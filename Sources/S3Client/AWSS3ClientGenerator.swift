@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 private extension Swift.Error {
     func isRetriable() -> Bool {
@@ -41,8 +42,8 @@ private extension Swift.Error {
  AWS Client Generator for the S3 service.
  */
 public struct AWSS3ClientGenerator {
-    let httpClient: HTTPClient
-    let dataHttpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
+    let dataHttpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -60,25 +61,25 @@ public struct AWSS3ClientGenerator {
                 target: String? = nil,
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>
                     = SmokeAWSClientReportingConfiguration<S3ModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
-        self.dataHttpClient = HTTPClient(endpointHostName: endpointHostName,
-                                          endpointPort: endpointPort,
-                                          contentType: contentType,
-                                          clientDelegate: clientDelegateForDataHttpClient,
-                                          connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                          eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
+        self.dataHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                                    endpointPort: endpointPort,
+                                                    contentType: contentType,
+                                                    clientDelegate: clientDelegateForDataHttpClient,
+                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                                    eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target
@@ -92,18 +93,9 @@ public struct AWSS3ClientGenerator {
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-        dataHttpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
-        dataHttpClient.wait()
+    public func close() throws {
+        try httpClient.close()
+        try dataHttpClient.close()
     }
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(

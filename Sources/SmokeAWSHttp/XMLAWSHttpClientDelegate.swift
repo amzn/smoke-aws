@@ -24,6 +24,7 @@ import SmokeHTTPClient
 import QueryCoding
 import HTTPHeadersCoding
 import HTTPPathCoding
+import AsyncHTTPClient
 
 extension CharacterSet {
     public static let uriAWSQueryValueAllowed: CharacterSet = ["~", "-", ".", "0", "1", "2", "3", "4",
@@ -141,11 +142,11 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     }
     
     public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
-            responseHead: HTTPResponseHead,
+            response: HTTPClient.Response,
             responseComponents: HTTPResponseComponents,
-            invocationReporting: InvocationReportingType) throws -> HTTPClientError {
+            invocationReporting: InvocationReportingType) throws -> SmokeHTTPClient.HTTPClientError {
         guard let bodyData = responseComponents.body else {
-            throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
+            throw HTTPError.unknownError("Error with status '\(response.status)' with empty body")
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
@@ -153,7 +154,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         
         let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
         
-        return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
+        return HTTPClientError(responseCode: Int(response.status.code), cause: cause)
     }
     
     public func encodeInputAndQueryString<InputType, InvocationReportingType: HTTPClientInvocationReporting>(

@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum StepFunctionsClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -58,7 +59,7 @@ private extension Swift.Error {
  AWS Client for the StepFunctions service.
  */
 public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: StepFunctionsClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -80,17 +81,17 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                 target: String? = "AWSStepFunctions",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>
                     = SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>() ) {
         let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -104,7 +105,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -126,16 +127,8 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -151,7 +144,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func createActivityAsync(
             input: StepFunctionsModel.CreateActivityInput, 
             completion: @escaping (Result<StepFunctionsModel.CreateActivityOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -162,7 +155,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.CreateActivityOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.CreateActivityOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -196,7 +189,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func createActivitySync(
             input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -229,7 +222,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
             completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -240,7 +233,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.CreateStateMachineOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.CreateStateMachineOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -274,7 +267,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func createStateMachineSync(
             input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -307,7 +300,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func deleteActivityAsync(
             input: StepFunctionsModel.DeleteActivityInput, 
             completion: @escaping (Result<StepFunctionsModel.DeleteActivityOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -318,7 +311,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.DeleteActivityOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.DeleteActivityOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -352,7 +345,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func deleteActivitySync(
             input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -385,7 +378,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
             completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -396,7 +389,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.DeleteStateMachineOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.DeleteStateMachineOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -430,7 +423,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func deleteStateMachineSync(
             input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -463,7 +456,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func describeActivityAsync(
             input: StepFunctionsModel.DescribeActivityInput, 
             completion: @escaping (Result<StepFunctionsModel.DescribeActivityOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -474,7 +467,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.DescribeActivityOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.DescribeActivityOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -508,7 +501,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeActivitySync(
             input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -541,7 +534,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func describeExecutionAsync(
             input: StepFunctionsModel.DescribeExecutionInput, 
             completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -552,7 +545,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.DescribeExecutionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.DescribeExecutionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -586,7 +579,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeExecutionSync(
             input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -619,7 +612,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func describeStateMachineAsync(
             input: StepFunctionsModel.DescribeStateMachineInput, 
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -630,7 +623,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.DescribeStateMachineOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.DescribeStateMachineOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -664,7 +657,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeStateMachineSync(
             input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -697,7 +690,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func describeStateMachineForExecutionAsync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput, 
             completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -708,7 +701,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.DescribeStateMachineForExecutionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -742,7 +735,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeStateMachineForExecutionSync(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -775,7 +768,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func getActivityTaskAsync(
             input: StepFunctionsModel.GetActivityTaskInput, 
             completion: @escaping (Result<StepFunctionsModel.GetActivityTaskOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -786,7 +779,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.GetActivityTaskOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.GetActivityTaskOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -820,7 +813,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getActivityTaskSync(
             input: StepFunctionsModel.GetActivityTaskInput) throws -> StepFunctionsModel.GetActivityTaskOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -853,7 +846,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func getExecutionHistoryAsync(
             input: StepFunctionsModel.GetExecutionHistoryInput, 
             completion: @escaping (Result<StepFunctionsModel.GetExecutionHistoryOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -864,7 +857,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.GetExecutionHistoryOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.GetExecutionHistoryOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -898,7 +891,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getExecutionHistorySync(
             input: StepFunctionsModel.GetExecutionHistoryInput) throws -> StepFunctionsModel.GetExecutionHistoryOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -931,7 +924,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func listActivitiesAsync(
             input: StepFunctionsModel.ListActivitiesInput, 
             completion: @escaping (Result<StepFunctionsModel.ListActivitiesOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -942,7 +935,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.ListActivitiesOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.ListActivitiesOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -976,7 +969,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listActivitiesSync(
             input: StepFunctionsModel.ListActivitiesInput) throws -> StepFunctionsModel.ListActivitiesOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1009,7 +1002,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
             completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1020,7 +1013,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.ListExecutionsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.ListExecutionsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1054,7 +1047,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listExecutionsSync(
             input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1087,7 +1080,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func listStateMachinesAsync(
             input: StepFunctionsModel.ListStateMachinesInput, 
             completion: @escaping (Result<StepFunctionsModel.ListStateMachinesOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1098,7 +1091,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.ListStateMachinesOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.ListStateMachinesOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1132,7 +1125,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listStateMachinesSync(
             input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1165,7 +1158,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func listTagsForResourceAsync(
             input: StepFunctionsModel.ListTagsForResourceInput, 
             completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1176,7 +1169,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.ListTagsForResourceOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.ListTagsForResourceOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1210,7 +1203,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listTagsForResourceSync(
             input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1243,7 +1236,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func sendTaskFailureAsync(
             input: StepFunctionsModel.SendTaskFailureInput, 
             completion: @escaping (Result<StepFunctionsModel.SendTaskFailureOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1254,7 +1247,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.SendTaskFailureOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.SendTaskFailureOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1288,7 +1281,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func sendTaskFailureSync(
             input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1321,7 +1314,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func sendTaskHeartbeatAsync(
             input: StepFunctionsModel.SendTaskHeartbeatInput, 
             completion: @escaping (Result<StepFunctionsModel.SendTaskHeartbeatOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1332,7 +1325,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.SendTaskHeartbeatOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.SendTaskHeartbeatOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1366,7 +1359,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func sendTaskHeartbeatSync(
             input: StepFunctionsModel.SendTaskHeartbeatInput) throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1399,7 +1392,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func sendTaskSuccessAsync(
             input: StepFunctionsModel.SendTaskSuccessInput, 
             completion: @escaping (Result<StepFunctionsModel.SendTaskSuccessOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1410,7 +1403,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.SendTaskSuccessOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.SendTaskSuccessOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1444,7 +1437,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func sendTaskSuccessSync(
             input: StepFunctionsModel.SendTaskSuccessInput) throws -> StepFunctionsModel.SendTaskSuccessOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1477,7 +1470,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
             completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1488,7 +1481,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.StartExecutionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.StartExecutionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1522,7 +1515,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func startExecutionSync(
             input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1555,7 +1548,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
             completion: @escaping (Result<StepFunctionsModel.StopExecutionOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1566,7 +1559,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.StopExecutionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.StopExecutionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1600,7 +1593,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func stopExecutionSync(
             input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1633,7 +1626,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func tagResourceAsync(
             input: StepFunctionsModel.TagResourceInput, 
             completion: @escaping (Result<StepFunctionsModel.TagResourceOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1644,7 +1637,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.TagResourceOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.TagResourceOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1678,7 +1671,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func tagResourceSync(
             input: StepFunctionsModel.TagResourceInput) throws -> StepFunctionsModel.TagResourceOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1711,7 +1704,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func untagResourceAsync(
             input: StepFunctionsModel.UntagResourceInput, 
             completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1722,7 +1715,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.UntagResourceOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.UntagResourceOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1756,7 +1749,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func untagResourceSync(
             input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1789,7 +1782,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
             completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, StepFunctionsError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1800,7 +1793,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<StepFunctionsModel.UpdateStateMachineOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<StepFunctionsModel.UpdateStateMachineOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1834,7 +1827,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

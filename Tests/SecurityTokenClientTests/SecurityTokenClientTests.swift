@@ -9,6 +9,7 @@ import SecurityTokenModel
 import SmokeAWSHttp
 import NIOHTTP1
 import SmokeHTTPClient
+import AsyncHTTPClient
 import Logging
 
 class SecurityTokenClientTests: XCTestCase {
@@ -25,14 +26,14 @@ class SecurityTokenClientTests: XCTestCase {
             </ErrorResponse>
             """
         
-        let responseHead = HTTPResponseHead(version: .init(major: 1, minor: 1),
-                                            status: .badRequest)
+        let response = HTTPClient.Response(host: "sts.amazonaws.com", status: .badRequest,
+                                           headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
-        let error = try clientDelegate.getResponseError(responseHead: responseHead,
+        let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
         

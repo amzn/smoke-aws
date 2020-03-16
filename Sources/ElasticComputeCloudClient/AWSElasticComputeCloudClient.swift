@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum ElasticComputeCloudClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -53,7 +54,7 @@ private extension Swift.Error {
  AWS Client for the ElasticComputeCloud service.
  */
 public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ElasticComputeCloudClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -76,19 +77,19 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 apiVersion: String = "2016-11-15",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -103,7 +104,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -126,16 +127,8 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -150,7 +143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func acceptReservedInstancesExchangeQuoteAsync(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -165,7 +158,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.acceptReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -198,7 +191,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptReservedInstancesExchangeQuoteSync(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -234,7 +227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func acceptTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -249,7 +242,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.acceptTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -282,7 +275,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptTransitGatewayPeeringAttachmentSync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -318,7 +311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func acceptTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -333,7 +326,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.acceptTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -366,7 +359,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptTransitGatewayVpcAttachmentSync(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -402,7 +395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func acceptVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -417,7 +410,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.acceptVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -450,7 +443,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptVpcEndpointConnectionsSync(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -486,7 +479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func acceptVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -501,7 +494,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.acceptVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -534,7 +527,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptVpcPeeringConnectionSync(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -570,7 +563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func advertiseByoipCidrAsync(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -585,7 +578,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.advertiseByoipCidr.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AdvertiseByoipCidrResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -618,7 +611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func advertiseByoipCidrSync(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest) throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -654,7 +647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func allocateAddressAsync(
             input: ElasticComputeCloudModel.AllocateAddressRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AllocateAddressResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -669,7 +662,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.allocateAddress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AllocateAddressResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AllocateAddressResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -702,7 +695,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func allocateAddressSync(
             input: ElasticComputeCloudModel.AllocateAddressRequest) throws -> ElasticComputeCloudModel.AllocateAddressResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -738,7 +731,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func allocateHostsAsync(
             input: ElasticComputeCloudModel.AllocateHostsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -753,7 +746,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.allocateHosts.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AllocateHostsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AllocateHostsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -786,7 +779,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func allocateHostsSync(
             input: ElasticComputeCloudModel.AllocateHostsRequest) throws -> ElasticComputeCloudModel.AllocateHostsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -822,7 +815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func applySecurityGroupsToClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -837,7 +830,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.applySecurityGroupsToClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -870,7 +863,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func applySecurityGroupsToClientVpnTargetNetworkSync(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -906,7 +899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func assignIpv6AddressesAsync(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -921,7 +914,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.assignIpv6Addresses.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssignIpv6AddressesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -954,7 +947,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func assignIpv6AddressesSync(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -990,7 +983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func assignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1005,7 +998,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.assignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1038,7 +1031,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func assignPrivateIpAddressesSync(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1074,7 +1067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateAddressAsync(
             input: ElasticComputeCloudModel.AssociateAddressRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateAddressResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1089,7 +1082,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateAddress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateAddressResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateAddressResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1122,7 +1115,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateAddressSync(
             input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1158,7 +1151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1173,7 +1166,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1206,7 +1199,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateClientVpnTargetNetworkSync(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1241,7 +1234,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateDhcpOptionsAsync(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1256,7 +1249,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateDhcpOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -1286,7 +1279,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateDhcpOptionsSync(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1322,7 +1315,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateIamInstanceProfileAsync(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1337,7 +1330,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateIamInstanceProfile.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1370,7 +1363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateIamInstanceProfileSync(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1406,7 +1399,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateRouteTableAsync(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1421,7 +1414,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateRouteTableResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateRouteTableResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1454,7 +1447,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateRouteTableSync(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1490,7 +1483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateSubnetCidrBlockAsync(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1505,7 +1498,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateSubnetCidrBlockResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1538,7 +1531,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateSubnetCidrBlockSync(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1574,7 +1567,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1589,7 +1582,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1622,7 +1615,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateTransitGatewayMulticastDomainSync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1658,7 +1651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1673,7 +1666,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1706,7 +1699,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateTransitGatewayRouteTableSync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1742,7 +1735,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func associateVpcCidrBlockAsync(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1757,7 +1750,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.associateVpcCidrBlock.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AssociateVpcCidrBlockResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1790,7 +1783,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateVpcCidrBlockSync(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1826,7 +1819,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func attachClassicLinkVpcAsync(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1841,7 +1834,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.attachClassicLinkVpc.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachClassicLinkVpcResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1874,7 +1867,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachClassicLinkVpcSync(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1909,7 +1902,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func attachInternetGatewayAsync(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1924,7 +1917,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.attachInternetGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -1954,7 +1947,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachInternetGatewaySync(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1990,7 +1983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func attachNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2005,7 +1998,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.attachNetworkInterface.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2038,7 +2031,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachNetworkInterfaceSync(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2074,7 +2067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func attachVolumeAsync(
             input: ElasticComputeCloudModel.AttachVolumeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2089,7 +2082,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.attachVolume.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.VolumeAttachment, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2122,7 +2115,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachVolumeSync(
             input: ElasticComputeCloudModel.AttachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2158,7 +2151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func attachVpnGatewayAsync(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AttachVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2173,7 +2166,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.attachVpnGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachVpnGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AttachVpnGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2206,7 +2199,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachVpnGatewaySync(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest) throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2242,7 +2235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func authorizeClientVpnIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2257,7 +2250,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.authorizeClientVpnIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2290,7 +2283,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func authorizeClientVpnIngressSync(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2325,7 +2318,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func authorizeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2340,7 +2333,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -2370,7 +2363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func authorizeSecurityGroupEgressSync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2405,7 +2398,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func authorizeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2420,7 +2413,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -2450,7 +2443,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func authorizeSecurityGroupIngressSync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2486,7 +2479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func bundleInstanceAsync(
             input: ElasticComputeCloudModel.BundleInstanceRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.BundleInstanceResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2501,7 +2494,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.bundleInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.BundleInstanceResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.BundleInstanceResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2534,7 +2527,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func bundleInstanceSync(
             input: ElasticComputeCloudModel.BundleInstanceRequest) throws -> ElasticComputeCloudModel.BundleInstanceResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2570,7 +2563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelBundleTaskAsync(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CancelBundleTaskResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2585,7 +2578,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelBundleTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelBundleTaskResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelBundleTaskResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2618,7 +2611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelBundleTaskSync(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest) throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2654,7 +2647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelCapacityReservationAsync(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2669,7 +2662,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelCapacityReservation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelCapacityReservationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelCapacityReservationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2702,7 +2695,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelCapacityReservationSync(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2737,7 +2730,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelConversionTaskAsync(
             input: ElasticComputeCloudModel.CancelConversionRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2752,7 +2745,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelConversionTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -2782,7 +2775,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelConversionTaskSync(
             input: ElasticComputeCloudModel.CancelConversionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2817,7 +2810,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelExportTaskAsync(
             input: ElasticComputeCloudModel.CancelExportTaskRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2832,7 +2825,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -2862,7 +2855,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelExportTaskSync(
             input: ElasticComputeCloudModel.CancelExportTaskRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2898,7 +2891,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelImportTaskAsync(
             input: ElasticComputeCloudModel.CancelImportTaskRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CancelImportTaskResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2913,7 +2906,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelImportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelImportTaskResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelImportTaskResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2946,7 +2939,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelImportTaskSync(
             input: ElasticComputeCloudModel.CancelImportTaskRequest) throws -> ElasticComputeCloudModel.CancelImportTaskResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2982,7 +2975,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelReservedInstancesListingAsync(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2997,7 +2990,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelReservedInstancesListing.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelReservedInstancesListingResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3030,7 +3023,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelReservedInstancesListingSync(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3066,7 +3059,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelSpotFleetRequestsAsync(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3081,7 +3074,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelSpotFleetRequests.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelSpotFleetRequestsResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3114,7 +3107,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelSpotFleetRequestsSync(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest) throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3150,7 +3143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func cancelSpotInstanceRequestsAsync(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3165,7 +3158,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.cancelSpotInstanceRequests.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CancelSpotInstanceRequestsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3198,7 +3191,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelSpotInstanceRequestsSync(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest) throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3234,7 +3227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func confirmProductInstanceAsync(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3249,7 +3242,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.confirmProductInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ConfirmProductInstanceResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3282,7 +3275,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func confirmProductInstanceSync(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest) throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3318,7 +3311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func copyFpgaImageAsync(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CopyFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3333,7 +3326,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.copyFpgaImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CopyFpgaImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CopyFpgaImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3366,7 +3359,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func copyFpgaImageSync(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest) throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3402,7 +3395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func copyImageAsync(
             input: ElasticComputeCloudModel.CopyImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CopyImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3417,7 +3410,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.copyImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CopyImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CopyImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3450,7 +3443,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func copyImageSync(
             input: ElasticComputeCloudModel.CopyImageRequest) throws -> ElasticComputeCloudModel.CopyImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3486,7 +3479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func copySnapshotAsync(
             input: ElasticComputeCloudModel.CopySnapshotRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CopySnapshotResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3501,7 +3494,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.copySnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CopySnapshotResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CopySnapshotResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3534,7 +3527,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func copySnapshotSync(
             input: ElasticComputeCloudModel.CopySnapshotRequest) throws -> ElasticComputeCloudModel.CopySnapshotResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3570,7 +3563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createCapacityReservationAsync(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3585,7 +3578,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createCapacityReservation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateCapacityReservationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateCapacityReservationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3618,7 +3611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCapacityReservationSync(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3654,7 +3647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3669,7 +3662,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateClientVpnEndpointResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3702,7 +3695,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createClientVpnEndpointSync(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3738,7 +3731,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createClientVpnRouteAsync(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3753,7 +3746,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createClientVpnRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateClientVpnRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3786,7 +3779,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createClientVpnRouteSync(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3822,7 +3815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createCustomerGatewayAsync(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3837,7 +3830,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createCustomerGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateCustomerGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3870,7 +3863,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCustomerGatewaySync(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest) throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3906,7 +3899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createDefaultSubnetAsync(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3921,7 +3914,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createDefaultSubnet.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDefaultSubnetResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3954,7 +3947,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createDefaultSubnetSync(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest) throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3990,7 +3983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createDefaultVpcAsync(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateDefaultVpcResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4005,7 +3998,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createDefaultVpc.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDefaultVpcResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDefaultVpcResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4038,7 +4031,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createDefaultVpcSync(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest) throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4074,7 +4067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createDhcpOptionsAsync(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4089,7 +4082,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createDhcpOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateDhcpOptionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4122,7 +4115,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createDhcpOptionsSync(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest) throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4158,7 +4151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createEgressOnlyInternetGatewayAsync(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4173,7 +4166,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4206,7 +4199,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createEgressOnlyInternetGatewaySync(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4242,7 +4235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createFleetAsync(
             input: ElasticComputeCloudModel.CreateFleetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateFleetResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4257,7 +4250,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createFleet.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFleetResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFleetResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4290,7 +4283,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createFleetSync(
             input: ElasticComputeCloudModel.CreateFleetRequest) throws -> ElasticComputeCloudModel.CreateFleetResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4326,7 +4319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createFlowLogsAsync(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4341,7 +4334,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createFlowLogs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFlowLogsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFlowLogsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4374,7 +4367,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createFlowLogsSync(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest) throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4410,7 +4403,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createFpgaImageAsync(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4425,7 +4418,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createFpgaImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFpgaImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateFpgaImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4458,7 +4451,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createFpgaImageSync(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest) throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4494,7 +4487,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createImageAsync(
             input: ElasticComputeCloudModel.CreateImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4509,7 +4502,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4542,7 +4535,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createImageSync(
             input: ElasticComputeCloudModel.CreateImageRequest) throws -> ElasticComputeCloudModel.CreateImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4578,7 +4571,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createInstanceExportTaskAsync(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4593,7 +4586,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createInstanceExportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateInstanceExportTaskResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4626,7 +4619,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createInstanceExportTaskSync(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4662,7 +4655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createInternetGatewayAsync(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4677,7 +4670,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createInternetGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateInternetGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateInternetGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4710,7 +4703,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createInternetGatewaySync(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4746,7 +4739,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createKeyPairAsync(
             input: ElasticComputeCloudModel.CreateKeyPairRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.KeyPair, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4761,7 +4754,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createKeyPair.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.KeyPair, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.KeyPair, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4794,7 +4787,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createKeyPairSync(
             input: ElasticComputeCloudModel.CreateKeyPairRequest) throws -> ElasticComputeCloudModel.KeyPair {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4830,7 +4823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createLaunchTemplateAsync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4845,7 +4838,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createLaunchTemplate.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLaunchTemplateResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4878,7 +4871,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLaunchTemplateSync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest) throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4914,7 +4907,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createLaunchTemplateVersionAsync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4929,7 +4922,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createLaunchTemplateVersion.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLaunchTemplateVersionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4962,7 +4955,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLaunchTemplateVersionSync(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest) throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4998,7 +4991,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createLocalGatewayRouteAsync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5013,7 +5006,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createLocalGatewayRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLocalGatewayRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5046,7 +5039,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLocalGatewayRouteSync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5082,7 +5075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createLocalGatewayRouteTableVpcAssociationAsync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5097,7 +5090,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createLocalGatewayRouteTableVpcAssociation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5130,7 +5123,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLocalGatewayRouteTableVpcAssociationSync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5166,7 +5159,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createNatGatewayAsync(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNatGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5181,7 +5174,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createNatGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNatGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNatGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5214,7 +5207,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNatGatewaySync(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest) throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5250,7 +5243,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createNetworkAclAsync(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkAclResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5265,7 +5258,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createNetworkAcl.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkAclResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkAclResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5298,7 +5291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkAclSync(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest) throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5333,7 +5326,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5348,7 +5341,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -5378,7 +5371,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkAclEntrySync(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5414,7 +5407,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5429,7 +5422,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createNetworkInterface.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkInterfaceResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5462,7 +5455,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkInterfaceSync(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5498,7 +5491,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createNetworkInterfacePermissionAsync(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5513,7 +5506,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5546,7 +5539,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkInterfacePermissionSync(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5581,7 +5574,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createPlacementGroupAsync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5596,7 +5589,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createPlacementGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -5626,7 +5619,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createPlacementGroupSync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5662,7 +5655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createReservedInstancesListingAsync(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5677,7 +5670,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createReservedInstancesListing.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5710,7 +5703,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createReservedInstancesListingSync(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5746,7 +5739,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createRouteAsync(
             input: ElasticComputeCloudModel.CreateRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5761,7 +5754,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5794,7 +5787,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createRouteSync(
             input: ElasticComputeCloudModel.CreateRouteRequest) throws -> ElasticComputeCloudModel.CreateRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5830,7 +5823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createRouteTableAsync(
             input: ElasticComputeCloudModel.CreateRouteTableRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5845,7 +5838,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateRouteTableResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateRouteTableResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5878,7 +5871,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createRouteTableSync(
             input: ElasticComputeCloudModel.CreateRouteTableRequest) throws -> ElasticComputeCloudModel.CreateRouteTableResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5914,7 +5907,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createSecurityGroupAsync(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSecurityGroupResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5929,7 +5922,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createSecurityGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSecurityGroupResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSecurityGroupResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5962,7 +5955,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSecurityGroupSync(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest) throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5998,7 +5991,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createSnapshotAsync(
             input: ElasticComputeCloudModel.CreateSnapshotRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.Snapshot, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6013,7 +6006,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.Snapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.Snapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6046,7 +6039,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSnapshotSync(
             input: ElasticComputeCloudModel.CreateSnapshotRequest) throws -> ElasticComputeCloudModel.Snapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6082,7 +6075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createSnapshotsAsync(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSnapshotsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6097,7 +6090,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createSnapshots.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSnapshotsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSnapshotsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6130,7 +6123,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSnapshotsSync(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest) throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6166,7 +6159,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6181,7 +6174,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6214,7 +6207,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSpotDatafeedSubscriptionSync(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6250,7 +6243,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createSubnetAsync(
             input: ElasticComputeCloudModel.CreateSubnetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6265,7 +6258,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createSubnet.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSubnetResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateSubnetResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6298,7 +6291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSubnetSync(
             input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6333,7 +6326,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTagsAsync(
             input: ElasticComputeCloudModel.CreateTagsRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6348,7 +6341,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTags.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -6378,7 +6371,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTagsSync(
             input: ElasticComputeCloudModel.CreateTagsRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6414,7 +6407,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTrafficMirrorFilterAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6429,7 +6422,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorFilter.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6462,7 +6455,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorFilterSync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6498,7 +6491,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6513,7 +6506,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorFilterRule.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6546,7 +6539,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorFilterRuleSync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6582,7 +6575,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6597,7 +6590,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorSession.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorSessionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6630,7 +6623,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorSessionSync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6666,7 +6659,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTrafficMirrorTargetAsync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6681,7 +6674,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTrafficMirrorTarget.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTrafficMirrorTargetResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6714,7 +6707,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorTargetSync(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest) throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6750,7 +6743,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTransitGatewayAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6765,7 +6758,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6798,7 +6791,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewaySync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6834,7 +6827,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6849,7 +6842,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6882,7 +6875,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayMulticastDomainSync(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6918,7 +6911,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6933,7 +6926,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6966,7 +6959,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayPeeringAttachmentSync(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7002,7 +6995,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7017,7 +7010,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7050,7 +7043,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayRouteSync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7086,7 +7079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7101,7 +7094,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7134,7 +7127,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayRouteTableSync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7170,7 +7163,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7185,7 +7178,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7218,7 +7211,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayVpcAttachmentSync(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7254,7 +7247,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVolumeAsync(
             input: ElasticComputeCloudModel.CreateVolumeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.Volume, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7269,7 +7262,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVolume.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.Volume, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.Volume, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7302,7 +7295,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVolumeSync(
             input: ElasticComputeCloudModel.CreateVolumeRequest) throws -> ElasticComputeCloudModel.Volume {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7338,7 +7331,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpcAsync(
             input: ElasticComputeCloudModel.CreateVpcRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7353,7 +7346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpc.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7386,7 +7379,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcSync(
             input: ElasticComputeCloudModel.CreateVpcRequest) throws -> ElasticComputeCloudModel.CreateVpcResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7422,7 +7415,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpcEndpointAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7437,7 +7430,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpcEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7470,7 +7463,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcEndpointSync(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7506,7 +7499,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpcEndpointConnectionNotificationAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7521,7 +7514,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7554,7 +7547,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcEndpointConnectionNotificationSync(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7590,7 +7583,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpcEndpointServiceConfigurationAsync(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7605,7 +7598,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7638,7 +7631,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcEndpointServiceConfigurationSync(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7674,7 +7667,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7689,7 +7682,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpcPeeringConnectionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7722,7 +7715,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcPeeringConnectionSync(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7758,7 +7751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpnConnectionAsync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7773,7 +7766,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpnConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpnConnectionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpnConnectionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7806,7 +7799,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpnConnectionSync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest) throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7841,7 +7834,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpnConnectionRouteAsync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7856,7 +7849,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpnConnectionRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -7886,7 +7879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpnConnectionRouteSync(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7922,7 +7915,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func createVpnGatewayAsync(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7937,7 +7930,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.createVpnGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpnGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.CreateVpnGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7970,7 +7963,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpnGatewaySync(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8006,7 +7999,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8021,7 +8014,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteClientVpnEndpointResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8054,7 +8047,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteClientVpnEndpointSync(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8090,7 +8083,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteClientVpnRouteAsync(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8105,7 +8098,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteClientVpnRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteClientVpnRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8138,7 +8131,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteClientVpnRouteSync(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8173,7 +8166,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteCustomerGatewayAsync(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8188,7 +8181,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteCustomerGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -8218,7 +8211,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteCustomerGatewaySync(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8253,7 +8246,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteDhcpOptionsAsync(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8268,7 +8261,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteDhcpOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -8298,7 +8291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteDhcpOptionsSync(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8334,7 +8327,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteEgressOnlyInternetGatewayAsync(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8349,7 +8342,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteEgressOnlyInternetGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8382,7 +8375,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteEgressOnlyInternetGatewaySync(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest) throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8418,7 +8411,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteFleetsAsync(
             input: ElasticComputeCloudModel.DeleteFleetsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteFleetsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8433,7 +8426,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteFleets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFleetsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFleetsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8466,7 +8459,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteFleetsSync(
             input: ElasticComputeCloudModel.DeleteFleetsRequest) throws -> ElasticComputeCloudModel.DeleteFleetsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8502,7 +8495,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteFlowLogsAsync(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8517,7 +8510,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteFlowLogs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFlowLogsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFlowLogsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8550,7 +8543,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteFlowLogsSync(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest) throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8586,7 +8579,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteFpgaImageAsync(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8601,7 +8594,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteFpgaImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFpgaImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteFpgaImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8634,7 +8627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteFpgaImageSync(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8669,7 +8662,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteInternetGatewayAsync(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8684,7 +8677,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteInternetGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -8714,7 +8707,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteInternetGatewaySync(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8749,7 +8742,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteKeyPairAsync(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8764,7 +8757,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteKeyPair.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -8794,7 +8787,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteKeyPairSync(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8830,7 +8823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteLaunchTemplateAsync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8845,7 +8838,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplate.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLaunchTemplateResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8878,7 +8871,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLaunchTemplateSync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8914,7 +8907,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteLaunchTemplateVersionsAsync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8929,7 +8922,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8962,7 +8955,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLaunchTemplateVersionsSync(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8998,7 +8991,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteLocalGatewayRouteAsync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9013,7 +9006,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteLocalGatewayRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9046,7 +9039,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLocalGatewayRouteSync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9082,7 +9075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteLocalGatewayRouteTableVpcAssociationAsync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9097,7 +9090,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteLocalGatewayRouteTableVpcAssociation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9130,7 +9123,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLocalGatewayRouteTableVpcAssociationSync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9166,7 +9159,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteNatGatewayAsync(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteNatGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9181,7 +9174,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteNatGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteNatGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteNatGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9214,7 +9207,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNatGatewaySync(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9249,7 +9242,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteNetworkAclAsync(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9264,7 +9257,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteNetworkAcl.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9294,7 +9287,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkAclSync(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9329,7 +9322,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9344,7 +9337,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9374,7 +9367,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkAclEntrySync(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9409,7 +9402,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9424,7 +9417,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteNetworkInterface.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9454,7 +9447,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInterfaceSync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9490,7 +9483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteNetworkInterfacePermissionAsync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9505,7 +9498,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteNetworkInterfacePermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9538,7 +9531,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInterfacePermissionSync(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9573,7 +9566,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deletePlacementGroupAsync(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9588,7 +9581,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deletePlacementGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9618,7 +9611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deletePlacementGroupSync(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9654,7 +9647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteQueuedReservedInstancesAsync(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9669,7 +9662,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteQueuedReservedInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9702,7 +9695,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteQueuedReservedInstancesSync(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest) throws -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9737,7 +9730,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteRouteAsync(
             input: ElasticComputeCloudModel.DeleteRouteRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9752,7 +9745,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9782,7 +9775,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteRouteSync(
             input: ElasticComputeCloudModel.DeleteRouteRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9817,7 +9810,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteRouteTableAsync(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9832,7 +9825,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9862,7 +9855,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteRouteTableSync(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9897,7 +9890,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteSecurityGroupAsync(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9912,7 +9905,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteSecurityGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -9942,7 +9935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSecurityGroupSync(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9977,7 +9970,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteSnapshotAsync(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9992,7 +9985,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -10022,7 +10015,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSnapshotSync(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10057,7 +10050,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10072,7 +10065,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -10102,7 +10095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSpotDatafeedSubscriptionSync(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10137,7 +10130,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteSubnetAsync(
             input: ElasticComputeCloudModel.DeleteSubnetRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10152,7 +10145,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteSubnet.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -10182,7 +10175,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSubnetSync(
             input: ElasticComputeCloudModel.DeleteSubnetRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10217,7 +10210,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTagsAsync(
             input: ElasticComputeCloudModel.DeleteTagsRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10232,7 +10225,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTags.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -10262,7 +10255,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTagsSync(
             input: ElasticComputeCloudModel.DeleteTagsRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10298,7 +10291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTrafficMirrorFilterAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10313,7 +10306,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilter.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10346,7 +10339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorFilterSync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10382,7 +10375,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10397,7 +10390,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorFilterRule.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10430,7 +10423,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorFilterRuleSync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10466,7 +10459,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10481,7 +10474,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorSession.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10514,7 +10507,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorSessionSync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10550,7 +10543,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTrafficMirrorTargetAsync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10565,7 +10558,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTrafficMirrorTarget.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10598,7 +10591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorTargetSync(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest) throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10634,7 +10627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTransitGatewayAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10649,7 +10642,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10682,7 +10675,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewaySync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10718,7 +10711,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10733,7 +10726,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10766,7 +10759,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayMulticastDomainSync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10802,7 +10795,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10817,7 +10810,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10850,7 +10843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayPeeringAttachmentSync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10886,7 +10879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10901,7 +10894,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10934,7 +10927,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayRouteSync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10970,7 +10963,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10985,7 +10978,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11018,7 +11011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayRouteTableSync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11054,7 +11047,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11069,7 +11062,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11102,7 +11095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayVpcAttachmentSync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11137,7 +11130,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVolumeAsync(
             input: ElasticComputeCloudModel.DeleteVolumeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11152,7 +11145,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVolume.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -11182,7 +11175,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVolumeSync(
             input: ElasticComputeCloudModel.DeleteVolumeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11217,7 +11210,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpcAsync(
             input: ElasticComputeCloudModel.DeleteVpcRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11232,7 +11225,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpc.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -11262,7 +11255,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcSync(
             input: ElasticComputeCloudModel.DeleteVpcRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11298,7 +11291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpcEndpointConnectionNotificationsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11313,7 +11306,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11346,7 +11339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcEndpointConnectionNotificationsSync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11382,7 +11375,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpcEndpointServiceConfigurationsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11397,7 +11390,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11430,7 +11423,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcEndpointServiceConfigurationsSync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11466,7 +11459,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpcEndpointsAsync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11481,7 +11474,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpcEndpoints.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcEndpointsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11514,7 +11507,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcEndpointsSync(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest) throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11550,7 +11543,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11565,7 +11558,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11598,7 +11591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcPeeringConnectionSync(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11633,7 +11626,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpnConnectionAsync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11648,7 +11641,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpnConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -11678,7 +11671,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpnConnectionSync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11713,7 +11706,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpnConnectionRouteAsync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11728,7 +11721,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpnConnectionRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -11758,7 +11751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpnConnectionRouteSync(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11793,7 +11786,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deleteVpnGatewayAsync(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11808,7 +11801,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteVpnGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -11838,7 +11831,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpnGatewaySync(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11874,7 +11867,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deprovisionByoipCidrAsync(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11889,7 +11882,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deprovisionByoipCidr.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11922,7 +11915,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deprovisionByoipCidrSync(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11957,7 +11950,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deregisterImageAsync(
             input: ElasticComputeCloudModel.DeregisterImageRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11972,7 +11965,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deregisterImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -12002,7 +11995,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterImageSync(
             input: ElasticComputeCloudModel.DeregisterImageRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12038,7 +12031,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deregisterTransitGatewayMulticastGroupMembersAsync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12053,7 +12046,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupMembers.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12086,7 +12079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterTransitGatewayMulticastGroupMembersSync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12122,7 +12115,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func deregisterTransitGatewayMulticastGroupSourcesAsync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12137,7 +12130,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deregisterTransitGatewayMulticastGroupSources.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12170,7 +12163,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterTransitGatewayMulticastGroupSourcesSync(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12206,7 +12199,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeAccountAttributesAsync(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12221,7 +12214,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12254,7 +12247,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAccountAttributesSync(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12290,7 +12283,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeAddressesAsync(
             input: ElasticComputeCloudModel.DescribeAddressesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12305,7 +12298,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeAddresses.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAddressesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAddressesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12338,7 +12331,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAddressesSync(
             input: ElasticComputeCloudModel.DescribeAddressesRequest) throws -> ElasticComputeCloudModel.DescribeAddressesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12374,7 +12367,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeAggregateIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12389,7 +12382,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeAggregateIdFormat.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAggregateIdFormatResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12422,7 +12415,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAggregateIdFormatSync(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12458,7 +12451,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeAvailabilityZonesAsync(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12473,7 +12466,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeAvailabilityZones.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12506,7 +12499,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAvailabilityZonesSync(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12542,7 +12535,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeBundleTasksAsync(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeBundleTasksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12557,7 +12550,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeBundleTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeBundleTasksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeBundleTasksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12590,7 +12583,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeBundleTasksSync(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12626,7 +12619,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeByoipCidrsAsync(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12641,7 +12634,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeByoipCidrs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12674,7 +12667,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeByoipCidrsSync(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12710,7 +12703,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeCapacityReservationsAsync(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12725,7 +12718,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeCapacityReservations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12758,7 +12751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCapacityReservationsSync(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12794,7 +12787,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeClassicLinkInstancesAsync(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12809,7 +12802,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeClassicLinkInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClassicLinkInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12842,7 +12835,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClassicLinkInstancesSync(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12878,7 +12871,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeClientVpnAuthorizationRulesAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12893,7 +12886,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeClientVpnAuthorizationRules.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -12926,7 +12919,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnAuthorizationRulesSync(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12962,7 +12955,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeClientVpnConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12977,7 +12970,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeClientVpnConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13010,7 +13003,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnConnectionsSync(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13046,7 +13039,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeClientVpnEndpointsAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13061,7 +13054,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeClientVpnEndpoints.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnEndpointsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13094,7 +13087,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnEndpointsSync(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13130,7 +13123,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeClientVpnRoutesAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13145,7 +13138,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeClientVpnRoutes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnRoutesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13178,7 +13171,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnRoutesSync(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13214,7 +13207,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeClientVpnTargetNetworksAsync(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13229,7 +13222,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeClientVpnTargetNetworks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13262,7 +13255,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnTargetNetworksSync(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13298,7 +13291,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeCoipPoolsAsync(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13313,7 +13306,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeCoipPools.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCoipPoolsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13346,7 +13339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCoipPoolsSync(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest) throws -> ElasticComputeCloudModel.DescribeCoipPoolsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13382,7 +13375,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeConversionTasksAsync(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeConversionTasksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13397,7 +13390,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeConversionTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeConversionTasksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeConversionTasksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13430,7 +13423,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeConversionTasksSync(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest) throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13466,7 +13459,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeCustomerGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13481,7 +13474,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeCustomerGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeCustomerGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13514,7 +13507,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCustomerGatewaysSync(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13550,7 +13543,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeDhcpOptionsAsync(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13565,7 +13558,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeDhcpOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeDhcpOptionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13598,7 +13591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeDhcpOptionsSync(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest) throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13634,7 +13627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeEgressOnlyInternetGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13649,7 +13642,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeEgressOnlyInternetGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13682,7 +13675,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeEgressOnlyInternetGatewaysSync(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13718,7 +13711,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeElasticGpusAsync(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeElasticGpusResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13733,7 +13726,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeElasticGpus.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeElasticGpusResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeElasticGpusResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13766,7 +13759,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeElasticGpusSync(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest) throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13802,7 +13795,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeExportImageTasksAsync(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13817,7 +13810,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeExportImageTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeExportImageTasksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13850,7 +13843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeExportImageTasksSync(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13886,7 +13879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeExportTasksAsync(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13901,7 +13894,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeExportTasksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeExportTasksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -13934,7 +13927,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeExportTasksSync(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13970,7 +13963,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13985,7 +13978,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFastSnapshotRestores.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14018,7 +14011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFastSnapshotRestoresSync(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14054,7 +14047,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFleetHistoryAsync(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14069,7 +14062,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFleetHistory.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetHistoryResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14102,7 +14095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFleetHistorySync(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest) throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14138,7 +14131,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFleetInstancesAsync(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14153,7 +14146,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFleetInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14186,7 +14179,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFleetInstancesSync(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest) throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14222,7 +14215,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFleetsAsync(
             input: ElasticComputeCloudModel.DescribeFleetsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFleetsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14237,7 +14230,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFleets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFleetsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14270,7 +14263,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFleetsSync(
             input: ElasticComputeCloudModel.DescribeFleetsRequest) throws -> ElasticComputeCloudModel.DescribeFleetsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14306,7 +14299,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFlowLogsAsync(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFlowLogsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14321,7 +14314,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFlowLogs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFlowLogsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFlowLogsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14354,7 +14347,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFlowLogsSync(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest) throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14390,7 +14383,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14405,7 +14398,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFpgaImageAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14438,7 +14431,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFpgaImageAttributeSync(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14474,7 +14467,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeFpgaImagesAsync(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14489,7 +14482,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeFpgaImages.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeFpgaImagesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14522,7 +14515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFpgaImagesSync(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest) throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14558,7 +14551,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeHostReservationOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14573,7 +14566,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeHostReservationOfferings.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostReservationOfferingsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14606,7 +14599,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeHostReservationOfferingsSync(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14642,7 +14635,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeHostReservationsAsync(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostReservationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14657,7 +14650,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeHostReservations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostReservationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostReservationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14690,7 +14683,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeHostReservationsSync(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest) throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14726,7 +14719,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeHostsAsync(
             input: ElasticComputeCloudModel.DescribeHostsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeHostsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14741,7 +14734,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeHosts.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeHostsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14774,7 +14767,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeHostsSync(
             input: ElasticComputeCloudModel.DescribeHostsRequest) throws -> ElasticComputeCloudModel.DescribeHostsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14810,7 +14803,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeIamInstanceProfileAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14825,7 +14818,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeIamInstanceProfileAssociations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14858,7 +14851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIamInstanceProfileAssociationsSync(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14894,7 +14887,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14909,7 +14902,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeIdFormat.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIdFormatResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIdFormatResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -14942,7 +14935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIdFormatSync(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14978,7 +14971,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeIdentityIdFormatAsync(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14993,7 +14986,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeIdentityIdFormat.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIdentityIdFormatResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15026,7 +15019,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIdentityIdFormatSync(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15062,7 +15055,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeImageAttributeAsync(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImageAttribute, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15077,7 +15070,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeImageAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImageAttribute, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImageAttribute, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15110,7 +15103,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImageAttributeSync(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest) throws -> ElasticComputeCloudModel.ImageAttribute {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15146,7 +15139,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeImagesAsync(
             input: ElasticComputeCloudModel.DescribeImagesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeImagesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15161,7 +15154,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeImages.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImagesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImagesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15194,7 +15187,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImagesSync(
             input: ElasticComputeCloudModel.DescribeImagesRequest) throws -> ElasticComputeCloudModel.DescribeImagesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15230,7 +15223,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeImportImageTasksAsync(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15245,7 +15238,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeImportImageTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImportImageTasksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15278,7 +15271,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImportImageTasksSync(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15314,7 +15307,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeImportSnapshotTasksAsync(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15329,7 +15322,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeImportSnapshotTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeImportSnapshotTasksResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15362,7 +15355,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImportSnapshotTasksSync(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest) throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15398,7 +15391,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInstanceAttributeAsync(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15413,7 +15406,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInstanceAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.InstanceAttribute, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.InstanceAttribute, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15446,7 +15439,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceAttributeSync(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest) throws -> ElasticComputeCloudModel.InstanceAttribute {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15482,7 +15475,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInstanceCreditSpecificationsAsync(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15497,7 +15490,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInstanceCreditSpecifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15530,7 +15523,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceCreditSpecificationsSync(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15566,7 +15559,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInstanceStatusAsync(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15581,7 +15574,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInstanceStatus.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceStatusResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15614,7 +15607,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceStatusSync(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15650,7 +15643,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInstanceTypeOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15665,7 +15658,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInstanceTypeOfferings.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15698,7 +15691,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceTypeOfferingsSync(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15734,7 +15727,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInstanceTypesAsync(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15749,7 +15742,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInstanceTypes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceTypesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15782,7 +15775,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceTypesSync(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest) throws -> ElasticComputeCloudModel.DescribeInstanceTypesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15818,7 +15811,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInstancesAsync(
             input: ElasticComputeCloudModel.DescribeInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15833,7 +15826,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15866,7 +15859,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstancesSync(
             input: ElasticComputeCloudModel.DescribeInstancesRequest) throws -> ElasticComputeCloudModel.DescribeInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15902,7 +15895,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeInternetGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15917,7 +15910,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeInternetGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -15950,7 +15943,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInternetGatewaysSync(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15986,7 +15979,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeIpv6PoolsAsync(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16001,7 +15994,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeIpv6Pools.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeIpv6PoolsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16034,7 +16027,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpv6PoolsSync(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest) throws -> ElasticComputeCloudModel.DescribeIpv6PoolsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16070,7 +16063,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeKeyPairsAsync(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeKeyPairsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16085,7 +16078,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeKeyPairs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeKeyPairsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeKeyPairsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16118,7 +16111,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeKeyPairsSync(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest) throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16154,7 +16147,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLaunchTemplateVersionsAsync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16169,7 +16162,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLaunchTemplateVersions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16202,7 +16195,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLaunchTemplateVersionsSync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest) throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16238,7 +16231,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLaunchTemplatesAsync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16253,7 +16246,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLaunchTemplates.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLaunchTemplatesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16286,7 +16279,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLaunchTemplatesSync(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest) throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16322,7 +16315,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16337,7 +16330,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16370,7 +16363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16406,7 +16399,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLocalGatewayRouteTableVpcAssociationsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16421,7 +16414,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTableVpcAssociations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16454,7 +16447,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayRouteTableVpcAssociationsSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16490,7 +16483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLocalGatewayRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16505,7 +16498,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayRouteTables.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16538,7 +16531,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayRouteTablesSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16574,7 +16567,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLocalGatewayVirtualInterfaceGroupsAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16589,7 +16582,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaceGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16622,7 +16615,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayVirtualInterfaceGroupsSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16658,7 +16651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLocalGatewayVirtualInterfacesAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16673,7 +16666,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLocalGatewayVirtualInterfaces.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16706,7 +16699,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayVirtualInterfacesSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16742,7 +16735,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeLocalGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16757,7 +16750,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeLocalGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16790,7 +16783,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewaysSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16826,7 +16819,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeMovingAddressesAsync(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16841,7 +16834,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeMovingAddresses.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeMovingAddressesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16874,7 +16867,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeMovingAddressesSync(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16910,7 +16903,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeNatGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16925,7 +16918,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeNatGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNatGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -16958,7 +16951,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNatGatewaysSync(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16994,7 +16987,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeNetworkAclsAsync(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17009,7 +17002,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeNetworkAcls.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17042,7 +17035,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkAclsSync(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17078,7 +17071,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17093,7 +17086,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17126,7 +17119,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInterfaceAttributeSync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17162,7 +17155,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeNetworkInterfacePermissionsAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17177,7 +17170,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeNetworkInterfacePermissions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17210,7 +17203,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInterfacePermissionsSync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17246,7 +17239,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeNetworkInterfacesAsync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17261,7 +17254,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeNetworkInterfaces.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeNetworkInterfacesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17294,7 +17287,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInterfacesSync(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17330,7 +17323,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describePlacementGroupsAsync(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17345,7 +17338,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describePlacementGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePlacementGroupsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17378,7 +17371,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePlacementGroupsSync(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest) throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17414,7 +17407,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describePrefixListsAsync(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePrefixListsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17429,7 +17422,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describePrefixLists.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePrefixListsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePrefixListsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17462,7 +17455,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePrefixListsSync(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest) throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17498,7 +17491,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describePrincipalIdFormatAsync(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17513,7 +17506,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describePrincipalIdFormat.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePrincipalIdFormatResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17546,7 +17539,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePrincipalIdFormatSync(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest) throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17582,7 +17575,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describePublicIpv4PoolsAsync(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17597,7 +17590,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describePublicIpv4Pools.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribePublicIpv4PoolsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17630,7 +17623,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePublicIpv4PoolsSync(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest) throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17666,7 +17659,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeRegionsAsync(
             input: ElasticComputeCloudModel.DescribeRegionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17681,7 +17674,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeRegions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeRegionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeRegionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17714,7 +17707,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeRegionsSync(
             input: ElasticComputeCloudModel.DescribeRegionsRequest) throws -> ElasticComputeCloudModel.DescribeRegionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17750,7 +17743,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeReservedInstancesAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17765,7 +17758,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeReservedInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17798,7 +17791,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesSync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17834,7 +17827,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeReservedInstancesListingsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17849,7 +17842,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeReservedInstancesListings.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesListingsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17882,7 +17875,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesListingsSync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17918,7 +17911,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeReservedInstancesModificationsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17933,7 +17926,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeReservedInstancesModifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -17966,7 +17959,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesModificationsSync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18002,7 +17995,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeReservedInstancesOfferingsAsync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18017,7 +18010,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeReservedInstancesOfferings.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18050,7 +18043,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesOfferingsSync(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18086,7 +18079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18101,7 +18094,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeRouteTables.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeRouteTablesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeRouteTablesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18134,7 +18127,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeRouteTablesSync(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18170,7 +18163,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeScheduledInstanceAvailabilityAsync(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18185,7 +18178,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeScheduledInstanceAvailability.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18218,7 +18211,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeScheduledInstanceAvailabilitySync(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest) throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18254,7 +18247,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeScheduledInstancesAsync(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18269,7 +18262,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeScheduledInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeScheduledInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18302,7 +18295,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeScheduledInstancesSync(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest) throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18338,7 +18331,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSecurityGroupReferencesAsync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18353,7 +18346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSecurityGroupReferences.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18386,7 +18379,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSecurityGroupReferencesSync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18422,7 +18415,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSecurityGroupsAsync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18437,7 +18430,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSecurityGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSecurityGroupsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18470,7 +18463,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSecurityGroupsSync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18506,7 +18499,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSnapshotAttributeAsync(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18521,7 +18514,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18554,7 +18547,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSnapshotAttributeSync(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18590,7 +18583,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSnapshotsAsync(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18605,7 +18598,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSnapshots.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSnapshotsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSnapshotsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18638,7 +18631,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSnapshotsSync(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18674,7 +18667,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSpotDatafeedSubscriptionAsync(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18689,7 +18682,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSpotDatafeedSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18722,7 +18715,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotDatafeedSubscriptionSync(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18758,7 +18751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSpotFleetInstancesAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18773,7 +18766,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSpotFleetInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18806,7 +18799,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotFleetInstancesSync(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18842,7 +18835,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSpotFleetRequestHistoryAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18857,7 +18850,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequestHistory.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18890,7 +18883,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotFleetRequestHistorySync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18926,7 +18919,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSpotFleetRequestsAsync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -18941,7 +18934,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSpotFleetRequests.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -18974,7 +18967,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotFleetRequestsSync(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest) throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19010,7 +19003,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSpotInstanceRequestsAsync(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19025,7 +19018,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSpotInstanceRequests.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19058,7 +19051,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotInstanceRequestsSync(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest) throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19094,7 +19087,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSpotPriceHistoryAsync(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19109,7 +19102,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSpotPriceHistory.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSpotPriceHistoryResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19142,7 +19135,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotPriceHistorySync(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest) throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19178,7 +19171,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeStaleSecurityGroupsAsync(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19193,7 +19186,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeStaleSecurityGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19226,7 +19219,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeStaleSecurityGroupsSync(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19262,7 +19255,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeSubnetsAsync(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeSubnetsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19277,7 +19270,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeSubnets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSubnetsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeSubnetsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19310,7 +19303,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSubnetsSync(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest) throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19346,7 +19339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTagsAsync(
             input: ElasticComputeCloudModel.DescribeTagsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTagsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19361,7 +19354,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTags.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTagsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTagsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19394,7 +19387,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTagsSync(
             input: ElasticComputeCloudModel.DescribeTagsRequest) throws -> ElasticComputeCloudModel.DescribeTagsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19430,7 +19423,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTrafficMirrorFiltersAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19445,7 +19438,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTrafficMirrorFilters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19478,7 +19471,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrafficMirrorFiltersSync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19514,7 +19507,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTrafficMirrorSessionsAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19529,7 +19522,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTrafficMirrorSessions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19562,7 +19555,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrafficMirrorSessionsSync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19598,7 +19591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTrafficMirrorTargetsAsync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19613,7 +19606,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTrafficMirrorTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19646,7 +19639,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrafficMirrorTargetsSync(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest) throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19682,7 +19675,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTransitGatewayAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19697,7 +19690,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19730,7 +19723,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayAttachmentsSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19766,7 +19759,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTransitGatewayMulticastDomainsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19781,7 +19774,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayMulticastDomains.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19814,7 +19807,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayMulticastDomainsSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19850,7 +19843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTransitGatewayPeeringAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19865,7 +19858,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayPeeringAttachments.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19898,7 +19891,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayPeeringAttachmentsSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19934,7 +19927,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTransitGatewayRouteTablesAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -19949,7 +19942,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayRouteTables.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -19982,7 +19975,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayRouteTablesSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20018,7 +20011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTransitGatewayVpcAttachmentsAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20033,7 +20026,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTransitGatewayVpcAttachments.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20066,7 +20059,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayVpcAttachmentsSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20102,7 +20095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeTransitGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20117,7 +20110,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeTransitGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20150,7 +20143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewaysSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20186,7 +20179,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVolumeAttributeAsync(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20201,7 +20194,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVolumeAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumeAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20234,7 +20227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumeAttributeSync(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20270,7 +20263,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVolumeStatusAsync(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20285,7 +20278,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVolumeStatus.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumeStatusResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20318,7 +20311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumeStatusSync(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest) throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20354,7 +20347,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVolumesAsync(
             input: ElasticComputeCloudModel.DescribeVolumesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20369,7 +20362,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVolumes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20402,7 +20395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumesSync(
             input: ElasticComputeCloudModel.DescribeVolumesRequest) throws -> ElasticComputeCloudModel.DescribeVolumesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20438,7 +20431,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVolumesModificationsAsync(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20453,7 +20446,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVolumesModifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVolumesModificationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20486,7 +20479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumesModificationsSync(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest) throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20522,7 +20515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcAttributeAsync(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20537,7 +20530,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20570,7 +20563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcAttributeSync(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20606,7 +20599,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20621,7 +20614,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcClassicLink.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcClassicLinkResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20654,7 +20647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcClassicLinkSync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20690,7 +20683,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20705,7 +20698,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20738,7 +20731,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcClassicLinkDnsSupportSync(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20774,7 +20767,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcEndpointConnectionNotificationsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20789,7 +20782,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnectionNotifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20822,7 +20815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointConnectionNotificationsSync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20858,7 +20851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20873,7 +20866,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20906,7 +20899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointConnectionsSync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20942,7 +20935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcEndpointServiceConfigurationsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -20957,7 +20950,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServiceConfigurations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -20990,7 +20983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointServiceConfigurationsSync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21026,7 +21019,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcEndpointServicePermissionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21041,7 +21034,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21074,7 +21067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointServicePermissionsSync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21110,7 +21103,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcEndpointServicesAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21125,7 +21118,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcEndpointServices.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointServicesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21158,7 +21151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointServicesSync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21194,7 +21187,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcEndpointsAsync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21209,7 +21202,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcEndpoints.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcEndpointsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21242,7 +21235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointsSync(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21278,7 +21271,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcPeeringConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21293,7 +21286,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcPeeringConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21326,7 +21319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcPeeringConnectionsSync(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21362,7 +21355,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpcsAsync(
             input: ElasticComputeCloudModel.DescribeVpcsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpcsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21377,7 +21370,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpcs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpcsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21410,7 +21403,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcsSync(
             input: ElasticComputeCloudModel.DescribeVpcsRequest) throws -> ElasticComputeCloudModel.DescribeVpcsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21446,7 +21439,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpnConnectionsAsync(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21461,7 +21454,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpnConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpnConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21494,7 +21487,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpnConnectionsSync(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest) throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21530,7 +21523,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func describeVpnGatewaysAsync(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21545,7 +21538,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.describeVpnGateways.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeVpnGatewaysResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21578,7 +21571,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpnGatewaysSync(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21614,7 +21607,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func detachClassicLinkVpcAsync(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21629,7 +21622,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.detachClassicLinkVpc.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DetachClassicLinkVpcResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21662,7 +21655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachClassicLinkVpcSync(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest) throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21697,7 +21690,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func detachInternetGatewayAsync(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21712,7 +21705,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.detachInternetGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -21742,7 +21735,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachInternetGatewaySync(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21777,7 +21770,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func detachNetworkInterfaceAsync(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21792,7 +21785,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.detachNetworkInterface.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -21822,7 +21815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachNetworkInterfaceSync(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21858,7 +21851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func detachVolumeAsync(
             input: ElasticComputeCloudModel.DetachVolumeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.VolumeAttachment, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21873,7 +21866,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.detachVolume.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.VolumeAttachment, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.VolumeAttachment, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -21906,7 +21899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachVolumeSync(
             input: ElasticComputeCloudModel.DetachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21941,7 +21934,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func detachVpnGatewayAsync(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -21956,7 +21949,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.detachVpnGateway.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -21986,7 +21979,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachVpnGatewaySync(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22022,7 +22015,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disableEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22037,7 +22030,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disableEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22070,7 +22063,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableEbsEncryptionByDefaultSync(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22106,7 +22099,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disableFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22121,7 +22114,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disableFastSnapshotRestores.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22154,7 +22147,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableFastSnapshotRestoresSync(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22190,7 +22183,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disableTransitGatewayRouteTablePropagationAsync(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22205,7 +22198,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22238,7 +22231,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableTransitGatewayRouteTablePropagationSync(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22273,7 +22266,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disableVgwRoutePropagationAsync(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22288,7 +22281,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -22318,7 +22311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableVgwRoutePropagationSync(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22354,7 +22347,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disableVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22369,7 +22362,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disableVpcClassicLink.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableVpcClassicLinkResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22402,7 +22395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableVpcClassicLinkSync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22438,7 +22431,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disableVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22453,7 +22446,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22486,7 +22479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableVpcClassicLinkDnsSupportSync(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22521,7 +22514,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateAddressAsync(
             input: ElasticComputeCloudModel.DisassociateAddressRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22536,7 +22529,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateAddress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -22566,7 +22559,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateAddressSync(
             input: ElasticComputeCloudModel.DisassociateAddressRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22602,7 +22595,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateClientVpnTargetNetworkAsync(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22617,7 +22610,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateClientVpnTargetNetwork.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22650,7 +22643,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateClientVpnTargetNetworkSync(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22686,7 +22679,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateIamInstanceProfileAsync(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22701,7 +22694,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateIamInstanceProfile.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22734,7 +22727,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateIamInstanceProfileSync(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22769,7 +22762,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateRouteTableAsync(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22784,7 +22777,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -22814,7 +22807,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateRouteTableSync(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22850,7 +22843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateSubnetCidrBlockAsync(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22865,7 +22858,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateSubnetCidrBlock.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22898,7 +22891,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateSubnetCidrBlockSync(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22934,7 +22927,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateTransitGatewayMulticastDomainAsync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -22949,7 +22942,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateTransitGatewayMulticastDomain.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -22982,7 +22975,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateTransitGatewayMulticastDomainSync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23018,7 +23011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateTransitGatewayRouteTableAsync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23033,7 +23026,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateTransitGatewayRouteTable.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23066,7 +23059,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateTransitGatewayRouteTableSync(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23102,7 +23095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func disassociateVpcCidrBlockAsync(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23117,7 +23110,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.disassociateVpcCidrBlock.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23150,7 +23143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateVpcCidrBlockSync(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23186,7 +23179,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23201,7 +23194,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23234,7 +23227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableEbsEncryptionByDefaultSync(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23270,7 +23263,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableFastSnapshotRestoresAsync(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23285,7 +23278,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23318,7 +23311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableFastSnapshotRestoresSync(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23354,7 +23347,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableTransitGatewayRouteTablePropagationAsync(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23369,7 +23362,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableTransitGatewayRouteTablePropagation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23402,7 +23395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableTransitGatewayRouteTablePropagationSync(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23437,7 +23430,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableVgwRoutePropagationAsync(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23452,7 +23445,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableVgwRoutePropagation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -23482,7 +23475,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVgwRoutePropagationSync(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23517,7 +23510,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableVolumeIOAsync(
             input: ElasticComputeCloudModel.EnableVolumeIORequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23532,7 +23525,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableVolumeIO.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -23562,7 +23555,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVolumeIOSync(
             input: ElasticComputeCloudModel.EnableVolumeIORequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23598,7 +23591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableVpcClassicLinkAsync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23613,7 +23606,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableVpcClassicLink.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableVpcClassicLinkResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23646,7 +23639,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVpcClassicLinkSync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23682,7 +23675,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func enableVpcClassicLinkDnsSupportAsync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23697,7 +23690,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.enableVpcClassicLinkDnsSupport.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23730,7 +23723,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVpcClassicLinkDnsSupportSync(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23766,7 +23759,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func exportClientVpnClientCertificateRevocationListAsync(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23781,7 +23774,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.exportClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23814,7 +23807,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportClientVpnClientCertificateRevocationListSync(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23850,7 +23843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func exportClientVpnClientConfigurationAsync(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23865,7 +23858,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.exportClientVpnClientConfiguration.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23898,7 +23891,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportClientVpnClientConfigurationSync(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23934,7 +23927,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func exportImageAsync(
             input: ElasticComputeCloudModel.ExportImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ExportImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -23949,7 +23942,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.exportImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -23982,7 +23975,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportImageSync(
             input: ElasticComputeCloudModel.ExportImageRequest) throws -> ElasticComputeCloudModel.ExportImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24018,7 +24011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func exportTransitGatewayRoutesAsync(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24033,7 +24026,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24066,7 +24059,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportTransitGatewayRoutesSync(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24102,7 +24095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getAssociatedIpv6PoolCidrsAsync(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24117,7 +24110,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getAssociatedIpv6PoolCidrs.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24150,7 +24143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getAssociatedIpv6PoolCidrsSync(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest) throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24186,7 +24179,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getCapacityReservationUsageAsync(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24201,7 +24194,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getCapacityReservationUsage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetCapacityReservationUsageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24234,7 +24227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getCapacityReservationUsageSync(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24270,7 +24263,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getCoipPoolUsageAsync(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24285,7 +24278,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getCoipPoolUsage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetCoipPoolUsageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24318,7 +24311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getCoipPoolUsageSync(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest) throws -> ElasticComputeCloudModel.GetCoipPoolUsageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24354,7 +24347,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getConsoleOutputAsync(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleOutputResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24369,7 +24362,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getConsoleOutput.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetConsoleOutputResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetConsoleOutputResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24402,7 +24395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getConsoleOutputSync(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest) throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24438,7 +24431,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getConsoleScreenshotAsync(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24453,7 +24446,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getConsoleScreenshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetConsoleScreenshotResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24486,7 +24479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getConsoleScreenshotSync(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24522,7 +24515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getDefaultCreditSpecificationAsync(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24537,7 +24530,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getDefaultCreditSpecification.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetDefaultCreditSpecificationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24570,7 +24563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getDefaultCreditSpecificationSync(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest) throws -> ElasticComputeCloudModel.GetDefaultCreditSpecificationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24606,7 +24599,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24621,7 +24614,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24654,7 +24647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getEbsDefaultKmsKeyIdSync(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24690,7 +24683,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getEbsEncryptionByDefaultAsync(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24705,7 +24698,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getEbsEncryptionByDefault.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24738,7 +24731,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getEbsEncryptionByDefaultSync(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24774,7 +24767,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getHostReservationPurchasePreviewAsync(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24789,7 +24782,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getHostReservationPurchasePreview.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24822,7 +24815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getHostReservationPurchasePreviewSync(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24858,7 +24851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getLaunchTemplateDataAsync(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24873,7 +24866,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getLaunchTemplateData.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24906,7 +24899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getLaunchTemplateDataSync(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24942,7 +24935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getPasswordDataAsync(
             input: ElasticComputeCloudModel.GetPasswordDataRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetPasswordDataResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -24957,7 +24950,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getPasswordData.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetPasswordDataResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetPasswordDataResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -24990,7 +24983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getPasswordDataSync(
             input: ElasticComputeCloudModel.GetPasswordDataRequest) throws -> ElasticComputeCloudModel.GetPasswordDataResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25026,7 +25019,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getReservedInstancesExchangeQuoteAsync(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25041,7 +25034,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getReservedInstancesExchangeQuote.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25074,7 +25067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getReservedInstancesExchangeQuoteSync(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25110,7 +25103,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getTransitGatewayAttachmentPropagationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25125,7 +25118,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getTransitGatewayAttachmentPropagations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25158,7 +25151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayAttachmentPropagationsSync(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25194,7 +25187,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getTransitGatewayMulticastDomainAssociationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25209,7 +25202,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getTransitGatewayMulticastDomainAssociations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25242,7 +25235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayMulticastDomainAssociationsSync(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25278,7 +25271,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getTransitGatewayRouteTableAssociationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25293,7 +25286,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTableAssociations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25326,7 +25319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayRouteTableAssociationsSync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25362,7 +25355,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func getTransitGatewayRouteTablePropagationsAsync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25377,7 +25370,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.getTransitGatewayRouteTablePropagations.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25410,7 +25403,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayRouteTablePropagationsSync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25446,7 +25439,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func importClientVpnClientCertificateRevocationListAsync(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25461,7 +25454,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.importClientVpnClientCertificateRevocationList.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25494,7 +25487,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importClientVpnClientCertificateRevocationListSync(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25530,7 +25523,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func importImageAsync(
             input: ElasticComputeCloudModel.ImportImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImportImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25545,7 +25538,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.importImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25578,7 +25571,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importImageSync(
             input: ElasticComputeCloudModel.ImportImageRequest) throws -> ElasticComputeCloudModel.ImportImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25614,7 +25607,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func importInstanceAsync(
             input: ElasticComputeCloudModel.ImportInstanceRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImportInstanceResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25629,7 +25622,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.importInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportInstanceResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportInstanceResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25662,7 +25655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importInstanceSync(
             input: ElasticComputeCloudModel.ImportInstanceRequest) throws -> ElasticComputeCloudModel.ImportInstanceResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25698,7 +25691,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func importKeyPairAsync(
             input: ElasticComputeCloudModel.ImportKeyPairRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImportKeyPairResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25713,7 +25706,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.importKeyPair.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportKeyPairResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportKeyPairResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25746,7 +25739,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importKeyPairSync(
             input: ElasticComputeCloudModel.ImportKeyPairRequest) throws -> ElasticComputeCloudModel.ImportKeyPairResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25782,7 +25775,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func importSnapshotAsync(
             input: ElasticComputeCloudModel.ImportSnapshotRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImportSnapshotResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25797,7 +25790,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.importSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportSnapshotResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportSnapshotResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25830,7 +25823,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importSnapshotSync(
             input: ElasticComputeCloudModel.ImportSnapshotRequest) throws -> ElasticComputeCloudModel.ImportSnapshotResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25866,7 +25859,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func importVolumeAsync(
             input: ElasticComputeCloudModel.ImportVolumeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25881,7 +25874,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.importVolume.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportVolumeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ImportVolumeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25914,7 +25907,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importVolumeSync(
             input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25950,7 +25943,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyCapacityReservationAsync(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -25965,7 +25958,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyCapacityReservation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -25998,7 +25991,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyCapacityReservationSync(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26034,7 +26027,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyClientVpnEndpointAsync(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26049,7 +26042,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyClientVpnEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyClientVpnEndpointResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26082,7 +26075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyClientVpnEndpointSync(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26118,7 +26111,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyDefaultCreditSpecificationAsync(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26133,7 +26126,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyDefaultCreditSpecification.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26166,7 +26159,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyDefaultCreditSpecificationSync(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26202,7 +26195,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26217,7 +26210,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26250,7 +26243,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyEbsDefaultKmsKeyIdSync(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26286,7 +26279,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyFleetAsync(
             input: ElasticComputeCloudModel.ModifyFleetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyFleetResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26301,7 +26294,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyFleet.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyFleetResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyFleetResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26334,7 +26327,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyFleetSync(
             input: ElasticComputeCloudModel.ModifyFleetRequest) throws -> ElasticComputeCloudModel.ModifyFleetResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26370,7 +26363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26385,7 +26378,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyFpgaImageAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26418,7 +26411,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyFpgaImageAttributeSync(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26454,7 +26447,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyHostsAsync(
             input: ElasticComputeCloudModel.ModifyHostsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyHostsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26469,7 +26462,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyHosts.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyHostsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyHostsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26502,7 +26495,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyHostsSync(
             input: ElasticComputeCloudModel.ModifyHostsRequest) throws -> ElasticComputeCloudModel.ModifyHostsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26537,7 +26530,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyIdFormatAsync(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26552,7 +26545,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyIdFormat.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -26582,7 +26575,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIdFormatSync(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26617,7 +26610,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyIdentityIdFormatAsync(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26632,7 +26625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyIdentityIdFormat.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -26662,7 +26655,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIdentityIdFormatSync(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26697,7 +26690,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyImageAttributeAsync(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26712,7 +26705,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyImageAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -26742,7 +26735,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyImageAttributeSync(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26777,7 +26770,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyInstanceAttributeAsync(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26792,7 +26785,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyInstanceAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -26822,7 +26815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceAttributeSync(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26858,7 +26851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyInstanceCapacityReservationAttributesAsync(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26873,7 +26866,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyInstanceCapacityReservationAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26906,7 +26899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceCapacityReservationAttributesSync(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26942,7 +26935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyInstanceCreditSpecificationAsync(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -26957,7 +26950,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyInstanceCreditSpecification.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -26990,7 +26983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceCreditSpecificationSync(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27026,7 +27019,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyInstanceEventStartTimeAsync(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27041,7 +27034,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyInstanceEventStartTime.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27074,7 +27067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceEventStartTimeSync(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27110,7 +27103,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyInstanceMetadataOptionsAsync(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27125,7 +27118,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyInstanceMetadataOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27158,7 +27151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceMetadataOptionsSync(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest) throws -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27194,7 +27187,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyInstancePlacementAsync(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27209,7 +27202,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyInstancePlacement.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27242,7 +27235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstancePlacementSync(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27278,7 +27271,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyLaunchTemplateAsync(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27293,7 +27286,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyLaunchTemplate.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27326,7 +27319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyLaunchTemplateSync(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27361,7 +27354,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27376,7 +27369,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -27406,7 +27399,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyNetworkInterfaceAttributeSync(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27442,7 +27435,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyReservedInstancesAsync(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27457,7 +27450,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyReservedInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27490,7 +27483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyReservedInstancesSync(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27525,7 +27518,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifySnapshotAttributeAsync(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27540,7 +27533,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifySnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -27570,7 +27563,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySnapshotAttributeSync(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27606,7 +27599,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifySpotFleetRequestAsync(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27621,7 +27614,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifySpotFleetRequest.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifySpotFleetRequestResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27654,7 +27647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySpotFleetRequestSync(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27689,7 +27682,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifySubnetAttributeAsync(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27704,7 +27697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifySubnetAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -27734,7 +27727,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySubnetAttributeSync(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27770,7 +27763,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyTrafficMirrorFilterNetworkServicesAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27785,7 +27778,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterNetworkServices.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27818,7 +27811,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTrafficMirrorFilterNetworkServicesSync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27854,7 +27847,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyTrafficMirrorFilterRuleAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27869,7 +27862,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorFilterRule.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27902,7 +27895,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTrafficMirrorFilterRuleSync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27938,7 +27931,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyTrafficMirrorSessionAsync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -27953,7 +27946,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -27986,7 +27979,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTrafficMirrorSessionSync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28022,7 +28015,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28037,7 +28030,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28070,7 +28063,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTransitGatewayVpcAttachmentSync(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28106,7 +28099,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVolumeAsync(
             input: ElasticComputeCloudModel.ModifyVolumeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVolumeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28121,7 +28114,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVolume.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVolumeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVolumeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28154,7 +28147,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVolumeSync(
             input: ElasticComputeCloudModel.ModifyVolumeRequest) throws -> ElasticComputeCloudModel.ModifyVolumeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28189,7 +28182,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVolumeAttributeAsync(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28204,7 +28197,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVolumeAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -28234,7 +28227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVolumeAttributeSync(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28269,7 +28262,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcAttributeAsync(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28284,7 +28277,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -28314,7 +28307,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcAttributeSync(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28350,7 +28343,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcEndpointAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28365,7 +28358,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28398,7 +28391,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointSync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28434,7 +28427,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcEndpointConnectionNotificationAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28449,7 +28442,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointConnectionNotification.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28482,7 +28475,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointConnectionNotificationSync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28518,7 +28511,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcEndpointServiceConfigurationAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28533,7 +28526,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServiceConfiguration.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28566,7 +28559,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointServiceConfigurationSync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28602,7 +28595,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcEndpointServicePermissionsAsync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28617,7 +28610,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcEndpointServicePermissions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28650,7 +28643,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointServicePermissionsSync(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28686,7 +28679,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcPeeringConnectionOptionsAsync(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28701,7 +28694,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcPeeringConnectionOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28734,7 +28727,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcPeeringConnectionOptionsSync(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28770,7 +28763,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpcTenancyAsync(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28785,7 +28778,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpcTenancy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpcTenancyResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28818,7 +28811,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcTenancySync(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28854,7 +28847,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpnConnectionAsync(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28869,7 +28862,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28902,7 +28895,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnConnectionSync(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28938,7 +28931,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpnTunnelCertificateAsync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -28953,7 +28946,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpnTunnelCertificate.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -28986,7 +28979,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnTunnelCertificateSync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29022,7 +29015,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func modifyVpnTunnelOptionsAsync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29037,7 +29030,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.modifyVpnTunnelOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29070,7 +29063,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnTunnelOptionsSync(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29106,7 +29099,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func monitorInstancesAsync(
             input: ElasticComputeCloudModel.MonitorInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.MonitorInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29121,7 +29114,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.monitorInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.MonitorInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.MonitorInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29154,7 +29147,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func monitorInstancesSync(
             input: ElasticComputeCloudModel.MonitorInstancesRequest) throws -> ElasticComputeCloudModel.MonitorInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29190,7 +29183,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func moveAddressToVpcAsync(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29205,7 +29198,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.moveAddressToVpc.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.MoveAddressToVpcResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.MoveAddressToVpcResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29238,7 +29231,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func moveAddressToVpcSync(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29274,7 +29267,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func provisionByoipCidrAsync(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29289,7 +29282,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.provisionByoipCidr.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29322,7 +29315,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func provisionByoipCidrSync(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29358,7 +29351,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func purchaseHostReservationAsync(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.PurchaseHostReservationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29373,7 +29366,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.purchaseHostReservation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseHostReservationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseHostReservationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29406,7 +29399,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func purchaseHostReservationSync(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29442,7 +29435,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func purchaseReservedInstancesOfferingAsync(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29457,7 +29450,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.purchaseReservedInstancesOffering.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29490,7 +29483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func purchaseReservedInstancesOfferingSync(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest) throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29526,7 +29519,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func purchaseScheduledInstancesAsync(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29541,7 +29534,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.purchaseScheduledInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.PurchaseScheduledInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29574,7 +29567,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func purchaseScheduledInstancesSync(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest) throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29609,7 +29602,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func rebootInstancesAsync(
             input: ElasticComputeCloudModel.RebootInstancesRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29624,7 +29617,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.rebootInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -29654,7 +29647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rebootInstancesSync(
             input: ElasticComputeCloudModel.RebootInstancesRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29690,7 +29683,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func registerImageAsync(
             input: ElasticComputeCloudModel.RegisterImageRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29705,7 +29698,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.registerImage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterImageResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterImageResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29738,7 +29731,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerImageSync(
             input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29774,7 +29767,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func registerTransitGatewayMulticastGroupMembersAsync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29789,7 +29782,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupMembers.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29822,7 +29815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerTransitGatewayMulticastGroupMembersSync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29858,7 +29851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func registerTransitGatewayMulticastGroupSourcesAsync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29873,7 +29866,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.registerTransitGatewayMulticastGroupSources.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29906,7 +29899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerTransitGatewayMulticastGroupSourcesSync(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29942,7 +29935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func rejectTransitGatewayPeeringAttachmentAsync(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -29957,7 +29950,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.rejectTransitGatewayPeeringAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -29990,7 +29983,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectTransitGatewayPeeringAttachmentSync(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30026,7 +30019,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func rejectTransitGatewayVpcAttachmentAsync(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30041,7 +30034,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.rejectTransitGatewayVpcAttachment.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30074,7 +30067,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectTransitGatewayVpcAttachmentSync(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30110,7 +30103,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func rejectVpcEndpointConnectionsAsync(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30125,7 +30118,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.rejectVpcEndpointConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30158,7 +30151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectVpcEndpointConnectionsSync(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30194,7 +30187,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func rejectVpcPeeringConnectionAsync(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30209,7 +30202,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.rejectVpcPeeringConnection.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RejectVpcPeeringConnectionResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30242,7 +30235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectVpcPeeringConnectionSync(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30277,7 +30270,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func releaseAddressAsync(
             input: ElasticComputeCloudModel.ReleaseAddressRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30292,7 +30285,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.releaseAddress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -30322,7 +30315,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func releaseAddressSync(
             input: ElasticComputeCloudModel.ReleaseAddressRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30358,7 +30351,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func releaseHostsAsync(
             input: ElasticComputeCloudModel.ReleaseHostsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30373,7 +30366,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.releaseHosts.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ReleaseHostsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReleaseHostsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30406,7 +30399,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func releaseHostsSync(
             input: ElasticComputeCloudModel.ReleaseHostsRequest) throws -> ElasticComputeCloudModel.ReleaseHostsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30442,7 +30435,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func replaceIamInstanceProfileAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30457,7 +30450,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.replaceIamInstanceProfileAssociation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30490,7 +30483,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceIamInstanceProfileAssociationSync(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30526,7 +30519,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func replaceNetworkAclAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30541,7 +30534,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.replaceNetworkAclAssociation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30574,7 +30567,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceNetworkAclAssociationSync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30609,7 +30602,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func replaceNetworkAclEntryAsync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30624,7 +30617,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.replaceNetworkAclEntry.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -30654,7 +30647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceNetworkAclEntrySync(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30689,7 +30682,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func replaceRouteAsync(
             input: ElasticComputeCloudModel.ReplaceRouteRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30704,7 +30697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.replaceRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -30734,7 +30727,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceRouteSync(
             input: ElasticComputeCloudModel.ReplaceRouteRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30770,7 +30763,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func replaceRouteTableAssociationAsync(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30785,7 +30778,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.replaceRouteTableAssociation.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceRouteTableAssociationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30818,7 +30811,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceRouteTableAssociationSync(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30854,7 +30847,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func replaceTransitGatewayRouteAsync(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30869,7 +30862,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.replaceTransitGatewayRoute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -30902,7 +30895,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceTransitGatewayRouteSync(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30937,7 +30930,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func reportInstanceStatusAsync(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -30952,7 +30945,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.reportInstanceStatus.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -30982,7 +30975,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func reportInstanceStatusSync(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31018,7 +31011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func requestSpotFleetAsync(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotFleetResponse, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31033,7 +31026,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.requestSpotFleet.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RequestSpotFleetResponse, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RequestSpotFleetResponse, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -31066,7 +31059,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func requestSpotFleetSync(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest) throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31102,7 +31095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func requestSpotInstancesAsync(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31117,7 +31110,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.requestSpotInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RequestSpotInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RequestSpotInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -31150,7 +31143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func requestSpotInstancesSync(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31186,7 +31179,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func resetEbsDefaultKmsKeyIdAsync(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31201,7 +31194,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.resetEbsDefaultKmsKeyId.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -31234,7 +31227,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetEbsDefaultKmsKeyIdSync(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31270,7 +31263,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func resetFpgaImageAttributeAsync(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31285,7 +31278,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.resetFpgaImageAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ResetFpgaImageAttributeResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -31318,7 +31311,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetFpgaImageAttributeSync(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31353,7 +31346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func resetImageAttributeAsync(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31368,7 +31361,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.resetImageAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -31398,7 +31391,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetImageAttributeSync(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31433,7 +31426,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func resetInstanceAttributeAsync(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31448,7 +31441,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.resetInstanceAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -31478,7 +31471,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetInstanceAttributeSync(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31513,7 +31506,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func resetNetworkInterfaceAttributeAsync(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31528,7 +31521,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.resetNetworkInterfaceAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -31558,7 +31551,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetNetworkInterfaceAttributeSync(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31593,7 +31586,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func resetSnapshotAttributeAsync(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31608,7 +31601,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.resetSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -31638,7 +31631,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetSnapshotAttributeSync(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31674,7 +31667,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func restoreAddressToClassicAsync(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31689,7 +31682,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.restoreAddressToClassic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -31722,7 +31715,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func restoreAddressToClassicSync(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31758,7 +31751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func revokeClientVpnIngressAsync(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31773,7 +31766,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.revokeClientVpnIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -31806,7 +31799,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func revokeClientVpnIngressSync(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31841,7 +31834,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func revokeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31856,7 +31849,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -31886,7 +31879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func revokeSecurityGroupEgressSync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31921,7 +31914,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func revokeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -31936,7 +31929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -31966,7 +31959,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func revokeSecurityGroupIngressSync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32002,7 +31995,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func runInstancesAsync(
             input: ElasticComputeCloudModel.RunInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.Reservation, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32017,7 +32010,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.runInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.Reservation, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.Reservation, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32050,7 +32043,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func runInstancesSync(
             input: ElasticComputeCloudModel.RunInstancesRequest) throws -> ElasticComputeCloudModel.Reservation {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32086,7 +32079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func runScheduledInstancesAsync(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.RunScheduledInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32101,7 +32094,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.runScheduledInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.RunScheduledInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RunScheduledInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32134,7 +32127,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func runScheduledInstancesSync(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest) throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32170,7 +32163,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func searchLocalGatewayRoutesAsync(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32185,7 +32178,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.searchLocalGatewayRoutes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchLocalGatewayRoutesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32218,7 +32211,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func searchLocalGatewayRoutesSync(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchLocalGatewayRoutesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32254,7 +32247,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func searchTransitGatewayMulticastGroupsAsync(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32269,7 +32262,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.searchTransitGatewayMulticastGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32302,7 +32295,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func searchTransitGatewayMulticastGroupsSync(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32338,7 +32331,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func searchTransitGatewayRoutesAsync(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32353,7 +32346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.searchTransitGatewayRoutes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.SearchTransitGatewayRoutesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32386,7 +32379,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func searchTransitGatewayRoutesSync(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32421,7 +32414,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func sendDiagnosticInterruptAsync(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32436,7 +32429,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.sendDiagnosticInterrupt.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -32466,7 +32459,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func sendDiagnosticInterruptSync(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32502,7 +32495,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func startInstancesAsync(
             input: ElasticComputeCloudModel.StartInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32517,7 +32510,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.startInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.StartInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.StartInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32550,7 +32543,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func startInstancesSync(
             input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32586,7 +32579,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func startVpcEndpointServicePrivateDnsVerificationAsync(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32601,7 +32594,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.startVpcEndpointServicePrivateDnsVerification.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32634,7 +32627,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func startVpcEndpointServicePrivateDnsVerificationSync(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest) throws -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32670,7 +32663,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func stopInstancesAsync(
             input: ElasticComputeCloudModel.StopInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.StopInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32685,7 +32678,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.stopInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.StopInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.StopInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32718,7 +32711,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func stopInstancesSync(
             input: ElasticComputeCloudModel.StopInstancesRequest) throws -> ElasticComputeCloudModel.StopInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32754,7 +32747,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func terminateClientVpnConnectionsAsync(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32769,7 +32762,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.terminateClientVpnConnections.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.TerminateClientVpnConnectionsResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32802,7 +32795,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func terminateClientVpnConnectionsSync(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32838,7 +32831,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func terminateInstancesAsync(
             input: ElasticComputeCloudModel.TerminateInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.TerminateInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32853,7 +32846,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.terminateInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.TerminateInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.TerminateInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32886,7 +32879,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func terminateInstancesSync(
             input: ElasticComputeCloudModel.TerminateInstancesRequest) throws -> ElasticComputeCloudModel.TerminateInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32922,7 +32915,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func unassignIpv6AddressesAsync(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -32937,7 +32930,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.unassignIpv6Addresses.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UnassignIpv6AddressesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -32970,7 +32963,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unassignIpv6AddressesSync(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33005,7 +32998,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func unassignPrivateIpAddressesAsync(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, 
             completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33020,7 +33013,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.unassignPrivateIpAddresses.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? ElasticComputeCloudError {
                     completion(typedError)
@@ -33050,7 +33043,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unassignPrivateIpAddressesSync(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33086,7 +33079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func unmonitorInstancesAsync(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.UnmonitorInstancesResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33101,7 +33094,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.unmonitorInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.UnmonitorInstancesResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UnmonitorInstancesResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -33134,7 +33127,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unmonitorInstancesSync(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33170,7 +33163,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func updateSecurityGroupRuleDescriptionsEgressAsync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33185,7 +33178,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsEgress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -33218,7 +33211,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func updateSecurityGroupRuleDescriptionsEgressSync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33254,7 +33247,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func updateSecurityGroupRuleDescriptionsIngressAsync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33269,7 +33262,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.updateSecurityGroupRuleDescriptionsIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -33302,7 +33295,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func updateSecurityGroupRuleDescriptionsIngressSync(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest) throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33338,7 +33331,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     public func withdrawByoipCidrAsync(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, 
             completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, ElasticComputeCloudError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -33353,7 +33346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.withdrawByoipCidr.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, HTTPClientError>) {
+        func innerCompletion(result: Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -33386,7 +33379,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func withdrawByoipCidrSync(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest) throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

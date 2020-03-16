@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum SimpleNotificationClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -58,7 +59,7 @@ private extension Swift.Error {
  AWS Client for the SimpleNotification service.
  */
 public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleNotificationClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -81,17 +82,17 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 apiVersion: String = "2010-03-31",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -106,7 +107,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -129,16 +130,8 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -153,7 +146,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func addPermissionAsync(
             input: SimpleNotificationModel.AddPermissionInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -168,7 +161,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -199,7 +192,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func addPermissionSync(
             input: SimpleNotificationModel.AddPermissionInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -236,7 +229,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func checkIfPhoneNumberIsOptedOutAsync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput, 
             completion: @escaping (Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -251,7 +244,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -285,7 +278,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func checkIfPhoneNumberIsOptedOutSync(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -322,7 +315,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
             completion: @escaping (Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -337,7 +330,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -371,7 +364,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func confirmSubscriptionSync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -408,7 +401,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func createPlatformApplicationAsync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput, 
             completion: @escaping (Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -423,7 +416,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -457,7 +450,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createPlatformApplicationSync(
             input: SimpleNotificationModel.CreatePlatformApplicationInput) throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -494,7 +487,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func createPlatformEndpointAsync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput, 
             completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -509,7 +502,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -543,7 +536,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createPlatformEndpointSync(
             input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -580,7 +573,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func createTopicAsync(
             input: SimpleNotificationModel.CreateTopicInput, 
             completion: @escaping (Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -595,7 +588,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createTopic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -629,7 +622,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createTopicSync(
             input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -665,7 +658,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func deleteEndpointAsync(
             input: SimpleNotificationModel.DeleteEndpointInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -680,7 +673,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -711,7 +704,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deleteEndpointSync(
             input: SimpleNotificationModel.DeleteEndpointInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -747,7 +740,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func deletePlatformApplicationAsync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -762,7 +755,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -793,7 +786,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deletePlatformApplicationSync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -829,7 +822,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -844,7 +837,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deleteTopic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -875,7 +868,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deleteTopicSync(
             input: SimpleNotificationModel.DeleteTopicInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -912,7 +905,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func getEndpointAttributesAsync(
             input: SimpleNotificationModel.GetEndpointAttributesInput, 
             completion: @escaping (Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -927,7 +920,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -961,7 +954,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getEndpointAttributesSync(
             input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -998,7 +991,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func getPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput, 
             completion: @escaping (Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1013,7 +1006,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1047,7 +1040,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getPlatformApplicationAttributesSync(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1084,7 +1077,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func getSMSAttributesAsync(
             input: SimpleNotificationModel.GetSMSAttributesInput, 
             completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1099,7 +1092,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1133,7 +1126,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getSMSAttributesSync(
             input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1170,7 +1163,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func getSubscriptionAttributesAsync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput, 
             completion: @escaping (Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1185,7 +1178,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1219,7 +1212,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getSubscriptionAttributesSync(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1256,7 +1249,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func getTopicAttributesAsync(
             input: SimpleNotificationModel.GetTopicAttributesInput, 
             completion: @escaping (Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1271,7 +1264,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1305,7 +1298,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getTopicAttributesSync(
             input: SimpleNotificationModel.GetTopicAttributesInput) throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1342,7 +1335,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listEndpointsByPlatformApplicationAsync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
             completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1357,7 +1350,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1391,7 +1384,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listEndpointsByPlatformApplicationSync(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1428,7 +1421,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listPhoneNumbersOptedOutAsync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput, 
             completion: @escaping (Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1443,7 +1436,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1477,7 +1470,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listPhoneNumbersOptedOutSync(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1514,7 +1507,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listPlatformApplicationsAsync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput, 
             completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1529,7 +1522,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1563,7 +1556,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listPlatformApplicationsSync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1600,7 +1593,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listSubscriptionsAsync(
             input: SimpleNotificationModel.ListSubscriptionsInput, 
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1615,7 +1608,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1649,7 +1642,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listSubscriptionsSync(
             input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1686,7 +1679,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listSubscriptionsByTopicAsync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput, 
             completion: @escaping (Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1701,7 +1694,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1735,7 +1728,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listSubscriptionsByTopicSync(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput) throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1772,7 +1765,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listTagsForResourceAsync(
             input: SimpleNotificationModel.ListTagsForResourceRequest, 
             completion: @escaping (Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1787,7 +1780,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1821,7 +1814,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listTagsForResourceSync(
             input: SimpleNotificationModel.ListTagsForResourceRequest) throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1858,7 +1851,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func listTopicsAsync(
             input: SimpleNotificationModel.ListTopicsInput, 
             completion: @escaping (Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1873,7 +1866,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listTopics.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListTopicsResponseForListTopics, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1907,7 +1900,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listTopicsSync(
             input: SimpleNotificationModel.ListTopicsInput) throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1944,7 +1937,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func optInPhoneNumberAsync(
             input: SimpleNotificationModel.OptInPhoneNumberInput, 
             completion: @escaping (Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1959,7 +1952,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1993,7 +1986,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func optInPhoneNumberSync(
             input: SimpleNotificationModel.OptInPhoneNumberInput) throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2030,7 +2023,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
             completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2045,7 +2038,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.publish.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.PublishResponseForPublish, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.PublishResponseForPublish, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2079,7 +2072,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func publishSync(
             input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2115,7 +2108,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func removePermissionAsync(
             input: SimpleNotificationModel.RemovePermissionInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2130,7 +2123,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -2161,7 +2154,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func removePermissionSync(
             input: SimpleNotificationModel.RemovePermissionInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2197,7 +2190,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func setEndpointAttributesAsync(
             input: SimpleNotificationModel.SetEndpointAttributesInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2212,7 +2205,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -2243,7 +2236,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setEndpointAttributesSync(
             input: SimpleNotificationModel.SetEndpointAttributesInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2279,7 +2272,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func setPlatformApplicationAttributesAsync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2294,7 +2287,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -2325,7 +2318,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setPlatformApplicationAttributesSync(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2362,7 +2355,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func setSMSAttributesAsync(
             input: SimpleNotificationModel.SetSMSAttributesInput, 
             completion: @escaping (Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2377,7 +2370,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2411,7 +2404,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setSMSAttributesSync(
             input: SimpleNotificationModel.SetSMSAttributesInput) throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2447,7 +2440,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2462,7 +2455,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -2493,7 +2486,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setSubscriptionAttributesSync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2529,7 +2522,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func setTopicAttributesAsync(
             input: SimpleNotificationModel.SetTopicAttributesInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2544,7 +2537,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -2575,7 +2568,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setTopicAttributesSync(
             input: SimpleNotificationModel.SetTopicAttributesInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2612,7 +2605,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
             completion: @escaping (Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2627,7 +2620,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.subscribe.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.SubscribeResponseForSubscribe, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2661,7 +2654,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func subscribeSync(
             input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2698,7 +2691,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func tagResourceAsync(
             input: SimpleNotificationModel.TagResourceRequest, 
             completion: @escaping (Result<SimpleNotificationModel.TagResourceResponseForTagResource, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2713,7 +2706,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.tagResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.TagResourceResponseForTagResource, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.TagResourceResponseForTagResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2747,7 +2740,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func tagResourceSync(
             input: SimpleNotificationModel.TagResourceRequest) throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2783,7 +2776,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func unsubscribeAsync(
             input: SimpleNotificationModel.UnsubscribeInput, 
             completion: @escaping (SimpleNotificationError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2798,7 +2791,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.unsubscribe.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? SimpleNotificationError {
                     completion(typedError)
@@ -2829,7 +2822,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func unsubscribeSync(
             input: SimpleNotificationModel.UnsubscribeInput) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2866,7 +2859,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     public func untagResourceAsync(
             input: SimpleNotificationModel.UntagResourceRequest, 
             completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2881,7 +2874,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.untagResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, HTTPClientError>) {
+        func innerCompletion(result: Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2915,7 +2908,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func untagResourceSync(
             input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

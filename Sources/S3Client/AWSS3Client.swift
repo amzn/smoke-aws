@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum S3ClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -53,8 +54,8 @@ private extension Swift.Error {
  AWS Client for the S3 service.
  */
 public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationReporting>: S3ClientProtocol {
-    let httpClient: HTTPClient
-    let dataHttpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
+    let dataHttpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -76,25 +77,25 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                 target: String? = nil,
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>
                     = SmokeAWSClientReportingConfiguration<S3ModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
-        self.dataHttpClient = HTTPClient(endpointHostName: endpointHostName,
-                                          endpointPort: endpointPort,
-                                          contentType: contentType,
-                                          clientDelegate: clientDelegateForDataHttpClient,
-                                          connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                          eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
+        self.dataHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                                    endpointPort: endpointPort,
+                                                    contentType: contentType,
+                                                    clientDelegate: clientDelegateForDataHttpClient,
+                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                                    eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target
@@ -108,7 +109,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient, dataHttpClient: HTTPClient,
+                httpClient: HTTPOperationsClient, dataHttpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -131,18 +132,9 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-        dataHttpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
-        dataHttpClient.wait()
+    public func close() throws {
+        try httpClient.close()
+        try dataHttpClient.close()
     }
 
     /**
@@ -158,7 +150,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func abortMultipartUploadAsync(
             input: S3Model.AbortMultipartUploadRequest, 
             completion: @escaping (Result<S3Model.AbortMultipartUploadOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -170,7 +162,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.AbortMultipartUploadOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.AbortMultipartUploadOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -204,7 +196,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func abortMultipartUploadSync(
             input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -237,7 +229,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func completeMultipartUploadAsync(
             input: S3Model.CompleteMultipartUploadRequest, 
             completion: @escaping (Result<S3Model.CompleteMultipartUploadOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -249,7 +241,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.CompleteMultipartUploadOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.CompleteMultipartUploadOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -282,7 +274,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func completeMultipartUploadSync(
             input: S3Model.CompleteMultipartUploadRequest) throws -> S3Model.CompleteMultipartUploadOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -316,7 +308,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func copyObjectAsync(
             input: S3Model.CopyObjectRequest, 
             completion: @escaping (Result<S3Model.CopyObjectOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -328,7 +320,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.CopyObjectOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.CopyObjectOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -362,7 +354,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func copyObjectSync(
             input: S3Model.CopyObjectRequest) throws -> S3Model.CopyObjectOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -396,7 +388,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func createBucketAsync(
             input: S3Model.CreateBucketRequest, 
             completion: @escaping (Result<S3Model.CreateBucketOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -408,7 +400,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.CreateBucketOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.CreateBucketOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -442,7 +434,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func createBucketSync(
             input: S3Model.CreateBucketRequest) throws -> S3Model.CreateBucketOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -475,7 +467,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func createMultipartUploadAsync(
             input: S3Model.CreateMultipartUploadRequest, 
             completion: @escaping (Result<S3Model.CreateMultipartUploadOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -487,7 +479,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.CreateMultipartUploadOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.CreateMultipartUploadOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -520,7 +512,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func createMultipartUploadSync(
             input: S3Model.CreateMultipartUploadRequest) throws -> S3Model.CreateMultipartUploadOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -552,7 +544,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketAsync(
             input: S3Model.DeleteBucketRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -564,7 +556,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -594,7 +586,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketSync(
             input: S3Model.DeleteBucketRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -626,7 +618,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketAnalyticsConfigurationAsync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -638,7 +630,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -668,7 +660,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketAnalyticsConfigurationSync(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -700,7 +692,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketCorsAsync(
             input: S3Model.DeleteBucketCorsRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -712,7 +704,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -742,7 +734,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketCorsSync(
             input: S3Model.DeleteBucketCorsRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -774,7 +766,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketEncryptionAsync(
             input: S3Model.DeleteBucketEncryptionRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -786,7 +778,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -816,7 +808,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketEncryptionSync(
             input: S3Model.DeleteBucketEncryptionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -848,7 +840,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketInventoryConfigurationAsync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -860,7 +852,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -890,7 +882,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketInventoryConfigurationSync(
             input: S3Model.DeleteBucketInventoryConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -922,7 +914,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketLifecycleAsync(
             input: S3Model.DeleteBucketLifecycleRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -934,7 +926,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -964,7 +956,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketLifecycleSync(
             input: S3Model.DeleteBucketLifecycleRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -996,7 +988,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketMetricsConfigurationAsync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1008,7 +1000,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -1038,7 +1030,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketMetricsConfigurationSync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1070,7 +1062,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketPolicyAsync(
             input: S3Model.DeleteBucketPolicyRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1082,7 +1074,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -1112,7 +1104,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketPolicySync(
             input: S3Model.DeleteBucketPolicyRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1144,7 +1136,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketReplicationAsync(
             input: S3Model.DeleteBucketReplicationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1156,7 +1148,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -1186,7 +1178,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketReplicationSync(
             input: S3Model.DeleteBucketReplicationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1218,7 +1210,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketTaggingAsync(
             input: S3Model.DeleteBucketTaggingRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1230,7 +1222,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -1260,7 +1252,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketTaggingSync(
             input: S3Model.DeleteBucketTaggingRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1292,7 +1284,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteBucketWebsiteAsync(
             input: S3Model.DeleteBucketWebsiteRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1304,7 +1296,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -1334,7 +1326,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketWebsiteSync(
             input: S3Model.DeleteBucketWebsiteRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1367,7 +1359,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteObjectAsync(
             input: S3Model.DeleteObjectRequest, 
             completion: @escaping (Result<S3Model.DeleteObjectOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1379,7 +1371,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.DeleteObjectOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.DeleteObjectOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1412,7 +1404,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteObjectSync(
             input: S3Model.DeleteObjectRequest) throws -> S3Model.DeleteObjectOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1445,7 +1437,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteObjectTaggingAsync(
             input: S3Model.DeleteObjectTaggingRequest, 
             completion: @escaping (Result<S3Model.DeleteObjectTaggingOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1457,7 +1449,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.DeleteObjectTaggingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.DeleteObjectTaggingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1490,7 +1482,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteObjectTaggingSync(
             input: S3Model.DeleteObjectTaggingRequest) throws -> S3Model.DeleteObjectTaggingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1523,7 +1515,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deleteObjectsAsync(
             input: S3Model.DeleteObjectsRequest, 
             completion: @escaping (Result<S3Model.DeleteObjectsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1535,7 +1527,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.DeleteObjectsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.DeleteObjectsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1568,7 +1560,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteObjectsSync(
             input: S3Model.DeleteObjectsRequest) throws -> S3Model.DeleteObjectsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1600,7 +1592,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func deletePublicAccessBlockAsync(
             input: S3Model.DeletePublicAccessBlockRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1612,7 +1604,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -1642,7 +1634,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deletePublicAccessBlockSync(
             input: S3Model.DeletePublicAccessBlockRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1675,7 +1667,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketAccelerateConfigurationAsync(
             input: S3Model.GetBucketAccelerateConfigurationRequest, 
             completion: @escaping (Result<S3Model.GetBucketAccelerateConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1687,7 +1679,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketAccelerateConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketAccelerateConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1720,7 +1712,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketAccelerateConfigurationSync(
             input: S3Model.GetBucketAccelerateConfigurationRequest) throws -> S3Model.GetBucketAccelerateConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1753,7 +1745,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketAclAsync(
             input: S3Model.GetBucketAclRequest, 
             completion: @escaping (Result<S3Model.GetBucketAclOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1765,7 +1757,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketAclOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketAclOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1798,7 +1790,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketAclSync(
             input: S3Model.GetBucketAclRequest) throws -> S3Model.GetBucketAclOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1831,7 +1823,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketAnalyticsConfigurationAsync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest, 
             completion: @escaping (Result<S3Model.GetBucketAnalyticsConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1843,7 +1835,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketAnalyticsConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketAnalyticsConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1876,7 +1868,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketAnalyticsConfigurationSync(
             input: S3Model.GetBucketAnalyticsConfigurationRequest) throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1909,7 +1901,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketCorsAsync(
             input: S3Model.GetBucketCorsRequest, 
             completion: @escaping (Result<S3Model.GetBucketCorsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1921,7 +1913,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketCorsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketCorsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1954,7 +1946,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketCorsSync(
             input: S3Model.GetBucketCorsRequest) throws -> S3Model.GetBucketCorsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1987,7 +1979,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketEncryptionAsync(
             input: S3Model.GetBucketEncryptionRequest, 
             completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1999,7 +1991,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketEncryptionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketEncryptionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2032,7 +2024,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketEncryptionSync(
             input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2065,7 +2057,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketInventoryConfigurationAsync(
             input: S3Model.GetBucketInventoryConfigurationRequest, 
             completion: @escaping (Result<S3Model.GetBucketInventoryConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2077,7 +2069,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketInventoryConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketInventoryConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2110,7 +2102,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketInventoryConfigurationSync(
             input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2143,7 +2135,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketLifecycleAsync(
             input: S3Model.GetBucketLifecycleRequest, 
             completion: @escaping (Result<S3Model.GetBucketLifecycleOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2155,7 +2147,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketLifecycleOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketLifecycleOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2188,7 +2180,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLifecycleSync(
             input: S3Model.GetBucketLifecycleRequest) throws -> S3Model.GetBucketLifecycleOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2221,7 +2213,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketLifecycleConfigurationAsync(
             input: S3Model.GetBucketLifecycleConfigurationRequest, 
             completion: @escaping (Result<S3Model.GetBucketLifecycleConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2233,7 +2225,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketLifecycleConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketLifecycleConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2266,7 +2258,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLifecycleConfigurationSync(
             input: S3Model.GetBucketLifecycleConfigurationRequest) throws -> S3Model.GetBucketLifecycleConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2299,7 +2291,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketLocationAsync(
             input: S3Model.GetBucketLocationRequest, 
             completion: @escaping (Result<S3Model.GetBucketLocationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2311,7 +2303,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketLocationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketLocationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2344,7 +2336,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLocationSync(
             input: S3Model.GetBucketLocationRequest) throws -> S3Model.GetBucketLocationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2377,7 +2369,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketLoggingAsync(
             input: S3Model.GetBucketLoggingRequest, 
             completion: @escaping (Result<S3Model.GetBucketLoggingOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2389,7 +2381,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketLoggingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketLoggingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2422,7 +2414,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLoggingSync(
             input: S3Model.GetBucketLoggingRequest) throws -> S3Model.GetBucketLoggingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2455,7 +2447,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketMetricsConfigurationAsync(
             input: S3Model.GetBucketMetricsConfigurationRequest, 
             completion: @escaping (Result<S3Model.GetBucketMetricsConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2467,7 +2459,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketMetricsConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketMetricsConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2500,7 +2492,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketMetricsConfigurationSync(
             input: S3Model.GetBucketMetricsConfigurationRequest) throws -> S3Model.GetBucketMetricsConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2533,7 +2525,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketNotificationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
             completion: @escaping (Result<S3Model.NotificationConfigurationDeprecated, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2545,7 +2537,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.NotificationConfigurationDeprecated, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.NotificationConfigurationDeprecated, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2578,7 +2570,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketNotificationSync(
             input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfigurationDeprecated {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2611,7 +2603,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketNotificationConfigurationAsync(
             input: S3Model.GetBucketNotificationConfigurationRequest, 
             completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2623,7 +2615,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.NotificationConfiguration, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.NotificationConfiguration, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2656,7 +2648,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketNotificationConfigurationSync(
             input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2689,7 +2681,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketPolicyAsync(
             input: S3Model.GetBucketPolicyRequest, 
             completion: @escaping (Result<S3Model.GetBucketPolicyOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2701,7 +2693,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketPolicyOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketPolicyOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2734,7 +2726,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketPolicySync(
             input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2767,7 +2759,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketPolicyStatusAsync(
             input: S3Model.GetBucketPolicyStatusRequest, 
             completion: @escaping (Result<S3Model.GetBucketPolicyStatusOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2779,7 +2771,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketPolicyStatusOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketPolicyStatusOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2812,7 +2804,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketPolicyStatusSync(
             input: S3Model.GetBucketPolicyStatusRequest) throws -> S3Model.GetBucketPolicyStatusOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2845,7 +2837,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketReplicationAsync(
             input: S3Model.GetBucketReplicationRequest, 
             completion: @escaping (Result<S3Model.GetBucketReplicationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2857,7 +2849,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketReplicationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketReplicationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2890,7 +2882,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketReplicationSync(
             input: S3Model.GetBucketReplicationRequest) throws -> S3Model.GetBucketReplicationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2923,7 +2915,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketRequestPaymentAsync(
             input: S3Model.GetBucketRequestPaymentRequest, 
             completion: @escaping (Result<S3Model.GetBucketRequestPaymentOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2935,7 +2927,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketRequestPaymentOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketRequestPaymentOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2968,7 +2960,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketRequestPaymentSync(
             input: S3Model.GetBucketRequestPaymentRequest) throws -> S3Model.GetBucketRequestPaymentOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3001,7 +2993,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketTaggingAsync(
             input: S3Model.GetBucketTaggingRequest, 
             completion: @escaping (Result<S3Model.GetBucketTaggingOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3013,7 +3005,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketTaggingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketTaggingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3046,7 +3038,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketTaggingSync(
             input: S3Model.GetBucketTaggingRequest) throws -> S3Model.GetBucketTaggingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3079,7 +3071,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketVersioningAsync(
             input: S3Model.GetBucketVersioningRequest, 
             completion: @escaping (Result<S3Model.GetBucketVersioningOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3091,7 +3083,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketVersioningOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketVersioningOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3124,7 +3116,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketVersioningSync(
             input: S3Model.GetBucketVersioningRequest) throws -> S3Model.GetBucketVersioningOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3157,7 +3149,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getBucketWebsiteAsync(
             input: S3Model.GetBucketWebsiteRequest, 
             completion: @escaping (Result<S3Model.GetBucketWebsiteOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3169,7 +3161,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetBucketWebsiteOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetBucketWebsiteOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3202,7 +3194,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketWebsiteSync(
             input: S3Model.GetBucketWebsiteRequest) throws -> S3Model.GetBucketWebsiteOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3236,7 +3228,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectAsync(
             input: S3Model.GetObjectRequest, 
             completion: @escaping (Result<S3Model.GetObjectOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3248,7 +3240,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3282,7 +3274,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectSync(
             input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3316,7 +3308,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectAclAsync(
             input: S3Model.GetObjectAclRequest, 
             completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3328,7 +3320,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectAclOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectAclOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3362,7 +3354,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectAclSync(
             input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3395,7 +3387,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectLegalHoldAsync(
             input: S3Model.GetObjectLegalHoldRequest, 
             completion: @escaping (Result<S3Model.GetObjectLegalHoldOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3407,7 +3399,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectLegalHoldOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectLegalHoldOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3440,7 +3432,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectLegalHoldSync(
             input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3473,7 +3465,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectLockConfigurationAsync(
             input: S3Model.GetObjectLockConfigurationRequest, 
             completion: @escaping (Result<S3Model.GetObjectLockConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3485,7 +3477,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectLockConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectLockConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3518,7 +3510,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectLockConfigurationSync(
             input: S3Model.GetObjectLockConfigurationRequest) throws -> S3Model.GetObjectLockConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3551,7 +3543,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectRetentionAsync(
             input: S3Model.GetObjectRetentionRequest, 
             completion: @escaping (Result<S3Model.GetObjectRetentionOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3563,7 +3555,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectRetentionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectRetentionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3596,7 +3588,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectRetentionSync(
             input: S3Model.GetObjectRetentionRequest) throws -> S3Model.GetObjectRetentionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3629,7 +3621,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectTaggingAsync(
             input: S3Model.GetObjectTaggingRequest, 
             completion: @escaping (Result<S3Model.GetObjectTaggingOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3641,7 +3633,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectTaggingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectTaggingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3674,7 +3666,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectTaggingSync(
             input: S3Model.GetObjectTaggingRequest) throws -> S3Model.GetObjectTaggingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3707,7 +3699,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getObjectTorrentAsync(
             input: S3Model.GetObjectTorrentRequest, 
             completion: @escaping (Result<S3Model.GetObjectTorrentOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3719,7 +3711,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetObjectTorrentOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetObjectTorrentOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3752,7 +3744,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectTorrentSync(
             input: S3Model.GetObjectTorrentRequest) throws -> S3Model.GetObjectTorrentOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3785,7 +3777,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func getPublicAccessBlockAsync(
             input: S3Model.GetPublicAccessBlockRequest, 
             completion: @escaping (Result<S3Model.GetPublicAccessBlockOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3797,7 +3789,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.GetPublicAccessBlockOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.GetPublicAccessBlockOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3830,7 +3822,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getPublicAccessBlockSync(
             input: S3Model.GetPublicAccessBlockRequest) throws -> S3Model.GetPublicAccessBlockOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3863,7 +3855,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func headBucketAsync(
             input: S3Model.HeadBucketRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3875,7 +3867,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -3906,7 +3898,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func headBucketSync(
             input: S3Model.HeadBucketRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3940,7 +3932,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func headObjectAsync(
             input: S3Model.HeadObjectRequest, 
             completion: @escaping (Result<S3Model.HeadObjectOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3952,7 +3944,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.HeadObjectOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.HeadObjectOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3986,7 +3978,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func headObjectSync(
             input: S3Model.HeadObjectRequest) throws -> S3Model.HeadObjectOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4019,7 +4011,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listBucketAnalyticsConfigurationsAsync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
             completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4031,7 +4023,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListBucketAnalyticsConfigurationsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListBucketAnalyticsConfigurationsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4064,7 +4056,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketAnalyticsConfigurationsSync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4097,7 +4089,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listBucketInventoryConfigurationsAsync(
             input: S3Model.ListBucketInventoryConfigurationsRequest, 
             completion: @escaping (Result<S3Model.ListBucketInventoryConfigurationsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4109,7 +4101,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListBucketInventoryConfigurationsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListBucketInventoryConfigurationsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4142,7 +4134,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketInventoryConfigurationsSync(
             input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4175,7 +4167,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listBucketMetricsConfigurationsAsync(
             input: S3Model.ListBucketMetricsConfigurationsRequest, 
             completion: @escaping (Result<S3Model.ListBucketMetricsConfigurationsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4187,7 +4179,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListBucketMetricsConfigurationsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListBucketMetricsConfigurationsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4220,7 +4212,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketMetricsConfigurationsSync(
             input: S3Model.ListBucketMetricsConfigurationsRequest) throws -> S3Model.ListBucketMetricsConfigurationsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4249,7 +4241,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketsAsync(
             completion: @escaping (Result<S3Model.ListBucketsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4261,7 +4253,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = NoHTTPRequestInput()
 
-        func innerCompletion(result: Result<S3Model.ListBucketsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListBucketsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4290,7 +4282,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
          Will be validated before being returned to caller.
      */
     public func listBucketsSync() throws -> S3Model.ListBucketsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4323,7 +4315,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listMultipartUploadsAsync(
             input: S3Model.ListMultipartUploadsRequest, 
             completion: @escaping (Result<S3Model.ListMultipartUploadsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4335,7 +4327,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListMultipartUploadsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListMultipartUploadsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4368,7 +4360,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listMultipartUploadsSync(
             input: S3Model.ListMultipartUploadsRequest) throws -> S3Model.ListMultipartUploadsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4401,7 +4393,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listObjectVersionsAsync(
             input: S3Model.ListObjectVersionsRequest, 
             completion: @escaping (Result<S3Model.ListObjectVersionsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4413,7 +4405,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListObjectVersionsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListObjectVersionsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4446,7 +4438,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listObjectVersionsSync(
             input: S3Model.ListObjectVersionsRequest) throws -> S3Model.ListObjectVersionsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4480,7 +4472,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listObjectsAsync(
             input: S3Model.ListObjectsRequest, 
             completion: @escaping (Result<S3Model.ListObjectsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4492,7 +4484,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListObjectsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListObjectsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4526,7 +4518,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listObjectsSync(
             input: S3Model.ListObjectsRequest) throws -> S3Model.ListObjectsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4560,7 +4552,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listObjectsV2Async(
             input: S3Model.ListObjectsV2Request, 
             completion: @escaping (Result<S3Model.ListObjectsV2Output, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4572,7 +4564,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListObjectsV2Output, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListObjectsV2Output, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4606,7 +4598,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listObjectsV2Sync(
             input: S3Model.ListObjectsV2Request) throws -> S3Model.ListObjectsV2Output {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4639,7 +4631,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func listPartsAsync(
             input: S3Model.ListPartsRequest, 
             completion: @escaping (Result<S3Model.ListPartsOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4651,7 +4643,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.ListPartsOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.ListPartsOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4684,7 +4676,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listPartsSync(
             input: S3Model.ListPartsRequest) throws -> S3Model.ListPartsOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4716,7 +4708,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketAccelerateConfigurationAsync(
             input: S3Model.PutBucketAccelerateConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4728,7 +4720,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -4758,7 +4750,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketAccelerateConfigurationSync(
             input: S3Model.PutBucketAccelerateConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4790,7 +4782,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketAclAsync(
             input: S3Model.PutBucketAclRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4802,7 +4794,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -4832,7 +4824,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketAclSync(
             input: S3Model.PutBucketAclRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4864,7 +4856,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketAnalyticsConfigurationAsync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4876,7 +4868,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -4906,7 +4898,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketAnalyticsConfigurationSync(
             input: S3Model.PutBucketAnalyticsConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4938,7 +4930,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketCorsAsync(
             input: S3Model.PutBucketCorsRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4950,7 +4942,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -4980,7 +4972,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketCorsSync(
             input: S3Model.PutBucketCorsRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5012,7 +5004,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketEncryptionAsync(
             input: S3Model.PutBucketEncryptionRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5024,7 +5016,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5054,7 +5046,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketEncryptionSync(
             input: S3Model.PutBucketEncryptionRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5086,7 +5078,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketInventoryConfigurationAsync(
             input: S3Model.PutBucketInventoryConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5098,7 +5090,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5128,7 +5120,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketInventoryConfigurationSync(
             input: S3Model.PutBucketInventoryConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5160,7 +5152,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketLifecycleAsync(
             input: S3Model.PutBucketLifecycleRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5172,7 +5164,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5202,7 +5194,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketLifecycleSync(
             input: S3Model.PutBucketLifecycleRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5234,7 +5226,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketLifecycleConfigurationAsync(
             input: S3Model.PutBucketLifecycleConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5246,7 +5238,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5276,7 +5268,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketLifecycleConfigurationSync(
             input: S3Model.PutBucketLifecycleConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5308,7 +5300,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketLoggingAsync(
             input: S3Model.PutBucketLoggingRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5320,7 +5312,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5350,7 +5342,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketLoggingSync(
             input: S3Model.PutBucketLoggingRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5382,7 +5374,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketMetricsConfigurationAsync(
             input: S3Model.PutBucketMetricsConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5394,7 +5386,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5424,7 +5416,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketMetricsConfigurationSync(
             input: S3Model.PutBucketMetricsConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5456,7 +5448,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketNotificationAsync(
             input: S3Model.PutBucketNotificationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5468,7 +5460,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5498,7 +5490,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketNotificationSync(
             input: S3Model.PutBucketNotificationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5530,7 +5522,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketNotificationConfigurationAsync(
             input: S3Model.PutBucketNotificationConfigurationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5542,7 +5534,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5572,7 +5564,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketNotificationConfigurationSync(
             input: S3Model.PutBucketNotificationConfigurationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5604,7 +5596,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketPolicyAsync(
             input: S3Model.PutBucketPolicyRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5616,7 +5608,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5646,7 +5638,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketPolicySync(
             input: S3Model.PutBucketPolicyRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5678,7 +5670,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketReplicationAsync(
             input: S3Model.PutBucketReplicationRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5690,7 +5682,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5720,7 +5712,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketReplicationSync(
             input: S3Model.PutBucketReplicationRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5752,7 +5744,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketRequestPaymentAsync(
             input: S3Model.PutBucketRequestPaymentRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5764,7 +5756,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5794,7 +5786,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketRequestPaymentSync(
             input: S3Model.PutBucketRequestPaymentRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5826,7 +5818,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketTaggingAsync(
             input: S3Model.PutBucketTaggingRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5838,7 +5830,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5868,7 +5860,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketTaggingSync(
             input: S3Model.PutBucketTaggingRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5900,7 +5892,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketVersioningAsync(
             input: S3Model.PutBucketVersioningRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5912,7 +5904,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -5942,7 +5934,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketVersioningSync(
             input: S3Model.PutBucketVersioningRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5974,7 +5966,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putBucketWebsiteAsync(
             input: S3Model.PutBucketWebsiteRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5986,7 +5978,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -6016,7 +6008,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketWebsiteSync(
             input: S3Model.PutBucketWebsiteRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6049,7 +6041,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putObjectAsync(
             input: S3Model.PutObjectRequest, 
             completion: @escaping (Result<S3Model.PutObjectOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6061,7 +6053,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.PutObjectOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.PutObjectOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6094,7 +6086,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectSync(
             input: S3Model.PutObjectRequest) throws -> S3Model.PutObjectOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6128,7 +6120,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putObjectAclAsync(
             input: S3Model.PutObjectAclRequest, 
             completion: @escaping (Result<S3Model.PutObjectAclOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6140,7 +6132,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.PutObjectAclOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.PutObjectAclOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6174,7 +6166,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectAclSync(
             input: S3Model.PutObjectAclRequest) throws -> S3Model.PutObjectAclOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6207,7 +6199,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putObjectLegalHoldAsync(
             input: S3Model.PutObjectLegalHoldRequest, 
             completion: @escaping (Result<S3Model.PutObjectLegalHoldOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6219,7 +6211,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.PutObjectLegalHoldOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.PutObjectLegalHoldOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6252,7 +6244,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectLegalHoldSync(
             input: S3Model.PutObjectLegalHoldRequest) throws -> S3Model.PutObjectLegalHoldOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6285,7 +6277,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putObjectLockConfigurationAsync(
             input: S3Model.PutObjectLockConfigurationRequest, 
             completion: @escaping (Result<S3Model.PutObjectLockConfigurationOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6297,7 +6289,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.PutObjectLockConfigurationOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.PutObjectLockConfigurationOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6330,7 +6322,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectLockConfigurationSync(
             input: S3Model.PutObjectLockConfigurationRequest) throws -> S3Model.PutObjectLockConfigurationOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6363,7 +6355,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putObjectRetentionAsync(
             input: S3Model.PutObjectRetentionRequest, 
             completion: @escaping (Result<S3Model.PutObjectRetentionOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6375,7 +6367,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.PutObjectRetentionOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.PutObjectRetentionOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6408,7 +6400,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectRetentionSync(
             input: S3Model.PutObjectRetentionRequest) throws -> S3Model.PutObjectRetentionOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6441,7 +6433,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putObjectTaggingAsync(
             input: S3Model.PutObjectTaggingRequest, 
             completion: @escaping (Result<S3Model.PutObjectTaggingOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6453,7 +6445,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.PutObjectTaggingOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.PutObjectTaggingOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6486,7 +6478,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectTaggingSync(
             input: S3Model.PutObjectTaggingRequest) throws -> S3Model.PutObjectTaggingOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6518,7 +6510,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func putPublicAccessBlockAsync(
             input: S3Model.PutPublicAccessBlockRequest, 
             completion: @escaping (S3Error?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6530,7 +6522,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? S3Error {
                     completion(typedError)
@@ -6560,7 +6552,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putPublicAccessBlockSync(
             input: S3Model.PutPublicAccessBlockRequest) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6594,7 +6586,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func restoreObjectAsync(
             input: S3Model.RestoreObjectRequest, 
             completion: @escaping (Result<S3Model.RestoreObjectOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6606,7 +6598,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.RestoreObjectOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.RestoreObjectOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6640,7 +6632,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func restoreObjectSync(
             input: S3Model.RestoreObjectRequest) throws -> S3Model.RestoreObjectOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6673,7 +6665,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func selectObjectContentAsync(
             input: S3Model.SelectObjectContentRequest, 
             completion: @escaping (Result<S3Model.SelectObjectContentOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6685,7 +6677,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.SelectObjectContentOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.SelectObjectContentOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6718,7 +6710,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func selectObjectContentSync(
             input: S3Model.SelectObjectContentRequest) throws -> S3Model.SelectObjectContentOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6751,7 +6743,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func uploadPartAsync(
             input: S3Model.UploadPartRequest, 
             completion: @escaping (Result<S3Model.UploadPartOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6763,7 +6755,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.UploadPartOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.UploadPartOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6796,7 +6788,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func uploadPartSync(
             input: S3Model.UploadPartRequest) throws -> S3Model.UploadPartOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6829,7 +6821,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     public func uploadPartCopyAsync(
             input: S3Model.UploadPartCopyRequest, 
             completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6841,7 +6833,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<S3Model.UploadPartCopyOutput, HTTPClientError>) {
+        func innerCompletion(result: Result<S3Model.UploadPartCopyOutput, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6874,7 +6866,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func uploadPartCopySync(
             input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

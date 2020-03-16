@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 private extension Swift.Error {
     func isRetriable() -> Bool {
@@ -41,8 +42,8 @@ private extension Swift.Error {
  AWS Client Generator for the SimpleQueue service.
  */
 public struct AWSSimpleQueueClientGenerator {
-    let httpClient: HTTPClient
-    let listHttpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
+    let listHttpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -61,7 +62,7 @@ public struct AWSSimpleQueueClientGenerator {
                 apiVersion: String = "2012-11-05",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
@@ -70,18 +71,18 @@ public struct AWSSimpleQueueClientGenerator {
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
-        self.listHttpClient = HTTPClient(endpointHostName: endpointHostName,
-                                          endpointPort: endpointPort,
-                                          contentType: contentType,
-                                          clientDelegate: clientDelegateForListHttpClient,
-                                          connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                          eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
+        self.listHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                                    endpointPort: endpointPort,
+                                                    contentType: contentType,
+                                                    clientDelegate: clientDelegateForListHttpClient,
+                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                                    eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -96,18 +97,9 @@ public struct AWSSimpleQueueClientGenerator {
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-        listHttpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
-        listHttpClient.wait()
+    public func close() throws {
+        try httpClient.close()
+        try listHttpClient.close()
     }
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(

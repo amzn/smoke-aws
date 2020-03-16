@@ -24,6 +24,7 @@ import HTTPHeadersCoding
 import HTTPPathCoding
 import XMLCoding
 import Logging
+import AsyncHTTPClient
 
 enum DataAWSHttpClientDelegateError: Error {
     case invalidPayloadNotData
@@ -42,11 +43,11 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     }
     
     public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
-            responseHead: HTTPResponseHead,
+            response: HTTPClient.Response,
             responseComponents: HTTPResponseComponents,
-            invocationReporting: InvocationReportingType) throws -> HTTPClientError {
+            invocationReporting: InvocationReportingType) throws -> SmokeHTTPClient.HTTPClientError {
         guard let bodyData = responseComponents.body else {
-            throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
+            throw HTTPError.unknownError("Error with status '\(response.status)' with empty body")
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
@@ -54,7 +55,7 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         
         let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
         
-        return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
+        return HTTPClientError(responseCode: Int(response.status.code), cause: cause)
     }
     
     public func encodeInputAndQueryString<InputType, InvocationReportingType: HTTPClientInvocationReporting>(

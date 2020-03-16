@@ -26,6 +26,7 @@ import SmokeHTTPClient
 import SmokeAWSHttp
 import NIO
 import NIOHTTP1
+import AsyncHTTPClient
 
 public enum RDSClientError: Swift.Error {
     case invalidEndpoint(String)
@@ -53,7 +54,7 @@ private extension Swift.Error {
  AWS Client for the RDS service.
  */
 public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: RDSClientProtocol {
-    let httpClient: HTTPClient
+    let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -76,17 +77,17 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
                 apiVersion: String = "2014-10-31",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                eventLoopProvider: HTTPClient.EventLoopProvider = .spawnNewThreads,
+                eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>
                     = SmokeAWSClientReportingConfiguration<RDSModelOperations>() ) {
         let clientDelegate = XMLAWSHttpClientDelegate<RDSError>()
 
-        self.httpClient = HTTPClient(endpointHostName: endpointHostName,
-                                     endpointPort: endpointPort,
-                                     contentType: contentType,
-                                     clientDelegate: clientDelegate,
-                                     connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                     eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
+                                               endpointPort: endpointPort,
+                                               contentType: contentType,
+                                               clientDelegate: clientDelegate,
+                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
+                                               eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -101,7 +102,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     
     internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
-                httpClient: HTTPClient,
+                httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
                 retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
@@ -124,16 +125,8 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times.
      */
-    public func close() {
-        httpClient.close()
-    }
-
-    /**
-     Waits for the client to be closed. If close() is not called,
-     this will block forever.
-     */
-    public func wait() {
-        httpClient.wait()
+    public func close() throws {
+        try httpClient.close()
     }
 
     /**
@@ -148,7 +141,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func addRoleToDBClusterAsync(
             input: RDSModel.AddRoleToDBClusterMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -163,7 +156,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addRoleToDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -194,7 +187,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addRoleToDBClusterSync(
             input: RDSModel.AddRoleToDBClusterMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -230,7 +223,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func addRoleToDBInstanceAsync(
             input: RDSModel.AddRoleToDBInstanceMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -245,7 +238,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addRoleToDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -276,7 +269,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addRoleToDBInstanceSync(
             input: RDSModel.AddRoleToDBInstanceMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -313,7 +306,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func addSourceIdentifierToSubscriptionAsync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage, 
             completion: @escaping (Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -328,7 +321,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addSourceIdentifierToSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -362,7 +355,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addSourceIdentifierToSubscriptionSync(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage) throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -398,7 +391,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -413,7 +406,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addTagsToResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -444,7 +437,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addTagsToResourceSync(
             input: RDSModel.AddTagsToResourceMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -481,7 +474,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func applyPendingMaintenanceActionAsync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage, 
             completion: @escaping (Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -496,7 +489,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.applyPendingMaintenanceAction.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -530,7 +523,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func applyPendingMaintenanceActionSync(
             input: RDSModel.ApplyPendingMaintenanceActionMessage) throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -567,7 +560,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func authorizeDBSecurityGroupIngressAsync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage, 
             completion: @escaping (Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -582,7 +575,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.authorizeDBSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -616,7 +609,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func authorizeDBSecurityGroupIngressSync(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -653,7 +646,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func backtrackDBClusterAsync(
             input: RDSModel.BacktrackDBClusterMessage, 
             completion: @escaping (Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -668,7 +661,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.backtrackDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -702,7 +695,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func backtrackDBClusterSync(
             input: RDSModel.BacktrackDBClusterMessage) throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -739,7 +732,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func cancelExportTaskAsync(
             input: RDSModel.CancelExportTaskMessage, 
             completion: @escaping (Result<RDSModel.ExportTaskForCancelExportTask, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -754,7 +747,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ExportTaskForCancelExportTask, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ExportTaskForCancelExportTask, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -788,7 +781,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func cancelExportTaskSync(
             input: RDSModel.CancelExportTaskMessage) throws -> RDSModel.ExportTaskForCancelExportTask {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -825,7 +818,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func copyDBClusterParameterGroupAsync(
             input: RDSModel.CopyDBClusterParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -840,7 +833,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -874,7 +867,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBClusterParameterGroupSync(
             input: RDSModel.CopyDBClusterParameterGroupMessage) throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -911,7 +904,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func copyDBClusterSnapshotAsync(
             input: RDSModel.CopyDBClusterSnapshotMessage, 
             completion: @escaping (Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -926,7 +919,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -960,7 +953,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBClusterSnapshotSync(
             input: RDSModel.CopyDBClusterSnapshotMessage) throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -997,7 +990,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func copyDBParameterGroupAsync(
             input: RDSModel.CopyDBParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1012,7 +1005,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1046,7 +1039,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBParameterGroupSync(
             input: RDSModel.CopyDBParameterGroupMessage) throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1083,7 +1076,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
             completion: @escaping (Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1098,7 +1091,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1132,7 +1125,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBSnapshotSync(
             input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1169,7 +1162,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func copyOptionGroupAsync(
             input: RDSModel.CopyOptionGroupMessage, 
             completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1184,7 +1177,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1218,7 +1211,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyOptionGroupSync(
             input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1255,7 +1248,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createCustomAvailabilityZoneAsync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage, 
             completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1270,7 +1263,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1304,7 +1297,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createCustomAvailabilityZoneSync(
             input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1341,7 +1334,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBClusterAsync(
             input: RDSModel.CreateDBClusterMessage, 
             completion: @escaping (Result<RDSModel.CreateDBClusterResultForCreateDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1356,7 +1349,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBClusterResultForCreateDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBClusterResultForCreateDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1390,7 +1383,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterSync(
             input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1427,7 +1420,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBClusterEndpointAsync(
             input: RDSModel.CreateDBClusterEndpointMessage, 
             completion: @escaping (Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1442,7 +1435,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1476,7 +1469,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterEndpointSync(
             input: RDSModel.CreateDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1513,7 +1506,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBClusterParameterGroupAsync(
             input: RDSModel.CreateDBClusterParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1528,7 +1521,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1562,7 +1555,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterParameterGroupSync(
             input: RDSModel.CreateDBClusterParameterGroupMessage) throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1599,7 +1592,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBClusterSnapshotAsync(
             input: RDSModel.CreateDBClusterSnapshotMessage, 
             completion: @escaping (Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1614,7 +1607,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1648,7 +1641,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterSnapshotSync(
             input: RDSModel.CreateDBClusterSnapshotMessage) throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1685,7 +1678,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
             completion: @escaping (Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1700,7 +1693,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1734,7 +1727,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBInstanceSync(
             input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1771,7 +1764,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
             completion: @escaping (Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1786,7 +1779,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBInstanceReadReplica.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1820,7 +1813,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBInstanceReadReplicaSync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1857,7 +1850,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBParameterGroupAsync(
             input: RDSModel.CreateDBParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1872,7 +1865,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1906,7 +1899,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBParameterGroupSync(
             input: RDSModel.CreateDBParameterGroupMessage) throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1943,7 +1936,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBProxyAsync(
             input: RDSModel.CreateDBProxyRequest, 
             completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1958,7 +1951,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBProxy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -1992,7 +1985,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBProxySync(
             input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2029,7 +2022,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBSecurityGroupAsync(
             input: RDSModel.CreateDBSecurityGroupMessage, 
             completion: @escaping (Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2044,7 +2037,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSecurityGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2078,7 +2071,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBSecurityGroupSync(
             input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2115,7 +2108,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBSnapshotAsync(
             input: RDSModel.CreateDBSnapshotMessage, 
             completion: @escaping (Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2130,7 +2123,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2164,7 +2157,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBSnapshotSync(
             input: RDSModel.CreateDBSnapshotMessage) throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2201,7 +2194,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createDBSubnetGroupAsync(
             input: RDSModel.CreateDBSubnetGroupMessage, 
             completion: @escaping (Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2216,7 +2209,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2250,7 +2243,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBSubnetGroupSync(
             input: RDSModel.CreateDBSubnetGroupMessage) throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2287,7 +2280,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createEventSubscriptionAsync(
             input: RDSModel.CreateEventSubscriptionMessage, 
             completion: @escaping (Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2302,7 +2295,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createEventSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2336,7 +2329,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createEventSubscriptionSync(
             input: RDSModel.CreateEventSubscriptionMessage) throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2373,7 +2366,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createGlobalClusterAsync(
             input: RDSModel.CreateGlobalClusterMessage, 
             completion: @escaping (Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2388,7 +2381,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2422,7 +2415,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createGlobalClusterSync(
             input: RDSModel.CreateGlobalClusterMessage) throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2459,7 +2452,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func createOptionGroupAsync(
             input: RDSModel.CreateOptionGroupMessage, 
             completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2474,7 +2467,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2508,7 +2501,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createOptionGroupSync(
             input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2545,7 +2538,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteCustomAvailabilityZoneAsync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
             completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2560,7 +2553,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2594,7 +2587,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteCustomAvailabilityZoneSync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2631,7 +2624,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
             completion: @escaping (Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2646,7 +2639,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2680,7 +2673,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterSync(
             input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2717,7 +2710,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBClusterEndpointAsync(
             input: RDSModel.DeleteDBClusterEndpointMessage, 
             completion: @escaping (Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2732,7 +2725,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2766,7 +2759,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterEndpointSync(
             input: RDSModel.DeleteDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2802,7 +2795,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBClusterParameterGroupAsync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2817,7 +2810,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -2848,7 +2841,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterParameterGroupSync(
             input: RDSModel.DeleteDBClusterParameterGroupMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2885,7 +2878,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBClusterSnapshotAsync(
             input: RDSModel.DeleteDBClusterSnapshotMessage, 
             completion: @escaping (Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2900,7 +2893,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -2934,7 +2927,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterSnapshotSync(
             input: RDSModel.DeleteDBClusterSnapshotMessage) throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2971,7 +2964,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBInstanceAsync(
             input: RDSModel.DeleteDBInstanceMessage, 
             completion: @escaping (Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2986,7 +2979,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3020,7 +3013,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBInstanceSync(
             input: RDSModel.DeleteDBInstanceMessage) throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3057,7 +3050,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBInstanceAutomatedBackupAsync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage, 
             completion: @escaping (Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3072,7 +3065,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBInstanceAutomatedBackup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3106,7 +3099,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBInstanceAutomatedBackupSync(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3142,7 +3135,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBParameterGroupAsync(
             input: RDSModel.DeleteDBParameterGroupMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3157,7 +3150,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -3188,7 +3181,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBParameterGroupSync(
             input: RDSModel.DeleteDBParameterGroupMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3225,7 +3218,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBProxyAsync(
             input: RDSModel.DeleteDBProxyRequest, 
             completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3240,7 +3233,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBProxy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3274,7 +3267,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBProxySync(
             input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3310,7 +3303,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBSecurityGroupAsync(
             input: RDSModel.DeleteDBSecurityGroupMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3325,7 +3318,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSecurityGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -3356,7 +3349,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBSecurityGroupSync(
             input: RDSModel.DeleteDBSecurityGroupMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3393,7 +3386,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBSnapshotAsync(
             input: RDSModel.DeleteDBSnapshotMessage, 
             completion: @escaping (Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3408,7 +3401,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3442,7 +3435,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBSnapshotSync(
             input: RDSModel.DeleteDBSnapshotMessage) throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3478,7 +3471,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteDBSubnetGroupAsync(
             input: RDSModel.DeleteDBSubnetGroupMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3493,7 +3486,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -3524,7 +3517,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBSubnetGroupSync(
             input: RDSModel.DeleteDBSubnetGroupMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3561,7 +3554,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteEventSubscriptionAsync(
             input: RDSModel.DeleteEventSubscriptionMessage, 
             completion: @escaping (Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3576,7 +3569,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteEventSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3610,7 +3603,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteEventSubscriptionSync(
             input: RDSModel.DeleteEventSubscriptionMessage) throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3647,7 +3640,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteGlobalClusterAsync(
             input: RDSModel.DeleteGlobalClusterMessage, 
             completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3662,7 +3655,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3696,7 +3689,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteGlobalClusterSync(
             input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3733,7 +3726,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteInstallationMediaAsync(
             input: RDSModel.DeleteInstallationMediaMessage, 
             completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3748,7 +3741,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteInstallationMedia.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.InstallationMediaForDeleteInstallationMedia, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.InstallationMediaForDeleteInstallationMedia, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3782,7 +3775,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteInstallationMediaSync(
             input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3818,7 +3811,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deleteOptionGroupAsync(
             input: RDSModel.DeleteOptionGroupMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3833,7 +3826,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -3864,7 +3857,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteOptionGroupSync(
             input: RDSModel.DeleteOptionGroupMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3901,7 +3894,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func deregisterDBProxyTargetsAsync(
             input: RDSModel.DeregisterDBProxyTargetsRequest, 
             completion: @escaping (Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3916,7 +3909,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deregisterDBProxyTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -3950,7 +3943,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deregisterDBProxyTargetsSync(
             input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3986,7 +3979,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeAccountAttributesAsync(
             input: RDSModel.DescribeAccountAttributesMessage, 
             completion: @escaping (Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4001,7 +3994,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4034,7 +4027,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeAccountAttributesSync(
             input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4071,7 +4064,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeCertificatesAsync(
             input: RDSModel.DescribeCertificatesMessage, 
             completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4086,7 +4079,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeCertificates.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CertificateMessageForDescribeCertificates, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CertificateMessageForDescribeCertificates, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4120,7 +4113,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeCertificatesSync(
             input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4157,7 +4150,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeCustomAvailabilityZonesAsync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
             completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4172,7 +4165,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4206,7 +4199,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeCustomAvailabilityZonesSync(
             input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4243,7 +4236,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClusterBacktracksAsync(
             input: RDSModel.DescribeDBClusterBacktracksMessage, 
             completion: @escaping (Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4258,7 +4251,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterBacktracks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4292,7 +4285,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterBacktracksSync(
             input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4329,7 +4322,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClusterEndpointsAsync(
             input: RDSModel.DescribeDBClusterEndpointsMessage, 
             completion: @escaping (Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4344,7 +4337,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterEndpoints.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4378,7 +4371,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterEndpointsSync(
             input: RDSModel.DescribeDBClusterEndpointsMessage) throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4415,7 +4408,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClusterParameterGroupsAsync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage, 
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4430,7 +4423,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterParameterGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4464,7 +4457,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterParameterGroupsSync(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage) throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4501,7 +4494,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClusterParametersAsync(
             input: RDSModel.DescribeDBClusterParametersMessage, 
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4516,7 +4509,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4550,7 +4543,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterParametersSync(
             input: RDSModel.DescribeDBClusterParametersMessage) throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4587,7 +4580,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClusterSnapshotAttributesAsync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage, 
             completion: @escaping (Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4602,7 +4595,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterSnapshotAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4636,7 +4629,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterSnapshotAttributesSync(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4673,7 +4666,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClusterSnapshotsAsync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage, 
             completion: @escaping (Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4688,7 +4681,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterSnapshots.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4722,7 +4715,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterSnapshotsSync(
             input: RDSModel.DescribeDBClusterSnapshotsMessage) throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4759,7 +4752,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBClustersAsync(
             input: RDSModel.DescribeDBClustersMessage, 
             completion: @escaping (Result<RDSModel.DBClusterMessageForDescribeDBClusters, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4774,7 +4767,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterMessageForDescribeDBClusters, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterMessageForDescribeDBClusters, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4808,7 +4801,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClustersSync(
             input: RDSModel.DescribeDBClustersMessage) throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4844,7 +4837,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBEngineVersionsAsync(
             input: RDSModel.DescribeDBEngineVersionsMessage, 
             completion: @escaping (Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4859,7 +4852,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBEngineVersions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4892,7 +4885,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBEngineVersionsSync(
             input: RDSModel.DescribeDBEngineVersionsMessage) throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4929,7 +4922,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBInstanceAutomatedBackupsAsync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage, 
             completion: @escaping (Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4944,7 +4937,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBInstanceAutomatedBackups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -4978,7 +4971,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBInstanceAutomatedBackupsSync(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5015,7 +5008,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBInstancesAsync(
             input: RDSModel.DescribeDBInstancesMessage, 
             completion: @escaping (Result<RDSModel.DBInstanceMessageForDescribeDBInstances, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5030,7 +5023,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBInstanceMessageForDescribeDBInstances, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBInstanceMessageForDescribeDBInstances, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5064,7 +5057,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBInstancesSync(
             input: RDSModel.DescribeDBInstancesMessage) throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5101,7 +5094,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBLogFilesAsync(
             input: RDSModel.DescribeDBLogFilesMessage, 
             completion: @escaping (Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5116,7 +5109,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBLogFiles.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5150,7 +5143,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBLogFilesSync(
             input: RDSModel.DescribeDBLogFilesMessage) throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5187,7 +5180,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBParameterGroupsAsync(
             input: RDSModel.DescribeDBParameterGroupsMessage, 
             completion: @escaping (Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5202,7 +5195,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBParameterGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5236,7 +5229,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBParameterGroupsSync(
             input: RDSModel.DescribeDBParameterGroupsMessage) throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5273,7 +5266,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBParametersAsync(
             input: RDSModel.DescribeDBParametersMessage, 
             completion: @escaping (Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5288,7 +5281,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5322,7 +5315,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBParametersSync(
             input: RDSModel.DescribeDBParametersMessage) throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5359,7 +5352,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBProxiesAsync(
             input: RDSModel.DescribeDBProxiesRequest, 
             completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5374,7 +5367,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxies.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5408,7 +5401,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxiesSync(
             input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5445,7 +5438,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBProxyTargetGroupsAsync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest, 
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5460,7 +5453,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxyTargetGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5494,7 +5487,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxyTargetGroupsSync(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5531,7 +5524,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBProxyTargetsAsync(
             input: RDSModel.DescribeDBProxyTargetsRequest, 
             completion: @escaping (Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5546,7 +5539,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxyTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5580,7 +5573,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxyTargetsSync(
             input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5617,7 +5610,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBSecurityGroupsAsync(
             input: RDSModel.DescribeDBSecurityGroupsMessage, 
             completion: @escaping (Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5632,7 +5625,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSecurityGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5666,7 +5659,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSecurityGroupsSync(
             input: RDSModel.DescribeDBSecurityGroupsMessage) throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5703,7 +5696,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBSnapshotAttributesAsync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage, 
             completion: @escaping (Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5718,7 +5711,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSnapshotAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5752,7 +5745,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSnapshotAttributesSync(
             input: RDSModel.DescribeDBSnapshotAttributesMessage) throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5789,7 +5782,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBSnapshotsAsync(
             input: RDSModel.DescribeDBSnapshotsMessage, 
             completion: @escaping (Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5804,7 +5797,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSnapshots.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5838,7 +5831,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSnapshotsSync(
             input: RDSModel.DescribeDBSnapshotsMessage) throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5875,7 +5868,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeDBSubnetGroupsAsync(
             input: RDSModel.DescribeDBSubnetGroupsMessage, 
             completion: @escaping (Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5890,7 +5883,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSubnetGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -5924,7 +5917,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSubnetGroupsSync(
             input: RDSModel.DescribeDBSubnetGroupsMessage) throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5960,7 +5953,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeEngineDefaultClusterParametersAsync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage, 
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5975,7 +5968,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEngineDefaultClusterParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6008,7 +6001,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEngineDefaultClusterParametersSync(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage) throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6044,7 +6037,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeEngineDefaultParametersAsync(
             input: RDSModel.DescribeEngineDefaultParametersMessage, 
             completion: @escaping (Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6059,7 +6052,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEngineDefaultParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6092,7 +6085,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEngineDefaultParametersSync(
             input: RDSModel.DescribeEngineDefaultParametersMessage) throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6128,7 +6121,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeEventCategoriesAsync(
             input: RDSModel.DescribeEventCategoriesMessage, 
             completion: @escaping (Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6143,7 +6136,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEventCategories.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6176,7 +6169,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEventCategoriesSync(
             input: RDSModel.DescribeEventCategoriesMessage) throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6213,7 +6206,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeEventSubscriptionsAsync(
             input: RDSModel.DescribeEventSubscriptionsMessage, 
             completion: @escaping (Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6228,7 +6221,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEventSubscriptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6262,7 +6255,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEventSubscriptionsSync(
             input: RDSModel.DescribeEventSubscriptionsMessage) throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6298,7 +6291,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeEventsAsync(
             input: RDSModel.DescribeEventsMessage, 
             completion: @escaping (Result<RDSModel.EventsMessageForDescribeEvents, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6313,7 +6306,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEvents.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.EventsMessageForDescribeEvents, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.EventsMessageForDescribeEvents, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6346,7 +6339,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEventsSync(
             input: RDSModel.DescribeEventsMessage) throws -> RDSModel.EventsMessageForDescribeEvents {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6383,7 +6376,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeExportTasksAsync(
             input: RDSModel.DescribeExportTasksMessage, 
             completion: @escaping (Result<RDSModel.ExportTasksMessageForDescribeExportTasks, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6398,7 +6391,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ExportTasksMessageForDescribeExportTasks, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ExportTasksMessageForDescribeExportTasks, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6432,7 +6425,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeExportTasksSync(
             input: RDSModel.DescribeExportTasksMessage) throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6469,7 +6462,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeGlobalClustersAsync(
             input: RDSModel.DescribeGlobalClustersMessage, 
             completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6484,7 +6477,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeGlobalClusters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6518,7 +6511,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeGlobalClustersSync(
             input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6555,7 +6548,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeInstallationMediaAsync(
             input: RDSModel.DescribeInstallationMediaMessage, 
             completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6570,7 +6563,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeInstallationMedia.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6604,7 +6597,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeInstallationMediaSync(
             input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6640,7 +6633,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeOptionGroupOptionsAsync(
             input: RDSModel.DescribeOptionGroupOptionsMessage, 
             completion: @escaping (Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6655,7 +6648,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOptionGroupOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6688,7 +6681,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeOptionGroupOptionsSync(
             input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6725,7 +6718,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeOptionGroupsAsync(
             input: RDSModel.DescribeOptionGroupsMessage, 
             completion: @escaping (Result<RDSModel.OptionGroupsForDescribeOptionGroups, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6740,7 +6733,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOptionGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.OptionGroupsForDescribeOptionGroups, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.OptionGroupsForDescribeOptionGroups, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6774,7 +6767,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeOptionGroupsSync(
             input: RDSModel.DescribeOptionGroupsMessage) throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6810,7 +6803,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeOrderableDBInstanceOptionsAsync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage, 
             completion: @escaping (Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6825,7 +6818,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOrderableDBInstanceOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6858,7 +6851,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeOrderableDBInstanceOptionsSync(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6895,7 +6888,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describePendingMaintenanceActionsAsync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage, 
             completion: @escaping (Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6910,7 +6903,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describePendingMaintenanceActions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -6944,7 +6937,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describePendingMaintenanceActionsSync(
             input: RDSModel.DescribePendingMaintenanceActionsMessage) throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6981,7 +6974,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeReservedDBInstancesAsync(
             input: RDSModel.DescribeReservedDBInstancesMessage, 
             completion: @escaping (Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6996,7 +6989,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeReservedDBInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7030,7 +7023,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeReservedDBInstancesSync(
             input: RDSModel.DescribeReservedDBInstancesMessage) throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7067,7 +7060,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeReservedDBInstancesOfferingsAsync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage, 
             completion: @escaping (Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7082,7 +7075,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeReservedDBInstancesOfferings.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7116,7 +7109,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeReservedDBInstancesOfferingsSync(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7152,7 +7145,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeSourceRegionsAsync(
             input: RDSModel.DescribeSourceRegionsMessage, 
             completion: @escaping (Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7167,7 +7160,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeSourceRegions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7200,7 +7193,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeSourceRegionsSync(
             input: RDSModel.DescribeSourceRegionsMessage) throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7237,7 +7230,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func describeValidDBInstanceModificationsAsync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage, 
             completion: @escaping (Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7252,7 +7245,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeValidDBInstanceModifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7286,7 +7279,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeValidDBInstanceModificationsSync(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage) throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7323,7 +7316,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func downloadDBLogFilePortionAsync(
             input: RDSModel.DownloadDBLogFilePortionMessage, 
             completion: @escaping (Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7338,7 +7331,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.downloadDBLogFilePortion.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7372,7 +7365,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func downloadDBLogFilePortionSync(
             input: RDSModel.DownloadDBLogFilePortionMessage) throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7409,7 +7402,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func failoverDBClusterAsync(
             input: RDSModel.FailoverDBClusterMessage, 
             completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7424,7 +7417,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.failoverDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7458,7 +7451,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func failoverDBClusterSync(
             input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7495,7 +7488,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func importInstallationMediaAsync(
             input: RDSModel.ImportInstallationMediaMessage, 
             completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7510,7 +7503,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.importInstallationMedia.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.InstallationMediaForImportInstallationMedia, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.InstallationMediaForImportInstallationMedia, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7544,7 +7537,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func importInstallationMediaSync(
             input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7581,7 +7574,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
             completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7596,7 +7589,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.TagListMessageForListTagsForResource, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.TagListMessageForListTagsForResource, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7630,7 +7623,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func listTagsForResourceSync(
             input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7667,7 +7660,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyCertificatesAsync(
             input: RDSModel.ModifyCertificatesMessage, 
             completion: @escaping (Result<RDSModel.ModifyCertificatesResultForModifyCertificates, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7682,7 +7675,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyCertificates.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyCertificatesResultForModifyCertificates, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyCertificatesResultForModifyCertificates, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7716,7 +7709,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyCertificatesSync(
             input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7753,7 +7746,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyCurrentDBClusterCapacityAsync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
             completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7768,7 +7761,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyCurrentDBClusterCapacity.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7802,7 +7795,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyCurrentDBClusterCapacitySync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7839,7 +7832,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
             completion: @escaping (Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7854,7 +7847,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7888,7 +7881,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterSync(
             input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7925,7 +7918,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBClusterEndpointAsync(
             input: RDSModel.ModifyDBClusterEndpointMessage, 
             completion: @escaping (Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7940,7 +7933,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -7974,7 +7967,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterEndpointSync(
             input: RDSModel.ModifyDBClusterEndpointMessage) throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8011,7 +8004,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBClusterParameterGroupAsync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8026,7 +8019,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8060,7 +8053,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterParameterGroupSync(
             input: RDSModel.ModifyDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8097,7 +8090,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBClusterSnapshotAttributeAsync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage, 
             completion: @escaping (Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8112,7 +8105,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8146,7 +8139,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterSnapshotAttributeSync(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8183,7 +8176,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
             completion: @escaping (Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8198,7 +8191,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8232,7 +8225,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBInstanceSync(
             input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8269,7 +8262,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBParameterGroupAsync(
             input: RDSModel.ModifyDBParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8284,7 +8277,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8318,7 +8311,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBParameterGroupSync(
             input: RDSModel.ModifyDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8355,7 +8348,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBProxyAsync(
             input: RDSModel.ModifyDBProxyRequest, 
             completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8370,7 +8363,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBProxy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8404,7 +8397,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBProxySync(
             input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8441,7 +8434,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBProxyTargetGroupAsync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest, 
             completion: @escaping (Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8456,7 +8449,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBProxyTargetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8490,7 +8483,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBProxyTargetGroupSync(
             input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8527,7 +8520,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBSnapshotAsync(
             input: RDSModel.ModifyDBSnapshotMessage, 
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8542,7 +8535,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8576,7 +8569,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBSnapshotSync(
             input: RDSModel.ModifyDBSnapshotMessage) throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8613,7 +8606,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBSnapshotAttributeAsync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage, 
             completion: @escaping (Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8628,7 +8621,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8662,7 +8655,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBSnapshotAttributeSync(
             input: RDSModel.ModifyDBSnapshotAttributeMessage) throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8699,7 +8692,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyDBSubnetGroupAsync(
             input: RDSModel.ModifyDBSubnetGroupMessage, 
             completion: @escaping (Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8714,7 +8707,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8748,7 +8741,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBSubnetGroupSync(
             input: RDSModel.ModifyDBSubnetGroupMessage) throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8785,7 +8778,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyEventSubscriptionAsync(
             input: RDSModel.ModifyEventSubscriptionMessage, 
             completion: @escaping (Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8800,7 +8793,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyEventSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8834,7 +8827,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyEventSubscriptionSync(
             input: RDSModel.ModifyEventSubscriptionMessage) throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8871,7 +8864,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
             completion: @escaping (Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8886,7 +8879,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -8920,7 +8913,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyGlobalClusterSync(
             input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8957,7 +8950,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func modifyOptionGroupAsync(
             input: RDSModel.ModifyOptionGroupMessage, 
             completion: @escaping (Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8972,7 +8965,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9006,7 +8999,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyOptionGroupSync(
             input: RDSModel.ModifyOptionGroupMessage) throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9043,7 +9036,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func promoteReadReplicaAsync(
             input: RDSModel.PromoteReadReplicaMessage, 
             completion: @escaping (Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9058,7 +9051,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.promoteReadReplica.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9092,7 +9085,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func promoteReadReplicaSync(
             input: RDSModel.PromoteReadReplicaMessage) throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9129,7 +9122,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func promoteReadReplicaDBClusterAsync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage, 
             completion: @escaping (Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9144,7 +9137,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.promoteReadReplicaDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9178,7 +9171,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func promoteReadReplicaDBClusterSync(
             input: RDSModel.PromoteReadReplicaDBClusterMessage) throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9215,7 +9208,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func purchaseReservedDBInstancesOfferingAsync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
             completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9230,7 +9223,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.purchaseReservedDBInstancesOffering.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9264,7 +9257,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func purchaseReservedDBInstancesOfferingSync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9301,7 +9294,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func rebootDBInstanceAsync(
             input: RDSModel.RebootDBInstanceMessage, 
             completion: @escaping (Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9316,7 +9309,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.rebootDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9350,7 +9343,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func rebootDBInstanceSync(
             input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9387,7 +9380,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func registerDBProxyTargetsAsync(
             input: RDSModel.RegisterDBProxyTargetsRequest, 
             completion: @escaping (Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9402,7 +9395,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.registerDBProxyTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9436,7 +9429,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func registerDBProxyTargetsSync(
             input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9473,7 +9466,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func removeFromGlobalClusterAsync(
             input: RDSModel.RemoveFromGlobalClusterMessage, 
             completion: @escaping (Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9488,7 +9481,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeFromGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9522,7 +9515,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeFromGlobalClusterSync(
             input: RDSModel.RemoveFromGlobalClusterMessage) throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9558,7 +9551,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func removeRoleFromDBClusterAsync(
             input: RDSModel.RemoveRoleFromDBClusterMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9573,7 +9566,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeRoleFromDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -9604,7 +9597,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeRoleFromDBClusterSync(
             input: RDSModel.RemoveRoleFromDBClusterMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9640,7 +9633,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func removeRoleFromDBInstanceAsync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9655,7 +9648,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeRoleFromDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -9686,7 +9679,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeRoleFromDBInstanceSync(
             input: RDSModel.RemoveRoleFromDBInstanceMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9723,7 +9716,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func removeSourceIdentifierFromSubscriptionAsync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage, 
             completion: @escaping (Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9738,7 +9731,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeSourceIdentifierFromSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9772,7 +9765,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeSourceIdentifierFromSubscriptionSync(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9808,7 +9801,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
             completion: @escaping (RDSError?) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9823,7 +9816,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeTagsFromResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: HTTPClientError?) {
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
             if let error = error {
                 if let typedError = error.cause as? RDSError {
                     completion(typedError)
@@ -9854,7 +9847,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeTagsFromResourceSync(
             input: RDSModel.RemoveTagsFromResourceMessage) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9891,7 +9884,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func resetDBClusterParameterGroupAsync(
             input: RDSModel.ResetDBClusterParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9906,7 +9899,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.resetDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -9940,7 +9933,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func resetDBClusterParameterGroupSync(
             input: RDSModel.ResetDBClusterParameterGroupMessage) throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9977,7 +9970,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func resetDBParameterGroupAsync(
             input: RDSModel.ResetDBParameterGroupMessage, 
             completion: @escaping (Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9992,7 +9985,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.resetDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10026,7 +10019,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func resetDBParameterGroupSync(
             input: RDSModel.ResetDBParameterGroupMessage) throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10063,7 +10056,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10078,7 +10071,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterFromS3.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10112,7 +10105,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBClusterFromS3Sync(
             input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10149,7 +10142,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
             completion: @escaping (Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10164,7 +10157,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterFromSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10198,7 +10191,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBClusterFromSnapshotSync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10235,7 +10228,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
             completion: @escaping (Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10250,7 +10243,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterToPointInTime.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10284,7 +10277,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBClusterToPointInTimeSync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10321,7 +10314,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10336,7 +10329,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceFromDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10370,7 +10363,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBInstanceFromDBSnapshotSync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10407,7 +10400,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
             completion: @escaping (Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10422,7 +10415,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceFromS3.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10456,7 +10449,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBInstanceFromS3Sync(
             input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10493,7 +10486,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
             completion: @escaping (Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10508,7 +10501,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceToPointInTime.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10542,7 +10535,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBInstanceToPointInTimeSync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10579,7 +10572,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func revokeDBSecurityGroupIngressAsync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage, 
             completion: @escaping (Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10594,7 +10587,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.revokeDBSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10628,7 +10621,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func revokeDBSecurityGroupIngressSync(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage) throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10665,7 +10658,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func startActivityStreamAsync(
             input: RDSModel.StartActivityStreamRequest, 
             completion: @escaping (Result<RDSModel.StartActivityStreamResponseForStartActivityStream, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10680,7 +10673,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startActivityStream.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StartActivityStreamResponseForStartActivityStream, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.StartActivityStreamResponseForStartActivityStream, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10714,7 +10707,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startActivityStreamSync(
             input: RDSModel.StartActivityStreamRequest) throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10751,7 +10744,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func startDBClusterAsync(
             input: RDSModel.StartDBClusterMessage, 
             completion: @escaping (Result<RDSModel.StartDBClusterResultForStartDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10766,7 +10759,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StartDBClusterResultForStartDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.StartDBClusterResultForStartDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10800,7 +10793,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startDBClusterSync(
             input: RDSModel.StartDBClusterMessage) throws -> RDSModel.StartDBClusterResultForStartDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10837,7 +10830,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func startDBInstanceAsync(
             input: RDSModel.StartDBInstanceMessage, 
             completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10852,7 +10845,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StartDBInstanceResultForStartDBInstance, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.StartDBInstanceResultForStartDBInstance, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10886,7 +10879,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startDBInstanceSync(
             input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10923,7 +10916,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
             completion: @escaping (Result<RDSModel.ExportTaskForStartExportTask, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10938,7 +10931,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startExportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ExportTaskForStartExportTask, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.ExportTaskForStartExportTask, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -10972,7 +10965,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startExportTaskSync(
             input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11009,7 +11002,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func stopActivityStreamAsync(
             input: RDSModel.StopActivityStreamRequest, 
             completion: @escaping (Result<RDSModel.StopActivityStreamResponseForStopActivityStream, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11024,7 +11017,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopActivityStream.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StopActivityStreamResponseForStopActivityStream, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.StopActivityStreamResponseForStopActivityStream, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11058,7 +11051,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopActivityStreamSync(
             input: RDSModel.StopActivityStreamRequest) throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11095,7 +11088,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func stopDBClusterAsync(
             input: RDSModel.StopDBClusterMessage, 
             completion: @escaping (Result<RDSModel.StopDBClusterResultForStopDBCluster, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11110,7 +11103,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StopDBClusterResultForStopDBCluster, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.StopDBClusterResultForStopDBCluster, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11144,7 +11137,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopDBClusterSync(
             input: RDSModel.StopDBClusterMessage) throws -> RDSModel.StopDBClusterResultForStopDBCluster {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11181,7 +11174,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     public func stopDBInstanceAsync(
             input: RDSModel.StopDBInstanceMessage, 
             completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11196,7 +11189,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StopDBInstanceResultForStopDBInstance, HTTPClientError>) {
+        func innerCompletion(result: Result<RDSModel.StopDBInstanceResultForStopDBInstance, SmokeHTTPClient.HTTPClientError>) {
             switch result {
             case .success(let payload):
                 completion(.success(payload))
@@ -11230,7 +11223,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopDBInstanceSync(
             input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
-        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+        let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

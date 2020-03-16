@@ -22,6 +22,7 @@ import SmokeAWSCore
 import QueryCoding
 import HTTPHeadersCoding
 import HTTPPathCoding
+import AsyncHTTPClient
 import Logging
 
 /**
@@ -37,11 +38,11 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     }
     
     public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
-            responseHead: HTTPResponseHead,
+            response: HTTPClient.Response,
             responseComponents: HTTPResponseComponents,
-            invocationReporting: InvocationReportingType) throws -> HTTPClientError {
+            invocationReporting: InvocationReportingType) throws -> SmokeHTTPClient.HTTPClientError {
         guard let bodyData = responseComponents.body else {
-            throw HTTPError.unknownError("Error with status '\(responseHead.status)' with empty body")
+            throw HTTPError.unknownError("Error with status '\(response.status)' with empty body")
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
@@ -50,7 +51,7 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         // attempt to get an error of Error type by decoding the body data
         let cause = try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
         
-        return HTTPClientError(responseCode: Int(responseHead.status.code), cause: cause)
+        return HTTPClientError(responseCode: Int(response.status.code), cause: cause)
     }
     
     public func encodeInputAndQueryString<InputType, InvocationReportingType: HTTPClientInvocationReporting>(
