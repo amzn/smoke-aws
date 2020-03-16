@@ -1032,6 +1032,8 @@ public struct CreateDBClusterMessage: Codable, Equatable {
     public var dBSubnetGroupName: String?
     public var databaseName: String?
     public var deletionProtection: BooleanOptional?
+    public var domain: String?
+    public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
     public var enableHttpEndpoint: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
@@ -1063,6 +1065,8 @@ public struct CreateDBClusterMessage: Codable, Equatable {
                 dBSubnetGroupName: String? = nil,
                 databaseName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
+                domain: String? = nil,
+                domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
                 enableHttpEndpoint: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
@@ -1093,6 +1097,8 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         self.dBSubnetGroupName = dBSubnetGroupName
         self.databaseName = databaseName
         self.deletionProtection = deletionProtection
+        self.domain = domain
+        self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
         self.enableHttpEndpoint = enableHttpEndpoint
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
@@ -1126,6 +1132,8 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         case dBSubnetGroupName = "DBSubnetGroupName"
         case databaseName = "DatabaseName"
         case deletionProtection = "DeletionProtection"
+        case domain = "Domain"
+        case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
         case enableHttpEndpoint = "EnableHttpEndpoint"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
@@ -2322,6 +2330,7 @@ public struct DBCluster: Codable, Equatable {
     public var databaseName: String?
     public var dbClusterResourceId: String?
     public var deletionProtection: BooleanOptional?
+    public var domainMemberships: DomainMembershipList?
     public var earliestBacktrackTime: TStamp?
     public var earliestRestorableTime: TStamp?
     public var enabledCloudwatchLogsExports: LogTypeList?
@@ -2374,6 +2383,7 @@ public struct DBCluster: Codable, Equatable {
                 databaseName: String? = nil,
                 dbClusterResourceId: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
+                domainMemberships: DomainMembershipList? = nil,
                 earliestBacktrackTime: TStamp? = nil,
                 earliestRestorableTime: TStamp? = nil,
                 enabledCloudwatchLogsExports: LogTypeList? = nil,
@@ -2425,6 +2435,7 @@ public struct DBCluster: Codable, Equatable {
         self.databaseName = databaseName
         self.dbClusterResourceId = dbClusterResourceId
         self.deletionProtection = deletionProtection
+        self.domainMemberships = domainMemberships
         self.earliestBacktrackTime = earliestBacktrackTime
         self.earliestRestorableTime = earliestRestorableTime
         self.enabledCloudwatchLogsExports = enabledCloudwatchLogsExports
@@ -2479,6 +2490,7 @@ public struct DBCluster: Codable, Equatable {
         case databaseName = "DatabaseName"
         case dbClusterResourceId = "DbClusterResourceId"
         case deletionProtection = "DeletionProtection"
+        case domainMemberships = "DomainMemberships"
         case earliestBacktrackTime = "EarliestBacktrackTime"
         case earliestRestorableTime = "EarliestRestorableTime"
         case enabledCloudwatchLogsExports = "EnabledCloudwatchLogsExports"
@@ -8333,6 +8345,8 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     public var dBClusterParameterGroupName: String?
     public var dBInstanceParameterGroupName: String?
     public var deletionProtection: BooleanOptional?
+    public var domain: String?
+    public var domainIAMRoleName: String?
     public var enableHttpEndpoint: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var engineVersion: String?
@@ -8355,6 +8369,8 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
                 dBClusterParameterGroupName: String? = nil,
                 dBInstanceParameterGroupName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
+                domain: String? = nil,
+                domainIAMRoleName: String? = nil,
                 enableHttpEndpoint: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 engineVersion: String? = nil,
@@ -8376,6 +8392,8 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         self.dBClusterParameterGroupName = dBClusterParameterGroupName
         self.dBInstanceParameterGroupName = dBInstanceParameterGroupName
         self.deletionProtection = deletionProtection
+        self.domain = domain
+        self.domainIAMRoleName = domainIAMRoleName
         self.enableHttpEndpoint = enableHttpEndpoint
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.engineVersion = engineVersion
@@ -8400,6 +8418,8 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         case dBClusterParameterGroupName = "DBClusterParameterGroupName"
         case dBInstanceParameterGroupName = "DBInstanceParameterGroupName"
         case deletionProtection = "DeletionProtection"
+        case domain = "Domain"
+        case domainIAMRoleName = "DomainIAMRoleName"
         case enableHttpEndpoint = "EnableHttpEndpoint"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case engineVersion = "EngineVersion"
@@ -10857,6 +10877,8 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
     public var dBSubnetGroupName: String?
     public var databaseName: String?
     public var deletionProtection: BooleanOptional?
+    public var domain: String?
+    public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var engine: String
@@ -10887,6 +10909,8 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
                 dBSubnetGroupName: String? = nil,
                 databaseName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
+                domain: String? = nil,
+                domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 engine: String,
@@ -10916,6 +10940,8 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
         self.dBSubnetGroupName = dBSubnetGroupName
         self.databaseName = databaseName
         self.deletionProtection = deletionProtection
+        self.domain = domain
+        self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.engine = engine
@@ -10948,6 +10974,8 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
         case dBSubnetGroupName = "DBSubnetGroupName"
         case databaseName = "DatabaseName"
         case deletionProtection = "DeletionProtection"
+        case domain = "Domain"
+        case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case engine = "Engine"
@@ -11014,6 +11042,8 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
     public var dBSubnetGroupName: String?
     public var databaseName: String?
     public var deletionProtection: BooleanOptional?
+    public var domain: String?
+    public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var engine: String
@@ -11035,6 +11065,8 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
                 dBSubnetGroupName: String? = nil,
                 databaseName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
+                domain: String? = nil,
+                domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 engine: String,
@@ -11055,6 +11087,8 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         self.dBSubnetGroupName = dBSubnetGroupName
         self.databaseName = databaseName
         self.deletionProtection = deletionProtection
+        self.domain = domain
+        self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.engine = engine
@@ -11078,6 +11112,8 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         case dBSubnetGroupName = "DBSubnetGroupName"
         case databaseName = "DatabaseName"
         case deletionProtection = "DeletionProtection"
+        case domain = "Domain"
+        case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case engine = "Engine"
@@ -11136,6 +11172,8 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public var dBClusterParameterGroupName: String?
     public var dBSubnetGroupName: String?
     public var deletionProtection: BooleanOptional?
+    public var domain: String?
+    public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var kmsKeyId: String?
@@ -11154,6 +11192,8 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
                 dBClusterParameterGroupName: String? = nil,
                 dBSubnetGroupName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
+                domain: String? = nil,
+                domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 kmsKeyId: String? = nil,
@@ -11171,6 +11211,8 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         self.dBClusterParameterGroupName = dBClusterParameterGroupName
         self.dBSubnetGroupName = dBSubnetGroupName
         self.deletionProtection = deletionProtection
+        self.domain = domain
+        self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.kmsKeyId = kmsKeyId
@@ -11191,6 +11233,8 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         case dBClusterParameterGroupName = "DBClusterParameterGroupName"
         case dBSubnetGroupName = "DBSubnetGroupName"
         case deletionProtection = "DeletionProtection"
+        case domain = "Domain"
+        case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case kmsKeyId = "KmsKeyId"

@@ -134,6 +134,11 @@ public typealias ListTagsForResourceOperationHTTPRequestInput = QueryHTTPRequest
 public typealias PutAnomalyDetectorOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the PutCompositeAlarm operation in a HTTP client.
+ */
+public typealias PutCompositeAlarmOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the PutDashboard operation in a HTTP client.
  */
 public typealias PutDashboardOperationHTTPRequestInput = QueryHTTPRequestInput

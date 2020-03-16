@@ -19766,6 +19766,70 @@ public struct AWSElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+         - completion: The ModifyAvailabilityZoneGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAvailabilityZoneGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyAvailabilityZoneGroupAsync(input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult>) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyAvailabilityZoneGroupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyAvailabilityZoneGroup.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyAvailabilityZoneGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+     - Returns: The ModifyAvailabilityZoneGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyAvailabilityZoneGroupSync(input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = ModifyAvailabilityZoneGroupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyAvailabilityZoneGroup.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ModifyCapacityReservation operation returning immediately and passing the response to a callback.
 
      - Parameters:

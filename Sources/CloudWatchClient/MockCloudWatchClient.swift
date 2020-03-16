@@ -71,6 +71,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let listTagsForResourceSyncOverride: CloudWatchClientProtocol.ListTagsForResourceSyncType?
     let putAnomalyDetectorAsyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorAsyncType?
     let putAnomalyDetectorSyncOverride: CloudWatchClientProtocol.PutAnomalyDetectorSyncType?
+    let putCompositeAlarmAsyncOverride: CloudWatchClientProtocol.PutCompositeAlarmAsyncType?
+    let putCompositeAlarmSyncOverride: CloudWatchClientProtocol.PutCompositeAlarmSyncType?
     let putDashboardAsyncOverride: CloudWatchClientProtocol.PutDashboardAsyncType?
     let putDashboardSyncOverride: CloudWatchClientProtocol.PutDashboardSyncType?
     let putInsightRuleAsyncOverride: CloudWatchClientProtocol.PutInsightRuleAsyncType?
@@ -135,6 +137,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             listTagsForResourceSync: CloudWatchClientProtocol.ListTagsForResourceSyncType? = nil,
             putAnomalyDetectorAsync: CloudWatchClientProtocol.PutAnomalyDetectorAsyncType? = nil,
             putAnomalyDetectorSync: CloudWatchClientProtocol.PutAnomalyDetectorSyncType? = nil,
+            putCompositeAlarmAsync: CloudWatchClientProtocol.PutCompositeAlarmAsyncType? = nil,
+            putCompositeAlarmSync: CloudWatchClientProtocol.PutCompositeAlarmSyncType? = nil,
             putDashboardAsync: CloudWatchClientProtocol.PutDashboardAsyncType? = nil,
             putDashboardSync: CloudWatchClientProtocol.PutDashboardSyncType? = nil,
             putInsightRuleAsync: CloudWatchClientProtocol.PutInsightRuleAsyncType? = nil,
@@ -193,6 +197,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.putAnomalyDetectorAsyncOverride = putAnomalyDetectorAsync
         self.putAnomalyDetectorSyncOverride = putAnomalyDetectorSync
+        self.putCompositeAlarmAsyncOverride = putCompositeAlarmAsync
+        self.putCompositeAlarmSyncOverride = putCompositeAlarmSync
         self.putDashboardAsyncOverride = putDashboardAsync
         self.putDashboardSyncOverride = putDashboardSync
         self.putInsightRuleAsyncOverride = putInsightRuleAsync
@@ -995,6 +1001,37 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         }
 
         return PutAnomalyDetectorOutputForPutAnomalyDetector.__default
+    }
+
+    /**
+     Invokes the PutCompositeAlarm operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded.
+     */
+    public func putCompositeAlarmAsync(input: CloudWatchModel.PutCompositeAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        if let putCompositeAlarmAsyncOverride = putCompositeAlarmAsyncOverride {
+            return try putCompositeAlarmAsyncOverride(input, completion)
+        }
+
+        completion(nil)
+    }
+
+    /**
+     Invokes the PutCompositeAlarm operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+     - Throws: limitExceeded.
+     */
+    public func putCompositeAlarmSync(input: CloudWatchModel.PutCompositeAlarmInput) throws {
+        if let putCompositeAlarmSyncOverride = putCompositeAlarmSyncOverride {
+            return try putCompositeAlarmSyncOverride(input)
+        }
+
     }
 
     /**

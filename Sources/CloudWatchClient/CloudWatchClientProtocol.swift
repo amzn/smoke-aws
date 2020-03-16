@@ -71,6 +71,8 @@ public protocol CloudWatchClientProtocol {
     typealias ListTagsForResourceAsyncType = (_ input: CloudWatchModel.ListTagsForResourceInput, _ completion: @escaping (HTTPResult<CloudWatchModel.ListTagsForResourceOutputForListTagsForResource>) -> ()) throws -> ()
     typealias PutAnomalyDetectorSyncType = (_ input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
     typealias PutAnomalyDetectorAsyncType = (_ input: CloudWatchModel.PutAnomalyDetectorInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector>) -> ()) throws -> ()
+    typealias PutCompositeAlarmSyncType = (_ input: CloudWatchModel.PutCompositeAlarmInput) throws -> ()
+    typealias PutCompositeAlarmAsyncType = (_ input: CloudWatchModel.PutCompositeAlarmInput, _ completion: @escaping (Swift.Error?) -> ()) throws -> ()
     typealias PutDashboardSyncType = (_ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
     typealias PutDashboardAsyncType = (_ input: CloudWatchModel.PutDashboardInput, _ completion: @escaping (HTTPResult<CloudWatchModel.PutDashboardOutputForPutDashboard>) -> ()) throws -> ()
     typealias PutInsightRuleSyncType = (_ input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
@@ -574,6 +576,26 @@ public protocol CloudWatchClientProtocol {
      - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
     func putAnomalyDetectorSync(input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
+
+    /**
+     Invokes the PutCompositeAlarm operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded.
+     */
+    func putCompositeAlarmAsync(input: CloudWatchModel.PutCompositeAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws
+
+    /**
+     Invokes the PutCompositeAlarm operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+     - Throws: limitExceeded.
+     */
+    func putCompositeAlarmSync(input: CloudWatchModel.PutCompositeAlarmInput) throws
 
     /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.
