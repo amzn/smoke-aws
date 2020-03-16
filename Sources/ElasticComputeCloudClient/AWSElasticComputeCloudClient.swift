@@ -25932,6 +25932,90 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+         - completion: The ModifyAvailabilityZoneGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAvailabilityZoneGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyAvailabilityZoneGroupAsync(
+            input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyAvailabilityZoneGroup,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyAvailabilityZoneGroupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyAvailabilityZoneGroup.rawValue,
+            version: apiVersion)
+
+        func innerCompletion(result: Result<ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult, SmokeHTTPClient.HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
+                }
+            }
+        }
+        
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: innerCompletion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyAvailabilityZoneGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+     - Returns: The ModifyAvailabilityZoneGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyAvailabilityZoneGroupSync(
+            input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyAvailabilityZoneGroup,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyAvailabilityZoneGroupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyAvailabilityZoneGroup.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the ModifyCapacityReservation operation returning immediately and passing the response to a callback.
 
      - Parameters:

@@ -1573,6 +1573,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ImportVolumeAsyncType = (
             _ input: ElasticComputeCloudModel.ImportVolumeRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyAvailabilityZoneGroupSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult
+    typealias ModifyAvailabilityZoneGroupAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyCapacityReservationSyncType = (
             _ input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult
     typealias ModifyCapacityReservationAsyncType = (
@@ -9322,6 +9327,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func importVolumeSync(
             input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult
+
+    /**
+     Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+         - completion: The ModifyAvailabilityZoneGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAvailabilityZoneGroupResult
+           object will be validated before being returned to caller.
+     */
+    func modifyAvailabilityZoneGroupAsync(
+            input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyAvailabilityZoneGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+     - Returns: The ModifyAvailabilityZoneGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyAvailabilityZoneGroupSync(
+            input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult
 
     /**
      Invokes the ModifyCapacityReservation operation returning immediately and passing the response to a callback.

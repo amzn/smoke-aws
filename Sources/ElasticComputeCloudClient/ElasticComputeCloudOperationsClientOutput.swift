@@ -3521,6 +3521,19 @@ extension ImportVolumeResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyAvailabilityZoneGroup operation in a HTTP client.
+ */
+extension ModifyAvailabilityZoneGroupResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyAvailabilityZoneGroupResult
+    public typealias HeadersType = ModifyAvailabilityZoneGroupResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyAvailabilityZoneGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyCapacityReservation operation in a HTTP client.
  */
 extension ModifyCapacityReservationResult: HTTPResponseOutputProtocol {

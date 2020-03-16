@@ -2007,6 +2007,88 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     }
 
     /**
+     Invokes the PutCompositeAlarm operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded.
+     */
+    public func putCompositeAlarmAsync(
+            input: CloudWatchModel.PutCompositeAlarmInput, 
+            completion: @escaping (CloudWatchError?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putCompositeAlarm,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutCompositeAlarmOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putCompositeAlarm.rawValue,
+            version: apiVersion)
+
+        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
+            if let error = error {
+                if let typedError = error.cause as? CloudWatchError {
+                    completion(typedError)
+                } else {
+                    completion(error.cause.asUnrecognizedCloudWatchError())
+                }
+            } else {
+                completion(nil)
+            }
+        }
+        
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: innerCompletion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutCompositeAlarm operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+     - Throws: limitExceeded.
+     */
+    public func putCompositeAlarmSync(
+            input: CloudWatchModel.PutCompositeAlarmInput) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putCompositeAlarm,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutCompositeAlarmOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putCompositeAlarm.rawValue,
+            version: apiVersion)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.
 
      - Parameters:

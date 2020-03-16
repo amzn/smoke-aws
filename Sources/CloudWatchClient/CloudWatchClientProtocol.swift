@@ -138,6 +138,11 @@ public protocol CloudWatchClientProtocol {
     typealias PutAnomalyDetectorAsyncType = (
             _ input: CloudWatchModel.PutAnomalyDetectorInput, 
             _ completion: @escaping (Result<CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector, CloudWatchError>) -> ()) throws -> ()
+    typealias PutCompositeAlarmSyncType = (
+            _ input: CloudWatchModel.PutCompositeAlarmInput) throws -> ()
+    typealias PutCompositeAlarmAsyncType = (
+            _ input: CloudWatchModel.PutCompositeAlarmInput, 
+            _ completion: @escaping (CloudWatchError?) -> ()) throws -> ()
     typealias PutDashboardSyncType = (
             _ input: CloudWatchModel.PutDashboardInput) throws -> CloudWatchModel.PutDashboardOutputForPutDashboard
     typealias PutDashboardAsyncType = (
@@ -728,6 +733,29 @@ public protocol CloudWatchClientProtocol {
      */
     func putAnomalyDetectorSync(
             input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector
+
+    /**
+     Invokes the PutCompositeAlarm operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded.
+     */
+    func putCompositeAlarmAsync(
+            input: CloudWatchModel.PutCompositeAlarmInput, 
+            completion: @escaping (CloudWatchError?) -> ()) throws
+
+    /**
+     Invokes the PutCompositeAlarm operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+     - Throws: limitExceeded.
+     */
+    func putCompositeAlarmSync(
+            input: CloudWatchModel.PutCompositeAlarmInput) throws
 
     /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.

@@ -50,6 +50,7 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
     let listMetrics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let putCompositeAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putDashboard: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putInsightRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putMetricAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -103,6 +104,8 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
             smokeAWSOperationReporting: operationsReporting.listTagsForResource)
         self.putAnomalyDetector = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putAnomalyDetector)
+        self.putCompositeAlarm = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putCompositeAlarm)
         self.putDashboard = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putDashboard)
         self.putInsightRule = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

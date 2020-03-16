@@ -1594,11 +1594,13 @@ public extension ClientVpnEndpoint {
             description: nil,
             dnsName: nil,
             dnsServers: nil,
+            securityGroupIds: nil,
             serverCertificateArn: nil,
             splitTunnel: nil,
             status: nil,
             tags: nil,
             transportProtocol: nil,
+            vpcId: nil,
             vpnPort: nil,
             vpnProtocol: nil)
 
@@ -1940,10 +1942,12 @@ public extension CreateClientVpnEndpointRequest {
             description: nil,
             dnsServers: nil,
             dryRun: nil,
+            securityGroupIds: nil,
             serverCertificateArn: "value",
             splitTunnel: nil,
             tagSpecifications: nil,
             transportProtocol: nil,
+            vpcId: nil,
             vpnPort: nil)
 
         return defaultInstance
@@ -2208,6 +2212,7 @@ public extension CreateFlowLogsRequest {
             maxAggregationInterval: nil,
             resourceIds: [],
             resourceType: .__default,
+            tagSpecifications: nil,
             trafficType: .__default)
 
         return defaultInstance
@@ -2472,7 +2477,9 @@ public extension CreateNatGatewayRequest {
         let defaultInstance = ElasticComputeCloudModel.CreateNatGatewayRequest(
             allocationId: "value",
             clientToken: nil,
-            subnetId: "value")
+            dryRun: nil,
+            subnetId: "value",
+            tagSpecifications: nil)
 
         return defaultInstance
     }()
@@ -3845,6 +3852,7 @@ public extension DeleteNatGatewayRequest {
      */
     static let __default: ElasticComputeCloudModel.DeleteNatGatewayRequest = {
         let defaultInstance = ElasticComputeCloudModel.DeleteNatGatewayRequest(
+            dryRun: nil,
             natGatewayId: "value")
 
         return defaultInstance
@@ -6206,6 +6214,7 @@ public extension DescribeNatGatewaysRequest {
      */
     static let __default: ElasticComputeCloudModel.DescribeNatGatewaysRequest = {
         let defaultInstance = ElasticComputeCloudModel.DescribeNatGatewaysRequest(
+            dryRun: nil,
             filter: nil,
             maxResults: nil,
             natGatewayIds: nil,
@@ -8090,6 +8099,7 @@ public extension DisableVgwRoutePropagationRequest {
      */
     static let __default: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest = {
         let defaultInstance = ElasticComputeCloudModel.DisableVgwRoutePropagationRequest(
+            dryRun: nil,
             gatewayId: "value",
             routeTableId: "value")
 
@@ -8738,6 +8748,7 @@ public extension EnableVgwRoutePropagationRequest {
      */
     static let __default: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest = {
         let defaultInstance = ElasticComputeCloudModel.EnableVgwRoutePropagationRequest(
+            dryRun: nil,
             gatewayId: "value",
             routeTableId: "value")
 
@@ -9194,6 +9205,7 @@ public extension FlowLog {
             logGroupName: nil,
             maxAggregationInterval: nil,
             resourceId: nil,
+            tags: nil,
             trafficType: nil)
 
         return defaultInstance
@@ -11956,6 +11968,32 @@ public extension MemoryInfo {
     }()
 }
 
+public extension ModifyAvailabilityZoneGroupRequest {
+    /**
+     Default instance of the ModifyAvailabilityZoneGroupRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest(
+            dryRun: nil,
+            groupName: "value",
+            optInStatus: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyAvailabilityZoneGroupResult {
+    /**
+     Default instance of the ModifyAvailabilityZoneGroupResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifyCapacityReservationRequest {
     /**
      Default instance of the ModifyCapacityReservationRequest structure.
@@ -11995,8 +12033,10 @@ public extension ModifyClientVpnEndpointRequest {
             description: nil,
             dnsServers: nil,
             dryRun: nil,
+            securityGroupIds: nil,
             serverCertificateArn: nil,
             splitTunnel: nil,
+            vpcId: nil,
             vpnPort: nil)
 
         return defaultInstance

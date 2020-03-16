@@ -98,7 +98,7 @@ public typealias AllocationId = String
 /**
  Type definition for the AllocationIdList field.
  */
-public typealias AllocationIdList = [String]
+public typealias AllocationIdList = [AllocationId]
 
 /**
  Enumeration restricting the values of the AllocationState field.
@@ -213,7 +213,7 @@ public typealias AssociatedTargetNetworkSet = [AssociatedTargetNetwork]
 /**
  Type definition for the AssociationIdList field.
  */
-public typealias AssociationIdList = [String]
+public typealias AssociationIdList = [IamInstanceProfileAssociationId]
 
 /**
  Enumeration restricting the values of the AssociationStatusCode field.
@@ -394,7 +394,7 @@ public typealias BundleId = String
 /**
  Type definition for the BundleIdStringList field.
  */
-public typealias BundleIdStringList = [String]
+public typealias BundleIdStringList = [BundleId]
 
 /**
  Type definition for the BundleTaskList field.
@@ -506,7 +506,7 @@ public typealias CapacityReservationId = String
 /**
  Type definition for the CapacityReservationIdSet field.
  */
-public typealias CapacityReservationIdSet = [String]
+public typealias CapacityReservationIdSet = [CapacityReservationId]
 
 /**
  Enumeration restricting the values of the CapacityReservationInstancePlatform field.
@@ -616,6 +616,11 @@ public enum ClientCertificateRevocationListStatusCode: String, Codable, CustomSt
 }
 
 /**
+ Type definition for the ClientVpnAssociationId field.
+ */
+public typealias ClientVpnAssociationId = String
+
+/**
  Type definition for the ClientVpnAuthenticationList field.
  */
 public typealias ClientVpnAuthenticationList = [ClientVpnAuthentication]
@@ -682,6 +687,11 @@ public enum ClientVpnConnectionStatusCode: String, Codable, CustomStringConverti
 public typealias ClientVpnEndpointId = String
 
 /**
+ Type definition for the ClientVpnEndpointIdList field.
+ */
+public typealias ClientVpnEndpointIdList = [ClientVpnEndpointId]
+
+/**
  Enumeration restricting the values of the ClientVpnEndpointStatusCode field.
  */
 public enum ClientVpnEndpointStatusCode: String, Codable, CustomStringConvertible {
@@ -721,7 +731,7 @@ public enum ClientVpnRouteStatusCode: String, Codable, CustomStringConvertible {
 /**
  Type definition for the ClientVpnSecurityGroupIdSet field.
  */
-public typealias ClientVpnSecurityGroupIdSet = [String]
+public typealias ClientVpnSecurityGroupIdSet = [SecurityGroupId]
 
 /**
  Type definition for the CoipAddressUsageSet field.
@@ -729,9 +739,14 @@ public typealias ClientVpnSecurityGroupIdSet = [String]
 public typealias CoipAddressUsageSet = [CoipAddressUsage]
 
 /**
+ Type definition for the CoipPoolId field.
+ */
+public typealias CoipPoolId = String
+
+/**
  Type definition for the CoipPoolIdSet field.
  */
-public typealias CoipPoolIdSet = [String]
+public typealias CoipPoolIdSet = [CoipPoolId]
 
 /**
  Type definition for the CoipPoolMaxResults field.
@@ -796,7 +811,7 @@ public enum ContainerFormat: String, Codable, CustomStringConvertible {
 /**
  Type definition for the ConversionIdStringList field.
  */
-public typealias ConversionIdStringList = [String]
+public typealias ConversionIdStringList = [ConversionTaskId]
 
 /**
  Type definition for the ConversionTaskId field.
@@ -883,7 +898,7 @@ public typealias CustomerGatewayId = String
 /**
  Type definition for the CustomerGatewayIdStringList field.
  */
-public typealias CustomerGatewayIdStringList = [String]
+public typealias CustomerGatewayIdStringList = [CustomerGatewayId]
 
 /**
  Type definition for the CustomerGatewayList field.
@@ -1030,7 +1045,7 @@ public enum DeleteQueuedReservedInstancesErrorCode: String, Codable, CustomStrin
 /**
  Type definition for the DeleteQueuedReservedInstancesIdList field.
  */
-public typealias DeleteQueuedReservedInstancesIdList = [String]
+public typealias DeleteQueuedReservedInstancesIdList = [ReservationId]
 
 /**
  Type definition for the DescribeByoipCidrsMaxResults field.
@@ -1269,7 +1284,7 @@ public typealias DhcpOptionsId = String
 /**
  Type definition for the DhcpOptionsIdStringList field.
  */
-public typealias DhcpOptionsIdStringList = [String]
+public typealias DhcpOptionsIdStringList = [DhcpOptionsId]
 
 /**
  Type definition for the DhcpOptionsList field.
@@ -1438,9 +1453,14 @@ public typealias EgressOnlyInternetGatewayList = [EgressOnlyInternetGateway]
 public typealias ElasticGpuAssociationList = [ElasticGpuAssociation]
 
 /**
+ Type definition for the ElasticGpuId field.
+ */
+public typealias ElasticGpuId = String
+
+/**
  Type definition for the ElasticGpuIdSet field.
  */
-public typealias ElasticGpuIdSet = [String]
+public typealias ElasticGpuIdSet = [ElasticGpuId]
 
 /**
  Type definition for the ElasticGpuSet field.
@@ -1626,9 +1646,14 @@ public enum ExportEnvironment: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ExportImageTaskId field.
+ */
+public typealias ExportImageTaskId = String
+
+/**
  Type definition for the ExportImageTaskIdList field.
  */
-public typealias ExportImageTaskIdList = [String]
+public typealias ExportImageTaskIdList = [ExportImageTaskId]
 
 /**
  Type definition for the ExportImageTaskList field.
@@ -1643,7 +1668,7 @@ public typealias ExportTaskId = String
 /**
  Type definition for the ExportTaskIdStringList field.
  */
-public typealias ExportTaskIdStringList = [String]
+public typealias ExportTaskIdStringList = [ExportTaskId]
 
 /**
  Type definition for the ExportTaskList field.
@@ -1665,6 +1690,11 @@ public enum ExportTaskState: String, Codable, CustomStringConvertible {
     
     public static let __default: ExportTaskState = .active
 }
+
+/**
+ Type definition for the ExportVmTaskId field.
+ */
+public typealias ExportVmTaskId = String
 
 /**
  Type definition for the FailedQueuedPurchaseDeletionSet field.
@@ -1752,14 +1782,14 @@ public enum FleetExcessCapacityTerminationPolicy: String, Codable, CustomStringC
 }
 
 /**
- Type definition for the FleetIdSet field.
+ Type definition for the FleetId field.
  */
-public typealias FleetIdSet = [FleetIdentifier]
+public typealias FleetId = String
 
 /**
- Type definition for the FleetIdentifier field.
+ Type definition for the FleetIdSet field.
  */
-public typealias FleetIdentifier = String
+public typealias FleetIdSet = [FleetId]
 
 /**
  Type definition for the FleetLaunchTemplateConfigList field.
@@ -1840,6 +1870,21 @@ public enum FleetType: String, Codable, CustomStringConvertible {
 public typealias Float = Double
 
 /**
+ Type definition for the FlowLogIdList field.
+ */
+public typealias FlowLogIdList = [VpcFlowLogId]
+
+/**
+ Type definition for the FlowLogResourceId field.
+ */
+public typealias FlowLogResourceId = String
+
+/**
+ Type definition for the FlowLogResourceIds field.
+ */
+public typealias FlowLogResourceIds = [FlowLogResourceId]
+
+/**
  Type definition for the FlowLogSet field.
  */
 public typealias FlowLogSet = [FlowLog]
@@ -1908,7 +1953,7 @@ public typealias FpgaImageId = String
 /**
  Type definition for the FpgaImageIdList field.
  */
-public typealias FpgaImageIdList = [String]
+public typealias FpgaImageIdList = [FpgaImageId]
 
 /**
  Type definition for the FpgaImageList field.
@@ -1997,12 +2042,12 @@ public typealias GroupIdentifierSet = [SecurityGroupIdentifier]
 /**
  Type definition for the GroupIds field.
  */
-public typealias GroupIds = [String]
+public typealias GroupIds = [SecurityGroupId]
 
 /**
  Type definition for the GroupNameStringList field.
  */
-public typealias GroupNameStringList = [String]
+public typealias GroupNameStringList = [SecurityGroupName]
 
 /**
  Type definition for the HibernationFlag field.
@@ -2049,9 +2094,14 @@ public enum HostRecovery: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the HostReservationId field.
+ */
+public typealias HostReservationId = String
+
+/**
  Type definition for the HostReservationIdSet field.
  */
-public typealias HostReservationIdSet = [String]
+public typealias HostReservationIdSet = [HostReservationId]
 
 /**
  Type definition for the HostReservationSet field.
@@ -2111,6 +2161,11 @@ public typealias IKEVersionsList = [IKEVersionsListValue]
 public typealias IKEVersionsRequestList = [IKEVersionsRequestListValue]
 
 /**
+ Type definition for the IamInstanceProfileAssociationId field.
+ */
+public typealias IamInstanceProfileAssociationId = String
+
+/**
  Type definition for the IamInstanceProfileAssociationSet field.
  */
 public typealias IamInstanceProfileAssociationSet = [IamInstanceProfileAssociation]
@@ -2168,7 +2223,7 @@ public typealias ImageId = String
 /**
  Type definition for the ImageIdStringList field.
  */
-public typealias ImageIdStringList = [String]
+public typealias ImageIdStringList = [ImageId]
 
 /**
  Type definition for the ImageList field.
@@ -2220,6 +2275,11 @@ public typealias ImportImageLicenseSpecificationListRequest = [ImportImageLicens
 public typealias ImportImageLicenseSpecificationListResponse = [ImportImageLicenseConfigurationResponse]
 
 /**
+ Type definition for the ImportImageTaskId field.
+ */
+public typealias ImportImageTaskId = String
+
+/**
  Type definition for the ImportImageTaskList field.
  */
 public typealias ImportImageTaskList = [ImportImageTask]
@@ -2228,6 +2288,16 @@ public typealias ImportImageTaskList = [ImportImageTask]
  Type definition for the ImportInstanceVolumeDetailSet field.
  */
 public typealias ImportInstanceVolumeDetailSet = [ImportInstanceVolumeDetailItem]
+
+/**
+ Type definition for the ImportSnapshotTaskId field.
+ */
+public typealias ImportSnapshotTaskId = String
+
+/**
+ Type definition for the ImportSnapshotTaskIdList field.
+ */
+public typealias ImportSnapshotTaskIdList = [ImportSnapshotTaskId]
 
 /**
  Type definition for the ImportSnapshotTaskList field.
@@ -2242,7 +2312,7 @@ public typealias ImportTaskId = String
 /**
  Type definition for the ImportTaskIdList field.
  */
-public typealias ImportTaskIdList = [String]
+public typealias ImportTaskIdList = [ImportImageTaskId]
 
 /**
  Type definition for the InferenceDeviceCount field.
@@ -2347,7 +2417,7 @@ public typealias InstanceIdSet = [String]
 /**
  Type definition for the InstanceIdStringList field.
  */
-public typealias InstanceIdStringList = [String]
+public typealias InstanceIdStringList = [InstanceId]
 
 /**
  Type definition for the InstanceIdsSet field.
@@ -2864,6 +2934,11 @@ public typealias InternetGatewayAttachmentList = [InternetGatewayAttachment]
 public typealias InternetGatewayId = String
 
 /**
+ Type definition for the InternetGatewayIdList field.
+ */
+public typealias InternetGatewayIdList = [InternetGatewayId]
+
+/**
  Type definition for the InternetGatewayList field.
  */
 public typealias InternetGatewayList = [InternetGateway]
@@ -2882,6 +2957,11 @@ public typealias IpRangeList = [IpRange]
  Type definition for the IpRanges field.
  */
 public typealias IpRanges = [String]
+
+/**
+ Type definition for the Ipv4PoolEc2Id field.
+ */
+public typealias Ipv4PoolEc2Id = String
 
 /**
  Type definition for the Ipv6Address field.
@@ -2907,6 +2987,16 @@ public typealias Ipv6CidrBlockSet = [Ipv6CidrBlock]
  Type definition for the Ipv6Flag field.
  */
 public typealias Ipv6Flag = Bool
+
+/**
+ Type definition for the Ipv6PoolEc2Id field.
+ */
+public typealias Ipv6PoolEc2Id = String
+
+/**
+ Type definition for the Ipv6PoolIdList field.
+ */
+public typealias Ipv6PoolIdList = [Ipv6PoolEc2Id]
 
 /**
  Type definition for the Ipv6PoolMaxResults field.
@@ -2945,12 +3035,17 @@ public typealias KernelId = String
 /**
  Type definition for the KeyNameStringList field.
  */
-public typealias KeyNameStringList = [String]
+public typealias KeyNameStringList = [KeyPairName]
+
+/**
+ Type definition for the KeyPairId field.
+ */
+public typealias KeyPairId = String
 
 /**
  Type definition for the KeyPairIdStringList field.
  */
-public typealias KeyPairIdStringList = [String]
+public typealias KeyPairIdStringList = [KeyPairId]
 
 /**
  Type definition for the KeyPairList field.
@@ -3043,6 +3138,11 @@ public enum LaunchTemplateHttpTokensState: String, Codable, CustomStringConverti
  Type definition for the LaunchTemplateId field.
  */
 public typealias LaunchTemplateId = String
+
+/**
+ Type definition for the LaunchTemplateIdStringList field.
+ */
+public typealias LaunchTemplateIdStringList = [LaunchTemplateId]
 
 /**
  Enumeration restricting the values of the LaunchTemplateInstanceMetadataEndpointState field.
@@ -3180,9 +3280,14 @@ public typealias LoadPermissionList = [LoadPermission]
 public typealias LoadPermissionListRequest = [LoadPermissionRequest]
 
 /**
+ Type definition for the LocalGatewayId field.
+ */
+public typealias LocalGatewayId = String
+
+/**
  Type definition for the LocalGatewayIdSet field.
  */
-public typealias LocalGatewayIdSet = [String]
+public typealias LocalGatewayIdSet = [LocalGatewayId]
 
 /**
  Type definition for the LocalGatewayMaxResults field.
@@ -3214,7 +3319,7 @@ public enum LocalGatewayRouteState: String, Codable, CustomStringConvertible {
 /**
  Type definition for the LocalGatewayRouteTableIdSet field.
  */
-public typealias LocalGatewayRouteTableIdSet = [String]
+public typealias LocalGatewayRouteTableIdSet = [LocalGatewayRoutetableId]
 
 /**
  Type definition for the LocalGatewayRouteTableSet field.
@@ -3222,9 +3327,14 @@ public typealias LocalGatewayRouteTableIdSet = [String]
 public typealias LocalGatewayRouteTableSet = [LocalGatewayRouteTable]
 
 /**
+ Type definition for the LocalGatewayRouteTableVirtualInterfaceGroupAssociationId field.
+ */
+public typealias LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = String
+
+/**
  Type definition for the LocalGatewayRouteTableVirtualInterfaceGroupAssociationIdSet field.
  */
-public typealias LocalGatewayRouteTableVirtualInterfaceGroupAssociationIdSet = [String]
+public typealias LocalGatewayRouteTableVirtualInterfaceGroupAssociationIdSet = [LocalGatewayRouteTableVirtualInterfaceGroupAssociationId]
 
 /**
  Type definition for the LocalGatewayRouteTableVirtualInterfaceGroupAssociationSet field.
@@ -3232,9 +3342,14 @@ public typealias LocalGatewayRouteTableVirtualInterfaceGroupAssociationIdSet = [
 public typealias LocalGatewayRouteTableVirtualInterfaceGroupAssociationSet = [LocalGatewayRouteTableVirtualInterfaceGroupAssociation]
 
 /**
+ Type definition for the LocalGatewayRouteTableVpcAssociationId field.
+ */
+public typealias LocalGatewayRouteTableVpcAssociationId = String
+
+/**
  Type definition for the LocalGatewayRouteTableVpcAssociationIdSet field.
  */
-public typealias LocalGatewayRouteTableVpcAssociationIdSet = [String]
+public typealias LocalGatewayRouteTableVpcAssociationIdSet = [LocalGatewayRouteTableVpcAssociationId]
 
 /**
  Type definition for the LocalGatewayRouteTableVpcAssociationSet field.
@@ -3256,14 +3371,24 @@ public enum LocalGatewayRouteType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the LocalGatewayRoutetableId field.
+ */
+public typealias LocalGatewayRoutetableId = String
+
+/**
  Type definition for the LocalGatewaySet field.
  */
 public typealias LocalGatewaySet = [LocalGateway]
 
 /**
+ Type definition for the LocalGatewayVirtualInterfaceGroupId field.
+ */
+public typealias LocalGatewayVirtualInterfaceGroupId = String
+
+/**
  Type definition for the LocalGatewayVirtualInterfaceGroupIdSet field.
  */
-public typealias LocalGatewayVirtualInterfaceGroupIdSet = [String]
+public typealias LocalGatewayVirtualInterfaceGroupIdSet = [LocalGatewayVirtualInterfaceGroupId]
 
 /**
  Type definition for the LocalGatewayVirtualInterfaceGroupSet field.
@@ -3271,9 +3396,14 @@ public typealias LocalGatewayVirtualInterfaceGroupIdSet = [String]
 public typealias LocalGatewayVirtualInterfaceGroupSet = [LocalGatewayVirtualInterfaceGroup]
 
 /**
+ Type definition for the LocalGatewayVirtualInterfaceId field.
+ */
+public typealias LocalGatewayVirtualInterfaceId = String
+
+/**
  Type definition for the LocalGatewayVirtualInterfaceIdSet field.
  */
-public typealias LocalGatewayVirtualInterfaceIdSet = [String]
+public typealias LocalGatewayVirtualInterfaceIdSet = [LocalGatewayVirtualInterfaceId]
 
 /**
  Type definition for the LocalGatewayVirtualInterfaceSet field.
@@ -3377,6 +3507,20 @@ public typealias MemorySize = Int
 public typealias MillisecondDateTime = String
 
 /**
+ Enumeration restricting the values of the ModifyAvailabilityZoneOptInStatus field.
+ */
+public enum ModifyAvailabilityZoneOptInStatus: String, Codable, CustomStringConvertible {
+    case notOptedIn = "not-opted-in"
+    case optedIn = "opted-in"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ModifyAvailabilityZoneOptInStatus = .notOptedIn
+}
+
+/**
  Enumeration restricting the values of the MonitoringState field.
  */
 public enum MonitoringState: String, Codable, CustomStringConvertible {
@@ -3436,6 +3580,11 @@ public typealias NatGatewayAddressList = [NatGatewayAddress]
 public typealias NatGatewayId = String
 
 /**
+ Type definition for the NatGatewayIdStringList field.
+ */
+public typealias NatGatewayIdStringList = [NatGatewayId]
+
+/**
  Type definition for the NatGatewayList field.
  */
 public typealias NatGatewayList = [NatGateway]
@@ -3476,6 +3625,11 @@ public typealias NetworkAclEntryList = [NetworkAclEntry]
  Type definition for the NetworkAclId field.
  */
 public typealias NetworkAclId = String
+
+/**
+ Type definition for the NetworkAclIdStringList field.
+ */
+public typealias NetworkAclIdStringList = [NetworkAclId]
 
 /**
  Type definition for the NetworkAclList field.
@@ -3524,7 +3678,7 @@ public typealias NetworkInterfaceId = String
 /**
  Type definition for the NetworkInterfaceIdList field.
  */
-public typealias NetworkInterfaceIdList = [String]
+public typealias NetworkInterfaceIdList = [NetworkInterfaceId]
 
 /**
  Type definition for the NetworkInterfaceIpv6AddressesList field.
@@ -3537,9 +3691,14 @@ public typealias NetworkInterfaceIpv6AddressesList = [NetworkInterfaceIpv6Addres
 public typealias NetworkInterfaceList = [NetworkInterface]
 
 /**
+ Type definition for the NetworkInterfacePermissionId field.
+ */
+public typealias NetworkInterfacePermissionId = String
+
+/**
  Type definition for the NetworkInterfacePermissionIdList field.
  */
-public typealias NetworkInterfacePermissionIdList = [String]
+public typealias NetworkInterfacePermissionIdList = [NetworkInterfacePermissionId]
 
 /**
  Type definition for the NetworkInterfacePermissionList field.
@@ -3783,9 +3942,14 @@ public typealias Phase2IntegrityAlgorithmsList = [Phase2IntegrityAlgorithmsListV
 public typealias Phase2IntegrityAlgorithmsRequestList = [Phase2IntegrityAlgorithmsRequestListValue]
 
 /**
+ Type definition for the PlacementGroupId field.
+ */
+public typealias PlacementGroupId = String
+
+/**
  Type definition for the PlacementGroupIdStringList field.
  */
-public typealias PlacementGroupIdStringList = [String]
+public typealias PlacementGroupIdStringList = [PlacementGroupId]
 
 /**
  Type definition for the PlacementGroupList field.
@@ -3836,7 +4000,7 @@ public typealias PlacementGroupStrategyList = [PlacementGroupStrategy]
 /**
  Type definition for the PlacementGroupStringList field.
  */
-public typealias PlacementGroupStringList = [String]
+public typealias PlacementGroupStringList = [PlacementGroupName]
 
 /**
  Enumeration restricting the values of the PlacementStrategy field.
@@ -3885,6 +4049,16 @@ public typealias PrefixListIdList = [PrefixListId]
  Type definition for the PrefixListIdSet field.
  */
 public typealias PrefixListIdSet = [String]
+
+/**
+ Type definition for the PrefixListResourceId field.
+ */
+public typealias PrefixListResourceId = String
+
+/**
+ Type definition for the PrefixListResourceIdStringList field.
+ */
+public typealias PrefixListResourceIdStringList = [PrefixListResourceId]
 
 /**
  Type definition for the PrefixListSet field.
@@ -3987,6 +4161,11 @@ public typealias PropagatingVgwList = [PropagatingVgw]
  Type definition for the PublicIpStringList field.
  */
 public typealias PublicIpStringList = [String]
+
+/**
+ Type definition for the PublicIpv4PoolIdStringList field.
+ */
+public typealias PublicIpv4PoolIdStringList = [Ipv4PoolEc2Id]
 
 /**
  Type definition for the PublicIpv4PoolRangeSet field.
@@ -4105,7 +4284,7 @@ public enum ReportStatusType: String, Codable, CustomStringConvertible {
 /**
  Type definition for the RequestHostIdList field.
  */
-public typealias RequestHostIdList = [String]
+public typealias RequestHostIdList = [DedicatedHostId]
 
 /**
  Type definition for the RequestHostIdSet field.
@@ -4116,6 +4295,21 @@ public typealias RequestHostIdSet = [DedicatedHostId]
  Type definition for the RequestInstanceTypeList field.
  */
 public typealias RequestInstanceTypeList = [InstanceType]
+
+/**
+ Type definition for the RequestSpotLaunchSpecificationSecurityGroupIdList field.
+ */
+public typealias RequestSpotLaunchSpecificationSecurityGroupIdList = [SecurityGroupId]
+
+/**
+ Type definition for the RequestSpotLaunchSpecificationSecurityGroupList field.
+ */
+public typealias RequestSpotLaunchSpecificationSecurityGroupList = [SecurityGroupName]
+
+/**
+ Type definition for the ReservationId field.
+ */
+public typealias ReservationId = String
 
 /**
  Type definition for the ReservationList field.
@@ -4141,7 +4335,7 @@ public enum ReservationState: String, Codable, CustomStringConvertible {
 /**
  Type definition for the ReservedInstanceIdSet field.
  */
-public typealias ReservedInstanceIdSet = [String]
+public typealias ReservedInstanceIdSet = [ReservationId]
 
 /**
  Type definition for the ReservedInstanceReservationValueSet field.
@@ -4174,7 +4368,7 @@ public typealias ReservedInstancesConfigurationList = [ReservedInstancesConfigur
 /**
  Type definition for the ReservedInstancesIdStringList field.
  */
-public typealias ReservedInstancesIdStringList = [String]
+public typealias ReservedInstancesIdStringList = [ReservationId]
 
 /**
  Type definition for the ReservedInstancesList field.
@@ -4192,9 +4386,14 @@ public typealias ReservedInstancesListingId = String
 public typealias ReservedInstancesListingList = [ReservedInstancesListing]
 
 /**
+ Type definition for the ReservedInstancesModificationId field.
+ */
+public typealias ReservedInstancesModificationId = String
+
+/**
  Type definition for the ReservedInstancesModificationIdStringList field.
  */
-public typealias ReservedInstancesModificationIdStringList = [String]
+public typealias ReservedInstancesModificationIdStringList = [ReservedInstancesModificationId]
 
 /**
  Type definition for the ReservedInstancesModificationList field.
@@ -4207,9 +4406,14 @@ public typealias ReservedInstancesModificationList = [ReservedInstancesModificat
 public typealias ReservedInstancesModificationResultList = [ReservedInstancesModificationResult]
 
 /**
+ Type definition for the ReservedInstancesOfferingId field.
+ */
+public typealias ReservedInstancesOfferingId = String
+
+/**
  Type definition for the ReservedInstancesOfferingIdStringList field.
  */
-public typealias ReservedInstancesOfferingIdStringList = [String]
+public typealias ReservedInstancesOfferingIdStringList = [ReservedInstancesOfferingId]
 
 /**
  Type definition for the ReservedInstancesOfferingList field.
@@ -4250,7 +4454,7 @@ public enum ResetImageAttributeName: String, Codable, CustomStringConvertible {
 /**
  Type definition for the ResourceIdList field.
  */
-public typealias ResourceIdList = [String]
+public typealias ResourceIdList = [TaggableResourceId]
 
 /**
  Type definition for the ResourceList field.
@@ -4294,6 +4498,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case transitGatewayRouteTable = "transit-gateway-route-table"
     case volume
     case vpc
+    case vpcFlowLog = "vpc-flow-log"
     case vpcPeeringConnection = "vpc-peering-connection"
     case vpnConnection = "vpn-connection"
     case vpnGateway = "vpn-gateway"
@@ -4338,6 +4543,11 @@ public enum RootDeviceType: String, Codable, CustomStringConvertible {
  Type definition for the RootDeviceTypeList field.
  */
 public typealias RootDeviceTypeList = [RootDeviceType]
+
+/**
+ Type definition for the RouteGatewayId field.
+ */
+public typealias RouteGatewayId = String
 
 /**
  Type definition for the RouteList field.
@@ -4401,14 +4611,14 @@ public enum RouteTableAssociationStateCode: String, Codable, CustomStringConvert
 }
 
 /**
- Type definition for the RouteTableGatewayId field.
- */
-public typealias RouteTableGatewayId = String
-
-/**
  Type definition for the RouteTableId field.
  */
 public typealias RouteTableId = String
+
+/**
+ Type definition for the RouteTableIdStringList field.
+ */
+public typealias RouteTableIdStringList = [RouteTableId]
 
 /**
  Type definition for the RouteTableList field.
@@ -4442,7 +4652,7 @@ public typealias ScheduledInstanceId = String
 /**
  Type definition for the ScheduledInstanceIdRequestSet field.
  */
-public typealias ScheduledInstanceIdRequestSet = [String]
+public typealias ScheduledInstanceIdRequestSet = [ScheduledInstanceId]
 
 /**
  Type definition for the ScheduledInstanceSet field.
@@ -4467,17 +4677,27 @@ public typealias ScheduledInstancesNetworkInterfaceSet = [ScheduledInstancesNetw
 /**
  Type definition for the ScheduledInstancesSecurityGroupIdSet field.
  */
-public typealias ScheduledInstancesSecurityGroupIdSet = [String]
+public typealias ScheduledInstancesSecurityGroupIdSet = [SecurityGroupId]
+
+/**
+ Type definition for the SecurityGroupId field.
+ */
+public typealias SecurityGroupId = String
 
 /**
  Type definition for the SecurityGroupIdStringList field.
  */
-public typealias SecurityGroupIdStringList = [String]
+public typealias SecurityGroupIdStringList = [SecurityGroupId]
 
 /**
  Type definition for the SecurityGroupList field.
  */
 public typealias SecurityGroupList = [SecurityGroup]
+
+/**
+ Type definition for the SecurityGroupName field.
+ */
+public typealias SecurityGroupName = String
 
 /**
  Type definition for the SecurityGroupReferences field.
@@ -4487,7 +4707,7 @@ public typealias SecurityGroupReferences = [SecurityGroupReference]
 /**
  Type definition for the SecurityGroupStringList field.
  */
-public typealias SecurityGroupStringList = [String]
+public typealias SecurityGroupStringList = [SecurityGroupName]
 
 /**
  Type definition for the SensitiveUserData field.
@@ -4503,11 +4723,6 @@ public typealias ServiceConfigurationSet = [ServiceConfiguration]
  Type definition for the ServiceDetailSet field.
  */
 public typealias ServiceDetailSet = [ServiceDetail]
-
-/**
- Type definition for the ServiceId field.
- */
-public typealias ServiceId = String
 
 /**
  Enumeration restricting the values of the ServiceState field.
@@ -4586,7 +4801,7 @@ public typealias SnapshotId = String
 /**
  Type definition for the SnapshotIdStringList field.
  */
-public typealias SnapshotIdStringList = [String]
+public typealias SnapshotIdStringList = [SnapshotId]
 
 /**
  Type definition for the SnapshotList field.
@@ -4639,6 +4854,11 @@ public typealias SpotFleetRequestConfigSet = [SpotFleetRequestConfig]
 public typealias SpotFleetRequestId = String
 
 /**
+ Type definition for the SpotFleetRequestIdList field.
+ */
+public typealias SpotFleetRequestIdList = [SpotFleetRequestId]
+
+/**
  Type definition for the SpotFleetTagSpecificationList field.
  */
 public typealias SpotFleetTagSpecificationList = [SpotFleetTagSpecification]
@@ -4659,9 +4879,14 @@ public enum SpotInstanceInterruptionBehavior: String, Codable, CustomStringConve
 }
 
 /**
+ Type definition for the SpotInstanceRequestId field.
+ */
+public typealias SpotInstanceRequestId = String
+
+/**
  Type definition for the SpotInstanceRequestIdList field.
  */
-public typealias SpotInstanceRequestIdList = [String]
+public typealias SpotInstanceRequestIdList = [SpotInstanceRequestId]
 
 /**
  Type definition for the SpotInstanceRequestList field.
@@ -4814,7 +5039,7 @@ public typealias SubnetId = String
 /**
  Type definition for the SubnetIdStringList field.
  */
-public typealias SubnetIdStringList = [String]
+public typealias SubnetIdStringList = [SubnetId]
 
 /**
  Type definition for the SubnetIpv6CidrBlockAssociationSet field.
@@ -4881,6 +5106,11 @@ public typealias TagList = [Tag]
  Type definition for the TagSpecificationList field.
  */
 public typealias TagSpecificationList = [TagSpecification]
+
+/**
+ Type definition for the TaggableResourceId field.
+ */
+public typealias TaggableResourceId = String
 
 /**
  Type definition for the TargetConfigurationRequestSet field.
@@ -4964,6 +5194,11 @@ public enum TrafficDirection: String, Codable, CustomStringConvertible {
  Type definition for the TrafficMirrorFilterId field.
  */
 public typealias TrafficMirrorFilterId = String
+
+/**
+ Type definition for the TrafficMirrorFilterIdList field.
+ */
+public typealias TrafficMirrorFilterIdList = [TrafficMirrorFilterId]
 
 /**
  Enumeration restricting the values of the TrafficMirrorFilterRuleField field.
@@ -5059,6 +5294,11 @@ public typealias TrafficMirrorSessionFieldList = [TrafficMirrorSessionField]
 public typealias TrafficMirrorSessionId = String
 
 /**
+ Type definition for the TrafficMirrorSessionIdList field.
+ */
+public typealias TrafficMirrorSessionIdList = [TrafficMirrorSessionId]
+
+/**
  Type definition for the TrafficMirrorSessionSet field.
  */
 public typealias TrafficMirrorSessionSet = [TrafficMirrorSession]
@@ -5067,6 +5307,11 @@ public typealias TrafficMirrorSessionSet = [TrafficMirrorSession]
  Type definition for the TrafficMirrorTargetId field.
  */
 public typealias TrafficMirrorTargetId = String
+
+/**
+ Type definition for the TrafficMirrorTargetIdList field.
+ */
+public typealias TrafficMirrorTargetIdList = [TrafficMirrorTargetId]
 
 /**
  Type definition for the TrafficMirrorTargetSet field.
@@ -5108,6 +5353,11 @@ public enum TrafficType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the TransitAssociationGatewayId field.
+ */
+public typealias TransitAssociationGatewayId = String
+
+/**
  Enumeration restricting the values of the TransitGatewayAssociationState field.
  */
 public enum TransitGatewayAssociationState: String, Codable, CustomStringConvertible {
@@ -5124,9 +5374,14 @@ public enum TransitGatewayAssociationState: String, Codable, CustomStringConvert
 }
 
 /**
+ Type definition for the TransitGatewayAttachmentId field.
+ */
+public typealias TransitGatewayAttachmentId = String
+
+/**
  Type definition for the TransitGatewayAttachmentIdStringList field.
  */
-public typealias TransitGatewayAttachmentIdStringList = [String]
+public typealias TransitGatewayAttachmentIdStringList = [TransitGatewayAttachmentId]
 
 /**
  Type definition for the TransitGatewayAttachmentList field.
@@ -5186,7 +5441,7 @@ public typealias TransitGatewayId = String
 /**
  Type definition for the TransitGatewayIdStringList field.
  */
-public typealias TransitGatewayIdStringList = [String]
+public typealias TransitGatewayIdStringList = [TransitGatewayId]
 
 /**
  Type definition for the TransitGatewayList field.
@@ -5220,9 +5475,14 @@ public enum TransitGatewayMulitcastDomainAssociationState: String, Codable, Cust
 public typealias TransitGatewayMulticastDomainAssociationList = [TransitGatewayMulticastDomainAssociation]
 
 /**
+ Type definition for the TransitGatewayMulticastDomainId field.
+ */
+public typealias TransitGatewayMulticastDomainId = String
+
+/**
  Type definition for the TransitGatewayMulticastDomainIdStringList field.
  */
-public typealias TransitGatewayMulticastDomainIdStringList = [String]
+public typealias TransitGatewayMulticastDomainIdStringList = [TransitGatewayMulticastDomainId]
 
 /**
  Type definition for the TransitGatewayMulticastDomainList field.
@@ -5249,6 +5509,11 @@ public enum TransitGatewayMulticastDomainState: String, Codable, CustomStringCon
  Type definition for the TransitGatewayMulticastGroupList field.
  */
 public typealias TransitGatewayMulticastGroupList = [TransitGatewayMulticastGroup]
+
+/**
+ Type definition for the TransitGatewayNetworkInterfaceIdList field.
+ */
+public typealias TransitGatewayNetworkInterfaceIdList = [NetworkInterfaceId]
 
 /**
  Type definition for the TransitGatewayPeeringAttachmentList field.
@@ -5304,9 +5569,14 @@ public enum TransitGatewayRouteState: String, Codable, CustomStringConvertible {
 public typealias TransitGatewayRouteTableAssociationList = [TransitGatewayRouteTableAssociation]
 
 /**
+ Type definition for the TransitGatewayRouteTableId field.
+ */
+public typealias TransitGatewayRouteTableId = String
+
+/**
  Type definition for the TransitGatewayRouteTableIdStringList field.
  */
-public typealias TransitGatewayRouteTableIdStringList = [String]
+public typealias TransitGatewayRouteTableIdStringList = [TransitGatewayRouteTableId]
 
 /**
  Type definition for the TransitGatewayRouteTableList field.
@@ -5364,6 +5634,11 @@ public enum TransitGatewayState: String, Codable, CustomStringConvertible {
     
     public static let __default: TransitGatewayState = .available
 }
+
+/**
+ Type definition for the TransitGatewaySubnetIdList field.
+ */
+public typealias TransitGatewaySubnetIdList = [SubnetId]
 
 /**
  Type definition for the TransitGatewayVpcAttachmentList field.
@@ -5724,7 +5999,7 @@ public enum VpcCidrBlockStateCode: String, Codable, CustomStringConvertible {
 /**
  Type definition for the VpcClassicLinkIdList field.
  */
-public typealias VpcClassicLinkIdList = [String]
+public typealias VpcClassicLinkIdList = [VpcId]
 
 /**
  Type definition for the VpcClassicLinkList field.
@@ -5742,9 +6017,39 @@ public typealias VpcEndpointConnectionSet = [VpcEndpointConnection]
 public typealias VpcEndpointId = String
 
 /**
+ Type definition for the VpcEndpointIdList field.
+ */
+public typealias VpcEndpointIdList = [VpcEndpointId]
+
+/**
+ Type definition for the VpcEndpointRouteTableIdList field.
+ */
+public typealias VpcEndpointRouteTableIdList = [RouteTableId]
+
+/**
+ Type definition for the VpcEndpointSecurityGroupIdList field.
+ */
+public typealias VpcEndpointSecurityGroupIdList = [SecurityGroupId]
+
+/**
+ Type definition for the VpcEndpointServiceId field.
+ */
+public typealias VpcEndpointServiceId = String
+
+/**
+ Type definition for the VpcEndpointServiceIdList field.
+ */
+public typealias VpcEndpointServiceIdList = [VpcEndpointServiceId]
+
+/**
  Type definition for the VpcEndpointSet field.
  */
 public typealias VpcEndpointSet = [VpcEndpoint]
+
+/**
+ Type definition for the VpcEndpointSubnetIdList field.
+ */
+public typealias VpcEndpointSubnetIdList = [SubnetId]
 
 /**
  Enumeration restricting the values of the VpcEndpointType field.
@@ -5761,6 +6066,11 @@ public enum VpcEndpointType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the VpcFlowLogId field.
+ */
+public typealias VpcFlowLogId = String
+
+/**
  Type definition for the VpcId field.
  */
 public typealias VpcId = String
@@ -5768,7 +6078,7 @@ public typealias VpcId = String
 /**
  Type definition for the VpcIdStringList field.
  */
-public typealias VpcIdStringList = [String]
+public typealias VpcIdStringList = [VpcId]
 
 /**
  Type definition for the VpcIpv6CidrBlockAssociationSet field.
@@ -5784,6 +6094,11 @@ public typealias VpcList = [Vpc]
  Type definition for the VpcPeeringConnectionId field.
  */
 public typealias VpcPeeringConnectionId = String
+
+/**
+ Type definition for the VpcPeeringConnectionIdList field.
+ */
+public typealias VpcPeeringConnectionIdList = [VpcPeeringConnectionId]
 
 /**
  Type definition for the VpcPeeringConnectionList field.
@@ -5846,7 +6161,7 @@ public typealias VpnConnectionId = String
 /**
  Type definition for the VpnConnectionIdStringList field.
  */
-public typealias VpnConnectionIdStringList = [String]
+public typealias VpnConnectionIdStringList = [VpnConnectionId]
 
 /**
  Type definition for the VpnConnectionList field.
@@ -5875,7 +6190,7 @@ public typealias VpnGatewayId = String
 /**
  Type definition for the VpnGatewayIdStringList field.
  */
-public typealias VpnGatewayIdStringList = [String]
+public typealias VpnGatewayIdStringList = [VpnGatewayId]
 
 /**
  Type definition for the VpnGatewayList field.
@@ -6031,7 +6346,7 @@ extension ElasticComputeCloudModel.DITOMaxResults {
 /**
  Validation for the DeleteQueuedReservedInstancesIdList field.
 */
-extension Array where Element == String {
+extension Array where Element == ElasticComputeCloudModel.ReservationId {
     public func validateAsDeleteQueuedReservedInstancesIdList() throws {
         if self.count < 1 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to DeleteQueuedReservedInstancesIdList violated the minimum length constraint.")

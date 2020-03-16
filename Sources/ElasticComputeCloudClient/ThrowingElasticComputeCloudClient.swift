@@ -647,6 +647,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let importSnapshotSyncOverride: ImportSnapshotSyncType?
     let importVolumeAsyncOverride: ImportVolumeAsyncType?
     let importVolumeSyncOverride: ImportVolumeSyncType?
+    let modifyAvailabilityZoneGroupAsyncOverride: ModifyAvailabilityZoneGroupAsyncType?
+    let modifyAvailabilityZoneGroupSyncOverride: ModifyAvailabilityZoneGroupSyncType?
     let modifyCapacityReservationAsyncOverride: ModifyCapacityReservationAsyncType?
     let modifyCapacityReservationSyncOverride: ModifyCapacityReservationSyncType?
     let modifyClientVpnEndpointAsyncOverride: ModifyClientVpnEndpointAsyncType?
@@ -1451,6 +1453,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             importSnapshotSync: ImportSnapshotSyncType? = nil,
             importVolumeAsync: ImportVolumeAsyncType? = nil,
             importVolumeSync: ImportVolumeSyncType? = nil,
+            modifyAvailabilityZoneGroupAsync: ModifyAvailabilityZoneGroupAsyncType? = nil,
+            modifyAvailabilityZoneGroupSync: ModifyAvailabilityZoneGroupSyncType? = nil,
             modifyCapacityReservationAsync: ModifyCapacityReservationAsyncType? = nil,
             modifyCapacityReservationSync: ModifyCapacityReservationSyncType? = nil,
             modifyClientVpnEndpointAsync: ModifyClientVpnEndpointAsyncType? = nil,
@@ -2250,6 +2254,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.importSnapshotSyncOverride = importSnapshotSync
         self.importVolumeAsyncOverride = importVolumeAsync
         self.importVolumeSyncOverride = importVolumeSync
+        self.modifyAvailabilityZoneGroupAsyncOverride = modifyAvailabilityZoneGroupAsync
+        self.modifyAvailabilityZoneGroupSyncOverride = modifyAvailabilityZoneGroupSync
         self.modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsync
         self.modifyCapacityReservationSyncOverride = modifyCapacityReservationSync
         self.modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsync
@@ -13434,6 +13440,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult {
         if let importVolumeSyncOverride = importVolumeSyncOverride {
             return try importVolumeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+         - completion: The ModifyAvailabilityZoneGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAvailabilityZoneGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyAvailabilityZoneGroupAsync(
+            input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyAvailabilityZoneGroupAsyncOverride = modifyAvailabilityZoneGroupAsyncOverride {
+            return try modifyAvailabilityZoneGroupAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ModifyAvailabilityZoneGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAvailabilityZoneGroupRequest object being passed to this operation.
+     - Returns: The ModifyAvailabilityZoneGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyAvailabilityZoneGroupSync(
+            input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult {
+        if let modifyAvailabilityZoneGroupSyncOverride = modifyAvailabilityZoneGroupSyncOverride {
+            return try modifyAvailabilityZoneGroupSyncOverride(input)
         }
 
         throw error

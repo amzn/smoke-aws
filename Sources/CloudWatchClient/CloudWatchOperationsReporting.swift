@@ -49,6 +49,7 @@ public struct CloudWatchOperationsReporting {
     let listMetrics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let listTagsForResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    let putCompositeAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putDashboard: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putInsightRule: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     let putMetricAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -102,6 +103,8 @@ public struct CloudWatchOperationsReporting {
             clientName: clientName, operation: .listTagsForResource, configuration: reportingConfiguration)
         self.putAnomalyDetector = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putAnomalyDetector, configuration: reportingConfiguration)
+        self.putCompositeAlarm = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putCompositeAlarm, configuration: reportingConfiguration)
         self.putDashboard = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putDashboard, configuration: reportingConfiguration)
         self.putInsightRule = StandardSmokeAWSOperationReporting(
