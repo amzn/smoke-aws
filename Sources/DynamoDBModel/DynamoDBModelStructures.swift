@@ -3411,6 +3411,7 @@ public struct RestoreTableFromBackupInput: Codable, Equatable {
     public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
     public var localSecondaryIndexOverride: LocalSecondaryIndexList?
     public var provisionedThroughputOverride: ProvisionedThroughput?
+    public var sSESpecificationOverride: SSESpecification?
     public var targetTableName: TableName
 
     public init(backupArn: BackupArn,
@@ -3418,12 +3419,14 @@ public struct RestoreTableFromBackupInput: Codable, Equatable {
                 globalSecondaryIndexOverride: GlobalSecondaryIndexList? = nil,
                 localSecondaryIndexOverride: LocalSecondaryIndexList? = nil,
                 provisionedThroughputOverride: ProvisionedThroughput? = nil,
+                sSESpecificationOverride: SSESpecification? = nil,
                 targetTableName: TableName) {
         self.backupArn = backupArn
         self.billingModeOverride = billingModeOverride
         self.globalSecondaryIndexOverride = globalSecondaryIndexOverride
         self.localSecondaryIndexOverride = localSecondaryIndexOverride
         self.provisionedThroughputOverride = provisionedThroughputOverride
+        self.sSESpecificationOverride = sSESpecificationOverride
         self.targetTableName = targetTableName
     }
 
@@ -3433,12 +3436,14 @@ public struct RestoreTableFromBackupInput: Codable, Equatable {
         case globalSecondaryIndexOverride = "GlobalSecondaryIndexOverride"
         case localSecondaryIndexOverride = "LocalSecondaryIndexOverride"
         case provisionedThroughputOverride = "ProvisionedThroughputOverride"
+        case sSESpecificationOverride = "SSESpecificationOverride"
         case targetTableName = "TargetTableName"
     }
 
     public func validate() throws {
         try backupArn.validateAsBackupArn()
         try provisionedThroughputOverride?.validate()
+        try sSESpecificationOverride?.validate()
         try targetTableName.validateAsTableName()
     }
 }
@@ -3465,7 +3470,9 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
     public var localSecondaryIndexOverride: LocalSecondaryIndexList?
     public var provisionedThroughputOverride: ProvisionedThroughput?
     public var restoreDateTime: Date?
-    public var sourceTableName: TableName
+    public var sSESpecificationOverride: SSESpecification?
+    public var sourceTableArn: TableArn?
+    public var sourceTableName: TableName?
     public var targetTableName: TableName
     public var useLatestRestorableTime: BooleanObject?
 
@@ -3474,7 +3481,9 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
                 localSecondaryIndexOverride: LocalSecondaryIndexList? = nil,
                 provisionedThroughputOverride: ProvisionedThroughput? = nil,
                 restoreDateTime: Date? = nil,
-                sourceTableName: TableName,
+                sSESpecificationOverride: SSESpecification? = nil,
+                sourceTableArn: TableArn? = nil,
+                sourceTableName: TableName? = nil,
                 targetTableName: TableName,
                 useLatestRestorableTime: BooleanObject? = nil) {
         self.billingModeOverride = billingModeOverride
@@ -3482,6 +3491,8 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
         self.localSecondaryIndexOverride = localSecondaryIndexOverride
         self.provisionedThroughputOverride = provisionedThroughputOverride
         self.restoreDateTime = restoreDateTime
+        self.sSESpecificationOverride = sSESpecificationOverride
+        self.sourceTableArn = sourceTableArn
         self.sourceTableName = sourceTableName
         self.targetTableName = targetTableName
         self.useLatestRestorableTime = useLatestRestorableTime
@@ -3493,6 +3504,8 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
         case localSecondaryIndexOverride = "LocalSecondaryIndexOverride"
         case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case restoreDateTime = "RestoreDateTime"
+        case sSESpecificationOverride = "SSESpecificationOverride"
+        case sourceTableArn = "SourceTableArn"
         case sourceTableName = "SourceTableName"
         case targetTableName = "TargetTableName"
         case useLatestRestorableTime = "UseLatestRestorableTime"
@@ -3500,7 +3513,8 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
 
     public func validate() throws {
         try provisionedThroughputOverride?.validate()
-        try sourceTableName.validateAsTableName()
+        try sSESpecificationOverride?.validate()
+        try sourceTableName?.validateAsTableName()
         try targetTableName.validateAsTableName()
     }
 }

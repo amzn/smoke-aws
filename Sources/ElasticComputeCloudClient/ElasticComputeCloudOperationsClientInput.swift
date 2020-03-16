@@ -1569,6 +1569,11 @@ public typealias ImportSnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias ImportVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyAvailabilityZoneGroup operation in a HTTP client.
+ */
+public typealias ModifyAvailabilityZoneGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyCapacityReservation operation in a HTTP client.
  */
 public typealias ModifyCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput

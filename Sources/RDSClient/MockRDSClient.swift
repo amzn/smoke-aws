@@ -2403,7 +2403,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object or an error will be passed to this 
            callback when the operation is complete. The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets
            object will be validated before being returned to caller.
-           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound, invalidDBProxyState.
      */
     public func deregisterDBProxyTargetsAsync(input: RDSModel.DeregisterDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets>) -> ()) throws {
         if let deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsyncOverride {
@@ -2422,7 +2422,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DeregisterDBProxyTargetsRequest object being passed to this operation.
      - Returns: The DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound, invalidDBProxyState.
      */
     public func deregisterDBProxyTargetsSync(input: RDSModel.DeregisterDBProxyTargetsRequest) throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
         if let deregisterDBProxyTargetsSyncOverride = deregisterDBProxyTargetsSyncOverride {
@@ -3065,7 +3065,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object or an error will be passed to this 
            callback when the operation is complete. The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
            object will be validated before being returned to caller.
-           The possible errors are: dBProxyTargetGroupNotFound.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, invalidDBProxyState.
      */
     public func describeDBProxyTargetGroupsAsync(input: RDSModel.DescribeDBProxyTargetGroupsRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups>) -> ()) throws {
         if let describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsyncOverride {
@@ -3084,7 +3084,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DescribeDBProxyTargetGroupsRequest object being passed to this operation.
      - Returns: The DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBProxyTargetGroupNotFound.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, invalidDBProxyState.
      */
     public func describeDBProxyTargetGroupsSync(input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
         if let describeDBProxyTargetGroupsSyncOverride = describeDBProxyTargetGroupsSyncOverride {
@@ -3102,7 +3102,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object or an error will be passed to this 
            callback when the operation is complete. The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets
            object will be validated before being returned to caller.
-           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound, invalidDBProxyState.
      */
     public func describeDBProxyTargetsAsync(input: RDSModel.DescribeDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets>) -> ()) throws {
         if let describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsyncOverride {
@@ -3121,7 +3121,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated DescribeDBProxyTargetsRequest object being passed to this operation.
      - Returns: The DescribeDBProxyTargetsResponseForDescribeDBProxyTargets object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, dBProxyTargetNotFound, invalidDBProxyState.
      */
     public func describeDBProxyTargetsSync(input: RDSModel.DescribeDBProxyTargetsRequest) throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
         if let describeDBProxyTargetsSyncOverride = describeDBProxyTargetsSyncOverride {
@@ -4346,7 +4346,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object or an error will be passed to this 
            callback when the operation is complete. The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
            object will be validated before being returned to caller.
-           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound.
+           The possible errors are: dBProxyNotFound, dBProxyTargetGroupNotFound, invalidDBProxyState.
      */
     public func modifyDBProxyTargetGroupAsync(input: RDSModel.ModifyDBProxyTargetGroupRequest, completion: @escaping (HTTPResult<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup>) -> ()) throws {
         if let modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsyncOverride {
@@ -4365,7 +4365,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated ModifyDBProxyTargetGroupRequest object being passed to this operation.
      - Returns: The ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound.
+     - Throws: dBProxyNotFound, dBProxyTargetGroupNotFound, invalidDBProxyState.
      */
     public func modifyDBProxyTargetGroupSync(input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
         if let modifyDBProxyTargetGroupSyncOverride = modifyDBProxyTargetGroupSyncOverride {
@@ -4753,7 +4753,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object or an error will be passed to this 
            callback when the operation is complete. The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBProxyState.
      */
     public func registerDBProxyTargetsAsync(input: RDSModel.RegisterDBProxyTargetsRequest, completion: @escaping (HTTPResult<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets>) -> ()) throws {
         if let registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsyncOverride {
@@ -4772,7 +4772,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RegisterDBProxyTargetsRequest object being passed to this operation.
      - Returns: The RegisterDBProxyTargetsResponseForRegisterDBProxyTargets object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetAlreadyRegistered, dBProxyTargetGroupNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBProxyState.
      */
     public func registerDBProxyTargetsSync(input: RDSModel.RegisterDBProxyTargetsRequest) throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
         if let registerDBProxyTargetsSyncOverride = registerDBProxyTargetsSyncOverride {

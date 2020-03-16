@@ -1545,6 +1545,69 @@ public struct AWSCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the PutCompositeAlarm operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: limitExceeded.
+     */
+    public func putCompositeAlarmAsync(input: CloudWatchModel.PutCompositeAlarmInput, completion: @escaping (Swift.Error?) -> ()) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = PutCompositeAlarmOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putCompositeAlarm.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutCompositeAlarm operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutCompositeAlarmInput object being passed to this operation.
+     - Throws: limitExceeded.
+     */
+    public func putCompositeAlarmSync(input: CloudWatchModel.PutCompositeAlarmInput) throws {
+        let handlerDelegate = AWSClientChannelInboundHandlerDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let wrappedInput = PutCompositeAlarmOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putCompositeAlarm.rawValue,
+            version: apiVersion)
+
+        try httpClient.executeSyncRetriableWithoutOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            handlerDelegate: handlerDelegate,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the PutDashboard operation returning immediately and passing the response to a callback.
 
      - Parameters:

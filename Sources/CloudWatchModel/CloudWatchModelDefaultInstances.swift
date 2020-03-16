@@ -28,6 +28,7 @@ public extension AlarmHistoryItem {
     static let __default: CloudWatchModel.AlarmHistoryItem = {
         let defaultInstance = CloudWatchModel.AlarmHistoryItem(
             alarmName: nil,
+            alarmType: nil,
             historyData: nil,
             historyItemType: nil,
             historySummary: nil,
@@ -62,6 +63,30 @@ public extension AnomalyDetectorConfiguration {
         let defaultInstance = CloudWatchModel.AnomalyDetectorConfiguration(
             excludedTimeRanges: nil,
             metricTimezone: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CompositeAlarm {
+    /**
+     Default instance of the CompositeAlarm structure.
+     */
+    static let __default: CloudWatchModel.CompositeAlarm = {
+        let defaultInstance = CloudWatchModel.CompositeAlarm(
+            actionsEnabled: nil,
+            alarmActions: nil,
+            alarmArn: nil,
+            alarmConfigurationUpdatedTimestamp: nil,
+            alarmDescription: nil,
+            alarmName: nil,
+            alarmRule: nil,
+            insufficientDataActions: nil,
+            oKActions: nil,
+            stateReason: nil,
+            stateReasonData: nil,
+            stateUpdatedTimestamp: nil,
+            stateValue: nil)
 
         return defaultInstance
     }()
@@ -278,10 +303,12 @@ public extension DescribeAlarmHistoryInput {
     static let __default: CloudWatchModel.DescribeAlarmHistoryInput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmHistoryInput(
             alarmName: nil,
+            alarmTypes: nil,
             endDate: nil,
             historyItemType: nil,
             maxRecords: nil,
             nextToken: nil,
+            scanBy: nil,
             startDate: nil)
 
         return defaultInstance
@@ -364,8 +391,11 @@ public extension DescribeAlarmsInput {
             actionPrefix: nil,
             alarmNamePrefix: nil,
             alarmNames: nil,
+            alarmTypes: nil,
+            childrenOfAlarmName: nil,
             maxRecords: nil,
             nextToken: nil,
+            parentsOfAlarmName: nil,
             stateValue: nil)
 
         return defaultInstance
@@ -378,6 +408,7 @@ public extension DescribeAlarmsOutput {
      */
     static let __default: CloudWatchModel.DescribeAlarmsOutput = {
         let defaultInstance = CloudWatchModel.DescribeAlarmsOutput(
+            compositeAlarms: nil,
             metricAlarms: nil,
             nextToken: nil)
 
@@ -1261,6 +1292,25 @@ public extension PutAnomalyDetectorOutputForPutAnomalyDetector {
     static let __default: CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector = {
         let defaultInstance = CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector(
             putAnomalyDetectorResult: PutAnomalyDetectorOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutCompositeAlarmInput {
+    /**
+     Default instance of the PutCompositeAlarmInput structure.
+     */
+    static let __default: CloudWatchModel.PutCompositeAlarmInput = {
+        let defaultInstance = CloudWatchModel.PutCompositeAlarmInput(
+            actionsEnabled: nil,
+            alarmActions: nil,
+            alarmDescription: nil,
+            alarmName: "0",
+            alarmRule: "0",
+            insufficientDataActions: nil,
+            oKActions: nil,
+            tags: nil)
 
         return defaultInstance
     }()

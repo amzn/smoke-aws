@@ -2005,6 +2005,7 @@ public extension RestoreTableFromBackupInput {
             globalSecondaryIndexOverride: nil,
             localSecondaryIndexOverride: nil,
             provisionedThroughputOverride: nil,
+            sSESpecificationOverride: nil,
             targetTableName: "012")
 
         return defaultInstance
@@ -2034,7 +2035,9 @@ public extension RestoreTableToPointInTimeInput {
             localSecondaryIndexOverride: nil,
             provisionedThroughputOverride: nil,
             restoreDateTime: nil,
-            sourceTableName: "012",
+            sSESpecificationOverride: nil,
+            sourceTableArn: nil,
+            sourceTableName: nil,
             targetTableName: "012",
             useLatestRestorableTime: nil)
 

@@ -334,6 +334,7 @@ public enum ElasticComputeCloudModelOperations: String {
     case importKeyPair = "ImportKeyPair"
     case importSnapshot = "ImportSnapshot"
     case importVolume = "ImportVolume"
+    case modifyAvailabilityZoneGroup = "ModifyAvailabilityZoneGroup"
     case modifyCapacityReservation = "ModifyCapacityReservation"
     case modifyClientVpnEndpoint = "ModifyClientVpnEndpoint"
     case modifyDefaultCreditSpecification = "ModifyDefaultCreditSpecification"
@@ -1044,6 +1045,8 @@ public enum ElasticComputeCloudModelOperations: String {
         case .importSnapshot:
             return "/"
         case .importVolume:
+            return "/"
+        case .modifyAvailabilityZoneGroup:
             return "/"
         case .modifyCapacityReservation:
             return "/"
