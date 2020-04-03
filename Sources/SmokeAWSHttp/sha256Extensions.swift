@@ -16,6 +16,35 @@
 //
 
 import Foundation
+#if swift(>=5.1)
+import Crypto
+
+extension String {
+    /// The SHA256 of this String
+    var sha256: [UInt8] {
+        let data = [UInt8](self.utf8)
+        return data.sha256
+    }
+}
+
+extension Array where Element == UInt8 {
+    /// The SHA256 of this Array
+    var sha256: [UInt8] {
+        let data = Data(self)
+        return data.sha256
+    }
+}
+
+extension Data {
+    /// The SHA256 of this Data
+    var sha256: [UInt8] {
+        let hash = SHA256.hash(data: self)
+        return hash.withUnsafeBytes { body in
+            return [UInt8](body)
+        }
+    }
+}
+#else
 import Cryptor
 
 extension String {
@@ -44,3 +73,4 @@ extension Data {
         return hash.final()
     }
 }
+#endif

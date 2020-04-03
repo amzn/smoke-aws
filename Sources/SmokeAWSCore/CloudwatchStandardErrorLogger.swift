@@ -29,8 +29,8 @@ public struct CloudwatchStandardErrorLogger: LogHandler {
     public var metadata: Logger.Metadata
     public var logLevel: Logger.Level
     
-    private init(logLevel: Logger.Level) {
-        self.logLevel = logLevel
+    private init(minimumLogLevel: Logger.Level) {
+        self.logLevel = minimumLogLevel
         self.metadata = [:]
     }
     
@@ -46,9 +46,19 @@ public struct CloudwatchStandardErrorLogger: LogHandler {
     /**
      Set the logger implementation of the LoggerAPI to this type.
      */
-    public static func enableLogging(logLevel: Logger.Level = .info) {
+    public static func enableLogging(minimumLogLevel: Logger.Level = .info) {
         LoggingSystem.bootstrap { label in
-            return CloudwatchStandardErrorLogger(logLevel: logLevel)
+            return CloudwatchStandardErrorLogger(minimumLogLevel: minimumLogLevel)
+        }
+    }
+    
+    /**
+     Set the logger implementation of the LoggerAPI to this type.
+     */
+    @available(swift, deprecated: 2.0, renamed: "enableLogging(minimumLogLevel:)")
+    public static func enableLogging(minimumLoggerType: Logger.Level) {
+        LoggingSystem.bootstrap { label in
+            return CloudwatchStandardErrorLogger(minimumLogLevel: minimumLoggerType)
         }
     }
     

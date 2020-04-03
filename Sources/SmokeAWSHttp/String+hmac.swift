@@ -16,6 +16,27 @@
 //
 
 import Foundation
+#if swift(>=5.1)
+import Crypto
+
+extension String {
+    /**
+     Returns the hmac for this String using the provided key.
+ 
+     - Parameters:
+        - key: the key to use to generate the hmac.
+     */
+    func hmac(withKey key: [UInt8]) -> [UInt8] {
+        let data = [UInt8](self.utf8)
+        let keyData = Data(key)
+        
+        let symmetricKey = SymmetricKey(data: keyData)
+        
+        let authenticationCode = HMAC<SHA256>.authenticationCode(for: data, using: symmetricKey)
+        return [UInt8](authenticationCode)
+    }
+}
+#else
 import Cryptor
 
 extension String {
@@ -34,3 +55,4 @@ extension String {
         return hmac
     }
 }
+#endif
