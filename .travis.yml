@@ -31,6 +31,26 @@ matrix:
       sudo: required
       services: docker
       env: DOCKER_IMAGE_TAG=swift:5.0.1-xenial USE_SWIFT_LINT=yes
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.2-bionic USE_SWIFT_LINT=yes SMOKE_AWS_MAC_OS_10_12_SUPPORT=true
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.2-xenial USE_SWIFT_LINT=yes SMOKE_AWS_MAC_OS_10_12_SUPPORT=true
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.1-bionic USE_SWIFT_LINT=yes SMOKE_AWS_MAC_OS_10_12_SUPPORT=true
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.1-xenial USE_SWIFT_LINT=yes SMOKE_AWS_MAC_OS_10_12_SUPPORT=true
 
 before_install:
   - docker pull $DOCKER_IMAGE_TAG
