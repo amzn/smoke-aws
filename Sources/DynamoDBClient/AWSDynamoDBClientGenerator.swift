@@ -27,6 +27,7 @@ import SmokeAWSHttp
 import NIO
 import NIOHTTP1
 import AsyncHTTPClient
+import Logging
 
 private extension Swift.Error {
     func isRetriable() -> Bool {
@@ -100,5 +101,28 @@ public struct AWSDynamoDBClientGenerator {
             retryOnErrorProvider: self.retryOnErrorProvider,
             retryConfiguration: self.retryConfiguration,
             operationsReporting: self.operationsReporting)
+    }
+    
+    public func with<NewTraceContextType: InvocationTraceContext>(
+            logger: Logging.Logger,
+            internalRequestId: String = "none",
+            traceContext: NewTraceContextType) -> AWSDynamoDBClient<StandardHTTPClientCoreInvocationReporting<NewTraceContextType>> {
+        let reporting = StandardHTTPClientCoreInvocationReporting(
+            logger: logger,
+            internalRequestId: internalRequestId,
+            traceContext: traceContext)
+        
+        return with(reporting: reporting)
+    }
+    
+    public func with(
+            logger: Logging.Logger,
+            internalRequestId: String = "none") -> AWSDynamoDBClient<StandardHTTPClientCoreInvocationReporting<AWSClientInvocationTraceContext>> {
+        let reporting = StandardHTTPClientCoreInvocationReporting(
+            logger: logger,
+            internalRequestId: internalRequestId,
+            traceContext: AWSClientInvocationTraceContext())
+        
+        return with(reporting: reporting)
     }
 }
