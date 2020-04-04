@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 //
 // Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
@@ -17,24 +17,10 @@
 import PackageDescription
 import Foundation
 
-let cryptoDependency: Package.Dependency
-let cryptoPackage: Target.Dependency
-let macOSSupportedPlatform: PackageDescription.SupportedPlatform
-
-if ProcessInfo.processInfo.environment["SMOKE_AWS_MAC_OS_10_12_SUPPORT"] != nil {
-    cryptoDependency = .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", from: "1.0.0")
-    cryptoPackage = "Cryptor"
-    macOSSupportedPlatform = .macOS(.v10_12)
-} else {
-    cryptoDependency = .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0")
-    cryptoPackage = "Crypto"
-    macOSSupportedPlatform = .macOS(.v10_15)
-}
-
 let package = Package(
     name: "SmokeAWS",
     platforms: [
-        macOSSupportedPlatform, .iOS(.v10)
+        .macOS(.v10_15), .iOS(.v10)
         ],
     products: [
         .library(
@@ -123,7 +109,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0"..<"3.0.0"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.4.1"),
         .package(url: "https://github.com/amzn/smoke-http.git", from: "2.0.0-alpha.7"),
-        cryptoDependency,
+        .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0"),
     ],
     targets: [
         .target(
@@ -205,7 +191,7 @@ let package = Package(
             name: "SmokeAWSHttp",
             dependencies: ["Logging", "NIO", "NIOHTTP1",
                            "SmokeAWSCore", "SmokeHTTPClient", "QueryCoding",
-                           "HTTPPathCoding", "HTTPHeadersCoding", cryptoPackage]),
+                           "HTTPPathCoding", "HTTPHeadersCoding", "Crypto"]),
         .testTarget(
             name: "S3ClientTests",
             dependencies: ["S3Client"]),
