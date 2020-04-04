@@ -16,7 +16,7 @@
 //
 
 import Foundation
-#if swift(>=5.1)
+#if swift(>=5.2)
 import Crypto
 
 extension String {
