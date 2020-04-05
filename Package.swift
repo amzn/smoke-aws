@@ -17,7 +17,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SmokeAWS",
+    name: "smoke-aws",
     platforms: [
         .macOS(.v10_15), .iOS(.v10)
         ],
