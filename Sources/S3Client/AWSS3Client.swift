@@ -27,6 +27,7 @@ import SmokeAWSHttp
 import NIO
 import NIOHTTP1
 import AsyncHTTPClient
+import Logging
 
 public enum S3ClientError: Swift.Error {
     case invalidEndpoint(String)

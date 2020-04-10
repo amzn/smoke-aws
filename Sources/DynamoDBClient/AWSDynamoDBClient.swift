@@ -27,6 +27,7 @@ import SmokeAWSHttp
 import NIO
 import NIOHTTP1
 import AsyncHTTPClient
+import Logging
 
 public enum DynamoDBClientError: Swift.Error {
     case invalidEndpoint(String)
