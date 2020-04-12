@@ -4538,6 +4538,44 @@ public extension DeregisterImageRequest {
     }()
 }
 
+public extension DeregisterInstanceEventNotificationAttributesRequest {
+    /**
+     Default instance of the DeregisterInstanceEventNotificationAttributesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest(
+            dryRun: nil,
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterInstanceEventNotificationAttributesResult {
+    /**
+     Default instance of the DeregisterInstanceEventNotificationAttributesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult(
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterInstanceTagAttributeRequest {
+    /**
+     Default instance of the DeregisterInstanceTagAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeregisterInstanceTagAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeregisterInstanceTagAttributeRequest(
+            includeAllTagsOfInstance: nil,
+            instanceTagKeys: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeregisterTransitGatewayMulticastGroupMembersRequest {
     /**
      Default instance of the DeregisterTransitGatewayMulticastGroupMembersRequest structure.
@@ -5735,6 +5773,30 @@ public extension DescribeInstanceCreditSpecificationsResult {
         let defaultInstance = ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult(
             instanceCreditSpecifications: nil,
             nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeInstanceEventNotificationAttributesRequest {
+    /**
+     Default instance of the DescribeInstanceEventNotificationAttributesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeInstanceEventNotificationAttributesResult {
+    /**
+     Default instance of the DescribeInstanceEventNotificationAttributesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult(
+            instanceTagAttribute: nil)
 
         return defaultInstance
     }()
@@ -10962,6 +11024,19 @@ public extension InstanceStorageInfo {
     }()
 }
 
+public extension InstanceTagNotificationAttribute {
+    /**
+     Default instance of the InstanceTagNotificationAttribute structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceTagNotificationAttribute = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceTagNotificationAttribute(
+            includeAllTagsOfInstance: nil,
+            instanceTagKeys: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InstanceTypeInfo {
     /**
      Default instance of the InstanceTypeInfo structure.
@@ -14085,6 +14160,44 @@ public extension RegisterImageResult {
     static let __default: ElasticComputeCloudModel.RegisterImageResult = {
         let defaultInstance = ElasticComputeCloudModel.RegisterImageResult(
             imageId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterInstanceEventNotificationAttributesRequest {
+    /**
+     Default instance of the RegisterInstanceEventNotificationAttributesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest(
+            dryRun: nil,
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterInstanceEventNotificationAttributesResult {
+    /**
+     Default instance of the RegisterInstanceEventNotificationAttributesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult = {
+        let defaultInstance = ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult(
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterInstanceTagAttributeRequest {
+    /**
+     Default instance of the RegisterInstanceTagAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RegisterInstanceTagAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RegisterInstanceTagAttributeRequest(
+            includeAllTagsOfInstance: nil,
+            instanceTagKeys: nil)
 
         return defaultInstance
     }()

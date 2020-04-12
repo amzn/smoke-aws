@@ -12021,6 +12021,90 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DeregisterInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The DeregisterInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func deregisterInstanceEventNotificationAttributesAsync(
+            input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterInstanceEventNotificationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterInstanceEventNotificationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deregisterInstanceEventNotificationAttributes.rawValue,
+            version: apiVersion)
+
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult, SmokeHTTPClient.HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
+                }
+            }
+        }
+        
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: innerCompletion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeregisterInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The DeregisterInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deregisterInstanceEventNotificationAttributesSync(
+            input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterInstanceEventNotificationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterInstanceEventNotificationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deregisterInstanceEventNotificationAttributes.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
      Invokes the DeregisterTransitGatewayMulticastGroupMembers operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15537,6 +15621,90 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeInstanceCreditSpecifications.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The DescribeInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceEventNotificationAttributesAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceEventNotificationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceEventNotificationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceEventNotificationAttributes.rawValue,
+            version: apiVersion)
+
+        func innerCompletion(result: Result<ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult, SmokeHTTPClient.HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
+                }
+            }
+        }
+        
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: innerCompletion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The DescribeInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceEventNotificationAttributesSync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceEventNotificationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceEventNotificationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceEventNotificationAttributes.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(
@@ -29829,6 +29997,90 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.registerImage.rawValue,
+            version: apiVersion)
+
+        return try httpClient.executeSyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The RegisterInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The RegisterInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func registerInstanceEventNotificationAttributesAsync(
+            input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerInstanceEventNotificationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterInstanceEventNotificationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.registerInstanceEventNotificationAttributes.rawValue,
+            version: apiVersion)
+
+        func innerCompletion(result: Result<ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult, SmokeHTTPClient.HTTPClientError>) {
+            switch result {
+            case .success(let payload):
+                completion(.success(payload))
+            case .failure(let error):
+                if let typedError = error.cause as? ElasticComputeCloudError {
+                    completion(.failure(typedError))
+                } else {
+                    completion(.failure(error.cause.asUnrecognizedElasticComputeCloudError()))
+                }
+            }
+        }
+        
+        _ = try httpClient.executeAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: innerCompletion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The RegisterInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func registerInstanceEventNotificationAttributesSync(
+            input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerInstanceEventNotificationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterInstanceEventNotificationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.registerInstanceEventNotificationAttributes.rawValue,
             version: apiVersion)
 
         return try httpClient.executeSyncRetriableWithOutput(

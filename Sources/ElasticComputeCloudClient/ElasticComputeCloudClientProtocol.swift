@@ -743,6 +743,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeregisterImageAsyncType = (
             _ input: ElasticComputeCloudModel.DeregisterImageRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias DeregisterInstanceEventNotificationAttributesSyncType = (
+            _ input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult
+    typealias DeregisterInstanceEventNotificationAttributesAsyncType = (
+            _ input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeregisterTransitGatewayMulticastGroupMembersSyncType = (
             _ input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest) throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult
     typealias DeregisterTransitGatewayMulticastGroupMembersAsyncType = (
@@ -953,6 +958,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeInstanceCreditSpecificationsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeInstanceEventNotificationAttributesSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult
+    typealias DescribeInstanceEventNotificationAttributesAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeInstanceStatusSyncType = (
             _ input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult
     typealias DescribeInstanceStatusAsyncType = (
@@ -1808,6 +1818,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RegisterImageAsyncType = (
             _ input: ElasticComputeCloudModel.RegisterImageRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.RegisterImageResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias RegisterInstanceEventNotificationAttributesSyncType = (
+            _ input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult
+    typealias RegisterInstanceEventNotificationAttributesAsyncType = (
+            _ input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RegisterTransitGatewayMulticastGroupMembersSyncType = (
             _ input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult
     typealias RegisterTransitGatewayMulticastGroupMembersAsyncType = (
@@ -5369,6 +5384,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeregisterImageRequest) throws
 
     /**
+     Invokes the DeregisterInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The DeregisterInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    func deregisterInstanceEventNotificationAttributesAsync(
+            input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeregisterInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The DeregisterInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deregisterInstanceEventNotificationAttributesSync(
+            input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult
+
+    /**
      Invokes the DeregisterTransitGatewayMulticastGroupMembers operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6375,6 +6414,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeInstanceCreditSpecificationsSync(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult
+
+    /**
+     Invokes the DescribeInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The DescribeInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    func describeInstanceEventNotificationAttributesAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The DescribeInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeInstanceEventNotificationAttributesSync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult
 
     /**
      Invokes the DescribeInstanceStatus operation returning immediately and passing the response to a callback.
@@ -10425,6 +10488,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func registerImageSync(
             input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult
+
+    /**
+     Invokes the RegisterInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The RegisterInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The RegisterInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    func registerInstanceEventNotificationAttributesAsync(
+            input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the RegisterInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The RegisterInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func registerInstanceEventNotificationAttributesSync(
+            input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult
 
     /**
      Invokes the RegisterTransitGatewayMulticastGroupMembers operation returning immediately and passing the response to a callback.

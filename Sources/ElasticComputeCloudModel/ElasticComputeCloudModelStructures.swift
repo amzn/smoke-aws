@@ -7578,6 +7578,61 @@ public struct DeregisterImageRequest: Codable, Equatable {
     }
 }
 
+public struct DeregisterInstanceEventNotificationAttributesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceTagAttribute: DeregisterInstanceTagAttributeRequest?
+
+    public init(dryRun: Boolean? = nil,
+                instanceTagAttribute: DeregisterInstanceTagAttributeRequest? = nil) {
+        self.dryRun = dryRun
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceTagAttribute = "InstanceTagAttribute"
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct DeregisterInstanceEventNotificationAttributesResult: Codable, Equatable {
+    public var instanceTagAttribute: InstanceTagNotificationAttribute?
+
+    public init(instanceTagAttribute: InstanceTagNotificationAttribute? = nil) {
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTagAttribute
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct DeregisterInstanceTagAttributeRequest: Codable, Equatable {
+    public var includeAllTagsOfInstance: Boolean?
+    public var instanceTagKeys: InstanceTagKeySet?
+
+    public init(includeAllTagsOfInstance: Boolean? = nil,
+                instanceTagKeys: InstanceTagKeySet? = nil) {
+        self.includeAllTagsOfInstance = includeAllTagsOfInstance
+        self.instanceTagKeys = instanceTagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case includeAllTagsOfInstance = "IncludeAllTagsOfInstance"
+        case instanceTagKeys = "InstanceTagKey"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeregisterTransitGatewayMulticastGroupMembersRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var groupIpAddress: String?
@@ -9601,6 +9656,37 @@ public struct DescribeInstanceCreditSpecificationsResult: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DescribeInstanceEventNotificationAttributesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeInstanceEventNotificationAttributesResult: Codable, Equatable {
+    public var instanceTagAttribute: InstanceTagNotificationAttribute?
+
+    public init(instanceTagAttribute: InstanceTagNotificationAttribute? = nil) {
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTagAttribute
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
     }
 }
 
@@ -18935,6 +19021,25 @@ public struct InstanceStorageInfo: Codable, Equatable {
     }
 }
 
+public struct InstanceTagNotificationAttribute: Codable, Equatable {
+    public var includeAllTagsOfInstance: Boolean?
+    public var instanceTagKeys: InstanceTagKeySet?
+
+    public init(includeAllTagsOfInstance: Boolean? = nil,
+                instanceTagKeys: InstanceTagKeySet? = nil) {
+        self.includeAllTagsOfInstance = includeAllTagsOfInstance
+        self.instanceTagKeys = instanceTagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case includeAllTagsOfInstance
+        case instanceTagKeys = "instanceTagKeySet"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InstanceTypeInfo: Codable, Equatable {
     public var autoRecoverySupported: AutoRecoveryFlag?
     public var bareMetal: BareMetalFlag?
@@ -24502,6 +24607,61 @@ public struct RegisterImageResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case imageId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RegisterInstanceEventNotificationAttributesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceTagAttribute: RegisterInstanceTagAttributeRequest?
+
+    public init(dryRun: Boolean? = nil,
+                instanceTagAttribute: RegisterInstanceTagAttributeRequest? = nil) {
+        self.dryRun = dryRun
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceTagAttribute = "InstanceTagAttribute"
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct RegisterInstanceEventNotificationAttributesResult: Codable, Equatable {
+    public var instanceTagAttribute: InstanceTagNotificationAttribute?
+
+    public init(instanceTagAttribute: InstanceTagNotificationAttribute? = nil) {
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTagAttribute
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct RegisterInstanceTagAttributeRequest: Codable, Equatable {
+    public var includeAllTagsOfInstance: Boolean?
+    public var instanceTagKeys: InstanceTagKeySet?
+
+    public init(includeAllTagsOfInstance: Boolean? = nil,
+                instanceTagKeys: InstanceTagKeySet? = nil) {
+        self.includeAllTagsOfInstance = includeAllTagsOfInstance
+        self.instanceTagKeys = instanceTagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case includeAllTagsOfInstance = "IncludeAllTagsOfInstance"
+        case instanceTagKeys = "InstanceTagKey"
     }
 
     public func validate() throws {

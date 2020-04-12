@@ -170,6 +170,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let deleteVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deprovisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deregisterImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deregisterInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deregisterTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deregisterTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAccountAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -212,6 +213,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let describeImportSnapshotTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceCreditSpecifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceTypeOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeInstanceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -383,6 +385,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let purchaseScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rebootInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let registerImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let registerInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let registerTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let registerTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -715,6 +718,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deprovisionByoipCidr, configuration: reportingConfiguration)
         self.deregisterImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deregisterImage, configuration: reportingConfiguration)
+        self.deregisterInstanceEventNotificationAttributes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deregisterInstanceEventNotificationAttributes, configuration: reportingConfiguration)
         self.deregisterTransitGatewayMulticastGroupMembers = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deregisterTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
         self.deregisterTransitGatewayMulticastGroupSources = StandardSmokeAWSOperationReporting(
@@ -799,6 +804,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeInstanceAttribute, configuration: reportingConfiguration)
         self.describeInstanceCreditSpecifications = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeInstanceCreditSpecifications, configuration: reportingConfiguration)
+        self.describeInstanceEventNotificationAttributes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceEventNotificationAttributes, configuration: reportingConfiguration)
         self.describeInstanceStatus = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeInstanceStatus, configuration: reportingConfiguration)
         self.describeInstanceTypeOfferings = StandardSmokeAWSOperationReporting(
@@ -1141,6 +1148,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .rebootInstances, configuration: reportingConfiguration)
         self.registerImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .registerImage, configuration: reportingConfiguration)
+        self.registerInstanceEventNotificationAttributes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .registerInstanceEventNotificationAttributes, configuration: reportingConfiguration)
         self.registerTransitGatewayMulticastGroupMembers = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .registerTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
         self.registerTransitGatewayMulticastGroupSources = StandardSmokeAWSOperationReporting(

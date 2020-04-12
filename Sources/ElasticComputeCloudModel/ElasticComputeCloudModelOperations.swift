@@ -168,6 +168,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteVpnGateway = "DeleteVpnGateway"
     case deprovisionByoipCidr = "DeprovisionByoipCidr"
     case deregisterImage = "DeregisterImage"
+    case deregisterInstanceEventNotificationAttributes = "DeregisterInstanceEventNotificationAttributes"
     case deregisterTransitGatewayMulticastGroupMembers = "DeregisterTransitGatewayMulticastGroupMembers"
     case deregisterTransitGatewayMulticastGroupSources = "DeregisterTransitGatewayMulticastGroupSources"
     case describeAccountAttributes = "DescribeAccountAttributes"
@@ -210,6 +211,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeImportSnapshotTasks = "DescribeImportSnapshotTasks"
     case describeInstanceAttribute = "DescribeInstanceAttribute"
     case describeInstanceCreditSpecifications = "DescribeInstanceCreditSpecifications"
+    case describeInstanceEventNotificationAttributes = "DescribeInstanceEventNotificationAttributes"
     case describeInstanceStatus = "DescribeInstanceStatus"
     case describeInstanceTypeOfferings = "DescribeInstanceTypeOfferings"
     case describeInstanceTypes = "DescribeInstanceTypes"
@@ -381,6 +383,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case purchaseScheduledInstances = "PurchaseScheduledInstances"
     case rebootInstances = "RebootInstances"
     case registerImage = "RegisterImage"
+    case registerInstanceEventNotificationAttributes = "RegisterInstanceEventNotificationAttributes"
     case registerTransitGatewayMulticastGroupMembers = "RegisterTransitGatewayMulticastGroupMembers"
     case registerTransitGatewayMulticastGroupSources = "RegisterTransitGatewayMulticastGroupSources"
     case rejectTransitGatewayPeeringAttachment = "RejectTransitGatewayPeeringAttachment"
@@ -718,6 +721,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .deregisterImage:
             return "/"
+        case .deregisterInstanceEventNotificationAttributes:
+            return "/"
         case .deregisterTransitGatewayMulticastGroupMembers:
             return "/"
         case .deregisterTransitGatewayMulticastGroupSources:
@@ -801,6 +806,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeInstanceAttribute:
             return "/"
         case .describeInstanceCreditSpecifications:
+            return "/"
+        case .describeInstanceEventNotificationAttributes:
             return "/"
         case .describeInstanceStatus:
             return "/"
@@ -1143,6 +1150,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .rebootInstances:
             return "/"
         case .registerImage:
+            return "/"
+        case .registerInstanceEventNotificationAttributes:
             return "/"
         case .registerTransitGatewayMulticastGroupMembers:
             return "/"

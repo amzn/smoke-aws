@@ -739,6 +739,11 @@ public typealias DeprovisionByoipCidrOperationHTTPRequestInput = QueryHTTPReques
 public typealias DeregisterImageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeregisterInstanceEventNotificationAttributes operation in a HTTP client.
+ */
+public typealias DeregisterInstanceEventNotificationAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeregisterTransitGatewayMulticastGroupMembers operation in a HTTP client.
  */
 public typealias DeregisterTransitGatewayMulticastGroupMembersOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -947,6 +952,11 @@ public typealias DescribeInstanceAttributeOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the DescribeInstanceCreditSpecifications operation in a HTTP client.
  */
 public typealias DescribeInstanceCreditSpecificationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeInstanceEventNotificationAttributes operation in a HTTP client.
+ */
+public typealias DescribeInstanceEventNotificationAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeInstanceStatus operation in a HTTP client.
@@ -1802,6 +1812,11 @@ public typealias RebootInstancesOperationHTTPRequestInput = QueryHTTPRequestInpu
  Type to handle the input to the RegisterImage operation in a HTTP client.
  */
 public typealias RegisterImageOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the RegisterInstanceEventNotificationAttributes operation in a HTTP client.
+ */
+public typealias RegisterInstanceEventNotificationAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the RegisterTransitGatewayMulticastGroupMembers operation in a HTTP client.
