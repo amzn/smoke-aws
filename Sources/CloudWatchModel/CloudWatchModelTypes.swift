@@ -96,6 +96,11 @@ public typealias AmazonResourceName = String
 public typealias AnomalyDetectorExcludedTimeRanges = [Range]
 
 /**
+ Type definition for the AnomalyDetectorMetricStat field.
+ */
+public typealias AnomalyDetectorMetricStat = String
+
+/**
  Type definition for the AnomalyDetectorMetricTimezone field.
  */
 public typealias AnomalyDetectorMetricTimezone = String
@@ -857,6 +862,37 @@ extension CloudWatchModel.AmazonResourceName {
 
         if self.count > 1024 {
             throw CloudWatchError.validationError(reason: "The provided value to AmazonResourceName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AnomalyDetectorMetricStat field.
+*/
+extension CloudWatchModel.AnomalyDetectorMetricStat {
+    public func validateAsAnomalyDetectorMetricStat() throws {
+        guard let matchingRange = self.range(of: "(SampleCount|Average|Sum|Minimum|Maximum|p(\\d{1,2}|100)(\\.\\d{0,2})?|[ou]\\d+(\\.\\d*)?)(_E|_L|_H)?", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to AnomalyDetectorMetricStat violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AnomalyDetectorMetricTimezone field.
+*/
+extension CloudWatchModel.AnomalyDetectorMetricTimezone {
+    public func validateAsAnomalyDetectorMetricTimezone() throws {
+
+        if self.count > 50 {
+            throw CloudWatchError.validationError(reason: "The provided value to AnomalyDetectorMetricTimezone violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to AnomalyDetectorMetricTimezone violated the regular expression constraint.")
         }
     }
 }

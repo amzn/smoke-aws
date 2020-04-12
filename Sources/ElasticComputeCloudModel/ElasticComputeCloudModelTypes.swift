@@ -2588,6 +2588,11 @@ public typealias InstanceStatusList = [InstanceStatus]
 public typealias InstanceStorageFlag = Bool
 
 /**
+ Type definition for the InstanceTagKeySet field.
+ */
+public typealias InstanceTagKeySet = [String]
+
+/**
  Enumeration restricting the values of the InstanceType field.
  */
 public enum InstanceType: String, Codable, CustomStringConvertible {

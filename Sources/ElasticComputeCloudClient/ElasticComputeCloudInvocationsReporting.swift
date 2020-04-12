@@ -171,6 +171,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let deleteVpnGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deprovisionByoipCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deregisterImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deregisterInstanceEventNotificationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deregisterTransitGatewayMulticastGroupMembers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deregisterTransitGatewayMulticastGroupSources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -213,6 +214,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let describeImportSnapshotTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeInstanceAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeInstanceCreditSpecifications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeInstanceEventNotificationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeInstanceStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeInstanceTypeOfferings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeInstanceTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -384,6 +386,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let purchaseScheduledInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let rebootInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let registerImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let registerInstanceEventNotificationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let registerTransitGatewayMulticastGroupMembers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let registerTransitGatewayMulticastGroupSources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let rejectTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -716,6 +719,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deprovisionByoipCidr)
         self.deregisterImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deregisterImage)
+        self.deregisterInstanceEventNotificationAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deregisterInstanceEventNotificationAttributes)
         self.deregisterTransitGatewayMulticastGroupMembers = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deregisterTransitGatewayMulticastGroupMembers)
         self.deregisterTransitGatewayMulticastGroupSources = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -800,6 +805,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeInstanceAttribute)
         self.describeInstanceCreditSpecifications = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeInstanceCreditSpecifications)
+        self.describeInstanceEventNotificationAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeInstanceEventNotificationAttributes)
         self.describeInstanceStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeInstanceStatus)
         self.describeInstanceTypeOfferings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1142,6 +1149,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.rebootInstances)
         self.registerImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.registerImage)
+        self.registerInstanceEventNotificationAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.registerInstanceEventNotificationAttributes)
         self.registerTransitGatewayMulticastGroupMembers = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.registerTransitGatewayMulticastGroupMembers)
         self.registerTransitGatewayMulticastGroupSources = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

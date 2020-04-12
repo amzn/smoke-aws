@@ -363,6 +363,34 @@ public typealias DevicesList = [Device]
 public typealias DockerLabelsMap = [String: String]
 
 /**
+ Enumeration restricting the values of the EFSAuthorizationConfigIAM field.
+ */
+public enum EFSAuthorizationConfigIAM: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case enabled = "ENABLED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: EFSAuthorizationConfigIAM = .disabled
+}
+
+/**
+ Enumeration restricting the values of the EFSTransitEncryption field.
+ */
+public enum EFSTransitEncryption: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case enabled = "ENABLED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: EFSTransitEncryption = .disabled
+}
+
+/**
  Type definition for the EnvironmentVariables field.
  */
 public typealias EnvironmentVariables = [KeyValuePair]

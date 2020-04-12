@@ -6563,13 +6563,13 @@ public struct DescribeExportTasksMessage: Codable, Equatable {
     public var exportTaskIdentifier: String?
     public var filters: FilterList?
     public var marker: String?
-    public var maxRecords: String?
+    public var maxRecords: MaxRecords?
     public var sourceArn: String?
 
     public init(exportTaskIdentifier: String? = nil,
                 filters: FilterList? = nil,
                 marker: String? = nil,
-                maxRecords: String? = nil,
+                maxRecords: MaxRecords? = nil,
                 sourceArn: String? = nil) {
         self.exportTaskIdentifier = exportTaskIdentifier
         self.filters = filters
@@ -6587,6 +6587,7 @@ public struct DescribeExportTasksMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+        try maxRecords?.validateAsMaxRecords()
     }
 }
 

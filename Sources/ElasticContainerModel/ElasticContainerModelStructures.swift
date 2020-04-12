@@ -1809,22 +1809,54 @@ public struct DockerVolumeConfiguration: Codable, Equatable {
     }
 }
 
-public struct EFSVolumeConfiguration: Codable, Equatable {
-    public var fileSystemId: String
-    public var rootDirectory: String?
+public struct EFSAuthorizationConfig: Codable, Equatable {
+    public var accessPointId: String?
+    public var iam: EFSAuthorizationConfigIAM?
 
-    public init(fileSystemId: String,
-                rootDirectory: String? = nil) {
-        self.fileSystemId = fileSystemId
-        self.rootDirectory = rootDirectory
+    public init(accessPointId: String? = nil,
+                iam: EFSAuthorizationConfigIAM? = nil) {
+        self.accessPointId = accessPointId
+        self.iam = iam
     }
 
     enum CodingKeys: String, CodingKey {
-        case fileSystemId
-        case rootDirectory
+        case accessPointId
+        case iam
     }
 
     public func validate() throws {
+    }
+}
+
+public struct EFSVolumeConfiguration: Codable, Equatable {
+    public var authorizationConfig: EFSAuthorizationConfig?
+    public var fileSystemId: String
+    public var rootDirectory: String?
+    public var transitEncryption: EFSTransitEncryption?
+    public var transitEncryptionPort: BoxedInteger?
+
+    public init(authorizationConfig: EFSAuthorizationConfig? = nil,
+                fileSystemId: String,
+                rootDirectory: String? = nil,
+                transitEncryption: EFSTransitEncryption? = nil,
+                transitEncryptionPort: BoxedInteger? = nil) {
+        self.authorizationConfig = authorizationConfig
+        self.fileSystemId = fileSystemId
+        self.rootDirectory = rootDirectory
+        self.transitEncryption = transitEncryption
+        self.transitEncryptionPort = transitEncryptionPort
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case authorizationConfig
+        case fileSystemId
+        case rootDirectory
+        case transitEncryption
+        case transitEncryptionPort
+    }
+
+    public func validate() throws {
+        try authorizationConfig?.validate()
     }
 }
 
@@ -4582,6 +4614,8 @@ public struct UpdateServiceRequest: Codable, Equatable {
     public var forceNewDeployment: Boolean?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
     public var networkConfiguration: NetworkConfiguration?
+    public var placementConstraints: PlacementConstraints?
+    public var placementStrategy: PlacementStrategies?
     public var platformVersion: String?
     public var service: String
     public var taskDefinition: String?
@@ -4593,6 +4627,8 @@ public struct UpdateServiceRequest: Codable, Equatable {
                 forceNewDeployment: Boolean? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
+                placementConstraints: PlacementConstraints? = nil,
+                placementStrategy: PlacementStrategies? = nil,
                 platformVersion: String? = nil,
                 service: String,
                 taskDefinition: String? = nil) {
@@ -4603,6 +4639,8 @@ public struct UpdateServiceRequest: Codable, Equatable {
         self.forceNewDeployment = forceNewDeployment
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
         self.networkConfiguration = networkConfiguration
+        self.placementConstraints = placementConstraints
+        self.placementStrategy = placementStrategy
         self.platformVersion = platformVersion
         self.service = service
         self.taskDefinition = taskDefinition
@@ -4616,6 +4654,8 @@ public struct UpdateServiceRequest: Codable, Equatable {
         case forceNewDeployment
         case healthCheckGracePeriodSeconds
         case networkConfiguration
+        case placementConstraints
+        case placementStrategy
         case platformVersion
         case service
         case taskDefinition

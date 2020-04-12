@@ -196,7 +196,7 @@ public extension DeleteAnomalyDetectorInput {
             dimensions: nil,
             metricName: "0",
             namespace: "0",
-            stat: "value")
+            stat: "")
 
         return defaultInstance
     }()
@@ -1268,7 +1268,7 @@ public extension PutAnomalyDetectorInput {
             dimensions: nil,
             metricName: "0",
             namespace: "0",
-            stat: "value")
+            stat: "")
 
         return defaultInstance
     }()
@@ -1361,7 +1361,8 @@ public extension PutInsightRuleInput {
         let defaultInstance = CloudWatchModel.PutInsightRuleInput(
             ruleDefinition: "0",
             ruleName: "0",
-            ruleState: nil)
+            ruleState: nil,
+            tags: nil)
 
         return defaultInstance
     }()
