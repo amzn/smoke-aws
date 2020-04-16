@@ -35,7 +35,11 @@ public enum RDSClientError: Swift.Error {
     case unknownError(String?)
 }
 
-internal extension RDSError {
+ extension RDSError: ConvertableError {
+    public static func asUnrecognizedError(error: Swift.Error) -> RDSError {
+        return error.asUnrecognizedRDSError()
+    }
+
     func isRetriable() -> Bool {
         return false
     }
@@ -157,23 +161,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addRoleToDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -203,13 +195,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addRoleToDBCluster.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -239,23 +236,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addRoleToDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -285,13 +270,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addRoleToDBInstance.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -322,24 +312,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addSourceIdentifierToSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -371,13 +348,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addSourceIdentifierToSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -407,23 +389,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addTagsToResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -453,13 +423,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.addTagsToResource.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -490,24 +465,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.applyPendingMaintenanceAction.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -539,13 +501,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.applyPendingMaintenanceAction.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -576,24 +543,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.authorizeDBSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -625,13 +579,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.authorizeDBSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -662,24 +621,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.backtrackDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterBacktrackForBacktrackDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -711,13 +657,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.backtrackDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -748,24 +699,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ExportTaskForCancelExportTask, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -797,13 +735,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.cancelExportTask.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -834,24 +777,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -883,13 +813,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -920,24 +855,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -969,13 +891,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1006,24 +933,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1055,13 +969,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1092,24 +1011,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyDBSnapshotResultForCopyDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1141,13 +1047,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyDBSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1178,24 +1089,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1227,13 +1125,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.copyOptionGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1264,24 +1167,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1313,13 +1203,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1350,24 +1245,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBClusterResultForCreateDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1399,13 +1281,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1436,24 +1323,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForCreateDBClusterEndpoint, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1485,13 +1359,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1522,24 +1401,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1571,13 +1437,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1608,24 +1479,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1657,13 +1515,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1694,24 +1557,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBInstanceResultForCreateDBInstance, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1743,13 +1593,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1780,24 +1635,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBInstanceReadReplica.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1829,13 +1671,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBInstanceReadReplica.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1866,24 +1713,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1915,13 +1749,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1952,24 +1791,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBProxy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2001,13 +1827,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBProxy.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2038,24 +1869,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSecurityGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2087,13 +1905,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSecurityGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2124,24 +1947,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBSnapshotResultForCreateDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2173,13 +1983,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2210,24 +2025,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2259,13 +2061,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2296,24 +2103,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createEventSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateEventSubscriptionResultForCreateEventSubscription, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2345,13 +2139,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createEventSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2382,24 +2181,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateGlobalClusterResultForCreateGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2431,13 +2217,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createGlobalCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2468,24 +2259,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2517,13 +2295,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.createOptionGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2554,24 +2337,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2603,13 +2373,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2640,24 +2415,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBClusterResultForDeleteDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2689,13 +2451,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2726,24 +2493,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2775,13 +2529,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2811,23 +2570,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2857,13 +2604,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2894,24 +2646,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2943,13 +2682,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBClusterSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2980,24 +2724,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBInstanceResultForDeleteDBInstance, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3029,13 +2760,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3066,24 +2802,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBInstanceAutomatedBackup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3115,13 +2838,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBInstanceAutomatedBackup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3151,23 +2879,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3197,13 +2913,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBParameterGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3234,24 +2955,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBProxy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3283,13 +2991,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBProxy.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3319,23 +3032,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSecurityGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3365,13 +3066,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSecurityGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3402,24 +3108,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3451,13 +3144,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3487,23 +3185,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3533,13 +3219,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3570,24 +3261,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteEventSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3619,13 +3297,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteEventSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3656,24 +3339,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3705,13 +3375,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteGlobalCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3742,24 +3417,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteInstallationMedia.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.InstallationMediaForDeleteInstallationMedia, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3791,13 +3453,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteInstallationMedia.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3827,23 +3494,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3873,13 +3528,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deleteOptionGroup.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3910,24 +3570,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deregisterDBProxyTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3959,13 +3606,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.deregisterDBProxyTargets.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3995,24 +3647,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.AccountAttributesMessageForDescribeAccountAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4043,13 +3682,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeAccountAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4080,24 +3724,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeCertificates.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CertificateMessageForDescribeCertificates, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4129,13 +3760,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeCertificates.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4166,24 +3802,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4215,13 +3838,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4252,24 +3880,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterBacktracks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4301,13 +3916,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterBacktracks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4338,24 +3958,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterEndpoints.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4387,13 +3994,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterEndpoints.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4424,24 +4036,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterParameterGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4473,13 +4072,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterParameterGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4510,24 +4114,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4559,13 +4150,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterParameters.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4596,24 +4192,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterSnapshotAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4645,13 +4228,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterSnapshotAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4682,24 +4270,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterSnapshots.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4731,13 +4306,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusterSnapshots.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4768,24 +4348,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterMessageForDescribeDBClusters, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4817,13 +4384,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBClusters.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4853,24 +4425,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBEngineVersions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4901,13 +4460,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBEngineVersions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -4938,24 +4502,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBInstanceAutomatedBackups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -4987,13 +4538,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBInstanceAutomatedBackups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5024,24 +4580,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBInstanceMessageForDescribeDBInstances, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5073,13 +4616,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5110,24 +4658,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBLogFiles.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5159,13 +4694,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBLogFiles.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5196,24 +4736,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBParameterGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5245,13 +4772,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBParameterGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5282,24 +4814,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupDetailsForDescribeDBParameters, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5331,13 +4850,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBParameters.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5368,24 +4892,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxies.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5417,13 +4928,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxies.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5454,24 +4970,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxyTargetGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5503,13 +5006,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxyTargetGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5540,24 +5048,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxyTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5589,13 +5084,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBProxyTargets.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5626,24 +5126,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSecurityGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5675,13 +5162,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSecurityGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5712,24 +5204,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSnapshotAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5761,13 +5240,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSnapshotAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5798,24 +5282,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSnapshots.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBSnapshotMessageForDescribeDBSnapshots, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5847,13 +5318,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSnapshots.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5884,24 +5360,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSubnetGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -5933,13 +5396,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeDBSubnetGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -5969,24 +5437,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEngineDefaultClusterParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6017,13 +5472,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEngineDefaultClusterParameters.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6053,24 +5513,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEngineDefaultParameters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6101,13 +5548,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEngineDefaultParameters.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6137,24 +5589,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEventCategories.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.EventCategoriesMessageForDescribeEventCategories, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6185,13 +5624,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEventCategories.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6222,24 +5666,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEventSubscriptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6271,13 +5702,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEventSubscriptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6307,24 +5743,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEvents.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.EventsMessageForDescribeEvents, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6355,13 +5778,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeEvents.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6392,24 +5820,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ExportTasksMessageForDescribeExportTasks, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6441,13 +5856,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeExportTasks.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6478,24 +5898,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeGlobalClusters.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6527,13 +5934,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeGlobalClusters.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6564,24 +5976,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeInstallationMedia.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6613,13 +6012,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeInstallationMedia.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6649,24 +6053,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOptionGroupOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6697,13 +6088,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOptionGroupOptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6734,24 +6130,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOptionGroups.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.OptionGroupsForDescribeOptionGroups, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6783,13 +6166,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOptionGroups.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6819,24 +6207,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOrderableDBInstanceOptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6867,13 +6242,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeOrderableDBInstanceOptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6904,24 +6284,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describePendingMaintenanceActions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -6953,13 +6320,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describePendingMaintenanceActions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -6990,24 +6362,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeReservedDBInstances.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7039,13 +6398,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeReservedDBInstances.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7076,24 +6440,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeReservedDBInstancesOfferings.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7125,13 +6476,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeReservedDBInstancesOfferings.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7161,24 +6517,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeSourceRegions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.SourceRegionMessageForDescribeSourceRegions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7209,13 +6552,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeSourceRegions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7246,24 +6594,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeValidDBInstanceModifications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7295,13 +6630,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.describeValidDBInstanceModifications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7332,24 +6672,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.downloadDBLogFilePortion.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7381,13 +6708,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.downloadDBLogFilePortion.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7418,24 +6750,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.failoverDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7467,13 +6786,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.failoverDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7504,24 +6828,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.importInstallationMedia.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.InstallationMediaForImportInstallationMedia, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7553,13 +6864,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.importInstallationMedia.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7590,24 +6906,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.TagListMessageForListTagsForResource, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7639,13 +6942,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7676,24 +6984,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyCertificates.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyCertificatesResultForModifyCertificates, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7725,13 +7020,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyCertificates.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7762,24 +7062,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyCurrentDBClusterCapacity.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7811,13 +7098,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyCurrentDBClusterCapacity.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7848,24 +7140,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBClusterResultForModifyDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7897,13 +7176,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -7934,24 +7218,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterEndpointForModifyDBClusterEndpoint, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -7983,13 +7254,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8020,24 +7296,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8069,13 +7332,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8106,24 +7374,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8155,13 +7410,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBClusterSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8192,24 +7452,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBInstanceResultForModifyDBInstance, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8241,13 +7488,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8278,24 +7530,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8327,13 +7566,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8364,24 +7608,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBProxy.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8413,13 +7644,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBProxy.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8450,24 +7686,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBProxyTargetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8499,13 +7722,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBProxyTargetGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8536,24 +7764,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8585,13 +7800,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8622,24 +7842,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8671,13 +7878,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSnapshotAttribute.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8708,24 +7920,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8757,13 +7956,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyDBSubnetGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8794,24 +7998,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyEventSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8843,13 +8034,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyEventSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8880,24 +8076,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -8929,13 +8112,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyGlobalCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -8966,24 +8154,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyOptionGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ModifyOptionGroupResultForModifyOptionGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9015,13 +8190,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.modifyOptionGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9052,24 +8232,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.promoteReadReplica.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PromoteReadReplicaResultForPromoteReadReplica, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9101,13 +8268,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.promoteReadReplica.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9138,24 +8310,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.promoteReadReplicaDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9187,13 +8346,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.promoteReadReplicaDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9224,24 +8388,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.purchaseReservedDBInstancesOffering.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9273,13 +8424,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.purchaseReservedDBInstancesOffering.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9310,24 +8466,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.rebootDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RebootDBInstanceResultForRebootDBInstance, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9359,13 +8502,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.rebootDBInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9396,24 +8544,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.registerDBProxyTargets.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9445,13 +8580,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.registerDBProxyTargets.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9482,24 +8622,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeFromGlobalCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9531,13 +8658,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeFromGlobalCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9567,23 +8699,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeRoleFromDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9613,13 +8733,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeRoleFromDBCluster.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9649,23 +8774,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeRoleFromDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9695,13 +8808,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeRoleFromDBInstance.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9732,24 +8850,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeSourceIdentifierFromSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9781,13 +8886,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeSourceIdentifierFromSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9817,23 +8927,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeTagsFromResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? RDSError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedRDSError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9863,13 +8961,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.removeTagsFromResource.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9900,24 +9003,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.resetDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -9949,13 +9039,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.resetDBClusterParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -9986,24 +9081,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.resetDBParameterGroup.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10035,13 +9117,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.resetDBParameterGroup.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10072,24 +9159,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterFromS3.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10121,13 +9195,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterFromS3.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10158,24 +9237,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterFromSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10207,13 +9273,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterFromSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10244,24 +9315,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterToPointInTime.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10293,13 +9351,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBClusterToPointInTime.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10330,24 +9393,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceFromDBSnapshot.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10379,13 +9429,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceFromDBSnapshot.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10416,24 +9471,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceFromS3.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10465,13 +9507,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceFromS3.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10502,24 +9549,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceToPointInTime.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10551,13 +9585,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.restoreDBInstanceToPointInTime.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10588,24 +9627,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.revokeDBSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10637,13 +9663,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.revokeDBSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10674,24 +9705,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startActivityStream.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StartActivityStreamResponseForStartActivityStream, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10723,13 +9741,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startActivityStream.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10760,24 +9783,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StartDBClusterResultForStartDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10809,13 +9819,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10846,24 +9861,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StartDBInstanceResultForStartDBInstance, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10895,13 +9897,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startDBInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -10932,24 +9939,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startExportTask.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.ExportTaskForStartExportTask, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -10981,13 +9975,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.startExportTask.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -11018,24 +10017,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopActivityStream.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StopActivityStreamResponseForStopActivityStream, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11067,13 +10053,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopActivityStream.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -11104,24 +10095,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopDBCluster.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StopDBClusterResultForStopDBCluster, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11153,13 +10131,18 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopDBCluster.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -11190,24 +10173,11 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopDBInstance.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<RDSModel.StopDBInstanceResultForStopDBInstance, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -11239,12 +10209,17 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
             action: RDSModelOperations.stopDBInstance.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
     }
 }

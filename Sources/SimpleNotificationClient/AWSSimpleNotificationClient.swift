@@ -35,7 +35,11 @@ public enum SimpleNotificationClientError: Swift.Error {
     case unknownError(String?)
 }
 
-internal extension SimpleNotificationError {
+ extension SimpleNotificationError: ConvertableError {
+    public static func asUnrecognizedError(error: Swift.Error) -> SimpleNotificationError {
+        return error.asUnrecognizedSimpleNotificationError()
+    }
+
     func isRetriable() -> Bool {
         switch self {
         case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
@@ -162,23 +166,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -208,13 +200,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -245,24 +242,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -294,13 +278,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -331,24 +320,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -380,13 +356,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -417,24 +398,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -466,13 +434,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -503,24 +476,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -552,13 +512,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -589,24 +554,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createTopic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.CreateTopicResponseForCreateTopic, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -638,13 +590,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.createTopic.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -674,23 +631,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -720,13 +665,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -756,23 +706,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -802,13 +740,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -838,23 +781,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deleteTopic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -884,13 +815,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.deleteTopic.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -921,24 +857,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -970,13 +893,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1007,24 +935,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1056,13 +971,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1093,24 +1013,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1142,13 +1049,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1179,24 +1091,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1228,13 +1127,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1265,24 +1169,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1314,13 +1205,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1351,24 +1247,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1400,13 +1283,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1437,24 +1325,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1486,13 +1361,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1523,24 +1403,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1572,13 +1439,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1609,24 +1481,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1658,13 +1517,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1695,24 +1559,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1744,13 +1595,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1781,24 +1637,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1830,13 +1673,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1867,24 +1715,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listTopics.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.ListTopicsResponseForListTopics, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1916,13 +1751,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.listTopics.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1953,24 +1793,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2002,13 +1829,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2039,24 +1871,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.publish.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.PublishResponseForPublish, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2088,13 +1907,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.publish.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2124,23 +1948,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2170,13 +1982,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2206,23 +2023,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2252,13 +2057,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2288,23 +2098,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2334,13 +2132,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2371,24 +2174,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2420,13 +2210,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2456,23 +2251,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2502,13 +2285,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2538,23 +2326,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2584,13 +2360,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2621,24 +2402,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.subscribe.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.SubscribeResponseForSubscribe, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2670,13 +2438,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.subscribe.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2707,24 +2480,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.tagResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.TagResourceResponseForTagResource, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2756,13 +2516,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.tagResource.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2792,23 +2557,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.unsubscribe.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleNotificationError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2838,13 +2591,18 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.unsubscribe.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2875,24 +2633,11 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.untagResource.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleNotificationError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleNotificationError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2924,12 +2669,17 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             action: SimpleNotificationModelOperations.untagResource.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
     }
 }

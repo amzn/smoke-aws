@@ -35,7 +35,11 @@ public enum RDSDataClientError: Swift.Error {
     case unknownError(String?)
 }
 
-internal extension RDSDataError {
+ extension RDSDataError: ConvertableError {
+    public static func asUnrecognizedError(error: Swift.Error) -> RDSDataError {
+        return error.asUnrecognizedRDSDataError()
+    }
+
     func isRetriable() -> Bool {
         return false
     }
@@ -151,24 +155,11 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchExecuteStatementOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<RDSDataModel.BatchExecuteStatementResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSDataError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/BatchExecute",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -196,13 +187,18 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BatchExecuteStatementOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/BatchExecute",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/BatchExecute",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -229,24 +225,11 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BeginTransactionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<RDSDataModel.BeginTransactionResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSDataError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/BeginTransaction",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -274,13 +257,18 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = BeginTransactionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/BeginTransaction",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/BeginTransaction",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -307,24 +295,11 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CommitTransactionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<RDSDataModel.CommitTransactionResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSDataError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/CommitTransaction",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -352,13 +327,18 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CommitTransactionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/CommitTransaction",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/CommitTransaction",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -385,24 +365,11 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ExecuteSqlOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<RDSDataModel.ExecuteSqlResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSDataError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/ExecuteSql",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -430,13 +397,18 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ExecuteSqlOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/ExecuteSql",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/ExecuteSql",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -463,24 +435,11 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ExecuteStatementOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<RDSDataModel.ExecuteStatementResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSDataError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/Execute",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -508,13 +467,18 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ExecuteStatementOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/Execute",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/Execute",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -541,24 +505,11 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RollbackTransactionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<RDSDataModel.RollbackTransactionResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? RDSDataError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedRDSDataError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/RollbackTransaction",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -586,12 +537,17 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RollbackTransactionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/RollbackTransaction",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/RollbackTransaction",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
     }
 }

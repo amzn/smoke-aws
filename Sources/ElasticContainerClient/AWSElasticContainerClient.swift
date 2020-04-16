@@ -35,7 +35,11 @@ public enum ElasticContainerClientError: Swift.Error {
     case unknownError(String?)
 }
 
-internal extension ElasticContainerError {
+ extension ElasticContainerError: ConvertableError {
+    public static func asUnrecognizedError(error: Swift.Error) -> ElasticContainerError {
+        return error.asUnrecognizedElasticContainerError()
+    }
+
     func isRetriable() -> Bool {
         switch self {
         case .attributeLimitExceeded:
@@ -156,24 +160,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.CreateCapacityProviderResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -201,13 +192,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -234,24 +230,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.CreateClusterResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -279,13 +262,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -312,24 +300,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.CreateServiceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -357,13 +332,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -390,24 +370,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.CreateTaskSetResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -435,13 +402,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -468,24 +440,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeleteAccountSettingResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -513,13 +472,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -546,24 +510,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeleteAttributesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -591,13 +542,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -624,24 +580,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeleteClusterResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -669,13 +612,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -702,24 +650,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeleteServiceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -747,13 +682,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -780,24 +720,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeleteTaskSetResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -825,13 +752,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -858,24 +790,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeregisterContainerInstanceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -903,13 +822,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -936,24 +860,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DeregisterTaskDefinitionResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -981,13 +892,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1014,24 +930,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeCapacityProvidersResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1059,13 +962,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1092,24 +1000,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeClustersResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1137,13 +1032,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1170,24 +1070,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeContainerInstancesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1215,13 +1102,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1248,24 +1140,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeServicesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1293,13 +1172,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1326,24 +1210,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeTaskDefinitionResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1371,13 +1242,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1404,24 +1280,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeTaskSetsResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1449,13 +1312,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1482,24 +1350,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DescribeTasksResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1527,13 +1382,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1560,24 +1420,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.DiscoverPollEndpointResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1605,13 +1452,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1638,24 +1490,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListAccountSettingsResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1683,13 +1522,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1716,24 +1560,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListAttributesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1761,13 +1592,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1794,24 +1630,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListClustersResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1839,13 +1662,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1872,24 +1700,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListContainerInstancesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1917,13 +1732,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1950,24 +1770,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListServicesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1995,13 +1802,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2028,24 +1840,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListTagsForResourceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2073,13 +1872,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2106,24 +1910,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListTaskDefinitionFamiliesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2151,13 +1942,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2184,24 +1980,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListTaskDefinitionsResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2229,13 +2012,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2262,24 +2050,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.ListTasksResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2307,13 +2082,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2340,24 +2120,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.PutAccountSettingResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2385,13 +2152,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2418,24 +2190,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingDefaultOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.PutAccountSettingDefaultResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2463,13 +2222,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutAccountSettingDefaultOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2496,24 +2260,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.PutAttributesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2541,13 +2292,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2574,24 +2330,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.PutClusterCapacityProvidersResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2619,13 +2362,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2652,24 +2400,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.RegisterContainerInstanceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2697,13 +2432,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2730,24 +2470,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.RegisterTaskDefinitionResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2775,13 +2502,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2808,24 +2540,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.RunTaskResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2853,13 +2572,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2886,24 +2610,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.StartTaskResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -2931,13 +2642,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -2964,24 +2680,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.StopTaskResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3009,13 +2712,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3042,24 +2750,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.SubmitAttachmentStateChangesResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3087,13 +2782,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3120,24 +2820,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.SubmitContainerStateChangeResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3165,13 +2852,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3198,24 +2890,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.SubmitTaskStateChangeResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3243,13 +2922,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3276,24 +2960,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.TagResourceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3321,13 +2992,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3354,24 +3030,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UntagResourceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3399,13 +3062,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3432,24 +3100,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UpdateClusterSettingsResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3477,13 +3132,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3510,24 +3170,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UpdateContainerAgentResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3555,13 +3202,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3588,24 +3240,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UpdateContainerInstancesStateResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3633,13 +3272,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3666,24 +3310,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UpdateServiceResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3711,13 +3342,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3744,24 +3380,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3789,13 +3412,18 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -3822,24 +3450,11 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
 
-        func innerCompletion(result: Result<ElasticContainerModel.UpdateTaskSetResponse, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? ElasticContainerError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedElasticContainerError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -3867,12 +3482,17 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
     }
 }

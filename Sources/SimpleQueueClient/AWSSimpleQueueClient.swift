@@ -35,7 +35,11 @@ public enum SimpleQueueClientError: Swift.Error {
     case unknownError(String?)
 }
 
-internal extension SimpleQueueError {
+ extension SimpleQueueError: ConvertableError {
+    public static func asUnrecognizedError(error: Swift.Error) -> SimpleQueueError {
+        return error.asUnrecognizedSimpleQueueError()
+    }
+
     func isRetriable() -> Bool {
         switch self {
         case .overLimit:
@@ -175,23 +179,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -221,13 +213,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.addPermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -257,23 +254,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -303,13 +288,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -340,24 +330,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -389,13 +366,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -426,24 +408,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.CreateQueueResultForCreateQueue, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -475,13 +444,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.createQueue.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -511,23 +485,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -557,13 +519,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteMessage.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -594,24 +561,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -643,13 +597,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -678,23 +637,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -723,13 +670,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.deleteQueue.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -760,24 +712,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try listHttpClient.executeAsyncRetriableWithOutput(
+        _ = try listHttpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -809,13 +748,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
             version: apiVersion)
 
-        return try listHttpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try listHttpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -846,24 +790,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.GetQueueUrlResultForGetQueueUrl, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -895,13 +826,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.getQueueUrl.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -932,24 +868,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -981,13 +904,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1017,24 +945,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ListQueueTagsResultForListQueueTags, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try listHttpClient.executeAsyncRetriableWithOutput(
+        _ = try listHttpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1065,13 +980,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listQueueTags.rawValue,
             version: apiVersion)
 
-        return try listHttpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try listHttpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1101,24 +1021,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ListQueuesResultForListQueues, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1149,13 +1056,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.listQueues.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1185,23 +1097,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1231,13 +1131,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.purgeQueue.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1268,24 +1173,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.ReceiveMessageResultForReceiveMessage, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1317,13 +1209,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.receiveMessage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1352,23 +1249,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1397,13 +1282,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.removePermission.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1434,24 +1324,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.SendMessageResultForSendMessage, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1483,13 +1360,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.sendMessage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1520,24 +1402,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SimpleQueueModel.SendMessageBatchResultForSendMessageBatch, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSimpleQueueError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1569,13 +1438,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1605,23 +1479,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
+        _ = try listHttpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1651,13 +1513,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
             version: apiVersion)
 
-        try listHttpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try listHttpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1686,23 +1553,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try listHttpClient.executeAsyncRetriableWithoutOutput(
+        _ = try listHttpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1731,13 +1586,18 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.tagQueue.rawValue,
             version: apiVersion)
 
-        try listHttpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try listHttpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -1766,23 +1626,11 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
-        func innerCompletion(error: SmokeHTTPClient.HTTPClientError?) {
-            if let error = error {
-                if let typedError = error.cause as? SimpleQueueError {
-                    completion(typedError)
-                } else {
-                    completion(error.cause.asUnrecognizedSimpleQueueError())
-                }
-            } else {
-                completion(nil)
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -1811,12 +1659,17 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             action: SimpleQueueModelOperations.untagQueue.rawValue,
             version: apiVersion)
 
-        try httpClient.executeSyncRetriableWithoutOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
     }
 }
