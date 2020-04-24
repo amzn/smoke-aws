@@ -51,11 +51,11 @@ public struct AWSSimpleQueueClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
 
     let operationsReporting: SimpleQueueOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "sqs",
@@ -66,9 +66,9 @@ public struct AWSSimpleQueueClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>(requiresTLS: credentialsProvider != nil)
 
-        let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(
+        let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(requiresTLS: credentialsProvider != nil,
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 

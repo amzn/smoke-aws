@@ -50,11 +50,11 @@ public struct AWSElasticComputeCloudClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
 
     let operationsReporting: ElasticComputeCloudOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "ec2",
@@ -65,7 +65,7 @@ public struct AWSElasticComputeCloudClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(
+        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(requiresTLS: credentialsProvider != nil,
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 

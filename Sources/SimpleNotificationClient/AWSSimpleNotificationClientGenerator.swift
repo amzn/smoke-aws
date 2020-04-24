@@ -50,11 +50,11 @@ public struct AWSSimpleNotificationClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
 
     let operationsReporting: SimpleNotificationOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "sns",
@@ -65,7 +65,7 @@ public struct AWSSimpleNotificationClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

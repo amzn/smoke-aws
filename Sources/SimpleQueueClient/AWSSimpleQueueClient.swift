@@ -72,14 +72,14 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: SimpleQueueOperationsReporting
     let invocationsReporting: SimpleQueueInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -91,9 +91,9 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>(requiresTLS: credentialsProvider != nil)
 
-        let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(
+        let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(requiresTLS: credentialsProvider != nil,
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 
@@ -121,7 +121,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
         self.invocationsReporting = SimpleQueueInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient, listHttpClient: HTTPOperationsClient,
                 service: String,

@@ -70,14 +70,14 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: SimpleWorkflowOperationsReporting
     let invocationsReporting: SimpleWorkflowInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -89,7 +89,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>()
+        let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,
@@ -108,7 +108,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
         self.invocationsReporting = SimpleWorkflowInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient,
                 service: String,

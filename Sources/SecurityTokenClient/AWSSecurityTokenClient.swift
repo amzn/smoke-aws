@@ -66,14 +66,14 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: SecurityTokenOperationsReporting
     let invocationsReporting: SecurityTokenInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion? = nil,
                 reporting: InvocationReportingType,
                 endpointHostName: String = "sts.amazonaws.com",
                 endpointPort: Int = 443,
@@ -85,7 +85,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>
                     = SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,
@@ -105,7 +105,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
         self.invocationsReporting = SecurityTokenInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
+    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion? = nil,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient,
                 service: String,

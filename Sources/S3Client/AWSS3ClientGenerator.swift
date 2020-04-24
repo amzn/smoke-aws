@@ -50,11 +50,11 @@ public struct AWSS3ClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
 
     let operationsReporting: S3OperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion? = nil,
                 endpointHostName: String = "s3.amazonaws.com",
                 endpointPort: Int = 443,
                 service: String = "s3",
@@ -65,9 +65,9 @@ public struct AWSS3ClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>
                     = SmokeAWSClientReportingConfiguration<S3ModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
+        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>(requiresTLS: credentialsProvider != nil)
 
-        let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
+        let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

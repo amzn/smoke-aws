@@ -49,11 +49,11 @@ public struct AWSRDSDataClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
 
     let operationsReporting: RDSDataOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "rds-data",
@@ -64,7 +64,7 @@ public struct AWSRDSDataClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSDataModelOperations>
                     = SmokeAWSClientReportingConfiguration<RDSDataModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>()
+        let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

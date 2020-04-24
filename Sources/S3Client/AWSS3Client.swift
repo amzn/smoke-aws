@@ -66,14 +66,14 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: S3OperationsReporting
     let invocationsReporting: S3InvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion? = nil,
                 reporting: InvocationReportingType,
                 endpointHostName: String = "s3.amazonaws.com",
                 endpointPort: Int = 443,
@@ -85,9 +85,9 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>
                     = SmokeAWSClientReportingConfiguration<S3ModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
+        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>(requiresTLS: credentialsProvider != nil)
 
-        let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>()
+        let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,
@@ -112,7 +112,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
         self.invocationsReporting = S3InvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
+    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion? = nil,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient, dataHttpClient: HTTPOperationsClient,
                 service: String,

@@ -25,7 +25,7 @@ import SmokeHTTPClient
 public struct AWSClientInvocationDelegate : HTTPClientInvocationDelegate {
     public var specifyContentHeadersForZeroLengthBody: Bool
     
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
     let awsRegion: AWSRegion
     let service: String
     let operation: String?
@@ -33,7 +33,7 @@ public struct AWSClientInvocationDelegate : HTTPClientInvocationDelegate {
     let isV4SignRequest: Bool
     let signAllHeaders: Bool
     
-    public init (credentialsProvider: CredentialsProvider,
+    public init (credentialsProvider: CredentialsProvider?,
                  awsRegion: AWSRegion,
                  service: String,
                  operation: String? = nil,
@@ -74,7 +74,12 @@ public struct AWSClientInvocationDelegate : HTTPClientInvocationDelegate {
     public func addClientSpecificHeaders<InvocationReportingType>(
             parameters: HTTPRequestParameters,
             invocationReporting: InvocationReportingType) -> [(String, String)] where InvocationReportingType : HTTPClientInvocationReporting {
-        let v4Signer = V4Signer(credentials: credentialsProvider.credentials, region: awsRegion,
+        // if there are no credentials, there are no headers to be added
+        guard let currentCredentialsProvider = credentialsProvider else {
+            return []
+        }
+        
+        let v4Signer = V4Signer(credentials: currentCredentialsProvider.credentials, region: awsRegion,
                                 service: service,
                                 signAllHeaders: signAllHeaders)
         var headers: [(String, String)]

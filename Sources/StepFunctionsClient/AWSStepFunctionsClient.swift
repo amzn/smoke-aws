@@ -70,14 +70,14 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider
+    let credentialsProvider: CredentialsProvider?
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: StepFunctionsOperationsReporting
     let invocationsReporting: StepFunctionsInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -89,7 +89,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>
                     = SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>()
+        let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>(requiresTLS: credentialsProvider != nil)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,
@@ -108,7 +108,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         self.invocationsReporting = StepFunctionsInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient,
                 service: String,
