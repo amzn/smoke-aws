@@ -35,7 +35,11 @@ public enum SecurityTokenClientError: Swift.Error {
     case unknownError(String?)
 }
 
-internal extension SecurityTokenError {
+ extension SecurityTokenError: ConvertableError {
+    public static func asUnrecognizedError(error: Swift.Error) -> SecurityTokenError {
+        return error.asUnrecognizedSecurityTokenError()
+    }
+
     func isRetriable() -> Bool {
         return false
     }
@@ -158,24 +162,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRole.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleResponseForAssumeRole, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -207,13 +198,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRole.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -244,24 +240,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRoleWithSAML.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -293,13 +276,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRoleWithSAML.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -330,24 +318,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRoleWithWebIdentity.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -379,13 +354,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.assumeRoleWithWebIdentity.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -416,24 +396,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.decodeAuthorizationMessage.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -465,13 +432,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.decodeAuthorizationMessage.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -501,24 +473,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getAccessKeyInfo.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -549,13 +508,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getAccessKeyInfo.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -585,24 +549,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getCallerIdentity.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -633,13 +584,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getCallerIdentity.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -670,24 +626,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getFederationToken.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetFederationTokenResponseForGetFederationToken, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -719,13 +662,18 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getFederationToken.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 
     /**
@@ -756,24 +704,11 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getSessionToken.rawValue,
             version: apiVersion)
 
-        func innerCompletion(result: Result<SecurityTokenModel.GetSessionTokenResponseForGetSessionToken, SmokeHTTPClient.HTTPClientError>) {
-            switch result {
-            case .success(let payload):
-                completion(.success(payload))
-            case .failure(let error):
-                if let typedError = error.cause as? SecurityTokenError {
-                    completion(.failure(typedError))
-                } else {
-                    completion(.failure(error.cause.asUnrecognizedSecurityTokenError()))
-                }
-            }
-        }
-        
-        _ = try httpClient.executeAsyncRetriableWithOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
-            completion: innerCompletion,
+            completion: completion,
             invocationContext: invocationContext,
             retryConfiguration: retryConfiguration,
             retryOnError: retryOnErrorProvider)
@@ -805,12 +740,17 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
             action: SecurityTokenModelOperations.getSessionToken.rawValue,
             version: apiVersion)
 
-        return try httpClient.executeSyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SecurityTokenError = error.asTypedError()
+            throw typedError
+        }
     }
 }
