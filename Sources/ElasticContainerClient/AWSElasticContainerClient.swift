@@ -81,6 +81,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "ecs",
                 contentType: String = "application/x-amz-json-1.1",
                 target: String? = "AmazonEC2ContainerServiceV20141113",
@@ -89,7 +90,8 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticContainerModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticContainerModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<ElasticContainerError>(forEndpointPort: endpointPort)
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = JSONAWSHttpClientDelegate<ElasticContainerError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

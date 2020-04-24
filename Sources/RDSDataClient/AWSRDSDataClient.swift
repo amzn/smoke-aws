@@ -76,6 +76,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "rds-data",
                 contentType: String = "application/x-amz-rest-json-1.1",
                 target: String? = nil,
@@ -84,7 +85,8 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSDataModelOperations>
                     = SmokeAWSClientReportingConfiguration<RDSDataModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>(forEndpointPort: endpointPort)
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

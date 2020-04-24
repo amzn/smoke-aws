@@ -82,6 +82,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "monitoring",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2010-08-01",
@@ -90,7 +91,8 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(forEndpointPort: endpointPort)
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

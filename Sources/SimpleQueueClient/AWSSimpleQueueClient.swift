@@ -83,6 +83,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "sqs",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2012-11-05",
@@ -91,9 +92,10 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>(forEndpointPort: endpointPort)
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = XMLAWSHttpClientDelegate<SimpleQueueError>(requiresTLS: useTLS)
 
-        let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(forEndpointPort: endpointPort,
+        let clientDelegateForListHttpClient = XMLAWSHttpClientDelegate<SimpleQueueError>(requiresTLS: useTLS,
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 

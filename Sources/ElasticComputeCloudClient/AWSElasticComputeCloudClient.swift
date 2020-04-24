@@ -77,6 +77,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "ec2",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2016-11-15",
@@ -85,7 +86,8 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(forEndpointPort: endpointPort,
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(requiresTLS: useTLS,
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 

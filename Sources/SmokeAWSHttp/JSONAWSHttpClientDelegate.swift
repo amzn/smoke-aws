@@ -35,8 +35,8 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     private let requiresTLS: Bool
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
     
-    public init(forEndpointPort endpointPort: Int, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
-        self.requiresTLS = (endpointPort % 1000 == 443)
+    public init(requiresTLS: Bool, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+        self.requiresTLS = requiresTLS
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
     }
     

@@ -77,6 +77,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                 reporting: InvocationReportingType,
                 endpointHostName: String = "s3.amazonaws.com",
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "s3",
                 contentType: String = "application/x-amz-rest-xml",
                 target: String? = nil,
@@ -85,9 +86,10 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>
                     = SmokeAWSClientReportingConfiguration<S3ModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>(forEndpointPort: endpointPort)
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>(requiresTLS: useTLS)
 
-        let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>(forEndpointPort: endpointPort)
+        let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

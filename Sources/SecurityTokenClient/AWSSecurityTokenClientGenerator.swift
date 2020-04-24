@@ -57,6 +57,7 @@ public struct AWSSecurityTokenClientGenerator {
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
                 endpointHostName: String = "sts.amazonaws.com",
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "sts",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2011-06-15",
@@ -65,7 +66,8 @@ public struct AWSSecurityTokenClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>
                     = SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(forEndpointPort: endpointPort)
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

@@ -129,13 +129,13 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     private let inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy
     private let inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy
     
-    public init(forEndpointPort endpointPort: Int, inputBodyRootKey: String? = nil,
+    public init(requiresTLS: Bool, inputBodyRootKey: String? = nil,
                 outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy? = nil,
                 outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy? = nil,
                 inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy = .singleQueryEntry,
                 inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy = .useAsShapeSeparator("."),
                 inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy = .none) {
-        self.requiresTLS = (endpointPort % 1000 == 443)
+        self.requiresTLS = requiresTLS
         self.inputBodyRootKey = inputBodyRootKey
         self.outputListDecodingStrategy = outputListDecodingStrategy
         self.outputMapDecodingStrategy = outputMapDecodingStrategy
