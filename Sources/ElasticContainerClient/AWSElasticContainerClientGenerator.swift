@@ -49,11 +49,11 @@ public struct AWSElasticContainerClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
 
     let operationsReporting: ElasticContainerOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "ecs",
@@ -64,7 +64,7 @@ public struct AWSElasticContainerClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticContainerModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticContainerModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<ElasticContainerError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = JSONAWSHttpClientDelegate<ElasticContainerError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

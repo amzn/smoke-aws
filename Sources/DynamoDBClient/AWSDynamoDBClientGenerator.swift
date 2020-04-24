@@ -49,11 +49,11 @@ public struct AWSDynamoDBClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
 
     let operationsReporting: DynamoDBOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "dynamodb",
@@ -64,7 +64,7 @@ public struct AWSDynamoDBClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>
                     = SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

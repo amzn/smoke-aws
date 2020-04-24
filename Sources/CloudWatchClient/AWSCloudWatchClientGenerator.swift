@@ -50,11 +50,11 @@ public struct AWSCloudWatchClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
 
     let operationsReporting: CloudWatchOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "monitoring",
@@ -65,7 +65,7 @@ public struct AWSCloudWatchClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

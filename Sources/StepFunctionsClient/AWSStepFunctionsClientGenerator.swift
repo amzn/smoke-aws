@@ -49,11 +49,11 @@ public struct AWSStepFunctionsClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
 
     let operationsReporting: StepFunctionsOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "states",
@@ -64,7 +64,7 @@ public struct AWSStepFunctionsClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>
                     = SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

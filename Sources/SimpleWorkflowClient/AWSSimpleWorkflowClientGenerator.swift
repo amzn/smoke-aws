@@ -49,11 +49,11 @@ public struct AWSSimpleWorkflowClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
 
     let operationsReporting: SimpleWorkflowOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 service: String = "swf",
@@ -64,7 +64,7 @@ public struct AWSSimpleWorkflowClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

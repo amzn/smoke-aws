@@ -71,14 +71,14 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: SimpleNotificationOperationsReporting
     let invocationsReporting: SimpleNotificationInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -90,7 +90,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,
@@ -110,7 +110,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
         self.invocationsReporting = SimpleNotificationInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient,
                 service: String,

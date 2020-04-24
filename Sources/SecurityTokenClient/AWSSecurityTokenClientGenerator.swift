@@ -50,11 +50,11 @@ public struct AWSSecurityTokenClientGenerator {
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
 
     let operationsReporting: SecurityTokenOperationsReporting
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion? = nil,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion? = nil,
                 endpointHostName: String = "sts.amazonaws.com",
                 endpointPort: Int = 443,
                 service: String = "sts",
@@ -65,7 +65,7 @@ public struct AWSSecurityTokenClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>
                     = SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

@@ -66,14 +66,14 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: ElasticComputeCloudOperationsReporting
     let invocationsReporting: ElasticComputeCloudInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -85,7 +85,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(requiresTLS: credentialsProvider != nil,
+        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(forEndpointPort: endpointPort,
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 
@@ -107,7 +107,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         self.invocationsReporting = ElasticComputeCloudInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient,
                 service: String,

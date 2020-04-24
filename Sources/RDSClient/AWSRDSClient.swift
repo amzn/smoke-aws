@@ -66,14 +66,14 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
     let retryOnErrorProvider: (Swift.Error) -> Bool
-    let credentialsProvider: CredentialsProvider?
+    let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
 
     let operationsReporting: RDSOperationsReporting
     let invocationsReporting: RDSInvocationsReporting<InvocationReportingType>
     
-    public init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -85,7 +85,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>
                     = SmokeAWSClientReportingConfiguration<RDSModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<RDSError>(requiresTLS: credentialsProvider != nil)
+        let clientDelegate = XMLAWSHttpClientDelegate<RDSError>(forEndpointPort: endpointPort)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,
@@ -105,7 +105,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         self.invocationsReporting = RDSInvocationsReporting(reporting: reporting, operationsReporting: self.operationsReporting)
     }
     
-    internal init(credentialsProvider: CredentialsProvider?, awsRegion: AWSRegion,
+    internal init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 reporting: InvocationReportingType,
                 httpClient: HTTPOperationsClient,
                 service: String,
