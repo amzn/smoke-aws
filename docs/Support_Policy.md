@@ -25,13 +25,11 @@ Once support has been removed, testing via continuous integration may be removed
 
 Following these rules, the support level for different Swift Toolchain versions are-
 1. **Swift 4.0 and earlier**: No support.
-2. **Swift 4.1**: Supported for SmokeAWS 1.x. Support to be removed after 26th October, 2020[1]. No support for SmokeAWS 2.x.
-3. **Swift 4.2**: Supported for SmokeAWS 1.x. Support to be removed after 26th October, 2020[1]. No support for SmokeAWS 2.x.
+2. **Swift 4.1**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
+3. **Swift 4.2**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
 4. **Swift 5.0**: Supported for SmokeAWS 1.x and 2.x. Support to be removed after 24th September, 2020.
 5. **Swift 5.1**: Supported for SmokeAWS 1.x and 2.x.
 6. **Swift 5.2**: Supported for SmokeAWS 1.x and 2.x.
-
-[1] Due to no previous support policy, support for these versions will be removed 6 months from the creation of this policy.
 
 # Runtime Support
 
