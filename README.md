@@ -2,15 +2,20 @@
 <a href="https://travis-ci.com/amzn/smoke-aws">
 <img src="https://travis-ci.com/amzn/smoke-aws.svg?branch=master" alt="Build - Master Branch">
 </a>
-<img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
 <a href="http://swift.org">
-<img src="https://img.shields.io/badge/swift-5.0-orange.svg?style=flat" alt="Swift 5.0 Compatible">
+<img src="https://img.shields.io/badge/swift-5.0-orange.svg?style=flat" alt="Swift 5.0 Tested">
 </a>
 <a href="http://swift.org">
-<img src="https://img.shields.io/badge/swift-5.1-orange.svg?style=flat" alt="Swift 5.1 Compatible">
+<img src="https://img.shields.io/badge/swift-5.1-orange.svg?style=flat" alt="Swift 5.1 Tested">
 </a>
 <a href="http://swift.org">
-<img src="https://img.shields.io/badge/swift-5.2-orange.svg?style=flat" alt="Swift 5.2 Compatible">
+<img src="https://img.shields.io/badge/swift-5.2-orange.svg?style=flat" alt="Swift 5.2 Tested">
+</a>
+<a href="http://swift.org">
+<img src="https://img.shields.io/badge/ubuntu-16.04-yellow.svg?style=flat" alt="Ubuntu 16.04 Tested">
+</a>
+<a href="http://swift.org">
+<img src="https://img.shields.io/badge/ubuntu-18.04-yellow.svg?style=flat" alt="Ubuntu 18.04 Tested">
 </a>
 <a href="https://gitter.im/SmokeServerSide">
 <img src="https://img.shields.io/badge/chat-on%20gitter-ee115e.svg?style=flat" alt="Join the Smoke Server Side community on gitter">
@@ -25,6 +30,10 @@ Swift programming language. Using [SwiftNIO](https://github.com/apple/swift-nio)
 for its networking layer, the library provides the ability to call API methods for AWS
 services either synchronously or asynchronously.
 
+## Support Policy
+
+The support policy for this package is described [here](https://github.com/amzn/smoke-aws/blob/master/docs/Support_Policy.md).
+
 # Conceptual overview
 
 Each AWS service has two libraries and corresponding targets in this package-
@@ -32,6 +41,8 @@ Each AWS service has two libraries and corresponding targets in this package-
 * a client library that provides a number of clients to contact the service or to mock the service for testing-
   * a protocol that defines synchronous and asynchronous variants for all service API methods.
   * an AWS client that can be used to contact the actual AWS service.
+    * Support for expontential backoff retries.
+    * Logging and emittion of invocation metrics, with API-level support for enabling/disabling emitting metrics
   * a mock client that by default returns a default instance of the return type for each API method.
   * a throwing client that by default throws an error of each API method.
 
@@ -44,7 +55,7 @@ to your Package.swift-
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/amzn/smoke-aws.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/amzn/smoke-aws.git", from: "2.0.0")
 ]
 ```
 
@@ -53,6 +64,23 @@ dependencies: [
 Once you have specified the SmokeAWS package as a dependency, you can specify the targets from this package 
 that your application needs to depend on. Swift Package Manager will compile these targets as part of your 
 application for you to use. It will not compile the targets in the SmokeAWS package that you don't depend on.
+
+For swift-tools version 5.2 and greater-
+
+```swift
+    targets: [
+        .target(
+            name: "SampleServiceOperations", dependencies: [
+                .product(name: "ElasticComputeCloudClient", package: "smoke-aws"),
+            ]),
+        .testTarget(
+            name: "SampleServiceOperationsTests", dependencies: [
+                .target(name: "SampleServiceOperations"),
+            ]),
+    ]
+```
+
+For swift-tools version 5.1 and prior-
  
 ```swift
     targets: [
@@ -105,6 +133,10 @@ import ElasticComputeCloudModel
 When starting your application in production, you can instantiate an instance of the AWS client
 and pass it in the place of the protocol to contact the actual AWS service.
 
+Each AWS service provides a Generator type that can be globally instatiated for the application and used to produce a request-specific client.
+
+At application startup-
+
 ```swift
 import ElasticComputeCloudClient
 import SmokeAWSCredentials
@@ -114,14 +146,41 @@ import SmokeAWSCredentials
         return Log.error("Unable to obtain credentials from the container environment.")
     }
 
-    let ec2Client = AWSElasticComputeCloudClient(credentialsProvider: credentialsProvider,
-                                                 awsRegion: region,
-                                                 endpointHostName: ec2EndpointHostName)
-
-    let context = SampleServiceOperationsContext(ec2Client: ec2Client)
+    self.ec2ClientGenerator = AWSElasticComputeCloudClientGenerator(
+        credentialsProvider: credentialsProvider,
+        awsRegion: region,
+        endpointHostName: ec2EndpointHostName,
+        connectionTimeoutSeconds: connectionTimeoutSeconds,
+        retryConfiguration: retryConfiguration,
+        eventLoopProvider: .createNew,
+        reportingConfiguration: reportingConfiguration)
 ```
 
-Here we use the [SmokeAWSCredentials](https://github.com/amzn/smoke-aws-credentials) package to obtain rotating credentials from an AWS runtime such as ECS.
+The inputs to this constructor are-
+1. **credentialsProvider**: The provider of credentials to use for this client. 
+  * Here we use the [SmokeAWSCredentials](https://github.com/amzn/smoke-aws-credentials) package to obtain rotating credentials from an AWS runtime such as ECS.
+2. **awsRegion**: The AWS region to use for this client
+3. **endpointHostName**: The hostname to contact for invocations made by this client. Doesn't include the scheme or port. 
+  * For example `dynamodb.us-west-2.amazonaws.com`.
+4. **connectionTimeoutSeconds**: The timeout in seconds for requests made by this client.
+5. **retryConfiguration**: An instance of type `HTTPClientRetryConfiguration` to indicate how the client should handle automatic retries on failure. Default to a configuration with 5 retries starting at a 500 ms interval.
+6. **eventLoopProvider**: The provider of the event loop for this client. Defaults to creating a new event loop.
+7. **reportingConfiguration**: An instance of `SmokeAWSClientReportingConfiguration` that indicates what metrics to emit for the client. Defaults to a configuration where all metrics for all APIs are emitted. 
+
+Within a request-
+
+```swift
+    let ec2Client = self.ec2ClientGenerator.with(logger: logger)
+```
+
+Recording metrics from the AWS clients will require an metrics implementation to be instatiated for the application for [swift-metrics](https://github.com/apple/swift-metrics). Currently SmokeAWS doesn't provide a default implementation for Cloudwatch.
+
+The metrics emitted by the AWS clients are-
+1. **success**: The count of successful invocations.
+2. **failure5XX**: The count of unsuccessful invocations of the client that return with a 5xx response code.
+3. **failure4XX**: The count of unsuccessful invocations of the client that return with a 4xx response code.
+4. **retryCount**: The retry count for invocations of the client.
+5. **latency**: The latency of invocations from the client.
 
 ## Step 5: Instantiate a mock client for testing
 
