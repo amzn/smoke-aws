@@ -11,12 +11,8 @@
 <a href="http://swift.org">
 <img src="https://img.shields.io/badge/swift-5.2-orange.svg?style=flat" alt="Swift 5.2 Tested">
 </a>
-<a href="http://swift.org">
 <img src="https://img.shields.io/badge/ubuntu-16.04-yellow.svg?style=flat" alt="Ubuntu 16.04 Tested">
-</a>
-<a href="http://swift.org">
 <img src="https://img.shields.io/badge/ubuntu-18.04-yellow.svg?style=flat" alt="Ubuntu 18.04 Tested">
-</a>
 <a href="https://gitter.im/SmokeServerSide">
 <img src="https://img.shields.io/badge/chat-on%20gitter-ee115e.svg?style=flat" alt="Join the Smoke Server Side community on gitter">
 </a>
