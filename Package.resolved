@@ -14,9 +14,9 @@
         "package": "smoke-http",
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
-          "branch": "expose_default_tls_configuration",
-          "revision": "c02c95ca43f90c7c4766a3fac4652f8ce41d6968",
-          "version": null
+          "branch": null,
+          "revision": "c2ce7ef13ad62ad5b8ea76db5c3cfc9b32816cb0",
+          "version": "2.0.0-rc.1"
         }
       },
       {
@@ -26,6 +26,15 @@
           "branch": null,
           "revision": "d67ac68d09a95443303e9d6e37b34e7ba101d5f1",
           "version": "1.0.1"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log",
+        "state": {
+          "branch": null,
+          "revision": "74d7b91ceebc85daf387ebb206003f78813f71aa",
+          "version": "1.2.0"
         }
       },
       {
