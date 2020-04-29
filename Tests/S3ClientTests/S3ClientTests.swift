@@ -93,7 +93,7 @@ class S3ClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>()
+        let clientDelegate = XMLAWSHttpClientDelegate<S3Error>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,
@@ -123,7 +123,7 @@ class S3ClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = DataAWSHttpClientDelegate<S3Error>()
+        let clientDelegate = DataAWSHttpClientDelegate<S3Error>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,
@@ -154,7 +154,7 @@ class S3ClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = DataAWSHttpClientDelegate<S3Error>()
+        let clientDelegate = DataAWSHttpClientDelegate<S3Error>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,

@@ -81,6 +81,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "states",
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "AWSStepFunctions",
@@ -89,7 +90,8 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>
                     = SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>()
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = JSONAWSHttpClientDelegate<StepFunctionsError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

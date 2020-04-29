@@ -56,6 +56,7 @@ public struct AWSDynamoDBClientGenerator {
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "dynamodb",
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "DynamoDB_20120810",
@@ -64,7 +65,8 @@ public struct AWSDynamoDBClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>
                     = SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>()
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = JSONAWSHttpClientDelegate<DynamoDBError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

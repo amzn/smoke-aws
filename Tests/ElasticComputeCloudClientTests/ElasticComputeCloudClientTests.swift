@@ -32,7 +32,7 @@ class ElasticComputeCloudClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<ElasticComputeCloudError>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,
@@ -66,7 +66,7 @@ class ElasticComputeCloudClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = DataAWSHttpClientDelegate<ElasticComputeCloudError>()
+        let clientDelegate = DataAWSHttpClientDelegate<ElasticComputeCloudError>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,

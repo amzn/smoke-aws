@@ -77,6 +77,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "rds",
                 contentType: String = "application/octet-stream",
                 apiVersion: String = "2014-10-31",
@@ -85,7 +86,8 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>
                     = SmokeAWSClientReportingConfiguration<RDSModelOperations>() ) {
-        let clientDelegate = XMLAWSHttpClientDelegate<RDSError>()
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = XMLAWSHttpClientDelegate<RDSError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

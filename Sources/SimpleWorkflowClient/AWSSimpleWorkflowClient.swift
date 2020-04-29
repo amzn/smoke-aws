@@ -81,6 +81,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                 reporting: InvocationReportingType,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "swf",
                 contentType: String = "application/x-amz-json-1.0",
                 target: String? = "SimpleWorkflowService",
@@ -89,7 +90,8 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>()
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = JSONAWSHttpClientDelegate<SimpleWorkflowError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

@@ -56,6 +56,7 @@ public struct AWSRDSDataClientGenerator {
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
                 service: String = "rds-data",
                 contentType: String = "application/x-amz-rest-json-1.1",
                 target: String? = nil,
@@ -64,7 +65,8 @@ public struct AWSRDSDataClientGenerator {
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSDataModelOperations>
                     = SmokeAWSClientReportingConfiguration<RDSDataModelOperations>() ) {
-        let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>()
+        let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
+        let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
                                                endpointPort: endpointPort,

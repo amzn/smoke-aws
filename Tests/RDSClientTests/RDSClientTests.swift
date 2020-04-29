@@ -29,7 +29,7 @@ class RDSClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = XMLAWSHttpClientDelegate<RDSError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<RDSError>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,
@@ -61,7 +61,7 @@ class RDSClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = DataAWSHttpClientDelegate<RDSError>()
+        let clientDelegate = DataAWSHttpClientDelegate<RDSError>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,

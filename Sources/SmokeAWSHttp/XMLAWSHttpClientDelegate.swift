@@ -17,6 +17,7 @@
 
 import Foundation
 import NIOHTTP1
+import NIOSSL
 import XMLCoding
 import SmokeAWSCore
 import Logging
@@ -120,6 +121,7 @@ struct ErrorWrapper<ErrorType: Error & Decodable>: Error & Decodable {
  on the decoding a XML error payload from the response body.
  */
 public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
+    private let requiresTLS: Bool
     private let inputBodyRootKey: String?
     private let outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy?
     private let outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy?
@@ -127,12 +129,13 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     private let inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy
     private let inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy
     
-    public init(inputBodyRootKey: String? = nil,
+    public init(requiresTLS: Bool, inputBodyRootKey: String? = nil,
                 outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy? = nil,
                 outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy? = nil,
                 inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy = .singleQueryEntry,
                 inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy = .useAsShapeSeparator("."),
                 inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy = .none) {
+        self.requiresTLS = requiresTLS
         self.inputBodyRootKey = inputBodyRootKey
         self.outputListDecodingStrategy = outputListDecodingStrategy
         self.outputMapDecodingStrategy = outputMapDecodingStrategy
@@ -263,5 +266,13 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         
         return try OutputType.compose(bodyDecodableProvider: bodyDecodableProvider,
                                       headersDecodableProvider: headersDecodableProvider)
+    }
+    
+    public func getTLSConfiguration() -> TLSConfiguration? {
+        if requiresTLS {
+            return getDefaultTLSConfiguration()
+        } else {
+            return nil
+        }
     }
 }

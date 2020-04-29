@@ -17,6 +17,7 @@
 
 import Foundation
 import NIOHTTP1
+import NIOSSL
 import SmokeHTTPClient
 import SmokeAWSCore
 import QueryCoding
@@ -31,9 +32,11 @@ import Logging
  on the decoding a JSON error payload from the response body.
  */
 public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
+    private let requiresTLS: Bool
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
     
-    public init(inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+    public init(requiresTLS: Bool, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+        self.requiresTLS = requiresTLS
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
     }
     
@@ -152,5 +155,13 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
         
         return try OutputType.compose(bodyDecodableProvider: bodyDecodableProvider,
                                       headersDecodableProvider: headersDecodableProvider)
+    }
+    
+    public func getTLSConfiguration() -> TLSConfiguration? {
+        if requiresTLS {
+            return getDefaultTLSConfiguration()
+        } else {
+            return nil
+        }
     }
 }

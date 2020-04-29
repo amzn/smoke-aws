@@ -30,7 +30,7 @@ class SecurityTokenClientTests: XCTestCase {
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
-        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>()
+        let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(requiresTLS: true)
         let invocationReporting = StandardHTTPClientInvocationReporting(internalRequestId: "internalRequestId",
                                                                         traceContext: MockInvocationTraceContext())
         let error = try clientDelegate.getResponseError(response: response,
