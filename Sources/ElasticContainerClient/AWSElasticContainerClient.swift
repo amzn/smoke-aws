@@ -65,6 +65,7 @@ private extension Swift.Error {
  */
 public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ElasticContainerClientProtocol {
     let httpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -93,12 +94,14 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
         let clientDelegate = JSONAWSHttpClientDelegate<ElasticContainerError>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -119,6 +122,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: ElasticContainerOperationsReporting) {
         self.httpClient = httpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -135,7 +139,9 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+        }
     }
 
     /**

@@ -65,6 +65,7 @@ private extension Swift.Error {
  */
 public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleNotificationClientProtocol {
     let httpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -94,12 +95,14 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
         let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -121,6 +124,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: SimpleNotificationOperationsReporting) {
         self.httpClient = httpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -138,7 +142,9 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+        }
     }
 
     /**

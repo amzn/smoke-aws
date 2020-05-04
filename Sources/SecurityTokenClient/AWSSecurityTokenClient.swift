@@ -60,6 +60,7 @@ private extension Swift.Error {
  */
 public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SecurityTokenClientProtocol {
     let httpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -89,12 +90,14 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
         let clientDelegate = XMLAWSHttpClientDelegate<SecurityTokenError>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = nil
@@ -116,6 +119,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: SecurityTokenOperationsReporting) {
         self.httpClient = httpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = nil
@@ -133,7 +137,9 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+        }
     }
 
     /**

@@ -60,6 +60,7 @@ private extension Swift.Error {
  */
 public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: RDSDataClientProtocol {
     let httpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -88,12 +89,14 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
         let clientDelegate = JSONAWSHttpClientDelegate<RDSDataError>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -114,6 +117,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: RDSDataOperationsReporting) {
         self.httpClient = httpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion
         self.service = service
         self.target = target
@@ -130,7 +134,9 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+        }
     }
 
     /**

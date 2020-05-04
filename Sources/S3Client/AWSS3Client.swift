@@ -61,6 +61,7 @@ private extension Swift.Error {
 public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationReporting>: S3ClientProtocol {
     let httpClient: HTTPOperationsClient
     let dataHttpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let target: String?
@@ -91,18 +92,21 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
-        self.dataHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                                    endpointPort: endpointPort,
-                                                    contentType: contentType,
-                                                    clientDelegate: clientDelegateForDataHttpClient,
-                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                                    eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.dataHttpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegateForDataHttpClient,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target
@@ -123,7 +127,8 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: S3OperationsReporting) {
         self.httpClient = httpClient
-            self.dataHttpClient = dataHttpClient
+        self.dataHttpClient = dataHttpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target
@@ -140,8 +145,10 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
-        try dataHttpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+            try dataHttpClient.close()
+        }
     }
 
     /**

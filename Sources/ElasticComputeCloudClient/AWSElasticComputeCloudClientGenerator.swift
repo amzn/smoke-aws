@@ -71,12 +71,13 @@ public struct AWSElasticComputeCloudClientGenerator {
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
