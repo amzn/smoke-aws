@@ -2351,7 +2351,8 @@ public extension CreateKeyPairRequest {
     static let __default: ElasticComputeCloudModel.CreateKeyPairRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateKeyPairRequest(
             dryRun: nil,
-            keyName: "value")
+            keyName: "value",
+            tagSpecifications: nil)
 
         return defaultInstance
     }()
@@ -2614,7 +2615,20 @@ public extension CreatePlacementGroupRequest {
             dryRun: nil,
             groupName: nil,
             partitionCount: nil,
-            strategy: nil)
+            strategy: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreatePlacementGroupResult {
+    /**
+     Default instance of the CreatePlacementGroupResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreatePlacementGroupResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreatePlacementGroupResult(
+            placementGroup: nil)
 
         return defaultInstance
     }()
@@ -3706,7 +3720,8 @@ public extension DeleteKeyPairRequest {
     static let __default: ElasticComputeCloudModel.DeleteKeyPairRequest = {
         let defaultInstance = ElasticComputeCloudModel.DeleteKeyPairRequest(
             dryRun: nil,
-            keyName: "value")
+            keyName: nil,
+            keyPairId: nil)
 
         return defaultInstance
     }()
@@ -4533,6 +4548,44 @@ public extension DeregisterImageRequest {
         let defaultInstance = ElasticComputeCloudModel.DeregisterImageRequest(
             dryRun: nil,
             imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterInstanceEventNotificationAttributesRequest {
+    /**
+     Default instance of the DeregisterInstanceEventNotificationAttributesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest(
+            dryRun: nil,
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterInstanceEventNotificationAttributesResult {
+    /**
+     Default instance of the DeregisterInstanceEventNotificationAttributesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult(
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeregisterInstanceTagAttributeRequest {
+    /**
+     Default instance of the DeregisterInstanceTagAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeregisterInstanceTagAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeregisterInstanceTagAttributeRequest(
+            includeAllTagsOfInstance: nil,
+            instanceTagKeys: nil)
 
         return defaultInstance
     }()
@@ -5735,6 +5788,30 @@ public extension DescribeInstanceCreditSpecificationsResult {
         let defaultInstance = ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult(
             instanceCreditSpecifications: nil,
             nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeInstanceEventNotificationAttributesRequest {
+    /**
+     Default instance of the DescribeInstanceEventNotificationAttributesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeInstanceEventNotificationAttributesResult {
+    /**
+     Default instance of the DescribeInstanceEventNotificationAttributesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult(
+            instanceTagAttribute: nil)
 
         return defaultInstance
     }()
@@ -10344,7 +10421,8 @@ public extension ImportKeyPairRequest {
         let defaultInstance = ElasticComputeCloudModel.ImportKeyPairRequest(
             dryRun: nil,
             keyName: "value",
-            publicKeyMaterial: Data())
+            publicKeyMaterial: Data(),
+            tagSpecifications: nil)
 
         return defaultInstance
     }()
@@ -10357,7 +10435,9 @@ public extension ImportKeyPairResult {
     static let __default: ElasticComputeCloudModel.ImportKeyPairResult = {
         let defaultInstance = ElasticComputeCloudModel.ImportKeyPairResult(
             keyFingerprint: nil,
-            keyName: nil)
+            keyName: nil,
+            keyPairId: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -10962,6 +11042,19 @@ public extension InstanceStorageInfo {
     }()
 }
 
+public extension InstanceTagNotificationAttribute {
+    /**
+     Default instance of the InstanceTagNotificationAttribute structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceTagNotificationAttribute = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceTagNotificationAttribute(
+            includeAllTagsOfInstance: nil,
+            instanceTagKeys: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InstanceTypeInfo {
     /**
      Default instance of the InstanceTypeInfo structure.
@@ -11143,7 +11236,8 @@ public extension KeyPair {
             keyFingerprint: nil,
             keyMaterial: nil,
             keyName: nil,
-            keyPairId: nil)
+            keyPairId: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -12532,6 +12626,8 @@ public extension ModifySubnetAttributeRequest {
     static let __default: ElasticComputeCloudModel.ModifySubnetAttributeRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifySubnetAttributeRequest(
             assignIpv6AddressOnCreation: nil,
+            customerOwnedIpv4Pool: nil,
+            mapCustomerOwnedIpOnLaunch: nil,
             mapPublicIpOnLaunch: nil,
             subnetId: "value")
 
@@ -14085,6 +14181,44 @@ public extension RegisterImageResult {
     static let __default: ElasticComputeCloudModel.RegisterImageResult = {
         let defaultInstance = ElasticComputeCloudModel.RegisterImageResult(
             imageId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterInstanceEventNotificationAttributesRequest {
+    /**
+     Default instance of the RegisterInstanceEventNotificationAttributesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest(
+            dryRun: nil,
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterInstanceEventNotificationAttributesResult {
+    /**
+     Default instance of the RegisterInstanceEventNotificationAttributesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult = {
+        let defaultInstance = ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult(
+            instanceTagAttribute: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterInstanceTagAttributeRequest {
+    /**
+     Default instance of the RegisterInstanceTagAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RegisterInstanceTagAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RegisterInstanceTagAttributeRequest(
+            includeAllTagsOfInstance: nil,
+            instanceTagKeys: nil)
 
         return defaultInstance
     }()
@@ -16177,8 +16311,10 @@ public extension Subnet {
             availabilityZoneId: nil,
             availableIpAddressCount: nil,
             cidrBlock: nil,
+            customerOwnedIpv4Pool: nil,
             defaultForAz: nil,
             ipv6CidrBlockAssociationSet: nil,
+            mapCustomerOwnedIpOnLaunch: nil,
             mapPublicIpOnLaunch: nil,
             outpostArn: nil,
             ownerId: nil,

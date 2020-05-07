@@ -314,6 +314,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let deprovisionByoipCidrSyncOverride: ElasticComputeCloudClientProtocol.DeprovisionByoipCidrSyncType?
     let deregisterImageAsyncOverride: ElasticComputeCloudClientProtocol.DeregisterImageAsyncType?
     let deregisterImageSyncOverride: ElasticComputeCloudClientProtocol.DeregisterImageSyncType?
+    let deregisterInstanceEventNotificationAttributesAsyncOverride: ElasticComputeCloudClientProtocol.DeregisterInstanceEventNotificationAttributesAsyncType?
+    let deregisterInstanceEventNotificationAttributesSyncOverride: ElasticComputeCloudClientProtocol.DeregisterInstanceEventNotificationAttributesSyncType?
     let deregisterTransitGatewayMulticastGroupMembersAsyncOverride: ElasticComputeCloudClientProtocol.DeregisterTransitGatewayMulticastGroupMembersAsyncType?
     let deregisterTransitGatewayMulticastGroupMembersSyncOverride: ElasticComputeCloudClientProtocol.DeregisterTransitGatewayMulticastGroupMembersSyncType?
     let deregisterTransitGatewayMulticastGroupSourcesAsyncOverride: ElasticComputeCloudClientProtocol.DeregisterTransitGatewayMulticastGroupSourcesAsyncType?
@@ -398,6 +400,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeInstanceAttributeSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceAttributeSyncType?
     let describeInstanceCreditSpecificationsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsAsyncType?
     let describeInstanceCreditSpecificationsSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsSyncType?
+    let describeInstanceEventNotificationAttributesAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceEventNotificationAttributesAsyncType?
+    let describeInstanceEventNotificationAttributesSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceEventNotificationAttributesSyncType?
     let describeInstanceStatusAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceStatusAsyncType?
     let describeInstanceStatusSyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceStatusSyncType?
     let describeInstanceTypeOfferingsAsyncOverride: ElasticComputeCloudClientProtocol.DescribeInstanceTypeOfferingsAsyncType?
@@ -740,6 +744,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let rebootInstancesSyncOverride: ElasticComputeCloudClientProtocol.RebootInstancesSyncType?
     let registerImageAsyncOverride: ElasticComputeCloudClientProtocol.RegisterImageAsyncType?
     let registerImageSyncOverride: ElasticComputeCloudClientProtocol.RegisterImageSyncType?
+    let registerInstanceEventNotificationAttributesAsyncOverride: ElasticComputeCloudClientProtocol.RegisterInstanceEventNotificationAttributesAsyncType?
+    let registerInstanceEventNotificationAttributesSyncOverride: ElasticComputeCloudClientProtocol.RegisterInstanceEventNotificationAttributesSyncType?
     let registerTransitGatewayMulticastGroupMembersAsyncOverride: ElasticComputeCloudClientProtocol.RegisterTransitGatewayMulticastGroupMembersAsyncType?
     let registerTransitGatewayMulticastGroupMembersSyncOverride: ElasticComputeCloudClientProtocol.RegisterTransitGatewayMulticastGroupMembersSyncType?
     let registerTransitGatewayMulticastGroupSourcesAsyncOverride: ElasticComputeCloudClientProtocol.RegisterTransitGatewayMulticastGroupSourcesAsyncType?
@@ -1120,6 +1126,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             deprovisionByoipCidrSync: ElasticComputeCloudClientProtocol.DeprovisionByoipCidrSyncType? = nil,
             deregisterImageAsync: ElasticComputeCloudClientProtocol.DeregisterImageAsyncType? = nil,
             deregisterImageSync: ElasticComputeCloudClientProtocol.DeregisterImageSyncType? = nil,
+            deregisterInstanceEventNotificationAttributesAsync: ElasticComputeCloudClientProtocol.DeregisterInstanceEventNotificationAttributesAsyncType? = nil,
+            deregisterInstanceEventNotificationAttributesSync: ElasticComputeCloudClientProtocol.DeregisterInstanceEventNotificationAttributesSyncType? = nil,
             deregisterTransitGatewayMulticastGroupMembersAsync: ElasticComputeCloudClientProtocol.DeregisterTransitGatewayMulticastGroupMembersAsyncType? = nil,
             deregisterTransitGatewayMulticastGroupMembersSync: ElasticComputeCloudClientProtocol.DeregisterTransitGatewayMulticastGroupMembersSyncType? = nil,
             deregisterTransitGatewayMulticastGroupSourcesAsync: ElasticComputeCloudClientProtocol.DeregisterTransitGatewayMulticastGroupSourcesAsyncType? = nil,
@@ -1204,6 +1212,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeInstanceAttributeSync: ElasticComputeCloudClientProtocol.DescribeInstanceAttributeSyncType? = nil,
             describeInstanceCreditSpecificationsAsync: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsAsyncType? = nil,
             describeInstanceCreditSpecificationsSync: ElasticComputeCloudClientProtocol.DescribeInstanceCreditSpecificationsSyncType? = nil,
+            describeInstanceEventNotificationAttributesAsync: ElasticComputeCloudClientProtocol.DescribeInstanceEventNotificationAttributesAsyncType? = nil,
+            describeInstanceEventNotificationAttributesSync: ElasticComputeCloudClientProtocol.DescribeInstanceEventNotificationAttributesSyncType? = nil,
             describeInstanceStatusAsync: ElasticComputeCloudClientProtocol.DescribeInstanceStatusAsyncType? = nil,
             describeInstanceStatusSync: ElasticComputeCloudClientProtocol.DescribeInstanceStatusSyncType? = nil,
             describeInstanceTypeOfferingsAsync: ElasticComputeCloudClientProtocol.DescribeInstanceTypeOfferingsAsyncType? = nil,
@@ -1546,6 +1556,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             rebootInstancesSync: ElasticComputeCloudClientProtocol.RebootInstancesSyncType? = nil,
             registerImageAsync: ElasticComputeCloudClientProtocol.RegisterImageAsyncType? = nil,
             registerImageSync: ElasticComputeCloudClientProtocol.RegisterImageSyncType? = nil,
+            registerInstanceEventNotificationAttributesAsync: ElasticComputeCloudClientProtocol.RegisterInstanceEventNotificationAttributesAsyncType? = nil,
+            registerInstanceEventNotificationAttributesSync: ElasticComputeCloudClientProtocol.RegisterInstanceEventNotificationAttributesSyncType? = nil,
             registerTransitGatewayMulticastGroupMembersAsync: ElasticComputeCloudClientProtocol.RegisterTransitGatewayMulticastGroupMembersAsyncType? = nil,
             registerTransitGatewayMulticastGroupMembersSync: ElasticComputeCloudClientProtocol.RegisterTransitGatewayMulticastGroupMembersSyncType? = nil,
             registerTransitGatewayMulticastGroupSourcesAsync: ElasticComputeCloudClientProtocol.RegisterTransitGatewayMulticastGroupSourcesAsyncType? = nil,
@@ -1921,6 +1933,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.deprovisionByoipCidrSyncOverride = deprovisionByoipCidrSync
         self.deregisterImageAsyncOverride = deregisterImageAsync
         self.deregisterImageSyncOverride = deregisterImageSync
+        self.deregisterInstanceEventNotificationAttributesAsyncOverride = deregisterInstanceEventNotificationAttributesAsync
+        self.deregisterInstanceEventNotificationAttributesSyncOverride = deregisterInstanceEventNotificationAttributesSync
         self.deregisterTransitGatewayMulticastGroupMembersAsyncOverride = deregisterTransitGatewayMulticastGroupMembersAsync
         self.deregisterTransitGatewayMulticastGroupMembersSyncOverride = deregisterTransitGatewayMulticastGroupMembersSync
         self.deregisterTransitGatewayMulticastGroupSourcesAsyncOverride = deregisterTransitGatewayMulticastGroupSourcesAsync
@@ -2005,6 +2019,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeInstanceAttributeSyncOverride = describeInstanceAttributeSync
         self.describeInstanceCreditSpecificationsAsyncOverride = describeInstanceCreditSpecificationsAsync
         self.describeInstanceCreditSpecificationsSyncOverride = describeInstanceCreditSpecificationsSync
+        self.describeInstanceEventNotificationAttributesAsyncOverride = describeInstanceEventNotificationAttributesAsync
+        self.describeInstanceEventNotificationAttributesSyncOverride = describeInstanceEventNotificationAttributesSync
         self.describeInstanceStatusAsyncOverride = describeInstanceStatusAsync
         self.describeInstanceStatusSyncOverride = describeInstanceStatusSync
         self.describeInstanceTypeOfferingsAsyncOverride = describeInstanceTypeOfferingsAsync
@@ -2347,6 +2363,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.rebootInstancesSyncOverride = rebootInstancesSync
         self.registerImageAsyncOverride = registerImageAsync
         self.registerImageSyncOverride = registerImageSync
+        self.registerInstanceEventNotificationAttributesAsyncOverride = registerInstanceEventNotificationAttributesAsync
+        self.registerInstanceEventNotificationAttributesSyncOverride = registerInstanceEventNotificationAttributesSync
         self.registerTransitGatewayMulticastGroupMembersAsyncOverride = registerTransitGatewayMulticastGroupMembersAsync
         self.registerTransitGatewayMulticastGroupMembersSyncOverride = registerTransitGatewayMulticastGroupMembersSync
         self.registerTransitGatewayMulticastGroupSourcesAsyncOverride = registerTransitGatewayMulticastGroupSourcesAsync
@@ -4566,15 +4584,16 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
 
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The CreatePlacementGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The CreatePlacementGroupResult
+           object will be validated before being returned to caller.
      */
-    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (Swift.Error?) -> ()) throws {
+    public func createPlacementGroupAsync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.CreatePlacementGroupResult>) -> ()) throws {
         if let createPlacementGroupAsyncOverride = createPlacementGroupAsyncOverride {
             return try createPlacementGroupAsyncOverride(input, completion)
         }
 
-        completion(error)
+        completion(.error(error))
     }
 
     /**
@@ -4582,8 +4601,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
 
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
+     - Returns: The CreatePlacementGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
-    public func createPlacementGroupSync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws {
+    public func createPlacementGroupSync(input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ElasticComputeCloudModel.CreatePlacementGroupResult {
         if let createPlacementGroupSyncOverride = createPlacementGroupSyncOverride {
             return try createPlacementGroupSyncOverride(input)
         }
@@ -7064,6 +7085,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DeregisterInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeregisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The DeregisterInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DeregisterInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func deregisterInstanceEventNotificationAttributesAsync(input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult>) -> ()) throws {
+        if let deregisterInstanceEventNotificationAttributesAsyncOverride = deregisterInstanceEventNotificationAttributesAsyncOverride {
+            return try deregisterInstanceEventNotificationAttributesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DeregisterInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeregisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The DeregisterInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deregisterInstanceEventNotificationAttributesSync(input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult {
+        if let deregisterInstanceEventNotificationAttributesSyncOverride = deregisterInstanceEventNotificationAttributesSyncOverride {
+            return try deregisterInstanceEventNotificationAttributesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeregisterTransitGatewayMulticastGroupMembers operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8444,6 +8498,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func describeInstanceCreditSpecificationsSync(input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
         if let describeInstanceCreditSpecificationsSyncOverride = describeInstanceCreditSpecificationsSyncOverride {
             return try describeInstanceCreditSpecificationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The DescribeInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceEventNotificationAttributesAsync(input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult>) -> ()) throws {
+        if let describeInstanceEventNotificationAttributesAsyncOverride = describeInstanceEventNotificationAttributesAsyncOverride {
+            return try describeInstanceEventNotificationAttributesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the DescribeInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The DescribeInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceEventNotificationAttributesSync(input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult {
+        if let describeInstanceEventNotificationAttributesSyncOverride = describeInstanceEventNotificationAttributesSyncOverride {
+            return try describeInstanceEventNotificationAttributesSyncOverride(input)
         }
 
         throw error
@@ -14033,6 +14120,39 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public func registerImageSync(input: ElasticComputeCloudModel.RegisterImageRequest) throws -> ElasticComputeCloudModel.RegisterImageResult {
         if let registerImageSyncOverride = registerImageSyncOverride {
             return try registerImageSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the RegisterInstanceEventNotificationAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+         - completion: The RegisterInstanceEventNotificationAttributesResult object or an error will be passed to this 
+           callback when the operation is complete. The RegisterInstanceEventNotificationAttributesResult
+           object will be validated before being returned to caller.
+     */
+    public func registerInstanceEventNotificationAttributesAsync(input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest, completion: @escaping (HTTPResult<ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult>) -> ()) throws {
+        if let registerInstanceEventNotificationAttributesAsyncOverride = registerInstanceEventNotificationAttributesAsyncOverride {
+            return try registerInstanceEventNotificationAttributesAsyncOverride(input, completion)
+        }
+
+        completion(.error(error))
+    }
+
+    /**
+     Invokes the RegisterInstanceEventNotificationAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterInstanceEventNotificationAttributesRequest object being passed to this operation.
+     - Returns: The RegisterInstanceEventNotificationAttributesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func registerInstanceEventNotificationAttributesSync(input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult {
+        if let registerInstanceEventNotificationAttributesSyncOverride = registerInstanceEventNotificationAttributesSyncOverride {
+            return try registerInstanceEventNotificationAttributesSyncOverride(input)
         }
 
         throw error

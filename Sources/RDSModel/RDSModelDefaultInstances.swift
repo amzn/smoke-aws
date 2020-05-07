@@ -2523,6 +2523,7 @@ public extension DBProxyTarget {
             port: nil,
             rdsResourceId: nil,
             targetArn: nil,
+            targetHealth: nil,
             trackedClusterId: nil,
             type: nil)
 
@@ -4098,6 +4099,7 @@ public extension DescribeOrderableDBInstanceOptionsMessage {
      */
     static let __default: RDSModel.DescribeOrderableDBInstanceOptionsMessage = {
         let defaultInstance = RDSModel.DescribeOrderableDBInstanceOptionsMessage(
+            availabilityZoneGroup: nil,
             dBInstanceClass: nil,
             engine: "value",
             engineVersion: nil,
@@ -6023,6 +6025,7 @@ public extension OrderableDBInstanceOption {
      */
     static let __default: RDSModel.OrderableDBInstanceOption = {
         let defaultInstance = RDSModel.OrderableDBInstanceOption(
+            availabilityZoneGroup: nil,
             availabilityZones: nil,
             availableProcessorFeatures: nil,
             dBInstanceClass: nil,
@@ -7671,6 +7674,20 @@ public extension TagListMessageForListTagsForResource {
     static let __default: RDSModel.TagListMessageForListTagsForResource = {
         let defaultInstance = RDSModel.TagListMessageForListTagsForResource(
             listTagsForResourceResult: TagListMessage.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension TargetHealth {
+    /**
+     Default instance of the TargetHealth structure.
+     */
+    static let __default: RDSModel.TargetHealth = {
+        let defaultInstance = RDSModel.TargetHealth(
+            description: nil,
+            reason: nil,
+            state: nil)
 
         return defaultInstance
     }()

@@ -218,6 +218,9 @@ public enum DBProxyStatus: String, Codable, CustomStringConvertible {
     case incompatibleNetwork = "incompatible-network"
     case insufficientResourceLimits = "insufficient-resource-limits"
     case modifying
+    case reactivating
+    case suspended
+    case suspending
 
     public var description: String {
         return rawValue
@@ -286,6 +289,7 @@ public typealias EC2SecurityGroupList = [EC2SecurityGroup]
  */
 public enum EngineFamily: String, Codable, CustomStringConvertible {
     case mysql = "MYSQL"
+    case postgresql = "POSTGRESQL"
 
     public var description: String {
         return rawValue
@@ -612,9 +616,40 @@ public typealias TagList = [Tag]
 public typealias TargetGroupList = [DBProxyTargetGroup]
 
 /**
+ Enumeration restricting the values of the TargetHealthReason field.
+ */
+public enum TargetHealthReason: String, Codable, CustomStringConvertible {
+    case authFailure = "AUTH_FAILURE"
+    case connectionFailed = "CONNECTION_FAILED"
+    case pendingProxyCapacity = "PENDING_PROXY_CAPACITY"
+    case unreachable = "UNREACHABLE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TargetHealthReason = .authFailure
+}
+
+/**
  Type definition for the TargetList field.
  */
 public typealias TargetList = [DBProxyTarget]
+
+/**
+ Enumeration restricting the values of the TargetState field.
+ */
+public enum TargetState: String, Codable, CustomStringConvertible {
+    case available = "AVAILABLE"
+    case registering = "REGISTERING"
+    case unavailable = "UNAVAILABLE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TargetState = .available
+}
 
 /**
  Enumeration restricting the values of the TargetType field.
