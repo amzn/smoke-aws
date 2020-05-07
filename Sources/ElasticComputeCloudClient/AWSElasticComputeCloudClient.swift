@@ -60,6 +60,7 @@ private extension Swift.Error {
  */
 public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ElasticComputeCloudClientProtocol {
     let httpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -91,12 +92,14 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             outputListDecodingStrategy: .collapseListUsingItemTag("item"), 
             inputQueryKeyEncodeTransformStrategy: .capitalizeFirstCharacter)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -118,6 +121,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: ElasticComputeCloudOperationsReporting) {
         self.httpClient = httpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -135,7 +139,9 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+        }
     }
 
     /**

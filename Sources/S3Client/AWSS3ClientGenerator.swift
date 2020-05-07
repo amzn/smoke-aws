@@ -71,18 +71,20 @@ public struct AWSS3ClientGenerator {
 
         let clientDelegateForDataHttpClient = DataAWSHttpClientDelegate<S3Error>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
-        self.dataHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                                    endpointPort: endpointPort,
-                                                    contentType: contentType,
-                                                    clientDelegate: clientDelegateForDataHttpClient,
-                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                                    eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.dataHttpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegateForDataHttpClient,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion ?? .us_east_1
         self.service = service
         self.target = target

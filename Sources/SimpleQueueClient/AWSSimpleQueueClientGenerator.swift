@@ -74,18 +74,20 @@ public struct AWSSimpleQueueClientGenerator {
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
-        self.listHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                                    endpointPort: endpointPort,
-                                                    contentType: contentType,
-                                                    clientDelegate: clientDelegateForListHttpClient,
-                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                                    eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.listHttpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegateForListHttpClient,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil

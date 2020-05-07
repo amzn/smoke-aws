@@ -65,6 +65,7 @@ private extension Swift.Error {
  */
 public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: CloudWatchClientProtocol {
     let httpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -94,12 +95,14 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
         let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: useTLS)
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -121,6 +124,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: CloudWatchOperationsReporting) {
         self.httpClient = httpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -138,7 +142,9 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+        }
     }
 
     /**

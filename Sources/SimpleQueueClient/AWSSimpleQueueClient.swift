@@ -66,6 +66,7 @@ private extension Swift.Error {
 public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleQueueClientProtocol {
     let httpClient: HTTPOperationsClient
     let listHttpClient: HTTPOperationsClient
+    let ownsHttpClients: Bool
     let awsRegion: AWSRegion
     let service: String
     let apiVersion: String
@@ -99,18 +100,21 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             outputMapDecodingStrategy: .collapseMapUsingTags(keyTag: "Key", valueTag: "Value"), 
             inputQueryMapDecodingStrategy: .separateQueryEntriesWith(keyTag: "Key", valueTag: "Value"))
 
-        self.httpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                               endpointPort: endpointPort,
-                                               contentType: contentType,
-                                               clientDelegate: clientDelegate,
-                                               connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                               eventLoopProvider: eventLoopProvider)
-        self.listHttpClient = HTTPOperationsClient(endpointHostName: endpointHostName,
-                                                    endpointPort: endpointPort,
-                                                    contentType: contentType,
-                                                    clientDelegate: clientDelegateForListHttpClient,
-                                                    connectionTimeoutSeconds: connectionTimeoutSeconds,
-                                                    eventLoopProvider: eventLoopProvider)
+        self.httpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegate,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.listHttpClient = HTTPOperationsClient(
+            endpointHostName: endpointHostName,
+            endpointPort: endpointPort,
+            contentType: contentType,
+            clientDelegate: clientDelegateForListHttpClient,
+            connectionTimeoutSeconds: connectionTimeoutSeconds,
+            eventLoopProvider: eventLoopProvider)
+        self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -132,7 +136,8 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: SimpleQueueOperationsReporting) {
         self.httpClient = httpClient
-            self.listHttpClient = listHttpClient
+        self.listHttpClient = listHttpClient
+        self.ownsHttpClients = false
         self.awsRegion = awsRegion
         self.service = service
         self.target = nil
@@ -150,8 +155,10 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      will handle being called multiple times.
      */
     public func close() throws {
-        try httpClient.close()
-        try listHttpClient.close()
+        if self.ownsHttpClients {
+            try httpClient.close()
+            try listHttpClient.close()
+        }
     }
 
     /**

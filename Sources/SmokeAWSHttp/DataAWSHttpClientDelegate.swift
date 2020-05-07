@@ -40,7 +40,7 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
     private let requiresTLS: Bool
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
     
-    public init(requiresTLS: Bool, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+    public init(requiresTLS: Bool = true, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
         self.requiresTLS = requiresTLS
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
     }
