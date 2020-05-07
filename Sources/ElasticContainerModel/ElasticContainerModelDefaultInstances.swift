@@ -1007,14 +1007,30 @@ public extension DockerVolumeConfiguration {
     }()
 }
 
+public extension EFSAuthorizationConfig {
+    /**
+     Default instance of the EFSAuthorizationConfig structure.
+     */
+    static let __default: ElasticContainerModel.EFSAuthorizationConfig = {
+        let defaultInstance = ElasticContainerModel.EFSAuthorizationConfig(
+            accessPointId: nil,
+            iam: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension EFSVolumeConfiguration {
     /**
      Default instance of the EFSVolumeConfiguration structure.
      */
     static let __default: ElasticContainerModel.EFSVolumeConfiguration = {
         let defaultInstance = ElasticContainerModel.EFSVolumeConfiguration(
+            authorizationConfig: nil,
             fileSystemId: "value",
-            rootDirectory: nil)
+            rootDirectory: nil,
+            transitEncryption: nil,
+            transitEncryptionPort: nil)
 
         return defaultInstance
     }()
@@ -2617,6 +2633,8 @@ public extension UpdateServiceRequest {
             forceNewDeployment: nil,
             healthCheckGracePeriodSeconds: nil,
             networkConfiguration: nil,
+            placementConstraints: nil,
+            placementStrategy: nil,
             platformVersion: nil,
             service: "value",
             taskDefinition: nil)

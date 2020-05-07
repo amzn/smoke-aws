@@ -4026,16 +4026,20 @@ public struct CreateInternetGatewayResult: Codable, Equatable {
 public struct CreateKeyPairRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var keyName: String
+    public var tagSpecifications: TagSpecificationList?
 
     public init(dryRun: Boolean? = nil,
-                keyName: String) {
+                keyName: String,
+                tagSpecifications: TagSpecificationList? = nil) {
         self.dryRun = dryRun
         self.keyName = keyName
+        self.tagSpecifications = tagSpecifications
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case keyName = "KeyName"
+        case tagSpecifications = "TagSpecification"
     }
 
     public func validate() throws {
@@ -4494,15 +4498,18 @@ public struct CreatePlacementGroupRequest: Codable, Equatable {
     public var groupName: String?
     public var partitionCount: Integer?
     public var strategy: PlacementStrategy?
+    public var tagSpecifications: TagSpecificationList?
 
     public init(dryRun: Boolean? = nil,
                 groupName: String? = nil,
                 partitionCount: Integer? = nil,
-                strategy: PlacementStrategy? = nil) {
+                strategy: PlacementStrategy? = nil,
+                tagSpecifications: TagSpecificationList? = nil) {
         self.dryRun = dryRun
         self.groupName = groupName
         self.partitionCount = partitionCount
         self.strategy = strategy
+        self.tagSpecifications = tagSpecifications
     }
 
     enum CodingKeys: String, CodingKey {
@@ -4510,9 +4517,26 @@ public struct CreatePlacementGroupRequest: Codable, Equatable {
         case groupName
         case partitionCount = "PartitionCount"
         case strategy
+        case tagSpecifications = "TagSpecification"
     }
 
     public func validate() throws {
+    }
+}
+
+public struct CreatePlacementGroupResult: Codable, Equatable {
+    public var placementGroup: PlacementGroup?
+
+    public init(placementGroup: PlacementGroup? = nil) {
+        self.placementGroup = placementGroup
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case placementGroup
+    }
+
+    public func validate() throws {
+        try placementGroup?.validate()
     }
 }
 
@@ -6355,17 +6379,21 @@ public struct DeleteInternetGatewayRequest: Codable, Equatable {
 
 public struct DeleteKeyPairRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var keyName: KeyPairName
+    public var keyName: KeyPairName?
+    public var keyPairId: KeyPairId?
 
     public init(dryRun: Boolean? = nil,
-                keyName: KeyPairName) {
+                keyName: KeyPairName? = nil,
+                keyPairId: KeyPairId? = nil) {
         self.dryRun = dryRun
         self.keyName = keyName
+        self.keyPairId = keyPairId
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case keyName = "KeyName"
+        case keyPairId = "KeyPairId"
     }
 
     public func validate() throws {
@@ -7572,6 +7600,61 @@ public struct DeregisterImageRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dryRun
         case imageId = "ImageId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeregisterInstanceEventNotificationAttributesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceTagAttribute: DeregisterInstanceTagAttributeRequest?
+
+    public init(dryRun: Boolean? = nil,
+                instanceTagAttribute: DeregisterInstanceTagAttributeRequest? = nil) {
+        self.dryRun = dryRun
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceTagAttribute = "InstanceTagAttribute"
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct DeregisterInstanceEventNotificationAttributesResult: Codable, Equatable {
+    public var instanceTagAttribute: InstanceTagNotificationAttribute?
+
+    public init(instanceTagAttribute: InstanceTagNotificationAttribute? = nil) {
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTagAttribute
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct DeregisterInstanceTagAttributeRequest: Codable, Equatable {
+    public var includeAllTagsOfInstance: Boolean?
+    public var instanceTagKeys: InstanceTagKeySet?
+
+    public init(includeAllTagsOfInstance: Boolean? = nil,
+                instanceTagKeys: InstanceTagKeySet? = nil) {
+        self.includeAllTagsOfInstance = includeAllTagsOfInstance
+        self.instanceTagKeys = instanceTagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case includeAllTagsOfInstance = "IncludeAllTagsOfInstance"
+        case instanceTagKeys = "InstanceTagKey"
     }
 
     public func validate() throws {
@@ -9601,6 +9684,37 @@ public struct DescribeInstanceCreditSpecificationsResult: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DescribeInstanceEventNotificationAttributesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeInstanceEventNotificationAttributesResult: Codable, Equatable {
+    public var instanceTagAttribute: InstanceTagNotificationAttribute?
+
+    public init(instanceTagAttribute: InstanceTagNotificationAttribute? = nil) {
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTagAttribute
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
     }
 }
 
@@ -17681,19 +17795,23 @@ public struct ImportKeyPairRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var keyName: String
     public var publicKeyMaterial: Blob
+    public var tagSpecifications: TagSpecificationList?
 
     public init(dryRun: Boolean? = nil,
                 keyName: String,
-                publicKeyMaterial: Blob) {
+                publicKeyMaterial: Blob,
+                tagSpecifications: TagSpecificationList? = nil) {
         self.dryRun = dryRun
         self.keyName = keyName
         self.publicKeyMaterial = publicKeyMaterial
+        self.tagSpecifications = tagSpecifications
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case keyName
         case publicKeyMaterial
+        case tagSpecifications = "TagSpecification"
     }
 
     public func validate() throws {
@@ -17703,16 +17821,24 @@ public struct ImportKeyPairRequest: Codable, Equatable {
 public struct ImportKeyPairResult: Codable, Equatable {
     public var keyFingerprint: String?
     public var keyName: String?
+    public var keyPairId: String?
+    public var tags: TagList?
 
     public init(keyFingerprint: String? = nil,
-                keyName: String? = nil) {
+                keyName: String? = nil,
+                keyPairId: String? = nil,
+                tags: TagList? = nil) {
         self.keyFingerprint = keyFingerprint
         self.keyName = keyName
+        self.keyPairId = keyPairId
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case keyFingerprint
         case keyName
+        case keyPairId
+        case tags = "tagSet"
     }
 
     public func validate() throws {
@@ -18935,6 +19061,25 @@ public struct InstanceStorageInfo: Codable, Equatable {
     }
 }
 
+public struct InstanceTagNotificationAttribute: Codable, Equatable {
+    public var includeAllTagsOfInstance: Boolean?
+    public var instanceTagKeys: InstanceTagKeySet?
+
+    public init(includeAllTagsOfInstance: Boolean? = nil,
+                instanceTagKeys: InstanceTagKeySet? = nil) {
+        self.includeAllTagsOfInstance = includeAllTagsOfInstance
+        self.instanceTagKeys = instanceTagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case includeAllTagsOfInstance
+        case instanceTagKeys = "instanceTagKeySet"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InstanceTypeInfo: Codable, Equatable {
     public var autoRecoverySupported: AutoRecoveryFlag?
     public var bareMetal: BareMetalFlag?
@@ -19275,15 +19420,18 @@ public struct KeyPair: Codable, Equatable {
     public var keyMaterial: SensitiveUserData?
     public var keyName: String?
     public var keyPairId: String?
+    public var tags: TagList?
 
     public init(keyFingerprint: String? = nil,
                 keyMaterial: SensitiveUserData? = nil,
                 keyName: String? = nil,
-                keyPairId: String? = nil) {
+                keyPairId: String? = nil,
+                tags: TagList? = nil) {
         self.keyFingerprint = keyFingerprint
         self.keyMaterial = keyMaterial
         self.keyName = keyName
         self.keyPairId = keyPairId
+        self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
@@ -19291,6 +19439,7 @@ public struct KeyPair: Codable, Equatable {
         case keyMaterial
         case keyName
         case keyPairId
+        case tags = "tagSet"
     }
 
     public func validate() throws {
@@ -21780,25 +21929,34 @@ public struct ModifySpotFleetRequestResponse: Codable, Equatable {
 
 public struct ModifySubnetAttributeRequest: Codable, Equatable {
     public var assignIpv6AddressOnCreation: AttributeBooleanValue?
+    public var customerOwnedIpv4Pool: CoipPoolId?
+    public var mapCustomerOwnedIpOnLaunch: AttributeBooleanValue?
     public var mapPublicIpOnLaunch: AttributeBooleanValue?
     public var subnetId: SubnetId
 
     public init(assignIpv6AddressOnCreation: AttributeBooleanValue? = nil,
+                customerOwnedIpv4Pool: CoipPoolId? = nil,
+                mapCustomerOwnedIpOnLaunch: AttributeBooleanValue? = nil,
                 mapPublicIpOnLaunch: AttributeBooleanValue? = nil,
                 subnetId: SubnetId) {
         self.assignIpv6AddressOnCreation = assignIpv6AddressOnCreation
+        self.customerOwnedIpv4Pool = customerOwnedIpv4Pool
+        self.mapCustomerOwnedIpOnLaunch = mapCustomerOwnedIpOnLaunch
         self.mapPublicIpOnLaunch = mapPublicIpOnLaunch
         self.subnetId = subnetId
     }
 
     enum CodingKeys: String, CodingKey {
         case assignIpv6AddressOnCreation = "AssignIpv6AddressOnCreation"
+        case customerOwnedIpv4Pool = "CustomerOwnedIpv4Pool"
+        case mapCustomerOwnedIpOnLaunch = "MapCustomerOwnedIpOnLaunch"
         case mapPublicIpOnLaunch = "MapPublicIpOnLaunch"
         case subnetId
     }
 
     public func validate() throws {
         try assignIpv6AddressOnCreation?.validate()
+        try mapCustomerOwnedIpOnLaunch?.validate()
         try mapPublicIpOnLaunch?.validate()
     }
 }
@@ -24502,6 +24660,61 @@ public struct RegisterImageResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case imageId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RegisterInstanceEventNotificationAttributesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceTagAttribute: RegisterInstanceTagAttributeRequest?
+
+    public init(dryRun: Boolean? = nil,
+                instanceTagAttribute: RegisterInstanceTagAttributeRequest? = nil) {
+        self.dryRun = dryRun
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceTagAttribute = "InstanceTagAttribute"
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct RegisterInstanceEventNotificationAttributesResult: Codable, Equatable {
+    public var instanceTagAttribute: InstanceTagNotificationAttribute?
+
+    public init(instanceTagAttribute: InstanceTagNotificationAttribute? = nil) {
+        self.instanceTagAttribute = instanceTagAttribute
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTagAttribute
+    }
+
+    public func validate() throws {
+        try instanceTagAttribute?.validate()
+    }
+}
+
+public struct RegisterInstanceTagAttributeRequest: Codable, Equatable {
+    public var includeAllTagsOfInstance: Boolean?
+    public var instanceTagKeys: InstanceTagKeySet?
+
+    public init(includeAllTagsOfInstance: Boolean? = nil,
+                instanceTagKeys: InstanceTagKeySet? = nil) {
+        self.includeAllTagsOfInstance = includeAllTagsOfInstance
+        self.instanceTagKeys = instanceTagKeys
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case includeAllTagsOfInstance = "IncludeAllTagsOfInstance"
+        case instanceTagKeys = "InstanceTagKey"
     }
 
     public func validate() throws {
@@ -28730,8 +28943,10 @@ public struct Subnet: Codable, Equatable {
     public var availabilityZoneId: String?
     public var availableIpAddressCount: Integer?
     public var cidrBlock: String?
+    public var customerOwnedIpv4Pool: CoipPoolId?
     public var defaultForAz: Boolean?
     public var ipv6CidrBlockAssociationSet: SubnetIpv6CidrBlockAssociationSet?
+    public var mapCustomerOwnedIpOnLaunch: Boolean?
     public var mapPublicIpOnLaunch: Boolean?
     public var outpostArn: String?
     public var ownerId: String?
@@ -28746,8 +28961,10 @@ public struct Subnet: Codable, Equatable {
                 availabilityZoneId: String? = nil,
                 availableIpAddressCount: Integer? = nil,
                 cidrBlock: String? = nil,
+                customerOwnedIpv4Pool: CoipPoolId? = nil,
                 defaultForAz: Boolean? = nil,
                 ipv6CidrBlockAssociationSet: SubnetIpv6CidrBlockAssociationSet? = nil,
+                mapCustomerOwnedIpOnLaunch: Boolean? = nil,
                 mapPublicIpOnLaunch: Boolean? = nil,
                 outpostArn: String? = nil,
                 ownerId: String? = nil,
@@ -28761,8 +28978,10 @@ public struct Subnet: Codable, Equatable {
         self.availabilityZoneId = availabilityZoneId
         self.availableIpAddressCount = availableIpAddressCount
         self.cidrBlock = cidrBlock
+        self.customerOwnedIpv4Pool = customerOwnedIpv4Pool
         self.defaultForAz = defaultForAz
         self.ipv6CidrBlockAssociationSet = ipv6CidrBlockAssociationSet
+        self.mapCustomerOwnedIpOnLaunch = mapCustomerOwnedIpOnLaunch
         self.mapPublicIpOnLaunch = mapPublicIpOnLaunch
         self.outpostArn = outpostArn
         self.ownerId = ownerId
@@ -28779,8 +28998,10 @@ public struct Subnet: Codable, Equatable {
         case availabilityZoneId
         case availableIpAddressCount
         case cidrBlock
+        case customerOwnedIpv4Pool
         case defaultForAz
         case ipv6CidrBlockAssociationSet
+        case mapCustomerOwnedIpOnLaunch
         case mapPublicIpOnLaunch
         case outpostArn
         case ownerId

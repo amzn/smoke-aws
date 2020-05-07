@@ -778,6 +778,19 @@ extension CreateNetworkInterfacePermissionResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreatePlacementGroup operation in a HTTP client.
+ */
+extension CreatePlacementGroupResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreatePlacementGroupResult
+    public typealias HeadersType = CreatePlacementGroupResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreatePlacementGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateReservedInstancesListing operation in a HTTP client.
  */
 extension CreateReservedInstancesListingResult: HTTPResponseOutputProtocol {
@@ -1480,6 +1493,19 @@ extension DeprovisionByoipCidrResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeregisterInstanceEventNotificationAttributes operation in a HTTP client.
+ */
+extension DeregisterInstanceEventNotificationAttributesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeregisterInstanceEventNotificationAttributesResult
+    public typealias HeadersType = DeregisterInstanceEventNotificationAttributesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeregisterInstanceEventNotificationAttributesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeregisterTransitGatewayMulticastGroupMembers operation in a HTTP client.
  */
 extension DeregisterTransitGatewayMulticastGroupMembersResult: HTTPResponseOutputProtocol {
@@ -2021,6 +2047,19 @@ extension DescribeInstanceCreditSpecificationsResult: HTTPResponseOutputProtocol
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeInstanceCreditSpecificationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeInstanceEventNotificationAttributes operation in a HTTP client.
+ */
+extension DescribeInstanceEventNotificationAttributesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeInstanceEventNotificationAttributesResult
+    public typealias HeadersType = DescribeInstanceEventNotificationAttributesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeInstanceEventNotificationAttributesResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3997,6 +4036,19 @@ extension RegisterImageResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> RegisterImageResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RegisterInstanceEventNotificationAttributes operation in a HTTP client.
+ */
+extension RegisterInstanceEventNotificationAttributesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RegisterInstanceEventNotificationAttributesResult
+    public typealias HeadersType = RegisterInstanceEventNotificationAttributesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RegisterInstanceEventNotificationAttributesResult {
         return try bodyDecodableProvider()
     }
 }
