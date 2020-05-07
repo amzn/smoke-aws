@@ -931,7 +931,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
@@ -948,7 +948,7 @@ public struct MockRDSClient: RDSClientProtocol {
 
      - Parameters:
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func addTagsToResourceSync(
             input: RDSModel.AddTagsToResourceMessage) throws {
@@ -4238,7 +4238,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The TagListMessageForListTagsForResource object or an error will be passed to this 
            callback when the operation is complete. The TagListMessageForListTagsForResource
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
@@ -4259,7 +4259,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated ListTagsForResourceMessage object being passed to this operation.
      - Returns: The TagListMessageForListTagsForResource object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func listTagsForResourceSync(
             input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
@@ -5265,7 +5265,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
+           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
@@ -5282,7 +5282,7 @@ public struct MockRDSClient: RDSClientProtocol {
 
      - Parameters:
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBSnapshotNotFound.
+     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func removeTagsFromResourceSync(
             input: RDSModel.RemoveTagsFromResourceMessage) throws {
