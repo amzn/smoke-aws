@@ -4258,6 +4258,7 @@ public struct DBProxyTarget: Codable, Equatable {
     public var port: Integer?
     public var rdsResourceId: String?
     public var targetArn: String?
+    public var targetHealth: TargetHealth?
     public var trackedClusterId: String?
     public var type: TargetType?
 
@@ -4265,12 +4266,14 @@ public struct DBProxyTarget: Codable, Equatable {
                 port: Integer? = nil,
                 rdsResourceId: String? = nil,
                 targetArn: String? = nil,
+                targetHealth: TargetHealth? = nil,
                 trackedClusterId: String? = nil,
                 type: TargetType? = nil) {
         self.endpoint = endpoint
         self.port = port
         self.rdsResourceId = rdsResourceId
         self.targetArn = targetArn
+        self.targetHealth = targetHealth
         self.trackedClusterId = trackedClusterId
         self.type = type
     }
@@ -4280,11 +4283,13 @@ public struct DBProxyTarget: Codable, Equatable {
         case port = "Port"
         case rdsResourceId = "RdsResourceId"
         case targetArn = "TargetArn"
+        case targetHealth = "TargetHealth"
         case trackedClusterId = "TrackedClusterId"
         case type = "Type"
     }
 
     public func validate() throws {
+        try targetHealth?.validate()
     }
 }
 
@@ -6712,6 +6717,7 @@ public struct DescribeOptionGroupsMessage: Codable, Equatable {
 }
 
 public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable {
+    public var availabilityZoneGroup: String?
     public var dBInstanceClass: String?
     public var engine: String
     public var engineVersion: String?
@@ -6721,7 +6727,8 @@ public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable {
     public var maxRecords: IntegerOptional?
     public var vpc: BooleanOptional?
 
-    public init(dBInstanceClass: String? = nil,
+    public init(availabilityZoneGroup: String? = nil,
+                dBInstanceClass: String? = nil,
                 engine: String,
                 engineVersion: String? = nil,
                 filters: FilterList? = nil,
@@ -6729,6 +6736,7 @@ public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable {
                 marker: String? = nil,
                 maxRecords: IntegerOptional? = nil,
                 vpc: BooleanOptional? = nil) {
+        self.availabilityZoneGroup = availabilityZoneGroup
         self.dBInstanceClass = dBInstanceClass
         self.engine = engine
         self.engineVersion = engineVersion
@@ -6740,6 +6748,7 @@ public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case availabilityZoneGroup = "AvailabilityZoneGroup"
         case dBInstanceClass = "DBInstanceClass"
         case engine = "Engine"
         case engineVersion = "EngineVersion"
@@ -9688,6 +9697,7 @@ public struct OptionVersion: Codable, Equatable {
 }
 
 public struct OrderableDBInstanceOption: Codable, Equatable {
+    public var availabilityZoneGroup: String?
     public var availabilityZones: AvailabilityZoneList?
     public var availableProcessorFeatures: AvailableProcessorFeatureList?
     public var dBInstanceClass: String?
@@ -9713,7 +9723,8 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
     public var supportsStorageEncryption: Boolean?
     public var vpc: Boolean?
 
-    public init(availabilityZones: AvailabilityZoneList? = nil,
+    public init(availabilityZoneGroup: String? = nil,
+                availabilityZones: AvailabilityZoneList? = nil,
                 availableProcessorFeatures: AvailableProcessorFeatureList? = nil,
                 dBInstanceClass: String? = nil,
                 engine: String? = nil,
@@ -9737,6 +9748,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
                 supportsStorageAutoscaling: BooleanOptional? = nil,
                 supportsStorageEncryption: Boolean? = nil,
                 vpc: Boolean? = nil) {
+        self.availabilityZoneGroup = availabilityZoneGroup
         self.availabilityZones = availabilityZones
         self.availableProcessorFeatures = availableProcessorFeatures
         self.dBInstanceClass = dBInstanceClass
@@ -9764,6 +9776,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case availabilityZoneGroup = "AvailabilityZoneGroup"
         case availabilityZones = "AvailabilityZones"
         case availableProcessorFeatures = "AvailableProcessorFeatures"
         case dBInstanceClass = "DBInstanceClass"
@@ -12566,6 +12579,29 @@ public struct TagListMessageForListTagsForResource: Codable, Equatable {
 
     public func validate() throws {
         try listTagsForResourceResult.validate()
+    }
+}
+
+public struct TargetHealth: Codable, Equatable {
+    public var description: String?
+    public var reason: TargetHealthReason?
+    public var state: TargetState?
+
+    public init(description: String? = nil,
+                reason: TargetHealthReason? = nil,
+                state: TargetState? = nil) {
+        self.description = description
+        self.reason = reason
+        self.state = state
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case description = "Description"
+        case reason = "Reason"
+        case state = "State"
+    }
+
+    public func validate() throws {
     }
 }
 

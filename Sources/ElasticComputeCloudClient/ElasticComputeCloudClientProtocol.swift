@@ -354,10 +354,10 @@ public protocol ElasticComputeCloudClientProtocol {
             _ input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreatePlacementGroupSyncType = (
-            _ input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ()
+            _ input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ElasticComputeCloudModel.CreatePlacementGroupResult
     typealias CreatePlacementGroupAsyncType = (
             _ input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
-            _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreatePlacementGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateReservedInstancesListingSyncType = (
             _ input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult
     typealias CreateReservedInstancesListingAsyncType = (
@@ -3588,21 +3588,24 @@ public protocol ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The CreatePlacementGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The CreatePlacementGroupResult
+           object will be validated before being returned to caller.
      */
     func createPlacementGroupAsync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws
+            completion: @escaping (Result<ElasticComputeCloudModel.CreatePlacementGroupResult, ElasticComputeCloudError>) -> ()) throws
 
     /**
      Invokes the CreatePlacementGroup operation waiting for the response before returning.
 
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
+     - Returns: The CreatePlacementGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     func createPlacementGroupSync(
-            input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws
+            input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ElasticComputeCloudModel.CreatePlacementGroupResult
 
     /**
      Invokes the CreateReservedInstancesListing operation returning immediately and passing the response to a callback.

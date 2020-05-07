@@ -2351,7 +2351,8 @@ public extension CreateKeyPairRequest {
     static let __default: ElasticComputeCloudModel.CreateKeyPairRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateKeyPairRequest(
             dryRun: nil,
-            keyName: "value")
+            keyName: "value",
+            tagSpecifications: nil)
 
         return defaultInstance
     }()
@@ -2614,7 +2615,20 @@ public extension CreatePlacementGroupRequest {
             dryRun: nil,
             groupName: nil,
             partitionCount: nil,
-            strategy: nil)
+            strategy: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreatePlacementGroupResult {
+    /**
+     Default instance of the CreatePlacementGroupResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreatePlacementGroupResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreatePlacementGroupResult(
+            placementGroup: nil)
 
         return defaultInstance
     }()
@@ -3706,7 +3720,8 @@ public extension DeleteKeyPairRequest {
     static let __default: ElasticComputeCloudModel.DeleteKeyPairRequest = {
         let defaultInstance = ElasticComputeCloudModel.DeleteKeyPairRequest(
             dryRun: nil,
-            keyName: "value")
+            keyName: nil,
+            keyPairId: nil)
 
         return defaultInstance
     }()
@@ -10406,7 +10421,8 @@ public extension ImportKeyPairRequest {
         let defaultInstance = ElasticComputeCloudModel.ImportKeyPairRequest(
             dryRun: nil,
             keyName: "value",
-            publicKeyMaterial: Data())
+            publicKeyMaterial: Data(),
+            tagSpecifications: nil)
 
         return defaultInstance
     }()
@@ -10419,7 +10435,9 @@ public extension ImportKeyPairResult {
     static let __default: ElasticComputeCloudModel.ImportKeyPairResult = {
         let defaultInstance = ElasticComputeCloudModel.ImportKeyPairResult(
             keyFingerprint: nil,
-            keyName: nil)
+            keyName: nil,
+            keyPairId: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -11218,7 +11236,8 @@ public extension KeyPair {
             keyFingerprint: nil,
             keyMaterial: nil,
             keyName: nil,
-            keyPairId: nil)
+            keyPairId: nil,
+            tags: nil)
 
         return defaultInstance
     }()
@@ -12607,6 +12626,8 @@ public extension ModifySubnetAttributeRequest {
     static let __default: ElasticComputeCloudModel.ModifySubnetAttributeRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifySubnetAttributeRequest(
             assignIpv6AddressOnCreation: nil,
+            customerOwnedIpv4Pool: nil,
+            mapCustomerOwnedIpOnLaunch: nil,
             mapPublicIpOnLaunch: nil,
             subnetId: "value")
 
@@ -16290,8 +16311,10 @@ public extension Subnet {
             availabilityZoneId: nil,
             availableIpAddressCount: nil,
             cidrBlock: nil,
+            customerOwnedIpv4Pool: nil,
             defaultForAz: nil,
             ipv6CidrBlockAssociationSet: nil,
+            mapCustomerOwnedIpOnLaunch: nil,
             mapPublicIpOnLaunch: nil,
             outpostArn: nil,
             ownerId: nil,

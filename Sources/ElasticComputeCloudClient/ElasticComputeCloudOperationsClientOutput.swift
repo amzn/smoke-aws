@@ -778,6 +778,19 @@ extension CreateNetworkInterfacePermissionResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreatePlacementGroup operation in a HTTP client.
+ */
+extension CreatePlacementGroupResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreatePlacementGroupResult
+    public typealias HeadersType = CreatePlacementGroupResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreatePlacementGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateReservedInstancesListing operation in a HTTP client.
  */
 extension CreateReservedInstancesListingResult: HTTPResponseOutputProtocol {

@@ -4887,17 +4887,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The CreatePlacementGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The CreatePlacementGroupResult
+           object will be validated before being returned to caller.
      */
     public func createPlacementGroupAsync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.CreatePlacementGroupResult, ElasticComputeCloudError>) -> ()) throws {
         if let createPlacementGroupAsyncOverride = createPlacementGroupAsyncOverride {
             return try createPlacementGroupAsyncOverride(input, completion)
         }
 
-        completion(nil)
+        let result = CreatePlacementGroupResult.__default
+        
+        completion(.success(result))
     }
 
     /**
@@ -4905,13 +4908,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated CreatePlacementGroupRequest object being passed to this operation.
+     - Returns: The CreatePlacementGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func createPlacementGroupSync(
-            input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws {
+            input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ElasticComputeCloudModel.CreatePlacementGroupResult {
         if let createPlacementGroupSyncOverride = createPlacementGroupSyncOverride {
             return try createPlacementGroupSyncOverride(input)
         }
 
+        return CreatePlacementGroupResult.__default
     }
 
     /**
