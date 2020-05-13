@@ -29,6 +29,12 @@ let package = Package(
             name: "CloudWatchModel",
             targets: ["CloudWatchModel"]),
         .library(
+            name: "CloudformationClient",
+            targets: ["CloudformationClient"]),
+        .library(
+            name: "CloudformationModel",
+            targets: ["CloudformationModel"]),
+        .library(
             name: "DynamoDBClient",
             targets: ["DynamoDBClient"]),
         .library(
@@ -116,6 +122,12 @@ let package = Package(
             dependencies: ["CloudWatchModel", "SmokeAWSHttp"]),
         .target(
             name: "CloudWatchModel",
+            dependencies: ["Logging"]),
+        .target(
+            name: "CloudformationClient",
+            dependencies: ["CloudformationModel", "SmokeAWSHttp"]),
+        .target(
+            name: "CloudformationModel",
             dependencies: ["Logging"]),
         .target(
             name: "DynamoDBClient",
