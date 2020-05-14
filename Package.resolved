@@ -14,9 +14,9 @@
         "package": "smoke-http",
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
-          "branch": "list_coding_strategy",
-          "revision": "566f0f47c02a56a91269a91faa4019089af6bd50",
-          "version": null
+          "branch": null,
+          "revision": "9a129aa70d660b1eca03b19f3910d9f7ac0d0444",
+          "version": "2.1.0"
         }
       },
       {
@@ -26,6 +26,15 @@
           "branch": null,
           "revision": "d67ac68d09a95443303e9d6e37b34e7ba101d5f1",
           "version": "1.0.1"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log",
+        "state": {
+          "branch": null,
+          "revision": "74d7b91ceebc85daf387ebb206003f78813f71aa",
+          "version": "1.2.0"
         }
       },
       {
