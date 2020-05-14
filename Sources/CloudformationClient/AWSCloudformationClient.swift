@@ -88,7 +88,8 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudformationModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudformationModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
-        let clientDelegate = XMLAWSHttpClientDelegate<CloudformationError>(requiresTLS: useTLS)
+        let clientDelegate = XMLAWSHttpClientDelegate<CloudformationError>(requiresTLS: useTLS,
+            outputListDecodingStrategy: .collapseListUsingItemTag("member"))
 
         self.httpClient = HTTPOperationsClient(
             endpointHostName: endpointHostName,
