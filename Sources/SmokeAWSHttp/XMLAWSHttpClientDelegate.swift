@@ -126,6 +126,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
     private let outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy?
     private let outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy?
     private let inputQueryMapEncodingStrategy: QueryEncoder.MapEncodingStrategy
+    private let inputQueryListEncodingStrategy: QueryEncoder.ListEncodingStrategy
     private let inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy
     private let inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy
     
@@ -133,6 +134,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                 outputListDecodingStrategy: XMLDecoder.ListDecodingStrategy? = nil,
                 outputMapDecodingStrategy: XMLDecoder.MapDecodingStrategy? = nil,
                 inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy = .singleQueryEntry,
+                inputQueryListEncodingStrategy: QueryEncoder.ListEncodingStrategy = .expandListWithIndex,
                 inputQueryKeyEncodingStrategy: QueryEncoder.KeyEncodingStrategy = .useAsShapeSeparator("."),
                 inputQueryKeyEncodeTransformStrategy: QueryEncoder.KeyEncodeTransformStrategy = .none) {
         self.requiresTLS = requiresTLS
@@ -140,6 +142,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         self.outputListDecodingStrategy = outputListDecodingStrategy
         self.outputMapDecodingStrategy = outputMapDecodingStrategy
         self.inputQueryMapEncodingStrategy = inputQueryMapDecodingStrategy
+        self.inputQueryListEncodingStrategy = inputQueryListEncodingStrategy
         self.inputQueryKeyEncodingStrategy = inputQueryKeyEncodingStrategy
         self.inputQueryKeyEncodeTransformStrategy = inputQueryKeyEncodeTransformStrategy
     }
@@ -208,9 +211,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             let query: String
             if let queryEncodable = input.queryEncodable {
                 let queryEncoder = QueryEncoder(
-                    keyEncodingStrategy: inputQueryKeyEncodingStrategy,
-                    mapEncodingStrategy: inputQueryMapEncodingStrategy,
-                    keyEncodeTransformStrategy: inputQueryKeyEncodeTransformStrategy)
+                    keyEncodingStrategy: self.inputQueryKeyEncodingStrategy,
+                    mapEncodingStrategy: self.inputQueryMapEncodingStrategy,
+                    listEncodingStrategy: self.inputQueryListEncodingStrategy,
+                    keyEncodeTransformStrategy: self.inputQueryKeyEncodeTransformStrategy)
   
                 let encodedQuery = try queryEncoder.encode(queryEncodable,
                                                            allowedCharacterSet: .uriAWSQueryValueAllowed)
