@@ -93,7 +93,9 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
-        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: useTLS)
+        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: useTLS,
+            outputListDecodingStrategy: .collapseListUsingItemTag("member"), 
+            inputQueryListEncodingStrategy: .expandListWithIndexAndItemTag(itemTag: "member"))
 
         self.httpClient = HTTPOperationsClient(
             endpointHostName: endpointHostName,
