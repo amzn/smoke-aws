@@ -45,18 +45,18 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     
     public func handleOutwardsRequestSuccess(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response, bodyData: Data?) {
-        let logLine = getLogLine(successfullyCompletedRequest: true, response: response)
+        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData)
         
         logger.info("\(logLine)")
         
         if let bodyData = bodyData {
-            logger.debug("Outgoing response body with size \(bodyData.count): \(bodyData.debugString)")
+            logger.debug("Outgoing response body: \(bodyData.debugString)")
         }
     }
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response?, bodyData: Data?, error: Error) {
-        let logLine = getLogLine(successfullyCompletedRequest: false, response: response)
+        let logLine = getLogLine(successfullyCompletedRequest: false, response: response, bodyData: bodyData)
         
         // if this is a client error, only log as a warning as
         // it isn't definitely an error
@@ -67,11 +67,11 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         }
         
         if let bodyData = bodyData {
-            logger.debug("Outgoing response body with size \(bodyData.count): \(bodyData.debugString)")
+            logger.debug("Outgoing response body: \(bodyData.debugString)")
         }
     }
     
-    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?) -> String {
+    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?) -> String {
         var logElements: [String] = []
         let completionString = successfullyCompletedRequest ? "Successfully" : "Unsuccessfully"
         logElements.append("\(completionString) completed outgoing request.")
@@ -89,6 +89,10 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         
         if let id2s = response?.headers[xAmzId2], !id2s.isEmpty {
             logElements.append("Returned \(xAmzId2) header '\(id2s.joined(separator: ","))'")
+        }
+        
+        if let bodyData = bodyData {
+            logElements.append("Returned body with size \(bodyData.count)")
         }
         
         return logElements.joined(separator: " ")
