@@ -29,6 +29,12 @@ let package = Package(
             name: "CloudWatchModel",
             targets: ["CloudWatchModel"]),
         .library(
+            name: "CloudformationClient",
+            targets: ["CloudformationClient"]),
+        .library(
+            name: "CloudformationModel",
+            targets: ["CloudformationModel"]),
+        .library(
             name: "DynamoDBClient",
             targets: ["DynamoDBClient"]),
         .library(
@@ -107,7 +113,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0"..<"3.0.0"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.4.1"),
-        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.0.0"),
+        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.1.0"),
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", from: "1.0.0"),
     ],
     targets: [
@@ -116,6 +122,12 @@ let package = Package(
             dependencies: ["CloudWatchModel", "SmokeAWSHttp"]),
         .target(
             name: "CloudWatchModel",
+            dependencies: ["Logging"]),
+        .target(
+            name: "CloudformationClient",
+            dependencies: ["CloudformationModel", "SmokeAWSHttp"]),
+        .target(
+            name: "CloudformationModel",
             dependencies: ["Logging"]),
         .target(
             name: "DynamoDBClient",
