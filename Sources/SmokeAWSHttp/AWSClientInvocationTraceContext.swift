@@ -48,7 +48,10 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         let logLine = getLogLine(successfullyCompletedRequest: true, response: response)
         
         logger.info("\(logLine)")
-        logger.debug("Outgoing response body: \(bodyData.debugString)")
+        
+        if let bodyData = bodyData {
+            logger.debug("Outgoing response body with size \(bodyData.count): \(bodyData.debugString)")
+        }
     }
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
@@ -62,7 +65,10 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         } else {
             logger.error("\(logLine)")
         }
-        logger.debug("Outgoing response body: \(bodyData.debugString)")
+        
+        if let bodyData = bodyData {
+            logger.debug("Outgoing response body with size \(bodyData.count): \(bodyData.debugString)")
+        }
     }
     
     private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?) -> String {
