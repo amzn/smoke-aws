@@ -11,21 +11,21 @@
         }
       },
       {
-        "package": "smoke-http",
+        "package": "Cryptor",
+        "repositoryURL": "https://github.com/IBM-Swift/BlueCryptor.git",
+        "state": {
+          "branch": null,
+          "revision": "12d2bf3ec7207ec3cd004b9582f69ef5fae1da3b",
+          "version": "1.0.32"
+        }
+      },
+      {
+        "package": "SmokeHTTP",
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
           "branch": null,
           "revision": "9a129aa70d660b1eca03b19f3910d9f7ac0d0444",
           "version": "2.1.0"
-        }
-      },
-      {
-        "package": "swift-crypto",
-        "repositoryURL": "https://github.com/apple/swift-crypto.git",
-        "state": {
-          "branch": null,
-          "revision": "d67ac68d09a95443303e9d6e37b34e7ba101d5f1",
-          "version": "1.0.1"
         }
       },
       {
