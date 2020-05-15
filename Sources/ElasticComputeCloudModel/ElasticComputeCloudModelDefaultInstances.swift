@@ -2381,7 +2381,8 @@ public extension CreateLaunchTemplateResult {
      */
     static let __default: ElasticComputeCloudModel.CreateLaunchTemplateResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateLaunchTemplateResult(
-            launchTemplate: nil)
+            launchTemplate: nil,
+            warning: nil)
 
         return defaultInstance
     }()
@@ -2411,7 +2412,8 @@ public extension CreateLaunchTemplateVersionResult {
      */
     static let __default: ElasticComputeCloudModel.CreateLaunchTemplateVersionResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateLaunchTemplateVersionResult(
-            launchTemplateVersion: nil)
+            launchTemplateVersion: nil,
+            warning: nil)
 
         return defaultInstance
     }()
@@ -2452,6 +2454,7 @@ public extension CreateLocalGatewayRouteTableVpcAssociationRequest {
         let defaultInstance = ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest(
             dryRun: nil,
             localGatewayRouteTableId: "value",
+            tagSpecifications: nil,
             vpcId: "value")
 
         return defaultInstance
@@ -17367,6 +17370,31 @@ public extension VCpuInfo {
             defaultVCpus: nil,
             validCores: nil,
             validThreadsPerCore: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ValidationError {
+    /**
+     Default instance of the ValidationError structure.
+     */
+    static let __default: ElasticComputeCloudModel.ValidationError = {
+        let defaultInstance = ElasticComputeCloudModel.ValidationError(
+            code: nil,
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ValidationWarning {
+    /**
+     Default instance of the ValidationWarning structure.
+     */
+    static let __default: ElasticComputeCloudModel.ValidationWarning = {
+        let defaultInstance = ElasticComputeCloudModel.ValidationWarning(
+            errors: nil)
 
         return defaultInstance
     }()

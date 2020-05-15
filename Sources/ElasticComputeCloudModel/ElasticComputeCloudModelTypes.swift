@@ -1579,6 +1579,11 @@ public enum EndDateType: String, Codable, CustomStringConvertible {
 public typealias EndpointSet = [ClientVpnEndpoint]
 
 /**
+ Type definition for the ErrorSet field.
+ */
+public typealias ErrorSet = [ValidationError]
+
+/**
  Enumeration restricting the values of the EventCode field.
  */
 public enum EventCode: String, Codable, CustomStringConvertible {
@@ -2757,6 +2762,15 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5n8xlarge = "m5n.8xlarge"
     case m5nLarge = "m5n.large"
     case m5nXlarge = "m5n.xlarge"
+    case m6g12xlarge = "m6g.12xlarge"
+    case m6g16xlarge = "m6g.16xlarge"
+    case m6g2xlarge = "m6g.2xlarge"
+    case m6g4xlarge = "m6g.4xlarge"
+    case m6g8xlarge = "m6g.8xlarge"
+    case m6gLarge = "m6g.large"
+    case m6gMedium = "m6g.medium"
+    case m6gMetal = "m6g.metal"
+    case m6gXlarge = "m6g.xlarge"
     case p216xlarge = "p2.16xlarge"
     case p28xlarge = "p2.8xlarge"
     case p2Xlarge = "p2.xlarge"
