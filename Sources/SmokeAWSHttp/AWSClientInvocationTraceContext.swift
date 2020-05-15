@@ -21,6 +21,7 @@ import AsyncHTTPClient
 import NIOHTTP1
 
 private let xAmzRequestId = "x-amz-request-id"
+private let xAmzRequestIdAlt = "x-amzn-RequestId"    
 private let xAmzId2 = "x-amz-id-2"
 
 /**
@@ -36,26 +37,35 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     
     public func handleOutwardsRequestStart(method: HTTPMethod, uri: String, logger: Logger, internalRequestId: String,
                                            headers: inout HTTPHeaders, bodyData: Data) -> String {
-        logger.debug("Starting outgoing \(method) request to endpoint '\(uri)' with body: \(bodyData.debugString)")
+        logger.info("Starting outgoing \(method) request to endpoint '\(uri)'.")
+        logger.debug("Outgoing request body: \(bodyData.debugString)")
         
         return ""
     }
     
     public func handleOutwardsRequestSuccess(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response, bodyData: Data?) {
-        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData)
+        let logLine = getLogLine(successfullyCompletedRequest: true, response: response)
         
-        logger.debug("\(logLine)")
+        logger.info("\(logLine)")
+        logger.debug("Outgoing response body: \(bodyData.debugString)")
     }
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response?, bodyData: Data?, error: Error) {
-        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData)
+        let logLine = getLogLine(successfullyCompletedRequest: false, response: response)
         
-        logger.error("\(logLine)")
+        // if this is a client error, only log as a warning as
+        // it isn't definitely an error
+        if let response = response, response.status.code >= 400 && response.status.code < 500 {
+            logger.warning("\(logLine)")
+        } else {
+            logger.error("\(logLine)")
+        }
+        logger.debug("Outgoing response body: \(bodyData.debugString)")
     }
     
-    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?) -> String {
+    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?) -> String {
         var logElements: [String] = []
         let completionString = successfullyCompletedRequest ? "Successfully" : "Unsuccessfully"
         logElements.append("\(completionString) completed outgoing request.")
@@ -64,16 +74,15 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
             logElements.append("Returned status code: \(code)")
         }
         
+        // check the variants of request id
         if let requestIds = response?.headers[xAmzRequestId], !requestIds.isEmpty {
+            logElements.append("Returned \(xAmzRequestId) header '\(requestIds.joined(separator: ","))'")
+        } else if let requestIds = response?.headers[xAmzRequestIdAlt], !requestIds.isEmpty {
             logElements.append("Returned \(xAmzRequestId) header '\(requestIds.joined(separator: ","))'")
         }
         
         if let id2s = response?.headers[xAmzId2], !id2s.isEmpty {
             logElements.append("Returned \(xAmzId2) header '\(id2s.joined(separator: ","))'")
-        }
-        
-        if let bodyData = bodyData {
-            logElements.append("Returned body: \(bodyData.debugString)")
         }
         
         return logElements.joined(separator: " ")
