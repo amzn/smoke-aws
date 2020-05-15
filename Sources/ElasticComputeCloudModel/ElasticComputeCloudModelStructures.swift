@@ -4086,17 +4086,22 @@ public struct CreateLaunchTemplateRequest: Codable, Equatable {
 
 public struct CreateLaunchTemplateResult: Codable, Equatable {
     public var launchTemplate: LaunchTemplate?
+    public var warning: ValidationWarning?
 
-    public init(launchTemplate: LaunchTemplate? = nil) {
+    public init(launchTemplate: LaunchTemplate? = nil,
+                warning: ValidationWarning? = nil) {
         self.launchTemplate = launchTemplate
+        self.warning = warning
     }
 
     enum CodingKeys: String, CodingKey {
         case launchTemplate
+        case warning
     }
 
     public func validate() throws {
         try launchTemplate?.validate()
+        try warning?.validate()
     }
 }
 
@@ -4144,17 +4149,22 @@ public struct CreateLaunchTemplateVersionRequest: Codable, Equatable {
 
 public struct CreateLaunchTemplateVersionResult: Codable, Equatable {
     public var launchTemplateVersion: LaunchTemplateVersion?
+    public var warning: ValidationWarning?
 
-    public init(launchTemplateVersion: LaunchTemplateVersion? = nil) {
+    public init(launchTemplateVersion: LaunchTemplateVersion? = nil,
+                warning: ValidationWarning? = nil) {
         self.launchTemplateVersion = launchTemplateVersion
+        self.warning = warning
     }
 
     enum CodingKeys: String, CodingKey {
         case launchTemplateVersion
+        case warning
     }
 
     public func validate() throws {
         try launchTemplateVersion?.validate()
+        try warning?.validate()
     }
 }
 
@@ -4204,19 +4214,23 @@ public struct CreateLocalGatewayRouteResult: Codable, Equatable {
 public struct CreateLocalGatewayRouteTableVpcAssociationRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var localGatewayRouteTableId: LocalGatewayRoutetableId
+    public var tagSpecifications: TagSpecificationList?
     public var vpcId: VpcId
 
     public init(dryRun: Boolean? = nil,
                 localGatewayRouteTableId: LocalGatewayRoutetableId,
+                tagSpecifications: TagSpecificationList? = nil,
                 vpcId: VpcId) {
         self.dryRun = dryRun
         self.localGatewayRouteTableId = localGatewayRouteTableId
+        self.tagSpecifications = tagSpecifications
         self.vpcId = vpcId
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun = "DryRun"
         case localGatewayRouteTableId = "LocalGatewayRouteTableId"
+        case tagSpecifications = "TagSpecification"
         case vpcId = "VpcId"
     }
 
@@ -30894,6 +30908,40 @@ public struct VCpuInfo: Codable, Equatable {
         case defaultVCpus
         case validCores
         case validThreadsPerCore
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ValidationError: Codable, Equatable {
+    public var code: String?
+    public var message: String?
+
+    public init(code: String? = nil,
+                message: String? = nil) {
+        self.code = code
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case code
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ValidationWarning: Codable, Equatable {
+    public var errors: ErrorSet?
+
+    public init(errors: ErrorSet? = nil) {
+        self.errors = errors
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case errors = "errorSet"
     }
 
     public func validate() throws {
