@@ -1668,6 +1668,7 @@ public struct DescribeTypeOutput: Codable, Equatable {
     public var description: Description?
     public var documentationUrl: OptionalSecureUrl?
     public var executionRoleArn: RoleArn?
+    public var isDefaultVersion: IsDefaultVersion?
     public var lastUpdated: Timestamp?
     public var loggingConfig: LoggingConfig?
     public var provisioningType: ProvisioningType?
@@ -1684,6 +1685,7 @@ public struct DescribeTypeOutput: Codable, Equatable {
                 description: Description? = nil,
                 documentationUrl: OptionalSecureUrl? = nil,
                 executionRoleArn: RoleArn? = nil,
+                isDefaultVersion: IsDefaultVersion? = nil,
                 lastUpdated: Timestamp? = nil,
                 loggingConfig: LoggingConfig? = nil,
                 provisioningType: ProvisioningType? = nil,
@@ -1699,6 +1701,7 @@ public struct DescribeTypeOutput: Codable, Equatable {
         self.description = description
         self.documentationUrl = documentationUrl
         self.executionRoleArn = executionRoleArn
+        self.isDefaultVersion = isDefaultVersion
         self.lastUpdated = lastUpdated
         self.loggingConfig = loggingConfig
         self.provisioningType = provisioningType
@@ -1717,6 +1720,7 @@ public struct DescribeTypeOutput: Codable, Equatable {
         case description = "Description"
         case documentationUrl = "DocumentationUrl"
         case executionRoleArn = "ExecutionRoleArn"
+        case isDefaultVersion = "IsDefaultVersion"
         case lastUpdated = "LastUpdated"
         case loggingConfig = "LoggingConfig"
         case provisioningType = "ProvisioningType"
@@ -4900,6 +4904,7 @@ public struct TypeSummary: Codable, Equatable {
 public struct TypeVersionSummary: Codable, Equatable {
     public var arn: TypeArn?
     public var description: Description?
+    public var isDefaultVersion: IsDefaultVersion?
     public var timeCreated: Timestamp?
     public var type: RegistryType?
     public var typeName: TypeName?
@@ -4907,12 +4912,14 @@ public struct TypeVersionSummary: Codable, Equatable {
 
     public init(arn: TypeArn? = nil,
                 description: Description? = nil,
+                isDefaultVersion: IsDefaultVersion? = nil,
                 timeCreated: Timestamp? = nil,
                 type: RegistryType? = nil,
                 typeName: TypeName? = nil,
                 versionId: TypeVersionId? = nil) {
         self.arn = arn
         self.description = description
+        self.isDefaultVersion = isDefaultVersion
         self.timeCreated = timeCreated
         self.type = type
         self.typeName = typeName
@@ -4922,6 +4929,7 @@ public struct TypeVersionSummary: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case arn = "Arn"
         case description = "Description"
+        case isDefaultVersion = "IsDefaultVersion"
         case timeCreated = "TimeCreated"
         case type = "Type"
         case typeName = "TypeName"

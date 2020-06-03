@@ -292,6 +292,7 @@ public extension ContainerDefinition {
             dockerSecurityOptions: nil,
             entryPoint: nil,
             environment: nil,
+            environmentFiles: nil,
             essential: nil,
             extraHosts: nil,
             firelensConfiguration: nil,
@@ -375,6 +376,7 @@ public extension ContainerOverride {
             command: nil,
             cpu: nil,
             environment: nil,
+            environmentFiles: nil,
             memory: nil,
             memoryReservation: nil,
             name: nil,
@@ -1031,6 +1033,19 @@ public extension EFSVolumeConfiguration {
             rootDirectory: nil,
             transitEncryption: nil,
             transitEncryptionPort: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnvironmentFile {
+    /**
+     Default instance of the EnvironmentFile structure.
+     */
+    static let __default: ElasticContainerModel.EnvironmentFile = {
+        let defaultInstance = ElasticContainerModel.EnvironmentFile(
+            type: .__default,
+            value: "value")
 
         return defaultInstance
     }()

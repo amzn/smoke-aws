@@ -343,6 +343,21 @@ public typealias AvailableInstanceCapacityList = [InstanceCapacity]
 public typealias BareMetalFlag = Bool
 
 /**
+ Type definition for the BaselineBandwidthInMbps field.
+ */
+public typealias BaselineBandwidthInMbps = Int
+
+/**
+ Type definition for the BaselineIops field.
+ */
+public typealias BaselineIops = Int
+
+/**
+ Type definition for the BaselineThroughputInMBps field.
+ */
+public typealias BaselineThroughputInMBps = Double
+
+/**
  Enumeration restricting the values of the BatchState field.
  */
 public enum BatchState: String, Codable, CustomStringConvertible {
@@ -636,6 +651,7 @@ public typealias ClientVpnAuthenticationRequestList = [ClientVpnAuthenticationRe
 public enum ClientVpnAuthenticationType: String, Codable, CustomStringConvertible {
     case certificateAuthentication = "certificate-authentication"
     case directoryServiceAuthentication = "directory-service-authentication"
+    case federatedAuthentication = "federated-authentication"
 
     public var description: String {
         return rawValue
@@ -1431,6 +1447,11 @@ public enum EbsOptimizedSupport: String, Codable, CustomStringConvertible {
     
     public static let __default: EbsOptimizedSupport = .`default`
 }
+
+/**
+ Type definition for the EfaSupportedFlag field.
+ */
+public typealias EfaSupportedFlag = Bool
 
 /**
  Type definition for the EgressOnlyInternetGatewayId field.
@@ -3500,6 +3521,21 @@ public typealias MaxNetworkInterfaces = Int
  Type definition for the MaxResults field.
  */
 public typealias MaxResults = Int
+
+/**
+ Type definition for the MaximumBandwidthInMbps field.
+ */
+public typealias MaximumBandwidthInMbps = Int
+
+/**
+ Type definition for the MaximumIops field.
+ */
+public typealias MaximumIops = Int
+
+/**
+ Type definition for the MaximumThroughputInMBps field.
+ */
+public typealias MaximumThroughputInMBps = Double
 
 /**
  Enumeration restricting the values of the MembershipType field.
@@ -5806,6 +5842,11 @@ public enum VirtualizationType: String, Codable, CustomStringConvertible {
     
     public static let __default: VirtualizationType = .hvm
 }
+
+/**
+ Type definition for the VirtualizationTypeList field.
+ */
+public typealias VirtualizationTypeList = [VirtualizationType]
 
 /**
  Type definition for the VolumeAttachmentList field.

@@ -391,6 +391,24 @@ public enum EFSTransitEncryption: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the EnvironmentFileType field.
+ */
+public enum EnvironmentFileType: String, Codable, CustomStringConvertible {
+    case s3
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: EnvironmentFileType = .s3
+}
+
+/**
+ Type definition for the EnvironmentFiles field.
+ */
+public typealias EnvironmentFiles = [EnvironmentFile]
+
+/**
  Type definition for the EnvironmentVariables field.
  */
 public typealias EnvironmentVariables = [KeyValuePair]

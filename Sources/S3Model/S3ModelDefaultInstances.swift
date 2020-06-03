@@ -2826,7 +2826,6 @@ public extension PutBucketAclRequest {
             aCL: nil,
             accessControlPolicy: nil,
             bucket: "value",
-            contentMD5: nil,
             grantFullControl: nil,
             grantRead: nil,
             grantReadACP: nil,
@@ -2858,8 +2857,7 @@ public extension PutBucketCorsRequest {
     static let __default: S3Model.PutBucketCorsRequest = {
         let defaultInstance = S3Model.PutBucketCorsRequest(
             bucket: "value",
-            cORSConfiguration: CORSConfiguration.__default,
-            contentMD5: nil)
+            cORSConfiguration: CORSConfiguration.__default)
 
         return defaultInstance
     }()
@@ -2872,7 +2870,6 @@ public extension PutBucketEncryptionRequest {
     static let __default: S3Model.PutBucketEncryptionRequest = {
         let defaultInstance = S3Model.PutBucketEncryptionRequest(
             bucket: "value",
-            contentMD5: nil,
             serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration.__default)
 
         return defaultInstance
@@ -2913,7 +2910,6 @@ public extension PutBucketLifecycleRequest {
     static let __default: S3Model.PutBucketLifecycleRequest = {
         let defaultInstance = S3Model.PutBucketLifecycleRequest(
             bucket: "value",
-            contentMD5: nil,
             lifecycleConfiguration: nil)
 
         return defaultInstance
@@ -2927,8 +2923,7 @@ public extension PutBucketLoggingRequest {
     static let __default: S3Model.PutBucketLoggingRequest = {
         let defaultInstance = S3Model.PutBucketLoggingRequest(
             bucket: "value",
-            bucketLoggingStatus: BucketLoggingStatus.__default,
-            contentMD5: nil)
+            bucketLoggingStatus: BucketLoggingStatus.__default)
 
         return defaultInstance
     }()
@@ -2968,7 +2963,6 @@ public extension PutBucketNotificationRequest {
     static let __default: S3Model.PutBucketNotificationRequest = {
         let defaultInstance = S3Model.PutBucketNotificationRequest(
             bucket: "value",
-            contentMD5: nil,
             notificationConfiguration: NotificationConfigurationDeprecated.__default)
 
         return defaultInstance
@@ -2983,7 +2977,6 @@ public extension PutBucketPolicyRequest {
         let defaultInstance = S3Model.PutBucketPolicyRequest(
             bucket: "value",
             confirmRemoveSelfBucketAccess: nil,
-            contentMD5: nil,
             policy: "value")
 
         return defaultInstance
@@ -2997,7 +2990,6 @@ public extension PutBucketReplicationRequest {
     static let __default: S3Model.PutBucketReplicationRequest = {
         let defaultInstance = S3Model.PutBucketReplicationRequest(
             bucket: "value",
-            contentMD5: nil,
             replicationConfiguration: ReplicationConfiguration.__default,
             token: nil)
 
@@ -3012,7 +3004,6 @@ public extension PutBucketRequestPaymentRequest {
     static let __default: S3Model.PutBucketRequestPaymentRequest = {
         let defaultInstance = S3Model.PutBucketRequestPaymentRequest(
             bucket: "value",
-            contentMD5: nil,
             requestPaymentConfiguration: RequestPaymentConfiguration.__default)
 
         return defaultInstance
@@ -3026,7 +3017,6 @@ public extension PutBucketTaggingRequest {
     static let __default: S3Model.PutBucketTaggingRequest = {
         let defaultInstance = S3Model.PutBucketTaggingRequest(
             bucket: "value",
-            contentMD5: nil,
             tagging: Tagging.__default)
 
         return defaultInstance
@@ -3040,7 +3030,6 @@ public extension PutBucketVersioningRequest {
     static let __default: S3Model.PutBucketVersioningRequest = {
         let defaultInstance = S3Model.PutBucketVersioningRequest(
             bucket: "value",
-            contentMD5: nil,
             mFA: nil,
             versioningConfiguration: VersioningConfiguration.__default)
 
@@ -3055,7 +3044,6 @@ public extension PutBucketWebsiteRequest {
     static let __default: S3Model.PutBucketWebsiteRequest = {
         let defaultInstance = S3Model.PutBucketWebsiteRequest(
             bucket: "value",
-            contentMD5: nil,
             websiteConfiguration: WebsiteConfiguration.__default)
 
         return defaultInstance
@@ -3083,7 +3071,6 @@ public extension PutObjectAclRequest {
             aCL: nil,
             accessControlPolicy: nil,
             bucket: "value",
-            contentMD5: nil,
             grantFullControl: nil,
             grantRead: nil,
             grantReadACP: nil,
@@ -3116,7 +3103,6 @@ public extension PutObjectLegalHoldRequest {
     static let __default: S3Model.PutObjectLegalHoldRequest = {
         let defaultInstance = S3Model.PutObjectLegalHoldRequest(
             bucket: "value",
-            contentMD5: nil,
             key: "0",
             legalHold: nil,
             requestPayer: nil,
@@ -3145,7 +3131,6 @@ public extension PutObjectLockConfigurationRequest {
     static let __default: S3Model.PutObjectLockConfigurationRequest = {
         let defaultInstance = S3Model.PutObjectLockConfigurationRequest(
             bucket: "value",
-            contentMD5: nil,
             objectLockConfiguration: nil,
             requestPayer: nil,
             token: nil)
@@ -3235,7 +3220,6 @@ public extension PutObjectRetentionRequest {
         let defaultInstance = S3Model.PutObjectRetentionRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
-            contentMD5: nil,
             key: "0",
             requestPayer: nil,
             retention: nil,
@@ -3264,7 +3248,6 @@ public extension PutObjectTaggingRequest {
     static let __default: S3Model.PutObjectTaggingRequest = {
         let defaultInstance = S3Model.PutObjectTaggingRequest(
             bucket: "value",
-            contentMD5: nil,
             key: "0",
             tagging: Tagging.__default,
             versionId: nil)
@@ -3280,7 +3263,6 @@ public extension PutPublicAccessBlockRequest {
     static let __default: S3Model.PutPublicAccessBlockRequest = {
         let defaultInstance = S3Model.PutPublicAccessBlockRequest(
             bucket: "value",
-            contentMD5: nil,
             publicAccessBlockConfiguration: PublicAccessBlockConfiguration.__default)
 
         return defaultInstance
