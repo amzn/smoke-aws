@@ -45,7 +45,7 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     
     public func handleOutwardsRequestSuccess(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response, bodyData: Data?) {
-        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData)
+        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData, error: nil)
         
         logger.info("\(logLine)")
         
@@ -56,7 +56,7 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response?, bodyData: Data?, error: Error) {
-        let logLine = getLogLine(successfullyCompletedRequest: false, response: response, bodyData: bodyData)
+        let logLine = getLogLine(successfullyCompletedRequest: false, response: response, bodyData: bodyData, error: error)
         
         // log at error if this is a server error
         if let response = response, response.status.code >= 500 && response.status.code < 600 {
@@ -70,10 +70,15 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         }
     }
     
-    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?) -> String {
+    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?,
+                            error: Error?) -> String {
         var logElements: [String] = []
         let completionString = successfullyCompletedRequest ? "Successfully" : "Unsuccessfully"
         logElements.append("\(completionString) completed outgoing request.")
+        
+        if let errorUnwrapped = error {
+            logElements.append("Error occurred: \(errorUnwrapped).")
+        }
         
         if let code = response?.status.code {
             logElements.append("Returned status code: \(code)")
