@@ -450,6 +450,7 @@ public struct ContainerDefinition: Codable, Equatable {
     public var dockerSecurityOptions: StringList?
     public var entryPoint: StringList?
     public var environment: EnvironmentVariables?
+    public var environmentFiles: EnvironmentFiles?
     public var essential: BoxedBoolean?
     public var extraHosts: HostEntryList?
     public var firelensConfiguration: FirelensConfiguration?
@@ -489,6 +490,7 @@ public struct ContainerDefinition: Codable, Equatable {
                 dockerSecurityOptions: StringList? = nil,
                 entryPoint: StringList? = nil,
                 environment: EnvironmentVariables? = nil,
+                environmentFiles: EnvironmentFiles? = nil,
                 essential: BoxedBoolean? = nil,
                 extraHosts: HostEntryList? = nil,
                 firelensConfiguration: FirelensConfiguration? = nil,
@@ -527,6 +529,7 @@ public struct ContainerDefinition: Codable, Equatable {
         self.dockerSecurityOptions = dockerSecurityOptions
         self.entryPoint = entryPoint
         self.environment = environment
+        self.environmentFiles = environmentFiles
         self.essential = essential
         self.extraHosts = extraHosts
         self.firelensConfiguration = firelensConfiguration
@@ -568,6 +571,7 @@ public struct ContainerDefinition: Codable, Equatable {
         case dockerSecurityOptions
         case entryPoint
         case environment
+        case environmentFiles
         case essential
         case extraHosts
         case firelensConfiguration
@@ -711,6 +715,7 @@ public struct ContainerOverride: Codable, Equatable {
     public var command: StringList?
     public var cpu: BoxedInteger?
     public var environment: EnvironmentVariables?
+    public var environmentFiles: EnvironmentFiles?
     public var memory: BoxedInteger?
     public var memoryReservation: BoxedInteger?
     public var name: String?
@@ -719,6 +724,7 @@ public struct ContainerOverride: Codable, Equatable {
     public init(command: StringList? = nil,
                 cpu: BoxedInteger? = nil,
                 environment: EnvironmentVariables? = nil,
+                environmentFiles: EnvironmentFiles? = nil,
                 memory: BoxedInteger? = nil,
                 memoryReservation: BoxedInteger? = nil,
                 name: String? = nil,
@@ -726,6 +732,7 @@ public struct ContainerOverride: Codable, Equatable {
         self.command = command
         self.cpu = cpu
         self.environment = environment
+        self.environmentFiles = environmentFiles
         self.memory = memory
         self.memoryReservation = memoryReservation
         self.name = name
@@ -736,6 +743,7 @@ public struct ContainerOverride: Codable, Equatable {
         case command
         case cpu
         case environment
+        case environmentFiles
         case memory
         case memoryReservation
         case name
@@ -1857,6 +1865,25 @@ public struct EFSVolumeConfiguration: Codable, Equatable {
 
     public func validate() throws {
         try authorizationConfig?.validate()
+    }
+}
+
+public struct EnvironmentFile: Codable, Equatable {
+    public var type: EnvironmentFileType
+    public var value: String
+
+    public init(type: EnvironmentFileType,
+                value: String) {
+        self.type = type
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case type
+        case value
+    }
+
+    public func validate() throws {
     }
 }
 

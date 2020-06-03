@@ -2438,50 +2438,60 @@ public struct ClientData: Codable, Equatable {
 
 public struct ClientVpnAuthentication: Codable, Equatable {
     public var activeDirectory: DirectoryServiceAuthentication?
+    public var federatedAuthentication: FederatedAuthentication?
     public var mutualAuthentication: CertificateAuthentication?
     public var type: ClientVpnAuthenticationType?
 
     public init(activeDirectory: DirectoryServiceAuthentication? = nil,
+                federatedAuthentication: FederatedAuthentication? = nil,
                 mutualAuthentication: CertificateAuthentication? = nil,
                 type: ClientVpnAuthenticationType? = nil) {
         self.activeDirectory = activeDirectory
+        self.federatedAuthentication = federatedAuthentication
         self.mutualAuthentication = mutualAuthentication
         self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case activeDirectory
+        case federatedAuthentication
         case mutualAuthentication
         case type
     }
 
     public func validate() throws {
         try activeDirectory?.validate()
+        try federatedAuthentication?.validate()
         try mutualAuthentication?.validate()
     }
 }
 
 public struct ClientVpnAuthenticationRequest: Codable, Equatable {
     public var activeDirectory: DirectoryServiceAuthenticationRequest?
+    public var federatedAuthentication: FederatedAuthenticationRequest?
     public var mutualAuthentication: CertificateAuthenticationRequest?
     public var type: ClientVpnAuthenticationType?
 
     public init(activeDirectory: DirectoryServiceAuthenticationRequest? = nil,
+                federatedAuthentication: FederatedAuthenticationRequest? = nil,
                 mutualAuthentication: CertificateAuthenticationRequest? = nil,
                 type: ClientVpnAuthenticationType? = nil) {
         self.activeDirectory = activeDirectory
+        self.federatedAuthentication = federatedAuthentication
         self.mutualAuthentication = mutualAuthentication
         self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case activeDirectory = "ActiveDirectory"
+        case federatedAuthentication = "FederatedAuthentication"
         case mutualAuthentication = "MutualAuthentication"
         case type = "Type"
     }
 
     public func validate() throws {
         try activeDirectory?.validate()
+        try federatedAuthentication?.validate()
         try mutualAuthentication?.validate()
     }
 }
@@ -14341,21 +14351,26 @@ public struct EbsBlockDevice: Codable, Equatable {
 }
 
 public struct EbsInfo: Codable, Equatable {
+    public var ebsOptimizedInfo: EbsOptimizedInfo?
     public var ebsOptimizedSupport: EbsOptimizedSupport?
     public var encryptionSupport: EbsEncryptionSupport?
 
-    public init(ebsOptimizedSupport: EbsOptimizedSupport? = nil,
+    public init(ebsOptimizedInfo: EbsOptimizedInfo? = nil,
+                ebsOptimizedSupport: EbsOptimizedSupport? = nil,
                 encryptionSupport: EbsEncryptionSupport? = nil) {
+        self.ebsOptimizedInfo = ebsOptimizedInfo
         self.ebsOptimizedSupport = ebsOptimizedSupport
         self.encryptionSupport = encryptionSupport
     }
 
     enum CodingKeys: String, CodingKey {
+        case ebsOptimizedInfo
         case ebsOptimizedSupport
         case encryptionSupport
     }
 
     public func validate() throws {
+        try ebsOptimizedInfo?.validate()
     }
 }
 
@@ -14399,6 +14414,41 @@ public struct EbsInstanceBlockDeviceSpecification: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case deleteOnTermination
         case volumeId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EbsOptimizedInfo: Codable, Equatable {
+    public var baselineBandwidthInMbps: BaselineBandwidthInMbps?
+    public var baselineIops: BaselineIops?
+    public var baselineThroughputInMBps: BaselineThroughputInMBps?
+    public var maximumBandwidthInMbps: MaximumBandwidthInMbps?
+    public var maximumIops: MaximumIops?
+    public var maximumThroughputInMBps: MaximumThroughputInMBps?
+
+    public init(baselineBandwidthInMbps: BaselineBandwidthInMbps? = nil,
+                baselineIops: BaselineIops? = nil,
+                baselineThroughputInMBps: BaselineThroughputInMBps? = nil,
+                maximumBandwidthInMbps: MaximumBandwidthInMbps? = nil,
+                maximumIops: MaximumIops? = nil,
+                maximumThroughputInMBps: MaximumThroughputInMBps? = nil) {
+        self.baselineBandwidthInMbps = baselineBandwidthInMbps
+        self.baselineIops = baselineIops
+        self.baselineThroughputInMBps = baselineThroughputInMBps
+        self.maximumBandwidthInMbps = maximumBandwidthInMbps
+        self.maximumIops = maximumIops
+        self.maximumThroughputInMBps = maximumThroughputInMBps
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case baselineBandwidthInMbps
+        case baselineIops
+        case baselineThroughputInMBps
+        case maximumBandwidthInMbps
+        case maximumIops
+        case maximumThroughputInMBps
     }
 
     public func validate() throws {
@@ -15333,6 +15383,36 @@ public struct FailedQueuedPurchaseDeletion: Codable, Equatable {
 
     public func validate() throws {
         try error?.validate()
+    }
+}
+
+public struct FederatedAuthentication: Codable, Equatable {
+    public var samlProviderArn: String?
+
+    public init(samlProviderArn: String? = nil) {
+        self.samlProviderArn = samlProviderArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case samlProviderArn
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct FederatedAuthenticationRequest: Codable, Equatable {
+    public var sAMLProviderArn: String?
+
+    public init(sAMLProviderArn: String? = nil) {
+        self.sAMLProviderArn = sAMLProviderArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case sAMLProviderArn = "SAMLProviderArn"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -19116,6 +19196,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
     public var processorInfo: ProcessorInfo?
     public var supportedRootDeviceTypes: RootDeviceTypeList?
     public var supportedUsageClasses: UsageClassTypeList?
+    public var supportedVirtualizationTypes: VirtualizationTypeList?
     public var vCpuInfo: VCpuInfo?
 
     public init(autoRecoverySupported: AutoRecoveryFlag? = nil,
@@ -19139,6 +19220,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
                 processorInfo: ProcessorInfo? = nil,
                 supportedRootDeviceTypes: RootDeviceTypeList? = nil,
                 supportedUsageClasses: UsageClassTypeList? = nil,
+                supportedVirtualizationTypes: VirtualizationTypeList? = nil,
                 vCpuInfo: VCpuInfo? = nil) {
         self.autoRecoverySupported = autoRecoverySupported
         self.bareMetal = bareMetal
@@ -19161,6 +19243,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         self.processorInfo = processorInfo
         self.supportedRootDeviceTypes = supportedRootDeviceTypes
         self.supportedUsageClasses = supportedUsageClasses
+        self.supportedVirtualizationTypes = supportedVirtualizationTypes
         self.vCpuInfo = vCpuInfo
     }
 
@@ -19186,6 +19269,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         case processorInfo
         case supportedRootDeviceTypes
         case supportedUsageClasses
+        case supportedVirtualizationTypes
         case vCpuInfo
     }
 
@@ -23115,6 +23199,7 @@ public struct NetworkAclEntry: Codable, Equatable {
 }
 
 public struct NetworkInfo: Codable, Equatable {
+    public var efaSupported: EfaSupportedFlag?
     public var enaSupport: EnaSupport?
     public var ipv4AddressesPerInterface: MaxIpv4AddrPerInterface?
     public var ipv6AddressesPerInterface: MaxIpv6AddrPerInterface?
@@ -23122,12 +23207,14 @@ public struct NetworkInfo: Codable, Equatable {
     public var maximumNetworkInterfaces: MaxNetworkInterfaces?
     public var networkPerformance: NetworkPerformance?
 
-    public init(enaSupport: EnaSupport? = nil,
+    public init(efaSupported: EfaSupportedFlag? = nil,
+                enaSupport: EnaSupport? = nil,
                 ipv4AddressesPerInterface: MaxIpv4AddrPerInterface? = nil,
                 ipv6AddressesPerInterface: MaxIpv6AddrPerInterface? = nil,
                 ipv6Supported: Ipv6Flag? = nil,
                 maximumNetworkInterfaces: MaxNetworkInterfaces? = nil,
                 networkPerformance: NetworkPerformance? = nil) {
+        self.efaSupported = efaSupported
         self.enaSupport = enaSupport
         self.ipv4AddressesPerInterface = ipv4AddressesPerInterface
         self.ipv6AddressesPerInterface = ipv6AddressesPerInterface
@@ -23137,6 +23224,7 @@ public struct NetworkInfo: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case efaSupported
         case enaSupport
         case ipv4AddressesPerInterface
         case ipv6AddressesPerInterface
@@ -24195,17 +24283,20 @@ public struct ProvisionByoipCidrRequest: Codable, Equatable {
     public var cidrAuthorizationContext: CidrAuthorizationContext?
     public var description: String?
     public var dryRun: Boolean?
+    public var poolTagSpecifications: TagSpecificationList?
     public var publiclyAdvertisable: Boolean?
 
     public init(cidr: String,
                 cidrAuthorizationContext: CidrAuthorizationContext? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
+                poolTagSpecifications: TagSpecificationList? = nil,
                 publiclyAdvertisable: Boolean? = nil) {
         self.cidr = cidr
         self.cidrAuthorizationContext = cidrAuthorizationContext
         self.description = description
         self.dryRun = dryRun
+        self.poolTagSpecifications = poolTagSpecifications
         self.publiclyAdvertisable = publiclyAdvertisable
     }
 
@@ -24214,6 +24305,7 @@ public struct ProvisionByoipCidrRequest: Codable, Equatable {
         case cidrAuthorizationContext = "CidrAuthorizationContext"
         case description = "Description"
         case dryRun = "DryRun"
+        case poolTagSpecifications = "PoolTagSpecification"
         case publiclyAdvertisable = "PubliclyAdvertisable"
     }
 
@@ -24271,6 +24363,7 @@ public struct ProvisionedBandwidth: Codable, Equatable {
 
 public struct PublicIpv4Pool: Codable, Equatable {
     public var description: String?
+    public var networkBorderGroup: String?
     public var poolAddressRanges: PublicIpv4PoolRangeSet?
     public var poolId: String?
     public var tags: TagList?
@@ -24278,12 +24371,14 @@ public struct PublicIpv4Pool: Codable, Equatable {
     public var totalAvailableAddressCount: Integer?
 
     public init(description: String? = nil,
+                networkBorderGroup: String? = nil,
                 poolAddressRanges: PublicIpv4PoolRangeSet? = nil,
                 poolId: String? = nil,
                 tags: TagList? = nil,
                 totalAddressCount: Integer? = nil,
                 totalAvailableAddressCount: Integer? = nil) {
         self.description = description
+        self.networkBorderGroup = networkBorderGroup
         self.poolAddressRanges = poolAddressRanges
         self.poolId = poolId
         self.tags = tags
@@ -24293,6 +24388,7 @@ public struct PublicIpv4Pool: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case description
+        case networkBorderGroup
         case poolAddressRanges = "poolAddressRangeSet"
         case poolId
         case tags = "tagSet"

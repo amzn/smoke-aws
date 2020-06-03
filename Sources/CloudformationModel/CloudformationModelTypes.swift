@@ -412,6 +412,11 @@ public typealias InProgressStackInstancesCount = Int
 public typealias InSyncStackInstancesCount = Int
 
 /**
+ Type definition for the IsDefaultVersion field.
+ */
+public typealias IsDefaultVersion = Bool
+
+/**
  Type definition for the Key field.
  */
 public typealias Key = String

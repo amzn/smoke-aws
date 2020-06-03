@@ -1022,6 +1022,7 @@ public extension DescribeTypeOutput {
             description: nil,
             documentationUrl: nil,
             executionRoleArn: nil,
+            isDefaultVersion: nil,
             lastUpdated: nil,
             loggingConfig: nil,
             provisioningType: nil,
@@ -2886,6 +2887,7 @@ public extension TypeVersionSummary {
         let defaultInstance = CloudformationModel.TypeVersionSummary(
             arn: nil,
             description: nil,
+            isDefaultVersion: nil,
             timeCreated: nil,
             type: nil,
             typeName: nil,

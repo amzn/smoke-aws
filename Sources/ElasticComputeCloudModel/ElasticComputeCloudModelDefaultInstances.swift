@@ -1508,6 +1508,7 @@ public extension ClientVpnAuthentication {
     static let __default: ElasticComputeCloudModel.ClientVpnAuthentication = {
         let defaultInstance = ElasticComputeCloudModel.ClientVpnAuthentication(
             activeDirectory: nil,
+            federatedAuthentication: nil,
             mutualAuthentication: nil,
             type: nil)
 
@@ -1522,6 +1523,7 @@ public extension ClientVpnAuthenticationRequest {
     static let __default: ElasticComputeCloudModel.ClientVpnAuthenticationRequest = {
         let defaultInstance = ElasticComputeCloudModel.ClientVpnAuthenticationRequest(
             activeDirectory: nil,
+            federatedAuthentication: nil,
             mutualAuthentication: nil,
             type: nil)
 
@@ -8538,6 +8540,7 @@ public extension EbsInfo {
      */
     static let __default: ElasticComputeCloudModel.EbsInfo = {
         let defaultInstance = ElasticComputeCloudModel.EbsInfo(
+            ebsOptimizedInfo: nil,
             ebsOptimizedSupport: nil,
             encryptionSupport: nil)
 
@@ -8568,6 +8571,23 @@ public extension EbsInstanceBlockDeviceSpecification {
         let defaultInstance = ElasticComputeCloudModel.EbsInstanceBlockDeviceSpecification(
             deleteOnTermination: nil,
             volumeId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EbsOptimizedInfo {
+    /**
+     Default instance of the EbsOptimizedInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.EbsOptimizedInfo = {
+        let defaultInstance = ElasticComputeCloudModel.EbsOptimizedInfo(
+            baselineBandwidthInMbps: nil,
+            baselineIops: nil,
+            baselineThroughputInMBps: nil,
+            maximumBandwidthInMbps: nil,
+            maximumIops: nil,
+            maximumThroughputInMBps: nil)
 
         return defaultInstance
     }()
@@ -9128,6 +9148,30 @@ public extension FailedQueuedPurchaseDeletion {
         let defaultInstance = ElasticComputeCloudModel.FailedQueuedPurchaseDeletion(
             error: nil,
             reservedInstancesId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FederatedAuthentication {
+    /**
+     Default instance of the FederatedAuthentication structure.
+     */
+    static let __default: ElasticComputeCloudModel.FederatedAuthentication = {
+        let defaultInstance = ElasticComputeCloudModel.FederatedAuthentication(
+            samlProviderArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FederatedAuthenticationRequest {
+    /**
+     Default instance of the FederatedAuthenticationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.FederatedAuthenticationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.FederatedAuthenticationRequest(
+            sAMLProviderArn: nil)
 
         return defaultInstance
     }()
@@ -11085,6 +11129,7 @@ public extension InstanceTypeInfo {
             processorInfo: nil,
             supportedRootDeviceTypes: nil,
             supportedUsageClasses: nil,
+            supportedVirtualizationTypes: nil,
             vCpuInfo: nil)
 
         return defaultInstance
@@ -13278,6 +13323,7 @@ public extension NetworkInfo {
      */
     static let __default: ElasticComputeCloudModel.NetworkInfo = {
         let defaultInstance = ElasticComputeCloudModel.NetworkInfo(
+            efaSupported: nil,
             enaSupport: nil,
             ipv4AddressesPerInterface: nil,
             ipv6AddressesPerInterface: nil,
@@ -13929,6 +13975,7 @@ public extension ProvisionByoipCidrRequest {
             cidrAuthorizationContext: nil,
             description: nil,
             dryRun: nil,
+            poolTagSpecifications: nil,
             publiclyAdvertisable: nil)
 
         return defaultInstance
@@ -13970,6 +14017,7 @@ public extension PublicIpv4Pool {
     static let __default: ElasticComputeCloudModel.PublicIpv4Pool = {
         let defaultInstance = ElasticComputeCloudModel.PublicIpv4Pool(
             description: nil,
+            networkBorderGroup: nil,
             poolAddressRanges: nil,
             poolId: nil,
             tags: nil,

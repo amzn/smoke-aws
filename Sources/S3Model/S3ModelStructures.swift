@@ -4852,7 +4852,6 @@ public struct PutBucketAclRequest: Codable, Equatable {
     public var aCL: BucketCannedACL?
     public var accessControlPolicy: AccessControlPolicy?
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -4862,7 +4861,6 @@ public struct PutBucketAclRequest: Codable, Equatable {
     public init(aCL: BucketCannedACL? = nil,
                 accessControlPolicy: AccessControlPolicy? = nil,
                 bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
@@ -4871,7 +4869,6 @@ public struct PutBucketAclRequest: Codable, Equatable {
         self.aCL = aCL
         self.accessControlPolicy = accessControlPolicy
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -4883,7 +4880,6 @@ public struct PutBucketAclRequest: Codable, Equatable {
         case aCL = "x-amz-acl"
         case accessControlPolicy = "AccessControlPolicy"
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -4923,20 +4919,16 @@ public struct PutBucketAnalyticsConfigurationRequest: Codable, Equatable {
 public struct PutBucketCorsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var cORSConfiguration: CORSConfiguration
-    public var contentMD5: ContentMD5?
 
     public init(bucket: BucketName,
-                cORSConfiguration: CORSConfiguration,
-                contentMD5: ContentMD5? = nil) {
+                cORSConfiguration: CORSConfiguration) {
         self.bucket = bucket
         self.cORSConfiguration = cORSConfiguration
-        self.contentMD5 = contentMD5
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case cORSConfiguration = "CORSConfiguration"
-        case contentMD5 = "Content-MD5"
     }
 
     public func validate() throws {
@@ -4946,20 +4938,16 @@ public struct PutBucketCorsRequest: Codable, Equatable {
 
 public struct PutBucketEncryptionRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.serverSideEncryptionConfiguration = serverSideEncryptionConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case serverSideEncryptionConfiguration = "ServerSideEncryptionConfiguration"
     }
 
@@ -5014,20 +5002,16 @@ public struct PutBucketLifecycleConfigurationRequest: Codable, Equatable {
 
 public struct PutBucketLifecycleRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var lifecycleConfiguration: LifecycleConfiguration?
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 lifecycleConfiguration: LifecycleConfiguration? = nil) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.lifecycleConfiguration = lifecycleConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case lifecycleConfiguration = "LifecycleConfiguration"
     }
 
@@ -5039,20 +5023,16 @@ public struct PutBucketLifecycleRequest: Codable, Equatable {
 public struct PutBucketLoggingRequest: Codable, Equatable {
     public var bucket: BucketName
     public var bucketLoggingStatus: BucketLoggingStatus
-    public var contentMD5: ContentMD5?
 
     public init(bucket: BucketName,
-                bucketLoggingStatus: BucketLoggingStatus,
-                contentMD5: ContentMD5? = nil) {
+                bucketLoggingStatus: BucketLoggingStatus) {
         self.bucket = bucket
         self.bucketLoggingStatus = bucketLoggingStatus
-        self.contentMD5 = contentMD5
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case bucketLoggingStatus = "BucketLoggingStatus"
-        case contentMD5 = "Content-MD5"
     }
 
     public func validate() throws {
@@ -5106,20 +5086,16 @@ public struct PutBucketNotificationConfigurationRequest: Codable, Equatable {
 
 public struct PutBucketNotificationRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var notificationConfiguration: NotificationConfigurationDeprecated
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 notificationConfiguration: NotificationConfigurationDeprecated) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.notificationConfiguration = notificationConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case notificationConfiguration = "NotificationConfiguration"
     }
 
@@ -5131,23 +5107,19 @@ public struct PutBucketNotificationRequest: Codable, Equatable {
 public struct PutBucketPolicyRequest: Codable, Equatable {
     public var bucket: BucketName
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
-    public var contentMD5: ContentMD5?
     public var policy: Policy
 
     public init(bucket: BucketName,
                 confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
-                contentMD5: ContentMD5? = nil,
                 policy: Policy) {
         self.bucket = bucket
         self.confirmRemoveSelfBucketAccess = confirmRemoveSelfBucketAccess
-        self.contentMD5 = contentMD5
         self.policy = policy
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case confirmRemoveSelfBucketAccess = "x-amz-confirm-remove-self-bucket-access"
-        case contentMD5 = "Content-MD5"
         case policy = "Policy"
     }
 
@@ -5157,23 +5129,19 @@ public struct PutBucketPolicyRequest: Codable, Equatable {
 
 public struct PutBucketReplicationRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var replicationConfiguration: ReplicationConfiguration
     public var token: ObjectLockToken?
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 replicationConfiguration: ReplicationConfiguration,
                 token: ObjectLockToken? = nil) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.replicationConfiguration = replicationConfiguration
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case replicationConfiguration = "ReplicationConfiguration"
         case token = "x-amz-bucket-object-lock-token"
     }
@@ -5185,20 +5153,16 @@ public struct PutBucketReplicationRequest: Codable, Equatable {
 
 public struct PutBucketRequestPaymentRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var requestPaymentConfiguration: RequestPaymentConfiguration
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 requestPaymentConfiguration: RequestPaymentConfiguration) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.requestPaymentConfiguration = requestPaymentConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case requestPaymentConfiguration = "RequestPaymentConfiguration"
     }
 
@@ -5209,20 +5173,16 @@ public struct PutBucketRequestPaymentRequest: Codable, Equatable {
 
 public struct PutBucketTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var tagging: Tagging
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 tagging: Tagging) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.tagging = tagging
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case tagging = "Tagging"
     }
 
@@ -5233,23 +5193,19 @@ public struct PutBucketTaggingRequest: Codable, Equatable {
 
 public struct PutBucketVersioningRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var mFA: MFA?
     public var versioningConfiguration: VersioningConfiguration
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 mFA: MFA? = nil,
                 versioningConfiguration: VersioningConfiguration) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.mFA = mFA
         self.versioningConfiguration = versioningConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case mFA = "x-amz-mfa"
         case versioningConfiguration = "VersioningConfiguration"
     }
@@ -5261,20 +5217,16 @@ public struct PutBucketVersioningRequest: Codable, Equatable {
 
 public struct PutBucketWebsiteRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var websiteConfiguration: WebsiteConfiguration
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 websiteConfiguration: WebsiteConfiguration) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.websiteConfiguration = websiteConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case websiteConfiguration = "WebsiteConfiguration"
     }
 
@@ -5302,7 +5254,6 @@ public struct PutObjectAclRequest: Codable, Equatable {
     public var aCL: ObjectCannedACL?
     public var accessControlPolicy: AccessControlPolicy?
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -5315,7 +5266,6 @@ public struct PutObjectAclRequest: Codable, Equatable {
     public init(aCL: ObjectCannedACL? = nil,
                 accessControlPolicy: AccessControlPolicy? = nil,
                 bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
@@ -5327,7 +5277,6 @@ public struct PutObjectAclRequest: Codable, Equatable {
         self.aCL = aCL
         self.accessControlPolicy = accessControlPolicy
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -5342,7 +5291,6 @@ public struct PutObjectAclRequest: Codable, Equatable {
         case aCL = "x-amz-acl"
         case accessControlPolicy = "AccessControlPolicy"
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -5376,20 +5324,17 @@ public struct PutObjectLegalHoldOutput: Codable, Equatable {
 
 public struct PutObjectLegalHoldRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var key: ObjectKey
     public var legalHold: ObjectLockLegalHold?
     public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 key: ObjectKey,
                 legalHold: ObjectLockLegalHold? = nil,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.key = key
         self.legalHold = legalHold
         self.requestPayer = requestPayer
@@ -5398,7 +5343,6 @@ public struct PutObjectLegalHoldRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case key = "Key"
         case legalHold = "LegalHold"
         case requestPayer = "x-amz-request-payer"
@@ -5428,18 +5372,15 @@ public struct PutObjectLockConfigurationOutput: Codable, Equatable {
 
 public struct PutObjectLockConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var objectLockConfiguration: ObjectLockConfiguration?
     public var requestPayer: RequestPayer?
     public var token: ObjectLockToken?
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 objectLockConfiguration: ObjectLockConfiguration? = nil,
                 requestPayer: RequestPayer? = nil,
                 token: ObjectLockToken? = nil) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.objectLockConfiguration = objectLockConfiguration
         self.requestPayer = requestPayer
         self.token = token
@@ -5447,7 +5388,6 @@ public struct PutObjectLockConfigurationRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case objectLockConfiguration = "ObjectLockConfiguration"
         case requestPayer = "x-amz-request-payer"
         case token = "x-amz-bucket-object-lock-token"
@@ -5655,7 +5595,6 @@ public struct PutObjectRetentionOutput: Codable, Equatable {
 public struct PutObjectRetentionRequest: Codable, Equatable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
-    public var contentMD5: ContentMD5?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var retention: ObjectLockRetention?
@@ -5663,14 +5602,12 @@ public struct PutObjectRetentionRequest: Codable, Equatable {
 
     public init(bucket: BucketName,
                 bypassGovernanceRetention: BypassGovernanceRetention? = nil,
-                contentMD5: ContentMD5? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 retention: ObjectLockRetention? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
         self.bypassGovernanceRetention = bypassGovernanceRetention
-        self.contentMD5 = contentMD5
         self.key = key
         self.requestPayer = requestPayer
         self.retention = retention
@@ -5680,7 +5617,6 @@ public struct PutObjectRetentionRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
-        case contentMD5 = "Content-MD5"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case retention = "Retention"
@@ -5710,18 +5646,15 @@ public struct PutObjectTaggingOutput: Codable, Equatable {
 
 public struct PutObjectTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var key: ObjectKey
     public var tagging: Tagging
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 key: ObjectKey,
                 tagging: Tagging,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.key = key
         self.tagging = tagging
         self.versionId = versionId
@@ -5729,7 +5662,6 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case key = "Key"
         case tagging = "Tagging"
         case versionId
@@ -5743,20 +5675,16 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
 
 public struct PutPublicAccessBlockRequest: Codable, Equatable {
     public var bucket: BucketName
-    public var contentMD5: ContentMD5?
     public var publicAccessBlockConfiguration: PublicAccessBlockConfiguration
 
     public init(bucket: BucketName,
-                contentMD5: ContentMD5? = nil,
                 publicAccessBlockConfiguration: PublicAccessBlockConfiguration) {
         self.bucket = bucket
-        self.contentMD5 = contentMD5
         self.publicAccessBlockConfiguration = publicAccessBlockConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
-        case contentMD5 = "Content-MD5"
         case publicAccessBlockConfiguration = "PublicAccessBlockConfiguration"
     }
 

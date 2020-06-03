@@ -4292,7 +4292,6 @@ public extension PutBucketAclRequest {
  */
 public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: BucketCannedACL?
-    public var contentMD5: ContentMD5?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -4300,14 +4299,12 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
 
     public init(aCL: BucketCannedACL? = nil,
-                contentMD5: ContentMD5? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
                 grantWrite: GrantWrite? = nil,
                 grantWriteACP: GrantWriteACP? = nil) {
         self.aCL = aCL
-        self.contentMD5 = contentMD5
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -4317,7 +4314,6 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
-        case contentMD5 = "Content-MD5"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -4333,7 +4329,6 @@ public extension PutBucketAclRequest {
     func asS3ModelPutBucketAclOperationInputAdditionalHeaders() -> PutBucketAclOperationInputAdditionalHeaders {
         return PutBucketAclOperationInputAdditionalHeaders(
             aCL: aCL,
-            contentMD5: contentMD5,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
             grantReadACP: grantReadACP,
@@ -4421,32 +4416,6 @@ public extension PutBucketCorsRequest {
 }
 
 /**
- Structure to encode the body input for the PutBucketCors
- operation.
- */
-public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketCorsRequest {
-    func asS3ModelPutBucketCorsOperationInputAdditionalHeaders() -> PutBucketCorsOperationInputAdditionalHeaders {
-        return PutBucketCorsOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
-    }
-}
-
-/**
  Structure to encode the path input for the PutBucketEncryption
  operation.
  */
@@ -4469,32 +4438,6 @@ public extension PutBucketEncryptionRequest {
     func asS3ModelPutBucketEncryptionOperationInputPath() -> PutBucketEncryptionOperationInputPath {
         return PutBucketEncryptionOperationInputPath(
             bucket: bucket)
-    }
-}
-
-/**
- Structure to encode the body input for the PutBucketEncryption
- operation.
- */
-public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketEncryptionRequest {
-    func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
-        return PutBucketEncryptionOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
     }
 }
 
@@ -4577,32 +4520,6 @@ public extension PutBucketLifecycleRequest {
 }
 
 /**
- Structure to encode the body input for the PutBucketLifecycle
- operation.
- */
-public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketLifecycleRequest {
-    func asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders() -> PutBucketLifecycleOperationInputAdditionalHeaders {
-        return PutBucketLifecycleOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
-    }
-}
-
-/**
  Structure to encode the path input for the PutBucketLifecycleConfiguration
  operation.
  */
@@ -4651,32 +4568,6 @@ public extension PutBucketLoggingRequest {
     func asS3ModelPutBucketLoggingOperationInputPath() -> PutBucketLoggingOperationInputPath {
         return PutBucketLoggingOperationInputPath(
             bucket: bucket)
-    }
-}
-
-/**
- Structure to encode the body input for the PutBucketLogging
- operation.
- */
-public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketLoggingRequest {
-    func asS3ModelPutBucketLoggingOperationInputAdditionalHeaders() -> PutBucketLoggingOperationInputAdditionalHeaders {
-        return PutBucketLoggingOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
     }
 }
 
@@ -4759,32 +4650,6 @@ public extension PutBucketNotificationRequest {
 }
 
 /**
- Structure to encode the body input for the PutBucketNotification
- operation.
- */
-public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketNotificationRequest {
-    func asS3ModelPutBucketNotificationOperationInputAdditionalHeaders() -> PutBucketNotificationOperationInputAdditionalHeaders {
-        return PutBucketNotificationOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
-    }
-}
-
-/**
  Structure to encode the path input for the PutBucketNotificationConfiguration
  operation.
  */
@@ -4842,17 +4707,13 @@ public extension PutBucketPolicyRequest {
  */
 public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
-    public var contentMD5: ContentMD5?
 
-    public init(confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
-                contentMD5: ContentMD5? = nil) {
+    public init(confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil) {
         self.confirmRemoveSelfBucketAccess = confirmRemoveSelfBucketAccess
-        self.contentMD5 = contentMD5
     }
 
     enum CodingKeys: String, CodingKey {
         case confirmRemoveSelfBucketAccess = "x-amz-confirm-remove-self-bucket-access"
-        case contentMD5 = "Content-MD5"
     }
 
     public func validate() throws {
@@ -4862,8 +4723,7 @@ public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable
 public extension PutBucketPolicyRequest {
     func asS3ModelPutBucketPolicyOperationInputAdditionalHeaders() -> PutBucketPolicyOperationInputAdditionalHeaders {
         return PutBucketPolicyOperationInputAdditionalHeaders(
-            confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess,
-            contentMD5: contentMD5)
+            confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess)
     }
 }
 
@@ -4898,17 +4758,13 @@ public extension PutBucketReplicationRequest {
  operation.
  */
 public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
     public var token: ObjectLockToken?
 
-    public init(contentMD5: ContentMD5? = nil,
-                token: ObjectLockToken? = nil) {
-        self.contentMD5 = contentMD5
+    public init(token: ObjectLockToken? = nil) {
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
         case token = "x-amz-bucket-object-lock-token"
     }
 
@@ -4919,7 +4775,6 @@ public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equa
 public extension PutBucketReplicationRequest {
     func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
         return PutBucketReplicationOperationInputAdditionalHeaders(
-            contentMD5: contentMD5,
             token: token)
     }
 }
@@ -4951,32 +4806,6 @@ public extension PutBucketRequestPaymentRequest {
 }
 
 /**
- Structure to encode the body input for the PutBucketRequestPayment
- operation.
- */
-public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketRequestPaymentRequest {
-    func asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders() -> PutBucketRequestPaymentOperationInputAdditionalHeaders {
-        return PutBucketRequestPaymentOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
-    }
-}
-
-/**
  Structure to encode the path input for the PutBucketTagging
  operation.
  */
@@ -4999,32 +4828,6 @@ public extension PutBucketTaggingRequest {
     func asS3ModelPutBucketTaggingOperationInputPath() -> PutBucketTaggingOperationInputPath {
         return PutBucketTaggingOperationInputPath(
             bucket: bucket)
-    }
-}
-
-/**
- Structure to encode the body input for the PutBucketTagging
- operation.
- */
-public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketTaggingRequest {
-    func asS3ModelPutBucketTaggingOperationInputAdditionalHeaders() -> PutBucketTaggingOperationInputAdditionalHeaders {
-        return PutBucketTaggingOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
     }
 }
 
@@ -5059,17 +4862,13 @@ public extension PutBucketVersioningRequest {
  operation.
  */
 public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
     public var mFA: MFA?
 
-    public init(contentMD5: ContentMD5? = nil,
-                mFA: MFA? = nil) {
-        self.contentMD5 = contentMD5
+    public init(mFA: MFA? = nil) {
         self.mFA = mFA
     }
 
     enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
         case mFA = "x-amz-mfa"
     }
 
@@ -5080,7 +4879,6 @@ public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equat
 public extension PutBucketVersioningRequest {
     func asS3ModelPutBucketVersioningOperationInputAdditionalHeaders() -> PutBucketVersioningOperationInputAdditionalHeaders {
         return PutBucketVersioningOperationInputAdditionalHeaders(
-            contentMD5: contentMD5,
             mFA: mFA)
     }
 }
@@ -5108,32 +4906,6 @@ public extension PutBucketWebsiteRequest {
     func asS3ModelPutBucketWebsiteOperationInputPath() -> PutBucketWebsiteOperationInputPath {
         return PutBucketWebsiteOperationInputPath(
             bucket: bucket)
-    }
-}
-
-/**
- Structure to encode the body input for the PutBucketWebsite
- operation.
- */
-public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutBucketWebsiteRequest {
-    func asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders() -> PutBucketWebsiteOperationInputAdditionalHeaders {
-        return PutBucketWebsiteOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
     }
 }
 
@@ -5389,7 +5161,6 @@ public extension PutObjectAclRequest {
  */
 public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
-    public var contentMD5: ContentMD5?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -5398,7 +5169,6 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var requestPayer: RequestPayer?
 
     public init(aCL: ObjectCannedACL? = nil,
-                contentMD5: ContentMD5? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
@@ -5406,7 +5176,6 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.aCL = aCL
-        self.contentMD5 = contentMD5
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -5417,7 +5186,6 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
-        case contentMD5 = "Content-MD5"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -5434,7 +5202,6 @@ public extension PutObjectAclRequest {
     func asS3ModelPutObjectAclOperationInputAdditionalHeaders() -> PutObjectAclOperationInputAdditionalHeaders {
         return PutObjectAclOperationInputAdditionalHeaders(
             aCL: aCL,
-            contentMD5: contentMD5,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
             grantReadACP: grantReadACP,
@@ -5507,17 +5274,13 @@ public extension PutObjectLegalHoldRequest {
  operation.
  */
 public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
     public var requestPayer: RequestPayer?
 
-    public init(contentMD5: ContentMD5? = nil,
-                requestPayer: RequestPayer? = nil) {
-        self.contentMD5 = contentMD5
+    public init(requestPayer: RequestPayer? = nil) {
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5528,7 +5291,6 @@ public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 public extension PutObjectLegalHoldRequest {
     func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
         return PutObjectLegalHoldOperationInputAdditionalHeaders(
-            contentMD5: contentMD5,
             requestPayer: requestPayer)
     }
 }
@@ -5564,20 +5326,16 @@ public extension PutObjectLockConfigurationRequest {
  operation.
  */
 public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
     public var requestPayer: RequestPayer?
     public var token: ObjectLockToken?
 
-    public init(contentMD5: ContentMD5? = nil,
-                requestPayer: RequestPayer? = nil,
+    public init(requestPayer: RequestPayer? = nil,
                 token: ObjectLockToken? = nil) {
-        self.contentMD5 = contentMD5
         self.requestPayer = requestPayer
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
         case requestPayer = "x-amz-request-payer"
         case token = "x-amz-bucket-object-lock-token"
     }
@@ -5589,7 +5347,6 @@ public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable
 public extension PutObjectLockConfigurationRequest {
     func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
         return PutObjectLockConfigurationOperationInputAdditionalHeaders(
-            contentMD5: contentMD5,
             requestPayer: requestPayer,
             token: token)
     }
@@ -5659,20 +5416,16 @@ public extension PutObjectRetentionRequest {
  */
 public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
-    public var contentMD5: ContentMD5?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
-                contentMD5: ContentMD5? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
-        self.contentMD5 = contentMD5
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
-        case contentMD5 = "Content-MD5"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5684,7 +5437,6 @@ public extension PutObjectRetentionRequest {
     func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
         return PutObjectRetentionOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
-            contentMD5: contentMD5,
             requestPayer: requestPayer)
     }
 }
@@ -5748,32 +5500,6 @@ public extension PutObjectTaggingRequest {
 }
 
 /**
- Structure to encode the body input for the PutObjectTagging
- operation.
- */
-public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutObjectTaggingRequest {
-    func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
-        return PutObjectTaggingOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
-    }
-}
-
-/**
  Structure to encode the path input for the PutPublicAccessBlock
  operation.
  */
@@ -5796,32 +5522,6 @@ public extension PutPublicAccessBlockRequest {
     func asS3ModelPutPublicAccessBlockOperationInputPath() -> PutPublicAccessBlockOperationInputPath {
         return PutPublicAccessBlockOperationInputPath(
             bucket: bucket)
-    }
-}
-
-/**
- Structure to encode the body input for the PutPublicAccessBlock
- operation.
- */
-public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
-    public var contentMD5: ContentMD5?
-
-    public init(contentMD5: ContentMD5? = nil) {
-        self.contentMD5 = contentMD5
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case contentMD5 = "Content-MD5"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension PutPublicAccessBlockRequest {
-    func asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders() -> PutPublicAccessBlockOperationInputAdditionalHeaders {
-        return PutPublicAccessBlockOperationInputAdditionalHeaders(
-            contentMD5: contentMD5)
     }
 }
 
