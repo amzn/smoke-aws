@@ -62,6 +62,7 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         if let response = response, response.status.code >= 500 && response.status.code < 600 {
             logger.error("\(logLine)")
         } else {
+            logger.error("\(error)")
             logger.info("\(logLine)")
         }
         
