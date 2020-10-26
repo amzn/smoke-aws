@@ -102,6 +102,19 @@ extension DeleteAttributesResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteCapacityProvider operation in a HTTP client.
+ */
+extension DeleteCapacityProviderResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteCapacityProviderResponse
+    public typealias HeadersType = DeleteCapacityProviderResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteCapacityProviderResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteCluster operation in a HTTP client.
  */
 extension DeleteClusterResponse: HTTPResponseOutputProtocol {

@@ -40,6 +40,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let deleteBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -61,6 +62,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let getBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketNotificationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let getBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketPolicyStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -99,6 +101,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let putBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketNotificationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let putBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketRequestPayment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -142,6 +145,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.deleteBucketLifecycle)
         self.deleteBucketMetricsConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteBucketMetricsConfiguration)
+        self.deleteBucketOwnershipControls = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteBucketOwnershipControls)
         self.deleteBucketPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteBucketPolicy)
         self.deleteBucketReplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -184,6 +189,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.getBucketNotification)
         self.getBucketNotificationConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getBucketNotificationConfiguration)
+        self.getBucketOwnershipControls = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getBucketOwnershipControls)
         self.getBucketPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getBucketPolicy)
         self.getBucketPolicyStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -260,6 +267,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.putBucketNotification)
         self.putBucketNotificationConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putBucketNotificationConfiguration)
+        self.putBucketOwnershipControls = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putBucketOwnershipControls)
         self.putBucketPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putBucketPolicy)
         self.putBucketReplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

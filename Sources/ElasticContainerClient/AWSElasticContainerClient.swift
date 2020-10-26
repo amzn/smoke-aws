@@ -152,7 +152,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - completion: The CreateCapacityProviderResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateCapacityProviderResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, invalidParameter, limitExceeded, server.
+           The possible errors are: client, invalidParameter, limitExceeded, server, updateInProgress.
      */
     public func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
@@ -185,7 +185,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - input: The validated CreateCapacityProviderRequest object being passed to this operation.
      - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, limitExceeded, server.
+     - Throws: client, invalidParameter, limitExceeded, server, updateInProgress.
      */
     public func createCapacityProviderSync(
             input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
@@ -549,6 +549,76 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAttributes,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+         - completion: The DeleteCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func deleteCapacityProviderAsync(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest, 
+            completion: @escaping (Result<ElasticContainerModel.DeleteCapacityProviderResponse, ElasticContainerError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteCapacityProvider.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+     - Returns: The DeleteCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deleteCapacityProviderSync(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest) throws -> ElasticContainerModel.DeleteCapacityProviderResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteCapacityProvider.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteCapacityProviderOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(

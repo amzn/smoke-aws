@@ -550,6 +550,19 @@ public typealias OutputFormat = String
 public typealias Period = Int
 
 /**
+ Enumeration restricting the values of the RecentlyActive field.
+ */
+public enum RecentlyActive: String, Codable, CustomStringConvertible {
+    case pt3h = "PT3H"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: RecentlyActive = .pt3h
+}
+
+/**
  Type definition for the ResourceId field.
  */
 public typealias ResourceId = String

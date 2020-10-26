@@ -977,6 +977,73 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     }
 
     /**
+     Invokes the DeleteBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteBucketOwnershipControlsAsync(
+            input: S3Model.DeleteBucketOwnershipControlsRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/{Bucket}?ownershipControls",
+            httpMethod: .DELETE,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    public func deleteBucketOwnershipControlsSync(
+            input: S3Model.DeleteBucketOwnershipControlsRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?ownershipControls",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DeleteBucketPolicy operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2420,6 +2487,76 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
         do {
             return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/{Bucket}?notification",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: The GetBucketOwnershipControlsOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetBucketOwnershipControlsOutput
+           object will be validated before being returned to caller.
+     */
+    public func getBucketOwnershipControlsAsync(
+            input: S3Model.GetBucketOwnershipControlsRequest, 
+            completion: @escaping (Result<S3Model.GetBucketOwnershipControlsOutput, S3Error>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/{Bucket}?ownershipControls",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+     - Returns: The GetBucketOwnershipControlsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketOwnershipControlsSync(
+            input: S3Model.GetBucketOwnershipControlsRequest) throws -> S3Model.GetBucketOwnershipControlsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/{Bucket}?ownershipControls",
                 httpMethod: .GET,
                 input: requestInput,
                 invocationContext: invocationContext,
@@ -5045,6 +5182,73 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
                 endpointPath: "/{Bucket}?notification",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func putBucketOwnershipControlsAsync(
+            input: S3Model.PutBucketOwnershipControlsRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/{Bucket}?ownershipControls",
+            httpMethod: .PUT,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    public func putBucketOwnershipControlsSync(
+            input: S3Model.PutBucketOwnershipControlsRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?ownershipControls",
                 httpMethod: .PUT,
                 input: requestInput,
                 invocationContext: invocationContext,

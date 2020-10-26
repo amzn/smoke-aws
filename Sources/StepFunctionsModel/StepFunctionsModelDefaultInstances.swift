@@ -93,6 +93,7 @@ public extension ActivityScheduledEventDetails {
         let defaultInstance = StepFunctionsModel.ActivityScheduledEventDetails(
             heartbeatInSeconds: nil,
             input: nil,
+            inputDetails: nil,
             resource: "0",
             timeoutInSeconds: nil)
 
@@ -118,7 +119,8 @@ public extension ActivitySucceededEventDetails {
      */
     static let __default: StepFunctionsModel.ActivitySucceededEventDetails = {
         let defaultInstance = StepFunctionsModel.ActivitySucceededEventDetails(
-            output: nil)
+            output: nil,
+            outputDetails: nil)
 
         return defaultInstance
     }()
@@ -144,6 +146,18 @@ public extension ActivityWorkerLimitExceeded {
     static let __default: StepFunctionsModel.ActivityWorkerLimitExceeded = {
         let defaultInstance = StepFunctionsModel.ActivityWorkerLimitExceeded(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CloudWatchEventsExecutionDataDetails {
+    /**
+     Default instance of the CloudWatchEventsExecutionDataDetails structure.
+     */
+    static let __default: StepFunctionsModel.CloudWatchEventsExecutionDataDetails = {
+        let defaultInstance = StepFunctionsModel.CloudWatchEventsExecutionDataDetails(
+            included: nil)
 
         return defaultInstance
     }()
@@ -198,6 +212,7 @@ public extension CreateStateMachineInput {
             name: "0",
             roleArn: "0",
             tags: nil,
+            tracingConfiguration: nil,
             type: nil)
 
         return defaultInstance
@@ -308,13 +323,16 @@ public extension DescribeExecutionOutput {
     static let __default: StepFunctionsModel.DescribeExecutionOutput = {
         let defaultInstance = StepFunctionsModel.DescribeExecutionOutput(
             executionArn: "0",
-            input: "",
+            input: nil,
+            inputDetails: nil,
             name: nil,
             output: nil,
+            outputDetails: nil,
             startDate: 1.52953091375E9,
             stateMachineArn: "0",
             status: .__default,
-            stopDate: nil)
+            stopDate: nil,
+            traceHeader: nil)
 
         return defaultInstance
     }()
@@ -343,6 +361,7 @@ public extension DescribeStateMachineForExecutionOutput {
             name: "0",
             roleArn: "0",
             stateMachineArn: "0",
+            tracingConfiguration: nil,
             updateDate: 1.52953091375E9)
 
         return defaultInstance
@@ -374,6 +393,7 @@ public extension DescribeStateMachineOutput {
             roleArn: "0",
             stateMachineArn: "0",
             status: nil,
+            tracingConfiguration: nil,
             type: .__default)
 
         return defaultInstance
@@ -466,6 +486,7 @@ public extension ExecutionStartedEventDetails {
     static let __default: StepFunctionsModel.ExecutionStartedEventDetails = {
         let defaultInstance = StepFunctionsModel.ExecutionStartedEventDetails(
             input: nil,
+            inputDetails: nil,
             roleArn: nil)
 
         return defaultInstance
@@ -478,7 +499,8 @@ public extension ExecutionSucceededEventDetails {
      */
     static let __default: StepFunctionsModel.ExecutionSucceededEventDetails = {
         let defaultInstance = StepFunctionsModel.ExecutionSucceededEventDetails(
-            output: nil)
+            output: nil,
+            outputDetails: nil)
 
         return defaultInstance
     }()
@@ -530,6 +552,7 @@ public extension GetExecutionHistoryInput {
     static let __default: StepFunctionsModel.GetExecutionHistoryInput = {
         let defaultInstance = StepFunctionsModel.GetExecutionHistoryInput(
             executionArn: "0",
+            includeExecutionData: nil,
             maxResults: nil,
             nextToken: nil,
             reverseOrder: nil)
@@ -593,6 +616,18 @@ public extension HistoryEvent {
             taskTimedOutEventDetails: nil,
             timestamp: 1.52953091375E9,
             type: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension HistoryEventExecutionDataDetails {
+    /**
+     Default instance of the HistoryEventExecutionDataDetails structure.
+     */
+    static let __default: StepFunctionsModel.HistoryEventExecutionDataDetails = {
+        let defaultInstance = StepFunctionsModel.HistoryEventExecutionDataDetails(
+            truncated: nil)
 
         return defaultInstance
     }()
@@ -682,6 +717,18 @@ public extension InvalidToken {
     }()
 }
 
+public extension InvalidTracingConfiguration {
+    /**
+     Default instance of the InvalidTracingConfiguration structure.
+     */
+    static let __default: StepFunctionsModel.InvalidTracingConfiguration = {
+        let defaultInstance = StepFunctionsModel.InvalidTracingConfiguration(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension LambdaFunctionFailedEventDetails {
     /**
      Default instance of the LambdaFunctionFailedEventDetails structure.
@@ -715,6 +762,7 @@ public extension LambdaFunctionScheduledEventDetails {
     static let __default: StepFunctionsModel.LambdaFunctionScheduledEventDetails = {
         let defaultInstance = StepFunctionsModel.LambdaFunctionScheduledEventDetails(
             input: nil,
+            inputDetails: nil,
             resource: "0",
             timeoutInSeconds: nil)
 
@@ -741,7 +789,8 @@ public extension LambdaFunctionSucceededEventDetails {
      */
     static let __default: StepFunctionsModel.LambdaFunctionSucceededEventDetails = {
         let defaultInstance = StepFunctionsModel.LambdaFunctionSucceededEventDetails(
-            output: nil)
+            output: nil,
+            outputDetails: nil)
 
         return defaultInstance
     }()
@@ -1020,7 +1069,8 @@ public extension StartExecutionInput {
         let defaultInstance = StepFunctionsModel.StartExecutionInput(
             input: nil,
             name: nil,
-            stateMachineArn: "0")
+            stateMachineArn: "0",
+            traceHeader: nil)
 
         return defaultInstance
     }()
@@ -1046,6 +1096,7 @@ public extension StateEnteredEventDetails {
     static let __default: StepFunctionsModel.StateEnteredEventDetails = {
         let defaultInstance = StepFunctionsModel.StateEnteredEventDetails(
             input: nil,
+            inputDetails: nil,
             name: "0")
 
         return defaultInstance
@@ -1059,7 +1110,8 @@ public extension StateExitedEventDetails {
     static let __default: StepFunctionsModel.StateExitedEventDetails = {
         let defaultInstance = StepFunctionsModel.StateExitedEventDetails(
             name: "0",
-            output: nil)
+            output: nil,
+            outputDetails: nil)
 
         return defaultInstance
     }()
@@ -1236,6 +1288,7 @@ public extension TaskScheduledEventDetails {
      */
     static let __default: StepFunctionsModel.TaskScheduledEventDetails = {
         let defaultInstance = StepFunctionsModel.TaskScheduledEventDetails(
+            heartbeatInSeconds: nil,
             parameters: "",
             region: "0",
             resource: "0",
@@ -1296,6 +1349,7 @@ public extension TaskSubmittedEventDetails {
     static let __default: StepFunctionsModel.TaskSubmittedEventDetails = {
         let defaultInstance = StepFunctionsModel.TaskSubmittedEventDetails(
             output: nil,
+            outputDetails: nil,
             resource: "0",
             resourceType: "0")
 
@@ -1310,6 +1364,7 @@ public extension TaskSucceededEventDetails {
     static let __default: StepFunctionsModel.TaskSucceededEventDetails = {
         let defaultInstance = StepFunctionsModel.TaskSucceededEventDetails(
             output: nil,
+            outputDetails: nil,
             resource: "0",
             resourceType: "0")
 
@@ -1357,6 +1412,18 @@ public extension TooManyTags {
     }()
 }
 
+public extension TracingConfiguration {
+    /**
+     Default instance of the TracingConfiguration structure.
+     */
+    static let __default: StepFunctionsModel.TracingConfiguration = {
+        let defaultInstance = StepFunctionsModel.TracingConfiguration(
+            enabled: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension UntagResourceInput {
     /**
      Default instance of the UntagResourceInput structure.
@@ -1390,7 +1457,8 @@ public extension UpdateStateMachineInput {
             definition: nil,
             loggingConfiguration: nil,
             roleArn: nil,
-            stateMachineArn: "0")
+            stateMachineArn: "0",
+            tracingConfiguration: nil)
 
         return defaultInstance
     }()

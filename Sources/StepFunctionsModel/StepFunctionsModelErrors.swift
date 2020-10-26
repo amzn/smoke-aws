@@ -45,6 +45,7 @@ private let invalidLoggingConfigurationIdentity = "InvalidLoggingConfiguration"
 private let invalidNameIdentity = "InvalidName"
 private let invalidOutputIdentity = "InvalidOutput"
 private let invalidTokenIdentity = "InvalidToken"
+private let invalidTracingConfigurationIdentity = "InvalidTracingConfiguration"
 private let missingRequiredParameterIdentity = "MissingRequiredParameter"
 private let resourceNotFoundIdentity = "ResourceNotFound"
 private let stateMachineAlreadyExistsIdentity = "StateMachineAlreadyExists"
@@ -71,6 +72,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case invalidName(InvalidName)
     case invalidOutput(InvalidOutput)
     case invalidToken(InvalidToken)
+    case invalidTracingConfiguration(InvalidTracingConfiguration)
     case missingRequiredParameter(MissingRequiredParameter)
     case resourceNotFound(ResourceNotFound)
     case stateMachineAlreadyExists(StateMachineAlreadyExists)
@@ -139,6 +141,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case invalidTokenIdentity:
             let errorPayload = try InvalidToken(from: decoder)
             self = StepFunctionsError.invalidToken(errorPayload)
+        case invalidTracingConfigurationIdentity:
+            let errorPayload = try InvalidTracingConfiguration(from: decoder)
+            self = StepFunctionsError.invalidTracingConfiguration(errorPayload)
         case missingRequiredParameterIdentity:
             let errorPayload = try MissingRequiredParameter(from: decoder)
             self = StepFunctionsError.missingRequiredParameter(errorPayload)

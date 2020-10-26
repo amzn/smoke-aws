@@ -53,6 +53,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let deleteBucketLifecycleSyncOverride: DeleteBucketLifecycleSyncType?
     let deleteBucketMetricsConfigurationAsyncOverride: DeleteBucketMetricsConfigurationAsyncType?
     let deleteBucketMetricsConfigurationSyncOverride: DeleteBucketMetricsConfigurationSyncType?
+    let deleteBucketOwnershipControlsAsyncOverride: DeleteBucketOwnershipControlsAsyncType?
+    let deleteBucketOwnershipControlsSyncOverride: DeleteBucketOwnershipControlsSyncType?
     let deleteBucketPolicyAsyncOverride: DeleteBucketPolicyAsyncType?
     let deleteBucketPolicySyncOverride: DeleteBucketPolicySyncType?
     let deleteBucketReplicationAsyncOverride: DeleteBucketReplicationAsyncType?
@@ -95,6 +97,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let getBucketNotificationSyncOverride: GetBucketNotificationSyncType?
     let getBucketNotificationConfigurationAsyncOverride: GetBucketNotificationConfigurationAsyncType?
     let getBucketNotificationConfigurationSyncOverride: GetBucketNotificationConfigurationSyncType?
+    let getBucketOwnershipControlsAsyncOverride: GetBucketOwnershipControlsAsyncType?
+    let getBucketOwnershipControlsSyncOverride: GetBucketOwnershipControlsSyncType?
     let getBucketPolicyAsyncOverride: GetBucketPolicyAsyncType?
     let getBucketPolicySyncOverride: GetBucketPolicySyncType?
     let getBucketPolicyStatusAsyncOverride: GetBucketPolicyStatusAsyncType?
@@ -171,6 +175,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let putBucketNotificationSyncOverride: PutBucketNotificationSyncType?
     let putBucketNotificationConfigurationAsyncOverride: PutBucketNotificationConfigurationAsyncType?
     let putBucketNotificationConfigurationSyncOverride: PutBucketNotificationConfigurationSyncType?
+    let putBucketOwnershipControlsAsyncOverride: PutBucketOwnershipControlsAsyncType?
+    let putBucketOwnershipControlsSyncOverride: PutBucketOwnershipControlsSyncType?
     let putBucketPolicyAsyncOverride: PutBucketPolicyAsyncType?
     let putBucketPolicySyncOverride: PutBucketPolicySyncType?
     let putBucketReplicationAsyncOverride: PutBucketReplicationAsyncType?
@@ -235,6 +241,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             deleteBucketLifecycleSync: DeleteBucketLifecycleSyncType? = nil,
             deleteBucketMetricsConfigurationAsync: DeleteBucketMetricsConfigurationAsyncType? = nil,
             deleteBucketMetricsConfigurationSync: DeleteBucketMetricsConfigurationSyncType? = nil,
+            deleteBucketOwnershipControlsAsync: DeleteBucketOwnershipControlsAsyncType? = nil,
+            deleteBucketOwnershipControlsSync: DeleteBucketOwnershipControlsSyncType? = nil,
             deleteBucketPolicyAsync: DeleteBucketPolicyAsyncType? = nil,
             deleteBucketPolicySync: DeleteBucketPolicySyncType? = nil,
             deleteBucketReplicationAsync: DeleteBucketReplicationAsyncType? = nil,
@@ -277,6 +285,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             getBucketNotificationSync: GetBucketNotificationSyncType? = nil,
             getBucketNotificationConfigurationAsync: GetBucketNotificationConfigurationAsyncType? = nil,
             getBucketNotificationConfigurationSync: GetBucketNotificationConfigurationSyncType? = nil,
+            getBucketOwnershipControlsAsync: GetBucketOwnershipControlsAsyncType? = nil,
+            getBucketOwnershipControlsSync: GetBucketOwnershipControlsSyncType? = nil,
             getBucketPolicyAsync: GetBucketPolicyAsyncType? = nil,
             getBucketPolicySync: GetBucketPolicySyncType? = nil,
             getBucketPolicyStatusAsync: GetBucketPolicyStatusAsyncType? = nil,
@@ -353,6 +363,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             putBucketNotificationSync: PutBucketNotificationSyncType? = nil,
             putBucketNotificationConfigurationAsync: PutBucketNotificationConfigurationAsyncType? = nil,
             putBucketNotificationConfigurationSync: PutBucketNotificationConfigurationSyncType? = nil,
+            putBucketOwnershipControlsAsync: PutBucketOwnershipControlsAsyncType? = nil,
+            putBucketOwnershipControlsSync: PutBucketOwnershipControlsSyncType? = nil,
             putBucketPolicyAsync: PutBucketPolicyAsyncType? = nil,
             putBucketPolicySync: PutBucketPolicySyncType? = nil,
             putBucketReplicationAsync: PutBucketReplicationAsyncType? = nil,
@@ -412,6 +424,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.deleteBucketLifecycleSyncOverride = deleteBucketLifecycleSync
         self.deleteBucketMetricsConfigurationAsyncOverride = deleteBucketMetricsConfigurationAsync
         self.deleteBucketMetricsConfigurationSyncOverride = deleteBucketMetricsConfigurationSync
+        self.deleteBucketOwnershipControlsAsyncOverride = deleteBucketOwnershipControlsAsync
+        self.deleteBucketOwnershipControlsSyncOverride = deleteBucketOwnershipControlsSync
         self.deleteBucketPolicyAsyncOverride = deleteBucketPolicyAsync
         self.deleteBucketPolicySyncOverride = deleteBucketPolicySync
         self.deleteBucketReplicationAsyncOverride = deleteBucketReplicationAsync
@@ -454,6 +468,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.getBucketNotificationSyncOverride = getBucketNotificationSync
         self.getBucketNotificationConfigurationAsyncOverride = getBucketNotificationConfigurationAsync
         self.getBucketNotificationConfigurationSyncOverride = getBucketNotificationConfigurationSync
+        self.getBucketOwnershipControlsAsyncOverride = getBucketOwnershipControlsAsync
+        self.getBucketOwnershipControlsSyncOverride = getBucketOwnershipControlsSync
         self.getBucketPolicyAsyncOverride = getBucketPolicyAsync
         self.getBucketPolicySyncOverride = getBucketPolicySync
         self.getBucketPolicyStatusAsyncOverride = getBucketPolicyStatusAsync
@@ -530,6 +546,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.putBucketNotificationSyncOverride = putBucketNotificationSync
         self.putBucketNotificationConfigurationAsyncOverride = putBucketNotificationConfigurationAsync
         self.putBucketNotificationConfigurationSyncOverride = putBucketNotificationConfigurationSync
+        self.putBucketOwnershipControlsAsyncOverride = putBucketOwnershipControlsAsync
+        self.putBucketOwnershipControlsSyncOverride = putBucketOwnershipControlsSync
         self.putBucketPolicyAsyncOverride = putBucketPolicyAsync
         self.putBucketPolicySyncOverride = putBucketPolicySync
         self.putBucketReplicationAsyncOverride = putBucketReplicationAsync
@@ -978,6 +996,39 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.DeleteBucketMetricsConfigurationRequest) throws {
         if let deleteBucketMetricsConfigurationSyncOverride = deleteBucketMetricsConfigurationSyncOverride {
             return try deleteBucketMetricsConfigurationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteBucketOwnershipControlsAsync(
+            input: S3Model.DeleteBucketOwnershipControlsRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        if let deleteBucketOwnershipControlsAsyncOverride = deleteBucketOwnershipControlsAsyncOverride {
+            return try deleteBucketOwnershipControlsAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the DeleteBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    public func deleteBucketOwnershipControlsSync(
+            input: S3Model.DeleteBucketOwnershipControlsRequest) throws {
+        if let deleteBucketOwnershipControlsSyncOverride = deleteBucketOwnershipControlsSyncOverride {
+            return try deleteBucketOwnershipControlsSyncOverride(input)
         }
 
         throw error
@@ -1719,6 +1770,42 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration {
         if let getBucketNotificationConfigurationSyncOverride = getBucketNotificationConfigurationSyncOverride {
             return try getBucketNotificationConfigurationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: The GetBucketOwnershipControlsOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetBucketOwnershipControlsOutput
+           object will be validated before being returned to caller.
+     */
+    public func getBucketOwnershipControlsAsync(
+            input: S3Model.GetBucketOwnershipControlsRequest, 
+            completion: @escaping (Result<S3Model.GetBucketOwnershipControlsOutput, S3Error>) -> ()) throws {
+        if let getBucketOwnershipControlsAsyncOverride = getBucketOwnershipControlsAsyncOverride {
+            return try getBucketOwnershipControlsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+     - Returns: The GetBucketOwnershipControlsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketOwnershipControlsSync(
+            input: S3Model.GetBucketOwnershipControlsRequest) throws -> S3Model.GetBucketOwnershipControlsOutput {
+        if let getBucketOwnershipControlsSyncOverride = getBucketOwnershipControlsSyncOverride {
+            return try getBucketOwnershipControlsSyncOverride(input)
         }
 
         throw error
@@ -3052,6 +3139,39 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.PutBucketNotificationConfigurationRequest) throws {
         if let putBucketNotificationConfigurationSyncOverride = putBucketNotificationConfigurationSyncOverride {
             return try putBucketNotificationConfigurationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the PutBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func putBucketOwnershipControlsAsync(
+            input: S3Model.PutBucketOwnershipControlsRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        if let putBucketOwnershipControlsAsyncOverride = putBucketOwnershipControlsAsyncOverride {
+            return try putBucketOwnershipControlsAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the PutBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    public func putBucketOwnershipControlsSync(
+            input: S3Model.PutBucketOwnershipControlsRequest) throws {
+        if let putBucketOwnershipControlsSyncOverride = putBucketOwnershipControlsSyncOverride {
+            return try putBucketOwnershipControlsSyncOverride(input)
         }
 
         throw error

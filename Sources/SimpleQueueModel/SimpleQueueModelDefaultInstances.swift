@@ -412,6 +412,8 @@ public extension ListDeadLetterSourceQueuesRequest {
      */
     static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesRequest = {
         let defaultInstance = SimpleQueueModel.ListDeadLetterSourceQueuesRequest(
+            maxResults: nil,
+            nextToken: nil,
             queueUrl: "value")
 
         return defaultInstance
@@ -424,6 +426,7 @@ public extension ListDeadLetterSourceQueuesResult {
      */
     static let __default: SimpleQueueModel.ListDeadLetterSourceQueuesResult = {
         let defaultInstance = SimpleQueueModel.ListDeadLetterSourceQueuesResult(
+            nextToken: nil,
             queueUrls: nil)
 
         return defaultInstance
@@ -484,6 +487,8 @@ public extension ListQueuesRequest {
      */
     static let __default: SimpleQueueModel.ListQueuesRequest = {
         let defaultInstance = SimpleQueueModel.ListQueuesRequest(
+            maxResults: nil,
+            nextToken: nil,
             queueNamePrefix: nil)
 
         return defaultInstance
@@ -496,6 +501,7 @@ public extension ListQueuesResult {
      */
     static let __default: SimpleQueueModel.ListQueuesResult = {
         let defaultInstance = SimpleQueueModel.ListQueuesResult(
+            nextToken: nil,
             queueUrls: nil)
 
         return defaultInstance

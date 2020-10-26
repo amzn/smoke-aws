@@ -1654,15 +1654,18 @@ public struct ListMetricsInput: Codable, Equatable {
     public var metricName: MetricName?
     public var namespace: Namespace?
     public var nextToken: NextToken?
+    public var recentlyActive: RecentlyActive?
 
     public init(dimensions: DimensionFilters? = nil,
                 metricName: MetricName? = nil,
                 namespace: Namespace? = nil,
-                nextToken: NextToken? = nil) {
+                nextToken: NextToken? = nil,
+                recentlyActive: RecentlyActive? = nil) {
         self.dimensions = dimensions
         self.metricName = metricName
         self.namespace = namespace
         self.nextToken = nextToken
+        self.recentlyActive = recentlyActive
     }
 
     enum CodingKeys: String, CodingKey {
@@ -1670,6 +1673,7 @@ public struct ListMetricsInput: Codable, Equatable {
         case metricName = "MetricName"
         case namespace = "Namespace"
         case nextToken = "NextToken"
+        case recentlyActive = "RecentlyActive"
     }
 
     public func validate() throws {

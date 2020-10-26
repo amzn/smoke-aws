@@ -41,6 +41,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
     let deleteAccountSettingSyncOverride: DeleteAccountSettingSyncType?
     let deleteAttributesAsyncOverride: DeleteAttributesAsyncType?
     let deleteAttributesSyncOverride: DeleteAttributesSyncType?
+    let deleteCapacityProviderAsyncOverride: DeleteCapacityProviderAsyncType?
+    let deleteCapacityProviderSyncOverride: DeleteCapacityProviderSyncType?
     let deleteClusterAsyncOverride: DeleteClusterAsyncType?
     let deleteClusterSyncOverride: DeleteClusterSyncType?
     let deleteServiceAsyncOverride: DeleteServiceAsyncType?
@@ -143,6 +145,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             deleteAccountSettingSync: DeleteAccountSettingSyncType? = nil,
             deleteAttributesAsync: DeleteAttributesAsyncType? = nil,
             deleteAttributesSync: DeleteAttributesSyncType? = nil,
+            deleteCapacityProviderAsync: DeleteCapacityProviderAsyncType? = nil,
+            deleteCapacityProviderSync: DeleteCapacityProviderSyncType? = nil,
             deleteClusterAsync: DeleteClusterAsyncType? = nil,
             deleteClusterSync: DeleteClusterSyncType? = nil,
             deleteServiceAsync: DeleteServiceAsyncType? = nil,
@@ -240,6 +244,8 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
         self.deleteAccountSettingSyncOverride = deleteAccountSettingSync
         self.deleteAttributesAsyncOverride = deleteAttributesAsync
         self.deleteAttributesSyncOverride = deleteAttributesSync
+        self.deleteCapacityProviderAsyncOverride = deleteCapacityProviderAsync
+        self.deleteCapacityProviderSyncOverride = deleteCapacityProviderSync
         self.deleteClusterAsyncOverride = deleteClusterAsync
         self.deleteClusterSyncOverride = deleteClusterSync
         self.deleteServiceAsyncOverride = deleteServiceAsync
@@ -334,7 +340,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The CreateCapacityProviderResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateCapacityProviderResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, invalidParameter, limitExceeded, server.
+           The possible errors are: client, invalidParameter, limitExceeded, server, updateInProgress.
      */
     public func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
@@ -353,7 +359,7 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated CreateCapacityProviderRequest object being passed to this operation.
      - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, limitExceeded, server.
+     - Throws: client, invalidParameter, limitExceeded, server, updateInProgress.
      */
     public func createCapacityProviderSync(
             input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse {
@@ -549,6 +555,44 @@ public struct ThrowingElasticContainerClient: ElasticContainerClientProtocol {
             input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse {
         if let deleteAttributesSyncOverride = deleteAttributesSyncOverride {
             return try deleteAttributesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+         - completion: The DeleteCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func deleteCapacityProviderAsync(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest, 
+            completion: @escaping (Result<ElasticContainerModel.DeleteCapacityProviderResponse, ElasticContainerError>) -> ()) throws {
+        if let deleteCapacityProviderAsyncOverride = deleteCapacityProviderAsyncOverride {
+            return try deleteCapacityProviderAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+     - Returns: The DeleteCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deleteCapacityProviderSync(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest) throws -> ElasticContainerModel.DeleteCapacityProviderResponse {
+        if let deleteCapacityProviderSyncOverride = deleteCapacityProviderSyncOverride {
+            return try deleteCapacityProviderSyncOverride(input)
         }
 
         throw error

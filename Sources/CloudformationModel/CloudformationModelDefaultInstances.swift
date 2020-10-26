@@ -1585,6 +1585,7 @@ public extension ListStackInstancesInput {
      */
     static let __default: CloudformationModel.ListStackInstancesInput = {
         let defaultInstance = CloudformationModel.ListStackInstancesInput(
+            filters: nil,
             maxResults: nil,
             nextToken: nil,
             stackInstanceAccount: nil,
@@ -2438,9 +2439,35 @@ public extension StackInstance {
             parameterOverrides: nil,
             region: nil,
             stackId: nil,
+            stackInstanceStatus: nil,
             stackSetId: nil,
             status: nil,
             statusReason: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StackInstanceComprehensiveStatus {
+    /**
+     Default instance of the StackInstanceComprehensiveStatus structure.
+     */
+    static let __default: CloudformationModel.StackInstanceComprehensiveStatus = {
+        let defaultInstance = CloudformationModel.StackInstanceComprehensiveStatus(
+            detailedStatus: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StackInstanceFilter {
+    /**
+     Default instance of the StackInstanceFilter structure.
+     */
+    static let __default: CloudformationModel.StackInstanceFilter = {
+        let defaultInstance = CloudformationModel.StackInstanceFilter(
+            name: nil,
+            values: nil)
 
         return defaultInstance
     }()
@@ -2469,6 +2496,7 @@ public extension StackInstanceSummary {
             organizationalUnitId: nil,
             region: nil,
             stackId: nil,
+            stackInstanceStatus: nil,
             stackSetId: nil,
             status: nil,
             statusReason: nil)

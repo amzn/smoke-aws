@@ -67,6 +67,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case copyImage = "CopyImage"
     case copySnapshot = "CopySnapshot"
     case createCapacityReservation = "CreateCapacityReservation"
+    case createCarrierGateway = "CreateCarrierGateway"
     case createClientVpnEndpoint = "CreateClientVpnEndpoint"
     case createClientVpnRoute = "CreateClientVpnRoute"
     case createCustomerGateway = "CreateCustomerGateway"
@@ -85,6 +86,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createLaunchTemplateVersion = "CreateLaunchTemplateVersion"
     case createLocalGatewayRoute = "CreateLocalGatewayRoute"
     case createLocalGatewayRouteTableVpcAssociation = "CreateLocalGatewayRouteTableVpcAssociation"
+    case createManagedPrefixList = "CreateManagedPrefixList"
     case createNatGateway = "CreateNatGateway"
     case createNetworkAcl = "CreateNetworkAcl"
     case createNetworkAclEntry = "CreateNetworkAclEntry"
@@ -107,6 +109,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createTransitGateway = "CreateTransitGateway"
     case createTransitGatewayMulticastDomain = "CreateTransitGatewayMulticastDomain"
     case createTransitGatewayPeeringAttachment = "CreateTransitGatewayPeeringAttachment"
+    case createTransitGatewayPrefixListReference = "CreateTransitGatewayPrefixListReference"
     case createTransitGatewayRoute = "CreateTransitGatewayRoute"
     case createTransitGatewayRouteTable = "CreateTransitGatewayRouteTable"
     case createTransitGatewayVpcAttachment = "CreateTransitGatewayVpcAttachment"
@@ -119,6 +122,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createVpnConnection = "CreateVpnConnection"
     case createVpnConnectionRoute = "CreateVpnConnectionRoute"
     case createVpnGateway = "CreateVpnGateway"
+    case deleteCarrierGateway = "DeleteCarrierGateway"
     case deleteClientVpnEndpoint = "DeleteClientVpnEndpoint"
     case deleteClientVpnRoute = "DeleteClientVpnRoute"
     case deleteCustomerGateway = "DeleteCustomerGateway"
@@ -133,6 +137,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteLaunchTemplateVersions = "DeleteLaunchTemplateVersions"
     case deleteLocalGatewayRoute = "DeleteLocalGatewayRoute"
     case deleteLocalGatewayRouteTableVpcAssociation = "DeleteLocalGatewayRouteTableVpcAssociation"
+    case deleteManagedPrefixList = "DeleteManagedPrefixList"
     case deleteNatGateway = "DeleteNatGateway"
     case deleteNetworkAcl = "DeleteNetworkAcl"
     case deleteNetworkAclEntry = "DeleteNetworkAclEntry"
@@ -154,6 +159,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteTransitGateway = "DeleteTransitGateway"
     case deleteTransitGatewayMulticastDomain = "DeleteTransitGatewayMulticastDomain"
     case deleteTransitGatewayPeeringAttachment = "DeleteTransitGatewayPeeringAttachment"
+    case deleteTransitGatewayPrefixListReference = "DeleteTransitGatewayPrefixListReference"
     case deleteTransitGatewayRoute = "DeleteTransitGatewayRoute"
     case deleteTransitGatewayRouteTable = "DeleteTransitGatewayRouteTable"
     case deleteTransitGatewayVpcAttachment = "DeleteTransitGatewayVpcAttachment"
@@ -178,6 +184,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeBundleTasks = "DescribeBundleTasks"
     case describeByoipCidrs = "DescribeByoipCidrs"
     case describeCapacityReservations = "DescribeCapacityReservations"
+    case describeCarrierGateways = "DescribeCarrierGateways"
     case describeClassicLinkInstances = "DescribeClassicLinkInstances"
     case describeClientVpnAuthorizationRules = "DescribeClientVpnAuthorizationRules"
     case describeClientVpnConnections = "DescribeClientVpnConnections"
@@ -227,6 +234,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeLocalGatewayVirtualInterfaceGroups = "DescribeLocalGatewayVirtualInterfaceGroups"
     case describeLocalGatewayVirtualInterfaces = "DescribeLocalGatewayVirtualInterfaces"
     case describeLocalGateways = "DescribeLocalGateways"
+    case describeManagedPrefixLists = "DescribeManagedPrefixLists"
     case describeMovingAddresses = "DescribeMovingAddresses"
     case describeNatGateways = "DescribeNatGateways"
     case describeNetworkAcls = "DescribeNetworkAcls"
@@ -322,12 +330,16 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getDefaultCreditSpecification = "GetDefaultCreditSpecification"
     case getEbsDefaultKmsKeyId = "GetEbsDefaultKmsKeyId"
     case getEbsEncryptionByDefault = "GetEbsEncryptionByDefault"
+    case getGroupsForCapacityReservation = "GetGroupsForCapacityReservation"
     case getHostReservationPurchasePreview = "GetHostReservationPurchasePreview"
     case getLaunchTemplateData = "GetLaunchTemplateData"
+    case getManagedPrefixListAssociations = "GetManagedPrefixListAssociations"
+    case getManagedPrefixListEntries = "GetManagedPrefixListEntries"
     case getPasswordData = "GetPasswordData"
     case getReservedInstancesExchangeQuote = "GetReservedInstancesExchangeQuote"
     case getTransitGatewayAttachmentPropagations = "GetTransitGatewayAttachmentPropagations"
     case getTransitGatewayMulticastDomainAssociations = "GetTransitGatewayMulticastDomainAssociations"
+    case getTransitGatewayPrefixListReferences = "GetTransitGatewayPrefixListReferences"
     case getTransitGatewayRouteTableAssociations = "GetTransitGatewayRouteTableAssociations"
     case getTransitGatewayRouteTablePropagations = "GetTransitGatewayRouteTablePropagations"
     case importClientVpnClientCertificateRevocationList = "ImportClientVpnClientCertificateRevocationList"
@@ -354,6 +366,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyInstanceMetadataOptions = "ModifyInstanceMetadataOptions"
     case modifyInstancePlacement = "ModifyInstancePlacement"
     case modifyLaunchTemplate = "ModifyLaunchTemplate"
+    case modifyManagedPrefixList = "ModifyManagedPrefixList"
     case modifyNetworkInterfaceAttribute = "ModifyNetworkInterfaceAttribute"
     case modifyReservedInstances = "ModifyReservedInstances"
     case modifySnapshotAttribute = "ModifySnapshotAttribute"
@@ -362,6 +375,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyTrafficMirrorFilterNetworkServices = "ModifyTrafficMirrorFilterNetworkServices"
     case modifyTrafficMirrorFilterRule = "ModifyTrafficMirrorFilterRule"
     case modifyTrafficMirrorSession = "ModifyTrafficMirrorSession"
+    case modifyTransitGateway = "ModifyTransitGateway"
+    case modifyTransitGatewayPrefixListReference = "ModifyTransitGatewayPrefixListReference"
     case modifyTransitGatewayVpcAttachment = "ModifyTransitGatewayVpcAttachment"
     case modifyVolume = "ModifyVolume"
     case modifyVolumeAttribute = "ModifyVolumeAttribute"
@@ -373,6 +388,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyVpcPeeringConnectionOptions = "ModifyVpcPeeringConnectionOptions"
     case modifyVpcTenancy = "ModifyVpcTenancy"
     case modifyVpnConnection = "ModifyVpnConnection"
+    case modifyVpnConnectionOptions = "ModifyVpnConnectionOptions"
     case modifyVpnTunnelCertificate = "ModifyVpnTunnelCertificate"
     case modifyVpnTunnelOptions = "ModifyVpnTunnelOptions"
     case monitorInstances = "MonitorInstances"
@@ -408,6 +424,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case resetNetworkInterfaceAttribute = "ResetNetworkInterfaceAttribute"
     case resetSnapshotAttribute = "ResetSnapshotAttribute"
     case restoreAddressToClassic = "RestoreAddressToClassic"
+    case restoreManagedPrefixListVersion = "RestoreManagedPrefixListVersion"
     case revokeClientVpnIngress = "RevokeClientVpnIngress"
     case revokeSecurityGroupEgress = "RevokeSecurityGroupEgress"
     case revokeSecurityGroupIngress = "RevokeSecurityGroupIngress"
@@ -519,6 +536,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .createCapacityReservation:
             return "/"
+        case .createCarrierGateway:
+            return "/"
         case .createClientVpnEndpoint:
             return "/"
         case .createClientVpnRoute:
@@ -554,6 +573,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .createLocalGatewayRoute:
             return "/"
         case .createLocalGatewayRouteTableVpcAssociation:
+            return "/"
+        case .createManagedPrefixList:
             return "/"
         case .createNatGateway:
             return "/"
@@ -599,6 +620,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .createTransitGatewayPeeringAttachment:
             return "/"
+        case .createTransitGatewayPrefixListReference:
+            return "/"
         case .createTransitGatewayRoute:
             return "/"
         case .createTransitGatewayRouteTable:
@@ -622,6 +645,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .createVpnConnectionRoute:
             return "/"
         case .createVpnGateway:
+            return "/"
+        case .deleteCarrierGateway:
             return "/"
         case .deleteClientVpnEndpoint:
             return "/"
@@ -650,6 +675,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .deleteLocalGatewayRoute:
             return "/"
         case .deleteLocalGatewayRouteTableVpcAssociation:
+            return "/"
+        case .deleteManagedPrefixList:
             return "/"
         case .deleteNatGateway:
             return "/"
@@ -692,6 +719,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .deleteTransitGatewayMulticastDomain:
             return "/"
         case .deleteTransitGatewayPeeringAttachment:
+            return "/"
+        case .deleteTransitGatewayPrefixListReference:
             return "/"
         case .deleteTransitGatewayRoute:
             return "/"
@@ -740,6 +769,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeByoipCidrs:
             return "/"
         case .describeCapacityReservations:
+            return "/"
+        case .describeCarrierGateways:
             return "/"
         case .describeClassicLinkInstances:
             return "/"
@@ -838,6 +869,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeLocalGatewayVirtualInterfaces:
             return "/"
         case .describeLocalGateways:
+            return "/"
+        case .describeManagedPrefixLists:
             return "/"
         case .describeMovingAddresses:
             return "/"
@@ -1029,9 +1062,15 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getEbsEncryptionByDefault:
             return "/"
+        case .getGroupsForCapacityReservation:
+            return "/"
         case .getHostReservationPurchasePreview:
             return "/"
         case .getLaunchTemplateData:
+            return "/"
+        case .getManagedPrefixListAssociations:
+            return "/"
+        case .getManagedPrefixListEntries:
             return "/"
         case .getPasswordData:
             return "/"
@@ -1040,6 +1079,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getTransitGatewayAttachmentPropagations:
             return "/"
         case .getTransitGatewayMulticastDomainAssociations:
+            return "/"
+        case .getTransitGatewayPrefixListReferences:
             return "/"
         case .getTransitGatewayRouteTableAssociations:
             return "/"
@@ -1093,6 +1134,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .modifyLaunchTemplate:
             return "/"
+        case .modifyManagedPrefixList:
+            return "/"
         case .modifyNetworkInterfaceAttribute:
             return "/"
         case .modifyReservedInstances:
@@ -1108,6 +1151,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyTrafficMirrorFilterRule:
             return "/"
         case .modifyTrafficMirrorSession:
+            return "/"
+        case .modifyTransitGateway:
+            return "/"
+        case .modifyTransitGatewayPrefixListReference:
             return "/"
         case .modifyTransitGatewayVpcAttachment:
             return "/"
@@ -1130,6 +1177,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyVpcTenancy:
             return "/"
         case .modifyVpnConnection:
+            return "/"
+        case .modifyVpnConnectionOptions:
             return "/"
         case .modifyVpnTunnelCertificate:
             return "/"
@@ -1200,6 +1249,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .resetSnapshotAttribute:
             return "/"
         case .restoreAddressToClassic:
+            return "/"
+        case .restoreManagedPrefixListVersion:
             return "/"
         case .revokeClientVpnIngress:
             return "/"

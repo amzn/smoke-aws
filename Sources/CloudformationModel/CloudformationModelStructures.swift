@@ -2529,17 +2529,20 @@ public struct ListImportsOutputForListImports: Codable, Equatable {
 }
 
 public struct ListStackInstancesInput: Codable, Equatable {
+    public var filters: StackInstanceFilters?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var stackInstanceAccount: Account?
     public var stackInstanceRegion: Region?
     public var stackSetName: StackSetName
 
-    public init(maxResults: MaxResults? = nil,
+    public init(filters: StackInstanceFilters? = nil,
+                maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 stackInstanceAccount: Account? = nil,
                 stackInstanceRegion: Region? = nil,
                 stackSetName: StackSetName) {
+        self.filters = filters
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.stackInstanceAccount = stackInstanceAccount
@@ -2548,6 +2551,7 @@ public struct ListStackInstancesInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case filters = "Filters"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case stackInstanceAccount = "StackInstanceAccount"
@@ -2556,6 +2560,7 @@ public struct ListStackInstancesInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try filters?.validateAsStackInstanceFilters()
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
         try stackInstanceAccount?.validateAsAccount()
@@ -3976,6 +3981,7 @@ public struct StackInstance: Codable, Equatable {
     public var parameterOverrides: Parameters?
     public var region: Region?
     public var stackId: StackId?
+    public var stackInstanceStatus: StackInstanceComprehensiveStatus?
     public var stackSetId: StackSetId?
     public var status: StackInstanceStatus?
     public var statusReason: Reason?
@@ -3987,6 +3993,7 @@ public struct StackInstance: Codable, Equatable {
                 parameterOverrides: Parameters? = nil,
                 region: Region? = nil,
                 stackId: StackId? = nil,
+                stackInstanceStatus: StackInstanceComprehensiveStatus? = nil,
                 stackSetId: StackSetId? = nil,
                 status: StackInstanceStatus? = nil,
                 statusReason: Reason? = nil) {
@@ -3997,6 +4004,7 @@ public struct StackInstance: Codable, Equatable {
         self.parameterOverrides = parameterOverrides
         self.region = region
         self.stackId = stackId
+        self.stackInstanceStatus = stackInstanceStatus
         self.stackSetId = stackSetId
         self.status = status
         self.statusReason = statusReason
@@ -4010,6 +4018,7 @@ public struct StackInstance: Codable, Equatable {
         case parameterOverrides = "ParameterOverrides"
         case region = "Region"
         case stackId = "StackId"
+        case stackInstanceStatus = "StackInstanceStatus"
         case stackSetId = "StackSetId"
         case status = "Status"
         case statusReason = "StatusReason"
@@ -4019,6 +4028,42 @@ public struct StackInstance: Codable, Equatable {
         try account?.validateAsAccount()
         try organizationalUnitId?.validateAsOrganizationalUnitId()
         try region?.validateAsRegion()
+        try stackInstanceStatus?.validate()
+    }
+}
+
+public struct StackInstanceComprehensiveStatus: Codable, Equatable {
+    public var detailedStatus: StackInstanceDetailedStatus?
+
+    public init(detailedStatus: StackInstanceDetailedStatus? = nil) {
+        self.detailedStatus = detailedStatus
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case detailedStatus = "DetailedStatus"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StackInstanceFilter: Codable, Equatable {
+    public var name: StackInstanceFilterName?
+    public var values: StackInstanceFilterValues?
+
+    public init(name: StackInstanceFilterName? = nil,
+                values: StackInstanceFilterValues? = nil) {
+        self.name = name
+        self.values = values
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+        case values = "Values"
+    }
+
+    public func validate() throws {
+        try values?.validateAsStackInstanceFilterValues()
     }
 }
 
@@ -4038,6 +4083,7 @@ public struct StackInstanceSummary: Codable, Equatable {
     public var organizationalUnitId: OrganizationalUnitId?
     public var region: Region?
     public var stackId: StackId?
+    public var stackInstanceStatus: StackInstanceComprehensiveStatus?
     public var stackSetId: StackSetId?
     public var status: StackInstanceStatus?
     public var statusReason: Reason?
@@ -4048,6 +4094,7 @@ public struct StackInstanceSummary: Codable, Equatable {
                 organizationalUnitId: OrganizationalUnitId? = nil,
                 region: Region? = nil,
                 stackId: StackId? = nil,
+                stackInstanceStatus: StackInstanceComprehensiveStatus? = nil,
                 stackSetId: StackSetId? = nil,
                 status: StackInstanceStatus? = nil,
                 statusReason: Reason? = nil) {
@@ -4057,6 +4104,7 @@ public struct StackInstanceSummary: Codable, Equatable {
         self.organizationalUnitId = organizationalUnitId
         self.region = region
         self.stackId = stackId
+        self.stackInstanceStatus = stackInstanceStatus
         self.stackSetId = stackSetId
         self.status = status
         self.statusReason = statusReason
@@ -4069,6 +4117,7 @@ public struct StackInstanceSummary: Codable, Equatable {
         case organizationalUnitId = "OrganizationalUnitId"
         case region = "Region"
         case stackId = "StackId"
+        case stackInstanceStatus = "StackInstanceStatus"
         case stackSetId = "StackSetId"
         case status = "Status"
         case statusReason = "StatusReason"
@@ -4078,6 +4127,7 @@ public struct StackInstanceSummary: Codable, Equatable {
         try account?.validateAsAccount()
         try organizationalUnitId?.validateAsOrganizationalUnitId()
         try region?.validateAsRegion()
+        try stackInstanceStatus?.validate()
     }
 }
 

@@ -342,6 +342,19 @@ extension NotificationConfiguration: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetBucketOwnershipControls operation in a HTTP client.
+ */
+extension GetBucketOwnershipControlsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetBucketOwnershipControlsOutput
+    public typealias HeadersType = GetBucketOwnershipControlsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetBucketOwnershipControlsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetBucketPolicy operation in a HTTP client.
  */
 extension GetBucketPolicyOutput: HTTPResponseOutputProtocol {

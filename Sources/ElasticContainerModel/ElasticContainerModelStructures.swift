@@ -174,17 +174,23 @@ public struct CapacityProvider: Codable, Equatable {
     public var name: String?
     public var status: CapacityProviderStatus?
     public var tags: Tags?
+    public var updateStatus: CapacityProviderUpdateStatus?
+    public var updateStatusReason: String?
 
     public init(autoScalingGroupProvider: AutoScalingGroupProvider? = nil,
                 capacityProviderArn: String? = nil,
                 name: String? = nil,
                 status: CapacityProviderStatus? = nil,
-                tags: Tags? = nil) {
+                tags: Tags? = nil,
+                updateStatus: CapacityProviderUpdateStatus? = nil,
+                updateStatusReason: String? = nil) {
         self.autoScalingGroupProvider = autoScalingGroupProvider
         self.capacityProviderArn = capacityProviderArn
         self.name = name
         self.status = status
         self.tags = tags
+        self.updateStatus = updateStatus
+        self.updateStatusReason = updateStatusReason
     }
 
     enum CodingKeys: String, CodingKey {
@@ -193,6 +199,8 @@ public struct CapacityProvider: Codable, Equatable {
         case name
         case status
         case tags
+        case updateStatus
+        case updateStatusReason
     }
 
     public func validate() throws {
@@ -1145,6 +1153,37 @@ public struct DeleteAttributesResponse: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DeleteCapacityProviderRequest: Codable, Equatable {
+    public var capacityProvider: String
+
+    public init(capacityProvider: String) {
+        self.capacityProvider = capacityProvider
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProvider
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteCapacityProviderResponse: Codable, Equatable {
+    public var capacityProvider: CapacityProvider?
+
+    public init(capacityProvider: CapacityProvider? = nil) {
+        self.capacityProvider = capacityProvider
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProvider
+    }
+
+    public func validate() throws {
+        try capacityProvider?.validate()
     }
 }
 
