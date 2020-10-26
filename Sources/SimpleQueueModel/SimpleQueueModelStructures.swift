@@ -530,13 +530,21 @@ public struct InvalidMessageContents: Codable, Equatable {
 }
 
 public struct ListDeadLetterSourceQueuesRequest: Codable, Equatable {
+    public var maxResults: BoxedInteger?
+    public var nextToken: Token?
     public var queueUrl: String
 
-    public init(queueUrl: String) {
+    public init(maxResults: BoxedInteger? = nil,
+                nextToken: Token? = nil,
+                queueUrl: String) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
         self.queueUrl = queueUrl
     }
 
     enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
         case queueUrl = "QueueUrl"
     }
 
@@ -545,13 +553,17 @@ public struct ListDeadLetterSourceQueuesRequest: Codable, Equatable {
 }
 
 public struct ListDeadLetterSourceQueuesResult: Codable, Equatable {
+    public var nextToken: Token?
     public var queueUrls: QueueUrlList?
 
-    public init(queueUrls: QueueUrlList? = nil) {
+    public init(nextToken: Token? = nil,
+                queueUrls: QueueUrlList? = nil) {
+        self.nextToken = nextToken
         self.queueUrls = queueUrls
     }
 
     enum CodingKeys: String, CodingKey {
+        case nextToken = "NextToken"
         case queueUrls = "QueueUrl"
     }
 
@@ -622,13 +634,21 @@ public struct ListQueueTagsResultForListQueueTags: Codable, Equatable {
 }
 
 public struct ListQueuesRequest: Codable, Equatable {
+    public var maxResults: BoxedInteger?
+    public var nextToken: Token?
     public var queueNamePrefix: String?
 
-    public init(queueNamePrefix: String? = nil) {
+    public init(maxResults: BoxedInteger? = nil,
+                nextToken: Token? = nil,
+                queueNamePrefix: String? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
         self.queueNamePrefix = queueNamePrefix
     }
 
     enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
         case queueNamePrefix = "QueueNamePrefix"
     }
 
@@ -637,13 +657,17 @@ public struct ListQueuesRequest: Codable, Equatable {
 }
 
 public struct ListQueuesResult: Codable, Equatable {
+    public var nextToken: Token?
     public var queueUrls: QueueUrlList?
 
-    public init(queueUrls: QueueUrlList? = nil) {
+    public init(nextToken: Token? = nil,
+                queueUrls: QueueUrlList? = nil) {
+        self.nextToken = nextToken
         self.queueUrls = queueUrls
     }
 
     enum CodingKeys: String, CodingKey {
+        case nextToken = "NextToken"
         case queueUrls = "QueueUrls"
     }
 

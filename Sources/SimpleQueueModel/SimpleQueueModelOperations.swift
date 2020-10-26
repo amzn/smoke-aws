@@ -268,6 +268,37 @@ public extension GetQueueAttributesRequest {
 }
 
 /**
+ Structure to encode the query input for the ListDeadLetterSourceQueues
+ operation.
+ */
+public struct ListDeadLetterSourceQueuesOperationInputQuery: Codable, Equatable {
+    public var maxResults: BoxedInteger?
+    public var nextToken: Token?
+
+    public init(maxResults: BoxedInteger? = nil,
+                nextToken: Token? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListDeadLetterSourceQueuesRequest {
+    func asSimpleQueueModelListDeadLetterSourceQueuesOperationInputQuery() -> ListDeadLetterSourceQueuesOperationInputQuery {
+        return ListDeadLetterSourceQueuesOperationInputQuery(
+            maxResults: maxResults,
+            nextToken: nextToken)
+    }
+}
+
+/**
  Structure to encode the query input for the ReceiveMessage
  operation.
  */

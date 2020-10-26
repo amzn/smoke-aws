@@ -37,6 +37,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case deleteBucketInventoryConfiguration = "DeleteBucketInventoryConfiguration"
     case deleteBucketLifecycle = "DeleteBucketLifecycle"
     case deleteBucketMetricsConfiguration = "DeleteBucketMetricsConfiguration"
+    case deleteBucketOwnershipControls = "DeleteBucketOwnershipControls"
     case deleteBucketPolicy = "DeleteBucketPolicy"
     case deleteBucketReplication = "DeleteBucketReplication"
     case deleteBucketTagging = "DeleteBucketTagging"
@@ -58,6 +59,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case getBucketMetricsConfiguration = "GetBucketMetricsConfiguration"
     case getBucketNotification = "GetBucketNotification"
     case getBucketNotificationConfiguration = "GetBucketNotificationConfiguration"
+    case getBucketOwnershipControls = "GetBucketOwnershipControls"
     case getBucketPolicy = "GetBucketPolicy"
     case getBucketPolicyStatus = "GetBucketPolicyStatus"
     case getBucketReplication = "GetBucketReplication"
@@ -96,6 +98,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case putBucketMetricsConfiguration = "PutBucketMetricsConfiguration"
     case putBucketNotification = "PutBucketNotification"
     case putBucketNotificationConfiguration = "PutBucketNotificationConfiguration"
+    case putBucketOwnershipControls = "PutBucketOwnershipControls"
     case putBucketPolicy = "PutBucketPolicy"
     case putBucketReplication = "PutBucketReplication"
     case putBucketRequestPayment = "PutBucketRequestPayment"
@@ -144,6 +147,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}?lifecycle"
         case .deleteBucketMetricsConfiguration:
             return "/{Bucket}?metrics"
+        case .deleteBucketOwnershipControls:
+            return "/{Bucket}?ownershipControls"
         case .deleteBucketPolicy:
             return "/{Bucket}?policy"
         case .deleteBucketReplication:
@@ -186,6 +191,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}?notification"
         case .getBucketNotificationConfiguration:
             return "/{Bucket}?notification"
+        case .getBucketOwnershipControls:
+            return "/{Bucket}?ownershipControls"
         case .getBucketPolicy:
             return "/{Bucket}?policy"
         case .getBucketPolicyStatus:
@@ -262,6 +269,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}?notification"
         case .putBucketNotificationConfiguration:
             return "/{Bucket}?notification"
+        case .putBucketOwnershipControls:
+            return "/{Bucket}?ownershipControls"
         case .putBucketPolicy:
             return "/{Bucket}?policy"
         case .putBucketReplication:
@@ -363,13 +372,17 @@ public extension AbortMultipartUploadRequest {
  operation.
  */
 public struct AbortMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -380,6 +393,7 @@ public struct AbortMultipartUploadOperationInputAdditionalHeaders: Codable, Equa
 public extension AbortMultipartUploadRequest {
     func asS3ModelAbortMultipartUploadOperationInputAdditionalHeaders() -> AbortMultipartUploadOperationInputAdditionalHeaders {
         return AbortMultipartUploadOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -447,13 +461,17 @@ public extension CompleteMultipartUploadRequest {
  operation.
  */
 public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -464,6 +482,7 @@ public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, E
 public extension CompleteMultipartUploadRequest {
     func asS3ModelCompleteMultipartUploadOperationInputAdditionalHeaders() -> CompleteMultipartUploadOperationInputAdditionalHeaders {
         return CompleteMultipartUploadOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -607,6 +626,8 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm?
     public var copySourceSSECustomerKey: CopySourceSSECustomerKey?
     public var copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5?
+    public var expectedBucketOwner: AccountId?
+    public var expectedSourceBucketOwner: AccountId?
     public var expires: Expires?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -643,6 +664,8 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm? = nil,
                 copySourceSSECustomerKey: CopySourceSSECustomerKey? = nil,
                 copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
+                expectedSourceBucketOwner: AccountId? = nil,
                 expires: Expires? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -678,6 +701,8 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.copySourceSSECustomerAlgorithm = copySourceSSECustomerAlgorithm
         self.copySourceSSECustomerKey = copySourceSSECustomerKey
         self.copySourceSSECustomerKeyMD5 = copySourceSSECustomerKeyMD5
+        self.expectedBucketOwner = expectedBucketOwner
+        self.expectedSourceBucketOwner = expectedSourceBucketOwner
         self.expires = expires
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -716,6 +741,8 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case copySourceSSECustomerAlgorithm = "x-amz-copy-source-server-side-encryption-customer-algorithm"
         case copySourceSSECustomerKey = "x-amz-copy-source-server-side-encryption-customer-key"
         case copySourceSSECustomerKeyMD5 = "x-amz-copy-source-server-side-encryption-customer-key-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case expectedSourceBucketOwner = "x-amz-source-expected-bucket-owner"
         case expires = "Expires"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -761,6 +788,8 @@ public extension CopyObjectRequest {
             copySourceSSECustomerAlgorithm: copySourceSSECustomerAlgorithm,
             copySourceSSECustomerKey: copySourceSSECustomerKey,
             copySourceSSECustomerKeyMD5: copySourceSSECustomerKeyMD5,
+            expectedBucketOwner: expectedBucketOwner,
+            expectedSourceBucketOwner: expectedSourceBucketOwner,
             expires: expires,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
@@ -976,6 +1005,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
     public var contentType: ContentType?
+    public var expectedBucketOwner: AccountId?
     public var expires: Expires?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -1002,6 +1032,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
                 contentType: ContentType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 expires: Expires? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -1027,6 +1058,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
         self.contentType = contentType
+        self.expectedBucketOwner = expectedBucketOwner
         self.expires = expires
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -1055,6 +1087,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         case contentEncoding = "Content-Encoding"
         case contentLanguage = "Content-Language"
         case contentType = "Content-Type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case expires = "Expires"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -1089,6 +1122,7 @@ public extension CreateMultipartUploadRequest {
             contentEncoding: contentEncoding,
             contentLanguage: contentLanguage,
             contentType: contentType,
+            expectedBucketOwner: expectedBucketOwner,
             expires: expires,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
@@ -1236,6 +1270,32 @@ public extension DeleteBucketRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucket
+ operation.
+ */
+public struct DeleteBucketOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketRequest {
+    func asS3ModelDeleteBucketOperationInputAdditionalHeaders() -> DeleteBucketOperationInputAdditionalHeaders {
+        return DeleteBucketOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketAnalyticsConfiguration
  operation.
  */
@@ -1288,6 +1348,32 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucketAnalyticsConfiguration
+ operation.
+ */
+public struct DeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketAnalyticsConfigurationRequest {
+    func asS3ModelDeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders() -> DeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders {
+        return DeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketCors
  operation.
  */
@@ -1314,6 +1400,32 @@ public extension DeleteBucketCorsRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucketCors
+ operation.
+ */
+public struct DeleteBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketCorsRequest {
+    func asS3ModelDeleteBucketCorsOperationInputAdditionalHeaders() -> DeleteBucketCorsOperationInputAdditionalHeaders {
+        return DeleteBucketCorsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketEncryption
  operation.
  */
@@ -1336,6 +1448,32 @@ public extension DeleteBucketEncryptionRequest {
     func asS3ModelDeleteBucketEncryptionOperationInputPath() -> DeleteBucketEncryptionOperationInputPath {
         return DeleteBucketEncryptionOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the DeleteBucketEncryption
+ operation.
+ */
+public struct DeleteBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketEncryptionRequest {
+    func asS3ModelDeleteBucketEncryptionOperationInputAdditionalHeaders() -> DeleteBucketEncryptionOperationInputAdditionalHeaders {
+        return DeleteBucketEncryptionOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -1392,6 +1530,32 @@ public extension DeleteBucketInventoryConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucketInventoryConfiguration
+ operation.
+ */
+public struct DeleteBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketInventoryConfigurationRequest {
+    func asS3ModelDeleteBucketInventoryConfigurationOperationInputAdditionalHeaders() -> DeleteBucketInventoryConfigurationOperationInputAdditionalHeaders {
+        return DeleteBucketInventoryConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketLifecycle
  operation.
  */
@@ -1414,6 +1578,32 @@ public extension DeleteBucketLifecycleRequest {
     func asS3ModelDeleteBucketLifecycleOperationInputPath() -> DeleteBucketLifecycleOperationInputPath {
         return DeleteBucketLifecycleOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the DeleteBucketLifecycle
+ operation.
+ */
+public struct DeleteBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketLifecycleRequest {
+    func asS3ModelDeleteBucketLifecycleOperationInputAdditionalHeaders() -> DeleteBucketLifecycleOperationInputAdditionalHeaders {
+        return DeleteBucketLifecycleOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -1470,6 +1660,84 @@ public extension DeleteBucketMetricsConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucketMetricsConfiguration
+ operation.
+ */
+public struct DeleteBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketMetricsConfigurationRequest {
+    func asS3ModelDeleteBucketMetricsConfigurationOperationInputAdditionalHeaders() -> DeleteBucketMetricsConfigurationOperationInputAdditionalHeaders {
+        return DeleteBucketMetricsConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
+ Structure to encode the path input for the DeleteBucketOwnershipControls
+ operation.
+ */
+public struct DeleteBucketOwnershipControlsOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketOwnershipControlsRequest {
+    func asS3ModelDeleteBucketOwnershipControlsOperationInputPath() -> DeleteBucketOwnershipControlsOperationInputPath {
+        return DeleteBucketOwnershipControlsOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the DeleteBucketOwnershipControls
+ operation.
+ */
+public struct DeleteBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketOwnershipControlsRequest {
+    func asS3ModelDeleteBucketOwnershipControlsOperationInputAdditionalHeaders() -> DeleteBucketOwnershipControlsOperationInputAdditionalHeaders {
+        return DeleteBucketOwnershipControlsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketPolicy
  operation.
  */
@@ -1492,6 +1760,32 @@ public extension DeleteBucketPolicyRequest {
     func asS3ModelDeleteBucketPolicyOperationInputPath() -> DeleteBucketPolicyOperationInputPath {
         return DeleteBucketPolicyOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the DeleteBucketPolicy
+ operation.
+ */
+public struct DeleteBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketPolicyRequest {
+    func asS3ModelDeleteBucketPolicyOperationInputAdditionalHeaders() -> DeleteBucketPolicyOperationInputAdditionalHeaders {
+        return DeleteBucketPolicyOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -1522,6 +1816,32 @@ public extension DeleteBucketReplicationRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucketReplication
+ operation.
+ */
+public struct DeleteBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketReplicationRequest {
+    func asS3ModelDeleteBucketReplicationOperationInputAdditionalHeaders() -> DeleteBucketReplicationOperationInputAdditionalHeaders {
+        return DeleteBucketReplicationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketTagging
  operation.
  */
@@ -1548,6 +1868,32 @@ public extension DeleteBucketTaggingRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteBucketTagging
+ operation.
+ */
+public struct DeleteBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketTaggingRequest {
+    func asS3ModelDeleteBucketTaggingOperationInputAdditionalHeaders() -> DeleteBucketTaggingOperationInputAdditionalHeaders {
+        return DeleteBucketTaggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketWebsite
  operation.
  */
@@ -1570,6 +1916,32 @@ public extension DeleteBucketWebsiteRequest {
     func asS3ModelDeleteBucketWebsiteOperationInputPath() -> DeleteBucketWebsiteOperationInputPath {
         return DeleteBucketWebsiteOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the DeleteBucketWebsite
+ operation.
+ */
+public struct DeleteBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketWebsiteRequest {
+    func asS3ModelDeleteBucketWebsiteOperationInputAdditionalHeaders() -> DeleteBucketWebsiteOperationInputAdditionalHeaders {
+        return DeleteBucketWebsiteOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -1637,19 +2009,23 @@ public extension DeleteObjectRequest {
  */
 public struct DeleteObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
     }
@@ -1662,6 +2038,7 @@ public extension DeleteObjectRequest {
     func asS3ModelDeleteObjectOperationInputAdditionalHeaders() -> DeleteObjectOperationInputAdditionalHeaders {
         return DeleteObjectOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
+            expectedBucketOwner: expectedBucketOwner,
             mFA: mFA,
             requestPayer: requestPayer)
     }
@@ -1726,6 +2103,32 @@ public extension DeleteObjectTaggingRequest {
 }
 
 /**
+ Structure to encode the body input for the DeleteObjectTagging
+ operation.
+ */
+public struct DeleteObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteObjectTaggingRequest {
+    func asS3ModelDeleteObjectTaggingOperationInputAdditionalHeaders() -> DeleteObjectTaggingOperationInputAdditionalHeaders {
+        return DeleteObjectTaggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteObjects
  operation.
  */
@@ -1757,19 +2160,23 @@ public extension DeleteObjectsRequest {
  */
 public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
     }
@@ -1782,6 +2189,7 @@ public extension DeleteObjectsRequest {
     func asS3ModelDeleteObjectsOperationInputAdditionalHeaders() -> DeleteObjectsOperationInputAdditionalHeaders {
         return DeleteObjectsOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
+            expectedBucketOwner: expectedBucketOwner,
             mFA: mFA,
             requestPayer: requestPayer)
     }
@@ -1871,6 +2279,32 @@ public extension DeletePublicAccessBlockRequest {
 }
 
 /**
+ Structure to encode the body input for the DeletePublicAccessBlock
+ operation.
+ */
+public struct DeletePublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeletePublicAccessBlockRequest {
+    func asS3ModelDeletePublicAccessBlockOperationInputAdditionalHeaders() -> DeletePublicAccessBlockOperationInputAdditionalHeaders {
+        return DeletePublicAccessBlockOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketAccelerateConfiguration
  operation.
  */
@@ -1897,6 +2331,32 @@ public extension GetBucketAccelerateConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketAccelerateConfiguration
+ operation.
+ */
+public struct GetBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketAccelerateConfigurationRequest {
+    func asS3ModelGetBucketAccelerateConfigurationOperationInputAdditionalHeaders() -> GetBucketAccelerateConfigurationOperationInputAdditionalHeaders {
+        return GetBucketAccelerateConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketAcl
  operation.
  */
@@ -1919,6 +2379,32 @@ public extension GetBucketAclRequest {
     func asS3ModelGetBucketAclOperationInputPath() -> GetBucketAclOperationInputPath {
         return GetBucketAclOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketAcl
+ operation.
+ */
+public struct GetBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketAclRequest {
+    func asS3ModelGetBucketAclOperationInputAdditionalHeaders() -> GetBucketAclOperationInputAdditionalHeaders {
+        return GetBucketAclOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -1975,6 +2461,32 @@ public extension GetBucketAnalyticsConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketAnalyticsConfiguration
+ operation.
+ */
+public struct GetBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketAnalyticsConfigurationRequest {
+    func asS3ModelGetBucketAnalyticsConfigurationOperationInputAdditionalHeaders() -> GetBucketAnalyticsConfigurationOperationInputAdditionalHeaders {
+        return GetBucketAnalyticsConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketCors
  operation.
  */
@@ -2001,6 +2513,32 @@ public extension GetBucketCorsRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketCors
+ operation.
+ */
+public struct GetBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketCorsRequest {
+    func asS3ModelGetBucketCorsOperationInputAdditionalHeaders() -> GetBucketCorsOperationInputAdditionalHeaders {
+        return GetBucketCorsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketEncryption
  operation.
  */
@@ -2023,6 +2561,32 @@ public extension GetBucketEncryptionRequest {
     func asS3ModelGetBucketEncryptionOperationInputPath() -> GetBucketEncryptionOperationInputPath {
         return GetBucketEncryptionOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketEncryption
+ operation.
+ */
+public struct GetBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketEncryptionRequest {
+    func asS3ModelGetBucketEncryptionOperationInputAdditionalHeaders() -> GetBucketEncryptionOperationInputAdditionalHeaders {
+        return GetBucketEncryptionOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2079,6 +2643,32 @@ public extension GetBucketInventoryConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketInventoryConfiguration
+ operation.
+ */
+public struct GetBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketInventoryConfigurationRequest {
+    func asS3ModelGetBucketInventoryConfigurationOperationInputAdditionalHeaders() -> GetBucketInventoryConfigurationOperationInputAdditionalHeaders {
+        return GetBucketInventoryConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketLifecycle
  operation.
  */
@@ -2101,6 +2691,32 @@ public extension GetBucketLifecycleRequest {
     func asS3ModelGetBucketLifecycleOperationInputPath() -> GetBucketLifecycleOperationInputPath {
         return GetBucketLifecycleOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketLifecycle
+ operation.
+ */
+public struct GetBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketLifecycleRequest {
+    func asS3ModelGetBucketLifecycleOperationInputAdditionalHeaders() -> GetBucketLifecycleOperationInputAdditionalHeaders {
+        return GetBucketLifecycleOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2131,6 +2747,32 @@ public extension GetBucketLifecycleConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketLifecycleConfiguration
+ operation.
+ */
+public struct GetBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketLifecycleConfigurationRequest {
+    func asS3ModelGetBucketLifecycleConfigurationOperationInputAdditionalHeaders() -> GetBucketLifecycleConfigurationOperationInputAdditionalHeaders {
+        return GetBucketLifecycleConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketLocation
  operation.
  */
@@ -2157,6 +2799,32 @@ public extension GetBucketLocationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketLocation
+ operation.
+ */
+public struct GetBucketLocationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketLocationRequest {
+    func asS3ModelGetBucketLocationOperationInputAdditionalHeaders() -> GetBucketLocationOperationInputAdditionalHeaders {
+        return GetBucketLocationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketLogging
  operation.
  */
@@ -2179,6 +2847,32 @@ public extension GetBucketLoggingRequest {
     func asS3ModelGetBucketLoggingOperationInputPath() -> GetBucketLoggingOperationInputPath {
         return GetBucketLoggingOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketLogging
+ operation.
+ */
+public struct GetBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketLoggingRequest {
+    func asS3ModelGetBucketLoggingOperationInputAdditionalHeaders() -> GetBucketLoggingOperationInputAdditionalHeaders {
+        return GetBucketLoggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2235,6 +2929,32 @@ public extension GetBucketMetricsConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketMetricsConfiguration
+ operation.
+ */
+public struct GetBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketMetricsConfigurationRequest {
+    func asS3ModelGetBucketMetricsConfigurationOperationInputAdditionalHeaders() -> GetBucketMetricsConfigurationOperationInputAdditionalHeaders {
+        return GetBucketMetricsConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketNotification
  operation.
  */
@@ -2257,6 +2977,32 @@ public extension GetBucketNotificationConfigurationRequest {
     func asS3ModelGetBucketNotificationOperationInputPath() -> GetBucketNotificationOperationInputPath {
         return GetBucketNotificationOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketNotification
+ operation.
+ */
+public struct GetBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketNotificationConfigurationRequest {
+    func asS3ModelGetBucketNotificationOperationInputAdditionalHeaders() -> GetBucketNotificationOperationInputAdditionalHeaders {
+        return GetBucketNotificationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2287,6 +3033,84 @@ public extension GetBucketNotificationConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketNotificationConfiguration
+ operation.
+ */
+public struct GetBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketNotificationConfigurationRequest {
+    func asS3ModelGetBucketNotificationConfigurationOperationInputAdditionalHeaders() -> GetBucketNotificationConfigurationOperationInputAdditionalHeaders {
+        return GetBucketNotificationConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
+ Structure to encode the path input for the GetBucketOwnershipControls
+ operation.
+ */
+public struct GetBucketOwnershipControlsOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketOwnershipControlsRequest {
+    func asS3ModelGetBucketOwnershipControlsOperationInputPath() -> GetBucketOwnershipControlsOperationInputPath {
+        return GetBucketOwnershipControlsOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketOwnershipControls
+ operation.
+ */
+public struct GetBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketOwnershipControlsRequest {
+    func asS3ModelGetBucketOwnershipControlsOperationInputAdditionalHeaders() -> GetBucketOwnershipControlsOperationInputAdditionalHeaders {
+        return GetBucketOwnershipControlsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketPolicy
  operation.
  */
@@ -2309,6 +3133,32 @@ public extension GetBucketPolicyRequest {
     func asS3ModelGetBucketPolicyOperationInputPath() -> GetBucketPolicyOperationInputPath {
         return GetBucketPolicyOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketPolicy
+ operation.
+ */
+public struct GetBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketPolicyRequest {
+    func asS3ModelGetBucketPolicyOperationInputAdditionalHeaders() -> GetBucketPolicyOperationInputAdditionalHeaders {
+        return GetBucketPolicyOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2339,6 +3189,32 @@ public extension GetBucketPolicyStatusRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketPolicyStatus
+ operation.
+ */
+public struct GetBucketPolicyStatusOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketPolicyStatusRequest {
+    func asS3ModelGetBucketPolicyStatusOperationInputAdditionalHeaders() -> GetBucketPolicyStatusOperationInputAdditionalHeaders {
+        return GetBucketPolicyStatusOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketReplication
  operation.
  */
@@ -2361,6 +3237,32 @@ public extension GetBucketReplicationRequest {
     func asS3ModelGetBucketReplicationOperationInputPath() -> GetBucketReplicationOperationInputPath {
         return GetBucketReplicationOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketReplication
+ operation.
+ */
+public struct GetBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketReplicationRequest {
+    func asS3ModelGetBucketReplicationOperationInputAdditionalHeaders() -> GetBucketReplicationOperationInputAdditionalHeaders {
+        return GetBucketReplicationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2391,6 +3293,32 @@ public extension GetBucketRequestPaymentRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketRequestPayment
+ operation.
+ */
+public struct GetBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketRequestPaymentRequest {
+    func asS3ModelGetBucketRequestPaymentOperationInputAdditionalHeaders() -> GetBucketRequestPaymentOperationInputAdditionalHeaders {
+        return GetBucketRequestPaymentOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketTagging
  operation.
  */
@@ -2413,6 +3341,32 @@ public extension GetBucketTaggingRequest {
     func asS3ModelGetBucketTaggingOperationInputPath() -> GetBucketTaggingOperationInputPath {
         return GetBucketTaggingOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketTagging
+ operation.
+ */
+public struct GetBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketTaggingRequest {
+    func asS3ModelGetBucketTaggingOperationInputAdditionalHeaders() -> GetBucketTaggingOperationInputAdditionalHeaders {
+        return GetBucketTaggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2443,6 +3397,32 @@ public extension GetBucketVersioningRequest {
 }
 
 /**
+ Structure to encode the body input for the GetBucketVersioning
+ operation.
+ */
+public struct GetBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketVersioningRequest {
+    func asS3ModelGetBucketVersioningOperationInputAdditionalHeaders() -> GetBucketVersioningOperationInputAdditionalHeaders {
+        return GetBucketVersioningOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the GetBucketWebsite
  operation.
  */
@@ -2465,6 +3445,32 @@ public extension GetBucketWebsiteRequest {
     func asS3ModelGetBucketWebsiteOperationInputPath() -> GetBucketWebsiteOperationInputPath {
         return GetBucketWebsiteOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketWebsite
+ operation.
+ */
+public struct GetBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketWebsiteRequest {
+    func asS3ModelGetBucketWebsiteOperationInputAdditionalHeaders() -> GetBucketWebsiteOperationInputAdditionalHeaders {
+        return GetBucketWebsiteOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -2566,6 +3572,7 @@ public extension GetObjectRequest {
  operation.
  */
 public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
     public var ifModifiedSince: IfModifiedSince?
     public var ifNoneMatch: IfNoneMatch?
@@ -2576,7 +3583,8 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(ifMatch: IfMatch? = nil,
+    public init(expectedBucketOwner: AccountId? = nil,
+                ifMatch: IfMatch? = nil,
                 ifModifiedSince: IfModifiedSince? = nil,
                 ifNoneMatch: IfNoneMatch? = nil,
                 ifUnmodifiedSince: IfUnmodifiedSince? = nil,
@@ -2585,6 +3593,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.ifMatch = ifMatch
         self.ifModifiedSince = ifModifiedSince
         self.ifNoneMatch = ifNoneMatch
@@ -2597,6 +3606,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case ifMatch = "If-Match"
         case ifModifiedSince = "If-Modified-Since"
         case ifNoneMatch = "If-None-Match"
@@ -2615,6 +3625,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension GetObjectRequest {
     func asS3ModelGetObjectOperationInputAdditionalHeaders() -> GetObjectOperationInputAdditionalHeaders {
         return GetObjectOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             ifMatch: ifMatch,
             ifModifiedSince: ifModifiedSince,
             ifNoneMatch: ifNoneMatch,
@@ -2861,13 +3872,17 @@ public extension GetObjectAclRequest {
  operation.
  */
 public struct GetObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -2878,6 +3893,7 @@ public struct GetObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 public extension GetObjectAclRequest {
     func asS3ModelGetObjectAclOperationInputAdditionalHeaders() -> GetObjectAclOperationInputAdditionalHeaders {
         return GetObjectAclOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -3003,13 +4019,17 @@ public extension GetObjectLegalHoldRequest {
  operation.
  */
 public struct GetObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -3020,6 +4040,7 @@ public struct GetObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 public extension GetObjectLegalHoldRequest {
     func asS3ModelGetObjectLegalHoldOperationInputAdditionalHeaders() -> GetObjectLegalHoldOperationInputAdditionalHeaders {
         return GetObjectLegalHoldOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -3047,6 +4068,32 @@ public extension GetObjectLockConfigurationRequest {
     func asS3ModelGetObjectLockConfigurationOperationInputPath() -> GetObjectLockConfigurationOperationInputPath {
         return GetObjectLockConfigurationOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetObjectLockConfiguration
+ operation.
+ */
+public struct GetObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectLockConfigurationRequest {
+    func asS3ModelGetObjectLockConfigurationOperationInputAdditionalHeaders() -> GetObjectLockConfigurationOperationInputAdditionalHeaders {
+        return GetObjectLockConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -3113,13 +4160,17 @@ public extension GetObjectRetentionRequest {
  operation.
  */
 public struct GetObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -3130,6 +4181,7 @@ public struct GetObjectRetentionOperationInputAdditionalHeaders: Codable, Equata
 public extension GetObjectRetentionRequest {
     func asS3ModelGetObjectRetentionOperationInputAdditionalHeaders() -> GetObjectRetentionOperationInputAdditionalHeaders {
         return GetObjectRetentionOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -3189,6 +4241,32 @@ public extension GetObjectTaggingRequest {
     func asS3ModelGetObjectTaggingOperationInputQuery() -> GetObjectTaggingOperationInputQuery {
         return GetObjectTaggingOperationInputQuery(
             versionId: versionId)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetObjectTagging
+ operation.
+ */
+public struct GetObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectTaggingRequest {
+    func asS3ModelGetObjectTaggingOperationInputAdditionalHeaders() -> GetObjectTaggingOperationInputAdditionalHeaders {
+        return GetObjectTaggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -3281,13 +4359,17 @@ public extension GetObjectTorrentRequest {
  operation.
  */
 public struct GetObjectTorrentOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -3298,6 +4380,7 @@ public struct GetObjectTorrentOperationInputAdditionalHeaders: Codable, Equatabl
 public extension GetObjectTorrentRequest {
     func asS3ModelGetObjectTorrentOperationInputAdditionalHeaders() -> GetObjectTorrentOperationInputAdditionalHeaders {
         return GetObjectTorrentOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -3355,6 +4438,32 @@ public extension GetPublicAccessBlockRequest {
 }
 
 /**
+ Structure to encode the body input for the GetPublicAccessBlock
+ operation.
+ */
+public struct GetPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetPublicAccessBlockRequest {
+    func asS3ModelGetPublicAccessBlockOperationInputAdditionalHeaders() -> GetPublicAccessBlockOperationInputAdditionalHeaders {
+        return GetPublicAccessBlockOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the HeadBucket
  operation.
  */
@@ -3377,6 +4486,32 @@ public extension HeadBucketRequest {
     func asS3ModelHeadBucketOperationInputPath() -> HeadBucketOperationInputPath {
         return HeadBucketOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the HeadBucket
+ operation.
+ */
+public struct HeadBucketOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension HeadBucketRequest {
+    func asS3ModelHeadBucketOperationInputAdditionalHeaders() -> HeadBucketOperationInputAdditionalHeaders {
+        return HeadBucketOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -3448,6 +4583,7 @@ public extension HeadObjectRequest {
  operation.
  */
 public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
     public var ifModifiedSince: IfModifiedSince?
     public var ifNoneMatch: IfNoneMatch?
@@ -3458,7 +4594,8 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(ifMatch: IfMatch? = nil,
+    public init(expectedBucketOwner: AccountId? = nil,
+                ifMatch: IfMatch? = nil,
                 ifModifiedSince: IfModifiedSince? = nil,
                 ifNoneMatch: IfNoneMatch? = nil,
                 ifUnmodifiedSince: IfUnmodifiedSince? = nil,
@@ -3467,6 +4604,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.ifMatch = ifMatch
         self.ifModifiedSince = ifModifiedSince
         self.ifNoneMatch = ifNoneMatch
@@ -3479,6 +4617,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case ifMatch = "If-Match"
         case ifModifiedSince = "If-Modified-Since"
         case ifNoneMatch = "If-None-Match"
@@ -3497,6 +4636,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension HeadObjectRequest {
     func asS3ModelHeadObjectOperationInputAdditionalHeaders() -> HeadObjectOperationInputAdditionalHeaders {
         return HeadObjectOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             ifMatch: ifMatch,
             ifModifiedSince: ifModifiedSince,
             ifNoneMatch: ifNoneMatch,
@@ -3562,6 +4702,32 @@ public extension ListBucketAnalyticsConfigurationsRequest {
 }
 
 /**
+ Structure to encode the body input for the ListBucketAnalyticsConfigurations
+ operation.
+ */
+public struct ListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListBucketAnalyticsConfigurationsRequest {
+    func asS3ModelListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders() -> ListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders {
+        return ListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the ListBucketInventoryConfigurations
  operation.
  */
@@ -3614,6 +4780,32 @@ public extension ListBucketInventoryConfigurationsRequest {
 }
 
 /**
+ Structure to encode the body input for the ListBucketInventoryConfigurations
+ operation.
+ */
+public struct ListBucketInventoryConfigurationsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListBucketInventoryConfigurationsRequest {
+    func asS3ModelListBucketInventoryConfigurationsOperationInputAdditionalHeaders() -> ListBucketInventoryConfigurationsOperationInputAdditionalHeaders {
+        return ListBucketInventoryConfigurationsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the ListBucketMetricsConfigurations
  operation.
  */
@@ -3662,6 +4854,32 @@ public extension ListBucketMetricsConfigurationsRequest {
     func asS3ModelListBucketMetricsConfigurationsOperationInputQuery() -> ListBucketMetricsConfigurationsOperationInputQuery {
         return ListBucketMetricsConfigurationsOperationInputQuery(
             continuationToken: continuationToken)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListBucketMetricsConfigurations
+ operation.
+ */
+public struct ListBucketMetricsConfigurationsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListBucketMetricsConfigurationsRequest {
+    func asS3ModelListBucketMetricsConfigurationsOperationInputAdditionalHeaders() -> ListBucketMetricsConfigurationsOperationInputAdditionalHeaders {
+        return ListBucketMetricsConfigurationsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -3743,6 +4961,32 @@ public extension ListMultipartUploadsRequest {
 }
 
 /**
+ Structure to encode the body input for the ListMultipartUploads
+ operation.
+ */
+public struct ListMultipartUploadsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListMultipartUploadsRequest {
+    func asS3ModelListMultipartUploadsOperationInputAdditionalHeaders() -> ListMultipartUploadsOperationInputAdditionalHeaders {
+        return ListMultipartUploadsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the ListObjectVersions
  operation.
  */
@@ -3816,6 +5060,32 @@ public extension ListObjectVersionsRequest {
             maxKeys: maxKeys,
             prefix: prefix,
             versionIdMarker: versionIdMarker)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjectVersions
+ operation.
+ */
+public struct ListObjectVersionsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectVersionsRequest {
+    func asS3ModelListObjectVersionsOperationInputAdditionalHeaders() -> ListObjectVersionsOperationInputAdditionalHeaders {
+        return ListObjectVersionsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -3896,13 +5166,17 @@ public extension ListObjectsRequest {
  operation.
  */
 public struct ListObjectsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -3913,6 +5187,7 @@ public struct ListObjectsOperationInputAdditionalHeaders: Codable, Equatable {
 public extension ListObjectsRequest {
     func asS3ModelListObjectsOperationInputAdditionalHeaders() -> ListObjectsOperationInputAdditionalHeaders {
         return ListObjectsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -4004,13 +5279,17 @@ public extension ListObjectsV2Request {
  operation.
  */
 public struct ListObjectsV2OperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -4021,6 +5300,7 @@ public struct ListObjectsV2OperationInputAdditionalHeaders: Codable, Equatable {
 public extension ListObjectsV2Request {
     func asS3ModelListObjectsV2OperationInputAdditionalHeaders() -> ListObjectsV2OperationInputAdditionalHeaders {
         return ListObjectsV2OperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -4098,13 +5378,17 @@ public extension ListPartsRequest {
  operation.
  */
 public struct ListPartsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -4115,6 +5399,7 @@ public struct ListPartsOperationInputAdditionalHeaders: Codable, Equatable {
 public extension ListPartsRequest {
     func asS3ModelListPartsOperationInputAdditionalHeaders() -> ListPartsOperationInputAdditionalHeaders {
         return ListPartsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -4261,6 +5546,32 @@ public extension PutBucketAccelerateConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketAccelerateConfiguration
+ operation.
+ */
+public struct PutBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketAccelerateConfigurationRequest {
+    func asS3ModelPutBucketAccelerateConfigurationOperationInputAdditionalHeaders() -> PutBucketAccelerateConfigurationOperationInputAdditionalHeaders {
+        return PutBucketAccelerateConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketAcl
  operation.
  */
@@ -4292,6 +5603,7 @@ public extension PutBucketAclRequest {
  */
 public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: BucketCannedACL?
+    public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -4299,12 +5611,14 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
 
     public init(aCL: BucketCannedACL? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
                 grantWrite: GrantWrite? = nil,
                 grantWriteACP: GrantWriteACP? = nil) {
         self.aCL = aCL
+        self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -4314,6 +5628,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -4329,6 +5644,7 @@ public extension PutBucketAclRequest {
     func asS3ModelPutBucketAclOperationInputAdditionalHeaders() -> PutBucketAclOperationInputAdditionalHeaders {
         return PutBucketAclOperationInputAdditionalHeaders(
             aCL: aCL,
+            expectedBucketOwner: expectedBucketOwner,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
             grantReadACP: grantReadACP,
@@ -4390,6 +5706,32 @@ public extension PutBucketAnalyticsConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketAnalyticsConfiguration
+ operation.
+ */
+public struct PutBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketAnalyticsConfigurationRequest {
+    func asS3ModelPutBucketAnalyticsConfigurationOperationInputAdditionalHeaders() -> PutBucketAnalyticsConfigurationOperationInputAdditionalHeaders {
+        return PutBucketAnalyticsConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketCors
  operation.
  */
@@ -4416,6 +5758,32 @@ public extension PutBucketCorsRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketCors
+ operation.
+ */
+public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketCorsRequest {
+    func asS3ModelPutBucketCorsOperationInputAdditionalHeaders() -> PutBucketCorsOperationInputAdditionalHeaders {
+        return PutBucketCorsOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketEncryption
  operation.
  */
@@ -4438,6 +5806,32 @@ public extension PutBucketEncryptionRequest {
     func asS3ModelPutBucketEncryptionOperationInputPath() -> PutBucketEncryptionOperationInputPath {
         return PutBucketEncryptionOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketEncryption
+ operation.
+ */
+public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketEncryptionRequest {
+    func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
+        return PutBucketEncryptionOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4494,6 +5888,32 @@ public extension PutBucketInventoryConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketInventoryConfiguration
+ operation.
+ */
+public struct PutBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketInventoryConfigurationRequest {
+    func asS3ModelPutBucketInventoryConfigurationOperationInputAdditionalHeaders() -> PutBucketInventoryConfigurationOperationInputAdditionalHeaders {
+        return PutBucketInventoryConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketLifecycle
  operation.
  */
@@ -4516,6 +5936,32 @@ public extension PutBucketLifecycleRequest {
     func asS3ModelPutBucketLifecycleOperationInputPath() -> PutBucketLifecycleOperationInputPath {
         return PutBucketLifecycleOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketLifecycle
+ operation.
+ */
+public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketLifecycleRequest {
+    func asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders() -> PutBucketLifecycleOperationInputAdditionalHeaders {
+        return PutBucketLifecycleOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4546,6 +5992,32 @@ public extension PutBucketLifecycleConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketLifecycleConfiguration
+ operation.
+ */
+public struct PutBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketLifecycleConfigurationRequest {
+    func asS3ModelPutBucketLifecycleConfigurationOperationInputAdditionalHeaders() -> PutBucketLifecycleConfigurationOperationInputAdditionalHeaders {
+        return PutBucketLifecycleConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketLogging
  operation.
  */
@@ -4568,6 +6040,32 @@ public extension PutBucketLoggingRequest {
     func asS3ModelPutBucketLoggingOperationInputPath() -> PutBucketLoggingOperationInputPath {
         return PutBucketLoggingOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketLogging
+ operation.
+ */
+public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketLoggingRequest {
+    func asS3ModelPutBucketLoggingOperationInputAdditionalHeaders() -> PutBucketLoggingOperationInputAdditionalHeaders {
+        return PutBucketLoggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4624,6 +6122,32 @@ public extension PutBucketMetricsConfigurationRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketMetricsConfiguration
+ operation.
+ */
+public struct PutBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketMetricsConfigurationRequest {
+    func asS3ModelPutBucketMetricsConfigurationOperationInputAdditionalHeaders() -> PutBucketMetricsConfigurationOperationInputAdditionalHeaders {
+        return PutBucketMetricsConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketNotification
  operation.
  */
@@ -4650,6 +6174,32 @@ public extension PutBucketNotificationRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketNotification
+ operation.
+ */
+public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketNotificationRequest {
+    func asS3ModelPutBucketNotificationOperationInputAdditionalHeaders() -> PutBucketNotificationOperationInputAdditionalHeaders {
+        return PutBucketNotificationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketNotificationConfiguration
  operation.
  */
@@ -4672,6 +6222,89 @@ public extension PutBucketNotificationConfigurationRequest {
     func asS3ModelPutBucketNotificationConfigurationOperationInputPath() -> PutBucketNotificationConfigurationOperationInputPath {
         return PutBucketNotificationConfigurationOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketNotificationConfiguration
+ operation.
+ */
+public struct PutBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketNotificationConfigurationRequest {
+    func asS3ModelPutBucketNotificationConfigurationOperationInputAdditionalHeaders() -> PutBucketNotificationConfigurationOperationInputAdditionalHeaders {
+        return PutBucketNotificationConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
+ Structure to encode the path input for the PutBucketOwnershipControls
+ operation.
+ */
+public struct PutBucketOwnershipControlsOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketOwnershipControlsRequest {
+    func asS3ModelPutBucketOwnershipControlsOperationInputPath() -> PutBucketOwnershipControlsOperationInputPath {
+        return PutBucketOwnershipControlsOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketOwnershipControls
+ operation.
+ */
+public struct PutBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
+    public var expectedBucketOwner: AccountId?
+
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketOwnershipControlsRequest {
+    func asS3ModelPutBucketOwnershipControlsOperationInputAdditionalHeaders() -> PutBucketOwnershipControlsOperationInputAdditionalHeaders {
+        return PutBucketOwnershipControlsOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4707,13 +6340,17 @@ public extension PutBucketPolicyRequest {
  */
 public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
+    public var expectedBucketOwner: AccountId?
 
-    public init(confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil) {
+    public init(confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
+                expectedBucketOwner: AccountId? = nil) {
         self.confirmRemoveSelfBucketAccess = confirmRemoveSelfBucketAccess
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case confirmRemoveSelfBucketAccess = "x-amz-confirm-remove-self-bucket-access"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -4723,7 +6360,8 @@ public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable
 public extension PutBucketPolicyRequest {
     func asS3ModelPutBucketPolicyOperationInputAdditionalHeaders() -> PutBucketPolicyOperationInputAdditionalHeaders {
         return PutBucketPolicyOperationInputAdditionalHeaders(
-            confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess)
+            confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess,
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4758,13 +6396,17 @@ public extension PutBucketReplicationRequest {
  operation.
  */
 public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var token: ObjectLockToken?
 
-    public init(token: ObjectLockToken? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                token: ObjectLockToken? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case token = "x-amz-bucket-object-lock-token"
     }
 
@@ -4775,6 +6417,7 @@ public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equa
 public extension PutBucketReplicationRequest {
     func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
         return PutBucketReplicationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             token: token)
     }
 }
@@ -4806,6 +6449,32 @@ public extension PutBucketRequestPaymentRequest {
 }
 
 /**
+ Structure to encode the body input for the PutBucketRequestPayment
+ operation.
+ */
+public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketRequestPaymentRequest {
+    func asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders() -> PutBucketRequestPaymentOperationInputAdditionalHeaders {
+        return PutBucketRequestPaymentOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutBucketTagging
  operation.
  */
@@ -4828,6 +6497,32 @@ public extension PutBucketTaggingRequest {
     func asS3ModelPutBucketTaggingOperationInputPath() -> PutBucketTaggingOperationInputPath {
         return PutBucketTaggingOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketTagging
+ operation.
+ */
+public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketTaggingRequest {
+    func asS3ModelPutBucketTaggingOperationInputAdditionalHeaders() -> PutBucketTaggingOperationInputAdditionalHeaders {
+        return PutBucketTaggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4862,13 +6557,17 @@ public extension PutBucketVersioningRequest {
  operation.
  */
 public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
 
-    public init(mFA: MFA? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                mFA: MFA? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
     }
 
@@ -4879,6 +6578,7 @@ public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equat
 public extension PutBucketVersioningRequest {
     func asS3ModelPutBucketVersioningOperationInputAdditionalHeaders() -> PutBucketVersioningOperationInputAdditionalHeaders {
         return PutBucketVersioningOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             mFA: mFA)
     }
 }
@@ -4906,6 +6606,32 @@ public extension PutBucketWebsiteRequest {
     func asS3ModelPutBucketWebsiteOperationInputPath() -> PutBucketWebsiteOperationInputPath {
         return PutBucketWebsiteOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutBucketWebsite
+ operation.
+ */
+public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketWebsiteRequest {
+    func asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders() -> PutBucketWebsiteOperationInputAdditionalHeaders {
+        return PutBucketWebsiteOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -4954,6 +6680,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var contentLength: ContentLength?
     public var contentMD5: ContentMD5?
     public var contentType: ContentType?
+    public var expectedBucketOwner: AccountId?
     public var expires: Expires?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -4982,6 +6709,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 contentLength: ContentLength? = nil,
                 contentMD5: ContentMD5? = nil,
                 contentType: ContentType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 expires: Expires? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -5009,6 +6737,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.contentLength = contentLength
         self.contentMD5 = contentMD5
         self.contentType = contentType
+        self.expectedBucketOwner = expectedBucketOwner
         self.expires = expires
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -5039,6 +6768,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case contentLength = "Content-Length"
         case contentMD5 = "Content-MD5"
         case contentType = "Content-Type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case expires = "Expires"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -5075,6 +6805,7 @@ public extension PutObjectRequest {
             contentLength: contentLength,
             contentMD5: contentMD5,
             contentType: contentType,
+            expectedBucketOwner: expectedBucketOwner,
             expires: expires,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
@@ -5161,6 +6892,7 @@ public extension PutObjectAclRequest {
  */
 public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
+    public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -5169,6 +6901,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var requestPayer: RequestPayer?
 
     public init(aCL: ObjectCannedACL? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
@@ -5176,6 +6909,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.aCL = aCL
+        self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -5186,6 +6920,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -5202,6 +6937,7 @@ public extension PutObjectAclRequest {
     func asS3ModelPutObjectAclOperationInputAdditionalHeaders() -> PutObjectAclOperationInputAdditionalHeaders {
         return PutObjectAclOperationInputAdditionalHeaders(
             aCL: aCL,
+            expectedBucketOwner: expectedBucketOwner,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
             grantReadACP: grantReadACP,
@@ -5274,13 +7010,17 @@ public extension PutObjectLegalHoldRequest {
  operation.
  */
 public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5291,6 +7031,7 @@ public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 public extension PutObjectLegalHoldRequest {
     func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
         return PutObjectLegalHoldOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -5326,16 +7067,20 @@ public extension PutObjectLockConfigurationRequest {
  operation.
  */
 public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
     public var token: ObjectLockToken?
 
-    public init(requestPayer: RequestPayer? = nil,
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil,
                 token: ObjectLockToken? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
         case token = "x-amz-bucket-object-lock-token"
     }
@@ -5347,6 +7092,7 @@ public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable
 public extension PutObjectLockConfigurationRequest {
     func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
         return PutObjectLockConfigurationOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer,
             token: token)
     }
@@ -5416,16 +7162,20 @@ public extension PutObjectRetentionRequest {
  */
 public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5437,6 +7187,7 @@ public extension PutObjectRetentionRequest {
     func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
         return PutObjectRetentionOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -5500,6 +7251,32 @@ public extension PutObjectTaggingRequest {
 }
 
 /**
+ Structure to encode the body input for the PutObjectTagging
+ operation.
+ */
+public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutObjectTaggingRequest {
+    func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
+        return PutObjectTaggingOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
  Structure to encode the path input for the PutPublicAccessBlock
  operation.
  */
@@ -5522,6 +7299,32 @@ public extension PutPublicAccessBlockRequest {
     func asS3ModelPutPublicAccessBlockOperationInputPath() -> PutPublicAccessBlockOperationInputPath {
         return PutPublicAccessBlockOperationInputPath(
             bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the body input for the PutPublicAccessBlock
+ operation.
+ */
+public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+
+    public init(expectedBucketOwner: AccountId? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutPublicAccessBlockRequest {
+    func asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders() -> PutPublicAccessBlockOperationInputAdditionalHeaders {
+        return PutPublicAccessBlockOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner)
     }
 }
 
@@ -5588,13 +7391,17 @@ public extension RestoreObjectRequest {
  operation.
  */
 public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(requestPayer: RequestPayer? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5605,6 +7412,7 @@ public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension RestoreObjectRequest {
     func asS3ModelRestoreObjectOperationInputAdditionalHeaders() -> RestoreObjectOperationInputAdditionalHeaders {
         return RestoreObjectOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
 }
@@ -5701,19 +7509,23 @@ public extension SelectObjectContentRequest {
  operation.
  */
 public struct SelectObjectContentOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
+    public init(expectedBucketOwner: AccountId? = nil,
+                sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
     }
 
     enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
@@ -5726,6 +7538,7 @@ public struct SelectObjectContentOperationInputAdditionalHeaders: Codable, Equat
 public extension SelectObjectContentRequest {
     func asS3ModelSelectObjectContentOperationInputAdditionalHeaders() -> SelectObjectContentOperationInputAdditionalHeaders {
         return SelectObjectContentOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
             sSECustomerKeyMD5: sSECustomerKeyMD5)
@@ -5802,6 +7615,7 @@ public extension UploadPartRequest {
 public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
     public var contentLength: ContentLength?
     public var contentMD5: ContentMD5?
+    public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -5809,12 +7623,14 @@ public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
 
     public init(contentLength: ContentLength? = nil,
                 contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
         self.contentLength = contentLength
         self.contentMD5 = contentMD5
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -5824,6 +7640,7 @@ public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case contentLength = "Content-Length"
         case contentMD5 = "Content-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -5839,6 +7656,7 @@ public extension UploadPartRequest {
         return UploadPartOperationInputAdditionalHeaders(
             contentLength: contentLength,
             contentMD5: contentMD5,
+            expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,
@@ -5923,6 +7741,8 @@ public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable 
     public var copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm?
     public var copySourceSSECustomerKey: CopySourceSSECustomerKey?
     public var copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5?
+    public var expectedBucketOwner: AccountId?
+    public var expectedSourceBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -5937,6 +7757,8 @@ public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable 
                 copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm? = nil,
                 copySourceSSECustomerKey: CopySourceSSECustomerKey? = nil,
                 copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
+                expectedSourceBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
@@ -5950,6 +7772,8 @@ public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable 
         self.copySourceSSECustomerAlgorithm = copySourceSSECustomerAlgorithm
         self.copySourceSSECustomerKey = copySourceSSECustomerKey
         self.copySourceSSECustomerKeyMD5 = copySourceSSECustomerKeyMD5
+        self.expectedBucketOwner = expectedBucketOwner
+        self.expectedSourceBucketOwner = expectedSourceBucketOwner
         self.requestPayer = requestPayer
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKey = sSECustomerKey
@@ -5966,6 +7790,8 @@ public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable 
         case copySourceSSECustomerAlgorithm = "x-amz-copy-source-server-side-encryption-customer-algorithm"
         case copySourceSSECustomerKey = "x-amz-copy-source-server-side-encryption-customer-key"
         case copySourceSSECustomerKeyMD5 = "x-amz-copy-source-server-side-encryption-customer-key-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case expectedSourceBucketOwner = "x-amz-source-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
@@ -5989,6 +7815,8 @@ public extension UploadPartCopyRequest {
             copySourceSSECustomerAlgorithm: copySourceSSECustomerAlgorithm,
             copySourceSSECustomerKey: copySourceSSECustomerKey,
             copySourceSSECustomerKeyMD5: copySourceSSECustomerKeyMD5,
+            expectedBucketOwner: expectedBucketOwner,
+            expectedSourceBucketOwner: expectedSourceBucketOwner,
             requestPayer: requestPayer,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKey: sSECustomerKey,

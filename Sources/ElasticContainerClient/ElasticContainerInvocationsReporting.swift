@@ -34,6 +34,7 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
     let createTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteAccountSetting: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -90,6 +91,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.deleteAccountSetting)
         self.deleteAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteAttributes)
+        self.deleteCapacityProvider = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteCapacityProvider)
         self.deleteCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteCluster)
         self.deleteService = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -788,6 +788,7 @@ public enum ReplicaStatus: String, Codable, CustomStringConvertible {
     case creating = "CREATING"
     case creationFailed = "CREATION_FAILED"
     case deleting = "DELETING"
+    case regionDisabled = "REGION_DISABLED"
     case updating = "UPDATING"
 
     public var description: String {

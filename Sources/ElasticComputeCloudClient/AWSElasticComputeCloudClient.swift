@@ -3319,6 +3319,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CreateCarrierGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCarrierGatewayRequest object being passed to this operation.
+         - completion: The CreateCarrierGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCarrierGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createCarrierGatewayAsync(
+            input: ElasticComputeCloudModel.CreateCarrierGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCarrierGateway,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCarrierGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createCarrierGateway.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateCarrierGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCarrierGatewayRequest object being passed to this operation.
+     - Returns: The CreateCarrierGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createCarrierGatewaySync(
+            input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) throws -> ElasticComputeCloudModel.CreateCarrierGatewayResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCarrierGateway,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCarrierGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createCarrierGateway.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateClientVpnEndpoint operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4670,6 +4746,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createLocalGatewayRouteTableVpcAssociation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateManagedPrefixListRequest object being passed to this operation.
+         - completion: The CreateManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    public func createManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.CreateManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createManagedPrefixList,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateManagedPrefixListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createManagedPrefixList.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateManagedPrefixListRequest object being passed to this operation.
+     - Returns: The CreateManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createManagedPrefixListSync(
+            input: ElasticComputeCloudModel.CreateManagedPrefixListRequest) throws -> ElasticComputeCloudModel.CreateManagedPrefixListResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createManagedPrefixList,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateManagedPrefixListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createManagedPrefixList.rawValue,
             version: apiVersion)
 
         do {
@@ -6353,6 +6505,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CreateTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTransitGatewayPrefixListReference,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayPrefixListReferenceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayPrefixListReference.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTransitGatewayPrefixListReference,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayPrefixListReferenceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayPrefixListReference.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateTransitGatewayRoute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7245,6 +7473,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createVpnGateway.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteCarrierGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCarrierGatewayRequest object being passed to this operation.
+         - completion: The DeleteCarrierGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCarrierGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteCarrierGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCarrierGateway,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteCarrierGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteCarrierGateway.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteCarrierGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCarrierGatewayRequest object being passed to this operation.
+     - Returns: The DeleteCarrierGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteCarrierGatewaySync(
+            input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest) throws -> ElasticComputeCloudModel.DeleteCarrierGatewayResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCarrierGateway,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteCarrierGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteCarrierGateway.rawValue,
             version: apiVersion)
 
         do {
@@ -8297,6 +8601,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.deleteLocalGatewayRouteTableVpcAssociation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteManagedPrefixListRequest object being passed to this operation.
+         - completion: The DeleteManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteManagedPrefixList,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteManagedPrefixListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteManagedPrefixList.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteManagedPrefixListRequest object being passed to this operation.
+     - Returns: The DeleteManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteManagedPrefixListSync(
+            input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest) throws -> ElasticComputeCloudModel.DeleteManagedPrefixListResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteManagedPrefixList,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteManagedPrefixListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteManagedPrefixList.rawValue,
             version: apiVersion)
 
         do {
@@ -9860,6 +10240,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.deleteTransitGatewayPeeringAttachment.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTransitGatewayPrefixListReference,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayPrefixListReferenceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayPrefixListReference.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTransitGatewayPrefixListReference,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayPrefixListReferenceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayPrefixListReference.rawValue,
             version: apiVersion)
 
         do {
@@ -11666,6 +12122,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeCapacityReservations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeCarrierGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCarrierGatewaysRequest object being passed to this operation.
+         - completion: The DescribeCarrierGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCarrierGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCarrierGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCarrierGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCarrierGateways,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCarrierGatewaysOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeCarrierGateways.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCarrierGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCarrierGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeCarrierGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCarrierGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCarrierGatewaysResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCarrierGateways,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCarrierGatewaysOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeCarrierGateways.rawValue,
             version: apiVersion)
 
         do {
@@ -15390,6 +15922,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeLocalGateways.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeManagedPrefixLists operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeManagedPrefixListsRequest object being passed to this operation.
+         - completion: The DescribeManagedPrefixListsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeManagedPrefixListsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeManagedPrefixListsAsync(
+            input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeManagedPrefixListsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeManagedPrefixLists,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeManagedPrefixListsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeManagedPrefixLists.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeManagedPrefixLists operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeManagedPrefixListsRequest object being passed to this operation.
+     - Returns: The DescribeManagedPrefixListsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeManagedPrefixListsSync(
+            input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest) throws -> ElasticComputeCloudModel.DescribeManagedPrefixListsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeManagedPrefixLists,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeManagedPrefixListsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeManagedPrefixLists.rawValue,
             version: apiVersion)
 
         do {
@@ -22603,6 +23211,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetGroupsForCapacityReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetGroupsForCapacityReservationRequest object being passed to this operation.
+         - completion: The GetGroupsForCapacityReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetGroupsForCapacityReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func getGroupsForCapacityReservationAsync(
+            input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetGroupsForCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getGroupsForCapacityReservation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetGroupsForCapacityReservationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getGroupsForCapacityReservation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetGroupsForCapacityReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetGroupsForCapacityReservationRequest object being passed to this operation.
+     - Returns: The GetGroupsForCapacityReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getGroupsForCapacityReservationSync(
+            input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getGroupsForCapacityReservation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetGroupsForCapacityReservationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getGroupsForCapacityReservation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetHostReservationPurchasePreview operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -22738,6 +23422,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getLaunchTemplateData.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetManagedPrefixListAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListAssociationsRequest object being passed to this operation.
+         - completion: The GetManagedPrefixListAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetManagedPrefixListAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListAssociationsAsync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getManagedPrefixListAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetManagedPrefixListAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getManagedPrefixListAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetManagedPrefixListAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListAssociationsRequest object being passed to this operation.
+     - Returns: The GetManagedPrefixListAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListAssociationsSync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getManagedPrefixListAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetManagedPrefixListAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getManagedPrefixListAssociations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetManagedPrefixListEntries operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListEntriesRequest object being passed to this operation.
+         - completion: The GetManagedPrefixListEntriesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetManagedPrefixListEntriesResult
+           object will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListEntriesAsync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListEntriesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getManagedPrefixListEntries,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetManagedPrefixListEntriesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getManagedPrefixListEntries.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetManagedPrefixListEntries operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListEntriesRequest object being passed to this operation.
+     - Returns: The GetManagedPrefixListEntriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListEntriesSync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getManagedPrefixListEntries,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetManagedPrefixListEntriesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getManagedPrefixListEntries.rawValue,
             version: apiVersion)
 
         do {
@@ -23042,6 +23878,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getTransitGatewayMulticastDomainAssociations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetTransitGatewayPrefixListReferences operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPrefixListReferencesRequest object being passed to this operation.
+         - completion: The GetTransitGatewayPrefixListReferencesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayPrefixListReferencesResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayPrefixListReferencesAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTransitGatewayPrefixListReferences,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTransitGatewayPrefixListReferencesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayPrefixListReferences.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetTransitGatewayPrefixListReferences operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPrefixListReferencesRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayPrefixListReferencesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayPrefixListReferencesSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTransitGatewayPrefixListReferences,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTransitGatewayPrefixListReferencesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getTransitGatewayPrefixListReferences.rawValue,
             version: apiVersion)
 
         do {
@@ -25023,6 +25935,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the ModifyManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyManagedPrefixListRequest object being passed to this operation.
+         - completion: The ModifyManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyManagedPrefixList,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyManagedPrefixListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyManagedPrefixList.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyManagedPrefixListRequest object being passed to this operation.
+     - Returns: The ModifyManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyManagedPrefixListSync(
+            input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest) throws -> ElasticComputeCloudModel.ModifyManagedPrefixListResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyManagedPrefixList,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyManagedPrefixListOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyManagedPrefixList.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ModifyNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -25605,6 +26593,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyTrafficMirrorSession.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyTransitGateway,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTransitGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTransitGateway.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewaySync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyTransitGateway,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTransitGatewayOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTransitGateway.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyTransitGatewayPrefixListReference,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTransitGatewayPrefixListReferenceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTransitGatewayPrefixListReference.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyTransitGatewayPrefixListReference,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyTransitGatewayPrefixListReferenceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyTransitGatewayPrefixListReference.rawValue,
             version: apiVersion)
 
         do {
@@ -26435,6 +27575,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyVpnConnection.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyVpnConnectionOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpnConnectionOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnConnectionOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyVpnConnectionOptions,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyVpnConnectionOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnConnectionOptions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyVpnConnectionOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpnConnectionOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionOptionsSync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyVpnConnectionOptions,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyVpnConnectionOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyVpnConnectionOptions.rawValue,
             version: apiVersion)
 
         do {
@@ -29085,6 +30301,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the RestoreManagedPrefixListVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RestoreManagedPrefixListVersionRequest object being passed to this operation.
+         - completion: The RestoreManagedPrefixListVersionResult object or an error will be passed to this 
+           callback when the operation is complete. The RestoreManagedPrefixListVersionResult
+           object will be validated before being returned to caller.
+     */
+    public func restoreManagedPrefixListVersionAsync(
+            input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreManagedPrefixListVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RestoreManagedPrefixListVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.restoreManagedPrefixListVersion.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RestoreManagedPrefixListVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RestoreManagedPrefixListVersionRequest object being passed to this operation.
+     - Returns: The RestoreManagedPrefixListVersionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func restoreManagedPrefixListVersionSync(
+            input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) throws -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreManagedPrefixListVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RestoreManagedPrefixListVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.restoreManagedPrefixListVersion.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -29165,12 +30457,13 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The RevokeSecurityGroupEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeSecurityGroupEgressResult
+           object will be validated before being returned to caller.
      */
     public func revokeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29186,7 +30479,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -29201,9 +30494,11 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
+     - Returns: The RevokeSecurityGroupEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func revokeSecurityGroupEgressSync(
-            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws {
+            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupEgressResult {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29220,7 +30515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             version: apiVersion)
 
         do {
-            try httpClient.executeSyncRetriableWithoutOutput(
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -29238,12 +30533,13 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The RevokeSecurityGroupIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeSecurityGroupIngressResult
+           object will be validated before being returned to caller.
      */
     public func revokeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29259,7 +30555,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.revokeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -29274,9 +30570,11 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
+     - Returns: The RevokeSecurityGroupIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func revokeSecurityGroupIngressSync(
-            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws {
+            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupIngressResult {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -29293,7 +30591,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             version: apiVersion)
 
         do {
-            try httpClient.executeSyncRetriableWithoutOutput(
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,

@@ -135,7 +135,9 @@ public extension CapacityProvider {
             capacityProviderArn: nil,
             name: nil,
             status: nil,
-            tags: nil)
+            tags: nil,
+            updateStatus: nil,
+            updateStatusReason: nil)
 
         return defaultInstance
     }()
@@ -583,6 +585,30 @@ public extension DeleteAttributesResponse {
     static let __default: ElasticContainerModel.DeleteAttributesResponse = {
         let defaultInstance = ElasticContainerModel.DeleteAttributesResponse(
             attributes: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteCapacityProviderRequest {
+    /**
+     Default instance of the DeleteCapacityProviderRequest structure.
+     */
+    static let __default: ElasticContainerModel.DeleteCapacityProviderRequest = {
+        let defaultInstance = ElasticContainerModel.DeleteCapacityProviderRequest(
+            capacityProvider: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteCapacityProviderResponse {
+    /**
+     Default instance of the DeleteCapacityProviderResponse structure.
+     */
+    static let __default: ElasticContainerModel.DeleteCapacityProviderResponse = {
+        let defaultInstance = ElasticContainerModel.DeleteCapacityProviderResponse(
+            capacityProvider: nil)
 
         return defaultInstance
     }()

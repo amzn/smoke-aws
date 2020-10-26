@@ -170,14 +170,14 @@ public typealias GetQueueUrlOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the ListDeadLetterSourceQueues operation in a HTTP client.
  */
 public struct ListDeadLetterSourceQueuesOperationHTTPRequestInput: HTTPRequestInputProtocol {
-    public let queryEncodable: String?
+    public let queryEncodable: ListDeadLetterSourceQueuesOperationInputQuery?
     public let pathEncodable: String?
     public let bodyEncodable: String?
     public let additionalHeadersEncodable: String?
     public let pathPostfix: String?
 
     public init(encodable: ListDeadLetterSourceQueuesRequest) {
-        self.queryEncodable = nil
+        self.queryEncodable = encodable.asSimpleQueueModelListDeadLetterSourceQueuesOperationInputQuery()
         self.pathEncodable = nil
         self.bodyEncodable = nil
         self.additionalHeadersEncodable = nil

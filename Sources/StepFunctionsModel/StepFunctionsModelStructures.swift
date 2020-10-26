@@ -121,15 +121,18 @@ public struct ActivityScheduleFailedEventDetails: Codable, Equatable {
 public struct ActivityScheduledEventDetails: Codable, Equatable {
     public var heartbeatInSeconds: TimeoutInSeconds?
     public var input: SensitiveData?
+    public var inputDetails: HistoryEventExecutionDataDetails?
     public var resource: Arn
     public var timeoutInSeconds: TimeoutInSeconds?
 
     public init(heartbeatInSeconds: TimeoutInSeconds? = nil,
                 input: SensitiveData? = nil,
+                inputDetails: HistoryEventExecutionDataDetails? = nil,
                 resource: Arn,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
         self.heartbeatInSeconds = heartbeatInSeconds
         self.input = input
+        self.inputDetails = inputDetails
         self.resource = resource
         self.timeoutInSeconds = timeoutInSeconds
     }
@@ -137,12 +140,14 @@ public struct ActivityScheduledEventDetails: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case heartbeatInSeconds
         case input
+        case inputDetails
         case resource
         case timeoutInSeconds
     }
 
     public func validate() throws {
         try input?.validateAsSensitiveData()
+        try inputDetails?.validate()
         try resource.validateAsArn()
     }
 }
@@ -165,17 +170,22 @@ public struct ActivityStartedEventDetails: Codable, Equatable {
 
 public struct ActivitySucceededEventDetails: Codable, Equatable {
     public var output: SensitiveData?
+    public var outputDetails: HistoryEventExecutionDataDetails?
 
-    public init(output: SensitiveData? = nil) {
+    public init(output: SensitiveData? = nil,
+                outputDetails: HistoryEventExecutionDataDetails? = nil) {
         self.output = output
+        self.outputDetails = outputDetails
     }
 
     enum CodingKeys: String, CodingKey {
         case output
+        case outputDetails
     }
 
     public func validate() throws {
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
     }
 }
 
@@ -209,6 +219,21 @@ public struct ActivityWorkerLimitExceeded: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CloudWatchEventsExecutionDataDetails: Codable, Equatable {
+    public var included: Included?
+
+    public init(included: Included? = nil) {
+        self.included = included
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case included
     }
 
     public func validate() throws {
@@ -277,6 +302,7 @@ public struct CreateStateMachineInput: Codable, Equatable {
     public var name: Name
     public var roleArn: Arn
     public var tags: TagList?
+    public var tracingConfiguration: TracingConfiguration?
     public var type: StateMachineType?
 
     public init(definition: Definition,
@@ -284,12 +310,14 @@ public struct CreateStateMachineInput: Codable, Equatable {
                 name: Name,
                 roleArn: Arn,
                 tags: TagList? = nil,
+                tracingConfiguration: TracingConfiguration? = nil,
                 type: StateMachineType? = nil) {
         self.definition = definition
         self.loggingConfiguration = loggingConfiguration
         self.name = name
         self.roleArn = roleArn
         self.tags = tags
+        self.tracingConfiguration = tracingConfiguration
         self.type = type
     }
 
@@ -299,6 +327,7 @@ public struct CreateStateMachineInput: Codable, Equatable {
         case name
         case roleArn
         case tags
+        case tracingConfiguration
         case type
     }
 
@@ -307,6 +336,7 @@ public struct CreateStateMachineInput: Codable, Equatable {
         try loggingConfiguration?.validate()
         try name.validateAsName()
         try roleArn.validateAsArn()
+        try tracingConfiguration?.validate()
     }
 }
 
@@ -439,49 +469,64 @@ public struct DescribeExecutionInput: Codable, Equatable {
 
 public struct DescribeExecutionOutput: Codable, Equatable {
     public var executionArn: Arn
-    public var input: SensitiveData
+    public var input: SensitiveData?
+    public var inputDetails: CloudWatchEventsExecutionDataDetails?
     public var name: Name?
     public var output: SensitiveData?
+    public var outputDetails: CloudWatchEventsExecutionDataDetails?
     public var startDate: Timestamp
     public var stateMachineArn: Arn
     public var status: ExecutionStatus
     public var stopDate: Timestamp?
+    public var traceHeader: TraceHeader?
 
     public init(executionArn: Arn,
-                input: SensitiveData,
+                input: SensitiveData? = nil,
+                inputDetails: CloudWatchEventsExecutionDataDetails? = nil,
                 name: Name? = nil,
                 output: SensitiveData? = nil,
+                outputDetails: CloudWatchEventsExecutionDataDetails? = nil,
                 startDate: Timestamp,
                 stateMachineArn: Arn,
                 status: ExecutionStatus,
-                stopDate: Timestamp? = nil) {
+                stopDate: Timestamp? = nil,
+                traceHeader: TraceHeader? = nil) {
         self.executionArn = executionArn
         self.input = input
+        self.inputDetails = inputDetails
         self.name = name
         self.output = output
+        self.outputDetails = outputDetails
         self.startDate = startDate
         self.stateMachineArn = stateMachineArn
         self.status = status
         self.stopDate = stopDate
+        self.traceHeader = traceHeader
     }
 
     enum CodingKeys: String, CodingKey {
         case executionArn
         case input
+        case inputDetails
         case name
         case output
+        case outputDetails
         case startDate
         case stateMachineArn
         case status
         case stopDate
+        case traceHeader
     }
 
     public func validate() throws {
         try executionArn.validateAsArn()
-        try input.validateAsSensitiveData()
+        try input?.validateAsSensitiveData()
+        try inputDetails?.validate()
         try name?.validateAsName()
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
         try stateMachineArn.validateAsArn()
+        try traceHeader?.validateAsTraceHeader()
     }
 }
 
@@ -507,6 +552,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     public var name: Name
     public var roleArn: Arn
     public var stateMachineArn: Arn
+    public var tracingConfiguration: TracingConfiguration?
     public var updateDate: Timestamp
 
     public init(definition: Definition,
@@ -514,12 +560,14 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
                 name: Name,
                 roleArn: Arn,
                 stateMachineArn: Arn,
+                tracingConfiguration: TracingConfiguration? = nil,
                 updateDate: Timestamp) {
         self.definition = definition
         self.loggingConfiguration = loggingConfiguration
         self.name = name
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
+        self.tracingConfiguration = tracingConfiguration
         self.updateDate = updateDate
     }
 
@@ -529,6 +577,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
         case name
         case roleArn
         case stateMachineArn
+        case tracingConfiguration
         case updateDate
     }
 
@@ -538,6 +587,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
         try name.validateAsName()
         try roleArn.validateAsArn()
         try stateMachineArn.validateAsArn()
+        try tracingConfiguration?.validate()
     }
 }
 
@@ -565,6 +615,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
     public var roleArn: Arn
     public var stateMachineArn: Arn
     public var status: StateMachineStatus?
+    public var tracingConfiguration: TracingConfiguration?
     public var type: StateMachineType
 
     public init(creationDate: Timestamp,
@@ -574,6 +625,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
                 roleArn: Arn,
                 stateMachineArn: Arn,
                 status: StateMachineStatus? = nil,
+                tracingConfiguration: TracingConfiguration? = nil,
                 type: StateMachineType) {
         self.creationDate = creationDate
         self.definition = definition
@@ -582,6 +634,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
         self.status = status
+        self.tracingConfiguration = tracingConfiguration
         self.type = type
     }
 
@@ -593,6 +646,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
         case roleArn
         case stateMachineArn
         case status
+        case tracingConfiguration
         case type
     }
 
@@ -602,6 +656,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
         try name.validateAsName()
         try roleArn.validateAsArn()
         try stateMachineArn.validateAsArn()
+        try tracingConfiguration?.validate()
     }
 }
 
@@ -732,38 +787,48 @@ public struct ExecutionListItem: Codable, Equatable {
 
 public struct ExecutionStartedEventDetails: Codable, Equatable {
     public var input: SensitiveData?
+    public var inputDetails: HistoryEventExecutionDataDetails?
     public var roleArn: Arn?
 
     public init(input: SensitiveData? = nil,
+                inputDetails: HistoryEventExecutionDataDetails? = nil,
                 roleArn: Arn? = nil) {
         self.input = input
+        self.inputDetails = inputDetails
         self.roleArn = roleArn
     }
 
     enum CodingKeys: String, CodingKey {
         case input
+        case inputDetails
         case roleArn
     }
 
     public func validate() throws {
         try input?.validateAsSensitiveData()
+        try inputDetails?.validate()
         try roleArn?.validateAsArn()
     }
 }
 
 public struct ExecutionSucceededEventDetails: Codable, Equatable {
     public var output: SensitiveData?
+    public var outputDetails: HistoryEventExecutionDataDetails?
 
-    public init(output: SensitiveData? = nil) {
+    public init(output: SensitiveData? = nil,
+                outputDetails: HistoryEventExecutionDataDetails? = nil) {
         self.output = output
+        self.outputDetails = outputDetails
     }
 
     enum CodingKeys: String, CodingKey {
         case output
+        case outputDetails
     }
 
     public func validate() throws {
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
     }
 }
 
@@ -832,15 +897,18 @@ public struct GetActivityTaskOutput: Codable, Equatable {
 
 public struct GetExecutionHistoryInput: Codable, Equatable {
     public var executionArn: Arn
+    public var includeExecutionData: IncludeExecutionDataGetExecutionHistory?
     public var maxResults: PageSize?
     public var nextToken: PageToken?
     public var reverseOrder: ReverseOrder?
 
     public init(executionArn: Arn,
+                includeExecutionData: IncludeExecutionDataGetExecutionHistory? = nil,
                 maxResults: PageSize? = nil,
                 nextToken: PageToken? = nil,
                 reverseOrder: ReverseOrder? = nil) {
         self.executionArn = executionArn
+        self.includeExecutionData = includeExecutionData
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.reverseOrder = reverseOrder
@@ -848,6 +916,7 @@ public struct GetExecutionHistoryInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case executionArn
+        case includeExecutionData
         case maxResults
         case nextToken
         case reverseOrder
@@ -1067,6 +1136,21 @@ public struct HistoryEvent: Codable, Equatable {
     }
 }
 
+public struct HistoryEventExecutionDataDetails: Codable, Equatable {
+    public var truncated: Truncated?
+
+    public init(truncated: Truncated? = nil) {
+        self.truncated = truncated
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case truncated
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidArn: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -1172,6 +1256,21 @@ public struct InvalidToken: Codable, Equatable {
     }
 }
 
+public struct InvalidTracingConfiguration: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct LambdaFunctionFailedEventDetails: Codable, Equatable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
@@ -1216,25 +1315,30 @@ public struct LambdaFunctionScheduleFailedEventDetails: Codable, Equatable {
 
 public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
     public var input: SensitiveData?
+    public var inputDetails: HistoryEventExecutionDataDetails?
     public var resource: Arn
     public var timeoutInSeconds: TimeoutInSeconds?
 
     public init(input: SensitiveData? = nil,
+                inputDetails: HistoryEventExecutionDataDetails? = nil,
                 resource: Arn,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
         self.input = input
+        self.inputDetails = inputDetails
         self.resource = resource
         self.timeoutInSeconds = timeoutInSeconds
     }
 
     enum CodingKeys: String, CodingKey {
         case input
+        case inputDetails
         case resource
         case timeoutInSeconds
     }
 
     public func validate() throws {
         try input?.validateAsSensitiveData()
+        try inputDetails?.validate()
         try resource.validateAsArn()
     }
 }
@@ -1262,17 +1366,22 @@ public struct LambdaFunctionStartFailedEventDetails: Codable, Equatable {
 
 public struct LambdaFunctionSucceededEventDetails: Codable, Equatable {
     public var output: SensitiveData?
+    public var outputDetails: HistoryEventExecutionDataDetails?
 
-    public init(output: SensitiveData? = nil) {
+    public init(output: SensitiveData? = nil,
+                outputDetails: HistoryEventExecutionDataDetails? = nil) {
         self.output = output
+        self.outputDetails = outputDetails
     }
 
     enum CodingKeys: String, CodingKey {
         case output
+        case outputDetails
     }
 
     public func validate() throws {
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
     }
 }
 
@@ -1665,25 +1774,30 @@ public struct StartExecutionInput: Codable, Equatable {
     public var input: SensitiveData?
     public var name: Name?
     public var stateMachineArn: Arn
+    public var traceHeader: TraceHeader?
 
     public init(input: SensitiveData? = nil,
                 name: Name? = nil,
-                stateMachineArn: Arn) {
+                stateMachineArn: Arn,
+                traceHeader: TraceHeader? = nil) {
         self.input = input
         self.name = name
         self.stateMachineArn = stateMachineArn
+        self.traceHeader = traceHeader
     }
 
     enum CodingKeys: String, CodingKey {
         case input
         case name
         case stateMachineArn
+        case traceHeader
     }
 
     public func validate() throws {
         try input?.validateAsSensitiveData()
         try name?.validateAsName()
         try stateMachineArn.validateAsArn()
+        try traceHeader?.validateAsTraceHeader()
     }
 }
 
@@ -1709,21 +1823,26 @@ public struct StartExecutionOutput: Codable, Equatable {
 
 public struct StateEnteredEventDetails: Codable, Equatable {
     public var input: SensitiveData?
+    public var inputDetails: HistoryEventExecutionDataDetails?
     public var name: Name
 
     public init(input: SensitiveData? = nil,
+                inputDetails: HistoryEventExecutionDataDetails? = nil,
                 name: Name) {
         self.input = input
+        self.inputDetails = inputDetails
         self.name = name
     }
 
     enum CodingKeys: String, CodingKey {
         case input
+        case inputDetails
         case name
     }
 
     public func validate() throws {
         try input?.validateAsSensitiveData()
+        try inputDetails?.validate()
         try name.validateAsName()
     }
 }
@@ -1731,21 +1850,26 @@ public struct StateEnteredEventDetails: Codable, Equatable {
 public struct StateExitedEventDetails: Codable, Equatable {
     public var name: Name
     public var output: SensitiveData?
+    public var outputDetails: HistoryEventExecutionDataDetails?
 
     public init(name: Name,
-                output: SensitiveData? = nil) {
+                output: SensitiveData? = nil,
+                outputDetails: HistoryEventExecutionDataDetails? = nil) {
         self.name = name
         self.output = output
+        self.outputDetails = outputDetails
     }
 
     enum CodingKeys: String, CodingKey {
         case name
         case output
+        case outputDetails
     }
 
     public func validate() throws {
         try name.validateAsName()
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
     }
 }
 
@@ -1991,17 +2115,20 @@ public struct TaskFailedEventDetails: Codable, Equatable {
 }
 
 public struct TaskScheduledEventDetails: Codable, Equatable {
+    public var heartbeatInSeconds: TimeoutInSeconds?
     public var parameters: ConnectorParameters
     public var region: Name
     public var resource: Name
     public var resourceType: Name
     public var timeoutInSeconds: TimeoutInSeconds?
 
-    public init(parameters: ConnectorParameters,
+    public init(heartbeatInSeconds: TimeoutInSeconds? = nil,
+                parameters: ConnectorParameters,
                 region: Name,
                 resource: Name,
                 resourceType: Name,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
+        self.heartbeatInSeconds = heartbeatInSeconds
         self.parameters = parameters
         self.region = region
         self.resource = resource
@@ -2010,6 +2137,7 @@ public struct TaskScheduledEventDetails: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case heartbeatInSeconds
         case parameters
         case region
         case resource
@@ -2110,25 +2238,30 @@ public struct TaskSubmitFailedEventDetails: Codable, Equatable {
 
 public struct TaskSubmittedEventDetails: Codable, Equatable {
     public var output: SensitiveData?
+    public var outputDetails: HistoryEventExecutionDataDetails?
     public var resource: Name
     public var resourceType: Name
 
     public init(output: SensitiveData? = nil,
+                outputDetails: HistoryEventExecutionDataDetails? = nil,
                 resource: Name,
                 resourceType: Name) {
         self.output = output
+        self.outputDetails = outputDetails
         self.resource = resource
         self.resourceType = resourceType
     }
 
     enum CodingKeys: String, CodingKey {
         case output
+        case outputDetails
         case resource
         case resourceType
     }
 
     public func validate() throws {
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
         try resource.validateAsName()
         try resourceType.validateAsName()
     }
@@ -2136,25 +2269,30 @@ public struct TaskSubmittedEventDetails: Codable, Equatable {
 
 public struct TaskSucceededEventDetails: Codable, Equatable {
     public var output: SensitiveData?
+    public var outputDetails: HistoryEventExecutionDataDetails?
     public var resource: Name
     public var resourceType: Name
 
     public init(output: SensitiveData? = nil,
+                outputDetails: HistoryEventExecutionDataDetails? = nil,
                 resource: Name,
                 resourceType: Name) {
         self.output = output
+        self.outputDetails = outputDetails
         self.resource = resource
         self.resourceType = resourceType
     }
 
     enum CodingKeys: String, CodingKey {
         case output
+        case outputDetails
         case resource
         case resourceType
     }
 
     public func validate() throws {
         try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
         try resource.validateAsName()
         try resourceType.validateAsName()
     }
@@ -2226,6 +2364,21 @@ public struct TooManyTags: Codable, Equatable {
     }
 }
 
+public struct TracingConfiguration: Codable, Equatable {
+    public var enabled: Enabled?
+
+    public init(enabled: Enabled? = nil) {
+        self.enabled = enabled
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enabled
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct UntagResourceInput: Codable, Equatable {
     public var resourceArn: Arn
     public var tagKeys: TagKeyList
@@ -2260,15 +2413,18 @@ public struct UpdateStateMachineInput: Codable, Equatable {
     public var loggingConfiguration: LoggingConfiguration?
     public var roleArn: Arn?
     public var stateMachineArn: Arn
+    public var tracingConfiguration: TracingConfiguration?
 
     public init(definition: Definition? = nil,
                 loggingConfiguration: LoggingConfiguration? = nil,
                 roleArn: Arn? = nil,
-                stateMachineArn: Arn) {
+                stateMachineArn: Arn,
+                tracingConfiguration: TracingConfiguration? = nil) {
         self.definition = definition
         self.loggingConfiguration = loggingConfiguration
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
+        self.tracingConfiguration = tracingConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
@@ -2276,6 +2432,7 @@ public struct UpdateStateMachineInput: Codable, Equatable {
         case loggingConfiguration
         case roleArn
         case stateMachineArn
+        case tracingConfiguration
     }
 
     public func validate() throws {
@@ -2283,6 +2440,7 @@ public struct UpdateStateMachineInput: Codable, Equatable {
         try loggingConfiguration?.validate()
         try roleArn?.validateAsArn()
         try stateMachineArn.validateAsArn()
+        try tracingConfiguration?.validate()
     }
 }
 

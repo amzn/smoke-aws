@@ -139,14 +139,28 @@ public enum BucketCannedACL: String, Codable, CustomStringConvertible {
  */
 public enum BucketLocationConstraint: String, Codable, CustomStringConvertible {
     case eu = "EU"
+    case afSouth1 = "af-south-1"
+    case apEast1 = "ap-east-1"
     case apNortheast1 = "ap-northeast-1"
+    case apNortheast2 = "ap-northeast-2"
+    case apNortheast3 = "ap-northeast-3"
     case apSouth1 = "ap-south-1"
     case apSoutheast1 = "ap-southeast-1"
     case apSoutheast2 = "ap-southeast-2"
+    case caCentral1 = "ca-central-1"
     case cnNorth1 = "cn-north-1"
+    case cnNorthwest1 = "cn-northwest-1"
     case euCentral1 = "eu-central-1"
+    case euNorth1 = "eu-north-1"
+    case euSouth1 = "eu-south-1"
     case euWest1 = "eu-west-1"
+    case euWest2 = "eu-west-2"
+    case euWest3 = "eu-west-3"
+    case meSouth1 = "me-south-1"
     case saEast1 = "sa-east-1"
+    case usEast2 = "us-east-2"
+    case usGovEast1 = "us-gov-east-1"
+    case usGovWest1 = "us-gov-west-1"
     case usWest1 = "us-west-1"
     case usWest2 = "us-west-2"
 
@@ -1143,6 +1157,20 @@ public enum ObjectLockRetentionMode: String, Codable, CustomStringConvertible {
 public typealias ObjectLockToken = String
 
 /**
+ Enumeration restricting the values of the ObjectOwnership field.
+ */
+public enum ObjectOwnership: String, Codable, CustomStringConvertible {
+    case bucketownerpreferred = "BucketOwnerPreferred"
+    case objectwriter = "ObjectWriter"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ObjectOwnership = .bucketownerpreferred
+}
+
+/**
  Enumeration restricting the values of the ObjectStorageClass field.
  */
 public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
@@ -1150,6 +1178,7 @@ public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
     case glacier = "GLACIER"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
+    case outposts = "OUTPOSTS"
     case reducedRedundancy = "REDUCED_REDUNDANCY"
     case standard = "STANDARD"
     case standardIa = "STANDARD_IA"
@@ -1196,6 +1225,11 @@ public enum OwnerOverride: String, Codable, CustomStringConvertible {
     
     public static let __default: OwnerOverride = .destination
 }
+
+/**
+ Type definition for the OwnershipControlsRules field.
+ */
+public typealias OwnershipControlsRules = [OwnershipControlsRule]
 
 /**
  Type definition for the PartNumber field.
@@ -1570,6 +1604,7 @@ public enum StorageClass: String, Codable, CustomStringConvertible {
     case glacier = "GLACIER"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
+    case outposts = "OUTPOSTS"
     case reducedRedundancy = "REDUCED_REDUNDANCY"
     case standard = "STANDARD"
     case standardIa = "STANDARD_IA"

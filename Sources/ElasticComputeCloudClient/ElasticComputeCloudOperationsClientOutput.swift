@@ -492,6 +492,19 @@ extension CreateCapacityReservationResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateCarrierGateway operation in a HTTP client.
+ */
+extension CreateCarrierGatewayResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateCarrierGatewayResult
+    public typealias HeadersType = CreateCarrierGatewayResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateCarrierGatewayResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateClientVpnEndpoint operation in a HTTP client.
  */
 extension CreateClientVpnEndpointResult: HTTPResponseOutputProtocol {
@@ -721,6 +734,19 @@ extension CreateLocalGatewayRouteTableVpcAssociationResult: HTTPResponseOutputPr
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateLocalGatewayRouteTableVpcAssociationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateManagedPrefixList operation in a HTTP client.
+ */
+extension CreateManagedPrefixListResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateManagedPrefixListResult
+    public typealias HeadersType = CreateManagedPrefixListResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateManagedPrefixListResult {
         return try bodyDecodableProvider()
     }
 }
@@ -986,6 +1012,19 @@ extension CreateTransitGatewayPeeringAttachmentResult: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the CreateTransitGatewayPrefixListReference operation in a HTTP client.
+ */
+extension CreateTransitGatewayPrefixListReferenceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTransitGatewayPrefixListReferenceResult
+    public typealias HeadersType = CreateTransitGatewayPrefixListReferenceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTransitGatewayPrefixListReferenceResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateTransitGatewayRoute operation in a HTTP client.
  */
 extension CreateTransitGatewayRouteResult: HTTPResponseOutputProtocol {
@@ -1129,6 +1168,19 @@ extension CreateVpnGatewayResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteCarrierGateway operation in a HTTP client.
+ */
+extension DeleteCarrierGatewayResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteCarrierGatewayResult
+    public typealias HeadersType = DeleteCarrierGatewayResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteCarrierGatewayResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteClientVpnEndpoint operation in a HTTP client.
  */
 extension DeleteClientVpnEndpointResult: HTTPResponseOutputProtocol {
@@ -1259,6 +1311,19 @@ extension DeleteLocalGatewayRouteTableVpcAssociationResult: HTTPResponseOutputPr
 }
 
 /**
+ Type to handle the output from the DeleteManagedPrefixList operation in a HTTP client.
+ */
+extension DeleteManagedPrefixListResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteManagedPrefixListResult
+    public typealias HeadersType = DeleteManagedPrefixListResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteManagedPrefixListResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteNatGateway operation in a HTTP client.
  */
 extension DeleteNatGatewayResult: HTTPResponseOutputProtocol {
@@ -1384,6 +1449,19 @@ extension DeleteTransitGatewayPeeringAttachmentResult: HTTPResponseOutputProtoco
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTransitGatewayPeeringAttachmentResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTransitGatewayPrefixListReference operation in a HTTP client.
+ */
+extension DeleteTransitGatewayPrefixListReferenceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTransitGatewayPrefixListReferenceResult
+    public typealias HeadersType = DeleteTransitGatewayPrefixListReferenceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTransitGatewayPrefixListReferenceResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1618,6 +1696,19 @@ extension DescribeCapacityReservationsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeCapacityReservationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeCarrierGateways operation in a HTTP client.
+ */
+extension DescribeCarrierGatewaysResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeCarrierGatewaysResult
+    public typealias HeadersType = DescribeCarrierGatewaysResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeCarrierGatewaysResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2255,6 +2346,19 @@ extension DescribeLocalGatewaysResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeLocalGatewaysResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeManagedPrefixLists operation in a HTTP client.
+ */
+extension DescribeManagedPrefixListsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeManagedPrefixListsResult
+    public typealias HeadersType = DescribeManagedPrefixListsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeManagedPrefixListsResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3378,6 +3482,19 @@ extension GetEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetGroupsForCapacityReservation operation in a HTTP client.
+ */
+extension GetGroupsForCapacityReservationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetGroupsForCapacityReservationResult
+    public typealias HeadersType = GetGroupsForCapacityReservationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetGroupsForCapacityReservationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetHostReservationPurchasePreview operation in a HTTP client.
  */
 extension GetHostReservationPurchasePreviewResult: HTTPResponseOutputProtocol {
@@ -3399,6 +3516,32 @@ extension GetLaunchTemplateDataResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetLaunchTemplateDataResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetManagedPrefixListAssociations operation in a HTTP client.
+ */
+extension GetManagedPrefixListAssociationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetManagedPrefixListAssociationsResult
+    public typealias HeadersType = GetManagedPrefixListAssociationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetManagedPrefixListAssociationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetManagedPrefixListEntries operation in a HTTP client.
+ */
+extension GetManagedPrefixListEntriesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetManagedPrefixListEntriesResult
+    public typealias HeadersType = GetManagedPrefixListEntriesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetManagedPrefixListEntriesResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3451,6 +3594,19 @@ extension GetTransitGatewayMulticastDomainAssociationsResult: HTTPResponseOutput
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetTransitGatewayMulticastDomainAssociationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetTransitGatewayPrefixListReferences operation in a HTTP client.
+ */
+extension GetTransitGatewayPrefixListReferencesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetTransitGatewayPrefixListReferencesResult
+    public typealias HeadersType = GetTransitGatewayPrefixListReferencesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetTransitGatewayPrefixListReferencesResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3742,6 +3898,19 @@ extension ModifyLaunchTemplateResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyManagedPrefixList operation in a HTTP client.
+ */
+extension ModifyManagedPrefixListResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyManagedPrefixListResult
+    public typealias HeadersType = ModifyManagedPrefixListResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyManagedPrefixListResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyReservedInstances operation in a HTTP client.
  */
 extension ModifyReservedInstancesResult: HTTPResponseOutputProtocol {
@@ -3802,6 +3971,32 @@ extension ModifyTrafficMirrorSessionResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTrafficMirrorSessionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyTransitGateway operation in a HTTP client.
+ */
+extension ModifyTransitGatewayResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyTransitGatewayResult
+    public typealias HeadersType = ModifyTransitGatewayResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTransitGatewayResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyTransitGatewayPrefixListReference operation in a HTTP client.
+ */
+extension ModifyTransitGatewayPrefixListReferenceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyTransitGatewayPrefixListReferenceResult
+    public typealias HeadersType = ModifyTransitGatewayPrefixListReferenceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTransitGatewayPrefixListReferenceResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3919,6 +4114,19 @@ extension ModifyVpnConnectionResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpnConnectionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVpnConnectionOptions operation in a HTTP client.
+ */
+extension ModifyVpnConnectionOptionsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVpnConnectionOptionsResult
+    public typealias HeadersType = ModifyVpnConnectionOptionsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpnConnectionOptionsResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4262,6 +4470,19 @@ extension RestoreAddressToClassicResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the RestoreManagedPrefixListVersion operation in a HTTP client.
+ */
+extension RestoreManagedPrefixListVersionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RestoreManagedPrefixListVersionResult
+    public typealias HeadersType = RestoreManagedPrefixListVersionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RestoreManagedPrefixListVersionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the RevokeClientVpnIngress operation in a HTTP client.
  */
 extension RevokeClientVpnIngressResult: HTTPResponseOutputProtocol {
@@ -4270,6 +4491,32 @@ extension RevokeClientVpnIngressResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> RevokeClientVpnIngressResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RevokeSecurityGroupEgress operation in a HTTP client.
+ */
+extension RevokeSecurityGroupEgressResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RevokeSecurityGroupEgressResult
+    public typealias HeadersType = RevokeSecurityGroupEgressResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RevokeSecurityGroupEgressResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RevokeSecurityGroupIngress operation in a HTTP client.
+ */
+extension RevokeSecurityGroupIngressResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RevokeSecurityGroupIngressResult
+    public typealias HeadersType = RevokeSecurityGroupIngressResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RevokeSecurityGroupIngressResult {
         return try bodyDecodableProvider()
     }
 }

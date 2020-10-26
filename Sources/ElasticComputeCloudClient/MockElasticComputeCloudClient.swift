@@ -112,6 +112,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let copySnapshotSyncOverride: CopySnapshotSyncType?
     let createCapacityReservationAsyncOverride: CreateCapacityReservationAsyncType?
     let createCapacityReservationSyncOverride: CreateCapacityReservationSyncType?
+    let createCarrierGatewayAsyncOverride: CreateCarrierGatewayAsyncType?
+    let createCarrierGatewaySyncOverride: CreateCarrierGatewaySyncType?
     let createClientVpnEndpointAsyncOverride: CreateClientVpnEndpointAsyncType?
     let createClientVpnEndpointSyncOverride: CreateClientVpnEndpointSyncType?
     let createClientVpnRouteAsyncOverride: CreateClientVpnRouteAsyncType?
@@ -148,6 +150,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createLocalGatewayRouteSyncOverride: CreateLocalGatewayRouteSyncType?
     let createLocalGatewayRouteTableVpcAssociationAsyncOverride: CreateLocalGatewayRouteTableVpcAssociationAsyncType?
     let createLocalGatewayRouteTableVpcAssociationSyncOverride: CreateLocalGatewayRouteTableVpcAssociationSyncType?
+    let createManagedPrefixListAsyncOverride: CreateManagedPrefixListAsyncType?
+    let createManagedPrefixListSyncOverride: CreateManagedPrefixListSyncType?
     let createNatGatewayAsyncOverride: CreateNatGatewayAsyncType?
     let createNatGatewaySyncOverride: CreateNatGatewaySyncType?
     let createNetworkAclAsyncOverride: CreateNetworkAclAsyncType?
@@ -192,6 +196,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createTransitGatewayMulticastDomainSyncOverride: CreateTransitGatewayMulticastDomainSyncType?
     let createTransitGatewayPeeringAttachmentAsyncOverride: CreateTransitGatewayPeeringAttachmentAsyncType?
     let createTransitGatewayPeeringAttachmentSyncOverride: CreateTransitGatewayPeeringAttachmentSyncType?
+    let createTransitGatewayPrefixListReferenceAsyncOverride: CreateTransitGatewayPrefixListReferenceAsyncType?
+    let createTransitGatewayPrefixListReferenceSyncOverride: CreateTransitGatewayPrefixListReferenceSyncType?
     let createTransitGatewayRouteAsyncOverride: CreateTransitGatewayRouteAsyncType?
     let createTransitGatewayRouteSyncOverride: CreateTransitGatewayRouteSyncType?
     let createTransitGatewayRouteTableAsyncOverride: CreateTransitGatewayRouteTableAsyncType?
@@ -216,6 +222,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createVpnConnectionRouteSyncOverride: CreateVpnConnectionRouteSyncType?
     let createVpnGatewayAsyncOverride: CreateVpnGatewayAsyncType?
     let createVpnGatewaySyncOverride: CreateVpnGatewaySyncType?
+    let deleteCarrierGatewayAsyncOverride: DeleteCarrierGatewayAsyncType?
+    let deleteCarrierGatewaySyncOverride: DeleteCarrierGatewaySyncType?
     let deleteClientVpnEndpointAsyncOverride: DeleteClientVpnEndpointAsyncType?
     let deleteClientVpnEndpointSyncOverride: DeleteClientVpnEndpointSyncType?
     let deleteClientVpnRouteAsyncOverride: DeleteClientVpnRouteAsyncType?
@@ -244,6 +252,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteLocalGatewayRouteSyncOverride: DeleteLocalGatewayRouteSyncType?
     let deleteLocalGatewayRouteTableVpcAssociationAsyncOverride: DeleteLocalGatewayRouteTableVpcAssociationAsyncType?
     let deleteLocalGatewayRouteTableVpcAssociationSyncOverride: DeleteLocalGatewayRouteTableVpcAssociationSyncType?
+    let deleteManagedPrefixListAsyncOverride: DeleteManagedPrefixListAsyncType?
+    let deleteManagedPrefixListSyncOverride: DeleteManagedPrefixListSyncType?
     let deleteNatGatewayAsyncOverride: DeleteNatGatewayAsyncType?
     let deleteNatGatewaySyncOverride: DeleteNatGatewaySyncType?
     let deleteNetworkAclAsyncOverride: DeleteNetworkAclAsyncType?
@@ -286,6 +296,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteTransitGatewayMulticastDomainSyncOverride: DeleteTransitGatewayMulticastDomainSyncType?
     let deleteTransitGatewayPeeringAttachmentAsyncOverride: DeleteTransitGatewayPeeringAttachmentAsyncType?
     let deleteTransitGatewayPeeringAttachmentSyncOverride: DeleteTransitGatewayPeeringAttachmentSyncType?
+    let deleteTransitGatewayPrefixListReferenceAsyncOverride: DeleteTransitGatewayPrefixListReferenceAsyncType?
+    let deleteTransitGatewayPrefixListReferenceSyncOverride: DeleteTransitGatewayPrefixListReferenceSyncType?
     let deleteTransitGatewayRouteAsyncOverride: DeleteTransitGatewayRouteAsyncType?
     let deleteTransitGatewayRouteSyncOverride: DeleteTransitGatewayRouteSyncType?
     let deleteTransitGatewayRouteTableAsyncOverride: DeleteTransitGatewayRouteTableAsyncType?
@@ -334,6 +346,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeByoipCidrsSyncOverride: DescribeByoipCidrsSyncType?
     let describeCapacityReservationsAsyncOverride: DescribeCapacityReservationsAsyncType?
     let describeCapacityReservationsSyncOverride: DescribeCapacityReservationsSyncType?
+    let describeCarrierGatewaysAsyncOverride: DescribeCarrierGatewaysAsyncType?
+    let describeCarrierGatewaysSyncOverride: DescribeCarrierGatewaysSyncType?
     let describeClassicLinkInstancesAsyncOverride: DescribeClassicLinkInstancesAsyncType?
     let describeClassicLinkInstancesSyncOverride: DescribeClassicLinkInstancesSyncType?
     let describeClientVpnAuthorizationRulesAsyncOverride: DescribeClientVpnAuthorizationRulesAsyncType?
@@ -432,6 +446,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeLocalGatewayVirtualInterfacesSyncOverride: DescribeLocalGatewayVirtualInterfacesSyncType?
     let describeLocalGatewaysAsyncOverride: DescribeLocalGatewaysAsyncType?
     let describeLocalGatewaysSyncOverride: DescribeLocalGatewaysSyncType?
+    let describeManagedPrefixListsAsyncOverride: DescribeManagedPrefixListsAsyncType?
+    let describeManagedPrefixListsSyncOverride: DescribeManagedPrefixListsSyncType?
     let describeMovingAddressesAsyncOverride: DescribeMovingAddressesAsyncType?
     let describeMovingAddressesSyncOverride: DescribeMovingAddressesSyncType?
     let describeNatGatewaysAsyncOverride: DescribeNatGatewaysAsyncType?
@@ -622,10 +638,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getEbsDefaultKmsKeyIdSyncOverride: GetEbsDefaultKmsKeyIdSyncType?
     let getEbsEncryptionByDefaultAsyncOverride: GetEbsEncryptionByDefaultAsyncType?
     let getEbsEncryptionByDefaultSyncOverride: GetEbsEncryptionByDefaultSyncType?
+    let getGroupsForCapacityReservationAsyncOverride: GetGroupsForCapacityReservationAsyncType?
+    let getGroupsForCapacityReservationSyncOverride: GetGroupsForCapacityReservationSyncType?
     let getHostReservationPurchasePreviewAsyncOverride: GetHostReservationPurchasePreviewAsyncType?
     let getHostReservationPurchasePreviewSyncOverride: GetHostReservationPurchasePreviewSyncType?
     let getLaunchTemplateDataAsyncOverride: GetLaunchTemplateDataAsyncType?
     let getLaunchTemplateDataSyncOverride: GetLaunchTemplateDataSyncType?
+    let getManagedPrefixListAssociationsAsyncOverride: GetManagedPrefixListAssociationsAsyncType?
+    let getManagedPrefixListAssociationsSyncOverride: GetManagedPrefixListAssociationsSyncType?
+    let getManagedPrefixListEntriesAsyncOverride: GetManagedPrefixListEntriesAsyncType?
+    let getManagedPrefixListEntriesSyncOverride: GetManagedPrefixListEntriesSyncType?
     let getPasswordDataAsyncOverride: GetPasswordDataAsyncType?
     let getPasswordDataSyncOverride: GetPasswordDataSyncType?
     let getReservedInstancesExchangeQuoteAsyncOverride: GetReservedInstancesExchangeQuoteAsyncType?
@@ -634,6 +656,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getTransitGatewayAttachmentPropagationsSyncOverride: GetTransitGatewayAttachmentPropagationsSyncType?
     let getTransitGatewayMulticastDomainAssociationsAsyncOverride: GetTransitGatewayMulticastDomainAssociationsAsyncType?
     let getTransitGatewayMulticastDomainAssociationsSyncOverride: GetTransitGatewayMulticastDomainAssociationsSyncType?
+    let getTransitGatewayPrefixListReferencesAsyncOverride: GetTransitGatewayPrefixListReferencesAsyncType?
+    let getTransitGatewayPrefixListReferencesSyncOverride: GetTransitGatewayPrefixListReferencesSyncType?
     let getTransitGatewayRouteTableAssociationsAsyncOverride: GetTransitGatewayRouteTableAssociationsAsyncType?
     let getTransitGatewayRouteTableAssociationsSyncOverride: GetTransitGatewayRouteTableAssociationsSyncType?
     let getTransitGatewayRouteTablePropagationsAsyncOverride: GetTransitGatewayRouteTablePropagationsAsyncType?
@@ -686,6 +710,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyInstancePlacementSyncOverride: ModifyInstancePlacementSyncType?
     let modifyLaunchTemplateAsyncOverride: ModifyLaunchTemplateAsyncType?
     let modifyLaunchTemplateSyncOverride: ModifyLaunchTemplateSyncType?
+    let modifyManagedPrefixListAsyncOverride: ModifyManagedPrefixListAsyncType?
+    let modifyManagedPrefixListSyncOverride: ModifyManagedPrefixListSyncType?
     let modifyNetworkInterfaceAttributeAsyncOverride: ModifyNetworkInterfaceAttributeAsyncType?
     let modifyNetworkInterfaceAttributeSyncOverride: ModifyNetworkInterfaceAttributeSyncType?
     let modifyReservedInstancesAsyncOverride: ModifyReservedInstancesAsyncType?
@@ -702,6 +728,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyTrafficMirrorFilterRuleSyncOverride: ModifyTrafficMirrorFilterRuleSyncType?
     let modifyTrafficMirrorSessionAsyncOverride: ModifyTrafficMirrorSessionAsyncType?
     let modifyTrafficMirrorSessionSyncOverride: ModifyTrafficMirrorSessionSyncType?
+    let modifyTransitGatewayAsyncOverride: ModifyTransitGatewayAsyncType?
+    let modifyTransitGatewaySyncOverride: ModifyTransitGatewaySyncType?
+    let modifyTransitGatewayPrefixListReferenceAsyncOverride: ModifyTransitGatewayPrefixListReferenceAsyncType?
+    let modifyTransitGatewayPrefixListReferenceSyncOverride: ModifyTransitGatewayPrefixListReferenceSyncType?
     let modifyTransitGatewayVpcAttachmentAsyncOverride: ModifyTransitGatewayVpcAttachmentAsyncType?
     let modifyTransitGatewayVpcAttachmentSyncOverride: ModifyTransitGatewayVpcAttachmentSyncType?
     let modifyVolumeAsyncOverride: ModifyVolumeAsyncType?
@@ -724,6 +754,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyVpcTenancySyncOverride: ModifyVpcTenancySyncType?
     let modifyVpnConnectionAsyncOverride: ModifyVpnConnectionAsyncType?
     let modifyVpnConnectionSyncOverride: ModifyVpnConnectionSyncType?
+    let modifyVpnConnectionOptionsAsyncOverride: ModifyVpnConnectionOptionsAsyncType?
+    let modifyVpnConnectionOptionsSyncOverride: ModifyVpnConnectionOptionsSyncType?
     let modifyVpnTunnelCertificateAsyncOverride: ModifyVpnTunnelCertificateAsyncType?
     let modifyVpnTunnelCertificateSyncOverride: ModifyVpnTunnelCertificateSyncType?
     let modifyVpnTunnelOptionsAsyncOverride: ModifyVpnTunnelOptionsAsyncType?
@@ -794,6 +826,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let resetSnapshotAttributeSyncOverride: ResetSnapshotAttributeSyncType?
     let restoreAddressToClassicAsyncOverride: RestoreAddressToClassicAsyncType?
     let restoreAddressToClassicSyncOverride: RestoreAddressToClassicSyncType?
+    let restoreManagedPrefixListVersionAsyncOverride: RestoreManagedPrefixListVersionAsyncType?
+    let restoreManagedPrefixListVersionSyncOverride: RestoreManagedPrefixListVersionSyncType?
     let revokeClientVpnIngressAsyncOverride: RevokeClientVpnIngressAsyncType?
     let revokeClientVpnIngressSyncOverride: RevokeClientVpnIngressSyncType?
     let revokeSecurityGroupEgressAsyncOverride: RevokeSecurityGroupEgressAsyncType?
@@ -924,6 +958,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             copySnapshotSync: CopySnapshotSyncType? = nil,
             createCapacityReservationAsync: CreateCapacityReservationAsyncType? = nil,
             createCapacityReservationSync: CreateCapacityReservationSyncType? = nil,
+            createCarrierGatewayAsync: CreateCarrierGatewayAsyncType? = nil,
+            createCarrierGatewaySync: CreateCarrierGatewaySyncType? = nil,
             createClientVpnEndpointAsync: CreateClientVpnEndpointAsyncType? = nil,
             createClientVpnEndpointSync: CreateClientVpnEndpointSyncType? = nil,
             createClientVpnRouteAsync: CreateClientVpnRouteAsyncType? = nil,
@@ -960,6 +996,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             createLocalGatewayRouteSync: CreateLocalGatewayRouteSyncType? = nil,
             createLocalGatewayRouteTableVpcAssociationAsync: CreateLocalGatewayRouteTableVpcAssociationAsyncType? = nil,
             createLocalGatewayRouteTableVpcAssociationSync: CreateLocalGatewayRouteTableVpcAssociationSyncType? = nil,
+            createManagedPrefixListAsync: CreateManagedPrefixListAsyncType? = nil,
+            createManagedPrefixListSync: CreateManagedPrefixListSyncType? = nil,
             createNatGatewayAsync: CreateNatGatewayAsyncType? = nil,
             createNatGatewaySync: CreateNatGatewaySyncType? = nil,
             createNetworkAclAsync: CreateNetworkAclAsyncType? = nil,
@@ -1004,6 +1042,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             createTransitGatewayMulticastDomainSync: CreateTransitGatewayMulticastDomainSyncType? = nil,
             createTransitGatewayPeeringAttachmentAsync: CreateTransitGatewayPeeringAttachmentAsyncType? = nil,
             createTransitGatewayPeeringAttachmentSync: CreateTransitGatewayPeeringAttachmentSyncType? = nil,
+            createTransitGatewayPrefixListReferenceAsync: CreateTransitGatewayPrefixListReferenceAsyncType? = nil,
+            createTransitGatewayPrefixListReferenceSync: CreateTransitGatewayPrefixListReferenceSyncType? = nil,
             createTransitGatewayRouteAsync: CreateTransitGatewayRouteAsyncType? = nil,
             createTransitGatewayRouteSync: CreateTransitGatewayRouteSyncType? = nil,
             createTransitGatewayRouteTableAsync: CreateTransitGatewayRouteTableAsyncType? = nil,
@@ -1028,6 +1068,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             createVpnConnectionRouteSync: CreateVpnConnectionRouteSyncType? = nil,
             createVpnGatewayAsync: CreateVpnGatewayAsyncType? = nil,
             createVpnGatewaySync: CreateVpnGatewaySyncType? = nil,
+            deleteCarrierGatewayAsync: DeleteCarrierGatewayAsyncType? = nil,
+            deleteCarrierGatewaySync: DeleteCarrierGatewaySyncType? = nil,
             deleteClientVpnEndpointAsync: DeleteClientVpnEndpointAsyncType? = nil,
             deleteClientVpnEndpointSync: DeleteClientVpnEndpointSyncType? = nil,
             deleteClientVpnRouteAsync: DeleteClientVpnRouteAsyncType? = nil,
@@ -1056,6 +1098,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             deleteLocalGatewayRouteSync: DeleteLocalGatewayRouteSyncType? = nil,
             deleteLocalGatewayRouteTableVpcAssociationAsync: DeleteLocalGatewayRouteTableVpcAssociationAsyncType? = nil,
             deleteLocalGatewayRouteTableVpcAssociationSync: DeleteLocalGatewayRouteTableVpcAssociationSyncType? = nil,
+            deleteManagedPrefixListAsync: DeleteManagedPrefixListAsyncType? = nil,
+            deleteManagedPrefixListSync: DeleteManagedPrefixListSyncType? = nil,
             deleteNatGatewayAsync: DeleteNatGatewayAsyncType? = nil,
             deleteNatGatewaySync: DeleteNatGatewaySyncType? = nil,
             deleteNetworkAclAsync: DeleteNetworkAclAsyncType? = nil,
@@ -1098,6 +1142,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             deleteTransitGatewayMulticastDomainSync: DeleteTransitGatewayMulticastDomainSyncType? = nil,
             deleteTransitGatewayPeeringAttachmentAsync: DeleteTransitGatewayPeeringAttachmentAsyncType? = nil,
             deleteTransitGatewayPeeringAttachmentSync: DeleteTransitGatewayPeeringAttachmentSyncType? = nil,
+            deleteTransitGatewayPrefixListReferenceAsync: DeleteTransitGatewayPrefixListReferenceAsyncType? = nil,
+            deleteTransitGatewayPrefixListReferenceSync: DeleteTransitGatewayPrefixListReferenceSyncType? = nil,
             deleteTransitGatewayRouteAsync: DeleteTransitGatewayRouteAsyncType? = nil,
             deleteTransitGatewayRouteSync: DeleteTransitGatewayRouteSyncType? = nil,
             deleteTransitGatewayRouteTableAsync: DeleteTransitGatewayRouteTableAsyncType? = nil,
@@ -1146,6 +1192,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeByoipCidrsSync: DescribeByoipCidrsSyncType? = nil,
             describeCapacityReservationsAsync: DescribeCapacityReservationsAsyncType? = nil,
             describeCapacityReservationsSync: DescribeCapacityReservationsSyncType? = nil,
+            describeCarrierGatewaysAsync: DescribeCarrierGatewaysAsyncType? = nil,
+            describeCarrierGatewaysSync: DescribeCarrierGatewaysSyncType? = nil,
             describeClassicLinkInstancesAsync: DescribeClassicLinkInstancesAsyncType? = nil,
             describeClassicLinkInstancesSync: DescribeClassicLinkInstancesSyncType? = nil,
             describeClientVpnAuthorizationRulesAsync: DescribeClientVpnAuthorizationRulesAsyncType? = nil,
@@ -1244,6 +1292,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeLocalGatewayVirtualInterfacesSync: DescribeLocalGatewayVirtualInterfacesSyncType? = nil,
             describeLocalGatewaysAsync: DescribeLocalGatewaysAsyncType? = nil,
             describeLocalGatewaysSync: DescribeLocalGatewaysSyncType? = nil,
+            describeManagedPrefixListsAsync: DescribeManagedPrefixListsAsyncType? = nil,
+            describeManagedPrefixListsSync: DescribeManagedPrefixListsSyncType? = nil,
             describeMovingAddressesAsync: DescribeMovingAddressesAsyncType? = nil,
             describeMovingAddressesSync: DescribeMovingAddressesSyncType? = nil,
             describeNatGatewaysAsync: DescribeNatGatewaysAsyncType? = nil,
@@ -1434,10 +1484,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getEbsDefaultKmsKeyIdSync: GetEbsDefaultKmsKeyIdSyncType? = nil,
             getEbsEncryptionByDefaultAsync: GetEbsEncryptionByDefaultAsyncType? = nil,
             getEbsEncryptionByDefaultSync: GetEbsEncryptionByDefaultSyncType? = nil,
+            getGroupsForCapacityReservationAsync: GetGroupsForCapacityReservationAsyncType? = nil,
+            getGroupsForCapacityReservationSync: GetGroupsForCapacityReservationSyncType? = nil,
             getHostReservationPurchasePreviewAsync: GetHostReservationPurchasePreviewAsyncType? = nil,
             getHostReservationPurchasePreviewSync: GetHostReservationPurchasePreviewSyncType? = nil,
             getLaunchTemplateDataAsync: GetLaunchTemplateDataAsyncType? = nil,
             getLaunchTemplateDataSync: GetLaunchTemplateDataSyncType? = nil,
+            getManagedPrefixListAssociationsAsync: GetManagedPrefixListAssociationsAsyncType? = nil,
+            getManagedPrefixListAssociationsSync: GetManagedPrefixListAssociationsSyncType? = nil,
+            getManagedPrefixListEntriesAsync: GetManagedPrefixListEntriesAsyncType? = nil,
+            getManagedPrefixListEntriesSync: GetManagedPrefixListEntriesSyncType? = nil,
             getPasswordDataAsync: GetPasswordDataAsyncType? = nil,
             getPasswordDataSync: GetPasswordDataSyncType? = nil,
             getReservedInstancesExchangeQuoteAsync: GetReservedInstancesExchangeQuoteAsyncType? = nil,
@@ -1446,6 +1502,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getTransitGatewayAttachmentPropagationsSync: GetTransitGatewayAttachmentPropagationsSyncType? = nil,
             getTransitGatewayMulticastDomainAssociationsAsync: GetTransitGatewayMulticastDomainAssociationsAsyncType? = nil,
             getTransitGatewayMulticastDomainAssociationsSync: GetTransitGatewayMulticastDomainAssociationsSyncType? = nil,
+            getTransitGatewayPrefixListReferencesAsync: GetTransitGatewayPrefixListReferencesAsyncType? = nil,
+            getTransitGatewayPrefixListReferencesSync: GetTransitGatewayPrefixListReferencesSyncType? = nil,
             getTransitGatewayRouteTableAssociationsAsync: GetTransitGatewayRouteTableAssociationsAsyncType? = nil,
             getTransitGatewayRouteTableAssociationsSync: GetTransitGatewayRouteTableAssociationsSyncType? = nil,
             getTransitGatewayRouteTablePropagationsAsync: GetTransitGatewayRouteTablePropagationsAsyncType? = nil,
@@ -1498,6 +1556,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             modifyInstancePlacementSync: ModifyInstancePlacementSyncType? = nil,
             modifyLaunchTemplateAsync: ModifyLaunchTemplateAsyncType? = nil,
             modifyLaunchTemplateSync: ModifyLaunchTemplateSyncType? = nil,
+            modifyManagedPrefixListAsync: ModifyManagedPrefixListAsyncType? = nil,
+            modifyManagedPrefixListSync: ModifyManagedPrefixListSyncType? = nil,
             modifyNetworkInterfaceAttributeAsync: ModifyNetworkInterfaceAttributeAsyncType? = nil,
             modifyNetworkInterfaceAttributeSync: ModifyNetworkInterfaceAttributeSyncType? = nil,
             modifyReservedInstancesAsync: ModifyReservedInstancesAsyncType? = nil,
@@ -1514,6 +1574,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             modifyTrafficMirrorFilterRuleSync: ModifyTrafficMirrorFilterRuleSyncType? = nil,
             modifyTrafficMirrorSessionAsync: ModifyTrafficMirrorSessionAsyncType? = nil,
             modifyTrafficMirrorSessionSync: ModifyTrafficMirrorSessionSyncType? = nil,
+            modifyTransitGatewayAsync: ModifyTransitGatewayAsyncType? = nil,
+            modifyTransitGatewaySync: ModifyTransitGatewaySyncType? = nil,
+            modifyTransitGatewayPrefixListReferenceAsync: ModifyTransitGatewayPrefixListReferenceAsyncType? = nil,
+            modifyTransitGatewayPrefixListReferenceSync: ModifyTransitGatewayPrefixListReferenceSyncType? = nil,
             modifyTransitGatewayVpcAttachmentAsync: ModifyTransitGatewayVpcAttachmentAsyncType? = nil,
             modifyTransitGatewayVpcAttachmentSync: ModifyTransitGatewayVpcAttachmentSyncType? = nil,
             modifyVolumeAsync: ModifyVolumeAsyncType? = nil,
@@ -1536,6 +1600,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             modifyVpcTenancySync: ModifyVpcTenancySyncType? = nil,
             modifyVpnConnectionAsync: ModifyVpnConnectionAsyncType? = nil,
             modifyVpnConnectionSync: ModifyVpnConnectionSyncType? = nil,
+            modifyVpnConnectionOptionsAsync: ModifyVpnConnectionOptionsAsyncType? = nil,
+            modifyVpnConnectionOptionsSync: ModifyVpnConnectionOptionsSyncType? = nil,
             modifyVpnTunnelCertificateAsync: ModifyVpnTunnelCertificateAsyncType? = nil,
             modifyVpnTunnelCertificateSync: ModifyVpnTunnelCertificateSyncType? = nil,
             modifyVpnTunnelOptionsAsync: ModifyVpnTunnelOptionsAsyncType? = nil,
@@ -1606,6 +1672,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             resetSnapshotAttributeSync: ResetSnapshotAttributeSyncType? = nil,
             restoreAddressToClassicAsync: RestoreAddressToClassicAsyncType? = nil,
             restoreAddressToClassicSync: RestoreAddressToClassicSyncType? = nil,
+            restoreManagedPrefixListVersionAsync: RestoreManagedPrefixListVersionAsyncType? = nil,
+            restoreManagedPrefixListVersionSync: RestoreManagedPrefixListVersionSyncType? = nil,
             revokeClientVpnIngressAsync: RevokeClientVpnIngressAsyncType? = nil,
             revokeClientVpnIngressSync: RevokeClientVpnIngressSyncType? = nil,
             revokeSecurityGroupEgressAsync: RevokeSecurityGroupEgressAsyncType? = nil,
@@ -1730,6 +1798,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.copySnapshotSyncOverride = copySnapshotSync
         self.createCapacityReservationAsyncOverride = createCapacityReservationAsync
         self.createCapacityReservationSyncOverride = createCapacityReservationSync
+        self.createCarrierGatewayAsyncOverride = createCarrierGatewayAsync
+        self.createCarrierGatewaySyncOverride = createCarrierGatewaySync
         self.createClientVpnEndpointAsyncOverride = createClientVpnEndpointAsync
         self.createClientVpnEndpointSyncOverride = createClientVpnEndpointSync
         self.createClientVpnRouteAsyncOverride = createClientVpnRouteAsync
@@ -1766,6 +1836,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.createLocalGatewayRouteSyncOverride = createLocalGatewayRouteSync
         self.createLocalGatewayRouteTableVpcAssociationAsyncOverride = createLocalGatewayRouteTableVpcAssociationAsync
         self.createLocalGatewayRouteTableVpcAssociationSyncOverride = createLocalGatewayRouteTableVpcAssociationSync
+        self.createManagedPrefixListAsyncOverride = createManagedPrefixListAsync
+        self.createManagedPrefixListSyncOverride = createManagedPrefixListSync
         self.createNatGatewayAsyncOverride = createNatGatewayAsync
         self.createNatGatewaySyncOverride = createNatGatewaySync
         self.createNetworkAclAsyncOverride = createNetworkAclAsync
@@ -1810,6 +1882,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.createTransitGatewayMulticastDomainSyncOverride = createTransitGatewayMulticastDomainSync
         self.createTransitGatewayPeeringAttachmentAsyncOverride = createTransitGatewayPeeringAttachmentAsync
         self.createTransitGatewayPeeringAttachmentSyncOverride = createTransitGatewayPeeringAttachmentSync
+        self.createTransitGatewayPrefixListReferenceAsyncOverride = createTransitGatewayPrefixListReferenceAsync
+        self.createTransitGatewayPrefixListReferenceSyncOverride = createTransitGatewayPrefixListReferenceSync
         self.createTransitGatewayRouteAsyncOverride = createTransitGatewayRouteAsync
         self.createTransitGatewayRouteSyncOverride = createTransitGatewayRouteSync
         self.createTransitGatewayRouteTableAsyncOverride = createTransitGatewayRouteTableAsync
@@ -1834,6 +1908,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.createVpnConnectionRouteSyncOverride = createVpnConnectionRouteSync
         self.createVpnGatewayAsyncOverride = createVpnGatewayAsync
         self.createVpnGatewaySyncOverride = createVpnGatewaySync
+        self.deleteCarrierGatewayAsyncOverride = deleteCarrierGatewayAsync
+        self.deleteCarrierGatewaySyncOverride = deleteCarrierGatewaySync
         self.deleteClientVpnEndpointAsyncOverride = deleteClientVpnEndpointAsync
         self.deleteClientVpnEndpointSyncOverride = deleteClientVpnEndpointSync
         self.deleteClientVpnRouteAsyncOverride = deleteClientVpnRouteAsync
@@ -1862,6 +1938,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.deleteLocalGatewayRouteSyncOverride = deleteLocalGatewayRouteSync
         self.deleteLocalGatewayRouteTableVpcAssociationAsyncOverride = deleteLocalGatewayRouteTableVpcAssociationAsync
         self.deleteLocalGatewayRouteTableVpcAssociationSyncOverride = deleteLocalGatewayRouteTableVpcAssociationSync
+        self.deleteManagedPrefixListAsyncOverride = deleteManagedPrefixListAsync
+        self.deleteManagedPrefixListSyncOverride = deleteManagedPrefixListSync
         self.deleteNatGatewayAsyncOverride = deleteNatGatewayAsync
         self.deleteNatGatewaySyncOverride = deleteNatGatewaySync
         self.deleteNetworkAclAsyncOverride = deleteNetworkAclAsync
@@ -1904,6 +1982,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.deleteTransitGatewayMulticastDomainSyncOverride = deleteTransitGatewayMulticastDomainSync
         self.deleteTransitGatewayPeeringAttachmentAsyncOverride = deleteTransitGatewayPeeringAttachmentAsync
         self.deleteTransitGatewayPeeringAttachmentSyncOverride = deleteTransitGatewayPeeringAttachmentSync
+        self.deleteTransitGatewayPrefixListReferenceAsyncOverride = deleteTransitGatewayPrefixListReferenceAsync
+        self.deleteTransitGatewayPrefixListReferenceSyncOverride = deleteTransitGatewayPrefixListReferenceSync
         self.deleteTransitGatewayRouteAsyncOverride = deleteTransitGatewayRouteAsync
         self.deleteTransitGatewayRouteSyncOverride = deleteTransitGatewayRouteSync
         self.deleteTransitGatewayRouteTableAsyncOverride = deleteTransitGatewayRouteTableAsync
@@ -1952,6 +2032,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeByoipCidrsSyncOverride = describeByoipCidrsSync
         self.describeCapacityReservationsAsyncOverride = describeCapacityReservationsAsync
         self.describeCapacityReservationsSyncOverride = describeCapacityReservationsSync
+        self.describeCarrierGatewaysAsyncOverride = describeCarrierGatewaysAsync
+        self.describeCarrierGatewaysSyncOverride = describeCarrierGatewaysSync
         self.describeClassicLinkInstancesAsyncOverride = describeClassicLinkInstancesAsync
         self.describeClassicLinkInstancesSyncOverride = describeClassicLinkInstancesSync
         self.describeClientVpnAuthorizationRulesAsyncOverride = describeClientVpnAuthorizationRulesAsync
@@ -2050,6 +2132,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeLocalGatewayVirtualInterfacesSyncOverride = describeLocalGatewayVirtualInterfacesSync
         self.describeLocalGatewaysAsyncOverride = describeLocalGatewaysAsync
         self.describeLocalGatewaysSyncOverride = describeLocalGatewaysSync
+        self.describeManagedPrefixListsAsyncOverride = describeManagedPrefixListsAsync
+        self.describeManagedPrefixListsSyncOverride = describeManagedPrefixListsSync
         self.describeMovingAddressesAsyncOverride = describeMovingAddressesAsync
         self.describeMovingAddressesSyncOverride = describeMovingAddressesSync
         self.describeNatGatewaysAsyncOverride = describeNatGatewaysAsync
@@ -2240,10 +2324,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getEbsDefaultKmsKeyIdSyncOverride = getEbsDefaultKmsKeyIdSync
         self.getEbsEncryptionByDefaultAsyncOverride = getEbsEncryptionByDefaultAsync
         self.getEbsEncryptionByDefaultSyncOverride = getEbsEncryptionByDefaultSync
+        self.getGroupsForCapacityReservationAsyncOverride = getGroupsForCapacityReservationAsync
+        self.getGroupsForCapacityReservationSyncOverride = getGroupsForCapacityReservationSync
         self.getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsync
         self.getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSync
         self.getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsync
         self.getLaunchTemplateDataSyncOverride = getLaunchTemplateDataSync
+        self.getManagedPrefixListAssociationsAsyncOverride = getManagedPrefixListAssociationsAsync
+        self.getManagedPrefixListAssociationsSyncOverride = getManagedPrefixListAssociationsSync
+        self.getManagedPrefixListEntriesAsyncOverride = getManagedPrefixListEntriesAsync
+        self.getManagedPrefixListEntriesSyncOverride = getManagedPrefixListEntriesSync
         self.getPasswordDataAsyncOverride = getPasswordDataAsync
         self.getPasswordDataSyncOverride = getPasswordDataSync
         self.getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsync
@@ -2252,6 +2342,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getTransitGatewayAttachmentPropagationsSyncOverride = getTransitGatewayAttachmentPropagationsSync
         self.getTransitGatewayMulticastDomainAssociationsAsyncOverride = getTransitGatewayMulticastDomainAssociationsAsync
         self.getTransitGatewayMulticastDomainAssociationsSyncOverride = getTransitGatewayMulticastDomainAssociationsSync
+        self.getTransitGatewayPrefixListReferencesAsyncOverride = getTransitGatewayPrefixListReferencesAsync
+        self.getTransitGatewayPrefixListReferencesSyncOverride = getTransitGatewayPrefixListReferencesSync
         self.getTransitGatewayRouteTableAssociationsAsyncOverride = getTransitGatewayRouteTableAssociationsAsync
         self.getTransitGatewayRouteTableAssociationsSyncOverride = getTransitGatewayRouteTableAssociationsSync
         self.getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsync
@@ -2304,6 +2396,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.modifyInstancePlacementSyncOverride = modifyInstancePlacementSync
         self.modifyLaunchTemplateAsyncOverride = modifyLaunchTemplateAsync
         self.modifyLaunchTemplateSyncOverride = modifyLaunchTemplateSync
+        self.modifyManagedPrefixListAsyncOverride = modifyManagedPrefixListAsync
+        self.modifyManagedPrefixListSyncOverride = modifyManagedPrefixListSync
         self.modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsync
         self.modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSync
         self.modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsync
@@ -2320,6 +2414,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.modifyTrafficMirrorFilterRuleSyncOverride = modifyTrafficMirrorFilterRuleSync
         self.modifyTrafficMirrorSessionAsyncOverride = modifyTrafficMirrorSessionAsync
         self.modifyTrafficMirrorSessionSyncOverride = modifyTrafficMirrorSessionSync
+        self.modifyTransitGatewayAsyncOverride = modifyTransitGatewayAsync
+        self.modifyTransitGatewaySyncOverride = modifyTransitGatewaySync
+        self.modifyTransitGatewayPrefixListReferenceAsyncOverride = modifyTransitGatewayPrefixListReferenceAsync
+        self.modifyTransitGatewayPrefixListReferenceSyncOverride = modifyTransitGatewayPrefixListReferenceSync
         self.modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsync
         self.modifyTransitGatewayVpcAttachmentSyncOverride = modifyTransitGatewayVpcAttachmentSync
         self.modifyVolumeAsyncOverride = modifyVolumeAsync
@@ -2342,6 +2440,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.modifyVpcTenancySyncOverride = modifyVpcTenancySync
         self.modifyVpnConnectionAsyncOverride = modifyVpnConnectionAsync
         self.modifyVpnConnectionSyncOverride = modifyVpnConnectionSync
+        self.modifyVpnConnectionOptionsAsyncOverride = modifyVpnConnectionOptionsAsync
+        self.modifyVpnConnectionOptionsSyncOverride = modifyVpnConnectionOptionsSync
         self.modifyVpnTunnelCertificateAsyncOverride = modifyVpnTunnelCertificateAsync
         self.modifyVpnTunnelCertificateSyncOverride = modifyVpnTunnelCertificateSync
         self.modifyVpnTunnelOptionsAsyncOverride = modifyVpnTunnelOptionsAsync
@@ -2412,6 +2512,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.resetSnapshotAttributeSyncOverride = resetSnapshotAttributeSync
         self.restoreAddressToClassicAsyncOverride = restoreAddressToClassicAsync
         self.restoreAddressToClassicSyncOverride = restoreAddressToClassicSync
+        self.restoreManagedPrefixListVersionAsyncOverride = restoreManagedPrefixListVersionAsync
+        self.restoreManagedPrefixListVersionSyncOverride = restoreManagedPrefixListVersionSync
         self.revokeClientVpnIngressAsyncOverride = revokeClientVpnIngressAsync
         self.revokeClientVpnIngressSyncOverride = revokeClientVpnIngressSync
         self.revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsync
@@ -4015,6 +4117,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateCarrierGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCarrierGatewayRequest object being passed to this operation.
+         - completion: The CreateCarrierGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCarrierGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func createCarrierGatewayAsync(
+            input: ElasticComputeCloudModel.CreateCarrierGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createCarrierGatewayAsyncOverride = createCarrierGatewayAsyncOverride {
+            return try createCarrierGatewayAsyncOverride(input, completion)
+        }
+
+        let result = CreateCarrierGatewayResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateCarrierGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCarrierGatewayRequest object being passed to this operation.
+     - Returns: The CreateCarrierGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createCarrierGatewaySync(
+            input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) throws -> ElasticComputeCloudModel.CreateCarrierGatewayResult {
+        if let createCarrierGatewaySyncOverride = createCarrierGatewaySyncOverride {
+            return try createCarrierGatewaySyncOverride(input)
+        }
+
+        return CreateCarrierGatewayResult.__default
+    }
+
+    /**
      Invokes the CreateClientVpnEndpoint operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4696,6 +4836,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return CreateLocalGatewayRouteTableVpcAssociationResult.__default
+    }
+
+    /**
+     Invokes the CreateManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateManagedPrefixListRequest object being passed to this operation.
+         - completion: The CreateManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    public func createManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.CreateManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createManagedPrefixListAsyncOverride = createManagedPrefixListAsyncOverride {
+            return try createManagedPrefixListAsyncOverride(input, completion)
+        }
+
+        let result = CreateManagedPrefixListResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateManagedPrefixListRequest object being passed to this operation.
+     - Returns: The CreateManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createManagedPrefixListSync(
+            input: ElasticComputeCloudModel.CreateManagedPrefixListRequest) throws -> ElasticComputeCloudModel.CreateManagedPrefixListResult {
+        if let createManagedPrefixListSyncOverride = createManagedPrefixListSyncOverride {
+            return try createManagedPrefixListSyncOverride(input)
+        }
+
+        return CreateManagedPrefixListResult.__default
     }
 
     /**
@@ -5523,6 +5701,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createTransitGatewayPrefixListReferenceAsyncOverride = createTransitGatewayPrefixListReferenceAsyncOverride {
+            return try createTransitGatewayPrefixListReferenceAsyncOverride(input, completion)
+        }
+
+        let result = CreateTransitGatewayPrefixListReferenceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult {
+        if let createTransitGatewayPrefixListReferenceSyncOverride = createTransitGatewayPrefixListReferenceSyncOverride {
+            return try createTransitGatewayPrefixListReferenceSyncOverride(input)
+        }
+
+        return CreateTransitGatewayPrefixListReferenceResult.__default
+    }
+
+    /**
      Invokes the CreateTransitGatewayRoute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5970,6 +6186,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return CreateVpnGatewayResult.__default
+    }
+
+    /**
+     Invokes the DeleteCarrierGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCarrierGatewayRequest object being passed to this operation.
+         - completion: The DeleteCarrierGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCarrierGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteCarrierGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteCarrierGatewayAsyncOverride = deleteCarrierGatewayAsyncOverride {
+            return try deleteCarrierGatewayAsyncOverride(input, completion)
+        }
+
+        let result = DeleteCarrierGatewayResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteCarrierGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCarrierGatewayRequest object being passed to this operation.
+     - Returns: The DeleteCarrierGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteCarrierGatewaySync(
+            input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest) throws -> ElasticComputeCloudModel.DeleteCarrierGatewayResult {
+        if let deleteCarrierGatewaySyncOverride = deleteCarrierGatewaySyncOverride {
+            return try deleteCarrierGatewaySyncOverride(input)
+        }
+
+        return DeleteCarrierGatewayResult.__default
     }
 
     /**
@@ -6478,6 +6732,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DeleteLocalGatewayRouteTableVpcAssociationResult.__default
+    }
+
+    /**
+     Invokes the DeleteManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteManagedPrefixListRequest object being passed to this operation.
+         - completion: The DeleteManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteManagedPrefixListAsyncOverride = deleteManagedPrefixListAsyncOverride {
+            return try deleteManagedPrefixListAsyncOverride(input, completion)
+        }
+
+        let result = DeleteManagedPrefixListResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteManagedPrefixListRequest object being passed to this operation.
+     - Returns: The DeleteManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteManagedPrefixListSync(
+            input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest) throws -> ElasticComputeCloudModel.DeleteManagedPrefixListResult {
+        if let deleteManagedPrefixListSyncOverride = deleteManagedPrefixListSyncOverride {
+            return try deleteManagedPrefixListSyncOverride(input)
+        }
+
+        return DeleteManagedPrefixListResult.__default
     }
 
     /**
@@ -7210,6 +7502,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DeleteTransitGatewayPeeringAttachmentResult.__default
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteTransitGatewayPrefixListReferenceAsyncOverride = deleteTransitGatewayPrefixListReferenceAsyncOverride {
+            return try deleteTransitGatewayPrefixListReferenceAsyncOverride(input, completion)
+        }
+
+        let result = DeleteTransitGatewayPrefixListReferenceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult {
+        if let deleteTransitGatewayPrefixListReferenceSyncOverride = deleteTransitGatewayPrefixListReferenceSyncOverride {
+            return try deleteTransitGatewayPrefixListReferenceSyncOverride(input)
+        }
+
+        return DeleteTransitGatewayPrefixListReferenceResult.__default
     }
 
     /**
@@ -8086,6 +8416,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DescribeCapacityReservationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeCarrierGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCarrierGatewaysRequest object being passed to this operation.
+         - completion: The DescribeCarrierGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCarrierGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCarrierGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCarrierGatewaysResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeCarrierGatewaysAsyncOverride = describeCarrierGatewaysAsyncOverride {
+            return try describeCarrierGatewaysAsyncOverride(input, completion)
+        }
+
+        let result = DescribeCarrierGatewaysResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeCarrierGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCarrierGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeCarrierGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCarrierGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCarrierGatewaysResult {
+        if let describeCarrierGatewaysSyncOverride = describeCarrierGatewaysSyncOverride {
+            return try describeCarrierGatewaysSyncOverride(input)
+        }
+
+        return DescribeCarrierGatewaysResult.__default
     }
 
     /**
@@ -9948,6 +10316,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DescribeLocalGatewaysResult.__default
+    }
+
+    /**
+     Invokes the DescribeManagedPrefixLists operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeManagedPrefixListsRequest object being passed to this operation.
+         - completion: The DescribeManagedPrefixListsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeManagedPrefixListsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeManagedPrefixListsAsync(
+            input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeManagedPrefixListsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeManagedPrefixListsAsyncOverride = describeManagedPrefixListsAsyncOverride {
+            return try describeManagedPrefixListsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeManagedPrefixListsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeManagedPrefixLists operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeManagedPrefixListsRequest object being passed to this operation.
+     - Returns: The DescribeManagedPrefixListsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeManagedPrefixListsSync(
+            input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest) throws -> ElasticComputeCloudModel.DescribeManagedPrefixListsResult {
+        if let describeManagedPrefixListsSyncOverride = describeManagedPrefixListsSyncOverride {
+            return try describeManagedPrefixListsSyncOverride(input)
+        }
+
+        return DescribeManagedPrefixListsResult.__default
     }
 
     /**
@@ -13513,6 +13919,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetGroupsForCapacityReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetGroupsForCapacityReservationRequest object being passed to this operation.
+         - completion: The GetGroupsForCapacityReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetGroupsForCapacityReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func getGroupsForCapacityReservationAsync(
+            input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetGroupsForCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getGroupsForCapacityReservationAsyncOverride = getGroupsForCapacityReservationAsyncOverride {
+            return try getGroupsForCapacityReservationAsyncOverride(input, completion)
+        }
+
+        let result = GetGroupsForCapacityReservationResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetGroupsForCapacityReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetGroupsForCapacityReservationRequest object being passed to this operation.
+     - Returns: The GetGroupsForCapacityReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getGroupsForCapacityReservationSync(
+            input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult {
+        if let getGroupsForCapacityReservationSyncOverride = getGroupsForCapacityReservationSyncOverride {
+            return try getGroupsForCapacityReservationSyncOverride(input)
+        }
+
+        return GetGroupsForCapacityReservationResult.__default
+    }
+
+    /**
      Invokes the GetHostReservationPurchasePreview operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13586,6 +14030,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return GetLaunchTemplateDataResult.__default
+    }
+
+    /**
+     Invokes the GetManagedPrefixListAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListAssociationsRequest object being passed to this operation.
+         - completion: The GetManagedPrefixListAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetManagedPrefixListAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListAssociationsAsync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getManagedPrefixListAssociationsAsyncOverride = getManagedPrefixListAssociationsAsyncOverride {
+            return try getManagedPrefixListAssociationsAsyncOverride(input, completion)
+        }
+
+        let result = GetManagedPrefixListAssociationsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetManagedPrefixListAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListAssociationsRequest object being passed to this operation.
+     - Returns: The GetManagedPrefixListAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListAssociationsSync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult {
+        if let getManagedPrefixListAssociationsSyncOverride = getManagedPrefixListAssociationsSyncOverride {
+            return try getManagedPrefixListAssociationsSyncOverride(input)
+        }
+
+        return GetManagedPrefixListAssociationsResult.__default
+    }
+
+    /**
+     Invokes the GetManagedPrefixListEntries operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListEntriesRequest object being passed to this operation.
+         - completion: The GetManagedPrefixListEntriesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetManagedPrefixListEntriesResult
+           object will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListEntriesAsync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListEntriesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getManagedPrefixListEntriesAsyncOverride = getManagedPrefixListEntriesAsyncOverride {
+            return try getManagedPrefixListEntriesAsyncOverride(input, completion)
+        }
+
+        let result = GetManagedPrefixListEntriesResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetManagedPrefixListEntries operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListEntriesRequest object being passed to this operation.
+     - Returns: The GetManagedPrefixListEntriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getManagedPrefixListEntriesSync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult {
+        if let getManagedPrefixListEntriesSyncOverride = getManagedPrefixListEntriesSyncOverride {
+            return try getManagedPrefixListEntriesSyncOverride(input)
+        }
+
+        return GetManagedPrefixListEntriesResult.__default
     }
 
     /**
@@ -13738,6 +14258,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return GetTransitGatewayMulticastDomainAssociationsResult.__default
+    }
+
+    /**
+     Invokes the GetTransitGatewayPrefixListReferences operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPrefixListReferencesRequest object being passed to this operation.
+         - completion: The GetTransitGatewayPrefixListReferencesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayPrefixListReferencesResult
+           object will be validated before being returned to caller.
+     */
+    public func getTransitGatewayPrefixListReferencesAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getTransitGatewayPrefixListReferencesAsyncOverride = getTransitGatewayPrefixListReferencesAsyncOverride {
+            return try getTransitGatewayPrefixListReferencesAsyncOverride(input, completion)
+        }
+
+        let result = GetTransitGatewayPrefixListReferencesResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetTransitGatewayPrefixListReferences operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPrefixListReferencesRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayPrefixListReferencesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getTransitGatewayPrefixListReferencesSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult {
+        if let getTransitGatewayPrefixListReferencesSyncOverride = getTransitGatewayPrefixListReferencesSyncOverride {
+            return try getTransitGatewayPrefixListReferencesSyncOverride(input)
+        }
+
+        return GetTransitGatewayPrefixListReferencesResult.__default
     }
 
     /**
@@ -14705,6 +15263,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyManagedPrefixListRequest object being passed to this operation.
+         - completion: The ModifyManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyManagedPrefixListAsyncOverride = modifyManagedPrefixListAsyncOverride {
+            return try modifyManagedPrefixListAsyncOverride(input, completion)
+        }
+
+        let result = ModifyManagedPrefixListResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyManagedPrefixListRequest object being passed to this operation.
+     - Returns: The ModifyManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyManagedPrefixListSync(
+            input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest) throws -> ElasticComputeCloudModel.ModifyManagedPrefixListResult {
+        if let modifyManagedPrefixListSyncOverride = modifyManagedPrefixListSyncOverride {
+            return try modifyManagedPrefixListSyncOverride(input)
+        }
+
+        return ModifyManagedPrefixListResult.__default
+    }
+
+    /**
      Invokes the ModifyNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14988,6 +15584,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return ModifyTrafficMirrorSessionResult.__default
+    }
+
+    /**
+     Invokes the ModifyTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyTransitGatewayAsyncOverride = modifyTransitGatewayAsyncOverride {
+            return try modifyTransitGatewayAsyncOverride(input, completion)
+        }
+
+        let result = ModifyTransitGatewayResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewaySync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayResult {
+        if let modifyTransitGatewaySyncOverride = modifyTransitGatewaySyncOverride {
+            return try modifyTransitGatewaySyncOverride(input)
+        }
+
+        return ModifyTransitGatewayResult.__default
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyTransitGatewayPrefixListReferenceAsyncOverride = modifyTransitGatewayPrefixListReferenceAsyncOverride {
+            return try modifyTransitGatewayPrefixListReferenceAsyncOverride(input, completion)
+        }
+
+        let result = ModifyTransitGatewayPrefixListReferenceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult {
+        if let modifyTransitGatewayPrefixListReferenceSyncOverride = modifyTransitGatewayPrefixListReferenceSyncOverride {
+            return try modifyTransitGatewayPrefixListReferenceSyncOverride(input)
+        }
+
+        return ModifyTransitGatewayPrefixListReferenceResult.__default
     }
 
     /**
@@ -15394,6 +16066,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return ModifyVpnConnectionResult.__default
+    }
+
+    /**
+     Invokes the ModifyVpnConnectionOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpnConnectionOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnConnectionOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVpnConnectionOptionsAsyncOverride = modifyVpnConnectionOptionsAsyncOverride {
+            return try modifyVpnConnectionOptionsAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVpnConnectionOptionsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVpnConnectionOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpnConnectionOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVpnConnectionOptionsSync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult {
+        if let modifyVpnConnectionOptionsSyncOverride = modifyVpnConnectionOptionsSyncOverride {
+            return try modifyVpnConnectionOptionsSyncOverride(input)
+        }
+
+        return ModifyVpnConnectionOptionsResult.__default
     }
 
     /**
@@ -16673,6 +17383,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the RestoreManagedPrefixListVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RestoreManagedPrefixListVersionRequest object being passed to this operation.
+         - completion: The RestoreManagedPrefixListVersionResult object or an error will be passed to this 
+           callback when the operation is complete. The RestoreManagedPrefixListVersionResult
+           object will be validated before being returned to caller.
+     */
+    public func restoreManagedPrefixListVersionAsync(
+            input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult, ElasticComputeCloudError>) -> ()) throws {
+        if let restoreManagedPrefixListVersionAsyncOverride = restoreManagedPrefixListVersionAsyncOverride {
+            return try restoreManagedPrefixListVersionAsyncOverride(input, completion)
+        }
+
+        let result = RestoreManagedPrefixListVersionResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the RestoreManagedPrefixListVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RestoreManagedPrefixListVersionRequest object being passed to this operation.
+     - Returns: The RestoreManagedPrefixListVersionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func restoreManagedPrefixListVersionSync(
+            input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) throws -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult {
+        if let restoreManagedPrefixListVersionSyncOverride = restoreManagedPrefixListVersionSyncOverride {
+            return try restoreManagedPrefixListVersionSyncOverride(input)
+        }
+
+        return RestoreManagedPrefixListVersionResult.__default
+    }
+
+    /**
      Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16715,17 +17463,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The RevokeSecurityGroupEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeSecurityGroupEgressResult
+           object will be validated before being returned to caller.
      */
     public func revokeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws {
         if let revokeSecurityGroupEgressAsyncOverride = revokeSecurityGroupEgressAsyncOverride {
             return try revokeSecurityGroupEgressAsyncOverride(input, completion)
         }
 
-        completion(nil)
+        let result = RevokeSecurityGroupEgressResult.__default
+        
+        completion(.success(result))
     }
 
     /**
@@ -16733,13 +17484,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
+     - Returns: The RevokeSecurityGroupEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func revokeSecurityGroupEgressSync(
-            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws {
+            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupEgressResult {
         if let revokeSecurityGroupEgressSyncOverride = revokeSecurityGroupEgressSyncOverride {
             return try revokeSecurityGroupEgressSyncOverride(input)
         }
 
+        return RevokeSecurityGroupEgressResult.__default
     }
 
     /**
@@ -16747,17 +17501,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The RevokeSecurityGroupIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeSecurityGroupIngressResult
+           object will be validated before being returned to caller.
      */
     public func revokeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws {
         if let revokeSecurityGroupIngressAsyncOverride = revokeSecurityGroupIngressAsyncOverride {
             return try revokeSecurityGroupIngressAsyncOverride(input, completion)
         }
 
-        completion(nil)
+        let result = RevokeSecurityGroupIngressResult.__default
+        
+        completion(.success(result))
     }
 
     /**
@@ -16765,13 +17522,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
+     - Returns: The RevokeSecurityGroupIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func revokeSecurityGroupIngressSync(
-            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws {
+            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupIngressResult {
         if let revokeSecurityGroupIngressSyncOverride = revokeSecurityGroupIngressSyncOverride {
             return try revokeSecurityGroupIngressSyncOverride(input)
         }
 
+        return RevokeSecurityGroupIngressResult.__default
     }
 
     /**

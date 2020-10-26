@@ -971,6 +971,47 @@ public typealias StackEvents = [StackEvent]
 public typealias StackId = String
 
 /**
+ Enumeration restricting the values of the StackInstanceDetailedStatus field.
+ */
+public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertible {
+    case cancelled = "CANCELLED"
+    case failed = "FAILED"
+    case inoperable = "INOPERABLE"
+    case pending = "PENDING"
+    case running = "RUNNING"
+    case succeeded = "SUCCEEDED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StackInstanceDetailedStatus = .cancelled
+}
+
+/**
+ Enumeration restricting the values of the StackInstanceFilterName field.
+ */
+public enum StackInstanceFilterName: String, Codable, CustomStringConvertible {
+    case detailedStatus = "DETAILED_STATUS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StackInstanceFilterName = .detailedStatus
+}
+
+/**
+ Type definition for the StackInstanceFilterValues field.
+ */
+public typealias StackInstanceFilterValues = String
+
+/**
+ Type definition for the StackInstanceFilters field.
+ */
+public typealias StackInstanceFilters = [StackInstanceFilter]
+
+/**
  Enumeration restricting the values of the StackInstanceStatus field.
  */
 public enum StackInstanceStatus: String, Codable, CustomStringConvertible {
@@ -2054,6 +2095,33 @@ extension CloudformationModel.StackDriftDetectionId {
 
         if self.count > 36 {
             throw CloudformationError.validationError(reason: "The provided value to StackDriftDetectionId violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the StackInstanceFilterValues field.
+*/
+extension CloudformationModel.StackInstanceFilterValues {
+    public func validateAsStackInstanceFilterValues() throws {
+        if self.count < 6 {
+            throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilterValues violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilterValues violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the StackInstanceFilters field.
+*/
+extension Array where Element == CloudformationModel.StackInstanceFilter {
+    public func validateAsStackInstanceFilters() throws {
+
+        if self.count > 1 {
+            throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilters violated the maximum length constraint.")
         }
     }
 }

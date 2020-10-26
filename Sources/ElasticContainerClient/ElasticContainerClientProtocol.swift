@@ -58,6 +58,11 @@ public protocol ElasticContainerClientProtocol {
     typealias DeleteAttributesAsyncType = (
             _ input: ElasticContainerModel.DeleteAttributesRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.DeleteAttributesResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias DeleteCapacityProviderSyncType = (
+            _ input: ElasticContainerModel.DeleteCapacityProviderRequest) throws -> ElasticContainerModel.DeleteCapacityProviderResponse
+    typealias DeleteCapacityProviderAsyncType = (
+            _ input: ElasticContainerModel.DeleteCapacityProviderRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteCapacityProviderResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteClusterSyncType = (
             _ input: ElasticContainerModel.DeleteClusterRequest) throws -> ElasticContainerModel.DeleteClusterResponse
     typealias DeleteClusterAsyncType = (
@@ -277,7 +282,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The CreateCapacityProviderResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateCapacityProviderResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, invalidParameter, limitExceeded, server.
+           The possible errors are: client, invalidParameter, limitExceeded, server, updateInProgress.
      */
     func createCapacityProviderAsync(
             input: ElasticContainerModel.CreateCapacityProviderRequest, 
@@ -290,7 +295,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated CreateCapacityProviderRequest object being passed to this operation.
      - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, limitExceeded, server.
+     - Throws: client, invalidParameter, limitExceeded, server, updateInProgress.
      */
     func createCapacityProviderSync(
             input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
@@ -424,6 +429,32 @@ public protocol ElasticContainerClientProtocol {
      */
     func deleteAttributesSync(
             input: ElasticContainerModel.DeleteAttributesRequest) throws -> ElasticContainerModel.DeleteAttributesResponse
+
+    /**
+     Invokes the DeleteCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+         - completion: The DeleteCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    func deleteCapacityProviderAsync(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest, 
+            completion: @escaping (Result<ElasticContainerModel.DeleteCapacityProviderResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the DeleteCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+     - Returns: The DeleteCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    func deleteCapacityProviderSync(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest) throws -> ElasticContainerModel.DeleteCapacityProviderResponse
 
     /**
      Invokes the DeleteCluster operation returning immediately and passing the response to a callback.

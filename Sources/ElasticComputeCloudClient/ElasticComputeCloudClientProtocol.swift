@@ -238,6 +238,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateCapacityReservationAsyncType = (
             _ input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateCarrierGatewaySyncType = (
+            _ input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) throws -> ElasticComputeCloudModel.CreateCarrierGatewayResult
+    typealias CreateCarrierGatewayAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateCarrierGatewayRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateClientVpnEndpointSyncType = (
             _ input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult
     typealias CreateClientVpnEndpointAsyncType = (
@@ -328,6 +333,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateLocalGatewayRouteTableVpcAssociationAsyncType = (
             _ input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateManagedPrefixListSyncType = (
+            _ input: ElasticComputeCloudModel.CreateManagedPrefixListRequest) throws -> ElasticComputeCloudModel.CreateManagedPrefixListResult
+    typealias CreateManagedPrefixListAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateManagedPrefixListRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateNatGatewaySyncType = (
             _ input: ElasticComputeCloudModel.CreateNatGatewayRequest) throws -> ElasticComputeCloudModel.CreateNatGatewayResult
     typealias CreateNatGatewayAsyncType = (
@@ -438,6 +448,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateTransitGatewayPeeringAttachmentAsyncType = (
             _ input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateTransitGatewayPrefixListReferenceSyncType = (
+            _ input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult
+    typealias CreateTransitGatewayPrefixListReferenceAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateTransitGatewayRouteSyncType = (
             _ input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult
     typealias CreateTransitGatewayRouteAsyncType = (
@@ -498,6 +513,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateVpnGatewayAsyncType = (
             _ input: ElasticComputeCloudModel.CreateVpnGatewayRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateVpnGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteCarrierGatewaySyncType = (
+            _ input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest) throws -> ElasticComputeCloudModel.DeleteCarrierGatewayResult
+    typealias DeleteCarrierGatewayAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteClientVpnEndpointSyncType = (
             _ input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult
     typealias DeleteClientVpnEndpointAsyncType = (
@@ -568,6 +588,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteLocalGatewayRouteTableVpcAssociationAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteManagedPrefixListSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest) throws -> ElasticComputeCloudModel.DeleteManagedPrefixListResult
+    typealias DeleteManagedPrefixListAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteNatGatewaySyncType = (
             _ input: ElasticComputeCloudModel.DeleteNatGatewayRequest) throws -> ElasticComputeCloudModel.DeleteNatGatewayResult
     typealias DeleteNatGatewayAsyncType = (
@@ -673,6 +698,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteTransitGatewayPeeringAttachmentAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteTransitGatewayPrefixListReferenceSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult
+    typealias DeleteTransitGatewayPrefixListReferenceAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteTransitGatewayRouteSyncType = (
             _ input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult
     typealias DeleteTransitGatewayRouteAsyncType = (
@@ -793,6 +823,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeCapacityReservationsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeCarrierGatewaysSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCarrierGatewaysResult
+    typealias DescribeCarrierGatewaysAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeCarrierGatewaysResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeClassicLinkInstancesSyncType = (
             _ input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult
     typealias DescribeClassicLinkInstancesAsyncType = (
@@ -1038,6 +1073,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeLocalGatewaysAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeLocalGatewaysResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeManagedPrefixListsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest) throws -> ElasticComputeCloudModel.DescribeManagedPrefixListsResult
+    typealias DescribeManagedPrefixListsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeManagedPrefixListsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeMovingAddressesSyncType = (
             _ input: ElasticComputeCloudModel.DescribeMovingAddressesRequest) throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult
     typealias DescribeMovingAddressesAsyncType = (
@@ -1513,6 +1553,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetEbsEncryptionByDefaultAsyncType = (
             _ input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetGroupsForCapacityReservationSyncType = (
+            _ input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult
+    typealias GetGroupsForCapacityReservationAsyncType = (
+            _ input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetGroupsForCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetHostReservationPurchasePreviewSyncType = (
             _ input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult
     typealias GetHostReservationPurchasePreviewAsyncType = (
@@ -1523,6 +1568,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetLaunchTemplateDataAsyncType = (
             _ input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetLaunchTemplateDataResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetManagedPrefixListAssociationsSyncType = (
+            _ input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult
+    typealias GetManagedPrefixListAssociationsAsyncType = (
+            _ input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetManagedPrefixListEntriesSyncType = (
+            _ input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult
+    typealias GetManagedPrefixListEntriesAsyncType = (
+            _ input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListEntriesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetPasswordDataSyncType = (
             _ input: ElasticComputeCloudModel.GetPasswordDataRequest) throws -> ElasticComputeCloudModel.GetPasswordDataResult
     typealias GetPasswordDataAsyncType = (
@@ -1543,6 +1598,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetTransitGatewayMulticastDomainAssociationsAsyncType = (
             _ input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetTransitGatewayPrefixListReferencesSyncType = (
+            _ input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult
+    typealias GetTransitGatewayPrefixListReferencesAsyncType = (
+            _ input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetTransitGatewayRouteTableAssociationsSyncType = (
             _ input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult
     typealias GetTransitGatewayRouteTableAssociationsAsyncType = (
@@ -1673,6 +1733,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyLaunchTemplateAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyLaunchTemplateResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyManagedPrefixListSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest) throws -> ElasticComputeCloudModel.ModifyManagedPrefixListResult
+    typealias ModifyManagedPrefixListAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyNetworkInterfaceAttributeSyncType = (
             _ input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws -> ()
     typealias ModifyNetworkInterfaceAttributeAsyncType = (
@@ -1713,6 +1778,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyTrafficMirrorSessionAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyTransitGatewaySyncType = (
+            _ input: ElasticComputeCloudModel.ModifyTransitGatewayRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayResult
+    typealias ModifyTransitGatewayAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyTransitGatewayRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyTransitGatewayPrefixListReferenceSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult
+    typealias ModifyTransitGatewayPrefixListReferenceAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyTransitGatewayVpcAttachmentSyncType = (
             _ input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult
     typealias ModifyTransitGatewayVpcAttachmentAsyncType = (
@@ -1768,6 +1843,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyVpnConnectionAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyVpnConnectionRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVpnConnectionOptionsSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult
+    typealias ModifyVpnConnectionOptionsAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyVpnTunnelCertificateSyncType = (
             _ input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest) throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult
     typealias ModifyVpnTunnelCertificateAsyncType = (
@@ -1943,21 +2023,26 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RestoreAddressToClassicAsyncType = (
             _ input: ElasticComputeCloudModel.RestoreAddressToClassicRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.RestoreAddressToClassicResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias RestoreManagedPrefixListVersionSyncType = (
+            _ input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) throws -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult
+    typealias RestoreManagedPrefixListVersionAsyncType = (
+            _ input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RevokeClientVpnIngressSyncType = (
             _ input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult
     typealias RevokeClientVpnIngressAsyncType = (
             _ input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.RevokeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RevokeSecurityGroupEgressSyncType = (
-            _ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ()
+            _ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupEgressResult
     typealias RevokeSecurityGroupEgressAsyncType = (
             _ input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RevokeSecurityGroupIngressSyncType = (
-            _ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ()
+            _ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupIngressResult
     typealias RevokeSecurityGroupIngressAsyncType = (
             _ input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RunInstancesSyncType = (
             _ input: ElasticComputeCloudModel.RunInstancesRequest) throws -> ElasticComputeCloudModel.Reservation
     typealias RunInstancesAsyncType = (
@@ -3035,6 +3120,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult
 
     /**
+     Invokes the CreateCarrierGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCarrierGatewayRequest object being passed to this operation.
+         - completion: The CreateCarrierGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCarrierGatewayResult
+           object will be validated before being returned to caller.
+     */
+    func createCarrierGatewayAsync(
+            input: ElasticComputeCloudModel.CreateCarrierGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateCarrierGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCarrierGatewayRequest object being passed to this operation.
+     - Returns: The CreateCarrierGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createCarrierGatewaySync(
+            input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) throws -> ElasticComputeCloudModel.CreateCarrierGatewayResult
+
+    /**
      Invokes the CreateClientVpnEndpoint operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3465,6 +3574,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createLocalGatewayRouteTableVpcAssociationSync(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest) throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult
+
+    /**
+     Invokes the CreateManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateManagedPrefixListRequest object being passed to this operation.
+         - completion: The CreateManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    func createManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.CreateManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateManagedPrefixListRequest object being passed to this operation.
+     - Returns: The CreateManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createManagedPrefixListSync(
+            input: ElasticComputeCloudModel.CreateManagedPrefixListRequest) throws -> ElasticComputeCloudModel.CreateManagedPrefixListResult
 
     /**
      Invokes the CreateNatGateway operation returning immediately and passing the response to a callback.
@@ -3989,6 +4122,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult
 
     /**
+     Invokes the CreateTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult
+
+    /**
      Invokes the CreateTransitGatewayRoute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4272,6 +4429,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createVpnGatewaySync(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest) throws -> ElasticComputeCloudModel.CreateVpnGatewayResult
+
+    /**
+     Invokes the DeleteCarrierGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCarrierGatewayRequest object being passed to this operation.
+         - completion: The DeleteCarrierGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteCarrierGatewayResult
+           object will be validated before being returned to caller.
+     */
+    func deleteCarrierGatewayAsync(
+            input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteCarrierGatewayResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteCarrierGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCarrierGatewayRequest object being passed to this operation.
+     - Returns: The DeleteCarrierGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteCarrierGatewaySync(
+            input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest) throws -> ElasticComputeCloudModel.DeleteCarrierGatewayResult
 
     /**
      Invokes the DeleteClientVpnEndpoint operation returning immediately and passing the response to a callback.
@@ -4596,6 +4777,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func deleteLocalGatewayRouteTableVpcAssociationSync(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest) throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult
+
+    /**
+     Invokes the DeleteManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteManagedPrefixListRequest object being passed to this operation.
+         - completion: The DeleteManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    func deleteManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteManagedPrefixListRequest object being passed to this operation.
+     - Returns: The DeleteManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteManagedPrefixListSync(
+            input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest) throws -> ElasticComputeCloudModel.DeleteManagedPrefixListResult
 
     /**
      Invokes the DeleteNatGateway operation returning immediately and passing the response to a callback.
@@ -5067,6 +5272,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayPeeringAttachmentSync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult
+
+    /**
+     Invokes the DeleteTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult
 
     /**
      Invokes the DeleteTransitGatewayRoute operation returning immediately and passing the response to a callback.
@@ -5625,6 +5854,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeCapacityReservationsSync(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult
+
+    /**
+     Invokes the DescribeCarrierGateways operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCarrierGatewaysRequest object being passed to this operation.
+         - completion: The DescribeCarrierGatewaysResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCarrierGatewaysResult
+           object will be validated before being returned to caller.
+     */
+    func describeCarrierGatewaysAsync(
+            input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCarrierGatewaysResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeCarrierGateways operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCarrierGatewaysRequest object being passed to this operation.
+     - Returns: The DescribeCarrierGatewaysResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeCarrierGatewaysSync(
+            input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeCarrierGatewaysResult
 
     /**
      Invokes the DescribeClassicLinkInstances operation returning immediately and passing the response to a callback.
@@ -6801,6 +7054,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeLocalGatewaysSync(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeLocalGatewaysResult
+
+    /**
+     Invokes the DescribeManagedPrefixLists operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeManagedPrefixListsRequest object being passed to this operation.
+         - completion: The DescribeManagedPrefixListsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeManagedPrefixListsResult
+           object will be validated before being returned to caller.
+     */
+    func describeManagedPrefixListsAsync(
+            input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeManagedPrefixListsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeManagedPrefixLists operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeManagedPrefixListsRequest object being passed to this operation.
+     - Returns: The DescribeManagedPrefixListsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeManagedPrefixListsSync(
+            input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest) throws -> ElasticComputeCloudModel.DescribeManagedPrefixListsResult
 
     /**
      Invokes the DescribeMovingAddresses operation returning immediately and passing the response to a callback.
@@ -9059,6 +9336,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult
 
     /**
+     Invokes the GetGroupsForCapacityReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetGroupsForCapacityReservationRequest object being passed to this operation.
+         - completion: The GetGroupsForCapacityReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetGroupsForCapacityReservationResult
+           object will be validated before being returned to caller.
+     */
+    func getGroupsForCapacityReservationAsync(
+            input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetGroupsForCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetGroupsForCapacityReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetGroupsForCapacityReservationRequest object being passed to this operation.
+     - Returns: The GetGroupsForCapacityReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getGroupsForCapacityReservationSync(
+            input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult
+
+    /**
      Invokes the GetHostReservationPurchasePreview operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9105,6 +9406,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getLaunchTemplateDataSync(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult
+
+    /**
+     Invokes the GetManagedPrefixListAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListAssociationsRequest object being passed to this operation.
+         - completion: The GetManagedPrefixListAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetManagedPrefixListAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    func getManagedPrefixListAssociationsAsync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetManagedPrefixListAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListAssociationsRequest object being passed to this operation.
+     - Returns: The GetManagedPrefixListAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getManagedPrefixListAssociationsSync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult
+
+    /**
+     Invokes the GetManagedPrefixListEntries operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListEntriesRequest object being passed to this operation.
+         - completion: The GetManagedPrefixListEntriesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetManagedPrefixListEntriesResult
+           object will be validated before being returned to caller.
+     */
+    func getManagedPrefixListEntriesAsync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListEntriesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetManagedPrefixListEntries operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetManagedPrefixListEntriesRequest object being passed to this operation.
+     - Returns: The GetManagedPrefixListEntriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getManagedPrefixListEntriesSync(
+            input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult
 
     /**
      Invokes the GetPasswordData operation returning immediately and passing the response to a callback.
@@ -9201,6 +9550,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayMulticastDomainAssociationsSync(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult
+
+    /**
+     Invokes the GetTransitGatewayPrefixListReferences operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPrefixListReferencesRequest object being passed to this operation.
+         - completion: The GetTransitGatewayPrefixListReferencesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetTransitGatewayPrefixListReferencesResult
+           object will be validated before being returned to caller.
+     */
+    func getTransitGatewayPrefixListReferencesAsync(
+            input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetTransitGatewayPrefixListReferences operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPrefixListReferencesRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayPrefixListReferencesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getTransitGatewayPrefixListReferencesSync(
+            input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult
 
     /**
      Invokes the GetTransitGatewayRouteTableAssociations operation returning immediately and passing the response to a callback.
@@ -9815,6 +10188,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult
 
     /**
+     Invokes the ModifyManagedPrefixList operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyManagedPrefixListRequest object being passed to this operation.
+         - completion: The ModifyManagedPrefixListResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyManagedPrefixListResult
+           object will be validated before being returned to caller.
+     */
+    func modifyManagedPrefixListAsync(
+            input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyManagedPrefixListResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyManagedPrefixList operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyManagedPrefixListRequest object being passed to this operation.
+     - Returns: The ModifyManagedPrefixListResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyManagedPrefixListSync(
+            input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest) throws -> ElasticComputeCloudModel.ModifyManagedPrefixListResult
+
+    /**
      Invokes the ModifyNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9996,6 +10393,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifyTrafficMirrorSessionSync(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest) throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult
+
+    /**
+     Invokes the ModifyTransitGateway operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayResult
+           object will be validated before being returned to caller.
+     */
+    func modifyTransitGatewayAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyTransitGateway operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyTransitGatewaySync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayResult
+
+    /**
+     Invokes the ModifyTransitGatewayPrefixListReference operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+         - completion: The ModifyTransitGatewayPrefixListReferenceResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyTransitGatewayPrefixListReferenceResult
+           object will be validated before being returned to caller.
+     */
+    func modifyTransitGatewayPrefixListReferenceAsync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyTransitGatewayPrefixListReference operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyTransitGatewayPrefixListReferenceRequest object being passed to this operation.
+     - Returns: The ModifyTransitGatewayPrefixListReferenceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyTransitGatewayPrefixListReferenceSync(
+            input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult
 
     /**
      Invokes the ModifyTransitGatewayVpcAttachment operation returning immediately and passing the response to a callback.
@@ -10254,6 +10699,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifyVpnConnectionSync(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult
+
+    /**
+     Invokes the ModifyVpnConnectionOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionOptionsRequest object being passed to this operation.
+         - completion: The ModifyVpnConnectionOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVpnConnectionOptionsResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVpnConnectionOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVpnConnectionOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVpnConnectionOptionsRequest object being passed to this operation.
+     - Returns: The ModifyVpnConnectionOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVpnConnectionOptionsSync(
+            input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest) throws -> ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult
 
     /**
      Invokes the ModifyVpnTunnelCertificate operation returning immediately and passing the response to a callback.
@@ -11069,6 +11538,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult
 
     /**
+     Invokes the RestoreManagedPrefixListVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RestoreManagedPrefixListVersionRequest object being passed to this operation.
+         - completion: The RestoreManagedPrefixListVersionResult object or an error will be passed to this 
+           callback when the operation is complete. The RestoreManagedPrefixListVersionResult
+           object will be validated before being returned to caller.
+     */
+    func restoreManagedPrefixListVersionAsync(
+            input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the RestoreManagedPrefixListVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RestoreManagedPrefixListVersionRequest object being passed to this operation.
+     - Returns: The RestoreManagedPrefixListVersionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func restoreManagedPrefixListVersionSync(
+            input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) throws -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult
+
+    /**
      Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11097,42 +11590,48 @@ public protocol ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The RevokeSecurityGroupEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeSecurityGroupEgressResult
+           object will be validated before being returned to caller.
      */
     func revokeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws
 
     /**
      Invokes the RevokeSecurityGroupEgress operation waiting for the response before returning.
 
      - Parameters:
          - input: The validated RevokeSecurityGroupEgressRequest object being passed to this operation.
+     - Returns: The RevokeSecurityGroupEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     func revokeSecurityGroupEgressSync(
-            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws
+            input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupEgressResult
 
     /**
      Invokes the RevokeSecurityGroupIngress operation returning immediately and passing the response to a callback.
 
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The RevokeSecurityGroupIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The RevokeSecurityGroupIngressResult
+           object will be validated before being returned to caller.
      */
     func revokeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws
+            completion: @escaping (Result<ElasticComputeCloudModel.RevokeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws
 
     /**
      Invokes the RevokeSecurityGroupIngress operation waiting for the response before returning.
 
      - Parameters:
          - input: The validated RevokeSecurityGroupIngressRequest object being passed to this operation.
+     - Returns: The RevokeSecurityGroupIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     func revokeSecurityGroupIngressSync(
-            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws
+            input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.RevokeSecurityGroupIngressResult
 
     /**
      Invokes the RunInstances operation returning immediately and passing the response to a callback.

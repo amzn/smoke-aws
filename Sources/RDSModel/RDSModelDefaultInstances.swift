@@ -700,6 +700,7 @@ public extension CreateDBClusterMessage {
             domain: nil,
             domainIAMRoleName: nil,
             enableCloudwatchLogsExports: nil,
+            enableGlobalWriteForwarding: nil,
             enableHttpEndpoint: nil,
             enableIAMDatabaseAuthentication: nil,
             engine: "value",
@@ -861,6 +862,7 @@ public extension CreateDBInstanceMessage {
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
+            ncharCharacterSetName: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
             performanceInsightsRetentionPeriod: nil,
@@ -913,6 +915,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             preSignedUrl: nil,
             processorFeatures: nil,
             publiclyAccessible: nil,
+            replicaMode: nil,
             sourceDBInstanceIdentifier: "value",
             storageType: nil,
             tags: nil,
@@ -1407,6 +1410,8 @@ public extension DBCluster {
             engine: nil,
             engineMode: nil,
             engineVersion: nil,
+            globalWriteForwardingRequested: nil,
+            globalWriteForwardingStatus: nil,
             hostedZoneId: nil,
             httpEndpointEnabled: nil,
             iAMDatabaseAuthenticationEnabled: nil,
@@ -1424,6 +1429,7 @@ public extension DBCluster {
             scalingConfigurationInfo: nil,
             status: nil,
             storageEncrypted: nil,
+            tagList: nil,
             vpcSecurityGroups: nil)
 
         return defaultInstance
@@ -1908,6 +1914,7 @@ public extension DBClusterSnapshot {
             sourceDBClusterSnapshotArn: nil,
             status: nil,
             storageEncrypted: nil,
+            tagList: nil,
             vpcId: nil)
 
         return defaultInstance
@@ -2004,8 +2011,11 @@ public extension DBEngineVersion {
             supportedCharacterSets: nil,
             supportedEngineModes: nil,
             supportedFeatureNames: nil,
+            supportedNcharCharacterSets: nil,
             supportedTimezones: nil,
+            supportsGlobalDatabases: nil,
             supportsLogExportsToCloudwatchLogs: nil,
+            supportsParallelQuery: nil,
             supportsReadReplica: nil,
             validUpgradeTarget: nil)
 
@@ -2082,6 +2092,7 @@ public extension DBInstance {
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
+            ncharCharacterSetName: nil,
             optionGroupMemberships: nil,
             pendingModifiedValues: nil,
             performanceInsightsEnabled: nil,
@@ -2095,10 +2106,12 @@ public extension DBInstance {
             readReplicaDBClusterIdentifiers: nil,
             readReplicaDBInstanceIdentifiers: nil,
             readReplicaSourceDBInstanceIdentifier: nil,
+            replicaMode: nil,
             secondaryAvailabilityZone: nil,
             statusInfos: nil,
             storageEncrypted: nil,
             storageType: nil,
+            tagList: nil,
             tdeCredentialArn: nil,
             timezone: nil,
             vpcSecurityGroups: nil)
@@ -2714,6 +2727,7 @@ public extension DBSnapshot {
             sourceRegion: nil,
             status: nil,
             storageType: nil,
+            tagList: nil,
             tdeCredentialArn: nil,
             timezone: nil,
             vpcId: nil)
@@ -4666,6 +4680,7 @@ public extension GlobalClusterMember {
     static let __default: RDSModel.GlobalClusterMember = {
         let defaultInstance = RDSModel.GlobalClusterMember(
             dBClusterArn: nil,
+            globalWriteForwardingStatus: nil,
             isWriter: nil,
             readers: nil)
 
@@ -4879,6 +4894,17 @@ public extension InstanceQuotaExceededFault {
      */
     static let __default: RDSModel.InstanceQuotaExceededFault = {
         let defaultInstance = RDSModel.InstanceQuotaExceededFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension InsufficientAvailableIPsInSubnetFault {
+    /**
+     Default instance of the InsufficientAvailableIPsInSubnetFault structure.
+     */
+    static let __default: RDSModel.InsufficientAvailableIPsInSubnetFault = {
+        let defaultInstance = RDSModel.InsufficientAvailableIPsInSubnetFault()
 
         return defaultInstance
     }()
@@ -5292,6 +5318,7 @@ public extension ModifyDBClusterMessage {
             deletionProtection: nil,
             domain: nil,
             domainIAMRoleName: nil,
+            enableGlobalWriteForwarding: nil,
             enableHttpEndpoint: nil,
             enableIAMDatabaseAuthentication: nil,
             engineVersion: nil,
@@ -5427,6 +5454,7 @@ public extension ModifyDBInstanceMessage {
             processorFeatures: nil,
             promotionTier: nil,
             publiclyAccessible: nil,
+            replicaMode: nil,
             storageType: nil,
             tdeCredentialArn: nil,
             tdeCredentialPassword: nil,
@@ -6039,10 +6067,12 @@ public extension OrderableDBInstanceOption {
             minIopsPerGib: nil,
             minStorageSize: nil,
             multiAZCapable: nil,
+            outpostCapable: nil,
             readReplicaCapable: nil,
             storageType: nil,
             supportedEngineModes: nil,
             supportsEnhancedMonitoring: nil,
+            supportsGlobalDatabases: nil,
             supportsIAMDatabaseAuthentication: nil,
             supportsIops: nil,
             supportsKerberosAuthentication: nil,
@@ -6075,6 +6105,18 @@ public extension OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstance
     static let __default: RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions = {
         let defaultInstance = RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions(
             describeOrderableDBInstanceOptionsResult: OrderableDBInstanceOptionsMessage.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension Outpost {
+    /**
+     Default instance of the Outpost structure.
+     */
+    static let __default: RDSModel.Outpost = {
+        let defaultInstance = RDSModel.Outpost(
+            arn: nil)
 
         return defaultInstance
     }()
@@ -7011,6 +7053,7 @@ public extension RestoreDBInstanceFromS3Message {
             licenseModel: nil,
             masterUserPassword: nil,
             masterUsername: nil,
+            maxAllocatedStorage: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
@@ -7082,6 +7125,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             engine: nil,
             iops: nil,
             licenseModel: nil,
+            maxAllocatedStorage: nil,
             multiAZ: nil,
             optionGroupName: nil,
             port: nil,
@@ -7592,6 +7636,7 @@ public extension Subnet {
         let defaultInstance = RDSModel.Subnet(
             subnetAvailabilityZone: nil,
             subnetIdentifier: nil,
+            subnetOutpost: nil,
             subnetStatus: nil)
 
         return defaultInstance

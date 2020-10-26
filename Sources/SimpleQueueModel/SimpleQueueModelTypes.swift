@@ -57,6 +57,11 @@ public typealias BinaryList = [Binary]
 public typealias Boolean = Bool
 
 /**
+ Type definition for the BoxedInteger field.
+ */
+public typealias BoxedInteger = Int
+
+/**
  Type definition for the ChangeMessageVisibilityBatchRequestEntryList field.
  */
 public typealias ChangeMessageVisibilityBatchRequestEntryList = [ChangeMessageVisibilityBatchRequestEntry]
@@ -218,3 +223,8 @@ public typealias TagMap = [TagKey: TagValue]
  Type definition for the TagValue field.
  */
 public typealias TagValue = String
+
+/**
+ Type definition for the Token field.
+ */
+public typealias Token = String

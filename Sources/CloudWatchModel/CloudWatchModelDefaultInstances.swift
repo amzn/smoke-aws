@@ -1030,7 +1030,8 @@ public extension ListMetricsInput {
             dimensions: nil,
             metricName: nil,
             namespace: nil,
-            nextToken: nil)
+            nextToken: nil,
+            recentlyActive: nil)
 
         return defaultInstance
     }()

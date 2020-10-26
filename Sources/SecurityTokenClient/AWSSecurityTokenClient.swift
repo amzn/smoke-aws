@@ -150,7 +150,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The AssumeRoleResponseForAssumeRole object or an error will be passed to this 
            callback when the operation is complete. The AssumeRoleResponseForAssumeRole
            object will be validated before being returned to caller.
-           The possible errors are: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
+           The possible errors are: expiredToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
     public func assumeRoleAsync(
             input: SecurityTokenModel.AssumeRoleRequest, 
@@ -187,7 +187,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated AssumeRoleRequest object being passed to this operation.
      - Returns: The AssumeRoleResponseForAssumeRole object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
+     - Throws: expiredToken, malformedPolicyDocument, packedPolicyTooLarge, regionDisabled.
      */
     public func assumeRoleSync(
             input: SecurityTokenModel.AssumeRoleRequest) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {

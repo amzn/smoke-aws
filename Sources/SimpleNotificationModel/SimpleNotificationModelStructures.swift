@@ -1288,6 +1288,8 @@ public struct PlatformApplicationDisabledException: Codable, Equatable {
 public struct PublishInput: Codable, Equatable {
     public var message: Message
     public var messageAttributes: MessageAttributeMap?
+    public var messageDeduplicationId: String?
+    public var messageGroupId: String?
     public var messageStructure: MessageStructure?
     public var phoneNumber: String?
     public var subject: Subject?
@@ -1296,6 +1298,8 @@ public struct PublishInput: Codable, Equatable {
 
     public init(message: Message,
                 messageAttributes: MessageAttributeMap? = nil,
+                messageDeduplicationId: String? = nil,
+                messageGroupId: String? = nil,
                 messageStructure: MessageStructure? = nil,
                 phoneNumber: String? = nil,
                 subject: Subject? = nil,
@@ -1303,6 +1307,8 @@ public struct PublishInput: Codable, Equatable {
                 topicArn: TopicARN? = nil) {
         self.message = message
         self.messageAttributes = messageAttributes
+        self.messageDeduplicationId = messageDeduplicationId
+        self.messageGroupId = messageGroupId
         self.messageStructure = messageStructure
         self.phoneNumber = phoneNumber
         self.subject = subject
@@ -1313,6 +1319,8 @@ public struct PublishInput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case message = "Message"
         case messageAttributes = "MessageAttributes"
+        case messageDeduplicationId = "MessageDeduplicationId"
+        case messageGroupId = "MessageGroupId"
         case messageStructure = "MessageStructure"
         case phoneNumber = "PhoneNumber"
         case subject = "Subject"
@@ -1326,13 +1334,17 @@ public struct PublishInput: Codable, Equatable {
 
 public struct PublishResponse: Codable, Equatable {
     public var messageId: MessageId?
+    public var sequenceNumber: String?
 
-    public init(messageId: MessageId? = nil) {
+    public init(messageId: MessageId? = nil,
+                sequenceNumber: String? = nil) {
         self.messageId = messageId
+        self.sequenceNumber = sequenceNumber
     }
 
     enum CodingKeys: String, CodingKey {
         case messageId = "MessageId"
+        case sequenceNumber = "SequenceNumber"
     }
 
     public func validate() throws {

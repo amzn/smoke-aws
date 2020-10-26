@@ -533,6 +533,20 @@ public typealias ReadersArnList = [String]
 public typealias RecurringChargeList = [RecurringCharge]
 
 /**
+ Enumeration restricting the values of the ReplicaMode field.
+ */
+public enum ReplicaMode: String, Codable, CustomStringConvertible {
+    case mounted
+    case openReadOnly = "open-read-only"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReplicaMode = .mounted
+}
+
+/**
  Type definition for the ReservedDBInstanceList field.
  */
 public typealias ReservedDBInstanceList = [ReservedDBInstance]
@@ -695,6 +709,23 @@ public typealias VpcSecurityGroupIdList = [String]
  Type definition for the VpcSecurityGroupMembershipList field.
  */
 public typealias VpcSecurityGroupMembershipList = [VpcSecurityGroupMembership]
+
+/**
+ Enumeration restricting the values of the WriteForwardingStatus field.
+ */
+public enum WriteForwardingStatus: String, Codable, CustomStringConvertible {
+    case disabled
+    case disabling
+    case enabled
+    case enabling
+    case unknown
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: WriteForwardingStatus = .disabled
+}
 
 /**
  Validation for the MaxRecords field.

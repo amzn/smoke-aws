@@ -976,6 +976,8 @@ public extension PublishInput {
         let defaultInstance = SimpleNotificationModel.PublishInput(
             message: "value",
             messageAttributes: nil,
+            messageDeduplicationId: nil,
+            messageGroupId: nil,
             messageStructure: nil,
             phoneNumber: nil,
             subject: nil,
@@ -992,7 +994,8 @@ public extension PublishResponse {
      */
     static let __default: SimpleNotificationModel.PublishResponse = {
         let defaultInstance = SimpleNotificationModel.PublishResponse(
-            messageId: nil)
+            messageId: nil,
+            sequenceNumber: nil)
 
         return defaultInstance
     }()

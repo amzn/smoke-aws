@@ -1777,6 +1777,7 @@ public extension ReplicaDescription {
             kMSMasterKeyId: nil,
             provisionedThroughputOverride: nil,
             regionName: nil,
+            replicaInaccessibleDateTime: nil,
             replicaStatus: nil,
             replicaStatusDescription: nil,
             replicaStatusPercentProgress: nil)

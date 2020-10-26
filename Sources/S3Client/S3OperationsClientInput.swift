@@ -125,14 +125,14 @@ public struct DeleteBucketOperationHTTPRequestInput: HTTPRequestInputProtocol {
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -144,14 +144,14 @@ public struct DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput: HTTPR
     public let queryEncodable: DeleteBucketAnalyticsConfigurationOperationInputQuery?
     public let pathEncodable: DeleteBucketAnalyticsConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketAnalyticsConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelDeleteBucketAnalyticsConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelDeleteBucketAnalyticsConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -163,14 +163,14 @@ public struct DeleteBucketCorsOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketCorsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketCorsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketCorsRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketCorsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketCorsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -182,14 +182,14 @@ public struct DeleteBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputP
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketEncryptionOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketEncryptionOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketEncryptionRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketEncryptionOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketEncryptionOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -201,14 +201,14 @@ public struct DeleteBucketInventoryConfigurationOperationHTTPRequestInput: HTTPR
     public let queryEncodable: DeleteBucketInventoryConfigurationOperationInputQuery?
     public let pathEncodable: DeleteBucketInventoryConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketInventoryConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketInventoryConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelDeleteBucketInventoryConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelDeleteBucketInventoryConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketInventoryConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -220,14 +220,14 @@ public struct DeleteBucketLifecycleOperationHTTPRequestInput: HTTPRequestInputPr
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketLifecycleOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketLifecycleOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketLifecycleRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketLifecycleOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketLifecycleOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -239,14 +239,33 @@ public struct DeleteBucketMetricsConfigurationOperationHTTPRequestInput: HTTPReq
     public let queryEncodable: DeleteBucketMetricsConfigurationOperationInputQuery?
     public let pathEncodable: DeleteBucketMetricsConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketMetricsConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketMetricsConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelDeleteBucketMetricsConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelDeleteBucketMetricsConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketMetricsConfigurationOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the DeleteBucketOwnershipControls operation in a HTTP client.
+ */
+public struct DeleteBucketOwnershipControlsOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: DeleteBucketOwnershipControlsOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketOwnershipControlsOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: DeleteBucketOwnershipControlsRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asS3ModelDeleteBucketOwnershipControlsOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketOwnershipControlsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -258,14 +277,14 @@ public struct DeleteBucketPolicyOperationHTTPRequestInput: HTTPRequestInputProto
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketPolicyOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketPolicyOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketPolicyRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketPolicyOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketPolicyOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -277,14 +296,14 @@ public struct DeleteBucketReplicationOperationHTTPRequestInput: HTTPRequestInput
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketReplicationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketReplicationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketReplicationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketReplicationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketReplicationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -296,14 +315,14 @@ public struct DeleteBucketTaggingOperationHTTPRequestInput: HTTPRequestInputProt
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketTaggingOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketTaggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketTaggingRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketTaggingOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketTaggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -315,14 +334,14 @@ public struct DeleteBucketWebsiteOperationHTTPRequestInput: HTTPRequestInputProt
     public let queryEncodable: String?
     public let pathEncodable: DeleteBucketWebsiteOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteBucketWebsiteOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteBucketWebsiteRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeleteBucketWebsiteOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteBucketWebsiteOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -353,14 +372,14 @@ public struct DeleteObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProt
     public let queryEncodable: DeleteObjectTaggingOperationInputQuery?
     public let pathEncodable: DeleteObjectTaggingOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeleteObjectTaggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeleteObjectTaggingRequest) {
         self.queryEncodable = encodable.asS3ModelDeleteObjectTaggingOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelDeleteObjectTaggingOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeleteObjectTaggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -391,14 +410,14 @@ public struct DeletePublicAccessBlockOperationHTTPRequestInput: HTTPRequestInput
     public let queryEncodable: String?
     public let pathEncodable: DeletePublicAccessBlockOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: DeletePublicAccessBlockOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: DeletePublicAccessBlockRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelDeletePublicAccessBlockOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelDeletePublicAccessBlockOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -410,14 +429,14 @@ public struct GetBucketAccelerateConfigurationOperationHTTPRequestInput: HTTPReq
     public let queryEncodable: String?
     public let pathEncodable: GetBucketAccelerateConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketAccelerateConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketAccelerateConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketAccelerateConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketAccelerateConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -429,14 +448,14 @@ public struct GetBucketAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
     public let queryEncodable: String?
     public let pathEncodable: GetBucketAclOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketAclOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketAclRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketAclOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketAclOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -448,14 +467,14 @@ public struct GetBucketAnalyticsConfigurationOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: GetBucketAnalyticsConfigurationOperationInputQuery?
     public let pathEncodable: GetBucketAnalyticsConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketAnalyticsConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketAnalyticsConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelGetBucketAnalyticsConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelGetBucketAnalyticsConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketAnalyticsConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -467,14 +486,14 @@ public struct GetBucketCorsOperationHTTPRequestInput: HTTPRequestInputProtocol {
     public let queryEncodable: String?
     public let pathEncodable: GetBucketCorsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketCorsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketCorsRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketCorsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketCorsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -486,14 +505,14 @@ public struct GetBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputProt
     public let queryEncodable: String?
     public let pathEncodable: GetBucketEncryptionOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketEncryptionOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketEncryptionRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketEncryptionOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketEncryptionOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -505,14 +524,14 @@ public struct GetBucketInventoryConfigurationOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: GetBucketInventoryConfigurationOperationInputQuery?
     public let pathEncodable: GetBucketInventoryConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketInventoryConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketInventoryConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelGetBucketInventoryConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelGetBucketInventoryConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketInventoryConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -524,14 +543,14 @@ public struct GetBucketLifecycleOperationHTTPRequestInput: HTTPRequestInputProto
     public let queryEncodable: String?
     public let pathEncodable: GetBucketLifecycleOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketLifecycleOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketLifecycleRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketLifecycleOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketLifecycleOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -543,14 +562,14 @@ public struct GetBucketLifecycleConfigurationOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: String?
     public let pathEncodable: GetBucketLifecycleConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketLifecycleConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketLifecycleConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketLifecycleConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketLifecycleConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -562,14 +581,14 @@ public struct GetBucketLocationOperationHTTPRequestInput: HTTPRequestInputProtoc
     public let queryEncodable: String?
     public let pathEncodable: GetBucketLocationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketLocationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketLocationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketLocationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketLocationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -581,14 +600,14 @@ public struct GetBucketLoggingOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: GetBucketLoggingOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketLoggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketLoggingRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketLoggingOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketLoggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -600,14 +619,14 @@ public struct GetBucketMetricsConfigurationOperationHTTPRequestInput: HTTPReques
     public let queryEncodable: GetBucketMetricsConfigurationOperationInputQuery?
     public let pathEncodable: GetBucketMetricsConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketMetricsConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketMetricsConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelGetBucketMetricsConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelGetBucketMetricsConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketMetricsConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -619,14 +638,14 @@ public struct GetBucketNotificationOperationHTTPRequestInput: HTTPRequestInputPr
     public let queryEncodable: String?
     public let pathEncodable: GetBucketNotificationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketNotificationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketNotificationConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketNotificationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketNotificationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -638,14 +657,33 @@ public struct GetBucketNotificationConfigurationOperationHTTPRequestInput: HTTPR
     public let queryEncodable: String?
     public let pathEncodable: GetBucketNotificationConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketNotificationConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketNotificationConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketNotificationConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketNotificationConfigurationOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the GetBucketOwnershipControls operation in a HTTP client.
+ */
+public struct GetBucketOwnershipControlsOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: GetBucketOwnershipControlsOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: GetBucketOwnershipControlsOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: GetBucketOwnershipControlsRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asS3ModelGetBucketOwnershipControlsOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketOwnershipControlsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -657,14 +695,14 @@ public struct GetBucketPolicyOperationHTTPRequestInput: HTTPRequestInputProtocol
     public let queryEncodable: String?
     public let pathEncodable: GetBucketPolicyOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketPolicyOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketPolicyRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketPolicyOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketPolicyOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -676,14 +714,14 @@ public struct GetBucketPolicyStatusOperationHTTPRequestInput: HTTPRequestInputPr
     public let queryEncodable: String?
     public let pathEncodable: GetBucketPolicyStatusOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketPolicyStatusOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketPolicyStatusRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketPolicyStatusOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketPolicyStatusOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -695,14 +733,14 @@ public struct GetBucketReplicationOperationHTTPRequestInput: HTTPRequestInputPro
     public let queryEncodable: String?
     public let pathEncodable: GetBucketReplicationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketReplicationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketReplicationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketReplicationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketReplicationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -714,14 +752,14 @@ public struct GetBucketRequestPaymentOperationHTTPRequestInput: HTTPRequestInput
     public let queryEncodable: String?
     public let pathEncodable: GetBucketRequestPaymentOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketRequestPaymentOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketRequestPaymentRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketRequestPaymentOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketRequestPaymentOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -733,14 +771,14 @@ public struct GetBucketTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: GetBucketTaggingOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketTaggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketTaggingRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketTaggingOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketTaggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -752,14 +790,14 @@ public struct GetBucketVersioningOperationHTTPRequestInput: HTTPRequestInputProt
     public let queryEncodable: String?
     public let pathEncodable: GetBucketVersioningOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketVersioningOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketVersioningRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketVersioningOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketVersioningOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -771,14 +809,14 @@ public struct GetBucketWebsiteOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: GetBucketWebsiteOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetBucketWebsiteOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetBucketWebsiteRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetBucketWebsiteOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetBucketWebsiteOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -847,14 +885,14 @@ public struct GetObjectLockConfigurationOperationHTTPRequestInput: HTTPRequestIn
     public let queryEncodable: String?
     public let pathEncodable: GetObjectLockConfigurationOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetObjectLockConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetObjectLockConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetObjectLockConfigurationOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetObjectLockConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -885,14 +923,14 @@ public struct GetObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: GetObjectTaggingOperationInputQuery?
     public let pathEncodable: GetObjectTaggingOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetObjectTaggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetObjectTaggingRequest) {
         self.queryEncodable = encodable.asS3ModelGetObjectTaggingOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelGetObjectTaggingOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetObjectTaggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -923,14 +961,14 @@ public struct GetPublicAccessBlockOperationHTTPRequestInput: HTTPRequestInputPro
     public let queryEncodable: String?
     public let pathEncodable: GetPublicAccessBlockOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: GetPublicAccessBlockOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: GetPublicAccessBlockRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelGetPublicAccessBlockOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetPublicAccessBlockOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -942,14 +980,14 @@ public struct HeadBucketOperationHTTPRequestInput: HTTPRequestInputProtocol {
     public let queryEncodable: String?
     public let pathEncodable: HeadBucketOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: HeadBucketOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: HeadBucketRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelHeadBucketOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelHeadBucketOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -980,14 +1018,14 @@ public struct ListBucketAnalyticsConfigurationsOperationHTTPRequestInput: HTTPRe
     public let queryEncodable: ListBucketAnalyticsConfigurationsOperationInputQuery?
     public let pathEncodable: ListBucketAnalyticsConfigurationsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: ListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: ListBucketAnalyticsConfigurationsRequest) {
         self.queryEncodable = encodable.asS3ModelListBucketAnalyticsConfigurationsOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelListBucketAnalyticsConfigurationsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -999,14 +1037,14 @@ public struct ListBucketInventoryConfigurationsOperationHTTPRequestInput: HTTPRe
     public let queryEncodable: ListBucketInventoryConfigurationsOperationInputQuery?
     public let pathEncodable: ListBucketInventoryConfigurationsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: ListBucketInventoryConfigurationsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: ListBucketInventoryConfigurationsRequest) {
         self.queryEncodable = encodable.asS3ModelListBucketInventoryConfigurationsOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelListBucketInventoryConfigurationsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelListBucketInventoryConfigurationsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1018,14 +1056,14 @@ public struct ListBucketMetricsConfigurationsOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: ListBucketMetricsConfigurationsOperationInputQuery?
     public let pathEncodable: ListBucketMetricsConfigurationsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: ListBucketMetricsConfigurationsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: ListBucketMetricsConfigurationsRequest) {
         self.queryEncodable = encodable.asS3ModelListBucketMetricsConfigurationsOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelListBucketMetricsConfigurationsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelListBucketMetricsConfigurationsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1037,14 +1075,14 @@ public struct ListMultipartUploadsOperationHTTPRequestInput: HTTPRequestInputPro
     public let queryEncodable: ListMultipartUploadsOperationInputQuery?
     public let pathEncodable: ListMultipartUploadsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: ListMultipartUploadsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: ListMultipartUploadsRequest) {
         self.queryEncodable = encodable.asS3ModelListMultipartUploadsOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelListMultipartUploadsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelListMultipartUploadsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1056,14 +1094,14 @@ public struct ListObjectVersionsOperationHTTPRequestInput: HTTPRequestInputProto
     public let queryEncodable: ListObjectVersionsOperationInputQuery?
     public let pathEncodable: ListObjectVersionsOperationInputPath?
     public let bodyEncodable: String?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: ListObjectVersionsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: ListObjectVersionsRequest) {
         self.queryEncodable = encodable.asS3ModelListObjectVersionsOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelListObjectVersionsOperationInputPath()
         self.bodyEncodable = nil
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelListObjectVersionsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1132,14 +1170,14 @@ public struct PutBucketAccelerateConfigurationOperationHTTPRequestInput: HTTPReq
     public let queryEncodable: String?
     public let pathEncodable: PutBucketAccelerateConfigurationOperationInputPath?
     public let bodyEncodable: AccelerateConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketAccelerateConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketAccelerateConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketAccelerateConfigurationOperationInputPath()
         self.bodyEncodable = encodable.accelerateConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketAccelerateConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1170,14 +1208,14 @@ public struct PutBucketAnalyticsConfigurationOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: PutBucketAnalyticsConfigurationOperationInputQuery?
     public let pathEncodable: PutBucketAnalyticsConfigurationOperationInputPath?
     public let bodyEncodable: AnalyticsConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketAnalyticsConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketAnalyticsConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelPutBucketAnalyticsConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelPutBucketAnalyticsConfigurationOperationInputPath()
         self.bodyEncodable = encodable.analyticsConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketAnalyticsConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1189,14 +1227,14 @@ public struct PutBucketCorsOperationHTTPRequestInput: HTTPRequestInputProtocol {
     public let queryEncodable: String?
     public let pathEncodable: PutBucketCorsOperationInputPath?
     public let bodyEncodable: CORSConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketCorsOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketCorsRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketCorsOperationInputPath()
         self.bodyEncodable = encodable.cORSConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketCorsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1208,14 +1246,14 @@ public struct PutBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputProt
     public let queryEncodable: String?
     public let pathEncodable: PutBucketEncryptionOperationInputPath?
     public let bodyEncodable: ServerSideEncryptionConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketEncryptionOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketEncryptionRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketEncryptionOperationInputPath()
         self.bodyEncodable = encodable.serverSideEncryptionConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1227,14 +1265,14 @@ public struct PutBucketInventoryConfigurationOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: PutBucketInventoryConfigurationOperationInputQuery?
     public let pathEncodable: PutBucketInventoryConfigurationOperationInputPath?
     public let bodyEncodable: InventoryConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketInventoryConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketInventoryConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelPutBucketInventoryConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelPutBucketInventoryConfigurationOperationInputPath()
         self.bodyEncodable = encodable.inventoryConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketInventoryConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1246,14 +1284,14 @@ public struct PutBucketLifecycleOperationHTTPRequestInput: HTTPRequestInputProto
     public let queryEncodable: String?
     public let pathEncodable: PutBucketLifecycleOperationInputPath?
     public let bodyEncodable: LifecycleConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketLifecycleOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketLifecycleRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketLifecycleOperationInputPath()
         self.bodyEncodable = encodable.lifecycleConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1265,14 +1303,14 @@ public struct PutBucketLifecycleConfigurationOperationHTTPRequestInput: HTTPRequ
     public let queryEncodable: String?
     public let pathEncodable: PutBucketLifecycleConfigurationOperationInputPath?
     public let bodyEncodable: BucketLifecycleConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketLifecycleConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketLifecycleConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketLifecycleConfigurationOperationInputPath()
         self.bodyEncodable = encodable.lifecycleConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketLifecycleConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1284,14 +1322,14 @@ public struct PutBucketLoggingOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: PutBucketLoggingOperationInputPath?
     public let bodyEncodable: BucketLoggingStatus?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketLoggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketLoggingRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketLoggingOperationInputPath()
         self.bodyEncodable = encodable.bucketLoggingStatus
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketLoggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1303,14 +1341,14 @@ public struct PutBucketMetricsConfigurationOperationHTTPRequestInput: HTTPReques
     public let queryEncodable: PutBucketMetricsConfigurationOperationInputQuery?
     public let pathEncodable: PutBucketMetricsConfigurationOperationInputPath?
     public let bodyEncodable: MetricsConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketMetricsConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketMetricsConfigurationRequest) {
         self.queryEncodable = encodable.asS3ModelPutBucketMetricsConfigurationOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelPutBucketMetricsConfigurationOperationInputPath()
         self.bodyEncodable = encodable.metricsConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketMetricsConfigurationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1322,14 +1360,14 @@ public struct PutBucketNotificationOperationHTTPRequestInput: HTTPRequestInputPr
     public let queryEncodable: String?
     public let pathEncodable: PutBucketNotificationOperationInputPath?
     public let bodyEncodable: NotificationConfigurationDeprecated?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketNotificationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketNotificationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketNotificationOperationInputPath()
         self.bodyEncodable = encodable.notificationConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketNotificationOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1341,14 +1379,33 @@ public struct PutBucketNotificationConfigurationOperationHTTPRequestInput: HTTPR
     public let queryEncodable: String?
     public let pathEncodable: PutBucketNotificationConfigurationOperationInputPath?
     public let bodyEncodable: NotificationConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketNotificationConfigurationOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketNotificationConfigurationRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketNotificationConfigurationOperationInputPath()
         self.bodyEncodable = encodable.notificationConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketNotificationConfigurationOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the PutBucketOwnershipControls operation in a HTTP client.
+ */
+public struct PutBucketOwnershipControlsOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: PutBucketOwnershipControlsOperationInputPath?
+    public let bodyEncodable: OwnershipControls?
+    public let additionalHeadersEncodable: PutBucketOwnershipControlsOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: PutBucketOwnershipControlsRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asS3ModelPutBucketOwnershipControlsOperationInputPath()
+        self.bodyEncodable = encodable.ownershipControls
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketOwnershipControlsOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1398,14 +1455,14 @@ public struct PutBucketRequestPaymentOperationHTTPRequestInput: HTTPRequestInput
     public let queryEncodable: String?
     public let pathEncodable: PutBucketRequestPaymentOperationInputPath?
     public let bodyEncodable: RequestPaymentConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketRequestPaymentOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketRequestPaymentRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketRequestPaymentOperationInputPath()
         self.bodyEncodable = encodable.requestPaymentConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1417,14 +1474,14 @@ public struct PutBucketTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: PutBucketTaggingOperationInputPath?
     public let bodyEncodable: Tagging?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketTaggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketTaggingRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketTaggingOperationInputPath()
         self.bodyEncodable = encodable.tagging
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketTaggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1455,14 +1512,14 @@ public struct PutBucketWebsiteOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: String?
     public let pathEncodable: PutBucketWebsiteOperationInputPath?
     public let bodyEncodable: WebsiteConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutBucketWebsiteOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutBucketWebsiteRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutBucketWebsiteOperationInputPath()
         self.bodyEncodable = encodable.websiteConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1569,14 +1626,14 @@ public struct PutObjectTaggingOperationHTTPRequestInput: HTTPRequestInputProtoco
     public let queryEncodable: PutObjectTaggingOperationInputQuery?
     public let pathEncodable: PutObjectTaggingOperationInputPath?
     public let bodyEncodable: Tagging?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutObjectTaggingOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutObjectTaggingRequest) {
         self.queryEncodable = encodable.asS3ModelPutObjectTaggingOperationInputQuery()
         self.pathEncodable = encodable.asS3ModelPutObjectTaggingOperationInputPath()
         self.bodyEncodable = encodable.tagging
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutObjectTaggingOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }
@@ -1588,14 +1645,14 @@ public struct PutPublicAccessBlockOperationHTTPRequestInput: HTTPRequestInputPro
     public let queryEncodable: String?
     public let pathEncodable: PutPublicAccessBlockOperationInputPath?
     public let bodyEncodable: PublicAccessBlockConfiguration?
-    public let additionalHeadersEncodable: String?
+    public let additionalHeadersEncodable: PutPublicAccessBlockOperationInputAdditionalHeaders?
     public let pathPostfix: String?
 
     public init(encodable: PutPublicAccessBlockRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asS3ModelPutPublicAccessBlockOperationInputPath()
         self.bodyEncodable = encodable.publicAccessBlockConfiguration
-        self.additionalHeadersEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders()
         self.pathPostfix = nil
     }
 }

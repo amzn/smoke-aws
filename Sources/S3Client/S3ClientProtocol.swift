@@ -88,6 +88,11 @@ public protocol S3ClientProtocol {
     typealias DeleteBucketMetricsConfigurationAsyncType = (
             _ input: S3Model.DeleteBucketMetricsConfigurationRequest, 
             _ completion: @escaping (S3Error?) -> ()) throws -> ()
+    typealias DeleteBucketOwnershipControlsSyncType = (
+            _ input: S3Model.DeleteBucketOwnershipControlsRequest) throws -> ()
+    typealias DeleteBucketOwnershipControlsAsyncType = (
+            _ input: S3Model.DeleteBucketOwnershipControlsRequest, 
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketPolicySyncType = (
             _ input: S3Model.DeleteBucketPolicyRequest) throws -> ()
     typealias DeleteBucketPolicyAsyncType = (
@@ -193,6 +198,11 @@ public protocol S3ClientProtocol {
     typealias GetBucketNotificationConfigurationAsyncType = (
             _ input: S3Model.GetBucketNotificationConfigurationRequest, 
             _ completion: @escaping (Result<S3Model.NotificationConfiguration, S3Error>) -> ()) throws -> ()
+    typealias GetBucketOwnershipControlsSyncType = (
+            _ input: S3Model.GetBucketOwnershipControlsRequest) throws -> S3Model.GetBucketOwnershipControlsOutput
+    typealias GetBucketOwnershipControlsAsyncType = (
+            _ input: S3Model.GetBucketOwnershipControlsRequest, 
+            _ completion: @escaping (Result<S3Model.GetBucketOwnershipControlsOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketPolicySyncType = (
             _ input: S3Model.GetBucketPolicyRequest) throws -> S3Model.GetBucketPolicyOutput
     typealias GetBucketPolicyAsyncType = (
@@ -380,6 +390,11 @@ public protocol S3ClientProtocol {
             _ input: S3Model.PutBucketNotificationConfigurationRequest) throws -> ()
     typealias PutBucketNotificationConfigurationAsyncType = (
             _ input: S3Model.PutBucketNotificationConfigurationRequest, 
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
+    typealias PutBucketOwnershipControlsSyncType = (
+            _ input: S3Model.PutBucketOwnershipControlsRequest) throws -> ()
+    typealias PutBucketOwnershipControlsAsyncType = (
+            _ input: S3Model.PutBucketOwnershipControlsRequest, 
             _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketPolicySyncType = (
             _ input: S3Model.PutBucketPolicyRequest) throws -> ()
@@ -739,6 +754,27 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketMetricsConfigurationSync(
             input: S3Model.DeleteBucketMetricsConfigurationRequest) throws
+
+    /**
+     Invokes the DeleteBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    func deleteBucketOwnershipControlsAsync(
+            input: S3Model.DeleteBucketOwnershipControlsRequest, 
+            completion: @escaping (S3Error?) -> ()) throws
+
+    /**
+     Invokes the DeleteBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    func deleteBucketOwnershipControlsSync(
+            input: S3Model.DeleteBucketOwnershipControlsRequest) throws
 
     /**
      Invokes the DeleteBucketPolicy operation returning immediately and passing the response to a callback.
@@ -1228,6 +1264,30 @@ public protocol S3ClientProtocol {
      */
     func getBucketNotificationConfigurationSync(
             input: S3Model.GetBucketNotificationConfigurationRequest) throws -> S3Model.NotificationConfiguration
+
+    /**
+     Invokes the GetBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: The GetBucketOwnershipControlsOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetBucketOwnershipControlsOutput
+           object will be validated before being returned to caller.
+     */
+    func getBucketOwnershipControlsAsync(
+            input: S3Model.GetBucketOwnershipControlsRequest, 
+            completion: @escaping (Result<S3Model.GetBucketOwnershipControlsOutput, S3Error>) -> ()) throws
+
+    /**
+     Invokes the GetBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+     - Returns: The GetBucketOwnershipControlsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getBucketOwnershipControlsSync(
+            input: S3Model.GetBucketOwnershipControlsRequest) throws -> S3Model.GetBucketOwnershipControlsOutput
 
     /**
      Invokes the GetBucketPolicy operation returning immediately and passing the response to a callback.
@@ -2105,6 +2165,27 @@ public protocol S3ClientProtocol {
      */
     func putBucketNotificationConfigurationSync(
             input: S3Model.PutBucketNotificationConfigurationRequest) throws
+
+    /**
+     Invokes the PutBucketOwnershipControls operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    func putBucketOwnershipControlsAsync(
+            input: S3Model.PutBucketOwnershipControlsRequest, 
+            completion: @escaping (S3Error?) -> ()) throws
+
+    /**
+     Invokes the PutBucketOwnershipControls operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    func putBucketOwnershipControlsSync(
+            input: S3Model.PutBucketOwnershipControlsRequest) throws
 
     /**
      Invokes the PutBucketPolicy operation returning immediately and passing the response to a callback.

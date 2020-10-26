@@ -42,6 +42,11 @@ public typealias ConnectorParameters = String
 public typealias Definition = String
 
 /**
+ Type definition for the Enabled field.
+ */
+public typealias Enabled = Bool
+
+/**
  Type definition for the ErrorMessage field.
  */
 public typealias ErrorMessage = String
@@ -154,6 +159,11 @@ public typealias Identity = String
  Type definition for the IncludeExecutionData field.
  */
 public typealias IncludeExecutionData = Bool
+
+/**
+ Type definition for the IncludeExecutionDataGetExecutionHistory field.
+ */
+public typealias IncludeExecutionDataGetExecutionHistory = Bool
 
 /**
  Type definition for the ListExecutionsPageToken field.
@@ -290,9 +300,24 @@ public typealias TimeoutInSeconds = Int
 public typealias Timestamp = Double
 
 /**
+ Type definition for the TraceHeader field.
+ */
+public typealias TraceHeader = String
+
+/**
  Type definition for the UnsignedInteger field.
  */
 public typealias UnsignedInteger = Int
+
+/**
+ Type definition for the Included field.
+ */
+public typealias Included = Bool
+
+/**
+ Type definition for the Truncated field.
+ */
+public typealias Truncated = Bool
 
 /**
  Validation for the Arn field.
@@ -318,7 +343,7 @@ extension StepFunctionsModel.ConnectorParameters {
             throw StepFunctionsError.validationError(reason: "The provided value to ConnectorParameters violated the minimum length constraint.")
         }
 
-        if self.count > 32768 {
+        if self.count > 262144 {
             throw StepFunctionsError.validationError(reason: "The provided value to ConnectorParameters violated the maximum length constraint.")
         }
     }
@@ -432,7 +457,7 @@ extension StepFunctionsModel.SensitiveCause {
 extension StepFunctionsModel.SensitiveData {
     public func validateAsSensitiveData() throws {
 
-        if self.count > 32768 {
+        if self.count > 262144 {
             throw StepFunctionsError.validationError(reason: "The provided value to SensitiveData violated the maximum length constraint.")
         }
     }
@@ -444,7 +469,7 @@ extension StepFunctionsModel.SensitiveData {
 extension StepFunctionsModel.SensitiveDataJobInput {
     public func validateAsSensitiveDataJobInput() throws {
 
-        if self.count > 65536 {
+        if self.count > 262144 {
             throw StepFunctionsError.validationError(reason: "The provided value to SensitiveDataJobInput violated the maximum length constraint.")
         }
     }
@@ -506,6 +531,27 @@ extension StepFunctionsModel.TaskToken {
 
         if self.count > 1024 {
             throw StepFunctionsError.validationError(reason: "The provided value to TaskToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TraceHeader field.
+*/
+extension StepFunctionsModel.TraceHeader {
+    public func validateAsTraceHeader() throws {
+        if self.count < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to TraceHeader violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw StepFunctionsError.validationError(reason: "The provided value to TraceHeader violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "\\p{ASCII}*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw StepFunctionsError.validationError(
+                    reason: "The provided value to TraceHeader violated the regular expression constraint.")
         }
     }
 }

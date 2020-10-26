@@ -2998,6 +2998,7 @@ public struct ReplicaDescription: Codable, Equatable {
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
     public var regionName: RegionName?
+    public var replicaInaccessibleDateTime: Date?
     public var replicaStatus: ReplicaStatus?
     public var replicaStatusDescription: ReplicaStatusDescription?
     public var replicaStatusPercentProgress: ReplicaStatusPercentProgress?
@@ -3006,6 +3007,7 @@ public struct ReplicaDescription: Codable, Equatable {
                 kMSMasterKeyId: KMSMasterKeyId? = nil,
                 provisionedThroughputOverride: ProvisionedThroughputOverride? = nil,
                 regionName: RegionName? = nil,
+                replicaInaccessibleDateTime: Date? = nil,
                 replicaStatus: ReplicaStatus? = nil,
                 replicaStatusDescription: ReplicaStatusDescription? = nil,
                 replicaStatusPercentProgress: ReplicaStatusPercentProgress? = nil) {
@@ -3013,6 +3015,7 @@ public struct ReplicaDescription: Codable, Equatable {
         self.kMSMasterKeyId = kMSMasterKeyId
         self.provisionedThroughputOverride = provisionedThroughputOverride
         self.regionName = regionName
+        self.replicaInaccessibleDateTime = replicaInaccessibleDateTime
         self.replicaStatus = replicaStatus
         self.replicaStatusDescription = replicaStatusDescription
         self.replicaStatusPercentProgress = replicaStatusPercentProgress
@@ -3023,6 +3026,7 @@ public struct ReplicaDescription: Codable, Equatable {
         case kMSMasterKeyId = "KMSMasterKeyId"
         case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case regionName = "RegionName"
+        case replicaInaccessibleDateTime = "ReplicaInaccessibleDateTime"
         case replicaStatus = "ReplicaStatus"
         case replicaStatusDescription = "ReplicaStatusDescription"
         case replicaStatusPercentProgress = "ReplicaStatusPercentProgress"

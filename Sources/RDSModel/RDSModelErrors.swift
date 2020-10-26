@@ -95,6 +95,7 @@ private let iamRoleNotFoundIdentity = "IamRoleNotFound"
 private let installationMediaAlreadyExistsIdentity = "InstallationMediaAlreadyExists"
 private let installationMediaNotFoundIdentity = "InstallationMediaNotFound"
 private let instanceQuotaExceededIdentity = "InstanceQuotaExceeded"
+private let insufficientAvailableIPsInSubnetIdentity = "InsufficientAvailableIPsInSubnetFault"
 private let insufficientDBClusterCapacityIdentity = "InsufficientDBClusterCapacityFault"
 private let insufficientDBInstanceCapacityIdentity = "InsufficientDBInstanceCapacity"
 private let insufficientStorageClusterCapacityIdentity = "InsufficientStorageClusterCapacity"
@@ -210,6 +211,7 @@ public enum RDSError: Swift.Error, Decodable {
     case installationMediaAlreadyExists(InstallationMediaAlreadyExistsFault)
     case installationMediaNotFound(InstallationMediaNotFoundFault)
     case instanceQuotaExceeded(InstanceQuotaExceededFault)
+    case insufficientAvailableIPsInSubnet(InsufficientAvailableIPsInSubnetFault)
     case insufficientDBClusterCapacity(InsufficientDBClusterCapacityFault)
     case insufficientDBInstanceCapacity(InsufficientDBInstanceCapacityFault)
     case insufficientStorageClusterCapacity(InsufficientStorageClusterCapacityFault)
@@ -467,6 +469,9 @@ public enum RDSError: Swift.Error, Decodable {
         case instanceQuotaExceededIdentity:
             let errorPayload = try InstanceQuotaExceededFault(from: decoder)
             self = RDSError.instanceQuotaExceeded(errorPayload)
+        case insufficientAvailableIPsInSubnetIdentity:
+            let errorPayload = try InsufficientAvailableIPsInSubnetFault(from: decoder)
+            self = RDSError.insufficientAvailableIPsInSubnet(errorPayload)
         case insufficientDBClusterCapacityIdentity:
             let errorPayload = try InsufficientDBClusterCapacityFault(from: decoder)
             self = RDSError.insufficientDBClusterCapacity(errorPayload)

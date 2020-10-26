@@ -54,6 +54,11 @@ public typealias DeleteAccountSettingOperationHTTPRequestInput = BodyHTTPRequest
 public typealias DeleteAttributesOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteCapacityProvider operation in a HTTP client.
+ */
+public typealias DeleteCapacityProviderOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteCluster operation in a HTTP client.
  */
 public typealias DeleteClusterOperationHTTPRequestInput = BodyHTTPRequestInput

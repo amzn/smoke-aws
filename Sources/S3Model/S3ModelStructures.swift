@@ -53,15 +53,18 @@ public struct AbortMultipartUploadOutput: Codable, Equatable {
 
 public struct AbortMultipartUploadRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var uploadId: MultipartUploadId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 uploadId: MultipartUploadId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
         self.uploadId = uploadId
@@ -69,6 +72,7 @@ public struct AbortMultipartUploadRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case uploadId
@@ -517,17 +521,20 @@ public struct CompleteMultipartUploadOutput: Codable, Equatable {
 
 public struct CompleteMultipartUploadRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var multipartUpload: CompletedMultipartUpload?
     public var requestPayer: RequestPayer?
     public var uploadId: MultipartUploadId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 multipartUpload: CompletedMultipartUpload? = nil,
                 requestPayer: RequestPayer? = nil,
                 uploadId: MultipartUploadId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.multipartUpload = multipartUpload
         self.requestPayer = requestPayer
@@ -536,6 +543,7 @@ public struct CompleteMultipartUploadRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case multipartUpload = "CompleteMultipartUpload"
         case requestPayer = "x-amz-request-payer"
@@ -678,6 +686,8 @@ public struct CopyObjectRequest: Codable, Equatable {
     public var copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm?
     public var copySourceSSECustomerKey: CopySourceSSECustomerKey?
     public var copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5?
+    public var expectedBucketOwner: AccountId?
+    public var expectedSourceBucketOwner: AccountId?
     public var expires: Expires?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -716,6 +726,8 @@ public struct CopyObjectRequest: Codable, Equatable {
                 copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm? = nil,
                 copySourceSSECustomerKey: CopySourceSSECustomerKey? = nil,
                 copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
+                expectedSourceBucketOwner: AccountId? = nil,
                 expires: Expires? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -753,6 +765,8 @@ public struct CopyObjectRequest: Codable, Equatable {
         self.copySourceSSECustomerAlgorithm = copySourceSSECustomerAlgorithm
         self.copySourceSSECustomerKey = copySourceSSECustomerKey
         self.copySourceSSECustomerKeyMD5 = copySourceSSECustomerKeyMD5
+        self.expectedBucketOwner = expectedBucketOwner
+        self.expectedSourceBucketOwner = expectedSourceBucketOwner
         self.expires = expires
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -793,6 +807,8 @@ public struct CopyObjectRequest: Codable, Equatable {
         case copySourceSSECustomerAlgorithm = "x-amz-copy-source-server-side-encryption-customer-algorithm"
         case copySourceSSECustomerKey = "x-amz-copy-source-server-side-encryption-customer-key"
         case copySourceSSECustomerKeyMD5 = "x-amz-copy-source-server-side-encryption-customer-key-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case expectedSourceBucketOwner = "x-amz-source-expected-bucket-owner"
         case expires = "Expires"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -1003,6 +1019,7 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
     public var contentType: ContentType?
+    public var expectedBucketOwner: AccountId?
     public var expires: Expires?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -1031,6 +1048,7 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
                 contentType: ContentType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 expires: Expires? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -1058,6 +1076,7 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
         self.contentType = contentType
+        self.expectedBucketOwner = expectedBucketOwner
         self.expires = expires
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -1088,6 +1107,7 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
         case contentEncoding = "Content-Encoding"
         case contentLanguage = "Content-Language"
         case contentType = "Content-Type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case expires = "Expires"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -1159,16 +1179,20 @@ public struct Delete: Codable, Equatable {
 
 public struct DeleteBucketAnalyticsConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: AnalyticsId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: AnalyticsId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
     }
 
@@ -1178,13 +1202,17 @@ public struct DeleteBucketAnalyticsConfigurationRequest: Codable, Equatable {
 
 public struct DeleteBucketCorsRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1193,13 +1221,17 @@ public struct DeleteBucketCorsRequest: Codable, Equatable {
 
 public struct DeleteBucketEncryptionRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1208,16 +1240,20 @@ public struct DeleteBucketEncryptionRequest: Codable, Equatable {
 
 public struct DeleteBucketInventoryConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: InventoryId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: InventoryId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
     }
 
@@ -1227,13 +1263,17 @@ public struct DeleteBucketInventoryConfigurationRequest: Codable, Equatable {
 
 public struct DeleteBucketLifecycleRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1242,17 +1282,40 @@ public struct DeleteBucketLifecycleRequest: Codable, Equatable {
 
 public struct DeleteBucketMetricsConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: MetricsId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: MetricsId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteBucketOwnershipControlsRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
+
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
+        self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1261,13 +1324,17 @@ public struct DeleteBucketMetricsConfigurationRequest: Codable, Equatable {
 
 public struct DeleteBucketPolicyRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1276,13 +1343,17 @@ public struct DeleteBucketPolicyRequest: Codable, Equatable {
 
 public struct DeleteBucketReplicationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1291,13 +1362,17 @@ public struct DeleteBucketReplicationRequest: Codable, Equatable {
 
 public struct DeleteBucketRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1306,13 +1381,17 @@ public struct DeleteBucketRequest: Codable, Equatable {
 
 public struct DeleteBucketTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1321,13 +1400,17 @@ public struct DeleteBucketTaggingRequest: Codable, Equatable {
 
 public struct DeleteBucketWebsiteRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1408,6 +1491,7 @@ public struct DeleteObjectOutput: Codable, Equatable {
 public struct DeleteObjectRequest: Codable, Equatable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
@@ -1415,12 +1499,14 @@ public struct DeleteObjectRequest: Codable, Equatable {
 
     public init(bucket: BucketName,
                 bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.mFA = mFA
         self.requestPayer = requestPayer
@@ -1430,6 +1516,7 @@ public struct DeleteObjectRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
@@ -1458,19 +1545,23 @@ public struct DeleteObjectTaggingOutput: Codable, Equatable {
 
 public struct DeleteObjectTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.versionId = versionId
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case versionId
     }
@@ -1507,17 +1598,20 @@ public struct DeleteObjectsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var delete: Delete
+    public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
     public init(bucket: BucketName,
                 bypassGovernanceRetention: BypassGovernanceRetention? = nil,
                 delete: Delete,
+                expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bucket = bucket
         self.bypassGovernanceRetention = bypassGovernanceRetention
         self.delete = delete
+        self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
         self.requestPayer = requestPayer
     }
@@ -1526,6 +1620,7 @@ public struct DeleteObjectsRequest: Codable, Equatable {
         case bucket = "Bucket"
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
         case delete = "Delete"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
     }
@@ -1537,13 +1632,17 @@ public struct DeleteObjectsRequest: Codable, Equatable {
 
 public struct DeletePublicAccessBlockRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1763,13 +1862,17 @@ public struct GetBucketAccelerateConfigurationOutput: Codable, Equatable {
 
 public struct GetBucketAccelerateConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1798,13 +1901,17 @@ public struct GetBucketAclOutput: Codable, Equatable {
 
 public struct GetBucketAclRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1829,16 +1936,20 @@ public struct GetBucketAnalyticsConfigurationOutput: Codable, Equatable {
 
 public struct GetBucketAnalyticsConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: AnalyticsId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: AnalyticsId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
     }
 
@@ -1863,13 +1974,17 @@ public struct GetBucketCorsOutput: Codable, Equatable {
 
 public struct GetBucketCorsRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1894,13 +2009,17 @@ public struct GetBucketEncryptionOutput: Codable, Equatable {
 
 public struct GetBucketEncryptionRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1925,16 +2044,20 @@ public struct GetBucketInventoryConfigurationOutput: Codable, Equatable {
 
 public struct GetBucketInventoryConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: InventoryId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: InventoryId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
     }
 
@@ -1959,13 +2082,17 @@ public struct GetBucketLifecycleConfigurationOutput: Codable, Equatable {
 
 public struct GetBucketLifecycleConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -1989,13 +2116,17 @@ public struct GetBucketLifecycleOutput: Codable, Equatable {
 
 public struct GetBucketLifecycleRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2019,13 +2150,17 @@ public struct GetBucketLocationOutput: Codable, Equatable {
 
 public struct GetBucketLocationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2050,13 +2185,17 @@ public struct GetBucketLoggingOutput: Codable, Equatable {
 
 public struct GetBucketLoggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2081,16 +2220,20 @@ public struct GetBucketMetricsConfigurationOutput: Codable, Equatable {
 
 public struct GetBucketMetricsConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: MetricsId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: MetricsId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
     }
 
@@ -2100,13 +2243,52 @@ public struct GetBucketMetricsConfigurationRequest: Codable, Equatable {
 
 public struct GetBucketNotificationConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetBucketOwnershipControlsOutput: Codable, Equatable {
+    public var ownershipControls: OwnershipControls?
+
+    public init(ownershipControls: OwnershipControls? = nil) {
+        self.ownershipControls = ownershipControls
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ownershipControls = "OwnershipControls"
+    }
+
+    public func validate() throws {
+        try ownershipControls?.validate()
+    }
+}
+
+public struct GetBucketOwnershipControlsRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
+
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
+        self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2130,13 +2312,17 @@ public struct GetBucketPolicyOutput: Codable, Equatable {
 
 public struct GetBucketPolicyRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2161,13 +2347,17 @@ public struct GetBucketPolicyStatusOutput: Codable, Equatable {
 
 public struct GetBucketPolicyStatusRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2192,13 +2382,17 @@ public struct GetBucketReplicationOutput: Codable, Equatable {
 
 public struct GetBucketReplicationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2222,13 +2416,17 @@ public struct GetBucketRequestPaymentOutput: Codable, Equatable {
 
 public struct GetBucketRequestPaymentRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2252,13 +2450,17 @@ public struct GetBucketTaggingOutput: Codable, Equatable {
 
 public struct GetBucketTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2286,13 +2488,17 @@ public struct GetBucketVersioningOutput: Codable, Equatable {
 
 public struct GetBucketVersioningRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2331,13 +2537,17 @@ public struct GetBucketWebsiteOutput: Codable, Equatable {
 
 public struct GetBucketWebsiteRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2370,15 +2580,18 @@ public struct GetObjectAclOutput: Codable, Equatable {
 
 public struct GetObjectAclRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
         self.versionId = versionId
@@ -2386,6 +2599,7 @@ public struct GetObjectAclRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case versionId
@@ -2414,15 +2628,18 @@ public struct GetObjectLegalHoldOutput: Codable, Equatable {
 
 public struct GetObjectLegalHoldRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
         self.versionId = versionId
@@ -2430,6 +2647,7 @@ public struct GetObjectLegalHoldRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case versionId
@@ -2458,13 +2676,17 @@ public struct GetObjectLockConfigurationOutput: Codable, Equatable {
 
 public struct GetObjectLockConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2608,6 +2830,7 @@ public struct GetObjectOutput: Codable, Equatable {
 
 public struct GetObjectRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
     public var ifModifiedSince: IfModifiedSince?
     public var ifNoneMatch: IfNoneMatch?
@@ -2628,6 +2851,7 @@ public struct GetObjectRequest: Codable, Equatable {
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 ifMatch: IfMatch? = nil,
                 ifModifiedSince: IfModifiedSince? = nil,
                 ifNoneMatch: IfNoneMatch? = nil,
@@ -2647,6 +2871,7 @@ public struct GetObjectRequest: Codable, Equatable {
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.ifMatch = ifMatch
         self.ifModifiedSince = ifModifiedSince
         self.ifNoneMatch = ifNoneMatch
@@ -2669,6 +2894,7 @@ public struct GetObjectRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case ifMatch = "If-Match"
         case ifModifiedSince = "If-Modified-Since"
         case ifNoneMatch = "If-None-Match"
@@ -2712,15 +2938,18 @@ public struct GetObjectRetentionOutput: Codable, Equatable {
 
 public struct GetObjectRetentionRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
         self.versionId = versionId
@@ -2728,6 +2957,7 @@ public struct GetObjectRetentionRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case versionId
@@ -2759,19 +2989,23 @@ public struct GetObjectTaggingOutput: Codable, Equatable {
 
 public struct GetObjectTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.versionId = versionId
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case versionId
     }
@@ -2802,19 +3036,23 @@ public struct GetObjectTorrentOutput: Codable, Equatable {
 
 public struct GetObjectTorrentRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
     }
@@ -2842,13 +3080,17 @@ public struct GetPublicAccessBlockOutput: Codable, Equatable {
 
 public struct GetPublicAccessBlockRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -2923,13 +3165,17 @@ public struct Grantee: Codable, Equatable {
 
 public struct HeadBucketRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
-    public init(bucket: BucketName) {
+    public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -3061,6 +3307,7 @@ public struct HeadObjectOutput: Codable, Equatable {
 
 public struct HeadObjectRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
     public var ifModifiedSince: IfModifiedSince?
     public var ifNoneMatch: IfNoneMatch?
@@ -3075,6 +3322,7 @@ public struct HeadObjectRequest: Codable, Equatable {
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 ifMatch: IfMatch? = nil,
                 ifModifiedSince: IfModifiedSince? = nil,
                 ifNoneMatch: IfNoneMatch? = nil,
@@ -3088,6 +3336,7 @@ public struct HeadObjectRequest: Codable, Equatable {
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.ifMatch = ifMatch
         self.ifModifiedSince = ifModifiedSince
         self.ifNoneMatch = ifNoneMatch
@@ -3104,6 +3353,7 @@ public struct HeadObjectRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case ifMatch = "If-Match"
         case ifModifiedSince = "If-Modified-Since"
         case ifNoneMatch = "If-None-Match"
@@ -3545,16 +3795,20 @@ public struct ListBucketAnalyticsConfigurationsOutput: Codable, Equatable {
 public struct ListBucketAnalyticsConfigurationsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var continuationToken: Token?
+    public var expectedBucketOwner: AccountId?
 
     public init(bucket: BucketName,
-                continuationToken: Token? = nil) {
+                continuationToken: Token? = nil,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
         self.continuationToken = continuationToken
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case continuationToken = "continuation-token"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -3591,16 +3845,20 @@ public struct ListBucketInventoryConfigurationsOutput: Codable, Equatable {
 public struct ListBucketInventoryConfigurationsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var continuationToken: Token?
+    public var expectedBucketOwner: AccountId?
 
     public init(bucket: BucketName,
-                continuationToken: Token? = nil) {
+                continuationToken: Token? = nil,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
         self.continuationToken = continuationToken
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case continuationToken = "continuation-token"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -3637,16 +3895,20 @@ public struct ListBucketMetricsConfigurationsOutput: Codable, Equatable {
 public struct ListBucketMetricsConfigurationsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var continuationToken: Token?
+    public var expectedBucketOwner: AccountId?
 
     public init(bucket: BucketName,
-                continuationToken: Token? = nil) {
+                continuationToken: Token? = nil,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
         self.continuationToken = continuationToken
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case continuationToken = "continuation-token"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -3736,6 +3998,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
+    public var expectedBucketOwner: AccountId?
     public var keyMarker: KeyMarker?
     public var maxUploads: MaxUploads?
     public var prefix: Prefix?
@@ -3744,6 +4007,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
     public init(bucket: BucketName,
                 delimiter: Delimiter? = nil,
                 encodingType: EncodingType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 keyMarker: KeyMarker? = nil,
                 maxUploads: MaxUploads? = nil,
                 prefix: Prefix? = nil,
@@ -3751,6 +4015,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
         self.bucket = bucket
         self.delimiter = delimiter
         self.encodingType = encodingType
+        self.expectedBucketOwner = expectedBucketOwner
         self.keyMarker = keyMarker
         self.maxUploads = maxUploads
         self.prefix = prefix
@@ -3761,6 +4026,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
         case bucket = "Bucket"
         case delimiter
         case encodingType = "encoding-type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case keyMarker = "key-marker"
         case maxUploads = "max-uploads"
         case prefix
@@ -3838,6 +4104,7 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
+    public var expectedBucketOwner: AccountId?
     public var keyMarker: KeyMarker?
     public var maxKeys: MaxKeys?
     public var prefix: Prefix?
@@ -3846,6 +4113,7 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
     public init(bucket: BucketName,
                 delimiter: Delimiter? = nil,
                 encodingType: EncodingType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 keyMarker: KeyMarker? = nil,
                 maxKeys: MaxKeys? = nil,
                 prefix: Prefix? = nil,
@@ -3853,6 +4121,7 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
         self.bucket = bucket
         self.delimiter = delimiter
         self.encodingType = encodingType
+        self.expectedBucketOwner = expectedBucketOwner
         self.keyMarker = keyMarker
         self.maxKeys = maxKeys
         self.prefix = prefix
@@ -3863,6 +4132,7 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
         case bucket = "Bucket"
         case delimiter
         case encodingType = "encoding-type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case keyMarker = "key-marker"
         case maxKeys = "max-keys"
         case prefix
@@ -3928,6 +4198,7 @@ public struct ListObjectsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
+    public var expectedBucketOwner: AccountId?
     public var marker: Marker?
     public var maxKeys: MaxKeys?
     public var prefix: Prefix?
@@ -3936,6 +4207,7 @@ public struct ListObjectsRequest: Codable, Equatable {
     public init(bucket: BucketName,
                 delimiter: Delimiter? = nil,
                 encodingType: EncodingType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 marker: Marker? = nil,
                 maxKeys: MaxKeys? = nil,
                 prefix: Prefix? = nil,
@@ -3943,6 +4215,7 @@ public struct ListObjectsRequest: Codable, Equatable {
         self.bucket = bucket
         self.delimiter = delimiter
         self.encodingType = encodingType
+        self.expectedBucketOwner = expectedBucketOwner
         self.marker = marker
         self.maxKeys = maxKeys
         self.prefix = prefix
@@ -3953,6 +4226,7 @@ public struct ListObjectsRequest: Codable, Equatable {
         case bucket = "Bucket"
         case delimiter
         case encodingType = "encoding-type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case marker
         case maxKeys = "max-keys"
         case prefix
@@ -4027,6 +4301,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
     public var continuationToken: Token?
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
+    public var expectedBucketOwner: AccountId?
     public var fetchOwner: FetchOwner?
     public var maxKeys: MaxKeys?
     public var prefix: Prefix?
@@ -4037,6 +4312,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
                 continuationToken: Token? = nil,
                 delimiter: Delimiter? = nil,
                 encodingType: EncodingType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 fetchOwner: FetchOwner? = nil,
                 maxKeys: MaxKeys? = nil,
                 prefix: Prefix? = nil,
@@ -4046,6 +4322,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
         self.continuationToken = continuationToken
         self.delimiter = delimiter
         self.encodingType = encodingType
+        self.expectedBucketOwner = expectedBucketOwner
         self.fetchOwner = fetchOwner
         self.maxKeys = maxKeys
         self.prefix = prefix
@@ -4058,6 +4335,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
         case continuationToken = "continuation-token"
         case delimiter
         case encodingType = "encoding-type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case fetchOwner = "fetch-owner"
         case maxKeys = "max-keys"
         case prefix
@@ -4141,6 +4419,7 @@ public struct ListPartsOutput: Codable, Equatable {
 
 public struct ListPartsRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var maxParts: MaxParts?
     public var partNumberMarker: PartNumberMarker?
@@ -4148,12 +4427,14 @@ public struct ListPartsRequest: Codable, Equatable {
     public var uploadId: MultipartUploadId
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 maxParts: MaxParts? = nil,
                 partNumberMarker: PartNumberMarker? = nil,
                 requestPayer: RequestPayer? = nil,
                 uploadId: MultipartUploadId) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.maxParts = maxParts
         self.partNumberMarker = partNumberMarker
@@ -4163,6 +4444,7 @@ public struct ListPartsRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case maxParts = "max-parts"
         case partNumberMarker = "part-number-marker"
@@ -4711,6 +4993,36 @@ public struct Owner: Codable, Equatable {
     }
 }
 
+public struct OwnershipControls: Codable, Equatable {
+    public var rules: OwnershipControlsRules
+
+    public init(rules: OwnershipControlsRules) {
+        self.rules = rules
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case rules = "Rule"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct OwnershipControlsRule: Codable, Equatable {
+    public var objectOwnership: ObjectOwnership
+
+    public init(objectOwnership: ObjectOwnership) {
+        self.objectOwnership = objectOwnership
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case objectOwnership = "ObjectOwnership"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ParquetInput: Codable, Equatable {
 
     public init() {
@@ -4831,16 +5143,20 @@ public struct PublicAccessBlockConfiguration: Codable, Equatable {
 public struct PutBucketAccelerateConfigurationRequest: Codable, Equatable {
     public var accelerateConfiguration: AccelerateConfiguration
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
 
     public init(accelerateConfiguration: AccelerateConfiguration,
-                bucket: BucketName) {
+                bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil) {
         self.accelerateConfiguration = accelerateConfiguration
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case accelerateConfiguration = "AccelerateConfiguration"
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -4852,6 +5168,7 @@ public struct PutBucketAclRequest: Codable, Equatable {
     public var aCL: BucketCannedACL?
     public var accessControlPolicy: AccessControlPolicy?
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -4861,6 +5178,7 @@ public struct PutBucketAclRequest: Codable, Equatable {
     public init(aCL: BucketCannedACL? = nil,
                 accessControlPolicy: AccessControlPolicy? = nil,
                 bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
@@ -4869,6 +5187,7 @@ public struct PutBucketAclRequest: Codable, Equatable {
         self.aCL = aCL
         self.accessControlPolicy = accessControlPolicy
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -4880,6 +5199,7 @@ public struct PutBucketAclRequest: Codable, Equatable {
         case aCL = "x-amz-acl"
         case accessControlPolicy = "AccessControlPolicy"
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -4895,19 +5215,23 @@ public struct PutBucketAclRequest: Codable, Equatable {
 public struct PutBucketAnalyticsConfigurationRequest: Codable, Equatable {
     public var analyticsConfiguration: AnalyticsConfiguration
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: AnalyticsId
 
     public init(analyticsConfiguration: AnalyticsConfiguration,
                 bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: AnalyticsId) {
         self.analyticsConfiguration = analyticsConfiguration
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
     }
 
     enum CodingKeys: String, CodingKey {
         case analyticsConfiguration = "AnalyticsConfiguration"
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
     }
 
@@ -4919,16 +5243,20 @@ public struct PutBucketAnalyticsConfigurationRequest: Codable, Equatable {
 public struct PutBucketCorsRequest: Codable, Equatable {
     public var bucket: BucketName
     public var cORSConfiguration: CORSConfiguration
+    public var expectedBucketOwner: AccountId?
 
     public init(bucket: BucketName,
-                cORSConfiguration: CORSConfiguration) {
+                cORSConfiguration: CORSConfiguration,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
         self.cORSConfiguration = cORSConfiguration
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case cORSConfiguration = "CORSConfiguration"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -4938,16 +5266,20 @@ public struct PutBucketCorsRequest: Codable, Equatable {
 
 public struct PutBucketEncryptionRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.serverSideEncryptionConfiguration = serverSideEncryptionConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case serverSideEncryptionConfiguration = "ServerSideEncryptionConfiguration"
     }
 
@@ -4958,19 +5290,23 @@ public struct PutBucketEncryptionRequest: Codable, Equatable {
 
 public struct PutBucketInventoryConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: InventoryId
     public var inventoryConfiguration: InventoryConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: InventoryId,
                 inventoryConfiguration: InventoryConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
         self.inventoryConfiguration = inventoryConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
         case inventoryConfiguration = "InventoryConfiguration"
     }
@@ -4982,16 +5318,20 @@ public struct PutBucketInventoryConfigurationRequest: Codable, Equatable {
 
 public struct PutBucketLifecycleConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var lifecycleConfiguration: BucketLifecycleConfiguration?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 lifecycleConfiguration: BucketLifecycleConfiguration? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.lifecycleConfiguration = lifecycleConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case lifecycleConfiguration = "LifecycleConfiguration"
     }
 
@@ -5002,16 +5342,20 @@ public struct PutBucketLifecycleConfigurationRequest: Codable, Equatable {
 
 public struct PutBucketLifecycleRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var lifecycleConfiguration: LifecycleConfiguration?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 lifecycleConfiguration: LifecycleConfiguration? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.lifecycleConfiguration = lifecycleConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case lifecycleConfiguration = "LifecycleConfiguration"
     }
 
@@ -5023,16 +5367,20 @@ public struct PutBucketLifecycleRequest: Codable, Equatable {
 public struct PutBucketLoggingRequest: Codable, Equatable {
     public var bucket: BucketName
     public var bucketLoggingStatus: BucketLoggingStatus
+    public var expectedBucketOwner: AccountId?
 
     public init(bucket: BucketName,
-                bucketLoggingStatus: BucketLoggingStatus) {
+                bucketLoggingStatus: BucketLoggingStatus,
+                expectedBucketOwner: AccountId? = nil) {
         self.bucket = bucket
         self.bucketLoggingStatus = bucketLoggingStatus
+        self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case bucketLoggingStatus = "BucketLoggingStatus"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
     public func validate() throws {
@@ -5042,19 +5390,23 @@ public struct PutBucketLoggingRequest: Codable, Equatable {
 
 public struct PutBucketMetricsConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var id: MetricsId
     public var metricsConfiguration: MetricsConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 id: MetricsId,
                 metricsConfiguration: MetricsConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.id = id
         self.metricsConfiguration = metricsConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case id
         case metricsConfiguration = "MetricsConfiguration"
     }
@@ -5066,16 +5418,20 @@ public struct PutBucketMetricsConfigurationRequest: Codable, Equatable {
 
 public struct PutBucketNotificationConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var notificationConfiguration: NotificationConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 notificationConfiguration: NotificationConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.notificationConfiguration = notificationConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case notificationConfiguration = "NotificationConfiguration"
     }
 
@@ -5086,16 +5442,20 @@ public struct PutBucketNotificationConfigurationRequest: Codable, Equatable {
 
 public struct PutBucketNotificationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var notificationConfiguration: NotificationConfigurationDeprecated
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 notificationConfiguration: NotificationConfigurationDeprecated) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.notificationConfiguration = notificationConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case notificationConfiguration = "NotificationConfiguration"
     }
 
@@ -5104,22 +5464,54 @@ public struct PutBucketNotificationRequest: Codable, Equatable {
     }
 }
 
+public struct PutBucketOwnershipControlsRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var contentMD5: ContentMD5?
+    public var expectedBucketOwner: AccountId?
+    public var ownershipControls: OwnershipControls
+
+    public init(bucket: BucketName,
+                contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
+                ownershipControls: OwnershipControls) {
+        self.bucket = bucket
+        self.contentMD5 = contentMD5
+        self.expectedBucketOwner = expectedBucketOwner
+        self.ownershipControls = ownershipControls
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case contentMD5 = "Content-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case ownershipControls = "OwnershipControls"
+    }
+
+    public func validate() throws {
+        try ownershipControls.validate()
+    }
+}
+
 public struct PutBucketPolicyRequest: Codable, Equatable {
     public var bucket: BucketName
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
+    public var expectedBucketOwner: AccountId?
     public var policy: Policy
 
     public init(bucket: BucketName,
                 confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 policy: Policy) {
         self.bucket = bucket
         self.confirmRemoveSelfBucketAccess = confirmRemoveSelfBucketAccess
+        self.expectedBucketOwner = expectedBucketOwner
         self.policy = policy
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case confirmRemoveSelfBucketAccess = "x-amz-confirm-remove-self-bucket-access"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case policy = "Policy"
     }
 
@@ -5129,19 +5521,23 @@ public struct PutBucketPolicyRequest: Codable, Equatable {
 
 public struct PutBucketReplicationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var replicationConfiguration: ReplicationConfiguration
     public var token: ObjectLockToken?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 replicationConfiguration: ReplicationConfiguration,
                 token: ObjectLockToken? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.replicationConfiguration = replicationConfiguration
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case replicationConfiguration = "ReplicationConfiguration"
         case token = "x-amz-bucket-object-lock-token"
     }
@@ -5153,16 +5549,20 @@ public struct PutBucketReplicationRequest: Codable, Equatable {
 
 public struct PutBucketRequestPaymentRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var requestPaymentConfiguration: RequestPaymentConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 requestPaymentConfiguration: RequestPaymentConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.requestPaymentConfiguration = requestPaymentConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPaymentConfiguration = "RequestPaymentConfiguration"
     }
 
@@ -5173,16 +5573,20 @@ public struct PutBucketRequestPaymentRequest: Codable, Equatable {
 
 public struct PutBucketTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var tagging: Tagging
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 tagging: Tagging) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.tagging = tagging
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case tagging = "Tagging"
     }
 
@@ -5193,19 +5597,23 @@ public struct PutBucketTaggingRequest: Codable, Equatable {
 
 public struct PutBucketVersioningRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
     public var versioningConfiguration: VersioningConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil,
                 versioningConfiguration: VersioningConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
         self.versioningConfiguration = versioningConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
         case versioningConfiguration = "VersioningConfiguration"
     }
@@ -5217,16 +5625,20 @@ public struct PutBucketVersioningRequest: Codable, Equatable {
 
 public struct PutBucketWebsiteRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var websiteConfiguration: WebsiteConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 websiteConfiguration: WebsiteConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.websiteConfiguration = websiteConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case websiteConfiguration = "WebsiteConfiguration"
     }
 
@@ -5254,6 +5666,7 @@ public struct PutObjectAclRequest: Codable, Equatable {
     public var aCL: ObjectCannedACL?
     public var accessControlPolicy: AccessControlPolicy?
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
     public var grantReadACP: GrantReadACP?
@@ -5266,6 +5679,7 @@ public struct PutObjectAclRequest: Codable, Equatable {
     public init(aCL: ObjectCannedACL? = nil,
                 accessControlPolicy: AccessControlPolicy? = nil,
                 bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
                 grantReadACP: GrantReadACP? = nil,
@@ -5277,6 +5691,7 @@ public struct PutObjectAclRequest: Codable, Equatable {
         self.aCL = aCL
         self.accessControlPolicy = accessControlPolicy
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
         self.grantReadACP = grantReadACP
@@ -5291,6 +5706,7 @@ public struct PutObjectAclRequest: Codable, Equatable {
         case aCL = "x-amz-acl"
         case accessControlPolicy = "AccessControlPolicy"
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
         case grantReadACP = "x-amz-grant-read-acp"
@@ -5324,17 +5740,20 @@ public struct PutObjectLegalHoldOutput: Codable, Equatable {
 
 public struct PutObjectLegalHoldRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var legalHold: ObjectLockLegalHold?
     public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 legalHold: ObjectLockLegalHold? = nil,
                 requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.legalHold = legalHold
         self.requestPayer = requestPayer
@@ -5343,6 +5762,7 @@ public struct PutObjectLegalHoldRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case legalHold = "LegalHold"
         case requestPayer = "x-amz-request-payer"
@@ -5372,15 +5792,18 @@ public struct PutObjectLockConfigurationOutput: Codable, Equatable {
 
 public struct PutObjectLockConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var objectLockConfiguration: ObjectLockConfiguration?
     public var requestPayer: RequestPayer?
     public var token: ObjectLockToken?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 objectLockConfiguration: ObjectLockConfiguration? = nil,
                 requestPayer: RequestPayer? = nil,
                 token: ObjectLockToken? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.objectLockConfiguration = objectLockConfiguration
         self.requestPayer = requestPayer
         self.token = token
@@ -5388,6 +5811,7 @@ public struct PutObjectLockConfigurationRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case objectLockConfiguration = "ObjectLockConfiguration"
         case requestPayer = "x-amz-request-payer"
         case token = "x-amz-bucket-object-lock-token"
@@ -5456,6 +5880,7 @@ public struct PutObjectRequest: Codable, Equatable {
     public var contentLength: ContentLength?
     public var contentMD5: ContentMD5?
     public var contentType: ContentType?
+    public var expectedBucketOwner: AccountId?
     public var expires: Expires?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -5487,6 +5912,7 @@ public struct PutObjectRequest: Codable, Equatable {
                 contentLength: ContentLength? = nil,
                 contentMD5: ContentMD5? = nil,
                 contentType: ContentType? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 expires: Expires? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -5517,6 +5943,7 @@ public struct PutObjectRequest: Codable, Equatable {
         self.contentLength = contentLength
         self.contentMD5 = contentMD5
         self.contentType = contentType
+        self.expectedBucketOwner = expectedBucketOwner
         self.expires = expires
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -5550,6 +5977,7 @@ public struct PutObjectRequest: Codable, Equatable {
         case contentLength = "Content-Length"
         case contentMD5 = "Content-MD5"
         case contentType = "Content-Type"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case expires = "Expires"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -5595,6 +6023,7 @@ public struct PutObjectRetentionOutput: Codable, Equatable {
 public struct PutObjectRetentionRequest: Codable, Equatable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var retention: ObjectLockRetention?
@@ -5602,12 +6031,14 @@ public struct PutObjectRetentionRequest: Codable, Equatable {
 
     public init(bucket: BucketName,
                 bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 retention: ObjectLockRetention? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
         self.retention = retention
@@ -5617,6 +6048,7 @@ public struct PutObjectRetentionRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case retention = "Retention"
@@ -5646,15 +6078,18 @@ public struct PutObjectTaggingOutput: Codable, Equatable {
 
 public struct PutObjectTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var tagging: Tagging
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 tagging: Tagging,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.tagging = tagging
         self.versionId = versionId
@@ -5662,6 +6097,7 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case tagging = "Tagging"
         case versionId
@@ -5675,16 +6111,20 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
 
 public struct PutPublicAccessBlockRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var publicAccessBlockConfiguration: PublicAccessBlockConfiguration
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 publicAccessBlockConfiguration: PublicAccessBlockConfiguration) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.publicAccessBlockConfiguration = publicAccessBlockConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case publicAccessBlockConfiguration = "PublicAccessBlockConfiguration"
     }
 
@@ -6006,17 +6446,20 @@ public struct RestoreObjectOutput: Codable, Equatable {
 
 public struct RestoreObjectRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var requestPayer: RequestPayer?
     public var restoreRequest: RestoreRequest?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 requestPayer: RequestPayer? = nil,
                 restoreRequest: RestoreRequest? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.requestPayer = requestPayer
         self.restoreRequest = restoreRequest
@@ -6025,6 +6468,7 @@ public struct RestoreObjectRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case requestPayer = "x-amz-request-payer"
         case restoreRequest = "RestoreRequest"
@@ -6305,6 +6749,7 @@ public struct SelectObjectContentOutput: Codable, Equatable {
 
 public struct SelectObjectContentRequest: Codable, Equatable {
     public var bucket: BucketName
+    public var expectedBucketOwner: AccountId?
     public var expression: Expression
     public var expressionType: ExpressionType
     public var inputSerialization: InputSerialization
@@ -6317,6 +6762,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
     public var scanRange: ScanRange?
 
     public init(bucket: BucketName,
+                expectedBucketOwner: AccountId? = nil,
                 expression: Expression,
                 expressionType: ExpressionType,
                 inputSerialization: InputSerialization,
@@ -6328,6 +6774,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
                 scanRange: ScanRange? = nil) {
         self.bucket = bucket
+        self.expectedBucketOwner = expectedBucketOwner
         self.expression = expression
         self.expressionType = expressionType
         self.inputSerialization = inputSerialization
@@ -6342,6 +6789,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case expression = "Expression"
         case expressionType = "ExpressionType"
         case inputSerialization = "InputSerialization"
@@ -6728,6 +7176,8 @@ public struct UploadPartCopyRequest: Codable, Equatable {
     public var copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm?
     public var copySourceSSECustomerKey: CopySourceSSECustomerKey?
     public var copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5?
+    public var expectedBucketOwner: AccountId?
+    public var expectedSourceBucketOwner: AccountId?
     public var key: ObjectKey
     public var partNumber: PartNumber
     public var requestPayer: RequestPayer?
@@ -6746,6 +7196,8 @@ public struct UploadPartCopyRequest: Codable, Equatable {
                 copySourceSSECustomerAlgorithm: CopySourceSSECustomerAlgorithm? = nil,
                 copySourceSSECustomerKey: CopySourceSSECustomerKey? = nil,
                 copySourceSSECustomerKeyMD5: CopySourceSSECustomerKeyMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
+                expectedSourceBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 partNumber: PartNumber,
                 requestPayer: RequestPayer? = nil,
@@ -6763,6 +7215,8 @@ public struct UploadPartCopyRequest: Codable, Equatable {
         self.copySourceSSECustomerAlgorithm = copySourceSSECustomerAlgorithm
         self.copySourceSSECustomerKey = copySourceSSECustomerKey
         self.copySourceSSECustomerKeyMD5 = copySourceSSECustomerKeyMD5
+        self.expectedBucketOwner = expectedBucketOwner
+        self.expectedSourceBucketOwner = expectedSourceBucketOwner
         self.key = key
         self.partNumber = partNumber
         self.requestPayer = requestPayer
@@ -6783,6 +7237,8 @@ public struct UploadPartCopyRequest: Codable, Equatable {
         case copySourceSSECustomerAlgorithm = "x-amz-copy-source-server-side-encryption-customer-algorithm"
         case copySourceSSECustomerKey = "x-amz-copy-source-server-side-encryption-customer-key"
         case copySourceSSECustomerKeyMD5 = "x-amz-copy-source-server-side-encryption-customer-key-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case expectedSourceBucketOwner = "x-amz-source-expected-bucket-owner"
         case key = "Key"
         case partNumber
         case requestPayer = "x-amz-request-payer"
@@ -6838,6 +7294,7 @@ public struct UploadPartRequest: Codable, Equatable {
     public var bucket: BucketName
     public var contentLength: ContentLength?
     public var contentMD5: ContentMD5?
+    public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
     public var partNumber: PartNumber
     public var requestPayer: RequestPayer?
@@ -6850,6 +7307,7 @@ public struct UploadPartRequest: Codable, Equatable {
                 bucket: BucketName,
                 contentLength: ContentLength? = nil,
                 contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
                 partNumber: PartNumber,
                 requestPayer: RequestPayer? = nil,
@@ -6861,6 +7319,7 @@ public struct UploadPartRequest: Codable, Equatable {
         self.bucket = bucket
         self.contentLength = contentLength
         self.contentMD5 = contentMD5
+        self.expectedBucketOwner = expectedBucketOwner
         self.key = key
         self.partNumber = partNumber
         self.requestPayer = requestPayer
@@ -6875,6 +7334,7 @@ public struct UploadPartRequest: Codable, Equatable {
         case bucket = "Bucket"
         case contentLength = "Content-Length"
         case contentMD5 = "Content-MD5"
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
         case partNumber
         case requestPayer = "x-amz-request-payer"

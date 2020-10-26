@@ -111,6 +111,7 @@ public typealias CapacityProviderFieldList = [CapacityProviderField]
  */
 public enum CapacityProviderStatus: String, Codable, CustomStringConvertible {
     case active = "ACTIVE"
+    case inactive = "INACTIVE"
 
     public var description: String {
         return rawValue
@@ -133,6 +134,21 @@ public typealias CapacityProviderStrategyItemBase = Int
  Type definition for the CapacityProviderStrategyItemWeight field.
  */
 public typealias CapacityProviderStrategyItemWeight = Int
+
+/**
+ Enumeration restricting the values of the CapacityProviderUpdateStatus field.
+ */
+public enum CapacityProviderUpdateStatus: String, Codable, CustomStringConvertible {
+    case deleteComplete = "DELETE_COMPLETE"
+    case deleteFailed = "DELETE_FAILED"
+    case deleteInProgress = "DELETE_IN_PROGRESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CapacityProviderUpdateStatus = .deleteComplete
+}
 
 /**
  Type definition for the CapacityProviders field.

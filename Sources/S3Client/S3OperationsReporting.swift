@@ -39,6 +39,7 @@ public struct S3OperationsReporting {
     let deleteBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -60,6 +61,7 @@ public struct S3OperationsReporting {
     let getBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketNotification: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketNotificationConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketPolicyStatus: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -98,6 +100,7 @@ public struct S3OperationsReporting {
     let putBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketNotification: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketNotificationConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketRequestPayment: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -141,6 +144,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .deleteBucketLifecycle, configuration: reportingConfiguration)
         self.deleteBucketMetricsConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteBucketMetricsConfiguration, configuration: reportingConfiguration)
+        self.deleteBucketOwnershipControls = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteBucketOwnershipControls, configuration: reportingConfiguration)
         self.deleteBucketPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteBucketPolicy, configuration: reportingConfiguration)
         self.deleteBucketReplication = StandardSmokeAWSOperationReporting(
@@ -183,6 +188,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .getBucketNotification, configuration: reportingConfiguration)
         self.getBucketNotificationConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getBucketNotificationConfiguration, configuration: reportingConfiguration)
+        self.getBucketOwnershipControls = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getBucketOwnershipControls, configuration: reportingConfiguration)
         self.getBucketPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getBucketPolicy, configuration: reportingConfiguration)
         self.getBucketPolicyStatus = StandardSmokeAWSOperationReporting(
@@ -259,6 +266,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .putBucketNotification, configuration: reportingConfiguration)
         self.putBucketNotificationConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putBucketNotificationConfiguration, configuration: reportingConfiguration)
+        self.putBucketOwnershipControls = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putBucketOwnershipControls, configuration: reportingConfiguration)
         self.putBucketPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putBucketPolicy, configuration: reportingConfiguration)
         self.putBucketReplication = StandardSmokeAWSOperationReporting(
