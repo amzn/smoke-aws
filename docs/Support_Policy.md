@@ -33,12 +33,12 @@ Following these rules, the support level for different Swift Toolchain versions 
 
 # Runtime Support
 
-SmokeAWS will provide support for the following runtimes, verifying this support using continuous integration of all changes for these runtimes.  Verification of support through continuous integration for each of these runtimes will be for five years from their release, unless otherwise stated-
-1. **Ubuntu 16.04**: Support to be removed after April, 2021.
-2. **Ubuntu 18.04**: Support to be removed after April, 2023.
-3. **Ubuntu 20.04**: Support to be removed after April, 2025.
-4. **Amazon Linux 2**: Support to be removed after June, 2023.
-5. **CentOS 8**: Support to be removed after November, 2024.
+SmokeAWS will provide support for the following runtimes, verifying this support using continuous integration of all changes for these runtimes.  Verification of support through continuous integration for each of these runtimes will occur for five years from their release, unless otherwise stated-
+1. **Ubuntu 16.04**: CI verification to be removed after April, 2021.
+2. **Ubuntu 18.04**: CI verification to be removed after April, 2023.
+3. **Ubuntu 20.04**: CI verification to be removed after April, 2025.
+4. **Amazon Linux 2**: CI verification to be removed after June, 2023.
+5. **CentOS 8**: CI verification to be removed after November, 2024.
 
 # Development Support
 
@@ -48,7 +48,7 @@ Following these rules, the support level for different macOS versions are-
 
 SmokeAWS 2.x
 * when compiling under Swift 5.2, ***macOS Catalina (10.15)*** or higher is required[1]
-* when compiling under Swift 5.1 or Swift 5.0, ***macOS High Sierra (10.13)*** or higher is required
+* when compiling under Swift 5.1, ***macOS High Sierra (10.13)*** or higher is required
 
 SmokeAWS 1.x
 * ***macOS Sierra (10.12)*** or higher is required
