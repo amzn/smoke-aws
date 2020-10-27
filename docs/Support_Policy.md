@@ -1,5 +1,5 @@
 ---
-date: 2020-04-26 13:00
+date: 2020-10-26 16:00
 description: Support Policy for SmokeAWS.
 tags: support policy
 ---
@@ -27,15 +27,18 @@ Following these rules, the support level for different Swift Toolchain versions 
 1. **Swift 4.0 and earlier**: No support.
 2. **Swift 4.1**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
 3. **Swift 4.2**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
-4. **Swift 5.0**: Supported for SmokeAWS 1.x and 2.x. Support to be removed after 24th September, 2020.
+4. **Swift 5.0**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
 5. **Swift 5.1**: Supported for SmokeAWS 1.x and 2.x.
 6. **Swift 5.2**: Supported for SmokeAWS 1.x and 2.x.
 
 # Runtime Support
 
-SmokeAWS will provide support for the following runtimes, verifying this support using continuous integration of all changes for these runtimes-
-1. Ubuntu 16.04
-2. Ubuntu 18.04
+SmokeAWS will provide support for the following runtimes, verifying this support using continuous integration of all changes for these runtimes.  Verification of support through continuous integration for each of these runtimes will be for five years from their release, unless otherwise stated-
+1. **Ubuntu 16.04**: Support to be removed after April, 2021.
+2. **Ubuntu 18.04**: Support to be removed after April, 2023.
+3. **Ubuntu 20.04**: Support to be removed after April, 2025.
+4. **Amazon Linux 2**: Support to be removed after June, 2023.
+5. **CentOS 8**: Support to be removed after November, 2024.
 
 # Development Support
 
