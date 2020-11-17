@@ -5,27 +5,33 @@ matrix:
       dist: xenial
       sudo: required
       services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.3.1-bionic ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.3.1-xenial ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.3.1-focal ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.3.1-amazonlinux2 ONLY_RUN_SWIFT_LINT=no USE_APT_GET=no
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE_TAG=swift:5.3.1-centos8 ONLY_RUN_SWIFT_LINT=no USE_APT_GET=no
+
+    - os: linux
+      dist: xenial
+      sudo: required
+      services: docker
       env: DOCKER_IMAGE_TAG=swift:5.2.5-bionic ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
-    - os: linux
-      dist: xenial
-      sudo: required
-      services: docker
-      env: DOCKER_IMAGE_TAG=swift:5.2.5-xenial ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
-    - os: linux
-      dist: xenial
-      sudo: required
-      services: docker
-      env: DOCKER_IMAGE_TAG=swift:5.2.5-focal ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
-    - os: linux
-      dist: xenial
-      sudo: required
-      services: docker
-      env: DOCKER_IMAGE_TAG=swift:5.2.5-amazonlinux2 ONLY_RUN_SWIFT_LINT=no USE_APT_GET=no
-    - os: linux
-      dist: xenial
-      sudo: required
-      services: docker
-      env: DOCKER_IMAGE_TAG=swift:5.2.5-centos8 ONLY_RUN_SWIFT_LINT=no USE_APT_GET=no
 
     - os: linux
       dist: xenial
