@@ -183,6 +183,11 @@ public typealias BatchGetResponseMap = [TableName: ItemList]
 public typealias BatchWriteItemRequestMap = [TableName: WriteRequests]
 
 /**
+ Type definition for the BilledSizeBytes field.
+ */
+public typealias BilledSizeBytes = Int
+
+/**
  Enumeration restricting the values of the BillingMode field.
  */
 public enum BillingMode: String, Codable, CustomStringConvertible {
@@ -225,6 +230,11 @@ public typealias CancellationReasonList = [CancellationReason]
  Type definition for the ClientRequestToken field.
  */
 public typealias ClientRequestToken = String
+
+/**
+ Type definition for the ClientToken field.
+ */
+public typealias ClientToken = String
 
 /**
  Type definition for the Code field.
@@ -381,6 +391,70 @@ public typealias ExceptionName = String
 public typealias ExpectedAttributeMap = [AttributeName: ExpectedAttributeValue]
 
 /**
+ Type definition for the ExportArn field.
+ */
+public typealias ExportArn = String
+
+/**
+ Type definition for the ExportEndTime field.
+ */
+public typealias ExportEndTime = String
+
+/**
+ Enumeration restricting the values of the ExportFormat field.
+ */
+public enum ExportFormat: String, Codable, CustomStringConvertible {
+    case dynamodbJson = "DYNAMODB_JSON"
+    case ion = "ION"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExportFormat = .dynamodbJson
+}
+
+/**
+ Type definition for the ExportManifest field.
+ */
+public typealias ExportManifest = String
+
+/**
+ Type definition for the ExportNextToken field.
+ */
+public typealias ExportNextToken = String
+
+/**
+ Type definition for the ExportStartTime field.
+ */
+public typealias ExportStartTime = String
+
+/**
+ Enumeration restricting the values of the ExportStatus field.
+ */
+public enum ExportStatus: String, Codable, CustomStringConvertible {
+    case completed = "COMPLETED"
+    case failed = "FAILED"
+    case inProgress = "IN_PROGRESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExportStatus = .completed
+}
+
+/**
+ Type definition for the ExportSummaries field.
+ */
+public typealias ExportSummaries = [ExportSummary]
+
+/**
+ Type definition for the ExportTime field.
+ */
+public typealias ExportTime = String
+
+/**
  Type definition for the ExpressionAttributeNameMap field.
  */
 public typealias ExpressionAttributeNameMap = [ExpressionAttributeNameVariable: AttributeName]
@@ -399,6 +473,16 @@ public typealias ExpressionAttributeValueMap = [ExpressionAttributeValueVariable
  Type definition for the ExpressionAttributeValueVariable field.
  */
 public typealias ExpressionAttributeValueVariable = String
+
+/**
+ Type definition for the FailureCode field.
+ */
+public typealias FailureCode = String
+
+/**
+ Type definition for the FailureMessage field.
+ */
+public typealias FailureMessage = String
 
 /**
  Type definition for the FilterConditionMap field.
@@ -602,6 +686,11 @@ public typealias ListAttributeValue = [AttributeValue]
 public typealias ListContributorInsightsLimit = Int
 
 /**
+ Type definition for the ListExportsMaxLimit field.
+ */
+public typealias ListExportsMaxLimit = Int
+
+/**
  Type definition for the ListTablesInputLimit field.
  */
 public typealias ListTablesInputLimit = Int
@@ -788,6 +877,7 @@ public enum ReplicaStatus: String, Codable, CustomStringConvertible {
     case creating = "CREATING"
     case creationFailed = "CREATION_FAILED"
     case deleting = "DELETING"
+    case inaccessibleEncryptionCredentials = "INACCESSIBLE_ENCRYPTION_CREDENTIALS"
     case regionDisabled = "REGION_DISABLED"
     case updating = "UPDATING"
 
@@ -887,6 +977,40 @@ public enum ReturnValuesOnConditionCheckFailure: String, Codable, CustomStringCo
     
     public static let __default: ReturnValuesOnConditionCheckFailure = .allOld
 }
+
+/**
+ Type definition for the S3Bucket field.
+ */
+public typealias S3Bucket = String
+
+/**
+ Type definition for the S3BucketOwner field.
+ */
+public typealias S3BucketOwner = String
+
+/**
+ Type definition for the S3Prefix field.
+ */
+public typealias S3Prefix = String
+
+/**
+ Enumeration restricting the values of the S3SseAlgorithm field.
+ */
+public enum S3SseAlgorithm: String, Codable, CustomStringConvertible {
+    case aes256 = "AES256"
+    case kms = "KMS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: S3SseAlgorithm = .aes256
+}
+
+/**
+ Type definition for the S3SseKmsKeyId field.
+ */
+public typealias S3SseKmsKeyId = String
 
 /**
  Type definition for the SSEEnabled field.
@@ -1256,6 +1380,18 @@ extension DynamoDBModel.BackupsInputLimit {
 }
 
 /**
+ Validation for the BilledSizeBytes field.
+*/
+extension DynamoDBModel.BilledSizeBytes {
+    public func validateAsBilledSizeBytes() throws {
+        if self < 0 {
+            throw DynamoDBError.validationError(reason: "The provided value to BilledSizeBytes violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
  Validation for the CancellationReasonList field.
 */
 extension Array where Element == DynamoDBModel.CancellationReason {
@@ -1294,6 +1430,21 @@ extension DynamoDBModel.ContributorInsightsRule {
             matchingRange == startIndex..<endIndex else {
                 throw DynamoDBError.validationError(
                     reason: "The provided value to ContributorInsightsRule violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ExportArn field.
+*/
+extension DynamoDBModel.ExportArn {
+    public func validateAsExportArn() throws {
+        if self.count < 37 {
+            throw DynamoDBError.validationError(reason: "The provided value to ExportArn violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw DynamoDBError.validationError(reason: "The provided value to ExportArn violated the maximum length constraint.")
         }
     }
 }
@@ -1426,6 +1577,21 @@ extension DynamoDBModel.ListContributorInsightsLimit {
 
         if self > 100 {
             throw DynamoDBError.validationError(reason: "The provided value to ListContributorInsightsLimit violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ListExportsMaxLimit field.
+*/
+extension DynamoDBModel.ListExportsMaxLimit {
+    public func validateAsListExportsMaxLimit() throws {
+        if self < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to ListExportsMaxLimit violated the minimum range constraint.")
+        }
+
+        if self > 25 {
+            throw DynamoDBError.validationError(reason: "The provided value to ListExportsMaxLimit violated the maximum range constraint.")
         }
     }
 }
@@ -1588,6 +1754,21 @@ extension DynamoDBModel.ResourceArnString {
 
         if self.count > 1283 {
             throw DynamoDBError.validationError(reason: "The provided value to ResourceArnString violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the S3SseKmsKeyId field.
+*/
+extension DynamoDBModel.S3SseKmsKeyId {
+    public func validateAsS3SseKmsKeyId() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to S3SseKmsKeyId violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw DynamoDBError.validationError(reason: "The provided value to S3SseKmsKeyId violated the maximum length constraint.")
         }
     }
 }

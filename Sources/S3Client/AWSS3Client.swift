@@ -776,6 +776,73 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     }
 
     /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/{Bucket}?intelligent-tiering",
+            httpMethod: .DELETE,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    public func deleteBucketIntelligentTieringConfigurationSync(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DeleteBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1939,6 +2006,76 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     }
 
     /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: The GetBucketIntelligentTieringConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetBucketIntelligentTieringConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    public func getBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (Result<S3Model.GetBucketIntelligentTieringConfigurationOutput, S3Error>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/{Bucket}?intelligent-tiering",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketIntelligentTieringConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketIntelligentTieringConfigurationSync(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest) throws -> S3Model.GetBucketIntelligentTieringConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3066,7 +3203,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
          - completion: The GetObjectOutput object or an error will be passed to this 
            callback when the operation is complete. The GetObjectOutput
            object will be validated before being returned to caller.
-           The possible errors are: noSuchKey.
+           The possible errors are: invalidObjectState, noSuchKey.
      */
     public func getObjectAsync(
             input: S3Model.GetObjectRequest, 
@@ -3100,7 +3237,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
          - input: The validated GetObjectRequest object being passed to this operation.
      - Returns: The GetObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: noSuchKey.
+     - Throws: invalidObjectState, noSuchKey.
      */
     public func getObjectSync(
             input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput {
@@ -3822,6 +3959,76 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
         do {
             return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/{Bucket}?analytics",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+         - completion: The ListBucketIntelligentTieringConfigurationsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListBucketIntelligentTieringConfigurationsOutput
+           object will be validated before being returned to caller.
+     */
+    public func listBucketIntelligentTieringConfigurationsAsync(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest, 
+            completion: @escaping (Result<S3Model.ListBucketIntelligentTieringConfigurationsOutput, S3Error>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBucketIntelligentTieringConfigurations.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBucketIntelligentTieringConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBucketIntelligentTieringConfigurationsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/{Bucket}?intelligent-tiering",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketIntelligentTieringConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBucketIntelligentTieringConfigurationsSync(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) throws -> S3Model.ListBucketIntelligentTieringConfigurationsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBucketIntelligentTieringConfigurations.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBucketIntelligentTieringConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBucketIntelligentTieringConfigurationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
                 httpMethod: .GET,
                 input: requestInput,
                 invocationContext: invocationContext,
@@ -4713,6 +4920,73 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
                 endpointPath: "/{Bucket}?encryption",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func putBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/{Bucket}?intelligent-tiering",
+            httpMethod: .PUT,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketIntelligentTieringConfigurationSync(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
                 httpMethod: .PUT,
                 input: requestInput,
                 invocationContext: invocationContext,

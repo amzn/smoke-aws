@@ -238,6 +238,19 @@ extension GetBucketEncryptionOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetBucketIntelligentTieringConfiguration operation in a HTTP client.
+ */
+extension GetBucketIntelligentTieringConfigurationOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetBucketIntelligentTieringConfigurationOutput
+    public typealias HeadersType = GetBucketIntelligentTieringConfigurationOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetBucketIntelligentTieringConfigurationOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetBucketInventoryConfiguration operation in a HTTP client.
  */
 extension GetBucketInventoryConfigurationOutput: HTTPResponseOutputProtocol {
@@ -621,6 +634,19 @@ extension ListBucketAnalyticsConfigurationsOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListBucketAnalyticsConfigurationsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListBucketIntelligentTieringConfigurations operation in a HTTP client.
+ */
+extension ListBucketIntelligentTieringConfigurationsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListBucketIntelligentTieringConfigurationsOutput
+    public typealias HeadersType = ListBucketIntelligentTieringConfigurationsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListBucketIntelligentTieringConfigurationsOutput {
         return try bodyDecodableProvider()
     }
 }

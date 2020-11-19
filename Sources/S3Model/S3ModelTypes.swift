@@ -100,6 +100,20 @@ public enum AnalyticsS3ExportFileFormat: String, Codable, CustomStringConvertibl
 }
 
 /**
+ Enumeration restricting the values of the ArchiveStatus field.
+ */
+public enum ArchiveStatus: String, Codable, CustomStringConvertible {
+    case archiveAccess = "ARCHIVE_ACCESS"
+    case deepArchiveAccess = "DEEP_ARCHIVE_ACCESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ArchiveStatus = .archiveAccess
+}
+
+/**
  Type definition for the Body field.
  */
 public typealias Body = Data
@@ -710,6 +724,49 @@ public typealias IfUnmodifiedSince = String
  Type definition for the Initiated field.
  */
 public typealias Initiated = String
+
+/**
+ Enumeration restricting the values of the IntelligentTieringAccessTier field.
+ */
+public enum IntelligentTieringAccessTier: String, Codable, CustomStringConvertible {
+    case archiveAccess = "ARCHIVE_ACCESS"
+    case deepArchiveAccess = "DEEP_ARCHIVE_ACCESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IntelligentTieringAccessTier = .archiveAccess
+}
+
+/**
+ Type definition for the IntelligentTieringConfigurationList field.
+ */
+public typealias IntelligentTieringConfigurationList = [IntelligentTieringConfiguration]
+
+/**
+ Type definition for the IntelligentTieringDays field.
+ */
+public typealias IntelligentTieringDays = Int
+
+/**
+ Type definition for the IntelligentTieringId field.
+ */
+public typealias IntelligentTieringId = String
+
+/**
+ Enumeration restricting the values of the IntelligentTieringStatus field.
+ */
+public enum IntelligentTieringStatus: String, Codable, CustomStringConvertible {
+    case disabled = "Disabled"
+    case enabled = "Enabled"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IntelligentTieringStatus = .disabled
+}
 
 /**
  Type definition for the InventoryConfigurationList field.
@@ -1692,6 +1749,11 @@ public enum Tier: String, Codable, CustomStringConvertible {
     
     public static let __default: Tier = .bulk
 }
+
+/**
+ Type definition for the TieringList field.
+ */
+public typealias TieringList = [Tiering]
 
 /**
  Type definition for the Token field.

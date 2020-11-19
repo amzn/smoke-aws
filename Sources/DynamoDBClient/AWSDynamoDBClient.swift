@@ -983,6 +983,76 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     }
 
     /**
+     Invokes the DescribeExport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+         - completion: The DescribeExportOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportOutput
+           object will be validated before being returned to caller.
+           The possible errors are: exportNotFound, internalServer, limitExceeded.
+     */
+    public func describeExportAsync(
+            input: DynamoDBModel.DescribeExportInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeExportOutput, DynamoDBError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeExport.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExport,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeExportOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeExport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+     - Returns: The DescribeExportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportNotFound, internalServer, limitExceeded.
+     */
+    public func describeExportSync(
+            input: DynamoDBModel.DescribeExportInput) throws -> DynamoDBModel.DescribeExportOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeExport.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExport,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeExportOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeGlobalTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1403,6 +1473,76 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     }
 
     /**
+     Invokes the ExportTableToPointInTime operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+         - completion: The ExportTableToPointInTimeOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExportTableToPointInTimeOutput
+           object will be validated before being returned to caller.
+           The possible errors are: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    public func exportTableToPointInTimeAsync(
+            input: DynamoDBModel.ExportTableToPointInTimeInput, 
+            completion: @escaping (Result<DynamoDBModel.ExportTableToPointInTimeOutput, DynamoDBError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.exportTableToPointInTime.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.exportTableToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExportTableToPointInTimeOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ExportTableToPointInTime operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+     - Returns: The ExportTableToPointInTimeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    public func exportTableToPointInTimeSync(
+            input: DynamoDBModel.ExportTableToPointInTimeInput) throws -> DynamoDBModel.ExportTableToPointInTimeOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.exportTableToPointInTime.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.exportTableToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExportTableToPointInTimeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetItem operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1597,6 +1737,76 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listContributorInsights,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExports operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+         - completion: The ListExportsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListExportsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded.
+     */
+    public func listExportsAsync(
+            input: DynamoDBModel.ListExportsInput, 
+            completion: @escaping (Result<DynamoDBModel.ListExportsOutput, DynamoDBError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listExports.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExports,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExportsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListExports operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+     - Returns: The ListExportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded.
+     */
+    public func listExportsSync(
+            input: DynamoDBModel.ListExportsInput) throws -> DynamoDBModel.ListExportsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listExports.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExports,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExportsOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(

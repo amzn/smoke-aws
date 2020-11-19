@@ -47,6 +47,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let deleteBucketCorsSyncOverride: DeleteBucketCorsSyncType?
     let deleteBucketEncryptionAsyncOverride: DeleteBucketEncryptionAsyncType?
     let deleteBucketEncryptionSyncOverride: DeleteBucketEncryptionSyncType?
+    let deleteBucketIntelligentTieringConfigurationAsyncOverride: DeleteBucketIntelligentTieringConfigurationAsyncType?
+    let deleteBucketIntelligentTieringConfigurationSyncOverride: DeleteBucketIntelligentTieringConfigurationSyncType?
     let deleteBucketInventoryConfigurationAsyncOverride: DeleteBucketInventoryConfigurationAsyncType?
     let deleteBucketInventoryConfigurationSyncOverride: DeleteBucketInventoryConfigurationSyncType?
     let deleteBucketLifecycleAsyncOverride: DeleteBucketLifecycleAsyncType?
@@ -81,6 +83,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let getBucketCorsSyncOverride: GetBucketCorsSyncType?
     let getBucketEncryptionAsyncOverride: GetBucketEncryptionAsyncType?
     let getBucketEncryptionSyncOverride: GetBucketEncryptionSyncType?
+    let getBucketIntelligentTieringConfigurationAsyncOverride: GetBucketIntelligentTieringConfigurationAsyncType?
+    let getBucketIntelligentTieringConfigurationSyncOverride: GetBucketIntelligentTieringConfigurationSyncType?
     let getBucketInventoryConfigurationAsyncOverride: GetBucketInventoryConfigurationAsyncType?
     let getBucketInventoryConfigurationSyncOverride: GetBucketInventoryConfigurationSyncType?
     let getBucketLifecycleAsyncOverride: GetBucketLifecycleAsyncType?
@@ -135,6 +139,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let headObjectSyncOverride: HeadObjectSyncType?
     let listBucketAnalyticsConfigurationsAsyncOverride: ListBucketAnalyticsConfigurationsAsyncType?
     let listBucketAnalyticsConfigurationsSyncOverride: ListBucketAnalyticsConfigurationsSyncType?
+    let listBucketIntelligentTieringConfigurationsAsyncOverride: ListBucketIntelligentTieringConfigurationsAsyncType?
+    let listBucketIntelligentTieringConfigurationsSyncOverride: ListBucketIntelligentTieringConfigurationsSyncType?
     let listBucketInventoryConfigurationsAsyncOverride: ListBucketInventoryConfigurationsAsyncType?
     let listBucketInventoryConfigurationsSyncOverride: ListBucketInventoryConfigurationsSyncType?
     let listBucketMetricsConfigurationsAsyncOverride: ListBucketMetricsConfigurationsAsyncType?
@@ -161,6 +167,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let putBucketCorsSyncOverride: PutBucketCorsSyncType?
     let putBucketEncryptionAsyncOverride: PutBucketEncryptionAsyncType?
     let putBucketEncryptionSyncOverride: PutBucketEncryptionSyncType?
+    let putBucketIntelligentTieringConfigurationAsyncOverride: PutBucketIntelligentTieringConfigurationAsyncType?
+    let putBucketIntelligentTieringConfigurationSyncOverride: PutBucketIntelligentTieringConfigurationSyncType?
     let putBucketInventoryConfigurationAsyncOverride: PutBucketInventoryConfigurationAsyncType?
     let putBucketInventoryConfigurationSyncOverride: PutBucketInventoryConfigurationSyncType?
     let putBucketLifecycleAsyncOverride: PutBucketLifecycleAsyncType?
@@ -235,6 +243,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             deleteBucketCorsSync: DeleteBucketCorsSyncType? = nil,
             deleteBucketEncryptionAsync: DeleteBucketEncryptionAsyncType? = nil,
             deleteBucketEncryptionSync: DeleteBucketEncryptionSyncType? = nil,
+            deleteBucketIntelligentTieringConfigurationAsync: DeleteBucketIntelligentTieringConfigurationAsyncType? = nil,
+            deleteBucketIntelligentTieringConfigurationSync: DeleteBucketIntelligentTieringConfigurationSyncType? = nil,
             deleteBucketInventoryConfigurationAsync: DeleteBucketInventoryConfigurationAsyncType? = nil,
             deleteBucketInventoryConfigurationSync: DeleteBucketInventoryConfigurationSyncType? = nil,
             deleteBucketLifecycleAsync: DeleteBucketLifecycleAsyncType? = nil,
@@ -269,6 +279,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             getBucketCorsSync: GetBucketCorsSyncType? = nil,
             getBucketEncryptionAsync: GetBucketEncryptionAsyncType? = nil,
             getBucketEncryptionSync: GetBucketEncryptionSyncType? = nil,
+            getBucketIntelligentTieringConfigurationAsync: GetBucketIntelligentTieringConfigurationAsyncType? = nil,
+            getBucketIntelligentTieringConfigurationSync: GetBucketIntelligentTieringConfigurationSyncType? = nil,
             getBucketInventoryConfigurationAsync: GetBucketInventoryConfigurationAsyncType? = nil,
             getBucketInventoryConfigurationSync: GetBucketInventoryConfigurationSyncType? = nil,
             getBucketLifecycleAsync: GetBucketLifecycleAsyncType? = nil,
@@ -323,6 +335,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             headObjectSync: HeadObjectSyncType? = nil,
             listBucketAnalyticsConfigurationsAsync: ListBucketAnalyticsConfigurationsAsyncType? = nil,
             listBucketAnalyticsConfigurationsSync: ListBucketAnalyticsConfigurationsSyncType? = nil,
+            listBucketIntelligentTieringConfigurationsAsync: ListBucketIntelligentTieringConfigurationsAsyncType? = nil,
+            listBucketIntelligentTieringConfigurationsSync: ListBucketIntelligentTieringConfigurationsSyncType? = nil,
             listBucketInventoryConfigurationsAsync: ListBucketInventoryConfigurationsAsyncType? = nil,
             listBucketInventoryConfigurationsSync: ListBucketInventoryConfigurationsSyncType? = nil,
             listBucketMetricsConfigurationsAsync: ListBucketMetricsConfigurationsAsyncType? = nil,
@@ -349,6 +363,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             putBucketCorsSync: PutBucketCorsSyncType? = nil,
             putBucketEncryptionAsync: PutBucketEncryptionAsyncType? = nil,
             putBucketEncryptionSync: PutBucketEncryptionSyncType? = nil,
+            putBucketIntelligentTieringConfigurationAsync: PutBucketIntelligentTieringConfigurationAsyncType? = nil,
+            putBucketIntelligentTieringConfigurationSync: PutBucketIntelligentTieringConfigurationSyncType? = nil,
             putBucketInventoryConfigurationAsync: PutBucketInventoryConfigurationAsyncType? = nil,
             putBucketInventoryConfigurationSync: PutBucketInventoryConfigurationSyncType? = nil,
             putBucketLifecycleAsync: PutBucketLifecycleAsyncType? = nil,
@@ -418,6 +434,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.deleteBucketCorsSyncOverride = deleteBucketCorsSync
         self.deleteBucketEncryptionAsyncOverride = deleteBucketEncryptionAsync
         self.deleteBucketEncryptionSyncOverride = deleteBucketEncryptionSync
+        self.deleteBucketIntelligentTieringConfigurationAsyncOverride = deleteBucketIntelligentTieringConfigurationAsync
+        self.deleteBucketIntelligentTieringConfigurationSyncOverride = deleteBucketIntelligentTieringConfigurationSync
         self.deleteBucketInventoryConfigurationAsyncOverride = deleteBucketInventoryConfigurationAsync
         self.deleteBucketInventoryConfigurationSyncOverride = deleteBucketInventoryConfigurationSync
         self.deleteBucketLifecycleAsyncOverride = deleteBucketLifecycleAsync
@@ -452,6 +470,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.getBucketCorsSyncOverride = getBucketCorsSync
         self.getBucketEncryptionAsyncOverride = getBucketEncryptionAsync
         self.getBucketEncryptionSyncOverride = getBucketEncryptionSync
+        self.getBucketIntelligentTieringConfigurationAsyncOverride = getBucketIntelligentTieringConfigurationAsync
+        self.getBucketIntelligentTieringConfigurationSyncOverride = getBucketIntelligentTieringConfigurationSync
         self.getBucketInventoryConfigurationAsyncOverride = getBucketInventoryConfigurationAsync
         self.getBucketInventoryConfigurationSyncOverride = getBucketInventoryConfigurationSync
         self.getBucketLifecycleAsyncOverride = getBucketLifecycleAsync
@@ -506,6 +526,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.headObjectSyncOverride = headObjectSync
         self.listBucketAnalyticsConfigurationsAsyncOverride = listBucketAnalyticsConfigurationsAsync
         self.listBucketAnalyticsConfigurationsSyncOverride = listBucketAnalyticsConfigurationsSync
+        self.listBucketIntelligentTieringConfigurationsAsyncOverride = listBucketIntelligentTieringConfigurationsAsync
+        self.listBucketIntelligentTieringConfigurationsSyncOverride = listBucketIntelligentTieringConfigurationsSync
         self.listBucketInventoryConfigurationsAsyncOverride = listBucketInventoryConfigurationsAsync
         self.listBucketInventoryConfigurationsSyncOverride = listBucketInventoryConfigurationsSync
         self.listBucketMetricsConfigurationsAsyncOverride = listBucketMetricsConfigurationsAsync
@@ -532,6 +554,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.putBucketCorsSyncOverride = putBucketCorsSync
         self.putBucketEncryptionAsyncOverride = putBucketEncryptionAsync
         self.putBucketEncryptionSyncOverride = putBucketEncryptionSync
+        self.putBucketIntelligentTieringConfigurationAsyncOverride = putBucketIntelligentTieringConfigurationAsync
+        self.putBucketIntelligentTieringConfigurationSyncOverride = putBucketIntelligentTieringConfigurationSync
         self.putBucketInventoryConfigurationAsyncOverride = putBucketInventoryConfigurationAsync
         self.putBucketInventoryConfigurationSyncOverride = putBucketInventoryConfigurationSync
         self.putBucketLifecycleAsyncOverride = putBucketLifecycleAsync
@@ -897,6 +921,39 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.DeleteBucketEncryptionRequest) throws {
         if let deleteBucketEncryptionSyncOverride = deleteBucketEncryptionSyncOverride {
             return try deleteBucketEncryptionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func deleteBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        if let deleteBucketIntelligentTieringConfigurationAsyncOverride = deleteBucketIntelligentTieringConfigurationAsyncOverride {
+            return try deleteBucketIntelligentTieringConfigurationAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    public func deleteBucketIntelligentTieringConfigurationSync(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) throws {
+        if let deleteBucketIntelligentTieringConfigurationSyncOverride = deleteBucketIntelligentTieringConfigurationSyncOverride {
+            return try deleteBucketIntelligentTieringConfigurationSyncOverride(input)
         }
 
         throw error
@@ -1488,6 +1545,42 @@ public struct ThrowingS3Client: S3ClientProtocol {
     }
 
     /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: The GetBucketIntelligentTieringConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetBucketIntelligentTieringConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    public func getBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (Result<S3Model.GetBucketIntelligentTieringConfigurationOutput, S3Error>) -> ()) throws {
+        if let getBucketIntelligentTieringConfigurationAsyncOverride = getBucketIntelligentTieringConfigurationAsyncOverride {
+            return try getBucketIntelligentTieringConfigurationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketIntelligentTieringConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketIntelligentTieringConfigurationSync(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest) throws -> S3Model.GetBucketIntelligentTieringConfigurationOutput {
+        if let getBucketIntelligentTieringConfigurationSyncOverride = getBucketIntelligentTieringConfigurationSyncOverride {
+            return try getBucketIntelligentTieringConfigurationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the GetBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2071,7 +2164,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - completion: The GetObjectOutput object or an error will be passed to this 
            callback when the operation is complete. The GetObjectOutput
            object will be validated before being returned to caller.
-           The possible errors are: noSuchKey.
+           The possible errors are: invalidObjectState, noSuchKey.
      */
     public func getObjectAsync(
             input: S3Model.GetObjectRequest, 
@@ -2090,7 +2183,7 @@ public struct ThrowingS3Client: S3ClientProtocol {
          - input: The validated GetObjectRequest object being passed to this operation.
      - Returns: The GetObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: noSuchKey.
+     - Throws: invalidObjectState, noSuchKey.
      */
     public func getObjectSync(
             input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput {
@@ -2459,6 +2552,42 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
         if let listBucketAnalyticsConfigurationsSyncOverride = listBucketAnalyticsConfigurationsSyncOverride {
             return try listBucketAnalyticsConfigurationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+         - completion: The ListBucketIntelligentTieringConfigurationsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListBucketIntelligentTieringConfigurationsOutput
+           object will be validated before being returned to caller.
+     */
+    public func listBucketIntelligentTieringConfigurationsAsync(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest, 
+            completion: @escaping (Result<S3Model.ListBucketIntelligentTieringConfigurationsOutput, S3Error>) -> ()) throws {
+        if let listBucketIntelligentTieringConfigurationsAsyncOverride = listBucketIntelligentTieringConfigurationsAsyncOverride {
+            return try listBucketIntelligentTieringConfigurationsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketIntelligentTieringConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBucketIntelligentTieringConfigurationsSync(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) throws -> S3Model.ListBucketIntelligentTieringConfigurationsOutput {
+        if let listBucketIntelligentTieringConfigurationsSyncOverride = listBucketIntelligentTieringConfigurationsSyncOverride {
+            return try listBucketIntelligentTieringConfigurationsSyncOverride(input)
         }
 
         throw error
@@ -2908,6 +3037,39 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.PutBucketEncryptionRequest) throws {
         if let putBucketEncryptionSyncOverride = putBucketEncryptionSyncOverride {
             return try putBucketEncryptionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func putBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        if let putBucketIntelligentTieringConfigurationAsyncOverride = putBucketIntelligentTieringConfigurationAsyncOverride {
+            return try putBucketIntelligentTieringConfigurationAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketIntelligentTieringConfigurationSync(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest) throws {
+        if let putBucketIntelligentTieringConfigurationSyncOverride = putBucketIntelligentTieringConfigurationSyncOverride {
+            return try putBucketIntelligentTieringConfigurationSyncOverride(input)
         }
 
         throw error

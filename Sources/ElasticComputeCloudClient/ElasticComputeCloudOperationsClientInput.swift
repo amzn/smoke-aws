@@ -94,6 +94,11 @@ public typealias AssociateClientVpnTargetNetworkOperationHTTPRequestInput = Quer
 public typealias AssociateDhcpOptionsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the AssociateEnclaveCertificateIamRole operation in a HTTP client.
+ */
+public typealias AssociateEnclaveCertificateIamRoleOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AssociateIamInstanceProfile operation in a HTTP client.
  */
 public typealias AssociateIamInstanceProfileOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1424,6 +1429,11 @@ public typealias DisassociateAddressOperationHTTPRequestInput = QueryHTTPRequest
 public typealias DisassociateClientVpnTargetNetworkOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisassociateEnclaveCertificateIamRole operation in a HTTP client.
+ */
+public typealias DisassociateEnclaveCertificateIamRoleOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisassociateIamInstanceProfile operation in a HTTP client.
  */
 public typealias DisassociateIamInstanceProfileOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1507,6 +1517,11 @@ public typealias ExportImageOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the ExportTransitGatewayRoutes operation in a HTTP client.
  */
 public typealias ExportTransitGatewayRoutesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetAssociatedEnclaveCertificateIamRoles operation in a HTTP client.
+ */
+public typealias GetAssociatedEnclaveCertificateIamRolesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetAssociatedIpv6PoolCidrs operation in a HTTP client.

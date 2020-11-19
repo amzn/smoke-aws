@@ -193,6 +193,19 @@ extension AssociateClientVpnTargetNetworkResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the AssociateEnclaveCertificateIamRole operation in a HTTP client.
+ */
+extension AssociateEnclaveCertificateIamRoleResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AssociateEnclaveCertificateIamRoleResult
+    public typealias HeadersType = AssociateEnclaveCertificateIamRoleResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AssociateEnclaveCertificateIamRoleResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the AssociateIamInstanceProfile operation in a HTTP client.
  */
 extension AssociateIamInstanceProfileResult: HTTPResponseOutputProtocol {
@@ -3196,6 +3209,19 @@ extension DisassociateClientVpnTargetNetworkResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisassociateEnclaveCertificateIamRole operation in a HTTP client.
+ */
+extension DisassociateEnclaveCertificateIamRoleResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisassociateEnclaveCertificateIamRoleResult
+    public typealias HeadersType = DisassociateEnclaveCertificateIamRoleResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisassociateEnclaveCertificateIamRoleResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisassociateIamInstanceProfile operation in a HTTP client.
  */
 extension DisassociateIamInstanceProfileResult: HTTPResponseOutputProtocol {
@@ -3373,6 +3399,19 @@ extension ExportTransitGatewayRoutesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ExportTransitGatewayRoutesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetAssociatedEnclaveCertificateIamRoles operation in a HTTP client.
+ */
+extension GetAssociatedEnclaveCertificateIamRolesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetAssociatedEnclaveCertificateIamRolesResult
+    public typealias HeadersType = GetAssociatedEnclaveCertificateIamRolesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetAssociatedEnclaveCertificateIamRolesResult {
         return try bodyDecodableProvider()
     }
 }

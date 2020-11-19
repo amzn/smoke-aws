@@ -36,11 +36,14 @@ private let backupInUseIdentity = "BackupInUseException"
 private let backupNotFoundIdentity = "BackupNotFoundException"
 private let conditionalCheckFailedIdentity = "ConditionalCheckFailedException"
 private let continuousBackupsUnavailableIdentity = "ContinuousBackupsUnavailableException"
+private let exportConflictIdentity = "ExportConflictException"
+private let exportNotFoundIdentity = "ExportNotFoundException"
 private let globalTableAlreadyExistsIdentity = "GlobalTableAlreadyExistsException"
 private let globalTableNotFoundIdentity = "GlobalTableNotFoundException"
 private let idempotentParameterMismatchIdentity = "IdempotentParameterMismatchException"
 private let indexNotFoundIdentity = "IndexNotFoundException"
 private let internalServerIdentity = "InternalServerError"
+private let invalidExportTimeIdentity = "InvalidExportTimeException"
 private let invalidRestoreTimeIdentity = "InvalidRestoreTimeException"
 private let itemCollectionSizeLimitExceededIdentity = "ItemCollectionSizeLimitExceededException"
 private let limitExceededIdentity = "LimitExceededException"
@@ -64,11 +67,14 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case backupNotFound(BackupNotFoundException)
     case conditionalCheckFailed(ConditionalCheckFailedException)
     case continuousBackupsUnavailable(ContinuousBackupsUnavailableException)
+    case exportConflict(ExportConflictException)
+    case exportNotFound(ExportNotFoundException)
     case globalTableAlreadyExists(GlobalTableAlreadyExistsException)
     case globalTableNotFound(GlobalTableNotFoundException)
     case idempotentParameterMismatch(IdempotentParameterMismatchException)
     case indexNotFound(IndexNotFoundException)
     case internalServer(InternalServerError)
+    case invalidExportTime(InvalidExportTimeException)
     case invalidRestoreTime(InvalidRestoreTimeException)
     case itemCollectionSizeLimitExceeded(ItemCollectionSizeLimitExceededException)
     case limitExceeded(LimitExceededException)
@@ -116,6 +122,12 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case continuousBackupsUnavailableIdentity:
             let errorPayload = try ContinuousBackupsUnavailableException(from: decoder)
             self = DynamoDBError.continuousBackupsUnavailable(errorPayload)
+        case exportConflictIdentity:
+            let errorPayload = try ExportConflictException(from: decoder)
+            self = DynamoDBError.exportConflict(errorPayload)
+        case exportNotFoundIdentity:
+            let errorPayload = try ExportNotFoundException(from: decoder)
+            self = DynamoDBError.exportNotFound(errorPayload)
         case globalTableAlreadyExistsIdentity:
             let errorPayload = try GlobalTableAlreadyExistsException(from: decoder)
             self = DynamoDBError.globalTableAlreadyExists(errorPayload)
@@ -131,6 +143,9 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case internalServerIdentity:
             let errorPayload = try InternalServerError(from: decoder)
             self = DynamoDBError.internalServer(errorPayload)
+        case invalidExportTimeIdentity:
+            let errorPayload = try InvalidExportTimeException(from: decoder)
+            self = DynamoDBError.invalidExportTime(errorPayload)
         case invalidRestoreTimeIdentity:
             let errorPayload = try InvalidRestoreTimeException(from: decoder)
             self = DynamoDBError.invalidRestoreTime(errorPayload)

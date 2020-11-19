@@ -964,7 +964,7 @@ public protocol RDSClientProtocol {
          - completion: The CopyDBSnapshotResultForCopyDBSnapshot object or an error will be passed to this 
            callback when the operation is complete. The CopyDBSnapshotResultForCopyDBSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
+           The possible errors are: customAvailabilityZoneNotFound, dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
     func copyDBSnapshotAsync(
             input: RDSModel.CopyDBSnapshotMessage, 
@@ -977,7 +977,7 @@ public protocol RDSClientProtocol {
          - input: The validated CopyDBSnapshotMessage object being passed to this operation.
      - Returns: The CopyDBSnapshotResultForCopyDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
+     - Throws: customAvailabilityZoneNotFound, dBSnapshotAlreadyExists, dBSnapshotNotFound, invalidDBSnapshotState, kMSKeyNotAccessible, snapshotQuotaExceeded.
      */
     func copyDBSnapshotSync(
             input: RDSModel.CopyDBSnapshotMessage) throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot

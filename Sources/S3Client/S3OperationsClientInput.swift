@@ -195,6 +195,25 @@ public struct DeleteBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputP
 }
 
 /**
+ Type to handle the input to the DeleteBucketIntelligentTieringConfiguration operation in a HTTP client.
+ */
+public struct DeleteBucketIntelligentTieringConfigurationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: DeleteBucketIntelligentTieringConfigurationOperationInputQuery?
+    public let pathEncodable: DeleteBucketIntelligentTieringConfigurationOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: DeleteBucketIntelligentTieringConfigurationRequest) {
+        self.queryEncodable = encodable.asS3ModelDeleteBucketIntelligentTieringConfigurationOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelDeleteBucketIntelligentTieringConfigurationOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
  Type to handle the input to the DeleteBucketInventoryConfiguration operation in a HTTP client.
  */
 public struct DeleteBucketInventoryConfigurationOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -513,6 +532,25 @@ public struct GetBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathEncodable = encodable.asS3ModelGetBucketEncryptionOperationInputPath()
         self.bodyEncodable = nil
         self.additionalHeadersEncodable = encodable.asS3ModelGetBucketEncryptionOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the GetBucketIntelligentTieringConfiguration operation in a HTTP client.
+ */
+public struct GetBucketIntelligentTieringConfigurationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: GetBucketIntelligentTieringConfigurationOperationInputQuery?
+    public let pathEncodable: GetBucketIntelligentTieringConfigurationOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: GetBucketIntelligentTieringConfigurationRequest) {
+        self.queryEncodable = encodable.asS3ModelGetBucketIntelligentTieringConfigurationOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelGetBucketIntelligentTieringConfigurationOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
         self.pathPostfix = nil
     }
 }
@@ -1031,6 +1069,25 @@ public struct ListBucketAnalyticsConfigurationsOperationHTTPRequestInput: HTTPRe
 }
 
 /**
+ Type to handle the input to the ListBucketIntelligentTieringConfigurations operation in a HTTP client.
+ */
+public struct ListBucketIntelligentTieringConfigurationsOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: ListBucketIntelligentTieringConfigurationsOperationInputQuery?
+    public let pathEncodable: ListBucketIntelligentTieringConfigurationsOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: ListBucketIntelligentTieringConfigurationsRequest) {
+        self.queryEncodable = encodable.asS3ModelListBucketIntelligentTieringConfigurationsOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelListBucketIntelligentTieringConfigurationsOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
  Type to handle the input to the ListBucketInventoryConfigurations operation in a HTTP client.
  */
 public struct ListBucketInventoryConfigurationsOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -1254,6 +1311,25 @@ public struct PutBucketEncryptionOperationHTTPRequestInput: HTTPRequestInputProt
         self.pathEncodable = encodable.asS3ModelPutBucketEncryptionOperationInputPath()
         self.bodyEncodable = encodable.serverSideEncryptionConfiguration
         self.additionalHeadersEncodable = encodable.asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the PutBucketIntelligentTieringConfiguration operation in a HTTP client.
+ */
+public struct PutBucketIntelligentTieringConfigurationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: PutBucketIntelligentTieringConfigurationOperationInputQuery?
+    public let pathEncodable: PutBucketIntelligentTieringConfigurationOperationInputPath?
+    public let bodyEncodable: IntelligentTieringConfiguration?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: PutBucketIntelligentTieringConfigurationRequest) {
+        self.queryEncodable = encodable.asS3ModelPutBucketIntelligentTieringConfigurationOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelPutBucketIntelligentTieringConfigurationOperationInputPath()
+        self.bodyEncodable = encodable.intelligentTieringConfiguration
+        self.additionalHeadersEncodable = nil
         self.pathPostfix = nil
     }
 }

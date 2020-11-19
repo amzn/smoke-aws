@@ -556,6 +556,7 @@ public extension CopyDBSnapshotMessage {
             preSignedUrl: nil,
             sourceDBSnapshotIdentifier: "value",
             tags: nil,
+            targetCustomAvailabilityZone: nil,
             targetDBSnapshotIdentifier: "value")
 
         return defaultInstance
@@ -905,6 +906,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             enablePerformanceInsights: nil,
             iops: nil,
             kmsKeyId: nil,
+            maxAllocatedStorage: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,

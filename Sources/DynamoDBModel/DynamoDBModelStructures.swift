@@ -1383,6 +1383,38 @@ public struct DescribeEndpointsResponse: Codable, Equatable {
     }
 }
 
+public struct DescribeExportInput: Codable, Equatable {
+    public var exportArn: ExportArn
+
+    public init(exportArn: ExportArn) {
+        self.exportArn = exportArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportArn = "ExportArn"
+    }
+
+    public func validate() throws {
+        try exportArn.validateAsExportArn()
+    }
+}
+
+public struct DescribeExportOutput: Codable, Equatable {
+    public var exportDescription: ExportDescription?
+
+    public init(exportDescription: ExportDescription? = nil) {
+        self.exportDescription = exportDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportDescription = "ExportDescription"
+    }
+
+    public func validate() throws {
+        try exportDescription?.validate()
+    }
+}
+
 public struct DescribeGlobalTableInput: Codable, Equatable {
     public var globalTableName: TableName
 
@@ -1631,6 +1663,212 @@ public struct ExpectedAttributeValue: Codable, Equatable {
 
     public func validate() throws {
         try value?.validate()
+    }
+}
+
+public struct ExportConflictException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExportDescription: Codable, Equatable {
+    public var billedSizeBytes: BilledSizeBytes?
+    public var clientToken: ClientToken?
+    public var endTime: ExportEndTime?
+    public var exportArn: ExportArn?
+    public var exportFormat: ExportFormat?
+    public var exportManifest: ExportManifest?
+    public var exportStatus: ExportStatus?
+    public var exportTime: ExportTime?
+    public var failureCode: FailureCode?
+    public var failureMessage: FailureMessage?
+    public var itemCount: ItemCount?
+    public var s3Bucket: S3Bucket?
+    public var s3BucketOwner: S3BucketOwner?
+    public var s3Prefix: S3Prefix?
+    public var s3SseAlgorithm: S3SseAlgorithm?
+    public var s3SseKmsKeyId: S3SseKmsKeyId?
+    public var startTime: ExportStartTime?
+    public var tableArn: TableArn?
+    public var tableId: TableId?
+
+    public init(billedSizeBytes: BilledSizeBytes? = nil,
+                clientToken: ClientToken? = nil,
+                endTime: ExportEndTime? = nil,
+                exportArn: ExportArn? = nil,
+                exportFormat: ExportFormat? = nil,
+                exportManifest: ExportManifest? = nil,
+                exportStatus: ExportStatus? = nil,
+                exportTime: ExportTime? = nil,
+                failureCode: FailureCode? = nil,
+                failureMessage: FailureMessage? = nil,
+                itemCount: ItemCount? = nil,
+                s3Bucket: S3Bucket? = nil,
+                s3BucketOwner: S3BucketOwner? = nil,
+                s3Prefix: S3Prefix? = nil,
+                s3SseAlgorithm: S3SseAlgorithm? = nil,
+                s3SseKmsKeyId: S3SseKmsKeyId? = nil,
+                startTime: ExportStartTime? = nil,
+                tableArn: TableArn? = nil,
+                tableId: TableId? = nil) {
+        self.billedSizeBytes = billedSizeBytes
+        self.clientToken = clientToken
+        self.endTime = endTime
+        self.exportArn = exportArn
+        self.exportFormat = exportFormat
+        self.exportManifest = exportManifest
+        self.exportStatus = exportStatus
+        self.exportTime = exportTime
+        self.failureCode = failureCode
+        self.failureMessage = failureMessage
+        self.itemCount = itemCount
+        self.s3Bucket = s3Bucket
+        self.s3BucketOwner = s3BucketOwner
+        self.s3Prefix = s3Prefix
+        self.s3SseAlgorithm = s3SseAlgorithm
+        self.s3SseKmsKeyId = s3SseKmsKeyId
+        self.startTime = startTime
+        self.tableArn = tableArn
+        self.tableId = tableId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case billedSizeBytes = "BilledSizeBytes"
+        case clientToken = "ClientToken"
+        case endTime = "EndTime"
+        case exportArn = "ExportArn"
+        case exportFormat = "ExportFormat"
+        case exportManifest = "ExportManifest"
+        case exportStatus = "ExportStatus"
+        case exportTime = "ExportTime"
+        case failureCode = "FailureCode"
+        case failureMessage = "FailureMessage"
+        case itemCount = "ItemCount"
+        case s3Bucket = "S3Bucket"
+        case s3BucketOwner = "S3BucketOwner"
+        case s3Prefix = "S3Prefix"
+        case s3SseAlgorithm = "S3SseAlgorithm"
+        case s3SseKmsKeyId = "S3SseKmsKeyId"
+        case startTime = "StartTime"
+        case tableArn = "TableArn"
+        case tableId = "TableId"
+    }
+
+    public func validate() throws {
+        try billedSizeBytes?.validateAsBilledSizeBytes()
+        try exportArn?.validateAsExportArn()
+        try itemCount?.validateAsItemCount()
+        try s3SseKmsKeyId?.validateAsS3SseKmsKeyId()
+        try tableId?.validateAsTableId()
+    }
+}
+
+public struct ExportNotFoundException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExportSummary: Codable, Equatable {
+    public var exportArn: ExportArn?
+    public var exportStatus: ExportStatus?
+
+    public init(exportArn: ExportArn? = nil,
+                exportStatus: ExportStatus? = nil) {
+        self.exportArn = exportArn
+        self.exportStatus = exportStatus
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportArn = "ExportArn"
+        case exportStatus = "ExportStatus"
+    }
+
+    public func validate() throws {
+        try exportArn?.validateAsExportArn()
+    }
+}
+
+public struct ExportTableToPointInTimeInput: Codable, Equatable {
+    public var clientToken: ClientToken?
+    public var exportFormat: ExportFormat?
+    public var exportTime: ExportTime?
+    public var s3Bucket: S3Bucket
+    public var s3BucketOwner: S3BucketOwner?
+    public var s3Prefix: S3Prefix?
+    public var s3SseAlgorithm: S3SseAlgorithm?
+    public var s3SseKmsKeyId: S3SseKmsKeyId?
+    public var tableArn: TableArn
+
+    public init(clientToken: ClientToken? = nil,
+                exportFormat: ExportFormat? = nil,
+                exportTime: ExportTime? = nil,
+                s3Bucket: S3Bucket,
+                s3BucketOwner: S3BucketOwner? = nil,
+                s3Prefix: S3Prefix? = nil,
+                s3SseAlgorithm: S3SseAlgorithm? = nil,
+                s3SseKmsKeyId: S3SseKmsKeyId? = nil,
+                tableArn: TableArn) {
+        self.clientToken = clientToken
+        self.exportFormat = exportFormat
+        self.exportTime = exportTime
+        self.s3Bucket = s3Bucket
+        self.s3BucketOwner = s3BucketOwner
+        self.s3Prefix = s3Prefix
+        self.s3SseAlgorithm = s3SseAlgorithm
+        self.s3SseKmsKeyId = s3SseKmsKeyId
+        self.tableArn = tableArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case exportFormat = "ExportFormat"
+        case exportTime = "ExportTime"
+        case s3Bucket = "S3Bucket"
+        case s3BucketOwner = "S3BucketOwner"
+        case s3Prefix = "S3Prefix"
+        case s3SseAlgorithm = "S3SseAlgorithm"
+        case s3SseKmsKeyId = "S3SseKmsKeyId"
+        case tableArn = "TableArn"
+    }
+
+    public func validate() throws {
+        try s3SseKmsKeyId?.validateAsS3SseKmsKeyId()
+    }
+}
+
+public struct ExportTableToPointInTimeOutput: Codable, Equatable {
+    public var exportDescription: ExportDescription?
+
+    public init(exportDescription: ExportDescription? = nil) {
+        self.exportDescription = exportDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportDescription = "ExportDescription"
+    }
+
+    public func validate() throws {
+        try exportDescription?.validate()
     }
 }
 
@@ -2055,6 +2293,21 @@ public struct InternalServerError: Codable, Equatable {
     }
 }
 
+public struct InvalidExportTimeException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidRestoreTimeException: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -2282,6 +2535,49 @@ public struct ListContributorInsightsOutput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case contributorInsightsSummaries = "ContributorInsightsSummaries"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListExportsInput: Codable, Equatable {
+    public var maxResults: ListExportsMaxLimit?
+    public var nextToken: ExportNextToken?
+    public var tableArn: TableArn?
+
+    public init(maxResults: ListExportsMaxLimit? = nil,
+                nextToken: ExportNextToken? = nil,
+                tableArn: TableArn? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.tableArn = tableArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case tableArn = "TableArn"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsListExportsMaxLimit()
+    }
+}
+
+public struct ListExportsOutput: Codable, Equatable {
+    public var exportSummaries: ExportSummaries?
+    public var nextToken: ExportNextToken?
+
+    public init(exportSummaries: ExportSummaries? = nil,
+                nextToken: ExportNextToken? = nil) {
+        self.exportSummaries = exportSummaries
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportSummaries = "ExportSummaries"
         case nextToken = "NextToken"
     }
 

@@ -37,6 +37,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let deleteBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -54,6 +55,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let getBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let getBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getBucketLifecycleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -81,6 +83,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let headBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let headObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listBucketAnalyticsConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let listBucketIntelligentTieringConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listBucketInventoryConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listBucketMetricsConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listBuckets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -94,6 +97,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     let putBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let putBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let putBucketLifecycleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -139,6 +143,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.deleteBucketCors)
         self.deleteBucketEncryption = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteBucketEncryption)
+        self.deleteBucketIntelligentTieringConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteBucketIntelligentTieringConfiguration)
         self.deleteBucketInventoryConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteBucketInventoryConfiguration)
         self.deleteBucketLifecycle = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -173,6 +179,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.getBucketCors)
         self.getBucketEncryption = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getBucketEncryption)
+        self.getBucketIntelligentTieringConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getBucketIntelligentTieringConfiguration)
         self.getBucketInventoryConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getBucketInventoryConfiguration)
         self.getBucketLifecycle = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -227,6 +235,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.headObject)
         self.listBucketAnalyticsConfigurations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listBucketAnalyticsConfigurations)
+        self.listBucketIntelligentTieringConfigurations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listBucketIntelligentTieringConfigurations)
         self.listBucketInventoryConfigurations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listBucketInventoryConfigurations)
         self.listBucketMetricsConfigurations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -253,6 +263,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.putBucketCors)
         self.putBucketEncryption = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putBucketEncryption)
+        self.putBucketIntelligentTieringConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putBucketIntelligentTieringConfiguration)
         self.putBucketInventoryConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putBucketInventoryConfiguration)
         self.putBucketLifecycle = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
