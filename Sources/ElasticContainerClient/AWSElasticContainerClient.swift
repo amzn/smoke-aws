@@ -40,22 +40,22 @@ public enum ElasticContainerClientError: Swift.Error {
         return error.asUnrecognizedElasticContainerError()
     }
 
-    func isRetriable() -> Bool {
+    func isRetriable() -> Bool? {
         switch self {
         case .attributeLimitExceeded:
             return true
         default:
-            return false
+            return nil
         }
     }
 }
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? ElasticContainerError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? ElasticContainerError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -70,7 +70,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
     let service: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -118,7 +118,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
                 httpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: ElasticContainerOperationsReporting) {
         self.httpClient = httpClient

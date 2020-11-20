@@ -39,20 +39,6 @@ public enum RDSDataClientError: Swift.Error {
     public static func asUnrecognizedError(error: Swift.Error) -> RDSDataError {
         return error.asUnrecognizedRDSDataError()
     }
-
-    func isRetriable() -> Bool {
-        return false
-    }
-}
-
-private extension Swift.Error {
-    func isRetriable() -> Bool {
-        if let typedError = self as? RDSDataError {
-            return typedError.isRetriable()
-        } else {
-            return true
-        }
-    }
 }
 
 /**
@@ -65,7 +51,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
     let service: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -113,7 +99,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
                 httpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: RDSDataOperationsReporting) {
         self.httpClient = httpClient

@@ -29,12 +29,12 @@ import NIOHTTP1
 import AsyncHTTPClient
 import Logging
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? CloudWatchError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? CloudWatchError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -49,7 +49,7 @@ public struct AWSCloudWatchClientGenerator {
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
 
     let operationsReporting: CloudWatchOperationsReporting

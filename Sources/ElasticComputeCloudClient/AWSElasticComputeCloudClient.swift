@@ -39,20 +39,6 @@ public enum ElasticComputeCloudClientError: Swift.Error {
     public static func asUnrecognizedError(error: Swift.Error) -> ElasticComputeCloudError {
         return error.asUnrecognizedElasticComputeCloudError()
     }
-
-    func isRetriable() -> Bool {
-        return false
-    }
-}
-
-private extension Swift.Error {
-    func isRetriable() -> Bool {
-        if let typedError = self as? ElasticComputeCloudError {
-            return typedError.isRetriable()
-        } else {
-            return true
-        }
-    }
 }
 
 /**
@@ -66,7 +52,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -117,7 +103,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: ElasticComputeCloudOperationsReporting) {
         self.httpClient = httpClient

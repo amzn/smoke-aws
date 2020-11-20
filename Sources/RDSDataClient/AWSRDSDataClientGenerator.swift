@@ -29,16 +29,6 @@ import NIOHTTP1
 import AsyncHTTPClient
 import Logging
 
-private extension Swift.Error {
-    func isRetriable() -> Bool {
-        if let typedError = self as? RDSDataError {
-            return typedError.isRetriable()
-        } else {
-            return true
-        }
-    }
-}
-
 /**
  AWS Client Generator for the RDSData service.
  */
@@ -48,7 +38,7 @@ public struct AWSRDSDataClientGenerator {
     let service: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
 
     let operationsReporting: RDSDataOperationsReporting
