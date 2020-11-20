@@ -39,15 +39,18 @@ public struct DynamoDBOperationsReporting {
     let describeContinuousBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeEndpoints: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let describeExport: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeLimits: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTableReplicaAutoScaling: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let exportTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let getItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let listExports: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listGlobalTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listTagsOfResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
@@ -94,6 +97,8 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .describeContributorInsights, configuration: reportingConfiguration)
         self.describeEndpoints = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeEndpoints, configuration: reportingConfiguration)
+        self.describeExport = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeExport, configuration: reportingConfiguration)
         self.describeGlobalTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeGlobalTable, configuration: reportingConfiguration)
         self.describeGlobalTableSettings = StandardSmokeAWSOperationReporting(
@@ -106,12 +111,16 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .describeTableReplicaAutoScaling, configuration: reportingConfiguration)
         self.describeTimeToLive = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeTimeToLive, configuration: reportingConfiguration)
+        self.exportTableToPointInTime = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .exportTableToPointInTime, configuration: reportingConfiguration)
         self.getItem = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getItem, configuration: reportingConfiguration)
         self.listBackups = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listBackups, configuration: reportingConfiguration)
         self.listContributorInsights = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listContributorInsights, configuration: reportingConfiguration)
+        self.listExports = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listExports, configuration: reportingConfiguration)
         self.listGlobalTables = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listGlobalTables, configuration: reportingConfiguration)
         self.listTables = StandardSmokeAWSOperationReporting(

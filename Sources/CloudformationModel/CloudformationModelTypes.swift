@@ -121,6 +121,7 @@ public typealias CausingEntity = String
  */
 public enum ChangeAction: String, Codable, CustomStringConvertible {
     case add = "Add"
+    case dynamic = "Dynamic"
     case `import` = "Import"
     case modify = "Modify"
     case remove = "Remove"
@@ -155,6 +156,9 @@ public enum ChangeSetStatus: String, Codable, CustomStringConvertible {
     case createInProgress = "CREATE_IN_PROGRESS"
     case createPending = "CREATE_PENDING"
     case deleteComplete = "DELETE_COMPLETE"
+    case deleteFailed = "DELETE_FAILED"
+    case deleteInProgress = "DELETE_IN_PROGRESS"
+    case deletePending = "DELETE_PENDING"
     case failed = "FAILED"
 
     public var description: String {
@@ -410,6 +414,11 @@ public typealias InProgressStackInstancesCount = Int
  Type definition for the InSyncStackInstancesCount field.
  */
 public typealias InSyncStackInstancesCount = Int
+
+/**
+ Type definition for the IncludeNestedStacks field.
+ */
+public typealias IncludeNestedStacks = Bool
 
 /**
  Type definition for the IsDefaultVersion field.

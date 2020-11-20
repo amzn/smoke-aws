@@ -1926,6 +1926,49 @@ public struct EnvironmentFile: Codable, Equatable {
     }
 }
 
+public struct FSxWindowsFileServerAuthorizationConfig: Codable, Equatable {
+    public var credentialsParameter: String
+    public var domain: String
+
+    public init(credentialsParameter: String,
+                domain: String) {
+        self.credentialsParameter = credentialsParameter
+        self.domain = domain
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case credentialsParameter
+        case domain
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct FSxWindowsFileServerVolumeConfiguration: Codable, Equatable {
+    public var authorizationConfig: FSxWindowsFileServerAuthorizationConfig
+    public var fileSystemId: String
+    public var rootDirectory: String
+
+    public init(authorizationConfig: FSxWindowsFileServerAuthorizationConfig,
+                fileSystemId: String,
+                rootDirectory: String) {
+        self.authorizationConfig = authorizationConfig
+        self.fileSystemId = fileSystemId
+        self.rootDirectory = rootDirectory
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case authorizationConfig
+        case fileSystemId
+        case rootDirectory
+    }
+
+    public func validate() throws {
+        try authorizationConfig.validate()
+    }
+}
+
 public struct Failure: Codable, Equatable {
     public var arn: String?
     public var detail: String?
@@ -4819,15 +4862,18 @@ public struct VersionInfo: Codable, Equatable {
 public struct Volume: Codable, Equatable {
     public var dockerVolumeConfiguration: DockerVolumeConfiguration?
     public var efsVolumeConfiguration: EFSVolumeConfiguration?
+    public var fsxWindowsFileServerVolumeConfiguration: FSxWindowsFileServerVolumeConfiguration?
     public var host: HostVolumeProperties?
     public var name: String?
 
     public init(dockerVolumeConfiguration: DockerVolumeConfiguration? = nil,
                 efsVolumeConfiguration: EFSVolumeConfiguration? = nil,
+                fsxWindowsFileServerVolumeConfiguration: FSxWindowsFileServerVolumeConfiguration? = nil,
                 host: HostVolumeProperties? = nil,
                 name: String? = nil) {
         self.dockerVolumeConfiguration = dockerVolumeConfiguration
         self.efsVolumeConfiguration = efsVolumeConfiguration
+        self.fsxWindowsFileServerVolumeConfiguration = fsxWindowsFileServerVolumeConfiguration
         self.host = host
         self.name = name
     }
@@ -4835,6 +4881,7 @@ public struct Volume: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dockerVolumeConfiguration
         case efsVolumeConfiguration
+        case fsxWindowsFileServerVolumeConfiguration
         case host
         case name
     }
@@ -4842,6 +4889,7 @@ public struct Volume: Codable, Equatable {
     public func validate() throws {
         try dockerVolumeConfiguration?.validate()
         try efsVolumeConfiguration?.validate()
+        try fsxWindowsFileServerVolumeConfiguration?.validate()
         try host?.validate()
     }
 }

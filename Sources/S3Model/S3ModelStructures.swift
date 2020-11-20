@@ -1238,6 +1238,25 @@ public struct DeleteBucketEncryptionRequest: Codable, Equatable {
     }
 }
 
+public struct DeleteBucketIntelligentTieringConfigurationRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var id: IntelligentTieringId
+
+    public init(bucket: BucketName,
+                id: IntelligentTieringId) {
+        self.bucket = bucket
+        self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case id
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeleteBucketInventoryConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
@@ -2020,6 +2039,41 @@ public struct GetBucketEncryptionRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetBucketIntelligentTieringConfigurationOutput: Codable, Equatable {
+    public var intelligentTieringConfiguration: IntelligentTieringConfiguration?
+
+    public init(intelligentTieringConfiguration: IntelligentTieringConfiguration? = nil) {
+        self.intelligentTieringConfiguration = intelligentTieringConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case intelligentTieringConfiguration = "IntelligentTieringConfiguration"
+    }
+
+    public func validate() throws {
+        try intelligentTieringConfiguration?.validate()
+    }
+}
+
+public struct GetBucketIntelligentTieringConfigurationRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var id: IntelligentTieringId
+
+    public init(bucket: BucketName,
+                id: IntelligentTieringId) {
+        self.bucket = bucket
+        self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case id
     }
 
     public func validate() throws {
@@ -3184,6 +3238,7 @@ public struct HeadBucketRequest: Codable, Equatable {
 
 public struct HeadObjectOutput: Codable, Equatable {
     public var acceptRanges: AcceptRanges?
+    public var archiveStatus: ArchiveStatus?
     public var cacheControl: CacheControl?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
@@ -3213,6 +3268,7 @@ public struct HeadObjectOutput: Codable, Equatable {
     public var websiteRedirectLocation: WebsiteRedirectLocation?
 
     public init(acceptRanges: AcceptRanges? = nil,
+                archiveStatus: ArchiveStatus? = nil,
                 cacheControl: CacheControl? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
@@ -3241,6 +3297,7 @@ public struct HeadObjectOutput: Codable, Equatable {
                 versionId: ObjectVersionId? = nil,
                 websiteRedirectLocation: WebsiteRedirectLocation? = nil) {
         self.acceptRanges = acceptRanges
+        self.archiveStatus = archiveStatus
         self.cacheControl = cacheControl
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
@@ -3272,6 +3329,7 @@ public struct HeadObjectOutput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case acceptRanges = "accept-ranges"
+        case archiveStatus = "x-amz-archive-status"
         case cacheControl = "Cache-Control"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
@@ -3434,6 +3492,97 @@ public struct InputSerialization: Codable, Equatable {
         try cSV?.validate()
         try jSON?.validate()
         try parquet?.validate()
+    }
+}
+
+public struct IntelligentTieringAndOperator: Codable, Equatable {
+    public var prefix: Prefix?
+    public var tags: TagSet?
+
+    public init(prefix: Prefix? = nil,
+                tags: TagSet? = nil) {
+        self.prefix = prefix
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case prefix = "Prefix"
+        case tags = "Tag"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct IntelligentTieringConfiguration: Codable, Equatable {
+    public var filter: IntelligentTieringFilter?
+    public var id: IntelligentTieringId
+    public var status: IntelligentTieringStatus
+    public var tierings: TieringList
+
+    public init(filter: IntelligentTieringFilter? = nil,
+                id: IntelligentTieringId,
+                status: IntelligentTieringStatus,
+                tierings: TieringList) {
+        self.filter = filter
+        self.id = id
+        self.status = status
+        self.tierings = tierings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case filter = "Filter"
+        case id = "Id"
+        case status = "Status"
+        case tierings = "Tiering"
+    }
+
+    public func validate() throws {
+        try filter?.validate()
+    }
+}
+
+public struct IntelligentTieringFilter: Codable, Equatable {
+    public var and: IntelligentTieringAndOperator?
+    public var prefix: Prefix?
+    public var tag: Tag?
+
+    public init(and: IntelligentTieringAndOperator? = nil,
+                prefix: Prefix? = nil,
+                tag: Tag? = nil) {
+        self.and = and
+        self.prefix = prefix
+        self.tag = tag
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case and = "And"
+        case prefix = "Prefix"
+        case tag = "Tag"
+    }
+
+    public func validate() throws {
+        try and?.validate()
+        try tag?.validate()
+    }
+}
+
+public struct InvalidObjectState: Codable, Equatable {
+    public var accessTier: IntelligentTieringAccessTier?
+    public var storageClass: StorageClass?
+
+    public init(accessTier: IntelligentTieringAccessTier? = nil,
+                storageClass: StorageClass? = nil) {
+        self.accessTier = accessTier
+        self.storageClass = storageClass
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case accessTier = "AccessTier"
+        case storageClass = "StorageClass"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -3809,6 +3958,52 @@ public struct ListBucketAnalyticsConfigurationsRequest: Codable, Equatable {
         case bucket = "Bucket"
         case continuationToken = "continuation-token"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListBucketIntelligentTieringConfigurationsOutput: Codable, Equatable {
+    public var continuationToken: Token?
+    public var intelligentTieringConfigurationList: IntelligentTieringConfigurationList?
+    public var isTruncated: IsTruncated?
+    public var nextContinuationToken: NextToken?
+
+    public init(continuationToken: Token? = nil,
+                intelligentTieringConfigurationList: IntelligentTieringConfigurationList? = nil,
+                isTruncated: IsTruncated? = nil,
+                nextContinuationToken: NextToken? = nil) {
+        self.continuationToken = continuationToken
+        self.intelligentTieringConfigurationList = intelligentTieringConfigurationList
+        self.isTruncated = isTruncated
+        self.nextContinuationToken = nextContinuationToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case continuationToken = "ContinuationToken"
+        case intelligentTieringConfigurationList = "IntelligentTieringConfiguration"
+        case isTruncated = "IsTruncated"
+        case nextContinuationToken = "NextContinuationToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListBucketIntelligentTieringConfigurationsRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var continuationToken: Token?
+
+    public init(bucket: BucketName,
+                continuationToken: Token? = nil) {
+        self.bucket = bucket
+        self.continuationToken = continuationToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case continuationToken = "continuation-token"
     }
 
     public func validate() throws {
@@ -4500,10 +4695,10 @@ public struct MetadataEntry: Codable, Equatable {
 }
 
 public struct Metrics: Codable, Equatable {
-    public var eventThreshold: ReplicationTimeValue
+    public var eventThreshold: ReplicationTimeValue?
     public var status: MetricsStatus
 
-    public init(eventThreshold: ReplicationTimeValue,
+    public init(eventThreshold: ReplicationTimeValue? = nil,
                 status: MetricsStatus) {
         self.eventThreshold = eventThreshold
         self.status = status
@@ -4515,7 +4710,7 @@ public struct Metrics: Codable, Equatable {
     }
 
     public func validate() throws {
-        try eventThreshold.validate()
+        try eventThreshold?.validate()
     }
 }
 
@@ -5285,6 +5480,30 @@ public struct PutBucketEncryptionRequest: Codable, Equatable {
 
     public func validate() throws {
         try serverSideEncryptionConfiguration.validate()
+    }
+}
+
+public struct PutBucketIntelligentTieringConfigurationRequest: Codable, Equatable {
+    public var bucket: BucketName
+    public var id: IntelligentTieringId
+    public var intelligentTieringConfiguration: IntelligentTieringConfiguration
+
+    public init(bucket: BucketName,
+                id: IntelligentTieringId,
+                intelligentTieringConfiguration: IntelligentTieringConfiguration) {
+        self.bucket = bucket
+        self.id = id
+        self.intelligentTieringConfiguration = intelligentTieringConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case id
+        case intelligentTieringConfiguration = "IntelligentTieringConfiguration"
+    }
+
+    public func validate() throws {
+        try intelligentTieringConfiguration.validate()
     }
 }
 
@@ -7048,6 +7267,25 @@ public struct TargetGrant: Codable, Equatable {
 
     public func validate() throws {
         try grantee?.validate()
+    }
+}
+
+public struct Tiering: Codable, Equatable {
+    public var accessTier: IntelligentTieringAccessTier
+    public var days: IntelligentTieringDays
+
+    public init(accessTier: IntelligentTieringAccessTier,
+                days: IntelligentTieringDays) {
+        self.accessTier = accessTier
+        self.days = days
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case accessTier = "AccessTier"
+        case days = "Days"
+    }
+
+    public func validate() throws {
     }
 }
 

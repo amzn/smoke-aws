@@ -34,6 +34,7 @@ public extension Swift.Error {
 
 private let bucketAlreadyExistsIdentity = "BucketAlreadyExists"
 private let bucketAlreadyOwnedByYouIdentity = "BucketAlreadyOwnedByYou"
+private let invalidObjectStateIdentity = "InvalidObjectState"
 private let noSuchBucketIdentity = "NoSuchBucket"
 private let noSuchKeyIdentity = "NoSuchKey"
 private let noSuchUploadIdentity = "NoSuchUpload"
@@ -44,6 +45,7 @@ private let __accessDeniedIdentity = "AccessDenied"
 public enum S3Error: Swift.Error, Decodable {
     case bucketAlreadyExists(BucketAlreadyExists)
     case bucketAlreadyOwnedByYou(BucketAlreadyOwnedByYou)
+    case invalidObjectState(InvalidObjectState)
     case noSuchBucket(NoSuchBucket)
     case noSuchKey(NoSuchKey)
     case noSuchUpload(NoSuchUpload)
@@ -74,6 +76,9 @@ public enum S3Error: Swift.Error, Decodable {
         case bucketAlreadyOwnedByYouIdentity:
             let errorPayload = try BucketAlreadyOwnedByYou(from: decoder)
             self = S3Error.bucketAlreadyOwnedByYou(errorPayload)
+        case invalidObjectStateIdentity:
+            let errorPayload = try InvalidObjectState(from: decoder)
+            self = S3Error.invalidObjectState(errorPayload)
         case noSuchBucketIdentity:
             let errorPayload = try NoSuchBucket(from: decoder)
             self = S3Error.noSuchBucket(errorPayload)

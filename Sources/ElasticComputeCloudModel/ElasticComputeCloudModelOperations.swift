@@ -39,6 +39,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case associateAddress = "AssociateAddress"
     case associateClientVpnTargetNetwork = "AssociateClientVpnTargetNetwork"
     case associateDhcpOptions = "AssociateDhcpOptions"
+    case associateEnclaveCertificateIamRole = "AssociateEnclaveCertificateIamRole"
     case associateIamInstanceProfile = "AssociateIamInstanceProfile"
     case associateRouteTable = "AssociateRouteTable"
     case associateSubnetCidrBlock = "AssociateSubnetCidrBlock"
@@ -305,6 +306,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disableVpcClassicLinkDnsSupport = "DisableVpcClassicLinkDnsSupport"
     case disassociateAddress = "DisassociateAddress"
     case disassociateClientVpnTargetNetwork = "DisassociateClientVpnTargetNetwork"
+    case disassociateEnclaveCertificateIamRole = "DisassociateEnclaveCertificateIamRole"
     case disassociateIamInstanceProfile = "DisassociateIamInstanceProfile"
     case disassociateRouteTable = "DisassociateRouteTable"
     case disassociateSubnetCidrBlock = "DisassociateSubnetCidrBlock"
@@ -322,6 +324,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case exportClientVpnClientConfiguration = "ExportClientVpnClientConfiguration"
     case exportImage = "ExportImage"
     case exportTransitGatewayRoutes = "ExportTransitGatewayRoutes"
+    case getAssociatedEnclaveCertificateIamRoles = "GetAssociatedEnclaveCertificateIamRoles"
     case getAssociatedIpv6PoolCidrs = "GetAssociatedIpv6PoolCidrs"
     case getCapacityReservationUsage = "GetCapacityReservationUsage"
     case getCoipPoolUsage = "GetCoipPoolUsage"
@@ -479,6 +482,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .associateClientVpnTargetNetwork:
             return "/"
         case .associateDhcpOptions:
+            return "/"
+        case .associateEnclaveCertificateIamRole:
             return "/"
         case .associateIamInstanceProfile:
             return "/"
@@ -1012,6 +1017,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disassociateClientVpnTargetNetwork:
             return "/"
+        case .disassociateEnclaveCertificateIamRole:
+            return "/"
         case .disassociateIamInstanceProfile:
             return "/"
         case .disassociateRouteTable:
@@ -1045,6 +1052,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .exportImage:
             return "/"
         case .exportTransitGatewayRoutes:
+            return "/"
+        case .getAssociatedEnclaveCertificateIamRoles:
             return "/"
         case .getAssociatedIpv6PoolCidrs:
             return "/"

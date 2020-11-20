@@ -52,6 +52,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let describeContributorInsightsSyncOverride: DescribeContributorInsightsSyncType?
     let describeEndpointsAsyncOverride: DescribeEndpointsAsyncType?
     let describeEndpointsSyncOverride: DescribeEndpointsSyncType?
+    let describeExportAsyncOverride: DescribeExportAsyncType?
+    let describeExportSyncOverride: DescribeExportSyncType?
     let describeGlobalTableAsyncOverride: DescribeGlobalTableAsyncType?
     let describeGlobalTableSyncOverride: DescribeGlobalTableSyncType?
     let describeGlobalTableSettingsAsyncOverride: DescribeGlobalTableSettingsAsyncType?
@@ -64,12 +66,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let describeTableReplicaAutoScalingSyncOverride: DescribeTableReplicaAutoScalingSyncType?
     let describeTimeToLiveAsyncOverride: DescribeTimeToLiveAsyncType?
     let describeTimeToLiveSyncOverride: DescribeTimeToLiveSyncType?
+    let exportTableToPointInTimeAsyncOverride: ExportTableToPointInTimeAsyncType?
+    let exportTableToPointInTimeSyncOverride: ExportTableToPointInTimeSyncType?
     let getItemAsyncOverride: GetItemAsyncType?
     let getItemSyncOverride: GetItemSyncType?
     let listBackupsAsyncOverride: ListBackupsAsyncType?
     let listBackupsSyncOverride: ListBackupsSyncType?
     let listContributorInsightsAsyncOverride: ListContributorInsightsAsyncType?
     let listContributorInsightsSyncOverride: ListContributorInsightsSyncType?
+    let listExportsAsyncOverride: ListExportsAsyncType?
+    let listExportsSyncOverride: ListExportsSyncType?
     let listGlobalTablesAsyncOverride: ListGlobalTablesAsyncType?
     let listGlobalTablesSyncOverride: ListGlobalTablesSyncType?
     let listTablesAsyncOverride: ListTablesAsyncType?
@@ -140,6 +146,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             describeContributorInsightsSync: DescribeContributorInsightsSyncType? = nil,
             describeEndpointsAsync: DescribeEndpointsAsyncType? = nil,
             describeEndpointsSync: DescribeEndpointsSyncType? = nil,
+            describeExportAsync: DescribeExportAsyncType? = nil,
+            describeExportSync: DescribeExportSyncType? = nil,
             describeGlobalTableAsync: DescribeGlobalTableAsyncType? = nil,
             describeGlobalTableSync: DescribeGlobalTableSyncType? = nil,
             describeGlobalTableSettingsAsync: DescribeGlobalTableSettingsAsyncType? = nil,
@@ -152,12 +160,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             describeTableReplicaAutoScalingSync: DescribeTableReplicaAutoScalingSyncType? = nil,
             describeTimeToLiveAsync: DescribeTimeToLiveAsyncType? = nil,
             describeTimeToLiveSync: DescribeTimeToLiveSyncType? = nil,
+            exportTableToPointInTimeAsync: ExportTableToPointInTimeAsyncType? = nil,
+            exportTableToPointInTimeSync: ExportTableToPointInTimeSyncType? = nil,
             getItemAsync: GetItemAsyncType? = nil,
             getItemSync: GetItemSyncType? = nil,
             listBackupsAsync: ListBackupsAsyncType? = nil,
             listBackupsSync: ListBackupsSyncType? = nil,
             listContributorInsightsAsync: ListContributorInsightsAsyncType? = nil,
             listContributorInsightsSync: ListContributorInsightsSyncType? = nil,
+            listExportsAsync: ListExportsAsyncType? = nil,
+            listExportsSync: ListExportsSyncType? = nil,
             listGlobalTablesAsync: ListGlobalTablesAsyncType? = nil,
             listGlobalTablesSync: ListGlobalTablesSyncType? = nil,
             listTablesAsync: ListTablesAsyncType? = nil,
@@ -222,6 +234,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.describeContributorInsightsSyncOverride = describeContributorInsightsSync
         self.describeEndpointsAsyncOverride = describeEndpointsAsync
         self.describeEndpointsSyncOverride = describeEndpointsSync
+        self.describeExportAsyncOverride = describeExportAsync
+        self.describeExportSyncOverride = describeExportSync
         self.describeGlobalTableAsyncOverride = describeGlobalTableAsync
         self.describeGlobalTableSyncOverride = describeGlobalTableSync
         self.describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsync
@@ -234,12 +248,16 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.describeTableReplicaAutoScalingSyncOverride = describeTableReplicaAutoScalingSync
         self.describeTimeToLiveAsyncOverride = describeTimeToLiveAsync
         self.describeTimeToLiveSyncOverride = describeTimeToLiveSync
+        self.exportTableToPointInTimeAsyncOverride = exportTableToPointInTimeAsync
+        self.exportTableToPointInTimeSyncOverride = exportTableToPointInTimeSync
         self.getItemAsyncOverride = getItemAsync
         self.getItemSyncOverride = getItemSync
         self.listBackupsAsyncOverride = listBackupsAsync
         self.listBackupsSyncOverride = listBackupsSync
         self.listContributorInsightsAsyncOverride = listContributorInsightsAsync
         self.listContributorInsightsSyncOverride = listContributorInsightsSync
+        self.listExportsAsyncOverride = listExportsAsync
+        self.listExportsSyncOverride = listExportsSync
         self.listGlobalTablesAsyncOverride = listGlobalTablesAsync
         self.listGlobalTablesSyncOverride = listGlobalTablesSync
         self.listTablesAsyncOverride = listTablesAsync
@@ -761,6 +779,46 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeExport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+         - completion: The DescribeExportOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportOutput
+           object will be validated before being returned to caller.
+           The possible errors are: exportNotFound, internalServer, limitExceeded.
+     */
+    public func describeExportAsync(
+            input: DynamoDBModel.DescribeExportInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeExportOutput, DynamoDBError>) -> ()) throws {
+        if let describeExportAsyncOverride = describeExportAsyncOverride {
+            return try describeExportAsyncOverride(input, completion)
+        }
+
+        let result = DescribeExportOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeExport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+     - Returns: The DescribeExportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportNotFound, internalServer, limitExceeded.
+     */
+    public func describeExportSync(
+            input: DynamoDBModel.DescribeExportInput) throws -> DynamoDBModel.DescribeExportOutput {
+        if let describeExportSyncOverride = describeExportSyncOverride {
+            return try describeExportSyncOverride(input)
+        }
+
+        return DescribeExportOutput.__default
+    }
+
+    /**
      Invokes the DescribeGlobalTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1001,6 +1059,46 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the ExportTableToPointInTime operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+         - completion: The ExportTableToPointInTimeOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExportTableToPointInTimeOutput
+           object will be validated before being returned to caller.
+           The possible errors are: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    public func exportTableToPointInTimeAsync(
+            input: DynamoDBModel.ExportTableToPointInTimeInput, 
+            completion: @escaping (Result<DynamoDBModel.ExportTableToPointInTimeOutput, DynamoDBError>) -> ()) throws {
+        if let exportTableToPointInTimeAsyncOverride = exportTableToPointInTimeAsyncOverride {
+            return try exportTableToPointInTimeAsyncOverride(input, completion)
+        }
+
+        let result = ExportTableToPointInTimeOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ExportTableToPointInTime operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+     - Returns: The ExportTableToPointInTimeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    public func exportTableToPointInTimeSync(
+            input: DynamoDBModel.ExportTableToPointInTimeInput) throws -> DynamoDBModel.ExportTableToPointInTimeOutput {
+        if let exportTableToPointInTimeSyncOverride = exportTableToPointInTimeSyncOverride {
+            return try exportTableToPointInTimeSyncOverride(input)
+        }
+
+        return ExportTableToPointInTimeOutput.__default
+    }
+
+    /**
      Invokes the GetItem operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1118,6 +1216,46 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         }
 
         return ListContributorInsightsOutput.__default
+    }
+
+    /**
+     Invokes the ListExports operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+         - completion: The ListExportsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListExportsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded.
+     */
+    public func listExportsAsync(
+            input: DynamoDBModel.ListExportsInput, 
+            completion: @escaping (Result<DynamoDBModel.ListExportsOutput, DynamoDBError>) -> ()) throws {
+        if let listExportsAsyncOverride = listExportsAsyncOverride {
+            return try listExportsAsyncOverride(input, completion)
+        }
+
+        let result = ListExportsOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListExports operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+     - Returns: The ListExportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded.
+     */
+    public func listExportsSync(
+            input: DynamoDBModel.ListExportsInput) throws -> DynamoDBModel.ListExportsOutput {
+        if let listExportsSyncOverride = listExportsSyncOverride {
+            return try listExportsSyncOverride(input)
+        }
+
+        return ListExportsOutput.__default
     }
 
     /**

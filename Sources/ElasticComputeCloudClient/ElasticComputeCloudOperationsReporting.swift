@@ -41,6 +41,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let associateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let associateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -307,6 +308,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let disableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let disassociateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -324,6 +326,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let exportClientVpnClientConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let exportTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let getAssociatedEnclaveCertificateIamRoles: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getAssociatedIpv6PoolCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getCapacityReservationUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let getCoipPoolUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -477,6 +480,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .associateClientVpnTargetNetwork, configuration: reportingConfiguration)
         self.associateDhcpOptions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateDhcpOptions, configuration: reportingConfiguration)
+        self.associateEnclaveCertificateIamRole = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateEnclaveCertificateIamRole, configuration: reportingConfiguration)
         self.associateIamInstanceProfile = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateIamInstanceProfile, configuration: reportingConfiguration)
         self.associateRouteTable = StandardSmokeAWSOperationReporting(
@@ -1009,6 +1014,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disassociateAddress, configuration: reportingConfiguration)
         self.disassociateClientVpnTargetNetwork = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateClientVpnTargetNetwork, configuration: reportingConfiguration)
+        self.disassociateEnclaveCertificateIamRole = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateEnclaveCertificateIamRole, configuration: reportingConfiguration)
         self.disassociateIamInstanceProfile = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateIamInstanceProfile, configuration: reportingConfiguration)
         self.disassociateRouteTable = StandardSmokeAWSOperationReporting(
@@ -1043,6 +1050,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .exportImage, configuration: reportingConfiguration)
         self.exportTransitGatewayRoutes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .exportTransitGatewayRoutes, configuration: reportingConfiguration)
+        self.getAssociatedEnclaveCertificateIamRoles = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getAssociatedEnclaveCertificateIamRoles, configuration: reportingConfiguration)
         self.getAssociatedIpv6PoolCidrs = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getAssociatedIpv6PoolCidrs, configuration: reportingConfiguration)
         self.getCapacityReservationUsage = StandardSmokeAWSOperationReporting(

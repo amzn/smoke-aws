@@ -36,6 +36,7 @@ public struct S3OperationsReporting {
     let deleteBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let deleteBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let deleteBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -53,6 +54,7 @@ public struct S3OperationsReporting {
     let getBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let getBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let getBucketLifecycleConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -80,6 +82,7 @@ public struct S3OperationsReporting {
     let headBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let headObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let listBucketAnalyticsConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let listBucketIntelligentTieringConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let listBucketInventoryConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let listBucketMetricsConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let listBuckets: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -93,6 +96,7 @@ public struct S3OperationsReporting {
     let putBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    let putBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
     let putBucketLifecycleConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -138,6 +142,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .deleteBucketCors, configuration: reportingConfiguration)
         self.deleteBucketEncryption = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteBucketEncryption, configuration: reportingConfiguration)
+        self.deleteBucketIntelligentTieringConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteBucketIntelligentTieringConfiguration, configuration: reportingConfiguration)
         self.deleteBucketInventoryConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteBucketInventoryConfiguration, configuration: reportingConfiguration)
         self.deleteBucketLifecycle = StandardSmokeAWSOperationReporting(
@@ -172,6 +178,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .getBucketCors, configuration: reportingConfiguration)
         self.getBucketEncryption = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getBucketEncryption, configuration: reportingConfiguration)
+        self.getBucketIntelligentTieringConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getBucketIntelligentTieringConfiguration, configuration: reportingConfiguration)
         self.getBucketInventoryConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getBucketInventoryConfiguration, configuration: reportingConfiguration)
         self.getBucketLifecycle = StandardSmokeAWSOperationReporting(
@@ -226,6 +234,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .headObject, configuration: reportingConfiguration)
         self.listBucketAnalyticsConfigurations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listBucketAnalyticsConfigurations, configuration: reportingConfiguration)
+        self.listBucketIntelligentTieringConfigurations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listBucketIntelligentTieringConfigurations, configuration: reportingConfiguration)
         self.listBucketInventoryConfigurations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listBucketInventoryConfigurations, configuration: reportingConfiguration)
         self.listBucketMetricsConfigurations = StandardSmokeAWSOperationReporting(
@@ -252,6 +262,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .putBucketCors, configuration: reportingConfiguration)
         self.putBucketEncryption = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putBucketEncryption, configuration: reportingConfiguration)
+        self.putBucketIntelligentTieringConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putBucketIntelligentTieringConfiguration, configuration: reportingConfiguration)
         self.putBucketInventoryConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putBucketInventoryConfiguration, configuration: reportingConfiguration)
         self.putBucketLifecycle = StandardSmokeAWSOperationReporting(

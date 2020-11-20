@@ -816,6 +816,30 @@ public extension DescribeEndpointsResponse {
     }()
 }
 
+public extension DescribeExportInput {
+    /**
+     Default instance of the DescribeExportInput structure.
+     */
+    static let __default: DynamoDBModel.DescribeExportInput = {
+        let defaultInstance = DynamoDBModel.DescribeExportInput(
+            exportArn: "0123456789012345678901234567890123456")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeExportOutput {
+    /**
+     Default instance of the DescribeExportOutput structure.
+     */
+    static let __default: DynamoDBModel.DescribeExportOutput = {
+        let defaultInstance = DynamoDBModel.DescribeExportOutput(
+            exportDescription: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeGlobalTableInput {
     /**
      Default instance of the DescribeGlobalTableInput structure.
@@ -986,6 +1010,105 @@ public extension ExpectedAttributeValue {
             comparisonOperator: nil,
             exists: nil,
             value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportConflictException {
+    /**
+     Default instance of the ExportConflictException structure.
+     */
+    static let __default: DynamoDBModel.ExportConflictException = {
+        let defaultInstance = DynamoDBModel.ExportConflictException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportDescription {
+    /**
+     Default instance of the ExportDescription structure.
+     */
+    static let __default: DynamoDBModel.ExportDescription = {
+        let defaultInstance = DynamoDBModel.ExportDescription(
+            billedSizeBytes: nil,
+            clientToken: nil,
+            endTime: nil,
+            exportArn: nil,
+            exportFormat: nil,
+            exportManifest: nil,
+            exportStatus: nil,
+            exportTime: nil,
+            failureCode: nil,
+            failureMessage: nil,
+            itemCount: nil,
+            s3Bucket: nil,
+            s3BucketOwner: nil,
+            s3Prefix: nil,
+            s3SseAlgorithm: nil,
+            s3SseKmsKeyId: nil,
+            startTime: nil,
+            tableArn: nil,
+            tableId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportNotFoundException {
+    /**
+     Default instance of the ExportNotFoundException structure.
+     */
+    static let __default: DynamoDBModel.ExportNotFoundException = {
+        let defaultInstance = DynamoDBModel.ExportNotFoundException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportSummary {
+    /**
+     Default instance of the ExportSummary structure.
+     */
+    static let __default: DynamoDBModel.ExportSummary = {
+        let defaultInstance = DynamoDBModel.ExportSummary(
+            exportArn: nil,
+            exportStatus: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTableToPointInTimeInput {
+    /**
+     Default instance of the ExportTableToPointInTimeInput structure.
+     */
+    static let __default: DynamoDBModel.ExportTableToPointInTimeInput = {
+        let defaultInstance = DynamoDBModel.ExportTableToPointInTimeInput(
+            clientToken: nil,
+            exportFormat: nil,
+            exportTime: nil,
+            s3Bucket: "value",
+            s3BucketOwner: nil,
+            s3Prefix: nil,
+            s3SseAlgorithm: nil,
+            s3SseKmsKeyId: nil,
+            tableArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ExportTableToPointInTimeOutput {
+    /**
+     Default instance of the ExportTableToPointInTimeOutput structure.
+     */
+    static let __default: DynamoDBModel.ExportTableToPointInTimeOutput = {
+        let defaultInstance = DynamoDBModel.ExportTableToPointInTimeOutput(
+            exportDescription: nil)
 
         return defaultInstance
     }()
@@ -1230,6 +1353,18 @@ public extension InternalServerError {
     }()
 }
 
+public extension InvalidExportTimeException {
+    /**
+     Default instance of the InvalidExportTimeException structure.
+     */
+    static let __default: DynamoDBModel.InvalidExportTimeException = {
+        let defaultInstance = DynamoDBModel.InvalidExportTimeException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InvalidRestoreTimeException {
     /**
      Default instance of the InvalidRestoreTimeException structure.
@@ -1371,6 +1506,33 @@ public extension ListContributorInsightsOutput {
     static let __default: DynamoDBModel.ListContributorInsightsOutput = {
         let defaultInstance = DynamoDBModel.ListContributorInsightsOutput(
             contributorInsightsSummaries: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListExportsInput {
+    /**
+     Default instance of the ListExportsInput structure.
+     */
+    static let __default: DynamoDBModel.ListExportsInput = {
+        let defaultInstance = DynamoDBModel.ListExportsInput(
+            maxResults: nil,
+            nextToken: nil,
+            tableArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListExportsOutput {
+    /**
+     Default instance of the ListExportsOutput structure.
+     */
+    static let __default: DynamoDBModel.ListExportsOutput = {
+        let defaultInstance = DynamoDBModel.ListExportsOutput(
+            exportSummaries: nil,
             nextToken: nil)
 
         return defaultInstance

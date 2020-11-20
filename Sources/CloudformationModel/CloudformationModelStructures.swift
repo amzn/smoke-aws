@@ -158,6 +158,9 @@ public struct ChangeSetSummary: Codable, Equatable {
     public var creationTime: CreationTime?
     public var description: Description?
     public var executionStatus: ExecutionStatus?
+    public var includeNestedStacks: IncludeNestedStacks?
+    public var parentChangeSetId: ChangeSetId?
+    public var rootChangeSetId: ChangeSetId?
     public var stackId: StackId?
     public var stackName: StackName?
     public var status: ChangeSetStatus?
@@ -168,6 +171,9 @@ public struct ChangeSetSummary: Codable, Equatable {
                 creationTime: CreationTime? = nil,
                 description: Description? = nil,
                 executionStatus: ExecutionStatus? = nil,
+                includeNestedStacks: IncludeNestedStacks? = nil,
+                parentChangeSetId: ChangeSetId? = nil,
+                rootChangeSetId: ChangeSetId? = nil,
                 stackId: StackId? = nil,
                 stackName: StackName? = nil,
                 status: ChangeSetStatus? = nil,
@@ -177,6 +183,9 @@ public struct ChangeSetSummary: Codable, Equatable {
         self.creationTime = creationTime
         self.description = description
         self.executionStatus = executionStatus
+        self.includeNestedStacks = includeNestedStacks
+        self.parentChangeSetId = parentChangeSetId
+        self.rootChangeSetId = rootChangeSetId
         self.stackId = stackId
         self.stackName = stackName
         self.status = status
@@ -189,6 +198,9 @@ public struct ChangeSetSummary: Codable, Equatable {
         case creationTime = "CreationTime"
         case description = "Description"
         case executionStatus = "ExecutionStatus"
+        case includeNestedStacks = "IncludeNestedStacks"
+        case parentChangeSetId = "ParentChangeSetId"
+        case rootChangeSetId = "RootChangeSetId"
         case stackId = "StackId"
         case stackName = "StackName"
         case status = "Status"
@@ -199,6 +211,8 @@ public struct ChangeSetSummary: Codable, Equatable {
         try changeSetId?.validateAsChangeSetId()
         try changeSetName?.validateAsChangeSetName()
         try description?.validateAsDescription()
+        try parentChangeSetId?.validateAsChangeSetId()
+        try rootChangeSetId?.validateAsChangeSetId()
     }
 }
 
@@ -263,6 +277,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
     public var changeSetType: ChangeSetType?
     public var clientToken: ClientToken?
     public var description: Description?
+    public var includeNestedStacks: IncludeNestedStacks?
     public var notificationARNs: NotificationARNs?
     public var parameters: Parameters?
     public var resourceTypes: ResourceTypes?
@@ -280,6 +295,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
                 changeSetType: ChangeSetType? = nil,
                 clientToken: ClientToken? = nil,
                 description: Description? = nil,
+                includeNestedStacks: IncludeNestedStacks? = nil,
                 notificationARNs: NotificationARNs? = nil,
                 parameters: Parameters? = nil,
                 resourceTypes: ResourceTypes? = nil,
@@ -296,6 +312,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
         self.changeSetType = changeSetType
         self.clientToken = clientToken
         self.description = description
+        self.includeNestedStacks = includeNestedStacks
         self.notificationARNs = notificationARNs
         self.parameters = parameters
         self.resourceTypes = resourceTypes
@@ -315,6 +332,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
         case changeSetType = "ChangeSetType"
         case clientToken = "ClientToken"
         case description = "Description"
+        case includeNestedStacks = "IncludeNestedStacks"
         case notificationARNs = "NotificationARNs"
         case parameters = "Parameters"
         case resourceTypes = "ResourceTypes"
@@ -1029,10 +1047,13 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
     public var creationTime: CreationTime?
     public var description: Description?
     public var executionStatus: ExecutionStatus?
+    public var includeNestedStacks: IncludeNestedStacks?
     public var nextToken: NextToken?
     public var notificationARNs: NotificationARNs?
     public var parameters: Parameters?
+    public var parentChangeSetId: ChangeSetId?
     public var rollbackConfiguration: RollbackConfiguration?
+    public var rootChangeSetId: ChangeSetId?
     public var stackId: StackId?
     public var stackName: StackName?
     public var status: ChangeSetStatus?
@@ -1046,10 +1067,13 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
                 creationTime: CreationTime? = nil,
                 description: Description? = nil,
                 executionStatus: ExecutionStatus? = nil,
+                includeNestedStacks: IncludeNestedStacks? = nil,
                 nextToken: NextToken? = nil,
                 notificationARNs: NotificationARNs? = nil,
                 parameters: Parameters? = nil,
+                parentChangeSetId: ChangeSetId? = nil,
                 rollbackConfiguration: RollbackConfiguration? = nil,
+                rootChangeSetId: ChangeSetId? = nil,
                 stackId: StackId? = nil,
                 stackName: StackName? = nil,
                 status: ChangeSetStatus? = nil,
@@ -1062,10 +1086,13 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
         self.creationTime = creationTime
         self.description = description
         self.executionStatus = executionStatus
+        self.includeNestedStacks = includeNestedStacks
         self.nextToken = nextToken
         self.notificationARNs = notificationARNs
         self.parameters = parameters
+        self.parentChangeSetId = parentChangeSetId
         self.rollbackConfiguration = rollbackConfiguration
+        self.rootChangeSetId = rootChangeSetId
         self.stackId = stackId
         self.stackName = stackName
         self.status = status
@@ -1081,10 +1108,13 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
         case creationTime = "CreationTime"
         case description = "Description"
         case executionStatus = "ExecutionStatus"
+        case includeNestedStacks = "IncludeNestedStacks"
         case nextToken = "NextToken"
         case notificationARNs = "NotificationARNs"
         case parameters = "Parameters"
+        case parentChangeSetId = "ParentChangeSetId"
         case rollbackConfiguration = "RollbackConfiguration"
+        case rootChangeSetId = "RootChangeSetId"
         case stackId = "StackId"
         case stackName = "StackName"
         case status = "Status"
@@ -1098,7 +1128,9 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
         try description?.validateAsDescription()
         try nextToken?.validateAsNextToken()
         try notificationARNs?.validateAsNotificationARNs()
+        try parentChangeSetId?.validateAsChangeSetId()
         try rollbackConfiguration?.validate()
+        try rootChangeSetId?.validateAsChangeSetId()
         try tags?.validateAsTags()
     }
 }
@@ -3484,6 +3516,7 @@ public struct RegisterTypeOutputForRegisterType: Codable, Equatable {
 
 public struct ResourceChange: Codable, Equatable {
     public var action: ChangeAction?
+    public var changeSetId: ChangeSetId?
     public var details: ResourceChangeDetails?
     public var logicalResourceId: LogicalResourceId?
     public var physicalResourceId: PhysicalResourceId?
@@ -3492,6 +3525,7 @@ public struct ResourceChange: Codable, Equatable {
     public var scope: Scope?
 
     public init(action: ChangeAction? = nil,
+                changeSetId: ChangeSetId? = nil,
                 details: ResourceChangeDetails? = nil,
                 logicalResourceId: LogicalResourceId? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
@@ -3499,6 +3533,7 @@ public struct ResourceChange: Codable, Equatable {
                 resourceType: ResourceType? = nil,
                 scope: Scope? = nil) {
         self.action = action
+        self.changeSetId = changeSetId
         self.details = details
         self.logicalResourceId = logicalResourceId
         self.physicalResourceId = physicalResourceId
@@ -3509,6 +3544,7 @@ public struct ResourceChange: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case action = "Action"
+        case changeSetId = "ChangeSetId"
         case details = "Details"
         case logicalResourceId = "LogicalResourceId"
         case physicalResourceId = "PhysicalResourceId"
@@ -3518,6 +3554,7 @@ public struct ResourceChange: Codable, Equatable {
     }
 
     public func validate() throws {
+        try changeSetId?.validateAsChangeSetId()
         try resourceType?.validateAsResourceType()
     }
 }

@@ -1206,6 +1206,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the AssociateEnclaveCertificateIamRole operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+         - completion: The AssociateEnclaveCertificateIamRoleResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateEnclaveCertificateIamRoleResult
+           object will be validated before being returned to caller.
+     */
+    public func associateEnclaveCertificateIamRoleAsync(
+            input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateEnclaveCertificateIamRole,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateEnclaveCertificateIamRoleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateEnclaveCertificateIamRole.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateEnclaveCertificateIamRole operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+     - Returns: The AssociateEnclaveCertificateIamRoleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateEnclaveCertificateIamRoleSync(
+            input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateEnclaveCertificateIamRole,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateEnclaveCertificateIamRoleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateEnclaveCertificateIamRole.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the AssociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -21320,6 +21396,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisassociateEnclaveCertificateIamRole operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+         - completion: The DisassociateEnclaveCertificateIamRoleResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateEnclaveCertificateIamRoleResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateEnclaveCertificateIamRoleAsync(
+            input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateEnclaveCertificateIamRole,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateEnclaveCertificateIamRoleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateEnclaveCertificateIamRole.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisassociateEnclaveCertificateIamRole operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+     - Returns: The DisassociateEnclaveCertificateIamRoleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateEnclaveCertificateIamRoleSync(
+            input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateEnclaveCertificateIamRole,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateEnclaveCertificateIamRoleOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateEnclaveCertificateIamRole.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -22586,6 +22738,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.exportTransitGatewayRoutes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetAssociatedEnclaveCertificateIamRoles operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAssociatedEnclaveCertificateIamRolesRequest object being passed to this operation.
+         - completion: The GetAssociatedEnclaveCertificateIamRolesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetAssociatedEnclaveCertificateIamRolesResult
+           object will be validated before being returned to caller.
+     */
+    public func getAssociatedEnclaveCertificateIamRolesAsync(
+            input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getAssociatedEnclaveCertificateIamRoles,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetAssociatedEnclaveCertificateIamRolesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getAssociatedEnclaveCertificateIamRoles.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetAssociatedEnclaveCertificateIamRoles operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAssociatedEnclaveCertificateIamRolesRequest object being passed to this operation.
+     - Returns: The GetAssociatedEnclaveCertificateIamRolesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAssociatedEnclaveCertificateIamRolesSync(
+            input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest) throws -> ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getAssociatedEnclaveCertificateIamRoles,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetAssociatedEnclaveCertificateIamRolesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getAssociatedEnclaveCertificateIamRoles.rawValue,
             version: apiVersion)
 
         do {

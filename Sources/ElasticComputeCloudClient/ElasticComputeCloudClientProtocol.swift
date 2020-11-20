@@ -98,6 +98,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AssociateDhcpOptionsAsyncType = (
             _ input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias AssociateEnclaveCertificateIamRoleSyncType = (
+            _ input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult
+    typealias AssociateEnclaveCertificateIamRoleAsyncType = (
+            _ input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AssociateIamInstanceProfileSyncType = (
             _ input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult
     typealias AssociateIamInstanceProfileAsyncType = (
@@ -1428,6 +1433,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisassociateClientVpnTargetNetworkAsyncType = (
             _ input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisassociateEnclaveCertificateIamRoleSyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult
+    typealias DisassociateEnclaveCertificateIamRoleAsyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisassociateIamInstanceProfileSyncType = (
             _ input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult
     typealias DisassociateIamInstanceProfileAsyncType = (
@@ -1513,6 +1523,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ExportTransitGatewayRoutesAsyncType = (
             _ input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ExportTransitGatewayRoutesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetAssociatedEnclaveCertificateIamRolesSyncType = (
+            _ input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest) throws -> ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult
+    typealias GetAssociatedEnclaveCertificateIamRolesAsyncType = (
+            _ input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetAssociatedIpv6PoolCidrsSyncType = (
             _ input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest) throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult
     typealias GetAssociatedIpv6PoolCidrsAsyncType = (
@@ -2461,6 +2476,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func associateDhcpOptionsSync(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws
+
+    /**
+     Invokes the AssociateEnclaveCertificateIamRole operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+         - completion: The AssociateEnclaveCertificateIamRoleResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateEnclaveCertificateIamRoleResult
+           object will be validated before being returned to caller.
+     */
+    func associateEnclaveCertificateIamRoleAsync(
+            input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AssociateEnclaveCertificateIamRole operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+     - Returns: The AssociateEnclaveCertificateIamRoleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateEnclaveCertificateIamRoleSync(
+            input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult
 
     /**
      Invokes the AssociateIamInstanceProfile operation returning immediately and passing the response to a callback.
@@ -8745,6 +8784,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult
 
     /**
+     Invokes the DisassociateEnclaveCertificateIamRole operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+         - completion: The DisassociateEnclaveCertificateIamRoleResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateEnclaveCertificateIamRoleResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateEnclaveCertificateIamRoleAsync(
+            input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisassociateEnclaveCertificateIamRole operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+     - Returns: The DisassociateEnclaveCertificateIamRoleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateEnclaveCertificateIamRoleSync(
+            input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult
+
+    /**
      Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9142,6 +9205,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func exportTransitGatewayRoutesSync(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult
+
+    /**
+     Invokes the GetAssociatedEnclaveCertificateIamRoles operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAssociatedEnclaveCertificateIamRolesRequest object being passed to this operation.
+         - completion: The GetAssociatedEnclaveCertificateIamRolesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetAssociatedEnclaveCertificateIamRolesResult
+           object will be validated before being returned to caller.
+     */
+    func getAssociatedEnclaveCertificateIamRolesAsync(
+            input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetAssociatedEnclaveCertificateIamRoles operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAssociatedEnclaveCertificateIamRolesRequest object being passed to this operation.
+     - Returns: The GetAssociatedEnclaveCertificateIamRolesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getAssociatedEnclaveCertificateIamRolesSync(
+            input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest) throws -> ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult
 
     /**
      Invokes the GetAssociatedIpv6PoolCidrs operation returning immediately and passing the response to a callback.

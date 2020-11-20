@@ -669,6 +669,19 @@ public extension DeleteBucketEncryptionRequest {
     }()
 }
 
+public extension DeleteBucketIntelligentTieringConfigurationRequest {
+    /**
+     Default instance of the DeleteBucketIntelligentTieringConfigurationRequest structure.
+     */
+    static let __default: S3Model.DeleteBucketIntelligentTieringConfigurationRequest = {
+        let defaultInstance = S3Model.DeleteBucketIntelligentTieringConfigurationRequest(
+            bucket: "value",
+            id: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteBucketInventoryConfigurationRequest {
     /**
      Default instance of the DeleteBucketInventoryConfigurationRequest structure.
@@ -1163,6 +1176,31 @@ public extension GetBucketEncryptionRequest {
         let defaultInstance = S3Model.GetBucketEncryptionRequest(
             bucket: "value",
             expectedBucketOwner: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetBucketIntelligentTieringConfigurationOutput {
+    /**
+     Default instance of the GetBucketIntelligentTieringConfigurationOutput structure.
+     */
+    static let __default: S3Model.GetBucketIntelligentTieringConfigurationOutput = {
+        let defaultInstance = S3Model.GetBucketIntelligentTieringConfigurationOutput(
+            intelligentTieringConfiguration: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetBucketIntelligentTieringConfigurationRequest {
+    /**
+     Default instance of the GetBucketIntelligentTieringConfigurationRequest structure.
+     */
+    static let __default: S3Model.GetBucketIntelligentTieringConfigurationRequest = {
+        let defaultInstance = S3Model.GetBucketIntelligentTieringConfigurationRequest(
+            bucket: "value",
+            id: "value")
 
         return defaultInstance
     }()
@@ -1863,6 +1901,7 @@ public extension HeadObjectOutput {
     static let __default: S3Model.HeadObjectOutput = {
         let defaultInstance = S3Model.HeadObjectOutput(
             acceptRanges: nil,
+            archiveStatus: nil,
             cacheControl: nil,
             contentDisposition: nil,
             contentEncoding: nil,
@@ -1955,6 +1994,61 @@ public extension InputSerialization {
             compressionType: nil,
             jSON: nil,
             parquet: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IntelligentTieringAndOperator {
+    /**
+     Default instance of the IntelligentTieringAndOperator structure.
+     */
+    static let __default: S3Model.IntelligentTieringAndOperator = {
+        let defaultInstance = S3Model.IntelligentTieringAndOperator(
+            prefix: nil,
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IntelligentTieringConfiguration {
+    /**
+     Default instance of the IntelligentTieringConfiguration structure.
+     */
+    static let __default: S3Model.IntelligentTieringConfiguration = {
+        let defaultInstance = S3Model.IntelligentTieringConfiguration(
+            filter: nil,
+            id: "value",
+            status: .__default,
+            tierings: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension IntelligentTieringFilter {
+    /**
+     Default instance of the IntelligentTieringFilter structure.
+     */
+    static let __default: S3Model.IntelligentTieringFilter = {
+        let defaultInstance = S3Model.IntelligentTieringFilter(
+            and: nil,
+            prefix: nil,
+            tag: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidObjectState {
+    /**
+     Default instance of the InvalidObjectState structure.
+     */
+    static let __default: S3Model.InvalidObjectState = {
+        let defaultInstance = S3Model.InvalidObjectState(
+            accessTier: nil,
+            storageClass: nil)
 
         return defaultInstance
     }()
@@ -2178,6 +2272,34 @@ public extension ListBucketAnalyticsConfigurationsRequest {
             bucket: "value",
             continuationToken: nil,
             expectedBucketOwner: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListBucketIntelligentTieringConfigurationsOutput {
+    /**
+     Default instance of the ListBucketIntelligentTieringConfigurationsOutput structure.
+     */
+    static let __default: S3Model.ListBucketIntelligentTieringConfigurationsOutput = {
+        let defaultInstance = S3Model.ListBucketIntelligentTieringConfigurationsOutput(
+            continuationToken: nil,
+            intelligentTieringConfigurationList: nil,
+            isTruncated: nil,
+            nextContinuationToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListBucketIntelligentTieringConfigurationsRequest {
+    /**
+     Default instance of the ListBucketIntelligentTieringConfigurationsRequest structure.
+     */
+    static let __default: S3Model.ListBucketIntelligentTieringConfigurationsRequest = {
+        let defaultInstance = S3Model.ListBucketIntelligentTieringConfigurationsRequest(
+            bucket: "value",
+            continuationToken: nil)
 
         return defaultInstance
     }()
@@ -2499,7 +2621,7 @@ public extension Metrics {
      */
     static let __default: S3Model.Metrics = {
         let defaultInstance = S3Model.Metrics(
-            eventThreshold: ReplicationTimeValue.__default,
+            eventThreshold: nil,
             status: .__default)
 
         return defaultInstance
@@ -2995,6 +3117,20 @@ public extension PutBucketEncryptionRequest {
             bucket: "value",
             expectedBucketOwner: nil,
             serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutBucketIntelligentTieringConfigurationRequest {
+    /**
+     Default instance of the PutBucketIntelligentTieringConfigurationRequest structure.
+     */
+    static let __default: S3Model.PutBucketIntelligentTieringConfigurationRequest = {
+        let defaultInstance = S3Model.PutBucketIntelligentTieringConfigurationRequest(
+            bucket: "value",
+            id: "value",
+            intelligentTieringConfiguration: IntelligentTieringConfiguration.__default)
 
         return defaultInstance
     }()
@@ -3964,6 +4100,19 @@ public extension TargetGrant {
         let defaultInstance = S3Model.TargetGrant(
             grantee: nil,
             permission: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Tiering {
+    /**
+     Default instance of the Tiering structure.
+     */
+    static let __default: S3Model.Tiering = {
+        let defaultInstance = S3Model.Tiering(
+            accessTier: .__default,
+            days: 0)
 
         return defaultInstance
     }()

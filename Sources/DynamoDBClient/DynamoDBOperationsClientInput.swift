@@ -84,6 +84,11 @@ public typealias DescribeContributorInsightsOperationHTTPRequestInput = BodyHTTP
 public typealias DescribeEndpointsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeExport operation in a HTTP client.
+ */
+public typealias DescribeExportOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeGlobalTable operation in a HTTP client.
  */
 public typealias DescribeGlobalTableOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -114,6 +119,11 @@ public typealias DescribeTableReplicaAutoScalingOperationHTTPRequestInput = Body
 public typealias DescribeTimeToLiveOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ExportTableToPointInTime operation in a HTTP client.
+ */
+public typealias ExportTableToPointInTimeOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the GetItem operation in a HTTP client.
  */
 public typealias GetItemOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -127,6 +137,11 @@ public typealias ListBackupsOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the ListContributorInsights operation in a HTTP client.
  */
 public typealias ListContributorInsightsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ListExports operation in a HTTP client.
+ */
+public typealias ListExportsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the ListGlobalTables operation in a HTTP client.

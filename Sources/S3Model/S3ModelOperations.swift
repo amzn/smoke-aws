@@ -34,6 +34,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case deleteBucketAnalyticsConfiguration = "DeleteBucketAnalyticsConfiguration"
     case deleteBucketCors = "DeleteBucketCors"
     case deleteBucketEncryption = "DeleteBucketEncryption"
+    case deleteBucketIntelligentTieringConfiguration = "DeleteBucketIntelligentTieringConfiguration"
     case deleteBucketInventoryConfiguration = "DeleteBucketInventoryConfiguration"
     case deleteBucketLifecycle = "DeleteBucketLifecycle"
     case deleteBucketMetricsConfiguration = "DeleteBucketMetricsConfiguration"
@@ -51,6 +52,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case getBucketAnalyticsConfiguration = "GetBucketAnalyticsConfiguration"
     case getBucketCors = "GetBucketCors"
     case getBucketEncryption = "GetBucketEncryption"
+    case getBucketIntelligentTieringConfiguration = "GetBucketIntelligentTieringConfiguration"
     case getBucketInventoryConfiguration = "GetBucketInventoryConfiguration"
     case getBucketLifecycle = "GetBucketLifecycle"
     case getBucketLifecycleConfiguration = "GetBucketLifecycleConfiguration"
@@ -78,6 +80,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case headBucket = "HeadBucket"
     case headObject = "HeadObject"
     case listBucketAnalyticsConfigurations = "ListBucketAnalyticsConfigurations"
+    case listBucketIntelligentTieringConfigurations = "ListBucketIntelligentTieringConfigurations"
     case listBucketInventoryConfigurations = "ListBucketInventoryConfigurations"
     case listBucketMetricsConfigurations = "ListBucketMetricsConfigurations"
     case listBuckets = "ListBuckets"
@@ -91,6 +94,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case putBucketAnalyticsConfiguration = "PutBucketAnalyticsConfiguration"
     case putBucketCors = "PutBucketCors"
     case putBucketEncryption = "PutBucketEncryption"
+    case putBucketIntelligentTieringConfiguration = "PutBucketIntelligentTieringConfiguration"
     case putBucketInventoryConfiguration = "PutBucketInventoryConfiguration"
     case putBucketLifecycle = "PutBucketLifecycle"
     case putBucketLifecycleConfiguration = "PutBucketLifecycleConfiguration"
@@ -141,6 +145,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}?cors"
         case .deleteBucketEncryption:
             return "/{Bucket}?encryption"
+        case .deleteBucketIntelligentTieringConfiguration:
+            return "/{Bucket}?intelligent-tiering"
         case .deleteBucketInventoryConfiguration:
             return "/{Bucket}?inventory"
         case .deleteBucketLifecycle:
@@ -175,6 +181,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}?cors"
         case .getBucketEncryption:
             return "/{Bucket}?encryption"
+        case .getBucketIntelligentTieringConfiguration:
+            return "/{Bucket}?intelligent-tiering"
         case .getBucketInventoryConfiguration:
             return "/{Bucket}?inventory"
         case .getBucketLifecycle:
@@ -229,6 +237,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}/{Key+}"
         case .listBucketAnalyticsConfigurations:
             return "/{Bucket}?analytics"
+        case .listBucketIntelligentTieringConfigurations:
+            return "/{Bucket}?intelligent-tiering"
         case .listBucketInventoryConfigurations:
             return "/{Bucket}?inventory"
         case .listBucketMetricsConfigurations:
@@ -255,6 +265,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}?cors"
         case .putBucketEncryption:
             return "/{Bucket}?encryption"
+        case .putBucketIntelligentTieringConfiguration:
+            return "/{Bucket}?intelligent-tiering"
         case .putBucketInventoryConfiguration:
             return "/{Bucket}?inventory"
         case .putBucketLifecycle:
@@ -1478,6 +1490,58 @@ public extension DeleteBucketEncryptionRequest {
 }
 
 /**
+ Structure to encode the path input for the DeleteBucketIntelligentTieringConfiguration
+ operation.
+ */
+public struct DeleteBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketIntelligentTieringConfigurationRequest {
+    func asS3ModelDeleteBucketIntelligentTieringConfigurationOperationInputPath() -> DeleteBucketIntelligentTieringConfigurationOperationInputPath {
+        return DeleteBucketIntelligentTieringConfigurationOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the query input for the DeleteBucketIntelligentTieringConfiguration
+ operation.
+ */
+public struct DeleteBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable {
+    public var id: IntelligentTieringId
+
+    public init(id: IntelligentTieringId) {
+        self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension DeleteBucketIntelligentTieringConfigurationRequest {
+    func asS3ModelDeleteBucketIntelligentTieringConfigurationOperationInputQuery() -> DeleteBucketIntelligentTieringConfigurationOperationInputQuery {
+        return DeleteBucketIntelligentTieringConfigurationOperationInputQuery(
+            id: id)
+    }
+}
+
+/**
  Structure to encode the path input for the DeleteBucketInventoryConfiguration
  operation.
  */
@@ -2587,6 +2651,58 @@ public extension GetBucketEncryptionRequest {
     func asS3ModelGetBucketEncryptionOperationInputAdditionalHeaders() -> GetBucketEncryptionOperationInputAdditionalHeaders {
         return GetBucketEncryptionOperationInputAdditionalHeaders(
             expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
+ Structure to encode the path input for the GetBucketIntelligentTieringConfiguration
+ operation.
+ */
+public struct GetBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketIntelligentTieringConfigurationRequest {
+    func asS3ModelGetBucketIntelligentTieringConfigurationOperationInputPath() -> GetBucketIntelligentTieringConfigurationOperationInputPath {
+        return GetBucketIntelligentTieringConfigurationOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the query input for the GetBucketIntelligentTieringConfiguration
+ operation.
+ */
+public struct GetBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable {
+    public var id: IntelligentTieringId
+
+    public init(id: IntelligentTieringId) {
+        self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketIntelligentTieringConfigurationRequest {
+    func asS3ModelGetBucketIntelligentTieringConfigurationOperationInputQuery() -> GetBucketIntelligentTieringConfigurationOperationInputQuery {
+        return GetBucketIntelligentTieringConfigurationOperationInputQuery(
+            id: id)
     }
 }
 
@@ -4728,6 +4844,58 @@ public extension ListBucketAnalyticsConfigurationsRequest {
 }
 
 /**
+ Structure to encode the path input for the ListBucketIntelligentTieringConfigurations
+ operation.
+ */
+public struct ListBucketIntelligentTieringConfigurationsOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListBucketIntelligentTieringConfigurationsRequest {
+    func asS3ModelListBucketIntelligentTieringConfigurationsOperationInputPath() -> ListBucketIntelligentTieringConfigurationsOperationInputPath {
+        return ListBucketIntelligentTieringConfigurationsOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the query input for the ListBucketIntelligentTieringConfigurations
+ operation.
+ */
+public struct ListBucketIntelligentTieringConfigurationsOperationInputQuery: Codable, Equatable {
+    public var continuationToken: Token?
+
+    public init(continuationToken: Token? = nil) {
+        self.continuationToken = continuationToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case continuationToken = "continuation-token"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListBucketIntelligentTieringConfigurationsRequest {
+    func asS3ModelListBucketIntelligentTieringConfigurationsOperationInputQuery() -> ListBucketIntelligentTieringConfigurationsOperationInputQuery {
+        return ListBucketIntelligentTieringConfigurationsOperationInputQuery(
+            continuationToken: continuationToken)
+    }
+}
+
+/**
  Structure to encode the path input for the ListBucketInventoryConfigurations
  operation.
  */
@@ -5832,6 +6000,58 @@ public extension PutBucketEncryptionRequest {
     func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
         return PutBucketEncryptionOperationInputAdditionalHeaders(
             expectedBucketOwner: expectedBucketOwner)
+    }
+}
+
+/**
+ Structure to encode the path input for the PutBucketIntelligentTieringConfiguration
+ operation.
+ */
+public struct PutBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+
+    public init(bucket: BucketName) {
+        self.bucket = bucket
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketIntelligentTieringConfigurationRequest {
+    func asS3ModelPutBucketIntelligentTieringConfigurationOperationInputPath() -> PutBucketIntelligentTieringConfigurationOperationInputPath {
+        return PutBucketIntelligentTieringConfigurationOperationInputPath(
+            bucket: bucket)
+    }
+}
+
+/**
+ Structure to encode the query input for the PutBucketIntelligentTieringConfiguration
+ operation.
+ */
+public struct PutBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable {
+    public var id: IntelligentTieringId
+
+    public init(id: IntelligentTieringId) {
+        self.id = id
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension PutBucketIntelligentTieringConfigurationRequest {
+    func asS3ModelPutBucketIntelligentTieringConfigurationOperationInputQuery() -> PutBucketIntelligentTieringConfigurationOperationInputQuery {
+        return PutBucketIntelligentTieringConfigurationOperationInputQuery(
+            id: id)
     }
 }
 

@@ -57,6 +57,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let associateClientVpnTargetNetworkSyncOverride: AssociateClientVpnTargetNetworkSyncType?
     let associateDhcpOptionsAsyncOverride: AssociateDhcpOptionsAsyncType?
     let associateDhcpOptionsSyncOverride: AssociateDhcpOptionsSyncType?
+    let associateEnclaveCertificateIamRoleAsyncOverride: AssociateEnclaveCertificateIamRoleAsyncType?
+    let associateEnclaveCertificateIamRoleSyncOverride: AssociateEnclaveCertificateIamRoleSyncType?
     let associateIamInstanceProfileAsyncOverride: AssociateIamInstanceProfileAsyncType?
     let associateIamInstanceProfileSyncOverride: AssociateIamInstanceProfileSyncType?
     let associateRouteTableAsyncOverride: AssociateRouteTableAsyncType?
@@ -589,6 +591,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let disassociateAddressSyncOverride: DisassociateAddressSyncType?
     let disassociateClientVpnTargetNetworkAsyncOverride: DisassociateClientVpnTargetNetworkAsyncType?
     let disassociateClientVpnTargetNetworkSyncOverride: DisassociateClientVpnTargetNetworkSyncType?
+    let disassociateEnclaveCertificateIamRoleAsyncOverride: DisassociateEnclaveCertificateIamRoleAsyncType?
+    let disassociateEnclaveCertificateIamRoleSyncOverride: DisassociateEnclaveCertificateIamRoleSyncType?
     let disassociateIamInstanceProfileAsyncOverride: DisassociateIamInstanceProfileAsyncType?
     let disassociateIamInstanceProfileSyncOverride: DisassociateIamInstanceProfileSyncType?
     let disassociateRouteTableAsyncOverride: DisassociateRouteTableAsyncType?
@@ -623,6 +627,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let exportImageSyncOverride: ExportImageSyncType?
     let exportTransitGatewayRoutesAsyncOverride: ExportTransitGatewayRoutesAsyncType?
     let exportTransitGatewayRoutesSyncOverride: ExportTransitGatewayRoutesSyncType?
+    let getAssociatedEnclaveCertificateIamRolesAsyncOverride: GetAssociatedEnclaveCertificateIamRolesAsyncType?
+    let getAssociatedEnclaveCertificateIamRolesSyncOverride: GetAssociatedEnclaveCertificateIamRolesSyncType?
     let getAssociatedIpv6PoolCidrsAsyncOverride: GetAssociatedIpv6PoolCidrsAsyncType?
     let getAssociatedIpv6PoolCidrsSyncOverride: GetAssociatedIpv6PoolCidrsSyncType?
     let getCapacityReservationUsageAsyncOverride: GetCapacityReservationUsageAsyncType?
@@ -903,6 +909,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             associateClientVpnTargetNetworkSync: AssociateClientVpnTargetNetworkSyncType? = nil,
             associateDhcpOptionsAsync: AssociateDhcpOptionsAsyncType? = nil,
             associateDhcpOptionsSync: AssociateDhcpOptionsSyncType? = nil,
+            associateEnclaveCertificateIamRoleAsync: AssociateEnclaveCertificateIamRoleAsyncType? = nil,
+            associateEnclaveCertificateIamRoleSync: AssociateEnclaveCertificateIamRoleSyncType? = nil,
             associateIamInstanceProfileAsync: AssociateIamInstanceProfileAsyncType? = nil,
             associateIamInstanceProfileSync: AssociateIamInstanceProfileSyncType? = nil,
             associateRouteTableAsync: AssociateRouteTableAsyncType? = nil,
@@ -1435,6 +1443,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             disassociateAddressSync: DisassociateAddressSyncType? = nil,
             disassociateClientVpnTargetNetworkAsync: DisassociateClientVpnTargetNetworkAsyncType? = nil,
             disassociateClientVpnTargetNetworkSync: DisassociateClientVpnTargetNetworkSyncType? = nil,
+            disassociateEnclaveCertificateIamRoleAsync: DisassociateEnclaveCertificateIamRoleAsyncType? = nil,
+            disassociateEnclaveCertificateIamRoleSync: DisassociateEnclaveCertificateIamRoleSyncType? = nil,
             disassociateIamInstanceProfileAsync: DisassociateIamInstanceProfileAsyncType? = nil,
             disassociateIamInstanceProfileSync: DisassociateIamInstanceProfileSyncType? = nil,
             disassociateRouteTableAsync: DisassociateRouteTableAsyncType? = nil,
@@ -1469,6 +1479,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             exportImageSync: ExportImageSyncType? = nil,
             exportTransitGatewayRoutesAsync: ExportTransitGatewayRoutesAsyncType? = nil,
             exportTransitGatewayRoutesSync: ExportTransitGatewayRoutesSyncType? = nil,
+            getAssociatedEnclaveCertificateIamRolesAsync: GetAssociatedEnclaveCertificateIamRolesAsyncType? = nil,
+            getAssociatedEnclaveCertificateIamRolesSync: GetAssociatedEnclaveCertificateIamRolesSyncType? = nil,
             getAssociatedIpv6PoolCidrsAsync: GetAssociatedIpv6PoolCidrsAsyncType? = nil,
             getAssociatedIpv6PoolCidrsSync: GetAssociatedIpv6PoolCidrsSyncType? = nil,
             getCapacityReservationUsageAsync: GetCapacityReservationUsageAsyncType? = nil,
@@ -1744,6 +1756,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.associateClientVpnTargetNetworkSyncOverride = associateClientVpnTargetNetworkSync
         self.associateDhcpOptionsAsyncOverride = associateDhcpOptionsAsync
         self.associateDhcpOptionsSyncOverride = associateDhcpOptionsSync
+        self.associateEnclaveCertificateIamRoleAsyncOverride = associateEnclaveCertificateIamRoleAsync
+        self.associateEnclaveCertificateIamRoleSyncOverride = associateEnclaveCertificateIamRoleSync
         self.associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsync
         self.associateIamInstanceProfileSyncOverride = associateIamInstanceProfileSync
         self.associateRouteTableAsyncOverride = associateRouteTableAsync
@@ -2276,6 +2290,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.disassociateAddressSyncOverride = disassociateAddressSync
         self.disassociateClientVpnTargetNetworkAsyncOverride = disassociateClientVpnTargetNetworkAsync
         self.disassociateClientVpnTargetNetworkSyncOverride = disassociateClientVpnTargetNetworkSync
+        self.disassociateEnclaveCertificateIamRoleAsyncOverride = disassociateEnclaveCertificateIamRoleAsync
+        self.disassociateEnclaveCertificateIamRoleSyncOverride = disassociateEnclaveCertificateIamRoleSync
         self.disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsync
         self.disassociateIamInstanceProfileSyncOverride = disassociateIamInstanceProfileSync
         self.disassociateRouteTableAsyncOverride = disassociateRouteTableAsync
@@ -2310,6 +2326,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.exportImageSyncOverride = exportImageSync
         self.exportTransitGatewayRoutesAsyncOverride = exportTransitGatewayRoutesAsync
         self.exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSync
+        self.getAssociatedEnclaveCertificateIamRolesAsyncOverride = getAssociatedEnclaveCertificateIamRolesAsync
+        self.getAssociatedEnclaveCertificateIamRolesSyncOverride = getAssociatedEnclaveCertificateIamRolesSync
         self.getAssociatedIpv6PoolCidrsAsyncOverride = getAssociatedIpv6PoolCidrsAsync
         self.getAssociatedIpv6PoolCidrsSyncOverride = getAssociatedIpv6PoolCidrsSync
         self.getCapacityReservationUsageAsyncOverride = getCapacityReservationUsageAsync
@@ -3054,6 +3072,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) throws {
         if let associateDhcpOptionsSyncOverride = associateDhcpOptionsSyncOverride {
             return try associateDhcpOptionsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AssociateEnclaveCertificateIamRole operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+         - completion: The AssociateEnclaveCertificateIamRoleResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateEnclaveCertificateIamRoleResult
+           object will be validated before being returned to caller.
+     */
+    public func associateEnclaveCertificateIamRoleAsync(
+            input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws {
+        if let associateEnclaveCertificateIamRoleAsyncOverride = associateEnclaveCertificateIamRoleAsyncOverride {
+            return try associateEnclaveCertificateIamRoleAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the AssociateEnclaveCertificateIamRole operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+     - Returns: The AssociateEnclaveCertificateIamRoleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateEnclaveCertificateIamRoleSync(
+            input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult {
+        if let associateEnclaveCertificateIamRoleSyncOverride = associateEnclaveCertificateIamRoleSyncOverride {
+            return try associateEnclaveCertificateIamRoleSyncOverride(input)
         }
 
         throw error
@@ -12534,6 +12588,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DisassociateEnclaveCertificateIamRole operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+         - completion: The DisassociateEnclaveCertificateIamRoleResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateEnclaveCertificateIamRoleResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateEnclaveCertificateIamRoleAsync(
+            input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disassociateEnclaveCertificateIamRoleAsyncOverride = disassociateEnclaveCertificateIamRoleAsyncOverride {
+            return try disassociateEnclaveCertificateIamRoleAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DisassociateEnclaveCertificateIamRole operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateEnclaveCertificateIamRoleRequest object being passed to this operation.
+     - Returns: The DisassociateEnclaveCertificateIamRoleResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateEnclaveCertificateIamRoleSync(
+            input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest) throws -> ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult {
+        if let disassociateEnclaveCertificateIamRoleSyncOverride = disassociateEnclaveCertificateIamRoleSyncOverride {
+            return try disassociateEnclaveCertificateIamRoleSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisassociateIamInstanceProfile operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13131,6 +13221,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
         if let exportTransitGatewayRoutesSyncOverride = exportTransitGatewayRoutesSyncOverride {
             return try exportTransitGatewayRoutesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetAssociatedEnclaveCertificateIamRoles operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAssociatedEnclaveCertificateIamRolesRequest object being passed to this operation.
+         - completion: The GetAssociatedEnclaveCertificateIamRolesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetAssociatedEnclaveCertificateIamRolesResult
+           object will be validated before being returned to caller.
+     */
+    public func getAssociatedEnclaveCertificateIamRolesAsync(
+            input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getAssociatedEnclaveCertificateIamRolesAsyncOverride = getAssociatedEnclaveCertificateIamRolesAsyncOverride {
+            return try getAssociatedEnclaveCertificateIamRolesAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetAssociatedEnclaveCertificateIamRoles operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAssociatedEnclaveCertificateIamRolesRequest object being passed to this operation.
+     - Returns: The GetAssociatedEnclaveCertificateIamRolesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAssociatedEnclaveCertificateIamRolesSync(
+            input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest) throws -> ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult {
+        if let getAssociatedEnclaveCertificateIamRolesSyncOverride = getAssociatedEnclaveCertificateIamRolesSyncOverride {
+            return try getAssociatedEnclaveCertificateIamRolesSyncOverride(input)
         }
 
         throw error

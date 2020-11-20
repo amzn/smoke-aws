@@ -804,6 +804,7 @@ public struct CopyDBSnapshotMessage: Codable, Equatable {
     public var preSignedUrl: String?
     public var sourceDBSnapshotIdentifier: String
     public var tags: TagList?
+    public var targetCustomAvailabilityZone: String?
     public var targetDBSnapshotIdentifier: String
 
     public init(copyTags: BooleanOptional? = nil,
@@ -812,6 +813,7 @@ public struct CopyDBSnapshotMessage: Codable, Equatable {
                 preSignedUrl: String? = nil,
                 sourceDBSnapshotIdentifier: String,
                 tags: TagList? = nil,
+                targetCustomAvailabilityZone: String? = nil,
                 targetDBSnapshotIdentifier: String) {
         self.copyTags = copyTags
         self.kmsKeyId = kmsKeyId
@@ -819,6 +821,7 @@ public struct CopyDBSnapshotMessage: Codable, Equatable {
         self.preSignedUrl = preSignedUrl
         self.sourceDBSnapshotIdentifier = sourceDBSnapshotIdentifier
         self.tags = tags
+        self.targetCustomAvailabilityZone = targetCustomAvailabilityZone
         self.targetDBSnapshotIdentifier = targetDBSnapshotIdentifier
     }
 
@@ -829,6 +832,7 @@ public struct CopyDBSnapshotMessage: Codable, Equatable {
         case preSignedUrl = "PreSignedUrl"
         case sourceDBSnapshotIdentifier = "SourceDBSnapshotIdentifier"
         case tags = "Tags"
+        case targetCustomAvailabilityZone = "TargetCustomAvailabilityZone"
         case targetDBSnapshotIdentifier = "TargetDBSnapshotIdentifier"
     }
 
@@ -1526,6 +1530,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
     public var enablePerformanceInsights: BooleanOptional?
     public var iops: IntegerOptional?
     public var kmsKeyId: String?
+    public var maxAllocatedStorage: IntegerOptional?
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
@@ -1558,6 +1563,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
                 enablePerformanceInsights: BooleanOptional? = nil,
                 iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
+                maxAllocatedStorage: IntegerOptional? = nil,
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
@@ -1589,6 +1595,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
         self.enablePerformanceInsights = enablePerformanceInsights
         self.iops = iops
         self.kmsKeyId = kmsKeyId
+        self.maxAllocatedStorage = maxAllocatedStorage
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
@@ -1623,6 +1630,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
         case enablePerformanceInsights = "EnablePerformanceInsights"
         case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
+        case maxAllocatedStorage = "MaxAllocatedStorage"
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"

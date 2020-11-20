@@ -73,6 +73,11 @@ public protocol S3ClientProtocol {
     typealias DeleteBucketEncryptionAsyncType = (
             _ input: S3Model.DeleteBucketEncryptionRequest, 
             _ completion: @escaping (S3Error?) -> ()) throws -> ()
+    typealias DeleteBucketIntelligentTieringConfigurationSyncType = (
+            _ input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) throws -> ()
+    typealias DeleteBucketIntelligentTieringConfigurationAsyncType = (
+            _ input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest, 
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias DeleteBucketInventoryConfigurationSyncType = (
             _ input: S3Model.DeleteBucketInventoryConfigurationRequest) throws -> ()
     typealias DeleteBucketInventoryConfigurationAsyncType = (
@@ -158,6 +163,11 @@ public protocol S3ClientProtocol {
     typealias GetBucketEncryptionAsyncType = (
             _ input: S3Model.GetBucketEncryptionRequest, 
             _ completion: @escaping (Result<S3Model.GetBucketEncryptionOutput, S3Error>) -> ()) throws -> ()
+    typealias GetBucketIntelligentTieringConfigurationSyncType = (
+            _ input: S3Model.GetBucketIntelligentTieringConfigurationRequest) throws -> S3Model.GetBucketIntelligentTieringConfigurationOutput
+    typealias GetBucketIntelligentTieringConfigurationAsyncType = (
+            _ input: S3Model.GetBucketIntelligentTieringConfigurationRequest, 
+            _ completion: @escaping (Result<S3Model.GetBucketIntelligentTieringConfigurationOutput, S3Error>) -> ()) throws -> ()
     typealias GetBucketInventoryConfigurationSyncType = (
             _ input: S3Model.GetBucketInventoryConfigurationRequest) throws -> S3Model.GetBucketInventoryConfigurationOutput
     typealias GetBucketInventoryConfigurationAsyncType = (
@@ -293,6 +303,11 @@ public protocol S3ClientProtocol {
     typealias ListBucketAnalyticsConfigurationsAsyncType = (
             _ input: S3Model.ListBucketAnalyticsConfigurationsRequest, 
             _ completion: @escaping (Result<S3Model.ListBucketAnalyticsConfigurationsOutput, S3Error>) -> ()) throws -> ()
+    typealias ListBucketIntelligentTieringConfigurationsSyncType = (
+            _ input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) throws -> S3Model.ListBucketIntelligentTieringConfigurationsOutput
+    typealias ListBucketIntelligentTieringConfigurationsAsyncType = (
+            _ input: S3Model.ListBucketIntelligentTieringConfigurationsRequest, 
+            _ completion: @escaping (Result<S3Model.ListBucketIntelligentTieringConfigurationsOutput, S3Error>) -> ()) throws -> ()
     typealias ListBucketInventoryConfigurationsSyncType = (
             _ input: S3Model.ListBucketInventoryConfigurationsRequest) throws -> S3Model.ListBucketInventoryConfigurationsOutput
     typealias ListBucketInventoryConfigurationsAsyncType = (
@@ -355,6 +370,11 @@ public protocol S3ClientProtocol {
             _ input: S3Model.PutBucketEncryptionRequest) throws -> ()
     typealias PutBucketEncryptionAsyncType = (
             _ input: S3Model.PutBucketEncryptionRequest, 
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
+    typealias PutBucketIntelligentTieringConfigurationSyncType = (
+            _ input: S3Model.PutBucketIntelligentTieringConfigurationRequest) throws -> ()
+    typealias PutBucketIntelligentTieringConfigurationAsyncType = (
+            _ input: S3Model.PutBucketIntelligentTieringConfigurationRequest, 
             _ completion: @escaping (S3Error?) -> ()) throws -> ()
     typealias PutBucketInventoryConfigurationSyncType = (
             _ input: S3Model.PutBucketInventoryConfigurationRequest) throws -> ()
@@ -691,6 +711,27 @@ public protocol S3ClientProtocol {
      */
     func deleteBucketEncryptionSync(
             input: S3Model.DeleteBucketEncryptionRequest) throws
+
+    /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    func deleteBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (S3Error?) -> ()) throws
+
+    /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    func deleteBucketIntelligentTieringConfigurationSync(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) throws
 
     /**
      Invokes the DeleteBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
@@ -1072,6 +1113,30 @@ public protocol S3ClientProtocol {
      */
     func getBucketEncryptionSync(
             input: S3Model.GetBucketEncryptionRequest) throws -> S3Model.GetBucketEncryptionOutput
+
+    /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: The GetBucketIntelligentTieringConfigurationOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetBucketIntelligentTieringConfigurationOutput
+           object will be validated before being returned to caller.
+     */
+    func getBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (Result<S3Model.GetBucketIntelligentTieringConfigurationOutput, S3Error>) -> ()) throws
+
+    /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketIntelligentTieringConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getBucketIntelligentTieringConfigurationSync(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest) throws -> S3Model.GetBucketIntelligentTieringConfigurationOutput
 
     /**
      Invokes the GetBucketInventoryConfiguration operation returning immediately and passing the response to a callback.
@@ -1465,7 +1530,7 @@ public protocol S3ClientProtocol {
          - completion: The GetObjectOutput object or an error will be passed to this 
            callback when the operation is complete. The GetObjectOutput
            object will be validated before being returned to caller.
-           The possible errors are: noSuchKey.
+           The possible errors are: invalidObjectState, noSuchKey.
      */
     func getObjectAsync(
             input: S3Model.GetObjectRequest, 
@@ -1478,7 +1543,7 @@ public protocol S3ClientProtocol {
          - input: The validated GetObjectRequest object being passed to this operation.
      - Returns: The GetObjectOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: noSuchKey.
+     - Throws: invalidObjectState, noSuchKey.
      */
     func getObjectSync(
             input: S3Model.GetObjectRequest) throws -> S3Model.GetObjectOutput
@@ -1725,6 +1790,30 @@ public protocol S3ClientProtocol {
      */
     func listBucketAnalyticsConfigurationsSync(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest) throws -> S3Model.ListBucketAnalyticsConfigurationsOutput
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+         - completion: The ListBucketIntelligentTieringConfigurationsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListBucketIntelligentTieringConfigurationsOutput
+           object will be validated before being returned to caller.
+     */
+    func listBucketIntelligentTieringConfigurationsAsync(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest, 
+            completion: @escaping (Result<S3Model.ListBucketIntelligentTieringConfigurationsOutput, S3Error>) -> ()) throws
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketIntelligentTieringConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func listBucketIntelligentTieringConfigurationsSync(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) throws -> S3Model.ListBucketIntelligentTieringConfigurationsOutput
 
     /**
      Invokes the ListBucketInventoryConfigurations operation returning immediately and passing the response to a callback.
@@ -2018,6 +2107,27 @@ public protocol S3ClientProtocol {
      */
     func putBucketEncryptionSync(
             input: S3Model.PutBucketEncryptionRequest) throws
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    func putBucketIntelligentTieringConfigurationAsync(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest, 
+            completion: @escaping (S3Error?) -> ()) throws
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    func putBucketIntelligentTieringConfigurationSync(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest) throws
 
     /**
      Invokes the PutBucketInventoryConfiguration operation returning immediately and passing the response to a callback.

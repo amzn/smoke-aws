@@ -37,15 +37,18 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case describeContinuousBackups = "DescribeContinuousBackups"
     case describeContributorInsights = "DescribeContributorInsights"
     case describeEndpoints = "DescribeEndpoints"
+    case describeExport = "DescribeExport"
     case describeGlobalTable = "DescribeGlobalTable"
     case describeGlobalTableSettings = "DescribeGlobalTableSettings"
     case describeLimits = "DescribeLimits"
     case describeTable = "DescribeTable"
     case describeTableReplicaAutoScaling = "DescribeTableReplicaAutoScaling"
     case describeTimeToLive = "DescribeTimeToLive"
+    case exportTableToPointInTime = "ExportTableToPointInTime"
     case getItem = "GetItem"
     case listBackups = "ListBackups"
     case listContributorInsights = "ListContributorInsights"
+    case listExports = "ListExports"
     case listGlobalTables = "ListGlobalTables"
     case listTables = "ListTables"
     case listTagsOfResource = "ListTagsOfResource"
@@ -97,6 +100,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeEndpoints:
             return "/"
+        case .describeExport:
+            return "/"
         case .describeGlobalTable:
             return "/"
         case .describeGlobalTableSettings:
@@ -109,11 +114,15 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeTimeToLive:
             return "/"
+        case .exportTableToPointInTime:
+            return "/"
         case .getItem:
             return "/"
         case .listBackups:
             return "/"
         case .listContributorInsights:
+            return "/"
+        case .listExports:
             return "/"
         case .listGlobalTables:
             return "/"

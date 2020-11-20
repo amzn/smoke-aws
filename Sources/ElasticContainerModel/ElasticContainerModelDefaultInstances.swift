@@ -1077,6 +1077,33 @@ public extension EnvironmentFile {
     }()
 }
 
+public extension FSxWindowsFileServerAuthorizationConfig {
+    /**
+     Default instance of the FSxWindowsFileServerAuthorizationConfig structure.
+     */
+    static let __default: ElasticContainerModel.FSxWindowsFileServerAuthorizationConfig = {
+        let defaultInstance = ElasticContainerModel.FSxWindowsFileServerAuthorizationConfig(
+            credentialsParameter: "value",
+            domain: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension FSxWindowsFileServerVolumeConfiguration {
+    /**
+     Default instance of the FSxWindowsFileServerVolumeConfiguration structure.
+     */
+    static let __default: ElasticContainerModel.FSxWindowsFileServerVolumeConfiguration = {
+        let defaultInstance = ElasticContainerModel.FSxWindowsFileServerVolumeConfiguration(
+            authorizationConfig: FSxWindowsFileServerAuthorizationConfig.__default,
+            fileSystemId: "value",
+            rootDirectory: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension Failure {
     /**
      Default instance of the Failure structure.
@@ -2745,6 +2772,7 @@ public extension Volume {
         let defaultInstance = ElasticContainerModel.Volume(
             dockerVolumeConfiguration: nil,
             efsVolumeConfiguration: nil,
+            fsxWindowsFileServerVolumeConfiguration: nil,
             host: nil,
             name: nil)
 

@@ -88,6 +88,11 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeEndpointsAsyncType = (
             _ input: DynamoDBModel.DescribeEndpointsRequest, 
             _ completion: @escaping (Result<DynamoDBModel.DescribeEndpointsResponse, DynamoDBError>) -> ()) throws -> ()
+    typealias DescribeExportSyncType = (
+            _ input: DynamoDBModel.DescribeExportInput) throws -> DynamoDBModel.DescribeExportOutput
+    typealias DescribeExportAsyncType = (
+            _ input: DynamoDBModel.DescribeExportInput, 
+            _ completion: @escaping (Result<DynamoDBModel.DescribeExportOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeGlobalTableSyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableInput) throws -> DynamoDBModel.DescribeGlobalTableOutput
     typealias DescribeGlobalTableAsyncType = (
@@ -118,6 +123,11 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeTimeToLiveAsyncType = (
             _ input: DynamoDBModel.DescribeTimeToLiveInput, 
             _ completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias ExportTableToPointInTimeSyncType = (
+            _ input: DynamoDBModel.ExportTableToPointInTimeInput) throws -> DynamoDBModel.ExportTableToPointInTimeOutput
+    typealias ExportTableToPointInTimeAsyncType = (
+            _ input: DynamoDBModel.ExportTableToPointInTimeInput, 
+            _ completion: @escaping (Result<DynamoDBModel.ExportTableToPointInTimeOutput, DynamoDBError>) -> ()) throws -> ()
     typealias GetItemSyncType = (
             _ input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput
     typealias GetItemAsyncType = (
@@ -133,6 +143,11 @@ public protocol DynamoDBClientProtocol {
     typealias ListContributorInsightsAsyncType = (
             _ input: DynamoDBModel.ListContributorInsightsInput, 
             _ completion: @escaping (Result<DynamoDBModel.ListContributorInsightsOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias ListExportsSyncType = (
+            _ input: DynamoDBModel.ListExportsInput) throws -> DynamoDBModel.ListExportsOutput
+    typealias ListExportsAsyncType = (
+            _ input: DynamoDBModel.ListExportsInput, 
+            _ completion: @escaping (Result<DynamoDBModel.ListExportsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListGlobalTablesSyncType = (
             _ input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput
     typealias ListGlobalTablesAsyncType = (
@@ -545,6 +560,32 @@ public protocol DynamoDBClientProtocol {
             input: DynamoDBModel.DescribeEndpointsRequest) throws -> DynamoDBModel.DescribeEndpointsResponse
 
     /**
+     Invokes the DescribeExport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+         - completion: The DescribeExportOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeExportOutput
+           object will be validated before being returned to caller.
+           The possible errors are: exportNotFound, internalServer, limitExceeded.
+     */
+    func describeExportAsync(
+            input: DynamoDBModel.DescribeExportInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeExportOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the DescribeExport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+     - Returns: The DescribeExportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportNotFound, internalServer, limitExceeded.
+     */
+    func describeExportSync(
+            input: DynamoDBModel.DescribeExportInput) throws -> DynamoDBModel.DescribeExportOutput
+
+    /**
      Invokes the DescribeGlobalTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -701,6 +742,32 @@ public protocol DynamoDBClientProtocol {
             input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput
 
     /**
+     Invokes the ExportTableToPointInTime operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+         - completion: The ExportTableToPointInTimeOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExportTableToPointInTimeOutput
+           object will be validated before being returned to caller.
+           The possible errors are: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    func exportTableToPointInTimeAsync(
+            input: DynamoDBModel.ExportTableToPointInTimeInput, 
+            completion: @escaping (Result<DynamoDBModel.ExportTableToPointInTimeOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the ExportTableToPointInTime operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+     - Returns: The ExportTableToPointInTimeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    func exportTableToPointInTimeSync(
+            input: DynamoDBModel.ExportTableToPointInTimeInput) throws -> DynamoDBModel.ExportTableToPointInTimeOutput
+
+    /**
      Invokes the GetItem operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -777,6 +844,32 @@ public protocol DynamoDBClientProtocol {
      */
     func listContributorInsightsSync(
             input: DynamoDBModel.ListContributorInsightsInput) throws -> DynamoDBModel.ListContributorInsightsOutput
+
+    /**
+     Invokes the ListExports operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+         - completion: The ListExportsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListExportsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded.
+     */
+    func listExportsAsync(
+            input: DynamoDBModel.ListExportsInput, 
+            completion: @escaping (Result<DynamoDBModel.ListExportsOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the ListExports operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+     - Returns: The ListExportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded.
+     */
+    func listExportsSync(
+            input: DynamoDBModel.ListExportsInput) throws -> DynamoDBModel.ListExportsOutput
 
     /**
      Invokes the ListGlobalTables operation returning immediately and passing the response to a callback.

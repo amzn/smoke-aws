@@ -158,6 +158,20 @@ public enum AllowsMultipleInstanceTypes: String, Codable, CustomStringConvertibl
 }
 
 /**
+ Enumeration restricting the values of the ApplianceModeSupportValue field.
+ */
+public enum ApplianceModeSupportValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ApplianceModeSupportValue = .disable
+}
+
+/**
  Enumeration restricting the values of the ArchitectureType field.
  */
 public enum ArchitectureType: String, Codable, CustomStringConvertible {
@@ -209,6 +223,11 @@ public enum AssociatedNetworkType: String, Codable, CustomStringConvertible {
     
     public static let __default: AssociatedNetworkType = .vpc
 }
+
+/**
+ Type definition for the AssociatedRolesList field.
+ */
+public typealias AssociatedRolesList = [AssociatedRole]
 
 /**
  Type definition for the AssociatedTargetNetworkSet field.
@@ -744,6 +763,20 @@ public enum ClientVpnConnectionStatusCode: String, Codable, CustomStringConverti
 }
 
 /**
+ Enumeration restricting the values of the ClientVpnEndpointAttributeStatusCode field.
+ */
+public enum ClientVpnEndpointAttributeStatusCode: String, Codable, CustomStringConvertible {
+    case applied
+    case applying
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientVpnEndpointAttributeStatusCode = .applied
+}
+
+/**
  Type definition for the ClientVpnEndpointId field.
  */
 public typealias ClientVpnEndpointId = String
@@ -1010,6 +1043,11 @@ public typealias DedicatedHostFlag = Bool
  Type definition for the DedicatedHostId field.
  */
 public typealias DedicatedHostId = String
+
+/**
+ Type definition for the DefaultNetworkCardIndex field.
+ */
+public typealias DefaultNetworkCardIndex = Int
 
 /**
  Enumeration restricting the values of the DefaultRouteTableAssociationValue field.
@@ -1933,6 +1971,19 @@ public enum FleetOnDemandAllocationStrategy: String, Codable, CustomStringConver
 }
 
 /**
+ Enumeration restricting the values of the FleetReplacementStrategy field.
+ */
+public enum FleetReplacementStrategy: String, Codable, CustomStringConvertible {
+    case launch
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FleetReplacementStrategy = .launch
+}
+
+/**
  Type definition for the FleetSet field.
  */
 public typealias FleetSet = [FleetData]
@@ -2459,6 +2510,7 @@ public enum InstanceAttributeName: String, Codable, CustomStringConvertible {
     case disableapitermination = "disableApiTermination"
     case ebsoptimized = "ebsOptimized"
     case enasupport = "enaSupport"
+    case enclaveoptions = "enclaveOptions"
     case groupset = "groupSet"
     case instanceinitiatedshutdownbehavior = "instanceInitiatedShutdownBehavior"
     case instancetype = "instanceType"
@@ -2934,6 +2986,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case p32xlarge = "p3.2xlarge"
     case p38xlarge = "p3.8xlarge"
     case p3dn24xlarge = "p3dn.24xlarge"
+    case p4d24xlarge = "p4d.24xlarge"
     case r32xlarge = "r3.2xlarge"
     case r34xlarge = "r3.4xlarge"
     case r38xlarge = "r3.8xlarge"
@@ -3698,6 +3751,11 @@ public typealias MaximumBandwidthInMbps = Int
 public typealias MaximumIops = Int
 
 /**
+ Type definition for the MaximumNetworkCards field.
+ */
+public typealias MaximumNetworkCards = Int
+
+/**
  Type definition for the MaximumThroughputInMBps field.
  */
 public typealias MaximumThroughputInMBps = Double
@@ -3855,6 +3913,16 @@ public typealias NetworkAclIdStringList = [NetworkAclId]
  Type definition for the NetworkAclList field.
  */
 public typealias NetworkAclList = [NetworkAcl]
+
+/**
+ Type definition for the NetworkCardIndex field.
+ */
+public typealias NetworkCardIndex = Int
+
+/**
+ Type definition for the NetworkCardInfoList field.
+ */
+public typealias NetworkCardInfoList = [NetworkCardInfo]
 
 /**
  Type definition for the NetworkInterfaceAttachmentId field.
@@ -4516,6 +4584,19 @@ public typealias RegionNameStringList = [String]
 public typealias RemovePrefixListEntries = [RemovePrefixListEntry]
 
 /**
+ Enumeration restricting the values of the ReplacementStrategy field.
+ */
+public enum ReplacementStrategy: String, Codable, CustomStringConvertible {
+    case launch
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReplacementStrategy = .launch
+}
+
+/**
  Enumeration restricting the values of the ReportInstanceReasonCodes field.
  */
 public enum ReportInstanceReasonCodes: String, Codable, CustomStringConvertible {
@@ -4991,6 +5072,20 @@ public typealias SecurityGroupReferences = [SecurityGroupReference]
 public typealias SecurityGroupStringList = [SecurityGroupName]
 
 /**
+ Enumeration restricting the values of the SelfServicePortal field.
+ */
+public enum SelfServicePortal: String, Codable, CustomStringConvertible {
+    case disabled
+    case enabled
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: SelfServicePortal = .disabled
+}
+
+/**
  Type definition for the SensitiveUserData field.
  */
 public typealias SensitiveUserData = String
@@ -5027,6 +5122,7 @@ public enum ServiceState: String, Codable, CustomStringConvertible {
  */
 public enum ServiceType: String, Codable, CustomStringConvertible {
     case gateway = "Gateway"
+    case gatewayloadbalancer = "GatewayLoadBalancer"
     case interface = "Interface"
 
     public var description: String {
@@ -6381,6 +6477,7 @@ public typealias VpcEndpointSubnetIdList = [SubnetId]
  */
 public enum VpcEndpointType: String, Codable, CustomStringConvertible {
     case gateway = "Gateway"
+    case gatewayloadbalancer = "GatewayLoadBalancer"
     case interface = "Interface"
 
     public var description: String {

@@ -180,6 +180,19 @@ extension DescribeEndpointsResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeExport operation in a HTTP client.
+ */
+extension DescribeExportOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeExportOutput
+    public typealias HeadersType = DescribeExportOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeExportOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeGlobalTable operation in a HTTP client.
  */
 extension DescribeGlobalTableOutput: HTTPResponseOutputProtocol {
@@ -258,6 +271,19 @@ extension DescribeTimeToLiveOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ExportTableToPointInTime operation in a HTTP client.
+ */
+extension ExportTableToPointInTimeOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExportTableToPointInTimeOutput
+    public typealias HeadersType = ExportTableToPointInTimeOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExportTableToPointInTimeOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetItem operation in a HTTP client.
  */
 extension GetItemOutput: HTTPResponseOutputProtocol {
@@ -292,6 +318,19 @@ extension ListContributorInsightsOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListContributorInsightsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListExports operation in a HTTP client.
+ */
+extension ListExportsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListExportsOutput
+    public typealias HeadersType = ListExportsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListExportsOutput {
         return try bodyDecodableProvider()
     }
 }
