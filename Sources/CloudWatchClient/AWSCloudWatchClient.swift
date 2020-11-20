@@ -40,22 +40,22 @@ public enum CloudWatchClientError: Swift.Error {
         return error.asUnrecognizedCloudWatchError()
     }
 
-    func isRetriable() -> Bool {
+    func isRetriable() -> Bool? {
         switch self {
         case .limitExceededException, .limitExceededFault:
             return true
         default:
-            return false
+            return nil
         }
     }
 }
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? CloudWatchError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? CloudWatchError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -71,7 +71,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -122,7 +122,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: CloudWatchOperationsReporting) {
         self.httpClient = httpClient

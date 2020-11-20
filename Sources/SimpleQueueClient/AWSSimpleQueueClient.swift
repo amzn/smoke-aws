@@ -40,22 +40,22 @@ public enum SimpleQueueClientError: Swift.Error {
         return error.asUnrecognizedSimpleQueueError()
     }
 
-    func isRetriable() -> Bool {
+    func isRetriable() -> Bool? {
         switch self {
         case .overLimit:
             return true
         default:
-            return false
+            return nil
         }
     }
 }
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? SimpleQueueError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? SimpleQueueError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -72,7 +72,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -132,7 +132,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
                 httpClient: HTTPOperationsClient, listHttpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: SimpleQueueOperationsReporting) {
         self.httpClient = httpClient

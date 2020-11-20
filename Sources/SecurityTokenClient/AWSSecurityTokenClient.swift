@@ -39,20 +39,6 @@ public enum SecurityTokenClientError: Swift.Error {
     public static func asUnrecognizedError(error: Swift.Error) -> SecurityTokenError {
         return error.asUnrecognizedSecurityTokenError()
     }
-
-    func isRetriable() -> Bool {
-        return false
-    }
-}
-
-private extension Swift.Error {
-    func isRetriable() -> Bool {
-        if let typedError = self as? SecurityTokenError {
-            return typedError.isRetriable()
-        } else {
-            return true
-        }
-    }
 }
 
 /**
@@ -66,7 +52,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -115,7 +101,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
                 httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: SecurityTokenOperationsReporting) {
         self.httpClient = httpClient

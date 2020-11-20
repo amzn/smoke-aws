@@ -29,16 +29,6 @@ import NIOHTTP1
 import AsyncHTTPClient
 import Logging
 
-private extension Swift.Error {
-    func isRetriable() -> Bool {
-        if let typedError = self as? S3Error {
-            return typedError.isRetriable()
-        } else {
-            return true
-        }
-    }
-}
-
 /**
  AWS Client Generator for the S3 service.
  */
@@ -49,7 +39,7 @@ public struct AWSS3ClientGenerator {
     let service: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
 
     let operationsReporting: S3OperationsReporting

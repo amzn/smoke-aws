@@ -40,22 +40,22 @@ public enum DynamoDBClientError: Swift.Error {
         return error.asUnrecognizedDynamoDBError()
     }
 
-    func isRetriable() -> Bool {
+    func isRetriable() -> Bool? {
         switch self {
         case .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded:
             return true
         default:
-            return false
+            return nil
         }
     }
 }
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? DynamoDBError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? DynamoDBError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -70,7 +70,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     let service: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -118,7 +118,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
                 httpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: DynamoDBOperationsReporting) {
         self.httpClient = httpClient

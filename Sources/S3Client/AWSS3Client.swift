@@ -39,20 +39,6 @@ public enum S3ClientError: Swift.Error {
     public static func asUnrecognizedError(error: Swift.Error) -> S3Error {
         return error.asUnrecognizedS3Error()
     }
-
-    func isRetriable() -> Bool {
-        return false
-    }
-}
-
-private extension Swift.Error {
-    func isRetriable() -> Bool {
-        if let typedError = self as? S3Error {
-            return typedError.isRetriable()
-        } else {
-            return true
-        }
-    }
 }
 
 /**
@@ -66,7 +52,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     let service: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -123,7 +109,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
                 httpClient: HTTPOperationsClient, dataHttpClient: HTTPOperationsClient,
                 service: String,
                 target: String?,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: S3OperationsReporting) {
         self.httpClient = httpClient

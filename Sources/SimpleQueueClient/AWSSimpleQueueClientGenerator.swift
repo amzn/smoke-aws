@@ -29,12 +29,12 @@ import NIOHTTP1
 import AsyncHTTPClient
 import Logging
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? SimpleQueueError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? SimpleQueueError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -50,7 +50,7 @@ public struct AWSSimpleQueueClientGenerator {
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
 
     let operationsReporting: SimpleQueueOperationsReporting

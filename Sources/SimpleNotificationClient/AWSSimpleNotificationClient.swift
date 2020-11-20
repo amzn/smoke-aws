@@ -40,22 +40,22 @@ public enum SimpleNotificationClientError: Swift.Error {
         return error.asUnrecognizedSimpleNotificationError()
     }
 
-    func isRetriable() -> Bool {
+    func isRetriable() -> Bool? {
         switch self {
         case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
             return true
         default:
-            return false
+            return nil
         }
     }
 }
 
-private extension Swift.Error {
+private extension SmokeHTTPClient.HTTPClientError {
     func isRetriable() -> Bool {
-        if let typedError = self as? SimpleNotificationError {
-            return typedError.isRetriable()
+        if let typedError = self.cause as? SimpleNotificationError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
         } else {
-            return true
+            return self.isRetriableAccordingToCategory
         }
     }
 }
@@ -71,7 +71,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     let apiVersion: String
     let target: String?
     let retryConfiguration: HTTPClientRetryConfiguration
-    let retryOnErrorProvider: (Swift.Error) -> Bool
+    let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
     
     public let reporting: InvocationReportingType
@@ -120,7 +120,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 httpClient: HTTPOperationsClient,
                 service: String,
                 apiVersion: String,
-                retryOnErrorProvider: @escaping (Swift.Error) -> Bool,
+                retryOnErrorProvider: @escaping (SmokeHTTPClient.HTTPClientError) -> Bool,
                 retryConfiguration: HTTPClientRetryConfiguration,
                 operationsReporting: SimpleNotificationOperationsReporting) {
         self.httpClient = httpClient
