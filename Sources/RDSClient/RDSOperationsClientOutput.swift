@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -1519,6 +1519,19 @@ extension StartDBInstanceResultForStartDBInstance: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the StartDBInstanceAutomatedBackupsReplication operation in a HTTP client.
+ */
+extension StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+    public typealias HeadersType = StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the StartExportTask operation in a HTTP client.
  */
 extension ExportTaskForStartExportTask: HTTPResponseOutputProtocol {
@@ -1566,6 +1579,19 @@ extension StopDBInstanceResultForStopDBInstance: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StopDBInstanceResultForStopDBInstance {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StopDBInstanceAutomatedBackupsReplication operation in a HTTP client.
+ */
+extension StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication: HTTPResponseOutputProtocol {
+    public typealias BodyType = StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+    public typealias HeadersType = StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
         return try bodyDecodableProvider()
     }
 }

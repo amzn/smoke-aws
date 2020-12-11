@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -158,6 +158,31 @@ public enum AllowsMultipleInstanceTypes: String, Codable, CustomStringConvertibl
 }
 
 /**
+ Type definition for the AlternatePathHintList field.
+ */
+public typealias AlternatePathHintList = [AlternatePathHint]
+
+/**
+ Type definition for the AnalysisComponentList field.
+ */
+public typealias AnalysisComponentList = [AnalysisComponent]
+
+/**
+ Enumeration restricting the values of the AnalysisStatus field.
+ */
+public enum AnalysisStatus: String, Codable, CustomStringConvertible {
+    case failed
+    case running
+    case succeeded
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AnalysisStatus = .failed
+}
+
+/**
  Enumeration restricting the values of the ApplianceModeSupportValue field.
  */
 public enum ApplianceModeSupportValue: String, Codable, CustomStringConvertible {
@@ -205,6 +230,11 @@ public enum ArchitectureValues: String, Codable, CustomStringConvertible {
     
     public static let __default: ArchitectureValues = .arm64
 }
+
+/**
+ Type definition for the ArnList field.
+ */
+public typealias ArnList = [ResourceArn]
 
 /**
  Type definition for the AssignedPrivateIpAddressList field.
@@ -276,6 +306,20 @@ public enum AttachmentStatus: String, Codable, CustomStringConvertible {
  Type definition for the AuthorizationRuleSet field.
  */
 public typealias AuthorizationRuleSet = [AuthorizationRule]
+
+/**
+ Enumeration restricting the values of the AutoAcceptSharedAssociationsValue field.
+ */
+public enum AutoAcceptSharedAssociationsValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AutoAcceptSharedAssociationsValue = .disable
+}
 
 /**
  Enumeration restricting the values of the AutoAcceptSharedAttachmentsValue field.
@@ -398,6 +442,20 @@ public enum BatchState: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: BatchState = .active
+}
+
+/**
+ Enumeration restricting the values of the BgpStatus field.
+ */
+public enum BgpStatus: String, Codable, CustomStringConvertible {
+    case down
+    case up
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BgpStatus = .down
 }
 
 /**
@@ -1776,6 +1834,11 @@ public enum ExcessCapacityTerminationPolicy: String, Codable, CustomStringConver
 public typealias ExecutableByStringList = [String]
 
 /**
+ Type definition for the ExplanationList field.
+ */
+public typealias ExplanationList = [Explanation]
+
+/**
  Enumeration restricting the values of the ExportEnvironment field.
  */
 public enum ExportEnvironment: String, Codable, CustomStringConvertible {
@@ -2360,6 +2423,20 @@ public enum IamInstanceProfileAssociationState: String, Codable, CustomStringCon
 public typealias IdFormatList = [IdFormat]
 
 /**
+ Enumeration restricting the values of the Igmpv2SupportValue field.
+ */
+public enum Igmpv2SupportValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: Igmpv2SupportValue = .disable
+}
+
+/**
  Enumeration restricting the values of the ImageAttributeName field.
  */
 public enum ImageAttributeName: String, Codable, CustomStringConvertible {
@@ -2501,6 +2578,11 @@ public typealias InferenceDeviceManufacturerName = String
  Type definition for the InferenceDeviceName field.
  */
 public typealias InferenceDeviceName = String
+
+/**
+ Type definition for the InsideCidrBlocksStringList field.
+ */
+public typealias InsideCidrBlocksStringList = [String]
 
 /**
  Enumeration restricting the values of the InstanceAttributeName field.
@@ -2849,6 +2931,16 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case d24xlarge = "d2.4xlarge"
     case d28xlarge = "d2.8xlarge"
     case d2Xlarge = "d2.xlarge"
+    case d32xlarge = "d3.2xlarge"
+    case d34xlarge = "d3.4xlarge"
+    case d38xlarge = "d3.8xlarge"
+    case d3Xlarge = "d3.xlarge"
+    case d3en12xlarge = "d3en.12xlarge"
+    case d3en2xlarge = "d3en.2xlarge"
+    case d3en4xlarge = "d3en.4xlarge"
+    case d3en6xlarge = "d3en.6xlarge"
+    case d3en8xlarge = "d3en.8xlarge"
+    case d3enXlarge = "d3en.xlarge"
     case f116xlarge = "f1.16xlarge"
     case f12xlarge = "f1.2xlarge"
     case f14xlarge = "f1.4xlarge"
@@ -2858,6 +2950,9 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case g34xlarge = "g3.4xlarge"
     case g38xlarge = "g3.8xlarge"
     case g3sXlarge = "g3s.xlarge"
+    case g4ad16xlarge = "g4ad.16xlarge"
+    case g4ad4xlarge = "g4ad.4xlarge"
+    case g4ad8xlarge = "g4ad.8xlarge"
     case g4dn12xlarge = "g4dn.12xlarge"
     case g4dn16xlarge = "g4dn.16xlarge"
     case g4dn2xlarge = "g4dn.2xlarge"
@@ -2961,6 +3056,13 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5n8xlarge = "m5n.8xlarge"
     case m5nLarge = "m5n.large"
     case m5nXlarge = "m5n.xlarge"
+    case m5zn12xlarge = "m5zn.12xlarge"
+    case m5zn2xlarge = "m5zn.2xlarge"
+    case m5zn3xlarge = "m5zn.3xlarge"
+    case m5zn6xlarge = "m5zn.6xlarge"
+    case m5znLarge = "m5zn.large"
+    case m5znMetal = "m5zn.metal"
+    case m5znXlarge = "m5zn.xlarge"
     case m6g12xlarge = "m6g.12xlarge"
     case m6g16xlarge = "m6g.16xlarge"
     case m6g2xlarge = "m6g.2xlarge"
@@ -2979,6 +3081,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m6gdMedium = "m6gd.medium"
     case m6gdMetal = "m6gd.metal"
     case m6gdXlarge = "m6gd.xlarge"
+    case mac1Metal = "mac1.metal"
     case p216xlarge = "p2.16xlarge"
     case p28xlarge = "p2.8xlarge"
     case p2Xlarge = "p2.xlarge"
@@ -3023,6 +3126,15 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r5ad8xlarge = "r5ad.8xlarge"
     case r5adLarge = "r5ad.large"
     case r5adXlarge = "r5ad.xlarge"
+    case r5b12xlarge = "r5b.12xlarge"
+    case r5b16xlarge = "r5b.16xlarge"
+    case r5b24xlarge = "r5b.24xlarge"
+    case r5b2xlarge = "r5b.2xlarge"
+    case r5b4xlarge = "r5b.4xlarge"
+    case r5b8xlarge = "r5b.8xlarge"
+    case r5bLarge = "r5b.large"
+    case r5bMetal = "r5b.metal"
+    case r5bXlarge = "r5b.xlarge"
     case r5d12xlarge = "r5d.12xlarge"
     case r5d16xlarge = "r5d.16xlarge"
     case r5d24xlarge = "r5d.24xlarge"
@@ -3195,6 +3307,16 @@ public typealias InternetGatewayIdList = [InternetGatewayId]
  Type definition for the InternetGatewayList field.
  */
 public typealias InternetGatewayList = [InternetGateway]
+
+/**
+ Type definition for the IpAddress field.
+ */
+public typealias IpAddress = String
+
+/**
+ Type definition for the IpAddressList field.
+ */
+public typealias IpAddressList = [IpAddress]
 
 /**
  Type definition for the IpPermissionList field.
@@ -3925,6 +4047,41 @@ public typealias NetworkCardIndex = Int
 public typealias NetworkCardInfoList = [NetworkCardInfo]
 
 /**
+ Type definition for the NetworkInsightsAnalysisId field.
+ */
+public typealias NetworkInsightsAnalysisId = String
+
+/**
+ Type definition for the NetworkInsightsAnalysisIdList field.
+ */
+public typealias NetworkInsightsAnalysisIdList = [NetworkInsightsAnalysisId]
+
+/**
+ Type definition for the NetworkInsightsAnalysisList field.
+ */
+public typealias NetworkInsightsAnalysisList = [NetworkInsightsAnalysis]
+
+/**
+ Type definition for the NetworkInsightsMaxResults field.
+ */
+public typealias NetworkInsightsMaxResults = Int
+
+/**
+ Type definition for the NetworkInsightsPathId field.
+ */
+public typealias NetworkInsightsPathId = String
+
+/**
+ Type definition for the NetworkInsightsPathIdList field.
+ */
+public typealias NetworkInsightsPathIdList = [NetworkInsightsPathId]
+
+/**
+ Type definition for the NetworkInsightsPathList field.
+ */
+public typealias NetworkInsightsPathList = [NetworkInsightsPath]
+
+/**
  Type definition for the NetworkInterfaceAttachmentId field.
  */
 public typealias NetworkInterfaceAttachmentId = String
@@ -4142,6 +4299,11 @@ public enum OperationType: String, Codable, CustomStringConvertible {
 public typealias OwnerStringList = [String]
 
 /**
+ Type definition for the PathComponentList field.
+ */
+public typealias PathComponentList = [PathComponent]
+
+/**
  Enumeration restricting the values of the PaymentOption field.
  */
 public enum PaymentOption: String, Codable, CustomStringConvertible {
@@ -4329,6 +4491,16 @@ public typealias PoolCidrBlocksSet = [PoolCidrBlock]
 public typealias PoolMaxResults = Int
 
 /**
+ Type definition for the Port field.
+ */
+public typealias Port = Int
+
+/**
+ Type definition for the PortRangeList field.
+ */
+public typealias PortRangeList = [PortRange]
+
+/**
  Type definition for the PrefixListAssociationSet field.
  */
 public typealias PrefixListAssociationSet = [PrefixListAssociation]
@@ -4431,6 +4603,11 @@ public enum PrincipalType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the PrivateDnsDetailsSet field.
+ */
+public typealias PrivateDnsDetailsSet = [PrivateDnsDetails]
+
+/**
  Type definition for the PrivateIpAddressConfigSet field.
  */
 public typealias PrivateIpAddressConfigSet = [ScheduledInstancesPrivateIpAddressConfig]
@@ -4483,6 +4660,33 @@ public typealias ProductDescriptionList = [String]
  Type definition for the PropagatingVgwList field.
  */
 public typealias PropagatingVgwList = [PropagatingVgw]
+
+/**
+ Enumeration restricting the values of the Protocol field.
+ */
+public enum Protocol: String, Codable, CustomStringConvertible {
+    case tcp
+    case udp
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: Protocol = .tcp
+}
+
+/**
+ Enumeration restricting the values of the ProtocolValue field.
+ */
+public enum ProtocolValue: String, Codable, CustomStringConvertible {
+    case gre
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ProtocolValue = .gre
+}
 
 /**
  Type definition for the PublicIpAddress field.
@@ -4842,6 +5046,8 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case localGatewayRouteTableVpcAssociation = "local-gateway-route-table-vpc-association"
     case natgateway
     case networkAcl = "network-acl"
+    case networkInsightsAnalysis = "network-insights-analysis"
+    case networkInsightsPath = "network-insights-path"
     case networkInterface = "network-interface"
     case placementGroup = "placement-group"
     case reservedInstances = "reserved-instances"
@@ -4856,6 +5062,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case trafficMirrorTarget = "traffic-mirror-target"
     case transitGateway = "transit-gateway"
     case transitGatewayAttachment = "transit-gateway-attachment"
+    case transitGatewayConnectPeer = "transit-gateway-connect-peer"
     case transitGatewayMulticastDomain = "transit-gateway-multicast-domain"
     case transitGatewayRouteTable = "transit-gateway-route-table"
     case volume
@@ -5337,6 +5544,20 @@ public enum State: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the StaticSourcesSupportValue field.
+ */
+public enum StaticSourcesSupportValue: String, Codable, CustomStringConvertible {
+    case disable
+    case enable
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StaticSourcesSupportValue = .disable
+}
+
+/**
  Enumeration restricting the values of the Status field.
  */
 public enum Status: String, Codable, CustomStringConvertible {
@@ -5379,6 +5600,11 @@ public enum StatusType: String, Codable, CustomStringConvertible {
     
     public static let __default: StatusType = .failed
 }
+
+/**
+ Type definition for the StringList field.
+ */
+public typealias StringList = [String]
 
 /**
  Type definition for the SubnetAssociationList field.
@@ -5751,6 +5977,11 @@ public enum TransitGatewayAssociationState: String, Codable, CustomStringConvert
 }
 
 /**
+ Type definition for the TransitGatewayAttachmentBgpConfigurationList field.
+ */
+public typealias TransitGatewayAttachmentBgpConfigurationList = [TransitGatewayAttachmentBgpConfiguration]
+
+/**
  Type definition for the TransitGatewayAttachmentId field.
  */
 public typealias TransitGatewayAttachmentId = String
@@ -5774,6 +6005,7 @@ public typealias TransitGatewayAttachmentPropagationList = [TransitGatewayAttach
  Enumeration restricting the values of the TransitGatewayAttachmentResourceType field.
  */
 public enum TransitGatewayAttachmentResourceType: String, Codable, CustomStringConvertible {
+    case connect
     case directConnectGateway = "direct-connect-gateway"
     case peering
     case tgwPeering = "tgw-peering"
@@ -5784,7 +6016,7 @@ public enum TransitGatewayAttachmentResourceType: String, Codable, CustomStringC
         return rawValue
     }
     
-    public static let __default: TransitGatewayAttachmentResourceType = .directConnectGateway
+    public static let __default: TransitGatewayAttachmentResourceType = .connect
 }
 
 /**
@@ -5810,6 +6042,47 @@ public enum TransitGatewayAttachmentState: String, Codable, CustomStringConverti
     }
     
     public static let __default: TransitGatewayAttachmentState = .available
+}
+
+/**
+ Type definition for the TransitGatewayCidrBlockStringList field.
+ */
+public typealias TransitGatewayCidrBlockStringList = [String]
+
+/**
+ Type definition for the TransitGatewayConnectList field.
+ */
+public typealias TransitGatewayConnectList = [TransitGatewayConnect]
+
+/**
+ Type definition for the TransitGatewayConnectPeerId field.
+ */
+public typealias TransitGatewayConnectPeerId = String
+
+/**
+ Type definition for the TransitGatewayConnectPeerIdStringList field.
+ */
+public typealias TransitGatewayConnectPeerIdStringList = [TransitGatewayConnectPeerId]
+
+/**
+ Type definition for the TransitGatewayConnectPeerList field.
+ */
+public typealias TransitGatewayConnectPeerList = [TransitGatewayConnectPeer]
+
+/**
+ Enumeration restricting the values of the TransitGatewayConnectPeerState field.
+ */
+public enum TransitGatewayConnectPeerState: String, Codable, CustomStringConvertible {
+    case available
+    case deleted
+    case deleting
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TransitGatewayConnectPeerState = .available
 }
 
 /**
@@ -5840,6 +6113,9 @@ public enum TransitGatewayMulitcastDomainAssociationState: String, Codable, Cust
     case associating
     case disassociated
     case disassociating
+    case failed
+    case pendingacceptance = "pendingAcceptance"
+    case rejected
 
     public var description: String {
         return rawValue
@@ -6357,6 +6633,7 @@ public enum VolumeStatusName: String, Codable, CustomStringConvertible {
  */
 public enum VolumeType: String, Codable, CustomStringConvertible {
     case gp2
+    case gp3
     case io1
     case io2
     case sc1
@@ -7382,6 +7659,9 @@ extension ElasticComputeCloudModel.ElasticInferenceAcceleratorCount {
 */
 extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateConfigRequest {
     public func validateAsFleetLaunchTemplateConfigListRequest() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateConfigListRequest violated the minimum length constraint.")
+        }
 
         if self.count > 50 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateConfigListRequest violated the maximum length constraint.")
@@ -7394,6 +7674,9 @@ extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateCon
 */
 extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateOverridesRequest {
     public func validateAsFleetLaunchTemplateOverridesListRequest() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateOverridesListRequest violated the minimum length constraint.")
+        }
 
         if self.count > 50 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateOverridesListRequest violated the maximum length constraint.")
@@ -7442,6 +7725,27 @@ extension ElasticComputeCloudModel.GetManagedPrefixListAssociationsMaxResults {
 
         if self > 255 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to GetManagedPrefixListAssociationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the IpAddress field.
+*/
+extension ElasticComputeCloudModel.IpAddress {
+    public func validateAsIpAddress() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpAddress violated the minimum length constraint.")
+        }
+
+        if self.count > 15 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpAddress violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^([0-9]{1,3}.){3}[0-9]{1,3}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticComputeCloudError.validationError(
+                    reason: "The provided value to IpAddress violated the regular expression constraint.")
         }
     }
 }
@@ -7510,6 +7814,21 @@ extension ElasticComputeCloudModel.LocalGatewayMaxResults {
 }
 
 /**
+ Validation for the NetworkInsightsMaxResults field.
+*/
+extension ElasticComputeCloudModel.NetworkInsightsMaxResults {
+    public func validateAsNetworkInsightsMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to NetworkInsightsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to NetworkInsightsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the PoolMaxResults field.
 */
 extension ElasticComputeCloudModel.PoolMaxResults {
@@ -7520,6 +7839,21 @@ extension ElasticComputeCloudModel.PoolMaxResults {
 
         if self > 10 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to PoolMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the Port field.
+*/
+extension ElasticComputeCloudModel.Port {
+    public func validateAsPort() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to Port violated the minimum range constraint.")
+        }
+
+        if self > 65535 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to Port violated the maximum range constraint.")
         }
     }
 }
@@ -7571,6 +7905,9 @@ extension Array where Element == ElasticComputeCloudModel.RemovePrefixListEntry 
 */
 extension Array where Element == ElasticComputeCloudModel.InstanceType {
     public func validateAsRequestInstanceTypeList() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to RequestInstanceTypeList violated the minimum length constraint.")
+        }
 
         if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to RequestInstanceTypeList violated the maximum length constraint.")
@@ -7643,6 +7980,9 @@ extension ElasticComputeCloudModel.TransitGatewayMaxResults {
 */
 extension ElasticComputeCloudModel.VersionDescription {
     public func validateAsVersionDescription() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to VersionDescription violated the minimum length constraint.")
+        }
 
         if self.count > 255 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to VersionDescription violated the maximum length constraint.")

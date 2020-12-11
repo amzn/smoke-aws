@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import ElasticComputeCloudModel
  */
 public struct ElasticComputeCloudOperationsReporting {
     let acceptReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let acceptTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let acceptTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let acceptTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let acceptVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -93,6 +94,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let createNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createNetworkInsightsPath: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createPlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -110,6 +112,8 @@ public struct ElasticComputeCloudOperationsReporting {
     let createTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayConnect: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let createTransitGatewayConnectPeer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let createTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -144,6 +148,8 @@ public struct ElasticComputeCloudOperationsReporting {
     let deleteNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNetworkInsightsAnalysis: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteNetworkInsightsPath: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deletePlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -160,6 +166,8 @@ public struct ElasticComputeCloudOperationsReporting {
     let deleteTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayConnect: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let deleteTransitGatewayConnectPeer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let deleteTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -241,6 +249,8 @@ public struct ElasticComputeCloudOperationsReporting {
     let describeMovingAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNatGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNetworkAcls: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNetworkInsightsAnalyses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeNetworkInsightsPaths: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNetworkInterfacePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeNetworkInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -273,6 +283,8 @@ public struct ElasticComputeCloudOperationsReporting {
     let describeTrafficMirrorSessions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTrafficMirrorTargets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayConnectPeers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeTransitGatewayConnects: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayMulticastDomains: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayPeeringAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeTransitGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -407,6 +419,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let registerInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let registerTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let registerTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let rejectTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let rejectVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -440,6 +453,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let searchTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let sendDiagnosticInterrupt: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let startInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let startNetworkInsightsAnalysis: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let startVpcEndpointServicePrivateDnsVerification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let stopInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let terminateClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -454,6 +468,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>) {
         self.acceptReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .acceptReservedInstancesExchangeQuote, configuration: reportingConfiguration)
+        self.acceptTransitGatewayMulticastDomainAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptTransitGatewayMulticastDomainAssociations, configuration: reportingConfiguration)
         self.acceptTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .acceptTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
         self.acceptTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
@@ -584,6 +600,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createNetworkAcl, configuration: reportingConfiguration)
         self.createNetworkAclEntry = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createNetworkAclEntry, configuration: reportingConfiguration)
+        self.createNetworkInsightsPath = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createNetworkInsightsPath, configuration: reportingConfiguration)
         self.createNetworkInterface = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createNetworkInterface, configuration: reportingConfiguration)
         self.createNetworkInterfacePermission = StandardSmokeAWSOperationReporting(
@@ -618,6 +636,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createTrafficMirrorTarget, configuration: reportingConfiguration)
         self.createTransitGateway = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createTransitGateway, configuration: reportingConfiguration)
+        self.createTransitGatewayConnect = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayConnect, configuration: reportingConfiguration)
+        self.createTransitGatewayConnectPeer = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createTransitGatewayConnectPeer, configuration: reportingConfiguration)
         self.createTransitGatewayMulticastDomain = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createTransitGatewayMulticastDomain, configuration: reportingConfiguration)
         self.createTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
@@ -686,6 +708,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteNetworkAcl, configuration: reportingConfiguration)
         self.deleteNetworkAclEntry = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteNetworkAclEntry, configuration: reportingConfiguration)
+        self.deleteNetworkInsightsAnalysis = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNetworkInsightsAnalysis, configuration: reportingConfiguration)
+        self.deleteNetworkInsightsPath = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteNetworkInsightsPath, configuration: reportingConfiguration)
         self.deleteNetworkInterface = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteNetworkInterface, configuration: reportingConfiguration)
         self.deleteNetworkInterfacePermission = StandardSmokeAWSOperationReporting(
@@ -718,6 +744,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteTrafficMirrorTarget, configuration: reportingConfiguration)
         self.deleteTransitGateway = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTransitGateway, configuration: reportingConfiguration)
+        self.deleteTransitGatewayConnect = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayConnect, configuration: reportingConfiguration)
+        self.deleteTransitGatewayConnectPeer = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTransitGatewayConnectPeer, configuration: reportingConfiguration)
         self.deleteTransitGatewayMulticastDomain = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTransitGatewayMulticastDomain, configuration: reportingConfiguration)
         self.deleteTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
@@ -880,6 +910,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeNatGateways, configuration: reportingConfiguration)
         self.describeNetworkAcls = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeNetworkAcls, configuration: reportingConfiguration)
+        self.describeNetworkInsightsAnalyses = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNetworkInsightsAnalyses, configuration: reportingConfiguration)
+        self.describeNetworkInsightsPaths = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeNetworkInsightsPaths, configuration: reportingConfiguration)
         self.describeNetworkInterfaceAttribute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeNetworkInterfaceAttribute, configuration: reportingConfiguration)
         self.describeNetworkInterfacePermissions = StandardSmokeAWSOperationReporting(
@@ -944,6 +978,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeTrafficMirrorTargets, configuration: reportingConfiguration)
         self.describeTransitGatewayAttachments = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeTransitGatewayAttachments, configuration: reportingConfiguration)
+        self.describeTransitGatewayConnectPeers = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayConnectPeers, configuration: reportingConfiguration)
+        self.describeTransitGatewayConnects = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTransitGatewayConnects, configuration: reportingConfiguration)
         self.describeTransitGatewayMulticastDomains = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeTransitGatewayMulticastDomains, configuration: reportingConfiguration)
         self.describeTransitGatewayPeeringAttachments = StandardSmokeAWSOperationReporting(
@@ -1212,6 +1250,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .registerTransitGatewayMulticastGroupMembers, configuration: reportingConfiguration)
         self.registerTransitGatewayMulticastGroupSources = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .registerTransitGatewayMulticastGroupSources, configuration: reportingConfiguration)
+        self.rejectTransitGatewayMulticastDomainAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rejectTransitGatewayMulticastDomainAssociations, configuration: reportingConfiguration)
         self.rejectTransitGatewayPeeringAttachment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .rejectTransitGatewayPeeringAttachment, configuration: reportingConfiguration)
         self.rejectTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
@@ -1278,6 +1318,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .sendDiagnosticInterrupt, configuration: reportingConfiguration)
         self.startInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .startInstances, configuration: reportingConfiguration)
+        self.startNetworkInsightsAnalysis = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startNetworkInsightsAnalysis, configuration: reportingConfiguration)
         self.startVpcEndpointServicePrivateDnsVerification = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .startVpcEndpointServicePrivateDnsVerification, configuration: reportingConfiguration)
         self.stopInstances = StandardSmokeAWSOperationReporting(

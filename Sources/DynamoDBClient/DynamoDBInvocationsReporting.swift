@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import DynamoDBModel
  Operation reporting for the DynamoDBModel.
  */
 public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+    let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let batchGetItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let batchWriteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -43,10 +44,15 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
     let describeExport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeGlobalTableSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTableReplicaAutoScaling: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTimeToLive: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let disableKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let enableKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let executeStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let executeTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let exportTableToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let getItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -74,6 +80,8 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
     let updateTimeToLive: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: DynamoDBOperationsReporting) {
+        self.batchExecuteStatement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.batchExecuteStatement)
         self.batchGetItem = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.batchGetItem)
         self.batchWriteItem = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -104,6 +112,8 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
             smokeAWSOperationReporting: operationsReporting.describeGlobalTable)
         self.describeGlobalTableSettings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeGlobalTableSettings)
+        self.describeKinesisStreamingDestination = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeKinesisStreamingDestination)
         self.describeLimits = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeLimits)
         self.describeTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -112,6 +122,14 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
             smokeAWSOperationReporting: operationsReporting.describeTableReplicaAutoScaling)
         self.describeTimeToLive = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeTimeToLive)
+        self.disableKinesisStreamingDestination = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.disableKinesisStreamingDestination)
+        self.enableKinesisStreamingDestination = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.enableKinesisStreamingDestination)
+        self.executeStatement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.executeStatement)
+        self.executeTransaction = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.executeTransaction)
         self.exportTableToPointInTime = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.exportTableToPointInTime)
         self.getItem = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -280,6 +280,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let startDBClusterSyncOverride: StartDBClusterSyncType?
     let startDBInstanceAsyncOverride: StartDBInstanceAsyncType?
     let startDBInstanceSyncOverride: StartDBInstanceSyncType?
+    let startDBInstanceAutomatedBackupsReplicationAsyncOverride: StartDBInstanceAutomatedBackupsReplicationAsyncType?
+    let startDBInstanceAutomatedBackupsReplicationSyncOverride: StartDBInstanceAutomatedBackupsReplicationSyncType?
     let startExportTaskAsyncOverride: StartExportTaskAsyncType?
     let startExportTaskSyncOverride: StartExportTaskSyncType?
     let stopActivityStreamAsyncOverride: StopActivityStreamAsyncType?
@@ -288,6 +290,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let stopDBClusterSyncOverride: StopDBClusterSyncType?
     let stopDBInstanceAsyncOverride: StopDBInstanceAsyncType?
     let stopDBInstanceSyncOverride: StopDBInstanceSyncType?
+    let stopDBInstanceAutomatedBackupsReplicationAsyncOverride: StopDBInstanceAutomatedBackupsReplicationAsyncType?
+    let stopDBInstanceAutomatedBackupsReplicationSyncOverride: StopDBInstanceAutomatedBackupsReplicationSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -546,6 +550,8 @@ public struct MockRDSClient: RDSClientProtocol {
             startDBClusterSync: StartDBClusterSyncType? = nil,
             startDBInstanceAsync: StartDBInstanceAsyncType? = nil,
             startDBInstanceSync: StartDBInstanceSyncType? = nil,
+            startDBInstanceAutomatedBackupsReplicationAsync: StartDBInstanceAutomatedBackupsReplicationAsyncType? = nil,
+            startDBInstanceAutomatedBackupsReplicationSync: StartDBInstanceAutomatedBackupsReplicationSyncType? = nil,
             startExportTaskAsync: StartExportTaskAsyncType? = nil,
             startExportTaskSync: StartExportTaskSyncType? = nil,
             stopActivityStreamAsync: StopActivityStreamAsyncType? = nil,
@@ -553,7 +559,9 @@ public struct MockRDSClient: RDSClientProtocol {
             stopDBClusterAsync: StopDBClusterAsyncType? = nil,
             stopDBClusterSync: StopDBClusterSyncType? = nil,
             stopDBInstanceAsync: StopDBInstanceAsyncType? = nil,
-            stopDBInstanceSync: StopDBInstanceSyncType? = nil) {
+            stopDBInstanceSync: StopDBInstanceSyncType? = nil,
+            stopDBInstanceAutomatedBackupsReplicationAsync: StopDBInstanceAutomatedBackupsReplicationAsyncType? = nil,
+            stopDBInstanceAutomatedBackupsReplicationSync: StopDBInstanceAutomatedBackupsReplicationSyncType? = nil) {
         self.addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsync
         self.addRoleToDBClusterSyncOverride = addRoleToDBClusterSync
         self.addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsync
@@ -806,6 +814,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.startDBClusterSyncOverride = startDBClusterSync
         self.startDBInstanceAsyncOverride = startDBInstanceAsync
         self.startDBInstanceSyncOverride = startDBInstanceSync
+        self.startDBInstanceAutomatedBackupsReplicationAsyncOverride = startDBInstanceAutomatedBackupsReplicationAsync
+        self.startDBInstanceAutomatedBackupsReplicationSyncOverride = startDBInstanceAutomatedBackupsReplicationSync
         self.startExportTaskAsyncOverride = startExportTaskAsync
         self.startExportTaskSyncOverride = startExportTaskSync
         self.stopActivityStreamAsyncOverride = stopActivityStreamAsync
@@ -814,6 +824,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.stopDBClusterSyncOverride = stopDBClusterSync
         self.stopDBInstanceAsyncOverride = stopDBInstanceAsync
         self.stopDBInstanceSyncOverride = stopDBInstanceSync
+        self.stopDBInstanceAutomatedBackupsReplicationAsyncOverride = stopDBInstanceAutomatedBackupsReplicationAsync
+        self.stopDBInstanceAutomatedBackupsReplicationSyncOverride = stopDBInstanceAutomatedBackupsReplicationSync
     }
 
     /**
@@ -5773,6 +5785,46 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the StartDBInstanceAutomatedBackupsReplication operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+         - completion: The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication object or an error will be passed to this 
+           callback when the operation is complete. The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, invalidDBInstanceState, kMSKeyNotAccessible, storageTypeNotSupported.
+     */
+    public func startDBInstanceAutomatedBackupsReplicationAsync(
+            input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage, 
+            completion: @escaping (Result<RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws {
+        if let startDBInstanceAutomatedBackupsReplicationAsyncOverride = startDBInstanceAutomatedBackupsReplicationAsyncOverride {
+            return try startDBInstanceAutomatedBackupsReplicationAsyncOverride(input, completion)
+        }
+
+        let result = StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the StartDBInstanceAutomatedBackupsReplication operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+     - Returns: The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, invalidDBInstanceState, kMSKeyNotAccessible, storageTypeNotSupported.
+     */
+    public func startDBInstanceAutomatedBackupsReplicationSync(
+            input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication {
+        if let startDBInstanceAutomatedBackupsReplicationSyncOverride = startDBInstanceAutomatedBackupsReplicationSyncOverride {
+            return try startDBInstanceAutomatedBackupsReplicationSyncOverride(input)
+        }
+
+        return StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication.__default
+    }
+
+    /**
      Invokes the StartExportTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5930,5 +5982,45 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return StopDBInstanceResultForStopDBInstance.__default
+    }
+
+    /**
+     Invokes the StopDBInstanceAutomatedBackupsReplication operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+         - completion: The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication object or an error will be passed to this 
+           callback when the operation is complete. The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func stopDBInstanceAutomatedBackupsReplicationAsync(
+            input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage, 
+            completion: @escaping (Result<RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws {
+        if let stopDBInstanceAutomatedBackupsReplicationAsyncOverride = stopDBInstanceAutomatedBackupsReplicationAsyncOverride {
+            return try stopDBInstanceAutomatedBackupsReplicationAsyncOverride(input, completion)
+        }
+
+        let result = StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the StopDBInstanceAutomatedBackupsReplication operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+     - Returns: The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func stopDBInstanceAutomatedBackupsReplicationSync(
+            input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
+        if let stopDBInstanceAutomatedBackupsReplicationSyncOverride = stopDBInstanceAutomatedBackupsReplicationSyncOverride {
+            return try stopDBInstanceAutomatedBackupsReplicationSyncOverride(input)
+        }
+
+        return StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication.__default
     }
 }

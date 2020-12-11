@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -9906,6 +9906,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the StartDBInstanceAutomatedBackupsReplication operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+         - completion: The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication object or an error will be passed to this 
+           callback when the operation is complete. The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, invalidDBInstanceState, kMSKeyNotAccessible, storageTypeNotSupported.
+     */
+    public func startDBInstanceAutomatedBackupsReplicationAsync(
+            input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage, 
+            completion: @escaping (Result<RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDBInstanceAutomatedBackupsReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.startDBInstanceAutomatedBackupsReplication.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartDBInstanceAutomatedBackupsReplication operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+     - Returns: The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, invalidDBInstanceState, kMSKeyNotAccessible, storageTypeNotSupported.
+     */
+    public func startDBInstanceAutomatedBackupsReplicationSync(
+            input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDBInstanceAutomatedBackupsReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.startDBInstanceAutomatedBackupsReplication.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the StartExportTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10201,6 +10279,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.stopDBInstance.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopDBInstanceAutomatedBackupsReplication operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+         - completion: The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication object or an error will be passed to this 
+           callback when the operation is complete. The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func stopDBInstanceAutomatedBackupsReplicationAsync(
+            input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage, 
+            completion: @escaping (Result<RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDBInstanceAutomatedBackupsReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StopDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.stopDBInstanceAutomatedBackupsReplication.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StopDBInstanceAutomatedBackupsReplication operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+     - Returns: The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func stopDBInstanceAutomatedBackupsReplicationSync(
+            input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDBInstanceAutomatedBackupsReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StopDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.stopDBInstanceAutomatedBackupsReplication.rawValue,
             version: apiVersion)
 
         do {

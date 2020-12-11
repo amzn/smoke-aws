@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -153,10 +153,12 @@ public struct RDSOperationsReporting {
     let startActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let startDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let startDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let startDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let startExportTask: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let stopActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let stopDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let stopDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let stopDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>) {
         self.addRoleToDBCluster = StandardSmokeAWSOperationReporting(
@@ -411,6 +413,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .startDBCluster, configuration: reportingConfiguration)
         self.startDBInstance = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .startDBInstance, configuration: reportingConfiguration)
+        self.startDBInstanceAutomatedBackupsReplication = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startDBInstanceAutomatedBackupsReplication, configuration: reportingConfiguration)
         self.startExportTask = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .startExportTask, configuration: reportingConfiguration)
         self.stopActivityStream = StandardSmokeAWSOperationReporting(
@@ -419,5 +423,7 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .stopDBCluster, configuration: reportingConfiguration)
         self.stopDBInstance = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .stopDBInstance, configuration: reportingConfiguration)
+        self.stopDBInstanceAutomatedBackupsReplication = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .stopDBInstanceAutomatedBackupsReplication, configuration: reportingConfiguration)
     }
 }

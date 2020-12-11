@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -112,6 +112,11 @@ public typealias SendTaskSuccessOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the StartExecution operation in a HTTP client.
  */
 public typealias StartExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the StartSyncExecution operation in a HTTP client.
+ */
+public typealias StartSyncExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the StopExecution operation in a HTTP client.

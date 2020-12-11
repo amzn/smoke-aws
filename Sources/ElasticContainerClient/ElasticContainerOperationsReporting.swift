@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -70,6 +70,7 @@ public struct ElasticContainerOperationsReporting {
     let submitTaskStateChange: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let tagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let untagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    let updateCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let updateClusterSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let updateContainerAgent: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     let updateContainerInstancesState: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -164,6 +165,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .tagResource, configuration: reportingConfiguration)
         self.untagResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .untagResource, configuration: reportingConfiguration)
+        self.updateCapacityProvider = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .updateCapacityProvider, configuration: reportingConfiguration)
         self.updateClusterSettings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateClusterSettings, configuration: reportingConfiguration)
         self.updateContainerAgent = StandardSmokeAWSOperationReporting(

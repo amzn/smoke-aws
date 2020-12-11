@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -658,6 +658,11 @@ public protocol RDSClientProtocol {
     typealias StartDBInstanceAsyncType = (
             _ input: RDSModel.StartDBInstanceMessage, 
             _ completion: @escaping (Result<RDSModel.StartDBInstanceResultForStartDBInstance, RDSError>) -> ()) throws -> ()
+    typealias StartDBInstanceAutomatedBackupsReplicationSyncType = (
+            _ input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+    typealias StartDBInstanceAutomatedBackupsReplicationAsyncType = (
+            _ input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage, 
+            _ completion: @escaping (Result<RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws -> ()
     typealias StartExportTaskSyncType = (
             _ input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask
     typealias StartExportTaskAsyncType = (
@@ -678,6 +683,11 @@ public protocol RDSClientProtocol {
     typealias StopDBInstanceAsyncType = (
             _ input: RDSModel.StopDBInstanceMessage, 
             _ completion: @escaping (Result<RDSModel.StopDBInstanceResultForStopDBInstance, RDSError>) -> ()) throws -> ()
+    typealias StopDBInstanceAutomatedBackupsReplicationSyncType = (
+            _ input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+    typealias StopDBInstanceAutomatedBackupsReplicationAsyncType = (
+            _ input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage, 
+            _ completion: @escaping (Result<RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws -> ()
 
     /**
      Invokes the AddRoleToDBCluster operation returning immediately and passing the response to a callback.
@@ -3905,6 +3915,32 @@ public protocol RDSClientProtocol {
             input: RDSModel.StartDBInstanceMessage) throws -> RDSModel.StartDBInstanceResultForStartDBInstance
 
     /**
+     Invokes the StartDBInstanceAutomatedBackupsReplication operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+         - completion: The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication object or an error will be passed to this 
+           callback when the operation is complete. The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, invalidDBInstanceState, kMSKeyNotAccessible, storageTypeNotSupported.
+     */
+    func startDBInstanceAutomatedBackupsReplicationAsync(
+            input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage, 
+            completion: @escaping (Result<RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws
+
+    /**
+     Invokes the StartDBInstanceAutomatedBackupsReplication operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+     - Returns: The StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceAutomatedBackupQuotaExceeded, dBInstanceNotFound, invalidDBInstanceState, kMSKeyNotAccessible, storageTypeNotSupported.
+     */
+    func startDBInstanceAutomatedBackupsReplicationSync(
+            input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication
+
+    /**
      Invokes the StartExportTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4007,4 +4043,30 @@ public protocol RDSClientProtocol {
      */
     func stopDBInstanceSync(
             input: RDSModel.StopDBInstanceMessage) throws -> RDSModel.StopDBInstanceResultForStopDBInstance
+
+    /**
+     Invokes the StopDBInstanceAutomatedBackupsReplication operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+         - completion: The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication object or an error will be passed to this 
+           callback when the operation is complete. The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    func stopDBInstanceAutomatedBackupsReplicationAsync(
+            input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage, 
+            completion: @escaping (Result<RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws
+
+    /**
+     Invokes the StopDBInstanceAutomatedBackupsReplication operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopDBInstanceAutomatedBackupsReplicationMessage object being passed to this operation.
+     - Returns: The StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    func stopDBInstanceAutomatedBackupsReplicationSync(
+            input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
 }

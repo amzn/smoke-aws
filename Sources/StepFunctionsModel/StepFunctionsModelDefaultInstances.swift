@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -146,6 +146,19 @@ public extension ActivityWorkerLimitExceeded {
     static let __default: StepFunctionsModel.ActivityWorkerLimitExceeded = {
         let defaultInstance = StepFunctionsModel.ActivityWorkerLimitExceeded(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BillingDetails {
+    /**
+     Default instance of the BillingDetails structure.
+     */
+    static let __default: StepFunctionsModel.BillingDetails = {
+        let defaultInstance = StepFunctionsModel.BillingDetails(
+            billedDurationInMilliseconds: nil,
+            billedMemoryUsedInMB: nil)
 
         return defaultInstance
     }()
@@ -1084,6 +1097,46 @@ public extension StartExecutionOutput {
         let defaultInstance = StepFunctionsModel.StartExecutionOutput(
             executionArn: "0",
             startDate: 1.52953091375E9)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartSyncExecutionInput {
+    /**
+     Default instance of the StartSyncExecutionInput structure.
+     */
+    static let __default: StepFunctionsModel.StartSyncExecutionInput = {
+        let defaultInstance = StepFunctionsModel.StartSyncExecutionInput(
+            input: nil,
+            name: nil,
+            stateMachineArn: "0",
+            traceHeader: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartSyncExecutionOutput {
+    /**
+     Default instance of the StartSyncExecutionOutput structure.
+     */
+    static let __default: StepFunctionsModel.StartSyncExecutionOutput = {
+        let defaultInstance = StepFunctionsModel.StartSyncExecutionOutput(
+            billingDetails: nil,
+            cause: nil,
+            error: nil,
+            executionArn: "0",
+            input: nil,
+            inputDetails: nil,
+            name: nil,
+            output: nil,
+            outputDetails: nil,
+            startDate: 1.52953091375E9,
+            stateMachineArn: nil,
+            status: .__default,
+            stopDate: 1.52953091375E9,
+            traceHeader: nil)
 
         return defaultInstance
     }()

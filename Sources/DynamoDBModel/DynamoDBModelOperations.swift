@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import Foundation
  Operation enumeration for the DynamoDBModel.
  */
 public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
+    case batchExecuteStatement = "BatchExecuteStatement"
     case batchGetItem = "BatchGetItem"
     case batchWriteItem = "BatchWriteItem"
     case createBackup = "CreateBackup"
@@ -40,10 +41,15 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case describeExport = "DescribeExport"
     case describeGlobalTable = "DescribeGlobalTable"
     case describeGlobalTableSettings = "DescribeGlobalTableSettings"
+    case describeKinesisStreamingDestination = "DescribeKinesisStreamingDestination"
     case describeLimits = "DescribeLimits"
     case describeTable = "DescribeTable"
     case describeTableReplicaAutoScaling = "DescribeTableReplicaAutoScaling"
     case describeTimeToLive = "DescribeTimeToLive"
+    case disableKinesisStreamingDestination = "DisableKinesisStreamingDestination"
+    case enableKinesisStreamingDestination = "EnableKinesisStreamingDestination"
+    case executeStatement = "ExecuteStatement"
+    case executeTransaction = "ExecuteTransaction"
     case exportTableToPointInTime = "ExportTableToPointInTime"
     case getItem = "GetItem"
     case listBackups = "ListBackups"
@@ -76,6 +82,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
 
     public var operationPath: String {
         switch self {
+        case .batchExecuteStatement:
+            return "/"
         case .batchGetItem:
             return "/"
         case .batchWriteItem:
@@ -106,6 +114,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeGlobalTableSettings:
             return "/"
+        case .describeKinesisStreamingDestination:
+            return "/"
         case .describeLimits:
             return "/"
         case .describeTable:
@@ -113,6 +123,14 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
         case .describeTableReplicaAutoScaling:
             return "/"
         case .describeTimeToLive:
+            return "/"
+        case .disableKinesisStreamingDestination:
+            return "/"
+        case .enableKinesisStreamingDestination:
+            return "/"
+        case .executeStatement:
+            return "/"
+        case .executeTransaction:
             return "/"
         case .exportTableToPointInTime:
             return "/"

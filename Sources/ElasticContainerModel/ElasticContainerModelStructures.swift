@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -127,6 +127,26 @@ public struct AutoScalingGroupProvider: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case autoScalingGroupArn
+        case managedScaling
+        case managedTerminationProtection
+    }
+
+    public func validate() throws {
+        try managedScaling?.validate()
+    }
+}
+
+public struct AutoScalingGroupProviderUpdate: Codable, Equatable {
+    public var managedScaling: ManagedScaling?
+    public var managedTerminationProtection: ManagedTerminationProtection?
+
+    public init(managedScaling: ManagedScaling? = nil,
+                managedTerminationProtection: ManagedTerminationProtection? = nil) {
+        self.managedScaling = managedScaling
+        self.managedTerminationProtection = managedTerminationProtection
+    }
+
+    enum CodingKeys: String, CodingKey {
         case managedScaling
         case managedTerminationProtection
     }
@@ -1304,11 +1324,14 @@ public struct Deployment: Codable, Equatable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var createdAt: Timestamp?
     public var desiredCount: Integer?
+    public var failedTasks: Integer?
     public var id: String?
     public var launchType: LaunchType?
     public var networkConfiguration: NetworkConfiguration?
     public var pendingCount: Integer?
     public var platformVersion: String?
+    public var rolloutState: DeploymentRolloutState?
+    public var rolloutStateReason: String?
     public var runningCount: Integer?
     public var status: String?
     public var taskDefinition: String?
@@ -1317,11 +1340,14 @@ public struct Deployment: Codable, Equatable {
     public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
                 createdAt: Timestamp? = nil,
                 desiredCount: Integer? = nil,
+                failedTasks: Integer? = nil,
                 id: String? = nil,
                 launchType: LaunchType? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
                 pendingCount: Integer? = nil,
                 platformVersion: String? = nil,
+                rolloutState: DeploymentRolloutState? = nil,
+                rolloutStateReason: String? = nil,
                 runningCount: Integer? = nil,
                 status: String? = nil,
                 taskDefinition: String? = nil,
@@ -1329,11 +1355,14 @@ public struct Deployment: Codable, Equatable {
         self.capacityProviderStrategy = capacityProviderStrategy
         self.createdAt = createdAt
         self.desiredCount = desiredCount
+        self.failedTasks = failedTasks
         self.id = id
         self.launchType = launchType
         self.networkConfiguration = networkConfiguration
         self.pendingCount = pendingCount
         self.platformVersion = platformVersion
+        self.rolloutState = rolloutState
+        self.rolloutStateReason = rolloutStateReason
         self.runningCount = runningCount
         self.status = status
         self.taskDefinition = taskDefinition
@@ -1344,11 +1373,14 @@ public struct Deployment: Codable, Equatable {
         case capacityProviderStrategy
         case createdAt
         case desiredCount
+        case failedTasks
         case id
         case launchType
         case networkConfiguration
         case pendingCount
         case platformVersion
+        case rolloutState
+        case rolloutStateReason
         case runningCount
         case status
         case taskDefinition
@@ -1360,22 +1392,46 @@ public struct Deployment: Codable, Equatable {
     }
 }
 
+public struct DeploymentCircuitBreaker: Codable, Equatable {
+    public var enable: Boolean
+    public var rollback: Boolean
+
+    public init(enable: Boolean,
+                rollback: Boolean) {
+        self.enable = enable
+        self.rollback = rollback
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enable
+        case rollback
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeploymentConfiguration: Codable, Equatable {
+    public var deploymentCircuitBreaker: DeploymentCircuitBreaker?
     public var maximumPercent: BoxedInteger?
     public var minimumHealthyPercent: BoxedInteger?
 
-    public init(maximumPercent: BoxedInteger? = nil,
+    public init(deploymentCircuitBreaker: DeploymentCircuitBreaker? = nil,
+                maximumPercent: BoxedInteger? = nil,
                 minimumHealthyPercent: BoxedInteger? = nil) {
+        self.deploymentCircuitBreaker = deploymentCircuitBreaker
         self.maximumPercent = maximumPercent
         self.minimumHealthyPercent = minimumHealthyPercent
     }
 
     enum CodingKeys: String, CodingKey {
+        case deploymentCircuitBreaker
         case maximumPercent
         case minimumHealthyPercent
     }
 
     public func validate() throws {
+        try deploymentCircuitBreaker?.validate()
     }
 }
 
@@ -2700,15 +2756,18 @@ public struct LogConfiguration: Codable, Equatable {
 }
 
 public struct ManagedScaling: Codable, Equatable {
+    public var instanceWarmupPeriod: ManagedScalingInstanceWarmupPeriod?
     public var maximumScalingStepSize: ManagedScalingStepSize?
     public var minimumScalingStepSize: ManagedScalingStepSize?
     public var status: ManagedScalingStatus?
     public var targetCapacity: ManagedScalingTargetCapacity?
 
-    public init(maximumScalingStepSize: ManagedScalingStepSize? = nil,
+    public init(instanceWarmupPeriod: ManagedScalingInstanceWarmupPeriod? = nil,
+                maximumScalingStepSize: ManagedScalingStepSize? = nil,
                 minimumScalingStepSize: ManagedScalingStepSize? = nil,
                 status: ManagedScalingStatus? = nil,
                 targetCapacity: ManagedScalingTargetCapacity? = nil) {
+        self.instanceWarmupPeriod = instanceWarmupPeriod
         self.maximumScalingStepSize = maximumScalingStepSize
         self.minimumScalingStepSize = minimumScalingStepSize
         self.status = status
@@ -2716,6 +2775,7 @@ public struct ManagedScaling: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case instanceWarmupPeriod
         case maximumScalingStepSize
         case minimumScalingStepSize
         case status
@@ -2723,6 +2783,7 @@ public struct ManagedScaling: Codable, Equatable {
     }
 
     public func validate() throws {
+        try instanceWarmupPeriod?.validateAsManagedScalingInstanceWarmupPeriod()
         try maximumScalingStepSize?.validateAsManagedScalingStepSize()
         try minimumScalingStepSize?.validateAsManagedScalingStepSize()
         try targetCapacity?.validateAsManagedScalingTargetCapacity()
@@ -4552,6 +4613,42 @@ public struct UntagResourceResponse: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct UpdateCapacityProviderRequest: Codable, Equatable {
+    public var autoScalingGroupProvider: AutoScalingGroupProviderUpdate
+    public var name: String
+
+    public init(autoScalingGroupProvider: AutoScalingGroupProviderUpdate,
+                name: String) {
+        self.autoScalingGroupProvider = autoScalingGroupProvider
+        self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case autoScalingGroupProvider
+        case name
+    }
+
+    public func validate() throws {
+        try autoScalingGroupProvider.validate()
+    }
+}
+
+public struct UpdateCapacityProviderResponse: Codable, Equatable {
+    public var capacityProvider: CapacityProvider?
+
+    public init(capacityProvider: CapacityProvider? = nil) {
+        self.capacityProvider = capacityProvider
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityProvider
+    }
+
+    public func validate() throws {
+        try capacityProvider?.validate()
     }
 }
 

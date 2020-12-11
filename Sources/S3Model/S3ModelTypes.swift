@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -147,6 +147,11 @@ public enum BucketCannedACL: String, Codable, CustomStringConvertible {
     
     public static let __default: BucketCannedACL = .authenticatedRead
 }
+
+/**
+ Type definition for the BucketKeyEnabled field.
+ */
+public typealias BucketKeyEnabled = Bool
 
 /**
  Enumeration restricting the values of the BucketLocationConstraint field.
@@ -1431,6 +1436,20 @@ public typealias ReplaceKeyWith = String
  Type definition for the ReplicaKmsKeyID field.
  */
 public typealias ReplicaKmsKeyID = String
+
+/**
+ Enumeration restricting the values of the ReplicaModificationsStatus field.
+ */
+public enum ReplicaModificationsStatus: String, Codable, CustomStringConvertible {
+    case disabled = "Disabled"
+    case enabled = "Enabled"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReplicaModificationsStatus = .disabled
+}
 
 /**
  Enumeration restricting the values of the ReplicationRuleStatus field.

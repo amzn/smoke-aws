@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -50,6 +50,7 @@ extension CompleteMultipartUploadOutput: HTTPResponseOutputProtocol {
 
         return S3Model.CompleteMultipartUploadOutput(
             bucket: body.bucket,
+            bucketKeyEnabled: headers.bucketKeyEnabled,
             eTag: body.eTag,
             expiration: headers.expiration,
             key: body.key,
@@ -74,6 +75,7 @@ extension CopyObjectOutput: HTTPResponseOutputProtocol {
         let headers = try headersDecodableProvider()
 
         return S3Model.CopyObjectOutput(
+            bucketKeyEnabled: headers.bucketKeyEnabled,
             copyObjectResult: body,
             copySourceVersionId: headers.copySourceVersionId,
             expiration: headers.expiration,
@@ -116,6 +118,7 @@ extension CreateMultipartUploadOutput: HTTPResponseOutputProtocol {
             abortDate: headers.abortDate,
             abortRuleId: headers.abortRuleId,
             bucket: body.bucket,
+            bucketKeyEnabled: headers.bucketKeyEnabled,
             key: body.key,
             requestCharged: headers.requestCharged,
             sSECustomerAlgorithm: headers.sSECustomerAlgorithm,
@@ -473,6 +476,7 @@ extension GetObjectOutput: HTTPResponseOutputProtocol {
         return S3Model.GetObjectOutput(
             acceptRanges: headers.acceptRanges,
             body: body,
+            bucketKeyEnabled: headers.bucketKeyEnabled,
             cacheControl: headers.cacheControl,
             contentDisposition: headers.contentDisposition,
             contentEncoding: headers.contentEncoding,
@@ -902,6 +906,7 @@ extension UploadPartCopyOutput: HTTPResponseOutputProtocol {
         let headers = try headersDecodableProvider()
 
         return S3Model.UploadPartCopyOutput(
+            bucketKeyEnabled: headers.bucketKeyEnabled,
             copyPartResult: body,
             copySourceVersionId: headers.copySourceVersionId,
             requestCharged: headers.requestCharged,

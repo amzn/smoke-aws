@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -654,6 +654,11 @@ public typealias StartDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias StartDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the StartDBInstanceAutomatedBackupsReplication operation in a HTTP client.
+ */
+public typealias StartDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the StartExportTask operation in a HTTP client.
  */
 public typealias StartExportTaskOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -672,3 +677,8 @@ public typealias StopDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StopDBInstance operation in a HTTP client.
  */
 public typealias StopDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the StopDBInstanceAutomatedBackupsReplication operation in a HTTP client.
+ */
+public typealias StopDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput = QueryHTTPRequestInput

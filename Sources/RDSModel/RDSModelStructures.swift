@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -3485,6 +3485,7 @@ public struct DBInstance: Codable, Equatable {
     public var copyTagsToSnapshot: Boolean?
     public var dBClusterIdentifier: String?
     public var dBInstanceArn: String?
+    public var dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList?
     public var dBInstanceClass: String?
     public var dBInstanceIdentifier: String?
     public var dBInstanceStatus: String?
@@ -3547,6 +3548,7 @@ public struct DBInstance: Codable, Equatable {
                 copyTagsToSnapshot: Boolean? = nil,
                 dBClusterIdentifier: String? = nil,
                 dBInstanceArn: String? = nil,
+                dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList? = nil,
                 dBInstanceClass: String? = nil,
                 dBInstanceIdentifier: String? = nil,
                 dBInstanceStatus: String? = nil,
@@ -3608,6 +3610,7 @@ public struct DBInstance: Codable, Equatable {
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.dBClusterIdentifier = dBClusterIdentifier
         self.dBInstanceArn = dBInstanceArn
+        self.dBInstanceAutomatedBackupsReplications = dBInstanceAutomatedBackupsReplications
         self.dBInstanceClass = dBInstanceClass
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dBInstanceStatus = dBInstanceStatus
@@ -3672,6 +3675,7 @@ public struct DBInstance: Codable, Equatable {
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case dBClusterIdentifier = "DBClusterIdentifier"
         case dBInstanceArn = "DBInstanceArn"
+        case dBInstanceAutomatedBackupsReplications = "DBInstanceAutomatedBackupsReplications"
         case dBInstanceClass = "DBInstanceClass"
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dBInstanceStatus = "DBInstanceStatus"
@@ -3745,7 +3749,10 @@ public struct DBInstanceAlreadyExistsFault: Codable, Equatable {
 public struct DBInstanceAutomatedBackup: Codable, Equatable {
     public var allocatedStorage: Integer?
     public var availabilityZone: String?
+    public var backupRetentionPeriod: IntegerOptional?
     public var dBInstanceArn: String?
+    public var dBInstanceAutomatedBackupsArn: String?
+    public var dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList?
     public var dBInstanceIdentifier: String?
     public var dbiResourceId: String?
     public var encrypted: Boolean?
@@ -3769,7 +3776,10 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
 
     public init(allocatedStorage: Integer? = nil,
                 availabilityZone: String? = nil,
+                backupRetentionPeriod: IntegerOptional? = nil,
                 dBInstanceArn: String? = nil,
+                dBInstanceAutomatedBackupsArn: String? = nil,
+                dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList? = nil,
                 dBInstanceIdentifier: String? = nil,
                 dbiResourceId: String? = nil,
                 encrypted: Boolean? = nil,
@@ -3792,7 +3802,10 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
                 vpcId: String? = nil) {
         self.allocatedStorage = allocatedStorage
         self.availabilityZone = availabilityZone
+        self.backupRetentionPeriod = backupRetentionPeriod
         self.dBInstanceArn = dBInstanceArn
+        self.dBInstanceAutomatedBackupsArn = dBInstanceAutomatedBackupsArn
+        self.dBInstanceAutomatedBackupsReplications = dBInstanceAutomatedBackupsReplications
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dbiResourceId = dbiResourceId
         self.encrypted = encrypted
@@ -3818,7 +3831,10 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case allocatedStorage = "AllocatedStorage"
         case availabilityZone = "AvailabilityZone"
+        case backupRetentionPeriod = "BackupRetentionPeriod"
         case dBInstanceArn = "DBInstanceArn"
+        case dBInstanceAutomatedBackupsArn = "DBInstanceAutomatedBackupsArn"
+        case dBInstanceAutomatedBackupsReplications = "DBInstanceAutomatedBackupsReplications"
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dbiResourceId = "DbiResourceId"
         case encrypted = "Encrypted"
@@ -3893,6 +3909,21 @@ public struct DBInstanceAutomatedBackupNotFoundFault: Codable, Equatable {
 public struct DBInstanceAutomatedBackupQuotaExceededFault: Codable, Equatable {
 
     public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBInstanceAutomatedBackupsReplication: Codable, Equatable {
+    public var dBInstanceAutomatedBackupsArn: String?
+
+    public init(dBInstanceAutomatedBackupsArn: String? = nil) {
+        self.dBInstanceAutomatedBackupsArn = dBInstanceAutomatedBackupsArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBInstanceAutomatedBackupsArn = "DBInstanceAutomatedBackupsArn"
     }
 
     public func validate() throws {
@@ -5084,13 +5115,17 @@ public struct DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot: Codable, 
 }
 
 public struct DeleteDBInstanceAutomatedBackupMessage: Codable, Equatable {
-    public var dbiResourceId: String
+    public var dBInstanceAutomatedBackupsArn: String?
+    public var dbiResourceId: String?
 
-    public init(dbiResourceId: String) {
+    public init(dBInstanceAutomatedBackupsArn: String? = nil,
+                dbiResourceId: String? = nil) {
+        self.dBInstanceAutomatedBackupsArn = dBInstanceAutomatedBackupsArn
         self.dbiResourceId = dbiResourceId
     }
 
     enum CodingKeys: String, CodingKey {
+        case dBInstanceAutomatedBackupsArn = "DBInstanceAutomatedBackupsArn"
         case dbiResourceId = "DbiResourceId"
     }
 
@@ -5860,17 +5895,20 @@ public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
 }
 
 public struct DescribeDBInstanceAutomatedBackupsMessage: Codable, Equatable {
+    public var dBInstanceAutomatedBackupsArn: String?
     public var dBInstanceIdentifier: String?
     public var dbiResourceId: String?
     public var filters: FilterList?
     public var marker: String?
     public var maxRecords: IntegerOptional?
 
-    public init(dBInstanceIdentifier: String? = nil,
+    public init(dBInstanceAutomatedBackupsArn: String? = nil,
+                dBInstanceIdentifier: String? = nil,
                 dbiResourceId: String? = nil,
                 filters: FilterList? = nil,
                 marker: String? = nil,
                 maxRecords: IntegerOptional? = nil) {
+        self.dBInstanceAutomatedBackupsArn = dBInstanceAutomatedBackupsArn
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dbiResourceId = dbiResourceId
         self.filters = filters
@@ -5879,6 +5917,7 @@ public struct DescribeDBInstanceAutomatedBackupsMessage: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case dBInstanceAutomatedBackupsArn = "DBInstanceAutomatedBackupsArn"
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dbiResourceId = "DbiResourceId"
         case filters = "Filters"
@@ -11803,6 +11842,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     public var processorFeatures: ProcessorFeatureList?
     public var publiclyAccessible: BooleanOptional?
     public var restoreTime: TStamp?
+    public var sourceDBInstanceAutomatedBackupsArn: String?
     public var sourceDBInstanceIdentifier: String?
     public var sourceDbiResourceId: String?
     public var storageType: String?
@@ -11836,6 +11876,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
                 processorFeatures: ProcessorFeatureList? = nil,
                 publiclyAccessible: BooleanOptional? = nil,
                 restoreTime: TStamp? = nil,
+                sourceDBInstanceAutomatedBackupsArn: String? = nil,
                 sourceDBInstanceIdentifier: String? = nil,
                 sourceDbiResourceId: String? = nil,
                 storageType: String? = nil,
@@ -11868,6 +11909,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         self.processorFeatures = processorFeatures
         self.publiclyAccessible = publiclyAccessible
         self.restoreTime = restoreTime
+        self.sourceDBInstanceAutomatedBackupsArn = sourceDBInstanceAutomatedBackupsArn
         self.sourceDBInstanceIdentifier = sourceDBInstanceIdentifier
         self.sourceDbiResourceId = sourceDbiResourceId
         self.storageType = storageType
@@ -11903,6 +11945,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         case processorFeatures = "ProcessorFeatures"
         case publiclyAccessible = "PubliclyAccessible"
         case restoreTime = "RestoreTime"
+        case sourceDBInstanceAutomatedBackupsArn = "SourceDBInstanceAutomatedBackupsArn"
         case sourceDBInstanceIdentifier = "SourceDBInstanceIdentifier"
         case sourceDbiResourceId = "SourceDbiResourceId"
         case storageType = "StorageType"
@@ -12153,19 +12196,23 @@ public struct SourceRegion: Codable, Equatable {
     public var endpoint: String?
     public var regionName: String?
     public var status: String?
+    public var supportsDBInstanceAutomatedBackupsReplication: Boolean?
 
     public init(endpoint: String? = nil,
                 regionName: String? = nil,
-                status: String? = nil) {
+                status: String? = nil,
+                supportsDBInstanceAutomatedBackupsReplication: Boolean? = nil) {
         self.endpoint = endpoint
         self.regionName = regionName
         self.status = status
+        self.supportsDBInstanceAutomatedBackupsReplication = supportsDBInstanceAutomatedBackupsReplication
     }
 
     enum CodingKeys: String, CodingKey {
         case endpoint = "Endpoint"
         case regionName = "RegionName"
         case status = "Status"
+        case supportsDBInstanceAutomatedBackupsReplication = "SupportsDBInstanceAutomatedBackupsReplication"
     }
 
     public func validate() throws {
@@ -12325,6 +12372,65 @@ public struct StartDBClusterResultForStartDBCluster: Codable, Equatable {
 
     public func validate() throws {
         try startDBClusterResult.validate()
+    }
+}
+
+public struct StartDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatable {
+    public var backupRetentionPeriod: IntegerOptional?
+    public var kmsKeyId: String?
+    public var preSignedUrl: String?
+    public var sourceDBInstanceArn: String
+
+    public init(backupRetentionPeriod: IntegerOptional? = nil,
+                kmsKeyId: String? = nil,
+                preSignedUrl: String? = nil,
+                sourceDBInstanceArn: String) {
+        self.backupRetentionPeriod = backupRetentionPeriod
+        self.kmsKeyId = kmsKeyId
+        self.preSignedUrl = preSignedUrl
+        self.sourceDBInstanceArn = sourceDBInstanceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case backupRetentionPeriod = "BackupRetentionPeriod"
+        case kmsKeyId = "KmsKeyId"
+        case preSignedUrl = "PreSignedUrl"
+        case sourceDBInstanceArn = "SourceDBInstanceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartDBInstanceAutomatedBackupsReplicationResult: Codable, Equatable {
+    public var dBInstanceAutomatedBackup: DBInstanceAutomatedBackup?
+
+    public init(dBInstanceAutomatedBackup: DBInstanceAutomatedBackup? = nil) {
+        self.dBInstanceAutomatedBackup = dBInstanceAutomatedBackup
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBInstanceAutomatedBackup = "DBInstanceAutomatedBackup"
+    }
+
+    public func validate() throws {
+        try dBInstanceAutomatedBackup?.validate()
+    }
+}
+
+public struct StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication: Codable, Equatable {
+    public var startDBInstanceAutomatedBackupsReplicationResult: StartDBInstanceAutomatedBackupsReplicationResult
+
+    public init(startDBInstanceAutomatedBackupsReplicationResult: StartDBInstanceAutomatedBackupsReplicationResult) {
+        self.startDBInstanceAutomatedBackupsReplicationResult = startDBInstanceAutomatedBackupsReplicationResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case startDBInstanceAutomatedBackupsReplicationResult = "StartDBInstanceAutomatedBackupsReplicationResult"
+    }
+
+    public func validate() throws {
+        try startDBInstanceAutomatedBackupsReplicationResult.validate()
     }
 }
 
@@ -12516,6 +12622,53 @@ public struct StopDBClusterResultForStopDBCluster: Codable, Equatable {
 
     public func validate() throws {
         try stopDBClusterResult.validate()
+    }
+}
+
+public struct StopDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatable {
+    public var sourceDBInstanceArn: String
+
+    public init(sourceDBInstanceArn: String) {
+        self.sourceDBInstanceArn = sourceDBInstanceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case sourceDBInstanceArn = "SourceDBInstanceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StopDBInstanceAutomatedBackupsReplicationResult: Codable, Equatable {
+    public var dBInstanceAutomatedBackup: DBInstanceAutomatedBackup?
+
+    public init(dBInstanceAutomatedBackup: DBInstanceAutomatedBackup? = nil) {
+        self.dBInstanceAutomatedBackup = dBInstanceAutomatedBackup
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBInstanceAutomatedBackup = "DBInstanceAutomatedBackup"
+    }
+
+    public func validate() throws {
+        try dBInstanceAutomatedBackup?.validate()
+    }
+}
+
+public struct StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication: Codable, Equatable {
+    public var stopDBInstanceAutomatedBackupsReplicationResult: StopDBInstanceAutomatedBackupsReplicationResult
+
+    public init(stopDBInstanceAutomatedBackupsReplicationResult: StopDBInstanceAutomatedBackupsReplicationResult) {
+        self.stopDBInstanceAutomatedBackupsReplicationResult = stopDBInstanceAutomatedBackupsReplicationResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stopDBInstanceAutomatedBackupsReplicationResult = "StopDBInstanceAutomatedBackupsReplicationResult"
+    }
+
+    public func validate() throws {
+        try stopDBInstanceAutomatedBackupsReplicationResult.validate()
     }
 }
 

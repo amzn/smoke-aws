@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case submitTaskStateChange = "SubmitTaskStateChange"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
+    case updateCapacityProvider = "UpdateCapacityProvider"
     case updateClusterSettings = "UpdateClusterSettings"
     case updateContainerAgent = "UpdateContainerAgent"
     case updateContainerInstancesState = "UpdateContainerInstancesState"
@@ -166,6 +167,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .tagResource:
             return "/"
         case .untagResource:
+            return "/"
+        case .updateCapacityProvider:
             return "/"
         case .updateClusterSettings:
             return "/"

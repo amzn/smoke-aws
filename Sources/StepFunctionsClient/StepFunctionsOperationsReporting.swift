@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@ public struct StepFunctionsOperationsReporting {
     let sendTaskHeartbeat: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     let sendTaskSuccess: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     let startExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    let startSyncExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     let stopExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     let tagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     let untagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
@@ -87,6 +88,8 @@ public struct StepFunctionsOperationsReporting {
             clientName: clientName, operation: .sendTaskSuccess, configuration: reportingConfiguration)
         self.startExecution = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .startExecution, configuration: reportingConfiguration)
+        self.startSyncExecution = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startSyncExecution, configuration: reportingConfiguration)
         self.stopExecution = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .stopExecution, configuration: reportingConfiguration)
         self.tagResource = StandardSmokeAWSOperationReporting(

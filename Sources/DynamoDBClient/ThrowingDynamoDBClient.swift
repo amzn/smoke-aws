@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import SmokeHTTPClient
  */
 public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
     let error: DynamoDBError
+    let batchExecuteStatementAsyncOverride: BatchExecuteStatementAsyncType?
+    let batchExecuteStatementSyncOverride: BatchExecuteStatementSyncType?
     let batchGetItemAsyncOverride: BatchGetItemAsyncType?
     let batchGetItemSyncOverride: BatchGetItemSyncType?
     let batchWriteItemAsyncOverride: BatchWriteItemAsyncType?
@@ -59,6 +61,8 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
     let describeGlobalTableSyncOverride: DescribeGlobalTableSyncType?
     let describeGlobalTableSettingsAsyncOverride: DescribeGlobalTableSettingsAsyncType?
     let describeGlobalTableSettingsSyncOverride: DescribeGlobalTableSettingsSyncType?
+    let describeKinesisStreamingDestinationAsyncOverride: DescribeKinesisStreamingDestinationAsyncType?
+    let describeKinesisStreamingDestinationSyncOverride: DescribeKinesisStreamingDestinationSyncType?
     let describeLimitsAsyncOverride: DescribeLimitsAsyncType?
     let describeLimitsSyncOverride: DescribeLimitsSyncType?
     let describeTableAsyncOverride: DescribeTableAsyncType?
@@ -67,6 +71,14 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
     let describeTableReplicaAutoScalingSyncOverride: DescribeTableReplicaAutoScalingSyncType?
     let describeTimeToLiveAsyncOverride: DescribeTimeToLiveAsyncType?
     let describeTimeToLiveSyncOverride: DescribeTimeToLiveSyncType?
+    let disableKinesisStreamingDestinationAsyncOverride: DisableKinesisStreamingDestinationAsyncType?
+    let disableKinesisStreamingDestinationSyncOverride: DisableKinesisStreamingDestinationSyncType?
+    let enableKinesisStreamingDestinationAsyncOverride: EnableKinesisStreamingDestinationAsyncType?
+    let enableKinesisStreamingDestinationSyncOverride: EnableKinesisStreamingDestinationSyncType?
+    let executeStatementAsyncOverride: ExecuteStatementAsyncType?
+    let executeStatementSyncOverride: ExecuteStatementSyncType?
+    let executeTransactionAsyncOverride: ExecuteTransactionAsyncType?
+    let executeTransactionSyncOverride: ExecuteTransactionSyncType?
     let exportTableToPointInTimeAsyncOverride: ExportTableToPointInTimeAsyncType?
     let exportTableToPointInTimeSyncOverride: ExportTableToPointInTimeSyncType?
     let getItemAsyncOverride: GetItemAsyncType?
@@ -123,6 +135,8 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
      functions can be overridden by passing them to this initializer.
      */
     public init(error: DynamoDBError,
+            batchExecuteStatementAsync: BatchExecuteStatementAsyncType? = nil,
+            batchExecuteStatementSync: BatchExecuteStatementSyncType? = nil,
             batchGetItemAsync: BatchGetItemAsyncType? = nil,
             batchGetItemSync: BatchGetItemSyncType? = nil,
             batchWriteItemAsync: BatchWriteItemAsyncType? = nil,
@@ -153,6 +167,8 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
             describeGlobalTableSync: DescribeGlobalTableSyncType? = nil,
             describeGlobalTableSettingsAsync: DescribeGlobalTableSettingsAsyncType? = nil,
             describeGlobalTableSettingsSync: DescribeGlobalTableSettingsSyncType? = nil,
+            describeKinesisStreamingDestinationAsync: DescribeKinesisStreamingDestinationAsyncType? = nil,
+            describeKinesisStreamingDestinationSync: DescribeKinesisStreamingDestinationSyncType? = nil,
             describeLimitsAsync: DescribeLimitsAsyncType? = nil,
             describeLimitsSync: DescribeLimitsSyncType? = nil,
             describeTableAsync: DescribeTableAsyncType? = nil,
@@ -161,6 +177,14 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
             describeTableReplicaAutoScalingSync: DescribeTableReplicaAutoScalingSyncType? = nil,
             describeTimeToLiveAsync: DescribeTimeToLiveAsyncType? = nil,
             describeTimeToLiveSync: DescribeTimeToLiveSyncType? = nil,
+            disableKinesisStreamingDestinationAsync: DisableKinesisStreamingDestinationAsyncType? = nil,
+            disableKinesisStreamingDestinationSync: DisableKinesisStreamingDestinationSyncType? = nil,
+            enableKinesisStreamingDestinationAsync: EnableKinesisStreamingDestinationAsyncType? = nil,
+            enableKinesisStreamingDestinationSync: EnableKinesisStreamingDestinationSyncType? = nil,
+            executeStatementAsync: ExecuteStatementAsyncType? = nil,
+            executeStatementSync: ExecuteStatementSyncType? = nil,
+            executeTransactionAsync: ExecuteTransactionAsyncType? = nil,
+            executeTransactionSync: ExecuteTransactionSyncType? = nil,
             exportTableToPointInTimeAsync: ExportTableToPointInTimeAsyncType? = nil,
             exportTableToPointInTimeSync: ExportTableToPointInTimeSyncType? = nil,
             getItemAsync: GetItemAsyncType? = nil,
@@ -212,6 +236,8 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
             updateTimeToLiveAsync: UpdateTimeToLiveAsyncType? = nil,
             updateTimeToLiveSync: UpdateTimeToLiveSyncType? = nil) {
         self.error = error
+        self.batchExecuteStatementAsyncOverride = batchExecuteStatementAsync
+        self.batchExecuteStatementSyncOverride = batchExecuteStatementSync
         self.batchGetItemAsyncOverride = batchGetItemAsync
         self.batchGetItemSyncOverride = batchGetItemSync
         self.batchWriteItemAsyncOverride = batchWriteItemAsync
@@ -242,6 +268,8 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
         self.describeGlobalTableSyncOverride = describeGlobalTableSync
         self.describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsync
         self.describeGlobalTableSettingsSyncOverride = describeGlobalTableSettingsSync
+        self.describeKinesisStreamingDestinationAsyncOverride = describeKinesisStreamingDestinationAsync
+        self.describeKinesisStreamingDestinationSyncOverride = describeKinesisStreamingDestinationSync
         self.describeLimitsAsyncOverride = describeLimitsAsync
         self.describeLimitsSyncOverride = describeLimitsSync
         self.describeTableAsyncOverride = describeTableAsync
@@ -250,6 +278,14 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
         self.describeTableReplicaAutoScalingSyncOverride = describeTableReplicaAutoScalingSync
         self.describeTimeToLiveAsyncOverride = describeTimeToLiveAsync
         self.describeTimeToLiveSyncOverride = describeTimeToLiveSync
+        self.disableKinesisStreamingDestinationAsyncOverride = disableKinesisStreamingDestinationAsync
+        self.disableKinesisStreamingDestinationSyncOverride = disableKinesisStreamingDestinationSync
+        self.enableKinesisStreamingDestinationAsyncOverride = enableKinesisStreamingDestinationAsync
+        self.enableKinesisStreamingDestinationSyncOverride = enableKinesisStreamingDestinationSync
+        self.executeStatementAsyncOverride = executeStatementAsync
+        self.executeStatementSyncOverride = executeStatementSync
+        self.executeTransactionAsyncOverride = executeTransactionAsync
+        self.executeTransactionSyncOverride = executeTransactionSync
         self.exportTableToPointInTimeAsyncOverride = exportTableToPointInTimeAsync
         self.exportTableToPointInTimeSyncOverride = exportTableToPointInTimeSync
         self.getItemAsyncOverride = getItemAsync
@@ -300,6 +336,44 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
         self.updateTableReplicaAutoScalingSyncOverride = updateTableReplicaAutoScalingSync
         self.updateTimeToLiveAsyncOverride = updateTimeToLiveAsync
         self.updateTimeToLiveSyncOverride = updateTimeToLiveSync
+    }
+
+    /**
+     Invokes the BatchExecuteStatement operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchExecuteStatementInput object being passed to this operation.
+         - completion: The BatchExecuteStatementOutput object or an error will be passed to this 
+           callback when the operation is complete. The BatchExecuteStatementOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, requestLimitExceeded.
+     */
+    public func batchExecuteStatementAsync(
+            input: DynamoDBModel.BatchExecuteStatementInput, 
+            completion: @escaping (Result<DynamoDBModel.BatchExecuteStatementOutput, DynamoDBError>) -> ()) throws {
+        if let batchExecuteStatementAsyncOverride = batchExecuteStatementAsyncOverride {
+            return try batchExecuteStatementAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the BatchExecuteStatement operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchExecuteStatementInput object being passed to this operation.
+     - Returns: The BatchExecuteStatementOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, requestLimitExceeded.
+     */
+    public func batchExecuteStatementSync(
+            input: DynamoDBModel.BatchExecuteStatementInput) throws -> DynamoDBModel.BatchExecuteStatementOutput {
+        if let batchExecuteStatementSyncOverride = batchExecuteStatementSyncOverride {
+            return try batchExecuteStatementSyncOverride(input)
+        }
+
+        throw error
     }
 
     /**
@@ -871,6 +945,44 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeKinesisStreamingDestination operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeKinesisStreamingDestinationInput object being passed to this operation.
+         - completion: The DescribeKinesisStreamingDestinationOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeKinesisStreamingDestinationOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    public func describeKinesisStreamingDestinationAsync(
+            input: DynamoDBModel.DescribeKinesisStreamingDestinationInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeKinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws {
+        if let describeKinesisStreamingDestinationAsyncOverride = describeKinesisStreamingDestinationAsyncOverride {
+            return try describeKinesisStreamingDestinationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeKinesisStreamingDestination operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeKinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The DescribeKinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeKinesisStreamingDestinationSync(
+            input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput {
+        if let describeKinesisStreamingDestinationSyncOverride = describeKinesisStreamingDestinationSyncOverride {
+            return try describeKinesisStreamingDestinationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeLimits operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1017,6 +1129,158 @@ public struct ThrowingDynamoDBClient: DynamoDBClientProtocol {
             input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput {
         if let describeTimeToLiveSyncOverride = describeTimeToLiveSyncOverride {
             return try describeTimeToLiveSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DisableKinesisStreamingDestination operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+         - completion: The KinesisStreamingDestinationOutput object or an error will be passed to this 
+           callback when the operation is complete. The KinesisStreamingDestinationOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func disableKinesisStreamingDestinationAsync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput, 
+            completion: @escaping (Result<DynamoDBModel.KinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws {
+        if let disableKinesisStreamingDestinationAsyncOverride = disableKinesisStreamingDestinationAsyncOverride {
+            return try disableKinesisStreamingDestinationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DisableKinesisStreamingDestination operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The KinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func disableKinesisStreamingDestinationSync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput) throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
+        if let disableKinesisStreamingDestinationSyncOverride = disableKinesisStreamingDestinationSyncOverride {
+            return try disableKinesisStreamingDestinationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the EnableKinesisStreamingDestination operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+         - completion: The KinesisStreamingDestinationOutput object or an error will be passed to this 
+           callback when the operation is complete. The KinesisStreamingDestinationOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func enableKinesisStreamingDestinationAsync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput, 
+            completion: @escaping (Result<DynamoDBModel.KinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws {
+        if let enableKinesisStreamingDestinationAsyncOverride = enableKinesisStreamingDestinationAsyncOverride {
+            return try enableKinesisStreamingDestinationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the EnableKinesisStreamingDestination operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The KinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func enableKinesisStreamingDestinationSync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput) throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
+        if let enableKinesisStreamingDestinationSyncOverride = enableKinesisStreamingDestinationSyncOverride {
+            return try enableKinesisStreamingDestinationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ExecuteStatement operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExecuteStatementInput object being passed to this operation.
+         - completion: The ExecuteStatementOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExecuteStatementOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conditionalCheckFailed, duplicateItem, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    public func executeStatementAsync(
+            input: DynamoDBModel.ExecuteStatementInput, 
+            completion: @escaping (Result<DynamoDBModel.ExecuteStatementOutput, DynamoDBError>) -> ()) throws {
+        if let executeStatementAsyncOverride = executeStatementAsyncOverride {
+            return try executeStatementAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ExecuteStatement operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExecuteStatementInput object being passed to this operation.
+     - Returns: The ExecuteStatementOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conditionalCheckFailed, duplicateItem, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    public func executeStatementSync(
+            input: DynamoDBModel.ExecuteStatementInput) throws -> DynamoDBModel.ExecuteStatementOutput {
+        if let executeStatementSyncOverride = executeStatementSyncOverride {
+            return try executeStatementSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ExecuteTransaction operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExecuteTransactionInput object being passed to this operation.
+         - completion: The ExecuteTransactionOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExecuteTransactionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func executeTransactionAsync(
+            input: DynamoDBModel.ExecuteTransactionInput, 
+            completion: @escaping (Result<DynamoDBModel.ExecuteTransactionOutput, DynamoDBError>) -> ()) throws {
+        if let executeTransactionAsyncOverride = executeTransactionAsyncOverride {
+            return try executeTransactionAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ExecuteTransaction operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExecuteTransactionInput object being passed to this operation.
+     - Returns: The ExecuteTransactionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func executeTransactionSync(
+            input: DynamoDBModel.ExecuteTransactionInput) throws -> DynamoDBModel.ExecuteTransactionOutput {
+        if let executeTransactionSyncOverride = executeTransactionSyncOverride {
+            return try executeTransactionSyncOverride(input)
         }
 
         throw error
