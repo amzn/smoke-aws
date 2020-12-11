@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -27,6 +27,11 @@ import ElasticComputeCloudModel
  Type to handle the input to the AcceptReservedInstancesExchangeQuote operation in a HTTP client.
  */
 public typealias AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the AcceptTransitGatewayMulticastDomainAssociations operation in a HTTP client.
+ */
+public typealias AcceptTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the AcceptTransitGatewayPeeringAttachment operation in a HTTP client.
@@ -354,6 +359,11 @@ public typealias CreateNetworkAclOperationHTTPRequestInput = QueryHTTPRequestInp
 public typealias CreateNetworkAclEntryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateNetworkInsightsPath operation in a HTTP client.
+ */
+public typealias CreateNetworkInsightsPathOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateNetworkInterface operation in a HTTP client.
  */
 public typealias CreateNetworkInterfaceOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -437,6 +447,16 @@ public typealias CreateTrafficMirrorTargetOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the CreateTransitGateway operation in a HTTP client.
  */
 public typealias CreateTransitGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTransitGatewayConnect operation in a HTTP client.
+ */
+public typealias CreateTransitGatewayConnectOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateTransitGatewayConnectPeer operation in a HTTP client.
+ */
+public typealias CreateTransitGatewayConnectPeerOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateTransitGatewayMulticastDomain operation in a HTTP client.
@@ -609,6 +629,16 @@ public typealias DeleteNetworkAclOperationHTTPRequestInput = QueryHTTPRequestInp
 public typealias DeleteNetworkAclEntryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteNetworkInsightsAnalysis operation in a HTTP client.
+ */
+public typealias DeleteNetworkInsightsAnalysisOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteNetworkInsightsPath operation in a HTTP client.
+ */
+public typealias DeleteNetworkInsightsPathOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteNetworkInterface operation in a HTTP client.
  */
 public typealias DeleteNetworkInterfaceOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -687,6 +717,16 @@ public typealias DeleteTrafficMirrorTargetOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the DeleteTransitGateway operation in a HTTP client.
  */
 public typealias DeleteTransitGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTransitGatewayConnect operation in a HTTP client.
+ */
+public typealias DeleteTransitGatewayConnectOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteTransitGatewayConnectPeer operation in a HTTP client.
+ */
+public typealias DeleteTransitGatewayConnectPeerOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteTransitGatewayMulticastDomain operation in a HTTP client.
@@ -1094,6 +1134,16 @@ public typealias DescribeNatGatewaysOperationHTTPRequestInput = QueryHTTPRequest
 public typealias DescribeNetworkAclsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeNetworkInsightsAnalyses operation in a HTTP client.
+ */
+public typealias DescribeNetworkInsightsAnalysesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeNetworkInsightsPaths operation in a HTTP client.
+ */
+public typealias DescribeNetworkInsightsPathsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeNetworkInterfaceAttribute operation in a HTTP client.
  */
 public typealias DescribeNetworkInterfaceAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1252,6 +1302,16 @@ public typealias DescribeTrafficMirrorTargetsOperationHTTPRequestInput = QueryHT
  Type to handle the input to the DescribeTransitGatewayAttachments operation in a HTTP client.
  */
 public typealias DescribeTransitGatewayAttachmentsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTransitGatewayConnectPeers operation in a HTTP client.
+ */
+public typealias DescribeTransitGatewayConnectPeersOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeTransitGatewayConnects operation in a HTTP client.
+ */
+public typealias DescribeTransitGatewayConnectsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeTransitGatewayMulticastDomains operation in a HTTP client.
@@ -1924,6 +1984,11 @@ public typealias RegisterTransitGatewayMulticastGroupMembersOperationHTTPRequest
 public typealias RegisterTransitGatewayMulticastGroupSourcesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the RejectTransitGatewayMulticastDomainAssociations operation in a HTTP client.
+ */
+public typealias RejectTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the RejectTransitGatewayPeeringAttachment operation in a HTTP client.
  */
 public typealias RejectTransitGatewayPeeringAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2087,6 +2152,11 @@ public typealias SendDiagnosticInterruptOperationHTTPRequestInput = QueryHTTPReq
  Type to handle the input to the StartInstances operation in a HTTP client.
  */
 public typealias StartInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the StartNetworkInsightsAnalysis operation in a HTTP client.
+ */
+public typealias StartNetworkInsightsAnalysisOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the StartVpcEndpointServicePrivateDnsVerification operation in a HTTP client.

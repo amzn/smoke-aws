@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -118,6 +118,11 @@ public protocol StepFunctionsClientProtocol {
     typealias StartExecutionAsyncType = (
             _ input: StepFunctionsModel.StartExecutionInput, 
             _ completion: @escaping (Result<StepFunctionsModel.StartExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias StartSyncExecutionSyncType = (
+            _ input: StepFunctionsModel.StartSyncExecutionInput) throws -> StepFunctionsModel.StartSyncExecutionOutput
+    typealias StartSyncExecutionAsyncType = (
+            _ input: StepFunctionsModel.StartSyncExecutionInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.StartSyncExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias StopExecutionSyncType = (
             _ input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
     typealias StopExecutionAsyncType = (
@@ -606,6 +611,32 @@ public protocol StepFunctionsClientProtocol {
      */
     func startExecutionSync(
             input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput
+
+    /**
+     Invokes the StartSyncExecution operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+         - completion: The StartSyncExecutionOutput object or an error will be passed to this 
+           callback when the operation is complete. The StartSyncExecutionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    func startSyncExecutionAsync(
+            input: StepFunctionsModel.StartSyncExecutionInput, 
+            completion: @escaping (Result<StepFunctionsModel.StartSyncExecutionOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the StartSyncExecution operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+     - Returns: The StartSyncExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    func startSyncExecutionSync(
+            input: StepFunctionsModel.StartSyncExecutionInput) throws -> StepFunctionsModel.StartSyncExecutionOutput
 
     /**
      Invokes the StopExecution operation returning immediately and passing the response to a callback.

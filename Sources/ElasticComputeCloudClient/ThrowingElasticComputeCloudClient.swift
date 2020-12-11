@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let error: ElasticComputeCloudError
     let acceptReservedInstancesExchangeQuoteAsyncOverride: AcceptReservedInstancesExchangeQuoteAsyncType?
     let acceptReservedInstancesExchangeQuoteSyncOverride: AcceptReservedInstancesExchangeQuoteSyncType?
+    let acceptTransitGatewayMulticastDomainAssociationsAsyncOverride: AcceptTransitGatewayMulticastDomainAssociationsAsyncType?
+    let acceptTransitGatewayMulticastDomainAssociationsSyncOverride: AcceptTransitGatewayMulticastDomainAssociationsSyncType?
     let acceptTransitGatewayPeeringAttachmentAsyncOverride: AcceptTransitGatewayPeeringAttachmentAsyncType?
     let acceptTransitGatewayPeeringAttachmentSyncOverride: AcceptTransitGatewayPeeringAttachmentSyncType?
     let acceptTransitGatewayVpcAttachmentAsyncOverride: AcceptTransitGatewayVpcAttachmentAsyncType?
@@ -161,6 +163,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createNetworkAclSyncOverride: CreateNetworkAclSyncType?
     let createNetworkAclEntryAsyncOverride: CreateNetworkAclEntryAsyncType?
     let createNetworkAclEntrySyncOverride: CreateNetworkAclEntrySyncType?
+    let createNetworkInsightsPathAsyncOverride: CreateNetworkInsightsPathAsyncType?
+    let createNetworkInsightsPathSyncOverride: CreateNetworkInsightsPathSyncType?
     let createNetworkInterfaceAsyncOverride: CreateNetworkInterfaceAsyncType?
     let createNetworkInterfaceSyncOverride: CreateNetworkInterfaceSyncType?
     let createNetworkInterfacePermissionAsyncOverride: CreateNetworkInterfacePermissionAsyncType?
@@ -195,6 +199,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createTrafficMirrorTargetSyncOverride: CreateTrafficMirrorTargetSyncType?
     let createTransitGatewayAsyncOverride: CreateTransitGatewayAsyncType?
     let createTransitGatewaySyncOverride: CreateTransitGatewaySyncType?
+    let createTransitGatewayConnectAsyncOverride: CreateTransitGatewayConnectAsyncType?
+    let createTransitGatewayConnectSyncOverride: CreateTransitGatewayConnectSyncType?
+    let createTransitGatewayConnectPeerAsyncOverride: CreateTransitGatewayConnectPeerAsyncType?
+    let createTransitGatewayConnectPeerSyncOverride: CreateTransitGatewayConnectPeerSyncType?
     let createTransitGatewayMulticastDomainAsyncOverride: CreateTransitGatewayMulticastDomainAsyncType?
     let createTransitGatewayMulticastDomainSyncOverride: CreateTransitGatewayMulticastDomainSyncType?
     let createTransitGatewayPeeringAttachmentAsyncOverride: CreateTransitGatewayPeeringAttachmentAsyncType?
@@ -263,6 +271,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let deleteNetworkAclSyncOverride: DeleteNetworkAclSyncType?
     let deleteNetworkAclEntryAsyncOverride: DeleteNetworkAclEntryAsyncType?
     let deleteNetworkAclEntrySyncOverride: DeleteNetworkAclEntrySyncType?
+    let deleteNetworkInsightsAnalysisAsyncOverride: DeleteNetworkInsightsAnalysisAsyncType?
+    let deleteNetworkInsightsAnalysisSyncOverride: DeleteNetworkInsightsAnalysisSyncType?
+    let deleteNetworkInsightsPathAsyncOverride: DeleteNetworkInsightsPathAsyncType?
+    let deleteNetworkInsightsPathSyncOverride: DeleteNetworkInsightsPathSyncType?
     let deleteNetworkInterfaceAsyncOverride: DeleteNetworkInterfaceAsyncType?
     let deleteNetworkInterfaceSyncOverride: DeleteNetworkInterfaceSyncType?
     let deleteNetworkInterfacePermissionAsyncOverride: DeleteNetworkInterfacePermissionAsyncType?
@@ -295,6 +307,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let deleteTrafficMirrorTargetSyncOverride: DeleteTrafficMirrorTargetSyncType?
     let deleteTransitGatewayAsyncOverride: DeleteTransitGatewayAsyncType?
     let deleteTransitGatewaySyncOverride: DeleteTransitGatewaySyncType?
+    let deleteTransitGatewayConnectAsyncOverride: DeleteTransitGatewayConnectAsyncType?
+    let deleteTransitGatewayConnectSyncOverride: DeleteTransitGatewayConnectSyncType?
+    let deleteTransitGatewayConnectPeerAsyncOverride: DeleteTransitGatewayConnectPeerAsyncType?
+    let deleteTransitGatewayConnectPeerSyncOverride: DeleteTransitGatewayConnectPeerSyncType?
     let deleteTransitGatewayMulticastDomainAsyncOverride: DeleteTransitGatewayMulticastDomainAsyncType?
     let deleteTransitGatewayMulticastDomainSyncOverride: DeleteTransitGatewayMulticastDomainSyncType?
     let deleteTransitGatewayPeeringAttachmentAsyncOverride: DeleteTransitGatewayPeeringAttachmentAsyncType?
@@ -457,6 +473,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeNatGatewaysSyncOverride: DescribeNatGatewaysSyncType?
     let describeNetworkAclsAsyncOverride: DescribeNetworkAclsAsyncType?
     let describeNetworkAclsSyncOverride: DescribeNetworkAclsSyncType?
+    let describeNetworkInsightsAnalysesAsyncOverride: DescribeNetworkInsightsAnalysesAsyncType?
+    let describeNetworkInsightsAnalysesSyncOverride: DescribeNetworkInsightsAnalysesSyncType?
+    let describeNetworkInsightsPathsAsyncOverride: DescribeNetworkInsightsPathsAsyncType?
+    let describeNetworkInsightsPathsSyncOverride: DescribeNetworkInsightsPathsSyncType?
     let describeNetworkInterfaceAttributeAsyncOverride: DescribeNetworkInterfaceAttributeAsyncType?
     let describeNetworkInterfaceAttributeSyncOverride: DescribeNetworkInterfaceAttributeSyncType?
     let describeNetworkInterfacePermissionsAsyncOverride: DescribeNetworkInterfacePermissionsAsyncType?
@@ -521,6 +541,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeTrafficMirrorTargetsSyncOverride: DescribeTrafficMirrorTargetsSyncType?
     let describeTransitGatewayAttachmentsAsyncOverride: DescribeTransitGatewayAttachmentsAsyncType?
     let describeTransitGatewayAttachmentsSyncOverride: DescribeTransitGatewayAttachmentsSyncType?
+    let describeTransitGatewayConnectPeersAsyncOverride: DescribeTransitGatewayConnectPeersAsyncType?
+    let describeTransitGatewayConnectPeersSyncOverride: DescribeTransitGatewayConnectPeersSyncType?
+    let describeTransitGatewayConnectsAsyncOverride: DescribeTransitGatewayConnectsAsyncType?
+    let describeTransitGatewayConnectsSyncOverride: DescribeTransitGatewayConnectsSyncType?
     let describeTransitGatewayMulticastDomainsAsyncOverride: DescribeTransitGatewayMulticastDomainsAsyncType?
     let describeTransitGatewayMulticastDomainsSyncOverride: DescribeTransitGatewayMulticastDomainsSyncType?
     let describeTransitGatewayPeeringAttachmentsAsyncOverride: DescribeTransitGatewayPeeringAttachmentsAsyncType?
@@ -789,6 +813,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let registerTransitGatewayMulticastGroupMembersSyncOverride: RegisterTransitGatewayMulticastGroupMembersSyncType?
     let registerTransitGatewayMulticastGroupSourcesAsyncOverride: RegisterTransitGatewayMulticastGroupSourcesAsyncType?
     let registerTransitGatewayMulticastGroupSourcesSyncOverride: RegisterTransitGatewayMulticastGroupSourcesSyncType?
+    let rejectTransitGatewayMulticastDomainAssociationsAsyncOverride: RejectTransitGatewayMulticastDomainAssociationsAsyncType?
+    let rejectTransitGatewayMulticastDomainAssociationsSyncOverride: RejectTransitGatewayMulticastDomainAssociationsSyncType?
     let rejectTransitGatewayPeeringAttachmentAsyncOverride: RejectTransitGatewayPeeringAttachmentAsyncType?
     let rejectTransitGatewayPeeringAttachmentSyncOverride: RejectTransitGatewayPeeringAttachmentSyncType?
     let rejectTransitGatewayVpcAttachmentAsyncOverride: RejectTransitGatewayVpcAttachmentAsyncType?
@@ -855,6 +881,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let sendDiagnosticInterruptSyncOverride: SendDiagnosticInterruptSyncType?
     let startInstancesAsyncOverride: StartInstancesAsyncType?
     let startInstancesSyncOverride: StartInstancesSyncType?
+    let startNetworkInsightsAnalysisAsyncOverride: StartNetworkInsightsAnalysisAsyncType?
+    let startNetworkInsightsAnalysisSyncOverride: StartNetworkInsightsAnalysisSyncType?
     let startVpcEndpointServicePrivateDnsVerificationAsyncOverride: StartVpcEndpointServicePrivateDnsVerificationAsyncType?
     let startVpcEndpointServicePrivateDnsVerificationSyncOverride: StartVpcEndpointServicePrivateDnsVerificationSyncType?
     let stopInstancesAsyncOverride: StopInstancesAsyncType?
@@ -883,6 +911,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     public init(error: ElasticComputeCloudError,
             acceptReservedInstancesExchangeQuoteAsync: AcceptReservedInstancesExchangeQuoteAsyncType? = nil,
             acceptReservedInstancesExchangeQuoteSync: AcceptReservedInstancesExchangeQuoteSyncType? = nil,
+            acceptTransitGatewayMulticastDomainAssociationsAsync: AcceptTransitGatewayMulticastDomainAssociationsAsyncType? = nil,
+            acceptTransitGatewayMulticastDomainAssociationsSync: AcceptTransitGatewayMulticastDomainAssociationsSyncType? = nil,
             acceptTransitGatewayPeeringAttachmentAsync: AcceptTransitGatewayPeeringAttachmentAsyncType? = nil,
             acceptTransitGatewayPeeringAttachmentSync: AcceptTransitGatewayPeeringAttachmentSyncType? = nil,
             acceptTransitGatewayVpcAttachmentAsync: AcceptTransitGatewayVpcAttachmentAsyncType? = nil,
@@ -1013,6 +1043,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createNetworkAclSync: CreateNetworkAclSyncType? = nil,
             createNetworkAclEntryAsync: CreateNetworkAclEntryAsyncType? = nil,
             createNetworkAclEntrySync: CreateNetworkAclEntrySyncType? = nil,
+            createNetworkInsightsPathAsync: CreateNetworkInsightsPathAsyncType? = nil,
+            createNetworkInsightsPathSync: CreateNetworkInsightsPathSyncType? = nil,
             createNetworkInterfaceAsync: CreateNetworkInterfaceAsyncType? = nil,
             createNetworkInterfaceSync: CreateNetworkInterfaceSyncType? = nil,
             createNetworkInterfacePermissionAsync: CreateNetworkInterfacePermissionAsyncType? = nil,
@@ -1047,6 +1079,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createTrafficMirrorTargetSync: CreateTrafficMirrorTargetSyncType? = nil,
             createTransitGatewayAsync: CreateTransitGatewayAsyncType? = nil,
             createTransitGatewaySync: CreateTransitGatewaySyncType? = nil,
+            createTransitGatewayConnectAsync: CreateTransitGatewayConnectAsyncType? = nil,
+            createTransitGatewayConnectSync: CreateTransitGatewayConnectSyncType? = nil,
+            createTransitGatewayConnectPeerAsync: CreateTransitGatewayConnectPeerAsyncType? = nil,
+            createTransitGatewayConnectPeerSync: CreateTransitGatewayConnectPeerSyncType? = nil,
             createTransitGatewayMulticastDomainAsync: CreateTransitGatewayMulticastDomainAsyncType? = nil,
             createTransitGatewayMulticastDomainSync: CreateTransitGatewayMulticastDomainSyncType? = nil,
             createTransitGatewayPeeringAttachmentAsync: CreateTransitGatewayPeeringAttachmentAsyncType? = nil,
@@ -1115,6 +1151,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             deleteNetworkAclSync: DeleteNetworkAclSyncType? = nil,
             deleteNetworkAclEntryAsync: DeleteNetworkAclEntryAsyncType? = nil,
             deleteNetworkAclEntrySync: DeleteNetworkAclEntrySyncType? = nil,
+            deleteNetworkInsightsAnalysisAsync: DeleteNetworkInsightsAnalysisAsyncType? = nil,
+            deleteNetworkInsightsAnalysisSync: DeleteNetworkInsightsAnalysisSyncType? = nil,
+            deleteNetworkInsightsPathAsync: DeleteNetworkInsightsPathAsyncType? = nil,
+            deleteNetworkInsightsPathSync: DeleteNetworkInsightsPathSyncType? = nil,
             deleteNetworkInterfaceAsync: DeleteNetworkInterfaceAsyncType? = nil,
             deleteNetworkInterfaceSync: DeleteNetworkInterfaceSyncType? = nil,
             deleteNetworkInterfacePermissionAsync: DeleteNetworkInterfacePermissionAsyncType? = nil,
@@ -1147,6 +1187,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             deleteTrafficMirrorTargetSync: DeleteTrafficMirrorTargetSyncType? = nil,
             deleteTransitGatewayAsync: DeleteTransitGatewayAsyncType? = nil,
             deleteTransitGatewaySync: DeleteTransitGatewaySyncType? = nil,
+            deleteTransitGatewayConnectAsync: DeleteTransitGatewayConnectAsyncType? = nil,
+            deleteTransitGatewayConnectSync: DeleteTransitGatewayConnectSyncType? = nil,
+            deleteTransitGatewayConnectPeerAsync: DeleteTransitGatewayConnectPeerAsyncType? = nil,
+            deleteTransitGatewayConnectPeerSync: DeleteTransitGatewayConnectPeerSyncType? = nil,
             deleteTransitGatewayMulticastDomainAsync: DeleteTransitGatewayMulticastDomainAsyncType? = nil,
             deleteTransitGatewayMulticastDomainSync: DeleteTransitGatewayMulticastDomainSyncType? = nil,
             deleteTransitGatewayPeeringAttachmentAsync: DeleteTransitGatewayPeeringAttachmentAsyncType? = nil,
@@ -1309,6 +1353,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeNatGatewaysSync: DescribeNatGatewaysSyncType? = nil,
             describeNetworkAclsAsync: DescribeNetworkAclsAsyncType? = nil,
             describeNetworkAclsSync: DescribeNetworkAclsSyncType? = nil,
+            describeNetworkInsightsAnalysesAsync: DescribeNetworkInsightsAnalysesAsyncType? = nil,
+            describeNetworkInsightsAnalysesSync: DescribeNetworkInsightsAnalysesSyncType? = nil,
+            describeNetworkInsightsPathsAsync: DescribeNetworkInsightsPathsAsyncType? = nil,
+            describeNetworkInsightsPathsSync: DescribeNetworkInsightsPathsSyncType? = nil,
             describeNetworkInterfaceAttributeAsync: DescribeNetworkInterfaceAttributeAsyncType? = nil,
             describeNetworkInterfaceAttributeSync: DescribeNetworkInterfaceAttributeSyncType? = nil,
             describeNetworkInterfacePermissionsAsync: DescribeNetworkInterfacePermissionsAsyncType? = nil,
@@ -1373,6 +1421,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeTrafficMirrorTargetsSync: DescribeTrafficMirrorTargetsSyncType? = nil,
             describeTransitGatewayAttachmentsAsync: DescribeTransitGatewayAttachmentsAsyncType? = nil,
             describeTransitGatewayAttachmentsSync: DescribeTransitGatewayAttachmentsSyncType? = nil,
+            describeTransitGatewayConnectPeersAsync: DescribeTransitGatewayConnectPeersAsyncType? = nil,
+            describeTransitGatewayConnectPeersSync: DescribeTransitGatewayConnectPeersSyncType? = nil,
+            describeTransitGatewayConnectsAsync: DescribeTransitGatewayConnectsAsyncType? = nil,
+            describeTransitGatewayConnectsSync: DescribeTransitGatewayConnectsSyncType? = nil,
             describeTransitGatewayMulticastDomainsAsync: DescribeTransitGatewayMulticastDomainsAsyncType? = nil,
             describeTransitGatewayMulticastDomainsSync: DescribeTransitGatewayMulticastDomainsSyncType? = nil,
             describeTransitGatewayPeeringAttachmentsAsync: DescribeTransitGatewayPeeringAttachmentsAsyncType? = nil,
@@ -1641,6 +1693,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             registerTransitGatewayMulticastGroupMembersSync: RegisterTransitGatewayMulticastGroupMembersSyncType? = nil,
             registerTransitGatewayMulticastGroupSourcesAsync: RegisterTransitGatewayMulticastGroupSourcesAsyncType? = nil,
             registerTransitGatewayMulticastGroupSourcesSync: RegisterTransitGatewayMulticastGroupSourcesSyncType? = nil,
+            rejectTransitGatewayMulticastDomainAssociationsAsync: RejectTransitGatewayMulticastDomainAssociationsAsyncType? = nil,
+            rejectTransitGatewayMulticastDomainAssociationsSync: RejectTransitGatewayMulticastDomainAssociationsSyncType? = nil,
             rejectTransitGatewayPeeringAttachmentAsync: RejectTransitGatewayPeeringAttachmentAsyncType? = nil,
             rejectTransitGatewayPeeringAttachmentSync: RejectTransitGatewayPeeringAttachmentSyncType? = nil,
             rejectTransitGatewayVpcAttachmentAsync: RejectTransitGatewayVpcAttachmentAsyncType? = nil,
@@ -1707,6 +1761,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             sendDiagnosticInterruptSync: SendDiagnosticInterruptSyncType? = nil,
             startInstancesAsync: StartInstancesAsyncType? = nil,
             startInstancesSync: StartInstancesSyncType? = nil,
+            startNetworkInsightsAnalysisAsync: StartNetworkInsightsAnalysisAsyncType? = nil,
+            startNetworkInsightsAnalysisSync: StartNetworkInsightsAnalysisSyncType? = nil,
             startVpcEndpointServicePrivateDnsVerificationAsync: StartVpcEndpointServicePrivateDnsVerificationAsyncType? = nil,
             startVpcEndpointServicePrivateDnsVerificationSync: StartVpcEndpointServicePrivateDnsVerificationSyncType? = nil,
             stopInstancesAsync: StopInstancesAsyncType? = nil,
@@ -1730,6 +1786,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.error = error
         self.acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsync
         self.acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSync
+        self.acceptTransitGatewayMulticastDomainAssociationsAsyncOverride = acceptTransitGatewayMulticastDomainAssociationsAsync
+        self.acceptTransitGatewayMulticastDomainAssociationsSyncOverride = acceptTransitGatewayMulticastDomainAssociationsSync
         self.acceptTransitGatewayPeeringAttachmentAsyncOverride = acceptTransitGatewayPeeringAttachmentAsync
         self.acceptTransitGatewayPeeringAttachmentSyncOverride = acceptTransitGatewayPeeringAttachmentSync
         self.acceptTransitGatewayVpcAttachmentAsyncOverride = acceptTransitGatewayVpcAttachmentAsync
@@ -1860,6 +1918,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createNetworkAclSyncOverride = createNetworkAclSync
         self.createNetworkAclEntryAsyncOverride = createNetworkAclEntryAsync
         self.createNetworkAclEntrySyncOverride = createNetworkAclEntrySync
+        self.createNetworkInsightsPathAsyncOverride = createNetworkInsightsPathAsync
+        self.createNetworkInsightsPathSyncOverride = createNetworkInsightsPathSync
         self.createNetworkInterfaceAsyncOverride = createNetworkInterfaceAsync
         self.createNetworkInterfaceSyncOverride = createNetworkInterfaceSync
         self.createNetworkInterfacePermissionAsyncOverride = createNetworkInterfacePermissionAsync
@@ -1894,6 +1954,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createTrafficMirrorTargetSyncOverride = createTrafficMirrorTargetSync
         self.createTransitGatewayAsyncOverride = createTransitGatewayAsync
         self.createTransitGatewaySyncOverride = createTransitGatewaySync
+        self.createTransitGatewayConnectAsyncOverride = createTransitGatewayConnectAsync
+        self.createTransitGatewayConnectSyncOverride = createTransitGatewayConnectSync
+        self.createTransitGatewayConnectPeerAsyncOverride = createTransitGatewayConnectPeerAsync
+        self.createTransitGatewayConnectPeerSyncOverride = createTransitGatewayConnectPeerSync
         self.createTransitGatewayMulticastDomainAsyncOverride = createTransitGatewayMulticastDomainAsync
         self.createTransitGatewayMulticastDomainSyncOverride = createTransitGatewayMulticastDomainSync
         self.createTransitGatewayPeeringAttachmentAsyncOverride = createTransitGatewayPeeringAttachmentAsync
@@ -1962,6 +2026,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.deleteNetworkAclSyncOverride = deleteNetworkAclSync
         self.deleteNetworkAclEntryAsyncOverride = deleteNetworkAclEntryAsync
         self.deleteNetworkAclEntrySyncOverride = deleteNetworkAclEntrySync
+        self.deleteNetworkInsightsAnalysisAsyncOverride = deleteNetworkInsightsAnalysisAsync
+        self.deleteNetworkInsightsAnalysisSyncOverride = deleteNetworkInsightsAnalysisSync
+        self.deleteNetworkInsightsPathAsyncOverride = deleteNetworkInsightsPathAsync
+        self.deleteNetworkInsightsPathSyncOverride = deleteNetworkInsightsPathSync
         self.deleteNetworkInterfaceAsyncOverride = deleteNetworkInterfaceAsync
         self.deleteNetworkInterfaceSyncOverride = deleteNetworkInterfaceSync
         self.deleteNetworkInterfacePermissionAsyncOverride = deleteNetworkInterfacePermissionAsync
@@ -1994,6 +2062,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.deleteTrafficMirrorTargetSyncOverride = deleteTrafficMirrorTargetSync
         self.deleteTransitGatewayAsyncOverride = deleteTransitGatewayAsync
         self.deleteTransitGatewaySyncOverride = deleteTransitGatewaySync
+        self.deleteTransitGatewayConnectAsyncOverride = deleteTransitGatewayConnectAsync
+        self.deleteTransitGatewayConnectSyncOverride = deleteTransitGatewayConnectSync
+        self.deleteTransitGatewayConnectPeerAsyncOverride = deleteTransitGatewayConnectPeerAsync
+        self.deleteTransitGatewayConnectPeerSyncOverride = deleteTransitGatewayConnectPeerSync
         self.deleteTransitGatewayMulticastDomainAsyncOverride = deleteTransitGatewayMulticastDomainAsync
         self.deleteTransitGatewayMulticastDomainSyncOverride = deleteTransitGatewayMulticastDomainSync
         self.deleteTransitGatewayPeeringAttachmentAsyncOverride = deleteTransitGatewayPeeringAttachmentAsync
@@ -2156,6 +2228,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeNatGatewaysSyncOverride = describeNatGatewaysSync
         self.describeNetworkAclsAsyncOverride = describeNetworkAclsAsync
         self.describeNetworkAclsSyncOverride = describeNetworkAclsSync
+        self.describeNetworkInsightsAnalysesAsyncOverride = describeNetworkInsightsAnalysesAsync
+        self.describeNetworkInsightsAnalysesSyncOverride = describeNetworkInsightsAnalysesSync
+        self.describeNetworkInsightsPathsAsyncOverride = describeNetworkInsightsPathsAsync
+        self.describeNetworkInsightsPathsSyncOverride = describeNetworkInsightsPathsSync
         self.describeNetworkInterfaceAttributeAsyncOverride = describeNetworkInterfaceAttributeAsync
         self.describeNetworkInterfaceAttributeSyncOverride = describeNetworkInterfaceAttributeSync
         self.describeNetworkInterfacePermissionsAsyncOverride = describeNetworkInterfacePermissionsAsync
@@ -2220,6 +2296,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeTrafficMirrorTargetsSyncOverride = describeTrafficMirrorTargetsSync
         self.describeTransitGatewayAttachmentsAsyncOverride = describeTransitGatewayAttachmentsAsync
         self.describeTransitGatewayAttachmentsSyncOverride = describeTransitGatewayAttachmentsSync
+        self.describeTransitGatewayConnectPeersAsyncOverride = describeTransitGatewayConnectPeersAsync
+        self.describeTransitGatewayConnectPeersSyncOverride = describeTransitGatewayConnectPeersSync
+        self.describeTransitGatewayConnectsAsyncOverride = describeTransitGatewayConnectsAsync
+        self.describeTransitGatewayConnectsSyncOverride = describeTransitGatewayConnectsSync
         self.describeTransitGatewayMulticastDomainsAsyncOverride = describeTransitGatewayMulticastDomainsAsync
         self.describeTransitGatewayMulticastDomainsSyncOverride = describeTransitGatewayMulticastDomainsSync
         self.describeTransitGatewayPeeringAttachmentsAsyncOverride = describeTransitGatewayPeeringAttachmentsAsync
@@ -2488,6 +2568,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.registerTransitGatewayMulticastGroupMembersSyncOverride = registerTransitGatewayMulticastGroupMembersSync
         self.registerTransitGatewayMulticastGroupSourcesAsyncOverride = registerTransitGatewayMulticastGroupSourcesAsync
         self.registerTransitGatewayMulticastGroupSourcesSyncOverride = registerTransitGatewayMulticastGroupSourcesSync
+        self.rejectTransitGatewayMulticastDomainAssociationsAsyncOverride = rejectTransitGatewayMulticastDomainAssociationsAsync
+        self.rejectTransitGatewayMulticastDomainAssociationsSyncOverride = rejectTransitGatewayMulticastDomainAssociationsSync
         self.rejectTransitGatewayPeeringAttachmentAsyncOverride = rejectTransitGatewayPeeringAttachmentAsync
         self.rejectTransitGatewayPeeringAttachmentSyncOverride = rejectTransitGatewayPeeringAttachmentSync
         self.rejectTransitGatewayVpcAttachmentAsyncOverride = rejectTransitGatewayVpcAttachmentAsync
@@ -2554,6 +2636,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.sendDiagnosticInterruptSyncOverride = sendDiagnosticInterruptSync
         self.startInstancesAsyncOverride = startInstancesAsync
         self.startInstancesSyncOverride = startInstancesSync
+        self.startNetworkInsightsAnalysisAsyncOverride = startNetworkInsightsAnalysisAsync
+        self.startNetworkInsightsAnalysisSyncOverride = startNetworkInsightsAnalysisSync
         self.startVpcEndpointServicePrivateDnsVerificationAsyncOverride = startVpcEndpointServicePrivateDnsVerificationAsync
         self.startVpcEndpointServicePrivateDnsVerificationSyncOverride = startVpcEndpointServicePrivateDnsVerificationSync
         self.stopInstancesAsyncOverride = stopInstancesAsync
@@ -2607,6 +2691,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
         if let acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSyncOverride {
             return try acceptReservedInstancesExchangeQuoteSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let acceptTransitGatewayMulticastDomainAssociationsAsyncOverride = acceptTransitGatewayMulticastDomainAssociationsAsyncOverride {
+            return try acceptTransitGatewayMulticastDomainAssociationsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult {
+        if let acceptTransitGatewayMulticastDomainAssociationsSyncOverride = acceptTransitGatewayMulticastDomainAssociationsSyncOverride {
+            return try acceptTransitGatewayMulticastDomainAssociationsSyncOverride(input)
         }
 
         throw error
@@ -4932,6 +5052,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the CreateNetworkInsightsPath operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsPathRequest object being passed to this operation.
+         - completion: The CreateNetworkInsightsPathResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNetworkInsightsPathResult
+           object will be validated before being returned to caller.
+     */
+    public func createNetworkInsightsPathAsync(
+            input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createNetworkInsightsPathAsyncOverride = createNetworkInsightsPathAsyncOverride {
+            return try createNetworkInsightsPathAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateNetworkInsightsPath operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsPathRequest object being passed to this operation.
+     - Returns: The CreateNetworkInsightsPathResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createNetworkInsightsPathSync(
+            input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult {
+        if let createNetworkInsightsPathSyncOverride = createNetworkInsightsPathSyncOverride {
+            return try createNetworkInsightsPathSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateNetworkInterface operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5535,6 +5691,78 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
         if let createTransitGatewaySyncOverride = createTransitGatewaySyncOverride {
             return try createTransitGatewaySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnect operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayConnectResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayConnectResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createTransitGatewayConnectAsyncOverride = createTransitGatewayConnectAsyncOverride {
+            return try createTransitGatewayConnectAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnect operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayConnectResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectResult {
+        if let createTransitGatewayConnectSyncOverride = createTransitGatewayConnectSyncOverride {
+            return try createTransitGatewayConnectSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnectPeer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectPeerRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayConnectPeerResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayConnectPeerResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectPeerAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createTransitGatewayConnectPeerAsyncOverride = createTransitGatewayConnectPeerAsyncOverride {
+            return try createTransitGatewayConnectPeerAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnectPeer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectPeerRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayConnectPeerResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectPeerSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult {
+        if let createTransitGatewayConnectPeerSyncOverride = createTransitGatewayConnectPeerSyncOverride {
+            return try createTransitGatewayConnectPeerSyncOverride(input)
         }
 
         throw error
@@ -6744,6 +6972,78 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DeleteNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAnalysisRequest object being passed to this operation.
+         - completion: The DeleteNetworkInsightsAnalysisResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInsightsAnalysisResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsAnalysisAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteNetworkInsightsAnalysisAsyncOverride = deleteNetworkInsightsAnalysisAsyncOverride {
+            return try deleteNetworkInsightsAnalysisAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsAnalysis operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAnalysisRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsAnalysisSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult {
+        if let deleteNetworkInsightsAnalysisSyncOverride = deleteNetworkInsightsAnalysisSyncOverride {
+            return try deleteNetworkInsightsAnalysisSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsPath operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsPathRequest object being passed to this operation.
+         - completion: The DeleteNetworkInsightsPathResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInsightsPathResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsPathAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteNetworkInsightsPathAsyncOverride = deleteNetworkInsightsPathAsyncOverride {
+            return try deleteNetworkInsightsPathAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsPath operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsPathRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsPathResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsPathSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsPathResult {
+        if let deleteNetworkInsightsPathSyncOverride = deleteNetworkInsightsPathSyncOverride {
+            return try deleteNetworkInsightsPathSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeleteNetworkInterface operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7287,6 +7587,78 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
         if let deleteTransitGatewaySyncOverride = deleteTransitGatewaySyncOverride {
             return try deleteTransitGatewaySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnect operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayConnectResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayConnectResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteTransitGatewayConnectAsyncOverride = deleteTransitGatewayConnectAsyncOverride {
+            return try deleteTransitGatewayConnectAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnect operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayConnectResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectResult {
+        if let deleteTransitGatewayConnectSyncOverride = deleteTransitGatewayConnectSyncOverride {
+            return try deleteTransitGatewayConnectSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnectPeer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectPeerRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayConnectPeerResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayConnectPeerResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectPeerAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteTransitGatewayConnectPeerAsyncOverride = deleteTransitGatewayConnectPeerAsyncOverride {
+            return try deleteTransitGatewayConnectPeerAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnectPeer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectPeerRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayConnectPeerResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectPeerSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult {
+        if let deleteTransitGatewayConnectPeerSyncOverride = deleteTransitGatewayConnectPeerSyncOverride {
+            return try deleteTransitGatewayConnectPeerSyncOverride(input)
         }
 
         throw error
@@ -10191,6 +10563,78 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DescribeNetworkInsightsAnalyses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAnalysesRequest object being passed to this operation.
+         - completion: The DescribeNetworkInsightsAnalysesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInsightsAnalysesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsAnalysesAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeNetworkInsightsAnalysesAsyncOverride = describeNetworkInsightsAnalysesAsyncOverride {
+            return try describeNetworkInsightsAnalysesAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsAnalyses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAnalysesRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsAnalysesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsAnalysesSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult {
+        if let describeNetworkInsightsAnalysesSyncOverride = describeNetworkInsightsAnalysesSyncOverride {
+            return try describeNetworkInsightsAnalysesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsPaths operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsPathsRequest object being passed to this operation.
+         - completion: The DescribeNetworkInsightsPathsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInsightsPathsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsPathsAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeNetworkInsightsPathsAsyncOverride = describeNetworkInsightsPathsAsyncOverride {
+            return try describeNetworkInsightsPathsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsPaths operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsPathsRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsPathsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsPathsSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult {
+        if let describeNetworkInsightsPathsSyncOverride = describeNetworkInsightsPathsSyncOverride {
+            return try describeNetworkInsightsPathsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11337,6 +11781,78 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
         if let describeTransitGatewayAttachmentsSyncOverride = describeTransitGatewayAttachmentsSyncOverride {
             return try describeTransitGatewayAttachmentsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnectPeers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectPeersRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayConnectPeersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayConnectPeersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectPeersAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeTransitGatewayConnectPeersAsyncOverride = describeTransitGatewayConnectPeersAsyncOverride {
+            return try describeTransitGatewayConnectPeersAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnectPeers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectPeersRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayConnectPeersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectPeersSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult {
+        if let describeTransitGatewayConnectPeersSyncOverride = describeTransitGatewayConnectPeersSyncOverride {
+            return try describeTransitGatewayConnectPeersSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnects operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayConnectsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayConnectsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeTransitGatewayConnectsAsyncOverride = describeTransitGatewayConnectsAsyncOverride {
+            return try describeTransitGatewayConnectsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnects operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayConnectsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult {
+        if let describeTransitGatewayConnectsSyncOverride = describeTransitGatewayConnectsSyncOverride {
+            return try describeTransitGatewayConnectsSyncOverride(input)
         }
 
         throw error
@@ -16113,6 +16629,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the RejectTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let rejectTransitGatewayMulticastDomainAssociationsAsyncOverride = rejectTransitGatewayMulticastDomainAssociationsAsyncOverride {
+            return try rejectTransitGatewayMulticastDomainAssociationsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the RejectTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult {
+        if let rejectTransitGatewayMulticastDomainAssociationsSyncOverride = rejectTransitGatewayMulticastDomainAssociationsSyncOverride {
+            return try rejectTransitGatewayMulticastDomainAssociationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the RejectTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -17268,6 +17820,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult {
         if let startInstancesSyncOverride = startInstancesSyncOverride {
             return try startInstancesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StartNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAnalysisRequest object being passed to this operation.
+         - completion: The StartNetworkInsightsAnalysisResult object or an error will be passed to this 
+           callback when the operation is complete. The StartNetworkInsightsAnalysisResult
+           object will be validated before being returned to caller.
+     */
+    public func startNetworkInsightsAnalysisAsync(
+            input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws {
+        if let startNetworkInsightsAnalysisAsyncOverride = startNetworkInsightsAnalysisAsyncOverride {
+            return try startNetworkInsightsAnalysisAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the StartNetworkInsightsAnalysis operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAnalysisRequest object being passed to this operation.
+     - Returns: The StartNetworkInsightsAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func startNetworkInsightsAnalysisSync(
+            input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult {
+        if let startNetworkInsightsAnalysisSyncOverride = startNetworkInsightsAnalysisSyncOverride {
+            return try startNetworkInsightsAnalysisSyncOverride(input)
         }
 
         throw error

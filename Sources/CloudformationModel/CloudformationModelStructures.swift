@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -3091,17 +3091,20 @@ public struct ListTypesInput: Codable, Equatable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var provisioningType: ProvisioningType?
+    public var type: RegistryType?
     public var visibility: Visibility?
 
     public init(deprecatedStatus: DeprecatedStatus? = nil,
                 maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 provisioningType: ProvisioningType? = nil,
+                type: RegistryType? = nil,
                 visibility: Visibility? = nil) {
         self.deprecatedStatus = deprecatedStatus
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.provisioningType = provisioningType
+        self.type = type
         self.visibility = visibility
     }
 
@@ -3110,6 +3113,7 @@ public struct ListTypesInput: Codable, Equatable {
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case provisioningType = "ProvisioningType"
+        case type = "Type"
         case visibility = "Visibility"
     }
 
@@ -3173,6 +3177,25 @@ public struct LoggingConfig: Codable, Equatable {
     public func validate() throws {
         try logGroupName.validateAsLogGroupName()
         try logRoleArn.validateAsRoleArn()
+    }
+}
+
+public struct ModuleInfo: Codable, Equatable {
+    public var logicalIdHierarchy: LogicalIdHierarchy?
+    public var typeHierarchy: TypeHierarchy?
+
+    public init(logicalIdHierarchy: LogicalIdHierarchy? = nil,
+                typeHierarchy: TypeHierarchy? = nil) {
+        self.logicalIdHierarchy = logicalIdHierarchy
+        self.typeHierarchy = typeHierarchy
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case logicalIdHierarchy = "LogicalIdHierarchy"
+        case typeHierarchy = "TypeHierarchy"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -3519,6 +3542,7 @@ public struct ResourceChange: Codable, Equatable {
     public var changeSetId: ChangeSetId?
     public var details: ResourceChangeDetails?
     public var logicalResourceId: LogicalResourceId?
+    public var moduleInfo: ModuleInfo?
     public var physicalResourceId: PhysicalResourceId?
     public var replacement: Replacement?
     public var resourceType: ResourceType?
@@ -3528,6 +3552,7 @@ public struct ResourceChange: Codable, Equatable {
                 changeSetId: ChangeSetId? = nil,
                 details: ResourceChangeDetails? = nil,
                 logicalResourceId: LogicalResourceId? = nil,
+                moduleInfo: ModuleInfo? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
                 replacement: Replacement? = nil,
                 resourceType: ResourceType? = nil,
@@ -3536,6 +3561,7 @@ public struct ResourceChange: Codable, Equatable {
         self.changeSetId = changeSetId
         self.details = details
         self.logicalResourceId = logicalResourceId
+        self.moduleInfo = moduleInfo
         self.physicalResourceId = physicalResourceId
         self.replacement = replacement
         self.resourceType = resourceType
@@ -3547,6 +3573,7 @@ public struct ResourceChange: Codable, Equatable {
         case changeSetId = "ChangeSetId"
         case details = "Details"
         case logicalResourceId = "LogicalResourceId"
+        case moduleInfo = "ModuleInfo"
         case physicalResourceId = "PhysicalResourceId"
         case replacement = "Replacement"
         case resourceType = "ResourceType"
@@ -3555,6 +3582,7 @@ public struct ResourceChange: Codable, Equatable {
 
     public func validate() throws {
         try changeSetId?.validateAsChangeSetId()
+        try moduleInfo?.validate()
         try resourceType?.validateAsResourceType()
     }
 }
@@ -4172,6 +4200,7 @@ public struct StackResource: Codable, Equatable {
     public var description: Description?
     public var driftInformation: StackResourceDriftInformation?
     public var logicalResourceId: LogicalResourceId
+    public var moduleInfo: ModuleInfo?
     public var physicalResourceId: PhysicalResourceId?
     public var resourceStatus: ResourceStatus
     public var resourceStatusReason: ResourceStatusReason?
@@ -4183,6 +4212,7 @@ public struct StackResource: Codable, Equatable {
     public init(description: Description? = nil,
                 driftInformation: StackResourceDriftInformation? = nil,
                 logicalResourceId: LogicalResourceId,
+                moduleInfo: ModuleInfo? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
                 resourceStatus: ResourceStatus,
                 resourceStatusReason: ResourceStatusReason? = nil,
@@ -4193,6 +4223,7 @@ public struct StackResource: Codable, Equatable {
         self.description = description
         self.driftInformation = driftInformation
         self.logicalResourceId = logicalResourceId
+        self.moduleInfo = moduleInfo
         self.physicalResourceId = physicalResourceId
         self.resourceStatus = resourceStatus
         self.resourceStatusReason = resourceStatusReason
@@ -4206,6 +4237,7 @@ public struct StackResource: Codable, Equatable {
         case description = "Description"
         case driftInformation = "DriftInformation"
         case logicalResourceId = "LogicalResourceId"
+        case moduleInfo = "ModuleInfo"
         case physicalResourceId = "PhysicalResourceId"
         case resourceStatus = "ResourceStatus"
         case resourceStatusReason = "ResourceStatusReason"
@@ -4218,6 +4250,7 @@ public struct StackResource: Codable, Equatable {
     public func validate() throws {
         try description?.validateAsDescription()
         try driftInformation?.validate()
+        try moduleInfo?.validate()
         try resourceType.validateAsResourceType()
     }
 }
@@ -4228,6 +4261,7 @@ public struct StackResourceDetail: Codable, Equatable {
     public var lastUpdatedTimestamp: Timestamp
     public var logicalResourceId: LogicalResourceId
     public var metadata: Metadata?
+    public var moduleInfo: ModuleInfo?
     public var physicalResourceId: PhysicalResourceId?
     public var resourceStatus: ResourceStatus
     public var resourceStatusReason: ResourceStatusReason?
@@ -4240,6 +4274,7 @@ public struct StackResourceDetail: Codable, Equatable {
                 lastUpdatedTimestamp: Timestamp,
                 logicalResourceId: LogicalResourceId,
                 metadata: Metadata? = nil,
+                moduleInfo: ModuleInfo? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
                 resourceStatus: ResourceStatus,
                 resourceStatusReason: ResourceStatusReason? = nil,
@@ -4251,6 +4286,7 @@ public struct StackResourceDetail: Codable, Equatable {
         self.lastUpdatedTimestamp = lastUpdatedTimestamp
         self.logicalResourceId = logicalResourceId
         self.metadata = metadata
+        self.moduleInfo = moduleInfo
         self.physicalResourceId = physicalResourceId
         self.resourceStatus = resourceStatus
         self.resourceStatusReason = resourceStatusReason
@@ -4265,6 +4301,7 @@ public struct StackResourceDetail: Codable, Equatable {
         case lastUpdatedTimestamp = "LastUpdatedTimestamp"
         case logicalResourceId = "LogicalResourceId"
         case metadata = "Metadata"
+        case moduleInfo = "ModuleInfo"
         case physicalResourceId = "PhysicalResourceId"
         case resourceStatus = "ResourceStatus"
         case resourceStatusReason = "ResourceStatusReason"
@@ -4276,6 +4313,7 @@ public struct StackResourceDetail: Codable, Equatable {
     public func validate() throws {
         try description?.validateAsDescription()
         try driftInformation?.validate()
+        try moduleInfo?.validate()
         try resourceType.validateAsResourceType()
     }
 }
@@ -4284,6 +4322,7 @@ public struct StackResourceDrift: Codable, Equatable {
     public var actualProperties: Properties?
     public var expectedProperties: Properties?
     public var logicalResourceId: LogicalResourceId
+    public var moduleInfo: ModuleInfo?
     public var physicalResourceId: PhysicalResourceId?
     public var physicalResourceIdContext: PhysicalResourceIdContext?
     public var propertyDifferences: PropertyDifferences?
@@ -4295,6 +4334,7 @@ public struct StackResourceDrift: Codable, Equatable {
     public init(actualProperties: Properties? = nil,
                 expectedProperties: Properties? = nil,
                 logicalResourceId: LogicalResourceId,
+                moduleInfo: ModuleInfo? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
                 physicalResourceIdContext: PhysicalResourceIdContext? = nil,
                 propertyDifferences: PropertyDifferences? = nil,
@@ -4305,6 +4345,7 @@ public struct StackResourceDrift: Codable, Equatable {
         self.actualProperties = actualProperties
         self.expectedProperties = expectedProperties
         self.logicalResourceId = logicalResourceId
+        self.moduleInfo = moduleInfo
         self.physicalResourceId = physicalResourceId
         self.physicalResourceIdContext = physicalResourceIdContext
         self.propertyDifferences = propertyDifferences
@@ -4318,6 +4359,7 @@ public struct StackResourceDrift: Codable, Equatable {
         case actualProperties = "ActualProperties"
         case expectedProperties = "ExpectedProperties"
         case logicalResourceId = "LogicalResourceId"
+        case moduleInfo = "ModuleInfo"
         case physicalResourceId = "PhysicalResourceId"
         case physicalResourceIdContext = "PhysicalResourceIdContext"
         case propertyDifferences = "PropertyDifferences"
@@ -4328,6 +4370,7 @@ public struct StackResourceDrift: Codable, Equatable {
     }
 
     public func validate() throws {
+        try moduleInfo?.validate()
         try physicalResourceIdContext?.validateAsPhysicalResourceIdContext()
         try resourceType.validateAsResourceType()
     }
@@ -4375,6 +4418,7 @@ public struct StackResourceSummary: Codable, Equatable {
     public var driftInformation: StackResourceDriftInformationSummary?
     public var lastUpdatedTimestamp: Timestamp
     public var logicalResourceId: LogicalResourceId
+    public var moduleInfo: ModuleInfo?
     public var physicalResourceId: PhysicalResourceId?
     public var resourceStatus: ResourceStatus
     public var resourceStatusReason: ResourceStatusReason?
@@ -4383,6 +4427,7 @@ public struct StackResourceSummary: Codable, Equatable {
     public init(driftInformation: StackResourceDriftInformationSummary? = nil,
                 lastUpdatedTimestamp: Timestamp,
                 logicalResourceId: LogicalResourceId,
+                moduleInfo: ModuleInfo? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
                 resourceStatus: ResourceStatus,
                 resourceStatusReason: ResourceStatusReason? = nil,
@@ -4390,6 +4435,7 @@ public struct StackResourceSummary: Codable, Equatable {
         self.driftInformation = driftInformation
         self.lastUpdatedTimestamp = lastUpdatedTimestamp
         self.logicalResourceId = logicalResourceId
+        self.moduleInfo = moduleInfo
         self.physicalResourceId = physicalResourceId
         self.resourceStatus = resourceStatus
         self.resourceStatusReason = resourceStatusReason
@@ -4400,6 +4446,7 @@ public struct StackResourceSummary: Codable, Equatable {
         case driftInformation = "DriftInformation"
         case lastUpdatedTimestamp = "LastUpdatedTimestamp"
         case logicalResourceId = "LogicalResourceId"
+        case moduleInfo = "ModuleInfo"
         case physicalResourceId = "PhysicalResourceId"
         case resourceStatus = "ResourceStatus"
         case resourceStatusReason = "ResourceStatusReason"
@@ -4408,6 +4455,7 @@ public struct StackResourceSummary: Codable, Equatable {
 
     public func validate() throws {
         try driftInformation?.validate()
+        try moduleInfo?.validate()
         try resourceType.validateAsResourceType()
     }
 }

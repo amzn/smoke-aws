@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ private let backupInUseIdentity = "BackupInUseException"
 private let backupNotFoundIdentity = "BackupNotFoundException"
 private let conditionalCheckFailedIdentity = "ConditionalCheckFailedException"
 private let continuousBackupsUnavailableIdentity = "ContinuousBackupsUnavailableException"
+private let duplicateItemIdentity = "DuplicateItemException"
 private let exportConflictIdentity = "ExportConflictException"
 private let exportNotFoundIdentity = "ExportNotFoundException"
 private let globalTableAlreadyExistsIdentity = "GlobalTableAlreadyExistsException"
@@ -67,6 +68,7 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case backupNotFound(BackupNotFoundException)
     case conditionalCheckFailed(ConditionalCheckFailedException)
     case continuousBackupsUnavailable(ContinuousBackupsUnavailableException)
+    case duplicateItem(DuplicateItemException)
     case exportConflict(ExportConflictException)
     case exportNotFound(ExportNotFoundException)
     case globalTableAlreadyExists(GlobalTableAlreadyExistsException)
@@ -122,6 +124,9 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case continuousBackupsUnavailableIdentity:
             let errorPayload = try ContinuousBackupsUnavailableException(from: decoder)
             self = DynamoDBError.continuousBackupsUnavailable(errorPayload)
+        case duplicateItemIdentity:
+            let errorPayload = try DuplicateItemException(from: decoder)
+            self = DynamoDBError.duplicateItem(errorPayload)
         case exportConflictIdentity:
             let errorPayload = try ExportConflictException(from: decoder)
             self = DynamoDBError.exportConflict(errorPayload)

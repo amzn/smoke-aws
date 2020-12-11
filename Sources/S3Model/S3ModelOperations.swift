@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -546,17 +546,20 @@ public extension CompleteMultipartUploadOutput {
  operation.
  */
 public struct CompleteMultipartUploadOperationOutputHeaders: Codable, Equatable {
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var expiration: Expiration?
     public var requestCharged: RequestCharged?
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
     public var versionId: ObjectVersionId?
 
-    public init(expiration: Expiration? = nil,
+    public init(bucketKeyEnabled: BucketKeyEnabled? = nil,
+                expiration: Expiration? = nil,
                 requestCharged: RequestCharged? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 versionId: ObjectVersionId? = nil) {
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.expiration = expiration
         self.requestCharged = requestCharged
         self.sSEKMSKeyId = sSEKMSKeyId
@@ -565,6 +568,7 @@ public struct CompleteMultipartUploadOperationOutputHeaders: Codable, Equatable 
     }
 
     enum CodingKeys: String, CodingKey {
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case expiration = "x-amz-expiration"
         case requestCharged = "x-amz-request-charged"
         case sSEKMSKeyId = "x-amz-server-side-encryption-aws-kms-key-id"
@@ -579,6 +583,7 @@ public struct CompleteMultipartUploadOperationOutputHeaders: Codable, Equatable 
 public extension CompleteMultipartUploadOutput {
     func asS3ModelCompleteMultipartUploadOperationOutputHeaders() -> CompleteMultipartUploadOperationOutputHeaders {
         return CompleteMultipartUploadOperationOutputHeaders(
+            bucketKeyEnabled: bucketKeyEnabled,
             expiration: expiration,
             requestCharged: requestCharged,
             sSEKMSKeyId: sSEKMSKeyId,
@@ -625,6 +630,7 @@ public extension CopyObjectRequest {
  */
 public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
@@ -663,6 +669,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var websiteRedirectLocation: WebsiteRedirectLocation?
 
     public init(aCL: ObjectCannedACL? = nil,
+                bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
@@ -700,6 +707,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 taggingDirective: TaggingDirective? = nil,
                 websiteRedirectLocation: WebsiteRedirectLocation? = nil) {
         self.aCL = aCL
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
@@ -740,6 +748,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
@@ -787,6 +796,7 @@ public extension CopyObjectRequest {
     func asS3ModelCopyObjectOperationInputAdditionalHeaders() -> CopyObjectOperationInputAdditionalHeaders {
         return CopyObjectOperationInputAdditionalHeaders(
             aCL: aCL,
+            bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
@@ -831,6 +841,7 @@ public extension CopyObjectRequest {
  operation.
  */
 public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var copySourceVersionId: CopySourceVersionId?
     public var expiration: Expiration?
     public var requestCharged: RequestCharged?
@@ -841,7 +852,8 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
     public var serverSideEncryption: ServerSideEncryption?
     public var versionId: ObjectVersionId?
 
-    public init(copySourceVersionId: CopySourceVersionId? = nil,
+    public init(bucketKeyEnabled: BucketKeyEnabled? = nil,
+                copySourceVersionId: CopySourceVersionId? = nil,
                 expiration: Expiration? = nil,
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
@@ -850,6 +862,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil,
                 versionId: ObjectVersionId? = nil) {
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.copySourceVersionId = copySourceVersionId
         self.expiration = expiration
         self.requestCharged = requestCharged
@@ -862,6 +875,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case copySourceVersionId = "x-amz-copy-source-version-id"
         case expiration = "x-amz-expiration"
         case requestCharged = "x-amz-request-charged"
@@ -880,6 +894,7 @@ public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
 public extension CopyObjectOutput {
     func asS3ModelCopyObjectOperationOutputHeaders() -> CopyObjectOperationOutputHeaders {
         return CopyObjectOperationOutputHeaders(
+            bucketKeyEnabled: bucketKeyEnabled,
             copySourceVersionId: copySourceVersionId,
             expiration: expiration,
             requestCharged: requestCharged,
@@ -1012,6 +1027,7 @@ public extension CreateMultipartUploadRequest {
  */
 public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
@@ -1039,6 +1055,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public var websiteRedirectLocation: WebsiteRedirectLocation?
 
     public init(aCL: ObjectCannedACL? = nil,
+                bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
@@ -1065,6 +1082,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
                 tagging: TaggingHeader? = nil,
                 websiteRedirectLocation: WebsiteRedirectLocation? = nil) {
         self.aCL = aCL
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
@@ -1094,6 +1112,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
@@ -1129,6 +1148,7 @@ public extension CreateMultipartUploadRequest {
     func asS3ModelCreateMultipartUploadOperationInputAdditionalHeaders() -> CreateMultipartUploadOperationInputAdditionalHeaders {
         return CreateMultipartUploadOperationInputAdditionalHeaders(
             aCL: aCL,
+            bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
@@ -1201,6 +1221,7 @@ public extension CreateMultipartUploadOutput {
 public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
     public var abortDate: AbortDate?
     public var abortRuleId: AbortRuleId?
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
@@ -1210,6 +1231,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
 
     public init(abortDate: AbortDate? = nil,
                 abortRuleId: AbortRuleId? = nil,
+                bucketKeyEnabled: BucketKeyEnabled? = nil,
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
@@ -1218,6 +1240,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
                 serverSideEncryption: ServerSideEncryption? = nil) {
         self.abortDate = abortDate
         self.abortRuleId = abortRuleId
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
@@ -1229,6 +1252,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case abortDate = "x-amz-abort-date"
         case abortRuleId = "x-amz-abort-rule-id"
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
@@ -1246,6 +1270,7 @@ public extension CreateMultipartUploadOutput {
         return CreateMultipartUploadOperationOutputHeaders(
             abortDate: abortDate,
             abortRuleId: abortRuleId,
+            bucketKeyEnabled: bucketKeyEnabled,
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
@@ -3760,6 +3785,7 @@ public extension GetObjectRequest {
  */
 public struct GetObjectOperationOutputHeaders: Codable, Equatable {
     public var acceptRanges: AcceptRanges?
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
@@ -3791,6 +3817,7 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
     public var websiteRedirectLocation: WebsiteRedirectLocation?
 
     public init(acceptRanges: AcceptRanges? = nil,
+                bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
@@ -3821,6 +3848,7 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
                 versionId: ObjectVersionId? = nil,
                 websiteRedirectLocation: WebsiteRedirectLocation? = nil) {
         self.acceptRanges = acceptRanges
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
@@ -3854,6 +3882,7 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case acceptRanges = "accept-ranges"
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
@@ -3893,6 +3922,7 @@ public extension GetObjectOutput {
     func asS3ModelGetObjectOperationOutputHeaders() -> GetObjectOperationOutputHeaders {
         return GetObjectOperationOutputHeaders(
             acceptRanges: acceptRanges,
+            bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
@@ -5771,6 +5801,7 @@ public extension PutBucketAclRequest {
  */
 public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: BucketCannedACL?
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -5779,6 +5810,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
 
     public init(aCL: BucketCannedACL? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -5786,6 +5818,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWrite: GrantWrite? = nil,
                 grantWriteACP: GrantWriteACP? = nil) {
         self.aCL = aCL
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -5796,6 +5829,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -5812,6 +5846,7 @@ public extension PutBucketAclRequest {
     func asS3ModelPutBucketAclOperationInputAdditionalHeaders() -> PutBucketAclOperationInputAdditionalHeaders {
         return PutBucketAclOperationInputAdditionalHeaders(
             aCL: aCL,
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
@@ -5930,13 +5965,17 @@ public extension PutBucketCorsRequest {
  operation.
  */
 public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -5947,6 +5986,7 @@ public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
 public extension PutBucketCorsRequest {
     func asS3ModelPutBucketCorsOperationInputAdditionalHeaders() -> PutBucketCorsOperationInputAdditionalHeaders {
         return PutBucketCorsOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -5982,13 +6022,17 @@ public extension PutBucketEncryptionRequest {
  operation.
  */
 public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -5999,6 +6043,7 @@ public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equat
 public extension PutBucketEncryptionRequest {
     func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
         return PutBucketEncryptionOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6164,13 +6209,17 @@ public extension PutBucketLifecycleRequest {
  operation.
  */
 public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6181,6 +6230,7 @@ public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equata
 public extension PutBucketLifecycleRequest {
     func asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders() -> PutBucketLifecycleOperationInputAdditionalHeaders {
         return PutBucketLifecycleOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6268,13 +6318,17 @@ public extension PutBucketLoggingRequest {
  operation.
  */
 public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6285,6 +6339,7 @@ public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutBucketLoggingRequest {
     func asS3ModelPutBucketLoggingOperationInputAdditionalHeaders() -> PutBucketLoggingOperationInputAdditionalHeaders {
         return PutBucketLoggingOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6398,13 +6453,17 @@ public extension PutBucketNotificationRequest {
  operation.
  */
 public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6415,6 +6474,7 @@ public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equ
 public extension PutBucketNotificationRequest {
     func asS3ModelPutBucketNotificationOperationInputAdditionalHeaders() -> PutBucketNotificationOperationInputAdditionalHeaders {
         return PutBucketNotificationOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6560,16 +6620,20 @@ public extension PutBucketPolicyRequest {
  */
 public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
     public init(confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
         self.confirmRemoveSelfBucketAccess = confirmRemoveSelfBucketAccess
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
         case confirmRemoveSelfBucketAccess = "x-amz-confirm-remove-self-bucket-access"
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6581,6 +6645,7 @@ public extension PutBucketPolicyRequest {
     func asS3ModelPutBucketPolicyOperationInputAdditionalHeaders() -> PutBucketPolicyOperationInputAdditionalHeaders {
         return PutBucketPolicyOperationInputAdditionalHeaders(
             confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess,
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6616,16 +6681,20 @@ public extension PutBucketReplicationRequest {
  operation.
  */
 public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var token: ObjectLockToken?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 token: ObjectLockToken? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case token = "x-amz-bucket-object-lock-token"
     }
@@ -6637,6 +6706,7 @@ public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equa
 public extension PutBucketReplicationRequest {
     func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
         return PutBucketReplicationOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             token: token)
     }
@@ -6673,13 +6743,17 @@ public extension PutBucketRequestPaymentRequest {
  operation.
  */
 public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6690,6 +6764,7 @@ public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, E
 public extension PutBucketRequestPaymentRequest {
     func asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders() -> PutBucketRequestPaymentOperationInputAdditionalHeaders {
         return PutBucketRequestPaymentOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6725,13 +6800,17 @@ public extension PutBucketTaggingRequest {
  operation.
  */
 public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6742,6 +6821,7 @@ public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutBucketTaggingRequest {
     func asS3ModelPutBucketTaggingOperationInputAdditionalHeaders() -> PutBucketTaggingOperationInputAdditionalHeaders {
         return PutBucketTaggingOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6777,16 +6857,20 @@ public extension PutBucketVersioningRequest {
  operation.
  */
 public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
     }
@@ -6798,6 +6882,7 @@ public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equat
 public extension PutBucketVersioningRequest {
     func asS3ModelPutBucketVersioningOperationInputAdditionalHeaders() -> PutBucketVersioningOperationInputAdditionalHeaders {
         return PutBucketVersioningOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             mFA: mFA)
     }
@@ -6834,13 +6919,17 @@ public extension PutBucketWebsiteRequest {
  operation.
  */
 public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6851,6 +6940,7 @@ public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutBucketWebsiteRequest {
     func asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders() -> PutBucketWebsiteOperationInputAdditionalHeaders {
         return PutBucketWebsiteOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6893,6 +6983,7 @@ public extension PutObjectRequest {
  */
 public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
@@ -6922,6 +7013,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var websiteRedirectLocation: WebsiteRedirectLocation?
 
     public init(aCL: ObjectCannedACL? = nil,
+                bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
@@ -6950,6 +7042,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 tagging: TaggingHeader? = nil,
                 websiteRedirectLocation: WebsiteRedirectLocation? = nil) {
         self.aCL = aCL
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
@@ -6981,6 +7074,7 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
@@ -7018,6 +7112,7 @@ public extension PutObjectRequest {
     func asS3ModelPutObjectOperationInputAdditionalHeaders() -> PutObjectOperationInputAdditionalHeaders {
         return PutObjectOperationInputAdditionalHeaders(
             aCL: aCL,
+            bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
@@ -7112,6 +7207,7 @@ public extension PutObjectAclRequest {
  */
 public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -7121,6 +7217,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var requestPayer: RequestPayer?
 
     public init(aCL: ObjectCannedACL? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
                 grantRead: GrantRead? = nil,
@@ -7129,6 +7226,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.aCL = aCL
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -7140,6 +7238,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
         case grantRead = "x-amz-grant-read"
@@ -7157,6 +7256,7 @@ public extension PutObjectAclRequest {
     func asS3ModelPutObjectAclOperationInputAdditionalHeaders() -> PutObjectAclOperationInputAdditionalHeaders {
         return PutObjectAclOperationInputAdditionalHeaders(
             aCL: aCL,
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             grantFullControl: grantFullControl,
             grantRead: grantRead,
@@ -7230,16 +7330,20 @@ public extension PutObjectLegalHoldRequest {
  operation.
  */
 public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
@@ -7251,6 +7355,7 @@ public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 public extension PutObjectLegalHoldRequest {
     func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
         return PutObjectLegalHoldOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
@@ -7287,19 +7392,23 @@ public extension PutObjectLockConfigurationRequest {
  operation.
  */
 public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
     public var token: ObjectLockToken?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil,
                 token: ObjectLockToken? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
         case token = "x-amz-bucket-object-lock-token"
@@ -7312,6 +7421,7 @@ public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable
 public extension PutObjectLockConfigurationRequest {
     func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
         return PutObjectLockConfigurationOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer,
             token: token)
@@ -7382,19 +7492,23 @@ public extension PutObjectRetentionRequest {
  */
 public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
@@ -7407,6 +7521,7 @@ public extension PutObjectRetentionRequest {
     func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
         return PutObjectRetentionOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
@@ -7475,13 +7590,17 @@ public extension PutObjectTaggingRequest {
  operation.
  */
 public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -7492,6 +7611,7 @@ public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutObjectTaggingRequest {
     func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
         return PutObjectTaggingOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -7527,13 +7647,17 @@ public extension PutPublicAccessBlockRequest {
  operation.
  */
 public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+    public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(contentMD5: ContentMD5? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -7544,6 +7668,7 @@ public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equa
 public extension PutPublicAccessBlockRequest {
     func asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders() -> PutPublicAccessBlockOperationInputAdditionalHeaders {
         return PutPublicAccessBlockOperationInputAdditionalHeaders(
+            contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -8049,6 +8174,7 @@ public extension UploadPartCopyRequest {
  operation.
  */
 public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable {
+    public var bucketKeyEnabled: BucketKeyEnabled?
     public var copySourceVersionId: CopySourceVersionId?
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
@@ -8056,12 +8182,14 @@ public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable {
     public var sSEKMSKeyId: SSEKMSKeyId?
     public var serverSideEncryption: ServerSideEncryption?
 
-    public init(copySourceVersionId: CopySourceVersionId? = nil,
+    public init(bucketKeyEnabled: BucketKeyEnabled? = nil,
+                copySourceVersionId: CopySourceVersionId? = nil,
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
                 sSEKMSKeyId: SSEKMSKeyId? = nil,
                 serverSideEncryption: ServerSideEncryption? = nil) {
+        self.bucketKeyEnabled = bucketKeyEnabled
         self.copySourceVersionId = copySourceVersionId
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
@@ -8071,6 +8199,7 @@ public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case copySourceVersionId = "x-amz-copy-source-version-id"
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
@@ -8086,6 +8215,7 @@ public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable {
 public extension UploadPartCopyOutput {
     func asS3ModelUploadPartCopyOperationOutputHeaders() -> UploadPartCopyOperationOutputHeaders {
         return UploadPartCopyOperationOutputHeaders(
+            bucketKeyEnabled: bucketKeyEnabled,
             copySourceVersionId: copySourceVersionId,
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,

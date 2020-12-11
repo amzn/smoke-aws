@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -46,6 +46,7 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
     let sendTaskHeartbeat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let sendTaskSuccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let startExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let startSyncExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let stopExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -88,6 +89,8 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.sendTaskSuccess)
         self.startExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startExecution)
+        self.startSyncExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.startSyncExecution)
         self.stopExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.stopExecution)
         self.tagResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

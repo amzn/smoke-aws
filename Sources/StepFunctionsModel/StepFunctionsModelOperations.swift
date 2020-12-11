@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
     case sendTaskHeartbeat = "SendTaskHeartbeat"
     case sendTaskSuccess = "SendTaskSuccess"
     case startExecution = "StartExecution"
+    case startSyncExecution = "StartSyncExecution"
     case stopExecution = "StopExecution"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
@@ -89,6 +90,8 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
         case .sendTaskSuccess:
             return "/"
         case .startExecution:
+            return "/"
+        case .startSyncExecution:
             return "/"
         case .stopExecution:
             return "/"

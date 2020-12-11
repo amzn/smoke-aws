@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -243,6 +243,11 @@ public protocol ElasticContainerClientProtocol {
     typealias UntagResourceAsyncType = (
             _ input: ElasticContainerModel.UntagResourceRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.UntagResourceResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias UpdateCapacityProviderSyncType = (
+            _ input: ElasticContainerModel.UpdateCapacityProviderRequest) throws -> ElasticContainerModel.UpdateCapacityProviderResponse
+    typealias UpdateCapacityProviderAsyncType = (
+            _ input: ElasticContainerModel.UpdateCapacityProviderRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateCapacityProviderResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateClusterSettingsSyncType = (
             _ input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
     typealias UpdateClusterSettingsAsyncType = (
@@ -1391,6 +1396,32 @@ public protocol ElasticContainerClientProtocol {
      */
     func untagResourceSync(
             input: ElasticContainerModel.UntagResourceRequest) throws -> ElasticContainerModel.UntagResourceResponse
+
+    /**
+     Invokes the UpdateCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateCapacityProviderRequest object being passed to this operation.
+         - completion: The UpdateCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    func updateCapacityProviderAsync(
+            input: ElasticContainerModel.UpdateCapacityProviderRequest, 
+            completion: @escaping (Result<ElasticContainerModel.UpdateCapacityProviderResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the UpdateCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateCapacityProviderRequest object being passed to this operation.
+     - Returns: The UpdateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    func updateCapacityProviderSync(
+            input: ElasticContainerModel.UpdateCapacityProviderRequest) throws -> ElasticContainerModel.UpdateCapacityProviderResponse
 
     /**
      Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.

@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import ElasticComputeCloudModel
  */
 public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     let acceptReservedInstancesExchangeQuote: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let acceptTransitGatewayMulticastDomainAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let acceptTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let acceptTransitGatewayVpcAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let acceptVpcEndpointConnections: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -94,6 +95,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let createNatGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createNetworkAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createNetworkAclEntry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let createNetworkInsightsPath: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createNetworkInterface: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createNetworkInterfacePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createPlacementGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -111,6 +113,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let createTrafficMirrorSession: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createTrafficMirrorTarget: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createTransitGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let createTransitGatewayConnect: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let createTransitGatewayConnectPeer: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createTransitGatewayMulticastDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createTransitGatewayPrefixListReference: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -145,6 +149,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let deleteNatGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteNetworkAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteNetworkAclEntry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteNetworkInsightsAnalysis: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteNetworkInsightsPath: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteNetworkInterface: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteNetworkInterfacePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deletePlacementGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -161,6 +167,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let deleteTrafficMirrorSession: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteTrafficMirrorTarget: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteTransitGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteTransitGatewayConnect: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteTransitGatewayConnectPeer: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteTransitGatewayMulticastDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteTransitGatewayPrefixListReference: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -242,6 +250,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let describeMovingAddresses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeNatGateways: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeNetworkAcls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeNetworkInsightsAnalyses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeNetworkInsightsPaths: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeNetworkInterfaceAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeNetworkInterfacePermissions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeNetworkInterfaces: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -274,6 +284,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let describeTrafficMirrorSessions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTrafficMirrorTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTransitGatewayAttachments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeTransitGatewayConnectPeers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeTransitGatewayConnects: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTransitGatewayMulticastDomains: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTransitGatewayPeeringAttachments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeTransitGatewayRouteTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -408,6 +420,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let registerInstanceEventNotificationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let registerTransitGatewayMulticastGroupMembers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let registerTransitGatewayMulticastGroupSources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let rejectTransitGatewayMulticastDomainAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let rejectTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let rejectTransitGatewayVpcAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let rejectVpcEndpointConnections: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -441,6 +454,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let searchTransitGatewayRoutes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let sendDiagnosticInterrupt: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let startInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let startNetworkInsightsAnalysis: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let startVpcEndpointServicePrivateDnsVerification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let stopInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let terminateClientVpnConnections: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -455,6 +469,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public init(reporting: InvocationReportingType, operationsReporting: ElasticComputeCloudOperationsReporting) {
         self.acceptReservedInstancesExchangeQuote = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.acceptReservedInstancesExchangeQuote)
+        self.acceptTransitGatewayMulticastDomainAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.acceptTransitGatewayMulticastDomainAssociations)
         self.acceptTransitGatewayPeeringAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.acceptTransitGatewayPeeringAttachment)
         self.acceptTransitGatewayVpcAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -585,6 +601,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createNetworkAcl)
         self.createNetworkAclEntry = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createNetworkAclEntry)
+        self.createNetworkInsightsPath = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createNetworkInsightsPath)
         self.createNetworkInterface = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createNetworkInterface)
         self.createNetworkInterfacePermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -619,6 +637,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createTrafficMirrorTarget)
         self.createTransitGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGateway)
+        self.createTransitGatewayConnect = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createTransitGatewayConnect)
+        self.createTransitGatewayConnectPeer = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createTransitGatewayConnectPeer)
         self.createTransitGatewayMulticastDomain = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayMulticastDomain)
         self.createTransitGatewayPeeringAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -687,6 +709,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteNetworkAcl)
         self.deleteNetworkAclEntry = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteNetworkAclEntry)
+        self.deleteNetworkInsightsAnalysis = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteNetworkInsightsAnalysis)
+        self.deleteNetworkInsightsPath = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteNetworkInsightsPath)
         self.deleteNetworkInterface = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteNetworkInterface)
         self.deleteNetworkInterfacePermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -719,6 +745,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteTrafficMirrorTarget)
         self.deleteTransitGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGateway)
+        self.deleteTransitGatewayConnect = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayConnect)
+        self.deleteTransitGatewayConnectPeer = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayConnectPeer)
         self.deleteTransitGatewayMulticastDomain = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayMulticastDomain)
         self.deleteTransitGatewayPeeringAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -881,6 +911,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeNatGateways)
         self.describeNetworkAcls = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeNetworkAcls)
+        self.describeNetworkInsightsAnalyses = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeNetworkInsightsAnalyses)
+        self.describeNetworkInsightsPaths = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeNetworkInsightsPaths)
         self.describeNetworkInterfaceAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeNetworkInterfaceAttribute)
         self.describeNetworkInterfacePermissions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -945,6 +979,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeTrafficMirrorTargets)
         self.describeTransitGatewayAttachments = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeTransitGatewayAttachments)
+        self.describeTransitGatewayConnectPeers = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeTransitGatewayConnectPeers)
+        self.describeTransitGatewayConnects = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeTransitGatewayConnects)
         self.describeTransitGatewayMulticastDomains = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeTransitGatewayMulticastDomains)
         self.describeTransitGatewayPeeringAttachments = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1213,6 +1251,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.registerTransitGatewayMulticastGroupMembers)
         self.registerTransitGatewayMulticastGroupSources = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.registerTransitGatewayMulticastGroupSources)
+        self.rejectTransitGatewayMulticastDomainAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.rejectTransitGatewayMulticastDomainAssociations)
         self.rejectTransitGatewayPeeringAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.rejectTransitGatewayPeeringAttachment)
         self.rejectTransitGatewayVpcAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1279,6 +1319,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.sendDiagnosticInterrupt)
         self.startInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startInstances)
+        self.startNetworkInsightsAnalysis = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.startNetworkInsightsAnalysis)
         self.startVpcEndpointServicePrivateDnsVerification = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startVpcEndpointServicePrivateDnsVerification)
         self.stopInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

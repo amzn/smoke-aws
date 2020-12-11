@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -451,6 +451,11 @@ public typealias LimitValue = Int
 public typealias LogGroupName = String
 
 /**
+ Type definition for the LogicalIdHierarchy field.
+ */
+public typealias LogicalIdHierarchy = String
+
+/**
  Type definition for the LogicalResourceId field.
  */
 public typealias LogicalResourceId = String
@@ -704,13 +709,14 @@ public typealias RegistrationTokenList = [RegistrationToken]
  Enumeration restricting the values of the RegistryType field.
  */
 public enum RegistryType: String, Codable, CustomStringConvertible {
+    case module = "MODULE"
     case resource = "RESOURCE"
 
     public var description: String {
         return rawValue
     }
     
-    public static let __default: RegistryType = .resource
+    public static let __default: RegistryType = .module
 }
 
 /**
@@ -1385,6 +1391,11 @@ public typealias Type = String
  Type definition for the TypeArn field.
  */
 public typealias TypeArn = String
+
+/**
+ Type definition for the TypeHierarchy field.
+ */
+public typealias TypeHierarchy = String
 
 /**
  Type definition for the TypeName field.
@@ -2373,11 +2384,11 @@ extension CloudformationModel.TypeName {
             throw CloudformationError.validationError(reason: "The provided value to TypeName violated the minimum length constraint.")
         }
 
-        if self.count > 196 {
+        if self.count > 204 {
             throw CloudformationError.validationError(reason: "The provided value to TypeName violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}", options: .regularExpression),
+        guard let matchingRange = self.range(of: "[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}(::MODULE){0,1}", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw CloudformationError.validationError(
                     reason: "The provided value to TypeName violated the regular expression constraint.")

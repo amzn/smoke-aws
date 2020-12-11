@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -154,10 +154,12 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     let startActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let startDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let startDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let startDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let startExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let stopActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let stopDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let stopDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let stopDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: RDSOperationsReporting) {
         self.addRoleToDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -412,6 +414,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.startDBCluster)
         self.startDBInstance = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startDBInstance)
+        self.startDBInstanceAutomatedBackupsReplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.startDBInstanceAutomatedBackupsReplication)
         self.startExportTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startExportTask)
         self.stopActivityStream = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -420,5 +424,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.stopDBCluster)
         self.stopDBInstance = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.stopDBInstance)
+        self.stopDBInstanceAutomatedBackupsReplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.stopDBInstanceAutomatedBackupsReplication)
     }
 }

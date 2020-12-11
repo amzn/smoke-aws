@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -190,6 +190,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.acceptReservedInstancesExchangeQuote.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.acceptTransitGatewayMulticastDomainAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AcceptTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.acceptTransitGatewayMulticastDomainAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AcceptTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.acceptTransitGatewayMulticastDomainAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AcceptTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.acceptTransitGatewayMulticastDomainAssociations.rawValue,
             version: apiVersion)
 
         do {
@@ -5126,6 +5202,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CreateNetworkInsightsPath operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsPathRequest object being passed to this operation.
+         - completion: The CreateNetworkInsightsPathResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNetworkInsightsPathResult
+           object will be validated before being returned to caller.
+     */
+    public func createNetworkInsightsPathAsync(
+            input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createNetworkInsightsPath,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateNetworkInsightsPathOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createNetworkInsightsPath.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateNetworkInsightsPath operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsPathRequest object being passed to this operation.
+     - Returns: The CreateNetworkInsightsPathResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createNetworkInsightsPathSync(
+            input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createNetworkInsightsPath,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateNetworkInsightsPathOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createNetworkInsightsPath.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateNetworkInterface operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6398,6 +6550,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createTransitGateway.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnect operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayConnectResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayConnectResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTransitGatewayConnect,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayConnectOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayConnect.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnect operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayConnectResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTransitGatewayConnect,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayConnectOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayConnect.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnectPeer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectPeerRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayConnectPeerResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayConnectPeerResult
+           object will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectPeerAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTransitGatewayConnectPeer,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayConnectPeerOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayConnectPeer.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateTransitGatewayConnectPeer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectPeerRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayConnectPeerResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createTransitGatewayConnectPeerSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTransitGatewayConnectPeer,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTransitGatewayConnectPeerOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createTransitGatewayConnectPeer.rawValue,
             version: apiVersion)
 
         do {
@@ -8978,6 +9282,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DeleteNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAnalysisRequest object being passed to this operation.
+         - completion: The DeleteNetworkInsightsAnalysisResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInsightsAnalysisResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsAnalysisAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteNetworkInsightsAnalysis,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteNetworkInsightsAnalysisOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteNetworkInsightsAnalysis.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsAnalysis operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAnalysisRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsAnalysisSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteNetworkInsightsAnalysis,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteNetworkInsightsAnalysisOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteNetworkInsightsAnalysis.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsPath operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsPathRequest object being passed to this operation.
+         - completion: The DeleteNetworkInsightsPathResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInsightsPathResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsPathAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteNetworkInsightsPath,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteNetworkInsightsPathOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteNetworkInsightsPath.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsPath operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsPathRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsPathResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteNetworkInsightsPathSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsPathResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteNetworkInsightsPath,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteNetworkInsightsPathOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteNetworkInsightsPath.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DeleteNetworkInterface operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10150,6 +10606,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.deleteTransitGateway.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnect operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayConnectResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayConnectResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTransitGatewayConnect,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayConnectOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayConnect.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnect operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayConnectResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTransitGatewayConnect,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayConnectOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayConnect.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnectPeer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectPeerRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayConnectPeerResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayConnectPeerResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectPeerAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTransitGatewayConnectPeer,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayConnectPeerOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayConnectPeer.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayConnectPeer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectPeerRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayConnectPeerResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteTransitGatewayConnectPeerSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTransitGatewayConnectPeer,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTransitGatewayConnectPeerOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteTransitGatewayConnectPeer.rawValue,
             version: apiVersion)
 
         do {
@@ -16305,6 +16913,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DescribeNetworkInsightsAnalyses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAnalysesRequest object being passed to this operation.
+         - completion: The DescribeNetworkInsightsAnalysesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInsightsAnalysesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsAnalysesAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeNetworkInsightsAnalyses,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeNetworkInsightsAnalysesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeNetworkInsightsAnalyses.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsAnalyses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAnalysesRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsAnalysesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsAnalysesSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeNetworkInsightsAnalyses,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeNetworkInsightsAnalysesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeNetworkInsightsAnalyses.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsPaths operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsPathsRequest object being passed to this operation.
+         - completion: The DescribeNetworkInsightsPathsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInsightsPathsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsPathsAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeNetworkInsightsPaths,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeNetworkInsightsPathsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeNetworkInsightsPaths.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsPaths operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsPathsRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsPathsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeNetworkInsightsPathsSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeNetworkInsightsPaths,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeNetworkInsightsPathsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeNetworkInsightsPaths.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -18720,6 +19480,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeTransitGatewayAttachments.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnectPeers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectPeersRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayConnectPeersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayConnectPeersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectPeersAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTransitGatewayConnectPeers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayConnectPeersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayConnectPeers.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnectPeers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectPeersRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayConnectPeersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectPeersSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTransitGatewayConnectPeers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayConnectPeersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayConnectPeers.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnects operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayConnectsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayConnectsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTransitGatewayConnects,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayConnectsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayConnects.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayConnects operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayConnectsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTransitGatewayConnectsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTransitGatewayConnects,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTransitGatewayConnectsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTransitGatewayConnects.rawValue,
             version: apiVersion)
 
         do {
@@ -28867,6 +29779,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the RejectTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rejectTransitGatewayMulticastDomainAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RejectTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.rejectTransitGatewayMulticastDomainAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RejectTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func rejectTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rejectTransitGatewayMulticastDomainAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RejectTransitGatewayMulticastDomainAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.rejectTransitGatewayMulticastDomainAssociations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the RejectTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -31331,6 +32319,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.startInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAnalysisRequest object being passed to this operation.
+         - completion: The StartNetworkInsightsAnalysisResult object or an error will be passed to this 
+           callback when the operation is complete. The StartNetworkInsightsAnalysisResult
+           object will be validated before being returned to caller.
+     */
+    public func startNetworkInsightsAnalysisAsync(
+            input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startNetworkInsightsAnalysis,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartNetworkInsightsAnalysisOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.startNetworkInsightsAnalysis.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartNetworkInsightsAnalysis operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAnalysisRequest object being passed to this operation.
+     - Returns: The StartNetworkInsightsAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func startNetworkInsightsAnalysisSync(
+            input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startNetworkInsightsAnalysis,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartNetworkInsightsAnalysisOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.startNetworkInsightsAnalysis.rawValue,
             version: apiVersion)
 
         do {

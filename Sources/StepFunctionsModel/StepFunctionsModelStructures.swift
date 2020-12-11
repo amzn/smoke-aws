@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -225,10 +225,31 @@ public struct ActivityWorkerLimitExceeded: Codable, Equatable {
     }
 }
 
-public struct CloudWatchEventsExecutionDataDetails: Codable, Equatable {
-    public var included: Included?
+public struct BillingDetails: Codable, Equatable {
+    public var billedDurationInMilliseconds: BilledDuration?
+    public var billedMemoryUsedInMB: BilledMemoryUsed?
 
-    public init(included: Included? = nil) {
+    public init(billedDurationInMilliseconds: BilledDuration? = nil,
+                billedMemoryUsedInMB: BilledMemoryUsed? = nil) {
+        self.billedDurationInMilliseconds = billedDurationInMilliseconds
+        self.billedMemoryUsedInMB = billedMemoryUsedInMB
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case billedDurationInMilliseconds
+        case billedMemoryUsedInMB
+    }
+
+    public func validate() throws {
+        try billedDurationInMilliseconds?.validateAsBilledDuration()
+        try billedMemoryUsedInMB?.validateAsBilledMemoryUsed()
+    }
+}
+
+public struct CloudWatchEventsExecutionDataDetails: Codable, Equatable {
+    public var included: IncludedDetails?
+
+    public init(included: IncludedDetails? = nil) {
         self.included = included
     }
 
@@ -1818,6 +1839,115 @@ public struct StartExecutionOutput: Codable, Equatable {
 
     public func validate() throws {
         try executionArn.validateAsArn()
+    }
+}
+
+public struct StartSyncExecutionInput: Codable, Equatable {
+    public var input: SensitiveData?
+    public var name: Name?
+    public var stateMachineArn: Arn
+    public var traceHeader: TraceHeader?
+
+    public init(input: SensitiveData? = nil,
+                name: Name? = nil,
+                stateMachineArn: Arn,
+                traceHeader: TraceHeader? = nil) {
+        self.input = input
+        self.name = name
+        self.stateMachineArn = stateMachineArn
+        self.traceHeader = traceHeader
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case input
+        case name
+        case stateMachineArn
+        case traceHeader
+    }
+
+    public func validate() throws {
+        try input?.validateAsSensitiveData()
+        try name?.validateAsName()
+        try stateMachineArn.validateAsArn()
+        try traceHeader?.validateAsTraceHeader()
+    }
+}
+
+public struct StartSyncExecutionOutput: Codable, Equatable {
+    public var billingDetails: BillingDetails?
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
+    public var executionArn: Arn
+    public var input: SensitiveData?
+    public var inputDetails: CloudWatchEventsExecutionDataDetails?
+    public var name: Name?
+    public var output: SensitiveData?
+    public var outputDetails: CloudWatchEventsExecutionDataDetails?
+    public var startDate: Timestamp
+    public var stateMachineArn: Arn?
+    public var status: SyncExecutionStatus
+    public var stopDate: Timestamp
+    public var traceHeader: TraceHeader?
+
+    public init(billingDetails: BillingDetails? = nil,
+                cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
+                executionArn: Arn,
+                input: SensitiveData? = nil,
+                inputDetails: CloudWatchEventsExecutionDataDetails? = nil,
+                name: Name? = nil,
+                output: SensitiveData? = nil,
+                outputDetails: CloudWatchEventsExecutionDataDetails? = nil,
+                startDate: Timestamp,
+                stateMachineArn: Arn? = nil,
+                status: SyncExecutionStatus,
+                stopDate: Timestamp,
+                traceHeader: TraceHeader? = nil) {
+        self.billingDetails = billingDetails
+        self.cause = cause
+        self.error = error
+        self.executionArn = executionArn
+        self.input = input
+        self.inputDetails = inputDetails
+        self.name = name
+        self.output = output
+        self.outputDetails = outputDetails
+        self.startDate = startDate
+        self.stateMachineArn = stateMachineArn
+        self.status = status
+        self.stopDate = stopDate
+        self.traceHeader = traceHeader
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case billingDetails
+        case cause
+        case error
+        case executionArn
+        case input
+        case inputDetails
+        case name
+        case output
+        case outputDetails
+        case startDate
+        case stateMachineArn
+        case status
+        case stopDate
+        case traceHeader
+    }
+
+    public func validate() throws {
+        try billingDetails?.validate()
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
+        try executionArn.validateAsArn()
+        try input?.validateAsSensitiveData()
+        try inputDetails?.validate()
+        try name?.validateAsName()
+        try output?.validateAsSensitiveData()
+        try outputDetails?.validate()
+        try stateMachineArn?.validateAsArn()
+        try traceHeader?.validateAsTraceHeader()
     }
 }
 

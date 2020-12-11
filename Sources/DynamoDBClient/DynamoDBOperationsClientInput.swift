@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -22,6 +22,11 @@
 import Foundation
 import SmokeHTTPClient
 import DynamoDBModel
+
+/**
+ Type to handle the input to the BatchExecuteStatement operation in a HTTP client.
+ */
+public typealias BatchExecuteStatementOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the BatchGetItem operation in a HTTP client.
@@ -99,6 +104,11 @@ public typealias DescribeGlobalTableOperationHTTPRequestInput = BodyHTTPRequestI
 public typealias DescribeGlobalTableSettingsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeKinesisStreamingDestination operation in a HTTP client.
+ */
+public typealias DescribeKinesisStreamingDestinationOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeLimits operation in a HTTP client.
  */
 public typealias DescribeLimitsOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -117,6 +127,26 @@ public typealias DescribeTableReplicaAutoScalingOperationHTTPRequestInput = Body
  Type to handle the input to the DescribeTimeToLive operation in a HTTP client.
  */
 public typealias DescribeTimeToLiveOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DisableKinesisStreamingDestination operation in a HTTP client.
+ */
+public typealias DisableKinesisStreamingDestinationOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableKinesisStreamingDestination operation in a HTTP client.
+ */
+public typealias EnableKinesisStreamingDestinationOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ExecuteStatement operation in a HTTP client.
+ */
+public typealias ExecuteStatementOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ExecuteTransaction operation in a HTTP client.
+ */
+public typealias ExecuteTransactionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the ExportTableToPointInTime operation in a HTTP client.

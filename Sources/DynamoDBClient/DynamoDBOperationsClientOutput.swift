@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -22,6 +22,19 @@
 import Foundation
 import SmokeHTTPClient
 import DynamoDBModel
+
+/**
+ Type to handle the output from the BatchExecuteStatement operation in a HTTP client.
+ */
+extension BatchExecuteStatementOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = BatchExecuteStatementOutput
+    public typealias HeadersType = BatchExecuteStatementOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> BatchExecuteStatementOutput {
+        return try bodyDecodableProvider()
+    }
+}
 
 /**
  Type to handle the output from the BatchGetItem operation in a HTTP client.
@@ -219,6 +232,19 @@ extension DescribeGlobalTableSettingsOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeKinesisStreamingDestination operation in a HTTP client.
+ */
+extension DescribeKinesisStreamingDestinationOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeKinesisStreamingDestinationOutput
+    public typealias HeadersType = DescribeKinesisStreamingDestinationOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeKinesisStreamingDestinationOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeLimits operation in a HTTP client.
  */
 extension DescribeLimitsOutput: HTTPResponseOutputProtocol {
@@ -266,6 +292,45 @@ extension DescribeTimeToLiveOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTimeToLiveOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DisableKinesisStreamingDestination operation in a HTTP client.
+ */
+extension KinesisStreamingDestinationOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = KinesisStreamingDestinationOutput
+    public typealias HeadersType = KinesisStreamingDestinationOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> KinesisStreamingDestinationOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ExecuteStatement operation in a HTTP client.
+ */
+extension ExecuteStatementOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExecuteStatementOutput
+    public typealias HeadersType = ExecuteStatementOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExecuteStatementOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ExecuteTransaction operation in a HTTP client.
+ */
+extension ExecuteTransactionOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExecuteTransactionOutput
+    public typealias HeadersType = ExecuteTransactionOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExecuteTransactionOutput {
         return try bodyDecodableProvider()
     }
 }

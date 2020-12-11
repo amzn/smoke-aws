@@ -1,5 +1,5 @@
 ---
-date: 2020-11-17 13:00
+date: 2020-12-11 13:00
 description: Support Policy for SmokeAWS.
 tags: support policy
 ---
@@ -8,7 +8,7 @@ tags: support policy
 SmokeAWS will keep versions up-to-date with AWS service models for at least **6 months** after the release of the next major version.
 
 Following these rules, the support level for different SmokeAWS versions are-
-1. **SmokeAWS 1.x**: Supported. Support to be removed after approximately November, 2020.
+1. **SmokeAWS 1.x**: No support since November, 2020.
 2. **SmokeAWS 2.x**: Supported.
 
 # Swift Version Support
@@ -24,13 +24,10 @@ SmokeAWS has two mechanism for removing support for Swift Toolchain versions-
 Once support has been removed, testing via continuous integration may be removed and no guarantees will be given for compiling the package using this version of the toolchain.
 
 Following these rules, the support level for different Swift Toolchain versions are-
-1. **Swift 4.0 and earlier**: No support.
-2. **Swift 4.1**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
-3. **Swift 4.2**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
-4. **Swift 5.0**: Supported for SmokeAWS 1.x. No support for SmokeAWS 2.x.
-5. **Swift 5.1**: Supported for SmokeAWS 1.x and 2.x. Support to be removed after 12th of May, 2021.
-6. **Swift 5.2**: Supported for SmokeAWS 1.x and 2.x.
-7. **Swift 5.3**: Supported for SmokeAWS 1.x and 2.x.
+1. **Swift 5.0 and earlier**: No support.
+5. **Swift 5.1**: Supported for SmokeAWS 2.x. Support to be removed after 12th of May, 2021.
+6. **Swift 5.2**: Supported for SmokeAWS 2.x.
+7. **Swift 5.3**: Supported for SmokeAWS 2.x.
 
 # Runtime Support
 

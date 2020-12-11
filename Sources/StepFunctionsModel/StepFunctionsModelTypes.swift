@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -30,6 +30,16 @@ public typealias ActivityList = [ActivityListItem]
  Type definition for the Arn field.
  */
 public typealias Arn = String
+
+/**
+ Type definition for the BilledDuration field.
+ */
+public typealias BilledDuration = Int
+
+/**
+ Type definition for the BilledMemoryUsed field.
+ */
+public typealias BilledMemoryUsed = Int
 
 /**
  Type definition for the ConnectorParameters field.
@@ -265,6 +275,21 @@ public enum StateMachineType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the SyncExecutionStatus field.
+ */
+public enum SyncExecutionStatus: String, Codable, CustomStringConvertible {
+    case failed = "FAILED"
+    case succeeded = "SUCCEEDED"
+    case timedOut = "TIMED_OUT"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: SyncExecutionStatus = .failed
+}
+
+/**
  Type definition for the TagKey field.
  */
 public typealias TagKey = String
@@ -310,9 +335,9 @@ public typealias TraceHeader = String
 public typealias UnsignedInteger = Int
 
 /**
- Type definition for the Included field.
+ Type definition for the IncludedDetails field.
  */
-public typealias Included = Bool
+public typealias IncludedDetails = Bool
 
 /**
  Type definition for the Truncated field.
@@ -331,6 +356,30 @@ extension StepFunctionsModel.Arn {
         if self.count > 256 {
             throw StepFunctionsError.validationError(reason: "The provided value to Arn violated the maximum length constraint.")
         }
+    }
+}
+
+/**
+ Validation for the BilledDuration field.
+*/
+extension StepFunctionsModel.BilledDuration {
+    public func validateAsBilledDuration() throws {
+        if self < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to BilledDuration violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
+ Validation for the BilledMemoryUsed field.
+*/
+extension StepFunctionsModel.BilledMemoryUsed {
+    public func validateAsBilledMemoryUsed() throws {
+        if self < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to BilledMemoryUsed violated the minimum range constraint.")
+        }
+
     }
 }
 

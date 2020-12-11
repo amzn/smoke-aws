@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -1389,6 +1389,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startExecution,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartSyncExecution operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+         - completion: The StartSyncExecutionOutput object or an error will be passed to this 
+           callback when the operation is complete. The StartSyncExecutionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func startSyncExecutionAsync(
+            input: StepFunctionsModel.StartSyncExecutionInput, 
+            completion: @escaping (Result<StepFunctionsModel.StartSyncExecutionOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.startSyncExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startSyncExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartSyncExecutionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartSyncExecution operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+     - Returns: The StartSyncExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func startSyncExecutionSync(
+            input: StepFunctionsModel.StartSyncExecutionInput) throws -> StepFunctionsModel.StartSyncExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.startSyncExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startSyncExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartSyncExecutionOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(

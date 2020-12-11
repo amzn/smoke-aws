@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -321,6 +321,7 @@ public extension CompleteMultipartUploadOutput {
     static let __default: S3Model.CompleteMultipartUploadOutput = {
         let defaultInstance = S3Model.CompleteMultipartUploadOutput(
             bucket: nil,
+            bucketKeyEnabled: nil,
             eTag: nil,
             expiration: nil,
             key: nil,
@@ -406,6 +407,7 @@ public extension CopyObjectOutput {
      */
     static let __default: S3Model.CopyObjectOutput = {
         let defaultInstance = S3Model.CopyObjectOutput(
+            bucketKeyEnabled: nil,
             copyObjectResult: nil,
             copySourceVersionId: nil,
             expiration: nil,
@@ -429,6 +431,7 @@ public extension CopyObjectRequest {
         let defaultInstance = S3Model.CopyObjectRequest(
             aCL: nil,
             bucket: "value",
+            bucketKeyEnabled: nil,
             cacheControl: nil,
             contentDisposition: nil,
             contentEncoding: nil,
@@ -550,6 +553,7 @@ public extension CreateMultipartUploadOutput {
             abortDate: nil,
             abortRuleId: nil,
             bucket: nil,
+            bucketKeyEnabled: nil,
             key: nil,
             requestCharged: nil,
             sSECustomerAlgorithm: nil,
@@ -571,6 +575,7 @@ public extension CreateMultipartUploadRequest {
         let defaultInstance = S3Model.CreateMultipartUploadRequest(
             aCL: nil,
             bucket: "value",
+            bucketKeyEnabled: nil,
             cacheControl: nil,
             contentDisposition: nil,
             contentEncoding: nil,
@@ -1666,6 +1671,7 @@ public extension GetObjectOutput {
         let defaultInstance = S3Model.GetObjectOutput(
             acceptRanges: nil,
             body: nil,
+            bucketKeyEnabled: nil,
             cacheControl: nil,
             contentDisposition: nil,
             contentEncoding: nil,
@@ -1902,6 +1908,7 @@ public extension HeadObjectOutput {
         let defaultInstance = S3Model.HeadObjectOutput(
             acceptRanges: nil,
             archiveStatus: nil,
+            bucketKeyEnabled: nil,
             cacheControl: nil,
             contentDisposition: nil,
             contentEncoding: nil,
@@ -3068,6 +3075,7 @@ public extension PutBucketAclRequest {
             aCL: nil,
             accessControlPolicy: nil,
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             grantFullControl: nil,
             grantRead: nil,
@@ -3102,6 +3110,7 @@ public extension PutBucketCorsRequest {
         let defaultInstance = S3Model.PutBucketCorsRequest(
             bucket: "value",
             cORSConfiguration: CORSConfiguration.__default,
+            contentMD5: nil,
             expectedBucketOwner: nil)
 
         return defaultInstance
@@ -3115,6 +3124,7 @@ public extension PutBucketEncryptionRequest {
     static let __default: S3Model.PutBucketEncryptionRequest = {
         let defaultInstance = S3Model.PutBucketEncryptionRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration.__default)
 
@@ -3172,6 +3182,7 @@ public extension PutBucketLifecycleRequest {
     static let __default: S3Model.PutBucketLifecycleRequest = {
         let defaultInstance = S3Model.PutBucketLifecycleRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             lifecycleConfiguration: nil)
 
@@ -3187,6 +3198,7 @@ public extension PutBucketLoggingRequest {
         let defaultInstance = S3Model.PutBucketLoggingRequest(
             bucket: "value",
             bucketLoggingStatus: BucketLoggingStatus.__default,
+            contentMD5: nil,
             expectedBucketOwner: nil)
 
         return defaultInstance
@@ -3229,6 +3241,7 @@ public extension PutBucketNotificationRequest {
     static let __default: S3Model.PutBucketNotificationRequest = {
         let defaultInstance = S3Model.PutBucketNotificationRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             notificationConfiguration: NotificationConfigurationDeprecated.__default)
 
@@ -3259,6 +3272,7 @@ public extension PutBucketPolicyRequest {
         let defaultInstance = S3Model.PutBucketPolicyRequest(
             bucket: "value",
             confirmRemoveSelfBucketAccess: nil,
+            contentMD5: nil,
             expectedBucketOwner: nil,
             policy: "value")
 
@@ -3273,6 +3287,7 @@ public extension PutBucketReplicationRequest {
     static let __default: S3Model.PutBucketReplicationRequest = {
         let defaultInstance = S3Model.PutBucketReplicationRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             replicationConfiguration: ReplicationConfiguration.__default,
             token: nil)
@@ -3288,6 +3303,7 @@ public extension PutBucketRequestPaymentRequest {
     static let __default: S3Model.PutBucketRequestPaymentRequest = {
         let defaultInstance = S3Model.PutBucketRequestPaymentRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             requestPaymentConfiguration: RequestPaymentConfiguration.__default)
 
@@ -3302,6 +3318,7 @@ public extension PutBucketTaggingRequest {
     static let __default: S3Model.PutBucketTaggingRequest = {
         let defaultInstance = S3Model.PutBucketTaggingRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             tagging: Tagging.__default)
 
@@ -3316,6 +3333,7 @@ public extension PutBucketVersioningRequest {
     static let __default: S3Model.PutBucketVersioningRequest = {
         let defaultInstance = S3Model.PutBucketVersioningRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             mFA: nil,
             versioningConfiguration: VersioningConfiguration.__default)
@@ -3331,6 +3349,7 @@ public extension PutBucketWebsiteRequest {
     static let __default: S3Model.PutBucketWebsiteRequest = {
         let defaultInstance = S3Model.PutBucketWebsiteRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             websiteConfiguration: WebsiteConfiguration.__default)
 
@@ -3359,6 +3378,7 @@ public extension PutObjectAclRequest {
             aCL: nil,
             accessControlPolicy: nil,
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             grantFullControl: nil,
             grantRead: nil,
@@ -3392,6 +3412,7 @@ public extension PutObjectLegalHoldRequest {
     static let __default: S3Model.PutObjectLegalHoldRequest = {
         let defaultInstance = S3Model.PutObjectLegalHoldRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
             legalHold: nil,
@@ -3421,6 +3442,7 @@ public extension PutObjectLockConfigurationRequest {
     static let __default: S3Model.PutObjectLockConfigurationRequest = {
         let defaultInstance = S3Model.PutObjectLockConfigurationRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             objectLockConfiguration: nil,
             requestPayer: nil,
@@ -3436,6 +3458,7 @@ public extension PutObjectOutput {
      */
     static let __default: S3Model.PutObjectOutput = {
         let defaultInstance = S3Model.PutObjectOutput(
+            bucketKeyEnabled: nil,
             eTag: nil,
             expiration: nil,
             requestCharged: nil,
@@ -3459,6 +3482,7 @@ public extension PutObjectRequest {
             aCL: nil,
             body: nil,
             bucket: "value",
+            bucketKeyEnabled: nil,
             cacheControl: nil,
             contentDisposition: nil,
             contentEncoding: nil,
@@ -3512,6 +3536,7 @@ public extension PutObjectRetentionRequest {
         let defaultInstance = S3Model.PutObjectRetentionRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
+            contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
             requestPayer: nil,
@@ -3541,6 +3566,7 @@ public extension PutObjectTaggingRequest {
     static let __default: S3Model.PutObjectTaggingRequest = {
         let defaultInstance = S3Model.PutObjectTaggingRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
             tagging: Tagging.__default,
@@ -3557,6 +3583,7 @@ public extension PutPublicAccessBlockRequest {
     static let __default: S3Model.PutPublicAccessBlockRequest = {
         let defaultInstance = S3Model.PutPublicAccessBlockRequest(
             bucket: "value",
+            contentMD5: nil,
             expectedBucketOwner: nil,
             publicAccessBlockConfiguration: PublicAccessBlockConfiguration.__default)
 
@@ -3629,6 +3656,18 @@ public extension RedirectAllRequestsTo {
         let defaultInstance = S3Model.RedirectAllRequestsTo(
             hostName: "value",
             protocol: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplicaModifications {
+    /**
+     Default instance of the ReplicaModifications structure.
+     */
+    static let __default: S3Model.ReplicaModifications = {
+        let defaultInstance = S3Model.ReplicaModifications(
+            status: .__default)
 
         return defaultInstance
     }()
@@ -3986,7 +4025,8 @@ public extension ServerSideEncryptionRule {
      */
     static let __default: S3Model.ServerSideEncryptionRule = {
         let defaultInstance = S3Model.ServerSideEncryptionRule(
-            applyServerSideEncryptionByDefault: nil)
+            applyServerSideEncryptionByDefault: nil,
+            bucketKeyEnabled: nil)
 
         return defaultInstance
     }()
@@ -3998,6 +4038,7 @@ public extension SourceSelectionCriteria {
      */
     static let __default: S3Model.SourceSelectionCriteria = {
         let defaultInstance = S3Model.SourceSelectionCriteria(
+            replicaModifications: nil,
             sseKmsEncryptedObjects: nil)
 
         return defaultInstance
@@ -4167,6 +4208,7 @@ public extension UploadPartCopyOutput {
      */
     static let __default: S3Model.UploadPartCopyOutput = {
         let defaultInstance = S3Model.UploadPartCopyOutput(
+            bucketKeyEnabled: nil,
             copyPartResult: nil,
             copySourceVersionId: nil,
             requestCharged: nil,
@@ -4215,6 +4257,7 @@ public extension UploadPartOutput {
      */
     static let __default: S3Model.UploadPartOutput = {
         let defaultInstance = S3Model.UploadPartOutput(
+            bucketKeyEnabled: nil,
             eTag: nil,
             requestCharged: nil,
             sSECustomerAlgorithm: nil,

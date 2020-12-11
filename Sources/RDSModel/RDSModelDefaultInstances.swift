@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -2066,6 +2066,7 @@ public extension DBInstance {
             copyTagsToSnapshot: nil,
             dBClusterIdentifier: nil,
             dBInstanceArn: nil,
+            dBInstanceAutomatedBackupsReplications: nil,
             dBInstanceClass: nil,
             dBInstanceIdentifier: nil,
             dBInstanceStatus: nil,
@@ -2141,7 +2142,10 @@ public extension DBInstanceAutomatedBackup {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackup(
             allocatedStorage: nil,
             availabilityZone: nil,
+            backupRetentionPeriod: nil,
             dBInstanceArn: nil,
+            dBInstanceAutomatedBackupsArn: nil,
+            dBInstanceAutomatedBackupsReplications: nil,
             dBInstanceIdentifier: nil,
             dbiResourceId: nil,
             encrypted: nil,
@@ -2209,6 +2213,18 @@ public extension DBInstanceAutomatedBackupQuotaExceededFault {
      */
     static let __default: RDSModel.DBInstanceAutomatedBackupQuotaExceededFault = {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackupQuotaExceededFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBInstanceAutomatedBackupsReplication {
+    /**
+     Default instance of the DBInstanceAutomatedBackupsReplication structure.
+     */
+    static let __default: RDSModel.DBInstanceAutomatedBackupsReplication = {
+        let defaultInstance = RDSModel.DBInstanceAutomatedBackupsReplication(
+            dBInstanceAutomatedBackupsArn: nil)
 
         return defaultInstance
     }()
@@ -3070,7 +3086,8 @@ public extension DeleteDBInstanceAutomatedBackupMessage {
      */
     static let __default: RDSModel.DeleteDBInstanceAutomatedBackupMessage = {
         let defaultInstance = RDSModel.DeleteDBInstanceAutomatedBackupMessage(
-            dbiResourceId: "value")
+            dBInstanceAutomatedBackupsArn: nil,
+            dbiResourceId: nil)
 
         return defaultInstance
     }()
@@ -3583,6 +3600,7 @@ public extension DescribeDBInstanceAutomatedBackupsMessage {
      */
     static let __default: RDSModel.DescribeDBInstanceAutomatedBackupsMessage = {
         let defaultInstance = RDSModel.DescribeDBInstanceAutomatedBackupsMessage(
+            dBInstanceAutomatedBackupsArn: nil,
             dBInstanceIdentifier: nil,
             dbiResourceId: nil,
             filters: nil,
@@ -7134,6 +7152,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             processorFeatures: nil,
             publiclyAccessible: nil,
             restoreTime: nil,
+            sourceDBInstanceAutomatedBackupsArn: nil,
             sourceDBInstanceIdentifier: nil,
             sourceDbiResourceId: nil,
             storageType: nil,
@@ -7332,7 +7351,8 @@ public extension SourceRegion {
         let defaultInstance = RDSModel.SourceRegion(
             endpoint: nil,
             regionName: nil,
-            status: nil)
+            status: nil,
+            supportsDBInstanceAutomatedBackupsReplication: nil)
 
         return defaultInstance
     }()
@@ -7437,6 +7457,45 @@ public extension StartDBClusterResultForStartDBCluster {
     static let __default: RDSModel.StartDBClusterResultForStartDBCluster = {
         let defaultInstance = RDSModel.StartDBClusterResultForStartDBCluster(
             startDBClusterResult: StartDBClusterResult.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartDBInstanceAutomatedBackupsReplicationMessage {
+    /**
+     Default instance of the StartDBInstanceAutomatedBackupsReplicationMessage structure.
+     */
+    static let __default: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage = {
+        let defaultInstance = RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage(
+            backupRetentionPeriod: nil,
+            kmsKeyId: nil,
+            preSignedUrl: nil,
+            sourceDBInstanceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension StartDBInstanceAutomatedBackupsReplicationResult {
+    /**
+     Default instance of the StartDBInstanceAutomatedBackupsReplicationResult structure.
+     */
+    static let __default: RDSModel.StartDBInstanceAutomatedBackupsReplicationResult = {
+        let defaultInstance = RDSModel.StartDBInstanceAutomatedBackupsReplicationResult(
+            dBInstanceAutomatedBackup: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication {
+    /**
+     Default instance of the StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication structure.
+     */
+    static let __default: RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication = {
+        let defaultInstance = RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication(
+            startDBInstanceAutomatedBackupsReplicationResult: StartDBInstanceAutomatedBackupsReplicationResult.__default)
 
         return defaultInstance
     }()
@@ -7566,6 +7625,42 @@ public extension StopDBClusterResultForStopDBCluster {
     static let __default: RDSModel.StopDBClusterResultForStopDBCluster = {
         let defaultInstance = RDSModel.StopDBClusterResultForStopDBCluster(
             stopDBClusterResult: StopDBClusterResult.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension StopDBInstanceAutomatedBackupsReplicationMessage {
+    /**
+     Default instance of the StopDBInstanceAutomatedBackupsReplicationMessage structure.
+     */
+    static let __default: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage = {
+        let defaultInstance = RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage(
+            sourceDBInstanceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension StopDBInstanceAutomatedBackupsReplicationResult {
+    /**
+     Default instance of the StopDBInstanceAutomatedBackupsReplicationResult structure.
+     */
+    static let __default: RDSModel.StopDBInstanceAutomatedBackupsReplicationResult = {
+        let defaultInstance = RDSModel.StopDBInstanceAutomatedBackupsReplicationResult(
+            dBInstanceAutomatedBackup: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
+    /**
+     Default instance of the StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication structure.
+     */
+    static let __default: RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication = {
+        let defaultInstance = RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication(
+            stopDBInstanceAutomatedBackupsReplicationResult: StopDBInstanceAutomatedBackupsReplicationResult.__default)
 
         return defaultInstance
     }()

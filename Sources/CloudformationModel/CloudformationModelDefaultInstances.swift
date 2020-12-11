@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -1916,6 +1916,7 @@ public extension ListTypesInput {
             maxResults: nil,
             nextToken: nil,
             provisioningType: nil,
+            type: nil,
             visibility: nil)
 
         return defaultInstance
@@ -1955,6 +1956,19 @@ public extension LoggingConfig {
         let defaultInstance = CloudformationModel.LoggingConfig(
             logGroupName: "0",
             logRoleArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModuleInfo {
+    /**
+     Default instance of the ModuleInfo structure.
+     */
+    static let __default: CloudformationModel.ModuleInfo = {
+        let defaultInstance = CloudformationModel.ModuleInfo(
+            logicalIdHierarchy: nil,
+            typeHierarchy: nil)
 
         return defaultInstance
     }()
@@ -2194,6 +2208,7 @@ public extension ResourceChange {
             changeSetId: nil,
             details: nil,
             logicalResourceId: nil,
+            moduleInfo: nil,
             physicalResourceId: nil,
             replacement: nil,
             resourceType: nil,
@@ -2522,6 +2537,7 @@ public extension StackResource {
             description: nil,
             driftInformation: nil,
             logicalResourceId: "value",
+            moduleInfo: nil,
             physicalResourceId: nil,
             resourceStatus: .__default,
             resourceStatusReason: nil,
@@ -2545,6 +2561,7 @@ public extension StackResourceDetail {
             lastUpdatedTimestamp: "2013-02-18T17:00:00Z",
             logicalResourceId: "value",
             metadata: nil,
+            moduleInfo: nil,
             physicalResourceId: nil,
             resourceStatus: .__default,
             resourceStatusReason: nil,
@@ -2565,6 +2582,7 @@ public extension StackResourceDrift {
             actualProperties: nil,
             expectedProperties: nil,
             logicalResourceId: "value",
+            moduleInfo: nil,
             physicalResourceId: nil,
             physicalResourceIdContext: nil,
             propertyDifferences: nil,
@@ -2612,6 +2630,7 @@ public extension StackResourceSummary {
             driftInformation: nil,
             lastUpdatedTimestamp: "2013-02-18T17:00:00Z",
             logicalResourceId: "value",
+            moduleInfo: nil,
             physicalResourceId: nil,
             resourceStatus: .__default,
             resourceStatusReason: nil,

@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -93,6 +93,19 @@ public extension AutoScalingGroupProvider {
     static let __default: ElasticContainerModel.AutoScalingGroupProvider = {
         let defaultInstance = ElasticContainerModel.AutoScalingGroupProvider(
             autoScalingGroupArn: "value",
+            managedScaling: nil,
+            managedTerminationProtection: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AutoScalingGroupProviderUpdate {
+    /**
+     Default instance of the AutoScalingGroupProviderUpdate structure.
+     */
+    static let __default: ElasticContainerModel.AutoScalingGroupProviderUpdate = {
+        let defaultInstance = ElasticContainerModel.AutoScalingGroupProviderUpdate(
             managedScaling: nil,
             managedTerminationProtection: nil)
 
@@ -700,15 +713,31 @@ public extension Deployment {
             capacityProviderStrategy: nil,
             createdAt: nil,
             desiredCount: nil,
+            failedTasks: nil,
             id: nil,
             launchType: nil,
             networkConfiguration: nil,
             pendingCount: nil,
             platformVersion: nil,
+            rolloutState: nil,
+            rolloutStateReason: nil,
             runningCount: nil,
             status: nil,
             taskDefinition: nil,
             updatedAt: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeploymentCircuitBreaker {
+    /**
+     Default instance of the DeploymentCircuitBreaker structure.
+     */
+    static let __default: ElasticContainerModel.DeploymentCircuitBreaker = {
+        let defaultInstance = ElasticContainerModel.DeploymentCircuitBreaker(
+            enable: false,
+            rollback: false)
 
         return defaultInstance
     }()
@@ -720,6 +749,7 @@ public extension DeploymentConfiguration {
      */
     static let __default: ElasticContainerModel.DeploymentConfiguration = {
         let defaultInstance = ElasticContainerModel.DeploymentConfiguration(
+            deploymentCircuitBreaker: nil,
             maximumPercent: nil,
             minimumHealthyPercent: nil)
 
@@ -1557,6 +1587,7 @@ public extension ManagedScaling {
      */
     static let __default: ElasticContainerModel.ManagedScaling = {
         let defaultInstance = ElasticContainerModel.ManagedScaling(
+            instanceWarmupPeriod: nil,
             maximumScalingStepSize: nil,
             minimumScalingStepSize: nil,
             status: nil,
@@ -2569,6 +2600,31 @@ public extension UntagResourceResponse {
      */
     static let __default: ElasticContainerModel.UntagResourceResponse = {
         let defaultInstance = ElasticContainerModel.UntagResourceResponse()
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateCapacityProviderRequest {
+    /**
+     Default instance of the UpdateCapacityProviderRequest structure.
+     */
+    static let __default: ElasticContainerModel.UpdateCapacityProviderRequest = {
+        let defaultInstance = ElasticContainerModel.UpdateCapacityProviderRequest(
+            autoScalingGroupProvider: AutoScalingGroupProviderUpdate.__default,
+            name: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateCapacityProviderResponse {
+    /**
+     Default instance of the UpdateCapacityProviderResponse structure.
+     */
+    static let __default: ElasticContainerModel.UpdateCapacityProviderResponse = {
+        let defaultInstance = ElasticContainerModel.UpdateCapacityProviderResponse(
+            capacityProvider: nil)
 
         return defaultInstance
     }()

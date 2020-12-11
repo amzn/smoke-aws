@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -64,6 +64,8 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
     let sendTaskSuccessSyncOverride: SendTaskSuccessSyncType?
     let startExecutionAsyncOverride: StartExecutionAsyncType?
     let startExecutionSyncOverride: StartExecutionSyncType?
+    let startSyncExecutionAsyncOverride: StartSyncExecutionAsyncType?
+    let startSyncExecutionSyncOverride: StartSyncExecutionSyncType?
     let stopExecutionAsyncOverride: StopExecutionAsyncType?
     let stopExecutionSyncOverride: StopExecutionSyncType?
     let tagResourceAsyncOverride: TagResourceAsyncType?
@@ -114,6 +116,8 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
             sendTaskSuccessSync: SendTaskSuccessSyncType? = nil,
             startExecutionAsync: StartExecutionAsyncType? = nil,
             startExecutionSync: StartExecutionSyncType? = nil,
+            startSyncExecutionAsync: StartSyncExecutionAsyncType? = nil,
+            startSyncExecutionSync: StartSyncExecutionSyncType? = nil,
             stopExecutionAsync: StopExecutionAsyncType? = nil,
             stopExecutionSync: StopExecutionSyncType? = nil,
             tagResourceAsync: TagResourceAsyncType? = nil,
@@ -158,6 +162,8 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
         self.sendTaskSuccessSyncOverride = sendTaskSuccessSync
         self.startExecutionAsyncOverride = startExecutionAsync
         self.startExecutionSyncOverride = startExecutionSync
+        self.startSyncExecutionAsyncOverride = startSyncExecutionAsync
+        self.startSyncExecutionSyncOverride = startSyncExecutionSync
         self.stopExecutionAsyncOverride = stopExecutionAsync
         self.stopExecutionSyncOverride = stopExecutionSync
         self.tagResourceAsyncOverride = tagResourceAsync
@@ -886,6 +892,46 @@ public struct MockStepFunctionsClient: StepFunctionsClientProtocol {
         }
 
         return StartExecutionOutput.__default
+    }
+
+    /**
+     Invokes the StartSyncExecution operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+         - completion: The StartSyncExecutionOutput object or an error will be passed to this 
+           callback when the operation is complete. The StartSyncExecutionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func startSyncExecutionAsync(
+            input: StepFunctionsModel.StartSyncExecutionInput, 
+            completion: @escaping (Result<StepFunctionsModel.StartSyncExecutionOutput, StepFunctionsError>) -> ()) throws {
+        if let startSyncExecutionAsyncOverride = startSyncExecutionAsyncOverride {
+            return try startSyncExecutionAsyncOverride(input, completion)
+        }
+
+        let result = StartSyncExecutionOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the StartSyncExecution operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+     - Returns: The StartSyncExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func startSyncExecutionSync(
+            input: StepFunctionsModel.StartSyncExecutionInput) throws -> StepFunctionsModel.StartSyncExecutionOutput {
+        if let startSyncExecutionSyncOverride = startSyncExecutionSyncOverride {
+            return try startSyncExecutionSyncOverride(input)
+        }
+
+        return StartSyncExecutionOutput.__default
     }
 
     /**

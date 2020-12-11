@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -253,6 +253,19 @@ extension StartExecutionOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StartExecutionOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StartSyncExecution operation in a HTTP client.
+ */
+extension StartSyncExecutionOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartSyncExecutionOutput
+    public typealias HeadersType = StartSyncExecutionOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartSyncExecutionOutput {
         return try bodyDecodableProvider()
     }
 }

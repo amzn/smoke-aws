@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -71,6 +71,7 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
     let submitTaskStateChange: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let updateCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let updateClusterSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let updateContainerAgent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let updateContainerInstancesState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -165,6 +166,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.tagResource)
         self.untagResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.untagResource)
+        self.updateCapacityProvider = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateCapacityProvider)
         self.updateClusterSettings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateClusterSettings)
         self.updateContainerAgent = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

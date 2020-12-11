@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -454,6 +454,37 @@ public struct BackupSummary: Codable, Equatable {
     }
 }
 
+public struct BatchExecuteStatementInput: Codable, Equatable {
+    public var statements: PartiQLBatchRequest
+
+    public init(statements: PartiQLBatchRequest) {
+        self.statements = statements
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case statements = "Statements"
+    }
+
+    public func validate() throws {
+        try statements.validateAsPartiQLBatchRequest()
+    }
+}
+
+public struct BatchExecuteStatementOutput: Codable, Equatable {
+    public var responses: PartiQLBatchResponse?
+
+    public init(responses: PartiQLBatchResponse? = nil) {
+        self.responses = responses
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case responses = "Responses"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct BatchGetItemInput: Codable, Equatable {
     public var requestItems: BatchGetRequestMap
     public var returnConsumedCapacity: ReturnConsumedCapacity?
@@ -493,6 +524,75 @@ public struct BatchGetItemOutput: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct BatchStatementError: Codable, Equatable {
+    public var code: BatchStatementErrorCodeEnum?
+    public var message: String?
+
+    public init(code: BatchStatementErrorCodeEnum? = nil,
+                message: String? = nil) {
+        self.code = code
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case code = "Code"
+        case message = "Message"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct BatchStatementRequest: Codable, Equatable {
+    public var consistentRead: ConsistentRead?
+    public var parameters: PreparedStatementParameters?
+    public var statement: PartiQLStatement
+
+    public init(consistentRead: ConsistentRead? = nil,
+                parameters: PreparedStatementParameters? = nil,
+                statement: PartiQLStatement) {
+        self.consistentRead = consistentRead
+        self.parameters = parameters
+        self.statement = statement
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case consistentRead = "ConsistentRead"
+        case parameters = "Parameters"
+        case statement = "Statement"
+    }
+
+    public func validate() throws {
+        try parameters?.validateAsPreparedStatementParameters()
+        try statement.validateAsPartiQLStatement()
+    }
+}
+
+public struct BatchStatementResponse: Codable, Equatable {
+    public var error: BatchStatementError?
+    public var item: AttributeMap?
+    public var tableName: TableName?
+
+    public init(error: BatchStatementError? = nil,
+                item: AttributeMap? = nil,
+                tableName: TableName? = nil) {
+        self.error = error
+        self.item = item
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case error = "Error"
+        case item = "Item"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try error?.validate()
+        try tableName?.validateAsTableName()
     }
 }
 
@@ -1483,6 +1583,42 @@ public struct DescribeGlobalTableSettingsOutput: Codable, Equatable {
     }
 }
 
+public struct DescribeKinesisStreamingDestinationInput: Codable, Equatable {
+    public var tableName: TableName
+
+    public init(tableName: TableName) {
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try tableName.validateAsTableName()
+    }
+}
+
+public struct DescribeKinesisStreamingDestinationOutput: Codable, Equatable {
+    public var kinesisDataStreamDestinations: KinesisDataStreamDestinations?
+    public var tableName: TableName?
+
+    public init(kinesisDataStreamDestinations: KinesisDataStreamDestinations? = nil,
+                tableName: TableName? = nil) {
+        self.kinesisDataStreamDestinations = kinesisDataStreamDestinations
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case kinesisDataStreamDestinations = "KinesisDataStreamDestinations"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try tableName?.validateAsTableName()
+    }
+}
+
 public struct DescribeLimitsInput: Codable, Equatable {
 
     public init() {
@@ -1619,6 +1755,21 @@ public struct DescribeTimeToLiveOutput: Codable, Equatable {
     }
 }
 
+public struct DuplicateItemException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Endpoint: Codable, Equatable {
     public var address: String
     public var cachePeriodInMinutes: Long
@@ -1635,6 +1786,93 @@ public struct Endpoint: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ExecuteStatementInput: Codable, Equatable {
+    public var consistentRead: ConsistentRead?
+    public var nextToken: PartiQLNextToken?
+    public var parameters: PreparedStatementParameters?
+    public var statement: PartiQLStatement
+
+    public init(consistentRead: ConsistentRead? = nil,
+                nextToken: PartiQLNextToken? = nil,
+                parameters: PreparedStatementParameters? = nil,
+                statement: PartiQLStatement) {
+        self.consistentRead = consistentRead
+        self.nextToken = nextToken
+        self.parameters = parameters
+        self.statement = statement
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case consistentRead = "ConsistentRead"
+        case nextToken = "NextToken"
+        case parameters = "Parameters"
+        case statement = "Statement"
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsPartiQLNextToken()
+        try parameters?.validateAsPreparedStatementParameters()
+        try statement.validateAsPartiQLStatement()
+    }
+}
+
+public struct ExecuteStatementOutput: Codable, Equatable {
+    public var items: ItemList?
+    public var nextToken: PartiQLNextToken?
+
+    public init(items: ItemList? = nil,
+                nextToken: PartiQLNextToken? = nil) {
+        self.items = items
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case items = "Items"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsPartiQLNextToken()
+    }
+}
+
+public struct ExecuteTransactionInput: Codable, Equatable {
+    public var clientRequestToken: ClientRequestToken?
+    public var transactStatements: ParameterizedStatements
+
+    public init(clientRequestToken: ClientRequestToken? = nil,
+                transactStatements: ParameterizedStatements) {
+        self.clientRequestToken = clientRequestToken
+        self.transactStatements = transactStatements
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientRequestToken = "ClientRequestToken"
+        case transactStatements = "TransactStatements"
+    }
+
+    public func validate() throws {
+        try clientRequestToken?.validateAsClientRequestToken()
+        try transactStatements.validateAsParameterizedStatements()
+    }
+}
+
+public struct ExecuteTransactionOutput: Codable, Equatable {
+    public var responses: ItemResponseList?
+
+    public init(responses: ItemResponseList? = nil) {
+        self.responses = responses
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case responses = "Responses"
+    }
+
+    public func validate() throws {
+        try responses?.validateAsItemResponseList()
     }
 }
 
@@ -2425,6 +2663,76 @@ public struct KeysAndAttributes: Codable, Equatable {
     }
 }
 
+public struct KinesisDataStreamDestination: Codable, Equatable {
+    public var destinationStatus: DestinationStatus?
+    public var destinationStatusDescription: String?
+    public var streamArn: StreamArn?
+
+    public init(destinationStatus: DestinationStatus? = nil,
+                destinationStatusDescription: String? = nil,
+                streamArn: StreamArn? = nil) {
+        self.destinationStatus = destinationStatus
+        self.destinationStatusDescription = destinationStatusDescription
+        self.streamArn = streamArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationStatus = "DestinationStatus"
+        case destinationStatusDescription = "DestinationStatusDescription"
+        case streamArn = "StreamArn"
+    }
+
+    public func validate() throws {
+        try streamArn?.validateAsStreamArn()
+    }
+}
+
+public struct KinesisStreamingDestinationInput: Codable, Equatable {
+    public var streamArn: StreamArn
+    public var tableName: TableName
+
+    public init(streamArn: StreamArn,
+                tableName: TableName) {
+        self.streamArn = streamArn
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case streamArn = "StreamArn"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try streamArn.validateAsStreamArn()
+        try tableName.validateAsTableName()
+    }
+}
+
+public struct KinesisStreamingDestinationOutput: Codable, Equatable {
+    public var destinationStatus: DestinationStatus?
+    public var streamArn: StreamArn?
+    public var tableName: TableName?
+
+    public init(destinationStatus: DestinationStatus? = nil,
+                streamArn: StreamArn? = nil,
+                tableName: TableName? = nil) {
+        self.destinationStatus = destinationStatus
+        self.streamArn = streamArn
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationStatus = "DestinationStatus"
+        case streamArn = "StreamArn"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try streamArn?.validateAsStreamArn()
+        try tableName?.validateAsTableName()
+    }
+}
+
 public struct LimitExceededException: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -2797,6 +3105,27 @@ public struct LocalSecondaryIndexInfo: Codable, Equatable {
         try indexName?.validateAsIndexName()
         try keySchema?.validateAsKeySchema()
         try projection?.validate()
+    }
+}
+
+public struct ParameterizedStatement: Codable, Equatable {
+    public var parameters: PreparedStatementParameters?
+    public var statement: PartiQLStatement
+
+    public init(parameters: PreparedStatementParameters? = nil,
+                statement: PartiQLStatement) {
+        self.parameters = parameters
+        self.statement = statement
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case parameters = "Parameters"
+        case statement = "Statement"
+    }
+
+    public func validate() throws {
+        try parameters?.validateAsPreparedStatementParameters()
+        try statement.validateAsPartiQLStatement()
     }
 }
 

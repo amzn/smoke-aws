@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -151,10 +151,12 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case startActivityStream = "StartActivityStream"
     case startDBCluster = "StartDBCluster"
     case startDBInstance = "StartDBInstance"
+    case startDBInstanceAutomatedBackupsReplication = "StartDBInstanceAutomatedBackupsReplication"
     case startExportTask = "StartExportTask"
     case stopActivityStream = "StopActivityStream"
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
+    case stopDBInstanceAutomatedBackupsReplication = "StopDBInstanceAutomatedBackupsReplication"
 
     public var description: String {
         return rawValue
@@ -414,6 +416,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .startDBInstance:
             return "/"
+        case .startDBInstanceAutomatedBackupsReplication:
+            return "/"
         case .startExportTask:
             return "/"
         case .stopActivityStream:
@@ -421,6 +425,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .stopDBCluster:
             return "/"
         case .stopDBInstance:
+            return "/"
+        case .stopDBInstanceAutomatedBackupsReplication:
             return "/"
         }
     }

@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -176,6 +176,29 @@ public typealias BatchGetRequestMap = [TableName: KeysAndAttributes]
  Type definition for the BatchGetResponseMap field.
  */
 public typealias BatchGetResponseMap = [TableName: ItemList]
+
+/**
+ Enumeration restricting the values of the BatchStatementErrorCodeEnum field.
+ */
+public enum BatchStatementErrorCodeEnum: String, Codable, CustomStringConvertible {
+    case accessdenied = "AccessDenied"
+    case conditionalcheckfailed = "ConditionalCheckFailed"
+    case duplicateitem = "DuplicateItem"
+    case internalservererror = "InternalServerError"
+    case itemcollectionsizelimitexceeded = "ItemCollectionSizeLimitExceeded"
+    case provisionedthroughputexceeded = "ProvisionedThroughputExceeded"
+    case requestlimitexceeded = "RequestLimitExceeded"
+    case resourcenotfound = "ResourceNotFound"
+    case throttlingerror = "ThrottlingError"
+    case transactionconflict = "TransactionConflict"
+    case validationerror = "ValidationError"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BatchStatementErrorCodeEnum = .accessdenied
+}
 
 /**
  Type definition for the BatchWriteItemRequestMap field.
@@ -364,6 +387,23 @@ public typealias ContributorInsightsSummaries = [ContributorInsightsSummary]
  Type definition for the Date field.
  */
 public typealias Date = String
+
+/**
+ Enumeration restricting the values of the DestinationStatus field.
+ */
+public enum DestinationStatus: String, Codable, CustomStringConvertible {
+    case active = "ACTIVE"
+    case disabled = "DISABLED"
+    case disabling = "DISABLING"
+    case enableFailed = "ENABLE_FAILED"
+    case enabling = "ENABLING"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DestinationStatus = .active
+}
 
 /**
  Type definition for the Endpoints field.
@@ -671,6 +711,11 @@ public enum KeyType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the KinesisDataStreamDestinations field.
+ */
+public typealias KinesisDataStreamDestinations = [KinesisDataStreamDestination]
+
+/**
  Type definition for the LastUpdateDateTime field.
  */
 public typealias LastUpdateDateTime = String
@@ -756,6 +801,31 @@ public typealias NumberAttributeValue = String
 public typealias NumberSetAttributeValue = [NumberAttributeValue]
 
 /**
+ Type definition for the ParameterizedStatements field.
+ */
+public typealias ParameterizedStatements = [ParameterizedStatement]
+
+/**
+ Type definition for the PartiQLBatchRequest field.
+ */
+public typealias PartiQLBatchRequest = [BatchStatementRequest]
+
+/**
+ Type definition for the PartiQLBatchResponse field.
+ */
+public typealias PartiQLBatchResponse = [BatchStatementResponse]
+
+/**
+ Type definition for the PartiQLNextToken field.
+ */
+public typealias PartiQLNextToken = String
+
+/**
+ Type definition for the PartiQLStatement field.
+ */
+public typealias PartiQLStatement = String
+
+/**
  Enumeration restricting the values of the PointInTimeRecoveryStatus field.
  */
 public enum PointInTimeRecoveryStatus: String, Codable, CustomStringConvertible {
@@ -778,6 +848,11 @@ public typealias PositiveIntegerObject = Int
  Type definition for the PositiveLongObject field.
  */
 public typealias PositiveLongObject = Int
+
+/**
+ Type definition for the PreparedStatementParameters field.
+ */
+public typealias PreparedStatementParameters = [AttributeValue]
 
 /**
  Type definition for the ProjectionExpression field.
@@ -1654,6 +1729,66 @@ extension DynamoDBModel.NonNegativeLongObject {
 }
 
 /**
+ Validation for the ParameterizedStatements field.
+*/
+extension Array where Element == DynamoDBModel.ParameterizedStatement {
+    public func validateAsParameterizedStatements() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to ParameterizedStatements violated the minimum length constraint.")
+        }
+
+        if self.count > 25 {
+            throw DynamoDBError.validationError(reason: "The provided value to ParameterizedStatements violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PartiQLBatchRequest field.
+*/
+extension Array where Element == DynamoDBModel.BatchStatementRequest {
+    public func validateAsPartiQLBatchRequest() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to PartiQLBatchRequest violated the minimum length constraint.")
+        }
+
+        if self.count > 25 {
+            throw DynamoDBError.validationError(reason: "The provided value to PartiQLBatchRequest violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PartiQLNextToken field.
+*/
+extension DynamoDBModel.PartiQLNextToken {
+    public func validateAsPartiQLNextToken() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to PartiQLNextToken violated the minimum length constraint.")
+        }
+
+        if self.count > 32768 {
+            throw DynamoDBError.validationError(reason: "The provided value to PartiQLNextToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PartiQLStatement field.
+*/
+extension DynamoDBModel.PartiQLStatement {
+    public func validateAsPartiQLStatement() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to PartiQLStatement violated the minimum length constraint.")
+        }
+
+        if self.count > 8192 {
+            throw DynamoDBError.validationError(reason: "The provided value to PartiQLStatement violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the PositiveIntegerObject field.
 */
 extension DynamoDBModel.PositiveIntegerObject {
@@ -1672,6 +1807,18 @@ extension DynamoDBModel.PositiveLongObject {
     public func validateAsPositiveLongObject() throws {
         if self < 1 {
             throw DynamoDBError.validationError(reason: "The provided value to PositiveLongObject violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
+ Validation for the PreparedStatementParameters field.
+*/
+extension Array where Element == DynamoDBModel.AttributeValue {
+    public func validateAsPreparedStatementParameters() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to PreparedStatementParameters violated the minimum length constraint.")
         }
 
     }

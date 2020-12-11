@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -247,6 +247,30 @@ public extension BackupSummary {
     }()
 }
 
+public extension BatchExecuteStatementInput {
+    /**
+     Default instance of the BatchExecuteStatementInput structure.
+     */
+    static let __default: DynamoDBModel.BatchExecuteStatementInput = {
+        let defaultInstance = DynamoDBModel.BatchExecuteStatementInput(
+            statements: [BatchStatementRequest.__default])
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchExecuteStatementOutput {
+    /**
+     Default instance of the BatchExecuteStatementOutput structure.
+     */
+    static let __default: DynamoDBModel.BatchExecuteStatementOutput = {
+        let defaultInstance = DynamoDBModel.BatchExecuteStatementOutput(
+            responses: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension BatchGetItemInput {
     /**
      Default instance of the BatchGetItemInput structure.
@@ -269,6 +293,47 @@ public extension BatchGetItemOutput {
             consumedCapacity: nil,
             responses: nil,
             unprocessedKeys: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchStatementError {
+    /**
+     Default instance of the BatchStatementError structure.
+     */
+    static let __default: DynamoDBModel.BatchStatementError = {
+        let defaultInstance = DynamoDBModel.BatchStatementError(
+            code: nil,
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchStatementRequest {
+    /**
+     Default instance of the BatchStatementRequest structure.
+     */
+    static let __default: DynamoDBModel.BatchStatementRequest = {
+        let defaultInstance = DynamoDBModel.BatchStatementRequest(
+            consistentRead: nil,
+            parameters: nil,
+            statement: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchStatementResponse {
+    /**
+     Default instance of the BatchStatementResponse structure.
+     */
+    static let __default: DynamoDBModel.BatchStatementResponse = {
+        let defaultInstance = DynamoDBModel.BatchStatementResponse(
+            error: nil,
+            item: nil,
+            tableName: nil)
 
         return defaultInstance
     }()
@@ -889,6 +954,31 @@ public extension DescribeGlobalTableSettingsOutput {
     }()
 }
 
+public extension DescribeKinesisStreamingDestinationInput {
+    /**
+     Default instance of the DescribeKinesisStreamingDestinationInput structure.
+     */
+    static let __default: DynamoDBModel.DescribeKinesisStreamingDestinationInput = {
+        let defaultInstance = DynamoDBModel.DescribeKinesisStreamingDestinationInput(
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeKinesisStreamingDestinationOutput {
+    /**
+     Default instance of the DescribeKinesisStreamingDestinationOutput structure.
+     */
+    static let __default: DynamoDBModel.DescribeKinesisStreamingDestinationOutput = {
+        let defaultInstance = DynamoDBModel.DescribeKinesisStreamingDestinationOutput(
+            kinesisDataStreamDestinations: nil,
+            tableName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeLimitsInput {
     /**
      Default instance of the DescribeLimitsInput structure.
@@ -987,6 +1077,18 @@ public extension DescribeTimeToLiveOutput {
     }()
 }
 
+public extension DuplicateItemException {
+    /**
+     Default instance of the DuplicateItemException structure.
+     */
+    static let __default: DynamoDBModel.DuplicateItemException = {
+        let defaultInstance = DynamoDBModel.DuplicateItemException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Endpoint {
     /**
      Default instance of the Endpoint structure.
@@ -995,6 +1097,59 @@ public extension Endpoint {
         let defaultInstance = DynamoDBModel.Endpoint(
             address: "value",
             cachePeriodInMinutes: 0)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteStatementInput {
+    /**
+     Default instance of the ExecuteStatementInput structure.
+     */
+    static let __default: DynamoDBModel.ExecuteStatementInput = {
+        let defaultInstance = DynamoDBModel.ExecuteStatementInput(
+            consistentRead: nil,
+            nextToken: nil,
+            parameters: nil,
+            statement: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteStatementOutput {
+    /**
+     Default instance of the ExecuteStatementOutput structure.
+     */
+    static let __default: DynamoDBModel.ExecuteStatementOutput = {
+        let defaultInstance = DynamoDBModel.ExecuteStatementOutput(
+            items: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteTransactionInput {
+    /**
+     Default instance of the ExecuteTransactionInput structure.
+     */
+    static let __default: DynamoDBModel.ExecuteTransactionInput = {
+        let defaultInstance = DynamoDBModel.ExecuteTransactionInput(
+            clientRequestToken: nil,
+            transactStatements: [ParameterizedStatement.__default])
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteTransactionOutput {
+    /**
+     Default instance of the ExecuteTransactionOutput structure.
+     */
+    static let __default: DynamoDBModel.ExecuteTransactionOutput = {
+        let defaultInstance = DynamoDBModel.ExecuteTransactionOutput(
+            responses: nil)
 
         return defaultInstance
     }()
@@ -1443,6 +1598,47 @@ public extension KeysAndAttributes {
     }()
 }
 
+public extension KinesisDataStreamDestination {
+    /**
+     Default instance of the KinesisDataStreamDestination structure.
+     */
+    static let __default: DynamoDBModel.KinesisDataStreamDestination = {
+        let defaultInstance = DynamoDBModel.KinesisDataStreamDestination(
+            destinationStatus: nil,
+            destinationStatusDescription: nil,
+            streamArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension KinesisStreamingDestinationInput {
+    /**
+     Default instance of the KinesisStreamingDestinationInput structure.
+     */
+    static let __default: DynamoDBModel.KinesisStreamingDestinationInput = {
+        let defaultInstance = DynamoDBModel.KinesisStreamingDestinationInput(
+            streamArn: "0123456789012345678901234567890123456",
+            tableName: "012")
+
+        return defaultInstance
+    }()
+}
+
+public extension KinesisStreamingDestinationOutput {
+    /**
+     Default instance of the KinesisStreamingDestinationOutput structure.
+     */
+    static let __default: DynamoDBModel.KinesisStreamingDestinationOutput = {
+        let defaultInstance = DynamoDBModel.KinesisStreamingDestinationOutput(
+            destinationStatus: nil,
+            streamArn: nil,
+            tableName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension LimitExceededException {
     /**
      Default instance of the LimitExceededException structure.
@@ -1658,6 +1854,19 @@ public extension LocalSecondaryIndexInfo {
             indexName: nil,
             keySchema: nil,
             projection: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ParameterizedStatement {
+    /**
+     Default instance of the ParameterizedStatement structure.
+     */
+    static let __default: DynamoDBModel.ParameterizedStatement = {
+        let defaultInstance = DynamoDBModel.ParameterizedStatement(
+            parameters: nil,
+            statement: "0")
 
         return defaultInstance
     }()

@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -114,6 +114,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     let tagResourceSyncOverride: TagResourceSyncType?
     let untagResourceAsyncOverride: UntagResourceAsyncType?
     let untagResourceSyncOverride: UntagResourceSyncType?
+    let updateCapacityProviderAsyncOverride: UpdateCapacityProviderAsyncType?
+    let updateCapacityProviderSyncOverride: UpdateCapacityProviderSyncType?
     let updateClusterSettingsAsyncOverride: UpdateClusterSettingsAsyncType?
     let updateClusterSettingsSyncOverride: UpdateClusterSettingsSyncType?
     let updateContainerAgentAsyncOverride: UpdateContainerAgentAsyncType?
@@ -218,6 +220,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             tagResourceSync: TagResourceSyncType? = nil,
             untagResourceAsync: UntagResourceAsyncType? = nil,
             untagResourceSync: UntagResourceSyncType? = nil,
+            updateCapacityProviderAsync: UpdateCapacityProviderAsyncType? = nil,
+            updateCapacityProviderSync: UpdateCapacityProviderSyncType? = nil,
             updateClusterSettingsAsync: UpdateClusterSettingsAsyncType? = nil,
             updateClusterSettingsSync: UpdateClusterSettingsSyncType? = nil,
             updateContainerAgentAsync: UpdateContainerAgentAsyncType? = nil,
@@ -316,6 +320,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.tagResourceSyncOverride = tagResourceSync
         self.untagResourceAsyncOverride = untagResourceAsync
         self.untagResourceSyncOverride = untagResourceSync
+        self.updateCapacityProviderAsyncOverride = updateCapacityProviderAsync
+        self.updateCapacityProviderSyncOverride = updateCapacityProviderSync
         self.updateClusterSettingsAsyncOverride = updateClusterSettingsAsync
         self.updateClusterSettingsSyncOverride = updateClusterSettingsSync
         self.updateContainerAgentAsyncOverride = updateContainerAgentAsync
@@ -2048,6 +2054,46 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         }
 
         return UntagResourceResponse.__default
+    }
+
+    /**
+     Invokes the UpdateCapacityProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateCapacityProviderRequest object being passed to this operation.
+         - completion: The UpdateCapacityProviderResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateCapacityProviderResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, server.
+     */
+    public func updateCapacityProviderAsync(
+            input: ElasticContainerModel.UpdateCapacityProviderRequest, 
+            completion: @escaping (Result<ElasticContainerModel.UpdateCapacityProviderResponse, ElasticContainerError>) -> ()) throws {
+        if let updateCapacityProviderAsyncOverride = updateCapacityProviderAsyncOverride {
+            return try updateCapacityProviderAsyncOverride(input, completion)
+        }
+
+        let result = UpdateCapacityProviderResponse.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the UpdateCapacityProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateCapacityProviderRequest object being passed to this operation.
+     - Returns: The UpdateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func updateCapacityProviderSync(
+            input: ElasticContainerModel.UpdateCapacityProviderRequest) throws -> ElasticContainerModel.UpdateCapacityProviderResponse {
+        if let updateCapacityProviderSyncOverride = updateCapacityProviderSyncOverride {
+            return try updateCapacityProviderSyncOverride(input)
+        }
+
+        return UpdateCapacityProviderResponse.__default
     }
 
     /**

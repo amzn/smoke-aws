@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -32,6 +32,19 @@ extension AcceptReservedInstancesExchangeQuoteResult: HTTPResponseOutputProtocol
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> AcceptReservedInstancesExchangeQuoteResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the AcceptTransitGatewayMulticastDomainAssociations operation in a HTTP client.
+ */
+extension AcceptTransitGatewayMulticastDomainAssociationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AcceptTransitGatewayMulticastDomainAssociationsResult
+    public typealias HeadersType = AcceptTransitGatewayMulticastDomainAssociationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AcceptTransitGatewayMulticastDomainAssociationsResult {
         return try bodyDecodableProvider()
     }
 }
@@ -791,6 +804,19 @@ extension CreateNetworkAclResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateNetworkInsightsPath operation in a HTTP client.
+ */
+extension CreateNetworkInsightsPathResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateNetworkInsightsPathResult
+    public typealias HeadersType = CreateNetworkInsightsPathResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateNetworkInsightsPathResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateNetworkInterface operation in a HTTP client.
  */
 extension CreateNetworkInterfaceResult: HTTPResponseOutputProtocol {
@@ -994,6 +1020,32 @@ extension CreateTransitGatewayResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateTransitGatewayResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateTransitGatewayConnect operation in a HTTP client.
+ */
+extension CreateTransitGatewayConnectResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTransitGatewayConnectResult
+    public typealias HeadersType = CreateTransitGatewayConnectResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTransitGatewayConnectResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateTransitGatewayConnectPeer operation in a HTTP client.
+ */
+extension CreateTransitGatewayConnectPeerResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateTransitGatewayConnectPeerResult
+    public typealias HeadersType = CreateTransitGatewayConnectPeerResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateTransitGatewayConnectPeerResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1350,6 +1402,32 @@ extension DeleteNatGatewayResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteNetworkInsightsAnalysis operation in a HTTP client.
+ */
+extension DeleteNetworkInsightsAnalysisResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteNetworkInsightsAnalysisResult
+    public typealias HeadersType = DeleteNetworkInsightsAnalysisResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteNetworkInsightsAnalysisResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteNetworkInsightsPath operation in a HTTP client.
+ */
+extension DeleteNetworkInsightsPathResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteNetworkInsightsPathResult
+    public typealias HeadersType = DeleteNetworkInsightsPathResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteNetworkInsightsPathResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteNetworkInterfacePermission operation in a HTTP client.
  */
 extension DeleteNetworkInterfacePermissionResult: HTTPResponseOutputProtocol {
@@ -1436,6 +1514,32 @@ extension DeleteTransitGatewayResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTransitGatewayResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTransitGatewayConnect operation in a HTTP client.
+ */
+extension DeleteTransitGatewayConnectResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTransitGatewayConnectResult
+    public typealias HeadersType = DeleteTransitGatewayConnectResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTransitGatewayConnectResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteTransitGatewayConnectPeer operation in a HTTP client.
+ */
+extension DeleteTransitGatewayConnectPeerResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTransitGatewayConnectPeerResult
+    public typealias HeadersType = DeleteTransitGatewayConnectPeerResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTransitGatewayConnectPeerResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2416,6 +2520,32 @@ extension DescribeNetworkAclsResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeNetworkInsightsAnalyses operation in a HTTP client.
+ */
+extension DescribeNetworkInsightsAnalysesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeNetworkInsightsAnalysesResult
+    public typealias HeadersType = DescribeNetworkInsightsAnalysesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeNetworkInsightsAnalysesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeNetworkInsightsPaths operation in a HTTP client.
+ */
+extension DescribeNetworkInsightsPathsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeNetworkInsightsPathsResult
+    public typealias HeadersType = DescribeNetworkInsightsPathsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeNetworkInsightsPathsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeNetworkInterfaceAttribute operation in a HTTP client.
  */
 extension DescribeNetworkInterfaceAttributeResult: HTTPResponseOutputProtocol {
@@ -2827,6 +2957,32 @@ extension DescribeTransitGatewayAttachmentsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTransitGatewayAttachmentsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTransitGatewayConnectPeers operation in a HTTP client.
+ */
+extension DescribeTransitGatewayConnectPeersResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTransitGatewayConnectPeersResult
+    public typealias HeadersType = DescribeTransitGatewayConnectPeersResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTransitGatewayConnectPeersResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeTransitGatewayConnects operation in a HTTP client.
+ */
+extension DescribeTransitGatewayConnectsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTransitGatewayConnectsResult
+    public typealias HeadersType = DescribeTransitGatewayConnectsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTransitGatewayConnectsResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4327,6 +4483,19 @@ extension RegisterTransitGatewayMulticastGroupSourcesResult: HTTPResponseOutputP
 }
 
 /**
+ Type to handle the output from the RejectTransitGatewayMulticastDomainAssociations operation in a HTTP client.
+ */
+extension RejectTransitGatewayMulticastDomainAssociationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RejectTransitGatewayMulticastDomainAssociationsResult
+    public typealias HeadersType = RejectTransitGatewayMulticastDomainAssociationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RejectTransitGatewayMulticastDomainAssociationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the RejectTransitGatewayPeeringAttachment operation in a HTTP client.
  */
 extension RejectTransitGatewayPeeringAttachmentResult: HTTPResponseOutputProtocol {
@@ -4634,6 +4803,19 @@ extension StartInstancesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StartInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StartNetworkInsightsAnalysis operation in a HTTP client.
+ */
+extension StartNetworkInsightsAnalysisResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartNetworkInsightsAnalysisResult
+    public typealias HeadersType = StartNetworkInsightsAnalysisResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartNetworkInsightsAnalysisResult {
         return try bodyDecodableProvider()
     }
 }

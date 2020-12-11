@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import DynamoDBModel
  Operation reporting for the DynamoDBModel.
  */
 public struct DynamoDBOperationsReporting {
+    let batchExecuteStatement: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let batchGetItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let batchWriteItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let createBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
@@ -42,10 +43,15 @@ public struct DynamoDBOperationsReporting {
     let describeExport: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let describeKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeLimits: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTableReplicaAutoScaling: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let describeTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let disableKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let enableKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let executeStatement: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    let executeTransaction: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let exportTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let getItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     let listBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
@@ -73,6 +79,8 @@ public struct DynamoDBOperationsReporting {
     let updateTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>) {
+        self.batchExecuteStatement = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .batchExecuteStatement, configuration: reportingConfiguration)
         self.batchGetItem = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .batchGetItem, configuration: reportingConfiguration)
         self.batchWriteItem = StandardSmokeAWSOperationReporting(
@@ -103,6 +111,8 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .describeGlobalTable, configuration: reportingConfiguration)
         self.describeGlobalTableSettings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeGlobalTableSettings, configuration: reportingConfiguration)
+        self.describeKinesisStreamingDestination = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeKinesisStreamingDestination, configuration: reportingConfiguration)
         self.describeLimits = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeLimits, configuration: reportingConfiguration)
         self.describeTable = StandardSmokeAWSOperationReporting(
@@ -111,6 +121,14 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .describeTableReplicaAutoScaling, configuration: reportingConfiguration)
         self.describeTimeToLive = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeTimeToLive, configuration: reportingConfiguration)
+        self.disableKinesisStreamingDestination = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableKinesisStreamingDestination, configuration: reportingConfiguration)
+        self.enableKinesisStreamingDestination = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableKinesisStreamingDestination, configuration: reportingConfiguration)
+        self.executeStatement = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .executeStatement, configuration: reportingConfiguration)
+        self.executeTransaction = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .executeTransaction, configuration: reportingConfiguration)
         self.exportTableToPointInTime = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .exportTableToPointInTime, configuration: reportingConfiguration)
         self.getItem = StandardSmokeAWSOperationReporting(

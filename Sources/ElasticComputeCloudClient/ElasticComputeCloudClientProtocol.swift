@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -33,6 +33,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AcceptReservedInstancesExchangeQuoteAsyncType = (
             _ input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AcceptTransitGatewayMulticastDomainAssociationsSyncType = (
+            _ input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult
+    typealias AcceptTransitGatewayMulticastDomainAssociationsAsyncType = (
+            _ input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AcceptTransitGatewayPeeringAttachmentSyncType = (
             _ input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult
     typealias AcceptTransitGatewayPeeringAttachmentAsyncType = (
@@ -358,6 +363,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateNetworkAclEntryAsyncType = (
             _ input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias CreateNetworkInsightsPathSyncType = (
+            _ input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult
+    typealias CreateNetworkInsightsPathAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateNetworkInterfaceSyncType = (
             _ input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult
     typealias CreateNetworkInterfaceAsyncType = (
@@ -443,6 +453,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateTransitGatewayAsyncType = (
             _ input: ElasticComputeCloudModel.CreateTransitGatewayRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateTransitGatewayConnectSyncType = (
+            _ input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectResult
+    typealias CreateTransitGatewayConnectAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateTransitGatewayConnectPeerSyncType = (
+            _ input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult
+    typealias CreateTransitGatewayConnectPeerAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateTransitGatewayMulticastDomainSyncType = (
             _ input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult
     typealias CreateTransitGatewayMulticastDomainAsyncType = (
@@ -613,6 +633,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteNetworkAclEntryAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias DeleteNetworkInsightsAnalysisSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult
+    typealias DeleteNetworkInsightsAnalysisAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteNetworkInsightsPathSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsPathResult
+    typealias DeleteNetworkInsightsPathAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteNetworkInterfaceSyncType = (
             _ input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) throws -> ()
     typealias DeleteNetworkInterfaceAsyncType = (
@@ -693,6 +723,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteTransitGatewayAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteTransitGatewayRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteTransitGatewayConnectSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectResult
+    typealias DeleteTransitGatewayConnectAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteTransitGatewayConnectPeerSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult
+    typealias DeleteTransitGatewayConnectPeerAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteTransitGatewayMulticastDomainSyncType = (
             _ input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult
     typealias DeleteTransitGatewayMulticastDomainAsyncType = (
@@ -1098,6 +1138,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeNetworkAclsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeNetworkInsightsAnalysesSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult
+    typealias DescribeNetworkInsightsAnalysesAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeNetworkInsightsPathsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult
+    typealias DescribeNetworkInsightsPathsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeNetworkInterfaceAttributeSyncType = (
             _ input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult
     typealias DescribeNetworkInterfaceAttributeAsyncType = (
@@ -1258,6 +1308,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeTransitGatewayAttachmentsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeTransitGatewayConnectPeersSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult
+    typealias DescribeTransitGatewayConnectPeersAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeTransitGatewayConnectsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult
+    typealias DescribeTransitGatewayConnectsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeTransitGatewayMulticastDomainsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult
     typealias DescribeTransitGatewayMulticastDomainsAsyncType = (
@@ -1928,6 +1988,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RegisterTransitGatewayMulticastGroupSourcesAsyncType = (
             _ input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias RejectTransitGatewayMulticastDomainAssociationsSyncType = (
+            _ input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult
+    typealias RejectTransitGatewayMulticastDomainAssociationsAsyncType = (
+            _ input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RejectTransitGatewayPeeringAttachmentSyncType = (
             _ input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult
     typealias RejectTransitGatewayPeeringAttachmentAsyncType = (
@@ -2093,6 +2158,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias StartInstancesAsyncType = (
             _ input: ElasticComputeCloudModel.StartInstancesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias StartNetworkInsightsAnalysisSyncType = (
+            _ input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult
+    typealias StartNetworkInsightsAnalysisAsyncType = (
+            _ input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias StartVpcEndpointServicePrivateDnsVerificationSyncType = (
             _ input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest) throws -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult
     typealias StartVpcEndpointServicePrivateDnsVerificationAsyncType = (
@@ -2167,6 +2237,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func acceptReservedInstancesExchangeQuoteSync(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult
+
+    /**
+     Invokes the AcceptTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The AcceptTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    func acceptTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AcceptTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The AcceptTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func acceptTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult
 
     /**
      Invokes the AcceptTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
@@ -3708,6 +3802,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) throws
 
     /**
+     Invokes the CreateNetworkInsightsPath operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsPathRequest object being passed to this operation.
+         - completion: The CreateNetworkInsightsPathResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateNetworkInsightsPathResult
+           object will be validated before being returned to caller.
+     */
+    func createNetworkInsightsPathAsync(
+            input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateNetworkInsightsPath operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsPathRequest object being passed to this operation.
+     - Returns: The CreateNetworkInsightsPathResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createNetworkInsightsPathSync(
+            input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult
+
+    /**
      Invokes the CreateNetworkInterface operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4111,6 +4229,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewaySync(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayResult
+
+    /**
+     Invokes the CreateTransitGatewayConnect operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayConnectResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayConnectResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayConnectAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGatewayConnect operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayConnectResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayConnectSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectResult
+
+    /**
+     Invokes the CreateTransitGatewayConnectPeer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectPeerRequest object being passed to this operation.
+         - completion: The CreateTransitGatewayConnectPeerResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateTransitGatewayConnectPeerResult
+           object will be validated before being returned to caller.
+     */
+    func createTransitGatewayConnectPeerAsync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateTransitGatewayConnectPeer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayConnectPeerRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayConnectPeerResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayConnectPeerSync(
+            input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult
 
     /**
      Invokes the CreateTransitGatewayMulticastDomain operation returning immediately and passing the response to a callback.
@@ -4908,6 +5074,54 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) throws
 
     /**
+     Invokes the DeleteNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAnalysisRequest object being passed to this operation.
+         - completion: The DeleteNetworkInsightsAnalysisResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInsightsAnalysisResult
+           object will be validated before being returned to caller.
+     */
+    func deleteNetworkInsightsAnalysisAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteNetworkInsightsAnalysis operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAnalysisRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteNetworkInsightsAnalysisSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult
+
+    /**
+     Invokes the DeleteNetworkInsightsPath operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsPathRequest object being passed to this operation.
+         - completion: The DeleteNetworkInsightsPathResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteNetworkInsightsPathResult
+           object will be validated before being returned to caller.
+     */
+    func deleteNetworkInsightsPathAsync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsPathResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteNetworkInsightsPath operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsPathRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsPathResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteNetworkInsightsPathSync(
+            input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsPathResult
+
+    /**
      Invokes the DeleteNetworkInterface operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5263,6 +5477,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewaySync(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult
+
+    /**
+     Invokes the DeleteTransitGatewayConnect operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayConnectResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayConnectResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayConnectAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGatewayConnect operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayConnectResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayConnectSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectResult
+
+    /**
+     Invokes the DeleteTransitGatewayConnectPeer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectPeerRequest object being passed to this operation.
+         - completion: The DeleteTransitGatewayConnectPeerResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTransitGatewayConnectPeerResult
+           object will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayConnectPeerAsync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteTransitGatewayConnectPeer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayConnectPeerRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayConnectPeerResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayConnectPeerSync(
+            input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult
 
     /**
      Invokes the DeleteTransitGatewayMulticastDomain operation returning immediately and passing the response to a callback.
@@ -7191,6 +7453,54 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult
 
     /**
+     Invokes the DescribeNetworkInsightsAnalyses operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAnalysesRequest object being passed to this operation.
+         - completion: The DescribeNetworkInsightsAnalysesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInsightsAnalysesResult
+           object will be validated before being returned to caller.
+     */
+    func describeNetworkInsightsAnalysesAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeNetworkInsightsAnalyses operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAnalysesRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsAnalysesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeNetworkInsightsAnalysesSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult
+
+    /**
+     Invokes the DescribeNetworkInsightsPaths operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsPathsRequest object being passed to this operation.
+         - completion: The DescribeNetworkInsightsPathsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeNetworkInsightsPathsResult
+           object will be validated before being returned to caller.
+     */
+    func describeNetworkInsightsPathsAsync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeNetworkInsightsPaths operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsPathsRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsPathsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeNetworkInsightsPathsSync(
+            input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult
+
+    /**
      Invokes the DescribeNetworkInterfaceAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7957,6 +8267,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayAttachmentsSync(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult
+
+    /**
+     Invokes the DescribeTransitGatewayConnectPeers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectPeersRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayConnectPeersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayConnectPeersResult
+           object will be validated before being returned to caller.
+     */
+    func describeTransitGatewayConnectPeersAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeTransitGatewayConnectPeers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectPeersRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayConnectPeersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayConnectPeersSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult
+
+    /**
+     Invokes the DescribeTransitGatewayConnects operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectsRequest object being passed to this operation.
+         - completion: The DescribeTransitGatewayConnectsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTransitGatewayConnectsResult
+           object will be validated before being returned to caller.
+     */
+    func describeTransitGatewayConnectsAsync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeTransitGatewayConnects operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayConnectsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayConnectsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayConnectsSync(
+            input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult
 
     /**
      Invokes the DescribeTransitGatewayMulticastDomains operation returning immediately and passing the response to a callback.
@@ -11121,6 +11479,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest) throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult
 
     /**
+     Invokes the RejectTransitGatewayMulticastDomainAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+         - completion: The RejectTransitGatewayMulticastDomainAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The RejectTransitGatewayMulticastDomainAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    func rejectTransitGatewayMulticastDomainAssociationsAsync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the RejectTransitGatewayMulticastDomainAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RejectTransitGatewayMulticastDomainAssociationsRequest object being passed to this operation.
+     - Returns: The RejectTransitGatewayMulticastDomainAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func rejectTransitGatewayMulticastDomainAssociationsSync(
+            input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest) throws -> ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult
+
+    /**
      Invokes the RejectTransitGatewayPeeringAttachment operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11884,6 +12266,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func startInstancesSync(
             input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult
+
+    /**
+     Invokes the StartNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAnalysisRequest object being passed to this operation.
+         - completion: The StartNetworkInsightsAnalysisResult object or an error will be passed to this 
+           callback when the operation is complete. The StartNetworkInsightsAnalysisResult
+           object will be validated before being returned to caller.
+     */
+    func startNetworkInsightsAnalysisAsync(
+            input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the StartNetworkInsightsAnalysis operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAnalysisRequest object being passed to this operation.
+     - Returns: The StartNetworkInsightsAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func startNetworkInsightsAnalysisSync(
+            input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult
 
     /**
      Invokes the StartVpcEndpointServicePrivateDnsVerification operation returning immediately and passing the response to a callback.

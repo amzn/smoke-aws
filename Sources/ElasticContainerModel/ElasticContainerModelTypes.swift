@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -142,6 +142,9 @@ public enum CapacityProviderUpdateStatus: String, Codable, CustomStringConvertib
     case deleteComplete = "DELETE_COMPLETE"
     case deleteFailed = "DELETE_FAILED"
     case deleteInProgress = "DELETE_IN_PROGRESS"
+    case updateComplete = "UPDATE_COMPLETE"
+    case updateFailed = "UPDATE_FAILED"
+    case updateInProgress = "UPDATE_IN_PROGRESS"
 
     public var description: String {
         return rawValue
@@ -326,6 +329,21 @@ public enum DeploymentControllerType: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: DeploymentControllerType = .codeDeploy
+}
+
+/**
+ Enumeration restricting the values of the DeploymentRolloutState field.
+ */
+public enum DeploymentRolloutState: String, Codable, CustomStringConvertible {
+    case completed = "COMPLETED"
+    case failed = "FAILED"
+    case inProgress = "IN_PROGRESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DeploymentRolloutState = .completed
 }
 
 /**
@@ -556,6 +574,11 @@ public enum LogDriver: String, Codable, CustomStringConvertible {
  Type definition for the Long field.
  */
 public typealias Long = Int
+
+/**
+ Type definition for the ManagedScalingInstanceWarmupPeriod field.
+ */
+public typealias ManagedScalingInstanceWarmupPeriod = Int
 
 /**
  Enumeration restricting the values of the ManagedScalingStatus field.
@@ -1163,6 +1186,21 @@ extension ElasticContainerModel.CapacityProviderStrategyItemWeight {
 
         if self > 1000 {
             throw ElasticContainerError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ManagedScalingInstanceWarmupPeriod field.
+*/
+extension ElasticContainerModel.ManagedScalingInstanceWarmupPeriod {
+    public func validateAsManagedScalingInstanceWarmupPeriod() throws {
+        if self < 0 {
+            throw ElasticContainerError.validationError(reason: "The provided value to ManagedScalingInstanceWarmupPeriod violated the minimum range constraint.")
+        }
+
+        if self > 10000 {
+            throw ElasticContainerError.validationError(reason: "The provided value to ManagedScalingInstanceWarmupPeriod violated the maximum range constraint.")
         }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -28,6 +28,11 @@ import SmokeHTTPClient
  Client Protocol for the DynamoDB service.
  */
 public protocol DynamoDBClientProtocol {
+    typealias BatchExecuteStatementSyncType = (
+            _ input: DynamoDBModel.BatchExecuteStatementInput) throws -> DynamoDBModel.BatchExecuteStatementOutput
+    typealias BatchExecuteStatementAsyncType = (
+            _ input: DynamoDBModel.BatchExecuteStatementInput, 
+            _ completion: @escaping (Result<DynamoDBModel.BatchExecuteStatementOutput, DynamoDBError>) -> ()) throws -> ()
     typealias BatchGetItemSyncType = (
             _ input: DynamoDBModel.BatchGetItemInput) throws -> DynamoDBModel.BatchGetItemOutput
     typealias BatchGetItemAsyncType = (
@@ -103,6 +108,11 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeGlobalTableSettingsAsyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
             _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias DescribeKinesisStreamingDestinationSyncType = (
+            _ input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput
+    typealias DescribeKinesisStreamingDestinationAsyncType = (
+            _ input: DynamoDBModel.DescribeKinesisStreamingDestinationInput, 
+            _ completion: @escaping (Result<DynamoDBModel.DescribeKinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeLimitsSyncType = (
             _ input: DynamoDBModel.DescribeLimitsInput) throws -> DynamoDBModel.DescribeLimitsOutput
     typealias DescribeLimitsAsyncType = (
@@ -123,6 +133,26 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeTimeToLiveAsyncType = (
             _ input: DynamoDBModel.DescribeTimeToLiveInput, 
             _ completion: @escaping (Result<DynamoDBModel.DescribeTimeToLiveOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias DisableKinesisStreamingDestinationSyncType = (
+            _ input: DynamoDBModel.KinesisStreamingDestinationInput) throws -> DynamoDBModel.KinesisStreamingDestinationOutput
+    typealias DisableKinesisStreamingDestinationAsyncType = (
+            _ input: DynamoDBModel.KinesisStreamingDestinationInput, 
+            _ completion: @escaping (Result<DynamoDBModel.KinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias EnableKinesisStreamingDestinationSyncType = (
+            _ input: DynamoDBModel.KinesisStreamingDestinationInput) throws -> DynamoDBModel.KinesisStreamingDestinationOutput
+    typealias EnableKinesisStreamingDestinationAsyncType = (
+            _ input: DynamoDBModel.KinesisStreamingDestinationInput, 
+            _ completion: @escaping (Result<DynamoDBModel.KinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias ExecuteStatementSyncType = (
+            _ input: DynamoDBModel.ExecuteStatementInput) throws -> DynamoDBModel.ExecuteStatementOutput
+    typealias ExecuteStatementAsyncType = (
+            _ input: DynamoDBModel.ExecuteStatementInput, 
+            _ completion: @escaping (Result<DynamoDBModel.ExecuteStatementOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias ExecuteTransactionSyncType = (
+            _ input: DynamoDBModel.ExecuteTransactionInput) throws -> DynamoDBModel.ExecuteTransactionOutput
+    typealias ExecuteTransactionAsyncType = (
+            _ input: DynamoDBModel.ExecuteTransactionInput, 
+            _ completion: @escaping (Result<DynamoDBModel.ExecuteTransactionOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ExportTableToPointInTimeSyncType = (
             _ input: DynamoDBModel.ExportTableToPointInTimeInput) throws -> DynamoDBModel.ExportTableToPointInTimeOutput
     typealias ExportTableToPointInTimeAsyncType = (
@@ -248,6 +278,32 @@ public protocol DynamoDBClientProtocol {
     typealias UpdateTimeToLiveAsyncType = (
             _ input: DynamoDBModel.UpdateTimeToLiveInput, 
             _ completion: @escaping (Result<DynamoDBModel.UpdateTimeToLiveOutput, DynamoDBError>) -> ()) throws -> ()
+
+    /**
+     Invokes the BatchExecuteStatement operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchExecuteStatementInput object being passed to this operation.
+         - completion: The BatchExecuteStatementOutput object or an error will be passed to this 
+           callback when the operation is complete. The BatchExecuteStatementOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, requestLimitExceeded.
+     */
+    func batchExecuteStatementAsync(
+            input: DynamoDBModel.BatchExecuteStatementInput, 
+            completion: @escaping (Result<DynamoDBModel.BatchExecuteStatementOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the BatchExecuteStatement operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchExecuteStatementInput object being passed to this operation.
+     - Returns: The BatchExecuteStatementOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, requestLimitExceeded.
+     */
+    func batchExecuteStatementSync(
+            input: DynamoDBModel.BatchExecuteStatementInput) throws -> DynamoDBModel.BatchExecuteStatementOutput
 
     /**
      Invokes the BatchGetItem operation returning immediately and passing the response to a callback.
@@ -638,6 +694,32 @@ public protocol DynamoDBClientProtocol {
             input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
 
     /**
+     Invokes the DescribeKinesisStreamingDestination operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeKinesisStreamingDestinationInput object being passed to this operation.
+         - completion: The DescribeKinesisStreamingDestinationOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeKinesisStreamingDestinationOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, resourceNotFound.
+     */
+    func describeKinesisStreamingDestinationAsync(
+            input: DynamoDBModel.DescribeKinesisStreamingDestinationInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeKinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the DescribeKinesisStreamingDestination operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeKinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The DescribeKinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    func describeKinesisStreamingDestinationSync(
+            input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput
+
+    /**
      Invokes the DescribeLimits operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -740,6 +822,110 @@ public protocol DynamoDBClientProtocol {
      */
     func describeTimeToLiveSync(
             input: DynamoDBModel.DescribeTimeToLiveInput) throws -> DynamoDBModel.DescribeTimeToLiveOutput
+
+    /**
+     Invokes the DisableKinesisStreamingDestination operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+         - completion: The KinesisStreamingDestinationOutput object or an error will be passed to this 
+           callback when the operation is complete. The KinesisStreamingDestinationOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func disableKinesisStreamingDestinationAsync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput, 
+            completion: @escaping (Result<DynamoDBModel.KinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the DisableKinesisStreamingDestination operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The KinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func disableKinesisStreamingDestinationSync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput) throws -> DynamoDBModel.KinesisStreamingDestinationOutput
+
+    /**
+     Invokes the EnableKinesisStreamingDestination operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+         - completion: The KinesisStreamingDestinationOutput object or an error will be passed to this 
+           callback when the operation is complete. The KinesisStreamingDestinationOutput
+           object will be validated before being returned to caller.
+           The possible errors are: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func enableKinesisStreamingDestinationAsync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput, 
+            completion: @escaping (Result<DynamoDBModel.KinesisStreamingDestinationOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the EnableKinesisStreamingDestination operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The KinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    func enableKinesisStreamingDestinationSync(
+            input: DynamoDBModel.KinesisStreamingDestinationInput) throws -> DynamoDBModel.KinesisStreamingDestinationOutput
+
+    /**
+     Invokes the ExecuteStatement operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExecuteStatementInput object being passed to this operation.
+         - completion: The ExecuteStatementOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExecuteStatementOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conditionalCheckFailed, duplicateItem, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    func executeStatementAsync(
+            input: DynamoDBModel.ExecuteStatementInput, 
+            completion: @escaping (Result<DynamoDBModel.ExecuteStatementOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the ExecuteStatement operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExecuteStatementInput object being passed to this operation.
+     - Returns: The ExecuteStatementOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conditionalCheckFailed, duplicateItem, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    func executeStatementSync(
+            input: DynamoDBModel.ExecuteStatementInput) throws -> DynamoDBModel.ExecuteStatementOutput
+
+    /**
+     Invokes the ExecuteTransaction operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExecuteTransactionInput object being passed to this operation.
+         - completion: The ExecuteTransactionOutput object or an error will be passed to this 
+           callback when the operation is complete. The ExecuteTransactionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    func executeTransactionAsync(
+            input: DynamoDBModel.ExecuteTransactionInput, 
+            completion: @escaping (Result<DynamoDBModel.ExecuteTransactionOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the ExecuteTransaction operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExecuteTransactionInput object being passed to this operation.
+     - Returns: The ExecuteTransactionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    func executeTransactionSync(
+            input: DynamoDBModel.ExecuteTransactionInput) throws -> DynamoDBModel.ExecuteTransactionOutput
 
     /**
      Invokes the ExportTableToPointInTime operation returning immediately and passing the response to a callback.

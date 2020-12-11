@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -237,6 +237,11 @@ public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UntagResource operation in a HTTP client.
  */
 public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateCapacityProvider operation in a HTTP client.
+ */
+public typealias UpdateCapacityProviderOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateClusterSettings operation in a HTTP client.

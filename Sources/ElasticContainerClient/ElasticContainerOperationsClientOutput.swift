@@ -1,4 +1,4 @@
-// Copyright 2018-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -578,6 +578,19 @@ extension UntagResourceResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UntagResourceResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateCapacityProvider operation in a HTTP client.
+ */
+extension UpdateCapacityProviderResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateCapacityProviderResponse
+    public typealias HeadersType = UpdateCapacityProviderResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateCapacityProviderResponse {
         return try bodyDecodableProvider()
     }
 }
