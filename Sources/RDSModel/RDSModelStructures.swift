@@ -550,6 +550,38 @@ public struct CloudwatchLogsExportConfiguration: Codable, Equatable {
     }
 }
 
+public struct ClusterPendingModifiedValues: Codable, Equatable {
+    public var dBClusterIdentifier: String?
+    public var engineVersion: String?
+    public var iAMDatabaseAuthenticationEnabled: BooleanOptional?
+    public var masterUserPassword: String?
+    public var pendingCloudwatchLogsExports: PendingCloudwatchLogsExports?
+
+    public init(dBClusterIdentifier: String? = nil,
+                engineVersion: String? = nil,
+                iAMDatabaseAuthenticationEnabled: BooleanOptional? = nil,
+                masterUserPassword: String? = nil,
+                pendingCloudwatchLogsExports: PendingCloudwatchLogsExports? = nil) {
+        self.dBClusterIdentifier = dBClusterIdentifier
+        self.engineVersion = engineVersion
+        self.iAMDatabaseAuthenticationEnabled = iAMDatabaseAuthenticationEnabled
+        self.masterUserPassword = masterUserPassword
+        self.pendingCloudwatchLogsExports = pendingCloudwatchLogsExports
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBClusterIdentifier = "DBClusterIdentifier"
+        case engineVersion = "EngineVersion"
+        case iAMDatabaseAuthenticationEnabled = "IAMDatabaseAuthenticationEnabled"
+        case masterUserPassword = "MasterUserPassword"
+        case pendingCloudwatchLogsExports = "PendingCloudwatchLogsExports"
+    }
+
+    public func validate() throws {
+        try pendingCloudwatchLogsExports?.validate()
+    }
+}
+
 public struct ConnectionPoolConfiguration: Codable, Equatable {
     public var connectionBorrowTimeout: IntegerOptional?
     public var initQuery: String?
@@ -1333,6 +1365,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
     public var domain: String?
     public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
+    public var enableCustomerOwnedIp: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var enablePerformanceInsights: BooleanOptional?
     public var engine: String
@@ -1381,6 +1414,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
                 domain: String? = nil,
                 domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
+                enableCustomerOwnedIp: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 enablePerformanceInsights: BooleanOptional? = nil,
                 engine: String,
@@ -1428,6 +1462,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         self.domain = domain
         self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
+        self.enableCustomerOwnedIp = enableCustomerOwnedIp
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.enablePerformanceInsights = enablePerformanceInsights
         self.engine = engine
@@ -1478,6 +1513,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         case domain = "Domain"
         case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
+        case enableCustomerOwnedIp = "EnableCustomerOwnedIp"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case enablePerformanceInsights = "EnablePerformanceInsights"
         case engine = "Engine"
@@ -2367,6 +2403,7 @@ public struct DBCluster: Codable, Equatable {
     public var latestRestorableTime: TStamp?
     public var masterUsername: String?
     public var multiAZ: BooleanOptional?
+    public var pendingModifiedValues: ClusterPendingModifiedValues?
     public var percentProgress: String?
     public var port: IntegerOptional?
     public var preferredBackupWindow: String?
@@ -2423,6 +2460,7 @@ public struct DBCluster: Codable, Equatable {
                 latestRestorableTime: TStamp? = nil,
                 masterUsername: String? = nil,
                 multiAZ: BooleanOptional? = nil,
+                pendingModifiedValues: ClusterPendingModifiedValues? = nil,
                 percentProgress: String? = nil,
                 port: IntegerOptional? = nil,
                 preferredBackupWindow: String? = nil,
@@ -2478,6 +2516,7 @@ public struct DBCluster: Codable, Equatable {
         self.latestRestorableTime = latestRestorableTime
         self.masterUsername = masterUsername
         self.multiAZ = multiAZ
+        self.pendingModifiedValues = pendingModifiedValues
         self.percentProgress = percentProgress
         self.port = port
         self.preferredBackupWindow = preferredBackupWindow
@@ -2536,6 +2575,7 @@ public struct DBCluster: Codable, Equatable {
         case latestRestorableTime = "LatestRestorableTime"
         case masterUsername = "MasterUsername"
         case multiAZ = "MultiAZ"
+        case pendingModifiedValues = "PendingModifiedValues"
         case percentProgress = "PercentProgress"
         case port = "Port"
         case preferredBackupWindow = "PreferredBackupWindow"
@@ -2551,6 +2591,7 @@ public struct DBCluster: Codable, Equatable {
     }
 
     public func validate() throws {
+        try pendingModifiedValues?.validate()
         try scalingConfigurationInfo?.validate()
     }
 }
@@ -3483,6 +3524,7 @@ public struct DBInstance: Codable, Equatable {
     public var cACertificateIdentifier: String?
     public var characterSetName: String?
     public var copyTagsToSnapshot: Boolean?
+    public var customerOwnedIpEnabled: BooleanOptional?
     public var dBClusterIdentifier: String?
     public var dBInstanceArn: String?
     public var dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList?
@@ -3546,6 +3588,7 @@ public struct DBInstance: Codable, Equatable {
                 cACertificateIdentifier: String? = nil,
                 characterSetName: String? = nil,
                 copyTagsToSnapshot: Boolean? = nil,
+                customerOwnedIpEnabled: BooleanOptional? = nil,
                 dBClusterIdentifier: String? = nil,
                 dBInstanceArn: String? = nil,
                 dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList? = nil,
@@ -3608,6 +3651,7 @@ public struct DBInstance: Codable, Equatable {
         self.cACertificateIdentifier = cACertificateIdentifier
         self.characterSetName = characterSetName
         self.copyTagsToSnapshot = copyTagsToSnapshot
+        self.customerOwnedIpEnabled = customerOwnedIpEnabled
         self.dBClusterIdentifier = dBClusterIdentifier
         self.dBInstanceArn = dBInstanceArn
         self.dBInstanceAutomatedBackupsReplications = dBInstanceAutomatedBackupsReplications
@@ -3673,6 +3717,7 @@ public struct DBInstance: Codable, Equatable {
         case cACertificateIdentifier = "CACertificateIdentifier"
         case characterSetName = "CharacterSetName"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
+        case customerOwnedIpEnabled = "CustomerOwnedIpEnabled"
         case dBClusterIdentifier = "DBClusterIdentifier"
         case dBInstanceArn = "DBInstanceArn"
         case dBInstanceAutomatedBackupsReplications = "DBInstanceAutomatedBackupsReplications"
@@ -8698,6 +8743,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     public var deletionProtection: BooleanOptional?
     public var domain: String?
     public var domainIAMRoleName: String?
+    public var enableCustomerOwnedIp: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var enablePerformanceInsights: BooleanOptional?
     public var engineVersion: String?
@@ -8742,6 +8788,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
                 deletionProtection: BooleanOptional? = nil,
                 domain: String? = nil,
                 domainIAMRoleName: String? = nil,
+                enableCustomerOwnedIp: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 enablePerformanceInsights: BooleanOptional? = nil,
                 engineVersion: String? = nil,
@@ -8785,6 +8832,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         self.deletionProtection = deletionProtection
         self.domain = domain
         self.domainIAMRoleName = domainIAMRoleName
+        self.enableCustomerOwnedIp = enableCustomerOwnedIp
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.enablePerformanceInsights = enablePerformanceInsights
         self.engineVersion = engineVersion
@@ -8831,6 +8879,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         case deletionProtection = "DeletionProtection"
         case domain = "Domain"
         case domainIAMRoleName = "DomainIAMRoleName"
+        case enableCustomerOwnedIp = "EnableCustomerOwnedIp"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case enablePerformanceInsights = "EnablePerformanceInsights"
         case engineVersion = "EngineVersion"
@@ -9282,20 +9331,28 @@ public struct ModifyEventSubscriptionResultForModifyEventSubscription: Codable, 
 }
 
 public struct ModifyGlobalClusterMessage: Codable, Equatable {
+    public var allowMajorVersionUpgrade: BooleanOptional?
     public var deletionProtection: BooleanOptional?
+    public var engineVersion: String?
     public var globalClusterIdentifier: String?
     public var newGlobalClusterIdentifier: String?
 
-    public init(deletionProtection: BooleanOptional? = nil,
+    public init(allowMajorVersionUpgrade: BooleanOptional? = nil,
+                deletionProtection: BooleanOptional? = nil,
+                engineVersion: String? = nil,
                 globalClusterIdentifier: String? = nil,
                 newGlobalClusterIdentifier: String? = nil) {
+        self.allowMajorVersionUpgrade = allowMajorVersionUpgrade
         self.deletionProtection = deletionProtection
+        self.engineVersion = engineVersion
         self.globalClusterIdentifier = globalClusterIdentifier
         self.newGlobalClusterIdentifier = newGlobalClusterIdentifier
     }
 
     enum CodingKeys: String, CodingKey {
+        case allowMajorVersionUpgrade = "AllowMajorVersionUpgrade"
         case deletionProtection = "DeletionProtection"
+        case engineVersion = "EngineVersion"
         case globalClusterIdentifier = "GlobalClusterIdentifier"
         case newGlobalClusterIdentifier = "NewGlobalClusterIdentifier"
     }
@@ -10141,6 +10198,7 @@ public struct PendingModifiedValues: Codable, Equatable {
     public var dBInstanceIdentifier: String?
     public var dBSubnetGroupName: String?
     public var engineVersion: String?
+    public var iAMDatabaseAuthenticationEnabled: BooleanOptional?
     public var iops: IntegerOptional?
     public var licenseModel: String?
     public var masterUserPassword: String?
@@ -10157,6 +10215,7 @@ public struct PendingModifiedValues: Codable, Equatable {
                 dBInstanceIdentifier: String? = nil,
                 dBSubnetGroupName: String? = nil,
                 engineVersion: String? = nil,
+                iAMDatabaseAuthenticationEnabled: BooleanOptional? = nil,
                 iops: IntegerOptional? = nil,
                 licenseModel: String? = nil,
                 masterUserPassword: String? = nil,
@@ -10172,6 +10231,7 @@ public struct PendingModifiedValues: Codable, Equatable {
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dBSubnetGroupName = dBSubnetGroupName
         self.engineVersion = engineVersion
+        self.iAMDatabaseAuthenticationEnabled = iAMDatabaseAuthenticationEnabled
         self.iops = iops
         self.licenseModel = licenseModel
         self.masterUserPassword = masterUserPassword
@@ -10190,6 +10250,7 @@ public struct PendingModifiedValues: Codable, Equatable {
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dBSubnetGroupName = "DBSubnetGroupName"
         case engineVersion = "EngineVersion"
+        case iAMDatabaseAuthenticationEnabled = "IAMDatabaseAuthenticationEnabled"
         case iops = "Iops"
         case licenseModel = "LicenseModel"
         case masterUserPassword = "MasterUserPassword"
@@ -11459,6 +11520,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     public var domain: String?
     public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
+    public var enableCustomerOwnedIp: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var engine: String?
     public var iops: IntegerOptional?
@@ -11488,6 +11550,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
                 domain: String? = nil,
                 domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
+                enableCustomerOwnedIp: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 engine: String? = nil,
                 iops: IntegerOptional? = nil,
@@ -11516,6 +11579,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
         self.domain = domain
         self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
+        self.enableCustomerOwnedIp = enableCustomerOwnedIp
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.engine = engine
         self.iops = iops
@@ -11547,6 +11611,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
         case domain = "Domain"
         case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
+        case enableCustomerOwnedIp = "EnableCustomerOwnedIp"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case engine = "Engine"
         case iops = "Iops"
@@ -11831,6 +11896,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     public var domain: String?
     public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
+    public var enableCustomerOwnedIp: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var engine: String?
     public var iops: IntegerOptional?
@@ -11865,6 +11931,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
                 domain: String? = nil,
                 domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
+                enableCustomerOwnedIp: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 engine: String? = nil,
                 iops: IntegerOptional? = nil,
@@ -11898,6 +11965,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         self.domain = domain
         self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
+        self.enableCustomerOwnedIp = enableCustomerOwnedIp
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.engine = engine
         self.iops = iops
@@ -11934,6 +12002,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         case domain = "Domain"
         case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
+        case enableCustomerOwnedIp = "EnableCustomerOwnedIp"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case engine = "Engine"
         case iops = "Iops"

@@ -434,19 +434,22 @@ public struct AllocateAddressRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var networkBorderGroup: String?
     public var publicIpv4Pool: Ipv4PoolEc2Id?
+    public var tagSpecifications: TagSpecificationList?
 
     public init(address: PublicIpAddress? = nil,
                 customerOwnedIpv4Pool: String? = nil,
                 domain: DomainType? = nil,
                 dryRun: Boolean? = nil,
                 networkBorderGroup: String? = nil,
-                publicIpv4Pool: Ipv4PoolEc2Id? = nil) {
+                publicIpv4Pool: Ipv4PoolEc2Id? = nil,
+                tagSpecifications: TagSpecificationList? = nil) {
         self.address = address
         self.customerOwnedIpv4Pool = customerOwnedIpv4Pool
         self.domain = domain
         self.dryRun = dryRun
         self.networkBorderGroup = networkBorderGroup
         self.publicIpv4Pool = publicIpv4Pool
+        self.tagSpecifications = tagSpecifications
     }
 
     enum CodingKeys: String, CodingKey {
@@ -456,6 +459,7 @@ public struct AllocateAddressRequest: Codable, Equatable {
         case dryRun
         case networkBorderGroup = "NetworkBorderGroup"
         case publicIpv4Pool = "PublicIpv4Pool"
+        case tagSpecifications = "TagSpecification"
     }
 
     public func validate() throws {
@@ -24928,6 +24932,7 @@ public struct ModifyVolumeAttributeRequest: Codable, Equatable {
 public struct ModifyVolumeRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var iops: Integer?
+    public var multiAttachEnabled: Boolean?
     public var size: Integer?
     public var throughput: Integer?
     public var volumeId: VolumeId
@@ -24935,12 +24940,14 @@ public struct ModifyVolumeRequest: Codable, Equatable {
 
     public init(dryRun: Boolean? = nil,
                 iops: Integer? = nil,
+                multiAttachEnabled: Boolean? = nil,
                 size: Integer? = nil,
                 throughput: Integer? = nil,
                 volumeId: VolumeId,
                 volumeType: VolumeType? = nil) {
         self.dryRun = dryRun
         self.iops = iops
+        self.multiAttachEnabled = multiAttachEnabled
         self.size = size
         self.throughput = throughput
         self.volumeId = volumeId
@@ -24950,6 +24957,7 @@ public struct ModifyVolumeRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dryRun = "DryRun"
         case iops = "Iops"
+        case multiAttachEnabled = "MultiAttachEnabled"
         case size = "Size"
         case throughput = "Throughput"
         case volumeId = "VolumeId"
@@ -34740,6 +34748,7 @@ public struct VolumeModification: Codable, Equatable {
     public var endTime: DateTime?
     public var modificationState: VolumeModificationState?
     public var originalIops: Integer?
+    public var originalMultiAttachEnabled: Boolean?
     public var originalSize: Integer?
     public var originalThroughput: Integer?
     public var originalVolumeType: VolumeType?
@@ -34747,6 +34756,7 @@ public struct VolumeModification: Codable, Equatable {
     public var startTime: DateTime?
     public var statusMessage: String?
     public var targetIops: Integer?
+    public var targetMultiAttachEnabled: Boolean?
     public var targetSize: Integer?
     public var targetThroughput: Integer?
     public var targetVolumeType: VolumeType?
@@ -34755,6 +34765,7 @@ public struct VolumeModification: Codable, Equatable {
     public init(endTime: DateTime? = nil,
                 modificationState: VolumeModificationState? = nil,
                 originalIops: Integer? = nil,
+                originalMultiAttachEnabled: Boolean? = nil,
                 originalSize: Integer? = nil,
                 originalThroughput: Integer? = nil,
                 originalVolumeType: VolumeType? = nil,
@@ -34762,6 +34773,7 @@ public struct VolumeModification: Codable, Equatable {
                 startTime: DateTime? = nil,
                 statusMessage: String? = nil,
                 targetIops: Integer? = nil,
+                targetMultiAttachEnabled: Boolean? = nil,
                 targetSize: Integer? = nil,
                 targetThroughput: Integer? = nil,
                 targetVolumeType: VolumeType? = nil,
@@ -34769,6 +34781,7 @@ public struct VolumeModification: Codable, Equatable {
         self.endTime = endTime
         self.modificationState = modificationState
         self.originalIops = originalIops
+        self.originalMultiAttachEnabled = originalMultiAttachEnabled
         self.originalSize = originalSize
         self.originalThroughput = originalThroughput
         self.originalVolumeType = originalVolumeType
@@ -34776,6 +34789,7 @@ public struct VolumeModification: Codable, Equatable {
         self.startTime = startTime
         self.statusMessage = statusMessage
         self.targetIops = targetIops
+        self.targetMultiAttachEnabled = targetMultiAttachEnabled
         self.targetSize = targetSize
         self.targetThroughput = targetThroughput
         self.targetVolumeType = targetVolumeType
@@ -34786,6 +34800,7 @@ public struct VolumeModification: Codable, Equatable {
         case endTime
         case modificationState
         case originalIops
+        case originalMultiAttachEnabled
         case originalSize
         case originalThroughput
         case originalVolumeType
@@ -34793,6 +34808,7 @@ public struct VolumeModification: Codable, Equatable {
         case startTime
         case statusMessage
         case targetIops
+        case targetMultiAttachEnabled
         case targetSize
         case targetThroughput
         case targetVolumeType

@@ -4850,7 +4850,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The ModifyGlobalClusterResultForModifyGlobalCluster object or an error will be passed to this 
            callback when the operation is complete. The ModifyGlobalClusterResultForModifyGlobalCluster
            object will be validated before being returned to caller.
-           The possible errors are: globalClusterNotFound, invalidGlobalClusterState.
+           The possible errors are: globalClusterNotFound, invalidDBClusterState, invalidDBInstanceState, invalidGlobalClusterState.
      */
     public func modifyGlobalClusterAsync(
             input: RDSModel.ModifyGlobalClusterMessage, 
@@ -4871,7 +4871,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated ModifyGlobalClusterMessage object being passed to this operation.
      - Returns: The ModifyGlobalClusterResultForModifyGlobalCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: globalClusterNotFound, invalidGlobalClusterState.
+     - Throws: globalClusterNotFound, invalidDBClusterState, invalidDBInstanceState, invalidGlobalClusterState.
      */
     public func modifyGlobalClusterSync(
             input: RDSModel.ModifyGlobalClusterMessage) throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
