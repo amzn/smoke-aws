@@ -393,6 +393,22 @@ public extension CloudwatchLogsExportConfiguration {
     }()
 }
 
+public extension ClusterPendingModifiedValues {
+    /**
+     Default instance of the ClusterPendingModifiedValues structure.
+     */
+    static let __default: RDSModel.ClusterPendingModifiedValues = {
+        let defaultInstance = RDSModel.ClusterPendingModifiedValues(
+            dBClusterIdentifier: nil,
+            engineVersion: nil,
+            iAMDatabaseAuthenticationEnabled: nil,
+            masterUserPassword: nil,
+            pendingCloudwatchLogsExports: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ConnectionPoolConfiguration {
     /**
      Default instance of the ConnectionPoolConfiguration structure.
@@ -850,6 +866,7 @@ public extension CreateDBInstanceMessage {
             domain: nil,
             domainIAMRoleName: nil,
             enableCloudwatchLogsExports: nil,
+            enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
             enablePerformanceInsights: nil,
             engine: "value",
@@ -1421,6 +1438,7 @@ public extension DBCluster {
             latestRestorableTime: nil,
             masterUsername: nil,
             multiAZ: nil,
+            pendingModifiedValues: nil,
             percentProgress: nil,
             port: nil,
             preferredBackupWindow: nil,
@@ -2064,6 +2082,7 @@ public extension DBInstance {
             cACertificateIdentifier: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
+            customerOwnedIpEnabled: nil,
             dBClusterIdentifier: nil,
             dBInstanceArn: nil,
             dBInstanceAutomatedBackupsReplications: nil,
@@ -5455,6 +5474,7 @@ public extension ModifyDBInstanceMessage {
             deletionProtection: nil,
             domain: nil,
             domainIAMRoleName: nil,
+            enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
             enablePerformanceInsights: nil,
             engineVersion: nil,
@@ -5765,7 +5785,9 @@ public extension ModifyGlobalClusterMessage {
      */
     static let __default: RDSModel.ModifyGlobalClusterMessage = {
         let defaultInstance = RDSModel.ModifyGlobalClusterMessage(
+            allowMajorVersionUpgrade: nil,
             deletionProtection: nil,
+            engineVersion: nil,
             globalClusterIdentifier: nil,
             newGlobalClusterIdentifier: nil)
 
@@ -6232,6 +6254,7 @@ public extension PendingModifiedValues {
             dBInstanceIdentifier: nil,
             dBSubnetGroupName: nil,
             engineVersion: nil,
+            iAMDatabaseAuthenticationEnabled: nil,
             iops: nil,
             licenseModel: nil,
             masterUserPassword: nil,
@@ -7001,6 +7024,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             domain: nil,
             domainIAMRoleName: nil,
             enableCloudwatchLogsExports: nil,
+            enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
             engine: nil,
             iops: nil,
@@ -7141,6 +7165,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             domain: nil,
             domainIAMRoleName: nil,
             enableCloudwatchLogsExports: nil,
+            enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
             engine: nil,
             iops: nil,

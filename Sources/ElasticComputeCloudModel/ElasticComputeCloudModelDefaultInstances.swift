@@ -289,7 +289,8 @@ public extension AllocateAddressRequest {
             domain: nil,
             dryRun: nil,
             networkBorderGroup: nil,
-            publicIpv4Pool: nil)
+            publicIpv4Pool: nil,
+            tagSpecifications: nil)
 
         return defaultInstance
     }()
@@ -14190,6 +14191,7 @@ public extension ModifyVolumeRequest {
         let defaultInstance = ElasticComputeCloudModel.ModifyVolumeRequest(
             dryRun: nil,
             iops: nil,
+            multiAttachEnabled: nil,
             size: nil,
             throughput: nil,
             volumeId: "value",
@@ -19347,6 +19349,7 @@ public extension VolumeModification {
             endTime: nil,
             modificationState: nil,
             originalIops: nil,
+            originalMultiAttachEnabled: nil,
             originalSize: nil,
             originalThroughput: nil,
             originalVolumeType: nil,
@@ -19354,6 +19357,7 @@ public extension VolumeModification {
             startTime: nil,
             statusMessage: nil,
             targetIops: nil,
+            targetMultiAttachEnabled: nil,
             targetSize: nil,
             targetThroughput: nil,
             targetVolumeType: nil,
