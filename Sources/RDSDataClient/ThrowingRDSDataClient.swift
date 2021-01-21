@@ -12,7 +12,8 @@
 // permissions and limitations under the License.
 //
 // swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment type_body_length
+// swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
 // ThrowingRDSDataClient.swift

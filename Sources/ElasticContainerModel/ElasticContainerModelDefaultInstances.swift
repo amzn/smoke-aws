@@ -13,6 +13,7 @@
 //
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
 // ElasticContainerModelDefaultInstances.swift
@@ -2446,6 +2447,7 @@ public extension TaskDefinition {
             compatibilities: nil,
             containerDefinitions: nil,
             cpu: nil,
+            deregisteredAt: nil,
             executionRoleArn: nil,
             family: nil,
             inferenceAccelerators: nil,
@@ -2455,6 +2457,8 @@ public extension TaskDefinition {
             pidMode: nil,
             placementConstraints: nil,
             proxyConfiguration: nil,
+            registeredAt: nil,
+            registeredBy: nil,
             requiresAttributes: nil,
             requiresCompatibilities: nil,
             revision: nil,
