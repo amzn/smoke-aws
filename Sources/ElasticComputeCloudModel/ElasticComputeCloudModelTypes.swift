@@ -13,6 +13,7 @@
 //
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
 // ElasticComputeCloudModelTypes.swift
@@ -7000,7 +7001,7 @@ extension Array where Element == ElasticComputeCloudModel.AddPrefixListEntry {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AddPrefixListEntries violated the minimum length constraint.")
         }
 
-        if self.count > 1000 {
+        if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AddPrefixListEntries violated the maximum length constraint.")
         }
     }
@@ -7876,7 +7877,7 @@ extension ElasticComputeCloudModel.PrefixListMaxResults {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to PrefixListMaxResults violated the minimum range constraint.")
         }
 
-        if self > 1000 {
+        if self > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to PrefixListMaxResults violated the maximum range constraint.")
         }
     }
@@ -7903,7 +7904,7 @@ extension Array where Element == ElasticComputeCloudModel.RemovePrefixListEntry 
             throw ElasticComputeCloudError.validationError(reason: "The provided value to RemovePrefixListEntries violated the minimum length constraint.")
         }
 
-        if self.count > 1000 {
+        if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to RemovePrefixListEntries violated the maximum length constraint.")
         }
     }

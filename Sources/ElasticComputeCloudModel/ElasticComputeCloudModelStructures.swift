@@ -13,6 +13,7 @@
 //
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
 // ElasticComputeCloudModelStructures.swift
@@ -2494,6 +2495,7 @@ public struct CapacityReservation: Codable, Equatable {
     public var instancePlatform: CapacityReservationInstancePlatform?
     public var instanceType: String?
     public var ownerId: String?
+    public var startDate: MillisecondDateTime?
     public var state: CapacityReservationState?
     public var tags: TagList?
     public var tenancy: CapacityReservationTenancy?
@@ -2513,6 +2515,7 @@ public struct CapacityReservation: Codable, Equatable {
                 instancePlatform: CapacityReservationInstancePlatform? = nil,
                 instanceType: String? = nil,
                 ownerId: String? = nil,
+                startDate: MillisecondDateTime? = nil,
                 state: CapacityReservationState? = nil,
                 tags: TagList? = nil,
                 tenancy: CapacityReservationTenancy? = nil,
@@ -2531,6 +2534,7 @@ public struct CapacityReservation: Codable, Equatable {
         self.instancePlatform = instancePlatform
         self.instanceType = instanceType
         self.ownerId = ownerId
+        self.startDate = startDate
         self.state = state
         self.tags = tags
         self.tenancy = tenancy
@@ -2552,6 +2556,7 @@ public struct CapacityReservation: Codable, Equatable {
         case instancePlatform
         case instanceType
         case ownerId
+        case startDate
         case state
         case tags = "tagSet"
         case tenancy
@@ -23446,17 +23451,20 @@ public struct ModifyAvailabilityZoneGroupResult: Codable, Equatable {
 }
 
 public struct ModifyCapacityReservationRequest: Codable, Equatable {
+    public var accept: Boolean?
     public var capacityReservationId: CapacityReservationId
     public var dryRun: Boolean?
     public var endDate: DateTime?
     public var endDateType: EndDateType?
     public var instanceCount: Integer?
 
-    public init(capacityReservationId: CapacityReservationId,
+    public init(accept: Boolean? = nil,
+                capacityReservationId: CapacityReservationId,
                 dryRun: Boolean? = nil,
                 endDate: DateTime? = nil,
                 endDateType: EndDateType? = nil,
                 instanceCount: Integer? = nil) {
+        self.accept = accept
         self.capacityReservationId = capacityReservationId
         self.dryRun = dryRun
         self.endDate = endDate
@@ -23465,6 +23473,7 @@ public struct ModifyCapacityReservationRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case accept = "Accept"
         case capacityReservationId = "CapacityReservationId"
         case dryRun = "DryRun"
         case endDate = "EndDate"

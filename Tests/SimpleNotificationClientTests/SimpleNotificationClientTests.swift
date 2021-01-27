@@ -27,6 +27,7 @@ class SimpleNotificationClientTests: XCTestCase {
             """
         
         let response = HTTPClient.Response(host: "sns.us-west-2.amazonaws.com", status: .badRequest,
+                                           version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
@@ -59,6 +60,7 @@ class SimpleNotificationClientTests: XCTestCase {
             """
         
         let response = HTTPClient.Response(host: "sns.us-west-2.amazonaws.com", status: .badRequest,
+                                           version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
@@ -89,6 +91,7 @@ class SimpleNotificationClientTests: XCTestCase {
             """
         
         let response = HTTPClient.Response(host: "sns.us-west-2.amazonaws.com", status: .badRequest,
+                                           version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)

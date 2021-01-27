@@ -18,6 +18,7 @@
 import Foundation
 import SmokeHTTPClient
 import SmokeAWSCore
+import NIO
 import Logging
 import Metrics
 
@@ -35,6 +36,10 @@ public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: HTT
     
     public var logger: Logging.Logger {
         return smokeAWSInvocationReporting.logger
+    }
+    
+    public var eventLoop: EventLoop? {
+        return smokeAWSInvocationReporting.eventLoop
     }
     
     public var internalRequestId: String {

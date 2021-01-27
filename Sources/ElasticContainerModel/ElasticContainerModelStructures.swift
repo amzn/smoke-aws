@@ -13,6 +13,7 @@
 //
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
 // ElasticContainerModelStructures.swift
@@ -4280,6 +4281,7 @@ public struct TaskDefinition: Codable, Equatable {
     public var compatibilities: CompatibilityList?
     public var containerDefinitions: ContainerDefinitions?
     public var cpu: String?
+    public var deregisteredAt: Timestamp?
     public var executionRoleArn: String?
     public var family: String?
     public var inferenceAccelerators: InferenceAccelerators?
@@ -4289,6 +4291,8 @@ public struct TaskDefinition: Codable, Equatable {
     public var pidMode: PidMode?
     public var placementConstraints: TaskDefinitionPlacementConstraints?
     public var proxyConfiguration: ProxyConfiguration?
+    public var registeredAt: Timestamp?
+    public var registeredBy: String?
     public var requiresAttributes: RequiresAttributes?
     public var requiresCompatibilities: CompatibilityList?
     public var revision: Integer?
@@ -4300,6 +4304,7 @@ public struct TaskDefinition: Codable, Equatable {
     public init(compatibilities: CompatibilityList? = nil,
                 containerDefinitions: ContainerDefinitions? = nil,
                 cpu: String? = nil,
+                deregisteredAt: Timestamp? = nil,
                 executionRoleArn: String? = nil,
                 family: String? = nil,
                 inferenceAccelerators: InferenceAccelerators? = nil,
@@ -4309,6 +4314,8 @@ public struct TaskDefinition: Codable, Equatable {
                 pidMode: PidMode? = nil,
                 placementConstraints: TaskDefinitionPlacementConstraints? = nil,
                 proxyConfiguration: ProxyConfiguration? = nil,
+                registeredAt: Timestamp? = nil,
+                registeredBy: String? = nil,
                 requiresAttributes: RequiresAttributes? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
                 revision: Integer? = nil,
@@ -4319,6 +4326,7 @@ public struct TaskDefinition: Codable, Equatable {
         self.compatibilities = compatibilities
         self.containerDefinitions = containerDefinitions
         self.cpu = cpu
+        self.deregisteredAt = deregisteredAt
         self.executionRoleArn = executionRoleArn
         self.family = family
         self.inferenceAccelerators = inferenceAccelerators
@@ -4328,6 +4336,8 @@ public struct TaskDefinition: Codable, Equatable {
         self.pidMode = pidMode
         self.placementConstraints = placementConstraints
         self.proxyConfiguration = proxyConfiguration
+        self.registeredAt = registeredAt
+        self.registeredBy = registeredBy
         self.requiresAttributes = requiresAttributes
         self.requiresCompatibilities = requiresCompatibilities
         self.revision = revision
@@ -4341,6 +4351,7 @@ public struct TaskDefinition: Codable, Equatable {
         case compatibilities
         case containerDefinitions
         case cpu
+        case deregisteredAt
         case executionRoleArn
         case family
         case inferenceAccelerators
@@ -4350,6 +4361,8 @@ public struct TaskDefinition: Codable, Equatable {
         case pidMode
         case placementConstraints
         case proxyConfiguration
+        case registeredAt
+        case registeredBy
         case requiresAttributes
         case requiresCompatibilities
         case revision
