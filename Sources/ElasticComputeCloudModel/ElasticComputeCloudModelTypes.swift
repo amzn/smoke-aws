@@ -7001,7 +7001,7 @@ extension Array where Element == ElasticComputeCloudModel.AddPrefixListEntry {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AddPrefixListEntries violated the minimum length constraint.")
         }
 
-        if self.count > 1000 {
+        if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AddPrefixListEntries violated the maximum length constraint.")
         }
     }
@@ -7877,7 +7877,7 @@ extension ElasticComputeCloudModel.PrefixListMaxResults {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to PrefixListMaxResults violated the minimum range constraint.")
         }
 
-        if self > 1000 {
+        if self > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to PrefixListMaxResults violated the maximum range constraint.")
         }
     }
@@ -7904,7 +7904,7 @@ extension Array where Element == ElasticComputeCloudModel.RemovePrefixListEntry 
             throw ElasticComputeCloudError.validationError(reason: "The provided value to RemovePrefixListEntries violated the minimum length constraint.")
         }
 
-        if self.count > 1000 {
+        if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to RemovePrefixListEntries violated the maximum length constraint.")
         }
     }

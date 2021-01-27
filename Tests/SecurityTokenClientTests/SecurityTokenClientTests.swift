@@ -27,6 +27,7 @@ class SecurityTokenClientTests: XCTestCase {
             """
         
         let response = HTTPClient.Response(host: "sts.amazonaws.com", status: .badRequest,
+                                           version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)

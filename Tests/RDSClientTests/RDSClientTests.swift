@@ -26,6 +26,7 @@ class RDSClientTests: XCTestCase {
         """
         
         let response = HTTPClient.Response(host: "rds.us-west-2.amazonaws.com", status: .badRequest,
+                                           version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)
@@ -58,6 +59,7 @@ class RDSClientTests: XCTestCase {
         """
         
         let response = HTTPClient.Response(host: "rds.us-west-2.amazonaws.com", status: .badRequest,
+                                           version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
         let components = HTTPResponseComponents(headers: [],
                                                 body: errorResponse.data(using: .utf8)!)

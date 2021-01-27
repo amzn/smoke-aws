@@ -1506,6 +1506,7 @@ public extension CapacityReservation {
             instancePlatform: nil,
             instanceType: nil,
             ownerId: nil,
+            startDate: nil,
             state: nil,
             tags: nil,
             tenancy: nil,
@@ -13385,6 +13386,7 @@ public extension ModifyCapacityReservationRequest {
      */
     static let __default: ElasticComputeCloudModel.ModifyCapacityReservationRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifyCapacityReservationRequest(
+            accept: nil,
             capacityReservationId: "value",
             dryRun: nil,
             endDate: nil,
