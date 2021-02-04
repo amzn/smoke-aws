@@ -306,6 +306,11 @@ public typealias FailureResource = String
 public typealias FaultDescription = String
 
 /**
+ Type definition for the GetMetricDataLabelTimezone field.
+ */
+public typealias GetMetricDataLabelTimezone = String
+
+/**
  Type definition for the GetMetricDataMaxDatapoints field.
  */
 public typealias GetMetricDataMaxDatapoints = Int

@@ -1169,6 +1169,7 @@ public struct GetInsightRuleReportOutputForGetInsightRuleReport: Codable, Equata
 
 public struct GetMetricDataInput: Codable, Equatable {
     public var endTime: Timestamp
+    public var labelOptions: LabelOptions?
     public var maxDatapoints: GetMetricDataMaxDatapoints?
     public var metricDataQueries: MetricDataQueries
     public var nextToken: NextToken?
@@ -1176,12 +1177,14 @@ public struct GetMetricDataInput: Codable, Equatable {
     public var startTime: Timestamp
 
     public init(endTime: Timestamp,
+                labelOptions: LabelOptions? = nil,
                 maxDatapoints: GetMetricDataMaxDatapoints? = nil,
                 metricDataQueries: MetricDataQueries,
                 nextToken: NextToken? = nil,
                 scanBy: ScanBy? = nil,
                 startTime: Timestamp) {
         self.endTime = endTime
+        self.labelOptions = labelOptions
         self.maxDatapoints = maxDatapoints
         self.metricDataQueries = metricDataQueries
         self.nextToken = nextToken
@@ -1191,6 +1194,7 @@ public struct GetMetricDataInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case endTime = "EndTime"
+        case labelOptions = "LabelOptions"
         case maxDatapoints = "MaxDatapoints"
         case metricDataQueries = "MetricDataQueries"
         case nextToken = "NextToken"
@@ -1199,6 +1203,7 @@ public struct GetMetricDataInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try labelOptions?.validate()
     }
 }
 
@@ -1565,6 +1570,21 @@ public struct InvalidParameterValueException: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct LabelOptions: Codable, Equatable {
+    public var timezone: GetMetricDataLabelTimezone?
+
+    public init(timezone: GetMetricDataLabelTimezone? = nil) {
+        self.timezone = timezone
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case timezone = "Timezone"
     }
 
     public func validate() throws {

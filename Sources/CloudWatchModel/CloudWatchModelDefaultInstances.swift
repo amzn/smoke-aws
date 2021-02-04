@@ -722,6 +722,7 @@ public extension GetMetricDataInput {
     static let __default: CloudWatchModel.GetMetricDataInput = {
         let defaultInstance = CloudWatchModel.GetMetricDataInput(
             endTime: "2013-02-18T17:00:00Z",
+            labelOptions: nil,
             maxDatapoints: nil,
             metricDataQueries: [],
             nextToken: nil,
@@ -956,6 +957,18 @@ public extension InvalidParameterValueException {
     static let __default: CloudWatchModel.InvalidParameterValueException = {
         let defaultInstance = CloudWatchModel.InvalidParameterValueException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LabelOptions {
+    /**
+     Default instance of the LabelOptions structure.
+     */
+    static let __default: CloudWatchModel.LabelOptions = {
+        let defaultInstance = CloudWatchModel.LabelOptions(
+            timezone: nil)
 
         return defaultInstance
     }()
