@@ -844,6 +844,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeAddressesAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeAddressesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeAddressesAttributeSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest) throws -> ElasticComputeCloudModel.DescribeAddressesAttributeResult
+    typealias DescribeAddressesAttributeAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesAttributeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeAggregateIdFormatSyncType = (
             _ input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest) throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult
     typealias DescribeAggregateIdFormatAsyncType = (
@@ -1719,6 +1724,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ImportVolumeAsyncType = (
             _ input: ElasticComputeCloudModel.ImportVolumeRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyAddressAttributeSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) throws -> ElasticComputeCloudModel.ModifyAddressAttributeResult
+    typealias ModifyAddressAttributeAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyAddressAttributeRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyAvailabilityZoneGroupSyncType = (
             _ input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult
     typealias ModifyAvailabilityZoneGroupAsyncType = (
@@ -2069,6 +2079,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RequestSpotInstancesAsyncType = (
             _ input: ElasticComputeCloudModel.RequestSpotInstancesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.RequestSpotInstancesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ResetAddressAttributeSyncType = (
+            _ input: ElasticComputeCloudModel.ResetAddressAttributeRequest) throws -> ElasticComputeCloudModel.ResetAddressAttributeResult
+    typealias ResetAddressAttributeAsyncType = (
+            _ input: ElasticComputeCloudModel.ResetAddressAttributeRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ResetAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ResetEbsDefaultKmsKeyIdSyncType = (
             _ input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult
     typealias ResetEbsDefaultKmsKeyIdAsyncType = (
@@ -6036,6 +6051,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeAddressesSync(
             input: ElasticComputeCloudModel.DescribeAddressesRequest) throws -> ElasticComputeCloudModel.DescribeAddressesResult
+
+    /**
+     Invokes the DescribeAddressesAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAddressesAttributeRequest object being passed to this operation.
+         - completion: The DescribeAddressesAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAddressesAttributeResult
+           object will be validated before being returned to caller.
+     */
+    func describeAddressesAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesAttributeResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeAddressesAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAddressesAttributeRequest object being passed to this operation.
+     - Returns: The DescribeAddressesAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeAddressesAttributeSync(
+            input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest) throws -> ElasticComputeCloudModel.DescribeAddressesAttributeResult
 
     /**
      Invokes the DescribeAggregateIdFormat operation returning immediately and passing the response to a callback.
@@ -10214,6 +10253,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult
 
     /**
+     Invokes the ModifyAddressAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAddressAttributeRequest object being passed to this operation.
+         - completion: The ModifyAddressAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAddressAttributeResult
+           object will be validated before being returned to caller.
+     */
+    func modifyAddressAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyAddressAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyAddressAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAddressAttributeRequest object being passed to this operation.
+     - Returns: The ModifyAddressAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyAddressAttributeSync(
+            input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) throws -> ElasticComputeCloudModel.ModifyAddressAttributeResult
+
+    /**
      Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11850,6 +11913,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func requestSpotInstancesSync(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest) throws -> ElasticComputeCloudModel.RequestSpotInstancesResult
+
+    /**
+     Invokes the ResetAddressAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetAddressAttributeRequest object being passed to this operation.
+         - completion: The ResetAddressAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetAddressAttributeResult
+           object will be validated before being returned to caller.
+     */
+    func resetAddressAttributeAsync(
+            input: ElasticComputeCloudModel.ResetAddressAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ResetAddressAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetAddressAttributeRequest object being passed to this operation.
+     - Returns: The ResetAddressAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func resetAddressAttributeSync(
+            input: ElasticComputeCloudModel.ResetAddressAttributeRequest) throws -> ElasticComputeCloudModel.ResetAddressAttributeResult
 
     /**
      Invokes the ResetEbsDefaultKmsKeyId operation returning immediately and passing the response to a callback.

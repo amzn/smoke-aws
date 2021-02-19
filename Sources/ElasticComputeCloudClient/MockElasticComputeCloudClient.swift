@@ -355,6 +355,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeAccountAttributesSyncOverride: DescribeAccountAttributesSyncType?
     let describeAddressesAsyncOverride: DescribeAddressesAsyncType?
     let describeAddressesSyncOverride: DescribeAddressesSyncType?
+    let describeAddressesAttributeAsyncOverride: DescribeAddressesAttributeAsyncType?
+    let describeAddressesAttributeSyncOverride: DescribeAddressesAttributeSyncType?
     let describeAggregateIdFormatAsyncOverride: DescribeAggregateIdFormatAsyncType?
     let describeAggregateIdFormatSyncOverride: DescribeAggregateIdFormatSyncType?
     let describeAvailabilityZonesAsyncOverride: DescribeAvailabilityZonesAsyncType?
@@ -705,6 +707,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let importSnapshotSyncOverride: ImportSnapshotSyncType?
     let importVolumeAsyncOverride: ImportVolumeAsyncType?
     let importVolumeSyncOverride: ImportVolumeSyncType?
+    let modifyAddressAttributeAsyncOverride: ModifyAddressAttributeAsyncType?
+    let modifyAddressAttributeSyncOverride: ModifyAddressAttributeSyncType?
     let modifyAvailabilityZoneGroupAsyncOverride: ModifyAvailabilityZoneGroupAsyncType?
     let modifyAvailabilityZoneGroupSyncOverride: ModifyAvailabilityZoneGroupSyncType?
     let modifyCapacityReservationAsyncOverride: ModifyCapacityReservationAsyncType?
@@ -845,6 +849,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let requestSpotFleetSyncOverride: RequestSpotFleetSyncType?
     let requestSpotInstancesAsyncOverride: RequestSpotInstancesAsyncType?
     let requestSpotInstancesSyncOverride: RequestSpotInstancesSyncType?
+    let resetAddressAttributeAsyncOverride: ResetAddressAttributeAsyncType?
+    let resetAddressAttributeSyncOverride: ResetAddressAttributeSyncType?
     let resetEbsDefaultKmsKeyIdAsyncOverride: ResetEbsDefaultKmsKeyIdAsyncType?
     let resetEbsDefaultKmsKeyIdSyncOverride: ResetEbsDefaultKmsKeyIdSyncType?
     let resetFpgaImageAttributeAsyncOverride: ResetFpgaImageAttributeAsyncType?
@@ -1235,6 +1241,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeAccountAttributesSync: DescribeAccountAttributesSyncType? = nil,
             describeAddressesAsync: DescribeAddressesAsyncType? = nil,
             describeAddressesSync: DescribeAddressesSyncType? = nil,
+            describeAddressesAttributeAsync: DescribeAddressesAttributeAsyncType? = nil,
+            describeAddressesAttributeSync: DescribeAddressesAttributeSyncType? = nil,
             describeAggregateIdFormatAsync: DescribeAggregateIdFormatAsyncType? = nil,
             describeAggregateIdFormatSync: DescribeAggregateIdFormatSyncType? = nil,
             describeAvailabilityZonesAsync: DescribeAvailabilityZonesAsyncType? = nil,
@@ -1585,6 +1593,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             importSnapshotSync: ImportSnapshotSyncType? = nil,
             importVolumeAsync: ImportVolumeAsyncType? = nil,
             importVolumeSync: ImportVolumeSyncType? = nil,
+            modifyAddressAttributeAsync: ModifyAddressAttributeAsyncType? = nil,
+            modifyAddressAttributeSync: ModifyAddressAttributeSyncType? = nil,
             modifyAvailabilityZoneGroupAsync: ModifyAvailabilityZoneGroupAsyncType? = nil,
             modifyAvailabilityZoneGroupSync: ModifyAvailabilityZoneGroupSyncType? = nil,
             modifyCapacityReservationAsync: ModifyCapacityReservationAsyncType? = nil,
@@ -1725,6 +1735,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             requestSpotFleetSync: RequestSpotFleetSyncType? = nil,
             requestSpotInstancesAsync: RequestSpotInstancesAsyncType? = nil,
             requestSpotInstancesSync: RequestSpotInstancesSyncType? = nil,
+            resetAddressAttributeAsync: ResetAddressAttributeAsyncType? = nil,
+            resetAddressAttributeSync: ResetAddressAttributeSyncType? = nil,
             resetEbsDefaultKmsKeyIdAsync: ResetEbsDefaultKmsKeyIdAsyncType? = nil,
             resetEbsDefaultKmsKeyIdSync: ResetEbsDefaultKmsKeyIdSyncType? = nil,
             resetFpgaImageAttributeAsync: ResetFpgaImageAttributeAsyncType? = nil,
@@ -2109,6 +2121,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeAccountAttributesSyncOverride = describeAccountAttributesSync
         self.describeAddressesAsyncOverride = describeAddressesAsync
         self.describeAddressesSyncOverride = describeAddressesSync
+        self.describeAddressesAttributeAsyncOverride = describeAddressesAttributeAsync
+        self.describeAddressesAttributeSyncOverride = describeAddressesAttributeSync
         self.describeAggregateIdFormatAsyncOverride = describeAggregateIdFormatAsync
         self.describeAggregateIdFormatSyncOverride = describeAggregateIdFormatSync
         self.describeAvailabilityZonesAsyncOverride = describeAvailabilityZonesAsync
@@ -2459,6 +2473,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.importSnapshotSyncOverride = importSnapshotSync
         self.importVolumeAsyncOverride = importVolumeAsync
         self.importVolumeSyncOverride = importVolumeSync
+        self.modifyAddressAttributeAsyncOverride = modifyAddressAttributeAsync
+        self.modifyAddressAttributeSyncOverride = modifyAddressAttributeSync
         self.modifyAvailabilityZoneGroupAsyncOverride = modifyAvailabilityZoneGroupAsync
         self.modifyAvailabilityZoneGroupSyncOverride = modifyAvailabilityZoneGroupSync
         self.modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsync
@@ -2599,6 +2615,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.requestSpotFleetSyncOverride = requestSpotFleetSync
         self.requestSpotInstancesAsyncOverride = requestSpotInstancesAsync
         self.requestSpotInstancesSyncOverride = requestSpotInstancesSync
+        self.resetAddressAttributeAsyncOverride = resetAddressAttributeAsync
+        self.resetAddressAttributeSyncOverride = resetAddressAttributeSync
         self.resetEbsDefaultKmsKeyIdAsyncOverride = resetEbsDefaultKmsKeyIdAsync
         self.resetEbsDefaultKmsKeyIdSyncOverride = resetEbsDefaultKmsKeyIdSync
         self.resetFpgaImageAttributeAsyncOverride = resetFpgaImageAttributeAsync
@@ -8671,6 +8689,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DescribeAddressesResult.__default
+    }
+
+    /**
+     Invokes the DescribeAddressesAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAddressesAttributeRequest object being passed to this operation.
+         - completion: The DescribeAddressesAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAddressesAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAddressesAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesAttributeResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeAddressesAttributeAsyncOverride = describeAddressesAttributeAsyncOverride {
+            return try describeAddressesAttributeAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAddressesAttributeResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeAddressesAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAddressesAttributeRequest object being passed to this operation.
+     - Returns: The DescribeAddressesAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAddressesAttributeSync(
+            input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest) throws -> ElasticComputeCloudModel.DescribeAddressesAttributeResult {
+        if let describeAddressesAttributeSyncOverride = describeAddressesAttributeSyncOverride {
+            return try describeAddressesAttributeSyncOverride(input)
+        }
+
+        return DescribeAddressesAttributeResult.__default
     }
 
     /**
@@ -15276,6 +15332,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyAddressAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAddressAttributeRequest object being passed to this operation.
+         - completion: The ModifyAddressAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAddressAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyAddressAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyAddressAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyAddressAttributeAsyncOverride = modifyAddressAttributeAsyncOverride {
+            return try modifyAddressAttributeAsyncOverride(input, completion)
+        }
+
+        let result = ModifyAddressAttributeResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyAddressAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAddressAttributeRequest object being passed to this operation.
+     - Returns: The ModifyAddressAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyAddressAttributeSync(
+            input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) throws -> ElasticComputeCloudModel.ModifyAddressAttributeResult {
+        if let modifyAddressAttributeSyncOverride = modifyAddressAttributeSyncOverride {
+            return try modifyAddressAttributeSyncOverride(input)
+        }
+
+        return ModifyAddressAttributeResult.__default
+    }
+
+    /**
      Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -17849,6 +17943,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return RequestSpotInstancesResult.__default
+    }
+
+    /**
+     Invokes the ResetAddressAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetAddressAttributeRequest object being passed to this operation.
+         - completion: The ResetAddressAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetAddressAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func resetAddressAttributeAsync(
+            input: ElasticComputeCloudModel.ResetAddressAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws {
+        if let resetAddressAttributeAsyncOverride = resetAddressAttributeAsyncOverride {
+            return try resetAddressAttributeAsyncOverride(input, completion)
+        }
+
+        let result = ResetAddressAttributeResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ResetAddressAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetAddressAttributeRequest object being passed to this operation.
+     - Returns: The ResetAddressAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func resetAddressAttributeSync(
+            input: ElasticComputeCloudModel.ResetAddressAttributeRequest) throws -> ElasticComputeCloudModel.ResetAddressAttributeResult {
+        if let resetAddressAttributeSyncOverride = resetAddressAttributeSyncOverride {
+            return try resetAddressAttributeSyncOverride(input)
+        }
+
+        return ResetAddressAttributeResult.__default
     }
 
     /**

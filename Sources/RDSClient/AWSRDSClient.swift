@@ -6796,6 +6796,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the FailoverGlobalCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated FailoverGlobalClusterMessage object being passed to this operation.
+         - completion: The FailoverGlobalClusterResultForFailoverGlobalCluster object or an error will be passed to this 
+           callback when the operation is complete. The FailoverGlobalClusterResultForFailoverGlobalCluster
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func failoverGlobalClusterAsync(
+            input: RDSModel.FailoverGlobalClusterMessage, 
+            completion: @escaping (Result<RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.failoverGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = FailoverGlobalClusterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.failoverGlobalCluster.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the FailoverGlobalCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated FailoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The FailoverGlobalClusterResultForFailoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func failoverGlobalClusterSync(
+            input: RDSModel.FailoverGlobalClusterMessage) throws -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.failoverGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = FailoverGlobalClusterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.failoverGlobalCluster.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
 
      - Parameters:

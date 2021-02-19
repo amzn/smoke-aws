@@ -1039,6 +1039,19 @@ extension FailoverDBClusterResultForFailoverDBCluster: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the FailoverGlobalCluster operation in a HTTP client.
+ */
+extension FailoverGlobalClusterResultForFailoverGlobalCluster: HTTPResponseOutputProtocol {
+    public typealias BodyType = FailoverGlobalClusterResultForFailoverGlobalCluster
+    public typealias HeadersType = FailoverGlobalClusterResultForFailoverGlobalCluster
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> FailoverGlobalClusterResultForFailoverGlobalCluster {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ImportInstallationMedia operation in a HTTP client.
  */
 extension InstallationMediaForImportInstallationMedia: HTTPResponseOutputProtocol {

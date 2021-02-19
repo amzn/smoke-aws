@@ -112,6 +112,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case describeValidDBInstanceModifications = "DescribeValidDBInstanceModifications"
     case downloadDBLogFilePortion = "DownloadDBLogFilePortion"
     case failoverDBCluster = "FailoverDBCluster"
+    case failoverGlobalCluster = "FailoverGlobalCluster"
     case importInstallationMedia = "ImportInstallationMedia"
     case listTagsForResource = "ListTagsForResource"
     case modifyCertificates = "ModifyCertificates"
@@ -336,6 +337,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .downloadDBLogFilePortion:
             return "/"
         case .failoverDBCluster:
+            return "/"
+        case .failoverGlobalCluster:
             return "/"
         case .importInstallationMedia:
             return "/"

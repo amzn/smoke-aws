@@ -1754,6 +1754,19 @@ extension DescribeAddressesResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeAddressesAttribute operation in a HTTP client.
+ */
+extension DescribeAddressesAttributeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeAddressesAttributeResult
+    public typealias HeadersType = DescribeAddressesAttributeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeAddressesAttributeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeAggregateIdFormat operation in a HTTP client.
  */
 extension DescribeAggregateIdFormatResult: HTTPResponseOutputProtocol {
@@ -3912,6 +3925,19 @@ extension ImportVolumeResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyAddressAttribute operation in a HTTP client.
+ */
+extension ModifyAddressAttributeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyAddressAttributeResult
+    public typealias HeadersType = ModifyAddressAttributeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyAddressAttributeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyAvailabilityZoneGroup operation in a HTTP client.
  */
 extension ModifyAvailabilityZoneGroupResult: HTTPResponseOutputProtocol {
@@ -4635,6 +4661,19 @@ extension RequestSpotInstancesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> RequestSpotInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ResetAddressAttribute operation in a HTTP client.
+ */
+extension ResetAddressAttributeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ResetAddressAttributeResult
+    public typealias HeadersType = ResetAddressAttributeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ResetAddressAttributeResult {
         return try bodyDecodableProvider()
     }
 }

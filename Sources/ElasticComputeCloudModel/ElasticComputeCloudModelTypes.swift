@@ -78,9 +78,32 @@ public enum ActivityStatus: String, Codable, CustomStringConvertible {
 public typealias AddPrefixListEntries = [AddPrefixListEntry]
 
 /**
+ Enumeration restricting the values of the AddressAttributeName field.
+ */
+public enum AddressAttributeName: String, Codable, CustomStringConvertible {
+    case domainName = "domain-name"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AddressAttributeName = .domainName
+}
+
+/**
  Type definition for the AddressList field.
  */
 public typealias AddressList = [Address]
+
+/**
+ Type definition for the AddressMaxResults field.
+ */
+public typealias AddressMaxResults = Int
+
+/**
+ Type definition for the AddressSet field.
+ */
+public typealias AddressSet = [AddressAttribute]
 
 /**
  Enumeration restricting the values of the Affinity field.
@@ -105,6 +128,11 @@ public typealias AllocationId = String
  Type definition for the AllocationIdList field.
  */
 public typealias AllocationIdList = [AllocationId]
+
+/**
+ Type definition for the AllocationIds field.
+ */
+public typealias AllocationIds = [AllocationId]
 
 /**
  Enumeration restricting the values of the AllocationState field.
@@ -7003,6 +7031,21 @@ extension Array where Element == ElasticComputeCloudModel.AddPrefixListEntry {
 
         if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AddPrefixListEntries violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AddressMaxResults field.
+*/
+extension ElasticComputeCloudModel.AddressMaxResults {
+    public func validateAsAddressMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AddressMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AddressMaxResults violated the maximum range constraint.")
         }
     }
 }

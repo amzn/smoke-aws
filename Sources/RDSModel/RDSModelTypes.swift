@@ -105,6 +105,11 @@ public typealias AvailabilityZones = [String]
 public typealias AvailableProcessorFeatureList = [AvailableProcessorFeature]
 
 /**
+ Type definition for the AwsBackupRecoveryPointArn field.
+ */
+public typealias AwsBackupRecoveryPointArn = String
+
+/**
  Type definition for the Boolean field.
  */
 public typealias Boolean = Bool
@@ -133,6 +138,11 @@ public typealias DBClusterBacktrackList = [DBClusterBacktrack]
  Type definition for the DBClusterEndpointList field.
  */
 public typealias DBClusterEndpointList = [DBClusterEndpoint]
+
+/**
+ Type definition for the DBClusterIdentifier field.
+ */
+public typealias DBClusterIdentifier = String
 
 /**
  Type definition for the DBClusterList field.
@@ -335,6 +345,21 @@ public typealias EventSubscriptionsList = [EventSubscription]
 public typealias ExportTasksList = [ExportTask]
 
 /**
+ Enumeration restricting the values of the FailoverStatus field.
+ */
+public enum FailoverStatus: String, Codable, CustomStringConvertible {
+    case cancelling
+    case failingOver = "failing-over"
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FailoverStatus = .cancelling
+}
+
+/**
  Type definition for the FeatureNameList field.
  */
 public typealias FeatureNameList = [String]
@@ -348,6 +373,11 @@ public typealias FilterList = [Filter]
  Type definition for the FilterValueList field.
  */
 public typealias FilterValueList = [String]
+
+/**
+ Type definition for the GlobalClusterIdentifier field.
+ */
+public typealias GlobalClusterIdentifier = String
 
 /**
  Type definition for the GlobalClusterList field.
@@ -731,6 +761,69 @@ public enum WriteForwardingStatus: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: WriteForwardingStatus = .disabled
+}
+
+/**
+ Validation for the AwsBackupRecoveryPointArn field.
+*/
+extension RDSModel.AwsBackupRecoveryPointArn {
+    public func validateAsAwsBackupRecoveryPointArn() throws {
+        if self.count < 43 {
+            throw RDSError.validationError(reason: "The provided value to AwsBackupRecoveryPointArn violated the minimum length constraint.")
+        }
+
+        if self.count > 350 {
+            throw RDSError.validationError(reason: "The provided value to AwsBackupRecoveryPointArn violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^arn:aws[a-z-]*:backup:[-a-z0-9]+:[0-9]{12}:[-a-z]+:([a-z0-9\\-]+:)?[a-z][a-z0-9\\-]{0,255}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to AwsBackupRecoveryPointArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DBClusterIdentifier field.
+*/
+extension RDSModel.DBClusterIdentifier {
+    public func validateAsDBClusterIdentifier() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to DBClusterIdentifier violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw RDSError.validationError(reason: "The provided value to DBClusterIdentifier violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z][0-9A-Za-z-:._]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to DBClusterIdentifier violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the GlobalClusterIdentifier field.
+*/
+extension RDSModel.GlobalClusterIdentifier {
+    public func validateAsGlobalClusterIdentifier() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to GlobalClusterIdentifier violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw RDSError.validationError(reason: "The provided value to GlobalClusterIdentifier violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z][0-9A-Za-z-:._]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to GlobalClusterIdentifier violated the regular expression constraint.")
+        }
+    }
 }
 
 /**

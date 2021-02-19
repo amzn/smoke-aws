@@ -270,6 +270,7 @@ public extension CreateStackInstancesInput {
     static let __default: CloudformationModel.CreateStackInstancesInput = {
         let defaultInstance = CloudformationModel.CreateStackInstancesInput(
             accounts: nil,
+            callAs: nil,
             deploymentTargets: nil,
             operationId: nil,
             operationPreferences: nil,
@@ -337,6 +338,7 @@ public extension CreateStackSetInput {
         let defaultInstance = CloudformationModel.CreateStackSetInput(
             administrationRoleARN: nil,
             autoDeployment: nil,
+            callAs: nil,
             capabilities: nil,
             clientRequestToken: nil,
             description: nil,
@@ -445,6 +447,7 @@ public extension DeleteStackInstancesInput {
     static let __default: CloudformationModel.DeleteStackInstancesInput = {
         let defaultInstance = CloudformationModel.DeleteStackInstancesInput(
             accounts: nil,
+            callAs: nil,
             deploymentTargets: nil,
             operationId: nil,
             operationPreferences: nil,
@@ -486,6 +489,7 @@ public extension DeleteStackSetInput {
      */
     static let __default: CloudformationModel.DeleteStackSetInput = {
         let defaultInstance = CloudformationModel.DeleteStackSetInput(
+            callAs: nil,
             stackSetName: "value")
 
         return defaultInstance
@@ -745,6 +749,7 @@ public extension DescribeStackInstanceInput {
      */
     static let __default: CloudformationModel.DescribeStackInstanceInput = {
         let defaultInstance = CloudformationModel.DescribeStackInstanceInput(
+            callAs: nil,
             stackInstanceAccount: "",
             stackInstanceRegion: "",
             stackSetName: "value")
@@ -898,6 +903,7 @@ public extension DescribeStackSetInput {
      */
     static let __default: CloudformationModel.DescribeStackSetInput = {
         let defaultInstance = CloudformationModel.DescribeStackSetInput(
+            callAs: nil,
             stackSetName: "value")
 
         return defaultInstance
@@ -910,6 +916,7 @@ public extension DescribeStackSetOperationInput {
      */
     static let __default: CloudformationModel.DescribeStackSetOperationInput = {
         let defaultInstance = CloudformationModel.DescribeStackSetOperationInput(
+            callAs: nil,
             operationId: "0",
             stackSetName: "value")
 
@@ -1176,6 +1183,7 @@ public extension DetectStackSetDriftInput {
      */
     static let __default: CloudformationModel.DetectStackSetDriftInput = {
         let defaultInstance = CloudformationModel.DetectStackSetDriftInput(
+            callAs: nil,
             operationId: nil,
             operationPreferences: nil,
             stackSetName: "")
@@ -1593,6 +1601,7 @@ public extension ListStackInstancesInput {
      */
     static let __default: CloudformationModel.ListStackInstancesInput = {
         let defaultInstance = CloudformationModel.ListStackInstancesInput(
+            callAs: nil,
             filters: nil,
             maxResults: nil,
             nextToken: nil,
@@ -1673,6 +1682,7 @@ public extension ListStackSetOperationResultsInput {
      */
     static let __default: CloudformationModel.ListStackSetOperationResultsInput = {
         let defaultInstance = CloudformationModel.ListStackSetOperationResultsInput(
+            callAs: nil,
             maxResults: nil,
             nextToken: nil,
             operationId: "0",
@@ -1713,6 +1723,7 @@ public extension ListStackSetOperationsInput {
      */
     static let __default: CloudformationModel.ListStackSetOperationsInput = {
         let defaultInstance = CloudformationModel.ListStackSetOperationsInput(
+            callAs: nil,
             maxResults: nil,
             nextToken: nil,
             stackSetName: "value")
@@ -1752,6 +1763,7 @@ public extension ListStackSetsInput {
      */
     static let __default: CloudformationModel.ListStackSetsInput = {
         let defaultInstance = CloudformationModel.ListStackSetsInput(
+            callAs: nil,
             maxResults: nil,
             nextToken: nil,
             status: nil)
@@ -2838,6 +2850,7 @@ public extension StopStackSetOperationInput {
      */
     static let __default: CloudformationModel.StopStackSetOperationInput = {
         let defaultInstance = CloudformationModel.StopStackSetOperationInput(
+            callAs: nil,
             operationId: "0",
             stackSetName: "value")
 
@@ -2987,6 +3000,7 @@ public extension UpdateStackInstancesInput {
     static let __default: CloudformationModel.UpdateStackInstancesInput = {
         let defaultInstance = CloudformationModel.UpdateStackInstancesInput(
             accounts: nil,
+            callAs: nil,
             deploymentTargets: nil,
             operationId: nil,
             operationPreferences: nil,
@@ -3055,6 +3069,7 @@ public extension UpdateStackSetInput {
             accounts: nil,
             administrationRoleARN: nil,
             autoDeployment: nil,
+            callAs: nil,
             capabilities: nil,
             deploymentTargets: nil,
             description: nil,

@@ -88,6 +88,20 @@ public typealias BoxedInteger = Int
 public typealias BoxedMaxResults = Int
 
 /**
+ Enumeration restricting the values of the CallAs field.
+ */
+public enum CallAs: String, Codable, CustomStringConvertible {
+    case delegatedAdmin = "DELEGATED_ADMIN"
+    case `self` = "SELF"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CallAs = .delegatedAdmin
+}
+
+/**
  Type definition for the Capabilities field.
  */
 public typealias Capabilities = [Capability]

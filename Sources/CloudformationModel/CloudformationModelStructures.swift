@@ -489,6 +489,7 @@ public struct CreateStackInput: Codable, Equatable {
 
 public struct CreateStackInstancesInput: Codable, Equatable {
     public var accounts: AccountList?
+    public var callAs: CallAs?
     public var deploymentTargets: DeploymentTargets?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
@@ -497,6 +498,7 @@ public struct CreateStackInstancesInput: Codable, Equatable {
     public var stackSetName: StackSetName
 
     public init(accounts: AccountList? = nil,
+                callAs: CallAs? = nil,
                 deploymentTargets: DeploymentTargets? = nil,
                 operationId: ClientRequestToken? = nil,
                 operationPreferences: StackSetOperationPreferences? = nil,
@@ -504,6 +506,7 @@ public struct CreateStackInstancesInput: Codable, Equatable {
                 regions: RegionList,
                 stackSetName: StackSetName) {
         self.accounts = accounts
+        self.callAs = callAs
         self.deploymentTargets = deploymentTargets
         self.operationId = operationId
         self.operationPreferences = operationPreferences
@@ -514,6 +517,7 @@ public struct CreateStackInstancesInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case accounts = "Accounts"
+        case callAs = "CallAs"
         case deploymentTargets = "DeploymentTargets"
         case operationId = "OperationId"
         case operationPreferences = "OperationPreferences"
@@ -595,6 +599,7 @@ public struct CreateStackOutputForCreateStack: Codable, Equatable {
 public struct CreateStackSetInput: Codable, Equatable {
     public var administrationRoleARN: RoleARN?
     public var autoDeployment: AutoDeployment?
+    public var callAs: CallAs?
     public var capabilities: Capabilities?
     public var clientRequestToken: ClientRequestToken?
     public var description: Description?
@@ -608,6 +613,7 @@ public struct CreateStackSetInput: Codable, Equatable {
 
     public init(administrationRoleARN: RoleARN? = nil,
                 autoDeployment: AutoDeployment? = nil,
+                callAs: CallAs? = nil,
                 capabilities: Capabilities? = nil,
                 clientRequestToken: ClientRequestToken? = nil,
                 description: Description? = nil,
@@ -620,6 +626,7 @@ public struct CreateStackSetInput: Codable, Equatable {
                 templateURL: TemplateURL? = nil) {
         self.administrationRoleARN = administrationRoleARN
         self.autoDeployment = autoDeployment
+        self.callAs = callAs
         self.capabilities = capabilities
         self.clientRequestToken = clientRequestToken
         self.description = description
@@ -635,6 +642,7 @@ public struct CreateStackSetInput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case administrationRoleARN = "AdministrationRoleARN"
         case autoDeployment = "AutoDeployment"
+        case callAs = "CallAs"
         case capabilities = "Capabilities"
         case clientRequestToken = "ClientRequestToken"
         case description = "Description"
@@ -776,6 +784,7 @@ public struct DeleteStackInput: Codable, Equatable {
 
 public struct DeleteStackInstancesInput: Codable, Equatable {
     public var accounts: AccountList?
+    public var callAs: CallAs?
     public var deploymentTargets: DeploymentTargets?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
@@ -784,6 +793,7 @@ public struct DeleteStackInstancesInput: Codable, Equatable {
     public var stackSetName: StackSetName
 
     public init(accounts: AccountList? = nil,
+                callAs: CallAs? = nil,
                 deploymentTargets: DeploymentTargets? = nil,
                 operationId: ClientRequestToken? = nil,
                 operationPreferences: StackSetOperationPreferences? = nil,
@@ -791,6 +801,7 @@ public struct DeleteStackInstancesInput: Codable, Equatable {
                 retainStacks: RetainStacks,
                 stackSetName: StackSetName) {
         self.accounts = accounts
+        self.callAs = callAs
         self.deploymentTargets = deploymentTargets
         self.operationId = operationId
         self.operationPreferences = operationPreferences
@@ -801,6 +812,7 @@ public struct DeleteStackInstancesInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case accounts = "Accounts"
+        case callAs = "CallAs"
         case deploymentTargets = "DeploymentTargets"
         case operationId = "OperationId"
         case operationPreferences = "OperationPreferences"
@@ -849,13 +861,17 @@ public struct DeleteStackInstancesOutputForDeleteStackInstances: Codable, Equata
 }
 
 public struct DeleteStackSetInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var stackSetName: StackSetName
 
-    public init(stackSetName: StackSetName) {
+    public init(callAs: CallAs? = nil,
+                stackSetName: StackSetName) {
+        self.callAs = callAs
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case stackSetName = "StackSetName"
     }
 
@@ -1281,19 +1297,23 @@ public struct DescribeStackEventsOutputForDescribeStackEvents: Codable, Equatabl
 }
 
 public struct DescribeStackInstanceInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var stackInstanceAccount: Account
     public var stackInstanceRegion: Region
     public var stackSetName: StackSetName
 
-    public init(stackInstanceAccount: Account,
+    public init(callAs: CallAs? = nil,
+                stackInstanceAccount: Account,
                 stackInstanceRegion: Region,
                 stackSetName: StackSetName) {
+        self.callAs = callAs
         self.stackInstanceAccount = stackInstanceAccount
         self.stackInstanceRegion = stackInstanceRegion
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case stackInstanceAccount = "StackInstanceAccount"
         case stackInstanceRegion = "StackInstanceRegion"
         case stackSetName = "StackSetName"
@@ -1510,13 +1530,17 @@ public struct DescribeStackResourcesOutputForDescribeStackResources: Codable, Eq
 }
 
 public struct DescribeStackSetInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var stackSetName: StackSetName
 
-    public init(stackSetName: StackSetName) {
+    public init(callAs: CallAs? = nil,
+                stackSetName: StackSetName) {
+        self.callAs = callAs
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case stackSetName = "StackSetName"
     }
 
@@ -1525,16 +1549,20 @@ public struct DescribeStackSetInput: Codable, Equatable {
 }
 
 public struct DescribeStackSetOperationInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var operationId: ClientRequestToken
     public var stackSetName: StackSetName
 
-    public init(operationId: ClientRequestToken,
+    public init(callAs: CallAs? = nil,
+                operationId: ClientRequestToken,
                 stackSetName: StackSetName) {
+        self.callAs = callAs
         self.operationId = operationId
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case operationId = "OperationId"
         case stackSetName = "StackSetName"
     }
@@ -1962,19 +1990,23 @@ public struct DetectStackResourceDriftOutputForDetectStackResourceDrift: Codable
 }
 
 public struct DetectStackSetDriftInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
     public var stackSetName: StackSetNameOrId
 
-    public init(operationId: ClientRequestToken? = nil,
+    public init(callAs: CallAs? = nil,
+                operationId: ClientRequestToken? = nil,
                 operationPreferences: StackSetOperationPreferences? = nil,
                 stackSetName: StackSetNameOrId) {
+        self.callAs = callAs
         self.operationId = operationId
         self.operationPreferences = operationPreferences
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case operationId = "OperationId"
         case operationPreferences = "OperationPreferences"
         case stackSetName = "StackSetName"
@@ -2562,6 +2594,7 @@ public struct ListImportsOutputForListImports: Codable, Equatable {
 }
 
 public struct ListStackInstancesInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var filters: StackInstanceFilters?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -2569,12 +2602,14 @@ public struct ListStackInstancesInput: Codable, Equatable {
     public var stackInstanceRegion: Region?
     public var stackSetName: StackSetName
 
-    public init(filters: StackInstanceFilters? = nil,
+    public init(callAs: CallAs? = nil,
+                filters: StackInstanceFilters? = nil,
                 maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 stackInstanceAccount: Account? = nil,
                 stackInstanceRegion: Region? = nil,
                 stackSetName: StackSetName) {
+        self.callAs = callAs
         self.filters = filters
         self.maxResults = maxResults
         self.nextToken = nextToken
@@ -2584,6 +2619,7 @@ public struct ListStackInstancesInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case filters = "Filters"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
@@ -2694,15 +2730,18 @@ public struct ListStackResourcesOutputForListStackResources: Codable, Equatable 
 }
 
 public struct ListStackSetOperationResultsInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var operationId: ClientRequestToken
     public var stackSetName: StackSetName
 
-    public init(maxResults: MaxResults? = nil,
+    public init(callAs: CallAs? = nil,
+                maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 operationId: ClientRequestToken,
                 stackSetName: StackSetName) {
+        self.callAs = callAs
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.operationId = operationId
@@ -2710,6 +2749,7 @@ public struct ListStackSetOperationResultsInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case operationId = "OperationId"
@@ -2760,19 +2800,23 @@ public struct ListStackSetOperationResultsOutputForListStackSetOperationResults:
 }
 
 public struct ListStackSetOperationsInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var stackSetName: StackSetName
 
-    public init(maxResults: MaxResults? = nil,
+    public init(callAs: CallAs? = nil,
+                maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 stackSetName: StackSetName) {
+        self.callAs = callAs
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case stackSetName = "StackSetName"
@@ -2821,19 +2865,23 @@ public struct ListStackSetOperationsOutputForListStackSetOperations: Codable, Eq
 }
 
 public struct ListStackSetsInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var status: StackSetStatus?
 
-    public init(maxResults: MaxResults? = nil,
+    public init(callAs: CallAs? = nil,
+                maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 status: StackSetStatus? = nil) {
+        self.callAs = callAs
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.status = status
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case status = "Status"
@@ -4887,16 +4935,20 @@ public struct StaleRequestException: Codable, Equatable {
 }
 
 public struct StopStackSetOperationInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var operationId: ClientRequestToken
     public var stackSetName: StackSetName
 
-    public init(operationId: ClientRequestToken,
+    public init(callAs: CallAs? = nil,
+                operationId: ClientRequestToken,
                 stackSetName: StackSetName) {
+        self.callAs = callAs
         self.operationId = operationId
         self.stackSetName = stackSetName
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case operationId = "OperationId"
         case stackSetName = "StackSetName"
     }
@@ -5168,6 +5220,7 @@ public struct UpdateStackInput: Codable, Equatable {
 
 public struct UpdateStackInstancesInput: Codable, Equatable {
     public var accounts: AccountList?
+    public var callAs: CallAs?
     public var deploymentTargets: DeploymentTargets?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
@@ -5176,6 +5229,7 @@ public struct UpdateStackInstancesInput: Codable, Equatable {
     public var stackSetName: StackSetNameOrId
 
     public init(accounts: AccountList? = nil,
+                callAs: CallAs? = nil,
                 deploymentTargets: DeploymentTargets? = nil,
                 operationId: ClientRequestToken? = nil,
                 operationPreferences: StackSetOperationPreferences? = nil,
@@ -5183,6 +5237,7 @@ public struct UpdateStackInstancesInput: Codable, Equatable {
                 regions: RegionList,
                 stackSetName: StackSetNameOrId) {
         self.accounts = accounts
+        self.callAs = callAs
         self.deploymentTargets = deploymentTargets
         self.operationId = operationId
         self.operationPreferences = operationPreferences
@@ -5193,6 +5248,7 @@ public struct UpdateStackInstancesInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case accounts = "Accounts"
+        case callAs = "CallAs"
         case deploymentTargets = "DeploymentTargets"
         case operationId = "OperationId"
         case operationPreferences = "OperationPreferences"
@@ -5276,6 +5332,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
     public var accounts: AccountList?
     public var administrationRoleARN: RoleARN?
     public var autoDeployment: AutoDeployment?
+    public var callAs: CallAs?
     public var capabilities: Capabilities?
     public var deploymentTargets: DeploymentTargets?
     public var description: Description?
@@ -5294,6 +5351,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
     public init(accounts: AccountList? = nil,
                 administrationRoleARN: RoleARN? = nil,
                 autoDeployment: AutoDeployment? = nil,
+                callAs: CallAs? = nil,
                 capabilities: Capabilities? = nil,
                 deploymentTargets: DeploymentTargets? = nil,
                 description: Description? = nil,
@@ -5311,6 +5369,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
         self.accounts = accounts
         self.administrationRoleARN = administrationRoleARN
         self.autoDeployment = autoDeployment
+        self.callAs = callAs
         self.capabilities = capabilities
         self.deploymentTargets = deploymentTargets
         self.description = description
@@ -5331,6 +5390,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
         case accounts = "Accounts"
         case administrationRoleARN = "AdministrationRoleARN"
         case autoDeployment = "AutoDeployment"
+        case callAs = "CallAs"
         case capabilities = "Capabilities"
         case deploymentTargets = "DeploymentTargets"
         case description = "Description"

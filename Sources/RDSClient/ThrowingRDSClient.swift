@@ -202,6 +202,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let downloadDBLogFilePortionSyncOverride: DownloadDBLogFilePortionSyncType?
     let failoverDBClusterAsyncOverride: FailoverDBClusterAsyncType?
     let failoverDBClusterSyncOverride: FailoverDBClusterSyncType?
+    let failoverGlobalClusterAsyncOverride: FailoverGlobalClusterAsyncType?
+    let failoverGlobalClusterSyncOverride: FailoverGlobalClusterSyncType?
     let importInstallationMediaAsyncOverride: ImportInstallationMediaAsyncType?
     let importInstallationMediaSyncOverride: ImportInstallationMediaSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
@@ -472,6 +474,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             downloadDBLogFilePortionSync: DownloadDBLogFilePortionSyncType? = nil,
             failoverDBClusterAsync: FailoverDBClusterAsyncType? = nil,
             failoverDBClusterSync: FailoverDBClusterSyncType? = nil,
+            failoverGlobalClusterAsync: FailoverGlobalClusterAsyncType? = nil,
+            failoverGlobalClusterSync: FailoverGlobalClusterSyncType? = nil,
             importInstallationMediaAsync: ImportInstallationMediaAsyncType? = nil,
             importInstallationMediaSync: ImportInstallationMediaSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
@@ -737,6 +741,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.downloadDBLogFilePortionSyncOverride = downloadDBLogFilePortionSync
         self.failoverDBClusterAsyncOverride = failoverDBClusterAsync
         self.failoverDBClusterSyncOverride = failoverDBClusterSync
+        self.failoverGlobalClusterAsyncOverride = failoverGlobalClusterAsync
+        self.failoverGlobalClusterSyncOverride = failoverGlobalClusterSync
         self.importInstallationMediaAsyncOverride = importInstallationMediaAsync
         self.importInstallationMediaSyncOverride = importInstallationMediaSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
@@ -4052,6 +4058,44 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
         if let failoverDBClusterSyncOverride = failoverDBClusterSyncOverride {
             return try failoverDBClusterSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the FailoverGlobalCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated FailoverGlobalClusterMessage object being passed to this operation.
+         - completion: The FailoverGlobalClusterResultForFailoverGlobalCluster object or an error will be passed to this 
+           callback when the operation is complete. The FailoverGlobalClusterResultForFailoverGlobalCluster
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func failoverGlobalClusterAsync(
+            input: RDSModel.FailoverGlobalClusterMessage, 
+            completion: @escaping (Result<RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster, RDSError>) -> ()) throws {
+        if let failoverGlobalClusterAsyncOverride = failoverGlobalClusterAsyncOverride {
+            return try failoverGlobalClusterAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the FailoverGlobalCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated FailoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The FailoverGlobalClusterResultForFailoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func failoverGlobalClusterSync(
+            input: RDSModel.FailoverGlobalClusterMessage) throws -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster {
+        if let failoverGlobalClusterSyncOverride = failoverGlobalClusterSyncOverride {
+            return try failoverGlobalClusterSyncOverride(input)
         }
 
         throw error

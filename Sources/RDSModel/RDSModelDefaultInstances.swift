@@ -1923,6 +1923,7 @@ public extension DBClusterSnapshot {
             dBClusterSnapshotArn: nil,
             dBClusterSnapshotIdentifier: nil,
             engine: nil,
+            engineMode: nil,
             engineVersion: nil,
             iAMDatabaseAuthenticationEnabled: nil,
             kmsKeyId: nil,
@@ -2079,6 +2080,7 @@ public extension DBInstance {
             associatedRoles: nil,
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
+            awsBackupRecoveryPointArn: nil,
             backupRetentionPeriod: nil,
             cACertificateIdentifier: nil,
             characterSetName: nil,
@@ -4668,6 +4670,57 @@ public extension FailoverDBClusterResultForFailoverDBCluster {
     }()
 }
 
+public extension FailoverGlobalClusterMessage {
+    /**
+     Default instance of the FailoverGlobalClusterMessage structure.
+     */
+    static let __default: RDSModel.FailoverGlobalClusterMessage = {
+        let defaultInstance = RDSModel.FailoverGlobalClusterMessage(
+            globalClusterIdentifier: "0",
+            targetDbClusterIdentifier: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension FailoverGlobalClusterResult {
+    /**
+     Default instance of the FailoverGlobalClusterResult structure.
+     */
+    static let __default: RDSModel.FailoverGlobalClusterResult = {
+        let defaultInstance = RDSModel.FailoverGlobalClusterResult(
+            globalCluster: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FailoverGlobalClusterResultForFailoverGlobalCluster {
+    /**
+     Default instance of the FailoverGlobalClusterResultForFailoverGlobalCluster structure.
+     */
+    static let __default: RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster = {
+        let defaultInstance = RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster(
+            failoverGlobalClusterResult: FailoverGlobalClusterResult.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension FailoverState {
+    /**
+     Default instance of the FailoverState structure.
+     */
+    static let __default: RDSModel.FailoverState = {
+        let defaultInstance = RDSModel.FailoverState(
+            fromDbClusterArn: nil,
+            status: nil,
+            toDbClusterArn: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Filter {
     /**
      Default instance of the Filter structure.
@@ -4691,6 +4744,7 @@ public extension GlobalCluster {
             deletionProtection: nil,
             engine: nil,
             engineVersion: nil,
+            failoverState: nil,
             globalClusterArn: nil,
             globalClusterIdentifier: nil,
             globalClusterMembers: nil,
@@ -5461,6 +5515,7 @@ public extension ModifyDBInstanceMessage {
             allowMajorVersionUpgrade: nil,
             applyImmediately: nil,
             autoMinorVersionUpgrade: nil,
+            awsBackupRecoveryPointArn: nil,
             backupRetentionPeriod: nil,
             cACertificateIdentifier: nil,
             certificateRotationRestart: nil,
@@ -7883,7 +7938,10 @@ public extension UpgradeTarget {
             description: nil,
             engine: nil,
             engineVersion: nil,
-            isMajorVersionUpgrade: nil)
+            isMajorVersionUpgrade: nil,
+            supportedEngineModes: nil,
+            supportsGlobalDatabases: nil,
+            supportsParallelQuery: nil)
 
         return defaultInstance
     }()

@@ -115,6 +115,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     let describeValidDBInstanceModifications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let downloadDBLogFilePortion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let failoverDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let failoverGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let importInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -335,6 +336,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.downloadDBLogFilePortion)
         self.failoverDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.failoverDBCluster)
+        self.failoverGlobalCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.failoverGlobalCluster)
         self.importInstallationMedia = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.importInstallationMedia)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
