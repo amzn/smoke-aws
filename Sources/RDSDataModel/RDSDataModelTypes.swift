@@ -197,8 +197,10 @@ public typealias TransactionStatus = String
 public enum TypeHint: String, Codable, CustomStringConvertible {
     case date = "DATE"
     case decimal = "DECIMAL"
+    case json = "JSON"
     case time = "TIME"
     case timestamp = "TIMESTAMP"
+    case uuid = "UUID"
 
     public var description: String {
         return rawValue

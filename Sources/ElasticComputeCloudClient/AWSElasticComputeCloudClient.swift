@@ -12430,6 +12430,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DescribeAddressesAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAddressesAttributeRequest object being passed to this operation.
+         - completion: The DescribeAddressesAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAddressesAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAddressesAttributeAsync(
+            input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressesAttributeResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeAddressesAttribute,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeAddressesAttributeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeAddressesAttribute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeAddressesAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAddressesAttributeRequest object being passed to this operation.
+     - Returns: The DescribeAddressesAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAddressesAttributeSync(
+            input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest) throws -> ElasticComputeCloudModel.DescribeAddressesAttributeResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeAddressesAttribute,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeAddressesAttributeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeAddressesAttribute.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeAggregateIdFormat operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -25706,6 +25782,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the ModifyAddressAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyAddressAttributeRequest object being passed to this operation.
+         - completion: The ModifyAddressAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyAddressAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyAddressAttributeAsync(
+            input: ElasticComputeCloudModel.ModifyAddressAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyAddressAttribute,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyAddressAttributeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyAddressAttribute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyAddressAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyAddressAttributeRequest object being passed to this operation.
+     - Returns: The ModifyAddressAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyAddressAttributeSync(
+            input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) throws -> ElasticComputeCloudModel.ModifyAddressAttributeResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyAddressAttribute,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyAddressAttributeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyAddressAttribute.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ModifyAvailabilityZoneGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -30967,6 +31119,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.requestSpotInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ResetAddressAttribute operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ResetAddressAttributeRequest object being passed to this operation.
+         - completion: The ResetAddressAttributeResult object or an error will be passed to this 
+           callback when the operation is complete. The ResetAddressAttributeResult
+           object will be validated before being returned to caller.
+     */
+    public func resetAddressAttributeAsync(
+            input: ElasticComputeCloudModel.ResetAddressAttributeRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ResetAddressAttributeResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.resetAddressAttribute,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ResetAddressAttributeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.resetAddressAttribute.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ResetAddressAttribute operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ResetAddressAttributeRequest object being passed to this operation.
+     - Returns: The ResetAddressAttributeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func resetAddressAttributeSync(
+            input: ElasticComputeCloudModel.ResetAddressAttributeRequest) throws -> ElasticComputeCloudModel.ResetAddressAttributeResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.resetAddressAttribute,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ResetAddressAttributeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.resetAddressAttribute.rawValue,
             version: apiVersion)
 
         do {

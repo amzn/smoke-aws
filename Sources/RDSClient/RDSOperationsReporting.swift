@@ -114,6 +114,7 @@ public struct RDSOperationsReporting {
     let describeValidDBInstanceModifications: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let downloadDBLogFilePortion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let failoverDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let failoverGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let importInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let listTagsForResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -334,6 +335,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .downloadDBLogFilePortion, configuration: reportingConfiguration)
         self.failoverDBCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .failoverDBCluster, configuration: reportingConfiguration)
+        self.failoverGlobalCluster = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .failoverGlobalCluster, configuration: reportingConfiguration)
         self.importInstallationMedia = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .importInstallationMedia, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(

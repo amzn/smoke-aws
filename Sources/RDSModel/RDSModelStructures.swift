@@ -3219,6 +3219,7 @@ public struct DBClusterSnapshot: Codable, Equatable {
     public var dBClusterSnapshotArn: String?
     public var dBClusterSnapshotIdentifier: String?
     public var engine: String?
+    public var engineMode: String?
     public var engineVersion: String?
     public var iAMDatabaseAuthenticationEnabled: Boolean?
     public var kmsKeyId: String?
@@ -3241,6 +3242,7 @@ public struct DBClusterSnapshot: Codable, Equatable {
                 dBClusterSnapshotArn: String? = nil,
                 dBClusterSnapshotIdentifier: String? = nil,
                 engine: String? = nil,
+                engineMode: String? = nil,
                 engineVersion: String? = nil,
                 iAMDatabaseAuthenticationEnabled: Boolean? = nil,
                 kmsKeyId: String? = nil,
@@ -3262,6 +3264,7 @@ public struct DBClusterSnapshot: Codable, Equatable {
         self.dBClusterSnapshotArn = dBClusterSnapshotArn
         self.dBClusterSnapshotIdentifier = dBClusterSnapshotIdentifier
         self.engine = engine
+        self.engineMode = engineMode
         self.engineVersion = engineVersion
         self.iAMDatabaseAuthenticationEnabled = iAMDatabaseAuthenticationEnabled
         self.kmsKeyId = kmsKeyId
@@ -3286,6 +3289,7 @@ public struct DBClusterSnapshot: Codable, Equatable {
         case dBClusterSnapshotArn = "DBClusterSnapshotArn"
         case dBClusterSnapshotIdentifier = "DBClusterSnapshotIdentifier"
         case engine = "Engine"
+        case engineMode = "EngineMode"
         case engineVersion = "EngineVersion"
         case iAMDatabaseAuthenticationEnabled = "IAMDatabaseAuthenticationEnabled"
         case kmsKeyId = "KmsKeyId"
@@ -3521,6 +3525,7 @@ public struct DBInstance: Codable, Equatable {
     public var associatedRoles: DBInstanceRoles?
     public var autoMinorVersionUpgrade: Boolean?
     public var availabilityZone: String?
+    public var awsBackupRecoveryPointArn: String?
     public var backupRetentionPeriod: Integer?
     public var cACertificateIdentifier: String?
     public var characterSetName: String?
@@ -3585,6 +3590,7 @@ public struct DBInstance: Codable, Equatable {
                 associatedRoles: DBInstanceRoles? = nil,
                 autoMinorVersionUpgrade: Boolean? = nil,
                 availabilityZone: String? = nil,
+                awsBackupRecoveryPointArn: String? = nil,
                 backupRetentionPeriod: Integer? = nil,
                 cACertificateIdentifier: String? = nil,
                 characterSetName: String? = nil,
@@ -3648,6 +3654,7 @@ public struct DBInstance: Codable, Equatable {
         self.associatedRoles = associatedRoles
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
+        self.awsBackupRecoveryPointArn = awsBackupRecoveryPointArn
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cACertificateIdentifier = cACertificateIdentifier
         self.characterSetName = characterSetName
@@ -3714,6 +3721,7 @@ public struct DBInstance: Codable, Equatable {
         case associatedRoles = "AssociatedRoles"
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
+        case awsBackupRecoveryPointArn = "AwsBackupRecoveryPointArn"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cACertificateIdentifier = "CACertificateIdentifier"
         case characterSetName = "CharacterSetName"
@@ -7731,6 +7739,82 @@ public struct FailoverDBClusterResultForFailoverDBCluster: Codable, Equatable {
     }
 }
 
+public struct FailoverGlobalClusterMessage: Codable, Equatable {
+    public var globalClusterIdentifier: GlobalClusterIdentifier
+    public var targetDbClusterIdentifier: DBClusterIdentifier
+
+    public init(globalClusterIdentifier: GlobalClusterIdentifier,
+                targetDbClusterIdentifier: DBClusterIdentifier) {
+        self.globalClusterIdentifier = globalClusterIdentifier
+        self.targetDbClusterIdentifier = targetDbClusterIdentifier
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalClusterIdentifier = "GlobalClusterIdentifier"
+        case targetDbClusterIdentifier = "TargetDbClusterIdentifier"
+    }
+
+    public func validate() throws {
+        try globalClusterIdentifier.validateAsGlobalClusterIdentifier()
+        try targetDbClusterIdentifier.validateAsDBClusterIdentifier()
+    }
+}
+
+public struct FailoverGlobalClusterResult: Codable, Equatable {
+    public var globalCluster: GlobalCluster?
+
+    public init(globalCluster: GlobalCluster? = nil) {
+        self.globalCluster = globalCluster
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case globalCluster = "GlobalCluster"
+    }
+
+    public func validate() throws {
+        try globalCluster?.validate()
+    }
+}
+
+public struct FailoverGlobalClusterResultForFailoverGlobalCluster: Codable, Equatable {
+    public var failoverGlobalClusterResult: FailoverGlobalClusterResult
+
+    public init(failoverGlobalClusterResult: FailoverGlobalClusterResult) {
+        self.failoverGlobalClusterResult = failoverGlobalClusterResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failoverGlobalClusterResult = "FailoverGlobalClusterResult"
+    }
+
+    public func validate() throws {
+        try failoverGlobalClusterResult.validate()
+    }
+}
+
+public struct FailoverState: Codable, Equatable {
+    public var fromDbClusterArn: String?
+    public var status: FailoverStatus?
+    public var toDbClusterArn: String?
+
+    public init(fromDbClusterArn: String? = nil,
+                status: FailoverStatus? = nil,
+                toDbClusterArn: String? = nil) {
+        self.fromDbClusterArn = fromDbClusterArn
+        self.status = status
+        self.toDbClusterArn = toDbClusterArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case fromDbClusterArn = "FromDbClusterArn"
+        case status = "Status"
+        case toDbClusterArn = "ToDbClusterArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Filter: Codable, Equatable {
     public var name: String
     public var values: FilterValueList
@@ -7755,6 +7839,7 @@ public struct GlobalCluster: Codable, Equatable {
     public var deletionProtection: BooleanOptional?
     public var engine: String?
     public var engineVersion: String?
+    public var failoverState: FailoverState?
     public var globalClusterArn: String?
     public var globalClusterIdentifier: String?
     public var globalClusterMembers: GlobalClusterMemberList?
@@ -7766,6 +7851,7 @@ public struct GlobalCluster: Codable, Equatable {
                 deletionProtection: BooleanOptional? = nil,
                 engine: String? = nil,
                 engineVersion: String? = nil,
+                failoverState: FailoverState? = nil,
                 globalClusterArn: String? = nil,
                 globalClusterIdentifier: String? = nil,
                 globalClusterMembers: GlobalClusterMemberList? = nil,
@@ -7776,6 +7862,7 @@ public struct GlobalCluster: Codable, Equatable {
         self.deletionProtection = deletionProtection
         self.engine = engine
         self.engineVersion = engineVersion
+        self.failoverState = failoverState
         self.globalClusterArn = globalClusterArn
         self.globalClusterIdentifier = globalClusterIdentifier
         self.globalClusterMembers = globalClusterMembers
@@ -7789,6 +7876,7 @@ public struct GlobalCluster: Codable, Equatable {
         case deletionProtection = "DeletionProtection"
         case engine = "Engine"
         case engineVersion = "EngineVersion"
+        case failoverState = "FailoverState"
         case globalClusterArn = "GlobalClusterArn"
         case globalClusterIdentifier = "GlobalClusterIdentifier"
         case globalClusterMembers = "GlobalClusterMembers"
@@ -7798,6 +7886,7 @@ public struct GlobalCluster: Codable, Equatable {
     }
 
     public func validate() throws {
+        try failoverState?.validate()
     }
 }
 
@@ -8730,6 +8819,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     public var allowMajorVersionUpgrade: Boolean?
     public var applyImmediately: Boolean?
     public var autoMinorVersionUpgrade: BooleanOptional?
+    public var awsBackupRecoveryPointArn: AwsBackupRecoveryPointArn?
     public var backupRetentionPeriod: IntegerOptional?
     public var cACertificateIdentifier: String?
     public var certificateRotationRestart: BooleanOptional?
@@ -8775,6 +8865,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
                 allowMajorVersionUpgrade: Boolean? = nil,
                 applyImmediately: Boolean? = nil,
                 autoMinorVersionUpgrade: BooleanOptional? = nil,
+                awsBackupRecoveryPointArn: AwsBackupRecoveryPointArn? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
                 cACertificateIdentifier: String? = nil,
                 certificateRotationRestart: BooleanOptional? = nil,
@@ -8819,6 +8910,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         self.allowMajorVersionUpgrade = allowMajorVersionUpgrade
         self.applyImmediately = applyImmediately
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
+        self.awsBackupRecoveryPointArn = awsBackupRecoveryPointArn
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cACertificateIdentifier = cACertificateIdentifier
         self.certificateRotationRestart = certificateRotationRestart
@@ -8866,6 +8958,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         case allowMajorVersionUpgrade = "AllowMajorVersionUpgrade"
         case applyImmediately = "ApplyImmediately"
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
+        case awsBackupRecoveryPointArn = "AwsBackupRecoveryPointArn"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cACertificateIdentifier = "CACertificateIdentifier"
         case certificateRotationRestart = "CertificateRotationRestart"
@@ -8909,6 +9002,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+        try awsBackupRecoveryPointArn?.validateAsAwsBackupRecoveryPointArn()
         try cloudwatchLogsExportConfiguration?.validate()
     }
 }
@@ -12970,17 +13064,26 @@ public struct UpgradeTarget: Codable, Equatable {
     public var engine: String?
     public var engineVersion: String?
     public var isMajorVersionUpgrade: Boolean?
+    public var supportedEngineModes: EngineModeList?
+    public var supportsGlobalDatabases: BooleanOptional?
+    public var supportsParallelQuery: BooleanOptional?
 
     public init(autoUpgrade: Boolean? = nil,
                 description: String? = nil,
                 engine: String? = nil,
                 engineVersion: String? = nil,
-                isMajorVersionUpgrade: Boolean? = nil) {
+                isMajorVersionUpgrade: Boolean? = nil,
+                supportedEngineModes: EngineModeList? = nil,
+                supportsGlobalDatabases: BooleanOptional? = nil,
+                supportsParallelQuery: BooleanOptional? = nil) {
         self.autoUpgrade = autoUpgrade
         self.description = description
         self.engine = engine
         self.engineVersion = engineVersion
         self.isMajorVersionUpgrade = isMajorVersionUpgrade
+        self.supportedEngineModes = supportedEngineModes
+        self.supportsGlobalDatabases = supportsGlobalDatabases
+        self.supportsParallelQuery = supportsParallelQuery
     }
 
     enum CodingKeys: String, CodingKey {
@@ -12989,6 +13092,9 @@ public struct UpgradeTarget: Codable, Equatable {
         case engine = "Engine"
         case engineVersion = "EngineVersion"
         case isMajorVersionUpgrade = "IsMajorVersionUpgrade"
+        case supportedEngineModes = "SupportedEngineModes"
+        case supportsGlobalDatabases = "SupportsGlobalDatabases"
+        case supportsParallelQuery = "SupportsParallelQuery"
     }
 
     public func validate() throws {

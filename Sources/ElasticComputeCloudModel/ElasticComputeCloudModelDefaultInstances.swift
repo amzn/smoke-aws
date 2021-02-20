@@ -254,6 +254,21 @@ public extension Address {
     }()
 }
 
+public extension AddressAttribute {
+    /**
+     Default instance of the AddressAttribute structure.
+     */
+    static let __default: ElasticComputeCloudModel.AddressAttribute = {
+        let defaultInstance = ElasticComputeCloudModel.AddressAttribute(
+            allocationId: nil,
+            ptrRecord: nil,
+            ptrRecordUpdate: nil,
+            publicIp: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AdvertiseByoipCidrRequest {
     /**
      Default instance of the AdvertiseByoipCidrRequest structure.
@@ -2105,6 +2120,7 @@ public extension CopyImageRequest {
         let defaultInstance = ElasticComputeCloudModel.CopyImageRequest(
             clientToken: nil,
             description: nil,
+            destinationOutpostArn: nil,
             dryRun: nil,
             encrypted: nil,
             kmsKeyId: nil,
@@ -2135,6 +2151,7 @@ public extension CopySnapshotRequest {
     static let __default: ElasticComputeCloudModel.CopySnapshotRequest = {
         let defaultInstance = ElasticComputeCloudModel.CopySnapshotRequest(
             description: nil,
+            destinationOutpostArn: nil,
             destinationRegion: nil,
             dryRun: nil,
             encrypted: nil,
@@ -3159,6 +3176,7 @@ public extension CreateSnapshotRequest {
         let defaultInstance = ElasticComputeCloudModel.CreateSnapshotRequest(
             description: nil,
             dryRun: nil,
+            outpostArn: nil,
             tagSpecifications: nil,
             volumeId: "value")
 
@@ -3176,6 +3194,7 @@ public extension CreateSnapshotsRequest {
             description: nil,
             dryRun: nil,
             instanceSpecification: InstanceSpecification.__default,
+            outpostArn: nil,
             tagSpecifications: nil)
 
         return defaultInstance
@@ -5365,6 +5384,35 @@ public extension DescribeAccountAttributesResult {
     static let __default: ElasticComputeCloudModel.DescribeAccountAttributesResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeAccountAttributesResult(
             accountAttributes: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeAddressesAttributeRequest {
+    /**
+     Default instance of the DescribeAddressesAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeAddressesAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeAddressesAttributeRequest(
+            allocationIds: nil,
+            attribute: nil,
+            dryRun: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeAddressesAttributeResult {
+    /**
+     Default instance of the DescribeAddressesAttributeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeAddressesAttributeResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeAddressesAttributeResult(
+            addresses: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -9424,6 +9472,7 @@ public extension EbsBlockDevice {
             encrypted: nil,
             iops: nil,
             kmsKeyId: nil,
+            outpostArn: nil,
             snapshotId: nil,
             throughput: nil,
             volumeSize: nil,
@@ -13354,6 +13403,32 @@ public extension MemoryInfo {
     }()
 }
 
+public extension ModifyAddressAttributeRequest {
+    /**
+     Default instance of the ModifyAddressAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyAddressAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyAddressAttributeRequest(
+            allocationId: "value",
+            domainName: nil,
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyAddressAttributeResult {
+    /**
+     Default instance of the ModifyAddressAttributeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyAddressAttributeResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyAddressAttributeResult(
+            address: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifyAvailabilityZoneGroupRequest {
     /**
      Default instance of the ModifyAvailabilityZoneGroupRequest structure.
@@ -15525,6 +15600,20 @@ public extension ProvisionedBandwidth {
     }()
 }
 
+public extension PtrUpdateStatus {
+    /**
+     Default instance of the PtrUpdateStatus structure.
+     */
+    static let __default: ElasticComputeCloudModel.PtrUpdateStatus = {
+        let defaultInstance = ElasticComputeCloudModel.PtrUpdateStatus(
+            reason: nil,
+            status: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PublicIpv4Pool {
     /**
      Default instance of the PublicIpv4Pool structure.
@@ -16516,6 +16605,32 @@ public extension ReservedInstancesOffering {
     }()
 }
 
+public extension ResetAddressAttributeRequest {
+    /**
+     Default instance of the ResetAddressAttributeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ResetAddressAttributeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ResetAddressAttributeRequest(
+            allocationId: "value",
+            attribute: .__default,
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ResetAddressAttributeResult {
+    /**
+     Default instance of the ResetAddressAttributeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ResetAddressAttributeResult = {
+        let defaultInstance = ElasticComputeCloudModel.ResetAddressAttributeResult(
+            address: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ResetEbsDefaultKmsKeyIdRequest {
     /**
      Default instance of the ResetEbsDefaultKmsKeyIdRequest structure.
@@ -17465,6 +17580,7 @@ public extension Snapshot {
             description: nil,
             encrypted: nil,
             kmsKeyId: nil,
+            outpostArn: nil,
             ownerAlias: nil,
             ownerId: nil,
             progress: nil,
@@ -17524,6 +17640,7 @@ public extension SnapshotInfo {
         let defaultInstance = ElasticComputeCloudModel.SnapshotInfo(
             description: nil,
             encrypted: nil,
+            outpostArn: nil,
             ownerId: nil,
             progress: nil,
             snapshotId: nil,

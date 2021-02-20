@@ -192,6 +192,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let deregisterTransitGatewayMulticastGroupSources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeAddresses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeAddressesAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeAggregateIdFormat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeAvailabilityZones: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeBundleTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -367,6 +368,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let importKeyPair: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let importSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let importVolume: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let modifyAddressAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyAvailabilityZoneGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyClientVpnEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -437,6 +439,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     let reportInstanceStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let requestSpotFleet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let requestSpotInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let resetAddressAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let resetEbsDefaultKmsKeyId: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let resetFpgaImageAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let resetImageAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -794,6 +797,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeAccountAttributes)
         self.describeAddresses = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeAddresses)
+        self.describeAddressesAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeAddressesAttribute)
         self.describeAggregateIdFormat = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeAggregateIdFormat)
         self.describeAvailabilityZones = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1144,6 +1149,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.importSnapshot)
         self.importVolume = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.importVolume)
+        self.modifyAddressAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyAddressAttribute)
         self.modifyAvailabilityZoneGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyAvailabilityZoneGroup)
         self.modifyCapacityReservation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1284,6 +1291,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.requestSpotFleet)
         self.requestSpotInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.requestSpotInstances)
+        self.resetAddressAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.resetAddressAttribute)
         self.resetEbsDefaultKmsKeyId = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.resetEbsDefaultKmsKeyId)
         self.resetFpgaImageAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

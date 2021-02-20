@@ -459,6 +459,11 @@ public protocol RDSClientProtocol {
     typealias FailoverDBClusterAsyncType = (
             _ input: RDSModel.FailoverDBClusterMessage, 
             _ completion: @escaping (Result<RDSModel.FailoverDBClusterResultForFailoverDBCluster, RDSError>) -> ()) throws -> ()
+    typealias FailoverGlobalClusterSyncType = (
+            _ input: RDSModel.FailoverGlobalClusterMessage) throws -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster
+    typealias FailoverGlobalClusterAsyncType = (
+            _ input: RDSModel.FailoverGlobalClusterMessage, 
+            _ completion: @escaping (Result<RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster, RDSError>) -> ()) throws -> ()
     typealias ImportInstallationMediaSyncType = (
             _ input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
     typealias ImportInstallationMediaAsyncType = (
@@ -2883,6 +2888,32 @@ public protocol RDSClientProtocol {
      */
     func failoverDBClusterSync(
             input: RDSModel.FailoverDBClusterMessage) throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster
+
+    /**
+     Invokes the FailoverGlobalCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated FailoverGlobalClusterMessage object being passed to this operation.
+         - completion: The FailoverGlobalClusterResultForFailoverGlobalCluster object or an error will be passed to this 
+           callback when the operation is complete. The FailoverGlobalClusterResultForFailoverGlobalCluster
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    func failoverGlobalClusterAsync(
+            input: RDSModel.FailoverGlobalClusterMessage, 
+            completion: @escaping (Result<RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster, RDSError>) -> ()) throws
+
+    /**
+     Invokes the FailoverGlobalCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated FailoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The FailoverGlobalClusterResultForFailoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    func failoverGlobalClusterSync(
+            input: RDSModel.FailoverGlobalClusterMessage) throws -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster
 
     /**
      Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.

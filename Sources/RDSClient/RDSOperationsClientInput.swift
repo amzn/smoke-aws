@@ -455,6 +455,11 @@ public typealias DownloadDBLogFilePortionOperationHTTPRequestInput = QueryHTTPRe
 public typealias FailoverDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the FailoverGlobalCluster operation in a HTTP client.
+ */
+public typealias FailoverGlobalClusterOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ImportInstallationMedia operation in a HTTP client.
  */
 public typealias ImportInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput

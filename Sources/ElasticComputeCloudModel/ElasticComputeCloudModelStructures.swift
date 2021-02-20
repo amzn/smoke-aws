@@ -393,6 +393,34 @@ public struct Address: Codable, Equatable {
     }
 }
 
+public struct AddressAttribute: Codable, Equatable {
+    public var allocationId: AllocationId?
+    public var ptrRecord: String?
+    public var ptrRecordUpdate: PtrUpdateStatus?
+    public var publicIp: PublicIpAddress?
+
+    public init(allocationId: AllocationId? = nil,
+                ptrRecord: String? = nil,
+                ptrRecordUpdate: PtrUpdateStatus? = nil,
+                publicIp: PublicIpAddress? = nil) {
+        self.allocationId = allocationId
+        self.ptrRecord = ptrRecord
+        self.ptrRecordUpdate = ptrRecordUpdate
+        self.publicIp = publicIp
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationId
+        case ptrRecord
+        case ptrRecordUpdate
+        case publicIp
+    }
+
+    public func validate() throws {
+        try ptrRecordUpdate?.validate()
+    }
+}
+
 public struct AdvertiseByoipCidrRequest: Codable, Equatable {
     public var cidr: String
     public var dryRun: Boolean?
@@ -3592,6 +3620,7 @@ public struct CopyFpgaImageResult: Codable, Equatable {
 public struct CopyImageRequest: Codable, Equatable {
     public var clientToken: String?
     public var description: String?
+    public var destinationOutpostArn: String?
     public var dryRun: Boolean?
     public var encrypted: Boolean?
     public var kmsKeyId: KmsKeyId?
@@ -3601,6 +3630,7 @@ public struct CopyImageRequest: Codable, Equatable {
 
     public init(clientToken: String? = nil,
                 description: String? = nil,
+                destinationOutpostArn: String? = nil,
                 dryRun: Boolean? = nil,
                 encrypted: Boolean? = nil,
                 kmsKeyId: KmsKeyId? = nil,
@@ -3609,6 +3639,7 @@ public struct CopyImageRequest: Codable, Equatable {
                 sourceRegion: String) {
         self.clientToken = clientToken
         self.description = description
+        self.destinationOutpostArn = destinationOutpostArn
         self.dryRun = dryRun
         self.encrypted = encrypted
         self.kmsKeyId = kmsKeyId
@@ -3620,6 +3651,7 @@ public struct CopyImageRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case clientToken = "ClientToken"
         case description = "Description"
+        case destinationOutpostArn = "DestinationOutpostArn"
         case dryRun
         case encrypted
         case kmsKeyId
@@ -3649,6 +3681,7 @@ public struct CopyImageResult: Codable, Equatable {
 
 public struct CopySnapshotRequest: Codable, Equatable {
     public var description: String?
+    public var destinationOutpostArn: String?
     public var destinationRegion: String?
     public var dryRun: Boolean?
     public var encrypted: Boolean?
@@ -3659,6 +3692,7 @@ public struct CopySnapshotRequest: Codable, Equatable {
     public var tagSpecifications: TagSpecificationList?
 
     public init(description: String? = nil,
+                destinationOutpostArn: String? = nil,
                 destinationRegion: String? = nil,
                 dryRun: Boolean? = nil,
                 encrypted: Boolean? = nil,
@@ -3668,6 +3702,7 @@ public struct CopySnapshotRequest: Codable, Equatable {
                 sourceSnapshotId: String,
                 tagSpecifications: TagSpecificationList? = nil) {
         self.description = description
+        self.destinationOutpostArn = destinationOutpostArn
         self.destinationRegion = destinationRegion
         self.dryRun = dryRun
         self.encrypted = encrypted
@@ -3680,6 +3715,7 @@ public struct CopySnapshotRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case description = "Description"
+        case destinationOutpostArn = "DestinationOutpostArn"
         case destinationRegion
         case dryRun
         case encrypted
@@ -5546,15 +5582,18 @@ public struct CreateSecurityGroupResult: Codable, Equatable {
 public struct CreateSnapshotRequest: Codable, Equatable {
     public var description: String?
     public var dryRun: Boolean?
+    public var outpostArn: String?
     public var tagSpecifications: TagSpecificationList?
     public var volumeId: VolumeId
 
     public init(description: String? = nil,
                 dryRun: Boolean? = nil,
+                outpostArn: String? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 volumeId: VolumeId) {
         self.description = description
         self.dryRun = dryRun
+        self.outpostArn = outpostArn
         self.tagSpecifications = tagSpecifications
         self.volumeId = volumeId
     }
@@ -5562,6 +5601,7 @@ public struct CreateSnapshotRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case description = "Description"
         case dryRun
+        case outpostArn = "OutpostArn"
         case tagSpecifications = "TagSpecification"
         case volumeId = "VolumeId"
     }
@@ -5575,17 +5615,20 @@ public struct CreateSnapshotsRequest: Codable, Equatable {
     public var description: String?
     public var dryRun: Boolean?
     public var instanceSpecification: InstanceSpecification
+    public var outpostArn: String?
     public var tagSpecifications: TagSpecificationList?
 
     public init(copyTagsFromSource: CopyTagsFromSource? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
                 instanceSpecification: InstanceSpecification,
+                outpostArn: String? = nil,
                 tagSpecifications: TagSpecificationList? = nil) {
         self.copyTagsFromSource = copyTagsFromSource
         self.description = description
         self.dryRun = dryRun
         self.instanceSpecification = instanceSpecification
+        self.outpostArn = outpostArn
         self.tagSpecifications = tagSpecifications
     }
 
@@ -5594,6 +5637,7 @@ public struct CreateSnapshotsRequest: Codable, Equatable {
         case description = "Description"
         case dryRun = "DryRun"
         case instanceSpecification = "InstanceSpecification"
+        case outpostArn = "OutpostArn"
         case tagSpecifications = "TagSpecification"
     }
 
@@ -9058,6 +9102,57 @@ public struct DescribeAccountAttributesResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case accountAttributes = "accountAttributeSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeAddressesAttributeRequest: Codable, Equatable {
+    public var allocationIds: AllocationIds?
+    public var attribute: AddressAttributeName?
+    public var dryRun: Boolean?
+    public var maxResults: AddressMaxResults?
+    public var nextToken: NextToken?
+
+    public init(allocationIds: AllocationIds? = nil,
+                attribute: AddressAttributeName? = nil,
+                dryRun: Boolean? = nil,
+                maxResults: AddressMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.allocationIds = allocationIds
+        self.attribute = attribute
+        self.dryRun = dryRun
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationIds = "AllocationId"
+        case attribute = "Attribute"
+        case dryRun = "DryRun"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsAddressMaxResults()
+    }
+}
+
+public struct DescribeAddressesAttributeResult: Codable, Equatable {
+    public var addresses: AddressSet?
+    public var nextToken: NextToken?
+
+    public init(addresses: AddressSet? = nil,
+                nextToken: NextToken? = nil) {
+        self.addresses = addresses
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case addresses = "addressSet"
+        case nextToken
     }
 
     public func validate() throws {
@@ -15933,6 +16028,7 @@ public struct EbsBlockDevice: Codable, Equatable {
     public var encrypted: Boolean?
     public var iops: Integer?
     public var kmsKeyId: String?
+    public var outpostArn: String?
     public var snapshotId: String?
     public var throughput: Integer?
     public var volumeSize: Integer?
@@ -15942,6 +16038,7 @@ public struct EbsBlockDevice: Codable, Equatable {
                 encrypted: Boolean? = nil,
                 iops: Integer? = nil,
                 kmsKeyId: String? = nil,
+                outpostArn: String? = nil,
                 snapshotId: String? = nil,
                 throughput: Integer? = nil,
                 volumeSize: Integer? = nil,
@@ -15950,6 +16047,7 @@ public struct EbsBlockDevice: Codable, Equatable {
         self.encrypted = encrypted
         self.iops = iops
         self.kmsKeyId = kmsKeyId
+        self.outpostArn = outpostArn
         self.snapshotId = snapshotId
         self.throughput = throughput
         self.volumeSize = volumeSize
@@ -15961,6 +16059,7 @@ public struct EbsBlockDevice: Codable, Equatable {
         case encrypted
         case iops
         case kmsKeyId = "KmsKeyId"
+        case outpostArn
         case snapshotId
         case throughput
         case volumeSize
@@ -23412,6 +23511,45 @@ public struct MemoryInfo: Codable, Equatable {
     }
 }
 
+public struct ModifyAddressAttributeRequest: Codable, Equatable {
+    public var allocationId: AllocationId
+    public var domainName: String?
+    public var dryRun: Boolean?
+
+    public init(allocationId: AllocationId,
+                domainName: String? = nil,
+                dryRun: Boolean? = nil) {
+        self.allocationId = allocationId
+        self.domainName = domainName
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationId = "AllocationId"
+        case domainName = "DomainName"
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyAddressAttributeResult: Codable, Equatable {
+    public var address: AddressAttribute?
+
+    public init(address: AddressAttribute? = nil) {
+        self.address = address
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case address
+    }
+
+    public func validate() throws {
+        try address?.validate()
+    }
+}
+
 public struct ModifyAvailabilityZoneGroupRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var groupName: String
@@ -27328,6 +27466,29 @@ public struct ProvisionedBandwidth: Codable, Equatable {
     }
 }
 
+public struct PtrUpdateStatus: Codable, Equatable {
+    public var reason: String?
+    public var status: String?
+    public var value: String?
+
+    public init(reason: String? = nil,
+                status: String? = nil,
+                value: String? = nil) {
+        self.reason = reason
+        self.status = status
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case reason
+        case status
+        case value
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct PublicIpv4Pool: Codable, Equatable {
     public var description: String?
     public var networkBorderGroup: String?
@@ -29209,6 +29370,45 @@ public struct ReservedInstancesOffering: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ResetAddressAttributeRequest: Codable, Equatable {
+    public var allocationId: AllocationId
+    public var attribute: AddressAttributeName
+    public var dryRun: Boolean?
+
+    public init(allocationId: AllocationId,
+                attribute: AddressAttributeName,
+                dryRun: Boolean? = nil) {
+        self.allocationId = allocationId
+        self.attribute = attribute
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationId = "AllocationId"
+        case attribute = "Attribute"
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ResetAddressAttributeResult: Codable, Equatable {
+    public var address: AddressAttribute?
+
+    public init(address: AddressAttribute? = nil) {
+        self.address = address
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case address
+    }
+
+    public func validate() throws {
+        try address?.validate()
     }
 }
 
@@ -31126,6 +31326,7 @@ public struct Snapshot: Codable, Equatable {
     public var description: String?
     public var encrypted: Boolean?
     public var kmsKeyId: String?
+    public var outpostArn: String?
     public var ownerAlias: String?
     public var ownerId: String?
     public var progress: String?
@@ -31141,6 +31342,7 @@ public struct Snapshot: Codable, Equatable {
                 description: String? = nil,
                 encrypted: Boolean? = nil,
                 kmsKeyId: String? = nil,
+                outpostArn: String? = nil,
                 ownerAlias: String? = nil,
                 ownerId: String? = nil,
                 progress: String? = nil,
@@ -31155,6 +31357,7 @@ public struct Snapshot: Codable, Equatable {
         self.description = description
         self.encrypted = encrypted
         self.kmsKeyId = kmsKeyId
+        self.outpostArn = outpostArn
         self.ownerAlias = ownerAlias
         self.ownerId = ownerId
         self.progress = progress
@@ -31172,6 +31375,7 @@ public struct Snapshot: Codable, Equatable {
         case description
         case encrypted
         case kmsKeyId
+        case outpostArn
         case ownerAlias
         case ownerId
         case progress
@@ -31271,6 +31475,7 @@ public struct SnapshotDiskContainer: Codable, Equatable {
 public struct SnapshotInfo: Codable, Equatable {
     public var description: String?
     public var encrypted: Boolean?
+    public var outpostArn: String?
     public var ownerId: String?
     public var progress: String?
     public var snapshotId: String?
@@ -31282,6 +31487,7 @@ public struct SnapshotInfo: Codable, Equatable {
 
     public init(description: String? = nil,
                 encrypted: Boolean? = nil,
+                outpostArn: String? = nil,
                 ownerId: String? = nil,
                 progress: String? = nil,
                 snapshotId: String? = nil,
@@ -31292,6 +31498,7 @@ public struct SnapshotInfo: Codable, Equatable {
                 volumeSize: Integer? = nil) {
         self.description = description
         self.encrypted = encrypted
+        self.outpostArn = outpostArn
         self.ownerId = ownerId
         self.progress = progress
         self.snapshotId = snapshotId
@@ -31305,6 +31512,7 @@ public struct SnapshotInfo: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case description
         case encrypted
+        case outpostArn
         case ownerId
         case progress
         case snapshotId
@@ -32411,11 +32619,11 @@ public struct SubnetCidrBlockState: Codable, Equatable {
 }
 
 public struct SubnetIpv6CidrBlockAssociation: Codable, Equatable {
-    public var associationId: String?
+    public var associationId: SubnetCidrAssociationId?
     public var ipv6CidrBlock: String?
     public var ipv6CidrBlockState: SubnetCidrBlockState?
 
-    public init(associationId: String? = nil,
+    public init(associationId: SubnetCidrAssociationId? = nil,
                 ipv6CidrBlock: String? = nil,
                 ipv6CidrBlockState: SubnetCidrBlockState? = nil) {
         self.associationId = associationId

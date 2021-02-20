@@ -191,6 +191,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let deregisterTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAccountAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let describeAddressesAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAggregateIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeAvailabilityZones: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let describeBundleTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -366,6 +367,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let importKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let importSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let importVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let modifyAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyAvailabilityZoneGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let modifyClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -436,6 +438,7 @@ public struct ElasticComputeCloudOperationsReporting {
     let reportInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let requestSpotFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let requestSpotInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    let resetAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let resetEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let resetFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     let resetImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -793,6 +796,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeAccountAttributes, configuration: reportingConfiguration)
         self.describeAddresses = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeAddresses, configuration: reportingConfiguration)
+        self.describeAddressesAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAddressesAttribute, configuration: reportingConfiguration)
         self.describeAggregateIdFormat = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeAggregateIdFormat, configuration: reportingConfiguration)
         self.describeAvailabilityZones = StandardSmokeAWSOperationReporting(
@@ -1143,6 +1148,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .importSnapshot, configuration: reportingConfiguration)
         self.importVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .importVolume, configuration: reportingConfiguration)
+        self.modifyAddressAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyAddressAttribute, configuration: reportingConfiguration)
         self.modifyAvailabilityZoneGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyAvailabilityZoneGroup, configuration: reportingConfiguration)
         self.modifyCapacityReservation = StandardSmokeAWSOperationReporting(
@@ -1283,6 +1290,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .requestSpotFleet, configuration: reportingConfiguration)
         self.requestSpotInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .requestSpotInstances, configuration: reportingConfiguration)
+        self.resetAddressAttribute = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .resetAddressAttribute, configuration: reportingConfiguration)
         self.resetEbsDefaultKmsKeyId = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .resetEbsDefaultKmsKeyId, configuration: reportingConfiguration)
         self.resetFpgaImageAttribute = StandardSmokeAWSOperationReporting(

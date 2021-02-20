@@ -840,6 +840,11 @@ public typealias DescribeAccountAttributesOperationHTTPRequestInput = QueryHTTPR
 public typealias DescribeAddressesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeAddressesAttribute operation in a HTTP client.
+ */
+public typealias DescribeAddressesAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeAggregateIdFormat operation in a HTTP client.
  */
 public typealias DescribeAggregateIdFormatOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1715,6 +1720,11 @@ public typealias ImportSnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias ImportVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyAddressAttribute operation in a HTTP client.
+ */
+public typealias ModifyAddressAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyAvailabilityZoneGroup operation in a HTTP client.
  */
 public typealias ModifyAvailabilityZoneGroupOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2063,6 +2073,11 @@ public typealias RequestSpotFleetOperationHTTPRequestInput = QueryHTTPRequestInp
  Type to handle the input to the RequestSpotInstances operation in a HTTP client.
  */
 public typealias RequestSpotInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ResetAddressAttribute operation in a HTTP client.
+ */
+public typealias ResetAddressAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ResetEbsDefaultKmsKeyId operation in a HTTP client.

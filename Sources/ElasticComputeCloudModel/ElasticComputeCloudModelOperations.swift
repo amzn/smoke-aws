@@ -189,6 +189,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deregisterTransitGatewayMulticastGroupSources = "DeregisterTransitGatewayMulticastGroupSources"
     case describeAccountAttributes = "DescribeAccountAttributes"
     case describeAddresses = "DescribeAddresses"
+    case describeAddressesAttribute = "DescribeAddressesAttribute"
     case describeAggregateIdFormat = "DescribeAggregateIdFormat"
     case describeAvailabilityZones = "DescribeAvailabilityZones"
     case describeBundleTasks = "DescribeBundleTasks"
@@ -364,6 +365,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case importKeyPair = "ImportKeyPair"
     case importSnapshot = "ImportSnapshot"
     case importVolume = "ImportVolume"
+    case modifyAddressAttribute = "ModifyAddressAttribute"
     case modifyAvailabilityZoneGroup = "ModifyAvailabilityZoneGroup"
     case modifyCapacityReservation = "ModifyCapacityReservation"
     case modifyClientVpnEndpoint = "ModifyClientVpnEndpoint"
@@ -434,6 +436,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case reportInstanceStatus = "ReportInstanceStatus"
     case requestSpotFleet = "RequestSpotFleet"
     case requestSpotInstances = "RequestSpotInstances"
+    case resetAddressAttribute = "ResetAddressAttribute"
     case resetEbsDefaultKmsKeyId = "ResetEbsDefaultKmsKeyId"
     case resetFpgaImageAttribute = "ResetFpgaImageAttribute"
     case resetImageAttribute = "ResetImageAttribute"
@@ -796,6 +799,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeAddresses:
             return "/"
+        case .describeAddressesAttribute:
+            return "/"
         case .describeAggregateIdFormat:
             return "/"
         case .describeAvailabilityZones:
@@ -1146,6 +1151,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .importVolume:
             return "/"
+        case .modifyAddressAttribute:
+            return "/"
         case .modifyAvailabilityZoneGroup:
             return "/"
         case .modifyCapacityReservation:
@@ -1285,6 +1292,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .requestSpotFleet:
             return "/"
         case .requestSpotInstances:
+            return "/"
+        case .resetAddressAttribute:
             return "/"
         case .resetEbsDefaultKmsKeyId:
             return "/"
