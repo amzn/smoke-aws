@@ -42,6 +42,10 @@ public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: HTT
         return smokeAWSInvocationReporting.eventLoop
     }
     
+    public var outwardsRequestAggregator: OutwardsRequestAggregator? {
+        return smokeAWSInvocationReporting.outwardsRequestAggregator
+    }
+    
     public var internalRequestId: String {
         return smokeAWSInvocationReporting.internalRequestId
     }

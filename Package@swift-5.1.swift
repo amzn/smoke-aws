@@ -106,6 +106,9 @@ let package = Package(
         .library(
             name: "SmokeAWSHttp",
             targets: ["SmokeAWSHttp"]),
+        .library(
+            name: "SmokeAWSMetrics",
+            targets: ["SmokeAWSMetrics"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.0.0"),
@@ -113,7 +116,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0"..<"3.0.0"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.4.1"),
-        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.4.0"),
+        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.7.0"),
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", from: "1.0.0"),
     ],
     targets: [
@@ -203,6 +206,9 @@ let package = Package(
             dependencies: ["Logging", "NIO", "NIOHTTP1",
                            "SmokeAWSCore", "SmokeHTTPClient", "QueryCoding",
                            "HTTPPathCoding", "HTTPHeadersCoding", "Cryptor"]),
+        .target(
+            name: "SmokeAWSMetrics",
+            dependencies: ["Logging", "Metrics", "CloudWatchClient"]),
         .testTarget(
             name: "S3ClientTests",
             dependencies: ["S3Client"]),
