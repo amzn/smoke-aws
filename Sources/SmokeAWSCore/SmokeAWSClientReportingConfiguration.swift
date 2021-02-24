@@ -52,6 +52,14 @@ public struct SmokeAWSClientReportingConfiguration<OperationIdentifer: Hashable>
         self.latencyTimerMatchingOperations = matchingOperations
     }
     
+    public static var none: Self {
+        return .init(matchingOperations: .none)
+    }
+    
+    public static var all: Self {
+        return .init(matchingOperations: .all)
+    }
+    
     public func reportSuccessForOperation(_ operation: OperationIdentifer) -> Bool {
         return isMatchingOperation(operation, matchingOperations: successCounterMatchingOperations)
     }
