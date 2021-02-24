@@ -15,6 +15,7 @@
 //  SmokeAWSMetrics
 //
 
+import Foundation
 import Metrics
 import CloudWatchClient
 import CloudWatchModel
@@ -22,49 +23,39 @@ import Logging
 /**
  Class conforming to `RecorderHandler` that emits a CloudWatch metric.
  */
-public class CloudWatchRecorderHandler: RecorderHandler {
-    private let cloudWatchClient: CloudWatchClientProtocol
+internal class CloudWatchRecorderHandler: RecorderHandler {
+    private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
     private let metricName: String
     private let namespace: String
-    private let dimensions: [Dimension]?
+    private let dimensions: [CloudWatchModel.Dimension]?
     private let logger: Logger
     
-    public init(cloudWatchClient: CloudWatchClientProtocol,
+    init(cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue,
                 metricName: String,
                 namespace: String,
-                dimensions: [Dimension]?,
+                dimensions: [CloudWatchModel.Dimension]?,
                 logger: Logger) {
-        self.cloudWatchClient = cloudWatchClient
+        self.cloudWatchPendingMetricsQueue = cloudWatchPendingMetricsQueue
         self.metricName = metricName
         self.namespace = namespace
         self.dimensions = dimensions
         self.logger = logger
     }
     
-    public func record(_ value: Int64) {
+    func record(_ value: Int64) {
         record(Double(value))
     }
     
-    public func record(_ value: Double) {
+    func record(_ value: Double) {
         let metricData = MetricDatum(dimensions: self.dimensions,
                                      metricName: self.metricName,
+                                     timestamp: Date().iso8601,
                                      value: value)
-        let input = PutMetricDataInput(metricData: [metricData],
-                                       namespace: self.namespace)
-        do {
-            try self.cloudWatchClient.putMetricDataAsync(input: input, completion: { error in
-                if let error = error {
-                    self.logger.error("Unable to submit metric \(self.metricName) to CloudWatch: \(String(describing: error))")
-                }
-            })
-        } catch {
-            self.logger.error("Unable to submit metric \(self.metricName) to CloudWatch: \(String(describing: error))")
-        }
+        
+        self.cloudWatchPendingMetricsQueue.submit(namespace: self.namespace, data: metricData)
     }
     
-    public func reset() {
+    func reset() {
         self.logger.warning("Attempting to reset metric \(self.metricName) which is not supported.")
     }
-    
-    
 }
