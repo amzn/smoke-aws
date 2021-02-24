@@ -25,7 +25,9 @@ import Logging
  */
 public class CloudWatchMetricsFactory: MetricsFactory {
     private let cloudWatchClient: CloudWatchClientProtocol
+    private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
     private let logger: Logger
+    
     private let namespaceDimension = "Namespace"
     private let operationNameDimension = "Operation Name"
     private let metricNameDimension = "Metric Name"
@@ -42,6 +44,20 @@ public class CloudWatchMetricsFactory: MetricsFactory {
         } else {
             self.logger = Self.logger
         }
+        
+        self.cloudWatchPendingMetricsQueue = CloudWatchPendingMetricsQueue(cloudWatchClient: self.cloudWatchClient, logger: self.logger)
+    }
+    
+    public func start() throws {
+        try self.cloudWatchPendingMetricsQueue.start()
+    }
+    
+    public func shutdown() throws {
+        try self.cloudWatchPendingMetricsQueue.shutdown()
+    }
+    
+    public func waitUntilShutdown() throws {
+        try self.cloudWatchPendingMetricsQueue.waitUntilShutdown()
     }
     
     public static var logger: Logger {
@@ -54,21 +70,21 @@ public class CloudWatchMetricsFactory: MetricsFactory {
     public func makeCounter(label: String, dimensions: [(String, String)]) -> CounterHandler {
         let (metricName, namespace, cloudWatchDimensions) = getAttributes(dimensions: dimensions)
         
-        return CloudWatchCounterHandler(cloudWatchClient: self.cloudWatchClient, metricName: metricName,
+        return CloudWatchCounterHandler(cloudWatchPendingMetricsQueue: self.cloudWatchPendingMetricsQueue, metricName: metricName,
                                         namespace: namespace, dimensions: cloudWatchDimensions, logger: self.logger)
     }
     
     public func makeRecorder(label: String, dimensions: [(String, String)], aggregate: Bool) -> RecorderHandler {
         let (metricName, namespace, cloudWatchDimensions) = getAttributes(dimensions: dimensions)
         
-        return CloudWatchRecorderHandler(cloudWatchClient: self.cloudWatchClient, metricName: metricName,
+        return CloudWatchRecorderHandler(cloudWatchPendingMetricsQueue: self.cloudWatchPendingMetricsQueue, metricName: metricName,
                                          namespace: namespace, dimensions: cloudWatchDimensions, logger: self.logger)
     }
     
     public func makeTimer(label: String, dimensions: [(String, String)]) -> TimerHandler {
         let (metricName, namespace, cloudWatchDimensions) = getAttributes(dimensions: dimensions)
         
-        return CloudWatchTimerHandler(cloudWatchClient: self.cloudWatchClient, metricName: metricName,
+        return CloudWatchTimerHandler(cloudWatchPendingMetricsQueue: self.cloudWatchPendingMetricsQueue, metricName: metricName,
                                       namespace: namespace, dimensions: cloudWatchDimensions, logger: self.logger)
     }
     
