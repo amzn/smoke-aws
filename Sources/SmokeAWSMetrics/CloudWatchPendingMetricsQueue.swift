@@ -52,6 +52,8 @@ internal class CloudWatchPendingMetricsQueue {
     
     private let accessQueue = DispatchQueue(label: "com.amazon.SmokeAWSMetrics.CloudWatchPendingMetricsQueue.accessQueue")
     private let queueConsumingTaskIntervalInSeconds = 2
+    // CloudWatch has a limit of 20 Dataums per request
+    // https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html
     private let maximumDataumsPerRequest = 20
     
     enum State {
