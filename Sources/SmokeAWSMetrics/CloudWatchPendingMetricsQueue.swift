@@ -52,7 +52,7 @@ internal class CloudWatchPendingMetricsQueue {
     
     private let accessQueue = DispatchQueue(label: "com.amazon.SmokeAWSMetrics.CloudWatchPendingMetricsQueue.accessQueue")
     private let queueConsumingTaskIntervalInSeconds = 2
-    private let maximumDataumsPerRequest = 100
+    private let maximumDataumsPerRequest = 20
     
     enum State {
         case initialized
