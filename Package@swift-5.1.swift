@@ -35,11 +35,29 @@ let package = Package(
             name: "CloudformationModel",
             targets: ["CloudformationModel"]),
         .library(
+            name: "CodeBuildClient",
+            targets: ["CodeBuildClient"]),
+        .library(
+            name: "CodeBuildModel",
+            targets: ["CodeBuildModel"]),
+        .library(
+            name: "CodePipelineClient",
+            targets: ["CodePipelineClient"]),
+        .library(
+            name: "CodePipelineModel",
+            targets: ["CodePipelineModel"]),
+        .library(
             name: "DynamoDBClient",
             targets: ["DynamoDBClient"]),
         .library(
             name: "DynamoDBModel",
             targets: ["DynamoDBModel"]),
+        .library(
+            name: "ECRClient",
+            targets: ["ECRClient"]),
+        .library(
+            name: "ECRModel",
+            targets: ["ECRModel"]),
         .library(
             name: "ElasticComputeCloudClient",
             targets: ["ElasticComputeCloudClient"]),
@@ -133,10 +151,28 @@ let package = Package(
             name: "CloudformationModel",
             dependencies: ["Logging"]),
         .target(
+            name: "CodeBuildClient",
+            dependencies: ["CodeBuildModel", "SmokeAWSHttp"]),
+        .target(
+            name: "CodeBuildModel",
+            dependencies: ["Logging"]),
+        .target(
+            name: "CodePipelineClient",
+            dependencies: ["CodePipelineModel", "SmokeAWSHttp"]),
+        .target(
+            name: "CodePipelineModel",
+            dependencies: ["Logging"]),
+        .target(
             name: "DynamoDBClient",
             dependencies: ["DynamoDBModel", "SmokeAWSHttp"]),
         .target(
             name: "DynamoDBModel",
+            dependencies: ["Logging"]),
+        .target(
+            name: "ECRClient",
+            dependencies: ["ECRModel", "SmokeAWSHttp"]),
+        .target(
+            name: "ECRModel",
             dependencies: ["Logging"]),
         .target(
             name: "ElasticComputeCloudClient",

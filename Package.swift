@@ -35,11 +35,29 @@ let package = Package(
             name: "CloudformationModel",
             targets: ["CloudformationModel"]),
         .library(
+            name: "CodeBuildClient",
+            targets: ["CodeBuildClient"]),
+        .library(
+            name: "CodeBuildModel",
+            targets: ["CodeBuildModel"]),
+        .library(
+            name: "CodePipelineClient",
+            targets: ["CodePipelineClient"]),
+        .library(
+            name: "CodePipelineModel",
+            targets: ["CodePipelineModel"]),
+        .library(
             name: "DynamoDBClient",
             targets: ["DynamoDBClient"]),
         .library(
             name: "DynamoDBModel",
             targets: ["DynamoDBModel"]),
+        .library(
+            name: "ECRClient",
+            targets: ["ECRClient"]),
+        .library(
+            name: "ECRModel",
+            targets: ["ECRModel"]),
         .library(
             name: "ElasticComputeCloudClient",
             targets: ["ElasticComputeCloudClient"]),
@@ -139,12 +157,39 @@ let package = Package(
                 .product(name: "Logging", package: "swift-log"),
             ]),
         .target(
+            name: "CodeBuildClient", dependencies: [
+                .target(name: "CodeBuildModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "CodeBuildModel", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
+        .target(
+            name: "CodePipelineClient", dependencies: [
+                .target(name: "CodePipelineModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "CodePipelineModel", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
+        .target(
             name: "DynamoDBClient", dependencies: [
                 .target(name: "DynamoDBModel"),
                 .target(name: "SmokeAWSHttp"),
             ]),
         .target(
             name: "DynamoDBModel", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
+        .target(
+            name: "ECRClient", dependencies: [
+                .target(name: "ECRModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "ECRModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
             ]),
         .target(
