@@ -65,7 +65,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
                 endpointHostName: String,
                 endpointPort: Int = 443,
                 requiresTLS: Bool? = nil,
-                service: String = "api.ecr",
+                service: String = "ecr",
                 contentType: String = "application/x-amz-json-1.1",
                 target: String? = "AmazonEC2ContainerRegistry_V20150921",
                 connectionTimeoutSeconds: Int64 = 10,
