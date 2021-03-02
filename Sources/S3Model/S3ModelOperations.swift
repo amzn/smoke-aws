@@ -4397,13 +4397,17 @@ public extension GetObjectTaggingRequest {
  */
 public struct GetObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var requestPayer: RequestPayer?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case requestPayer = "x-amz-request-payer"
     }
 
     public func validate() throws {
@@ -4413,7 +4417,8 @@ public struct GetObjectTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension GetObjectTaggingRequest {
     func asS3ModelGetObjectTaggingOperationInputAdditionalHeaders() -> GetObjectTaggingOperationInputAdditionalHeaders {
         return GetObjectTaggingOperationInputAdditionalHeaders(
-            expectedBucketOwner: expectedBucketOwner)
+            expectedBucketOwner: expectedBucketOwner,
+            requestPayer: requestPayer)
     }
 }
 
@@ -7593,16 +7598,20 @@ public extension PutObjectTaggingRequest {
 public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
+    public var requestPayer: RequestPayer?
 
     public init(contentMD5: ContentMD5? = nil,
-                expectedBucketOwner: AccountId? = nil) {
+                expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
+        self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case requestPayer = "x-amz-request-payer"
     }
 
     public func validate() throws {
@@ -7613,7 +7622,8 @@ public extension PutObjectTaggingRequest {
     func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
         return PutObjectTaggingOperationInputAdditionalHeaders(
             contentMD5: contentMD5,
-            expectedBucketOwner: expectedBucketOwner)
+            expectedBucketOwner: expectedBucketOwner,
+            requestPayer: requestPayer)
     }
 }
 
