@@ -3070,15 +3070,18 @@ public struct GetObjectTaggingRequest: Codable, Equatable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
+    public var requestPayer: RequestPayer?
     public var versionId: ObjectVersionId?
 
     public init(bucket: BucketName,
                 expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
+                requestPayer: RequestPayer? = nil,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
         self.expectedBucketOwner = expectedBucketOwner
         self.key = key
+        self.requestPayer = requestPayer
         self.versionId = versionId
     }
 
@@ -3086,6 +3089,7 @@ public struct GetObjectTaggingRequest: Codable, Equatable {
         case bucket = "Bucket"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
+        case requestPayer = "x-amz-request-payer"
         case versionId
     }
 
@@ -6401,6 +6405,7 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
+    public var requestPayer: RequestPayer?
     public var tagging: Tagging
     public var versionId: ObjectVersionId?
 
@@ -6408,12 +6413,14 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
                 contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 key: ObjectKey,
+                requestPayer: RequestPayer? = nil,
                 tagging: Tagging,
                 versionId: ObjectVersionId? = nil) {
         self.bucket = bucket
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.key = key
+        self.requestPayer = requestPayer
         self.tagging = tagging
         self.versionId = versionId
     }
@@ -6423,6 +6430,7 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case key = "Key"
+        case requestPayer = "x-amz-request-payer"
         case tagging = "Tagging"
         case versionId
     }

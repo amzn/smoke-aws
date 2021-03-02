@@ -1788,6 +1788,7 @@ public extension GetObjectTaggingRequest {
             bucket: "value",
             expectedBucketOwner: nil,
             key: "0",
+            requestPayer: nil,
             versionId: nil)
 
         return defaultInstance
@@ -3570,6 +3571,7 @@ public extension PutObjectTaggingRequest {
             contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
+            requestPayer: nil,
             tagging: Tagging.__default,
             versionId: nil)
 

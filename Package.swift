@@ -41,6 +41,12 @@ let package = Package(
             name: "DynamoDBModel",
             targets: ["DynamoDBModel"]),
         .library(
+            name: "ECRClient",
+            targets: ["ECRClient"]),
+        .library(
+            name: "ECRModel",
+            targets: ["ECRModel"]),
+        .library(
             name: "ElasticComputeCloudClient",
             targets: ["ElasticComputeCloudClient"]),
         .library(
@@ -145,6 +151,15 @@ let package = Package(
             ]),
         .target(
             name: "DynamoDBModel", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
+        .target(
+            name: "ECRClient", dependencies: [
+                .target(name: "ECRModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "ECRModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
             ]),
         .target(
