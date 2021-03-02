@@ -65,7 +65,7 @@ public typealias BatchedOperationLayerDigestList = [BatchedOperationLayerDigest]
 /**
  Type definition for the CreationTimestamp field.
  */
-public typealias CreationTimestamp = String
+public typealias CreationTimestamp = Int64
 
 /**
  Enumeration restricting the values of the EncryptionType field.
@@ -84,7 +84,7 @@ public enum EncryptionType: String, Codable, CustomStringConvertible {
 /**
  Type definition for the EvaluationTimestamp field.
  */
-public typealias EvaluationTimestamp = String
+public typealias EvaluationTimestamp = Int64
 
 /**
  Type definition for the ExceptionMessage field.
@@ -94,7 +94,7 @@ public typealias ExceptionMessage = String
 /**
  Type definition for the ExpirationTimestamp field.
  */
-public typealias ExpirationTimestamp = String
+public typealias ExpirationTimestamp = Int64
 
 /**
  Type definition for the FindingDescription field.
@@ -387,7 +387,7 @@ public typealias ProxyEndpoint = String
 /**
  Type definition for the PushTimestamp field.
  */
-public typealias PushTimestamp = String
+public typealias PushTimestamp = Int64
 
 /**
  Type definition for the Region field.
@@ -462,7 +462,7 @@ public typealias ScanStatusDescription = String
 /**
  Type definition for the ScanTimestamp field.
  */
-public typealias ScanTimestamp = String
+public typealias ScanTimestamp = Int64
 
 /**
  Type definition for the SeverityCount field.
@@ -517,7 +517,7 @@ public typealias Url = String
 /**
  Type definition for the VulnerabilitySourceUpdateTimestamp field.
  */
-public typealias VulnerabilitySourceUpdateTimestamp = String
+public typealias VulnerabilitySourceUpdateTimestamp = Int64
 
 /**
  Validation for the AttributeKey field.
