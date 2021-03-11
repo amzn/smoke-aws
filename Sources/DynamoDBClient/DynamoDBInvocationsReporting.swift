@@ -26,59 +26,59 @@ import SmokeAWSHttp
 import DynamoDBModel
 
 /**
- Operation reporting for the DynamoDBModel.
+ Invocations reporting for the DynamoDBModel.
  */
 public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let batchGetItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let batchWriteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeContinuousBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeExport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeGlobalTableSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTableReplicaAutoScaling: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTimeToLive: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let disableKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let enableKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let executeStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let executeTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let exportTableToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listGlobalTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsOfResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let query: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreTableFromBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreTableToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let scan: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let transactGetItems: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let transactWriteItems: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateContinuousBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateGlobalTableSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateTableReplicaAutoScaling: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateTimeToLive: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchGetItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchWriteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeContinuousBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeExport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeGlobalTableSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTableReplicaAutoScaling: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTimeToLive: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let executeStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let executeTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let exportTableToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listGlobalTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsOfResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let query: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreTableFromBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreTableToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let scan: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let transactGetItems: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let transactWriteItems: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateContinuousBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateGlobalTableSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateTableReplicaAutoScaling: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateTimeToLive: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: DynamoDBOperationsReporting) {
         self.batchExecuteStatement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

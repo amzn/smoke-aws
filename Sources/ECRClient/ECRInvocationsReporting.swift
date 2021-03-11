@@ -26,43 +26,43 @@ import SmokeAWSHttp
 import ECRModel
 
 /**
- Operation reporting for the ECRModel.
+ Invocations reporting for the ECRModel.
  */
 public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let batchCheckLayerAvailability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let batchDeleteImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let batchGetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let completeLayerUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeImageScanFindings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeRegistry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeRepositories: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getAuthorizationToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getDownloadUrlForLayer: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getLifecyclePolicyPreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let initiateLayerUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putImageScanningConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putImageTagMutability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putReplicationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startImageScan: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startLifecyclePolicyPreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let uploadLayerPart: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchCheckLayerAvailability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchDeleteImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchGetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let completeLayerUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeImageScanFindings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeRegistry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeRepositories: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getAuthorizationToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getDownloadUrlForLayer: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getLifecyclePolicyPreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let initiateLayerUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putImageScanningConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putImageTagMutability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putReplicationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startImageScan: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startLifecyclePolicyPreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let uploadLayerPart: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: ECROperationsReporting) {
         self.batchCheckLayerAvailability = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

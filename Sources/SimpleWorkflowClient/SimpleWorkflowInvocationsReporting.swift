@@ -26,46 +26,46 @@ import SmokeAWSHttp
 import SimpleWorkflowModel
 
 /**
- Operation reporting for the SimpleWorkflowModel.
+ Invocations reporting for the SimpleWorkflowModel.
  */
 public struct SimpleWorkflowInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let countClosedWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let countOpenWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let countPendingActivityTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let countPendingDecisionTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deprecateActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deprecateDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deprecateWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getWorkflowExecutionHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listActivityTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listClosedWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listDomains: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listOpenWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listWorkflowTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let pollForActivityTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let pollForDecisionTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let recordActivityTaskHeartbeat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let requestCancelWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let respondActivityTaskCanceled: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let respondActivityTaskCompleted: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let respondActivityTaskFailed: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let respondDecisionTaskCompleted: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let signalWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let terminateWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let undeprecateActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let undeprecateDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let undeprecateWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let countClosedWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let countOpenWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let countPendingActivityTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let countPendingDecisionTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deprecateActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deprecateDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deprecateWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getWorkflowExecutionHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listActivityTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listClosedWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listDomains: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listOpenWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listWorkflowTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let pollForActivityTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let pollForDecisionTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let recordActivityTaskHeartbeat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let requestCancelWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let respondActivityTaskCanceled: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let respondActivityTaskCompleted: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let respondActivityTaskFailed: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let respondDecisionTaskCompleted: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let signalWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let terminateWorkflowExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let undeprecateActivityType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let undeprecateDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let undeprecateWorkflowType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: SimpleWorkflowOperationsReporting) {
         self.countClosedWorkflowExecutions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

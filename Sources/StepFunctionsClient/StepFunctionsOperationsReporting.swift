@@ -28,29 +28,29 @@ import StepFunctionsModel
  Operation reporting for the StepFunctionsModel.
  */
 public struct StepFunctionsOperationsReporting {
-    let createActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let createStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let deleteActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let deleteStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let describeStateMachineForExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let getActivityTask: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let getExecutionHistory: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listActivities: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listExecutions: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listStateMachines: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let sendTaskFailure: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let sendTaskHeartbeat: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let sendTaskSuccess: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let startExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let startSyncExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let stopExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
-    let updateStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let createActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let createStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let deleteActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let deleteStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let describeActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let describeExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let describeStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let describeStateMachineForExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let getActivityTask: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let getExecutionHistory: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let listActivities: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let listExecutions: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let listStateMachines: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let sendTaskFailure: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let sendTaskHeartbeat: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let sendTaskSuccess: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let startExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let startSyncExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let stopExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let updateStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>) {
         self.createActivity = StandardSmokeAWSOperationReporting(

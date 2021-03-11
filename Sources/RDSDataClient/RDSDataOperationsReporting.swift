@@ -28,12 +28,12 @@ import RDSDataModel
  Operation reporting for the RDSDataModel.
  */
 public struct RDSDataOperationsReporting {
-    let batchExecuteStatement: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
-    let beginTransaction: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
-    let commitTransaction: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
-    let executeSql: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
-    let executeStatement: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
-    let rollbackTransaction: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
+    public let batchExecuteStatement: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
+    public let beginTransaction: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
+    public let commitTransaction: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
+    public let executeSql: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
+    public let executeStatement: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
+    public let rollbackTransaction: StandardSmokeAWSOperationReporting<RDSDataModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSDataModelOperations>) {
         self.batchExecuteStatement = StandardSmokeAWSOperationReporting(

@@ -28,101 +28,101 @@ import S3Model
  Operation reporting for the S3Model.
  */
 public struct S3OperationsReporting {
-    let abortMultipartUpload: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let completeMultipartUpload: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let copyObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let createBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let createMultipartUpload: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteObjectTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deleteObjects: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let deletePublicAccessBlock: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketAccelerateConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketLifecycleConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketLocation: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketLogging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketNotification: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketNotificationConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketPolicyStatus: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketRequestPayment: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketVersioning: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObjectAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObjectLegalHold: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObjectLockConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObjectRetention: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObjectTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getObjectTorrent: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let getPublicAccessBlock: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let headBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let headObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listBucketAnalyticsConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listBucketIntelligentTieringConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listBucketInventoryConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listBucketMetricsConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listBuckets: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listMultipartUploads: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listObjectVersions: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listObjects: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listObjectsV2: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let listParts: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketAccelerateConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketLifecycleConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketLogging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketNotification: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketNotificationConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketRequestPayment: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketVersioning: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putObjectAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putObjectLegalHold: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putObjectLockConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putObjectRetention: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putObjectTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let putPublicAccessBlock: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let restoreObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let selectObjectContent: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let uploadPart: StandardSmokeAWSOperationReporting<S3ModelOperations>
-    let uploadPartCopy: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let abortMultipartUpload: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let completeMultipartUpload: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let copyObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let createBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let createMultipartUpload: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteObjectTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deleteObjects: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let deletePublicAccessBlock: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketAccelerateConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketLifecycleConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketLocation: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketLogging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketNotification: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketNotificationConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketPolicyStatus: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketRequestPayment: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketVersioning: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectLegalHold: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectLockConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectRetention: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectTorrent: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getPublicAccessBlock: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let headBucket: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let headObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listBucketAnalyticsConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listBucketIntelligentTieringConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listBucketInventoryConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listBucketMetricsConfigurations: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listBuckets: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listMultipartUploads: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listObjectVersions: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listObjects: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listObjectsV2: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let listParts: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketAccelerateConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketAnalyticsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketCors: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketEncryption: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketIntelligentTieringConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketInventoryConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketLifecycle: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketLifecycleConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketLogging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketMetricsConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketNotification: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketNotificationConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketOwnershipControls: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketPolicy: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketReplication: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketRequestPayment: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketVersioning: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putObjectAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putObjectLegalHold: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putObjectLockConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putObjectRetention: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putObjectTagging: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let putPublicAccessBlock: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let restoreObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let selectObjectContent: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let uploadPart: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let uploadPartCopy: StandardSmokeAWSOperationReporting<S3ModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>) {
         self.abortMultipartUpload = StandardSmokeAWSOperationReporting(

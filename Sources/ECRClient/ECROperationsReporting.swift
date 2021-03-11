@@ -28,40 +28,40 @@ import ECRModel
  Operation reporting for the ECRModel.
  */
 public struct ECROperationsReporting {
-    let batchCheckLayerAvailability: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let batchDeleteImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let batchGetImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let completeLayerUpload: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let createRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let deleteLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let deleteRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let deleteRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let deleteRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let describeImageScanFindings: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let describeImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let describeRegistry: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let describeRepositories: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let getAuthorizationToken: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let getDownloadUrlForLayer: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let getLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let getLifecyclePolicyPreview: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let getRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let getRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let initiateLayerUpload: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let listImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let putImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let putImageScanningConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let putImageTagMutability: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let putLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let putRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let putReplicationConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let setRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let startImageScan: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let startLifecyclePolicyPreview: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<ECRModelOperations>
-    let uploadLayerPart: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let batchCheckLayerAvailability: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let batchDeleteImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let batchGetImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let completeLayerUpload: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let createRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let deleteLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let deleteRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let deleteRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let deleteRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let describeImageScanFindings: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let describeImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let describeRegistry: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let describeRepositories: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getAuthorizationToken: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getDownloadUrlForLayer: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getLifecyclePolicyPreview: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let initiateLayerUpload: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let listImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putImageScanningConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putImageTagMutability: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putReplicationConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let setRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let startImageScan: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let startLifecyclePolicyPreview: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let uploadLayerPart: StandardSmokeAWSOperationReporting<ECRModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ECRModelOperations>) {
         self.batchCheckLayerAvailability = StandardSmokeAWSOperationReporting(

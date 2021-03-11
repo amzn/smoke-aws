@@ -28,56 +28,56 @@ import ElasticContainerModel
  Operation reporting for the ElasticContainerModel.
  */
 public struct ElasticContainerOperationsReporting {
-    let createCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let createCluster: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let createService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let createTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteAccountSetting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteCluster: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deleteTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deregisterContainerInstance: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let deregisterTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeCapacityProviders: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeClusters: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeContainerInstances: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeServices: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeTaskSets: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let describeTasks: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let discoverPollEndpoint: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listAccountSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listClusters: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listContainerInstances: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listServices: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTaskDefinitionFamilies: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTaskDefinitions: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let listTasks: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putAccountSetting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putAccountSettingDefault: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let putClusterCapacityProviders: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let registerContainerInstance: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let registerTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let runTask: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let startTask: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let stopTask: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let submitAttachmentStateChanges: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let submitContainerStateChange: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let submitTaskStateChange: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateClusterSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateContainerAgent: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateContainerInstancesState: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateServicePrimaryTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
-    let updateTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let createCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let createCluster: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let createService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let createTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteAccountSetting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteCluster: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deregisterContainerInstance: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deregisterTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeCapacityProviders: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeClusters: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeContainerInstances: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeServices: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeTaskSets: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let describeTasks: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let discoverPollEndpoint: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listAccountSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listClusters: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listContainerInstances: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listServices: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listTaskDefinitionFamilies: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listTaskDefinitions: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listTasks: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let putAccountSetting: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let putAccountSettingDefault: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let putAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let putClusterCapacityProviders: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let registerContainerInstance: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let registerTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let runTask: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let startTask: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let stopTask: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let submitAttachmentStateChanges: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let submitContainerStateChange: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let submitTaskStateChange: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateClusterSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateContainerAgent: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateContainerInstancesState: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateServicePrimaryTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticContainerModelOperations>) {
         self.createCapacityProvider = StandardSmokeAWSOperationReporting(

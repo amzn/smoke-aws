@@ -28,14 +28,14 @@ import SecurityTokenModel
  Operation reporting for the SecurityTokenModel.
  */
 public struct SecurityTokenOperationsReporting {
-    let assumeRole: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let assumeRoleWithSAML: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let assumeRoleWithWebIdentity: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let decodeAuthorizationMessage: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let getAccessKeyInfo: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let getCallerIdentity: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let getFederationToken: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
-    let getSessionToken: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let assumeRole: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let assumeRoleWithSAML: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let assumeRoleWithWebIdentity: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let decodeAuthorizationMessage: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let getAccessKeyInfo: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let getCallerIdentity: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let getFederationToken: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
+    public let getSessionToken: StandardSmokeAWSOperationReporting<SecurityTokenModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<SecurityTokenModelOperations>) {
         self.assumeRole = StandardSmokeAWSOperationReporting(

@@ -26,39 +26,39 @@ import SmokeAWSHttp
 import CloudWatchModel
 
 /**
- Operation reporting for the CloudWatchModel.
+ Invocations reporting for the CloudWatchModel.
  */
 public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let deleteAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeAlarmHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeAlarmsForMetric: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeAnomalyDetectors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let disableAlarmActions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let disableInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let enableAlarmActions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let enableInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getDashboard: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getInsightRuleReport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getMetricStatistics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getMetricWidgetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listMetrics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putCompositeAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putDashboard: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putInsightRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putMetricAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setAlarmState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeAlarmHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeAlarmsForMetric: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeAnomalyDetectors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableAlarmActions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableAlarmActions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getDashboard: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getInsightRuleReport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getMetricStatistics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getMetricWidgetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listMetrics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putCompositeAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putDashboard: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putInsightRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putMetricAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setAlarmState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: CloudWatchOperationsReporting) {
         self.deleteAlarms = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

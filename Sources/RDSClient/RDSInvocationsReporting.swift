@@ -26,146 +26,146 @@ import SmokeAWSHttp
 import RDSModel
 
 /**
- Operation reporting for the RDSModel.
+ Invocations reporting for the RDSModel.
  */
 public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let addRoleToDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let addRoleToDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let addSourceIdentifierToSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let addTagsToResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let applyPendingMaintenanceAction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let authorizeDBSecurityGroupIngress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let backtrackDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let cancelExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let copyDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let copyDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let copyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let copyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let copyOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createCustomAvailabilityZone: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBInstanceReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBSecurityGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteCustomAvailabilityZone: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBInstanceAutomatedBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBSecurityGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deregisterDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeCustomAvailabilityZones: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusterBacktracks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusterEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusterParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusterParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusterSnapshotAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusterSnapshots: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBEngineVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBInstanceAutomatedBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBLogFiles: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBProxies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBProxyEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBProxyTargetGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBSecurityGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBSnapshotAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBSnapshots: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeDBSubnetGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeEngineDefaultClusterParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeEngineDefaultParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeEventCategories: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeEventSubscriptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeExportTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeGlobalClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeOptionGroupOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeOptionGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeOrderableDBInstanceOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describePendingMaintenanceActions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeReservedDBInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeReservedDBInstancesOfferings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeSourceRegions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeValidDBInstanceModifications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let downloadDBLogFilePortion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let failoverDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let failoverGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let importInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyCurrentDBClusterCapacity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBClusterSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBProxyTargetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let modifyOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let promoteReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let promoteReadReplicaDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let purchaseReservedDBInstancesOffering: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let rebootDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removeFromGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removeRoleFromDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removeRoleFromDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removeSourceIdentifierFromSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removeTagsFromResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let resetDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let resetDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreDBClusterFromS3: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreDBClusterFromSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreDBClusterToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreDBInstanceFromDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreDBInstanceFromS3: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreDBInstanceToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let revokeDBSecurityGroupIngress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let addRoleToDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let addRoleToDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let addSourceIdentifierToSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let addTagsToResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let applyPendingMaintenanceAction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let authorizeDBSecurityGroupIngress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let backtrackDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let cancelExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let copyDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let copyDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let copyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let copyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let copyOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createCustomAvailabilityZone: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBInstanceReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBSecurityGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteCustomAvailabilityZone: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBInstanceAutomatedBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBSecurityGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deregisterDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeCustomAvailabilityZones: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterBacktracks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterSnapshotAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterSnapshots: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBEngineVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBInstanceAutomatedBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBLogFiles: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBProxies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBProxyEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBProxyTargetGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBSecurityGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBSnapshotAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBSnapshots: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBSubnetGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeEngineDefaultClusterParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeEngineDefaultParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeEventCategories: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeEventSubscriptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeExportTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeGlobalClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeOptionGroupOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeOptionGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeOrderableDBInstanceOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describePendingMaintenanceActions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeReservedDBInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeReservedDBInstancesOfferings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeSourceRegions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeValidDBInstanceModifications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let downloadDBLogFilePortion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let failoverDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let failoverGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let importInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyCurrentDBClusterCapacity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBClusterSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBProxyTargetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let promoteReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let promoteReadReplicaDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let purchaseReservedDBInstancesOffering: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let rebootDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removeFromGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removeRoleFromDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removeRoleFromDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removeSourceIdentifierFromSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removeTagsFromResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let resetDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let resetDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreDBClusterFromS3: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreDBClusterFromSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreDBClusterToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreDBInstanceFromDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreDBInstanceFromS3: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreDBInstanceToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let revokeDBSecurityGroupIngress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: RDSOperationsReporting) {
         self.addRoleToDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

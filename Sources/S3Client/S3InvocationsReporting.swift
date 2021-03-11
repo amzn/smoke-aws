@@ -26,104 +26,104 @@ import SmokeAWSHttp
 import S3Model
 
 /**
- Operation reporting for the S3Model.
+ Invocations reporting for the S3Model.
  */
 public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let abortMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let completeMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let copyObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteObjectTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteObjects: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deletePublicAccessBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketAccelerateConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketLifecycleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketLocation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketLogging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketNotificationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketPolicyStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketRequestPayment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketVersioning: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObjectAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObjectLegalHold: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObjectLockConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObjectRetention: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObjectTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getObjectTorrent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getPublicAccessBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let headBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let headObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listBucketAnalyticsConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listBucketIntelligentTieringConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listBucketInventoryConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listBucketMetricsConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listBuckets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listMultipartUploads: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listObjectVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listObjects: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listObjectsV2: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listParts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketAccelerateConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketLifecycleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketLogging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketNotificationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketRequestPayment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketVersioning: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putObjectAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putObjectLegalHold: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putObjectLockConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putObjectRetention: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putObjectTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putPublicAccessBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let restoreObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let selectObjectContent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let uploadPart: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let uploadPartCopy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let abortMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let completeMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let copyObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteObjectTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteObjects: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deletePublicAccessBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketAccelerateConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketLifecycleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketLocation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketLogging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketNotificationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketPolicyStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketRequestPayment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketVersioning: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectLegalHold: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectLockConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectRetention: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectTorrent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getPublicAccessBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let headBucket: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let headObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listBucketAnalyticsConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listBucketIntelligentTieringConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listBucketInventoryConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listBucketMetricsConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listBuckets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listMultipartUploads: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listObjectVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listObjects: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listObjectsV2: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listParts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketAccelerateConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketAnalyticsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketCors: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketEncryption: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketIntelligentTieringConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketInventoryConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketLifecycle: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketLifecycleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketLogging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketMetricsConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketNotificationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketOwnershipControls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketRequestPayment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketVersioning: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putObjectAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putObjectLegalHold: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putObjectLockConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putObjectRetention: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putObjectTagging: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putPublicAccessBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let selectObjectContent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let uploadPart: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let uploadPartCopy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: S3OperationsReporting) {
         self.abortMultipartUpload = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

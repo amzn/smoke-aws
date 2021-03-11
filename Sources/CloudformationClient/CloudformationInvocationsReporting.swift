@@ -26,64 +26,64 @@ import SmokeAWSHttp
 import CloudformationModel
 
 /**
- Operation reporting for the CloudformationModel.
+ Invocations reporting for the CloudformationModel.
  */
 public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let cancelUpdateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let continueUpdateRollback: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deregisterType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeAccountLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackDriftDetectionStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackResourceDrifts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackResources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStackSetOperation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStacks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTypeRegistration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let detectStackDrift: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let detectStackResourceDrift: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let detectStackSetDrift: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let estimateTemplateCost: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let executeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getTemplateSummary: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listChangeSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listImports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStackResources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStackSetOperationResults: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStackSetOperations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStackSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStacks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTypeRegistrations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTypeVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let recordHandlerProgress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setTypeDefaultVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let signalResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopStackSetOperation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateTerminationProtection: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let validateTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let cancelUpdateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let continueUpdateRollback: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deregisterType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeAccountLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackDriftDetectionStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackResourceDrifts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackResources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStackSetOperation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStacks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTypeRegistration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let detectStackDrift: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let detectStackResourceDrift: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let detectStackSetDrift: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let estimateTemplateCost: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let executeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getTemplateSummary: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listChangeSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listImports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStackResources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStackSetOperationResults: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStackSetOperations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStackSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStacks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTypeRegistrations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTypeVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let recordHandlerProgress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setTypeDefaultVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let signalResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopStackSetOperation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateTerminationProtection: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let validateTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: CloudformationOperationsReporting) {
         self.cancelUpdateStack = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
