@@ -41,7 +41,7 @@ public enum DynamoDBClientError: Swift.Error {
         return error.asUnrecognizedDynamoDBError()
     }
 
-    func isRetriable() -> Bool? {
+    public func isRetriable() -> Bool? {
         switch self {
         case .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded:
             return true
