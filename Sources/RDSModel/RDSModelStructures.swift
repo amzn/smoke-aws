@@ -1813,6 +1813,75 @@ public struct CreateDBParameterGroupResultForCreateDBParameterGroup: Codable, Eq
     }
 }
 
+public struct CreateDBProxyEndpointRequest: Codable, Equatable {
+    public var dBProxyEndpointName: DBProxyEndpointName
+    public var dBProxyName: DBProxyName
+    public var tags: TagList?
+    public var targetRole: DBProxyEndpointTargetRole?
+    public var vpcSecurityGroupIds: StringList?
+    public var vpcSubnetIds: StringList
+
+    public init(dBProxyEndpointName: DBProxyEndpointName,
+                dBProxyName: DBProxyName,
+                tags: TagList? = nil,
+                targetRole: DBProxyEndpointTargetRole? = nil,
+                vpcSecurityGroupIds: StringList? = nil,
+                vpcSubnetIds: StringList) {
+        self.dBProxyEndpointName = dBProxyEndpointName
+        self.dBProxyName = dBProxyName
+        self.tags = tags
+        self.targetRole = targetRole
+        self.vpcSecurityGroupIds = vpcSecurityGroupIds
+        self.vpcSubnetIds = vpcSubnetIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpointName = "DBProxyEndpointName"
+        case dBProxyName = "DBProxyName"
+        case tags = "Tags"
+        case targetRole = "TargetRole"
+        case vpcSecurityGroupIds = "VpcSecurityGroupIds"
+        case vpcSubnetIds = "VpcSubnetIds"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpointName.validateAsDBProxyEndpointName()
+        try dBProxyName.validateAsDBProxyName()
+    }
+}
+
+public struct CreateDBProxyEndpointResponse: Codable, Equatable {
+    public var dBProxyEndpoint: DBProxyEndpoint?
+
+    public init(dBProxyEndpoint: DBProxyEndpoint? = nil) {
+        self.dBProxyEndpoint = dBProxyEndpoint
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpoint = "DBProxyEndpoint"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpoint?.validate()
+    }
+}
+
+public struct CreateDBProxyEndpointResponseForCreateDBProxyEndpoint: Codable, Equatable {
+    public var createDBProxyEndpointResult: CreateDBProxyEndpointResponse
+
+    public init(createDBProxyEndpointResult: CreateDBProxyEndpointResponse) {
+        self.createDBProxyEndpointResult = createDBProxyEndpointResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createDBProxyEndpointResult = "CreateDBProxyEndpointResult"
+    }
+
+    public func validate() throws {
+        try createDBProxyEndpointResult.validate()
+    }
+}
+
 public struct CreateDBProxyRequest: Codable, Equatable {
     public var auth: UserAuthConfigList
     public var dBProxyName: String
@@ -4317,6 +4386,7 @@ public struct DBProxy: Codable, Equatable {
     public var roleArn: String?
     public var status: DBProxyStatus?
     public var updatedDate: TStamp?
+    public var vpcId: String?
     public var vpcSecurityGroupIds: StringList?
     public var vpcSubnetIds: StringList?
 
@@ -4332,6 +4402,7 @@ public struct DBProxy: Codable, Equatable {
                 roleArn: String? = nil,
                 status: DBProxyStatus? = nil,
                 updatedDate: TStamp? = nil,
+                vpcId: String? = nil,
                 vpcSecurityGroupIds: StringList? = nil,
                 vpcSubnetIds: StringList? = nil) {
         self.auth = auth
@@ -4346,6 +4417,7 @@ public struct DBProxy: Codable, Equatable {
         self.roleArn = roleArn
         self.status = status
         self.updatedDate = updatedDate
+        self.vpcId = vpcId
         self.vpcSecurityGroupIds = vpcSecurityGroupIds
         self.vpcSubnetIds = vpcSubnetIds
     }
@@ -4363,6 +4435,7 @@ public struct DBProxy: Codable, Equatable {
         case roleArn = "RoleArn"
         case status = "Status"
         case updatedDate = "UpdatedDate"
+        case vpcId = "VpcId"
         case vpcSecurityGroupIds = "VpcSecurityGroupIds"
         case vpcSubnetIds = "VpcSubnetIds"
     }
@@ -4372,6 +4445,88 @@ public struct DBProxy: Codable, Equatable {
 }
 
 public struct DBProxyAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyEndpoint: Codable, Equatable {
+    public var createdDate: TStamp?
+    public var dBProxyEndpointArn: String?
+    public var dBProxyEndpointName: String?
+    public var dBProxyName: String?
+    public var endpoint: String?
+    public var isDefault: Boolean?
+    public var status: DBProxyEndpointStatus?
+    public var targetRole: DBProxyEndpointTargetRole?
+    public var vpcId: String?
+    public var vpcSecurityGroupIds: StringList?
+    public var vpcSubnetIds: StringList?
+
+    public init(createdDate: TStamp? = nil,
+                dBProxyEndpointArn: String? = nil,
+                dBProxyEndpointName: String? = nil,
+                dBProxyName: String? = nil,
+                endpoint: String? = nil,
+                isDefault: Boolean? = nil,
+                status: DBProxyEndpointStatus? = nil,
+                targetRole: DBProxyEndpointTargetRole? = nil,
+                vpcId: String? = nil,
+                vpcSecurityGroupIds: StringList? = nil,
+                vpcSubnetIds: StringList? = nil) {
+        self.createdDate = createdDate
+        self.dBProxyEndpointArn = dBProxyEndpointArn
+        self.dBProxyEndpointName = dBProxyEndpointName
+        self.dBProxyName = dBProxyName
+        self.endpoint = endpoint
+        self.isDefault = isDefault
+        self.status = status
+        self.targetRole = targetRole
+        self.vpcId = vpcId
+        self.vpcSecurityGroupIds = vpcSecurityGroupIds
+        self.vpcSubnetIds = vpcSubnetIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createdDate = "CreatedDate"
+        case dBProxyEndpointArn = "DBProxyEndpointArn"
+        case dBProxyEndpointName = "DBProxyEndpointName"
+        case dBProxyName = "DBProxyName"
+        case endpoint = "Endpoint"
+        case isDefault = "IsDefault"
+        case status = "Status"
+        case targetRole = "TargetRole"
+        case vpcId = "VpcId"
+        case vpcSecurityGroupIds = "VpcSecurityGroupIds"
+        case vpcSubnetIds = "VpcSubnetIds"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyEndpointAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyEndpointNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DBProxyEndpointQuotaExceededFault: Codable, Equatable {
 
     public init() {
     }
@@ -4402,6 +4557,7 @@ public struct DBProxyTarget: Codable, Equatable {
     public var endpoint: String?
     public var port: Integer?
     public var rdsResourceId: String?
+    public var role: TargetRole?
     public var targetArn: String?
     public var targetHealth: TargetHealth?
     public var trackedClusterId: String?
@@ -4410,6 +4566,7 @@ public struct DBProxyTarget: Codable, Equatable {
     public init(endpoint: String? = nil,
                 port: Integer? = nil,
                 rdsResourceId: String? = nil,
+                role: TargetRole? = nil,
                 targetArn: String? = nil,
                 targetHealth: TargetHealth? = nil,
                 trackedClusterId: String? = nil,
@@ -4417,6 +4574,7 @@ public struct DBProxyTarget: Codable, Equatable {
         self.endpoint = endpoint
         self.port = port
         self.rdsResourceId = rdsResourceId
+        self.role = role
         self.targetArn = targetArn
         self.targetHealth = targetHealth
         self.trackedClusterId = trackedClusterId
@@ -4427,6 +4585,7 @@ public struct DBProxyTarget: Codable, Equatable {
         case endpoint = "Endpoint"
         case port = "Port"
         case rdsResourceId = "RdsResourceId"
+        case role = "Role"
         case targetArn = "TargetArn"
         case targetHealth = "TargetHealth"
         case trackedClusterId = "TrackedClusterId"
@@ -5290,6 +5449,54 @@ public struct DeleteDBParameterGroupMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DeleteDBProxyEndpointRequest: Codable, Equatable {
+    public var dBProxyEndpointName: DBProxyEndpointName
+
+    public init(dBProxyEndpointName: DBProxyEndpointName) {
+        self.dBProxyEndpointName = dBProxyEndpointName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpointName = "DBProxyEndpointName"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpointName.validateAsDBProxyEndpointName()
+    }
+}
+
+public struct DeleteDBProxyEndpointResponse: Codable, Equatable {
+    public var dBProxyEndpoint: DBProxyEndpoint?
+
+    public init(dBProxyEndpoint: DBProxyEndpoint? = nil) {
+        self.dBProxyEndpoint = dBProxyEndpoint
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpoint = "DBProxyEndpoint"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpoint?.validate()
+    }
+}
+
+public struct DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint: Codable, Equatable {
+    public var deleteDBProxyEndpointResult: DeleteDBProxyEndpointResponse
+
+    public init(deleteDBProxyEndpointResult: DeleteDBProxyEndpointResponse) {
+        self.deleteDBProxyEndpointResult = deleteDBProxyEndpointResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteDBProxyEndpointResult = "DeleteDBProxyEndpointResult"
+    }
+
+    public func validate() throws {
+        try deleteDBProxyEndpointResult.validate()
     }
 }
 
@@ -6225,6 +6432,75 @@ public struct DescribeDBProxiesResponseForDescribeDBProxies: Codable, Equatable 
 
     public func validate() throws {
         try describeDBProxiesResult.validate()
+    }
+}
+
+public struct DescribeDBProxyEndpointsRequest: Codable, Equatable {
+    public var dBProxyEndpointName: DBProxyEndpointName?
+    public var dBProxyName: DBProxyName?
+    public var filters: FilterList?
+    public var marker: String?
+    public var maxRecords: MaxRecords?
+
+    public init(dBProxyEndpointName: DBProxyEndpointName? = nil,
+                dBProxyName: DBProxyName? = nil,
+                filters: FilterList? = nil,
+                marker: String? = nil,
+                maxRecords: MaxRecords? = nil) {
+        self.dBProxyEndpointName = dBProxyEndpointName
+        self.dBProxyName = dBProxyName
+        self.filters = filters
+        self.marker = marker
+        self.maxRecords = maxRecords
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpointName = "DBProxyEndpointName"
+        case dBProxyName = "DBProxyName"
+        case filters = "Filters"
+        case marker = "Marker"
+        case maxRecords = "MaxRecords"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpointName?.validateAsDBProxyEndpointName()
+        try dBProxyName?.validateAsDBProxyName()
+        try maxRecords?.validateAsMaxRecords()
+    }
+}
+
+public struct DescribeDBProxyEndpointsResponse: Codable, Equatable {
+    public var dBProxyEndpoints: DBProxyEndpointList?
+    public var marker: String?
+
+    public init(dBProxyEndpoints: DBProxyEndpointList? = nil,
+                marker: String? = nil) {
+        self.dBProxyEndpoints = dBProxyEndpoints
+        self.marker = marker
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpoints = "DBProxyEndpoints"
+        case marker = "Marker"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints: Codable, Equatable {
+    public var describeDBProxyEndpointsResult: DescribeDBProxyEndpointsResponse
+
+    public init(describeDBProxyEndpointsResult: DescribeDBProxyEndpointsResponse) {
+        self.describeDBProxyEndpointsResult = describeDBProxyEndpointsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeDBProxyEndpointsResult = "DescribeDBProxyEndpointsResult"
+    }
+
+    public func validate() throws {
+        try describeDBProxyEndpointsResult.validate()
     }
 }
 
@@ -8299,6 +8575,15 @@ public struct InvalidDBParameterGroupStateFault: Codable, Equatable {
     }
 }
 
+public struct InvalidDBProxyEndpointStateFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidDBProxyStateFault: Codable, Equatable {
 
     public init() {
@@ -9055,6 +9340,63 @@ public struct ModifyDBParameterGroupMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ModifyDBProxyEndpointRequest: Codable, Equatable {
+    public var dBProxyEndpointName: DBProxyEndpointName
+    public var newDBProxyEndpointName: DBProxyEndpointName?
+    public var vpcSecurityGroupIds: StringList?
+
+    public init(dBProxyEndpointName: DBProxyEndpointName,
+                newDBProxyEndpointName: DBProxyEndpointName? = nil,
+                vpcSecurityGroupIds: StringList? = nil) {
+        self.dBProxyEndpointName = dBProxyEndpointName
+        self.newDBProxyEndpointName = newDBProxyEndpointName
+        self.vpcSecurityGroupIds = vpcSecurityGroupIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpointName = "DBProxyEndpointName"
+        case newDBProxyEndpointName = "NewDBProxyEndpointName"
+        case vpcSecurityGroupIds = "VpcSecurityGroupIds"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpointName.validateAsDBProxyEndpointName()
+        try newDBProxyEndpointName?.validateAsDBProxyEndpointName()
+    }
+}
+
+public struct ModifyDBProxyEndpointResponse: Codable, Equatable {
+    public var dBProxyEndpoint: DBProxyEndpoint?
+
+    public init(dBProxyEndpoint: DBProxyEndpoint? = nil) {
+        self.dBProxyEndpoint = dBProxyEndpoint
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBProxyEndpoint = "DBProxyEndpoint"
+    }
+
+    public func validate() throws {
+        try dBProxyEndpoint?.validate()
+    }
+}
+
+public struct ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint: Codable, Equatable {
+    public var modifyDBProxyEndpointResult: ModifyDBProxyEndpointResponse
+
+    public init(modifyDBProxyEndpointResult: ModifyDBProxyEndpointResponse) {
+        self.modifyDBProxyEndpointResult = modifyDBProxyEndpointResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case modifyDBProxyEndpointResult = "ModifyDBProxyEndpointResult"
+    }
+
+    public func validate() throws {
+        try modifyDBProxyEndpointResult.validate()
     }
 }
 

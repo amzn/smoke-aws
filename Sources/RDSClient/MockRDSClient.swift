@@ -73,6 +73,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let createDBParameterGroupSyncOverride: CreateDBParameterGroupSyncType?
     let createDBProxyAsyncOverride: CreateDBProxyAsyncType?
     let createDBProxySyncOverride: CreateDBProxySyncType?
+    let createDBProxyEndpointAsyncOverride: CreateDBProxyEndpointAsyncType?
+    let createDBProxyEndpointSyncOverride: CreateDBProxyEndpointSyncType?
     let createDBSecurityGroupAsyncOverride: CreateDBSecurityGroupAsyncType?
     let createDBSecurityGroupSyncOverride: CreateDBSecurityGroupSyncType?
     let createDBSnapshotAsyncOverride: CreateDBSnapshotAsyncType?
@@ -103,6 +105,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let deleteDBParameterGroupSyncOverride: DeleteDBParameterGroupSyncType?
     let deleteDBProxyAsyncOverride: DeleteDBProxyAsyncType?
     let deleteDBProxySyncOverride: DeleteDBProxySyncType?
+    let deleteDBProxyEndpointAsyncOverride: DeleteDBProxyEndpointAsyncType?
+    let deleteDBProxyEndpointSyncOverride: DeleteDBProxyEndpointSyncType?
     let deleteDBSecurityGroupAsyncOverride: DeleteDBSecurityGroupAsyncType?
     let deleteDBSecurityGroupSyncOverride: DeleteDBSecurityGroupSyncType?
     let deleteDBSnapshotAsyncOverride: DeleteDBSnapshotAsyncType?
@@ -153,6 +157,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let describeDBParametersSyncOverride: DescribeDBParametersSyncType?
     let describeDBProxiesAsyncOverride: DescribeDBProxiesAsyncType?
     let describeDBProxiesSyncOverride: DescribeDBProxiesSyncType?
+    let describeDBProxyEndpointsAsyncOverride: DescribeDBProxyEndpointsAsyncType?
+    let describeDBProxyEndpointsSyncOverride: DescribeDBProxyEndpointsSyncType?
     let describeDBProxyTargetGroupsAsyncOverride: DescribeDBProxyTargetGroupsAsyncType?
     let describeDBProxyTargetGroupsSyncOverride: DescribeDBProxyTargetGroupsSyncType?
     let describeDBProxyTargetsAsyncOverride: DescribeDBProxyTargetsAsyncType?
@@ -225,6 +231,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let modifyDBParameterGroupSyncOverride: ModifyDBParameterGroupSyncType?
     let modifyDBProxyAsyncOverride: ModifyDBProxyAsyncType?
     let modifyDBProxySyncOverride: ModifyDBProxySyncType?
+    let modifyDBProxyEndpointAsyncOverride: ModifyDBProxyEndpointAsyncType?
+    let modifyDBProxyEndpointSyncOverride: ModifyDBProxyEndpointSyncType?
     let modifyDBProxyTargetGroupAsyncOverride: ModifyDBProxyTargetGroupAsyncType?
     let modifyDBProxyTargetGroupSyncOverride: ModifyDBProxyTargetGroupSyncType?
     let modifyDBSnapshotAsyncOverride: ModifyDBSnapshotAsyncType?
@@ -345,6 +353,8 @@ public struct MockRDSClient: RDSClientProtocol {
             createDBParameterGroupSync: CreateDBParameterGroupSyncType? = nil,
             createDBProxyAsync: CreateDBProxyAsyncType? = nil,
             createDBProxySync: CreateDBProxySyncType? = nil,
+            createDBProxyEndpointAsync: CreateDBProxyEndpointAsyncType? = nil,
+            createDBProxyEndpointSync: CreateDBProxyEndpointSyncType? = nil,
             createDBSecurityGroupAsync: CreateDBSecurityGroupAsyncType? = nil,
             createDBSecurityGroupSync: CreateDBSecurityGroupSyncType? = nil,
             createDBSnapshotAsync: CreateDBSnapshotAsyncType? = nil,
@@ -375,6 +385,8 @@ public struct MockRDSClient: RDSClientProtocol {
             deleteDBParameterGroupSync: DeleteDBParameterGroupSyncType? = nil,
             deleteDBProxyAsync: DeleteDBProxyAsyncType? = nil,
             deleteDBProxySync: DeleteDBProxySyncType? = nil,
+            deleteDBProxyEndpointAsync: DeleteDBProxyEndpointAsyncType? = nil,
+            deleteDBProxyEndpointSync: DeleteDBProxyEndpointSyncType? = nil,
             deleteDBSecurityGroupAsync: DeleteDBSecurityGroupAsyncType? = nil,
             deleteDBSecurityGroupSync: DeleteDBSecurityGroupSyncType? = nil,
             deleteDBSnapshotAsync: DeleteDBSnapshotAsyncType? = nil,
@@ -425,6 +437,8 @@ public struct MockRDSClient: RDSClientProtocol {
             describeDBParametersSync: DescribeDBParametersSyncType? = nil,
             describeDBProxiesAsync: DescribeDBProxiesAsyncType? = nil,
             describeDBProxiesSync: DescribeDBProxiesSyncType? = nil,
+            describeDBProxyEndpointsAsync: DescribeDBProxyEndpointsAsyncType? = nil,
+            describeDBProxyEndpointsSync: DescribeDBProxyEndpointsSyncType? = nil,
             describeDBProxyTargetGroupsAsync: DescribeDBProxyTargetGroupsAsyncType? = nil,
             describeDBProxyTargetGroupsSync: DescribeDBProxyTargetGroupsSyncType? = nil,
             describeDBProxyTargetsAsync: DescribeDBProxyTargetsAsyncType? = nil,
@@ -497,6 +511,8 @@ public struct MockRDSClient: RDSClientProtocol {
             modifyDBParameterGroupSync: ModifyDBParameterGroupSyncType? = nil,
             modifyDBProxyAsync: ModifyDBProxyAsyncType? = nil,
             modifyDBProxySync: ModifyDBProxySyncType? = nil,
+            modifyDBProxyEndpointAsync: ModifyDBProxyEndpointAsyncType? = nil,
+            modifyDBProxyEndpointSync: ModifyDBProxyEndpointSyncType? = nil,
             modifyDBProxyTargetGroupAsync: ModifyDBProxyTargetGroupAsyncType? = nil,
             modifyDBProxyTargetGroupSync: ModifyDBProxyTargetGroupSyncType? = nil,
             modifyDBSnapshotAsync: ModifyDBSnapshotAsyncType? = nil,
@@ -611,6 +627,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.createDBParameterGroupSyncOverride = createDBParameterGroupSync
         self.createDBProxyAsyncOverride = createDBProxyAsync
         self.createDBProxySyncOverride = createDBProxySync
+        self.createDBProxyEndpointAsyncOverride = createDBProxyEndpointAsync
+        self.createDBProxyEndpointSyncOverride = createDBProxyEndpointSync
         self.createDBSecurityGroupAsyncOverride = createDBSecurityGroupAsync
         self.createDBSecurityGroupSyncOverride = createDBSecurityGroupSync
         self.createDBSnapshotAsyncOverride = createDBSnapshotAsync
@@ -641,6 +659,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.deleteDBParameterGroupSyncOverride = deleteDBParameterGroupSync
         self.deleteDBProxyAsyncOverride = deleteDBProxyAsync
         self.deleteDBProxySyncOverride = deleteDBProxySync
+        self.deleteDBProxyEndpointAsyncOverride = deleteDBProxyEndpointAsync
+        self.deleteDBProxyEndpointSyncOverride = deleteDBProxyEndpointSync
         self.deleteDBSecurityGroupAsyncOverride = deleteDBSecurityGroupAsync
         self.deleteDBSecurityGroupSyncOverride = deleteDBSecurityGroupSync
         self.deleteDBSnapshotAsyncOverride = deleteDBSnapshotAsync
@@ -691,6 +711,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.describeDBParametersSyncOverride = describeDBParametersSync
         self.describeDBProxiesAsyncOverride = describeDBProxiesAsync
         self.describeDBProxiesSyncOverride = describeDBProxiesSync
+        self.describeDBProxyEndpointsAsyncOverride = describeDBProxyEndpointsAsync
+        self.describeDBProxyEndpointsSyncOverride = describeDBProxyEndpointsSync
         self.describeDBProxyTargetGroupsAsyncOverride = describeDBProxyTargetGroupsAsync
         self.describeDBProxyTargetGroupsSyncOverride = describeDBProxyTargetGroupsSync
         self.describeDBProxyTargetsAsyncOverride = describeDBProxyTargetsAsync
@@ -763,6 +785,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.modifyDBParameterGroupSyncOverride = modifyDBParameterGroupSync
         self.modifyDBProxyAsyncOverride = modifyDBProxyAsync
         self.modifyDBProxySyncOverride = modifyDBProxySync
+        self.modifyDBProxyEndpointAsyncOverride = modifyDBProxyEndpointAsync
+        self.modifyDBProxyEndpointSyncOverride = modifyDBProxyEndpointSync
         self.modifyDBProxyTargetGroupAsyncOverride = modifyDBProxyTargetGroupAsync
         self.modifyDBProxyTargetGroupSyncOverride = modifyDBProxyTargetGroupSync
         self.modifyDBSnapshotAsyncOverride = modifyDBSnapshotAsync
@@ -1698,6 +1722,46 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the CreateDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyEndpointRequest object being passed to this operation.
+         - completion: The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointAlreadyExists, dBProxyEndpointQuotaExceeded, dBProxyNotFound, invalidDBProxyState, invalidSubnet.
+     */
+    public func createDBProxyEndpointAsync(
+            input: RDSModel.CreateDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint, RDSError>) -> ()) throws {
+        if let createDBProxyEndpointAsyncOverride = createDBProxyEndpointAsyncOverride {
+            return try createDBProxyEndpointAsyncOverride(input, completion)
+        }
+
+        let result = CreateDBProxyEndpointResponseForCreateDBProxyEndpoint.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointAlreadyExists, dBProxyEndpointQuotaExceeded, dBProxyNotFound, invalidDBProxyState, invalidSubnet.
+     */
+    public func createDBProxyEndpointSync(
+            input: RDSModel.CreateDBProxyEndpointRequest) throws -> RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint {
+        if let createDBProxyEndpointSyncOverride = createDBProxyEndpointSyncOverride {
+            return try createDBProxyEndpointSyncOverride(input)
+        }
+
+        return CreateDBProxyEndpointResponseForCreateDBProxyEndpoint.__default
+    }
+
+    /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2283,6 +2347,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return DeleteDBProxyResponseForDeleteDBProxy.__default
+    }
+
+    /**
+     Invokes the DeleteDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyEndpointRequest object being passed to this operation.
+         - completion: The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointNotFound, invalidDBProxyEndpointState.
+     */
+    public func deleteDBProxyEndpointAsync(
+            input: RDSModel.DeleteDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint, RDSError>) -> ()) throws {
+        if let deleteDBProxyEndpointAsyncOverride = deleteDBProxyEndpointAsyncOverride {
+            return try deleteDBProxyEndpointAsyncOverride(input, completion)
+        }
+
+        let result = DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointNotFound, invalidDBProxyEndpointState.
+     */
+    public func deleteDBProxyEndpointSync(
+            input: RDSModel.DeleteDBProxyEndpointRequest) throws -> RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint {
+        if let deleteDBProxyEndpointSyncOverride = deleteDBProxyEndpointSyncOverride {
+            return try deleteDBProxyEndpointSyncOverride(input)
+        }
+
+        return DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint.__default
     }
 
     /**
@@ -3261,6 +3365,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return DescribeDBProxiesResponseForDescribeDBProxies.__default
+    }
+
+    /**
+     Invokes the DescribeDBProxyEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyEndpointsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointNotFound, dBProxyNotFound.
+     */
+    public func describeDBProxyEndpointsAsync(
+            input: RDSModel.DescribeDBProxyEndpointsRequest, 
+            completion: @escaping (Result<RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints, RDSError>) -> ()) throws {
+        if let describeDBProxyEndpointsAsyncOverride = describeDBProxyEndpointsAsyncOverride {
+            return try describeDBProxyEndpointsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeDBProxyEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointNotFound, dBProxyNotFound.
+     */
+    public func describeDBProxyEndpointsSync(
+            input: RDSModel.DescribeDBProxyEndpointsRequest) throws -> RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints {
+        if let describeDBProxyEndpointsSyncOverride = describeDBProxyEndpointsSyncOverride {
+            return try describeDBProxyEndpointsSyncOverride(input)
+        }
+
+        return DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints.__default
     }
 
     /**
@@ -4687,6 +4831,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return ModifyDBProxyResponseForModifyDBProxy.__default
+    }
+
+    /**
+     Invokes the ModifyDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyEndpointRequest object being passed to this operation.
+         - completion: The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointAlreadyExists, dBProxyEndpointNotFound, invalidDBProxyEndpointState, invalidDBProxyState.
+     */
+    public func modifyDBProxyEndpointAsync(
+            input: RDSModel.ModifyDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint, RDSError>) -> ()) throws {
+        if let modifyDBProxyEndpointAsyncOverride = modifyDBProxyEndpointAsyncOverride {
+            return try modifyDBProxyEndpointAsyncOverride(input, completion)
+        }
+
+        let result = ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointAlreadyExists, dBProxyEndpointNotFound, invalidDBProxyEndpointState, invalidDBProxyState.
+     */
+    public func modifyDBProxyEndpointSync(
+            input: RDSModel.ModifyDBProxyEndpointRequest) throws -> RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint {
+        if let modifyDBProxyEndpointSyncOverride = modifyDBProxyEndpointSyncOverride {
+            return try modifyDBProxyEndpointSyncOverride(input)
+        }
+
+        return ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint.__default
     }
 
     /**

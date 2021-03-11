@@ -17,7 +17,7 @@
 
 import SmokeHTTPClient
 
-public protocol ConvertableError {
+public protocol ConvertableError: Error {
     static func asUnrecognizedError(error: Swift.Error) -> Self
 }
 

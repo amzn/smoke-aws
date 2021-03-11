@@ -65,7 +65,10 @@ private let dBLogFileNotFoundIdentity = "DBLogFileNotFoundFault"
 private let dBParameterGroupAlreadyExistsIdentity = "DBParameterGroupAlreadyExists"
 private let dBParameterGroupNotFoundIdentity = "DBParameterGroupNotFound"
 private let dBParameterGroupQuotaExceededIdentity = "DBParameterGroupQuotaExceeded"
-private let dBProxyAlreadyExistsIdentity = "DBProxyTargetExistsFault"
+private let dBProxyAlreadyExistsIdentity = "DBProxyAlreadyExistsFault"
+private let dBProxyEndpointAlreadyExistsIdentity = "DBProxyEndpointAlreadyExistsFault"
+private let dBProxyEndpointNotFoundIdentity = "DBProxyEndpointNotFoundFault"
+private let dBProxyEndpointQuotaExceededIdentity = "DBProxyEndpointQuotaExceededFault"
 private let dBProxyNotFoundIdentity = "DBProxyNotFoundFault"
 private let dBProxyQuotaExceededIdentity = "DBProxyQuotaExceededFault"
 private let dBProxyTargetAlreadyRegisteredIdentity = "DBProxyTargetAlreadyRegisteredFault"
@@ -107,6 +110,7 @@ private let invalidDBClusterStateIdentity = "InvalidDBClusterStateFault"
 private let invalidDBInstanceAutomatedBackupStateIdentity = "InvalidDBInstanceAutomatedBackupState"
 private let invalidDBInstanceStateIdentity = "InvalidDBInstanceState"
 private let invalidDBParameterGroupStateIdentity = "InvalidDBParameterGroupState"
+private let invalidDBProxyEndpointStateIdentity = "InvalidDBProxyEndpointStateFault"
 private let invalidDBProxyStateIdentity = "InvalidDBProxyStateFault"
 private let invalidDBSecurityGroupStateIdentity = "InvalidDBSecurityGroupState"
 private let invalidDBSnapshotStateIdentity = "InvalidDBSnapshotState"
@@ -182,6 +186,9 @@ public enum RDSError: Swift.Error, Decodable {
     case dBParameterGroupNotFound(DBParameterGroupNotFoundFault)
     case dBParameterGroupQuotaExceeded(DBParameterGroupQuotaExceededFault)
     case dBProxyAlreadyExists(DBProxyAlreadyExistsFault)
+    case dBProxyEndpointAlreadyExists(DBProxyEndpointAlreadyExistsFault)
+    case dBProxyEndpointNotFound(DBProxyEndpointNotFoundFault)
+    case dBProxyEndpointQuotaExceeded(DBProxyEndpointQuotaExceededFault)
     case dBProxyNotFound(DBProxyNotFoundFault)
     case dBProxyQuotaExceeded(DBProxyQuotaExceededFault)
     case dBProxyTargetAlreadyRegistered(DBProxyTargetAlreadyRegisteredFault)
@@ -223,6 +230,7 @@ public enum RDSError: Swift.Error, Decodable {
     case invalidDBInstanceAutomatedBackupState(InvalidDBInstanceAutomatedBackupStateFault)
     case invalidDBInstanceState(InvalidDBInstanceStateFault)
     case invalidDBParameterGroupState(InvalidDBParameterGroupStateFault)
+    case invalidDBProxyEndpointState(InvalidDBProxyEndpointStateFault)
     case invalidDBProxyState(InvalidDBProxyStateFault)
     case invalidDBSecurityGroupState(InvalidDBSecurityGroupStateFault)
     case invalidDBSnapshotState(InvalidDBSnapshotStateFault)
@@ -380,6 +388,15 @@ public enum RDSError: Swift.Error, Decodable {
         case dBProxyAlreadyExistsIdentity:
             let errorPayload = try DBProxyAlreadyExistsFault(from: decoder)
             self = RDSError.dBProxyAlreadyExists(errorPayload)
+        case dBProxyEndpointAlreadyExistsIdentity:
+            let errorPayload = try DBProxyEndpointAlreadyExistsFault(from: decoder)
+            self = RDSError.dBProxyEndpointAlreadyExists(errorPayload)
+        case dBProxyEndpointNotFoundIdentity:
+            let errorPayload = try DBProxyEndpointNotFoundFault(from: decoder)
+            self = RDSError.dBProxyEndpointNotFound(errorPayload)
+        case dBProxyEndpointQuotaExceededIdentity:
+            let errorPayload = try DBProxyEndpointQuotaExceededFault(from: decoder)
+            self = RDSError.dBProxyEndpointQuotaExceeded(errorPayload)
         case dBProxyNotFoundIdentity:
             let errorPayload = try DBProxyNotFoundFault(from: decoder)
             self = RDSError.dBProxyNotFound(errorPayload)
@@ -503,6 +520,9 @@ public enum RDSError: Swift.Error, Decodable {
         case invalidDBParameterGroupStateIdentity:
             let errorPayload = try InvalidDBParameterGroupStateFault(from: decoder)
             self = RDSError.invalidDBParameterGroupState(errorPayload)
+        case invalidDBProxyEndpointStateIdentity:
+            let errorPayload = try InvalidDBProxyEndpointStateFault(from: decoder)
+            self = RDSError.invalidDBProxyEndpointState(errorPayload)
         case invalidDBProxyStateIdentity:
             let errorPayload = try InvalidDBProxyStateFault(from: decoder)
             self = RDSError.invalidDBProxyState(errorPayload)

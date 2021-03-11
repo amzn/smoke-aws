@@ -248,6 +248,7 @@ public extension CORSRule {
             allowedMethods: [],
             allowedOrigins: [],
             exposeHeaders: nil,
+            iD: nil,
             maxAgeSeconds: nil)
 
         return defaultInstance

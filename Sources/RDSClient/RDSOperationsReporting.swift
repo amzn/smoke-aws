@@ -50,6 +50,7 @@ public struct RDSOperationsReporting {
     let createDBInstanceReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let createDBProxyEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBSecurityGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let createDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -65,6 +66,7 @@ public struct RDSOperationsReporting {
     let deleteDBInstanceAutomatedBackup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let deleteDBProxyEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBSecurityGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let deleteDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -90,6 +92,7 @@ public struct RDSOperationsReporting {
     let describeDBParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBProxies: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let describeDBProxyEndpoints: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBProxyTargetGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let describeDBSecurityGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -126,6 +129,7 @@ public struct RDSOperationsReporting {
     let modifyDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    let modifyDBProxyEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBProxyTargetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
     let modifyDBSnapshotAttribute: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -207,6 +211,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .createDBParameterGroup, configuration: reportingConfiguration)
         self.createDBProxy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createDBProxy, configuration: reportingConfiguration)
+        self.createDBProxyEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createDBProxyEndpoint, configuration: reportingConfiguration)
         self.createDBSecurityGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createDBSecurityGroup, configuration: reportingConfiguration)
         self.createDBSnapshot = StandardSmokeAWSOperationReporting(
@@ -237,6 +243,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .deleteDBParameterGroup, configuration: reportingConfiguration)
         self.deleteDBProxy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBProxy, configuration: reportingConfiguration)
+        self.deleteDBProxyEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteDBProxyEndpoint, configuration: reportingConfiguration)
         self.deleteDBSecurityGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBSecurityGroup, configuration: reportingConfiguration)
         self.deleteDBSnapshot = StandardSmokeAWSOperationReporting(
@@ -287,6 +295,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .describeDBParameters, configuration: reportingConfiguration)
         self.describeDBProxies = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeDBProxies, configuration: reportingConfiguration)
+        self.describeDBProxyEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeDBProxyEndpoints, configuration: reportingConfiguration)
         self.describeDBProxyTargetGroups = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeDBProxyTargetGroups, configuration: reportingConfiguration)
         self.describeDBProxyTargets = StandardSmokeAWSOperationReporting(
@@ -359,6 +369,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .modifyDBParameterGroup, configuration: reportingConfiguration)
         self.modifyDBProxy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyDBProxy, configuration: reportingConfiguration)
+        self.modifyDBProxyEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyDBProxyEndpoint, configuration: reportingConfiguration)
         self.modifyDBProxyTargetGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyDBProxyTargetGroup, configuration: reportingConfiguration)
         self.modifyDBSnapshot = StandardSmokeAWSOperationReporting(

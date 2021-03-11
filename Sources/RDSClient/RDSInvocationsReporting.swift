@@ -51,6 +51,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     let createDBInstanceReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let createDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createDBSecurityGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let createDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -66,6 +67,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     let deleteDBInstanceAutomatedBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let deleteDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteDBSecurityGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let deleteDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -91,6 +93,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     let describeDBParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeDBParameters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeDBProxies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let describeDBProxyEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeDBProxyTargetGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let describeDBSecurityGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -127,6 +130,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     let modifyDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyDBProxy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    let modifyDBProxyEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyDBProxyTargetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     let modifyDBSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -208,6 +212,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.createDBParameterGroup)
         self.createDBProxy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createDBProxy)
+        self.createDBProxyEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createDBProxyEndpoint)
         self.createDBSecurityGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createDBSecurityGroup)
         self.createDBSnapshot = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -238,6 +244,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.deleteDBParameterGroup)
         self.deleteDBProxy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteDBProxy)
+        self.deleteDBProxyEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteDBProxyEndpoint)
         self.deleteDBSecurityGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteDBSecurityGroup)
         self.deleteDBSnapshot = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -288,6 +296,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.describeDBParameters)
         self.describeDBProxies = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeDBProxies)
+        self.describeDBProxyEndpoints = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeDBProxyEndpoints)
         self.describeDBProxyTargetGroups = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeDBProxyTargetGroups)
         self.describeDBProxyTargets = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -360,6 +370,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.modifyDBParameterGroup)
         self.modifyDBProxy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyDBProxy)
+        self.modifyDBProxyEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyDBProxyEndpoint)
         self.modifyDBProxyTargetGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyDBProxyTargetGroup)
         self.modifyDBSnapshot = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

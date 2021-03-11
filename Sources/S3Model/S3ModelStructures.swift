@@ -334,17 +334,20 @@ public struct CORSRule: Codable, Equatable {
     public var allowedMethods: AllowedMethods
     public var allowedOrigins: AllowedOrigins
     public var exposeHeaders: ExposeHeaders?
+    public var iD: ID?
     public var maxAgeSeconds: MaxAgeSeconds?
 
     public init(allowedHeaders: AllowedHeaders? = nil,
                 allowedMethods: AllowedMethods,
                 allowedOrigins: AllowedOrigins,
                 exposeHeaders: ExposeHeaders? = nil,
+                iD: ID? = nil,
                 maxAgeSeconds: MaxAgeSeconds? = nil) {
         self.allowedHeaders = allowedHeaders
         self.allowedMethods = allowedMethods
         self.allowedOrigins = allowedOrigins
         self.exposeHeaders = exposeHeaders
+        self.iD = iD
         self.maxAgeSeconds = maxAgeSeconds
     }
 
@@ -353,6 +356,7 @@ public struct CORSRule: Codable, Equatable {
         case allowedMethods = "AllowedMethod"
         case allowedOrigins = "AllowedOrigin"
         case exposeHeaders = "ExposeHeader"
+        case iD = "ID"
         case maxAgeSeconds = "MaxAgeSeconds"
     }
 

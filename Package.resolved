@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/swift-server/async-http-client.git",
         "state": {
           "branch": null,
-          "revision": "a72c5adce3986ff6b5092ae0464a8f2675087860",
-          "version": "1.2.3"
+          "revision": "ba845ee93d6ea10671e829ebf273b6f7a0c92ef0",
+          "version": "1.2.4"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/apple/swift-crypto.git",
         "state": {
           "branch": null,
-          "revision": "296d3308b4b2fa355cfe0de4ca411bf7a1cd8cf8",
-          "version": "1.1.4"
+          "revision": "0141f53dd525706c803b0c20aa8ad36f9ecd45e5",
+          "version": "1.1.5"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/apple/swift-log",
         "state": {
           "branch": null,
-          "revision": "12d3a8651d32295794a850307f77407f95b8c881",
-          "version": "1.4.1"
+          "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+          "version": "1.4.2"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio-ssl.git",
         "state": {
           "branch": null,
-          "revision": "4c933e955b8797f5a5a90bd2a0fb411fdb11bb94",
-          "version": "2.10.3"
+          "revision": "bbb38fbcbbe9dc4665b2c638dfa5681b01079bfb",
+          "version": "2.10.4"
         }
       },
       {

@@ -272,6 +272,19 @@ extension CreateDBProxyResponseForCreateDBProxy: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateDBProxyEndpoint operation in a HTTP client.
+ */
+extension CreateDBProxyEndpointResponseForCreateDBProxyEndpoint: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+    public typealias HeadersType = CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateDBProxyEndpointResponseForCreateDBProxyEndpoint {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateDBSecurityGroup operation in a HTTP client.
  */
 extension CreateDBSecurityGroupResultForCreateDBSecurityGroup: HTTPResponseOutputProtocol {
@@ -436,6 +449,19 @@ extension DeleteDBProxyResponseForDeleteDBProxy: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteDBProxyResponseForDeleteDBProxy {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteDBProxyEndpoint operation in a HTTP client.
+ */
+extension DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
+    public typealias HeadersType = DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint {
         return try bodyDecodableProvider()
     }
 }
@@ -722,6 +748,19 @@ extension DescribeDBProxiesResponseForDescribeDBProxies: HTTPResponseOutputProto
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeDBProxiesResponseForDescribeDBProxies {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeDBProxyEndpoints operation in a HTTP client.
+ */
+extension DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
+    public typealias HeadersType = DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints {
         return try bodyDecodableProvider()
     }
 }
@@ -1190,6 +1229,19 @@ extension ModifyDBProxyResponseForModifyDBProxy: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyDBProxyResponseForModifyDBProxy {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyDBProxyEndpoint operation in a HTTP client.
+ */
+extension ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
+    public typealias HeadersType = ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint {
         return try bodyDecodableProvider()
     }
 }

@@ -1033,6 +1033,47 @@ public extension CreateDBParameterGroupResultForCreateDBParameterGroup {
     }()
 }
 
+public extension CreateDBProxyEndpointRequest {
+    /**
+     Default instance of the CreateDBProxyEndpointRequest structure.
+     */
+    static let __default: RDSModel.CreateDBProxyEndpointRequest = {
+        let defaultInstance = RDSModel.CreateDBProxyEndpointRequest(
+            dBProxyEndpointName: "0",
+            dBProxyName: "0",
+            tags: nil,
+            targetRole: nil,
+            vpcSecurityGroupIds: nil,
+            vpcSubnetIds: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateDBProxyEndpointResponse {
+    /**
+     Default instance of the CreateDBProxyEndpointResponse structure.
+     */
+    static let __default: RDSModel.CreateDBProxyEndpointResponse = {
+        let defaultInstance = RDSModel.CreateDBProxyEndpointResponse(
+            dBProxyEndpoint: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateDBProxyEndpointResponseForCreateDBProxyEndpoint {
+    /**
+     Default instance of the CreateDBProxyEndpointResponseForCreateDBProxyEndpoint structure.
+     */
+    static let __default: RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint = {
+        let defaultInstance = RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint(
+            createDBProxyEndpointResult: CreateDBProxyEndpointResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateDBProxyRequest {
     /**
      Default instance of the CreateDBProxyRequest structure.
@@ -2526,6 +2567,7 @@ public extension DBProxy {
             roleArn: nil,
             status: nil,
             updatedDate: nil,
+            vpcId: nil,
             vpcSecurityGroupIds: nil,
             vpcSubnetIds: nil)
 
@@ -2539,6 +2581,61 @@ public extension DBProxyAlreadyExistsFault {
      */
     static let __default: RDSModel.DBProxyAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBProxyAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyEndpoint {
+    /**
+     Default instance of the DBProxyEndpoint structure.
+     */
+    static let __default: RDSModel.DBProxyEndpoint = {
+        let defaultInstance = RDSModel.DBProxyEndpoint(
+            createdDate: nil,
+            dBProxyEndpointArn: nil,
+            dBProxyEndpointName: nil,
+            dBProxyName: nil,
+            endpoint: nil,
+            isDefault: nil,
+            status: nil,
+            targetRole: nil,
+            vpcId: nil,
+            vpcSecurityGroupIds: nil,
+            vpcSubnetIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyEndpointAlreadyExistsFault {
+    /**
+     Default instance of the DBProxyEndpointAlreadyExistsFault structure.
+     */
+    static let __default: RDSModel.DBProxyEndpointAlreadyExistsFault = {
+        let defaultInstance = RDSModel.DBProxyEndpointAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyEndpointNotFoundFault {
+    /**
+     Default instance of the DBProxyEndpointNotFoundFault structure.
+     */
+    static let __default: RDSModel.DBProxyEndpointNotFoundFault = {
+        let defaultInstance = RDSModel.DBProxyEndpointNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBProxyEndpointQuotaExceededFault {
+    /**
+     Default instance of the DBProxyEndpointQuotaExceededFault structure.
+     */
+    static let __default: RDSModel.DBProxyEndpointQuotaExceededFault = {
+        let defaultInstance = RDSModel.DBProxyEndpointQuotaExceededFault()
 
         return defaultInstance
     }()
@@ -2575,6 +2672,7 @@ public extension DBProxyTarget {
             endpoint: nil,
             port: nil,
             rdsResourceId: nil,
+            role: nil,
             targetArn: nil,
             targetHealth: nil,
             trackedClusterId: nil,
@@ -3190,6 +3288,42 @@ public extension DeleteDBParameterGroupMessage {
     }()
 }
 
+public extension DeleteDBProxyEndpointRequest {
+    /**
+     Default instance of the DeleteDBProxyEndpointRequest structure.
+     */
+    static let __default: RDSModel.DeleteDBProxyEndpointRequest = {
+        let defaultInstance = RDSModel.DeleteDBProxyEndpointRequest(
+            dBProxyEndpointName: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteDBProxyEndpointResponse {
+    /**
+     Default instance of the DeleteDBProxyEndpointResponse structure.
+     */
+    static let __default: RDSModel.DeleteDBProxyEndpointResponse = {
+        let defaultInstance = RDSModel.DeleteDBProxyEndpointResponse(
+            dBProxyEndpoint: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint {
+    /**
+     Default instance of the DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint structure.
+     */
+    static let __default: RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint = {
+        let defaultInstance = RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint(
+            deleteDBProxyEndpointResult: DeleteDBProxyEndpointResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteDBProxyRequest {
     /**
      Default instance of the DeleteDBProxyRequest structure.
@@ -3771,6 +3905,47 @@ public extension DescribeDBProxiesResponseForDescribeDBProxies {
     static let __default: RDSModel.DescribeDBProxiesResponseForDescribeDBProxies = {
         let defaultInstance = RDSModel.DescribeDBProxiesResponseForDescribeDBProxies(
             describeDBProxiesResult: DescribeDBProxiesResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyEndpointsRequest {
+    /**
+     Default instance of the DescribeDBProxyEndpointsRequest structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyEndpointsRequest = {
+        let defaultInstance = RDSModel.DescribeDBProxyEndpointsRequest(
+            dBProxyEndpointName: nil,
+            dBProxyName: nil,
+            filters: nil,
+            marker: nil,
+            maxRecords: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyEndpointsResponse {
+    /**
+     Default instance of the DescribeDBProxyEndpointsResponse structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyEndpointsResponse = {
+        let defaultInstance = RDSModel.DescribeDBProxyEndpointsResponse(
+            dBProxyEndpoints: nil,
+            marker: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints {
+    /**
+     Default instance of the DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints structure.
+     */
+    static let __default: RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints = {
+        let defaultInstance = RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints(
+            describeDBProxyEndpointsResult: DescribeDBProxyEndpointsResponse.__default)
 
         return defaultInstance
     }()
@@ -5114,6 +5289,17 @@ public extension InvalidDBParameterGroupStateFault {
     }()
 }
 
+public extension InvalidDBProxyEndpointStateFault {
+    /**
+     Default instance of the InvalidDBProxyEndpointStateFault structure.
+     */
+    static let __default: RDSModel.InvalidDBProxyEndpointStateFault = {
+        let defaultInstance = RDSModel.InvalidDBProxyEndpointStateFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension InvalidDBProxyStateFault {
     /**
      Default instance of the InvalidDBProxyStateFault structure.
@@ -5593,6 +5779,44 @@ public extension ModifyDBParameterGroupMessage {
         let defaultInstance = RDSModel.ModifyDBParameterGroupMessage(
             dBParameterGroupName: "value",
             parameters: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyEndpointRequest {
+    /**
+     Default instance of the ModifyDBProxyEndpointRequest structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyEndpointRequest = {
+        let defaultInstance = RDSModel.ModifyDBProxyEndpointRequest(
+            dBProxyEndpointName: "0",
+            newDBProxyEndpointName: nil,
+            vpcSecurityGroupIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyEndpointResponse {
+    /**
+     Default instance of the ModifyDBProxyEndpointResponse structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyEndpointResponse = {
+        let defaultInstance = RDSModel.ModifyDBProxyEndpointResponse(
+            dBProxyEndpoint: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint {
+    /**
+     Default instance of the ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint structure.
+     */
+    static let __default: RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint = {
+        let defaultInstance = RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint(
+            modifyDBProxyEndpointResult: ModifyDBProxyEndpointResponse.__default)
 
         return defaultInstance
     }()
