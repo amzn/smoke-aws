@@ -26,32 +26,32 @@ import SmokeAWSHttp
 import StepFunctionsModel
 
 /**
- Operation reporting for the StepFunctionsModel.
+ Invocations reporting for the StepFunctionsModel.
  */
 public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let createActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeStateMachineForExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getActivityTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getExecutionHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listActivities: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listStateMachines: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let sendTaskFailure: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let sendTaskHeartbeat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let sendTaskSuccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startSyncExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStateMachineForExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getActivityTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getExecutionHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listActivities: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStateMachines: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let sendTaskFailure: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let sendTaskHeartbeat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let sendTaskSuccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startSyncExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: StepFunctionsOperationsReporting) {
         self.createActivity = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

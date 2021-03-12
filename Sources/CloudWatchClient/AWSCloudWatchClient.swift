@@ -41,7 +41,7 @@ public enum CloudWatchClientError: Swift.Error {
         return error.asUnrecognizedCloudWatchError()
     }
 
-    func isRetriable() -> Bool? {
+    public func isRetriable() -> Bool? {
         switch self {
         case .limitExceededException, .limitExceededFault:
             return true

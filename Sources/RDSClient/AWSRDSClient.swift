@@ -1837,6 +1837,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the CreateDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyEndpointRequest object being passed to this operation.
+         - completion: The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointAlreadyExists, dBProxyEndpointQuotaExceeded, dBProxyNotFound, invalidDBProxyState, invalidSubnet.
+     */
+    public func createDBProxyEndpointAsync(
+            input: RDSModel.CreateDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBProxyEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateDBProxyEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createDBProxyEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointAlreadyExists, dBProxyEndpointQuotaExceeded, dBProxyNotFound, invalidDBProxyState, invalidSubnet.
+     */
+    public func createDBProxyEndpointSync(
+            input: RDSModel.CreateDBProxyEndpointRequest) throws -> RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDBProxyEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateDBProxyEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createDBProxyEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2984,6 +3062,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.deleteDBProxy.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyEndpointRequest object being passed to this operation.
+         - completion: The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointNotFound, invalidDBProxyEndpointState.
+     */
+    public func deleteDBProxyEndpointAsync(
+            input: RDSModel.DeleteDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBProxyEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBProxyEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBProxyEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointNotFound, invalidDBProxyEndpointState.
+     */
+    public func deleteDBProxyEndpointSync(
+            input: RDSModel.DeleteDBProxyEndpointRequest) throws -> RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBProxyEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBProxyEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBProxyEndpoint.rawValue,
             version: apiVersion)
 
         do {
@@ -4921,6 +5077,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.describeDBProxies.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeDBProxyEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyEndpointsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointNotFound, dBProxyNotFound.
+     */
+    public func describeDBProxyEndpointsAsync(
+            input: RDSModel.DescribeDBProxyEndpointsRequest, 
+            completion: @escaping (Result<RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxyEndpoints,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxyEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxyEndpoints.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBProxyEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointNotFound, dBProxyNotFound.
+     */
+    public func describeDBProxyEndpointsSync(
+            input: RDSModel.DescribeDBProxyEndpointsRequest) throws -> RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBProxyEndpoints,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBProxyEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBProxyEndpoints.rawValue,
             version: apiVersion)
 
         do {
@@ -7715,6 +7949,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.modifyDBProxy.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyEndpointRequest object being passed to this operation.
+         - completion: The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointAlreadyExists, dBProxyEndpointNotFound, invalidDBProxyEndpointState, invalidDBProxyState.
+     */
+    public func modifyDBProxyEndpointAsync(
+            input: RDSModel.ModifyDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBProxyEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDBProxyEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyDBProxyEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointAlreadyExists, dBProxyEndpointNotFound, invalidDBProxyEndpointState, invalidDBProxyState.
+     */
+    public func modifyDBProxyEndpointSync(
+            input: RDSModel.ModifyDBProxyEndpointRequest) throws -> RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyDBProxyEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyDBProxyEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyDBProxyEndpoint.rawValue,
             version: apiVersion)
 
         do {

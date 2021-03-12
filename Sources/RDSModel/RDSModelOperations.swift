@@ -48,6 +48,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case createDBInstanceReadReplica = "CreateDBInstanceReadReplica"
     case createDBParameterGroup = "CreateDBParameterGroup"
     case createDBProxy = "CreateDBProxy"
+    case createDBProxyEndpoint = "CreateDBProxyEndpoint"
     case createDBSecurityGroup = "CreateDBSecurityGroup"
     case createDBSnapshot = "CreateDBSnapshot"
     case createDBSubnetGroup = "CreateDBSubnetGroup"
@@ -63,6 +64,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case deleteDBInstanceAutomatedBackup = "DeleteDBInstanceAutomatedBackup"
     case deleteDBParameterGroup = "DeleteDBParameterGroup"
     case deleteDBProxy = "DeleteDBProxy"
+    case deleteDBProxyEndpoint = "DeleteDBProxyEndpoint"
     case deleteDBSecurityGroup = "DeleteDBSecurityGroup"
     case deleteDBSnapshot = "DeleteDBSnapshot"
     case deleteDBSubnetGroup = "DeleteDBSubnetGroup"
@@ -88,6 +90,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case describeDBParameterGroups = "DescribeDBParameterGroups"
     case describeDBParameters = "DescribeDBParameters"
     case describeDBProxies = "DescribeDBProxies"
+    case describeDBProxyEndpoints = "DescribeDBProxyEndpoints"
     case describeDBProxyTargetGroups = "DescribeDBProxyTargetGroups"
     case describeDBProxyTargets = "DescribeDBProxyTargets"
     case describeDBSecurityGroups = "DescribeDBSecurityGroups"
@@ -124,6 +127,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case modifyDBInstance = "ModifyDBInstance"
     case modifyDBParameterGroup = "ModifyDBParameterGroup"
     case modifyDBProxy = "ModifyDBProxy"
+    case modifyDBProxyEndpoint = "ModifyDBProxyEndpoint"
     case modifyDBProxyTargetGroup = "ModifyDBProxyTargetGroup"
     case modifyDBSnapshot = "ModifyDBSnapshot"
     case modifyDBSnapshotAttribute = "ModifyDBSnapshotAttribute"
@@ -210,6 +214,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .createDBProxy:
             return "/"
+        case .createDBProxyEndpoint:
+            return "/"
         case .createDBSecurityGroup:
             return "/"
         case .createDBSnapshot:
@@ -239,6 +245,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .deleteDBParameterGroup:
             return "/"
         case .deleteDBProxy:
+            return "/"
+        case .deleteDBProxyEndpoint:
             return "/"
         case .deleteDBSecurityGroup:
             return "/"
@@ -289,6 +297,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .describeDBParameters:
             return "/"
         case .describeDBProxies:
+            return "/"
+        case .describeDBProxyEndpoints:
             return "/"
         case .describeDBProxyTargetGroups:
             return "/"
@@ -361,6 +371,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .modifyDBParameterGroup:
             return "/"
         case .modifyDBProxy:
+            return "/"
+        case .modifyDBProxyEndpoint:
             return "/"
         case .modifyDBProxyTargetGroup:
             return "/"

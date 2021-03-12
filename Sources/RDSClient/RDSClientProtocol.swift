@@ -139,6 +139,11 @@ public protocol RDSClientProtocol {
     typealias CreateDBProxyAsyncType = (
             _ input: RDSModel.CreateDBProxyRequest, 
             _ completion: @escaping (Result<RDSModel.CreateDBProxyResponseForCreateDBProxy, RDSError>) -> ()) throws -> ()
+    typealias CreateDBProxyEndpointSyncType = (
+            _ input: RDSModel.CreateDBProxyEndpointRequest) throws -> RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+    typealias CreateDBProxyEndpointAsyncType = (
+            _ input: RDSModel.CreateDBProxyEndpointRequest, 
+            _ completion: @escaping (Result<RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint, RDSError>) -> ()) throws -> ()
     typealias CreateDBSecurityGroupSyncType = (
             _ input: RDSModel.CreateDBSecurityGroupMessage) throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup
     typealias CreateDBSecurityGroupAsyncType = (
@@ -214,6 +219,11 @@ public protocol RDSClientProtocol {
     typealias DeleteDBProxyAsyncType = (
             _ input: RDSModel.DeleteDBProxyRequest, 
             _ completion: @escaping (Result<RDSModel.DeleteDBProxyResponseForDeleteDBProxy, RDSError>) -> ()) throws -> ()
+    typealias DeleteDBProxyEndpointSyncType = (
+            _ input: RDSModel.DeleteDBProxyEndpointRequest) throws -> RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
+    typealias DeleteDBProxyEndpointAsyncType = (
+            _ input: RDSModel.DeleteDBProxyEndpointRequest, 
+            _ completion: @escaping (Result<RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint, RDSError>) -> ()) throws -> ()
     typealias DeleteDBSecurityGroupSyncType = (
             _ input: RDSModel.DeleteDBSecurityGroupMessage) throws -> ()
     typealias DeleteDBSecurityGroupAsyncType = (
@@ -339,6 +349,11 @@ public protocol RDSClientProtocol {
     typealias DescribeDBProxiesAsyncType = (
             _ input: RDSModel.DescribeDBProxiesRequest, 
             _ completion: @escaping (Result<RDSModel.DescribeDBProxiesResponseForDescribeDBProxies, RDSError>) -> ()) throws -> ()
+    typealias DescribeDBProxyEndpointsSyncType = (
+            _ input: RDSModel.DescribeDBProxyEndpointsRequest) throws -> RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
+    typealias DescribeDBProxyEndpointsAsyncType = (
+            _ input: RDSModel.DescribeDBProxyEndpointsRequest, 
+            _ completion: @escaping (Result<RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints, RDSError>) -> ()) throws -> ()
     typealias DescribeDBProxyTargetGroupsSyncType = (
             _ input: RDSModel.DescribeDBProxyTargetGroupsRequest) throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups
     typealias DescribeDBProxyTargetGroupsAsyncType = (
@@ -519,6 +534,11 @@ public protocol RDSClientProtocol {
     typealias ModifyDBProxyAsyncType = (
             _ input: RDSModel.ModifyDBProxyRequest, 
             _ completion: @escaping (Result<RDSModel.ModifyDBProxyResponseForModifyDBProxy, RDSError>) -> ()) throws -> ()
+    typealias ModifyDBProxyEndpointSyncType = (
+            _ input: RDSModel.ModifyDBProxyEndpointRequest) throws -> RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
+    typealias ModifyDBProxyEndpointAsyncType = (
+            _ input: RDSModel.ModifyDBProxyEndpointRequest, 
+            _ completion: @escaping (Result<RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint, RDSError>) -> ()) throws -> ()
     typealias ModifyDBProxyTargetGroupSyncType = (
             _ input: RDSModel.ModifyDBProxyTargetGroupRequest) throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup
     typealias ModifyDBProxyTargetGroupAsyncType = (
@@ -1259,6 +1279,32 @@ public protocol RDSClientProtocol {
             input: RDSModel.CreateDBProxyRequest) throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy
 
     /**
+     Invokes the CreateDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateDBProxyEndpointRequest object being passed to this operation.
+         - completion: The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointAlreadyExists, dBProxyEndpointQuotaExceeded, dBProxyNotFound, invalidDBProxyState, invalidSubnet.
+     */
+    func createDBProxyEndpointAsync(
+            input: RDSModel.CreateDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint, RDSError>) -> ()) throws
+
+    /**
+     Invokes the CreateDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The CreateDBProxyEndpointResponseForCreateDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointAlreadyExists, dBProxyEndpointQuotaExceeded, dBProxyNotFound, invalidDBProxyState, invalidSubnet.
+     */
+    func createDBProxyEndpointSync(
+            input: RDSModel.CreateDBProxyEndpointRequest) throws -> RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint
+
+    /**
      Invokes the CreateDBSecurityGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1641,6 +1687,32 @@ public protocol RDSClientProtocol {
      */
     func deleteDBProxySync(
             input: RDSModel.DeleteDBProxyRequest) throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy
+
+    /**
+     Invokes the DeleteDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyEndpointRequest object being passed to this operation.
+         - completion: The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointNotFound, invalidDBProxyEndpointState.
+     */
+    func deleteDBProxyEndpointAsync(
+            input: RDSModel.DeleteDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint, RDSError>) -> ()) throws
+
+    /**
+     Invokes the DeleteDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointNotFound, invalidDBProxyEndpointState.
+     */
+    func deleteDBProxyEndpointSync(
+            input: RDSModel.DeleteDBProxyEndpointRequest) throws -> RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint
 
     /**
      Invokes the DeleteDBSecurityGroup operation returning immediately and passing the response to a callback.
@@ -2278,6 +2350,32 @@ public protocol RDSClientProtocol {
      */
     func describeDBProxiesSync(
             input: RDSModel.DescribeDBProxiesRequest) throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies
+
+    /**
+     Invokes the DescribeDBProxyEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyEndpointsRequest object being passed to this operation.
+         - completion: The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints object or an error will be passed to this 
+           callback when the operation is complete. The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointNotFound, dBProxyNotFound.
+     */
+    func describeDBProxyEndpointsAsync(
+            input: RDSModel.DescribeDBProxyEndpointsRequest, 
+            completion: @escaping (Result<RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints, RDSError>) -> ()) throws
+
+    /**
+     Invokes the DescribeDBProxyEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBProxyEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointNotFound, dBProxyNotFound.
+     */
+    func describeDBProxyEndpointsSync(
+            input: RDSModel.DescribeDBProxyEndpointsRequest) throws -> RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints
 
     /**
      Invokes the DescribeDBProxyTargetGroups operation returning immediately and passing the response to a callback.
@@ -3200,6 +3298,32 @@ public protocol RDSClientProtocol {
      */
     func modifyDBProxySync(
             input: RDSModel.ModifyDBProxyRequest) throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy
+
+    /**
+     Invokes the ModifyDBProxyEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyEndpointRequest object being passed to this operation.
+         - completion: The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint object or an error will be passed to this 
+           callback when the operation is complete. The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
+           object will be validated before being returned to caller.
+           The possible errors are: dBProxyEndpointAlreadyExists, dBProxyEndpointNotFound, invalidDBProxyEndpointState, invalidDBProxyState.
+     */
+    func modifyDBProxyEndpointAsync(
+            input: RDSModel.ModifyDBProxyEndpointRequest, 
+            completion: @escaping (Result<RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint, RDSError>) -> ()) throws
+
+    /**
+     Invokes the ModifyDBProxyEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyDBProxyEndpointRequest object being passed to this operation.
+     - Returns: The ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBProxyEndpointAlreadyExists, dBProxyEndpointNotFound, invalidDBProxyEndpointState, invalidDBProxyState.
+     */
+    func modifyDBProxyEndpointSync(
+            input: RDSModel.ModifyDBProxyEndpointRequest) throws -> RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint
 
     /**
      Invokes the ModifyDBProxyTargetGroup operation returning immediately and passing the response to a callback.

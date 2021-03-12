@@ -26,59 +26,59 @@ import SmokeAWSHttp
 import ElasticContainerModel
 
 /**
- Operation reporting for the ElasticContainerModel.
+ Invocations reporting for the ElasticContainerModel.
  */
 public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let createCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteAccountSetting: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deregisterContainerInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deregisterTaskDefinition: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeCapacityProviders: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeContainerInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeServices: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTaskDefinition: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTaskSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let describeTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let discoverPollEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listAccountSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listContainerInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listServices: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTaskDefinitionFamilies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTaskDefinitions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putAccountSetting: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putAccountSettingDefault: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let putClusterCapacityProviders: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerContainerInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let registerTaskDefinition: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let runTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let startTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let stopTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let submitAttachmentStateChanges: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let submitContainerStateChange: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let submitTaskStateChange: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateClusterSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateContainerAgent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateContainerInstancesState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateServicePrimaryTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let updateTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteAccountSetting: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deregisterContainerInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deregisterTaskDefinition: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeCapacityProviders: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeContainerInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeServices: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTaskDefinition: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTaskSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let discoverPollEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listAccountSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listContainerInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listServices: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTaskDefinitionFamilies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTaskDefinitions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putAccountSetting: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putAccountSettingDefault: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putClusterCapacityProviders: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerContainerInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerTaskDefinition: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let runTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let submitAttachmentStateChanges: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let submitContainerStateChange: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let submitTaskStateChange: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateClusterSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateContainerAgent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateContainerInstancesState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateServicePrimaryTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: ElasticContainerOperationsReporting) {
         self.createCapacityProvider = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

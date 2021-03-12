@@ -28,139 +28,143 @@ import RDSModel
  Operation reporting for the RDSModel.
  */
 public struct RDSOperationsReporting {
-    let addRoleToDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let addRoleToDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let addSourceIdentifierToSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let addTagsToResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let applyPendingMaintenanceAction: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let authorizeDBSecurityGroupIngress: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let backtrackDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let cancelExportTask: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let copyOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBInstanceReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBSecurityGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let createOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBInstanceAutomatedBackup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBSecurityGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deleteOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let deregisterDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeAccountAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeCustomAvailabilityZones: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterBacktracks: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterEndpoints: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterSnapshotAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusterSnapshots: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBClusters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBEngineVersions: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBInstanceAutomatedBackups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBInstances: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBLogFiles: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBProxies: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBProxyTargetGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSecurityGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSnapshotAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSnapshots: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeDBSubnetGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEngineDefaultClusterParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEngineDefaultParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEventCategories: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEventSubscriptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeEvents: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeExportTasks: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeGlobalClusters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeOptionGroupOptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeOptionGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeOrderableDBInstanceOptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describePendingMaintenanceActions: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeReservedDBInstances: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeReservedDBInstancesOfferings: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeSourceRegions: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let describeValidDBInstanceModifications: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let downloadDBLogFilePortion: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let failoverDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let failoverGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let importInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyCurrentDBClusterCapacity: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBClusterSnapshotAttribute: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBProxyTargetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBSnapshotAttribute: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let modifyOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let promoteReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let promoteReadReplicaDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let purchaseReservedDBInstancesOffering: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let rebootDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let registerDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeFromGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeRoleFromDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeRoleFromDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeSourceIdentifierFromSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let removeTagsFromResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let resetDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let resetDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBClusterFromS3: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBClusterFromSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBClusterToPointInTime: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBInstanceFromDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBInstanceFromS3: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let restoreDBInstanceToPointInTime: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let revokeDBSecurityGroupIngress: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let startExportTask: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    let stopDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let addRoleToDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let addRoleToDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let addSourceIdentifierToSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let addTagsToResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let applyPendingMaintenanceAction: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let authorizeDBSecurityGroupIngress: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let backtrackDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let cancelExportTask: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let copyDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let copyDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let copyDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let copyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let copyOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBInstanceReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBProxyEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBSecurityGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBInstanceAutomatedBackup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBProxyEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBSecurityGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deregisterDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeAccountAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeCustomAvailabilityZones: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterBacktracks: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterEndpoints: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterSnapshotAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterSnapshots: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusters: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBEngineVersions: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBInstanceAutomatedBackups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBInstances: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBLogFiles: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBProxies: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBProxyEndpoints: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBProxyTargetGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBSecurityGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBSnapshotAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBSnapshots: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBSubnetGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeEngineDefaultClusterParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeEngineDefaultParameters: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeEventCategories: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeEventSubscriptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeEvents: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeExportTasks: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeGlobalClusters: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeOptionGroupOptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeOptionGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeOrderableDBInstanceOptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describePendingMaintenanceActions: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeReservedDBInstances: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeReservedDBInstancesOfferings: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeSourceRegions: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeValidDBInstanceModifications: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let downloadDBLogFilePortion: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let failoverDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let failoverGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let importInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyCurrentDBClusterCapacity: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBClusterSnapshotAttribute: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBProxy: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBProxyEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBProxyTargetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBSnapshotAttribute: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let promoteReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let promoteReadReplicaDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let purchaseReservedDBInstancesOffering: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let rebootDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let registerDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let removeFromGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let removeRoleFromDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let removeRoleFromDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let removeSourceIdentifierFromSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let removeTagsFromResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let resetDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let resetDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let restoreDBClusterFromS3: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let restoreDBClusterFromSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let restoreDBClusterToPointInTime: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let restoreDBInstanceFromDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let restoreDBInstanceFromS3: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let restoreDBInstanceToPointInTime: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let revokeDBSecurityGroupIngress: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let startActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let startDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let startDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let startDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let startExportTask: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let stopActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let stopDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let stopDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let stopDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>) {
         self.addRoleToDBCluster = StandardSmokeAWSOperationReporting(
@@ -207,6 +211,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .createDBParameterGroup, configuration: reportingConfiguration)
         self.createDBProxy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createDBProxy, configuration: reportingConfiguration)
+        self.createDBProxyEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createDBProxyEndpoint, configuration: reportingConfiguration)
         self.createDBSecurityGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createDBSecurityGroup, configuration: reportingConfiguration)
         self.createDBSnapshot = StandardSmokeAWSOperationReporting(
@@ -237,6 +243,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .deleteDBParameterGroup, configuration: reportingConfiguration)
         self.deleteDBProxy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBProxy, configuration: reportingConfiguration)
+        self.deleteDBProxyEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteDBProxyEndpoint, configuration: reportingConfiguration)
         self.deleteDBSecurityGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBSecurityGroup, configuration: reportingConfiguration)
         self.deleteDBSnapshot = StandardSmokeAWSOperationReporting(
@@ -287,6 +295,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .describeDBParameters, configuration: reportingConfiguration)
         self.describeDBProxies = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeDBProxies, configuration: reportingConfiguration)
+        self.describeDBProxyEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeDBProxyEndpoints, configuration: reportingConfiguration)
         self.describeDBProxyTargetGroups = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeDBProxyTargetGroups, configuration: reportingConfiguration)
         self.describeDBProxyTargets = StandardSmokeAWSOperationReporting(
@@ -359,6 +369,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .modifyDBParameterGroup, configuration: reportingConfiguration)
         self.modifyDBProxy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyDBProxy, configuration: reportingConfiguration)
+        self.modifyDBProxyEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyDBProxyEndpoint, configuration: reportingConfiguration)
         self.modifyDBProxyTargetGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyDBProxyTargetGroup, configuration: reportingConfiguration)
         self.modifyDBSnapshot = StandardSmokeAWSOperationReporting(

@@ -41,7 +41,7 @@ public enum SimpleWorkflowClientError: Swift.Error {
         return error.asUnrecognizedSimpleWorkflowError()
     }
 
-    func isRetriable() -> Bool? {
+    public func isRetriable() -> Bool? {
         switch self {
         case .limitExceeded:
             return true

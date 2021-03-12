@@ -135,6 +135,11 @@ public typealias CreateDBParameterGroupOperationHTTPRequestInput = QueryHTTPRequ
 public typealias CreateDBProxyOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateDBProxyEndpoint operation in a HTTP client.
+ */
+public typealias CreateDBProxyEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateDBSecurityGroup operation in a HTTP client.
  */
 public typealias CreateDBSecurityGroupOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -208,6 +213,11 @@ public typealias DeleteDBParameterGroupOperationHTTPRequestInput = QueryHTTPRequ
  Type to handle the input to the DeleteDBProxy operation in a HTTP client.
  */
 public typealias DeleteDBProxyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteDBProxyEndpoint operation in a HTTP client.
+ */
+public typealias DeleteDBProxyEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteDBSecurityGroup operation in a HTTP client.
@@ -333,6 +343,11 @@ public typealias DescribeDBParametersOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the DescribeDBProxies operation in a HTTP client.
  */
 public typealias DescribeDBProxiesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeDBProxyEndpoints operation in a HTTP client.
+ */
+public typealias DescribeDBProxyEndpointsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeDBProxyTargetGroups operation in a HTTP client.
@@ -513,6 +528,11 @@ public typealias ModifyDBParameterGroupOperationHTTPRequestInput = QueryHTTPRequ
  Type to handle the input to the ModifyDBProxy operation in a HTTP client.
  */
 public typealias ModifyDBProxyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyDBProxyEndpoint operation in a HTTP client.
+ */
+public typealias ModifyDBProxyEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyDBProxyTargetGroup operation in a HTTP client.

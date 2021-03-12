@@ -26,15 +26,15 @@ import SmokeAWSHttp
 import RDSDataModel
 
 /**
- Operation reporting for the RDSDataModel.
+ Invocations reporting for the RDSDataModel.
  */
 public struct RDSDataInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let beginTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let commitTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let executeSql: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let executeStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let rollbackTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let beginTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let commitTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let executeSql: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let executeStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let rollbackTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: RDSDataOperationsReporting) {
         self.batchExecuteStatement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

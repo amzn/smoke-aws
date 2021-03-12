@@ -28,43 +28,43 @@ import SimpleWorkflowModel
  Operation reporting for the SimpleWorkflowModel.
  */
 public struct SimpleWorkflowOperationsReporting {
-    let countClosedWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let countOpenWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let countPendingActivityTasks: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let countPendingDecisionTasks: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let deprecateActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let deprecateDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let deprecateWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let describeWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let getWorkflowExecutionHistory: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listActivityTypes: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listClosedWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listDomains: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listOpenWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let listWorkflowTypes: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let pollForActivityTask: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let pollForDecisionTask: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let recordActivityTaskHeartbeat: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let registerActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let registerDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let registerWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let requestCancelWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondActivityTaskCanceled: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondActivityTaskCompleted: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondActivityTaskFailed: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let respondDecisionTaskCompleted: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let signalWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let startWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let terminateWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let undeprecateActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let undeprecateDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let undeprecateWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let countClosedWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let countOpenWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let countPendingActivityTasks: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let countPendingDecisionTasks: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let deprecateActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let deprecateDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let deprecateWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let describeActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let describeDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let describeWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let describeWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let getWorkflowExecutionHistory: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let listActivityTypes: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let listClosedWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let listDomains: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let listOpenWorkflowExecutions: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let listWorkflowTypes: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let pollForActivityTask: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let pollForDecisionTask: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let recordActivityTaskHeartbeat: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let registerActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let registerDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let registerWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let requestCancelWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let respondActivityTaskCanceled: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let respondActivityTaskCompleted: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let respondActivityTaskFailed: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let respondDecisionTaskCompleted: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let signalWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let startWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let terminateWorkflowExecution: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let undeprecateActivityType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let undeprecateDomain: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let undeprecateWorkflowType: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<SimpleWorkflowModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>) {
         self.countClosedWorkflowExecutions = StandardSmokeAWSOperationReporting(

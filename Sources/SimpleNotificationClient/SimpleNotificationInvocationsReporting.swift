@@ -26,42 +26,42 @@ import SmokeAWSHttp
 import SimpleNotificationModel
 
 /**
- Operation reporting for the SimpleNotificationModel.
+ Invocations reporting for the SimpleNotificationModel.
  */
 public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let checkIfPhoneNumberIsOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let confirmSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createPlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createPlatformEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deletePlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getSMSAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getSubscriptionAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getTopicAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listEndpointsByPlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listPhoneNumbersOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listPlatformApplications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listSubscriptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listSubscriptionsByTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listTopics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let optInPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let publish: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setSMSAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setSubscriptionAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setTopicAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let subscribe: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let unsubscribe: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let checkIfPhoneNumberIsOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let confirmSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createPlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createPlatformEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deletePlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getSMSAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getSubscriptionAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getTopicAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listEndpointsByPlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listPhoneNumbersOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listPlatformApplications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listSubscriptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listSubscriptionsByTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listTopics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let optInPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let publish: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setSMSAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setSubscriptionAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setTopicAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let subscribe: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let unsubscribe: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: SimpleNotificationOperationsReporting) {
         self.addPermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

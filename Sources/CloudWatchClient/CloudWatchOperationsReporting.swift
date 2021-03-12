@@ -28,36 +28,36 @@ import CloudWatchModel
  Operation reporting for the CloudWatchModel.
  */
 public struct CloudWatchOperationsReporting {
-    let deleteAlarms: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let deleteAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let deleteDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let deleteInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let describeAlarmHistory: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let describeAlarms: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let describeAlarmsForMetric: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let describeAnomalyDetectors: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let describeInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let disableAlarmActions: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let disableInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let enableAlarmActions: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let enableInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let getDashboard: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let getInsightRuleReport: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let getMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let getMetricStatistics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let getMetricWidgetImage: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let listDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let listMetrics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let putAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let putCompositeAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let putDashboard: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let putInsightRule: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let putMetricAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let putMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let setAlarmState: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let deleteAlarms: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let deleteAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let deleteDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let deleteInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let describeAlarmHistory: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let describeAlarms: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let describeAlarmsForMetric: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let describeAnomalyDetectors: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let describeInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let disableAlarmActions: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let disableInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let enableAlarmActions: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let enableInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let getDashboard: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let getInsightRuleReport: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let getMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let getMetricStatistics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let getMetricWidgetImage: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let listDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let listMetrics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putCompositeAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putDashboard: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putInsightRule: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putMetricAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let setAlarmState: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>) {
         self.deleteAlarms = StandardSmokeAWSOperationReporting(

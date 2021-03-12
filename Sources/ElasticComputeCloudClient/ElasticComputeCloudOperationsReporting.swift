@@ -28,446 +28,446 @@ import ElasticComputeCloudModel
  Operation reporting for the ElasticComputeCloudModel.
  */
 public struct ElasticComputeCloudOperationsReporting {
-    let acceptReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let acceptTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let acceptTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let acceptTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let acceptVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let acceptVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let advertiseByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let allocateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let allocateHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let applySecurityGroupsToClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let assignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let assignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let associateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let attachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let attachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let attachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let attachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let attachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let authorizeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let authorizeSecurityGroupEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let authorizeSecurityGroupIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let bundleInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelBundleTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelConversionTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelImportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let cancelSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let confirmProductInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let copyFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let copyImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let copySnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createCarrierGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createCustomerGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createDefaultSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createDefaultVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createEgressOnlyInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createInstanceExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createLaunchTemplateVersion: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createLocalGatewayRouteTableVpcAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createNetworkInsightsPath: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createPlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayConnect: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayConnectPeer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpcEndpointConnectionNotification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpcEndpointServiceConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpnConnectionRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let createVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteCarrierGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteCustomerGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteEgressOnlyInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteLaunchTemplateVersions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteLocalGatewayRouteTableVpcAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNetworkInsightsAnalysis: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNetworkInsightsPath: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deletePlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteQueuedReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayConnect: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayConnectPeer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpcEndpointServiceConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpcEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpnConnectionRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deleteVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deprovisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deregisterImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deregisterInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deregisterTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let deregisterTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeAccountAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeAddressesAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeAggregateIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeAvailabilityZones: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeBundleTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeByoipCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeCapacityReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeCarrierGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeClassicLinkInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeClientVpnAuthorizationRules: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeClientVpnEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeClientVpnRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeClientVpnTargetNetworks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeCoipPools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeConversionTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeCustomerGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeEgressOnlyInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeElasticGpus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeExportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeExportTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFleetHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFleetInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeFpgaImages: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeHostReservationOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeHostReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeIamInstanceProfileAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeIdentityIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeImages: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeImportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeImportSnapshotTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstanceCreditSpecifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstanceTypeOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstanceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeIpv6Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeKeyPairs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLaunchTemplateVersions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLaunchTemplates: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLocalGatewayRouteTableVpcAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLocalGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLocalGatewayVirtualInterfaceGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLocalGatewayVirtualInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeLocalGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeManagedPrefixLists: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeMovingAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNatGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNetworkAcls: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNetworkInsightsAnalyses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNetworkInsightsPaths: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNetworkInterfacePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeNetworkInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describePlacementGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describePrefixLists: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describePrincipalIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describePublicIpv4Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeRegions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeReservedInstancesListings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeReservedInstancesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeReservedInstancesOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeScheduledInstanceAvailability: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSecurityGroupReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSpotFleetInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSpotFleetRequestHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSpotPriceHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeStaleSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeSubnets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTrafficMirrorFilters: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTrafficMirrorSessions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTrafficMirrorTargets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayConnectPeers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayConnects: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayMulticastDomains: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayPeeringAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGatewayVpcAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeTransitGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVolumeStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVolumes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVolumesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcEndpointServiceConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcEndpointServicePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcEndpointServices: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcPeeringConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpcs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let describeVpnGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let detachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let detachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let detachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let detachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let detachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let disassociateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableVolumeIO: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let enableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let exportClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let exportClientVpnClientConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let exportImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let exportTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getAssociatedEnclaveCertificateIamRoles: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getAssociatedIpv6PoolCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getCapacityReservationUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getCoipPoolUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getConsoleOutput: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getConsoleScreenshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getGroupsForCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getHostReservationPurchasePreview: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getLaunchTemplateData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getManagedPrefixListAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getManagedPrefixListEntries: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getTransitGatewayAttachmentPropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getTransitGatewayPrefixListReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getTransitGatewayRouteTableAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let getTransitGatewayRouteTablePropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let importClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let importImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let importInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let importKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let importSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let importVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyAvailabilityZoneGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyIdentityIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyInstanceCapacityReservationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyInstanceCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyInstanceEventStartTime: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyInstanceMetadataOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyInstancePlacement: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifySnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifySpotFleetRequest: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifySubnetAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyTrafficMirrorFilterNetworkServices: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcEndpointConnectionNotification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcEndpointServiceConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcEndpointServicePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcPeeringConnectionOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpcTenancy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpnConnectionOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpnTunnelCertificate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let modifyVpnTunnelOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let monitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let moveAddressToVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let provisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let purchaseHostReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let purchaseReservedInstancesOffering: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let purchaseScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let rebootInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let registerImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let registerInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let registerTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let registerTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let rejectTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let rejectTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let rejectTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let rejectVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let rejectVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let releaseAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let releaseHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let replaceIamInstanceProfileAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let replaceNetworkAclAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let replaceNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let replaceRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let replaceRouteTableAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let replaceTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let reportInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let requestSpotFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let requestSpotInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let resetSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let restoreAddressToClassic: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let restoreManagedPrefixListVersion: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let revokeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let revokeSecurityGroupEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let revokeSecurityGroupIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let runInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let runScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let searchLocalGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let searchTransitGatewayMulticastGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let searchTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let sendDiagnosticInterrupt: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let startInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let startNetworkInsightsAnalysis: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let startVpcEndpointServicePrivateDnsVerification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let stopInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let terminateClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let terminateInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let unassignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let unassignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let unmonitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let updateSecurityGroupRuleDescriptionsEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let updateSecurityGroupRuleDescriptionsIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
-    let withdrawByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let acceptReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let acceptTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let acceptTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let acceptTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let acceptVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let acceptVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let advertiseByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let allocateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let allocateHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let applySecurityGroupsToClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let assignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let assignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let attachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let attachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let attachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let attachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let attachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let authorizeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let authorizeSecurityGroupEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let authorizeSecurityGroupIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let bundleInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelBundleTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelConversionTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelImportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let confirmProductInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let copyFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let copyImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let copySnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createCarrierGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createCustomerGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createDefaultSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createDefaultVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createEgressOnlyInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createInstanceExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createLaunchTemplateVersion: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createLocalGatewayRouteTableVpcAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createNetworkInsightsPath: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createPlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayConnect: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayConnectPeer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpcEndpointConnectionNotification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpcEndpointServiceConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpnConnectionRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteCarrierGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteCustomerGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteEgressOnlyInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteLaunchTemplateVersions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteLocalGatewayRouteTableVpcAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNatGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNetworkAcl: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNetworkInsightsAnalysis: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNetworkInsightsPath: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deletePlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteQueuedReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTrafficMirrorTarget: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayConnect: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayConnectPeer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpcEndpointServiceConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpcEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpnConnectionRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deprovisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deregisterImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deregisterInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deregisterTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deregisterTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAccountAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAddressesAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAggregateIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAvailabilityZones: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeBundleTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeByoipCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeCapacityReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeCarrierGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeClassicLinkInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeClientVpnAuthorizationRules: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeClientVpnEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeClientVpnRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeClientVpnTargetNetworks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeCoipPools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeConversionTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeCustomerGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeEgressOnlyInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeElasticGpus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeExportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeExportTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFleetHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFleetInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeFpgaImages: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeHostReservationOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeHostReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeIamInstanceProfileAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeIdentityIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeImages: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeImportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeImportSnapshotTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceCreditSpecifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceTypeOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeIpv6Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeKeyPairs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLaunchTemplateVersions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLaunchTemplates: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLocalGatewayRouteTableVpcAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLocalGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLocalGatewayVirtualInterfaceGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLocalGatewayVirtualInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeLocalGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeManagedPrefixLists: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeMovingAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNatGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNetworkAcls: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNetworkInsightsAnalyses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNetworkInsightsPaths: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNetworkInterfacePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeNetworkInterfaces: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describePlacementGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describePrefixLists: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describePrincipalIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describePublicIpv4Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeRegions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeReservedInstancesListings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeReservedInstancesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeReservedInstancesOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeScheduledInstanceAvailability: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSecurityGroupReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSpotFleetInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSpotFleetRequestHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSpotPriceHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeStaleSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSubnets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTrafficMirrorFilters: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTrafficMirrorSessions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTrafficMirrorTargets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayConnectPeers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayConnects: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayMulticastDomains: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayPeeringAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGatewayVpcAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTransitGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVolumeStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVolumes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVolumesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcEndpointServiceConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcEndpointServicePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcEndpointServices: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcPeeringConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpcs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVpnGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let detachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let detachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let detachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let detachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let detachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableVolumeIO: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableVpcClassicLinkDnsSupport: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let exportClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let exportClientVpnClientConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let exportImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let exportTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getAssociatedEnclaveCertificateIamRoles: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getAssociatedIpv6PoolCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getCapacityReservationUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getCoipPoolUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getConsoleOutput: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getConsoleScreenshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getGroupsForCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getHostReservationPurchasePreview: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getLaunchTemplateData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getManagedPrefixListAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getManagedPrefixListEntries: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getTransitGatewayAttachmentPropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getTransitGatewayPrefixListReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getTransitGatewayRouteTableAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getTransitGatewayRouteTablePropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let importClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let importImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let importInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let importKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let importSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let importVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyAvailabilityZoneGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyIdentityIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstanceCapacityReservationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstanceCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstanceEventStartTime: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstanceMetadataOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstancePlacement: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifySnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifySpotFleetRequest: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifySubnetAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyTrafficMirrorFilterNetworkServices: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyTrafficMirrorSession: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcEndpointConnectionNotification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcEndpointServiceConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcEndpointServicePermissions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcPeeringConnectionOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpcTenancy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpnConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpnConnectionOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpnTunnelCertificate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVpnTunnelOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let monitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let moveAddressToVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let provisionByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let purchaseHostReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let purchaseReservedInstancesOffering: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let purchaseScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let rebootInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let registerImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let registerInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let registerTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let registerTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let rejectTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let rejectTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let rejectTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let rejectVpcEndpointConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let rejectVpcPeeringConnection: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let releaseAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let releaseHosts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceIamInstanceProfileAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceNetworkAclAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceNetworkAclEntry: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceRouteTableAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let reportInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let requestSpotFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let requestSpotInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetFpgaImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetImageAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let resetSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let restoreAddressToClassic: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let restoreManagedPrefixListVersion: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let revokeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let revokeSecurityGroupEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let revokeSecurityGroupIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let runInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let runScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let searchLocalGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let searchTransitGatewayMulticastGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let searchTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let sendDiagnosticInterrupt: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let startInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let startNetworkInsightsAnalysis: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let startVpcEndpointServicePrivateDnsVerification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let stopInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let terminateClientVpnConnections: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let terminateInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let unassignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let unassignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let unmonitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let updateSecurityGroupRuleDescriptionsEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let updateSecurityGroupRuleDescriptionsIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let withdrawByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>) {
         self.acceptReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(

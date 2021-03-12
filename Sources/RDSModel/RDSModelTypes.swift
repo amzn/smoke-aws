@@ -220,9 +220,56 @@ public typealias DBParameterGroupList = [DBParameterGroup]
 public typealias DBParameterGroupStatusList = [DBParameterGroupStatus]
 
 /**
+ Type definition for the DBProxyEndpointList field.
+ */
+public typealias DBProxyEndpointList = [DBProxyEndpoint]
+
+/**
+ Type definition for the DBProxyEndpointName field.
+ */
+public typealias DBProxyEndpointName = String
+
+/**
+ Enumeration restricting the values of the DBProxyEndpointStatus field.
+ */
+public enum DBProxyEndpointStatus: String, Codable, CustomStringConvertible {
+    case available
+    case creating
+    case deleting
+    case incompatibleNetwork = "incompatible-network"
+    case insufficientResourceLimits = "insufficient-resource-limits"
+    case modifying
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DBProxyEndpointStatus = .available
+}
+
+/**
+ Enumeration restricting the values of the DBProxyEndpointTargetRole field.
+ */
+public enum DBProxyEndpointTargetRole: String, Codable, CustomStringConvertible {
+    case readOnly = "READ_ONLY"
+    case readWrite = "READ_WRITE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DBProxyEndpointTargetRole = .readOnly
+}
+
+/**
  Type definition for the DBProxyList field.
  */
 public typealias DBProxyList = [DBProxy]
+
+/**
+ Type definition for the DBProxyName field.
+ */
+public typealias DBProxyName = String
 
 /**
  Enumeration restricting the values of the DBProxyStatus field.
@@ -671,6 +718,7 @@ public typealias TargetGroupList = [DBProxyTargetGroup]
 public enum TargetHealthReason: String, Codable, CustomStringConvertible {
     case authFailure = "AUTH_FAILURE"
     case connectionFailed = "CONNECTION_FAILED"
+    case invalidReplicationState = "INVALID_REPLICATION_STATE"
     case pendingProxyCapacity = "PENDING_PROXY_CAPACITY"
     case unreachable = "UNREACHABLE"
 
@@ -685,6 +733,21 @@ public enum TargetHealthReason: String, Codable, CustomStringConvertible {
  Type definition for the TargetList field.
  */
 public typealias TargetList = [DBProxyTarget]
+
+/**
+ Enumeration restricting the values of the TargetRole field.
+ */
+public enum TargetRole: String, Codable, CustomStringConvertible {
+    case readOnly = "READ_ONLY"
+    case readWrite = "READ_WRITE"
+    case unknown = "UNKNOWN"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TargetRole = .readOnly
+}
 
 /**
  Enumeration restricting the values of the TargetState field.
@@ -801,6 +864,48 @@ extension RDSModel.DBClusterIdentifier {
             matchingRange == startIndex..<endIndex else {
                 throw RDSError.validationError(
                     reason: "The provided value to DBClusterIdentifier violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DBProxyEndpointName field.
+*/
+extension RDSModel.DBProxyEndpointName {
+    public func validateAsDBProxyEndpointName() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to DBProxyEndpointName violated the minimum length constraint.")
+        }
+
+        if self.count > 63 {
+            throw RDSError.validationError(reason: "The provided value to DBProxyEndpointName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to DBProxyEndpointName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DBProxyName field.
+*/
+extension RDSModel.DBProxyName {
+    public func validateAsDBProxyName() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to DBProxyName violated the minimum length constraint.")
+        }
+
+        if self.count > 63 {
+            throw RDSError.validationError(reason: "The provided value to DBProxyName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to DBProxyName violated the regular expression constraint.")
         }
     }
 }

@@ -28,39 +28,39 @@ import SimpleNotificationModel
  Operation reporting for the SimpleNotificationModel.
  */
 public struct SimpleNotificationOperationsReporting {
-    let addPermission: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let checkIfPhoneNumberIsOptedOut: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let confirmSubscription: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let createPlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let createPlatformEndpoint: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let createTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let deleteEndpoint: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let deletePlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let deleteTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getSMSAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getSubscriptionAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let getTopicAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listEndpointsByPlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listPhoneNumbersOptedOut: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listPlatformApplications: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listSubscriptions: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listSubscriptionsByTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listTagsForResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let listTopics: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let optInPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let publish: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let removePermission: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setSMSAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setSubscriptionAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let setTopicAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let subscribe: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let unsubscribe: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let addPermission: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let checkIfPhoneNumberIsOptedOut: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let confirmSubscription: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let createPlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let createPlatformEndpoint: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let createTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let deleteEndpoint: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let deletePlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let deleteTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getSMSAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getSubscriptionAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getTopicAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listEndpointsByPlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listPhoneNumbersOptedOut: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listPlatformApplications: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listSubscriptions: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listSubscriptionsByTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listTagsForResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listTopics: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let optInPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let publish: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let removePermission: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let setEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let setPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let setSMSAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let setSubscriptionAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let setTopicAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let subscribe: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let unsubscribe: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>) {
         self.addPermission = StandardSmokeAWSOperationReporting(

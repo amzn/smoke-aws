@@ -28,61 +28,61 @@ import CloudformationModel
  Operation reporting for the CloudformationModel.
  */
 public struct CloudformationOperationsReporting {
-    let cancelUpdateStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let continueUpdateRollback: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let createChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let createStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let createStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let createStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let deleteChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let deleteStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let deleteStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let deleteStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let deregisterType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeAccountLimits: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackDriftDetectionStatus: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackEvents: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackInstance: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackResource: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackResourceDrifts: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackResources: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStackSetOperation: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeStacks: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let describeTypeRegistration: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let detectStackDrift: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let detectStackResourceDrift: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let detectStackSetDrift: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let estimateTemplateCost: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let executeChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let getStackPolicy: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let getTemplate: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let getTemplateSummary: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listChangeSets: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listExports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listImports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listStackResources: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listStackSetOperationResults: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listStackSetOperations: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listStackSets: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listStacks: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listTypeRegistrations: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listTypeVersions: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let listTypes: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let recordHandlerProgress: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let registerType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let setStackPolicy: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let setTypeDefaultVersion: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let signalResource: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let stopStackSetOperation: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let updateStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let updateStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let updateStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let updateTerminationProtection: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
-    let validateTemplate: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let cancelUpdateStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let continueUpdateRollback: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let createChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let createStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let createStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let createStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let deleteChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let deleteStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let deleteStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let deleteStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let deregisterType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeAccountLimits: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackDriftDetectionStatus: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackEvents: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackInstance: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackResource: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackResourceDrifts: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackResources: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStackSetOperation: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeStacks: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeTypeRegistration: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let detectStackDrift: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let detectStackResourceDrift: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let detectStackSetDrift: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let estimateTemplateCost: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let executeChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let getStackPolicy: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let getTemplate: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let getTemplateSummary: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listChangeSets: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listExports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listImports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStackResources: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStackSetOperationResults: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStackSetOperations: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStackSets: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStacks: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listTypeRegistrations: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listTypeVersions: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listTypes: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let recordHandlerProgress: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let registerType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let setStackPolicy: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let setTypeDefaultVersion: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let signalResource: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let stopStackSetOperation: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let updateStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let updateStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let updateStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let updateTerminationProtection: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let validateTemplate: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudformationModelOperations>) {
         self.cancelUpdateStack = StandardSmokeAWSOperationReporting(

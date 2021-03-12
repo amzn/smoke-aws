@@ -28,56 +28,56 @@ import DynamoDBModel
  Operation reporting for the DynamoDBModel.
  */
 public struct DynamoDBOperationsReporting {
-    let batchExecuteStatement: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let batchGetItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let batchWriteItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let createBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let createGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let createTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let deleteBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let deleteItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let deleteTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeContinuousBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeEndpoints: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeExport: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeLimits: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeTableReplicaAutoScaling: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let describeTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let disableKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let enableKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let executeStatement: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let executeTransaction: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let exportTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let getItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let listBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let listContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let listExports: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let listGlobalTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let listTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let listTagsOfResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let putItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let query: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let restoreTableFromBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let restoreTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let scan: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let tagResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let transactGetItems: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let transactWriteItems: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let untagResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateContinuousBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateTableReplicaAutoScaling: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
-    let updateTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let batchExecuteStatement: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let batchGetItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let batchWriteItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let createBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let createGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let createTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let deleteBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let deleteItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let deleteTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeContinuousBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeEndpoints: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeExport: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeLimits: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeTableReplicaAutoScaling: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let disableKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let enableKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let executeStatement: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let executeTransaction: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let exportTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let getItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listExports: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listGlobalTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listTagsOfResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let putItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let query: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let restoreTableFromBackup: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let restoreTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let scan: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let tagResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let transactGetItems: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let transactWriteItems: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let untagResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateContinuousBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateTableReplicaAutoScaling: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let updateTimeToLive: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<DynamoDBModelOperations>) {
         self.batchExecuteStatement = StandardSmokeAWSOperationReporting(

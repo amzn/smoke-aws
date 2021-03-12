@@ -28,26 +28,26 @@ import SimpleQueueModel
  Operation reporting for the SimpleQueueModel.
  */
 public struct SimpleQueueOperationsReporting {
-    let addPermission: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let changeMessageVisibility: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let changeMessageVisibilityBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let createQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let deleteMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let deleteMessageBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let deleteQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let getQueueAttributes: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let getQueueUrl: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let listDeadLetterSourceQueues: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let listQueueTags: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let listQueues: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let purgeQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let receiveMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let removePermission: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let sendMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let sendMessageBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let setQueueAttributes: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let tagQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
-    let untagQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let addPermission: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let changeMessageVisibility: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let changeMessageVisibilityBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let createQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let deleteMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let deleteMessageBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let deleteQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let getQueueAttributes: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let getQueueUrl: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let listDeadLetterSourceQueues: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let listQueueTags: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let listQueues: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let purgeQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let receiveMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let removePermission: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let sendMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let sendMessageBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let setQueueAttributes: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let tagQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let untagQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>) {
         self.addPermission = StandardSmokeAWSOperationReporting(

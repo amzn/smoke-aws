@@ -157,6 +157,7 @@ public enum AllocationState: String, Codable, CustomStringConvertible {
  */
 public enum AllocationStrategy: String, Codable, CustomStringConvertible {
     case capacityoptimized = "capacityOptimized"
+    case capacityoptimizedprioritized = "capacityOptimizedPrioritized"
     case diversified
     case lowestprice = "lowestPrice"
 
@@ -5455,6 +5456,7 @@ public enum SnapshotState: String, Codable, CustomStringConvertible {
  */
 public enum SpotAllocationStrategy: String, Codable, CustomStringConvertible {
     case capacityOptimized = "capacity-optimized"
+    case capacityOptimizedPrioritized = "capacity-optimized-prioritized"
     case diversified
     case lowestPrice = "lowest-price"
 

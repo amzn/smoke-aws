@@ -26,17 +26,17 @@ import SmokeAWSHttp
 import SecurityTokenModel
 
 /**
- Operation reporting for the SecurityTokenModel.
+ Invocations reporting for the SecurityTokenModel.
  */
 public struct SecurityTokenInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let assumeRole: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let assumeRoleWithSAML: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let assumeRoleWithWebIdentity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let decodeAuthorizationMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getAccessKeyInfo: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getCallerIdentity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getFederationToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getSessionToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let assumeRole: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let assumeRoleWithSAML: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let assumeRoleWithWebIdentity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let decodeAuthorizationMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getAccessKeyInfo: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getCallerIdentity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getFederationToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getSessionToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: SecurityTokenOperationsReporting) {
         self.assumeRole = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

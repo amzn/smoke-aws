@@ -41,7 +41,7 @@ public enum StepFunctionsClientError: Swift.Error {
         return error.asUnrecognizedStepFunctionsError()
     }
 
-    func isRetriable() -> Bool? {
+    public func isRetriable() -> Bool? {
         switch self {
         case .activityLimitExceeded, .activityWorkerLimitExceeded, .executionLimitExceeded, .stateMachineLimitExceeded:
             return true

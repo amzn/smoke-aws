@@ -26,29 +26,29 @@ import SmokeAWSHttp
 import SimpleQueueModel
 
 /**
- Operation reporting for the SimpleQueueModel.
+ Invocations reporting for the SimpleQueueModel.
  */
 public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
-    let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let changeMessageVisibility: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let changeMessageVisibilityBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let createQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteMessageBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let deleteQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getQueueAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let getQueueUrl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listDeadLetterSourceQueues: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listQueueTags: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let listQueues: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let purgeQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let receiveMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let removePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let sendMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let sendMessageBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let setQueueAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let tagQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    let untagQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let changeMessageVisibility: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let changeMessageVisibilityBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteMessageBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getQueueAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getQueueUrl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listDeadLetterSourceQueues: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listQueueTags: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listQueues: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let purgeQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let receiveMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let removePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let sendMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let sendMessageBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setQueueAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let tagQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let untagQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: SimpleQueueOperationsReporting) {
         self.addPermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
