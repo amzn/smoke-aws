@@ -129,6 +129,11 @@ public protocol ElasticContainerClientProtocol {
     typealias DiscoverPollEndpointAsyncType = (
             _ input: ElasticContainerModel.DiscoverPollEndpointRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.DiscoverPollEndpointResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias ExecuteCommandSyncType = (
+            _ input: ElasticContainerModel.ExecuteCommandRequest) throws -> ElasticContainerModel.ExecuteCommandResponse
+    typealias ExecuteCommandAsyncType = (
+            _ input: ElasticContainerModel.ExecuteCommandRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.ExecuteCommandResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListAccountSettingsSyncType = (
             _ input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
     typealias ListAccountSettingsAsyncType = (
@@ -249,6 +254,11 @@ public protocol ElasticContainerClientProtocol {
     typealias UpdateCapacityProviderAsyncType = (
             _ input: ElasticContainerModel.UpdateCapacityProviderRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.UpdateCapacityProviderResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias UpdateClusterSyncType = (
+            _ input: ElasticContainerModel.UpdateClusterRequest) throws -> ElasticContainerModel.UpdateClusterResponse
+    typealias UpdateClusterAsyncType = (
+            _ input: ElasticContainerModel.UpdateClusterRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateClusterResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateClusterSettingsSyncType = (
             _ input: ElasticContainerModel.UpdateClusterSettingsRequest) throws -> ElasticContainerModel.UpdateClusterSettingsResponse
     typealias UpdateClusterSettingsAsyncType = (
@@ -799,6 +809,32 @@ public protocol ElasticContainerClientProtocol {
      */
     func discoverPollEndpointSync(
             input: ElasticContainerModel.DiscoverPollEndpointRequest) throws -> ElasticContainerModel.DiscoverPollEndpointResponse
+
+    /**
+     Invokes the ExecuteCommand operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExecuteCommandRequest object being passed to this operation.
+         - completion: The ExecuteCommandResponse object or an error will be passed to this 
+           callback when the operation is complete. The ExecuteCommandResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, targetNotConnected.
+     */
+    func executeCommandAsync(
+            input: ElasticContainerModel.ExecuteCommandRequest, 
+            completion: @escaping (Result<ElasticContainerModel.ExecuteCommandResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the ExecuteCommand operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExecuteCommandRequest object being passed to this operation.
+     - Returns: The ExecuteCommandResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, targetNotConnected.
+     */
+    func executeCommandSync(
+            input: ElasticContainerModel.ExecuteCommandRequest) throws -> ElasticContainerModel.ExecuteCommandResponse
 
     /**
      Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
@@ -1423,6 +1459,32 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateCapacityProviderSync(
             input: ElasticContainerModel.UpdateCapacityProviderRequest) throws -> ElasticContainerModel.UpdateCapacityProviderResponse
+
+    /**
+     Invokes the UpdateCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterRequest object being passed to this operation.
+         - completion: The UpdateClusterResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    func updateClusterAsync(
+            input: ElasticContainerModel.UpdateClusterRequest, 
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the UpdateCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterRequest object being passed to this operation.
+     - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    func updateClusterSync(
+            input: ElasticContainerModel.UpdateClusterRequest) throws -> ElasticContainerModel.UpdateClusterResponse
 
     /**
      Invokes the UpdateClusterSettings operation returning immediately and passing the response to a callback.

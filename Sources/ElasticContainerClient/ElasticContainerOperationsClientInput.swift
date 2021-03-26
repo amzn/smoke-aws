@@ -125,6 +125,11 @@ public typealias DescribeTasksOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias DiscoverPollEndpointOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ExecuteCommand operation in a HTTP client.
+ */
+public typealias ExecuteCommandOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListAccountSettings operation in a HTTP client.
  */
 public typealias ListAccountSettingsOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -243,6 +248,11 @@ public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UpdateCapacityProvider operation in a HTTP client.
  */
 public typealias UpdateCapacityProviderOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateCluster operation in a HTTP client.
+ */
+public typealias UpdateClusterOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateClusterSettings operation in a HTTP client.

@@ -514,6 +514,39 @@ public typealias BlockDeviceMappingRequestList = [BlockDeviceMapping]
 public typealias Boolean = Bool
 
 /**
+ Enumeration restricting the values of the BootModeType field.
+ */
+public enum BootModeType: String, Codable, CustomStringConvertible {
+    case legacyBios = "legacy-bios"
+    case uefi
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BootModeType = .legacyBios
+}
+
+/**
+ Type definition for the BootModeTypeList field.
+ */
+public typealias BootModeTypeList = [BootModeType]
+
+/**
+ Enumeration restricting the values of the BootModeValues field.
+ */
+public enum BootModeValues: String, Codable, CustomStringConvertible {
+    case legacyBios = "legacy-bios"
+    case uefi
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BootModeValues = .legacyBios
+}
+
+/**
  Type definition for the BundleId field.
  */
 public typealias BundleId = String
@@ -2471,6 +2504,7 @@ public enum Igmpv2SupportValue: String, Codable, CustomStringConvertible {
  */
 public enum ImageAttributeName: String, Codable, CustomStringConvertible {
     case blockdevicemapping = "blockDeviceMapping"
+    case bootmode = "bootMode"
     case description
     case kernel
     case launchpermission = "launchPermission"
@@ -3259,6 +3293,15 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case x1e4xlarge = "x1e.4xlarge"
     case x1e8xlarge = "x1e.8xlarge"
     case x1eXlarge = "x1e.xlarge"
+    case x2gd12xlarge = "x2gd.12xlarge"
+    case x2gd16xlarge = "x2gd.16xlarge"
+    case x2gd2xlarge = "x2gd.2xlarge"
+    case x2gd4xlarge = "x2gd.4xlarge"
+    case x2gd8xlarge = "x2gd.8xlarge"
+    case x2gdLarge = "x2gd.large"
+    case x2gdMedium = "x2gd.medium"
+    case x2gdMetal = "x2gd.metal"
+    case x2gdXlarge = "x2gd.xlarge"
     case z1d12xlarge = "z1d.12xlarge"
     case z1d2xlarge = "z1d.2xlarge"
     case z1d3xlarge = "z1d.3xlarge"
@@ -3905,6 +3948,11 @@ public typealias MaxResults = Int
  Type definition for the MaximumBandwidthInMbps field.
  */
 public typealias MaximumBandwidthInMbps = Int
+
+/**
+ Type definition for the MaximumEfaInterfaces field.
+ */
+public typealias MaximumEfaInterfaces = Int
 
 /**
  Type definition for the MaximumIops field.

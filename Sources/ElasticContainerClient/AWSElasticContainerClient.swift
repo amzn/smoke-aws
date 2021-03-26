@@ -1546,6 +1546,76 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
     }
 
     /**
+     Invokes the ExecuteCommand operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ExecuteCommandRequest object being passed to this operation.
+         - completion: The ExecuteCommandResponse object or an error will be passed to this 
+           callback when the operation is complete. The ExecuteCommandResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, server, targetNotConnected.
+     */
+    public func executeCommandAsync(
+            input: ElasticContainerModel.ExecuteCommandRequest, 
+            completion: @escaping (Result<ElasticContainerModel.ExecuteCommandResponse, ElasticContainerError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.executeCommand.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeCommand,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteCommandOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ExecuteCommand operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ExecuteCommandRequest object being passed to this operation.
+     - Returns: The ExecuteCommandResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, targetNotConnected.
+     */
+    public func executeCommandSync(
+            input: ElasticContainerModel.ExecuteCommandRequest) throws -> ElasticContainerModel.ExecuteCommandResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.executeCommand.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeCommand,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteCommandOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3210,6 +3280,76 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateCapacityProvider,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateClusterRequest object being passed to this operation.
+         - completion: The UpdateClusterResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateClusterResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterAsync(
+            input: ElasticContainerModel.UpdateClusterRequest, 
+            completion: @escaping (Result<ElasticContainerModel.UpdateClusterResponse, ElasticContainerError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateCluster.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateClusterOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterRequest object being passed to this operation.
+     - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSync(
+            input: ElasticContainerModel.UpdateClusterRequest) throws -> ElasticContainerModel.UpdateClusterResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateCluster.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateClusterOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(

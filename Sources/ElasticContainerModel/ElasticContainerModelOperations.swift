@@ -46,6 +46,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case describeTaskSets = "DescribeTaskSets"
     case describeTasks = "DescribeTasks"
     case discoverPollEndpoint = "DiscoverPollEndpoint"
+    case executeCommand = "ExecuteCommand"
     case listAccountSettings = "ListAccountSettings"
     case listAttributes = "ListAttributes"
     case listClusters = "ListClusters"
@@ -70,6 +71,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
     case updateCapacityProvider = "UpdateCapacityProvider"
+    case updateCluster = "UpdateCluster"
     case updateClusterSettings = "UpdateClusterSettings"
     case updateContainerAgent = "UpdateContainerAgent"
     case updateContainerInstancesState = "UpdateContainerInstancesState"
@@ -123,6 +125,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
             return "/"
         case .discoverPollEndpoint:
             return "/"
+        case .executeCommand:
+            return "/"
         case .listAccountSettings:
             return "/"
         case .listAttributes:
@@ -170,6 +174,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .untagResource:
             return "/"
         case .updateCapacityProvider:
+            return "/"
+        case .updateCluster:
             return "/"
         case .updateClusterSettings:
             return "/"

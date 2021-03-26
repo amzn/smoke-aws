@@ -48,6 +48,7 @@ public struct ElasticContainerOperationsReporting {
     public let describeTaskSets: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let describeTasks: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let discoverPollEndpoint: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let executeCommand: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listAccountSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listClusters: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -72,6 +73,7 @@ public struct ElasticContainerOperationsReporting {
     public let tagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let untagResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateCluster: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateClusterSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateContainerAgent: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateContainerInstancesState: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -120,6 +122,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .describeTasks, configuration: reportingConfiguration)
         self.discoverPollEndpoint = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .discoverPollEndpoint, configuration: reportingConfiguration)
+        self.executeCommand = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .executeCommand, configuration: reportingConfiguration)
         self.listAccountSettings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listAccountSettings, configuration: reportingConfiguration)
         self.listAttributes = StandardSmokeAWSOperationReporting(
@@ -168,6 +172,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .untagResource, configuration: reportingConfiguration)
         self.updateCapacityProvider = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateCapacityProvider, configuration: reportingConfiguration)
+        self.updateCluster = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .updateCluster, configuration: reportingConfiguration)
         self.updateClusterSettings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateClusterSettings, configuration: reportingConfiguration)
         self.updateContainerAgent = StandardSmokeAWSOperationReporting(

@@ -502,6 +502,11 @@ public protocol S3ClientProtocol {
     typealias UploadPartCopyAsyncType = (
             _ input: S3Model.UploadPartCopyRequest, 
             _ completion: @escaping (Result<S3Model.UploadPartCopyOutput, S3Error>) -> ()) throws -> ()
+    typealias WriteGetObjectResponseSyncType = (
+            _ input: S3Model.WriteGetObjectResponseRequest) throws -> ()
+    typealias WriteGetObjectResponseAsyncType = (
+            _ input: S3Model.WriteGetObjectResponseRequest, 
+            _ completion: @escaping (S3Error?) -> ()) throws -> ()
 
     /**
      Invokes the AbortMultipartUpload operation returning immediately and passing the response to a callback.
@@ -2688,4 +2693,25 @@ public protocol S3ClientProtocol {
      */
     func uploadPartCopySync(
             input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput
+
+    /**
+     Invokes the WriteGetObjectResponse operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    func writeGetObjectResponseAsync(
+            input: S3Model.WriteGetObjectResponseRequest, 
+            completion: @escaping (S3Error?) -> ()) throws
+
+    /**
+     Invokes the WriteGetObjectResponse operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+     */
+    func writeGetObjectResponseSync(
+            input: S3Model.WriteGetObjectResponseRequest) throws
 }

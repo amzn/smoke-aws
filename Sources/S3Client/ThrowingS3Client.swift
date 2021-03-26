@@ -220,6 +220,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let uploadPartSyncOverride: UploadPartSyncType?
     let uploadPartCopyAsyncOverride: UploadPartCopyAsyncType?
     let uploadPartCopySyncOverride: UploadPartCopySyncType?
+    let writeGetObjectResponseAsyncOverride: WriteGetObjectResponseAsyncType?
+    let writeGetObjectResponseSyncOverride: WriteGetObjectResponseSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -415,7 +417,9 @@ public struct ThrowingS3Client: S3ClientProtocol {
             uploadPartAsync: UploadPartAsyncType? = nil,
             uploadPartSync: UploadPartSyncType? = nil,
             uploadPartCopyAsync: UploadPartCopyAsyncType? = nil,
-            uploadPartCopySync: UploadPartCopySyncType? = nil) {
+            uploadPartCopySync: UploadPartCopySyncType? = nil,
+            writeGetObjectResponseAsync: WriteGetObjectResponseAsyncType? = nil,
+            writeGetObjectResponseSync: WriteGetObjectResponseSyncType? = nil) {
         self.error = error
         self.abortMultipartUploadAsyncOverride = abortMultipartUploadAsync
         self.abortMultipartUploadSyncOverride = abortMultipartUploadSync
@@ -607,6 +611,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.uploadPartSyncOverride = uploadPartSync
         self.uploadPartCopyAsyncOverride = uploadPartCopyAsync
         self.uploadPartCopySyncOverride = uploadPartCopySync
+        self.writeGetObjectResponseAsyncOverride = writeGetObjectResponseAsync
+        self.writeGetObjectResponseSyncOverride = writeGetObjectResponseSync
     }
 
     /**
@@ -3930,6 +3936,39 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.UploadPartCopyRequest) throws -> S3Model.UploadPartCopyOutput {
         if let uploadPartCopySyncOverride = uploadPartCopySyncOverride {
             return try uploadPartCopySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the WriteGetObjectResponse operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func writeGetObjectResponseAsync(
+            input: S3Model.WriteGetObjectResponseRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        if let writeGetObjectResponseAsyncOverride = writeGetObjectResponseAsyncOverride {
+            return try writeGetObjectResponseAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the WriteGetObjectResponse operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+     */
+    public func writeGetObjectResponseSync(
+            input: S3Model.WriteGetObjectResponseRequest) throws {
+        if let writeGetObjectResponseSyncOverride = writeGetObjectResponseSyncOverride {
+            return try writeGetObjectResponseSyncOverride(input)
         }
 
         throw error

@@ -285,6 +285,19 @@ extension DiscoverPollEndpointResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ExecuteCommand operation in a HTTP client.
+ */
+extension ExecuteCommandResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExecuteCommandResponse
+    public typealias HeadersType = ExecuteCommandResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExecuteCommandResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListAccountSettings operation in a HTTP client.
  */
 extension ListAccountSettingsResponse: HTTPResponseOutputProtocol {
@@ -592,6 +605,19 @@ extension UpdateCapacityProviderResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UpdateCapacityProviderResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateCluster operation in a HTTP client.
+ */
+extension UpdateClusterResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateClusterResponse
+    public typealias HeadersType = UpdateClusterResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateClusterResponse {
         return try bodyDecodableProvider()
     }
 }

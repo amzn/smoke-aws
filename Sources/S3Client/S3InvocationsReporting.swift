@@ -124,6 +124,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     public let selectObjectContent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let uploadPart: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let uploadPartCopy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let writeGetObjectResponse: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: S3OperationsReporting) {
         self.abortMultipartUpload = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -316,5 +317,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.uploadPart)
         self.uploadPartCopy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.uploadPartCopy)
+        self.writeGetObjectResponse = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.writeGetObjectResponse)
     }
 }
