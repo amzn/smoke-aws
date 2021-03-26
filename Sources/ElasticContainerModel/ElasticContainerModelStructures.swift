@@ -277,6 +277,7 @@ public struct Cluster: Codable, Equatable {
     public var capacityProviders: StringList?
     public var clusterArn: String?
     public var clusterName: String?
+    public var configuration: ClusterConfiguration?
     public var defaultCapacityProviderStrategy: CapacityProviderStrategy?
     public var pendingTasksCount: Integer?
     public var registeredContainerInstancesCount: Integer?
@@ -292,6 +293,7 @@ public struct Cluster: Codable, Equatable {
                 capacityProviders: StringList? = nil,
                 clusterArn: String? = nil,
                 clusterName: String? = nil,
+                configuration: ClusterConfiguration? = nil,
                 defaultCapacityProviderStrategy: CapacityProviderStrategy? = nil,
                 pendingTasksCount: Integer? = nil,
                 registeredContainerInstancesCount: Integer? = nil,
@@ -306,6 +308,7 @@ public struct Cluster: Codable, Equatable {
         self.capacityProviders = capacityProviders
         self.clusterArn = clusterArn
         self.clusterName = clusterName
+        self.configuration = configuration
         self.defaultCapacityProviderStrategy = defaultCapacityProviderStrategy
         self.pendingTasksCount = pendingTasksCount
         self.registeredContainerInstancesCount = registeredContainerInstancesCount
@@ -323,6 +326,7 @@ public struct Cluster: Codable, Equatable {
         case capacityProviders
         case clusterArn
         case clusterName
+        case configuration
         case defaultCapacityProviderStrategy
         case pendingTasksCount
         case registeredContainerInstancesCount
@@ -334,7 +338,24 @@ public struct Cluster: Codable, Equatable {
     }
 
     public func validate() throws {
+        try configuration?.validate()
         try tags?.validateAsTags()
+    }
+}
+
+public struct ClusterConfiguration: Codable, Equatable {
+    public var executeCommandConfiguration: ExecuteCommandConfiguration?
+
+    public init(executeCommandConfiguration: ExecuteCommandConfiguration? = nil) {
+        self.executeCommandConfiguration = executeCommandConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case executeCommandConfiguration
+    }
+
+    public func validate() throws {
+        try executeCommandConfiguration?.validate()
     }
 }
 
@@ -402,6 +423,7 @@ public struct Container: Codable, Equatable {
     public var image: String?
     public var imageDigest: String?
     public var lastStatus: String?
+    public var managedAgents: ManagedAgents?
     public var memory: String?
     public var memoryReservation: String?
     public var name: String?
@@ -419,6 +441,7 @@ public struct Container: Codable, Equatable {
                 image: String? = nil,
                 imageDigest: String? = nil,
                 lastStatus: String? = nil,
+                managedAgents: ManagedAgents? = nil,
                 memory: String? = nil,
                 memoryReservation: String? = nil,
                 name: String? = nil,
@@ -435,6 +458,7 @@ public struct Container: Codable, Equatable {
         self.image = image
         self.imageDigest = imageDigest
         self.lastStatus = lastStatus
+        self.managedAgents = managedAgents
         self.memory = memory
         self.memoryReservation = memoryReservation
         self.name = name
@@ -454,6 +478,7 @@ public struct Container: Codable, Equatable {
         case image
         case imageDigest
         case lastStatus
+        case managedAgents
         case memory
         case memoryReservation
         case name
@@ -866,17 +891,20 @@ public struct CreateCapacityProviderResponse: Codable, Equatable {
 public struct CreateClusterRequest: Codable, Equatable {
     public var capacityProviders: StringList?
     public var clusterName: String?
+    public var configuration: ClusterConfiguration?
     public var defaultCapacityProviderStrategy: CapacityProviderStrategy?
     public var settings: ClusterSettings?
     public var tags: Tags?
 
     public init(capacityProviders: StringList? = nil,
                 clusterName: String? = nil,
+                configuration: ClusterConfiguration? = nil,
                 defaultCapacityProviderStrategy: CapacityProviderStrategy? = nil,
                 settings: ClusterSettings? = nil,
                 tags: Tags? = nil) {
         self.capacityProviders = capacityProviders
         self.clusterName = clusterName
+        self.configuration = configuration
         self.defaultCapacityProviderStrategy = defaultCapacityProviderStrategy
         self.settings = settings
         self.tags = tags
@@ -885,12 +913,14 @@ public struct CreateClusterRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case capacityProviders
         case clusterName
+        case configuration
         case defaultCapacityProviderStrategy
         case settings
         case tags
     }
 
     public func validate() throws {
+        try configuration?.validate()
         try tags?.validateAsTags()
     }
 }
@@ -919,6 +949,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var deploymentController: DeploymentController?
     public var desiredCount: BoxedInteger?
     public var enableECSManagedTags: Boolean?
+    public var enableExecuteCommand: Boolean?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
     public var launchType: LaunchType?
     public var loadBalancers: LoadBalancers?
@@ -941,6 +972,7 @@ public struct CreateServiceRequest: Codable, Equatable {
                 deploymentController: DeploymentController? = nil,
                 desiredCount: BoxedInteger? = nil,
                 enableECSManagedTags: Boolean? = nil,
+                enableExecuteCommand: Boolean? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
                 launchType: LaunchType? = nil,
                 loadBalancers: LoadBalancers? = nil,
@@ -962,6 +994,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         self.deploymentController = deploymentController
         self.desiredCount = desiredCount
         self.enableECSManagedTags = enableECSManagedTags
+        self.enableExecuteCommand = enableExecuteCommand
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
         self.launchType = launchType
         self.loadBalancers = loadBalancers
@@ -986,6 +1019,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         case deploymentController
         case desiredCount
         case enableECSManagedTags
+        case enableExecuteCommand
         case healthCheckGracePeriodSeconds
         case launchType
         case loadBalancers
@@ -1983,6 +2017,128 @@ public struct EnvironmentFile: Codable, Equatable {
     }
 }
 
+public struct ExecuteCommandConfiguration: Codable, Equatable {
+    public var kmsKeyId: String?
+    public var logConfiguration: ExecuteCommandLogConfiguration?
+    public var logging: ExecuteCommandLogging?
+
+    public init(kmsKeyId: String? = nil,
+                logConfiguration: ExecuteCommandLogConfiguration? = nil,
+                logging: ExecuteCommandLogging? = nil) {
+        self.kmsKeyId = kmsKeyId
+        self.logConfiguration = logConfiguration
+        self.logging = logging
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case kmsKeyId
+        case logConfiguration
+        case logging
+    }
+
+    public func validate() throws {
+        try logConfiguration?.validate()
+    }
+}
+
+public struct ExecuteCommandLogConfiguration: Codable, Equatable {
+    public var cloudWatchEncryptionEnabled: Boolean?
+    public var cloudWatchLogGroupName: String?
+    public var s3BucketName: String?
+    public var s3EncryptionEnabled: Boolean?
+    public var s3KeyPrefix: String?
+
+    public init(cloudWatchEncryptionEnabled: Boolean? = nil,
+                cloudWatchLogGroupName: String? = nil,
+                s3BucketName: String? = nil,
+                s3EncryptionEnabled: Boolean? = nil,
+                s3KeyPrefix: String? = nil) {
+        self.cloudWatchEncryptionEnabled = cloudWatchEncryptionEnabled
+        self.cloudWatchLogGroupName = cloudWatchLogGroupName
+        self.s3BucketName = s3BucketName
+        self.s3EncryptionEnabled = s3EncryptionEnabled
+        self.s3KeyPrefix = s3KeyPrefix
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cloudWatchEncryptionEnabled
+        case cloudWatchLogGroupName
+        case s3BucketName
+        case s3EncryptionEnabled
+        case s3KeyPrefix
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExecuteCommandRequest: Codable, Equatable {
+    public var cluster: String?
+    public var command: String
+    public var container: String?
+    public var interactive: Boolean
+    public var task: String
+
+    public init(cluster: String? = nil,
+                command: String,
+                container: String? = nil,
+                interactive: Boolean,
+                task: String) {
+        self.cluster = cluster
+        self.command = command
+        self.container = container
+        self.interactive = interactive
+        self.task = task
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case command
+        case container
+        case interactive
+        case task
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ExecuteCommandResponse: Codable, Equatable {
+    public var clusterArn: String?
+    public var containerArn: String?
+    public var containerName: String?
+    public var interactive: Boolean?
+    public var session: Session?
+    public var taskArn: String?
+
+    public init(clusterArn: String? = nil,
+                containerArn: String? = nil,
+                containerName: String? = nil,
+                interactive: Boolean? = nil,
+                session: Session? = nil,
+                taskArn: String? = nil) {
+        self.clusterArn = clusterArn
+        self.containerArn = containerArn
+        self.containerName = containerName
+        self.interactive = interactive
+        self.session = session
+        self.taskArn = taskArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clusterArn
+        case containerArn
+        case containerName
+        case interactive
+        case session
+        case taskArn
+    }
+
+    public func validate() throws {
+        try session?.validate()
+    }
+}
+
 public struct FSxWindowsFileServerAuthorizationConfig: Codable, Equatable {
     public var credentialsParameter: String
     public var domain: String
@@ -2756,6 +2912,60 @@ public struct LogConfiguration: Codable, Equatable {
     }
 }
 
+public struct ManagedAgent: Codable, Equatable {
+    public var lastStartedAt: Timestamp?
+    public var lastStatus: String?
+    public var name: ManagedAgentName?
+    public var reason: String?
+
+    public init(lastStartedAt: Timestamp? = nil,
+                lastStatus: String? = nil,
+                name: ManagedAgentName? = nil,
+                reason: String? = nil) {
+        self.lastStartedAt = lastStartedAt
+        self.lastStatus = lastStatus
+        self.name = name
+        self.reason = reason
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case lastStartedAt
+        case lastStatus
+        case name
+        case reason
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ManagedAgentStateChange: Codable, Equatable {
+    public var containerName: String
+    public var managedAgentName: ManagedAgentName
+    public var reason: String?
+    public var status: String
+
+    public init(containerName: String,
+                managedAgentName: ManagedAgentName,
+                reason: String? = nil,
+                status: String) {
+        self.containerName = containerName
+        self.managedAgentName = managedAgentName
+        self.reason = reason
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case containerName
+        case managedAgentName
+        case reason
+        case status
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ManagedScaling: Codable, Equatable {
     public var instanceWarmupPeriod: ManagedScalingInstanceWarmupPeriod?
     public var maximumScalingStepSize: ManagedScalingStepSize?
@@ -3417,6 +3627,7 @@ public struct RunTaskRequest: Codable, Equatable {
     public var cluster: String?
     public var count: BoxedInteger?
     public var enableECSManagedTags: Boolean?
+    public var enableExecuteCommand: Boolean?
     public var group: String?
     public var launchType: LaunchType?
     public var networkConfiguration: NetworkConfiguration?
@@ -3434,6 +3645,7 @@ public struct RunTaskRequest: Codable, Equatable {
                 cluster: String? = nil,
                 count: BoxedInteger? = nil,
                 enableECSManagedTags: Boolean? = nil,
+                enableExecuteCommand: Boolean? = nil,
                 group: String? = nil,
                 launchType: LaunchType? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
@@ -3450,6 +3662,7 @@ public struct RunTaskRequest: Codable, Equatable {
         self.cluster = cluster
         self.count = count
         self.enableECSManagedTags = enableECSManagedTags
+        self.enableExecuteCommand = enableExecuteCommand
         self.group = group
         self.launchType = launchType
         self.networkConfiguration = networkConfiguration
@@ -3469,6 +3682,7 @@ public struct RunTaskRequest: Codable, Equatable {
         case cluster
         case count
         case enableECSManagedTags
+        case enableExecuteCommand
         case group
         case launchType
         case networkConfiguration
@@ -3572,6 +3786,7 @@ public struct Service: Codable, Equatable {
     public var deployments: Deployments?
     public var desiredCount: Integer?
     public var enableECSManagedTags: Boolean?
+    public var enableExecuteCommand: Boolean?
     public var events: ServiceEvents?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
     public var launchType: LaunchType?
@@ -3602,6 +3817,7 @@ public struct Service: Codable, Equatable {
                 deployments: Deployments? = nil,
                 desiredCount: Integer? = nil,
                 enableECSManagedTags: Boolean? = nil,
+                enableExecuteCommand: Boolean? = nil,
                 events: ServiceEvents? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
                 launchType: LaunchType? = nil,
@@ -3631,6 +3847,7 @@ public struct Service: Codable, Equatable {
         self.deployments = deployments
         self.desiredCount = desiredCount
         self.enableECSManagedTags = enableECSManagedTags
+        self.enableExecuteCommand = enableExecuteCommand
         self.events = events
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
         self.launchType = launchType
@@ -3663,6 +3880,7 @@ public struct Service: Codable, Equatable {
         case deployments
         case desiredCount
         case enableECSManagedTags
+        case enableExecuteCommand
         case events
         case healthCheckGracePeriodSeconds
         case launchType
@@ -3761,6 +3979,29 @@ public struct ServiceRegistry: Codable, Equatable {
     }
 }
 
+public struct Session: Codable, Equatable {
+    public var sessionId: String?
+    public var streamUrl: String?
+    public var tokenValue: SensitiveString?
+
+    public init(sessionId: String? = nil,
+                streamUrl: String? = nil,
+                tokenValue: SensitiveString? = nil) {
+        self.sessionId = sessionId
+        self.streamUrl = streamUrl
+        self.tokenValue = tokenValue
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case sessionId
+        case streamUrl
+        case tokenValue
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Setting: Codable, Equatable {
     public var name: SettingName?
     public var principalArn: String?
@@ -3788,6 +4029,7 @@ public struct StartTaskRequest: Codable, Equatable {
     public var cluster: String?
     public var containerInstances: StringList
     public var enableECSManagedTags: Boolean?
+    public var enableExecuteCommand: Boolean?
     public var group: String?
     public var networkConfiguration: NetworkConfiguration?
     public var overrides: TaskOverride?
@@ -3800,6 +4042,7 @@ public struct StartTaskRequest: Codable, Equatable {
     public init(cluster: String? = nil,
                 containerInstances: StringList,
                 enableECSManagedTags: Boolean? = nil,
+                enableExecuteCommand: Boolean? = nil,
                 group: String? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
                 overrides: TaskOverride? = nil,
@@ -3811,6 +4054,7 @@ public struct StartTaskRequest: Codable, Equatable {
         self.cluster = cluster
         self.containerInstances = containerInstances
         self.enableECSManagedTags = enableECSManagedTags
+        self.enableExecuteCommand = enableExecuteCommand
         self.group = group
         self.networkConfiguration = networkConfiguration
         self.overrides = overrides
@@ -3825,6 +4069,7 @@ public struct StartTaskRequest: Codable, Equatable {
         case cluster
         case containerInstances
         case enableECSManagedTags
+        case enableExecuteCommand
         case group
         case networkConfiguration
         case overrides
@@ -3997,6 +4242,7 @@ public struct SubmitTaskStateChangeRequest: Codable, Equatable {
     public var cluster: String?
     public var containers: ContainerStateChanges?
     public var executionStoppedAt: Timestamp?
+    public var managedAgents: ManagedAgentStateChanges?
     public var pullStartedAt: Timestamp?
     public var pullStoppedAt: Timestamp?
     public var reason: String?
@@ -4007,6 +4253,7 @@ public struct SubmitTaskStateChangeRequest: Codable, Equatable {
                 cluster: String? = nil,
                 containers: ContainerStateChanges? = nil,
                 executionStoppedAt: Timestamp? = nil,
+                managedAgents: ManagedAgentStateChanges? = nil,
                 pullStartedAt: Timestamp? = nil,
                 pullStoppedAt: Timestamp? = nil,
                 reason: String? = nil,
@@ -4016,6 +4263,7 @@ public struct SubmitTaskStateChangeRequest: Codable, Equatable {
         self.cluster = cluster
         self.containers = containers
         self.executionStoppedAt = executionStoppedAt
+        self.managedAgents = managedAgents
         self.pullStartedAt = pullStartedAt
         self.pullStoppedAt = pullStoppedAt
         self.reason = reason
@@ -4028,6 +4276,7 @@ public struct SubmitTaskStateChangeRequest: Codable, Equatable {
         case cluster
         case containers
         case executionStoppedAt
+        case managedAgents
         case pullStartedAt
         case pullStoppedAt
         case reason
@@ -4123,6 +4372,15 @@ public struct TagResourceResponse: Codable, Equatable {
     }
 }
 
+public struct TargetNotConnectedException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct TargetNotFoundException: Codable, Equatable {
 
     public init() {
@@ -4145,6 +4403,7 @@ public struct Task: Codable, Equatable {
     public var cpu: String?
     public var createdAt: Timestamp?
     public var desiredStatus: String?
+    public var enableExecuteCommand: Boolean?
     public var executionStoppedAt: Timestamp?
     public var group: String?
     public var healthStatus: HealthStatus?
@@ -4179,6 +4438,7 @@ public struct Task: Codable, Equatable {
                 cpu: String? = nil,
                 createdAt: Timestamp? = nil,
                 desiredStatus: String? = nil,
+                enableExecuteCommand: Boolean? = nil,
                 executionStoppedAt: Timestamp? = nil,
                 group: String? = nil,
                 healthStatus: HealthStatus? = nil,
@@ -4212,6 +4472,7 @@ public struct Task: Codable, Equatable {
         self.cpu = cpu
         self.createdAt = createdAt
         self.desiredStatus = desiredStatus
+        self.enableExecuteCommand = enableExecuteCommand
         self.executionStoppedAt = executionStoppedAt
         self.group = group
         self.healthStatus = healthStatus
@@ -4248,6 +4509,7 @@ public struct Task: Codable, Equatable {
         case cpu
         case createdAt
         case desiredStatus
+        case enableExecuteCommand
         case executionStoppedAt
         case group
         case healthStatus
@@ -4665,6 +4927,46 @@ public struct UpdateCapacityProviderResponse: Codable, Equatable {
     }
 }
 
+public struct UpdateClusterRequest: Codable, Equatable {
+    public var cluster: String
+    public var configuration: ClusterConfiguration?
+    public var settings: ClusterSettings?
+
+    public init(cluster: String,
+                configuration: ClusterConfiguration? = nil,
+                settings: ClusterSettings? = nil) {
+        self.cluster = cluster
+        self.configuration = configuration
+        self.settings = settings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case configuration
+        case settings
+    }
+
+    public func validate() throws {
+        try configuration?.validate()
+    }
+}
+
+public struct UpdateClusterResponse: Codable, Equatable {
+    public var cluster: Cluster?
+
+    public init(cluster: Cluster? = nil) {
+        self.cluster = cluster
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+    }
+
+    public func validate() throws {
+        try cluster?.validate()
+    }
+}
+
 public struct UpdateClusterSettingsRequest: Codable, Equatable {
     public var cluster: String
     public var settings: ClusterSettings
@@ -4830,6 +5132,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
     public var desiredCount: BoxedInteger?
+    public var enableExecuteCommand: BoxedBoolean?
     public var forceNewDeployment: Boolean?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
     public var networkConfiguration: NetworkConfiguration?
@@ -4843,6 +5146,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
                 cluster: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
                 desiredCount: BoxedInteger? = nil,
+                enableExecuteCommand: BoxedBoolean? = nil,
                 forceNewDeployment: Boolean? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
@@ -4855,6 +5159,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
         self.desiredCount = desiredCount
+        self.enableExecuteCommand = enableExecuteCommand
         self.forceNewDeployment = forceNewDeployment
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
         self.networkConfiguration = networkConfiguration
@@ -4870,6 +5175,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
         case cluster
         case deploymentConfiguration
         case desiredCount
+        case enableExecuteCommand
         case forceNewDeployment
         case healthCheckGracePeriodSeconds
         case networkConfiguration

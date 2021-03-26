@@ -164,6 +164,7 @@ public typealias CapacityProviders = [CapacityProvider]
  */
 public enum ClusterField: String, Codable, CustomStringConvertible {
     case attachments = "ATTACHMENTS"
+    case configurations = "CONFIGURATIONS"
     case settings = "SETTINGS"
     case statistics = "STATISTICS"
     case tags = "TAGS"
@@ -449,6 +450,21 @@ public typealias EnvironmentFiles = [EnvironmentFile]
 public typealias EnvironmentVariables = [KeyValuePair]
 
 /**
+ Enumeration restricting the values of the ExecuteCommandLogging field.
+ */
+public enum ExecuteCommandLogging: String, Codable, CustomStringConvertible {
+    case `default` = "DEFAULT"
+    case none = "NONE"
+    case override = "OVERRIDE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExecuteCommandLogging = .`default`
+}
+
+/**
  Type definition for the Failures field.
  */
 public typealias Failures = [Failure]
@@ -575,6 +591,29 @@ public enum LogDriver: String, Codable, CustomStringConvertible {
  Type definition for the Long field.
  */
 public typealias Long = Int
+
+/**
+ Enumeration restricting the values of the ManagedAgentName field.
+ */
+public enum ManagedAgentName: String, Codable, CustomStringConvertible {
+    case executecommandagent = "ExecuteCommandAgent"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ManagedAgentName = .executecommandagent
+}
+
+/**
+ Type definition for the ManagedAgentStateChanges field.
+ */
+public typealias ManagedAgentStateChanges = [ManagedAgentStateChange]
+
+/**
+ Type definition for the ManagedAgents field.
+ */
+public typealias ManagedAgents = [ManagedAgent]
 
 /**
  Type definition for the ManagedScalingInstanceWarmupPeriod field.
@@ -832,6 +871,11 @@ public enum Scope: String, Codable, CustomStringConvertible {
  Type definition for the SecretList field.
  */
 public typealias SecretList = [Secret]
+
+/**
+ Type definition for the SensitiveString field.
+ */
+public typealias SensitiveString = String
 
 /**
  Type definition for the ServiceEvents field.

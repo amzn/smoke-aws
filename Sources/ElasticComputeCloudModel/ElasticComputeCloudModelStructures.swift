@@ -16179,6 +16179,21 @@ public struct EbsOptimizedInfo: Codable, Equatable {
     }
 }
 
+public struct EfaInfo: Codable, Equatable {
+    public var maximumEfaInterfaces: MaximumEfaInterfaces?
+
+    public init(maximumEfaInterfaces: MaximumEfaInterfaces? = nil) {
+        self.maximumEfaInterfaces = maximumEfaInterfaces
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maximumEfaInterfaces
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct EgressOnlyInternetGateway: Codable, Equatable {
     public var attachments: InternetGatewayAttachmentList?
     public var egressOnlyInternetGatewayId: EgressOnlyInternetGatewayId?
@@ -19537,6 +19552,7 @@ public struct IdFormat: Codable, Equatable {
 public struct Image: Codable, Equatable {
     public var architecture: ArchitectureValues?
     public var blockDeviceMappings: BlockDeviceMappingList?
+    public var bootMode: BootModeValues?
     public var creationDate: String?
     public var description: String?
     public var enaSupport: Boolean?
@@ -19564,6 +19580,7 @@ public struct Image: Codable, Equatable {
 
     public init(architecture: ArchitectureValues? = nil,
                 blockDeviceMappings: BlockDeviceMappingList? = nil,
+                bootMode: BootModeValues? = nil,
                 creationDate: String? = nil,
                 description: String? = nil,
                 enaSupport: Boolean? = nil,
@@ -19590,6 +19607,7 @@ public struct Image: Codable, Equatable {
                 virtualizationType: VirtualizationType? = nil) {
         self.architecture = architecture
         self.blockDeviceMappings = blockDeviceMappings
+        self.bootMode = bootMode
         self.creationDate = creationDate
         self.description = description
         self.enaSupport = enaSupport
@@ -19619,6 +19637,7 @@ public struct Image: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case architecture
         case blockDeviceMappings = "blockDeviceMapping"
+        case bootMode
         case creationDate
         case description
         case enaSupport
@@ -19652,6 +19671,7 @@ public struct Image: Codable, Equatable {
 
 public struct ImageAttribute: Codable, Equatable {
     public var blockDeviceMappings: BlockDeviceMappingList?
+    public var bootMode: AttributeValue?
     public var description: AttributeValue?
     public var imageId: String?
     public var kernelId: AttributeValue?
@@ -19661,6 +19681,7 @@ public struct ImageAttribute: Codable, Equatable {
     public var sriovNetSupport: AttributeValue?
 
     public init(blockDeviceMappings: BlockDeviceMappingList? = nil,
+                bootMode: AttributeValue? = nil,
                 description: AttributeValue? = nil,
                 imageId: String? = nil,
                 kernelId: AttributeValue? = nil,
@@ -19669,6 +19690,7 @@ public struct ImageAttribute: Codable, Equatable {
                 ramdiskId: AttributeValue? = nil,
                 sriovNetSupport: AttributeValue? = nil) {
         self.blockDeviceMappings = blockDeviceMappings
+        self.bootMode = bootMode
         self.description = description
         self.imageId = imageId
         self.kernelId = kernelId
@@ -19680,6 +19702,7 @@ public struct ImageAttribute: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case blockDeviceMappings = "blockDeviceMapping"
+        case bootMode
         case description
         case imageId
         case kernelId = "kernel"
@@ -19690,6 +19713,7 @@ public struct ImageAttribute: Codable, Equatable {
     }
 
     public func validate() throws {
+        try bootMode?.validate()
         try description?.validate()
         try kernelId?.validate()
         try ramdiskId?.validate()
@@ -20467,6 +20491,7 @@ public struct Instance: Codable, Equatable {
     public var amiLaunchIndex: Integer?
     public var architecture: ArchitectureValues?
     public var blockDeviceMappings: InstanceBlockDeviceMappingList?
+    public var bootMode: BootModeValues?
     public var capacityReservationId: String?
     public var capacityReservationSpecification: CapacityReservationSpecificationResponse?
     public var clientToken: String?
@@ -20516,6 +20541,7 @@ public struct Instance: Codable, Equatable {
     public init(amiLaunchIndex: Integer? = nil,
                 architecture: ArchitectureValues? = nil,
                 blockDeviceMappings: InstanceBlockDeviceMappingList? = nil,
+                bootMode: BootModeValues? = nil,
                 capacityReservationId: String? = nil,
                 capacityReservationSpecification: CapacityReservationSpecificationResponse? = nil,
                 clientToken: String? = nil,
@@ -20564,6 +20590,7 @@ public struct Instance: Codable, Equatable {
         self.amiLaunchIndex = amiLaunchIndex
         self.architecture = architecture
         self.blockDeviceMappings = blockDeviceMappings
+        self.bootMode = bootMode
         self.capacityReservationId = capacityReservationId
         self.capacityReservationSpecification = capacityReservationSpecification
         self.clientToken = clientToken
@@ -20615,6 +20642,7 @@ public struct Instance: Codable, Equatable {
         case amiLaunchIndex
         case architecture
         case blockDeviceMappings = "blockDeviceMapping"
+        case bootMode
         case capacityReservationId
         case capacityReservationSpecification
         case clientToken
@@ -21531,6 +21559,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
     public var networkInfo: NetworkInfo?
     public var placementGroupInfo: PlacementGroupInfo?
     public var processorInfo: ProcessorInfo?
+    public var supportedBootModes: BootModeTypeList?
     public var supportedRootDeviceTypes: RootDeviceTypeList?
     public var supportedUsageClasses: UsageClassTypeList?
     public var supportedVirtualizationTypes: VirtualizationTypeList?
@@ -21555,6 +21584,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
                 networkInfo: NetworkInfo? = nil,
                 placementGroupInfo: PlacementGroupInfo? = nil,
                 processorInfo: ProcessorInfo? = nil,
+                supportedBootModes: BootModeTypeList? = nil,
                 supportedRootDeviceTypes: RootDeviceTypeList? = nil,
                 supportedUsageClasses: UsageClassTypeList? = nil,
                 supportedVirtualizationTypes: VirtualizationTypeList? = nil,
@@ -21578,6 +21608,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         self.networkInfo = networkInfo
         self.placementGroupInfo = placementGroupInfo
         self.processorInfo = processorInfo
+        self.supportedBootModes = supportedBootModes
         self.supportedRootDeviceTypes = supportedRootDeviceTypes
         self.supportedUsageClasses = supportedUsageClasses
         self.supportedVirtualizationTypes = supportedVirtualizationTypes
@@ -21604,6 +21635,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         case networkInfo
         case placementGroupInfo
         case processorInfo
+        case supportedBootModes
         case supportedRootDeviceTypes
         case supportedUsageClasses
         case supportedVirtualizationTypes
@@ -26045,6 +26077,7 @@ public struct NetworkCardInfo: Codable, Equatable {
 
 public struct NetworkInfo: Codable, Equatable {
     public var defaultNetworkCardIndex: DefaultNetworkCardIndex?
+    public var efaInfo: EfaInfo?
     public var efaSupported: EfaSupportedFlag?
     public var enaSupport: EnaSupport?
     public var ipv4AddressesPerInterface: MaxIpv4AddrPerInterface?
@@ -26056,6 +26089,7 @@ public struct NetworkInfo: Codable, Equatable {
     public var networkPerformance: NetworkPerformance?
 
     public init(defaultNetworkCardIndex: DefaultNetworkCardIndex? = nil,
+                efaInfo: EfaInfo? = nil,
                 efaSupported: EfaSupportedFlag? = nil,
                 enaSupport: EnaSupport? = nil,
                 ipv4AddressesPerInterface: MaxIpv4AddrPerInterface? = nil,
@@ -26066,6 +26100,7 @@ public struct NetworkInfo: Codable, Equatable {
                 networkCards: NetworkCardInfoList? = nil,
                 networkPerformance: NetworkPerformance? = nil) {
         self.defaultNetworkCardIndex = defaultNetworkCardIndex
+        self.efaInfo = efaInfo
         self.efaSupported = efaSupported
         self.enaSupport = enaSupport
         self.ipv4AddressesPerInterface = ipv4AddressesPerInterface
@@ -26079,6 +26114,7 @@ public struct NetworkInfo: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case defaultNetworkCardIndex
+        case efaInfo
         case efaSupported
         case enaSupport
         case ipv4AddressesPerInterface
@@ -26091,6 +26127,7 @@ public struct NetworkInfo: Codable, Equatable {
     }
 
     public func validate() throws {
+        try efaInfo?.validate()
     }
 }
 
@@ -27834,6 +27871,7 @@ public struct RegisterImageRequest: Codable, Equatable {
     public var architecture: ArchitectureValues?
     public var billingProducts: BillingProductList?
     public var blockDeviceMappings: BlockDeviceMappingRequestList?
+    public var bootMode: BootModeValues?
     public var description: String?
     public var dryRun: Boolean?
     public var enaSupport: Boolean?
@@ -27848,6 +27886,7 @@ public struct RegisterImageRequest: Codable, Equatable {
     public init(architecture: ArchitectureValues? = nil,
                 billingProducts: BillingProductList? = nil,
                 blockDeviceMappings: BlockDeviceMappingRequestList? = nil,
+                bootMode: BootModeValues? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
                 enaSupport: Boolean? = nil,
@@ -27861,6 +27900,7 @@ public struct RegisterImageRequest: Codable, Equatable {
         self.architecture = architecture
         self.billingProducts = billingProducts
         self.blockDeviceMappings = blockDeviceMappings
+        self.bootMode = bootMode
         self.description = description
         self.dryRun = dryRun
         self.enaSupport = enaSupport
@@ -27877,6 +27917,7 @@ public struct RegisterImageRequest: Codable, Equatable {
         case architecture
         case billingProducts = "BillingProduct"
         case blockDeviceMappings = "BlockDeviceMapping"
+        case bootMode = "BootMode"
         case description
         case dryRun
         case enaSupport

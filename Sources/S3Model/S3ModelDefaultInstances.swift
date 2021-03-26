@@ -4323,3 +4323,50 @@ public extension WebsiteConfiguration {
         return defaultInstance
     }()
 }
+
+public extension WriteGetObjectResponseRequest {
+    /**
+     Default instance of the WriteGetObjectResponseRequest structure.
+     */
+    static let __default: S3Model.WriteGetObjectResponseRequest = {
+        let defaultInstance = S3Model.WriteGetObjectResponseRequest(
+            acceptRanges: nil,
+            body: nil,
+            bucketKeyEnabled: nil,
+            cacheControl: nil,
+            contentDisposition: nil,
+            contentEncoding: nil,
+            contentLanguage: nil,
+            contentLength: nil,
+            contentRange: nil,
+            contentType: nil,
+            deleteMarker: nil,
+            eTag: nil,
+            errorCode: nil,
+            errorMessage: nil,
+            expiration: nil,
+            expires: nil,
+            lastModified: nil,
+            metadata: nil,
+            missingMeta: nil,
+            objectLockLegalHoldStatus: nil,
+            objectLockMode: nil,
+            objectLockRetainUntilDate: nil,
+            partsCount: nil,
+            replicationStatus: nil,
+            requestCharged: nil,
+            requestRoute: "value",
+            requestToken: "value",
+            restore: nil,
+            sSECustomerAlgorithm: nil,
+            sSECustomerKeyMD5: nil,
+            sSEKMSKeyId: nil,
+            serverSideEncryption: nil,
+            statusCode: nil,
+            storageClass: nil,
+            tagCount: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}

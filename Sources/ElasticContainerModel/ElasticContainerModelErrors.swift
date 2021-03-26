@@ -52,6 +52,7 @@ private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let serverIdentity = "ServerException"
 private let serviceNotActiveIdentity = "ServiceNotActiveException"
 private let serviceNotFoundIdentity = "ServiceNotFoundException"
+private let targetNotConnectedIdentity = "TargetNotConnectedException"
 private let targetNotFoundIdentity = "TargetNotFoundException"
 private let taskSetNotFoundIdentity = "TaskSetNotFoundException"
 private let unsupportedFeatureIdentity = "UnsupportedFeatureException"
@@ -77,6 +78,7 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case server(ServerException)
     case serviceNotActive(ServiceNotActiveException)
     case serviceNotFound(ServiceNotFoundException)
+    case targetNotConnected(TargetNotConnectedException)
     case targetNotFound(TargetNotFoundException)
     case taskSetNotFound(TaskSetNotFoundException)
     case unsupportedFeature(UnsupportedFeatureException)
@@ -156,6 +158,9 @@ public enum ElasticContainerError: Swift.Error, Decodable {
         case serviceNotFoundIdentity:
             let errorPayload = try ServiceNotFoundException(from: decoder)
             self = ElasticContainerError.serviceNotFound(errorPayload)
+        case targetNotConnectedIdentity:
+            let errorPayload = try TargetNotConnectedException(from: decoder)
+            self = ElasticContainerError.targetNotConnected(errorPayload)
         case targetNotFoundIdentity:
             let errorPayload = try TargetNotFoundException(from: decoder)
             self = ElasticContainerError.targetNotFound(errorPayload)

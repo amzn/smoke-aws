@@ -195,6 +195,7 @@ public extension Cluster {
             capacityProviders: nil,
             clusterArn: nil,
             clusterName: nil,
+            configuration: nil,
             defaultCapacityProviderStrategy: nil,
             pendingTasksCount: nil,
             registeredContainerInstancesCount: nil,
@@ -203,6 +204,18 @@ public extension Cluster {
             statistics: nil,
             status: nil,
             tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ClusterConfiguration {
+    /**
+     Default instance of the ClusterConfiguration structure.
+     */
+    static let __default: ElasticContainerModel.ClusterConfiguration = {
+        let defaultInstance = ElasticContainerModel.ClusterConfiguration(
+            executeCommandConfiguration: nil)
 
         return defaultInstance
     }()
@@ -279,6 +292,7 @@ public extension Container {
             image: nil,
             imageDigest: nil,
             lastStatus: nil,
+            managedAgents: nil,
             memory: nil,
             memoryReservation: nil,
             name: nil,
@@ -454,6 +468,7 @@ public extension CreateClusterRequest {
         let defaultInstance = ElasticContainerModel.CreateClusterRequest(
             capacityProviders: nil,
             clusterName: nil,
+            configuration: nil,
             defaultCapacityProviderStrategy: nil,
             settings: nil,
             tags: nil)
@@ -487,6 +502,7 @@ public extension CreateServiceRequest {
             deploymentController: nil,
             desiredCount: nil,
             enableECSManagedTags: nil,
+            enableExecuteCommand: nil,
             healthCheckGracePeriodSeconds: nil,
             launchType: nil,
             loadBalancers: nil,
@@ -1108,6 +1124,69 @@ public extension EnvironmentFile {
     }()
 }
 
+public extension ExecuteCommandConfiguration {
+    /**
+     Default instance of the ExecuteCommandConfiguration structure.
+     */
+    static let __default: ElasticContainerModel.ExecuteCommandConfiguration = {
+        let defaultInstance = ElasticContainerModel.ExecuteCommandConfiguration(
+            kmsKeyId: nil,
+            logConfiguration: nil,
+            logging: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteCommandLogConfiguration {
+    /**
+     Default instance of the ExecuteCommandLogConfiguration structure.
+     */
+    static let __default: ElasticContainerModel.ExecuteCommandLogConfiguration = {
+        let defaultInstance = ElasticContainerModel.ExecuteCommandLogConfiguration(
+            cloudWatchEncryptionEnabled: nil,
+            cloudWatchLogGroupName: nil,
+            s3BucketName: nil,
+            s3EncryptionEnabled: nil,
+            s3KeyPrefix: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteCommandRequest {
+    /**
+     Default instance of the ExecuteCommandRequest structure.
+     */
+    static let __default: ElasticContainerModel.ExecuteCommandRequest = {
+        let defaultInstance = ElasticContainerModel.ExecuteCommandRequest(
+            cluster: nil,
+            command: "value",
+            container: nil,
+            interactive: false,
+            task: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ExecuteCommandResponse {
+    /**
+     Default instance of the ExecuteCommandResponse structure.
+     */
+    static let __default: ElasticContainerModel.ExecuteCommandResponse = {
+        let defaultInstance = ElasticContainerModel.ExecuteCommandResponse(
+            clusterArn: nil,
+            containerArn: nil,
+            containerName: nil,
+            interactive: nil,
+            session: nil,
+            taskArn: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension FSxWindowsFileServerAuthorizationConfig {
     /**
      Default instance of the FSxWindowsFileServerAuthorizationConfig structure.
@@ -1582,6 +1661,36 @@ public extension LogConfiguration {
     }()
 }
 
+public extension ManagedAgent {
+    /**
+     Default instance of the ManagedAgent structure.
+     */
+    static let __default: ElasticContainerModel.ManagedAgent = {
+        let defaultInstance = ElasticContainerModel.ManagedAgent(
+            lastStartedAt: nil,
+            lastStatus: nil,
+            name: nil,
+            reason: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ManagedAgentStateChange {
+    /**
+     Default instance of the ManagedAgentStateChange structure.
+     */
+    static let __default: ElasticContainerModel.ManagedAgentStateChange = {
+        let defaultInstance = ElasticContainerModel.ManagedAgentStateChange(
+            containerName: "value",
+            managedAgentName: .__default,
+            reason: nil,
+            status: "value")
+
+        return defaultInstance
+    }()
+}
+
 public extension ManagedScaling {
     /**
      Default instance of the ManagedScaling structure.
@@ -2011,6 +2120,7 @@ public extension RunTaskRequest {
             cluster: nil,
             count: nil,
             enableECSManagedTags: nil,
+            enableExecuteCommand: nil,
             group: nil,
             launchType: nil,
             networkConfiguration: nil,
@@ -2094,6 +2204,7 @@ public extension Service {
             deployments: nil,
             desiredCount: nil,
             enableECSManagedTags: nil,
+            enableExecuteCommand: nil,
             events: nil,
             healthCheckGracePeriodSeconds: nil,
             launchType: nil,
@@ -2170,6 +2281,20 @@ public extension ServiceRegistry {
     }()
 }
 
+public extension Session {
+    /**
+     Default instance of the Session structure.
+     */
+    static let __default: ElasticContainerModel.Session = {
+        let defaultInstance = ElasticContainerModel.Session(
+            sessionId: nil,
+            streamUrl: nil,
+            tokenValue: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Setting {
     /**
      Default instance of the Setting structure.
@@ -2193,6 +2318,7 @@ public extension StartTaskRequest {
             cluster: nil,
             containerInstances: [],
             enableECSManagedTags: nil,
+            enableExecuteCommand: nil,
             group: nil,
             networkConfiguration: nil,
             overrides: nil,
@@ -2311,6 +2437,7 @@ public extension SubmitTaskStateChangeRequest {
             cluster: nil,
             containers: nil,
             executionStoppedAt: nil,
+            managedAgents: nil,
             pullStartedAt: nil,
             pullStoppedAt: nil,
             reason: nil,
@@ -2383,6 +2510,17 @@ public extension TagResourceResponse {
     }()
 }
 
+public extension TargetNotConnectedException {
+    /**
+     Default instance of the TargetNotConnectedException structure.
+     */
+    static let __default: ElasticContainerModel.TargetNotConnectedException = {
+        let defaultInstance = ElasticContainerModel.TargetNotConnectedException()
+
+        return defaultInstance
+    }()
+}
+
 public extension TargetNotFoundException {
     /**
      Default instance of the TargetNotFoundException structure.
@@ -2412,6 +2550,7 @@ public extension Task {
             cpu: nil,
             createdAt: nil,
             desiredStatus: nil,
+            enableExecuteCommand: nil,
             executionStoppedAt: nil,
             group: nil,
             healthStatus: nil,
@@ -2634,6 +2773,32 @@ public extension UpdateCapacityProviderResponse {
     }()
 }
 
+public extension UpdateClusterRequest {
+    /**
+     Default instance of the UpdateClusterRequest structure.
+     */
+    static let __default: ElasticContainerModel.UpdateClusterRequest = {
+        let defaultInstance = ElasticContainerModel.UpdateClusterRequest(
+            cluster: "value",
+            configuration: nil,
+            settings: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateClusterResponse {
+    /**
+     Default instance of the UpdateClusterResponse structure.
+     */
+    static let __default: ElasticContainerModel.UpdateClusterResponse = {
+        let defaultInstance = ElasticContainerModel.UpdateClusterResponse(
+            cluster: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension UpdateClusterSettingsRequest {
     /**
      Default instance of the UpdateClusterSettingsRequest structure.
@@ -2758,6 +2923,7 @@ public extension UpdateServiceRequest {
             cluster: nil,
             deploymentConfiguration: nil,
             desiredCount: nil,
+            enableExecuteCommand: nil,
             forceNewDeployment: nil,
             healthCheckGracePeriodSeconds: nil,
             networkConfiguration: nil,

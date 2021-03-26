@@ -9542,6 +9542,18 @@ public extension EbsOptimizedInfo {
     }()
 }
 
+public extension EfaInfo {
+    /**
+     Default instance of the EfaInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.EfaInfo = {
+        let defaultInstance = ElasticComputeCloudModel.EfaInfo(
+            maximumEfaInterfaces: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension EgressOnlyInternetGateway {
     /**
      Default instance of the EgressOnlyInternetGateway structure.
@@ -11408,6 +11420,7 @@ public extension Image {
         let defaultInstance = ElasticComputeCloudModel.Image(
             architecture: nil,
             blockDeviceMappings: nil,
+            bootMode: nil,
             creationDate: nil,
             description: nil,
             enaSupport: nil,
@@ -11444,6 +11457,7 @@ public extension ImageAttribute {
     static let __default: ElasticComputeCloudModel.ImageAttribute = {
         let defaultInstance = ElasticComputeCloudModel.ImageAttribute(
             blockDeviceMappings: nil,
+            bootMode: nil,
             description: nil,
             imageId: nil,
             kernelId: nil,
@@ -11842,6 +11856,7 @@ public extension Instance {
             amiLaunchIndex: nil,
             architecture: nil,
             blockDeviceMappings: nil,
+            bootMode: nil,
             capacityReservationId: nil,
             capacityReservationSpecification: nil,
             clientToken: nil,
@@ -12359,6 +12374,7 @@ public extension InstanceTypeInfo {
             networkInfo: nil,
             placementGroupInfo: nil,
             processorInfo: nil,
+            supportedBootModes: nil,
             supportedRootDeviceTypes: nil,
             supportedUsageClasses: nil,
             supportedVirtualizationTypes: nil,
@@ -14803,6 +14819,7 @@ public extension NetworkInfo {
     static let __default: ElasticComputeCloudModel.NetworkInfo = {
         let defaultInstance = ElasticComputeCloudModel.NetworkInfo(
             defaultNetworkCardIndex: nil,
+            efaInfo: nil,
             efaSupported: nil,
             enaSupport: nil,
             ipv4AddressesPerInterface: nil,
@@ -15815,6 +15832,7 @@ public extension RegisterImageRequest {
             architecture: nil,
             billingProducts: nil,
             blockDeviceMappings: nil,
+            bootMode: nil,
             description: nil,
             dryRun: nil,
             enaSupport: nil,

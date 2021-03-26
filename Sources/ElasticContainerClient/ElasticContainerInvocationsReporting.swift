@@ -49,6 +49,7 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
     public let describeTaskSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let discoverPollEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let executeCommand: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listAccountSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -73,6 +74,7 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
     public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateClusterSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateContainerAgent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateContainerInstancesState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -121,6 +123,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.describeTasks)
         self.discoverPollEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.discoverPollEndpoint)
+        self.executeCommand = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.executeCommand)
         self.listAccountSettings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listAccountSettings)
         self.listAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -169,6 +173,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.untagResource)
         self.updateCapacityProvider = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateCapacityProvider)
+        self.updateCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateCluster)
         self.updateClusterSettings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateClusterSettings)
         self.updateContainerAgent = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

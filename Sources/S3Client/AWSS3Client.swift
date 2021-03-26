@@ -6693,4 +6693,71 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
             throw typedError
         }
     }
+
+    /**
+     Invokes the WriteGetObjectResponse operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+     */
+    public func writeGetObjectResponseAsync(
+            input: S3Model.WriteGetObjectResponseRequest, 
+            completion: @escaping (S3Error?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.writeGetObjectResponse.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.writeGetObjectResponse,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = WriteGetObjectResponseOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/WriteGetObjectResponse",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the WriteGetObjectResponse operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+     */
+    public func writeGetObjectResponseSync(
+            input: S3Model.WriteGetObjectResponseRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.writeGetObjectResponse.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.writeGetObjectResponse,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = WriteGetObjectResponseOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/WriteGetObjectResponse",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
 }

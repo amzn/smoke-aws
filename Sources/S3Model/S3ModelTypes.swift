@@ -498,6 +498,16 @@ public enum EncodingType: String, Codable, CustomStringConvertible {
 public typealias End = Int
 
 /**
+ Type definition for the ErrorCode field.
+ */
+public typealias ErrorCode = String
+
+/**
+ Type definition for the ErrorMessage field.
+ */
+public typealias ErrorMessage = String
+
+/**
  Type definition for the Errors field.
  */
 public typealias Errors = [Error]
@@ -655,6 +665,11 @@ public enum FilterRuleName: String, Codable, CustomStringConvertible {
  Type definition for the FilterRuleValue field.
  */
 public typealias FilterRuleValue = String
+
+/**
+ Type definition for the GetObjectResponseStatusCode field.
+ */
+public typealias GetObjectResponseStatusCode = Int
 
 /**
  Type definition for the GrantFullControl field.
@@ -1526,6 +1541,16 @@ public enum RequestPayer: String, Codable, CustomStringConvertible {
     
     public static let __default: RequestPayer = .requester
 }
+
+/**
+ Type definition for the RequestRoute field.
+ */
+public typealias RequestRoute = String
+
+/**
+ Type definition for the RequestToken field.
+ */
+public typealias RequestToken = String
 
 /**
  Type definition for the ResponseCacheControl field.

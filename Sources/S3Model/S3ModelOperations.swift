@@ -121,6 +121,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case selectObjectContent = "SelectObjectContent"
     case uploadPart = "UploadPart"
     case uploadPartCopy = "UploadPartCopy"
+    case writeGetObjectResponse = "WriteGetObjectResponse"
 
     public var description: String {
         return rawValue
@@ -318,6 +319,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}/{Key+}"
         case .uploadPartCopy:
             return "/{Bucket}/{Key+}"
+        case .writeGetObjectResponse:
+            return "/WriteGetObjectResponse"
         }
     }
 }
@@ -8233,5 +8236,201 @@ public extension UploadPartCopyOutput {
             sSECustomerKeyMD5: sSECustomerKeyMD5,
             sSEKMSKeyId: sSEKMSKeyId,
             serverSideEncryption: serverSideEncryption)
+    }
+}
+
+/**
+ Structure to encode the body input for the WriteGetObjectResponse
+ operation.
+ */
+public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Equatable {
+    public var acceptRanges: AcceptRanges?
+    public var bucketKeyEnabled: BucketKeyEnabled?
+    public var cacheControl: CacheControl?
+    public var contentDisposition: ContentDisposition?
+    public var contentEncoding: ContentEncoding?
+    public var contentLanguage: ContentLanguage?
+    public var contentLength: ContentLength?
+    public var contentRange: ContentRange?
+    public var contentType: ContentType?
+    public var deleteMarker: DeleteMarker?
+    public var eTag: ETag?
+    public var errorCode: ErrorCode?
+    public var errorMessage: ErrorMessage?
+    public var expiration: Expiration?
+    public var expires: Expires?
+    public var lastModified: LastModified?
+    public var metadata: Metadata?
+    public var missingMeta: MissingMeta?
+    public var objectLockLegalHoldStatus: ObjectLockLegalHoldStatus?
+    public var objectLockMode: ObjectLockMode?
+    public var objectLockRetainUntilDate: ObjectLockRetainUntilDate?
+    public var partsCount: PartsCount?
+    public var replicationStatus: ReplicationStatus?
+    public var requestCharged: RequestCharged?
+    public var requestRoute: RequestRoute
+    public var requestToken: RequestToken
+    public var restore: Restore?
+    public var sSECustomerAlgorithm: SSECustomerAlgorithm?
+    public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+    public var sSEKMSKeyId: SSEKMSKeyId?
+    public var serverSideEncryption: ServerSideEncryption?
+    public var statusCode: GetObjectResponseStatusCode?
+    public var storageClass: StorageClass?
+    public var tagCount: TagCount?
+    public var versionId: ObjectVersionId?
+
+    public init(acceptRanges: AcceptRanges? = nil,
+                bucketKeyEnabled: BucketKeyEnabled? = nil,
+                cacheControl: CacheControl? = nil,
+                contentDisposition: ContentDisposition? = nil,
+                contentEncoding: ContentEncoding? = nil,
+                contentLanguage: ContentLanguage? = nil,
+                contentLength: ContentLength? = nil,
+                contentRange: ContentRange? = nil,
+                contentType: ContentType? = nil,
+                deleteMarker: DeleteMarker? = nil,
+                eTag: ETag? = nil,
+                errorCode: ErrorCode? = nil,
+                errorMessage: ErrorMessage? = nil,
+                expiration: Expiration? = nil,
+                expires: Expires? = nil,
+                lastModified: LastModified? = nil,
+                metadata: Metadata? = nil,
+                missingMeta: MissingMeta? = nil,
+                objectLockLegalHoldStatus: ObjectLockLegalHoldStatus? = nil,
+                objectLockMode: ObjectLockMode? = nil,
+                objectLockRetainUntilDate: ObjectLockRetainUntilDate? = nil,
+                partsCount: PartsCount? = nil,
+                replicationStatus: ReplicationStatus? = nil,
+                requestCharged: RequestCharged? = nil,
+                requestRoute: RequestRoute,
+                requestToken: RequestToken,
+                restore: Restore? = nil,
+                sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
+                sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
+                sSEKMSKeyId: SSEKMSKeyId? = nil,
+                serverSideEncryption: ServerSideEncryption? = nil,
+                statusCode: GetObjectResponseStatusCode? = nil,
+                storageClass: StorageClass? = nil,
+                tagCount: TagCount? = nil,
+                versionId: ObjectVersionId? = nil) {
+        self.acceptRanges = acceptRanges
+        self.bucketKeyEnabled = bucketKeyEnabled
+        self.cacheControl = cacheControl
+        self.contentDisposition = contentDisposition
+        self.contentEncoding = contentEncoding
+        self.contentLanguage = contentLanguage
+        self.contentLength = contentLength
+        self.contentRange = contentRange
+        self.contentType = contentType
+        self.deleteMarker = deleteMarker
+        self.eTag = eTag
+        self.errorCode = errorCode
+        self.errorMessage = errorMessage
+        self.expiration = expiration
+        self.expires = expires
+        self.lastModified = lastModified
+        self.metadata = metadata
+        self.missingMeta = missingMeta
+        self.objectLockLegalHoldStatus = objectLockLegalHoldStatus
+        self.objectLockMode = objectLockMode
+        self.objectLockRetainUntilDate = objectLockRetainUntilDate
+        self.partsCount = partsCount
+        self.replicationStatus = replicationStatus
+        self.requestCharged = requestCharged
+        self.requestRoute = requestRoute
+        self.requestToken = requestToken
+        self.restore = restore
+        self.sSECustomerAlgorithm = sSECustomerAlgorithm
+        self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+        self.sSEKMSKeyId = sSEKMSKeyId
+        self.serverSideEncryption = serverSideEncryption
+        self.statusCode = statusCode
+        self.storageClass = storageClass
+        self.tagCount = tagCount
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case acceptRanges = "x-amz-fwd-header-accept-ranges"
+        case bucketKeyEnabled = "x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled"
+        case cacheControl = "x-amz-fwd-header-Cache-Control"
+        case contentDisposition = "x-amz-fwd-header-Content-Disposition"
+        case contentEncoding = "x-amz-fwd-header-Content-Encoding"
+        case contentLanguage = "x-amz-fwd-header-Content-Language"
+        case contentLength = "Content-Length"
+        case contentRange = "x-amz-fwd-header-Content-Range"
+        case contentType = "x-amz-fwd-header-Content-Type"
+        case deleteMarker = "x-amz-fwd-header-x-amz-delete-marker"
+        case eTag = "x-amz-fwd-header-ETag"
+        case errorCode = "x-amz-fwd-error-code"
+        case errorMessage = "x-amz-fwd-error-message"
+        case expiration = "x-amz-fwd-header-x-amz-expiration"
+        case expires = "x-amz-fwd-header-Expires"
+        case lastModified = "x-amz-fwd-header-Last-Modified"
+        case metadata = "x-amz-meta-"
+        case missingMeta = "x-amz-fwd-header-x-amz-missing-meta"
+        case objectLockLegalHoldStatus = "x-amz-fwd-header-x-amz-object-lock-legal-hold"
+        case objectLockMode = "x-amz-fwd-header-x-amz-object-lock-mode"
+        case objectLockRetainUntilDate = "x-amz-fwd-header-x-amz-object-lock-retain-until-date"
+        case partsCount = "x-amz-fwd-header-x-amz-mp-parts-count"
+        case replicationStatus = "x-amz-fwd-header-x-amz-replication-status"
+        case requestCharged = "x-amz-fwd-header-x-amz-request-charged"
+        case requestRoute = "x-amz-request-route"
+        case requestToken = "x-amz-request-token"
+        case restore = "x-amz-fwd-header-x-amz-restore"
+        case sSECustomerAlgorithm = "x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm"
+        case sSECustomerKeyMD5 = "x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5"
+        case sSEKMSKeyId = "x-amz-fwd-header-x-amz-server-side-encryption-aws-kms-key-id"
+        case serverSideEncryption = "x-amz-fwd-header-x-amz-server-side-encryption"
+        case statusCode = "x-amz-fwd-status"
+        case storageClass = "x-amz-fwd-header-x-amz-storage-class"
+        case tagCount = "x-amz-fwd-header-x-amz-tagging-count"
+        case versionId = "x-amz-fwd-header-x-amz-version-id"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension WriteGetObjectResponseRequest {
+    func asS3ModelWriteGetObjectResponseOperationInputAdditionalHeaders() -> WriteGetObjectResponseOperationInputAdditionalHeaders {
+        return WriteGetObjectResponseOperationInputAdditionalHeaders(
+            acceptRanges: acceptRanges,
+            bucketKeyEnabled: bucketKeyEnabled,
+            cacheControl: cacheControl,
+            contentDisposition: contentDisposition,
+            contentEncoding: contentEncoding,
+            contentLanguage: contentLanguage,
+            contentLength: contentLength,
+            contentRange: contentRange,
+            contentType: contentType,
+            deleteMarker: deleteMarker,
+            eTag: eTag,
+            errorCode: errorCode,
+            errorMessage: errorMessage,
+            expiration: expiration,
+            expires: expires,
+            lastModified: lastModified,
+            metadata: metadata,
+            missingMeta: missingMeta,
+            objectLockLegalHoldStatus: objectLockLegalHoldStatus,
+            objectLockMode: objectLockMode,
+            objectLockRetainUntilDate: objectLockRetainUntilDate,
+            partsCount: partsCount,
+            replicationStatus: replicationStatus,
+            requestCharged: requestCharged,
+            requestRoute: requestRoute,
+            requestToken: requestToken,
+            restore: restore,
+            sSECustomerAlgorithm: sSECustomerAlgorithm,
+            sSECustomerKeyMD5: sSECustomerKeyMD5,
+            sSEKMSKeyId: sSEKMSKeyId,
+            serverSideEncryption: serverSideEncryption,
+            statusCode: statusCode,
+            storageClass: storageClass,
+            tagCount: tagCount,
+            versionId: versionId)
     }
 }

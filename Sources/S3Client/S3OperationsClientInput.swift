@@ -1809,3 +1809,22 @@ public struct UploadPartCopyOperationHTTPRequestInput: HTTPRequestInputProtocol 
         self.pathPostfix = nil
     }
 }
+
+/**
+ Type to handle the input to the WriteGetObjectResponse operation in a HTTP client.
+ */
+public struct WriteGetObjectResponseOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: String?
+    public let bodyEncodable: Body?
+    public let additionalHeadersEncodable: WriteGetObjectResponseOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: WriteGetObjectResponseRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = nil
+        self.bodyEncodable = encodable.body
+        self.additionalHeadersEncodable = encodable.asS3ModelWriteGetObjectResponseOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}

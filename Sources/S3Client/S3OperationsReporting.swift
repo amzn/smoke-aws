@@ -123,6 +123,7 @@ public struct S3OperationsReporting {
     public let selectObjectContent: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let uploadPart: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let uploadPartCopy: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let writeGetObjectResponse: StandardSmokeAWSOperationReporting<S3ModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<S3ModelOperations>) {
         self.abortMultipartUpload = StandardSmokeAWSOperationReporting(
@@ -315,5 +316,7 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .uploadPart, configuration: reportingConfiguration)
         self.uploadPartCopy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .uploadPartCopy, configuration: reportingConfiguration)
+        self.writeGetObjectResponse = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .writeGetObjectResponse, configuration: reportingConfiguration)
     }
 }
