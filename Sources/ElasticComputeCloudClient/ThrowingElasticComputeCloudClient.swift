@@ -172,8 +172,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createNetworkInterfacePermissionSyncOverride: CreateNetworkInterfacePermissionSyncType?
     let createPlacementGroupAsyncOverride: CreatePlacementGroupAsyncType?
     let createPlacementGroupSyncOverride: CreatePlacementGroupSyncType?
+    let createReplaceRootVolumeTaskAsyncOverride: CreateReplaceRootVolumeTaskAsyncType?
+    let createReplaceRootVolumeTaskSyncOverride: CreateReplaceRootVolumeTaskSyncType?
     let createReservedInstancesListingAsyncOverride: CreateReservedInstancesListingAsyncType?
     let createReservedInstancesListingSyncOverride: CreateReservedInstancesListingSyncType?
+    let createRestoreImageTaskAsyncOverride: CreateRestoreImageTaskAsyncType?
+    let createRestoreImageTaskSyncOverride: CreateRestoreImageTaskSyncType?
     let createRouteAsyncOverride: CreateRouteAsyncType?
     let createRouteSyncOverride: CreateRouteSyncType?
     let createRouteTableAsyncOverride: CreateRouteTableAsyncType?
@@ -186,6 +190,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let createSnapshotsSyncOverride: CreateSnapshotsSyncType?
     let createSpotDatafeedSubscriptionAsyncOverride: CreateSpotDatafeedSubscriptionAsyncType?
     let createSpotDatafeedSubscriptionSyncOverride: CreateSpotDatafeedSubscriptionSyncType?
+    let createStoreImageTaskAsyncOverride: CreateStoreImageTaskAsyncType?
+    let createStoreImageTaskSyncOverride: CreateStoreImageTaskSyncType?
     let createSubnetAsyncOverride: CreateSubnetAsyncType?
     let createSubnetSyncOverride: CreateSubnetSyncType?
     let createTagsAsyncOverride: CreateTagsAsyncType?
@@ -496,6 +502,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describePublicIpv4PoolsSyncOverride: DescribePublicIpv4PoolsSyncType?
     let describeRegionsAsyncOverride: DescribeRegionsAsyncType?
     let describeRegionsSyncOverride: DescribeRegionsSyncType?
+    let describeReplaceRootVolumeTasksAsyncOverride: DescribeReplaceRootVolumeTasksAsyncType?
+    let describeReplaceRootVolumeTasksSyncOverride: DescribeReplaceRootVolumeTasksSyncType?
     let describeReservedInstancesAsyncOverride: DescribeReservedInstancesAsyncType?
     let describeReservedInstancesSyncOverride: DescribeReservedInstancesSyncType?
     let describeReservedInstancesListingsAsyncOverride: DescribeReservedInstancesListingsAsyncType?
@@ -532,6 +540,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeSpotPriceHistorySyncOverride: DescribeSpotPriceHistorySyncType?
     let describeStaleSecurityGroupsAsyncOverride: DescribeStaleSecurityGroupsAsyncType?
     let describeStaleSecurityGroupsSyncOverride: DescribeStaleSecurityGroupsSyncType?
+    let describeStoreImageTasksAsyncOverride: DescribeStoreImageTasksAsyncType?
+    let describeStoreImageTasksSyncOverride: DescribeStoreImageTasksSyncType?
     let describeSubnetsAsyncOverride: DescribeSubnetsAsyncType?
     let describeSubnetsSyncOverride: DescribeSubnetsSyncType?
     let describeTagsAsyncOverride: DescribeTagsAsyncType?
@@ -606,6 +616,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let disableEbsEncryptionByDefaultSyncOverride: DisableEbsEncryptionByDefaultSyncType?
     let disableFastSnapshotRestoresAsyncOverride: DisableFastSnapshotRestoresAsyncType?
     let disableFastSnapshotRestoresSyncOverride: DisableFastSnapshotRestoresSyncType?
+    let disableSerialConsoleAccessAsyncOverride: DisableSerialConsoleAccessAsyncType?
+    let disableSerialConsoleAccessSyncOverride: DisableSerialConsoleAccessSyncType?
     let disableTransitGatewayRouteTablePropagationAsyncOverride: DisableTransitGatewayRouteTablePropagationAsyncType?
     let disableTransitGatewayRouteTablePropagationSyncOverride: DisableTransitGatewayRouteTablePropagationSyncType?
     let disableVgwRoutePropagationAsyncOverride: DisableVgwRoutePropagationAsyncType?
@@ -636,6 +648,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let enableEbsEncryptionByDefaultSyncOverride: EnableEbsEncryptionByDefaultSyncType?
     let enableFastSnapshotRestoresAsyncOverride: EnableFastSnapshotRestoresAsyncType?
     let enableFastSnapshotRestoresSyncOverride: EnableFastSnapshotRestoresSyncType?
+    let enableSerialConsoleAccessAsyncOverride: EnableSerialConsoleAccessAsyncType?
+    let enableSerialConsoleAccessSyncOverride: EnableSerialConsoleAccessSyncType?
     let enableTransitGatewayRouteTablePropagationAsyncOverride: EnableTransitGatewayRouteTablePropagationAsyncType?
     let enableTransitGatewayRouteTablePropagationSyncOverride: EnableTransitGatewayRouteTablePropagationSyncType?
     let enableVgwRoutePropagationAsyncOverride: EnableVgwRoutePropagationAsyncType?
@@ -672,6 +686,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let getEbsDefaultKmsKeyIdSyncOverride: GetEbsDefaultKmsKeyIdSyncType?
     let getEbsEncryptionByDefaultAsyncOverride: GetEbsEncryptionByDefaultAsyncType?
     let getEbsEncryptionByDefaultSyncOverride: GetEbsEncryptionByDefaultSyncType?
+    let getFlowLogsIntegrationTemplateAsyncOverride: GetFlowLogsIntegrationTemplateAsyncType?
+    let getFlowLogsIntegrationTemplateSyncOverride: GetFlowLogsIntegrationTemplateSyncType?
     let getGroupsForCapacityReservationAsyncOverride: GetGroupsForCapacityReservationAsyncType?
     let getGroupsForCapacityReservationSyncOverride: GetGroupsForCapacityReservationSyncType?
     let getHostReservationPurchasePreviewAsyncOverride: GetHostReservationPurchasePreviewAsyncType?
@@ -686,6 +702,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let getPasswordDataSyncOverride: GetPasswordDataSyncType?
     let getReservedInstancesExchangeQuoteAsyncOverride: GetReservedInstancesExchangeQuoteAsyncType?
     let getReservedInstancesExchangeQuoteSyncOverride: GetReservedInstancesExchangeQuoteSyncType?
+    let getSerialConsoleAccessStatusAsyncOverride: GetSerialConsoleAccessStatusAsyncType?
+    let getSerialConsoleAccessStatusSyncOverride: GetSerialConsoleAccessStatusSyncType?
     let getTransitGatewayAttachmentPropagationsAsyncOverride: GetTransitGatewayAttachmentPropagationsAsyncType?
     let getTransitGatewayAttachmentPropagationsSyncOverride: GetTransitGatewayAttachmentPropagationsSyncType?
     let getTransitGatewayMulticastDomainAssociationsAsyncOverride: GetTransitGatewayMulticastDomainAssociationsAsyncType?
@@ -1058,8 +1076,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createNetworkInterfacePermissionSync: CreateNetworkInterfacePermissionSyncType? = nil,
             createPlacementGroupAsync: CreatePlacementGroupAsyncType? = nil,
             createPlacementGroupSync: CreatePlacementGroupSyncType? = nil,
+            createReplaceRootVolumeTaskAsync: CreateReplaceRootVolumeTaskAsyncType? = nil,
+            createReplaceRootVolumeTaskSync: CreateReplaceRootVolumeTaskSyncType? = nil,
             createReservedInstancesListingAsync: CreateReservedInstancesListingAsyncType? = nil,
             createReservedInstancesListingSync: CreateReservedInstancesListingSyncType? = nil,
+            createRestoreImageTaskAsync: CreateRestoreImageTaskAsyncType? = nil,
+            createRestoreImageTaskSync: CreateRestoreImageTaskSyncType? = nil,
             createRouteAsync: CreateRouteAsyncType? = nil,
             createRouteSync: CreateRouteSyncType? = nil,
             createRouteTableAsync: CreateRouteTableAsyncType? = nil,
@@ -1072,6 +1094,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             createSnapshotsSync: CreateSnapshotsSyncType? = nil,
             createSpotDatafeedSubscriptionAsync: CreateSpotDatafeedSubscriptionAsyncType? = nil,
             createSpotDatafeedSubscriptionSync: CreateSpotDatafeedSubscriptionSyncType? = nil,
+            createStoreImageTaskAsync: CreateStoreImageTaskAsyncType? = nil,
+            createStoreImageTaskSync: CreateStoreImageTaskSyncType? = nil,
             createSubnetAsync: CreateSubnetAsyncType? = nil,
             createSubnetSync: CreateSubnetSyncType? = nil,
             createTagsAsync: CreateTagsAsyncType? = nil,
@@ -1382,6 +1406,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describePublicIpv4PoolsSync: DescribePublicIpv4PoolsSyncType? = nil,
             describeRegionsAsync: DescribeRegionsAsyncType? = nil,
             describeRegionsSync: DescribeRegionsSyncType? = nil,
+            describeReplaceRootVolumeTasksAsync: DescribeReplaceRootVolumeTasksAsyncType? = nil,
+            describeReplaceRootVolumeTasksSync: DescribeReplaceRootVolumeTasksSyncType? = nil,
             describeReservedInstancesAsync: DescribeReservedInstancesAsyncType? = nil,
             describeReservedInstancesSync: DescribeReservedInstancesSyncType? = nil,
             describeReservedInstancesListingsAsync: DescribeReservedInstancesListingsAsyncType? = nil,
@@ -1418,6 +1444,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeSpotPriceHistorySync: DescribeSpotPriceHistorySyncType? = nil,
             describeStaleSecurityGroupsAsync: DescribeStaleSecurityGroupsAsyncType? = nil,
             describeStaleSecurityGroupsSync: DescribeStaleSecurityGroupsSyncType? = nil,
+            describeStoreImageTasksAsync: DescribeStoreImageTasksAsyncType? = nil,
+            describeStoreImageTasksSync: DescribeStoreImageTasksSyncType? = nil,
             describeSubnetsAsync: DescribeSubnetsAsyncType? = nil,
             describeSubnetsSync: DescribeSubnetsSyncType? = nil,
             describeTagsAsync: DescribeTagsAsyncType? = nil,
@@ -1492,6 +1520,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             disableEbsEncryptionByDefaultSync: DisableEbsEncryptionByDefaultSyncType? = nil,
             disableFastSnapshotRestoresAsync: DisableFastSnapshotRestoresAsyncType? = nil,
             disableFastSnapshotRestoresSync: DisableFastSnapshotRestoresSyncType? = nil,
+            disableSerialConsoleAccessAsync: DisableSerialConsoleAccessAsyncType? = nil,
+            disableSerialConsoleAccessSync: DisableSerialConsoleAccessSyncType? = nil,
             disableTransitGatewayRouteTablePropagationAsync: DisableTransitGatewayRouteTablePropagationAsyncType? = nil,
             disableTransitGatewayRouteTablePropagationSync: DisableTransitGatewayRouteTablePropagationSyncType? = nil,
             disableVgwRoutePropagationAsync: DisableVgwRoutePropagationAsyncType? = nil,
@@ -1522,6 +1552,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             enableEbsEncryptionByDefaultSync: EnableEbsEncryptionByDefaultSyncType? = nil,
             enableFastSnapshotRestoresAsync: EnableFastSnapshotRestoresAsyncType? = nil,
             enableFastSnapshotRestoresSync: EnableFastSnapshotRestoresSyncType? = nil,
+            enableSerialConsoleAccessAsync: EnableSerialConsoleAccessAsyncType? = nil,
+            enableSerialConsoleAccessSync: EnableSerialConsoleAccessSyncType? = nil,
             enableTransitGatewayRouteTablePropagationAsync: EnableTransitGatewayRouteTablePropagationAsyncType? = nil,
             enableTransitGatewayRouteTablePropagationSync: EnableTransitGatewayRouteTablePropagationSyncType? = nil,
             enableVgwRoutePropagationAsync: EnableVgwRoutePropagationAsyncType? = nil,
@@ -1558,6 +1590,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             getEbsDefaultKmsKeyIdSync: GetEbsDefaultKmsKeyIdSyncType? = nil,
             getEbsEncryptionByDefaultAsync: GetEbsEncryptionByDefaultAsyncType? = nil,
             getEbsEncryptionByDefaultSync: GetEbsEncryptionByDefaultSyncType? = nil,
+            getFlowLogsIntegrationTemplateAsync: GetFlowLogsIntegrationTemplateAsyncType? = nil,
+            getFlowLogsIntegrationTemplateSync: GetFlowLogsIntegrationTemplateSyncType? = nil,
             getGroupsForCapacityReservationAsync: GetGroupsForCapacityReservationAsyncType? = nil,
             getGroupsForCapacityReservationSync: GetGroupsForCapacityReservationSyncType? = nil,
             getHostReservationPurchasePreviewAsync: GetHostReservationPurchasePreviewAsyncType? = nil,
@@ -1572,6 +1606,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             getPasswordDataSync: GetPasswordDataSyncType? = nil,
             getReservedInstancesExchangeQuoteAsync: GetReservedInstancesExchangeQuoteAsyncType? = nil,
             getReservedInstancesExchangeQuoteSync: GetReservedInstancesExchangeQuoteSyncType? = nil,
+            getSerialConsoleAccessStatusAsync: GetSerialConsoleAccessStatusAsyncType? = nil,
+            getSerialConsoleAccessStatusSync: GetSerialConsoleAccessStatusSyncType? = nil,
             getTransitGatewayAttachmentPropagationsAsync: GetTransitGatewayAttachmentPropagationsAsyncType? = nil,
             getTransitGatewayAttachmentPropagationsSync: GetTransitGatewayAttachmentPropagationsSyncType? = nil,
             getTransitGatewayMulticastDomainAssociationsAsync: GetTransitGatewayMulticastDomainAssociationsAsyncType? = nil,
@@ -1939,8 +1975,12 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createNetworkInterfacePermissionSyncOverride = createNetworkInterfacePermissionSync
         self.createPlacementGroupAsyncOverride = createPlacementGroupAsync
         self.createPlacementGroupSyncOverride = createPlacementGroupSync
+        self.createReplaceRootVolumeTaskAsyncOverride = createReplaceRootVolumeTaskAsync
+        self.createReplaceRootVolumeTaskSyncOverride = createReplaceRootVolumeTaskSync
         self.createReservedInstancesListingAsyncOverride = createReservedInstancesListingAsync
         self.createReservedInstancesListingSyncOverride = createReservedInstancesListingSync
+        self.createRestoreImageTaskAsyncOverride = createRestoreImageTaskAsync
+        self.createRestoreImageTaskSyncOverride = createRestoreImageTaskSync
         self.createRouteAsyncOverride = createRouteAsync
         self.createRouteSyncOverride = createRouteSync
         self.createRouteTableAsyncOverride = createRouteTableAsync
@@ -1953,6 +1993,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.createSnapshotsSyncOverride = createSnapshotsSync
         self.createSpotDatafeedSubscriptionAsyncOverride = createSpotDatafeedSubscriptionAsync
         self.createSpotDatafeedSubscriptionSyncOverride = createSpotDatafeedSubscriptionSync
+        self.createStoreImageTaskAsyncOverride = createStoreImageTaskAsync
+        self.createStoreImageTaskSyncOverride = createStoreImageTaskSync
         self.createSubnetAsyncOverride = createSubnetAsync
         self.createSubnetSyncOverride = createSubnetSync
         self.createTagsAsyncOverride = createTagsAsync
@@ -2263,6 +2305,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describePublicIpv4PoolsSyncOverride = describePublicIpv4PoolsSync
         self.describeRegionsAsyncOverride = describeRegionsAsync
         self.describeRegionsSyncOverride = describeRegionsSync
+        self.describeReplaceRootVolumeTasksAsyncOverride = describeReplaceRootVolumeTasksAsync
+        self.describeReplaceRootVolumeTasksSyncOverride = describeReplaceRootVolumeTasksSync
         self.describeReservedInstancesAsyncOverride = describeReservedInstancesAsync
         self.describeReservedInstancesSyncOverride = describeReservedInstancesSync
         self.describeReservedInstancesListingsAsyncOverride = describeReservedInstancesListingsAsync
@@ -2299,6 +2343,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeSpotPriceHistorySyncOverride = describeSpotPriceHistorySync
         self.describeStaleSecurityGroupsAsyncOverride = describeStaleSecurityGroupsAsync
         self.describeStaleSecurityGroupsSyncOverride = describeStaleSecurityGroupsSync
+        self.describeStoreImageTasksAsyncOverride = describeStoreImageTasksAsync
+        self.describeStoreImageTasksSyncOverride = describeStoreImageTasksSync
         self.describeSubnetsAsyncOverride = describeSubnetsAsync
         self.describeSubnetsSyncOverride = describeSubnetsSync
         self.describeTagsAsyncOverride = describeTagsAsync
@@ -2373,6 +2419,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.disableEbsEncryptionByDefaultSyncOverride = disableEbsEncryptionByDefaultSync
         self.disableFastSnapshotRestoresAsyncOverride = disableFastSnapshotRestoresAsync
         self.disableFastSnapshotRestoresSyncOverride = disableFastSnapshotRestoresSync
+        self.disableSerialConsoleAccessAsyncOverride = disableSerialConsoleAccessAsync
+        self.disableSerialConsoleAccessSyncOverride = disableSerialConsoleAccessSync
         self.disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsync
         self.disableTransitGatewayRouteTablePropagationSyncOverride = disableTransitGatewayRouteTablePropagationSync
         self.disableVgwRoutePropagationAsyncOverride = disableVgwRoutePropagationAsync
@@ -2403,6 +2451,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.enableEbsEncryptionByDefaultSyncOverride = enableEbsEncryptionByDefaultSync
         self.enableFastSnapshotRestoresAsyncOverride = enableFastSnapshotRestoresAsync
         self.enableFastSnapshotRestoresSyncOverride = enableFastSnapshotRestoresSync
+        self.enableSerialConsoleAccessAsyncOverride = enableSerialConsoleAccessAsync
+        self.enableSerialConsoleAccessSyncOverride = enableSerialConsoleAccessSync
         self.enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsync
         self.enableTransitGatewayRouteTablePropagationSyncOverride = enableTransitGatewayRouteTablePropagationSync
         self.enableVgwRoutePropagationAsyncOverride = enableVgwRoutePropagationAsync
@@ -2439,6 +2489,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.getEbsDefaultKmsKeyIdSyncOverride = getEbsDefaultKmsKeyIdSync
         self.getEbsEncryptionByDefaultAsyncOverride = getEbsEncryptionByDefaultAsync
         self.getEbsEncryptionByDefaultSyncOverride = getEbsEncryptionByDefaultSync
+        self.getFlowLogsIntegrationTemplateAsyncOverride = getFlowLogsIntegrationTemplateAsync
+        self.getFlowLogsIntegrationTemplateSyncOverride = getFlowLogsIntegrationTemplateSync
         self.getGroupsForCapacityReservationAsyncOverride = getGroupsForCapacityReservationAsync
         self.getGroupsForCapacityReservationSyncOverride = getGroupsForCapacityReservationSync
         self.getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsync
@@ -2453,6 +2505,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.getPasswordDataSyncOverride = getPasswordDataSync
         self.getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsync
         self.getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSync
+        self.getSerialConsoleAccessStatusAsyncOverride = getSerialConsoleAccessStatusAsync
+        self.getSerialConsoleAccessStatusSyncOverride = getSerialConsoleAccessStatusSync
         self.getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsync
         self.getTransitGatewayAttachmentPropagationsSyncOverride = getTransitGatewayAttachmentPropagationsSync
         self.getTransitGatewayMulticastDomainAssociationsAsyncOverride = getTransitGatewayMulticastDomainAssociationsAsync
@@ -5215,6 +5269,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the CreateReplaceRootVolumeTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateReplaceRootVolumeTaskRequest object being passed to this operation.
+         - completion: The CreateReplaceRootVolumeTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateReplaceRootVolumeTaskResult
+           object will be validated before being returned to caller.
+     */
+    public func createReplaceRootVolumeTaskAsync(
+            input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createReplaceRootVolumeTaskAsyncOverride = createReplaceRootVolumeTaskAsyncOverride {
+            return try createReplaceRootVolumeTaskAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateReplaceRootVolumeTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateReplaceRootVolumeTaskRequest object being passed to this operation.
+     - Returns: The CreateReplaceRootVolumeTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createReplaceRootVolumeTaskSync(
+            input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest) throws -> ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult {
+        if let createReplaceRootVolumeTaskSyncOverride = createReplaceRootVolumeTaskSyncOverride {
+            return try createReplaceRootVolumeTaskSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateReservedInstancesListing operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5245,6 +5335,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
         if let createReservedInstancesListingSyncOverride = createReservedInstancesListingSyncOverride {
             return try createReservedInstancesListingSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateRestoreImageTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateRestoreImageTaskRequest object being passed to this operation.
+         - completion: The CreateRestoreImageTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateRestoreImageTaskResult
+           object will be validated before being returned to caller.
+     */
+    public func createRestoreImageTaskAsync(
+            input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRestoreImageTaskResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createRestoreImageTaskAsyncOverride = createRestoreImageTaskAsyncOverride {
+            return try createRestoreImageTaskAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateRestoreImageTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateRestoreImageTaskRequest object being passed to this operation.
+     - Returns: The CreateRestoreImageTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createRestoreImageTaskSync(
+            input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest) throws -> ElasticComputeCloudModel.CreateRestoreImageTaskResult {
+        if let createRestoreImageTaskSyncOverride = createRestoreImageTaskSyncOverride {
+            return try createRestoreImageTaskSyncOverride(input)
         }
 
         throw error
@@ -5461,6 +5587,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
         if let createSpotDatafeedSubscriptionSyncOverride = createSpotDatafeedSubscriptionSyncOverride {
             return try createSpotDatafeedSubscriptionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateStoreImageTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateStoreImageTaskRequest object being passed to this operation.
+         - completion: The CreateStoreImageTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateStoreImageTaskResult
+           object will be validated before being returned to caller.
+     */
+    public func createStoreImageTaskAsync(
+            input: ElasticComputeCloudModel.CreateStoreImageTaskRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateStoreImageTaskResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createStoreImageTaskAsyncOverride = createStoreImageTaskAsyncOverride {
+            return try createStoreImageTaskAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateStoreImageTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateStoreImageTaskRequest object being passed to this operation.
+     - Returns: The CreateStoreImageTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createStoreImageTaskSync(
+            input: ElasticComputeCloudModel.CreateStoreImageTaskRequest) throws -> ElasticComputeCloudModel.CreateStoreImageTaskResult {
+        if let createStoreImageTaskSyncOverride = createStoreImageTaskSyncOverride {
+            return try createStoreImageTaskSyncOverride(input)
         }
 
         throw error
@@ -10978,6 +11140,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DescribeReplaceRootVolumeTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeReplaceRootVolumeTasksRequest object being passed to this operation.
+         - completion: The DescribeReplaceRootVolumeTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeReplaceRootVolumeTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeReplaceRootVolumeTasksAsync(
+            input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeReplaceRootVolumeTasksAsyncOverride = describeReplaceRootVolumeTasksAsyncOverride {
+            return try describeReplaceRootVolumeTasksAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeReplaceRootVolumeTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeReplaceRootVolumeTasksRequest object being passed to this operation.
+     - Returns: The DescribeReplaceRootVolumeTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeReplaceRootVolumeTasksSync(
+            input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest) throws -> ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult {
+        if let describeReplaceRootVolumeTasksSyncOverride = describeReplaceRootVolumeTasksSyncOverride {
+            return try describeReplaceRootVolumeTasksSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeReservedInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11620,6 +11818,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
         if let describeStaleSecurityGroupsSyncOverride = describeStaleSecurityGroupsSyncOverride {
             return try describeStaleSecurityGroupsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeStoreImageTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeStoreImageTasksRequest object being passed to this operation.
+         - completion: The DescribeStoreImageTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeStoreImageTasksResult
+           object will be validated before being returned to caller.
+     */
+    public func describeStoreImageTasksAsync(
+            input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStoreImageTasksResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeStoreImageTasksAsyncOverride = describeStoreImageTasksAsyncOverride {
+            return try describeStoreImageTasksAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeStoreImageTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeStoreImageTasksRequest object being passed to this operation.
+     - Returns: The DescribeStoreImageTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStoreImageTasksSync(
+            input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeStoreImageTasksResult {
+        if let describeStoreImageTasksSyncOverride = describeStoreImageTasksSyncOverride {
+            return try describeStoreImageTasksSyncOverride(input)
         }
 
         throw error
@@ -12949,6 +13183,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the DisableSerialConsoleAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableSerialConsoleAccessRequest object being passed to this operation.
+         - completion: The DisableSerialConsoleAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableSerialConsoleAccessResult
+           object will be validated before being returned to caller.
+     */
+    public func disableSerialConsoleAccessAsync(
+            input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableSerialConsoleAccessResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disableSerialConsoleAccessAsyncOverride = disableSerialConsoleAccessAsyncOverride {
+            return try disableSerialConsoleAccessAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DisableSerialConsoleAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableSerialConsoleAccessRequest object being passed to this operation.
+     - Returns: The DisableSerialConsoleAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableSerialConsoleAccessSync(
+            input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult {
+        if let disableSerialConsoleAccessSyncOverride = disableSerialConsoleAccessSyncOverride {
+            return try disableSerialConsoleAccessSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13474,6 +13744,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
         if let enableFastSnapshotRestoresSyncOverride = enableFastSnapshotRestoresSyncOverride {
             return try enableFastSnapshotRestoresSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the EnableSerialConsoleAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableSerialConsoleAccessRequest object being passed to this operation.
+         - completion: The EnableSerialConsoleAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableSerialConsoleAccessResult
+           object will be validated before being returned to caller.
+     */
+    public func enableSerialConsoleAccessAsync(
+            input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableSerialConsoleAccessResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableSerialConsoleAccessAsyncOverride = enableSerialConsoleAccessAsyncOverride {
+            return try enableSerialConsoleAccessAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the EnableSerialConsoleAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableSerialConsoleAccessRequest object being passed to this operation.
+     - Returns: The EnableSerialConsoleAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableSerialConsoleAccessSync(
+            input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult {
+        if let enableSerialConsoleAccessSyncOverride = enableSerialConsoleAccessSyncOverride {
+            return try enableSerialConsoleAccessSyncOverride(input)
         }
 
         throw error
@@ -14122,6 +14428,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the GetFlowLogsIntegrationTemplate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetFlowLogsIntegrationTemplateRequest object being passed to this operation.
+         - completion: The GetFlowLogsIntegrationTemplateResult object or an error will be passed to this 
+           callback when the operation is complete. The GetFlowLogsIntegrationTemplateResult
+           object will be validated before being returned to caller.
+     */
+    public func getFlowLogsIntegrationTemplateAsync(
+            input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getFlowLogsIntegrationTemplateAsyncOverride = getFlowLogsIntegrationTemplateAsyncOverride {
+            return try getFlowLogsIntegrationTemplateAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetFlowLogsIntegrationTemplate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetFlowLogsIntegrationTemplateRequest object being passed to this operation.
+     - Returns: The GetFlowLogsIntegrationTemplateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getFlowLogsIntegrationTemplateSync(
+            input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest) throws -> ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult {
+        if let getFlowLogsIntegrationTemplateSyncOverride = getFlowLogsIntegrationTemplateSyncOverride {
+            return try getFlowLogsIntegrationTemplateSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the GetGroupsForCapacityReservation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14368,6 +14710,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
         if let getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSyncOverride {
             return try getReservedInstancesExchangeQuoteSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetSerialConsoleAccessStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSerialConsoleAccessStatusRequest object being passed to this operation.
+         - completion: The GetSerialConsoleAccessStatusResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSerialConsoleAccessStatusResult
+           object will be validated before being returned to caller.
+     */
+    public func getSerialConsoleAccessStatusAsync(
+            input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getSerialConsoleAccessStatusAsyncOverride = getSerialConsoleAccessStatusAsyncOverride {
+            return try getSerialConsoleAccessStatusAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetSerialConsoleAccessStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSerialConsoleAccessStatusRequest object being passed to this operation.
+     - Returns: The GetSerialConsoleAccessStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSerialConsoleAccessStatusSync(
+            input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult {
+        if let getSerialConsoleAccessStatusSyncOverride = getSerialConsoleAccessStatusSyncOverride {
+            return try getSerialConsoleAccessStatusSyncOverride(input)
         }
 
         throw error

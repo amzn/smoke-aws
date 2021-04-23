@@ -49,6 +49,11 @@ public protocol CloudWatchClientProtocol {
     typealias DeleteInsightRulesAsyncType = (
             _ input: CloudWatchModel.DeleteInsightRulesInput, 
             _ completion: @escaping (Result<CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules, CloudWatchError>) -> ()) throws -> ()
+    typealias DeleteMetricStreamSyncType = (
+            _ input: CloudWatchModel.DeleteMetricStreamInput) throws -> CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream
+    typealias DeleteMetricStreamAsyncType = (
+            _ input: CloudWatchModel.DeleteMetricStreamInput, 
+            _ completion: @escaping (Result<CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream, CloudWatchError>) -> ()) throws -> ()
     typealias DescribeAlarmHistorySyncType = (
             _ input: CloudWatchModel.DescribeAlarmHistoryInput) throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory
     typealias DescribeAlarmHistoryAsyncType = (
@@ -114,6 +119,11 @@ public protocol CloudWatchClientProtocol {
     typealias GetMetricStatisticsAsyncType = (
             _ input: CloudWatchModel.GetMetricStatisticsInput, 
             _ completion: @escaping (Result<CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics, CloudWatchError>) -> ()) throws -> ()
+    typealias GetMetricStreamSyncType = (
+            _ input: CloudWatchModel.GetMetricStreamInput) throws -> CloudWatchModel.GetMetricStreamOutputForGetMetricStream
+    typealias GetMetricStreamAsyncType = (
+            _ input: CloudWatchModel.GetMetricStreamInput, 
+            _ completion: @escaping (Result<CloudWatchModel.GetMetricStreamOutputForGetMetricStream, CloudWatchError>) -> ()) throws -> ()
     typealias GetMetricWidgetImageSyncType = (
             _ input: CloudWatchModel.GetMetricWidgetImageInput) throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage
     typealias GetMetricWidgetImageAsyncType = (
@@ -124,6 +134,11 @@ public protocol CloudWatchClientProtocol {
     typealias ListDashboardsAsyncType = (
             _ input: CloudWatchModel.ListDashboardsInput, 
             _ completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, CloudWatchError>) -> ()) throws -> ()
+    typealias ListMetricStreamsSyncType = (
+            _ input: CloudWatchModel.ListMetricStreamsInput) throws -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams
+    typealias ListMetricStreamsAsyncType = (
+            _ input: CloudWatchModel.ListMetricStreamsInput, 
+            _ completion: @escaping (Result<CloudWatchModel.ListMetricStreamsOutputForListMetricStreams, CloudWatchError>) -> ()) throws -> ()
     typealias ListMetricsSyncType = (
             _ input: CloudWatchModel.ListMetricsInput) throws -> CloudWatchModel.ListMetricsOutputForListMetrics
     typealias ListMetricsAsyncType = (
@@ -164,11 +179,26 @@ public protocol CloudWatchClientProtocol {
     typealias PutMetricDataAsyncType = (
             _ input: CloudWatchModel.PutMetricDataInput, 
             _ completion: @escaping (CloudWatchError?) -> ()) throws -> ()
+    typealias PutMetricStreamSyncType = (
+            _ input: CloudWatchModel.PutMetricStreamInput) throws -> CloudWatchModel.PutMetricStreamOutputForPutMetricStream
+    typealias PutMetricStreamAsyncType = (
+            _ input: CloudWatchModel.PutMetricStreamInput, 
+            _ completion: @escaping (Result<CloudWatchModel.PutMetricStreamOutputForPutMetricStream, CloudWatchError>) -> ()) throws -> ()
     typealias SetAlarmStateSyncType = (
             _ input: CloudWatchModel.SetAlarmStateInput) throws -> ()
     typealias SetAlarmStateAsyncType = (
             _ input: CloudWatchModel.SetAlarmStateInput, 
             _ completion: @escaping (CloudWatchError?) -> ()) throws -> ()
+    typealias StartMetricStreamsSyncType = (
+            _ input: CloudWatchModel.StartMetricStreamsInput) throws -> CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams
+    typealias StartMetricStreamsAsyncType = (
+            _ input: CloudWatchModel.StartMetricStreamsInput, 
+            _ completion: @escaping (Result<CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams, CloudWatchError>) -> ()) throws -> ()
+    typealias StopMetricStreamsSyncType = (
+            _ input: CloudWatchModel.StopMetricStreamsInput) throws -> CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams
+    typealias StopMetricStreamsAsyncType = (
+            _ input: CloudWatchModel.StopMetricStreamsInput, 
+            _ completion: @escaping (Result<CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams, CloudWatchError>) -> ()) throws -> ()
     typealias TagResourceSyncType = (
             _ input: CloudWatchModel.TagResourceInput) throws -> CloudWatchModel.TagResourceOutputForTagResource
     typealias TagResourceAsyncType = (
@@ -280,6 +310,32 @@ public protocol CloudWatchClientProtocol {
      */
     func deleteInsightRulesSync(
             input: CloudWatchModel.DeleteInsightRulesInput) throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules
+
+    /**
+     Invokes the DeleteMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteMetricStreamInput object being passed to this operation.
+         - completion: The DeleteMetricStreamOutputForDeleteMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The DeleteMetricStreamOutputForDeleteMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    func deleteMetricStreamAsync(
+            input: CloudWatchModel.DeleteMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the DeleteMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteMetricStreamInput object being passed to this operation.
+     - Returns: The DeleteMetricStreamOutputForDeleteMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    func deleteMetricStreamSync(
+            input: CloudWatchModel.DeleteMetricStreamInput) throws -> CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream
 
     /**
      Invokes the DescribeAlarmHistory operation returning immediately and passing the response to a callback.
@@ -608,6 +664,32 @@ public protocol CloudWatchClientProtocol {
             input: CloudWatchModel.GetMetricStatisticsInput) throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics
 
     /**
+     Invokes the GetMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetMetricStreamInput object being passed to this operation.
+         - completion: The GetMetricStreamOutputForGetMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The GetMetricStreamOutputForGetMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    func getMetricStreamAsync(
+            input: CloudWatchModel.GetMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.GetMetricStreamOutputForGetMetricStream, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the GetMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetMetricStreamInput object being passed to this operation.
+     - Returns: The GetMetricStreamOutputForGetMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    func getMetricStreamSync(
+            input: CloudWatchModel.GetMetricStreamInput) throws -> CloudWatchModel.GetMetricStreamOutputForGetMetricStream
+
+    /**
      Invokes the GetMetricWidgetImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -656,6 +738,32 @@ public protocol CloudWatchClientProtocol {
      */
     func listDashboardsSync(
             input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards
+
+    /**
+     Invokes the ListMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMetricStreamsInput object being passed to this operation.
+         - completion: The ListMetricStreamsOutputForListMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The ListMetricStreamsOutputForListMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    func listMetricStreamsAsync(
+            input: CloudWatchModel.ListMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.ListMetricStreamsOutputForListMetricStreams, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the ListMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMetricStreamsInput object being passed to this operation.
+     - Returns: The ListMetricStreamsOutputForListMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    func listMetricStreamsSync(
+            input: CloudWatchModel.ListMetricStreamsInput) throws -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams
 
     /**
      Invokes the ListMetrics operation returning immediately and passing the response to a callback.
@@ -857,6 +965,32 @@ public protocol CloudWatchClientProtocol {
             input: CloudWatchModel.PutMetricDataInput) throws
 
     /**
+     Invokes the PutMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutMetricStreamInput object being passed to this operation.
+         - completion: The PutMetricStreamOutputForPutMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The PutMetricStreamOutputForPutMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
+     */
+    func putMetricStreamAsync(
+            input: CloudWatchModel.PutMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.PutMetricStreamOutputForPutMetricStream, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the PutMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutMetricStreamInput object being passed to this operation.
+     - Returns: The PutMetricStreamOutputForPutMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
+     */
+    func putMetricStreamSync(
+            input: CloudWatchModel.PutMetricStreamInput) throws -> CloudWatchModel.PutMetricStreamOutputForPutMetricStream
+
+    /**
      Invokes the SetAlarmState operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -878,6 +1012,58 @@ public protocol CloudWatchClientProtocol {
      */
     func setAlarmStateSync(
             input: CloudWatchModel.SetAlarmStateInput) throws
+
+    /**
+     Invokes the StartMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartMetricStreamsInput object being passed to this operation.
+         - completion: The StartMetricStreamsOutputForStartMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The StartMetricStreamsOutputForStartMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    func startMetricStreamsAsync(
+            input: CloudWatchModel.StartMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the StartMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartMetricStreamsInput object being passed to this operation.
+     - Returns: The StartMetricStreamsOutputForStartMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    func startMetricStreamsSync(
+            input: CloudWatchModel.StartMetricStreamsInput) throws -> CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams
+
+    /**
+     Invokes the StopMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopMetricStreamsInput object being passed to this operation.
+         - completion: The StopMetricStreamsOutputForStopMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The StopMetricStreamsOutputForStopMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    func stopMetricStreamsAsync(
+            input: CloudWatchModel.StopMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the StopMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopMetricStreamsInput object being passed to this operation.
+     - Returns: The StopMetricStreamsOutputForStopMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    func stopMetricStreamsSync(
+            input: CloudWatchModel.StopMetricStreamsInput) throws -> CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams
 
     /**
      Invokes the TagResource operation returning immediately and passing the response to a callback.

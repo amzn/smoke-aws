@@ -451,6 +451,11 @@ public typealias InsightRules = [InsightRule]
 public typealias LastModified = String
 
 /**
+ Type definition for the ListMetricStreamsMaxResults field.
+ */
+public typealias ListMetricStreamsMaxResults = Int
+
+/**
  Type definition for the MaxRecords field.
  */
 public typealias MaxRecords = Int
@@ -519,6 +524,45 @@ public typealias MetricLabel = String
  Type definition for the MetricName field.
  */
 public typealias MetricName = String
+
+/**
+ Type definition for the MetricStreamEntries field.
+ */
+public typealias MetricStreamEntries = [MetricStreamEntry]
+
+/**
+ Type definition for the MetricStreamFilters field.
+ */
+public typealias MetricStreamFilters = [MetricStreamFilter]
+
+/**
+ Type definition for the MetricStreamName field.
+ */
+public typealias MetricStreamName = String
+
+/**
+ Type definition for the MetricStreamNames field.
+ */
+public typealias MetricStreamNames = [MetricStreamName]
+
+/**
+ Enumeration restricting the values of the MetricStreamOutputFormat field.
+ */
+public enum MetricStreamOutputFormat: String, Codable, CustomStringConvertible {
+    case json
+    case opentelemetry07 = "opentelemetry0.7"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: MetricStreamOutputFormat = .json
+}
+
+/**
+ Type definition for the MetricStreamState field.
+ */
+public typealias MetricStreamState = String
 
 /**
  Type definition for the MetricWidget field.
@@ -1203,6 +1247,21 @@ extension CloudWatchModel.InsightRuleState {
 }
 
 /**
+ Validation for the ListMetricStreamsMaxResults field.
+*/
+extension CloudWatchModel.ListMetricStreamsMaxResults {
+    public func validateAsListMetricStreamsMaxResults() throws {
+        if self < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to ListMetricStreamsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 500 {
+            throw CloudWatchError.validationError(reason: "The provided value to ListMetricStreamsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the MaxRecords field.
 */
 extension CloudWatchModel.MaxRecords {
@@ -1270,6 +1329,21 @@ extension CloudWatchModel.MetricName {
 
         if self.count > 255 {
             throw CloudWatchError.validationError(reason: "The provided value to MetricName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the MetricStreamName field.
+*/
+extension CloudWatchModel.MetricStreamName {
+    public func validateAsMetricStreamName() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to MetricStreamName violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw CloudWatchError.validationError(reason: "The provided value to MetricStreamName violated the maximum length constraint.")
         }
     }
 }

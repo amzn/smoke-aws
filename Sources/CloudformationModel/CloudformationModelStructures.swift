@@ -906,20 +906,25 @@ public struct DeleteStackSetOutputForDeleteStackSet: Codable, Equatable {
 
 public struct DeploymentTargets: Codable, Equatable {
     public var accounts: AccountList?
+    public var accountsUrl: AccountsUrl?
     public var organizationalUnitIds: OrganizationalUnitIdList?
 
     public init(accounts: AccountList? = nil,
+                accountsUrl: AccountsUrl? = nil,
                 organizationalUnitIds: OrganizationalUnitIdList? = nil) {
         self.accounts = accounts
+        self.accountsUrl = accountsUrl
         self.organizationalUnitIds = organizationalUnitIds
     }
 
     enum CodingKeys: String, CodingKey {
         case accounts = "Accounts"
+        case accountsUrl = "AccountsUrl"
         case organizationalUnitIds = "OrganizationalUnitIds"
     }
 
     public func validate() throws {
+        try accountsUrl?.validateAsAccountsUrl()
     }
 }
 
@@ -4723,17 +4728,20 @@ public struct StackSetOperationPreferences: Codable, Equatable {
     public var failureTolerancePercentage: FailureTolerancePercentage?
     public var maxConcurrentCount: MaxConcurrentCount?
     public var maxConcurrentPercentage: MaxConcurrentPercentage?
+    public var regionConcurrencyType: RegionConcurrencyType?
     public var regionOrder: RegionList?
 
     public init(failureToleranceCount: FailureToleranceCount? = nil,
                 failureTolerancePercentage: FailureTolerancePercentage? = nil,
                 maxConcurrentCount: MaxConcurrentCount? = nil,
                 maxConcurrentPercentage: MaxConcurrentPercentage? = nil,
+                regionConcurrencyType: RegionConcurrencyType? = nil,
                 regionOrder: RegionList? = nil) {
         self.failureToleranceCount = failureToleranceCount
         self.failureTolerancePercentage = failureTolerancePercentage
         self.maxConcurrentCount = maxConcurrentCount
         self.maxConcurrentPercentage = maxConcurrentPercentage
+        self.regionConcurrencyType = regionConcurrencyType
         self.regionOrder = regionOrder
     }
 
@@ -4742,6 +4750,7 @@ public struct StackSetOperationPreferences: Codable, Equatable {
         case failureTolerancePercentage = "FailureTolerancePercentage"
         case maxConcurrentCount = "MaxConcurrentCount"
         case maxConcurrentPercentage = "MaxConcurrentPercentage"
+        case regionConcurrencyType = "RegionConcurrencyType"
         case regionOrder = "RegionOrder"
     }
 

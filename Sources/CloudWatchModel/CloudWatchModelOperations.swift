@@ -30,6 +30,7 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case deleteAnomalyDetector = "DeleteAnomalyDetector"
     case deleteDashboards = "DeleteDashboards"
     case deleteInsightRules = "DeleteInsightRules"
+    case deleteMetricStream = "DeleteMetricStream"
     case describeAlarmHistory = "DescribeAlarmHistory"
     case describeAlarms = "DescribeAlarms"
     case describeAlarmsForMetric = "DescribeAlarmsForMetric"
@@ -43,8 +44,10 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case getInsightRuleReport = "GetInsightRuleReport"
     case getMetricData = "GetMetricData"
     case getMetricStatistics = "GetMetricStatistics"
+    case getMetricStream = "GetMetricStream"
     case getMetricWidgetImage = "GetMetricWidgetImage"
     case listDashboards = "ListDashboards"
+    case listMetricStreams = "ListMetricStreams"
     case listMetrics = "ListMetrics"
     case listTagsForResource = "ListTagsForResource"
     case putAnomalyDetector = "PutAnomalyDetector"
@@ -53,7 +56,10 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case putInsightRule = "PutInsightRule"
     case putMetricAlarm = "PutMetricAlarm"
     case putMetricData = "PutMetricData"
+    case putMetricStream = "PutMetricStream"
     case setAlarmState = "SetAlarmState"
+    case startMetricStreams = "StartMetricStreams"
+    case stopMetricStreams = "StopMetricStreams"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
 
@@ -70,6 +76,8 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
         case .deleteDashboards:
             return "/"
         case .deleteInsightRules:
+            return "/"
+        case .deleteMetricStream:
             return "/"
         case .describeAlarmHistory:
             return "/"
@@ -97,9 +105,13 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
             return "/"
         case .getMetricStatistics:
             return "/"
+        case .getMetricStream:
+            return "/"
         case .getMetricWidgetImage:
             return "/"
         case .listDashboards:
+            return "/"
+        case .listMetricStreams:
             return "/"
         case .listMetrics:
             return "/"
@@ -117,7 +129,13 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
             return "/"
         case .putMetricData:
             return "/"
+        case .putMetricStream:
+            return "/"
         case .setAlarmState:
+            return "/"
+        case .startMetricStreams:
+            return "/"
+        case .stopMetricStreams:
             return "/"
         case .tagResource:
             return "/"

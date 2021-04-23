@@ -32,6 +32,7 @@ public struct CloudWatchOperationsReporting {
     public let deleteAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let deleteDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let deleteInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let deleteMetricStream: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let describeAlarmHistory: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let describeAlarms: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let describeAlarmsForMetric: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -45,8 +46,10 @@ public struct CloudWatchOperationsReporting {
     public let getInsightRuleReport: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let getMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let getMetricStatistics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let getMetricStream: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let getMetricWidgetImage: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let listMetricStreams: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listMetrics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putAnomalyDetector: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -55,7 +58,10 @@ public struct CloudWatchOperationsReporting {
     public let putInsightRule: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putMetricAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putMetricStream: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let setAlarmState: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let startMetricStreams: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let stopMetricStreams: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let tagResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let untagResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
 
@@ -68,6 +74,8 @@ public struct CloudWatchOperationsReporting {
             clientName: clientName, operation: .deleteDashboards, configuration: reportingConfiguration)
         self.deleteInsightRules = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteInsightRules, configuration: reportingConfiguration)
+        self.deleteMetricStream = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteMetricStream, configuration: reportingConfiguration)
         self.describeAlarmHistory = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeAlarmHistory, configuration: reportingConfiguration)
         self.describeAlarms = StandardSmokeAWSOperationReporting(
@@ -94,10 +102,14 @@ public struct CloudWatchOperationsReporting {
             clientName: clientName, operation: .getMetricData, configuration: reportingConfiguration)
         self.getMetricStatistics = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getMetricStatistics, configuration: reportingConfiguration)
+        self.getMetricStream = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getMetricStream, configuration: reportingConfiguration)
         self.getMetricWidgetImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getMetricWidgetImage, configuration: reportingConfiguration)
         self.listDashboards = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listDashboards, configuration: reportingConfiguration)
+        self.listMetricStreams = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listMetricStreams, configuration: reportingConfiguration)
         self.listMetrics = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listMetrics, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(
@@ -114,8 +126,14 @@ public struct CloudWatchOperationsReporting {
             clientName: clientName, operation: .putMetricAlarm, configuration: reportingConfiguration)
         self.putMetricData = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putMetricData, configuration: reportingConfiguration)
+        self.putMetricStream = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putMetricStream, configuration: reportingConfiguration)
         self.setAlarmState = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .setAlarmState, configuration: reportingConfiguration)
+        self.startMetricStreams = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startMetricStreams, configuration: reportingConfiguration)
+        self.stopMetricStreams = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .stopMetricStreams, configuration: reportingConfiguration)
         self.tagResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .tagResource, configuration: reportingConfiguration)
         self.untagResource = StandardSmokeAWSOperationReporting(

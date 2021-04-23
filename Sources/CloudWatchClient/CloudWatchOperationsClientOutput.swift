@@ -64,6 +64,19 @@ extension DeleteInsightRulesOutputForDeleteInsightRules: HTTPResponseOutputProto
 }
 
 /**
+ Type to handle the output from the DeleteMetricStream operation in a HTTP client.
+ */
+extension DeleteMetricStreamOutputForDeleteMetricStream: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteMetricStreamOutputForDeleteMetricStream
+    public typealias HeadersType = DeleteMetricStreamOutputForDeleteMetricStream
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteMetricStreamOutputForDeleteMetricStream {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeAlarmHistory operation in a HTTP client.
  */
 extension DescribeAlarmHistoryOutputForDescribeAlarmHistory: HTTPResponseOutputProtocol {
@@ -207,6 +220,19 @@ extension GetMetricStatisticsOutputForGetMetricStatistics: HTTPResponseOutputPro
 }
 
 /**
+ Type to handle the output from the GetMetricStream operation in a HTTP client.
+ */
+extension GetMetricStreamOutputForGetMetricStream: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetMetricStreamOutputForGetMetricStream
+    public typealias HeadersType = GetMetricStreamOutputForGetMetricStream
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetMetricStreamOutputForGetMetricStream {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetMetricWidgetImage operation in a HTTP client.
  */
 extension GetMetricWidgetImageOutputForGetMetricWidgetImage: HTTPResponseOutputProtocol {
@@ -228,6 +254,19 @@ extension ListDashboardsOutputForListDashboards: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListDashboardsOutputForListDashboards {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListMetricStreams operation in a HTTP client.
+ */
+extension ListMetricStreamsOutputForListMetricStreams: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListMetricStreamsOutputForListMetricStreams
+    public typealias HeadersType = ListMetricStreamsOutputForListMetricStreams
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListMetricStreamsOutputForListMetricStreams {
         return try bodyDecodableProvider()
     }
 }
@@ -293,6 +332,45 @@ extension PutInsightRuleOutputForPutInsightRule: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutInsightRuleOutputForPutInsightRule {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutMetricStream operation in a HTTP client.
+ */
+extension PutMetricStreamOutputForPutMetricStream: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutMetricStreamOutputForPutMetricStream
+    public typealias HeadersType = PutMetricStreamOutputForPutMetricStream
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutMetricStreamOutputForPutMetricStream {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StartMetricStreams operation in a HTTP client.
+ */
+extension StartMetricStreamsOutputForStartMetricStreams: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartMetricStreamsOutputForStartMetricStreams
+    public typealias HeadersType = StartMetricStreamsOutputForStartMetricStreams
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartMetricStreamsOutputForStartMetricStreams {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StopMetricStreams operation in a HTTP client.
+ */
+extension StopMetricStreamsOutputForStopMetricStreams: HTTPResponseOutputProtocol {
+    public typealias BodyType = StopMetricStreamsOutputForStopMetricStreams
+    public typealias HeadersType = StopMetricStreamsOutputForStopMetricStreams
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StopMetricStreamsOutputForStopMetricStreams {
         return try bodyDecodableProvider()
     }
 }

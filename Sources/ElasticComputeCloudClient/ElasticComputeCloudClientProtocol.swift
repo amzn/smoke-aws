@@ -384,11 +384,21 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreatePlacementGroupAsyncType = (
             _ input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreatePlacementGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateReplaceRootVolumeTaskSyncType = (
+            _ input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest) throws -> ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult
+    typealias CreateReplaceRootVolumeTaskAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateReservedInstancesListingSyncType = (
             _ input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult
     typealias CreateReservedInstancesListingAsyncType = (
             _ input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateReservedInstancesListingResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateRestoreImageTaskSyncType = (
+            _ input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest) throws -> ElasticComputeCloudModel.CreateRestoreImageTaskResult
+    typealias CreateRestoreImageTaskAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateRestoreImageTaskResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateRouteSyncType = (
             _ input: ElasticComputeCloudModel.CreateRouteRequest) throws -> ElasticComputeCloudModel.CreateRouteResult
     typealias CreateRouteAsyncType = (
@@ -419,6 +429,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateSpotDatafeedSubscriptionAsyncType = (
             _ input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateStoreImageTaskSyncType = (
+            _ input: ElasticComputeCloudModel.CreateStoreImageTaskRequest) throws -> ElasticComputeCloudModel.CreateStoreImageTaskResult
+    typealias CreateStoreImageTaskAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateStoreImageTaskRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateStoreImageTaskResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateSubnetSyncType = (
             _ input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult
     typealias CreateSubnetAsyncType = (
@@ -1194,6 +1209,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeRegionsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeRegionsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeRegionsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeReplaceRootVolumeTasksSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest) throws -> ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult
+    typealias DescribeReplaceRootVolumeTasksAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeReservedInstancesSyncType = (
             _ input: ElasticComputeCloudModel.DescribeReservedInstancesRequest) throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult
     typealias DescribeReservedInstancesAsyncType = (
@@ -1284,6 +1304,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeStaleSecurityGroupsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeStoreImageTasksSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeStoreImageTasksResult
+    typealias DescribeStoreImageTasksAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeStoreImageTasksResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeSubnetsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeSubnetsRequest) throws -> ElasticComputeCloudModel.DescribeSubnetsResult
     typealias DescribeSubnetsAsyncType = (
@@ -1469,6 +1494,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisableFastSnapshotRestoresAsyncType = (
             _ input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisableSerialConsoleAccessSyncType = (
+            _ input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult
+    typealias DisableSerialConsoleAccessAsyncType = (
+            _ input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisableSerialConsoleAccessResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisableTransitGatewayRouteTablePropagationSyncType = (
             _ input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult
     typealias DisableTransitGatewayRouteTablePropagationAsyncType = (
@@ -1544,6 +1574,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias EnableFastSnapshotRestoresAsyncType = (
             _ input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias EnableSerialConsoleAccessSyncType = (
+            _ input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult
+    typealias EnableSerialConsoleAccessAsyncType = (
+            _ input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableSerialConsoleAccessResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias EnableTransitGatewayRouteTablePropagationSyncType = (
             _ input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult
     typealias EnableTransitGatewayRouteTablePropagationAsyncType = (
@@ -1634,6 +1669,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetEbsEncryptionByDefaultAsyncType = (
             _ input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetFlowLogsIntegrationTemplateSyncType = (
+            _ input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest) throws -> ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult
+    typealias GetFlowLogsIntegrationTemplateAsyncType = (
+            _ input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetGroupsForCapacityReservationSyncType = (
             _ input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult
     typealias GetGroupsForCapacityReservationAsyncType = (
@@ -1669,6 +1709,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetReservedInstancesExchangeQuoteAsyncType = (
             _ input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetSerialConsoleAccessStatusSyncType = (
+            _ input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult
+    typealias GetSerialConsoleAccessStatusAsyncType = (
+            _ input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetTransitGatewayAttachmentPropagationsSyncType = (
             _ input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult
     typealias GetTransitGatewayAttachmentPropagationsAsyncType = (
@@ -3914,6 +3959,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ElasticComputeCloudModel.CreatePlacementGroupResult
 
     /**
+     Invokes the CreateReplaceRootVolumeTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateReplaceRootVolumeTaskRequest object being passed to this operation.
+         - completion: The CreateReplaceRootVolumeTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateReplaceRootVolumeTaskResult
+           object will be validated before being returned to caller.
+     */
+    func createReplaceRootVolumeTaskAsync(
+            input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateReplaceRootVolumeTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateReplaceRootVolumeTaskRequest object being passed to this operation.
+     - Returns: The CreateReplaceRootVolumeTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createReplaceRootVolumeTaskSync(
+            input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest) throws -> ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult
+
+    /**
      Invokes the CreateReservedInstancesListing operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3936,6 +4005,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createReservedInstancesListingSync(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult
+
+    /**
+     Invokes the CreateRestoreImageTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateRestoreImageTaskRequest object being passed to this operation.
+         - completion: The CreateRestoreImageTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateRestoreImageTaskResult
+           object will be validated before being returned to caller.
+     */
+    func createRestoreImageTaskAsync(
+            input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateRestoreImageTaskResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateRestoreImageTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateRestoreImageTaskRequest object being passed to this operation.
+     - Returns: The CreateRestoreImageTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createRestoreImageTaskSync(
+            input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest) throws -> ElasticComputeCloudModel.CreateRestoreImageTaskResult
 
     /**
      Invokes the CreateRoute operation returning immediately and passing the response to a callback.
@@ -4080,6 +4173,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createSpotDatafeedSubscriptionSync(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult
+
+    /**
+     Invokes the CreateStoreImageTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateStoreImageTaskRequest object being passed to this operation.
+         - completion: The CreateStoreImageTaskResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateStoreImageTaskResult
+           object will be validated before being returned to caller.
+     */
+    func createStoreImageTaskAsync(
+            input: ElasticComputeCloudModel.CreateStoreImageTaskRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateStoreImageTaskResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateStoreImageTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateStoreImageTaskRequest object being passed to this operation.
+     - Returns: The CreateStoreImageTaskResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createStoreImageTaskSync(
+            input: ElasticComputeCloudModel.CreateStoreImageTaskRequest) throws -> ElasticComputeCloudModel.CreateStoreImageTaskResult
 
     /**
      Invokes the CreateSubnet operation returning immediately and passing the response to a callback.
@@ -7733,6 +7850,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeRegionsRequest) throws -> ElasticComputeCloudModel.DescribeRegionsResult
 
     /**
+     Invokes the DescribeReplaceRootVolumeTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeReplaceRootVolumeTasksRequest object being passed to this operation.
+         - completion: The DescribeReplaceRootVolumeTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeReplaceRootVolumeTasksResult
+           object will be validated before being returned to caller.
+     */
+    func describeReplaceRootVolumeTasksAsync(
+            input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeReplaceRootVolumeTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeReplaceRootVolumeTasksRequest object being passed to this operation.
+     - Returns: The DescribeReplaceRootVolumeTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeReplaceRootVolumeTasksSync(
+            input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest) throws -> ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult
+
+    /**
      Invokes the DescribeReservedInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8163,6 +8304,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeStaleSecurityGroupsSync(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult
+
+    /**
+     Invokes the DescribeStoreImageTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeStoreImageTasksRequest object being passed to this operation.
+         - completion: The DescribeStoreImageTasksResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeStoreImageTasksResult
+           object will be validated before being returned to caller.
+     */
+    func describeStoreImageTasksAsync(
+            input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeStoreImageTasksResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeStoreImageTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeStoreImageTasksRequest object being passed to this operation.
+     - Returns: The DescribeStoreImageTasksResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeStoreImageTasksSync(
+            input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest) throws -> ElasticComputeCloudModel.DescribeStoreImageTasksResult
 
     /**
      Invokes the DescribeSubnets operation returning immediately and passing the response to a callback.
@@ -9044,6 +9209,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult
 
     /**
+     Invokes the DisableSerialConsoleAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableSerialConsoleAccessRequest object being passed to this operation.
+         - completion: The DisableSerialConsoleAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableSerialConsoleAccessResult
+           object will be validated before being returned to caller.
+     */
+    func disableSerialConsoleAccessAsync(
+            input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableSerialConsoleAccessResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisableSerialConsoleAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableSerialConsoleAccessRequest object being passed to this operation.
+     - Returns: The DisableSerialConsoleAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableSerialConsoleAccessSync(
+            input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult
+
+    /**
      Invokes the DisableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9393,6 +9582,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func enableFastSnapshotRestoresSync(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult
+
+    /**
+     Invokes the EnableSerialConsoleAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableSerialConsoleAccessRequest object being passed to this operation.
+         - completion: The EnableSerialConsoleAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableSerialConsoleAccessResult
+           object will be validated before being returned to caller.
+     */
+    func enableSerialConsoleAccessAsync(
+            input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableSerialConsoleAccessResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the EnableSerialConsoleAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableSerialConsoleAccessRequest object being passed to this operation.
+     - Returns: The EnableSerialConsoleAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableSerialConsoleAccessSync(
+            input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult
 
     /**
      Invokes the EnableTransitGatewayRouteTablePropagation operation returning immediately and passing the response to a callback.
@@ -9821,6 +10034,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult
 
     /**
+     Invokes the GetFlowLogsIntegrationTemplate operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetFlowLogsIntegrationTemplateRequest object being passed to this operation.
+         - completion: The GetFlowLogsIntegrationTemplateResult object or an error will be passed to this 
+           callback when the operation is complete. The GetFlowLogsIntegrationTemplateResult
+           object will be validated before being returned to caller.
+     */
+    func getFlowLogsIntegrationTemplateAsync(
+            input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetFlowLogsIntegrationTemplate operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetFlowLogsIntegrationTemplateRequest object being passed to this operation.
+     - Returns: The GetFlowLogsIntegrationTemplateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getFlowLogsIntegrationTemplateSync(
+            input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest) throws -> ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult
+
+    /**
      Invokes the GetGroupsForCapacityReservation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9987,6 +10224,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getReservedInstancesExchangeQuoteSync(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult
+
+    /**
+     Invokes the GetSerialConsoleAccessStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSerialConsoleAccessStatusRequest object being passed to this operation.
+         - completion: The GetSerialConsoleAccessStatusResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSerialConsoleAccessStatusResult
+           object will be validated before being returned to caller.
+     */
+    func getSerialConsoleAccessStatusAsync(
+            input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetSerialConsoleAccessStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSerialConsoleAccessStatusRequest object being passed to this operation.
+     - Returns: The GetSerialConsoleAccessStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getSerialConsoleAccessStatusSync(
+            input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult
 
     /**
      Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.

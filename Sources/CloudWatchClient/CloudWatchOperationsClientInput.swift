@@ -45,6 +45,11 @@ public typealias DeleteDashboardsOperationHTTPRequestInput = QueryHTTPRequestInp
 public typealias DeleteInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteMetricStream operation in a HTTP client.
+ */
+public typealias DeleteMetricStreamOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeAlarmHistory operation in a HTTP client.
  */
 public typealias DescribeAlarmHistoryOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -110,6 +115,11 @@ public typealias GetMetricDataOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias GetMetricStatisticsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetMetricStream operation in a HTTP client.
+ */
+public typealias GetMetricStreamOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetMetricWidgetImage operation in a HTTP client.
  */
 public typealias GetMetricWidgetImageOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -118,6 +128,11 @@ public typealias GetMetricWidgetImageOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the ListDashboards operation in a HTTP client.
  */
 public typealias ListDashboardsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ListMetricStreams operation in a HTTP client.
+ */
+public typealias ListMetricStreamsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ListMetrics operation in a HTTP client.
@@ -160,9 +175,24 @@ public typealias PutMetricAlarmOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias PutMetricDataOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the PutMetricStream operation in a HTTP client.
+ */
+public typealias PutMetricStreamOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the SetAlarmState operation in a HTTP client.
  */
 public typealias SetAlarmStateOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the StartMetricStreams operation in a HTTP client.
+ */
+public typealias StartMetricStreamsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the StopMetricStreams operation in a HTTP client.
+ */
+public typealias StopMetricStreamsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the TagResource operation in a HTTP client.

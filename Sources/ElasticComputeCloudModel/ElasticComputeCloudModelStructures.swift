@@ -1505,6 +1505,33 @@ public struct AssociationStatus: Codable, Equatable {
     }
 }
 
+public struct AthenaIntegration: Codable, Equatable {
+    public var integrationResultS3DestinationArn: String
+    public var partitionEndDate: MillisecondDateTime?
+    public var partitionLoadFrequency: PartitionLoadFrequency
+    public var partitionStartDate: MillisecondDateTime?
+
+    public init(integrationResultS3DestinationArn: String,
+                partitionEndDate: MillisecondDateTime? = nil,
+                partitionLoadFrequency: PartitionLoadFrequency,
+                partitionStartDate: MillisecondDateTime? = nil) {
+        self.integrationResultS3DestinationArn = integrationResultS3DestinationArn
+        self.partitionEndDate = partitionEndDate
+        self.partitionLoadFrequency = partitionLoadFrequency
+        self.partitionStartDate = partitionStartDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case integrationResultS3DestinationArn = "IntegrationResultS3DestinationArn"
+        case partitionEndDate = "PartitionEndDate"
+        case partitionLoadFrequency = "PartitionLoadFrequency"
+        case partitionStartDate = "PartitionStartDate"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct AttachClassicLinkVpcRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var groups: GroupIdStringList
@@ -5362,6 +5389,53 @@ public struct CreatePlacementGroupResult: Codable, Equatable {
     }
 }
 
+public struct CreateReplaceRootVolumeTaskRequest: Codable, Equatable {
+    public var clientToken: String?
+    public var dryRun: Boolean?
+    public var instanceId: InstanceId
+    public var snapshotId: SnapshotId?
+    public var tagSpecifications: TagSpecificationList?
+
+    public init(clientToken: String? = nil,
+                dryRun: Boolean? = nil,
+                instanceId: InstanceId,
+                snapshotId: SnapshotId? = nil,
+                tagSpecifications: TagSpecificationList? = nil) {
+        self.clientToken = clientToken
+        self.dryRun = dryRun
+        self.instanceId = instanceId
+        self.snapshotId = snapshotId
+        self.tagSpecifications = tagSpecifications
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case dryRun = "DryRun"
+        case instanceId = "InstanceId"
+        case snapshotId = "SnapshotId"
+        case tagSpecifications = "TagSpecification"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateReplaceRootVolumeTaskResult: Codable, Equatable {
+    public var replaceRootVolumeTask: ReplaceRootVolumeTask?
+
+    public init(replaceRootVolumeTask: ReplaceRootVolumeTask? = nil) {
+        self.replaceRootVolumeTask = replaceRootVolumeTask
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case replaceRootVolumeTask
+    }
+
+    public func validate() throws {
+        try replaceRootVolumeTask?.validate()
+    }
+}
+
 public struct CreateReservedInstancesListingRequest: Codable, Equatable {
     public var clientToken: String
     public var instanceCount: Integer
@@ -5398,6 +5472,52 @@ public struct CreateReservedInstancesListingResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case reservedInstancesListings = "reservedInstancesListingsSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateRestoreImageTaskRequest: Codable, Equatable {
+    public var bucket: String
+    public var dryRun: Boolean?
+    public var name: String?
+    public var objectKey: String
+    public var tagSpecifications: TagSpecificationList?
+
+    public init(bucket: String,
+                dryRun: Boolean? = nil,
+                name: String? = nil,
+                objectKey: String,
+                tagSpecifications: TagSpecificationList? = nil) {
+        self.bucket = bucket
+        self.dryRun = dryRun
+        self.name = name
+        self.objectKey = objectKey
+        self.tagSpecifications = tagSpecifications
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case dryRun = "DryRun"
+        case name = "Name"
+        case objectKey = "ObjectKey"
+        case tagSpecifications = "TagSpecification"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateRestoreImageTaskResult: Codable, Equatable {
+    public var imageId: String?
+
+    public init(imageId: String? = nil) {
+        self.imageId = imageId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case imageId
     }
 
     public func validate() throws {
@@ -5697,6 +5817,48 @@ public struct CreateSpotDatafeedSubscriptionResult: Codable, Equatable {
 
     public func validate() throws {
         try spotDatafeedSubscription?.validate()
+    }
+}
+
+public struct CreateStoreImageTaskRequest: Codable, Equatable {
+    public var bucket: String
+    public var dryRun: Boolean?
+    public var imageId: ImageId
+    public var s3ObjectTags: S3ObjectTagList?
+
+    public init(bucket: String,
+                dryRun: Boolean? = nil,
+                imageId: ImageId,
+                s3ObjectTags: S3ObjectTagList? = nil) {
+        self.bucket = bucket
+        self.dryRun = dryRun
+        self.imageId = imageId
+        self.s3ObjectTags = s3ObjectTags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case dryRun = "DryRun"
+        case imageId = "ImageId"
+        case s3ObjectTags = "S3ObjectTag"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateStoreImageTaskResult: Codable, Equatable {
+    public var objectKey: String?
+
+    public init(objectKey: String? = nil) {
+        self.objectKey = objectKey
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case objectKey
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -12627,6 +12789,57 @@ public struct DescribeRegionsResult: Codable, Equatable {
     }
 }
 
+public struct DescribeReplaceRootVolumeTasksRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var maxResults: DescribeReplaceRootVolumeTasksMaxResults?
+    public var nextToken: NextToken?
+    public var replaceRootVolumeTaskIds: ReplaceRootVolumeTaskIds?
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                maxResults: DescribeReplaceRootVolumeTasksMaxResults? = nil,
+                nextToken: NextToken? = nil,
+                replaceRootVolumeTaskIds: ReplaceRootVolumeTaskIds? = nil) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.replaceRootVolumeTaskIds = replaceRootVolumeTaskIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case replaceRootVolumeTaskIds = "ReplaceRootVolumeTaskId"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsDescribeReplaceRootVolumeTasksMaxResults()
+    }
+}
+
+public struct DescribeReplaceRootVolumeTasksResult: Codable, Equatable {
+    public var nextToken: String?
+    public var replaceRootVolumeTasks: ReplaceRootVolumeTasks?
+
+    public init(nextToken: String? = nil,
+                replaceRootVolumeTasks: ReplaceRootVolumeTasks? = nil) {
+        self.nextToken = nextToken
+        self.replaceRootVolumeTasks = replaceRootVolumeTasks
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case replaceRootVolumeTasks = "replaceRootVolumeTaskSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DescribeReservedInstancesListingsRequest: Codable, Equatable {
     public var filters: FilterList?
     public var reservedInstancesId: ReservationId?
@@ -13560,6 +13773,57 @@ public struct DescribeStaleSecurityGroupsResult: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case nextToken
         case staleSecurityGroupSet
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeStoreImageTasksRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var imageIds: ImageIdList?
+    public var maxResults: DescribeStoreImageTasksRequestMaxResults?
+    public var nextToken: String?
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                imageIds: ImageIdList? = nil,
+                maxResults: DescribeStoreImageTasksRequestMaxResults? = nil,
+                nextToken: String? = nil) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.imageIds = imageIds
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case imageIds = "ImageId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsDescribeStoreImageTasksRequestMaxResults()
+    }
+}
+
+public struct DescribeStoreImageTasksResult: Codable, Equatable {
+    public var nextToken: String?
+    public var storeImageTaskResults: StoreImageTaskResultSet?
+
+    public init(nextToken: String? = nil,
+                storeImageTaskResults: StoreImageTaskResultSet? = nil) {
+        self.nextToken = nextToken
+        self.storeImageTaskResults = storeImageTaskResults
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case storeImageTaskResults = "storeImageTaskResultSet"
     }
 
     public func validate() throws {
@@ -15429,6 +15693,36 @@ public struct DisableFastSnapshotRestoresResult: Codable, Equatable {
     }
 }
 
+public struct DisableSerialConsoleAccessRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableSerialConsoleAccessResult: Codable, Equatable {
+    public var serialConsoleAccessEnabled: Boolean?
+
+    public init(serialConsoleAccessEnabled: Boolean? = nil) {
+        self.serialConsoleAccessEnabled = serialConsoleAccessEnabled
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case serialConsoleAccessEnabled
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DisableTransitGatewayRouteTablePropagationRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var transitGatewayAttachmentId: TransitGatewayAttachmentId
@@ -16555,6 +16849,36 @@ public struct EnableFastSnapshotRestoresResult: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case successful
         case unsuccessful
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableSerialConsoleAccessRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableSerialConsoleAccessResult: Codable, Equatable {
+    public var serialConsoleAccessEnabled: Boolean?
+
+    public init(serialConsoleAccessEnabled: Boolean? = nil) {
+        self.serialConsoleAccessEnabled = serialConsoleAccessEnabled
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case serialConsoleAccessEnabled
     }
 
     public func validate() throws {
@@ -18412,6 +18736,49 @@ public struct GetEbsEncryptionByDefaultResult: Codable, Equatable {
     }
 }
 
+public struct GetFlowLogsIntegrationTemplateRequest: Codable, Equatable {
+    public var configDeliveryS3DestinationArn: String
+    public var dryRun: Boolean?
+    public var flowLogId: VpcFlowLogId
+    public var integrateServices: IntegrateServices
+
+    public init(configDeliveryS3DestinationArn: String,
+                dryRun: Boolean? = nil,
+                flowLogId: VpcFlowLogId,
+                integrateServices: IntegrateServices) {
+        self.configDeliveryS3DestinationArn = configDeliveryS3DestinationArn
+        self.dryRun = dryRun
+        self.flowLogId = flowLogId
+        self.integrateServices = integrateServices
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case configDeliveryS3DestinationArn = "ConfigDeliveryS3DestinationArn"
+        case dryRun = "DryRun"
+        case flowLogId = "FlowLogId"
+        case integrateServices = "IntegrateService"
+    }
+
+    public func validate() throws {
+        try integrateServices.validate()
+    }
+}
+
+public struct GetFlowLogsIntegrationTemplateResult: Codable, Equatable {
+    public var result: String?
+
+    public init(result: String? = nil) {
+        self.result = result
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case result
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct GetGroupsForCapacityReservationRequest: Codable, Equatable {
     public var capacityReservationId: CapacityReservationId
     public var dryRun: Boolean?
@@ -18749,6 +19116,36 @@ public struct GetReservedInstancesExchangeQuoteResult: Codable, Equatable {
     public func validate() throws {
         try reservedInstanceValueRollup?.validate()
         try targetConfigurationValueRollup?.validate()
+    }
+}
+
+public struct GetSerialConsoleAccessStatusRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetSerialConsoleAccessStatusResult: Codable, Equatable {
+    public var serialConsoleAccessEnabled: Boolean?
+
+    public init(serialConsoleAccessEnabled: Boolean? = nil) {
+        self.serialConsoleAccessEnabled = serialConsoleAccessEnabled
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case serialConsoleAccessEnabled
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -21695,6 +22092,22 @@ public struct InstanceUsage: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct IntegrateServices: Codable, Equatable {
+    public var athenaIntegrations: AthenaIntegrationsSet?
+
+    public init(athenaIntegrations: AthenaIntegrationsSet? = nil) {
+        self.athenaIntegrations = athenaIntegrations
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case athenaIntegrations = "AthenaIntegration"
+    }
+
+    public func validate() throws {
+        try athenaIntegrations?.validateAsAthenaIntegrationsSet()
     }
 }
 
@@ -28478,6 +28891,41 @@ public struct ReplaceNetworkAclEntryRequest: Codable, Equatable {
     }
 }
 
+public struct ReplaceRootVolumeTask: Codable, Equatable {
+    public var completeTime: String?
+    public var instanceId: String?
+    public var replaceRootVolumeTaskId: ReplaceRootVolumeTaskId?
+    public var startTime: String?
+    public var tags: TagList?
+    public var taskState: ReplaceRootVolumeTaskState?
+
+    public init(completeTime: String? = nil,
+                instanceId: String? = nil,
+                replaceRootVolumeTaskId: ReplaceRootVolumeTaskId? = nil,
+                startTime: String? = nil,
+                tags: TagList? = nil,
+                taskState: ReplaceRootVolumeTaskState? = nil) {
+        self.completeTime = completeTime
+        self.instanceId = instanceId
+        self.replaceRootVolumeTaskId = replaceRootVolumeTaskId
+        self.startTime = startTime
+        self.tags = tags
+        self.taskState = taskState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case completeTime
+        case instanceId
+        case replaceRootVolumeTaskId
+        case startTime
+        case tags = "tagSet"
+        case taskState
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ReplaceRouteRequest: Codable, Equatable {
     public var carrierGatewayId: CarrierGatewayId?
     public var destinationCidrBlock: String?
@@ -30416,6 +30864,25 @@ public struct RunScheduledInstancesResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case instanceIdSet
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct S3ObjectTag: Codable, Equatable {
+    public var key: String?
+    public var value: String?
+
+    public init(key: String? = nil,
+                value: String? = nil) {
+        self.key = key
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case key = "Key"
+        case value = "Value"
     }
 
     public func validate() throws {
@@ -32536,6 +33003,45 @@ public struct StorageLocation: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case key = "Key"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StoreImageTaskResult: Codable, Equatable {
+    public var amiId: String?
+    public var bucket: String?
+    public var progressPercentage: Integer?
+    public var s3objectKey: String?
+    public var storeTaskFailureReason: String?
+    public var storeTaskState: String?
+    public var taskStartTime: MillisecondDateTime?
+
+    public init(amiId: String? = nil,
+                bucket: String? = nil,
+                progressPercentage: Integer? = nil,
+                s3objectKey: String? = nil,
+                storeTaskFailureReason: String? = nil,
+                storeTaskState: String? = nil,
+                taskStartTime: MillisecondDateTime? = nil) {
+        self.amiId = amiId
+        self.bucket = bucket
+        self.progressPercentage = progressPercentage
+        self.s3objectKey = s3objectKey
+        self.storeTaskFailureReason = storeTaskFailureReason
+        self.storeTaskState = storeTaskState
+        self.taskStartTime = taskStartTime
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case amiId
+        case bucket
+        case progressPercentage
+        case s3objectKey
+        case storeTaskFailureReason
+        case storeTaskState
+        case taskStartTime
     }
 
     public func validate() throws {

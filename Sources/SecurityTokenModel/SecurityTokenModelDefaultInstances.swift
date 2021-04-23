@@ -35,6 +35,7 @@ public extension AssumeRoleRequest {
             roleArn: "01234567890123456789",
             roleSessionName: "01",
             serialNumber: nil,
+            sourceIdentity: nil,
             tags: nil,
             tokenCode: nil,
             transitiveTagKeys: nil)
@@ -51,7 +52,8 @@ public extension AssumeRoleResponse {
         let defaultInstance = SecurityTokenModel.AssumeRoleResponse(
             assumedRoleUser: nil,
             credentials: nil,
-            packedPolicySize: nil)
+            packedPolicySize: nil,
+            sourceIdentity: nil)
 
         return defaultInstance
     }()
@@ -98,6 +100,7 @@ public extension AssumeRoleWithSAMLResponse {
             issuer: nil,
             nameQualifier: nil,
             packedPolicySize: nil,
+            sourceIdentity: nil,
             subject: nil,
             subjectType: nil)
 
@@ -146,6 +149,7 @@ public extension AssumeRoleWithWebIdentityResponse {
             credentials: nil,
             packedPolicySize: nil,
             provider: nil,
+            sourceIdentity: nil,
             subjectFromWebIdentityToken: nil)
 
         return defaultInstance

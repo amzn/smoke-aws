@@ -183,6 +183,11 @@ public typealias SerialNumberType = String
 public typealias SessionPolicyDocumentType = String
 
 /**
+ Type definition for the SourceIdentityType field.
+ */
+public typealias SourceIdentityType = String
+
+/**
  Type definition for the TagKeyListType field.
  */
 public typealias TagKeyListType = [TagKeyType]
@@ -319,7 +324,7 @@ extension SecurityTokenModel.ClientTokenType {
             throw SecurityTokenError.validationError(reason: "The provided value to clientTokenType violated the minimum length constraint.")
         }
 
-        if self.count > 2048 {
+        if self.count > 20000 {
             throw SecurityTokenError.validationError(reason: "The provided value to clientTokenType violated the maximum length constraint.")
         }
     }
@@ -483,6 +488,27 @@ extension SecurityTokenModel.SessionPolicyDocumentType {
             matchingRange == startIndex..<endIndex else {
                 throw SecurityTokenError.validationError(
                     reason: "The provided value to sessionPolicyDocumentType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SourceIdentityType field.
+*/
+extension SecurityTokenModel.SourceIdentityType {
+    public func validateAsSourceIdentityType() throws {
+        if self.count < 2 {
+            throw SecurityTokenError.validationError(reason: "The provided value to sourceIdentityType violated the minimum length constraint.")
+        }
+
+        if self.count > 64 {
+            throw SecurityTokenError.validationError(reason: "The provided value to sourceIdentityType violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\w+=,.@-]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw SecurityTokenError.validationError(
+                    reason: "The provided value to sourceIdentityType violated the regular expression constraint.")
         }
     }
 }
