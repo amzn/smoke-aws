@@ -482,6 +482,47 @@ public struct DeleteInsightRulesOutputForDeleteInsightRules: Codable, Equatable 
     }
 }
 
+public struct DeleteMetricStreamInput: Codable, Equatable {
+    public var name: MetricStreamName
+
+    public init(name: MetricStreamName) {
+        self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+    }
+
+    public func validate() throws {
+        try name.validateAsMetricStreamName()
+    }
+}
+
+public struct DeleteMetricStreamOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteMetricStreamOutputForDeleteMetricStream: Codable, Equatable {
+    public var deleteMetricStreamResult: DeleteMetricStreamOutput
+
+    public init(deleteMetricStreamResult: DeleteMetricStreamOutput) {
+        self.deleteMetricStreamResult = deleteMetricStreamResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteMetricStreamResult = "DeleteMetricStreamResult"
+    }
+
+    public func validate() throws {
+        try deleteMetricStreamResult.validate()
+    }
+}
+
 public struct DescribeAlarmHistoryInput: Codable, Equatable {
     public var alarmName: AlarmName?
     public var alarmTypes: AlarmTypes?
@@ -1334,6 +1375,93 @@ public struct GetMetricStatisticsOutputForGetMetricStatistics: Codable, Equatabl
     }
 }
 
+public struct GetMetricStreamInput: Codable, Equatable {
+    public var name: MetricStreamName
+
+    public init(name: MetricStreamName) {
+        self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+    }
+
+    public func validate() throws {
+        try name.validateAsMetricStreamName()
+    }
+}
+
+public struct GetMetricStreamOutput: Codable, Equatable {
+    public var arn: AmazonResourceName?
+    public var creationDate: Timestamp?
+    public var excludeFilters: MetricStreamFilters?
+    public var firehoseArn: AmazonResourceName?
+    public var includeFilters: MetricStreamFilters?
+    public var lastUpdateDate: Timestamp?
+    public var name: MetricStreamName?
+    public var outputFormat: MetricStreamOutputFormat?
+    public var roleArn: AmazonResourceName?
+    public var state: MetricStreamState?
+
+    public init(arn: AmazonResourceName? = nil,
+                creationDate: Timestamp? = nil,
+                excludeFilters: MetricStreamFilters? = nil,
+                firehoseArn: AmazonResourceName? = nil,
+                includeFilters: MetricStreamFilters? = nil,
+                lastUpdateDate: Timestamp? = nil,
+                name: MetricStreamName? = nil,
+                outputFormat: MetricStreamOutputFormat? = nil,
+                roleArn: AmazonResourceName? = nil,
+                state: MetricStreamState? = nil) {
+        self.arn = arn
+        self.creationDate = creationDate
+        self.excludeFilters = excludeFilters
+        self.firehoseArn = firehoseArn
+        self.includeFilters = includeFilters
+        self.lastUpdateDate = lastUpdateDate
+        self.name = name
+        self.outputFormat = outputFormat
+        self.roleArn = roleArn
+        self.state = state
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+        case creationDate = "CreationDate"
+        case excludeFilters = "ExcludeFilters"
+        case firehoseArn = "FirehoseArn"
+        case includeFilters = "IncludeFilters"
+        case lastUpdateDate = "LastUpdateDate"
+        case name = "Name"
+        case outputFormat = "OutputFormat"
+        case roleArn = "RoleArn"
+        case state = "State"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsAmazonResourceName()
+        try firehoseArn?.validateAsAmazonResourceName()
+        try name?.validateAsMetricStreamName()
+        try roleArn?.validateAsAmazonResourceName()
+    }
+}
+
+public struct GetMetricStreamOutputForGetMetricStream: Codable, Equatable {
+    public var getMetricStreamResult: GetMetricStreamOutput
+
+    public init(getMetricStreamResult: GetMetricStreamOutput) {
+        self.getMetricStreamResult = getMetricStreamResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case getMetricStreamResult = "GetMetricStreamResult"
+    }
+
+    public func validate() throws {
+        try getMetricStreamResult.validate()
+    }
+}
+
 public struct GetMetricWidgetImageInput: Codable, Equatable {
     public var metricWidget: MetricWidget
     public var outputFormat: OutputFormat?
@@ -1667,6 +1795,61 @@ public struct ListDashboardsOutputForListDashboards: Codable, Equatable {
 
     public func validate() throws {
         try listDashboardsResult.validate()
+    }
+}
+
+public struct ListMetricStreamsInput: Codable, Equatable {
+    public var maxResults: ListMetricStreamsMaxResults?
+    public var nextToken: NextToken?
+
+    public init(maxResults: ListMetricStreamsMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsListMetricStreamsMaxResults()
+    }
+}
+
+public struct ListMetricStreamsOutput: Codable, Equatable {
+    public var entries: MetricStreamEntries?
+    public var nextToken: NextToken?
+
+    public init(entries: MetricStreamEntries? = nil,
+                nextToken: NextToken? = nil) {
+        self.entries = entries
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case entries = "Entries"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListMetricStreamsOutputForListMetricStreams: Codable, Equatable {
+    public var listMetricStreamsResult: ListMetricStreamsOutput
+
+    public init(listMetricStreamsResult: ListMetricStreamsOutput) {
+        self.listMetricStreamsResult = listMetricStreamsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listMetricStreamsResult = "ListMetricStreamsResult"
+    }
+
+    public func validate() throws {
+        try listMetricStreamsResult.validate()
     }
 }
 
@@ -2123,6 +2306,64 @@ public struct MetricStat: Codable, Equatable {
     }
 }
 
+public struct MetricStreamEntry: Codable, Equatable {
+    public var arn: AmazonResourceName?
+    public var creationDate: Timestamp?
+    public var firehoseArn: AmazonResourceName?
+    public var lastUpdateDate: Timestamp?
+    public var name: MetricStreamName?
+    public var outputFormat: MetricStreamOutputFormat?
+    public var state: MetricStreamState?
+
+    public init(arn: AmazonResourceName? = nil,
+                creationDate: Timestamp? = nil,
+                firehoseArn: AmazonResourceName? = nil,
+                lastUpdateDate: Timestamp? = nil,
+                name: MetricStreamName? = nil,
+                outputFormat: MetricStreamOutputFormat? = nil,
+                state: MetricStreamState? = nil) {
+        self.arn = arn
+        self.creationDate = creationDate
+        self.firehoseArn = firehoseArn
+        self.lastUpdateDate = lastUpdateDate
+        self.name = name
+        self.outputFormat = outputFormat
+        self.state = state
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+        case creationDate = "CreationDate"
+        case firehoseArn = "FirehoseArn"
+        case lastUpdateDate = "LastUpdateDate"
+        case name = "Name"
+        case outputFormat = "OutputFormat"
+        case state = "State"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsAmazonResourceName()
+        try firehoseArn?.validateAsAmazonResourceName()
+        try name?.validateAsMetricStreamName()
+    }
+}
+
+public struct MetricStreamFilter: Codable, Equatable {
+    public var namespace: Namespace?
+
+    public init(namespace: Namespace? = nil) {
+        self.namespace = namespace
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case namespace = "Namespace"
+    }
+
+    public func validate() throws {
+        try namespace?.validateAsNamespace()
+    }
+}
+
 public struct MissingRequiredParameterException: Codable, Equatable {
     public var message: AwsQueryErrorMessage?
 
@@ -2514,6 +2755,80 @@ public struct PutMetricDataInput: Codable, Equatable {
     }
 }
 
+public struct PutMetricStreamInput: Codable, Equatable {
+    public var excludeFilters: MetricStreamFilters?
+    public var firehoseArn: AmazonResourceName
+    public var includeFilters: MetricStreamFilters?
+    public var name: MetricStreamName
+    public var outputFormat: MetricStreamOutputFormat
+    public var roleArn: AmazonResourceName
+    public var tags: TagList?
+
+    public init(excludeFilters: MetricStreamFilters? = nil,
+                firehoseArn: AmazonResourceName,
+                includeFilters: MetricStreamFilters? = nil,
+                name: MetricStreamName,
+                outputFormat: MetricStreamOutputFormat,
+                roleArn: AmazonResourceName,
+                tags: TagList? = nil) {
+        self.excludeFilters = excludeFilters
+        self.firehoseArn = firehoseArn
+        self.includeFilters = includeFilters
+        self.name = name
+        self.outputFormat = outputFormat
+        self.roleArn = roleArn
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case excludeFilters = "ExcludeFilters"
+        case firehoseArn = "FirehoseArn"
+        case includeFilters = "IncludeFilters"
+        case name = "Name"
+        case outputFormat = "OutputFormat"
+        case roleArn = "RoleArn"
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+        try firehoseArn.validateAsAmazonResourceName()
+        try name.validateAsMetricStreamName()
+        try roleArn.validateAsAmazonResourceName()
+    }
+}
+
+public struct PutMetricStreamOutput: Codable, Equatable {
+    public var arn: AmazonResourceName?
+
+    public init(arn: AmazonResourceName? = nil) {
+        self.arn = arn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsAmazonResourceName()
+    }
+}
+
+public struct PutMetricStreamOutputForPutMetricStream: Codable, Equatable {
+    public var putMetricStreamResult: PutMetricStreamOutput
+
+    public init(putMetricStreamResult: PutMetricStreamOutput) {
+        self.putMetricStreamResult = putMetricStreamResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case putMetricStreamResult = "PutMetricStreamResult"
+    }
+
+    public func validate() throws {
+        try putMetricStreamResult.validate()
+    }
+}
+
 public struct Range: Codable, Equatable {
     public var endTime: Timestamp
     public var startTime: Timestamp
@@ -2598,6 +2913,46 @@ public struct SetAlarmStateInput: Codable, Equatable {
     }
 }
 
+public struct StartMetricStreamsInput: Codable, Equatable {
+    public var names: MetricStreamNames
+
+    public init(names: MetricStreamNames) {
+        self.names = names
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case names = "Names"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartMetricStreamsOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartMetricStreamsOutputForStartMetricStreams: Codable, Equatable {
+    public var startMetricStreamsResult: StartMetricStreamsOutput
+
+    public init(startMetricStreamsResult: StartMetricStreamsOutput) {
+        self.startMetricStreamsResult = startMetricStreamsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case startMetricStreamsResult = "StartMetricStreamsResult"
+    }
+
+    public func validate() throws {
+        try startMetricStreamsResult.validate()
+    }
+}
+
 public struct StatisticSet: Codable, Equatable {
     public var maximum: DatapointValue
     public var minimum: DatapointValue
@@ -2622,6 +2977,46 @@ public struct StatisticSet: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct StopMetricStreamsInput: Codable, Equatable {
+    public var names: MetricStreamNames
+
+    public init(names: MetricStreamNames) {
+        self.names = names
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case names = "Names"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StopMetricStreamsOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StopMetricStreamsOutputForStopMetricStreams: Codable, Equatable {
+    public var stopMetricStreamsResult: StopMetricStreamsOutput
+
+    public init(stopMetricStreamsResult: StopMetricStreamsOutput) {
+        self.stopMetricStreamsResult = stopMetricStreamsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stopMetricStreamsResult = "StopMetricStreamsResult"
+    }
+
+    public func validate() throws {
+        try stopMetricStreamsResult.validate()
     }
 }
 

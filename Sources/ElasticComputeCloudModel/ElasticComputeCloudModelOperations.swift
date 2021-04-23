@@ -97,13 +97,16 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createNetworkInterface = "CreateNetworkInterface"
     case createNetworkInterfacePermission = "CreateNetworkInterfacePermission"
     case createPlacementGroup = "CreatePlacementGroup"
+    case createReplaceRootVolumeTask = "CreateReplaceRootVolumeTask"
     case createReservedInstancesListing = "CreateReservedInstancesListing"
+    case createRestoreImageTask = "CreateRestoreImageTask"
     case createRoute = "CreateRoute"
     case createRouteTable = "CreateRouteTable"
     case createSecurityGroup = "CreateSecurityGroup"
     case createSnapshot = "CreateSnapshot"
     case createSnapshots = "CreateSnapshots"
     case createSpotDatafeedSubscription = "CreateSpotDatafeedSubscription"
+    case createStoreImageTask = "CreateStoreImageTask"
     case createSubnet = "CreateSubnet"
     case createTags = "CreateTags"
     case createTrafficMirrorFilter = "CreateTrafficMirrorFilter"
@@ -259,6 +262,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describePrincipalIdFormat = "DescribePrincipalIdFormat"
     case describePublicIpv4Pools = "DescribePublicIpv4Pools"
     case describeRegions = "DescribeRegions"
+    case describeReplaceRootVolumeTasks = "DescribeReplaceRootVolumeTasks"
     case describeReservedInstances = "DescribeReservedInstances"
     case describeReservedInstancesListings = "DescribeReservedInstancesListings"
     case describeReservedInstancesModifications = "DescribeReservedInstancesModifications"
@@ -277,6 +281,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeSpotInstanceRequests = "DescribeSpotInstanceRequests"
     case describeSpotPriceHistory = "DescribeSpotPriceHistory"
     case describeStaleSecurityGroups = "DescribeStaleSecurityGroups"
+    case describeStoreImageTasks = "DescribeStoreImageTasks"
     case describeSubnets = "DescribeSubnets"
     case describeTags = "DescribeTags"
     case describeTrafficMirrorFilters = "DescribeTrafficMirrorFilters"
@@ -314,6 +319,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case detachVpnGateway = "DetachVpnGateway"
     case disableEbsEncryptionByDefault = "DisableEbsEncryptionByDefault"
     case disableFastSnapshotRestores = "DisableFastSnapshotRestores"
+    case disableSerialConsoleAccess = "DisableSerialConsoleAccess"
     case disableTransitGatewayRouteTablePropagation = "DisableTransitGatewayRouteTablePropagation"
     case disableVgwRoutePropagation = "DisableVgwRoutePropagation"
     case disableVpcClassicLink = "DisableVpcClassicLink"
@@ -329,6 +335,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disassociateVpcCidrBlock = "DisassociateVpcCidrBlock"
     case enableEbsEncryptionByDefault = "EnableEbsEncryptionByDefault"
     case enableFastSnapshotRestores = "EnableFastSnapshotRestores"
+    case enableSerialConsoleAccess = "EnableSerialConsoleAccess"
     case enableTransitGatewayRouteTablePropagation = "EnableTransitGatewayRouteTablePropagation"
     case enableVgwRoutePropagation = "EnableVgwRoutePropagation"
     case enableVolumeIO = "EnableVolumeIO"
@@ -347,6 +354,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getDefaultCreditSpecification = "GetDefaultCreditSpecification"
     case getEbsDefaultKmsKeyId = "GetEbsDefaultKmsKeyId"
     case getEbsEncryptionByDefault = "GetEbsEncryptionByDefault"
+    case getFlowLogsIntegrationTemplate = "GetFlowLogsIntegrationTemplate"
     case getGroupsForCapacityReservation = "GetGroupsForCapacityReservation"
     case getHostReservationPurchasePreview = "GetHostReservationPurchasePreview"
     case getLaunchTemplateData = "GetLaunchTemplateData"
@@ -354,6 +362,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getManagedPrefixListEntries = "GetManagedPrefixListEntries"
     case getPasswordData = "GetPasswordData"
     case getReservedInstancesExchangeQuote = "GetReservedInstancesExchangeQuote"
+    case getSerialConsoleAccessStatus = "GetSerialConsoleAccessStatus"
     case getTransitGatewayAttachmentPropagations = "GetTransitGatewayAttachmentPropagations"
     case getTransitGatewayMulticastDomainAssociations = "GetTransitGatewayMulticastDomainAssociations"
     case getTransitGatewayPrefixListReferences = "GetTransitGatewayPrefixListReferences"
@@ -615,7 +624,11 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .createPlacementGroup:
             return "/"
+        case .createReplaceRootVolumeTask:
+            return "/"
         case .createReservedInstancesListing:
+            return "/"
+        case .createRestoreImageTask:
             return "/"
         case .createRoute:
             return "/"
@@ -628,6 +641,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .createSnapshots:
             return "/"
         case .createSpotDatafeedSubscription:
+            return "/"
+        case .createStoreImageTask:
             return "/"
         case .createSubnet:
             return "/"
@@ -939,6 +954,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeRegions:
             return "/"
+        case .describeReplaceRootVolumeTasks:
+            return "/"
         case .describeReservedInstances:
             return "/"
         case .describeReservedInstancesListings:
@@ -974,6 +991,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeSpotPriceHistory:
             return "/"
         case .describeStaleSecurityGroups:
+            return "/"
+        case .describeStoreImageTasks:
             return "/"
         case .describeSubnets:
             return "/"
@@ -1049,6 +1068,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disableFastSnapshotRestores:
             return "/"
+        case .disableSerialConsoleAccess:
+            return "/"
         case .disableTransitGatewayRouteTablePropagation:
             return "/"
         case .disableVgwRoutePropagation:
@@ -1078,6 +1099,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .enableEbsEncryptionByDefault:
             return "/"
         case .enableFastSnapshotRestores:
+            return "/"
+        case .enableSerialConsoleAccess:
             return "/"
         case .enableTransitGatewayRouteTablePropagation:
             return "/"
@@ -1115,6 +1138,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getEbsEncryptionByDefault:
             return "/"
+        case .getFlowLogsIntegrationTemplate:
+            return "/"
         case .getGroupsForCapacityReservation:
             return "/"
         case .getHostReservationPurchasePreview:
@@ -1128,6 +1153,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getPasswordData:
             return "/"
         case .getReservedInstancesExchangeQuote:
+            return "/"
+        case .getSerialConsoleAccessStatus:
             return "/"
         case .getTransitGatewayAttachmentPropagations:
             return "/"

@@ -99,13 +99,16 @@ public struct ElasticComputeCloudOperationsReporting {
     public let createNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createNetworkInterfacePermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createPlacementGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createReplaceRootVolumeTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createRestoreImageTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createSecurityGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createStoreImageTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -261,6 +264,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describePrincipalIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describePublicIpv4Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeRegions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeReplaceRootVolumeTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeReservedInstancesListings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeReservedInstancesModifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -279,6 +283,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeSpotInstanceRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeSpotPriceHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeStaleSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeStoreImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeSubnets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeTrafficMirrorFilters: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -316,6 +321,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let detachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableSerialConsoleAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableVpcClassicLink: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -331,6 +337,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let disassociateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableSerialConsoleAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableVolumeIO: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -349,6 +356,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getFlowLogsIntegrationTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getGroupsForCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getHostReservationPurchasePreview: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getLaunchTemplateData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -356,6 +364,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getManagedPrefixListEntries: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getSerialConsoleAccessStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayAttachmentPropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayPrefixListReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -612,8 +621,12 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createNetworkInterfacePermission, configuration: reportingConfiguration)
         self.createPlacementGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createPlacementGroup, configuration: reportingConfiguration)
+        self.createReplaceRootVolumeTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createReplaceRootVolumeTask, configuration: reportingConfiguration)
         self.createReservedInstancesListing = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createReservedInstancesListing, configuration: reportingConfiguration)
+        self.createRestoreImageTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createRestoreImageTask, configuration: reportingConfiguration)
         self.createRoute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createRoute, configuration: reportingConfiguration)
         self.createRouteTable = StandardSmokeAWSOperationReporting(
@@ -626,6 +639,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createSnapshots, configuration: reportingConfiguration)
         self.createSpotDatafeedSubscription = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createSpotDatafeedSubscription, configuration: reportingConfiguration)
+        self.createStoreImageTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createStoreImageTask, configuration: reportingConfiguration)
         self.createSubnet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createSubnet, configuration: reportingConfiguration)
         self.createTags = StandardSmokeAWSOperationReporting(
@@ -936,6 +951,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describePublicIpv4Pools, configuration: reportingConfiguration)
         self.describeRegions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeRegions, configuration: reportingConfiguration)
+        self.describeReplaceRootVolumeTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeReplaceRootVolumeTasks, configuration: reportingConfiguration)
         self.describeReservedInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeReservedInstances, configuration: reportingConfiguration)
         self.describeReservedInstancesListings = StandardSmokeAWSOperationReporting(
@@ -972,6 +989,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeSpotPriceHistory, configuration: reportingConfiguration)
         self.describeStaleSecurityGroups = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeStaleSecurityGroups, configuration: reportingConfiguration)
+        self.describeStoreImageTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeStoreImageTasks, configuration: reportingConfiguration)
         self.describeSubnets = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeSubnets, configuration: reportingConfiguration)
         self.describeTags = StandardSmokeAWSOperationReporting(
@@ -1046,6 +1065,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disableEbsEncryptionByDefault, configuration: reportingConfiguration)
         self.disableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.disableSerialConsoleAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableSerialConsoleAccess, configuration: reportingConfiguration)
         self.disableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableTransitGatewayRouteTablePropagation, configuration: reportingConfiguration)
         self.disableVgwRoutePropagation = StandardSmokeAWSOperationReporting(
@@ -1076,6 +1097,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .enableEbsEncryptionByDefault, configuration: reportingConfiguration)
         self.enableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.enableSerialConsoleAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableSerialConsoleAccess, configuration: reportingConfiguration)
         self.enableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableTransitGatewayRouteTablePropagation, configuration: reportingConfiguration)
         self.enableVgwRoutePropagation = StandardSmokeAWSOperationReporting(
@@ -1112,6 +1135,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getEbsDefaultKmsKeyId, configuration: reportingConfiguration)
         self.getEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getEbsEncryptionByDefault, configuration: reportingConfiguration)
+        self.getFlowLogsIntegrationTemplate = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getFlowLogsIntegrationTemplate, configuration: reportingConfiguration)
         self.getGroupsForCapacityReservation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getGroupsForCapacityReservation, configuration: reportingConfiguration)
         self.getHostReservationPurchasePreview = StandardSmokeAWSOperationReporting(
@@ -1126,6 +1151,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getPasswordData, configuration: reportingConfiguration)
         self.getReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getReservedInstancesExchangeQuote, configuration: reportingConfiguration)
+        self.getSerialConsoleAccessStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getSerialConsoleAccessStatus, configuration: reportingConfiguration)
         self.getTransitGatewayAttachmentPropagations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getTransitGatewayAttachmentPropagations, configuration: reportingConfiguration)
         self.getTransitGatewayMulticastDomainAssociations = StandardSmokeAWSOperationReporting(

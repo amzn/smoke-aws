@@ -33,6 +33,7 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
     public let deleteAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteMetricStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAlarmHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAlarmsForMetric: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -46,8 +47,10 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
     public let getInsightRuleReport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getMetricStatistics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getMetricStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getMetricWidgetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listMetricStreams: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listMetrics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -56,7 +59,10 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
     public let putInsightRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putMetricAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putMetricStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setAlarmState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startMetricStreams: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let stopMetricStreams: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
@@ -69,6 +75,8 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
             smokeAWSOperationReporting: operationsReporting.deleteDashboards)
         self.deleteInsightRules = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteInsightRules)
+        self.deleteMetricStream = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteMetricStream)
         self.describeAlarmHistory = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeAlarmHistory)
         self.describeAlarms = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -95,10 +103,14 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
             smokeAWSOperationReporting: operationsReporting.getMetricData)
         self.getMetricStatistics = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getMetricStatistics)
+        self.getMetricStream = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getMetricStream)
         self.getMetricWidgetImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getMetricWidgetImage)
         self.listDashboards = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listDashboards)
+        self.listMetricStreams = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listMetricStreams)
         self.listMetrics = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listMetrics)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -115,8 +127,14 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
             smokeAWSOperationReporting: operationsReporting.putMetricAlarm)
         self.putMetricData = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putMetricData)
+        self.putMetricStream = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putMetricStream)
         self.setAlarmState = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.setAlarmState)
+        self.startMetricStreams = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.startMetricStreams)
+        self.stopMetricStreams = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.stopMetricStreams)
         self.tagResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.tagResource)
         self.untagResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

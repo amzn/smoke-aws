@@ -857,6 +857,19 @@ extension CreatePlacementGroupResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateReplaceRootVolumeTask operation in a HTTP client.
+ */
+extension CreateReplaceRootVolumeTaskResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateReplaceRootVolumeTaskResult
+    public typealias HeadersType = CreateReplaceRootVolumeTaskResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateReplaceRootVolumeTaskResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateReservedInstancesListing operation in a HTTP client.
  */
 extension CreateReservedInstancesListingResult: HTTPResponseOutputProtocol {
@@ -865,6 +878,19 @@ extension CreateReservedInstancesListingResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateReservedInstancesListingResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateRestoreImageTask operation in a HTTP client.
+ */
+extension CreateRestoreImageTaskResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateRestoreImageTaskResult
+    public typealias HeadersType = CreateRestoreImageTaskResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateRestoreImageTaskResult {
         return try bodyDecodableProvider()
     }
 }
@@ -943,6 +969,19 @@ extension CreateSpotDatafeedSubscriptionResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateSpotDatafeedSubscriptionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateStoreImageTask operation in a HTTP client.
+ */
+extension CreateStoreImageTaskResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateStoreImageTaskResult
+    public typealias HeadersType = CreateStoreImageTaskResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateStoreImageTaskResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2664,6 +2703,19 @@ extension DescribeRegionsResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeReplaceRootVolumeTasks operation in a HTTP client.
+ */
+extension DescribeReplaceRootVolumeTasksResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeReplaceRootVolumeTasksResult
+    public typealias HeadersType = DescribeReplaceRootVolumeTasksResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeReplaceRootVolumeTasksResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeReservedInstances operation in a HTTP client.
  */
 extension DescribeReservedInstancesResult: HTTPResponseOutputProtocol {
@@ -2893,6 +2945,19 @@ extension DescribeStaleSecurityGroupsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeStaleSecurityGroupsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeStoreImageTasks operation in a HTTP client.
+ */
+extension DescribeStoreImageTasksResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeStoreImageTasksResult
+    public typealias HeadersType = DescribeStoreImageTasksResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeStoreImageTasksResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3327,6 +3392,19 @@ extension DisableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisableSerialConsoleAccess operation in a HTTP client.
+ */
+extension DisableSerialConsoleAccessResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableSerialConsoleAccessResult
+    public typealias HeadersType = DisableSerialConsoleAccessResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableSerialConsoleAccessResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisableTransitGatewayRouteTablePropagation operation in a HTTP client.
  */
 extension DisableTransitGatewayRouteTablePropagationResult: HTTPResponseOutputProtocol {
@@ -3478,6 +3556,19 @@ extension EnableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> EnableFastSnapshotRestoresResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableSerialConsoleAccess operation in a HTTP client.
+ */
+extension EnableSerialConsoleAccessResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableSerialConsoleAccessResult
+    public typealias HeadersType = EnableSerialConsoleAccessResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableSerialConsoleAccessResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3691,6 +3782,19 @@ extension GetEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetFlowLogsIntegrationTemplate operation in a HTTP client.
+ */
+extension GetFlowLogsIntegrationTemplateResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetFlowLogsIntegrationTemplateResult
+    public typealias HeadersType = GetFlowLogsIntegrationTemplateResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetFlowLogsIntegrationTemplateResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetGroupsForCapacityReservation operation in a HTTP client.
  */
 extension GetGroupsForCapacityReservationResult: HTTPResponseOutputProtocol {
@@ -3777,6 +3881,19 @@ extension GetReservedInstancesExchangeQuoteResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetReservedInstancesExchangeQuoteResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetSerialConsoleAccessStatus operation in a HTTP client.
+ */
+extension GetSerialConsoleAccessStatusResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetSerialConsoleAccessStatusResult
+    public typealias HeadersType = GetSerialConsoleAccessStatusResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetSerialConsoleAccessStatusResult {
         return try bodyDecodableProvider()
     }
 }

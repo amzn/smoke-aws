@@ -380,9 +380,19 @@ public typealias CreateNetworkInterfacePermissionOperationHTTPRequestInput = Que
 public typealias CreatePlacementGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateReplaceRootVolumeTask operation in a HTTP client.
+ */
+public typealias CreateReplaceRootVolumeTaskOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateReservedInstancesListing operation in a HTTP client.
  */
 public typealias CreateReservedInstancesListingOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateRestoreImageTask operation in a HTTP client.
+ */
+public typealias CreateRestoreImageTaskOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateRoute operation in a HTTP client.
@@ -413,6 +423,11 @@ public typealias CreateSnapshotsOperationHTTPRequestInput = QueryHTTPRequestInpu
  Type to handle the input to the CreateSpotDatafeedSubscription operation in a HTTP client.
  */
 public typealias CreateSpotDatafeedSubscriptionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateStoreImageTask operation in a HTTP client.
+ */
+public typealias CreateStoreImageTaskOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateSubnet operation in a HTTP client.
@@ -1190,6 +1205,11 @@ public typealias DescribePublicIpv4PoolsOperationHTTPRequestInput = QueryHTTPReq
 public typealias DescribeRegionsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeReplaceRootVolumeTasks operation in a HTTP client.
+ */
+public typealias DescribeReplaceRootVolumeTasksOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeReservedInstances operation in a HTTP client.
  */
 public typealias DescribeReservedInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1278,6 +1298,11 @@ public typealias DescribeSpotPriceHistoryOperationHTTPRequestInput = QueryHTTPRe
  Type to handle the input to the DescribeStaleSecurityGroups operation in a HTTP client.
  */
 public typealias DescribeStaleSecurityGroupsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeStoreImageTasks operation in a HTTP client.
+ */
+public typealias DescribeStoreImageTasksOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeSubnets operation in a HTTP client.
@@ -1465,6 +1490,11 @@ public typealias DisableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryH
 public typealias DisableFastSnapshotRestoresOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisableSerialConsoleAccess operation in a HTTP client.
+ */
+public typealias DisableSerialConsoleAccessOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisableTransitGatewayRouteTablePropagation operation in a HTTP client.
  */
 public typealias DisableTransitGatewayRouteTablePropagationOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1538,6 +1568,11 @@ public typealias EnableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHT
  Type to handle the input to the EnableFastSnapshotRestores operation in a HTTP client.
  */
 public typealias EnableFastSnapshotRestoresOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableSerialConsoleAccess operation in a HTTP client.
+ */
+public typealias EnableSerialConsoleAccessOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the EnableTransitGatewayRouteTablePropagation operation in a HTTP client.
@@ -1630,6 +1665,11 @@ public typealias GetEbsDefaultKmsKeyIdOperationHTTPRequestInput = QueryHTTPReque
 public typealias GetEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetFlowLogsIntegrationTemplate operation in a HTTP client.
+ */
+public typealias GetFlowLogsIntegrationTemplateOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetGroupsForCapacityReservation operation in a HTTP client.
  */
 public typealias GetGroupsForCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1663,6 +1703,11 @@ public typealias GetPasswordDataOperationHTTPRequestInput = QueryHTTPRequestInpu
  Type to handle the input to the GetReservedInstancesExchangeQuote operation in a HTTP client.
  */
 public typealias GetReservedInstancesExchangeQuoteOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetSerialConsoleAccessStatus operation in a HTTP client.
+ */
+public typealias GetSerialConsoleAccessStatusOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetTransitGatewayAttachmentPropagations operation in a HTTP client.

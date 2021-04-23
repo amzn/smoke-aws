@@ -58,6 +58,11 @@ public typealias AccountLimitList = [AccountLimit]
 public typealias AccountList = [Account]
 
 /**
+ Type definition for the AccountsUrl field.
+ */
+public typealias AccountsUrl = String
+
+/**
  Type definition for the AllowedValue field.
  */
 public typealias AllowedValue = String
@@ -689,6 +694,20 @@ public typealias Reason = String
  Type definition for the Region field.
  */
 public typealias Region = String
+
+/**
+ Enumeration restricting the values of the RegionConcurrencyType field.
+ */
+public enum RegionConcurrencyType: String, Codable, CustomStringConvertible {
+    case parallel = "PARALLEL"
+    case sequential = "SEQUENTIAL"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: RegionConcurrencyType = .parallel
+}
 
 /**
  Type definition for the RegionList field.
@@ -1485,6 +1504,27 @@ extension CloudformationModel.Account {
             matchingRange == startIndex..<endIndex else {
                 throw CloudformationError.validationError(
                     reason: "The provided value to Account violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AccountsUrl field.
+*/
+extension CloudformationModel.AccountsUrl {
+    public func validateAsAccountsUrl() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to AccountsUrl violated the minimum length constraint.")
+        }
+
+        if self.count > 5120 {
+            throw CloudformationError.validationError(reason: "The provided value to AccountsUrl violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "(s3://|http(s?)://).+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to AccountsUrl violated the regular expression constraint.")
         }
     }
 }

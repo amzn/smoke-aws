@@ -37,6 +37,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let deleteDashboardsSyncOverride: DeleteDashboardsSyncType?
     let deleteInsightRulesAsyncOverride: DeleteInsightRulesAsyncType?
     let deleteInsightRulesSyncOverride: DeleteInsightRulesSyncType?
+    let deleteMetricStreamAsyncOverride: DeleteMetricStreamAsyncType?
+    let deleteMetricStreamSyncOverride: DeleteMetricStreamSyncType?
     let describeAlarmHistoryAsyncOverride: DescribeAlarmHistoryAsyncType?
     let describeAlarmHistorySyncOverride: DescribeAlarmHistorySyncType?
     let describeAlarmsAsyncOverride: DescribeAlarmsAsyncType?
@@ -63,10 +65,14 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let getMetricDataSyncOverride: GetMetricDataSyncType?
     let getMetricStatisticsAsyncOverride: GetMetricStatisticsAsyncType?
     let getMetricStatisticsSyncOverride: GetMetricStatisticsSyncType?
+    let getMetricStreamAsyncOverride: GetMetricStreamAsyncType?
+    let getMetricStreamSyncOverride: GetMetricStreamSyncType?
     let getMetricWidgetImageAsyncOverride: GetMetricWidgetImageAsyncType?
     let getMetricWidgetImageSyncOverride: GetMetricWidgetImageSyncType?
     let listDashboardsAsyncOverride: ListDashboardsAsyncType?
     let listDashboardsSyncOverride: ListDashboardsSyncType?
+    let listMetricStreamsAsyncOverride: ListMetricStreamsAsyncType?
+    let listMetricStreamsSyncOverride: ListMetricStreamsSyncType?
     let listMetricsAsyncOverride: ListMetricsAsyncType?
     let listMetricsSyncOverride: ListMetricsSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
@@ -83,8 +89,14 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let putMetricAlarmSyncOverride: PutMetricAlarmSyncType?
     let putMetricDataAsyncOverride: PutMetricDataAsyncType?
     let putMetricDataSyncOverride: PutMetricDataSyncType?
+    let putMetricStreamAsyncOverride: PutMetricStreamAsyncType?
+    let putMetricStreamSyncOverride: PutMetricStreamSyncType?
     let setAlarmStateAsyncOverride: SetAlarmStateAsyncType?
     let setAlarmStateSyncOverride: SetAlarmStateSyncType?
+    let startMetricStreamsAsyncOverride: StartMetricStreamsAsyncType?
+    let startMetricStreamsSyncOverride: StartMetricStreamsSyncType?
+    let stopMetricStreamsAsyncOverride: StopMetricStreamsAsyncType?
+    let stopMetricStreamsSyncOverride: StopMetricStreamsSyncType?
     let tagResourceAsyncOverride: TagResourceAsyncType?
     let tagResourceSyncOverride: TagResourceSyncType?
     let untagResourceAsyncOverride: UntagResourceAsyncType?
@@ -103,6 +115,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             deleteDashboardsSync: DeleteDashboardsSyncType? = nil,
             deleteInsightRulesAsync: DeleteInsightRulesAsyncType? = nil,
             deleteInsightRulesSync: DeleteInsightRulesSyncType? = nil,
+            deleteMetricStreamAsync: DeleteMetricStreamAsyncType? = nil,
+            deleteMetricStreamSync: DeleteMetricStreamSyncType? = nil,
             describeAlarmHistoryAsync: DescribeAlarmHistoryAsyncType? = nil,
             describeAlarmHistorySync: DescribeAlarmHistorySyncType? = nil,
             describeAlarmsAsync: DescribeAlarmsAsyncType? = nil,
@@ -129,10 +143,14 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             getMetricDataSync: GetMetricDataSyncType? = nil,
             getMetricStatisticsAsync: GetMetricStatisticsAsyncType? = nil,
             getMetricStatisticsSync: GetMetricStatisticsSyncType? = nil,
+            getMetricStreamAsync: GetMetricStreamAsyncType? = nil,
+            getMetricStreamSync: GetMetricStreamSyncType? = nil,
             getMetricWidgetImageAsync: GetMetricWidgetImageAsyncType? = nil,
             getMetricWidgetImageSync: GetMetricWidgetImageSyncType? = nil,
             listDashboardsAsync: ListDashboardsAsyncType? = nil,
             listDashboardsSync: ListDashboardsSyncType? = nil,
+            listMetricStreamsAsync: ListMetricStreamsAsyncType? = nil,
+            listMetricStreamsSync: ListMetricStreamsSyncType? = nil,
             listMetricsAsync: ListMetricsAsyncType? = nil,
             listMetricsSync: ListMetricsSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
@@ -149,8 +167,14 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             putMetricAlarmSync: PutMetricAlarmSyncType? = nil,
             putMetricDataAsync: PutMetricDataAsyncType? = nil,
             putMetricDataSync: PutMetricDataSyncType? = nil,
+            putMetricStreamAsync: PutMetricStreamAsyncType? = nil,
+            putMetricStreamSync: PutMetricStreamSyncType? = nil,
             setAlarmStateAsync: SetAlarmStateAsyncType? = nil,
             setAlarmStateSync: SetAlarmStateSyncType? = nil,
+            startMetricStreamsAsync: StartMetricStreamsAsyncType? = nil,
+            startMetricStreamsSync: StartMetricStreamsSyncType? = nil,
+            stopMetricStreamsAsync: StopMetricStreamsAsyncType? = nil,
+            stopMetricStreamsSync: StopMetricStreamsSyncType? = nil,
             tagResourceAsync: TagResourceAsyncType? = nil,
             tagResourceSync: TagResourceSyncType? = nil,
             untagResourceAsync: UntagResourceAsyncType? = nil,
@@ -163,6 +187,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.deleteDashboardsSyncOverride = deleteDashboardsSync
         self.deleteInsightRulesAsyncOverride = deleteInsightRulesAsync
         self.deleteInsightRulesSyncOverride = deleteInsightRulesSync
+        self.deleteMetricStreamAsyncOverride = deleteMetricStreamAsync
+        self.deleteMetricStreamSyncOverride = deleteMetricStreamSync
         self.describeAlarmHistoryAsyncOverride = describeAlarmHistoryAsync
         self.describeAlarmHistorySyncOverride = describeAlarmHistorySync
         self.describeAlarmsAsyncOverride = describeAlarmsAsync
@@ -189,10 +215,14 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.getMetricDataSyncOverride = getMetricDataSync
         self.getMetricStatisticsAsyncOverride = getMetricStatisticsAsync
         self.getMetricStatisticsSyncOverride = getMetricStatisticsSync
+        self.getMetricStreamAsyncOverride = getMetricStreamAsync
+        self.getMetricStreamSyncOverride = getMetricStreamSync
         self.getMetricWidgetImageAsyncOverride = getMetricWidgetImageAsync
         self.getMetricWidgetImageSyncOverride = getMetricWidgetImageSync
         self.listDashboardsAsyncOverride = listDashboardsAsync
         self.listDashboardsSyncOverride = listDashboardsSync
+        self.listMetricStreamsAsyncOverride = listMetricStreamsAsync
+        self.listMetricStreamsSyncOverride = listMetricStreamsSync
         self.listMetricsAsyncOverride = listMetricsAsync
         self.listMetricsSyncOverride = listMetricsSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
@@ -209,8 +239,14 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.putMetricAlarmSyncOverride = putMetricAlarmSync
         self.putMetricDataAsyncOverride = putMetricDataAsync
         self.putMetricDataSyncOverride = putMetricDataSync
+        self.putMetricStreamAsyncOverride = putMetricStreamAsync
+        self.putMetricStreamSyncOverride = putMetricStreamSync
         self.setAlarmStateAsyncOverride = setAlarmStateAsync
         self.setAlarmStateSyncOverride = setAlarmStateSync
+        self.startMetricStreamsAsyncOverride = startMetricStreamsAsync
+        self.startMetricStreamsSyncOverride = startMetricStreamsSync
+        self.stopMetricStreamsAsyncOverride = stopMetricStreamsAsync
+        self.stopMetricStreamsSyncOverride = stopMetricStreamsSync
         self.tagResourceAsyncOverride = tagResourceAsync
         self.tagResourceSyncOverride = tagResourceSync
         self.untagResourceAsyncOverride = untagResourceAsync
@@ -369,6 +405,46 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         }
 
         return DeleteInsightRulesOutputForDeleteInsightRules.__default
+    }
+
+    /**
+     Invokes the DeleteMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteMetricStreamInput object being passed to this operation.
+         - completion: The DeleteMetricStreamOutputForDeleteMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The DeleteMetricStreamOutputForDeleteMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteMetricStreamAsync(
+            input: CloudWatchModel.DeleteMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream, CloudWatchError>) -> ()) throws {
+        if let deleteMetricStreamAsyncOverride = deleteMetricStreamAsyncOverride {
+            return try deleteMetricStreamAsyncOverride(input, completion)
+        }
+
+        let result = DeleteMetricStreamOutputForDeleteMetricStream.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteMetricStreamInput object being passed to this operation.
+     - Returns: The DeleteMetricStreamOutputForDeleteMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteMetricStreamSync(
+            input: CloudWatchModel.DeleteMetricStreamInput) throws -> CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream {
+        if let deleteMetricStreamSyncOverride = deleteMetricStreamSyncOverride {
+            return try deleteMetricStreamSyncOverride(input)
+        }
+
+        return DeleteMetricStreamOutputForDeleteMetricStream.__default
     }
 
     /**
@@ -874,6 +950,46 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the GetMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetMetricStreamInput object being passed to this operation.
+         - completion: The GetMetricStreamOutputForGetMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The GetMetricStreamOutputForGetMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getMetricStreamAsync(
+            input: CloudWatchModel.GetMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.GetMetricStreamOutputForGetMetricStream, CloudWatchError>) -> ()) throws {
+        if let getMetricStreamAsyncOverride = getMetricStreamAsyncOverride {
+            return try getMetricStreamAsyncOverride(input, completion)
+        }
+
+        let result = GetMetricStreamOutputForGetMetricStream.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetMetricStreamInput object being passed to this operation.
+     - Returns: The GetMetricStreamOutputForGetMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getMetricStreamSync(
+            input: CloudWatchModel.GetMetricStreamInput) throws -> CloudWatchModel.GetMetricStreamOutputForGetMetricStream {
+        if let getMetricStreamSyncOverride = getMetricStreamSyncOverride {
+            return try getMetricStreamSyncOverride(input)
+        }
+
+        return GetMetricStreamOutputForGetMetricStream.__default
+    }
+
+    /**
      Invokes the GetMetricWidgetImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -949,6 +1065,46 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         }
 
         return ListDashboardsOutputForListDashboards.__default
+    }
+
+    /**
+     Invokes the ListMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMetricStreamsInput object being passed to this operation.
+         - completion: The ListMetricStreamsOutputForListMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The ListMetricStreamsOutputForListMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listMetricStreamsAsync(
+            input: CloudWatchModel.ListMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.ListMetricStreamsOutputForListMetricStreams, CloudWatchError>) -> ()) throws {
+        if let listMetricStreamsAsyncOverride = listMetricStreamsAsyncOverride {
+            return try listMetricStreamsAsyncOverride(input, completion)
+        }
+
+        let result = ListMetricStreamsOutputForListMetricStreams.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMetricStreamsInput object being passed to this operation.
+     - Returns: The ListMetricStreamsOutputForListMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listMetricStreamsSync(
+            input: CloudWatchModel.ListMetricStreamsInput) throws -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams {
+        if let listMetricStreamsSyncOverride = listMetricStreamsSyncOverride {
+            return try listMetricStreamsSyncOverride(input)
+        }
+
+        return ListMetricStreamsOutputForListMetricStreams.__default
     }
 
     /**
@@ -1254,6 +1410,46 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the PutMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutMetricStreamInput object being passed to this operation.
+         - completion: The PutMetricStreamOutputForPutMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The PutMetricStreamOutputForPutMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
+     */
+    public func putMetricStreamAsync(
+            input: CloudWatchModel.PutMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.PutMetricStreamOutputForPutMetricStream, CloudWatchError>) -> ()) throws {
+        if let putMetricStreamAsyncOverride = putMetricStreamAsyncOverride {
+            return try putMetricStreamAsyncOverride(input, completion)
+        }
+
+        let result = PutMetricStreamOutputForPutMetricStream.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the PutMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutMetricStreamInput object being passed to this operation.
+     - Returns: The PutMetricStreamOutputForPutMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
+     */
+    public func putMetricStreamSync(
+            input: CloudWatchModel.PutMetricStreamInput) throws -> CloudWatchModel.PutMetricStreamOutputForPutMetricStream {
+        if let putMetricStreamSyncOverride = putMetricStreamSyncOverride {
+            return try putMetricStreamSyncOverride(input)
+        }
+
+        return PutMetricStreamOutputForPutMetricStream.__default
+    }
+
+    /**
      Invokes the SetAlarmState operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1285,6 +1481,86 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             return try setAlarmStateSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the StartMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartMetricStreamsInput object being passed to this operation.
+         - completion: The StartMetricStreamsOutputForStartMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The StartMetricStreamsOutputForStartMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func startMetricStreamsAsync(
+            input: CloudWatchModel.StartMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams, CloudWatchError>) -> ()) throws {
+        if let startMetricStreamsAsyncOverride = startMetricStreamsAsyncOverride {
+            return try startMetricStreamsAsyncOverride(input, completion)
+        }
+
+        let result = StartMetricStreamsOutputForStartMetricStreams.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the StartMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartMetricStreamsInput object being passed to this operation.
+     - Returns: The StartMetricStreamsOutputForStartMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func startMetricStreamsSync(
+            input: CloudWatchModel.StartMetricStreamsInput) throws -> CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams {
+        if let startMetricStreamsSyncOverride = startMetricStreamsSyncOverride {
+            return try startMetricStreamsSyncOverride(input)
+        }
+
+        return StartMetricStreamsOutputForStartMetricStreams.__default
+    }
+
+    /**
+     Invokes the StopMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopMetricStreamsInput object being passed to this operation.
+         - completion: The StopMetricStreamsOutputForStopMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The StopMetricStreamsOutputForStopMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func stopMetricStreamsAsync(
+            input: CloudWatchModel.StopMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams, CloudWatchError>) -> ()) throws {
+        if let stopMetricStreamsAsyncOverride = stopMetricStreamsAsyncOverride {
+            return try stopMetricStreamsAsyncOverride(input, completion)
+        }
+
+        let result = StopMetricStreamsOutputForStopMetricStreams.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the StopMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopMetricStreamsInput object being passed to this operation.
+     - Returns: The StopMetricStreamsOutputForStopMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func stopMetricStreamsSync(
+            input: CloudWatchModel.StopMetricStreamsInput) throws -> CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams {
+        if let stopMetricStreamsSyncOverride = stopMetricStreamsSyncOverride {
+            return try stopMetricStreamsSyncOverride(input)
+        }
+
+        return StopMetricStreamsOutputForStopMetricStreams.__default
     }
 
     /**

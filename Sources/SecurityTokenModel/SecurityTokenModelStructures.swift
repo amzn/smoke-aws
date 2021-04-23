@@ -30,6 +30,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
     public var roleArn: ArnType
     public var roleSessionName: RoleSessionNameType
     public var serialNumber: SerialNumberType?
+    public var sourceIdentity: SourceIdentityType?
     public var tags: TagListType?
     public var tokenCode: TokenCodeType?
     public var transitiveTagKeys: TagKeyListType?
@@ -41,6 +42,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
                 roleArn: ArnType,
                 roleSessionName: RoleSessionNameType,
                 serialNumber: SerialNumberType? = nil,
+                sourceIdentity: SourceIdentityType? = nil,
                 tags: TagListType? = nil,
                 tokenCode: TokenCodeType? = nil,
                 transitiveTagKeys: TagKeyListType? = nil) {
@@ -51,6 +53,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         self.roleArn = roleArn
         self.roleSessionName = roleSessionName
         self.serialNumber = serialNumber
+        self.sourceIdentity = sourceIdentity
         self.tags = tags
         self.tokenCode = tokenCode
         self.transitiveTagKeys = transitiveTagKeys
@@ -64,6 +67,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         case roleArn = "RoleArn"
         case roleSessionName = "RoleSessionName"
         case serialNumber = "SerialNumber"
+        case sourceIdentity = "SourceIdentity"
         case tags = "Tags"
         case tokenCode = "TokenCode"
         case transitiveTagKeys = "TransitiveTagKeys"
@@ -76,6 +80,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         try roleArn.validateAsArnType()
         try roleSessionName.validateAsRoleSessionNameType()
         try serialNumber?.validateAsSerialNumberType()
+        try sourceIdentity?.validateAsSourceIdentityType()
         try tags?.validateAsTagListType()
         try tokenCode?.validateAsTokenCodeType()
         try transitiveTagKeys?.validateAsTagKeyListType()
@@ -86,25 +91,30 @@ public struct AssumeRoleResponse: Codable, Equatable {
     public var assumedRoleUser: AssumedRoleUser?
     public var credentials: Credentials?
     public var packedPolicySize: NonNegativeIntegerType?
+    public var sourceIdentity: SourceIdentityType?
 
     public init(assumedRoleUser: AssumedRoleUser? = nil,
                 credentials: Credentials? = nil,
-                packedPolicySize: NonNegativeIntegerType? = nil) {
+                packedPolicySize: NonNegativeIntegerType? = nil,
+                sourceIdentity: SourceIdentityType? = nil) {
         self.assumedRoleUser = assumedRoleUser
         self.credentials = credentials
         self.packedPolicySize = packedPolicySize
+        self.sourceIdentity = sourceIdentity
     }
 
     enum CodingKeys: String, CodingKey {
         case assumedRoleUser = "AssumedRoleUser"
         case credentials = "Credentials"
         case packedPolicySize = "PackedPolicySize"
+        case sourceIdentity = "SourceIdentity"
     }
 
     public func validate() throws {
         try assumedRoleUser?.validate()
         try credentials?.validate()
         try packedPolicySize?.validateAsNonNegativeIntegerType()
+        try sourceIdentity?.validateAsSourceIdentityType()
     }
 }
 
@@ -171,6 +181,7 @@ public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
     public var issuer: Issuer?
     public var nameQualifier: NameQualifier?
     public var packedPolicySize: NonNegativeIntegerType?
+    public var sourceIdentity: SourceIdentityType?
     public var subject: Subject?
     public var subjectType: SubjectType?
 
@@ -180,6 +191,7 @@ public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
                 issuer: Issuer? = nil,
                 nameQualifier: NameQualifier? = nil,
                 packedPolicySize: NonNegativeIntegerType? = nil,
+                sourceIdentity: SourceIdentityType? = nil,
                 subject: Subject? = nil,
                 subjectType: SubjectType? = nil) {
         self.assumedRoleUser = assumedRoleUser
@@ -188,6 +200,7 @@ public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
         self.issuer = issuer
         self.nameQualifier = nameQualifier
         self.packedPolicySize = packedPolicySize
+        self.sourceIdentity = sourceIdentity
         self.subject = subject
         self.subjectType = subjectType
     }
@@ -199,6 +212,7 @@ public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
         case issuer = "Issuer"
         case nameQualifier = "NameQualifier"
         case packedPolicySize = "PackedPolicySize"
+        case sourceIdentity = "SourceIdentity"
         case subject = "Subject"
         case subjectType = "SubjectType"
     }
@@ -207,6 +221,7 @@ public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
         try assumedRoleUser?.validate()
         try credentials?.validate()
         try packedPolicySize?.validateAsNonNegativeIntegerType()
+        try sourceIdentity?.validateAsSourceIdentityType()
     }
 }
 
@@ -277,6 +292,7 @@ public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable {
     public var credentials: Credentials?
     public var packedPolicySize: NonNegativeIntegerType?
     public var provider: Issuer?
+    public var sourceIdentity: SourceIdentityType?
     public var subjectFromWebIdentityToken: WebIdentitySubjectType?
 
     public init(assumedRoleUser: AssumedRoleUser? = nil,
@@ -284,12 +300,14 @@ public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable {
                 credentials: Credentials? = nil,
                 packedPolicySize: NonNegativeIntegerType? = nil,
                 provider: Issuer? = nil,
+                sourceIdentity: SourceIdentityType? = nil,
                 subjectFromWebIdentityToken: WebIdentitySubjectType? = nil) {
         self.assumedRoleUser = assumedRoleUser
         self.audience = audience
         self.credentials = credentials
         self.packedPolicySize = packedPolicySize
         self.provider = provider
+        self.sourceIdentity = sourceIdentity
         self.subjectFromWebIdentityToken = subjectFromWebIdentityToken
     }
 
@@ -299,6 +317,7 @@ public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable {
         case credentials = "Credentials"
         case packedPolicySize = "PackedPolicySize"
         case provider = "Provider"
+        case sourceIdentity = "SourceIdentity"
         case subjectFromWebIdentityToken = "SubjectFromWebIdentityToken"
     }
 
@@ -306,6 +325,7 @@ public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable {
         try assumedRoleUser?.validate()
         try credentials?.validate()
         try packedPolicySize?.validateAsNonNegativeIntegerType()
+        try sourceIdentity?.validateAsSourceIdentityType()
         try subjectFromWebIdentityToken?.validateAsWebIdentitySubjectType()
     }
 }

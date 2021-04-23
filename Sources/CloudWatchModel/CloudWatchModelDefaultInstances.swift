@@ -297,6 +297,41 @@ public extension DeleteInsightRulesOutputForDeleteInsightRules {
     }()
 }
 
+public extension DeleteMetricStreamInput {
+    /**
+     Default instance of the DeleteMetricStreamInput structure.
+     */
+    static let __default: CloudWatchModel.DeleteMetricStreamInput = {
+        let defaultInstance = CloudWatchModel.DeleteMetricStreamInput(
+            name: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteMetricStreamOutput {
+    /**
+     Default instance of the DeleteMetricStreamOutput structure.
+     */
+    static let __default: CloudWatchModel.DeleteMetricStreamOutput = {
+        let defaultInstance = CloudWatchModel.DeleteMetricStreamOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteMetricStreamOutputForDeleteMetricStream {
+    /**
+     Default instance of the DeleteMetricStreamOutputForDeleteMetricStream structure.
+     */
+    static let __default: CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream = {
+        let defaultInstance = CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream(
+            deleteMetricStreamResult: DeleteMetricStreamOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeAlarmHistoryInput {
     /**
      Default instance of the DescribeAlarmHistoryInput structure.
@@ -804,6 +839,51 @@ public extension GetMetricStatisticsOutputForGetMetricStatistics {
     }()
 }
 
+public extension GetMetricStreamInput {
+    /**
+     Default instance of the GetMetricStreamInput structure.
+     */
+    static let __default: CloudWatchModel.GetMetricStreamInput = {
+        let defaultInstance = CloudWatchModel.GetMetricStreamInput(
+            name: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetMetricStreamOutput {
+    /**
+     Default instance of the GetMetricStreamOutput structure.
+     */
+    static let __default: CloudWatchModel.GetMetricStreamOutput = {
+        let defaultInstance = CloudWatchModel.GetMetricStreamOutput(
+            arn: nil,
+            creationDate: nil,
+            excludeFilters: nil,
+            firehoseArn: nil,
+            includeFilters: nil,
+            lastUpdateDate: nil,
+            name: nil,
+            outputFormat: nil,
+            roleArn: nil,
+            state: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetMetricStreamOutputForGetMetricStream {
+    /**
+     Default instance of the GetMetricStreamOutputForGetMetricStream structure.
+     */
+    static let __default: CloudWatchModel.GetMetricStreamOutputForGetMetricStream = {
+        let defaultInstance = CloudWatchModel.GetMetricStreamOutputForGetMetricStream(
+            getMetricStreamResult: GetMetricStreamOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetMetricWidgetImageInput {
     /**
      Default instance of the GetMetricWidgetImageInput structure.
@@ -1035,6 +1115,44 @@ public extension ListDashboardsOutputForListDashboards {
     }()
 }
 
+public extension ListMetricStreamsInput {
+    /**
+     Default instance of the ListMetricStreamsInput structure.
+     */
+    static let __default: CloudWatchModel.ListMetricStreamsInput = {
+        let defaultInstance = CloudWatchModel.ListMetricStreamsInput(
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMetricStreamsOutput {
+    /**
+     Default instance of the ListMetricStreamsOutput structure.
+     */
+    static let __default: CloudWatchModel.ListMetricStreamsOutput = {
+        let defaultInstance = CloudWatchModel.ListMetricStreamsOutput(
+            entries: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMetricStreamsOutputForListMetricStreams {
+    /**
+     Default instance of the ListMetricStreamsOutputForListMetricStreams structure.
+     */
+    static let __default: CloudWatchModel.ListMetricStreamsOutputForListMetricStreams = {
+        let defaultInstance = CloudWatchModel.ListMetricStreamsOutputForListMetricStreams(
+            listMetricStreamsResult: ListMetricStreamsOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListMetricsInput {
     /**
      Default instance of the ListMetricsInput structure.
@@ -1246,6 +1364,36 @@ public extension MetricStat {
     }()
 }
 
+public extension MetricStreamEntry {
+    /**
+     Default instance of the MetricStreamEntry structure.
+     */
+    static let __default: CloudWatchModel.MetricStreamEntry = {
+        let defaultInstance = CloudWatchModel.MetricStreamEntry(
+            arn: nil,
+            creationDate: nil,
+            firehoseArn: nil,
+            lastUpdateDate: nil,
+            name: nil,
+            outputFormat: nil,
+            state: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MetricStreamFilter {
+    /**
+     Default instance of the MetricStreamFilter structure.
+     */
+    static let __default: CloudWatchModel.MetricStreamFilter = {
+        let defaultInstance = CloudWatchModel.MetricStreamFilter(
+            namespace: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MissingRequiredParameterException {
     /**
      Default instance of the MissingRequiredParameterException structure.
@@ -1452,6 +1600,48 @@ public extension PutMetricDataInput {
     }()
 }
 
+public extension PutMetricStreamInput {
+    /**
+     Default instance of the PutMetricStreamInput structure.
+     */
+    static let __default: CloudWatchModel.PutMetricStreamInput = {
+        let defaultInstance = CloudWatchModel.PutMetricStreamInput(
+            excludeFilters: nil,
+            firehoseArn: "0",
+            includeFilters: nil,
+            name: "0",
+            outputFormat: .__default,
+            roleArn: "0",
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutMetricStreamOutput {
+    /**
+     Default instance of the PutMetricStreamOutput structure.
+     */
+    static let __default: CloudWatchModel.PutMetricStreamOutput = {
+        let defaultInstance = CloudWatchModel.PutMetricStreamOutput(
+            arn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutMetricStreamOutputForPutMetricStream {
+    /**
+     Default instance of the PutMetricStreamOutputForPutMetricStream structure.
+     */
+    static let __default: CloudWatchModel.PutMetricStreamOutputForPutMetricStream = {
+        let defaultInstance = CloudWatchModel.PutMetricStreamOutputForPutMetricStream(
+            putMetricStreamResult: PutMetricStreamOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension Range {
     /**
      Default instance of the Range structure.
@@ -1505,6 +1695,41 @@ public extension SetAlarmStateInput {
     }()
 }
 
+public extension StartMetricStreamsInput {
+    /**
+     Default instance of the StartMetricStreamsInput structure.
+     */
+    static let __default: CloudWatchModel.StartMetricStreamsInput = {
+        let defaultInstance = CloudWatchModel.StartMetricStreamsInput(
+            names: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension StartMetricStreamsOutput {
+    /**
+     Default instance of the StartMetricStreamsOutput structure.
+     */
+    static let __default: CloudWatchModel.StartMetricStreamsOutput = {
+        let defaultInstance = CloudWatchModel.StartMetricStreamsOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension StartMetricStreamsOutputForStartMetricStreams {
+    /**
+     Default instance of the StartMetricStreamsOutputForStartMetricStreams structure.
+     */
+    static let __default: CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams = {
+        let defaultInstance = CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams(
+            startMetricStreamsResult: StartMetricStreamsOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension StatisticSet {
     /**
      Default instance of the StatisticSet structure.
@@ -1515,6 +1740,41 @@ public extension StatisticSet {
             minimum: 0.0,
             sampleCount: 0.0,
             sum: 0.0)
+
+        return defaultInstance
+    }()
+}
+
+public extension StopMetricStreamsInput {
+    /**
+     Default instance of the StopMetricStreamsInput structure.
+     */
+    static let __default: CloudWatchModel.StopMetricStreamsInput = {
+        let defaultInstance = CloudWatchModel.StopMetricStreamsInput(
+            names: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension StopMetricStreamsOutput {
+    /**
+     Default instance of the StopMetricStreamsOutput structure.
+     */
+    static let __default: CloudWatchModel.StopMetricStreamsOutput = {
+        let defaultInstance = CloudWatchModel.StopMetricStreamsOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension StopMetricStreamsOutputForStopMetricStreams {
+    /**
+     Default instance of the StopMetricStreamsOutputForStopMetricStreams structure.
+     */
+    static let __default: CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams = {
+        let defaultInstance = CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams(
+            stopMetricStreamsResult: StopMetricStreamsOutput.__default)
 
         return defaultInstance
     }()

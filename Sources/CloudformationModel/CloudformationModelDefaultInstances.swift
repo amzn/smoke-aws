@@ -526,6 +526,7 @@ public extension DeploymentTargets {
     static let __default: CloudformationModel.DeploymentTargets = {
         let defaultInstance = CloudformationModel.DeploymentTargets(
             accounts: nil,
+            accountsUrl: nil,
             organizationalUnitIds: nil)
 
         return defaultInstance
@@ -2753,6 +2754,7 @@ public extension StackSetOperationPreferences {
             failureTolerancePercentage: nil,
             maxConcurrentCount: nil,
             maxConcurrentPercentage: nil,
+            regionConcurrencyType: nil,
             regionOrder: nil)
 
         return defaultInstance

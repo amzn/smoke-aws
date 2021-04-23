@@ -460,6 +460,84 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     }
 
     /**
+     Invokes the DeleteMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteMetricStreamInput object being passed to this operation.
+         - completion: The DeleteMetricStreamOutputForDeleteMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The DeleteMetricStreamOutputForDeleteMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteMetricStreamAsync(
+            input: CloudWatchModel.DeleteMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMetricStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteMetricStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteMetricStream.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteMetricStreamInput object being passed to this operation.
+     - Returns: The DeleteMetricStreamOutputForDeleteMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func deleteMetricStreamSync(
+            input: CloudWatchModel.DeleteMetricStreamInput) throws -> CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMetricStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteMetricStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.deleteMetricStream.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeAlarmHistory operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1462,6 +1540,84 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     }
 
     /**
+     Invokes the GetMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetMetricStreamInput object being passed to this operation.
+         - completion: The GetMetricStreamOutputForGetMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The GetMetricStreamOutputForGetMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getMetricStreamAsync(
+            input: CloudWatchModel.GetMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.GetMetricStreamOutputForGetMetricStream, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getMetricStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetMetricStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.getMetricStream.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetMetricStreamInput object being passed to this operation.
+     - Returns: The GetMetricStreamOutputForGetMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     */
+    public func getMetricStreamSync(
+            input: CloudWatchModel.GetMetricStreamInput) throws -> CloudWatchModel.GetMetricStreamOutputForGetMetricStream {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getMetricStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetMetricStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.getMetricStream.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetMetricWidgetImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1599,6 +1755,84 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.listDashboards.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMetricStreamsInput object being passed to this operation.
+         - completion: The ListMetricStreamsOutputForListMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The ListMetricStreamsOutputForListMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listMetricStreamsAsync(
+            input: CloudWatchModel.ListMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.ListMetricStreamsOutputForListMetricStreams, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMetricStreams,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListMetricStreamsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.listMetricStreams.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMetricStreamsInput object being passed to this operation.
+     - Returns: The ListMetricStreamsOutputForListMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listMetricStreamsSync(
+            input: CloudWatchModel.ListMetricStreamsInput) throws -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMetricStreams,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListMetricStreamsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.listMetricStreams.rawValue,
             version: apiVersion)
 
         do {
@@ -2231,6 +2465,84 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     }
 
     /**
+     Invokes the PutMetricStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutMetricStreamInput object being passed to this operation.
+         - completion: The PutMetricStreamOutputForPutMetricStream object or an error will be passed to this 
+           callback when the operation is complete. The PutMetricStreamOutputForPutMetricStream
+           object will be validated before being returned to caller.
+           The possible errors are: concurrentModification, internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
+     */
+    public func putMetricStreamAsync(
+            input: CloudWatchModel.PutMetricStreamInput, 
+            completion: @escaping (Result<CloudWatchModel.PutMetricStreamOutputForPutMetricStream, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putMetricStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutMetricStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putMetricStream.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutMetricStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutMetricStreamInput object being passed to this operation.
+     - Returns: The PutMetricStreamOutputForPutMetricStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
+     */
+    public func putMetricStreamSync(
+            input: CloudWatchModel.PutMetricStreamInput) throws -> CloudWatchModel.PutMetricStreamOutputForPutMetricStream {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putMetricStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutMetricStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putMetricStream.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the SetAlarmState operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2293,6 +2605,162 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
 
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartMetricStreamsInput object being passed to this operation.
+         - completion: The StartMetricStreamsOutputForStartMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The StartMetricStreamsOutputForStartMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func startMetricStreamsAsync(
+            input: CloudWatchModel.StartMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startMetricStreams,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartMetricStreamsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.startMetricStreams.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartMetricStreamsInput object being passed to this operation.
+     - Returns: The StartMetricStreamsOutputForStartMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func startMetricStreamsSync(
+            input: CloudWatchModel.StartMetricStreamsInput) throws -> CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startMetricStreams,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartMetricStreamsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.startMetricStreams.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopMetricStreams operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StopMetricStreamsInput object being passed to this operation.
+         - completion: The StopMetricStreamsOutputForStopMetricStreams object or an error will be passed to this 
+           callback when the operation is complete. The StopMetricStreamsOutputForStopMetricStreams
+           object will be validated before being returned to caller.
+           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func stopMetricStreamsAsync(
+            input: CloudWatchModel.StopMetricStreamsInput, 
+            completion: @escaping (Result<CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopMetricStreams,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StopMetricStreamsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.stopMetricStreams.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StopMetricStreams operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StopMetricStreamsInput object being passed to this operation.
+     - Returns: The StopMetricStreamsOutputForStopMetricStreams object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalService, invalidParameterValue, missingRequiredParameter.
+     */
+    public func stopMetricStreamsSync(
+            input: CloudWatchModel.StopMetricStreamsInput) throws -> CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopMetricStreams,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StopMetricStreamsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.stopMetricStreams.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,

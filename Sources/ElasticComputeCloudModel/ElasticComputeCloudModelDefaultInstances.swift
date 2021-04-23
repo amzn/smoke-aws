@@ -898,6 +898,21 @@ public extension AssociationStatus {
     }()
 }
 
+public extension AthenaIntegration {
+    /**
+     Default instance of the AthenaIntegration structure.
+     */
+    static let __default: ElasticComputeCloudModel.AthenaIntegration = {
+        let defaultInstance = ElasticComputeCloudModel.AthenaIntegration(
+            integrationResultS3DestinationArn: "value",
+            partitionEndDate: nil,
+            partitionLoadFrequency: .__default,
+            partitionStartDate: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AttachClassicLinkVpcRequest {
     /**
      Default instance of the AttachClassicLinkVpcRequest structure.
@@ -3048,6 +3063,34 @@ public extension CreatePlacementGroupResult {
     }()
 }
 
+public extension CreateReplaceRootVolumeTaskRequest {
+    /**
+     Default instance of the CreateReplaceRootVolumeTaskRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest(
+            clientToken: nil,
+            dryRun: nil,
+            instanceId: "value",
+            snapshotId: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateReplaceRootVolumeTaskResult {
+    /**
+     Default instance of the CreateReplaceRootVolumeTaskResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult(
+            replaceRootVolumeTask: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateReservedInstancesListingRequest {
     /**
      Default instance of the CreateReservedInstancesListingRequest structure.
@@ -3070,6 +3113,34 @@ public extension CreateReservedInstancesListingResult {
     static let __default: ElasticComputeCloudModel.CreateReservedInstancesListingResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateReservedInstancesListingResult(
             reservedInstancesListings: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateRestoreImageTaskRequest {
+    /**
+     Default instance of the CreateRestoreImageTaskRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateRestoreImageTaskRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateRestoreImageTaskRequest(
+            bucket: "value",
+            dryRun: nil,
+            name: nil,
+            objectKey: "value",
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateRestoreImageTaskResult {
+    /**
+     Default instance of the CreateRestoreImageTaskResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateRestoreImageTaskResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateRestoreImageTaskResult(
+            imageId: nil)
 
         return defaultInstance
     }()
@@ -3234,6 +3305,33 @@ public extension CreateSpotDatafeedSubscriptionResult {
     static let __default: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult(
             spotDatafeedSubscription: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateStoreImageTaskRequest {
+    /**
+     Default instance of the CreateStoreImageTaskRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateStoreImageTaskRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateStoreImageTaskRequest(
+            bucket: "value",
+            dryRun: nil,
+            imageId: "value",
+            s3ObjectTags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateStoreImageTaskResult {
+    /**
+     Default instance of the CreateStoreImageTaskResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateStoreImageTaskResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateStoreImageTaskResult(
+            objectKey: nil)
 
         return defaultInstance
     }()
@@ -7436,6 +7534,35 @@ public extension DescribeRegionsResult {
     }()
 }
 
+public extension DescribeReplaceRootVolumeTasksRequest {
+    /**
+     Default instance of the DescribeReplaceRootVolumeTasksRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil,
+            replaceRootVolumeTaskIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeReplaceRootVolumeTasksResult {
+    /**
+     Default instance of the DescribeReplaceRootVolumeTasksResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult(
+            nextToken: nil,
+            replaceRootVolumeTasks: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeReservedInstancesListingsRequest {
     /**
      Default instance of the DescribeReservedInstancesListingsRequest structure.
@@ -7960,6 +8087,35 @@ public extension DescribeStaleSecurityGroupsResult {
         let defaultInstance = ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult(
             nextToken: nil,
             staleSecurityGroupSet: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeStoreImageTasksRequest {
+    /**
+     Default instance of the DescribeStoreImageTasksRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeStoreImageTasksRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeStoreImageTasksRequest(
+            dryRun: nil,
+            filters: nil,
+            imageIds: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeStoreImageTasksResult {
+    /**
+     Default instance of the DescribeStoreImageTasksResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeStoreImageTasksResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeStoreImageTasksResult(
+            nextToken: nil,
+            storeImageTaskResults: nil)
 
         return defaultInstance
     }()
@@ -9069,6 +9225,30 @@ public extension DisableFastSnapshotRestoresResult {
     }()
 }
 
+public extension DisableSerialConsoleAccessRequest {
+    /**
+     Default instance of the DisableSerialConsoleAccessRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisableSerialConsoleAccessRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableSerialConsoleAccessResult {
+    /**
+     Default instance of the DisableSerialConsoleAccessResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableSerialConsoleAccessResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisableSerialConsoleAccessResult(
+            serialConsoleAccessEnabled: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DisableTransitGatewayRouteTablePropagationRequest {
     /**
      Default instance of the DisableTransitGatewayRouteTablePropagationRequest structure.
@@ -9772,6 +9952,30 @@ public extension EnableFastSnapshotRestoresResult {
         let defaultInstance = ElasticComputeCloudModel.EnableFastSnapshotRestoresResult(
             successful: nil,
             unsuccessful: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableSerialConsoleAccessRequest {
+    /**
+     Default instance of the EnableSerialConsoleAccessRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest = {
+        let defaultInstance = ElasticComputeCloudModel.EnableSerialConsoleAccessRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableSerialConsoleAccessResult {
+    /**
+     Default instance of the EnableSerialConsoleAccessResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableSerialConsoleAccessResult = {
+        let defaultInstance = ElasticComputeCloudModel.EnableSerialConsoleAccessResult(
+            serialConsoleAccessEnabled: nil)
 
         return defaultInstance
     }()
@@ -10769,6 +10973,33 @@ public extension GetEbsEncryptionByDefaultResult {
     }()
 }
 
+public extension GetFlowLogsIntegrationTemplateRequest {
+    /**
+     Default instance of the GetFlowLogsIntegrationTemplateRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest(
+            configDeliveryS3DestinationArn: "value",
+            dryRun: nil,
+            flowLogId: "value",
+            integrateServices: IntegrateServices.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetFlowLogsIntegrationTemplateResult {
+    /**
+     Default instance of the GetFlowLogsIntegrationTemplateResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult(
+            result: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetGroupsForCapacityReservationRequest {
     /**
      Default instance of the GetGroupsForCapacityReservationRequest structure.
@@ -10963,6 +11194,30 @@ public extension GetReservedInstancesExchangeQuoteResult {
             targetConfigurationValueRollup: nil,
             targetConfigurationValueSet: nil,
             validationFailureReason: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSerialConsoleAccessStatusRequest {
+    /**
+     Default instance of the GetSerialConsoleAccessStatusRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSerialConsoleAccessStatusResult {
+    /**
+     Default instance of the GetSerialConsoleAccessStatusResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult(
+            serialConsoleAccessEnabled: nil)
 
         return defaultInstance
     }()
@@ -12406,6 +12661,18 @@ public extension InstanceUsage {
         let defaultInstance = ElasticComputeCloudModel.InstanceUsage(
             accountId: nil,
             usedInstanceCount: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IntegrateServices {
+    /**
+     Default instance of the IntegrateServices structure.
+     */
+    static let __default: ElasticComputeCloudModel.IntegrateServices = {
+        let defaultInstance = ElasticComputeCloudModel.IntegrateServices(
+            athenaIntegrations: nil)
 
         return defaultInstance
     }()
@@ -16204,6 +16471,23 @@ public extension ReplaceNetworkAclEntryRequest {
     }()
 }
 
+public extension ReplaceRootVolumeTask {
+    /**
+     Default instance of the ReplaceRootVolumeTask structure.
+     */
+    static let __default: ElasticComputeCloudModel.ReplaceRootVolumeTask = {
+        let defaultInstance = ElasticComputeCloudModel.ReplaceRootVolumeTask(
+            completeTime: nil,
+            instanceId: nil,
+            replaceRootVolumeTaskId: nil,
+            startTime: nil,
+            tags: nil,
+            taskState: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ReplaceRouteRequest {
     /**
      Default instance of the ReplaceRouteRequest structure.
@@ -17111,6 +17395,19 @@ public extension RunScheduledInstancesResult {
     static let __default: ElasticComputeCloudModel.RunScheduledInstancesResult = {
         let defaultInstance = ElasticComputeCloudModel.RunScheduledInstancesResult(
             instanceIdSet: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension S3ObjectTag {
+    /**
+     Default instance of the S3ObjectTag structure.
+     */
+    static let __default: ElasticComputeCloudModel.S3ObjectTag = {
+        let defaultInstance = ElasticComputeCloudModel.S3ObjectTag(
+            key: nil,
+            value: nil)
 
         return defaultInstance
     }()
@@ -18154,6 +18451,24 @@ public extension StorageLocation {
         let defaultInstance = ElasticComputeCloudModel.StorageLocation(
             bucket: nil,
             key: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StoreImageTaskResult {
+    /**
+     Default instance of the StoreImageTaskResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.StoreImageTaskResult = {
+        let defaultInstance = ElasticComputeCloudModel.StoreImageTaskResult(
+            amiId: nil,
+            bucket: nil,
+            progressPercentage: nil,
+            s3objectKey: nil,
+            storeTaskFailureReason: nil,
+            storeTaskState: nil,
+            taskStartTime: nil)
 
         return defaultInstance
     }()

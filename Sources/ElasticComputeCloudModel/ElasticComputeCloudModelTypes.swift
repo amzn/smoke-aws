@@ -317,6 +317,11 @@ public enum AssociationStatusCode: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the AthenaIntegrationsSet field.
+ */
+public typealias AthenaIntegrationsSet = [AthenaIntegration]
+
+/**
  Enumeration restricting the values of the AttachmentStatus field.
  */
 public enum AttachmentStatus: String, Codable, CustomStringConvertible {
@@ -1419,6 +1424,11 @@ public typealias DescribeNetworkInterfacesMaxResults = Int
 public typealias DescribePrincipalIdFormatMaxResults = Int
 
 /**
+ Type definition for the DescribeReplaceRootVolumeTasksMaxResults field.
+ */
+public typealias DescribeReplaceRootVolumeTasksMaxResults = Int
+
+/**
  Type definition for the DescribeRouteTablesMaxResults field.
  */
 public typealias DescribeRouteTablesMaxResults = Int
@@ -1452,6 +1462,11 @@ public typealias DescribeStaleSecurityGroupsMaxResults = Int
  Type definition for the DescribeStaleSecurityGroupsNextToken field.
  */
 public typealias DescribeStaleSecurityGroupsNextToken = String
+
+/**
+ Type definition for the DescribeStoreImageTasksRequestMaxResults field.
+ */
+public typealias DescribeStoreImageTasksRequestMaxResults = Int
 
 /**
  Type definition for the DescribeSubnetsMaxResults field.
@@ -2528,6 +2543,11 @@ public typealias ImageDiskContainerList = [ImageDiskContainer]
  Type definition for the ImageId field.
  */
 public typealias ImageId = String
+
+/**
+ Type definition for the ImageIdList field.
+ */
+public typealias ImageIdList = [ImageId]
 
 /**
  Type definition for the ImageIdStringList field.
@@ -4386,6 +4406,22 @@ public enum OperationType: String, Codable, CustomStringConvertible {
 public typealias OwnerStringList = [String]
 
 /**
+ Enumeration restricting the values of the PartitionLoadFrequency field.
+ */
+public enum PartitionLoadFrequency: String, Codable, CustomStringConvertible {
+    case daily
+    case monthly
+    case none
+    case weekly
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PartitionLoadFrequency = .daily
+}
+
+/**
  Type definition for the PathComponentList field.
  */
 public typealias PathComponentList = [PathComponent]
@@ -4875,6 +4911,39 @@ public typealias RegionNameStringList = [String]
 public typealias RemovePrefixListEntries = [RemovePrefixListEntry]
 
 /**
+ Type definition for the ReplaceRootVolumeTaskId field.
+ */
+public typealias ReplaceRootVolumeTaskId = String
+
+/**
+ Type definition for the ReplaceRootVolumeTaskIds field.
+ */
+public typealias ReplaceRootVolumeTaskIds = [ReplaceRootVolumeTaskId]
+
+/**
+ Enumeration restricting the values of the ReplaceRootVolumeTaskState field.
+ */
+public enum ReplaceRootVolumeTaskState: String, Codable, CustomStringConvertible {
+    case failed
+    case failedDetached = "failed-detached"
+    case failing
+    case inProgress = "in-progress"
+    case pending
+    case succeeded
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReplaceRootVolumeTaskState = .failed
+}
+
+/**
+ Type definition for the ReplaceRootVolumeTasks field.
+ */
+public typealias ReplaceRootVolumeTasks = [ReplaceRootVolumeTask]
+
+/**
  Enumeration restricting the values of the ReplacementStrategy field.
  */
 public enum ReplacementStrategy: String, Codable, CustomStringConvertible {
@@ -4945,7 +5014,7 @@ public typealias RequestSpotLaunchSpecificationSecurityGroupIdList = [SecurityGr
 /**
  Type definition for the RequestSpotLaunchSpecificationSecurityGroupList field.
  */
-public typealias RequestSpotLaunchSpecificationSecurityGroupList = [SecurityGroupName]
+public typealias RequestSpotLaunchSpecificationSecurityGroupList = [String]
 
 /**
  Type definition for the ReservationId field.
@@ -5294,6 +5363,11 @@ public enum RuleAction: String, Codable, CustomStringConvertible {
     
     public static let __default: RuleAction = .allow
 }
+
+/**
+ Type definition for the S3ObjectTagList field.
+ */
+public typealias S3ObjectTagList = [S3ObjectTag]
 
 /**
  Type definition for the ScheduledInstanceAvailabilitySet field.
@@ -5688,6 +5762,11 @@ public enum StatusType: String, Codable, CustomStringConvertible {
     
     public static let __default: StatusType = .failed
 }
+
+/**
+ Type definition for the StoreImageTaskResultSet field.
+ */
+public typealias StoreImageTaskResultSet = [StoreImageTaskResult]
 
 /**
  Type definition for the StringList field.
@@ -7101,6 +7180,21 @@ extension ElasticComputeCloudModel.AddressMaxResults {
 }
 
 /**
+ Validation for the AthenaIntegrationsSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.AthenaIntegration {
+    public func validateAsAthenaIntegrationsSet() throws {
+        if self.count < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AthenaIntegrationsSet violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AthenaIntegrationsSet violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the CarrierGatewayMaxResults field.
 */
 extension ElasticComputeCloudModel.CarrierGatewayMaxResults {
@@ -7566,6 +7660,21 @@ extension ElasticComputeCloudModel.DescribePrincipalIdFormatMaxResults {
 }
 
 /**
+ Validation for the DescribeReplaceRootVolumeTasksMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksMaxResults {
+    public func validateAsDescribeReplaceRootVolumeTasksMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeReplaceRootVolumeTasksMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 50 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeReplaceRootVolumeTasksMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DescribeRouteTablesMaxResults field.
 */
 extension ElasticComputeCloudModel.DescribeRouteTablesMaxResults {
@@ -7666,6 +7775,21 @@ extension ElasticComputeCloudModel.DescribeStaleSecurityGroupsNextToken {
 
         if self.count > 1024 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStaleSecurityGroupsNextToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeStoreImageTasksRequestMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeStoreImageTasksRequestMaxResults {
+    public func validateAsDescribeStoreImageTasksRequestMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStoreImageTasksRequestMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 200 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeStoreImageTasksRequestMaxResults violated the maximum range constraint.")
         }
     }
 }
