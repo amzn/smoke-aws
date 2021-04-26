@@ -3,7 +3,7 @@
 <img src="https://travis-ci.com/amzn/smoke-aws.svg?branch=master" alt="Build - Master Branch">
 </a>
 <a href="http://swift.org">
-<img src="https://img.shields.io/badge/swift-5.1|5.2|5.3-orange.svg?style=flat" alt="Swift 5.1, 5.2 and 5.3 Tested">
+<img src="https://img.shields.io/badge/swift-5.1|5.2|5.3|5.4-orange.svg?style=flat" alt="Swift 5.1, 5.2 and 5.3 Tested">
 </a>
 <img src="https://img.shields.io/badge/ubuntu-16.04|18.04|20.04-yellow.svg?style=flat" alt="Ubuntu 16.04, 18.04 and 20.04 Tested">
 <img src="https://img.shields.io/badge/CentOS-8-yellow.svg?style=flat" alt="CentOS 8 Tested">
@@ -136,6 +136,16 @@ import SmokeAWSCredentials
     guard let credentialsProvider = AwsContainerRotatingCredentials.getCredentials(fromEnvironment: environment) else {
         return Log.error("Unable to obtain credentials from the container environment.")
     }
+    
+    // for the EC2 clients, only emit the retry count metric
+    // only report 5XX error counts for DescribeInstances (even if additional operations are added in the future)
+    // only report 4XX error counts for operations other than DescribeInstances (including if they are added in the future)
+    let reportingConfiguration = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>(
+        successCounterMatchingOperations: .none,
+        failure5XXCounterMatchingRequests: .onlyForOperations([.describeInstances]),
+        failure4XXCounterMatchingRequests: .exceptForOperations([.describeInstances]),
+        retryCountRecorderMatchingOperations: .all,
+        latencyTimerMatchingOperations: .none)
 
     self.ec2ClientGenerator = AWSElasticComputeCloudClientGenerator(
         credentialsProvider: credentialsProvider,
