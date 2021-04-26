@@ -54,11 +54,11 @@ matrix:
       env: DOCKER_IMAGE_TAG=swiftlang/swift:nightly-amazonlinux2 ONLY_RUN_SWIFT_LINT=no USE_APT_GET=no
 
     # Use a docker image that contains the SwiftLint executable the verify the code against the linter.
-    - os: linux
-      dist: xenial
-      sudo: required
-      services: docker
-      env: DOCKER_IMAGE_TAG=bytesguy/swiftlint:0.39.2 ONLY_RUN_SWIFT_LINT=yes USE_APT_GET=no
+#    - os: linux
+#      dist: xenial
+#      sudo: required
+#      services: docker
+#      env: DOCKER_IMAGE_TAG=bytesguy/swiftlint:0.39.2 ONLY_RUN_SWIFT_LINT=yes USE_APT_GET=no
 
 before_install:
   - docker pull $DOCKER_IMAGE_TAG
