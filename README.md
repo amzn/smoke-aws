@@ -137,7 +137,7 @@ import SmokeAWSCredentials
         return Log.error("Unable to obtain credentials from the container environment.")
     }
     
-    // for the EC2 clients, only emit the retry count metric
+    // optional: for the EC2 clients, only emit the retry count metric
     // only report 5XX error counts for DescribeInstances (even if additional operations are added in the future)
     // only report 4XX error counts for operations other than DescribeInstances (including if they are added in the future)
     let reportingConfiguration = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>(
@@ -151,10 +151,10 @@ import SmokeAWSCredentials
         credentialsProvider: credentialsProvider,
         awsRegion: region,
         endpointHostName: ec2EndpointHostName,
-        connectionTimeoutSeconds: connectionTimeoutSeconds,
-        retryConfiguration: retryConfiguration,
-        eventLoopProvider: .createNew,
-        reportingConfiguration: reportingConfiguration)
+        connectionTimeoutSeconds: connectionTimeoutSeconds, // optional
+        retryConfiguration: retryConfiguration,             // optional
+        eventLoopProvider: .createNew,                      // optional
+        reportingConfiguration: reportingConfiguration)     // optional
 ```
 
 The inputs to this constructor are-
