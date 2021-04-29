@@ -19,6 +19,8 @@ import Foundation
 
 public struct SmokeAWSClientReportingConfiguration<OperationIdentifer: Hashable> {
     
+    // TODO: Remove non-inclusive language
+    // https://github.com/amzn/smoke-aws/issues/84
     public enum MatchingOperations {
         case all
         case whitelist(Set<OperationIdentifer>)
@@ -58,6 +60,14 @@ public struct SmokeAWSClientReportingConfiguration<OperationIdentifer: Hashable>
     
     public static var all: Self {
         return .init(matchingOperations: .all)
+    }
+    
+    public static func onlyForOperations(_ operations: Set<OperationIdentifer>) -> Self {
+        return .init(matchingOperations: .whitelist(operations))
+    }
+
+    public static func exceptForOperations(_ operations: Set<OperationIdentifer>) -> Self {
+        return .init(matchingOperations: .blacklist(operations))
     }
     
     public func reportSuccessForOperation(_ operation: OperationIdentifer) -> Bool {
