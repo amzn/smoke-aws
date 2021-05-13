@@ -85,23 +85,4 @@ public extension AWSClientProtocol {
     }
 }
 
-public struct AWSClientHelper {
-    public static func getEventLoop(eventLoopGroupProvider: HTTPClient.EventLoopGroupProvider) -> EventLoopGroup {
-        switch eventLoopGroupProvider {
-        case .shared(let group):
-            return group
-        case .createNew:
-            #if canImport(Network)
-                if #available(OSX 10.14, iOS 12.0, tvOS 12.0, watchOS 6.0, *) {
-                    return NIOTSEventLoopGroup()
-                } else {
-                    return MultiThreadedEventLoopGroup(numberOfThreads: 1)
-                }
-            #else
-                return MultiThreadedEventLoopGroup(numberOfThreads: 1)
-            #endif
-        }
-    }
-}
-
 #endif
