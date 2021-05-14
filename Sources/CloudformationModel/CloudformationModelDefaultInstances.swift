@@ -1387,6 +1387,7 @@ public extension GetTemplateSummaryInput {
      */
     static let __default: CloudformationModel.GetTemplateSummaryInput = {
         let defaultInstance = CloudformationModel.GetTemplateSummaryInput(
+            callAs: nil,
             stackName: nil,
             stackSetName: nil,
             templateBody: nil,

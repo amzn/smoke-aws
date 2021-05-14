@@ -3300,10 +3300,14 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case t4gNano = "t4g.nano"
     case t4gSmall = "t4g.small"
     case t4gXlarge = "t4g.xlarge"
+    case u12tb1112xlarge = "u-12tb1.112xlarge"
     case u12tb1Metal = "u-12tb1.metal"
     case u18tb1Metal = "u-18tb1.metal"
     case u24tb1Metal = "u-24tb1.metal"
+    case u6tb1112xlarge = "u-6tb1.112xlarge"
+    case u6tb156xlarge = "u-6tb1.56xlarge"
     case u6tb1Metal = "u-6tb1.metal"
+    case u9tb1112xlarge = "u-9tb1.112xlarge"
     case u9tb1Metal = "u-9tb1.metal"
     case x116xlarge = "x1.16xlarge"
     case x132xlarge = "x1.32xlarge"
@@ -7892,21 +7896,6 @@ extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateCon
 
         if self.count > 50 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateConfigListRequest violated the maximum length constraint.")
-        }
-    }
-}
-
-/**
- Validation for the FleetLaunchTemplateOverridesListRequest field.
-*/
-extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateOverridesRequest {
-    public func validateAsFleetLaunchTemplateOverridesListRequest() throws {
-        if self.count < 0 {
-            throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateOverridesListRequest violated the minimum length constraint.")
-        }
-
-        if self.count > 50 {
-            throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateOverridesListRequest violated the maximum length constraint.")
         }
     }
 }

@@ -1124,6 +1124,18 @@ public extension EnvironmentFile {
     }()
 }
 
+public extension EphemeralStorage {
+    /**
+     Default instance of the EphemeralStorage structure.
+     */
+    static let __default: ElasticContainerModel.EphemeralStorage = {
+        let defaultInstance = ElasticContainerModel.EphemeralStorage(
+            sizeInGiB: 0)
+
+        return defaultInstance
+    }()
+}
+
 public extension ExecuteCommandConfiguration {
     /**
      Default instance of the ExecuteCommandConfiguration structure.
@@ -2015,6 +2027,7 @@ public extension RegisterTaskDefinitionRequest {
         let defaultInstance = ElasticContainerModel.RegisterTaskDefinitionRequest(
             containerDefinitions: [],
             cpu: nil,
+            ephemeralStorage: nil,
             executionRoleArn: nil,
             family: "value",
             inferenceAccelerators: nil,
@@ -2551,6 +2564,7 @@ public extension Task {
             createdAt: nil,
             desiredStatus: nil,
             enableExecuteCommand: nil,
+            ephemeralStorage: nil,
             executionStoppedAt: nil,
             group: nil,
             healthStatus: nil,
@@ -2587,6 +2601,7 @@ public extension TaskDefinition {
             containerDefinitions: nil,
             cpu: nil,
             deregisteredAt: nil,
+            ephemeralStorage: nil,
             executionRoleArn: nil,
             family: nil,
             inferenceAccelerators: nil,
@@ -2631,6 +2646,7 @@ public extension TaskOverride {
         let defaultInstance = ElasticContainerModel.TaskOverride(
             containerOverrides: nil,
             cpu: nil,
+            ephemeralStorage: nil,
             executionRoleArn: nil,
             inferenceAcceleratorOverrides: nil,
             memory: nil,

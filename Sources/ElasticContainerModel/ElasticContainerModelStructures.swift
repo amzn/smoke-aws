@@ -2017,6 +2017,21 @@ public struct EnvironmentFile: Codable, Equatable {
     }
 }
 
+public struct EphemeralStorage: Codable, Equatable {
+    public var sizeInGiB: Integer
+
+    public init(sizeInGiB: Integer) {
+        self.sizeInGiB = sizeInGiB
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case sizeInGiB
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ExecuteCommandConfiguration: Codable, Equatable {
     public var kmsKeyId: String?
     public var logConfiguration: ExecuteCommandLogConfiguration?
@@ -3444,6 +3459,7 @@ public struct RegisterContainerInstanceResponse: Codable, Equatable {
 public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     public var containerDefinitions: ContainerDefinitions
     public var cpu: String?
+    public var ephemeralStorage: EphemeralStorage?
     public var executionRoleArn: String?
     public var family: String
     public var inferenceAccelerators: InferenceAccelerators?
@@ -3460,6 +3476,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
 
     public init(containerDefinitions: ContainerDefinitions,
                 cpu: String? = nil,
+                ephemeralStorage: EphemeralStorage? = nil,
                 executionRoleArn: String? = nil,
                 family: String,
                 inferenceAccelerators: InferenceAccelerators? = nil,
@@ -3475,6 +3492,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
                 volumes: VolumeList? = nil) {
         self.containerDefinitions = containerDefinitions
         self.cpu = cpu
+        self.ephemeralStorage = ephemeralStorage
         self.executionRoleArn = executionRoleArn
         self.family = family
         self.inferenceAccelerators = inferenceAccelerators
@@ -3493,6 +3511,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case containerDefinitions
         case cpu
+        case ephemeralStorage
         case executionRoleArn
         case family
         case inferenceAccelerators
@@ -3509,6 +3528,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+        try ephemeralStorage?.validate()
         try proxyConfiguration?.validate()
         try tags?.validateAsTags()
     }
@@ -4404,6 +4424,7 @@ public struct Task: Codable, Equatable {
     public var createdAt: Timestamp?
     public var desiredStatus: String?
     public var enableExecuteCommand: Boolean?
+    public var ephemeralStorage: EphemeralStorage?
     public var executionStoppedAt: Timestamp?
     public var group: String?
     public var healthStatus: HealthStatus?
@@ -4439,6 +4460,7 @@ public struct Task: Codable, Equatable {
                 createdAt: Timestamp? = nil,
                 desiredStatus: String? = nil,
                 enableExecuteCommand: Boolean? = nil,
+                ephemeralStorage: EphemeralStorage? = nil,
                 executionStoppedAt: Timestamp? = nil,
                 group: String? = nil,
                 healthStatus: HealthStatus? = nil,
@@ -4473,6 +4495,7 @@ public struct Task: Codable, Equatable {
         self.createdAt = createdAt
         self.desiredStatus = desiredStatus
         self.enableExecuteCommand = enableExecuteCommand
+        self.ephemeralStorage = ephemeralStorage
         self.executionStoppedAt = executionStoppedAt
         self.group = group
         self.healthStatus = healthStatus
@@ -4510,6 +4533,7 @@ public struct Task: Codable, Equatable {
         case createdAt
         case desiredStatus
         case enableExecuteCommand
+        case ephemeralStorage
         case executionStoppedAt
         case group
         case healthStatus
@@ -4534,6 +4558,7 @@ public struct Task: Codable, Equatable {
     }
 
     public func validate() throws {
+        try ephemeralStorage?.validate()
         try overrides?.validate()
         try tags?.validateAsTags()
     }
@@ -4544,6 +4569,7 @@ public struct TaskDefinition: Codable, Equatable {
     public var containerDefinitions: ContainerDefinitions?
     public var cpu: String?
     public var deregisteredAt: Timestamp?
+    public var ephemeralStorage: EphemeralStorage?
     public var executionRoleArn: String?
     public var family: String?
     public var inferenceAccelerators: InferenceAccelerators?
@@ -4567,6 +4593,7 @@ public struct TaskDefinition: Codable, Equatable {
                 containerDefinitions: ContainerDefinitions? = nil,
                 cpu: String? = nil,
                 deregisteredAt: Timestamp? = nil,
+                ephemeralStorage: EphemeralStorage? = nil,
                 executionRoleArn: String? = nil,
                 family: String? = nil,
                 inferenceAccelerators: InferenceAccelerators? = nil,
@@ -4589,6 +4616,7 @@ public struct TaskDefinition: Codable, Equatable {
         self.containerDefinitions = containerDefinitions
         self.cpu = cpu
         self.deregisteredAt = deregisteredAt
+        self.ephemeralStorage = ephemeralStorage
         self.executionRoleArn = executionRoleArn
         self.family = family
         self.inferenceAccelerators = inferenceAccelerators
@@ -4614,6 +4642,7 @@ public struct TaskDefinition: Codable, Equatable {
         case containerDefinitions
         case cpu
         case deregisteredAt
+        case ephemeralStorage
         case executionRoleArn
         case family
         case inferenceAccelerators
@@ -4635,6 +4664,7 @@ public struct TaskDefinition: Codable, Equatable {
     }
 
     public func validate() throws {
+        try ephemeralStorage?.validate()
         try proxyConfiguration?.validate()
     }
 }
@@ -4661,6 +4691,7 @@ public struct TaskDefinitionPlacementConstraint: Codable, Equatable {
 public struct TaskOverride: Codable, Equatable {
     public var containerOverrides: ContainerOverrides?
     public var cpu: String?
+    public var ephemeralStorage: EphemeralStorage?
     public var executionRoleArn: String?
     public var inferenceAcceleratorOverrides: InferenceAcceleratorOverrides?
     public var memory: String?
@@ -4668,12 +4699,14 @@ public struct TaskOverride: Codable, Equatable {
 
     public init(containerOverrides: ContainerOverrides? = nil,
                 cpu: String? = nil,
+                ephemeralStorage: EphemeralStorage? = nil,
                 executionRoleArn: String? = nil,
                 inferenceAcceleratorOverrides: InferenceAcceleratorOverrides? = nil,
                 memory: String? = nil,
                 taskRoleArn: String? = nil) {
         self.containerOverrides = containerOverrides
         self.cpu = cpu
+        self.ephemeralStorage = ephemeralStorage
         self.executionRoleArn = executionRoleArn
         self.inferenceAcceleratorOverrides = inferenceAcceleratorOverrides
         self.memory = memory
@@ -4683,6 +4716,7 @@ public struct TaskOverride: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case containerOverrides
         case cpu
+        case ephemeralStorage
         case executionRoleArn
         case inferenceAcceleratorOverrides
         case memory
@@ -4690,6 +4724,7 @@ public struct TaskOverride: Codable, Equatable {
     }
 
     public func validate() throws {
+        try ephemeralStorage?.validate()
     }
 }
 
