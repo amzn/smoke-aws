@@ -17903,7 +17903,6 @@ public struct FleetLaunchTemplateConfigRequest: Codable, Equatable {
 
     public func validate() throws {
         try launchTemplateSpecification?.validate()
-        try overrides?.validateAsFleetLaunchTemplateOverridesListRequest()
     }
 }
 

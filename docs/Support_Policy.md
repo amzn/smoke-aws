@@ -1,5 +1,5 @@
 ---
-date: 2021-04-26 15:00
+date: 2021-05-14 15:00
 description: Support Policy for SmokeAWS.
 tags: support policy
 ---
@@ -24,16 +24,15 @@ SmokeAWS has two mechanism for removing support for Swift Toolchain versions-
 Once support has been removed, testing via continuous integration may be removed and no guarantees will be given for compiling the package using this version of the toolchain.
 
 Following these rules, the support level for different Swift Toolchain versions are-
-1. **Swift 5.0 and earlier**: No support.
-2. **Swift 5.1**: Supported for SmokeAWS 2.x. Support to be removed after 12th of May, 2021.
-3. **Swift 5.2**: Supported for SmokeAWS 2.x. Support to be removed after 26th of October, 2021.
-4. **Swift 5.3**: Supported for SmokeAWS 2.x.
-5. **Swift 5.4**: Supported for SmokeAWS 2.x.
+1. **Swift 5.1 and earlier**: No support.
+2. **Swift 5.2**: Supported for SmokeAWS 2.x. Support to be removed after 26th of October, 2021.
+3. **Swift 5.3**: Supported for SmokeAWS 2.x.
+4. **Swift 5.4**: Supported for SmokeAWS 2.x.
 
 # Runtime Support
 
 SmokeAWS will provide support for the following runtimes, verifying this support using continuous integration of all changes for these runtimes.  Verification of support through continuous integration for each of these runtimes will occur for five years from their release, unless otherwise stated-
-1. **Ubuntu 16.04**: CI verification to be removed after April, 2021.
+1. **Ubuntu 16.04 and earlier**: No support.
 2. **Ubuntu 18.04**: CI verification to be removed after April, 2023.
 3. **Ubuntu 20.04**: CI verification to be removed after April, 2025.
 4. **Amazon Linux 2**: CI verification to be removed after June, 2023.
@@ -43,14 +42,5 @@ SmokeAWS will provide support for the following runtimes, verifying this support
 
 Currently, SmokeAWS supports macOS as a development environment and will provide support for **at least** the two most recent macOS versions. For these two versions of macOS, SmokeAWS will ensure debug support as long as XCode does.
 
-Following these rules, the support level for different macOS versions are-
-
-SmokeAWS 2.x
-* when compiling under Swift 5.2, ***macOS Catalina (10.15)*** or higher is required[1]
-* when compiling under Swift 5.1, ***macOS High Sierra (10.13)*** or higher is required
-
-SmokeAWS 1.x
-* ***macOS Sierra (10.12)*** or higher is required
-
-[1] Swift 5.2 is shipped with XCode 11.4 which requires a Mac running macOS Catalina 10.15.2 or later and therefore SmokeAWS doesn't support the combination of Swift 5.2 with earlier versions of macOS
+Following these rules, SmokeAWS currently requires ***macOS Catalina (10.15)*** or higher.
 

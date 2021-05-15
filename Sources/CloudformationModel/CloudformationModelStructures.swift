@@ -2294,15 +2294,18 @@ public struct GetTemplateOutputForGetTemplate: Codable, Equatable {
 }
 
 public struct GetTemplateSummaryInput: Codable, Equatable {
+    public var callAs: CallAs?
     public var stackName: StackNameOrId?
     public var stackSetName: StackSetNameOrId?
     public var templateBody: TemplateBody?
     public var templateURL: TemplateURL?
 
-    public init(stackName: StackNameOrId? = nil,
+    public init(callAs: CallAs? = nil,
+                stackName: StackNameOrId? = nil,
                 stackSetName: StackSetNameOrId? = nil,
                 templateBody: TemplateBody? = nil,
                 templateURL: TemplateURL? = nil) {
+        self.callAs = callAs
         self.stackName = stackName
         self.stackSetName = stackSetName
         self.templateBody = templateBody
@@ -2310,6 +2313,7 @@ public struct GetTemplateSummaryInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
         case stackName = "StackName"
         case stackSetName = "StackSetName"
         case templateBody = "TemplateBody"
