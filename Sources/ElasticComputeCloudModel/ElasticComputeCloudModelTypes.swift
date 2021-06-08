@@ -4405,6 +4405,11 @@ public enum OperationType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the OutpostArn field.
+ */
+public typealias OutpostArn = String
+
+/**
  Type definition for the OwnerStringList field.
  */
 public typealias OwnerStringList = [String]
@@ -8040,6 +8045,19 @@ extension ElasticComputeCloudModel.NetworkInsightsMaxResults {
 
         if self > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to NetworkInsightsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the OutpostArn field.
+*/
+extension ElasticComputeCloudModel.OutpostArn {
+    public func validateAsOutpostArn() throws {
+        guard let matchingRange = self.range(of: "^arn:aws([a-z-]+)?:outposts:[a-z\\d-]+:\\d{12}:outpost/op-[a-f0-9]{17}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticComputeCloudError.validationError(
+                    reason: "The provided value to OutpostArn violated the regular expression constraint.")
         }
     }
 }

@@ -212,6 +212,42 @@ public extension CreatePlatformEndpointInput {
     }()
 }
 
+public extension CreateSMSSandboxPhoneNumberInput {
+    /**
+     Default instance of the CreateSMSSandboxPhoneNumberInput structure.
+     */
+    static let __default: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput = {
+        let defaultInstance = SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput(
+            languageCode: nil,
+            phoneNumber: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateSMSSandboxPhoneNumberResult {
+    /**
+     Default instance of the CreateSMSSandboxPhoneNumberResult structure.
+     */
+    static let __default: SimpleNotificationModel.CreateSMSSandboxPhoneNumberResult = {
+        let defaultInstance = SimpleNotificationModel.CreateSMSSandboxPhoneNumberResult()
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
+    /**
+     Default instance of the CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber structure.
+     */
+    static let __default: SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber = {
+        let defaultInstance = SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber(
+            createSMSSandboxPhoneNumberResult: CreateSMSSandboxPhoneNumberResult.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateTopicInput {
     /**
      Default instance of the CreateTopicInput structure.
@@ -269,6 +305,41 @@ public extension DeletePlatformApplicationInput {
     static let __default: SimpleNotificationModel.DeletePlatformApplicationInput = {
         let defaultInstance = SimpleNotificationModel.DeletePlatformApplicationInput(
             platformApplicationArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteSMSSandboxPhoneNumberInput {
+    /**
+     Default instance of the DeleteSMSSandboxPhoneNumberInput structure.
+     */
+    static let __default: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput = {
+        let defaultInstance = SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput(
+            phoneNumber: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteSMSSandboxPhoneNumberResult {
+    /**
+     Default instance of the DeleteSMSSandboxPhoneNumberResult structure.
+     */
+    static let __default: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResult = {
+        let defaultInstance = SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResult()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
+    /**
+     Default instance of the DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber structure.
+     */
+    static let __default: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber = {
+        let defaultInstance = SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber(
+            deleteSMSSandboxPhoneNumberResult: DeleteSMSSandboxPhoneNumberResult.__default)
 
         return defaultInstance
     }()
@@ -426,6 +497,41 @@ public extension GetSMSAttributesResponseForGetSMSAttributes {
     static let __default: SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes = {
         let defaultInstance = SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes(
             getSMSAttributesResult: GetSMSAttributesResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSMSSandboxAccountStatusInput {
+    /**
+     Default instance of the GetSMSSandboxAccountStatusInput structure.
+     */
+    static let __default: SimpleNotificationModel.GetSMSSandboxAccountStatusInput = {
+        let defaultInstance = SimpleNotificationModel.GetSMSSandboxAccountStatusInput()
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSMSSandboxAccountStatusResult {
+    /**
+     Default instance of the GetSMSSandboxAccountStatusResult structure.
+     */
+    static let __default: SimpleNotificationModel.GetSMSSandboxAccountStatusResult = {
+        let defaultInstance = SimpleNotificationModel.GetSMSSandboxAccountStatusResult(
+            isInSandbox: false)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
+    /**
+     Default instance of the GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus structure.
+     */
+    static let __default: SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus = {
+        let defaultInstance = SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus(
+            getSMSSandboxAccountStatusResult: GetSMSSandboxAccountStatusResult.__default)
 
         return defaultInstance
     }()
@@ -661,6 +767,44 @@ public extension ListEndpointsByPlatformApplicationResponseForListEndpointsByPla
     }()
 }
 
+public extension ListOriginationNumbersRequest {
+    /**
+     Default instance of the ListOriginationNumbersRequest structure.
+     */
+    static let __default: SimpleNotificationModel.ListOriginationNumbersRequest = {
+        let defaultInstance = SimpleNotificationModel.ListOriginationNumbersRequest(
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListOriginationNumbersResult {
+    /**
+     Default instance of the ListOriginationNumbersResult structure.
+     */
+    static let __default: SimpleNotificationModel.ListOriginationNumbersResult = {
+        let defaultInstance = SimpleNotificationModel.ListOriginationNumbersResult(
+            nextToken: nil,
+            phoneNumbers: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListOriginationNumbersResultForListOriginationNumbers {
+    /**
+     Default instance of the ListOriginationNumbersResultForListOriginationNumbers structure.
+     */
+    static let __default: SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers = {
+        let defaultInstance = SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers(
+            listOriginationNumbersResult: ListOriginationNumbersResult.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListPhoneNumbersOptedOutInput {
     /**
      Default instance of the ListPhoneNumbersOptedOutInput structure.
@@ -730,6 +874,44 @@ public extension ListPlatformApplicationsResponseForListPlatformApplications {
     static let __default: SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications = {
         let defaultInstance = SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications(
             listPlatformApplicationsResult: ListPlatformApplicationsResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListSMSSandboxPhoneNumbersInput {
+    /**
+     Default instance of the ListSMSSandboxPhoneNumbersInput structure.
+     */
+    static let __default: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput = {
+        let defaultInstance = SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput(
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListSMSSandboxPhoneNumbersResult {
+    /**
+     Default instance of the ListSMSSandboxPhoneNumbersResult structure.
+     */
+    static let __default: SimpleNotificationModel.ListSMSSandboxPhoneNumbersResult = {
+        let defaultInstance = SimpleNotificationModel.ListSMSSandboxPhoneNumbersResult(
+            nextToken: nil,
+            phoneNumbers: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
+    /**
+     Default instance of the ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers structure.
+     */
+    static let __default: SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers = {
+        let defaultInstance = SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers(
+            listSMSSandboxPhoneNumbersResult: ListSMSSandboxPhoneNumbersResult.__default)
 
         return defaultInstance
     }()
@@ -944,6 +1126,35 @@ public extension OptInPhoneNumberResponseForOptInPhoneNumber {
     }()
 }
 
+public extension OptedOutException {
+    /**
+     Default instance of the OptedOutException structure.
+     */
+    static let __default: SimpleNotificationModel.OptedOutException = {
+        let defaultInstance = SimpleNotificationModel.OptedOutException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PhoneNumberInformation {
+    /**
+     Default instance of the PhoneNumberInformation structure.
+     */
+    static let __default: SimpleNotificationModel.PhoneNumberInformation = {
+        let defaultInstance = SimpleNotificationModel.PhoneNumberInformation(
+            createdAt: nil,
+            iso2CountryCode: nil,
+            numberCapabilities: nil,
+            phoneNumber: nil,
+            routeType: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PlatformApplication {
     /**
      Default instance of the PlatformApplication structure.
@@ -1034,6 +1245,19 @@ public extension ResourceNotFoundException {
     static let __default: SimpleNotificationModel.ResourceNotFoundException = {
         let defaultInstance = SimpleNotificationModel.ResourceNotFoundException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SMSSandboxPhoneNumber {
+    /**
+     Default instance of the SMSSandboxPhoneNumber structure.
+     */
+    static let __default: SimpleNotificationModel.SMSSandboxPhoneNumber = {
+        let defaultInstance = SimpleNotificationModel.SMSSandboxPhoneNumber(
+            phoneNumber: nil,
+            status: nil)
 
         return defaultInstance
     }()
@@ -1360,6 +1584,79 @@ public extension UntagResourceResponseForUntagResource {
     static let __default: SimpleNotificationModel.UntagResourceResponseForUntagResource = {
         let defaultInstance = SimpleNotificationModel.UntagResourceResponseForUntagResource(
             untagResourceResult: UntagResourceResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension UserErrorException {
+    /**
+     Default instance of the UserErrorException structure.
+     */
+    static let __default: SimpleNotificationModel.UserErrorException = {
+        let defaultInstance = SimpleNotificationModel.UserErrorException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ValidationException {
+    /**
+     Default instance of the ValidationException structure.
+     */
+    static let __default: SimpleNotificationModel.ValidationException = {
+        let defaultInstance = SimpleNotificationModel.ValidationException(
+            message: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension VerificationException {
+    /**
+     Default instance of the VerificationException structure.
+     */
+    static let __default: SimpleNotificationModel.VerificationException = {
+        let defaultInstance = SimpleNotificationModel.VerificationException(
+            message: "value",
+            status: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension VerifySMSSandboxPhoneNumberInput {
+    /**
+     Default instance of the VerifySMSSandboxPhoneNumberInput structure.
+     */
+    static let __default: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput = {
+        let defaultInstance = SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput(
+            oneTimePassword: "01234",
+            phoneNumber: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension VerifySMSSandboxPhoneNumberResult {
+    /**
+     Default instance of the VerifySMSSandboxPhoneNumberResult structure.
+     */
+    static let __default: SimpleNotificationModel.VerifySMSSandboxPhoneNumberResult = {
+        let defaultInstance = SimpleNotificationModel.VerifySMSSandboxPhoneNumberResult()
+
+        return defaultInstance
+    }()
+}
+
+public extension VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
+    /**
+     Default instance of the VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber structure.
+     */
+    static let __default: SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber = {
+        let defaultInstance = SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber(
+            verifySMSSandboxPhoneNumberResult: VerifySMSSandboxPhoneNumberResult.__default)
 
         return defaultInstance
     }()

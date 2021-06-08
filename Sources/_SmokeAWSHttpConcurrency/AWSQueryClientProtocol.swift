@@ -11,6 +11,7 @@ import SmokeAWSHttp
 import _SmokeHTTPClientConcurrency
 
 public extension AWSQueryClientProtocol {
+    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
     func executeWithoutOutput<InvocationReportingType: HTTPClientInvocationReporting,
                               WrappedInputType: HTTPRequestInputProtocol, ErrorType: ConvertableError>(
             httpClient: HTTPOperationsClient,
@@ -45,7 +46,8 @@ public extension AWSQueryClientProtocol {
             throw typedError
         }
     }
-        
+      
+    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
     func executeWithOutput<OutputType: HTTPResponseOutputProtocol, InvocationReportingType: HTTPClientInvocationReporting,
                                 WrappedInputType: HTTPRequestInputProtocol, ErrorType: ConvertableError>(
             httpClient: HTTPOperationsClient,

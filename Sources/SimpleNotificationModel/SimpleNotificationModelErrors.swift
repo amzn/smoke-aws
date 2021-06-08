@@ -48,6 +48,7 @@ private let kMSNotFoundIdentity = "KMSNotFound"
 private let kMSOptInRequiredIdentity = "KMSOptInRequired"
 private let kMSThrottlingIdentity = "KMSThrottling"
 private let notFoundIdentity = "NotFound"
+private let optedOutIdentity = "OptedOut"
 private let platformApplicationDisabledIdentity = "PlatformApplicationDisabled"
 private let resourceNotFoundIdentity = "ResourceNotFound"
 private let staleTagIdentity = "StaleTag"
@@ -56,6 +57,9 @@ private let tagLimitExceededIdentity = "TagLimitExceeded"
 private let tagPolicyIdentity = "TagPolicy"
 private let throttledIdentity = "Throttled"
 private let topicLimitExceededIdentity = "TopicLimitExceeded"
+private let userErrorIdentity = "UserError"
+private let validationIdentity = "ValidationException"
+private let verificationIdentity = "VerificationException"
 private let __accessDeniedIdentity = "AccessDenied"
 
 public enum SimpleNotificationError: Swift.Error, Decodable {
@@ -74,6 +78,7 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case kMSOptInRequired(KMSOptInRequired)
     case kMSThrottling(KMSThrottlingException)
     case notFound(NotFoundException)
+    case optedOut(OptedOutException)
     case platformApplicationDisabled(PlatformApplicationDisabledException)
     case resourceNotFound(ResourceNotFoundException)
     case staleTag(StaleTagException)
@@ -82,6 +87,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case tagPolicy(TagPolicyException)
     case throttled(ThrottledException)
     case topicLimitExceeded(TopicLimitExceededException)
+    case userError(UserErrorException)
+    case validation(ValidationException)
+    case verification(VerificationException)
     case accessDenied(message: String?)
     case validationError(reason: String)
     case unrecognizedError(String, String?)
@@ -146,6 +154,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case notFoundIdentity:
             let errorPayload = try NotFoundException(from: decoder)
             self = SimpleNotificationError.notFound(errorPayload)
+        case optedOutIdentity:
+            let errorPayload = try OptedOutException(from: decoder)
+            self = SimpleNotificationError.optedOut(errorPayload)
         case platformApplicationDisabledIdentity:
             let errorPayload = try PlatformApplicationDisabledException(from: decoder)
             self = SimpleNotificationError.platformApplicationDisabled(errorPayload)
@@ -170,6 +181,15 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case topicLimitExceededIdentity:
             let errorPayload = try TopicLimitExceededException(from: decoder)
             self = SimpleNotificationError.topicLimitExceeded(errorPayload)
+        case userErrorIdentity:
+            let errorPayload = try UserErrorException(from: decoder)
+            self = SimpleNotificationError.userError(errorPayload)
+        case validationIdentity:
+            let errorPayload = try ValidationException(from: decoder)
+            self = SimpleNotificationError.validation(errorPayload)
+        case verificationIdentity:
+            let errorPayload = try VerificationException(from: decoder)
+            self = SimpleNotificationError.verification(errorPayload)
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:

@@ -50,6 +50,11 @@ public typealias CreatePlatformApplicationOperationHTTPRequestInput = QueryHTTPR
 public typealias CreatePlatformEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateSMSSandboxPhoneNumber operation in a HTTP client.
+ */
+public typealias CreateSMSSandboxPhoneNumberOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateTopic operation in a HTTP client.
  */
 public typealias CreateTopicOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -63,6 +68,11 @@ public typealias DeleteEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the DeletePlatformApplication operation in a HTTP client.
  */
 public typealias DeletePlatformApplicationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteSMSSandboxPhoneNumber operation in a HTTP client.
+ */
+public typealias DeleteSMSSandboxPhoneNumberOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteTopic operation in a HTTP client.
@@ -85,6 +95,11 @@ public typealias GetPlatformApplicationAttributesOperationHTTPRequestInput = Que
 public typealias GetSMSAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetSMSSandboxAccountStatus operation in a HTTP client.
+ */
+public typealias GetSMSSandboxAccountStatusOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetSubscriptionAttributes operation in a HTTP client.
  */
 public typealias GetSubscriptionAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -100,6 +115,11 @@ public typealias GetTopicAttributesOperationHTTPRequestInput = QueryHTTPRequestI
 public typealias ListEndpointsByPlatformApplicationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ListOriginationNumbers operation in a HTTP client.
+ */
+public typealias ListOriginationNumbersOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListPhoneNumbersOptedOut operation in a HTTP client.
  */
 public typealias ListPhoneNumbersOptedOutOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -108,6 +128,11 @@ public typealias ListPhoneNumbersOptedOutOperationHTTPRequestInput = QueryHTTPRe
  Type to handle the input to the ListPlatformApplications operation in a HTTP client.
  */
 public typealias ListPlatformApplicationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ListSMSSandboxPhoneNumbers operation in a HTTP client.
+ */
+public typealias ListSMSSandboxPhoneNumbersOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ListSubscriptions operation in a HTTP client.
@@ -188,3 +213,8 @@ public typealias UnsubscribeOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the UntagResource operation in a HTTP client.
  */
 public typealias UntagResourceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the VerifySMSSandboxPhoneNumber operation in a HTTP client.
+ */
+public typealias VerifySMSSandboxPhoneNumberOperationHTTPRequestInput = QueryHTTPRequestInput

@@ -33,18 +33,23 @@ public struct SimpleNotificationOperationsReporting {
     public let confirmSubscription: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let createPlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let createPlatformEndpoint: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let createSMSSandboxPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let createTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let deleteEndpoint: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let deletePlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let deleteSMSSandboxPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let deleteTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getSMSAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getSMSSandboxAccountStatus: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getSubscriptionAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getTopicAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let listEndpointsByPlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listOriginationNumbers: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let listPhoneNumbersOptedOut: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let listPlatformApplications: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let listSMSSandboxPhoneNumbers: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let listSubscriptions: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let listSubscriptionsByTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
@@ -61,6 +66,7 @@ public struct SimpleNotificationOperationsReporting {
     public let tagResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let unsubscribe: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let untagResource: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let verifySMSSandboxPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>) {
         self.addPermission = StandardSmokeAWSOperationReporting(
@@ -73,12 +79,16 @@ public struct SimpleNotificationOperationsReporting {
             clientName: clientName, operation: .createPlatformApplication, configuration: reportingConfiguration)
         self.createPlatformEndpoint = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createPlatformEndpoint, configuration: reportingConfiguration)
+        self.createSMSSandboxPhoneNumber = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSMSSandboxPhoneNumber, configuration: reportingConfiguration)
         self.createTopic = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createTopic, configuration: reportingConfiguration)
         self.deleteEndpoint = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteEndpoint, configuration: reportingConfiguration)
         self.deletePlatformApplication = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deletePlatformApplication, configuration: reportingConfiguration)
+        self.deleteSMSSandboxPhoneNumber = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteSMSSandboxPhoneNumber, configuration: reportingConfiguration)
         self.deleteTopic = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTopic, configuration: reportingConfiguration)
         self.getEndpointAttributes = StandardSmokeAWSOperationReporting(
@@ -87,16 +97,22 @@ public struct SimpleNotificationOperationsReporting {
             clientName: clientName, operation: .getPlatformApplicationAttributes, configuration: reportingConfiguration)
         self.getSMSAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getSMSAttributes, configuration: reportingConfiguration)
+        self.getSMSSandboxAccountStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getSMSSandboxAccountStatus, configuration: reportingConfiguration)
         self.getSubscriptionAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getSubscriptionAttributes, configuration: reportingConfiguration)
         self.getTopicAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getTopicAttributes, configuration: reportingConfiguration)
         self.listEndpointsByPlatformApplication = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listEndpointsByPlatformApplication, configuration: reportingConfiguration)
+        self.listOriginationNumbers = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listOriginationNumbers, configuration: reportingConfiguration)
         self.listPhoneNumbersOptedOut = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listPhoneNumbersOptedOut, configuration: reportingConfiguration)
         self.listPlatformApplications = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listPlatformApplications, configuration: reportingConfiguration)
+        self.listSMSSandboxPhoneNumbers = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listSMSSandboxPhoneNumbers, configuration: reportingConfiguration)
         self.listSubscriptions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listSubscriptions, configuration: reportingConfiguration)
         self.listSubscriptionsByTopic = StandardSmokeAWSOperationReporting(
@@ -129,5 +145,7 @@ public struct SimpleNotificationOperationsReporting {
             clientName: clientName, operation: .unsubscribe, configuration: reportingConfiguration)
         self.untagResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .untagResource, configuration: reportingConfiguration)
+        self.verifySMSSandboxPhoneNumber = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .verifySMSSandboxPhoneNumber, configuration: reportingConfiguration)
     }
 }

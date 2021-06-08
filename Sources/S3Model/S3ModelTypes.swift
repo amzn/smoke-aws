@@ -846,6 +846,7 @@ public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConver
  Enumeration restricting the values of the InventoryOptionalField field.
  */
 public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
+    case bucketkeystatus = "BucketKeyStatus"
     case etag = "ETag"
     case encryptionstatus = "EncryptionStatus"
     case intelligenttieringaccesstier = "IntelligentTieringAccessTier"
@@ -862,7 +863,7 @@ public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: InventoryOptionalField = .etag
+    public static let __default: InventoryOptionalField = .bucketkeystatus
 }
 
 /**

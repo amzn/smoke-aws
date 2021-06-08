@@ -54,6 +54,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias CreatePlatformEndpointAsyncType = (
             _ input: SimpleNotificationModel.CreatePlatformEndpointInput, 
             _ completion: @escaping (Result<SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint, SimpleNotificationError>) -> ()) throws -> ()
+    typealias CreateSMSSandboxPhoneNumberSyncType = (
+            _ input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+    typealias CreateSMSSandboxPhoneNumberAsyncType = (
+            _ input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws -> ()
     typealias CreateTopicSyncType = (
             _ input: SimpleNotificationModel.CreateTopicInput) throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic
     typealias CreateTopicAsyncType = (
@@ -69,6 +74,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias DeletePlatformApplicationAsyncType = (
             _ input: SimpleNotificationModel.DeletePlatformApplicationInput, 
             _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
+    typealias DeleteSMSSandboxPhoneNumberSyncType = (
+            _ input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
+    typealias DeleteSMSSandboxPhoneNumberAsyncType = (
+            _ input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws -> ()
     typealias DeleteTopicSyncType = (
             _ input: SimpleNotificationModel.DeleteTopicInput) throws -> ()
     typealias DeleteTopicAsyncType = (
@@ -89,6 +99,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias GetSMSAttributesAsyncType = (
             _ input: SimpleNotificationModel.GetSMSAttributesInput, 
             _ completion: @escaping (Result<SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes, SimpleNotificationError>) -> ()) throws -> ()
+    typealias GetSMSSandboxAccountStatusSyncType = (
+            _ input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) throws -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+    typealias GetSMSSandboxAccountStatusAsyncType = (
+            _ input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus, SimpleNotificationError>) -> ()) throws -> ()
     typealias GetSubscriptionAttributesSyncType = (
             _ input: SimpleNotificationModel.GetSubscriptionAttributesInput) throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes
     typealias GetSubscriptionAttributesAsyncType = (
@@ -104,6 +119,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias ListEndpointsByPlatformApplicationAsyncType = (
             _ input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput, 
             _ completion: @escaping (Result<SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication, SimpleNotificationError>) -> ()) throws -> ()
+    typealias ListOriginationNumbersSyncType = (
+            _ input: SimpleNotificationModel.ListOriginationNumbersRequest) throws -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers
+    typealias ListOriginationNumbersAsyncType = (
+            _ input: SimpleNotificationModel.ListOriginationNumbersRequest, 
+            _ completion: @escaping (Result<SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListPhoneNumbersOptedOutSyncType = (
             _ input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut
     typealias ListPhoneNumbersOptedOutAsyncType = (
@@ -114,6 +134,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias ListPlatformApplicationsAsyncType = (
             _ input: SimpleNotificationModel.ListPlatformApplicationsInput, 
             _ completion: @escaping (Result<SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications, SimpleNotificationError>) -> ()) throws -> ()
+    typealias ListSMSSandboxPhoneNumbersSyncType = (
+            _ input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) throws -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
+    typealias ListSMSSandboxPhoneNumbersAsyncType = (
+            _ input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers, SimpleNotificationError>) -> ()) throws -> ()
     typealias ListSubscriptionsSyncType = (
             _ input: SimpleNotificationModel.ListSubscriptionsInput) throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions
     typealias ListSubscriptionsAsyncType = (
@@ -194,6 +219,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias UntagResourceAsyncType = (
             _ input: SimpleNotificationModel.UntagResourceRequest, 
             _ completion: @escaping (Result<SimpleNotificationModel.UntagResourceResponseForUntagResource, SimpleNotificationError>) -> ()) throws -> ()
+    typealias VerifySMSSandboxPhoneNumberSyncType = (
+            _ input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
+    typealias VerifySMSSandboxPhoneNumberAsyncType = (
+            _ input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws -> ()
 
     /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.
@@ -323,6 +353,32 @@ public protocol SimpleNotificationClientProtocol {
             input: SimpleNotificationModel.CreatePlatformEndpointInput) throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint
 
     /**
+     Invokes the CreateSMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    func createSMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the CreateSMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    func createSMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+
+    /**
      Invokes the CreateTopic operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -393,6 +449,32 @@ public protocol SimpleNotificationClientProtocol {
      */
     func deletePlatformApplicationSync(
             input: SimpleNotificationModel.DeletePlatformApplicationInput) throws
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    func deleteSMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    func deleteSMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
 
     /**
      Invokes the DeleteTopic operation returning immediately and passing the response to a callback.
@@ -496,6 +578,32 @@ public protocol SimpleNotificationClientProtocol {
             input: SimpleNotificationModel.GetSMSAttributesInput) throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes
 
     /**
+     Invokes the GetSMSSandboxAccountStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+         - completion: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object or an error will be passed to this 
+           callback when the operation is complete. The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, throttled.
+     */
+    func getSMSSandboxAccountStatusAsync(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput, 
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the GetSMSSandboxAccountStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+     - Returns: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, throttled.
+     */
+    func getSMSSandboxAccountStatusSync(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) throws -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+
+    /**
      Invokes the GetSubscriptionAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -574,6 +682,32 @@ public protocol SimpleNotificationClientProtocol {
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication
 
     /**
+     Invokes the ListOriginationNumbers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+         - completion: The ListOriginationNumbersResultForListOriginationNumbers object or an error will be passed to this 
+           callback when the operation is complete. The ListOriginationNumbersResultForListOriginationNumbers
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    func listOriginationNumbersAsync(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest, 
+            completion: @escaping (Result<SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the ListOriginationNumbers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+     - Returns: The ListOriginationNumbersResultForListOriginationNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    func listOriginationNumbersSync(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest) throws -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers
+
+    /**
      Invokes the ListPhoneNumbersOptedOut operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -624,6 +758,32 @@ public protocol SimpleNotificationClientProtocol {
      */
     func listPlatformApplicationsSync(
             input: SimpleNotificationModel.ListPlatformApplicationsInput) throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+         - completion: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object or an error will be passed to this 
+           callback when the operation is complete. The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    func listSMSSandboxPhoneNumbersAsync(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput, 
+            completion: @escaping (Result<SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+     - Returns: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    func listSMSSandboxPhoneNumbersSync(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) throws -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
 
     /**
      Invokes the ListSubscriptions operation returning immediately and passing the response to a callback.
@@ -1022,4 +1182,30 @@ public protocol SimpleNotificationClientProtocol {
      */
     func untagResourceSync(
             input: SimpleNotificationModel.UntagResourceRequest) throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    func verifySMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    func verifySMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
 }
