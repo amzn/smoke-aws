@@ -34,18 +34,23 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
     public let confirmSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createPlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createPlatformEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createSMSSandboxPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deletePlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteSMSSandboxPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSMSAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getSMSSandboxAccountStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSubscriptionAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTopicAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listEndpointsByPlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listOriginationNumbers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listPhoneNumbersOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listPlatformApplications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listSMSSandboxPhoneNumbers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listSubscriptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listSubscriptionsByTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -62,6 +67,7 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
     public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let unsubscribe: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let verifySMSSandboxPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: SimpleNotificationOperationsReporting) {
         self.addPermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -74,12 +80,16 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
             smokeAWSOperationReporting: operationsReporting.createPlatformApplication)
         self.createPlatformEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createPlatformEndpoint)
+        self.createSMSSandboxPhoneNumber = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createSMSSandboxPhoneNumber)
         self.createTopic = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTopic)
         self.deleteEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteEndpoint)
         self.deletePlatformApplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deletePlatformApplication)
+        self.deleteSMSSandboxPhoneNumber = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteSMSSandboxPhoneNumber)
         self.deleteTopic = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTopic)
         self.getEndpointAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -88,16 +98,22 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
             smokeAWSOperationReporting: operationsReporting.getPlatformApplicationAttributes)
         self.getSMSAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getSMSAttributes)
+        self.getSMSSandboxAccountStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getSMSSandboxAccountStatus)
         self.getSubscriptionAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getSubscriptionAttributes)
         self.getTopicAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getTopicAttributes)
         self.listEndpointsByPlatformApplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listEndpointsByPlatformApplication)
+        self.listOriginationNumbers = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listOriginationNumbers)
         self.listPhoneNumbersOptedOut = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listPhoneNumbersOptedOut)
         self.listPlatformApplications = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listPlatformApplications)
+        self.listSMSSandboxPhoneNumbers = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listSMSSandboxPhoneNumbers)
         self.listSubscriptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listSubscriptions)
         self.listSubscriptionsByTopic = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -130,5 +146,7 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
             smokeAWSOperationReporting: operationsReporting.unsubscribe)
         self.untagResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.untagResource)
+        self.verifySMSSandboxPhoneNumber = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.verifySMSSandboxPhoneNumber)
     }
 }

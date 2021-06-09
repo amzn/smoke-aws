@@ -536,6 +536,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     }
 
     /**
+     Invokes the CreateSMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    public func createSMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createSMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateSMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.createSMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateSMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    public func createSMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createSMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateSMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.createSMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateTopic operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -751,6 +829,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
 
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    public func deleteSMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteSMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteSMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.deleteSMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    public func deleteSMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteSMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteSMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.deleteSMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -1073,6 +1229,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     }
 
     /**
+     Invokes the GetSMSSandboxAccountStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+         - completion: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object or an error will be passed to this 
+           callback when the operation is complete. The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, throttled.
+     */
+    public func getSMSSandboxAccountStatusAsync(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput, 
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSMSSandboxAccountStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSMSSandboxAccountStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getSMSSandboxAccountStatus.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetSMSSandboxAccountStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+     - Returns: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, throttled.
+     */
+    public func getSMSSandboxAccountStatusSync(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) throws -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSMSSandboxAccountStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSMSSandboxAccountStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getSMSSandboxAccountStatus.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetSubscriptionAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1307,6 +1541,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
     }
 
     /**
+     Invokes the ListOriginationNumbers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+         - completion: The ListOriginationNumbersResultForListOriginationNumbers object or an error will be passed to this 
+           callback when the operation is complete. The ListOriginationNumbersResultForListOriginationNumbers
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    public func listOriginationNumbersAsync(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest, 
+            completion: @escaping (Result<SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listOriginationNumbers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListOriginationNumbersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listOriginationNumbers.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListOriginationNumbers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+     - Returns: The ListOriginationNumbersResultForListOriginationNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    public func listOriginationNumbersSync(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest) throws -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listOriginationNumbers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListOriginationNumbersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listOriginationNumbers.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListPhoneNumbersOptedOut operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1446,6 +1758,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+         - completion: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object or an error will be passed to this 
+           callback when the operation is complete. The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    public func listSMSSandboxPhoneNumbersAsync(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput, 
+            completion: @escaping (Result<SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSMSSandboxPhoneNumbers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListSMSSandboxPhoneNumbersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listSMSSandboxPhoneNumbers.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+     - Returns: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    public func listSMSSandboxPhoneNumbersSync(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) throws -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSMSSandboxPhoneNumbers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListSMSSandboxPhoneNumbersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listSMSSandboxPhoneNumbers.rawValue,
             version: apiVersion)
 
         do {
@@ -2676,6 +3066,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: SimpleNotificationModelOperations.untagResource.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    public func verifySMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.verifySMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = VerifySMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.verifySMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    public func verifySMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.verifySMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = VerifySMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.verifySMSSandboxPhoneNumber.rawValue,
             version: apiVersion)
 
         do {

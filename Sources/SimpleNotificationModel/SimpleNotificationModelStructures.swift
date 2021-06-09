@@ -291,6 +291,51 @@ public struct CreatePlatformEndpointInput: Codable, Equatable {
     }
 }
 
+public struct CreateSMSSandboxPhoneNumberInput: Codable, Equatable {
+    public var languageCode: LanguageCodeString?
+    public var phoneNumber: PhoneNumberString
+
+    public init(languageCode: LanguageCodeString? = nil,
+                phoneNumber: PhoneNumberString) {
+        self.languageCode = languageCode
+        self.phoneNumber = phoneNumber
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case languageCode = "LanguageCode"
+        case phoneNumber = "PhoneNumber"
+    }
+
+    public func validate() throws {
+        try phoneNumber.validateAsPhoneNumberString()
+    }
+}
+
+public struct CreateSMSSandboxPhoneNumberResult: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber: Codable, Equatable {
+    public var createSMSSandboxPhoneNumberResult: CreateSMSSandboxPhoneNumberResult
+
+    public init(createSMSSandboxPhoneNumberResult: CreateSMSSandboxPhoneNumberResult) {
+        self.createSMSSandboxPhoneNumberResult = createSMSSandboxPhoneNumberResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createSMSSandboxPhoneNumberResult = "CreateSMSSandboxPhoneNumberResult"
+    }
+
+    public func validate() throws {
+        try createSMSSandboxPhoneNumberResult.validate()
+    }
+}
+
 public struct CreateTopicInput: Codable, Equatable {
     public var attributes: TopicAttributesMap?
     public var name: TopicName
@@ -372,6 +417,47 @@ public struct DeletePlatformApplicationInput: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DeleteSMSSandboxPhoneNumberInput: Codable, Equatable {
+    public var phoneNumber: PhoneNumberString
+
+    public init(phoneNumber: PhoneNumberString) {
+        self.phoneNumber = phoneNumber
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case phoneNumber = "PhoneNumber"
+    }
+
+    public func validate() throws {
+        try phoneNumber.validateAsPhoneNumberString()
+    }
+}
+
+public struct DeleteSMSSandboxPhoneNumberResult: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber: Codable, Equatable {
+    public var deleteSMSSandboxPhoneNumberResult: DeleteSMSSandboxPhoneNumberResult
+
+    public init(deleteSMSSandboxPhoneNumberResult: DeleteSMSSandboxPhoneNumberResult) {
+        self.deleteSMSSandboxPhoneNumberResult = deleteSMSSandboxPhoneNumberResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteSMSSandboxPhoneNumberResult = "DeleteSMSSandboxPhoneNumberResult"
+    }
+
+    public func validate() throws {
+        try deleteSMSSandboxPhoneNumberResult.validate()
     }
 }
 
@@ -574,6 +660,46 @@ public struct GetSMSAttributesResponseForGetSMSAttributes: Codable, Equatable {
 
     public func validate() throws {
         try getSMSAttributesResult.validate()
+    }
+}
+
+public struct GetSMSSandboxAccountStatusInput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetSMSSandboxAccountStatusResult: Codable, Equatable {
+    public var isInSandbox: Boolean
+
+    public init(isInSandbox: Boolean) {
+        self.isInSandbox = isInSandbox
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case isInSandbox = "IsInSandbox"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus: Codable, Equatable {
+    public var getSMSSandboxAccountStatusResult: GetSMSSandboxAccountStatusResult
+
+    public init(getSMSSandboxAccountStatusResult: GetSMSSandboxAccountStatusResult) {
+        self.getSMSSandboxAccountStatusResult = getSMSSandboxAccountStatusResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case getSMSSandboxAccountStatusResult = "GetSMSSandboxAccountStatusResult"
+    }
+
+    public func validate() throws {
+        try getSMSSandboxAccountStatusResult.validate()
     }
 }
 
@@ -873,6 +999,61 @@ public struct ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatfo
     }
 }
 
+public struct ListOriginationNumbersRequest: Codable, Equatable {
+    public var maxResults: MaxItemsListOriginationNumbers?
+    public var nextToken: NextToken?
+
+    public init(maxResults: MaxItemsListOriginationNumbers? = nil,
+                nextToken: NextToken? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsMaxItemsListOriginationNumbers()
+    }
+}
+
+public struct ListOriginationNumbersResult: Codable, Equatable {
+    public var nextToken: NextToken?
+    public var phoneNumbers: PhoneNumberInformationList?
+
+    public init(nextToken: NextToken? = nil,
+                phoneNumbers: PhoneNumberInformationList? = nil) {
+        self.nextToken = nextToken
+        self.phoneNumbers = phoneNumbers
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken = "NextToken"
+        case phoneNumbers = "PhoneNumbers"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListOriginationNumbersResultForListOriginationNumbers: Codable, Equatable {
+    public var listOriginationNumbersResult: ListOriginationNumbersResult
+
+    public init(listOriginationNumbersResult: ListOriginationNumbersResult) {
+        self.listOriginationNumbersResult = listOriginationNumbersResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listOriginationNumbersResult = "ListOriginationNumbersResult"
+    }
+
+    public func validate() throws {
+        try listOriginationNumbersResult.validate()
+    }
+}
+
 public struct ListPhoneNumbersOptedOutInput: Codable, Equatable {
     public var nextToken: String?
 
@@ -970,6 +1151,61 @@ public struct ListPlatformApplicationsResponseForListPlatformApplications: Codab
 
     public func validate() throws {
         try listPlatformApplicationsResult.validate()
+    }
+}
+
+public struct ListSMSSandboxPhoneNumbersInput: Codable, Equatable {
+    public var maxResults: MaxItems?
+    public var nextToken: NextToken?
+
+    public init(maxResults: MaxItems? = nil,
+                nextToken: NextToken? = nil) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsMaxItems()
+    }
+}
+
+public struct ListSMSSandboxPhoneNumbersResult: Codable, Equatable {
+    public var nextToken: String?
+    public var phoneNumbers: SMSSandboxPhoneNumberList
+
+    public init(nextToken: String? = nil,
+                phoneNumbers: SMSSandboxPhoneNumberList) {
+        self.nextToken = nextToken
+        self.phoneNumbers = phoneNumbers
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken = "NextToken"
+        case phoneNumbers = "PhoneNumbers"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers: Codable, Equatable {
+    public var listSMSSandboxPhoneNumbersResult: ListSMSSandboxPhoneNumbersResult
+
+    public init(listSMSSandboxPhoneNumbersResult: ListSMSSandboxPhoneNumbersResult) {
+        self.listSMSSandboxPhoneNumbersResult = listSMSSandboxPhoneNumbersResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listSMSSandboxPhoneNumbersResult = "ListSMSSandboxPhoneNumbersResult"
+    }
+
+    public func validate() throws {
+        try listSMSSandboxPhoneNumbersResult.validate()
     }
 }
 
@@ -1252,6 +1488,57 @@ public struct OptInPhoneNumberResponseForOptInPhoneNumber: Codable, Equatable {
     }
 }
 
+public struct OptedOutException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PhoneNumberInformation: Codable, Equatable {
+    public var createdAt: Timestamp?
+    public var iso2CountryCode: Iso2CountryCode?
+    public var numberCapabilities: NumberCapabilityList?
+    public var phoneNumber: String?
+    public var routeType: RouteType?
+    public var status: String?
+
+    public init(createdAt: Timestamp? = nil,
+                iso2CountryCode: Iso2CountryCode? = nil,
+                numberCapabilities: NumberCapabilityList? = nil,
+                phoneNumber: String? = nil,
+                routeType: RouteType? = nil,
+                status: String? = nil) {
+        self.createdAt = createdAt
+        self.iso2CountryCode = iso2CountryCode
+        self.numberCapabilities = numberCapabilities
+        self.phoneNumber = phoneNumber
+        self.routeType = routeType
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt = "CreatedAt"
+        case iso2CountryCode = "Iso2CountryCode"
+        case numberCapabilities = "NumberCapabilities"
+        case phoneNumber = "PhoneNumber"
+        case routeType = "RouteType"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+        try iso2CountryCode?.validateAsIso2CountryCode()
+    }
+}
+
 public struct PlatformApplication: Codable, Equatable {
     public var attributes: MapStringToString?
     public var platformApplicationArn: String?
@@ -1399,6 +1686,26 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct SMSSandboxPhoneNumber: Codable, Equatable {
+    public var phoneNumber: PhoneNumberString?
+    public var status: SMSSandboxPhoneNumberVerificationStatus?
+
+    public init(phoneNumber: PhoneNumberString? = nil,
+                status: SMSSandboxPhoneNumberVerificationStatus? = nil) {
+        self.phoneNumber = phoneNumber
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case phoneNumber = "PhoneNumber"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+        try phoneNumber?.validateAsPhoneNumberString()
     }
 }
 
@@ -1847,5 +2154,100 @@ public struct UntagResourceResponseForUntagResource: Codable, Equatable {
 
     public func validate() throws {
         try untagResourceResult.validate()
+    }
+}
+
+public struct UserErrorException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ValidationException: Codable, Equatable {
+    public var message: String
+
+    public init(message: String) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message = "Message"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VerificationException: Codable, Equatable {
+    public var message: String
+    public var status: String
+
+    public init(message: String,
+                status: String) {
+        self.message = message
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message = "Message"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VerifySMSSandboxPhoneNumberInput: Codable, Equatable {
+    public var oneTimePassword: OTPCode
+    public var phoneNumber: PhoneNumberString
+
+    public init(oneTimePassword: OTPCode,
+                phoneNumber: PhoneNumberString) {
+        self.oneTimePassword = oneTimePassword
+        self.phoneNumber = phoneNumber
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case oneTimePassword = "OneTimePassword"
+        case phoneNumber = "PhoneNumber"
+    }
+
+    public func validate() throws {
+        try oneTimePassword.validateAsOTPCode()
+        try phoneNumber.validateAsPhoneNumberString()
+    }
+}
+
+public struct VerifySMSSandboxPhoneNumberResult: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber: Codable, Equatable {
+    public var verifySMSSandboxPhoneNumberResult: VerifySMSSandboxPhoneNumberResult
+
+    public init(verifySMSSandboxPhoneNumberResult: VerifySMSSandboxPhoneNumberResult) {
+        self.verifySMSSandboxPhoneNumberResult = verifySMSSandboxPhoneNumberResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case verifySMSSandboxPhoneNumberResult = "VerifySMSSandboxPhoneNumberResult"
+    }
+
+    public func validate() throws {
+        try verifySMSSandboxPhoneNumberResult.validate()
     }
 }

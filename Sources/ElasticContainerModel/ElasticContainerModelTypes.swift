@@ -209,6 +209,7 @@ public typealias Clusters = [Cluster]
  */
 public enum Compatibility: String, Codable, CustomStringConvertible {
     case ec2 = "EC2"
+    case external = "EXTERNAL"
     case fargate = "FARGATE"
 
     public var description: String {
@@ -548,6 +549,7 @@ public enum IpcMode: String, Codable, CustomStringConvertible {
  */
 public enum LaunchType: String, Codable, CustomStringConvertible {
     case ec2 = "EC2"
+    case external = "EXTERNAL"
     case fargate = "FARGATE"
 
     public var description: String {

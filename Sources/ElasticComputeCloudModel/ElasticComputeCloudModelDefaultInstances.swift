@@ -1535,6 +1535,7 @@ public extension CapacityReservation {
             instanceMatchCriteria: nil,
             instancePlatform: nil,
             instanceType: nil,
+            outpostArn: nil,
             ownerId: nil,
             startDate: nil,
             state: nil,
@@ -2237,6 +2238,7 @@ public extension CreateCapacityReservationRequest {
             instanceMatchCriteria: nil,
             instancePlatform: .__default,
             instanceType: "value",
+            outpostArn: nil,
             tagSpecifications: nil,
             tenancy: nil)
 
@@ -3007,6 +3009,7 @@ public extension CreateNetworkInterfaceRequest {
      */
     static let __default: ElasticComputeCloudModel.CreateNetworkInterfaceRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateNetworkInterfaceRequest(
+            clientToken: nil,
             description: nil,
             dryRun: nil,
             groups: nil,
@@ -3029,6 +3032,7 @@ public extension CreateNetworkInterfaceResult {
      */
     static let __default: ElasticComputeCloudModel.CreateNetworkInterfaceResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateNetworkInterfaceResult(
+            clientToken: nil,
             networkInterface: nil)
 
         return defaultInstance

@@ -2549,6 +2549,7 @@ public struct CapacityReservation: Codable, Equatable {
     public var instanceMatchCriteria: InstanceMatchCriteria?
     public var instancePlatform: CapacityReservationInstancePlatform?
     public var instanceType: String?
+    public var outpostArn: OutpostArn?
     public var ownerId: String?
     public var startDate: MillisecondDateTime?
     public var state: CapacityReservationState?
@@ -2569,6 +2570,7 @@ public struct CapacityReservation: Codable, Equatable {
                 instanceMatchCriteria: InstanceMatchCriteria? = nil,
                 instancePlatform: CapacityReservationInstancePlatform? = nil,
                 instanceType: String? = nil,
+                outpostArn: OutpostArn? = nil,
                 ownerId: String? = nil,
                 startDate: MillisecondDateTime? = nil,
                 state: CapacityReservationState? = nil,
@@ -2588,6 +2590,7 @@ public struct CapacityReservation: Codable, Equatable {
         self.instanceMatchCriteria = instanceMatchCriteria
         self.instancePlatform = instancePlatform
         self.instanceType = instanceType
+        self.outpostArn = outpostArn
         self.ownerId = ownerId
         self.startDate = startDate
         self.state = state
@@ -2610,6 +2613,7 @@ public struct CapacityReservation: Codable, Equatable {
         case instanceMatchCriteria
         case instancePlatform
         case instanceType
+        case outpostArn
         case ownerId
         case startDate
         case state
@@ -2619,6 +2623,7 @@ public struct CapacityReservation: Codable, Equatable {
     }
 
     public func validate() throws {
+        try outpostArn?.validateAsOutpostArn()
     }
 }
 
@@ -3827,6 +3832,7 @@ public struct CreateCapacityReservationRequest: Codable, Equatable {
     public var instanceMatchCriteria: InstanceMatchCriteria?
     public var instancePlatform: CapacityReservationInstancePlatform
     public var instanceType: String
+    public var outpostArn: OutpostArn?
     public var tagSpecifications: TagSpecificationList?
     public var tenancy: CapacityReservationTenancy?
 
@@ -3842,6 +3848,7 @@ public struct CreateCapacityReservationRequest: Codable, Equatable {
                 instanceMatchCriteria: InstanceMatchCriteria? = nil,
                 instancePlatform: CapacityReservationInstancePlatform,
                 instanceType: String,
+                outpostArn: OutpostArn? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 tenancy: CapacityReservationTenancy? = nil) {
         self.availabilityZone = availabilityZone
@@ -3856,6 +3863,7 @@ public struct CreateCapacityReservationRequest: Codable, Equatable {
         self.instanceMatchCriteria = instanceMatchCriteria
         self.instancePlatform = instancePlatform
         self.instanceType = instanceType
+        self.outpostArn = outpostArn
         self.tagSpecifications = tagSpecifications
         self.tenancy = tenancy
     }
@@ -3873,11 +3881,13 @@ public struct CreateCapacityReservationRequest: Codable, Equatable {
         case instanceMatchCriteria = "InstanceMatchCriteria"
         case instancePlatform = "InstancePlatform"
         case instanceType = "InstanceType"
+        case outpostArn = "OutpostArn"
         case tagSpecifications = "TagSpecifications"
         case tenancy = "Tenancy"
     }
 
     public func validate() throws {
+        try outpostArn?.validateAsOutpostArn()
     }
 }
 
@@ -5272,6 +5282,7 @@ public struct CreateNetworkInterfacePermissionResult: Codable, Equatable {
 }
 
 public struct CreateNetworkInterfaceRequest: Codable, Equatable {
+    public var clientToken: String?
     public var description: String?
     public var dryRun: Boolean?
     public var groups: SecurityGroupIdStringList?
@@ -5284,7 +5295,8 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
     public var subnetId: SubnetId
     public var tagSpecifications: TagSpecificationList?
 
-    public init(description: String? = nil,
+    public init(clientToken: String? = nil,
+                description: String? = nil,
                 dryRun: Boolean? = nil,
                 groups: SecurityGroupIdStringList? = nil,
                 interfaceType: NetworkInterfaceCreationType? = nil,
@@ -5295,6 +5307,7 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
                 secondaryPrivateIpAddressCount: Integer? = nil,
                 subnetId: SubnetId,
                 tagSpecifications: TagSpecificationList? = nil) {
+        self.clientToken = clientToken
         self.description = description
         self.dryRun = dryRun
         self.groups = groups
@@ -5309,6 +5322,7 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
         case description
         case dryRun
         case groups = "SecurityGroupId"
@@ -5327,13 +5341,17 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
 }
 
 public struct CreateNetworkInterfaceResult: Codable, Equatable {
+    public var clientToken: String?
     public var networkInterface: NetworkInterface?
 
-    public init(networkInterface: NetworkInterface? = nil) {
+    public init(clientToken: String? = nil,
+                networkInterface: NetworkInterface? = nil) {
+        self.clientToken = clientToken
         self.networkInterface = networkInterface
     }
 
     enum CodingKeys: String, CodingKey {
+        case clientToken
         case networkInterface
     }
 

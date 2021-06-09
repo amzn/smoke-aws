@@ -31,18 +31,23 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
     case confirmSubscription = "ConfirmSubscription"
     case createPlatformApplication = "CreatePlatformApplication"
     case createPlatformEndpoint = "CreatePlatformEndpoint"
+    case createSMSSandboxPhoneNumber = "CreateSMSSandboxPhoneNumber"
     case createTopic = "CreateTopic"
     case deleteEndpoint = "DeleteEndpoint"
     case deletePlatformApplication = "DeletePlatformApplication"
+    case deleteSMSSandboxPhoneNumber = "DeleteSMSSandboxPhoneNumber"
     case deleteTopic = "DeleteTopic"
     case getEndpointAttributes = "GetEndpointAttributes"
     case getPlatformApplicationAttributes = "GetPlatformApplicationAttributes"
     case getSMSAttributes = "GetSMSAttributes"
+    case getSMSSandboxAccountStatus = "GetSMSSandboxAccountStatus"
     case getSubscriptionAttributes = "GetSubscriptionAttributes"
     case getTopicAttributes = "GetTopicAttributes"
     case listEndpointsByPlatformApplication = "ListEndpointsByPlatformApplication"
+    case listOriginationNumbers = "ListOriginationNumbers"
     case listPhoneNumbersOptedOut = "ListPhoneNumbersOptedOut"
     case listPlatformApplications = "ListPlatformApplications"
+    case listSMSSandboxPhoneNumbers = "ListSMSSandboxPhoneNumbers"
     case listSubscriptions = "ListSubscriptions"
     case listSubscriptionsByTopic = "ListSubscriptionsByTopic"
     case listTagsForResource = "ListTagsForResource"
@@ -59,6 +64,7 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
     case tagResource = "TagResource"
     case unsubscribe = "Unsubscribe"
     case untagResource = "UntagResource"
+    case verifySMSSandboxPhoneNumber = "VerifySMSSandboxPhoneNumber"
 
     public var description: String {
         return rawValue
@@ -76,11 +82,15 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
             return "/"
         case .createPlatformEndpoint:
             return "/"
+        case .createSMSSandboxPhoneNumber:
+            return "/"
         case .createTopic:
             return "/"
         case .deleteEndpoint:
             return "/"
         case .deletePlatformApplication:
+            return "/"
+        case .deleteSMSSandboxPhoneNumber:
             return "/"
         case .deleteTopic:
             return "/"
@@ -90,15 +100,21 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
             return "/"
         case .getSMSAttributes:
             return "/"
+        case .getSMSSandboxAccountStatus:
+            return "/"
         case .getSubscriptionAttributes:
             return "/"
         case .getTopicAttributes:
             return "/"
         case .listEndpointsByPlatformApplication:
             return "/"
+        case .listOriginationNumbers:
+            return "/"
         case .listPhoneNumbersOptedOut:
             return "/"
         case .listPlatformApplications:
+            return "/"
+        case .listSMSSandboxPhoneNumbers:
             return "/"
         case .listSubscriptions:
             return "/"
@@ -131,6 +147,8 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
         case .unsubscribe:
             return "/"
         case .untagResource:
+            return "/"
+        case .verifySMSSandboxPhoneNumber:
             return "/"
         }
     }

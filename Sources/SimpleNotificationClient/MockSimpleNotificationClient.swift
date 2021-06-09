@@ -39,12 +39,16 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     let createPlatformApplicationSyncOverride: CreatePlatformApplicationSyncType?
     let createPlatformEndpointAsyncOverride: CreatePlatformEndpointAsyncType?
     let createPlatformEndpointSyncOverride: CreatePlatformEndpointSyncType?
+    let createSMSSandboxPhoneNumberAsyncOverride: CreateSMSSandboxPhoneNumberAsyncType?
+    let createSMSSandboxPhoneNumberSyncOverride: CreateSMSSandboxPhoneNumberSyncType?
     let createTopicAsyncOverride: CreateTopicAsyncType?
     let createTopicSyncOverride: CreateTopicSyncType?
     let deleteEndpointAsyncOverride: DeleteEndpointAsyncType?
     let deleteEndpointSyncOverride: DeleteEndpointSyncType?
     let deletePlatformApplicationAsyncOverride: DeletePlatformApplicationAsyncType?
     let deletePlatformApplicationSyncOverride: DeletePlatformApplicationSyncType?
+    let deleteSMSSandboxPhoneNumberAsyncOverride: DeleteSMSSandboxPhoneNumberAsyncType?
+    let deleteSMSSandboxPhoneNumberSyncOverride: DeleteSMSSandboxPhoneNumberSyncType?
     let deleteTopicAsyncOverride: DeleteTopicAsyncType?
     let deleteTopicSyncOverride: DeleteTopicSyncType?
     let getEndpointAttributesAsyncOverride: GetEndpointAttributesAsyncType?
@@ -53,16 +57,22 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     let getPlatformApplicationAttributesSyncOverride: GetPlatformApplicationAttributesSyncType?
     let getSMSAttributesAsyncOverride: GetSMSAttributesAsyncType?
     let getSMSAttributesSyncOverride: GetSMSAttributesSyncType?
+    let getSMSSandboxAccountStatusAsyncOverride: GetSMSSandboxAccountStatusAsyncType?
+    let getSMSSandboxAccountStatusSyncOverride: GetSMSSandboxAccountStatusSyncType?
     let getSubscriptionAttributesAsyncOverride: GetSubscriptionAttributesAsyncType?
     let getSubscriptionAttributesSyncOverride: GetSubscriptionAttributesSyncType?
     let getTopicAttributesAsyncOverride: GetTopicAttributesAsyncType?
     let getTopicAttributesSyncOverride: GetTopicAttributesSyncType?
     let listEndpointsByPlatformApplicationAsyncOverride: ListEndpointsByPlatformApplicationAsyncType?
     let listEndpointsByPlatformApplicationSyncOverride: ListEndpointsByPlatformApplicationSyncType?
+    let listOriginationNumbersAsyncOverride: ListOriginationNumbersAsyncType?
+    let listOriginationNumbersSyncOverride: ListOriginationNumbersSyncType?
     let listPhoneNumbersOptedOutAsyncOverride: ListPhoneNumbersOptedOutAsyncType?
     let listPhoneNumbersOptedOutSyncOverride: ListPhoneNumbersOptedOutSyncType?
     let listPlatformApplicationsAsyncOverride: ListPlatformApplicationsAsyncType?
     let listPlatformApplicationsSyncOverride: ListPlatformApplicationsSyncType?
+    let listSMSSandboxPhoneNumbersAsyncOverride: ListSMSSandboxPhoneNumbersAsyncType?
+    let listSMSSandboxPhoneNumbersSyncOverride: ListSMSSandboxPhoneNumbersSyncType?
     let listSubscriptionsAsyncOverride: ListSubscriptionsAsyncType?
     let listSubscriptionsSyncOverride: ListSubscriptionsSyncType?
     let listSubscriptionsByTopicAsyncOverride: ListSubscriptionsByTopicAsyncType?
@@ -95,6 +105,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     let unsubscribeSyncOverride: UnsubscribeSyncType?
     let untagResourceAsyncOverride: UntagResourceAsyncType?
     let untagResourceSyncOverride: UntagResourceSyncType?
+    let verifySMSSandboxPhoneNumberAsyncOverride: VerifySMSSandboxPhoneNumberAsyncType?
+    let verifySMSSandboxPhoneNumberSyncOverride: VerifySMSSandboxPhoneNumberSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -111,12 +123,16 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             createPlatformApplicationSync: CreatePlatformApplicationSyncType? = nil,
             createPlatformEndpointAsync: CreatePlatformEndpointAsyncType? = nil,
             createPlatformEndpointSync: CreatePlatformEndpointSyncType? = nil,
+            createSMSSandboxPhoneNumberAsync: CreateSMSSandboxPhoneNumberAsyncType? = nil,
+            createSMSSandboxPhoneNumberSync: CreateSMSSandboxPhoneNumberSyncType? = nil,
             createTopicAsync: CreateTopicAsyncType? = nil,
             createTopicSync: CreateTopicSyncType? = nil,
             deleteEndpointAsync: DeleteEndpointAsyncType? = nil,
             deleteEndpointSync: DeleteEndpointSyncType? = nil,
             deletePlatformApplicationAsync: DeletePlatformApplicationAsyncType? = nil,
             deletePlatformApplicationSync: DeletePlatformApplicationSyncType? = nil,
+            deleteSMSSandboxPhoneNumberAsync: DeleteSMSSandboxPhoneNumberAsyncType? = nil,
+            deleteSMSSandboxPhoneNumberSync: DeleteSMSSandboxPhoneNumberSyncType? = nil,
             deleteTopicAsync: DeleteTopicAsyncType? = nil,
             deleteTopicSync: DeleteTopicSyncType? = nil,
             getEndpointAttributesAsync: GetEndpointAttributesAsyncType? = nil,
@@ -125,16 +141,22 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             getPlatformApplicationAttributesSync: GetPlatformApplicationAttributesSyncType? = nil,
             getSMSAttributesAsync: GetSMSAttributesAsyncType? = nil,
             getSMSAttributesSync: GetSMSAttributesSyncType? = nil,
+            getSMSSandboxAccountStatusAsync: GetSMSSandboxAccountStatusAsyncType? = nil,
+            getSMSSandboxAccountStatusSync: GetSMSSandboxAccountStatusSyncType? = nil,
             getSubscriptionAttributesAsync: GetSubscriptionAttributesAsyncType? = nil,
             getSubscriptionAttributesSync: GetSubscriptionAttributesSyncType? = nil,
             getTopicAttributesAsync: GetTopicAttributesAsyncType? = nil,
             getTopicAttributesSync: GetTopicAttributesSyncType? = nil,
             listEndpointsByPlatformApplicationAsync: ListEndpointsByPlatformApplicationAsyncType? = nil,
             listEndpointsByPlatformApplicationSync: ListEndpointsByPlatformApplicationSyncType? = nil,
+            listOriginationNumbersAsync: ListOriginationNumbersAsyncType? = nil,
+            listOriginationNumbersSync: ListOriginationNumbersSyncType? = nil,
             listPhoneNumbersOptedOutAsync: ListPhoneNumbersOptedOutAsyncType? = nil,
             listPhoneNumbersOptedOutSync: ListPhoneNumbersOptedOutSyncType? = nil,
             listPlatformApplicationsAsync: ListPlatformApplicationsAsyncType? = nil,
             listPlatformApplicationsSync: ListPlatformApplicationsSyncType? = nil,
+            listSMSSandboxPhoneNumbersAsync: ListSMSSandboxPhoneNumbersAsyncType? = nil,
+            listSMSSandboxPhoneNumbersSync: ListSMSSandboxPhoneNumbersSyncType? = nil,
             listSubscriptionsAsync: ListSubscriptionsAsyncType? = nil,
             listSubscriptionsSync: ListSubscriptionsSyncType? = nil,
             listSubscriptionsByTopicAsync: ListSubscriptionsByTopicAsyncType? = nil,
@@ -166,7 +188,9 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             unsubscribeAsync: UnsubscribeAsyncType? = nil,
             unsubscribeSync: UnsubscribeSyncType? = nil,
             untagResourceAsync: UntagResourceAsyncType? = nil,
-            untagResourceSync: UntagResourceSyncType? = nil) {
+            untagResourceSync: UntagResourceSyncType? = nil,
+            verifySMSSandboxPhoneNumberAsync: VerifySMSSandboxPhoneNumberAsyncType? = nil,
+            verifySMSSandboxPhoneNumberSync: VerifySMSSandboxPhoneNumberSyncType? = nil) {
         self.addPermissionAsyncOverride = addPermissionAsync
         self.addPermissionSyncOverride = addPermissionSync
         self.checkIfPhoneNumberIsOptedOutAsyncOverride = checkIfPhoneNumberIsOptedOutAsync
@@ -177,12 +201,16 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.createPlatformApplicationSyncOverride = createPlatformApplicationSync
         self.createPlatformEndpointAsyncOverride = createPlatformEndpointAsync
         self.createPlatformEndpointSyncOverride = createPlatformEndpointSync
+        self.createSMSSandboxPhoneNumberAsyncOverride = createSMSSandboxPhoneNumberAsync
+        self.createSMSSandboxPhoneNumberSyncOverride = createSMSSandboxPhoneNumberSync
         self.createTopicAsyncOverride = createTopicAsync
         self.createTopicSyncOverride = createTopicSync
         self.deleteEndpointAsyncOverride = deleteEndpointAsync
         self.deleteEndpointSyncOverride = deleteEndpointSync
         self.deletePlatformApplicationAsyncOverride = deletePlatformApplicationAsync
         self.deletePlatformApplicationSyncOverride = deletePlatformApplicationSync
+        self.deleteSMSSandboxPhoneNumberAsyncOverride = deleteSMSSandboxPhoneNumberAsync
+        self.deleteSMSSandboxPhoneNumberSyncOverride = deleteSMSSandboxPhoneNumberSync
         self.deleteTopicAsyncOverride = deleteTopicAsync
         self.deleteTopicSyncOverride = deleteTopicSync
         self.getEndpointAttributesAsyncOverride = getEndpointAttributesAsync
@@ -191,16 +219,22 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.getPlatformApplicationAttributesSyncOverride = getPlatformApplicationAttributesSync
         self.getSMSAttributesAsyncOverride = getSMSAttributesAsync
         self.getSMSAttributesSyncOverride = getSMSAttributesSync
+        self.getSMSSandboxAccountStatusAsyncOverride = getSMSSandboxAccountStatusAsync
+        self.getSMSSandboxAccountStatusSyncOverride = getSMSSandboxAccountStatusSync
         self.getSubscriptionAttributesAsyncOverride = getSubscriptionAttributesAsync
         self.getSubscriptionAttributesSyncOverride = getSubscriptionAttributesSync
         self.getTopicAttributesAsyncOverride = getTopicAttributesAsync
         self.getTopicAttributesSyncOverride = getTopicAttributesSync
         self.listEndpointsByPlatformApplicationAsyncOverride = listEndpointsByPlatformApplicationAsync
         self.listEndpointsByPlatformApplicationSyncOverride = listEndpointsByPlatformApplicationSync
+        self.listOriginationNumbersAsyncOverride = listOriginationNumbersAsync
+        self.listOriginationNumbersSyncOverride = listOriginationNumbersSync
         self.listPhoneNumbersOptedOutAsyncOverride = listPhoneNumbersOptedOutAsync
         self.listPhoneNumbersOptedOutSyncOverride = listPhoneNumbersOptedOutSync
         self.listPlatformApplicationsAsyncOverride = listPlatformApplicationsAsync
         self.listPlatformApplicationsSyncOverride = listPlatformApplicationsSync
+        self.listSMSSandboxPhoneNumbersAsyncOverride = listSMSSandboxPhoneNumbersAsync
+        self.listSMSSandboxPhoneNumbersSyncOverride = listSMSSandboxPhoneNumbersSync
         self.listSubscriptionsAsyncOverride = listSubscriptionsAsync
         self.listSubscriptionsSyncOverride = listSubscriptionsSync
         self.listSubscriptionsByTopicAsyncOverride = listSubscriptionsByTopicAsync
@@ -233,6 +267,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.unsubscribeSyncOverride = unsubscribeSync
         self.untagResourceAsyncOverride = untagResourceAsync
         self.untagResourceSyncOverride = untagResourceSync
+        self.verifySMSSandboxPhoneNumberAsyncOverride = verifySMSSandboxPhoneNumberAsync
+        self.verifySMSSandboxPhoneNumberSyncOverride = verifySMSSandboxPhoneNumberSync
     }
 
     /**
@@ -430,6 +466,46 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the CreateSMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    public func createSMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws {
+        if let createSMSSandboxPhoneNumberAsyncOverride = createSMSSandboxPhoneNumberAsyncOverride {
+            return try createSMSSandboxPhoneNumberAsyncOverride(input, completion)
+        }
+
+        let result = CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateSMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    public func createSMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
+        if let createSMSSandboxPhoneNumberSyncOverride = createSMSSandboxPhoneNumberSyncOverride {
+            return try createSMSSandboxPhoneNumberSyncOverride(input)
+        }
+
+        return CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber.__default
+    }
+
+    /**
      Invokes the CreateTopic operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -535,6 +611,46 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             return try deletePlatformApplicationSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    public func deleteSMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws {
+        if let deleteSMSSandboxPhoneNumberAsyncOverride = deleteSMSSandboxPhoneNumberAsyncOverride {
+            return try deleteSMSSandboxPhoneNumberAsyncOverride(input, completion)
+        }
+
+        let result = DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    public func deleteSMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
+        if let deleteSMSSandboxPhoneNumberSyncOverride = deleteSMSSandboxPhoneNumberSyncOverride {
+            return try deleteSMSSandboxPhoneNumberSyncOverride(input)
+        }
+
+        return DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber.__default
     }
 
     /**
@@ -692,6 +808,46 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the GetSMSSandboxAccountStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+         - completion: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object or an error will be passed to this 
+           callback when the operation is complete. The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, throttled.
+     */
+    public func getSMSSandboxAccountStatusAsync(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput, 
+            completion: @escaping (Result<SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus, SimpleNotificationError>) -> ()) throws {
+        if let getSMSSandboxAccountStatusAsyncOverride = getSMSSandboxAccountStatusAsyncOverride {
+            return try getSMSSandboxAccountStatusAsyncOverride(input, completion)
+        }
+
+        let result = GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetSMSSandboxAccountStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+     - Returns: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, throttled.
+     */
+    public func getSMSSandboxAccountStatusSync(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) throws -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
+        if let getSMSSandboxAccountStatusSyncOverride = getSMSSandboxAccountStatusSyncOverride {
+            return try getSMSSandboxAccountStatusSyncOverride(input)
+        }
+
+        return GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus.__default
+    }
+
+    /**
      Invokes the GetSubscriptionAttributes operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -812,6 +968,46 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the ListOriginationNumbers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+         - completion: The ListOriginationNumbersResultForListOriginationNumbers object or an error will be passed to this 
+           callback when the operation is complete. The ListOriginationNumbersResultForListOriginationNumbers
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    public func listOriginationNumbersAsync(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest, 
+            completion: @escaping (Result<SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers, SimpleNotificationError>) -> ()) throws {
+        if let listOriginationNumbersAsyncOverride = listOriginationNumbersAsyncOverride {
+            return try listOriginationNumbersAsyncOverride(input, completion)
+        }
+
+        let result = ListOriginationNumbersResultForListOriginationNumbers.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListOriginationNumbers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+     - Returns: The ListOriginationNumbersResultForListOriginationNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    public func listOriginationNumbersSync(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest) throws -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers {
+        if let listOriginationNumbersSyncOverride = listOriginationNumbersSyncOverride {
+            return try listOriginationNumbersSyncOverride(input)
+        }
+
+        return ListOriginationNumbersResultForListOriginationNumbers.__default
+    }
+
+    /**
      Invokes the ListPhoneNumbersOptedOut operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -889,6 +1085,46 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         }
 
         return ListPlatformApplicationsResponseForListPlatformApplications.__default
+    }
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+         - completion: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object or an error will be passed to this 
+           callback when the operation is complete. The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    public func listSMSSandboxPhoneNumbersAsync(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput, 
+            completion: @escaping (Result<SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers, SimpleNotificationError>) -> ()) throws {
+        if let listSMSSandboxPhoneNumbersAsyncOverride = listSMSSandboxPhoneNumbersAsyncOverride {
+            return try listSMSSandboxPhoneNumbersAsyncOverride(input, completion)
+        }
+
+        let result = ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+     - Returns: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    public func listSMSSandboxPhoneNumbersSync(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) throws -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
+        if let listSMSSandboxPhoneNumbersSyncOverride = listSMSSandboxPhoneNumbersSyncOverride {
+            return try listSMSSandboxPhoneNumbersSyncOverride(input)
+        }
+
+        return ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers.__default
     }
 
     /**
@@ -1493,5 +1729,45 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         }
 
         return UntagResourceResponseForUntagResource.__default
+    }
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+         - completion: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object or an error will be passed to this 
+           callback when the operation is complete. The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    public func verifySMSSandboxPhoneNumberAsync(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput, 
+            completion: @escaping (Result<SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber, SimpleNotificationError>) -> ()) throws {
+        if let verifySMSSandboxPhoneNumberAsyncOverride = verifySMSSandboxPhoneNumberAsyncOverride {
+            return try verifySMSSandboxPhoneNumberAsyncOverride(input, completion)
+        }
+
+        let result = VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    public func verifySMSSandboxPhoneNumberSync(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) throws -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
+        if let verifySMSSandboxPhoneNumberSyncOverride = verifySMSSandboxPhoneNumberSyncOverride {
+            return try verifySMSSandboxPhoneNumberSyncOverride(input)
+        }
+
+        return VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber.__default
     }
 }

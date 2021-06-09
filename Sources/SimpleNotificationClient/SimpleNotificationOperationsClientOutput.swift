@@ -77,6 +77,19 @@ extension CreateEndpointResponseForCreatePlatformEndpoint: HTTPResponseOutputPro
 }
 
 /**
+ Type to handle the output from the CreateSMSSandboxPhoneNumber operation in a HTTP client.
+ */
+extension CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+    public typealias HeadersType = CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateTopic operation in a HTTP client.
  */
 extension CreateTopicResponseForCreateTopic: HTTPResponseOutputProtocol {
@@ -85,6 +98,19 @@ extension CreateTopicResponseForCreateTopic: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateTopicResponseForCreateTopic {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteSMSSandboxPhoneNumber operation in a HTTP client.
+ */
+extension DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
+    public typealias HeadersType = DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
         return try bodyDecodableProvider()
     }
 }
@@ -129,6 +155,19 @@ extension GetSMSAttributesResponseForGetSMSAttributes: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the GetSMSSandboxAccountStatus operation in a HTTP client.
+ */
+extension GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+    public typealias HeadersType = GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetSubscriptionAttributes operation in a HTTP client.
  */
 extension GetSubscriptionAttributesResponseForGetSubscriptionAttributes: HTTPResponseOutputProtocol {
@@ -168,6 +207,19 @@ extension ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformAp
 }
 
 /**
+ Type to handle the output from the ListOriginationNumbers operation in a HTTP client.
+ */
+extension ListOriginationNumbersResultForListOriginationNumbers: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListOriginationNumbersResultForListOriginationNumbers
+    public typealias HeadersType = ListOriginationNumbersResultForListOriginationNumbers
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListOriginationNumbersResultForListOriginationNumbers {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListPhoneNumbersOptedOut operation in a HTTP client.
  */
 extension ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut: HTTPResponseOutputProtocol {
@@ -189,6 +241,19 @@ extension ListPlatformApplicationsResponseForListPlatformApplications: HTTPRespo
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListPlatformApplicationsResponseForListPlatformApplications {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListSMSSandboxPhoneNumbers operation in a HTTP client.
+ */
+extension ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
+    public typealias HeadersType = ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
         return try bodyDecodableProvider()
     }
 }
@@ -319,6 +384,19 @@ extension UntagResourceResponseForUntagResource: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UntagResourceResponseForUntagResource {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the VerifySMSSandboxPhoneNumber operation in a HTTP client.
+ */
+extension VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber: HTTPResponseOutputProtocol {
+    public typealias BodyType = VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
+    public typealias HeadersType = VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
         return try bodyDecodableProvider()
     }
 }
