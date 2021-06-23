@@ -2,7 +2,7 @@
 //  MockClientProtocol.swift
 //
 
-#if compiler(>=5.5) && $AsyncAwait
+#if compiler(>=5.5)
 
 import NIO
 import SmokeAWSHttp
@@ -10,6 +10,7 @@ import _SmokeHTTPClientConcurrency
 
 public extension MockClientProtocol {
     
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
             defaultResult: OutputType,
@@ -40,7 +41,7 @@ public extension MockClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
             defaultResult: OutputType,
@@ -58,6 +59,7 @@ public extension MockClientProtocol {
         return defaultResult
     }
     
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             eventLoop: EventLoop,
@@ -87,7 +89,7 @@ public extension MockClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             eventLoop: EventLoop,
@@ -106,6 +108,7 @@ public extension MockClientProtocol {
         }
     }
     
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
             defaultResult: OutputType,
             eventLoop: EventLoop,
@@ -135,7 +138,7 @@ public extension MockClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockExecuteWithoutInputWithOutput<OutputType>(
             defaultResult: OutputType,
             eventLoop: EventLoop,
@@ -152,6 +155,7 @@ public extension MockClientProtocol {
         return defaultResult
     }
     
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockEventLoopFutureExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
             functionTypeOverride: (() async throws -> ())?,
@@ -180,7 +184,7 @@ public extension MockClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
             functionTypeOverride: (() async throws -> ())?,
