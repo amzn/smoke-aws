@@ -11,7 +11,7 @@ import _SmokeHTTPClientConcurrency
 public extension MockClientProtocol {
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
+    func mockAsyncAwareEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
             defaultResult: OutputType,
             eventLoop: EventLoop,
@@ -60,7 +60,7 @@ public extension MockClientProtocol {
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
+    func mockAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             eventLoop: EventLoop,
             functionTypeOverride: ((InputType) async throws -> ())?,
@@ -109,7 +109,7 @@ public extension MockClientProtocol {
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
+    func mockAsyncAwareEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
             defaultResult: OutputType,
             eventLoop: EventLoop,
             functionTypeOverride: (() async throws -> OutputType)?,
@@ -156,7 +156,7 @@ public extension MockClientProtocol {
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockEventLoopFutureExecuteWithoutInputWithoutOutput(
+    func mockAsyncAwareEventLoopFutureExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
             functionTypeOverride: (() async throws -> ())?,
             eventLoopFutureTypeOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
