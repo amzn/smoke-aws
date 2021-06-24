@@ -15,13 +15,13 @@ public extension MockThrowingClientProtocol {
             input: InputType,
             defaultError: Error,
             eventLoop: EventLoop,
-            functionTypeOverride: ((InputType) throws -> OutputType)?,
-            eventLoopFutureTypeOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
+            functionOverride: ((InputType) throws -> OutputType)?,
+            eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
         let promise = eventLoop.makePromise(of: OutputType.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             do {
-                let overrideResult = try functionTypeOverride(input)
+                let overrideResult = try functionOverride(input)
                 promise.succeed(overrideResult)
             } catch {
                 promise.fail(error)
@@ -30,8 +30,8 @@ public extension MockThrowingClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride(input)
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride(input)
         }
 
         promise.fail(defaultError)
@@ -43,13 +43,13 @@ public extension MockThrowingClientProtocol {
             input: InputType,
             defaultError: Error,
             eventLoop: EventLoop,
-            functionTypeOverride: ((InputType) throws -> ())?,
-            eventLoopFutureTypeOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
+            functionOverride: ((InputType) throws -> ())?,
+            eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
         let promise = eventLoop.makePromise(of: Void.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             do {
-                try functionTypeOverride(input)
+                try functionOverride(input)
                 promise.succeed(())
             } catch {
                 promise.fail(error)
@@ -58,8 +58,8 @@ public extension MockThrowingClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride(input)
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride(input)
         }
 
         promise.fail(defaultError)
@@ -70,13 +70,13 @@ public extension MockThrowingClientProtocol {
     func mockThrowingEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
             defaultError: Error,
             eventLoop: EventLoop,
-            functionTypeOverride: (() throws -> OutputType)?,
-            eventLoopFutureTypeOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
+            functionOverride: (() throws -> OutputType)?,
+            eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
         let promise = eventLoop.makePromise(of: OutputType.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             do {
-                let overrideResult = try functionTypeOverride()
+                let overrideResult = try functionOverride()
                 promise.succeed(overrideResult)
             } catch {
                 promise.fail(error)
@@ -85,8 +85,8 @@ public extension MockThrowingClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride()
         }
 
         promise.fail(defaultError)
@@ -97,13 +97,13 @@ public extension MockThrowingClientProtocol {
     func mockThrowingEventLoopFutureExecuteWithoutInputWithoutOutput(
             defaultError: Error,
             eventLoop: EventLoop,
-            functionTypeOverride: (() throws -> ())?,
-            eventLoopFutureTypeOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
+            functionOverride: (() throws -> ())?,
+            eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
         let promise = eventLoop.makePromise(of: Void.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             do {
-                try functionTypeOverride()
+                try functionOverride()
                 promise.succeed(())
             } catch {
                 promise.fail(error)
@@ -112,8 +112,8 @@ public extension MockThrowingClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride()
         }
 
         promise.fail(defaultError)

@@ -15,14 +15,14 @@ public extension MockClientProtocol {
             input: InputType,
             defaultResult: OutputType,
             eventLoop: EventLoop,
-            functionTypeOverride: ((InputType) async throws -> OutputType)?,
-            eventLoopFutureTypeOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
+            functionOverride: ((InputType) async throws -> OutputType)?,
+            eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
         let promise = eventLoop.makePromise(of: OutputType.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             Task {
                 do {
-                    let overrideResult = try await functionTypeOverride(input)
+                    let overrideResult = try await functionOverride(input)
                     promise.succeed(overrideResult)
                 } catch {
                     promise.fail(error)
@@ -32,8 +32,8 @@ public extension MockClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride(input)
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride(input)
         }
 
         promise.succeed(defaultResult)
@@ -46,14 +46,14 @@ public extension MockClientProtocol {
             input: InputType,
             defaultResult: OutputType,
             eventLoop: EventLoop,
-            functionTypeOverride: ((InputType) async throws -> OutputType)?,
-            eventLoopFutureTypeOverride: ((InputType) -> EventLoopFuture<OutputType>)?) async throws -> OutputType {
-        if let functionTypeOverride = functionTypeOverride {
-            return try await functionTypeOverride(input)
+            functionOverride: ((InputType) async throws -> OutputType)?,
+            eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) async throws -> OutputType {
+        if let functionOverride = functionOverride {
+            return try await functionOverride(input)
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return try await eventLoopFutureTypeOverride(input).get()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return try await eventLoopFutureFunctionOverride(input).get()
         }
         
         return defaultResult
@@ -63,14 +63,14 @@ public extension MockClientProtocol {
     func mockAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             eventLoop: EventLoop,
-            functionTypeOverride: ((InputType) async throws -> ())?,
-            eventLoopFutureTypeOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
+            functionOverride: ((InputType) async throws -> ())?,
+            eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
         let promise = eventLoop.makePromise(of: Void.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             Task {
                 do {
-                    try await functionTypeOverride(input)
+                    try await functionOverride(input)
                     promise.succeed(())
                 } catch {
                     promise.fail(error)
@@ -80,8 +80,8 @@ public extension MockClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride(input)
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride(input)
         }
 
         promise.succeed(())
@@ -93,16 +93,16 @@ public extension MockClientProtocol {
     func mockExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             eventLoop: EventLoop,
-            functionTypeOverride: ((InputType) async throws -> ())?,
-            eventLoopFutureTypeOverride: ((InputType) -> EventLoopFuture<Void>)?) async throws {
-        if let functionTypeOverride = functionTypeOverride {
-            try await functionTypeOverride(input)
+            functionOverride: ((InputType) async throws -> ())?,
+            eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) async throws {
+        if let functionOverride = functionOverride {
+            try await functionOverride(input)
             
             return
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            try await eventLoopFutureTypeOverride(input).get()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            try await eventLoopFutureFunctionOverride(input).get()
             
             return
         }
@@ -112,14 +112,14 @@ public extension MockClientProtocol {
     func mockAsyncAwareEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
             defaultResult: OutputType,
             eventLoop: EventLoop,
-            functionTypeOverride: (() async throws -> OutputType)?,
-            eventLoopFutureTypeOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
+            functionOverride: (() async throws -> OutputType)?,
+            eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
         let promise = eventLoop.makePromise(of: OutputType.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             Task {
                 do {
-                    let overrideResult = try await functionTypeOverride()
+                    let overrideResult = try await functionOverride()
                     promise.succeed(overrideResult)
                 } catch {
                     promise.fail(error)
@@ -129,8 +129,8 @@ public extension MockClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride()
         }
 
         promise.succeed(defaultResult)
@@ -142,14 +142,14 @@ public extension MockClientProtocol {
     func mockExecuteWithoutInputWithOutput<OutputType>(
             defaultResult: OutputType,
             eventLoop: EventLoop,
-            functionTypeOverride: (() async throws -> OutputType)?,
-            eventLoopFutureTypeOverride: (() -> EventLoopFuture<OutputType>)?) async throws -> OutputType {
-        if let functionTypeOverride = functionTypeOverride {
-            return try await functionTypeOverride()
+            functionOverride: (() async throws -> OutputType)?,
+            eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) async throws -> OutputType {
+        if let functionOverride = functionOverride {
+            return try await functionOverride()
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return try await eventLoopFutureTypeOverride().get()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return try await eventLoopFutureFunctionOverride().get()
         }
         
         return defaultResult
@@ -158,14 +158,14 @@ public extension MockClientProtocol {
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockAsyncAwareEventLoopFutureExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
-            functionTypeOverride: (() async throws -> ())?,
-            eventLoopFutureTypeOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
+            functionOverride: (() async throws -> ())?,
+            eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
         let promise = eventLoop.makePromise(of: Void.self)
         
-        if let functionTypeOverride = functionTypeOverride {
+        if let functionOverride = functionOverride {
             Task {
                 do {
-                    try await functionTypeOverride()
+                    try await functionOverride()
                     promise.succeed(())
                 } catch {
                     promise.fail(error)
@@ -175,8 +175,8 @@ public extension MockClientProtocol {
             return promise.futureResult
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            return eventLoopFutureTypeOverride()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            return eventLoopFutureFunctionOverride()
         }
 
         promise.succeed(())
@@ -187,16 +187,16 @@ public extension MockClientProtocol {
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
-            functionTypeOverride: (() async throws -> ())?,
-            eventLoopFutureTypeOverride: (() -> EventLoopFuture<Void>)?) async throws {
-        if let functionTypeOverride = functionTypeOverride {
-            try await functionTypeOverride()
+            functionOverride: (() async throws -> ())?,
+            eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) async throws {
+        if let functionOverride = functionOverride {
+            try await functionOverride()
         
             return
         }
 
-        if let eventLoopFutureTypeOverride = eventLoopFutureTypeOverride {
-            try await eventLoopFutureTypeOverride().get()
+        if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
+            try await eventLoopFutureFunctionOverride().get()
             
             return
         }
