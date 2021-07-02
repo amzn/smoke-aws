@@ -2,7 +2,7 @@
 //  AWSClientProtocol.swift
 //
 
-#if compiler(>=5.5) && $AsyncAwait
+#if compiler(>=5.5)
 
 import SmokeHTTPClient
 import SmokeAWSCore
@@ -14,7 +14,7 @@ import SmokeAWSHttp
 import _SmokeHTTPClientConcurrency
 
 public extension AWSClientProtocol {
-    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func executeWithoutOutput<InvocationReportingType: HTTPClientInvocationReporting,
                               InputType: HTTPRequestInputProtocol, ErrorType: ConvertableError>(
             httpClient: HTTPOperationsClient,
@@ -50,7 +50,7 @@ public extension AWSClientProtocol {
         }
     }
     
-    @available(macOS 9999, iOS 9999, watchOS 9999, tvOS 9999, *)
+    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func executeWithOutput<OutputType: HTTPResponseOutputProtocol, InvocationReportingType: HTTPClientInvocationReporting,
                            InputType: HTTPRequestInputProtocol, ErrorType: ConvertableError>(
             httpClient: HTTPOperationsClient,
