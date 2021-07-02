@@ -29,6 +29,10 @@ import SmokeHTTPClient
  Mock Client for the Cloudformation service by default returns the `__default` property of its return type.
  */
 public struct MockCloudformationClient: CloudformationClientProtocol {
+    let activateTypeAsyncOverride: ActivateTypeAsyncType?
+    let activateTypeSyncOverride: ActivateTypeSyncType?
+    let batchDescribeTypeConfigurationsAsyncOverride: BatchDescribeTypeConfigurationsAsyncType?
+    let batchDescribeTypeConfigurationsSyncOverride: BatchDescribeTypeConfigurationsSyncType?
     let cancelUpdateStackAsyncOverride: CancelUpdateStackAsyncType?
     let cancelUpdateStackSyncOverride: CancelUpdateStackSyncType?
     let continueUpdateRollbackAsyncOverride: ContinueUpdateRollbackAsyncType?
@@ -41,6 +45,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     let createStackInstancesSyncOverride: CreateStackInstancesSyncType?
     let createStackSetAsyncOverride: CreateStackSetAsyncType?
     let createStackSetSyncOverride: CreateStackSetSyncType?
+    let deactivateTypeAsyncOverride: DeactivateTypeAsyncType?
+    let deactivateTypeSyncOverride: DeactivateTypeSyncType?
     let deleteChangeSetAsyncOverride: DeleteChangeSetAsyncType?
     let deleteChangeSetSyncOverride: DeleteChangeSetSyncType?
     let deleteStackAsyncOverride: DeleteStackAsyncType?
@@ -55,6 +61,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     let describeAccountLimitsSyncOverride: DescribeAccountLimitsSyncType?
     let describeChangeSetAsyncOverride: DescribeChangeSetAsyncType?
     let describeChangeSetSyncOverride: DescribeChangeSetSyncType?
+    let describePublisherAsyncOverride: DescribePublisherAsyncType?
+    let describePublisherSyncOverride: DescribePublisherSyncType?
     let describeStackDriftDetectionStatusAsyncOverride: DescribeStackDriftDetectionStatusAsyncType?
     let describeStackDriftDetectionStatusSyncOverride: DescribeStackDriftDetectionStatusSyncType?
     let describeStackEventsAsyncOverride: DescribeStackEventsAsyncType?
@@ -117,18 +125,26 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     let listTypeVersionsSyncOverride: ListTypeVersionsSyncType?
     let listTypesAsyncOverride: ListTypesAsyncType?
     let listTypesSyncOverride: ListTypesSyncType?
+    let publishTypeAsyncOverride: PublishTypeAsyncType?
+    let publishTypeSyncOverride: PublishTypeSyncType?
     let recordHandlerProgressAsyncOverride: RecordHandlerProgressAsyncType?
     let recordHandlerProgressSyncOverride: RecordHandlerProgressSyncType?
+    let registerPublisherAsyncOverride: RegisterPublisherAsyncType?
+    let registerPublisherSyncOverride: RegisterPublisherSyncType?
     let registerTypeAsyncOverride: RegisterTypeAsyncType?
     let registerTypeSyncOverride: RegisterTypeSyncType?
     let setStackPolicyAsyncOverride: SetStackPolicyAsyncType?
     let setStackPolicySyncOverride: SetStackPolicySyncType?
+    let setTypeConfigurationAsyncOverride: SetTypeConfigurationAsyncType?
+    let setTypeConfigurationSyncOverride: SetTypeConfigurationSyncType?
     let setTypeDefaultVersionAsyncOverride: SetTypeDefaultVersionAsyncType?
     let setTypeDefaultVersionSyncOverride: SetTypeDefaultVersionSyncType?
     let signalResourceAsyncOverride: SignalResourceAsyncType?
     let signalResourceSyncOverride: SignalResourceSyncType?
     let stopStackSetOperationAsyncOverride: StopStackSetOperationAsyncType?
     let stopStackSetOperationSyncOverride: StopStackSetOperationSyncType?
+    let testTypeAsyncOverride: TestTypeAsyncType?
+    let testTypeSyncOverride: TestTypeSyncType?
     let updateStackAsyncOverride: UpdateStackAsyncType?
     let updateStackSyncOverride: UpdateStackSyncType?
     let updateStackInstancesAsyncOverride: UpdateStackInstancesAsyncType?
@@ -145,6 +161,10 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
      functions can be overridden by passing them to this initializer.
      */
     public init(
+            activateTypeAsync: ActivateTypeAsyncType? = nil,
+            activateTypeSync: ActivateTypeSyncType? = nil,
+            batchDescribeTypeConfigurationsAsync: BatchDescribeTypeConfigurationsAsyncType? = nil,
+            batchDescribeTypeConfigurationsSync: BatchDescribeTypeConfigurationsSyncType? = nil,
             cancelUpdateStackAsync: CancelUpdateStackAsyncType? = nil,
             cancelUpdateStackSync: CancelUpdateStackSyncType? = nil,
             continueUpdateRollbackAsync: ContinueUpdateRollbackAsyncType? = nil,
@@ -157,6 +177,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             createStackInstancesSync: CreateStackInstancesSyncType? = nil,
             createStackSetAsync: CreateStackSetAsyncType? = nil,
             createStackSetSync: CreateStackSetSyncType? = nil,
+            deactivateTypeAsync: DeactivateTypeAsyncType? = nil,
+            deactivateTypeSync: DeactivateTypeSyncType? = nil,
             deleteChangeSetAsync: DeleteChangeSetAsyncType? = nil,
             deleteChangeSetSync: DeleteChangeSetSyncType? = nil,
             deleteStackAsync: DeleteStackAsyncType? = nil,
@@ -171,6 +193,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             describeAccountLimitsSync: DescribeAccountLimitsSyncType? = nil,
             describeChangeSetAsync: DescribeChangeSetAsyncType? = nil,
             describeChangeSetSync: DescribeChangeSetSyncType? = nil,
+            describePublisherAsync: DescribePublisherAsyncType? = nil,
+            describePublisherSync: DescribePublisherSyncType? = nil,
             describeStackDriftDetectionStatusAsync: DescribeStackDriftDetectionStatusAsyncType? = nil,
             describeStackDriftDetectionStatusSync: DescribeStackDriftDetectionStatusSyncType? = nil,
             describeStackEventsAsync: DescribeStackEventsAsyncType? = nil,
@@ -233,18 +257,26 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             listTypeVersionsSync: ListTypeVersionsSyncType? = nil,
             listTypesAsync: ListTypesAsyncType? = nil,
             listTypesSync: ListTypesSyncType? = nil,
+            publishTypeAsync: PublishTypeAsyncType? = nil,
+            publishTypeSync: PublishTypeSyncType? = nil,
             recordHandlerProgressAsync: RecordHandlerProgressAsyncType? = nil,
             recordHandlerProgressSync: RecordHandlerProgressSyncType? = nil,
+            registerPublisherAsync: RegisterPublisherAsyncType? = nil,
+            registerPublisherSync: RegisterPublisherSyncType? = nil,
             registerTypeAsync: RegisterTypeAsyncType? = nil,
             registerTypeSync: RegisterTypeSyncType? = nil,
             setStackPolicyAsync: SetStackPolicyAsyncType? = nil,
             setStackPolicySync: SetStackPolicySyncType? = nil,
+            setTypeConfigurationAsync: SetTypeConfigurationAsyncType? = nil,
+            setTypeConfigurationSync: SetTypeConfigurationSyncType? = nil,
             setTypeDefaultVersionAsync: SetTypeDefaultVersionAsyncType? = nil,
             setTypeDefaultVersionSync: SetTypeDefaultVersionSyncType? = nil,
             signalResourceAsync: SignalResourceAsyncType? = nil,
             signalResourceSync: SignalResourceSyncType? = nil,
             stopStackSetOperationAsync: StopStackSetOperationAsyncType? = nil,
             stopStackSetOperationSync: StopStackSetOperationSyncType? = nil,
+            testTypeAsync: TestTypeAsyncType? = nil,
+            testTypeSync: TestTypeSyncType? = nil,
             updateStackAsync: UpdateStackAsyncType? = nil,
             updateStackSync: UpdateStackSyncType? = nil,
             updateStackInstancesAsync: UpdateStackInstancesAsyncType? = nil,
@@ -255,6 +287,10 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             updateTerminationProtectionSync: UpdateTerminationProtectionSyncType? = nil,
             validateTemplateAsync: ValidateTemplateAsyncType? = nil,
             validateTemplateSync: ValidateTemplateSyncType? = nil) {
+        self.activateTypeAsyncOverride = activateTypeAsync
+        self.activateTypeSyncOverride = activateTypeSync
+        self.batchDescribeTypeConfigurationsAsyncOverride = batchDescribeTypeConfigurationsAsync
+        self.batchDescribeTypeConfigurationsSyncOverride = batchDescribeTypeConfigurationsSync
         self.cancelUpdateStackAsyncOverride = cancelUpdateStackAsync
         self.cancelUpdateStackSyncOverride = cancelUpdateStackSync
         self.continueUpdateRollbackAsyncOverride = continueUpdateRollbackAsync
@@ -267,6 +303,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.createStackInstancesSyncOverride = createStackInstancesSync
         self.createStackSetAsyncOverride = createStackSetAsync
         self.createStackSetSyncOverride = createStackSetSync
+        self.deactivateTypeAsyncOverride = deactivateTypeAsync
+        self.deactivateTypeSyncOverride = deactivateTypeSync
         self.deleteChangeSetAsyncOverride = deleteChangeSetAsync
         self.deleteChangeSetSyncOverride = deleteChangeSetSync
         self.deleteStackAsyncOverride = deleteStackAsync
@@ -281,6 +319,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.describeAccountLimitsSyncOverride = describeAccountLimitsSync
         self.describeChangeSetAsyncOverride = describeChangeSetAsync
         self.describeChangeSetSyncOverride = describeChangeSetSync
+        self.describePublisherAsyncOverride = describePublisherAsync
+        self.describePublisherSyncOverride = describePublisherSync
         self.describeStackDriftDetectionStatusAsyncOverride = describeStackDriftDetectionStatusAsync
         self.describeStackDriftDetectionStatusSyncOverride = describeStackDriftDetectionStatusSync
         self.describeStackEventsAsyncOverride = describeStackEventsAsync
@@ -343,18 +383,26 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.listTypeVersionsSyncOverride = listTypeVersionsSync
         self.listTypesAsyncOverride = listTypesAsync
         self.listTypesSyncOverride = listTypesSync
+        self.publishTypeAsyncOverride = publishTypeAsync
+        self.publishTypeSyncOverride = publishTypeSync
         self.recordHandlerProgressAsyncOverride = recordHandlerProgressAsync
         self.recordHandlerProgressSyncOverride = recordHandlerProgressSync
+        self.registerPublisherAsyncOverride = registerPublisherAsync
+        self.registerPublisherSyncOverride = registerPublisherSync
         self.registerTypeAsyncOverride = registerTypeAsync
         self.registerTypeSyncOverride = registerTypeSync
         self.setStackPolicyAsyncOverride = setStackPolicyAsync
         self.setStackPolicySyncOverride = setStackPolicySync
+        self.setTypeConfigurationAsyncOverride = setTypeConfigurationAsync
+        self.setTypeConfigurationSyncOverride = setTypeConfigurationSync
         self.setTypeDefaultVersionAsyncOverride = setTypeDefaultVersionAsync
         self.setTypeDefaultVersionSyncOverride = setTypeDefaultVersionSync
         self.signalResourceAsyncOverride = signalResourceAsync
         self.signalResourceSyncOverride = signalResourceSync
         self.stopStackSetOperationAsyncOverride = stopStackSetOperationAsync
         self.stopStackSetOperationSyncOverride = stopStackSetOperationSync
+        self.testTypeAsyncOverride = testTypeAsync
+        self.testTypeSyncOverride = testTypeSync
         self.updateStackAsyncOverride = updateStackAsync
         self.updateStackSyncOverride = updateStackSync
         self.updateStackInstancesAsyncOverride = updateStackInstancesAsync
@@ -365,6 +413,86 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.updateTerminationProtectionSyncOverride = updateTerminationProtectionSync
         self.validateTemplateAsyncOverride = validateTemplateAsync
         self.validateTemplateSyncOverride = validateTemplateSync
+    }
+
+    /**
+     Invokes the ActivateType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+         - completion: The ActivateTypeOutputForActivateType object or an error will be passed to this 
+           callback when the operation is complete. The ActivateTypeOutputForActivateType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func activateTypeAsync(
+            input: CloudformationModel.ActivateTypeInput, 
+            completion: @escaping (Result<CloudformationModel.ActivateTypeOutputForActivateType, CloudformationError>) -> ()) throws {
+        if let activateTypeAsyncOverride = activateTypeAsyncOverride {
+            return try activateTypeAsyncOverride(input, completion)
+        }
+
+        let result = ActivateTypeOutputForActivateType.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ActivateType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+     - Returns: The ActivateTypeOutputForActivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func activateTypeSync(
+            input: CloudformationModel.ActivateTypeInput) throws -> CloudformationModel.ActivateTypeOutputForActivateType {
+        if let activateTypeSyncOverride = activateTypeSyncOverride {
+            return try activateTypeSyncOverride(input)
+        }
+
+        return ActivateTypeOutputForActivateType.__default
+    }
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+         - completion: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object or an error will be passed to this 
+           callback when the operation is complete. The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeConfigurationNotFound.
+     */
+    public func batchDescribeTypeConfigurationsAsync(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput, 
+            completion: @escaping (Result<CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations, CloudformationError>) -> ()) throws {
+        if let batchDescribeTypeConfigurationsAsyncOverride = batchDescribeTypeConfigurationsAsyncOverride {
+            return try batchDescribeTypeConfigurationsAsyncOverride(input, completion)
+        }
+
+        let result = BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+     - Returns: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeConfigurationNotFound.
+     */
+    public func batchDescribeTypeConfigurationsSync(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput) throws -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
+        if let batchDescribeTypeConfigurationsSyncOverride = batchDescribeTypeConfigurationsSyncOverride {
+            return try batchDescribeTypeConfigurationsSyncOverride(input)
+        }
+
+        return BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations.__default
     }
 
     /**
@@ -599,6 +727,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return CreateStackSetOutputForCreateStackSet.__default
+    }
+
+    /**
+     Invokes the DeactivateType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+         - completion: The DeactivateTypeOutputForDeactivateType object or an error will be passed to this 
+           callback when the operation is complete. The DeactivateTypeOutputForDeactivateType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func deactivateTypeAsync(
+            input: CloudformationModel.DeactivateTypeInput, 
+            completion: @escaping (Result<CloudformationModel.DeactivateTypeOutputForDeactivateType, CloudformationError>) -> ()) throws {
+        if let deactivateTypeAsyncOverride = deactivateTypeAsyncOverride {
+            return try deactivateTypeAsyncOverride(input, completion)
+        }
+
+        let result = DeactivateTypeOutputForDeactivateType.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeactivateType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+     - Returns: The DeactivateTypeOutputForDeactivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func deactivateTypeSync(
+            input: CloudformationModel.DeactivateTypeInput) throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType {
+        if let deactivateTypeSyncOverride = deactivateTypeSyncOverride {
+            return try deactivateTypeSyncOverride(input)
+        }
+
+        return DeactivateTypeOutputForDeactivateType.__default
     }
 
     /**
@@ -871,6 +1039,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return DescribeChangeSetOutputForDescribeChangeSet.__default
+    }
+
+    /**
+     Invokes the DescribePublisher operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+         - completion: The DescribePublisherOutputForDescribePublisher object or an error will be passed to this 
+           callback when the operation is complete. The DescribePublisherOutputForDescribePublisher
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry.
+     */
+    public func describePublisherAsync(
+            input: CloudformationModel.DescribePublisherInput, 
+            completion: @escaping (Result<CloudformationModel.DescribePublisherOutputForDescribePublisher, CloudformationError>) -> ()) throws {
+        if let describePublisherAsyncOverride = describePublisherAsyncOverride {
+            return try describePublisherAsyncOverride(input, completion)
+        }
+
+        let result = DescribePublisherOutputForDescribePublisher.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribePublisher operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+     - Returns: The DescribePublisherOutputForDescribePublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func describePublisherSync(
+            input: CloudformationModel.DescribePublisherInput) throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher {
+        if let describePublisherSyncOverride = describePublisherSyncOverride {
+            return try describePublisherSyncOverride(input)
+        }
+
+        return DescribePublisherOutputForDescribePublisher.__default
     }
 
     /**
@@ -2082,6 +2290,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     }
 
     /**
+     Invokes the PublishType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+         - completion: The PublishTypeOutputForPublishType object or an error will be passed to this 
+           callback when the operation is complete. The PublishTypeOutputForPublishType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func publishTypeAsync(
+            input: CloudformationModel.PublishTypeInput, 
+            completion: @escaping (Result<CloudformationModel.PublishTypeOutputForPublishType, CloudformationError>) -> ()) throws {
+        if let publishTypeAsyncOverride = publishTypeAsyncOverride {
+            return try publishTypeAsyncOverride(input, completion)
+        }
+
+        let result = PublishTypeOutputForPublishType.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the PublishType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+     - Returns: The PublishTypeOutputForPublishType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func publishTypeSync(
+            input: CloudformationModel.PublishTypeInput) throws -> CloudformationModel.PublishTypeOutputForPublishType {
+        if let publishTypeSyncOverride = publishTypeSyncOverride {
+            return try publishTypeSyncOverride(input)
+        }
+
+        return PublishTypeOutputForPublishType.__default
+    }
+
+    /**
      Invokes the RecordHandlerProgress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2119,6 +2367,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return RecordHandlerProgressOutputForRecordHandlerProgress.__default
+    }
+
+    /**
+     Invokes the RegisterPublisher operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+         - completion: The RegisterPublisherOutputForRegisterPublisher object or an error will be passed to this 
+           callback when the operation is complete. The RegisterPublisherOutputForRegisterPublisher
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry.
+     */
+    public func registerPublisherAsync(
+            input: CloudformationModel.RegisterPublisherInput, 
+            completion: @escaping (Result<CloudformationModel.RegisterPublisherOutputForRegisterPublisher, CloudformationError>) -> ()) throws {
+        if let registerPublisherAsyncOverride = registerPublisherAsyncOverride {
+            return try registerPublisherAsyncOverride(input, completion)
+        }
+
+        let result = RegisterPublisherOutputForRegisterPublisher.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the RegisterPublisher operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+     - Returns: The RegisterPublisherOutputForRegisterPublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func registerPublisherSync(
+            input: CloudformationModel.RegisterPublisherInput) throws -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher {
+        if let registerPublisherSyncOverride = registerPublisherSyncOverride {
+            return try registerPublisherSyncOverride(input)
+        }
+
+        return RegisterPublisherOutputForRegisterPublisher.__default
     }
 
     /**
@@ -2191,6 +2479,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             return try setStackPolicySyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the SetTypeConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+         - completion: The SetTypeConfigurationOutputForSetTypeConfiguration object or an error will be passed to this 
+           callback when the operation is complete. The SetTypeConfigurationOutputForSetTypeConfiguration
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func setTypeConfigurationAsync(
+            input: CloudformationModel.SetTypeConfigurationInput, 
+            completion: @escaping (Result<CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration, CloudformationError>) -> ()) throws {
+        if let setTypeConfigurationAsyncOverride = setTypeConfigurationAsyncOverride {
+            return try setTypeConfigurationAsyncOverride(input, completion)
+        }
+
+        let result = SetTypeConfigurationOutputForSetTypeConfiguration.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the SetTypeConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+     - Returns: The SetTypeConfigurationOutputForSetTypeConfiguration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func setTypeConfigurationSync(
+            input: CloudformationModel.SetTypeConfigurationInput) throws -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration {
+        if let setTypeConfigurationSyncOverride = setTypeConfigurationSyncOverride {
+            return try setTypeConfigurationSyncOverride(input)
+        }
+
+        return SetTypeConfigurationOutputForSetTypeConfiguration.__default
     }
 
     /**
@@ -2303,6 +2631,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return StopStackSetOperationOutputForStopStackSetOperation.__default
+    }
+
+    /**
+     Invokes the TestType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+         - completion: The TestTypeOutputForTestType object or an error will be passed to this 
+           callback when the operation is complete. The TestTypeOutputForTestType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func testTypeAsync(
+            input: CloudformationModel.TestTypeInput, 
+            completion: @escaping (Result<CloudformationModel.TestTypeOutputForTestType, CloudformationError>) -> ()) throws {
+        if let testTypeAsyncOverride = testTypeAsyncOverride {
+            return try testTypeAsyncOverride(input, completion)
+        }
+
+        let result = TestTypeOutputForTestType.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the TestType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+     - Returns: The TestTypeOutputForTestType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func testTypeSync(
+            input: CloudformationModel.TestTypeInput) throws -> CloudformationModel.TestTypeOutputForTestType {
+        if let testTypeSyncOverride = testTypeSyncOverride {
+            return try testTypeSyncOverride(input)
+        }
+
+        return TestTypeOutputForTestType.__default
     }
 
     /**

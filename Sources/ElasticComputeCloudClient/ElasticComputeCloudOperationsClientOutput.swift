@@ -285,6 +285,19 @@ extension AssociateTransitGatewayRouteTableResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the AssociateTrunkInterface operation in a HTTP client.
+ */
+extension AssociateTrunkInterfaceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AssociateTrunkInterfaceResult
+    public typealias HeadersType = AssociateTrunkInterfaceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AssociateTrunkInterfaceResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the AssociateVpcCidrBlock operation in a HTTP client.
  */
 extension AssociateVpcCidrBlockResult: HTTPResponseOutputProtocol {
@@ -3132,6 +3145,19 @@ extension DescribeTransitGatewaysResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeTrunkInterfaceAssociations operation in a HTTP client.
+ */
+extension DescribeTrunkInterfaceAssociationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeTrunkInterfaceAssociationsResult
+    public typealias HeadersType = DescribeTrunkInterfaceAssociationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeTrunkInterfaceAssociationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeVolumeAttribute operation in a HTTP client.
  */
 extension DescribeVolumeAttributeResult: HTTPResponseOutputProtocol {
@@ -3392,6 +3418,19 @@ extension DisableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisableImageDeprecation operation in a HTTP client.
+ */
+extension DisableImageDeprecationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableImageDeprecationResult
+    public typealias HeadersType = DisableImageDeprecationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableImageDeprecationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisableSerialConsoleAccess operation in a HTTP client.
  */
 extension DisableSerialConsoleAccessResult: HTTPResponseOutputProtocol {
@@ -3522,6 +3561,19 @@ extension DisassociateTransitGatewayRouteTableResult: HTTPResponseOutputProtocol
 }
 
 /**
+ Type to handle the output from the DisassociateTrunkInterface operation in a HTTP client.
+ */
+extension DisassociateTrunkInterfaceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisassociateTrunkInterfaceResult
+    public typealias HeadersType = DisassociateTrunkInterfaceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisassociateTrunkInterfaceResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisassociateVpcCidrBlock operation in a HTTP client.
  */
 extension DisassociateVpcCidrBlockResult: HTTPResponseOutputProtocol {
@@ -3556,6 +3608,19 @@ extension EnableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> EnableFastSnapshotRestoresResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableImageDeprecation operation in a HTTP client.
+ */
+extension EnableImageDeprecationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableImageDeprecationResult
+    public typealias HeadersType = EnableImageDeprecationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableImageDeprecationResult {
         return try bodyDecodableProvider()
     }
 }

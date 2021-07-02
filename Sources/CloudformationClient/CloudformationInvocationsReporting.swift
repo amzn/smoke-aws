@@ -29,12 +29,15 @@ import CloudformationModel
  Invocations reporting for the CloudformationModel.
  */
 public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+    public let activateType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchDescribeTypeConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelUpdateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let continueUpdateRollback: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deactivateType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -42,6 +45,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let deregisterType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAccountLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describePublisher: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackDriftDetectionStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -73,12 +77,16 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let listTypeRegistrations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTypeVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let publishType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let recordHandlerProgress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let registerPublisher: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let registerType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let setTypeConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setTypeDefaultVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let signalResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopStackSetOperation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let testType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -86,6 +94,10 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let validateTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: CloudformationOperationsReporting) {
+        self.activateType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.activateType)
+        self.batchDescribeTypeConfigurations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.batchDescribeTypeConfigurations)
         self.cancelUpdateStack = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.cancelUpdateStack)
         self.continueUpdateRollback = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -98,6 +110,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.createStackInstances)
         self.createStackSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createStackSet)
+        self.deactivateType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deactivateType)
         self.deleteChangeSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteChangeSet)
         self.deleteStack = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -112,6 +126,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.describeAccountLimits)
         self.describeChangeSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeChangeSet)
+        self.describePublisher = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describePublisher)
         self.describeStackDriftDetectionStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeStackDriftDetectionStatus)
         self.describeStackEvents = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -174,18 +190,26 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.listTypeVersions)
         self.listTypes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listTypes)
+        self.publishType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.publishType)
         self.recordHandlerProgress = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.recordHandlerProgress)
+        self.registerPublisher = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.registerPublisher)
         self.registerType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.registerType)
         self.setStackPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.setStackPolicy)
+        self.setTypeConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.setTypeConfiguration)
         self.setTypeDefaultVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.setTypeDefaultVersion)
         self.signalResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.signalResource)
         self.stopStackSetOperation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.stopStackSetOperation)
+        self.testType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.testType)
         self.updateStack = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateStack)
         self.updateStackInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -132,6 +132,162 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     }
 
     /**
+     Invokes the ActivateType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+         - completion: The ActivateTypeOutputForActivateType object or an error will be passed to this 
+           callback when the operation is complete. The ActivateTypeOutputForActivateType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func activateTypeAsync(
+            input: CloudformationModel.ActivateTypeInput, 
+            completion: @escaping (Result<CloudformationModel.ActivateTypeOutputForActivateType, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.activateType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ActivateTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.activateType.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ActivateType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+     - Returns: The ActivateTypeOutputForActivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func activateTypeSync(
+            input: CloudformationModel.ActivateTypeInput) throws -> CloudformationModel.ActivateTypeOutputForActivateType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.activateType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ActivateTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.activateType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+         - completion: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object or an error will be passed to this 
+           callback when the operation is complete. The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeConfigurationNotFound.
+     */
+    public func batchDescribeTypeConfigurationsAsync(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput, 
+            completion: @escaping (Result<CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchDescribeTypeConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = BatchDescribeTypeConfigurationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.batchDescribeTypeConfigurations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+     - Returns: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeConfigurationNotFound.
+     */
+    public func batchDescribeTypeConfigurationsSync(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput) throws -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchDescribeTypeConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = BatchDescribeTypeConfigurationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.batchDescribeTypeConfigurations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CancelUpdateStack operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -580,6 +736,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.createStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeactivateType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+         - completion: The DeactivateTypeOutputForDeactivateType object or an error will be passed to this 
+           callback when the operation is complete. The DeactivateTypeOutputForDeactivateType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func deactivateTypeAsync(
+            input: CloudformationModel.DeactivateTypeInput, 
+            completion: @escaping (Result<CloudformationModel.DeactivateTypeOutputForDeactivateType, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deactivateType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeactivateTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deactivateType.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeactivateType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+     - Returns: The DeactivateTypeOutputForDeactivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func deactivateTypeSync(
+            input: CloudformationModel.DeactivateTypeInput) throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deactivateType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeactivateTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deactivateType.rawValue,
             version: apiVersion)
 
         do {
@@ -1121,6 +1355,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.describeChangeSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribePublisher operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+         - completion: The DescribePublisherOutputForDescribePublisher object or an error will be passed to this 
+           callback when the operation is complete. The DescribePublisherOutputForDescribePublisher
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry.
+     */
+    public func describePublisherAsync(
+            input: CloudformationModel.DescribePublisherInput, 
+            completion: @escaping (Result<CloudformationModel.DescribePublisherOutputForDescribePublisher, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePublisher,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribePublisherOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describePublisher.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribePublisher operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+     - Returns: The DescribePublisherOutputForDescribePublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func describePublisherSync(
+            input: CloudformationModel.DescribePublisherInput) throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePublisher,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribePublisherOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describePublisher.rawValue,
             version: apiVersion)
 
         do {
@@ -3524,6 +3836,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     }
 
     /**
+     Invokes the PublishType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+         - completion: The PublishTypeOutputForPublishType object or an error will be passed to this 
+           callback when the operation is complete. The PublishTypeOutputForPublishType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func publishTypeAsync(
+            input: CloudformationModel.PublishTypeInput, 
+            completion: @escaping (Result<CloudformationModel.PublishTypeOutputForPublishType, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.publishType.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PublishType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+     - Returns: The PublishTypeOutputForPublishType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func publishTypeSync(
+            input: CloudformationModel.PublishTypeInput) throws -> CloudformationModel.PublishTypeOutputForPublishType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.publishType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the RecordHandlerProgress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3585,6 +3975,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.recordHandlerProgress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RegisterPublisher operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+         - completion: The RegisterPublisherOutputForRegisterPublisher object or an error will be passed to this 
+           callback when the operation is complete. The RegisterPublisherOutputForRegisterPublisher
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry.
+     */
+    public func registerPublisherAsync(
+            input: CloudformationModel.RegisterPublisherInput, 
+            completion: @escaping (Result<CloudformationModel.RegisterPublisherOutputForRegisterPublisher, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerPublisher,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterPublisherOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.registerPublisher.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RegisterPublisher operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+     - Returns: The RegisterPublisherOutputForRegisterPublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func registerPublisherSync(
+            input: CloudformationModel.RegisterPublisherInput) throws -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerPublisher,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterPublisherOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.registerPublisher.rawValue,
             version: apiVersion)
 
         do {
@@ -3740,6 +4208,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
 
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetTypeConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+         - completion: The SetTypeConfigurationOutputForSetTypeConfiguration object or an error will be passed to this 
+           callback when the operation is complete. The SetTypeConfigurationOutputForSetTypeConfiguration
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func setTypeConfigurationAsync(
+            input: CloudformationModel.SetTypeConfigurationInput, 
+            completion: @escaping (Result<CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTypeConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetTypeConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.setTypeConfiguration.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SetTypeConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+     - Returns: The SetTypeConfigurationOutputForSetTypeConfiguration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func setTypeConfigurationSync(
+            input: CloudformationModel.SetTypeConfigurationInput) throws -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTypeConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetTypeConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.setTypeConfiguration.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -3965,6 +4511,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.stopStackSetOperation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TestType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+         - completion: The TestTypeOutputForTestType object or an error will be passed to this 
+           callback when the operation is complete. The TestTypeOutputForTestType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    public func testTypeAsync(
+            input: CloudformationModel.TestTypeInput, 
+            completion: @escaping (Result<CloudformationModel.TestTypeOutputForTestType, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.testType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = TestTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.testType.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the TestType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+     - Returns: The TestTypeOutputForTestType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func testTypeSync(
+            input: CloudformationModel.TestTypeInput) throws -> CloudformationModel.TestTypeOutputForTestType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.testType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = TestTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.testType.rawValue,
             version: apiVersion)
 
         do {

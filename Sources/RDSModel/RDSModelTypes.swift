@@ -42,6 +42,11 @@ public enum ActivityStreamMode: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ActivityStreamModeList field.
+ */
+public typealias ActivityStreamModeList = [String]
+
+/**
  Enumeration restricting the values of the ActivityStreamStatus field.
  */
 public enum ActivityStreamStatus: String, Codable, CustomStringConvertible {

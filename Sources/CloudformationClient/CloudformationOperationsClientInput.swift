@@ -25,6 +25,16 @@ import SmokeHTTPClient
 import CloudformationModel
 
 /**
+ Type to handle the input to the ActivateType operation in a HTTP client.
+ */
+public typealias ActivateTypeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the BatchDescribeTypeConfigurations operation in a HTTP client.
+ */
+public typealias BatchDescribeTypeConfigurationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CancelUpdateStack operation in a HTTP client.
  */
 public typealias CancelUpdateStackOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -53,6 +63,11 @@ public typealias CreateStackInstancesOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the CreateStackSet operation in a HTTP client.
  */
 public typealias CreateStackSetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeactivateType operation in a HTTP client.
+ */
+public typealias DeactivateTypeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteChangeSet operation in a HTTP client.
@@ -88,6 +103,11 @@ public typealias DescribeAccountLimitsOperationHTTPRequestInput = QueryHTTPReque
  Type to handle the input to the DescribeChangeSet operation in a HTTP client.
  */
 public typealias DescribeChangeSetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribePublisher operation in a HTTP client.
+ */
+public typealias DescribePublisherOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeStackDriftDetectionStatus operation in a HTTP client.
@@ -245,9 +265,19 @@ public typealias ListTypeVersionsOperationHTTPRequestInput = QueryHTTPRequestInp
 public typealias ListTypesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the PublishType operation in a HTTP client.
+ */
+public typealias PublishTypeOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the RecordHandlerProgress operation in a HTTP client.
  */
 public typealias RecordHandlerProgressOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the RegisterPublisher operation in a HTTP client.
+ */
+public typealias RegisterPublisherOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the RegisterType operation in a HTTP client.
@@ -258,6 +288,11 @@ public typealias RegisterTypeOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the SetStackPolicy operation in a HTTP client.
  */
 public typealias SetStackPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the SetTypeConfiguration operation in a HTTP client.
+ */
+public typealias SetTypeConfigurationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the SetTypeDefaultVersion operation in a HTTP client.
@@ -273,6 +308,11 @@ public typealias SignalResourceOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StopStackSetOperation operation in a HTTP client.
  */
 public typealias StopStackSetOperationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the TestType operation in a HTTP client.
+ */
+public typealias TestTypeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateStack operation in a HTTP client.

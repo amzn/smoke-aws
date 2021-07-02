@@ -26,12 +26,15 @@ import Foundation
  Operation enumeration for the CloudformationModel.
  */
 public enum CloudformationModelOperations: String, Hashable, CustomStringConvertible {
+    case activateType = "ActivateType"
+    case batchDescribeTypeConfigurations = "BatchDescribeTypeConfigurations"
     case cancelUpdateStack = "CancelUpdateStack"
     case continueUpdateRollback = "ContinueUpdateRollback"
     case createChangeSet = "CreateChangeSet"
     case createStack = "CreateStack"
     case createStackInstances = "CreateStackInstances"
     case createStackSet = "CreateStackSet"
+    case deactivateType = "DeactivateType"
     case deleteChangeSet = "DeleteChangeSet"
     case deleteStack = "DeleteStack"
     case deleteStackInstances = "DeleteStackInstances"
@@ -39,6 +42,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case deregisterType = "DeregisterType"
     case describeAccountLimits = "DescribeAccountLimits"
     case describeChangeSet = "DescribeChangeSet"
+    case describePublisher = "DescribePublisher"
     case describeStackDriftDetectionStatus = "DescribeStackDriftDetectionStatus"
     case describeStackEvents = "DescribeStackEvents"
     case describeStackInstance = "DescribeStackInstance"
@@ -70,12 +74,16 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case listTypeRegistrations = "ListTypeRegistrations"
     case listTypeVersions = "ListTypeVersions"
     case listTypes = "ListTypes"
+    case publishType = "PublishType"
     case recordHandlerProgress = "RecordHandlerProgress"
+    case registerPublisher = "RegisterPublisher"
     case registerType = "RegisterType"
     case setStackPolicy = "SetStackPolicy"
+    case setTypeConfiguration = "SetTypeConfiguration"
     case setTypeDefaultVersion = "SetTypeDefaultVersion"
     case signalResource = "SignalResource"
     case stopStackSetOperation = "StopStackSetOperation"
+    case testType = "TestType"
     case updateStack = "UpdateStack"
     case updateStackInstances = "UpdateStackInstances"
     case updateStackSet = "UpdateStackSet"
@@ -88,6 +96,10 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
 
     public var operationPath: String {
         switch self {
+        case .activateType:
+            return "/"
+        case .batchDescribeTypeConfigurations:
+            return "/"
         case .cancelUpdateStack:
             return "/"
         case .continueUpdateRollback:
@@ -99,6 +111,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .createStackInstances:
             return "/"
         case .createStackSet:
+            return "/"
+        case .deactivateType:
             return "/"
         case .deleteChangeSet:
             return "/"
@@ -113,6 +127,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .describeAccountLimits:
             return "/"
         case .describeChangeSet:
+            return "/"
+        case .describePublisher:
             return "/"
         case .describeStackDriftDetectionStatus:
             return "/"
@@ -176,17 +192,25 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
             return "/"
         case .listTypes:
             return "/"
+        case .publishType:
+            return "/"
         case .recordHandlerProgress:
+            return "/"
+        case .registerPublisher:
             return "/"
         case .registerType:
             return "/"
         case .setStackPolicy:
+            return "/"
+        case .setTypeConfiguration:
             return "/"
         case .setTypeDefaultVersion:
             return "/"
         case .signalResource:
             return "/"
         case .stopStackSetOperation:
+            return "/"
+        case .testType:
             return "/"
         case .updateStack:
             return "/"

@@ -68,6 +68,7 @@ private let stackSetNotFoundIdentity = "StackSetNotFoundException"
 private let staleRequestIdentity = "StaleRequestException"
 private let throttlingIdentity = "ThrottlingException"
 private let tokenAlreadyExistsIdentity = "TokenAlreadyExistsException"
+private let typeConfigurationNotFoundIdentity = "TypeConfigurationNotFoundException"
 private let typeNotFoundIdentity = "TypeNotFoundException"
 private let validationIdentity = "ValidationError"
 
@@ -117,6 +118,7 @@ public enum CloudformationError: Swift.Error, Decodable {
     case staleRequest(StaleRequestException)
     case throttling(CloudformationErrorPayload)
     case tokenAlreadyExists(TokenAlreadyExistsException)
+    case typeConfigurationNotFound(TypeConfigurationNotFoundException)
     case typeNotFound(TypeNotFoundException)
     case validation(CloudformationErrorPayload)
     case validationError(reason: String)
@@ -242,6 +244,9 @@ public enum CloudformationError: Swift.Error, Decodable {
         case tokenAlreadyExistsIdentity:
             let errorPayload = try TokenAlreadyExistsException(from: decoder)
             self = CloudformationError.tokenAlreadyExists(errorPayload)
+        case typeConfigurationNotFoundIdentity:
+            let errorPayload = try TypeConfigurationNotFoundException(from: decoder)
+            self = CloudformationError.typeConfigurationNotFound(errorPayload)
         case typeNotFoundIdentity:
             let errorPayload = try TypeNotFoundException(from: decoder)
             self = CloudformationError.typeNotFound(errorPayload)

@@ -1379,6 +1379,61 @@ public struct AssociateTransitGatewayRouteTableResult: Codable, Equatable {
     }
 }
 
+public struct AssociateTrunkInterfaceRequest: Codable, Equatable {
+    public var branchInterfaceId: NetworkInterfaceId
+    public var clientToken: String?
+    public var dryRun: Boolean?
+    public var greKey: Integer?
+    public var trunkInterfaceId: NetworkInterfaceId
+    public var vlanId: Integer?
+
+    public init(branchInterfaceId: NetworkInterfaceId,
+                clientToken: String? = nil,
+                dryRun: Boolean? = nil,
+                greKey: Integer? = nil,
+                trunkInterfaceId: NetworkInterfaceId,
+                vlanId: Integer? = nil) {
+        self.branchInterfaceId = branchInterfaceId
+        self.clientToken = clientToken
+        self.dryRun = dryRun
+        self.greKey = greKey
+        self.trunkInterfaceId = trunkInterfaceId
+        self.vlanId = vlanId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case branchInterfaceId = "BranchInterfaceId"
+        case clientToken = "ClientToken"
+        case dryRun = "DryRun"
+        case greKey = "GreKey"
+        case trunkInterfaceId = "TrunkInterfaceId"
+        case vlanId = "VlanId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct AssociateTrunkInterfaceResult: Codable, Equatable {
+    public var clientToken: String?
+    public var interfaceAssociation: TrunkInterfaceAssociation?
+
+    public init(clientToken: String? = nil,
+                interfaceAssociation: TrunkInterfaceAssociation? = nil) {
+        self.clientToken = clientToken
+        self.interfaceAssociation = interfaceAssociation
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken
+        case interfaceAssociation
+    }
+
+    public func validate() throws {
+        try interfaceAssociation?.validate()
+    }
+}
+
 public struct AssociateVpcCidrBlockRequest: Codable, Equatable {
     public var amazonProvidedIpv6CidrBlock: Boolean?
     public var cidrBlock: String?
@@ -4371,6 +4426,7 @@ public struct CreateFleetInstance: Codable, Equatable {
 
 public struct CreateFleetRequest: Codable, Equatable {
     public var clientToken: String?
+    public var context: String?
     public var dryRun: Boolean?
     public var excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy?
     public var launchTemplateConfigs: FleetLaunchTemplateConfigListRequest
@@ -4385,6 +4441,7 @@ public struct CreateFleetRequest: Codable, Equatable {
     public var validUntil: DateTime?
 
     public init(clientToken: String? = nil,
+                context: String? = nil,
                 dryRun: Boolean? = nil,
                 excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy? = nil,
                 launchTemplateConfigs: FleetLaunchTemplateConfigListRequest,
@@ -4398,6 +4455,7 @@ public struct CreateFleetRequest: Codable, Equatable {
                 validFrom: DateTime? = nil,
                 validUntil: DateTime? = nil) {
         self.clientToken = clientToken
+        self.context = context
         self.dryRun = dryRun
         self.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy
         self.launchTemplateConfigs = launchTemplateConfigs
@@ -4414,6 +4472,7 @@ public struct CreateFleetRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case clientToken = "ClientToken"
+        case context = "Context"
         case dryRun = "DryRun"
         case excessCapacityTerminationPolicy = "ExcessCapacityTerminationPolicy"
         case launchTemplateConfigs = "LaunchTemplateConfigs"
@@ -5026,19 +5085,22 @@ public struct CreateManagedPrefixListResult: Codable, Equatable {
 }
 
 public struct CreateNatGatewayRequest: Codable, Equatable {
-    public var allocationId: AllocationId
+    public var allocationId: AllocationId?
     public var clientToken: String?
+    public var connectivityType: ConnectivityType?
     public var dryRun: Boolean?
     public var subnetId: SubnetId
     public var tagSpecifications: TagSpecificationList?
 
-    public init(allocationId: AllocationId,
+    public init(allocationId: AllocationId? = nil,
                 clientToken: String? = nil,
+                connectivityType: ConnectivityType? = nil,
                 dryRun: Boolean? = nil,
                 subnetId: SubnetId,
                 tagSpecifications: TagSpecificationList? = nil) {
         self.allocationId = allocationId
         self.clientToken = clientToken
+        self.connectivityType = connectivityType
         self.dryRun = dryRun
         self.subnetId = subnetId
         self.tagSpecifications = tagSpecifications
@@ -5047,6 +5109,7 @@ public struct CreateNatGatewayRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case allocationId = "AllocationId"
         case clientToken = "ClientToken"
+        case connectivityType = "ConnectivityType"
         case dryRun = "DryRun"
         case subnetId = "SubnetId"
         case tagSpecifications = "TagSpecification"
@@ -11081,17 +11144,20 @@ public struct DescribeImagesRequest: Codable, Equatable {
     public var executableUsers: ExecutableByStringList?
     public var filters: FilterList?
     public var imageIds: ImageIdStringList?
+    public var includeDeprecated: Boolean?
     public var owners: OwnerStringList?
 
     public init(dryRun: Boolean? = nil,
                 executableUsers: ExecutableByStringList? = nil,
                 filters: FilterList? = nil,
                 imageIds: ImageIdStringList? = nil,
+                includeDeprecated: Boolean? = nil,
                 owners: OwnerStringList? = nil) {
         self.dryRun = dryRun
         self.executableUsers = executableUsers
         self.filters = filters
         self.imageIds = imageIds
+        self.includeDeprecated = includeDeprecated
         self.owners = owners
     }
 
@@ -11100,6 +11166,7 @@ public struct DescribeImagesRequest: Codable, Equatable {
         case executableUsers = "ExecutableBy"
         case filters = "Filter"
         case imageIds = "ImageId"
+        case includeDeprecated = "IncludeDeprecated"
         case owners = "Owner"
     }
 
@@ -14506,6 +14573,57 @@ public struct DescribeTransitGatewaysResult: Codable, Equatable {
     }
 }
 
+public struct DescribeTrunkInterfaceAssociationsRequest: Codable, Equatable {
+    public var associationIds: TrunkInterfaceAssociationIdList?
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var maxResults: DescribeTrunkInterfaceAssociationsMaxResults?
+    public var nextToken: String?
+
+    public init(associationIds: TrunkInterfaceAssociationIdList? = nil,
+                dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                maxResults: DescribeTrunkInterfaceAssociationsMaxResults? = nil,
+                nextToken: String? = nil) {
+        self.associationIds = associationIds
+        self.dryRun = dryRun
+        self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case associationIds = "AssociationId"
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsDescribeTrunkInterfaceAssociationsMaxResults()
+    }
+}
+
+public struct DescribeTrunkInterfaceAssociationsResult: Codable, Equatable {
+    public var interfaceAssociations: TrunkInterfaceAssociationList?
+    public var nextToken: String?
+
+    public init(interfaceAssociations: TrunkInterfaceAssociationList? = nil,
+                nextToken: String? = nil) {
+        self.interfaceAssociations = interfaceAssociations
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case interfaceAssociations = "interfaceAssociationSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DescribeVolumeAttributeRequest: Codable, Equatable {
     public var attribute: VolumeAttributeName
     public var dryRun: Boolean?
@@ -15711,6 +15829,40 @@ public struct DisableFastSnapshotRestoresResult: Codable, Equatable {
     }
 }
 
+public struct DisableImageDeprecationRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var imageId: ImageId
+
+    public init(dryRun: Boolean? = nil,
+                imageId: ImageId) {
+        self.dryRun = dryRun
+        self.imageId = imageId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case imageId = "ImageId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableImageDeprecationResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DisableSerialConsoleAccessRequest: Codable, Equatable {
     public var dryRun: Boolean?
 
@@ -16137,6 +16289,48 @@ public struct DisassociateTransitGatewayRouteTableResult: Codable, Equatable {
 
     public func validate() throws {
         try association?.validate()
+    }
+}
+
+public struct DisassociateTrunkInterfaceRequest: Codable, Equatable {
+    public var associationId: TrunkInterfaceAssociationId
+    public var clientToken: String?
+    public var dryRun: Boolean?
+
+    public init(associationId: TrunkInterfaceAssociationId,
+                clientToken: String? = nil,
+                dryRun: Boolean? = nil) {
+        self.associationId = associationId
+        self.clientToken = clientToken
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case associationId = "AssociationId"
+        case clientToken = "ClientToken"
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisassociateTrunkInterfaceResult: Codable, Equatable {
+    public var clientToken: String?
+    public var `return`: Boolean?
+
+    public init(clientToken: String? = nil,
+                `return`: Boolean? = nil) {
+        self.clientToken = clientToken
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken
+        case `return` = "return"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -16867,6 +17061,44 @@ public struct EnableFastSnapshotRestoresResult: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case successful
         case unsuccessful
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableImageDeprecationRequest: Codable, Equatable {
+    public var deprecateAt: MillisecondDateTime
+    public var dryRun: Boolean?
+    public var imageId: ImageId
+
+    public init(deprecateAt: MillisecondDateTime,
+                dryRun: Boolean? = nil,
+                imageId: ImageId) {
+        self.deprecateAt = deprecateAt
+        self.dryRun = dryRun
+        self.imageId = imageId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deprecateAt = "DeprecateAt"
+        case dryRun = "DryRun"
+        case imageId = "ImageId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableImageDeprecationResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
     }
 
     public func validate() throws {
@@ -17793,6 +18025,7 @@ public struct Filter: Codable, Equatable {
 public struct FleetData: Codable, Equatable {
     public var activityStatus: FleetActivityStatus?
     public var clientToken: String?
+    public var context: String?
     public var createTime: DateTime?
     public var errors: DescribeFleetsErrorSet?
     public var excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy?
@@ -17814,6 +18047,7 @@ public struct FleetData: Codable, Equatable {
 
     public init(activityStatus: FleetActivityStatus? = nil,
                 clientToken: String? = nil,
+                context: String? = nil,
                 createTime: DateTime? = nil,
                 errors: DescribeFleetsErrorSet? = nil,
                 excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy? = nil,
@@ -17834,6 +18068,7 @@ public struct FleetData: Codable, Equatable {
                 validUntil: DateTime? = nil) {
         self.activityStatus = activityStatus
         self.clientToken = clientToken
+        self.context = context
         self.createTime = createTime
         self.errors = errors
         self.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy
@@ -17857,6 +18092,7 @@ public struct FleetData: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case activityStatus
         case clientToken
+        case context
         case createTime
         case errors = "errorSet"
         case excessCapacityTerminationPolicy
@@ -19968,6 +20204,7 @@ public struct Image: Codable, Equatable {
     public var blockDeviceMappings: BlockDeviceMappingList?
     public var bootMode: BootModeValues?
     public var creationDate: String?
+    public var deprecationTime: String?
     public var description: String?
     public var enaSupport: Boolean?
     public var hypervisor: HypervisorType?
@@ -19996,6 +20233,7 @@ public struct Image: Codable, Equatable {
                 blockDeviceMappings: BlockDeviceMappingList? = nil,
                 bootMode: BootModeValues? = nil,
                 creationDate: String? = nil,
+                deprecationTime: String? = nil,
                 description: String? = nil,
                 enaSupport: Boolean? = nil,
                 hypervisor: HypervisorType? = nil,
@@ -20023,6 +20261,7 @@ public struct Image: Codable, Equatable {
         self.blockDeviceMappings = blockDeviceMappings
         self.bootMode = bootMode
         self.creationDate = creationDate
+        self.deprecationTime = deprecationTime
         self.description = description
         self.enaSupport = enaSupport
         self.hypervisor = hypervisor
@@ -20053,6 +20292,7 @@ public struct Image: Codable, Equatable {
         case blockDeviceMappings = "blockDeviceMapping"
         case bootMode
         case creationDate
+        case deprecationTime
         case description
         case enaSupport
         case hypervisor
@@ -24251,17 +24491,20 @@ public struct ModifyEbsDefaultKmsKeyIdResult: Codable, Equatable {
 }
 
 public struct ModifyFleetRequest: Codable, Equatable {
+    public var context: String?
     public var dryRun: Boolean?
     public var excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy?
     public var fleetId: FleetId
     public var launchTemplateConfigs: FleetLaunchTemplateConfigListRequest?
     public var targetCapacitySpecification: TargetCapacitySpecificationRequest?
 
-    public init(dryRun: Boolean? = nil,
+    public init(context: String? = nil,
+                dryRun: Boolean? = nil,
                 excessCapacityTerminationPolicy: FleetExcessCapacityTerminationPolicy? = nil,
                 fleetId: FleetId,
                 launchTemplateConfigs: FleetLaunchTemplateConfigListRequest? = nil,
                 targetCapacitySpecification: TargetCapacitySpecificationRequest? = nil) {
+        self.context = context
         self.dryRun = dryRun
         self.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy
         self.fleetId = fleetId
@@ -24270,6 +24513,7 @@ public struct ModifyFleetRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case context = "Context"
         case dryRun = "DryRun"
         case excessCapacityTerminationPolicy = "ExcessCapacityTerminationPolicy"
         case fleetId = "FleetId"
@@ -25043,17 +25287,20 @@ public struct ModifySnapshotAttributeRequest: Codable, Equatable {
 }
 
 public struct ModifySpotFleetRequestRequest: Codable, Equatable {
+    public var context: String?
     public var excessCapacityTerminationPolicy: ExcessCapacityTerminationPolicy?
     public var launchTemplateConfigs: LaunchTemplateConfigList?
     public var onDemandTargetCapacity: Integer?
     public var spotFleetRequestId: SpotFleetRequestId
     public var targetCapacity: Integer?
 
-    public init(excessCapacityTerminationPolicy: ExcessCapacityTerminationPolicy? = nil,
+    public init(context: String? = nil,
+                excessCapacityTerminationPolicy: ExcessCapacityTerminationPolicy? = nil,
                 launchTemplateConfigs: LaunchTemplateConfigList? = nil,
                 onDemandTargetCapacity: Integer? = nil,
                 spotFleetRequestId: SpotFleetRequestId,
                 targetCapacity: Integer? = nil) {
+        self.context = context
         self.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy
         self.launchTemplateConfigs = launchTemplateConfigs
         self.onDemandTargetCapacity = onDemandTargetCapacity
@@ -25062,6 +25309,7 @@ public struct ModifySpotFleetRequestRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case context = "Context"
         case excessCapacityTerminationPolicy
         case launchTemplateConfigs = "LaunchTemplateConfig"
         case onDemandTargetCapacity = "OnDemandTargetCapacity"
@@ -26293,6 +26541,7 @@ public struct MovingAddressStatus: Codable, Equatable {
 }
 
 public struct NatGateway: Codable, Equatable {
+    public var connectivityType: ConnectivityType?
     public var createTime: DateTime?
     public var deleteTime: DateTime?
     public var failureCode: String?
@@ -26305,7 +26554,8 @@ public struct NatGateway: Codable, Equatable {
     public var tags: TagList?
     public var vpcId: String?
 
-    public init(createTime: DateTime? = nil,
+    public init(connectivityType: ConnectivityType? = nil,
+                createTime: DateTime? = nil,
                 deleteTime: DateTime? = nil,
                 failureCode: String? = nil,
                 failureMessage: String? = nil,
@@ -26316,6 +26566,7 @@ public struct NatGateway: Codable, Equatable {
                 subnetId: String? = nil,
                 tags: TagList? = nil,
                 vpcId: String? = nil) {
+        self.connectivityType = connectivityType
         self.createTime = createTime
         self.deleteTime = deleteTime
         self.failureCode = failureCode
@@ -26330,6 +26581,7 @@ public struct NatGateway: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case connectivityType
         case createTime
         case deleteTime
         case failureCode
@@ -27855,6 +28107,7 @@ public struct ProvisionByoipCidrRequest: Codable, Equatable {
     public var cidrAuthorizationContext: CidrAuthorizationContext?
     public var description: String?
     public var dryRun: Boolean?
+    public var multiRegion: Boolean?
     public var poolTagSpecifications: TagSpecificationList?
     public var publiclyAdvertisable: Boolean?
 
@@ -27862,12 +28115,14 @@ public struct ProvisionByoipCidrRequest: Codable, Equatable {
                 cidrAuthorizationContext: CidrAuthorizationContext? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
+                multiRegion: Boolean? = nil,
                 poolTagSpecifications: TagSpecificationList? = nil,
                 publiclyAdvertisable: Boolean? = nil) {
         self.cidr = cidr
         self.cidrAuthorizationContext = cidrAuthorizationContext
         self.description = description
         self.dryRun = dryRun
+        self.multiRegion = multiRegion
         self.poolTagSpecifications = poolTagSpecifications
         self.publiclyAdvertisable = publiclyAdvertisable
     }
@@ -27877,6 +28132,7 @@ public struct ProvisionByoipCidrRequest: Codable, Equatable {
         case cidrAuthorizationContext = "CidrAuthorizationContext"
         case description = "Description"
         case dryRun = "DryRun"
+        case multiRegion = "MultiRegion"
         case poolTagSpecifications = "PoolTagSpecification"
         case publiclyAdvertisable = "PubliclyAdvertisable"
     }
@@ -32295,6 +32551,7 @@ public struct SpotFleetRequestConfig: Codable, Equatable {
 public struct SpotFleetRequestConfigData: Codable, Equatable {
     public var allocationStrategy: AllocationStrategy?
     public var clientToken: String?
+    public var context: String?
     public var excessCapacityTerminationPolicy: ExcessCapacityTerminationPolicy?
     public var fulfilledCapacity: Double?
     public var iamFleetRole: String
@@ -32320,6 +32577,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
 
     public init(allocationStrategy: AllocationStrategy? = nil,
                 clientToken: String? = nil,
+                context: String? = nil,
                 excessCapacityTerminationPolicy: ExcessCapacityTerminationPolicy? = nil,
                 fulfilledCapacity: Double? = nil,
                 iamFleetRole: String,
@@ -32344,6 +32602,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
                 validUntil: DateTime? = nil) {
         self.allocationStrategy = allocationStrategy
         self.clientToken = clientToken
+        self.context = context
         self.excessCapacityTerminationPolicy = excessCapacityTerminationPolicy
         self.fulfilledCapacity = fulfilledCapacity
         self.iamFleetRole = iamFleetRole
@@ -32371,6 +32630,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case allocationStrategy
         case clientToken
+        case context
         case excessCapacityTerminationPolicy
         case fulfilledCapacity
         case iamFleetRole
@@ -34862,6 +35122,45 @@ public struct TransitGatewayVpcAttachmentOptions: Codable, Equatable {
         case applianceModeSupport
         case dnsSupport
         case ipv6Support
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TrunkInterfaceAssociation: Codable, Equatable {
+    public var associationId: TrunkInterfaceAssociationId?
+    public var branchInterfaceId: String?
+    public var greKey: Integer?
+    public var interfaceProtocol: InterfaceProtocolType?
+    public var tags: TagList?
+    public var trunkInterfaceId: String?
+    public var vlanId: Integer?
+
+    public init(associationId: TrunkInterfaceAssociationId? = nil,
+                branchInterfaceId: String? = nil,
+                greKey: Integer? = nil,
+                interfaceProtocol: InterfaceProtocolType? = nil,
+                tags: TagList? = nil,
+                trunkInterfaceId: String? = nil,
+                vlanId: Integer? = nil) {
+        self.associationId = associationId
+        self.branchInterfaceId = branchInterfaceId
+        self.greKey = greKey
+        self.interfaceProtocol = interfaceProtocol
+        self.tags = tags
+        self.trunkInterfaceId = trunkInterfaceId
+        self.vlanId = vlanId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case associationId
+        case branchInterfaceId
+        case greKey
+        case interfaceProtocol
+        case tags = "tagSet"
+        case trunkInterfaceId
+        case vlanId
     }
 
     public func validate() throws {

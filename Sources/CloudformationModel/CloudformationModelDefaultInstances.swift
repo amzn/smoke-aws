@@ -48,6 +48,51 @@ public extension AccountLimit {
     }()
 }
 
+public extension ActivateTypeInput {
+    /**
+     Default instance of the ActivateTypeInput structure.
+     */
+    static let __default: CloudformationModel.ActivateTypeInput = {
+        let defaultInstance = CloudformationModel.ActivateTypeInput(
+            autoUpdate: nil,
+            executionRoleArn: nil,
+            loggingConfig: nil,
+            majorVersion: nil,
+            publicTypeArn: nil,
+            publisherId: nil,
+            type: nil,
+            typeName: nil,
+            typeNameAlias: nil,
+            versionBump: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ActivateTypeOutput {
+    /**
+     Default instance of the ActivateTypeOutput structure.
+     */
+    static let __default: CloudformationModel.ActivateTypeOutput = {
+        let defaultInstance = CloudformationModel.ActivateTypeOutput(
+            arn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ActivateTypeOutputForActivateType {
+    /**
+     Default instance of the ActivateTypeOutputForActivateType structure.
+     */
+    static let __default: CloudformationModel.ActivateTypeOutputForActivateType = {
+        let defaultInstance = CloudformationModel.ActivateTypeOutputForActivateType(
+            activateTypeResult: ActivateTypeOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension AlreadyExistsException {
     /**
      Default instance of the AlreadyExistsException structure.
@@ -67,6 +112,58 @@ public extension AutoDeployment {
         let defaultInstance = CloudformationModel.AutoDeployment(
             enabled: nil,
             retainStacksOnAccountRemoval: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchDescribeTypeConfigurationsError {
+    /**
+     Default instance of the BatchDescribeTypeConfigurationsError structure.
+     */
+    static let __default: CloudformationModel.BatchDescribeTypeConfigurationsError = {
+        let defaultInstance = CloudformationModel.BatchDescribeTypeConfigurationsError(
+            errorCode: nil,
+            errorMessage: nil,
+            typeConfigurationIdentifier: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchDescribeTypeConfigurationsInput {
+    /**
+     Default instance of the BatchDescribeTypeConfigurationsInput structure.
+     */
+    static let __default: CloudformationModel.BatchDescribeTypeConfigurationsInput = {
+        let defaultInstance = CloudformationModel.BatchDescribeTypeConfigurationsInput(
+            typeConfigurationIdentifiers: [TypeConfigurationIdentifier.__default])
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchDescribeTypeConfigurationsOutput {
+    /**
+     Default instance of the BatchDescribeTypeConfigurationsOutput structure.
+     */
+    static let __default: CloudformationModel.BatchDescribeTypeConfigurationsOutput = {
+        let defaultInstance = CloudformationModel.BatchDescribeTypeConfigurationsOutput(
+            errors: nil,
+            typeConfigurations: nil,
+            unprocessedTypeConfigurations: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
+    /**
+     Default instance of the BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations structure.
+     */
+    static let __default: CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations = {
+        let defaultInstance = CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations(
+            batchDescribeTypeConfigurationsResult: BatchDescribeTypeConfigurationsOutput.__default)
 
         return defaultInstance
     }()
@@ -389,6 +486,43 @@ public extension CreatedButModifiedException {
     }()
 }
 
+public extension DeactivateTypeInput {
+    /**
+     Default instance of the DeactivateTypeInput structure.
+     */
+    static let __default: CloudformationModel.DeactivateTypeInput = {
+        let defaultInstance = CloudformationModel.DeactivateTypeInput(
+            arn: nil,
+            type: nil,
+            typeName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeactivateTypeOutput {
+    /**
+     Default instance of the DeactivateTypeOutput structure.
+     */
+    static let __default: CloudformationModel.DeactivateTypeOutput = {
+        let defaultInstance = CloudformationModel.DeactivateTypeOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeactivateTypeOutputForDeactivateType {
+    /**
+     Default instance of the DeactivateTypeOutputForDeactivateType structure.
+     */
+    static let __default: CloudformationModel.DeactivateTypeOutputForDeactivateType = {
+        let defaultInstance = CloudformationModel.DeactivateTypeOutputForDeactivateType(
+            deactivateTypeResult: DeactivateTypeOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteChangeSetInput {
     /**
      Default instance of the DeleteChangeSetInput structure.
@@ -659,6 +793,45 @@ public extension DescribeChangeSetOutputForDescribeChangeSet {
     static let __default: CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet = {
         let defaultInstance = CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet(
             describeChangeSetResult: DescribeChangeSetOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribePublisherInput {
+    /**
+     Default instance of the DescribePublisherInput structure.
+     */
+    static let __default: CloudformationModel.DescribePublisherInput = {
+        let defaultInstance = CloudformationModel.DescribePublisherInput(
+            publisherId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribePublisherOutput {
+    /**
+     Default instance of the DescribePublisherOutput structure.
+     */
+    static let __default: CloudformationModel.DescribePublisherOutput = {
+        let defaultInstance = CloudformationModel.DescribePublisherOutput(
+            identityProvider: nil,
+            publisherId: nil,
+            publisherProfile: nil,
+            publisherStatus: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribePublisherOutputForDescribePublisher {
+    /**
+     Default instance of the DescribePublisherOutputForDescribePublisher structure.
+     */
+    static let __default: CloudformationModel.DescribePublisherOutputForDescribePublisher = {
+        let defaultInstance = CloudformationModel.DescribePublisherOutputForDescribePublisher(
+            describePublisherResult: DescribePublisherOutput.__default)
 
         return defaultInstance
     }()
@@ -1018,6 +1191,8 @@ public extension DescribeTypeInput {
     static let __default: CloudformationModel.DescribeTypeInput = {
         let defaultInstance = CloudformationModel.DescribeTypeInput(
             arn: nil,
+            publicVersionNumber: nil,
+            publisherId: nil,
             type: nil,
             typeName: nil,
             versionId: nil)
@@ -1033,20 +1208,31 @@ public extension DescribeTypeOutput {
     static let __default: CloudformationModel.DescribeTypeOutput = {
         let defaultInstance = CloudformationModel.DescribeTypeOutput(
             arn: nil,
+            autoUpdate: nil,
+            configurationSchema: nil,
             defaultVersionId: nil,
             deprecatedStatus: nil,
             description: nil,
             documentationUrl: nil,
             executionRoleArn: nil,
+            isActivated: nil,
             isDefaultVersion: nil,
             lastUpdated: nil,
+            latestPublicVersion: nil,
             loggingConfig: nil,
+            originalTypeArn: nil,
+            originalTypeName: nil,
             provisioningType: nil,
+            publicVersionNumber: nil,
+            publisherId: nil,
+            requiredActivatedTypes: nil,
             schema: nil,
             sourceUrl: nil,
             timeCreated: nil,
             type: nil,
             typeName: nil,
+            typeTestsStatus: nil,
+            typeTestsStatusDescription: nil,
             visibility: nil)
 
         return defaultInstance
@@ -1889,6 +2075,7 @@ public extension ListTypeVersionsInput {
             deprecatedStatus: nil,
             maxResults: nil,
             nextToken: nil,
+            publisherId: nil,
             type: nil,
             typeName: nil)
 
@@ -1928,6 +2115,7 @@ public extension ListTypesInput {
     static let __default: CloudformationModel.ListTypesInput = {
         let defaultInstance = CloudformationModel.ListTypesInput(
             deprecatedStatus: nil,
+            filters: nil,
             maxResults: nil,
             nextToken: nil,
             provisioningType: nil,
@@ -2131,6 +2319,45 @@ public extension PropertyDifference {
     }()
 }
 
+public extension PublishTypeInput {
+    /**
+     Default instance of the PublishTypeInput structure.
+     */
+    static let __default: CloudformationModel.PublishTypeInput = {
+        let defaultInstance = CloudformationModel.PublishTypeInput(
+            arn: nil,
+            publicVersionNumber: nil,
+            type: nil,
+            typeName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishTypeOutput {
+    /**
+     Default instance of the PublishTypeOutput structure.
+     */
+    static let __default: CloudformationModel.PublishTypeOutput = {
+        let defaultInstance = CloudformationModel.PublishTypeOutput(
+            publicTypeArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishTypeOutputForPublishType {
+    /**
+     Default instance of the PublishTypeOutputForPublishType structure.
+     */
+    static let __default: CloudformationModel.PublishTypeOutputForPublishType = {
+        let defaultInstance = CloudformationModel.PublishTypeOutputForPublishType(
+            publishTypeResult: PublishTypeOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension RecordHandlerProgressInput {
     /**
      Default instance of the RecordHandlerProgressInput structure.
@@ -2172,6 +2399,43 @@ public extension RecordHandlerProgressOutputForRecordHandlerProgress {
     }()
 }
 
+public extension RegisterPublisherInput {
+    /**
+     Default instance of the RegisterPublisherInput structure.
+     */
+    static let __default: CloudformationModel.RegisterPublisherInput = {
+        let defaultInstance = CloudformationModel.RegisterPublisherInput(
+            acceptTermsAndConditions: nil,
+            connectionArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterPublisherOutput {
+    /**
+     Default instance of the RegisterPublisherOutput structure.
+     */
+    static let __default: CloudformationModel.RegisterPublisherOutput = {
+        let defaultInstance = CloudformationModel.RegisterPublisherOutput(
+            publisherId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegisterPublisherOutputForRegisterPublisher {
+    /**
+     Default instance of the RegisterPublisherOutputForRegisterPublisher structure.
+     */
+    static let __default: CloudformationModel.RegisterPublisherOutputForRegisterPublisher = {
+        let defaultInstance = CloudformationModel.RegisterPublisherOutputForRegisterPublisher(
+            registerPublisherResult: RegisterPublisherOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension RegisterTypeInput {
     /**
      Default instance of the RegisterTypeInput structure.
@@ -2208,6 +2472,21 @@ public extension RegisterTypeOutputForRegisterType {
     static let __default: CloudformationModel.RegisterTypeOutputForRegisterType = {
         let defaultInstance = CloudformationModel.RegisterTypeOutputForRegisterType(
             registerTypeResult: RegisterTypeOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension RequiredActivatedType {
+    /**
+     Default instance of the RequiredActivatedType structure.
+     */
+    static let __default: CloudformationModel.RequiredActivatedType = {
+        let defaultInstance = CloudformationModel.RequiredActivatedType(
+            originalTypeName: nil,
+            publisherId: nil,
+            supportedMajorVersions: nil,
+            typeNameAlias: nil)
 
         return defaultInstance
     }()
@@ -2325,6 +2604,46 @@ public extension SetStackPolicyInput {
             stackName: "value",
             stackPolicyBody: nil,
             stackPolicyURL: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SetTypeConfigurationInput {
+    /**
+     Default instance of the SetTypeConfigurationInput structure.
+     */
+    static let __default: CloudformationModel.SetTypeConfigurationInput = {
+        let defaultInstance = CloudformationModel.SetTypeConfigurationInput(
+            configuration: "0",
+            configurationAlias: nil,
+            type: nil,
+            typeArn: nil,
+            typeName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SetTypeConfigurationOutput {
+    /**
+     Default instance of the SetTypeConfigurationOutput structure.
+     */
+    static let __default: CloudformationModel.SetTypeConfigurationOutput = {
+        let defaultInstance = CloudformationModel.SetTypeConfigurationOutput(
+            configurationArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SetTypeConfigurationOutputForSetTypeConfiguration {
+    /**
+     Default instance of the SetTypeConfigurationOutputForSetTypeConfiguration structure.
+     */
+    static let __default: CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration = {
+        let defaultInstance = CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration(
+            setTypeConfigurationResult: SetTypeConfigurationOutput.__default)
 
         return defaultInstance
     }()
@@ -2912,12 +3231,111 @@ public extension TemplateParameter {
     }()
 }
 
+public extension TestTypeInput {
+    /**
+     Default instance of the TestTypeInput structure.
+     */
+    static let __default: CloudformationModel.TestTypeInput = {
+        let defaultInstance = CloudformationModel.TestTypeInput(
+            arn: nil,
+            logDeliveryBucket: nil,
+            type: nil,
+            typeName: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TestTypeOutput {
+    /**
+     Default instance of the TestTypeOutput structure.
+     */
+    static let __default: CloudformationModel.TestTypeOutput = {
+        let defaultInstance = CloudformationModel.TestTypeOutput(
+            typeVersionArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TestTypeOutputForTestType {
+    /**
+     Default instance of the TestTypeOutputForTestType structure.
+     */
+    static let __default: CloudformationModel.TestTypeOutputForTestType = {
+        let defaultInstance = CloudformationModel.TestTypeOutputForTestType(
+            testTypeResult: TestTypeOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension TokenAlreadyExistsException {
     /**
      Default instance of the TokenAlreadyExistsException structure.
      */
     static let __default: CloudformationModel.TokenAlreadyExistsException = {
         let defaultInstance = CloudformationModel.TokenAlreadyExistsException()
+
+        return defaultInstance
+    }()
+}
+
+public extension TypeConfigurationDetails {
+    /**
+     Default instance of the TypeConfigurationDetails structure.
+     */
+    static let __default: CloudformationModel.TypeConfigurationDetails = {
+        let defaultInstance = CloudformationModel.TypeConfigurationDetails(
+            alias: nil,
+            arn: nil,
+            configuration: nil,
+            isDefaultConfiguration: nil,
+            lastUpdated: nil,
+            typeArn: nil,
+            typeName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TypeConfigurationIdentifier {
+    /**
+     Default instance of the TypeConfigurationIdentifier structure.
+     */
+    static let __default: CloudformationModel.TypeConfigurationIdentifier = {
+        let defaultInstance = CloudformationModel.TypeConfigurationIdentifier(
+            type: nil,
+            typeArn: nil,
+            typeConfigurationAlias: nil,
+            typeConfigurationArn: nil,
+            typeName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TypeConfigurationNotFoundException {
+    /**
+     Default instance of the TypeConfigurationNotFoundException structure.
+     */
+    static let __default: CloudformationModel.TypeConfigurationNotFoundException = {
+        let defaultInstance = CloudformationModel.TypeConfigurationNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
+public extension TypeFilters {
+    /**
+     Default instance of the TypeFilters structure.
+     */
+    static let __default: CloudformationModel.TypeFilters = {
+        let defaultInstance = CloudformationModel.TypeFilters(
+            category: nil,
+            publisherId: nil,
+            typeNamePrefix: nil)
 
         return defaultInstance
     }()
@@ -2942,7 +3360,14 @@ public extension TypeSummary {
         let defaultInstance = CloudformationModel.TypeSummary(
             defaultVersionId: nil,
             description: nil,
+            isActivated: nil,
             lastUpdated: nil,
+            latestPublicVersion: nil,
+            originalTypeName: nil,
+            publicVersionNumber: nil,
+            publisherId: nil,
+            publisherIdentity: nil,
+            publisherName: nil,
             type: nil,
             typeArn: nil,
             typeName: nil)
@@ -2960,6 +3385,7 @@ public extension TypeVersionSummary {
             arn: nil,
             description: nil,
             isDefaultVersion: nil,
+            publicVersionNumber: nil,
             timeCreated: nil,
             type: nil,
             typeName: nil,
