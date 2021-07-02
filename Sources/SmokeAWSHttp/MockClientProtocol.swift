@@ -8,6 +8,21 @@ public protocol MockClientProtocol {
 
 }
 
+/**
+ Implementations for a mock service client.
+ 
+ A function override directly returning a result and/or an EventLoopFuture override returning an
+ `EventLoopFuture` that will provide a result at a later time can be provided.
+ 
+ If the function override is provided, the implementation will return - via a future - the result
+ provided by this override or will throw any error thrown by the override.
+ 
+ Otherwise, if the `EventLoopFuture` override is provided, the implementation will return the result
+ provided by the `EventLoopFuture` or will throw any error that fails the future. This override is ignored if the first
+ function override is provided.
+ 
+ Otherwise, the implementation will return the default value provided.
+ */
 public extension MockClientProtocol {
     
     func mockEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(

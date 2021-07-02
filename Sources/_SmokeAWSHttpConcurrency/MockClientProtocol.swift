@@ -8,6 +8,21 @@ import NIO
 import SmokeAWSHttp
 import _SmokeHTTPClientConcurrency
 
+/**
+ Implementations for a mock service client.
+ 
+ An async function override directly returning a result and/or an EventLoopFuture override returning an
+ `EventLoopFuture` that will provide a result at a later time can be provided.
+ 
+ If the function override is provided, the implementation will return - directly or via a future - the result provided
+ by this override or will throw any error thrown by the override.
+ 
+ Otherwise, if the `EventLoopFuture` override is provided, the implementation will return the result
+ provided by the `EventLoopFuture` or will throw any error that fails the future. This override is ignored if the first
+ function override is provided.
+ 
+ Otherwise, the implementation will return the default value provided.
+ */
 public extension MockClientProtocol {
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
