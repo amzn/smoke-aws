@@ -1022,6 +1022,20 @@ public enum ConnectionNotificationType: String, Codable, CustomStringConvertible
 }
 
 /**
+ Enumeration restricting the values of the ConnectivityType field.
+ */
+public enum ConnectivityType: String, Codable, CustomStringConvertible {
+    case `private` = "private"
+    case `public` = "public"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ConnectivityType = .`private`
+}
+
+/**
  Enumeration restricting the values of the ContainerFormat field.
  */
 public enum ContainerFormat: String, Codable, CustomStringConvertible {
@@ -1472,6 +1486,11 @@ public typealias DescribeStoreImageTasksRequestMaxResults = Int
  Type definition for the DescribeSubnetsMaxResults field.
  */
 public typealias DescribeSubnetsMaxResults = Int
+
+/**
+ Type definition for the DescribeTrunkInterfaceAssociationsMaxResults field.
+ */
+public typealias DescribeTrunkInterfaceAssociationsMaxResults = Int
 
 /**
  Type definition for the DescribeVpcClassicLinkDnsSupportMaxResults field.
@@ -3140,6 +3159,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5dn4xlarge = "m5dn.4xlarge"
     case m5dn8xlarge = "m5dn.8xlarge"
     case m5dnLarge = "m5dn.large"
+    case m5dnMetal = "m5dn.metal"
     case m5dnXlarge = "m5dn.xlarge"
     case m5n12xlarge = "m5n.12xlarge"
     case m5n16xlarge = "m5n.16xlarge"
@@ -3148,6 +3168,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5n4xlarge = "m5n.4xlarge"
     case m5n8xlarge = "m5n.8xlarge"
     case m5nLarge = "m5n.large"
+    case m5nMetal = "m5n.metal"
     case m5nXlarge = "m5n.xlarge"
     case m5zn12xlarge = "m5zn.12xlarge"
     case m5zn2xlarge = "m5zn.2xlarge"
@@ -3244,6 +3265,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r5dn4xlarge = "r5dn.4xlarge"
     case r5dn8xlarge = "r5dn.8xlarge"
     case r5dnLarge = "r5dn.large"
+    case r5dnMetal = "r5dn.metal"
     case r5dnXlarge = "r5dn.xlarge"
     case r5n12xlarge = "r5n.12xlarge"
     case r5n16xlarge = "r5n.16xlarge"
@@ -3252,6 +3274,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r5n4xlarge = "r5n.4xlarge"
     case r5n8xlarge = "r5n.8xlarge"
     case r5nLarge = "r5n.large"
+    case r5nMetal = "r5n.metal"
     case r5nXlarge = "r5n.xlarge"
     case r6g12xlarge = "r6g.12xlarge"
     case r6g16xlarge = "r6g.16xlarge"
@@ -3392,6 +3415,20 @@ public enum InterfacePermissionType: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: InterfacePermissionType = .eipAssociate
+}
+
+/**
+ Enumeration restricting the values of the InterfaceProtocolType field.
+ */
+public enum InterfaceProtocolType: String, Codable, CustomStringConvertible {
+    case gre = "GRE"
+    case vlan = "VLAN"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InterfaceProtocolType = .gre
 }
 
 /**
@@ -4217,13 +4254,15 @@ public enum NetworkInterfaceAttribute: String, Codable, CustomStringConvertible 
  Enumeration restricting the values of the NetworkInterfaceCreationType field.
  */
 public enum NetworkInterfaceCreationType: String, Codable, CustomStringConvertible {
+    case branch
     case efa
+    case trunk
 
     public var description: String {
         return rawValue
     }
     
-    public static let __default: NetworkInterfaceCreationType = .efa
+    public static let __default: NetworkInterfaceCreationType = .branch
 }
 
 /**
@@ -4306,6 +4345,7 @@ public enum NetworkInterfaceType: String, Codable, CustomStringConvertible {
     case efa
     case interface
     case natgateway = "natGateway"
+    case trunk
 
     public var description: String {
         return rawValue
@@ -6512,6 +6552,21 @@ public enum TransportProtocol: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the TrunkInterfaceAssociationId field.
+ */
+public typealias TrunkInterfaceAssociationId = String
+
+/**
+ Type definition for the TrunkInterfaceAssociationIdList field.
+ */
+public typealias TrunkInterfaceAssociationIdList = [TrunkInterfaceAssociationId]
+
+/**
+ Type definition for the TrunkInterfaceAssociationList field.
+ */
+public typealias TrunkInterfaceAssociationList = [TrunkInterfaceAssociation]
+
+/**
  Enumeration restricting the values of the TunnelInsideIpVersion field.
  */
 public enum TunnelInsideIpVersion: String, Codable, CustomStringConvertible {
@@ -7814,6 +7869,21 @@ extension ElasticComputeCloudModel.DescribeSubnetsMaxResults {
 
         if self > 1000 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSubnetsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeTrunkInterfaceAssociationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsMaxResults {
+    public func validateAsDescribeTrunkInterfaceAssociationsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeTrunkInterfaceAssociationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 255 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeTrunkInterfaceAssociationsMaxResults violated the maximum range constraint.")
         }
     }
 }

@@ -60,6 +60,96 @@ public struct AccountLimit: Codable, Equatable {
     }
 }
 
+public struct ActivateTypeInput: Codable, Equatable {
+    public var autoUpdate: AutoUpdate?
+    public var executionRoleArn: RoleArn?
+    public var loggingConfig: LoggingConfig?
+    public var majorVersion: MajorVersion?
+    public var publicTypeArn: ThirdPartyTypeArn?
+    public var publisherId: PublisherId?
+    public var type: ThirdPartyType?
+    public var typeName: TypeName?
+    public var typeNameAlias: TypeName?
+    public var versionBump: VersionBump?
+
+    public init(autoUpdate: AutoUpdate? = nil,
+                executionRoleArn: RoleArn? = nil,
+                loggingConfig: LoggingConfig? = nil,
+                majorVersion: MajorVersion? = nil,
+                publicTypeArn: ThirdPartyTypeArn? = nil,
+                publisherId: PublisherId? = nil,
+                type: ThirdPartyType? = nil,
+                typeName: TypeName? = nil,
+                typeNameAlias: TypeName? = nil,
+                versionBump: VersionBump? = nil) {
+        self.autoUpdate = autoUpdate
+        self.executionRoleArn = executionRoleArn
+        self.loggingConfig = loggingConfig
+        self.majorVersion = majorVersion
+        self.publicTypeArn = publicTypeArn
+        self.publisherId = publisherId
+        self.type = type
+        self.typeName = typeName
+        self.typeNameAlias = typeNameAlias
+        self.versionBump = versionBump
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case autoUpdate = "AutoUpdate"
+        case executionRoleArn = "ExecutionRoleArn"
+        case loggingConfig = "LoggingConfig"
+        case majorVersion = "MajorVersion"
+        case publicTypeArn = "PublicTypeArn"
+        case publisherId = "PublisherId"
+        case type = "Type"
+        case typeName = "TypeName"
+        case typeNameAlias = "TypeNameAlias"
+        case versionBump = "VersionBump"
+    }
+
+    public func validate() throws {
+        try executionRoleArn?.validateAsRoleArn()
+        try loggingConfig?.validate()
+        try majorVersion?.validateAsMajorVersion()
+        try publicTypeArn?.validateAsThirdPartyTypeArn()
+        try publisherId?.validateAsPublisherId()
+        try typeName?.validateAsTypeName()
+        try typeNameAlias?.validateAsTypeName()
+    }
+}
+
+public struct ActivateTypeOutput: Codable, Equatable {
+    public var arn: PrivateTypeArn?
+
+    public init(arn: PrivateTypeArn? = nil) {
+        self.arn = arn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsPrivateTypeArn()
+    }
+}
+
+public struct ActivateTypeOutputForActivateType: Codable, Equatable {
+    public var activateTypeResult: ActivateTypeOutput
+
+    public init(activateTypeResult: ActivateTypeOutput) {
+        self.activateTypeResult = activateTypeResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case activateTypeResult = "ActivateTypeResult"
+    }
+
+    public func validate() throws {
+        try activateTypeResult.validate()
+    }
+}
+
 public struct AlreadyExistsException: Codable, Equatable {
 
     public init() {
@@ -85,6 +175,87 @@ public struct AutoDeployment: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct BatchDescribeTypeConfigurationsError: Codable, Equatable {
+    public var errorCode: ErrorCode?
+    public var errorMessage: ErrorMessage?
+    public var typeConfigurationIdentifier: TypeConfigurationIdentifier?
+
+    public init(errorCode: ErrorCode? = nil,
+                errorMessage: ErrorMessage? = nil,
+                typeConfigurationIdentifier: TypeConfigurationIdentifier? = nil) {
+        self.errorCode = errorCode
+        self.errorMessage = errorMessage
+        self.typeConfigurationIdentifier = typeConfigurationIdentifier
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case errorCode = "ErrorCode"
+        case errorMessage = "ErrorMessage"
+        case typeConfigurationIdentifier = "TypeConfigurationIdentifier"
+    }
+
+    public func validate() throws {
+        try errorCode?.validateAsErrorCode()
+        try errorMessage?.validateAsErrorMessage()
+        try typeConfigurationIdentifier?.validate()
+    }
+}
+
+public struct BatchDescribeTypeConfigurationsInput: Codable, Equatable {
+    public var typeConfigurationIdentifiers: TypeConfigurationIdentifiers
+
+    public init(typeConfigurationIdentifiers: TypeConfigurationIdentifiers) {
+        self.typeConfigurationIdentifiers = typeConfigurationIdentifiers
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case typeConfigurationIdentifiers = "TypeConfigurationIdentifiers"
+    }
+
+    public func validate() throws {
+        try typeConfigurationIdentifiers.validateAsTypeConfigurationIdentifiers()
+    }
+}
+
+public struct BatchDescribeTypeConfigurationsOutput: Codable, Equatable {
+    public var errors: BatchDescribeTypeConfigurationsErrors?
+    public var typeConfigurations: TypeConfigurationDetailsList?
+    public var unprocessedTypeConfigurations: UnprocessedTypeConfigurations?
+
+    public init(errors: BatchDescribeTypeConfigurationsErrors? = nil,
+                typeConfigurations: TypeConfigurationDetailsList? = nil,
+                unprocessedTypeConfigurations: UnprocessedTypeConfigurations? = nil) {
+        self.errors = errors
+        self.typeConfigurations = typeConfigurations
+        self.unprocessedTypeConfigurations = unprocessedTypeConfigurations
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case errors = "Errors"
+        case typeConfigurations = "TypeConfigurations"
+        case unprocessedTypeConfigurations = "UnprocessedTypeConfigurations"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations: Codable, Equatable {
+    public var batchDescribeTypeConfigurationsResult: BatchDescribeTypeConfigurationsOutput
+
+    public init(batchDescribeTypeConfigurationsResult: BatchDescribeTypeConfigurationsOutput) {
+        self.batchDescribeTypeConfigurationsResult = batchDescribeTypeConfigurationsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case batchDescribeTypeConfigurationsResult = "BatchDescribeTypeConfigurationsResult"
+    }
+
+    public func validate() throws {
+        try batchDescribeTypeConfigurationsResult.validate()
     }
 }
 
@@ -707,6 +878,56 @@ public struct CreatedButModifiedException: Codable, Equatable {
     }
 }
 
+public struct DeactivateTypeInput: Codable, Equatable {
+    public var arn: PrivateTypeArn?
+    public var type: ThirdPartyType?
+    public var typeName: TypeName?
+
+    public init(arn: PrivateTypeArn? = nil,
+                type: ThirdPartyType? = nil,
+                typeName: TypeName? = nil) {
+        self.arn = arn
+        self.type = type
+        self.typeName = typeName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+        case type = "Type"
+        case typeName = "TypeName"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsPrivateTypeArn()
+        try typeName?.validateAsTypeName()
+    }
+}
+
+public struct DeactivateTypeOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeactivateTypeOutputForDeactivateType: Codable, Equatable {
+    public var deactivateTypeResult: DeactivateTypeOutput
+
+    public init(deactivateTypeResult: DeactivateTypeOutput) {
+        self.deactivateTypeResult = deactivateTypeResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deactivateTypeResult = "DeactivateTypeResult"
+    }
+
+    public func validate() throws {
+        try deactivateTypeResult.validate()
+    }
+}
+
 public struct DeleteChangeSetInput: Codable, Equatable {
     public var changeSetName: ChangeSetNameOrId
     public var stackName: StackNameOrId?
@@ -1170,6 +1391,67 @@ public struct DescribeChangeSetOutputForDescribeChangeSet: Codable, Equatable {
 
     public func validate() throws {
         try describeChangeSetResult.validate()
+    }
+}
+
+public struct DescribePublisherInput: Codable, Equatable {
+    public var publisherId: PublisherId?
+
+    public init(publisherId: PublisherId? = nil) {
+        self.publisherId = publisherId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case publisherId = "PublisherId"
+    }
+
+    public func validate() throws {
+        try publisherId?.validateAsPublisherId()
+    }
+}
+
+public struct DescribePublisherOutput: Codable, Equatable {
+    public var identityProvider: IdentityProvider?
+    public var publisherId: PublisherId?
+    public var publisherProfile: PublisherProfile?
+    public var publisherStatus: PublisherStatus?
+
+    public init(identityProvider: IdentityProvider? = nil,
+                publisherId: PublisherId? = nil,
+                publisherProfile: PublisherProfile? = nil,
+                publisherStatus: PublisherStatus? = nil) {
+        self.identityProvider = identityProvider
+        self.publisherId = publisherId
+        self.publisherProfile = publisherProfile
+        self.publisherStatus = publisherStatus
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case identityProvider = "IdentityProvider"
+        case publisherId = "PublisherId"
+        case publisherProfile = "PublisherProfile"
+        case publisherStatus = "PublisherStatus"
+    }
+
+    public func validate() throws {
+        try publisherId?.validateAsPublisherId()
+        try publisherProfile?.validateAsPublisherProfile()
+    }
+}
+
+public struct DescribePublisherOutputForDescribePublisher: Codable, Equatable {
+    public var describePublisherResult: DescribePublisherOutput
+
+    public init(describePublisherResult: DescribePublisherOutput) {
+        self.describePublisherResult = describePublisherResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describePublisherResult = "DescribePublisherResult"
+    }
+
+    public func validate() throws {
+        try describePublisherResult.validate()
     }
 }
 
@@ -1699,15 +1981,21 @@ public struct DescribeStacksOutputForDescribeStacks: Codable, Equatable {
 
 public struct DescribeTypeInput: Codable, Equatable {
     public var arn: TypeArn?
+    public var publicVersionNumber: PublicVersionNumber?
+    public var publisherId: PublisherId?
     public var type: RegistryType?
     public var typeName: TypeName?
     public var versionId: TypeVersionId?
 
     public init(arn: TypeArn? = nil,
+                publicVersionNumber: PublicVersionNumber? = nil,
+                publisherId: PublisherId? = nil,
                 type: RegistryType? = nil,
                 typeName: TypeName? = nil,
                 versionId: TypeVersionId? = nil) {
         self.arn = arn
+        self.publicVersionNumber = publicVersionNumber
+        self.publisherId = publisherId
         self.type = type
         self.typeName = typeName
         self.versionId = versionId
@@ -1715,6 +2003,8 @@ public struct DescribeTypeInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case arn = "Arn"
+        case publicVersionNumber = "PublicVersionNumber"
+        case publisherId = "PublisherId"
         case type = "Type"
         case typeName = "TypeName"
         case versionId = "VersionId"
@@ -1722,6 +2012,8 @@ public struct DescribeTypeInput: Codable, Equatable {
 
     public func validate() throws {
         try arn?.validateAsTypeArn()
+        try publicVersionNumber?.validateAsPublicVersionNumber()
+        try publisherId?.validateAsPublisherId()
         try typeName?.validateAsTypeName()
         try versionId?.validateAsTypeVersionId()
     }
@@ -1729,85 +2021,136 @@ public struct DescribeTypeInput: Codable, Equatable {
 
 public struct DescribeTypeOutput: Codable, Equatable {
     public var arn: TypeArn?
+    public var autoUpdate: AutoUpdate?
+    public var configurationSchema: ConfigurationSchema?
     public var defaultVersionId: TypeVersionId?
     public var deprecatedStatus: DeprecatedStatus?
     public var description: Description?
     public var documentationUrl: OptionalSecureUrl?
     public var executionRoleArn: RoleArn?
+    public var isActivated: IsActivated?
     public var isDefaultVersion: IsDefaultVersion?
     public var lastUpdated: Timestamp?
+    public var latestPublicVersion: PublicVersionNumber?
     public var loggingConfig: LoggingConfig?
+    public var originalTypeArn: TypeArn?
+    public var originalTypeName: TypeName?
     public var provisioningType: ProvisioningType?
+    public var publicVersionNumber: PublicVersionNumber?
+    public var publisherId: PublisherId?
+    public var requiredActivatedTypes: RequiredActivatedTypes?
     public var schema: TypeSchema?
     public var sourceUrl: OptionalSecureUrl?
     public var timeCreated: Timestamp?
     public var type: RegistryType?
     public var typeName: TypeName?
+    public var typeTestsStatus: TypeTestsStatus?
+    public var typeTestsStatusDescription: TypeTestsStatusDescription?
     public var visibility: Visibility?
 
     public init(arn: TypeArn? = nil,
+                autoUpdate: AutoUpdate? = nil,
+                configurationSchema: ConfigurationSchema? = nil,
                 defaultVersionId: TypeVersionId? = nil,
                 deprecatedStatus: DeprecatedStatus? = nil,
                 description: Description? = nil,
                 documentationUrl: OptionalSecureUrl? = nil,
                 executionRoleArn: RoleArn? = nil,
+                isActivated: IsActivated? = nil,
                 isDefaultVersion: IsDefaultVersion? = nil,
                 lastUpdated: Timestamp? = nil,
+                latestPublicVersion: PublicVersionNumber? = nil,
                 loggingConfig: LoggingConfig? = nil,
+                originalTypeArn: TypeArn? = nil,
+                originalTypeName: TypeName? = nil,
                 provisioningType: ProvisioningType? = nil,
+                publicVersionNumber: PublicVersionNumber? = nil,
+                publisherId: PublisherId? = nil,
+                requiredActivatedTypes: RequiredActivatedTypes? = nil,
                 schema: TypeSchema? = nil,
                 sourceUrl: OptionalSecureUrl? = nil,
                 timeCreated: Timestamp? = nil,
                 type: RegistryType? = nil,
                 typeName: TypeName? = nil,
+                typeTestsStatus: TypeTestsStatus? = nil,
+                typeTestsStatusDescription: TypeTestsStatusDescription? = nil,
                 visibility: Visibility? = nil) {
         self.arn = arn
+        self.autoUpdate = autoUpdate
+        self.configurationSchema = configurationSchema
         self.defaultVersionId = defaultVersionId
         self.deprecatedStatus = deprecatedStatus
         self.description = description
         self.documentationUrl = documentationUrl
         self.executionRoleArn = executionRoleArn
+        self.isActivated = isActivated
         self.isDefaultVersion = isDefaultVersion
         self.lastUpdated = lastUpdated
+        self.latestPublicVersion = latestPublicVersion
         self.loggingConfig = loggingConfig
+        self.originalTypeArn = originalTypeArn
+        self.originalTypeName = originalTypeName
         self.provisioningType = provisioningType
+        self.publicVersionNumber = publicVersionNumber
+        self.publisherId = publisherId
+        self.requiredActivatedTypes = requiredActivatedTypes
         self.schema = schema
         self.sourceUrl = sourceUrl
         self.timeCreated = timeCreated
         self.type = type
         self.typeName = typeName
+        self.typeTestsStatus = typeTestsStatus
+        self.typeTestsStatusDescription = typeTestsStatusDescription
         self.visibility = visibility
     }
 
     enum CodingKeys: String, CodingKey {
         case arn = "Arn"
+        case autoUpdate = "AutoUpdate"
+        case configurationSchema = "ConfigurationSchema"
         case defaultVersionId = "DefaultVersionId"
         case deprecatedStatus = "DeprecatedStatus"
         case description = "Description"
         case documentationUrl = "DocumentationUrl"
         case executionRoleArn = "ExecutionRoleArn"
+        case isActivated = "IsActivated"
         case isDefaultVersion = "IsDefaultVersion"
         case lastUpdated = "LastUpdated"
+        case latestPublicVersion = "LatestPublicVersion"
         case loggingConfig = "LoggingConfig"
+        case originalTypeArn = "OriginalTypeArn"
+        case originalTypeName = "OriginalTypeName"
         case provisioningType = "ProvisioningType"
+        case publicVersionNumber = "PublicVersionNumber"
+        case publisherId = "PublisherId"
+        case requiredActivatedTypes = "RequiredActivatedTypes"
         case schema = "Schema"
         case sourceUrl = "SourceUrl"
         case timeCreated = "TimeCreated"
         case type = "Type"
         case typeName = "TypeName"
+        case typeTestsStatus = "TypeTestsStatus"
+        case typeTestsStatusDescription = "TypeTestsStatusDescription"
         case visibility = "Visibility"
     }
 
     public func validate() throws {
         try arn?.validateAsTypeArn()
+        try configurationSchema?.validateAsConfigurationSchema()
         try defaultVersionId?.validateAsTypeVersionId()
         try description?.validateAsDescription()
         try documentationUrl?.validateAsOptionalSecureUrl()
         try executionRoleArn?.validateAsRoleArn()
+        try latestPublicVersion?.validateAsPublicVersionNumber()
         try loggingConfig?.validate()
+        try originalTypeArn?.validateAsTypeArn()
+        try originalTypeName?.validateAsTypeName()
+        try publicVersionNumber?.validateAsPublicVersionNumber()
+        try publisherId?.validateAsPublisherId()
         try schema?.validateAsTypeSchema()
         try sourceUrl?.validateAsOptionalSecureUrl()
         try typeName?.validateAsTypeName()
+        try typeTestsStatusDescription?.validateAsTypeTestsStatusDescription()
     }
 }
 
@@ -3070,23 +3413,26 @@ public struct ListTypeRegistrationsOutputForListTypeRegistrations: Codable, Equa
 }
 
 public struct ListTypeVersionsInput: Codable, Equatable {
-    public var arn: PrivateTypeArn?
+    public var arn: TypeArn?
     public var deprecatedStatus: DeprecatedStatus?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
+    public var publisherId: PublisherId?
     public var type: RegistryType?
     public var typeName: TypeName?
 
-    public init(arn: PrivateTypeArn? = nil,
+    public init(arn: TypeArn? = nil,
                 deprecatedStatus: DeprecatedStatus? = nil,
                 maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
+                publisherId: PublisherId? = nil,
                 type: RegistryType? = nil,
                 typeName: TypeName? = nil) {
         self.arn = arn
         self.deprecatedStatus = deprecatedStatus
         self.maxResults = maxResults
         self.nextToken = nextToken
+        self.publisherId = publisherId
         self.type = type
         self.typeName = typeName
     }
@@ -3096,14 +3442,16 @@ public struct ListTypeVersionsInput: Codable, Equatable {
         case deprecatedStatus = "DeprecatedStatus"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
+        case publisherId = "PublisherId"
         case type = "Type"
         case typeName = "TypeName"
     }
 
     public func validate() throws {
-        try arn?.validateAsPrivateTypeArn()
+        try arn?.validateAsTypeArn()
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
+        try publisherId?.validateAsPublisherId()
         try typeName?.validateAsTypeName()
     }
 }
@@ -3146,6 +3494,7 @@ public struct ListTypeVersionsOutputForListTypeVersions: Codable, Equatable {
 
 public struct ListTypesInput: Codable, Equatable {
     public var deprecatedStatus: DeprecatedStatus?
+    public var filters: TypeFilters?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var provisioningType: ProvisioningType?
@@ -3153,12 +3502,14 @@ public struct ListTypesInput: Codable, Equatable {
     public var visibility: Visibility?
 
     public init(deprecatedStatus: DeprecatedStatus? = nil,
+                filters: TypeFilters? = nil,
                 maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 provisioningType: ProvisioningType? = nil,
                 type: RegistryType? = nil,
                 visibility: Visibility? = nil) {
         self.deprecatedStatus = deprecatedStatus
+        self.filters = filters
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.provisioningType = provisioningType
@@ -3168,6 +3519,7 @@ public struct ListTypesInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case deprecatedStatus = "DeprecatedStatus"
+        case filters = "Filters"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case provisioningType = "ProvisioningType"
@@ -3176,6 +3528,7 @@ public struct ListTypesInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try filters?.validate()
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
     }
@@ -3455,6 +3808,68 @@ public struct PropertyDifference: Codable, Equatable {
     }
 }
 
+public struct PublishTypeInput: Codable, Equatable {
+    public var arn: PrivateTypeArn?
+    public var publicVersionNumber: PublicVersionNumber?
+    public var type: ThirdPartyType?
+    public var typeName: TypeName?
+
+    public init(arn: PrivateTypeArn? = nil,
+                publicVersionNumber: PublicVersionNumber? = nil,
+                type: ThirdPartyType? = nil,
+                typeName: TypeName? = nil) {
+        self.arn = arn
+        self.publicVersionNumber = publicVersionNumber
+        self.type = type
+        self.typeName = typeName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+        case publicVersionNumber = "PublicVersionNumber"
+        case type = "Type"
+        case typeName = "TypeName"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsPrivateTypeArn()
+        try publicVersionNumber?.validateAsPublicVersionNumber()
+        try typeName?.validateAsTypeName()
+    }
+}
+
+public struct PublishTypeOutput: Codable, Equatable {
+    public var publicTypeArn: TypeArn?
+
+    public init(publicTypeArn: TypeArn? = nil) {
+        self.publicTypeArn = publicTypeArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case publicTypeArn = "PublicTypeArn"
+    }
+
+    public func validate() throws {
+        try publicTypeArn?.validateAsTypeArn()
+    }
+}
+
+public struct PublishTypeOutputForPublishType: Codable, Equatable {
+    public var publishTypeResult: PublishTypeOutput
+
+    public init(publishTypeResult: PublishTypeOutput) {
+        self.publishTypeResult = publishTypeResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case publishTypeResult = "PublishTypeResult"
+    }
+
+    public func validate() throws {
+        try publishTypeResult.validate()
+    }
+}
+
 public struct RecordHandlerProgressInput: Codable, Equatable {
     public var bearerToken: ClientToken
     public var clientRequestToken: ClientRequestToken?
@@ -3520,6 +3935,58 @@ public struct RecordHandlerProgressOutputForRecordHandlerProgress: Codable, Equa
 
     public func validate() throws {
         try recordHandlerProgressResult.validate()
+    }
+}
+
+public struct RegisterPublisherInput: Codable, Equatable {
+    public var acceptTermsAndConditions: AcceptTermsAndConditions?
+    public var connectionArn: ConnectionArn?
+
+    public init(acceptTermsAndConditions: AcceptTermsAndConditions? = nil,
+                connectionArn: ConnectionArn? = nil) {
+        self.acceptTermsAndConditions = acceptTermsAndConditions
+        self.connectionArn = connectionArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case acceptTermsAndConditions = "AcceptTermsAndConditions"
+        case connectionArn = "ConnectionArn"
+    }
+
+    public func validate() throws {
+        try connectionArn?.validateAsConnectionArn()
+    }
+}
+
+public struct RegisterPublisherOutput: Codable, Equatable {
+    public var publisherId: PublisherId?
+
+    public init(publisherId: PublisherId? = nil) {
+        self.publisherId = publisherId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case publisherId = "PublisherId"
+    }
+
+    public func validate() throws {
+        try publisherId?.validateAsPublisherId()
+    }
+}
+
+public struct RegisterPublisherOutputForRegisterPublisher: Codable, Equatable {
+    public var registerPublisherResult: RegisterPublisherOutput
+
+    public init(registerPublisherResult: RegisterPublisherOutput) {
+        self.registerPublisherResult = registerPublisherResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case registerPublisherResult = "RegisterPublisherResult"
+    }
+
+    public func validate() throws {
+        try registerPublisherResult.validate()
     }
 }
 
@@ -3592,6 +4059,36 @@ public struct RegisterTypeOutputForRegisterType: Codable, Equatable {
 
     public func validate() throws {
         try registerTypeResult.validate()
+    }
+}
+
+public struct RequiredActivatedType: Codable, Equatable {
+    public var originalTypeName: TypeName?
+    public var publisherId: PublisherId?
+    public var supportedMajorVersions: SupportedMajorVersions?
+    public var typeNameAlias: TypeName?
+
+    public init(originalTypeName: TypeName? = nil,
+                publisherId: PublisherId? = nil,
+                supportedMajorVersions: SupportedMajorVersions? = nil,
+                typeNameAlias: TypeName? = nil) {
+        self.originalTypeName = originalTypeName
+        self.publisherId = publisherId
+        self.supportedMajorVersions = supportedMajorVersions
+        self.typeNameAlias = typeNameAlias
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case originalTypeName = "OriginalTypeName"
+        case publisherId = "PublisherId"
+        case supportedMajorVersions = "SupportedMajorVersions"
+        case typeNameAlias = "TypeNameAlias"
+    }
+
+    public func validate() throws {
+        try originalTypeName?.validateAsTypeName()
+        try publisherId?.validateAsPublisherId()
+        try typeNameAlias?.validateAsTypeName()
     }
 }
 
@@ -3807,6 +4304,73 @@ public struct SetStackPolicyInput: Codable, Equatable {
     public func validate() throws {
         try stackPolicyBody?.validateAsStackPolicyBody()
         try stackPolicyURL?.validateAsStackPolicyURL()
+    }
+}
+
+public struct SetTypeConfigurationInput: Codable, Equatable {
+    public var configuration: TypeConfiguration
+    public var configurationAlias: TypeConfigurationAlias?
+    public var type: ThirdPartyType?
+    public var typeArn: TypeArn?
+    public var typeName: TypeName?
+
+    public init(configuration: TypeConfiguration,
+                configurationAlias: TypeConfigurationAlias? = nil,
+                type: ThirdPartyType? = nil,
+                typeArn: TypeArn? = nil,
+                typeName: TypeName? = nil) {
+        self.configuration = configuration
+        self.configurationAlias = configurationAlias
+        self.type = type
+        self.typeArn = typeArn
+        self.typeName = typeName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case configuration = "Configuration"
+        case configurationAlias = "ConfigurationAlias"
+        case type = "Type"
+        case typeArn = "TypeArn"
+        case typeName = "TypeName"
+    }
+
+    public func validate() throws {
+        try configuration.validateAsTypeConfiguration()
+        try configurationAlias?.validateAsTypeConfigurationAlias()
+        try typeArn?.validateAsTypeArn()
+        try typeName?.validateAsTypeName()
+    }
+}
+
+public struct SetTypeConfigurationOutput: Codable, Equatable {
+    public var configurationArn: TypeConfigurationArn?
+
+    public init(configurationArn: TypeConfigurationArn? = nil) {
+        self.configurationArn = configurationArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case configurationArn = "ConfigurationArn"
+    }
+
+    public func validate() throws {
+        try configurationArn?.validateAsTypeConfigurationArn()
+    }
+}
+
+public struct SetTypeConfigurationOutputForSetTypeConfiguration: Codable, Equatable {
+    public var setTypeConfigurationResult: SetTypeConfigurationOutput
+
+    public init(setTypeConfigurationResult: SetTypeConfigurationOutput) {
+        self.setTypeConfigurationResult = setTypeConfigurationResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case setTypeConfigurationResult = "SetTypeConfigurationResult"
+    }
+
+    public func validate() throws {
+        try setTypeConfigurationResult.validate()
     }
 }
 
@@ -5045,12 +5609,192 @@ public struct TemplateParameter: Codable, Equatable {
     }
 }
 
+public struct TestTypeInput: Codable, Equatable {
+    public var arn: TypeArn?
+    public var logDeliveryBucket: S3Bucket?
+    public var type: ThirdPartyType?
+    public var typeName: TypeName?
+    public var versionId: TypeVersionId?
+
+    public init(arn: TypeArn? = nil,
+                logDeliveryBucket: S3Bucket? = nil,
+                type: ThirdPartyType? = nil,
+                typeName: TypeName? = nil,
+                versionId: TypeVersionId? = nil) {
+        self.arn = arn
+        self.logDeliveryBucket = logDeliveryBucket
+        self.type = type
+        self.typeName = typeName
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arn = "Arn"
+        case logDeliveryBucket = "LogDeliveryBucket"
+        case type = "Type"
+        case typeName = "TypeName"
+        case versionId = "VersionId"
+    }
+
+    public func validate() throws {
+        try arn?.validateAsTypeArn()
+        try logDeliveryBucket?.validateAsS3Bucket()
+        try typeName?.validateAsTypeName()
+        try versionId?.validateAsTypeVersionId()
+    }
+}
+
+public struct TestTypeOutput: Codable, Equatable {
+    public var typeVersionArn: TypeArn?
+
+    public init(typeVersionArn: TypeArn? = nil) {
+        self.typeVersionArn = typeVersionArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case typeVersionArn = "TypeVersionArn"
+    }
+
+    public func validate() throws {
+        try typeVersionArn?.validateAsTypeArn()
+    }
+}
+
+public struct TestTypeOutputForTestType: Codable, Equatable {
+    public var testTypeResult: TestTypeOutput
+
+    public init(testTypeResult: TestTypeOutput) {
+        self.testTypeResult = testTypeResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case testTypeResult = "TestTypeResult"
+    }
+
+    public func validate() throws {
+        try testTypeResult.validate()
+    }
+}
+
 public struct TokenAlreadyExistsException: Codable, Equatable {
 
     public init() {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct TypeConfigurationDetails: Codable, Equatable {
+    public var alias: TypeConfigurationAlias?
+    public var arn: TypeConfigurationArn?
+    public var configuration: TypeConfiguration?
+    public var isDefaultConfiguration: IsDefaultConfiguration?
+    public var lastUpdated: Timestamp?
+    public var typeArn: TypeArn?
+    public var typeName: TypeName?
+
+    public init(alias: TypeConfigurationAlias? = nil,
+                arn: TypeConfigurationArn? = nil,
+                configuration: TypeConfiguration? = nil,
+                isDefaultConfiguration: IsDefaultConfiguration? = nil,
+                lastUpdated: Timestamp? = nil,
+                typeArn: TypeArn? = nil,
+                typeName: TypeName? = nil) {
+        self.alias = alias
+        self.arn = arn
+        self.configuration = configuration
+        self.isDefaultConfiguration = isDefaultConfiguration
+        self.lastUpdated = lastUpdated
+        self.typeArn = typeArn
+        self.typeName = typeName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case alias = "Alias"
+        case arn = "Arn"
+        case configuration = "Configuration"
+        case isDefaultConfiguration = "IsDefaultConfiguration"
+        case lastUpdated = "LastUpdated"
+        case typeArn = "TypeArn"
+        case typeName = "TypeName"
+    }
+
+    public func validate() throws {
+        try alias?.validateAsTypeConfigurationAlias()
+        try arn?.validateAsTypeConfigurationArn()
+        try configuration?.validateAsTypeConfiguration()
+        try typeArn?.validateAsTypeArn()
+        try typeName?.validateAsTypeName()
+    }
+}
+
+public struct TypeConfigurationIdentifier: Codable, Equatable {
+    public var type: ThirdPartyType?
+    public var typeArn: TypeArn?
+    public var typeConfigurationAlias: TypeConfigurationAlias?
+    public var typeConfigurationArn: TypeConfigurationArn?
+    public var typeName: TypeName?
+
+    public init(type: ThirdPartyType? = nil,
+                typeArn: TypeArn? = nil,
+                typeConfigurationAlias: TypeConfigurationAlias? = nil,
+                typeConfigurationArn: TypeConfigurationArn? = nil,
+                typeName: TypeName? = nil) {
+        self.type = type
+        self.typeArn = typeArn
+        self.typeConfigurationAlias = typeConfigurationAlias
+        self.typeConfigurationArn = typeConfigurationArn
+        self.typeName = typeName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case type = "Type"
+        case typeArn = "TypeArn"
+        case typeConfigurationAlias = "TypeConfigurationAlias"
+        case typeConfigurationArn = "TypeConfigurationArn"
+        case typeName = "TypeName"
+    }
+
+    public func validate() throws {
+        try typeArn?.validateAsTypeArn()
+        try typeConfigurationAlias?.validateAsTypeConfigurationAlias()
+        try typeConfigurationArn?.validateAsTypeConfigurationArn()
+        try typeName?.validateAsTypeName()
+    }
+}
+
+public struct TypeConfigurationNotFoundException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TypeFilters: Codable, Equatable {
+    public var category: Category?
+    public var publisherId: PublisherId?
+    public var typeNamePrefix: TypeNamePrefix?
+
+    public init(category: Category? = nil,
+                publisherId: PublisherId? = nil,
+                typeNamePrefix: TypeNamePrefix? = nil) {
+        self.category = category
+        self.publisherId = publisherId
+        self.typeNamePrefix = typeNamePrefix
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case category = "Category"
+        case publisherId = "PublisherId"
+        case typeNamePrefix = "TypeNamePrefix"
+    }
+
+    public func validate() throws {
+        try publisherId?.validateAsPublisherId()
+        try typeNamePrefix?.validateAsTypeNamePrefix()
     }
 }
 
@@ -5066,20 +5810,41 @@ public struct TypeNotFoundException: Codable, Equatable {
 public struct TypeSummary: Codable, Equatable {
     public var defaultVersionId: TypeVersionId?
     public var description: Description?
+    public var isActivated: IsActivated?
     public var lastUpdated: Timestamp?
+    public var latestPublicVersion: PublicVersionNumber?
+    public var originalTypeName: TypeName?
+    public var publicVersionNumber: PublicVersionNumber?
+    public var publisherId: PublisherId?
+    public var publisherIdentity: IdentityProvider?
+    public var publisherName: PublisherName?
     public var type: RegistryType?
     public var typeArn: TypeArn?
     public var typeName: TypeName?
 
     public init(defaultVersionId: TypeVersionId? = nil,
                 description: Description? = nil,
+                isActivated: IsActivated? = nil,
                 lastUpdated: Timestamp? = nil,
+                latestPublicVersion: PublicVersionNumber? = nil,
+                originalTypeName: TypeName? = nil,
+                publicVersionNumber: PublicVersionNumber? = nil,
+                publisherId: PublisherId? = nil,
+                publisherIdentity: IdentityProvider? = nil,
+                publisherName: PublisherName? = nil,
                 type: RegistryType? = nil,
                 typeArn: TypeArn? = nil,
                 typeName: TypeName? = nil) {
         self.defaultVersionId = defaultVersionId
         self.description = description
+        self.isActivated = isActivated
         self.lastUpdated = lastUpdated
+        self.latestPublicVersion = latestPublicVersion
+        self.originalTypeName = originalTypeName
+        self.publicVersionNumber = publicVersionNumber
+        self.publisherId = publisherId
+        self.publisherIdentity = publisherIdentity
+        self.publisherName = publisherName
         self.type = type
         self.typeArn = typeArn
         self.typeName = typeName
@@ -5088,7 +5853,14 @@ public struct TypeSummary: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case defaultVersionId = "DefaultVersionId"
         case description = "Description"
+        case isActivated = "IsActivated"
         case lastUpdated = "LastUpdated"
+        case latestPublicVersion = "LatestPublicVersion"
+        case originalTypeName = "OriginalTypeName"
+        case publicVersionNumber = "PublicVersionNumber"
+        case publisherId = "PublisherId"
+        case publisherIdentity = "PublisherIdentity"
+        case publisherName = "PublisherName"
         case type = "Type"
         case typeArn = "TypeArn"
         case typeName = "TypeName"
@@ -5097,6 +5869,11 @@ public struct TypeSummary: Codable, Equatable {
     public func validate() throws {
         try defaultVersionId?.validateAsTypeVersionId()
         try description?.validateAsDescription()
+        try latestPublicVersion?.validateAsPublicVersionNumber()
+        try originalTypeName?.validateAsTypeName()
+        try publicVersionNumber?.validateAsPublicVersionNumber()
+        try publisherId?.validateAsPublisherId()
+        try publisherName?.validateAsPublisherName()
         try typeArn?.validateAsTypeArn()
         try typeName?.validateAsTypeName()
     }
@@ -5106,6 +5883,7 @@ public struct TypeVersionSummary: Codable, Equatable {
     public var arn: TypeArn?
     public var description: Description?
     public var isDefaultVersion: IsDefaultVersion?
+    public var publicVersionNumber: PublicVersionNumber?
     public var timeCreated: Timestamp?
     public var type: RegistryType?
     public var typeName: TypeName?
@@ -5114,6 +5892,7 @@ public struct TypeVersionSummary: Codable, Equatable {
     public init(arn: TypeArn? = nil,
                 description: Description? = nil,
                 isDefaultVersion: IsDefaultVersion? = nil,
+                publicVersionNumber: PublicVersionNumber? = nil,
                 timeCreated: Timestamp? = nil,
                 type: RegistryType? = nil,
                 typeName: TypeName? = nil,
@@ -5121,6 +5900,7 @@ public struct TypeVersionSummary: Codable, Equatable {
         self.arn = arn
         self.description = description
         self.isDefaultVersion = isDefaultVersion
+        self.publicVersionNumber = publicVersionNumber
         self.timeCreated = timeCreated
         self.type = type
         self.typeName = typeName
@@ -5131,6 +5911,7 @@ public struct TypeVersionSummary: Codable, Equatable {
         case arn = "Arn"
         case description = "Description"
         case isDefaultVersion = "IsDefaultVersion"
+        case publicVersionNumber = "PublicVersionNumber"
         case timeCreated = "TimeCreated"
         case type = "Type"
         case typeName = "TypeName"
@@ -5140,6 +5921,7 @@ public struct TypeVersionSummary: Codable, Equatable {
     public func validate() throws {
         try arn?.validateAsTypeArn()
         try description?.validateAsDescription()
+        try publicVersionNumber?.validateAsPublicVersionNumber()
         try typeName?.validateAsTypeName()
         try versionId?.validateAsTypeVersionId()
     }

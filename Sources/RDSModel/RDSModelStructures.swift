@@ -3590,6 +3590,11 @@ public struct DBEngineVersionMessageForDescribeDBEngineVersions: Codable, Equata
 }
 
 public struct DBInstance: Codable, Equatable {
+    public var activityStreamEngineNativeAuditFieldsIncluded: BooleanOptional?
+    public var activityStreamKinesisStreamName: String?
+    public var activityStreamKmsKeyId: String?
+    public var activityStreamMode: ActivityStreamMode?
+    public var activityStreamStatus: ActivityStreamStatus?
     public var allocatedStorage: Integer?
     public var associatedRoles: DBInstanceRoles?
     public var autoMinorVersionUpgrade: Boolean?
@@ -3655,7 +3660,12 @@ public struct DBInstance: Codable, Equatable {
     public var timezone: String?
     public var vpcSecurityGroups: VpcSecurityGroupMembershipList?
 
-    public init(allocatedStorage: Integer? = nil,
+    public init(activityStreamEngineNativeAuditFieldsIncluded: BooleanOptional? = nil,
+                activityStreamKinesisStreamName: String? = nil,
+                activityStreamKmsKeyId: String? = nil,
+                activityStreamMode: ActivityStreamMode? = nil,
+                activityStreamStatus: ActivityStreamStatus? = nil,
+                allocatedStorage: Integer? = nil,
                 associatedRoles: DBInstanceRoles? = nil,
                 autoMinorVersionUpgrade: Boolean? = nil,
                 availabilityZone: String? = nil,
@@ -3719,6 +3729,11 @@ public struct DBInstance: Codable, Equatable {
                 tdeCredentialArn: String? = nil,
                 timezone: String? = nil,
                 vpcSecurityGroups: VpcSecurityGroupMembershipList? = nil) {
+        self.activityStreamEngineNativeAuditFieldsIncluded = activityStreamEngineNativeAuditFieldsIncluded
+        self.activityStreamKinesisStreamName = activityStreamKinesisStreamName
+        self.activityStreamKmsKeyId = activityStreamKmsKeyId
+        self.activityStreamMode = activityStreamMode
+        self.activityStreamStatus = activityStreamStatus
         self.allocatedStorage = allocatedStorage
         self.associatedRoles = associatedRoles
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
@@ -3786,6 +3801,11 @@ public struct DBInstance: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case activityStreamEngineNativeAuditFieldsIncluded = "ActivityStreamEngineNativeAuditFieldsIncluded"
+        case activityStreamKinesisStreamName = "ActivityStreamKinesisStreamName"
+        case activityStreamKmsKeyId = "ActivityStreamKmsKeyId"
+        case activityStreamMode = "ActivityStreamMode"
+        case activityStreamStatus = "ActivityStreamStatus"
         case allocatedStorage = "AllocatedStorage"
         case associatedRoles = "AssociatedRoles"
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
@@ -10332,6 +10352,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
     public var outpostCapable: Boolean?
     public var readReplicaCapable: Boolean?
     public var storageType: String?
+    public var supportedActivityStreamModes: ActivityStreamModeList?
     public var supportedEngineModes: EngineModeList?
     public var supportsEnhancedMonitoring: Boolean?
     public var supportsGlobalDatabases: Boolean?
@@ -10360,6 +10381,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
                 outpostCapable: Boolean? = nil,
                 readReplicaCapable: Boolean? = nil,
                 storageType: String? = nil,
+                supportedActivityStreamModes: ActivityStreamModeList? = nil,
                 supportedEngineModes: EngineModeList? = nil,
                 supportsEnhancedMonitoring: Boolean? = nil,
                 supportsGlobalDatabases: Boolean? = nil,
@@ -10387,6 +10409,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
         self.outpostCapable = outpostCapable
         self.readReplicaCapable = readReplicaCapable
         self.storageType = storageType
+        self.supportedActivityStreamModes = supportedActivityStreamModes
         self.supportedEngineModes = supportedEngineModes
         self.supportsEnhancedMonitoring = supportsEnhancedMonitoring
         self.supportsGlobalDatabases = supportsGlobalDatabases
@@ -10417,6 +10440,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
         case outpostCapable = "OutpostCapable"
         case readReplicaCapable = "ReadReplicaCapable"
         case storageType = "StorageType"
+        case supportedActivityStreamModes = "SupportedActivityStreamModes"
         case supportedEngineModes = "SupportedEngineModes"
         case supportsEnhancedMonitoring = "SupportsEnhancedMonitoring"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
@@ -11835,11 +11859,13 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public var domainIAMRoleName: String?
     public var enableCloudwatchLogsExports: LogTypeList?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
+    public var engineMode: String?
     public var kmsKeyId: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
     public var restoreToTime: TStamp?
     public var restoreType: String?
+    public var scalingConfiguration: ScalingConfiguration?
     public var sourceDBClusterIdentifier: String
     public var tags: TagList?
     public var useLatestRestorableTime: Boolean?
@@ -11855,11 +11881,13 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
                 domainIAMRoleName: String? = nil,
                 enableCloudwatchLogsExports: LogTypeList? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
+                engineMode: String? = nil,
                 kmsKeyId: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
                 restoreToTime: TStamp? = nil,
                 restoreType: String? = nil,
+                scalingConfiguration: ScalingConfiguration? = nil,
                 sourceDBClusterIdentifier: String,
                 tags: TagList? = nil,
                 useLatestRestorableTime: Boolean? = nil,
@@ -11874,11 +11902,13 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         self.domainIAMRoleName = domainIAMRoleName
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
+        self.engineMode = engineMode
         self.kmsKeyId = kmsKeyId
         self.optionGroupName = optionGroupName
         self.port = port
         self.restoreToTime = restoreToTime
         self.restoreType = restoreType
+        self.scalingConfiguration = scalingConfiguration
         self.sourceDBClusterIdentifier = sourceDBClusterIdentifier
         self.tags = tags
         self.useLatestRestorableTime = useLatestRestorableTime
@@ -11896,11 +11926,13 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         case domainIAMRoleName = "DomainIAMRoleName"
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
+        case engineMode = "EngineMode"
         case kmsKeyId = "KmsKeyId"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
         case restoreToTime = "RestoreToTime"
         case restoreType = "RestoreType"
+        case scalingConfiguration = "ScalingConfiguration"
         case sourceDBClusterIdentifier = "SourceDBClusterIdentifier"
         case tags = "Tags"
         case useLatestRestorableTime = "UseLatestRestorableTime"
@@ -11908,6 +11940,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     }
 
     public func validate() throws {
+        try scalingConfiguration?.validate()
     }
 }
 
@@ -12762,15 +12795,18 @@ public struct SourceRegionMessageForDescribeSourceRegions: Codable, Equatable {
 
 public struct StartActivityStreamRequest: Codable, Equatable {
     public var applyImmediately: BooleanOptional?
+    public var engineNativeAuditFieldsIncluded: BooleanOptional?
     public var kmsKeyId: String
     public var mode: ActivityStreamMode
     public var resourceArn: String
 
     public init(applyImmediately: BooleanOptional? = nil,
+                engineNativeAuditFieldsIncluded: BooleanOptional? = nil,
                 kmsKeyId: String,
                 mode: ActivityStreamMode,
                 resourceArn: String) {
         self.applyImmediately = applyImmediately
+        self.engineNativeAuditFieldsIncluded = engineNativeAuditFieldsIncluded
         self.kmsKeyId = kmsKeyId
         self.mode = mode
         self.resourceArn = resourceArn
@@ -12778,6 +12814,7 @@ public struct StartActivityStreamRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case applyImmediately = "ApplyImmediately"
+        case engineNativeAuditFieldsIncluded = "EngineNativeAuditFieldsIncluded"
         case kmsKeyId = "KmsKeyId"
         case mode = "Mode"
         case resourceArn = "ResourceArn"
@@ -12789,17 +12826,20 @@ public struct StartActivityStreamRequest: Codable, Equatable {
 
 public struct StartActivityStreamResponse: Codable, Equatable {
     public var applyImmediately: Boolean?
+    public var engineNativeAuditFieldsIncluded: BooleanOptional?
     public var kinesisStreamName: String?
     public var kmsKeyId: String?
     public var mode: ActivityStreamMode?
     public var status: ActivityStreamStatus?
 
     public init(applyImmediately: Boolean? = nil,
+                engineNativeAuditFieldsIncluded: BooleanOptional? = nil,
                 kinesisStreamName: String? = nil,
                 kmsKeyId: String? = nil,
                 mode: ActivityStreamMode? = nil,
                 status: ActivityStreamStatus? = nil) {
         self.applyImmediately = applyImmediately
+        self.engineNativeAuditFieldsIncluded = engineNativeAuditFieldsIncluded
         self.kinesisStreamName = kinesisStreamName
         self.kmsKeyId = kmsKeyId
         self.mode = mode
@@ -12808,6 +12848,7 @@ public struct StartActivityStreamResponse: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case applyImmediately = "ApplyImmediately"
+        case engineNativeAuditFieldsIncluded = "EngineNativeAuditFieldsIncluded"
         case kinesisStreamName = "KinesisStreamName"
         case kmsKeyId = "KmsKeyId"
         case mode = "Mode"

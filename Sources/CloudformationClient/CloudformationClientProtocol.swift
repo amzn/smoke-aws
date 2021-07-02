@@ -29,6 +29,16 @@ import SmokeHTTPClient
  Client Protocol for the Cloudformation service.
  */
 public protocol CloudformationClientProtocol {
+    typealias ActivateTypeSyncType = (
+            _ input: CloudformationModel.ActivateTypeInput) throws -> CloudformationModel.ActivateTypeOutputForActivateType
+    typealias ActivateTypeAsyncType = (
+            _ input: CloudformationModel.ActivateTypeInput, 
+            _ completion: @escaping (Result<CloudformationModel.ActivateTypeOutputForActivateType, CloudformationError>) -> ()) throws -> ()
+    typealias BatchDescribeTypeConfigurationsSyncType = (
+            _ input: CloudformationModel.BatchDescribeTypeConfigurationsInput) throws -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
+    typealias BatchDescribeTypeConfigurationsAsyncType = (
+            _ input: CloudformationModel.BatchDescribeTypeConfigurationsInput, 
+            _ completion: @escaping (Result<CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations, CloudformationError>) -> ()) throws -> ()
     typealias CancelUpdateStackSyncType = (
             _ input: CloudformationModel.CancelUpdateStackInput) throws -> ()
     typealias CancelUpdateStackAsyncType = (
@@ -59,6 +69,11 @@ public protocol CloudformationClientProtocol {
     typealias CreateStackSetAsyncType = (
             _ input: CloudformationModel.CreateStackSetInput, 
             _ completion: @escaping (Result<CloudformationModel.CreateStackSetOutputForCreateStackSet, CloudformationError>) -> ()) throws -> ()
+    typealias DeactivateTypeSyncType = (
+            _ input: CloudformationModel.DeactivateTypeInput) throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType
+    typealias DeactivateTypeAsyncType = (
+            _ input: CloudformationModel.DeactivateTypeInput, 
+            _ completion: @escaping (Result<CloudformationModel.DeactivateTypeOutputForDeactivateType, CloudformationError>) -> ()) throws -> ()
     typealias DeleteChangeSetSyncType = (
             _ input: CloudformationModel.DeleteChangeSetInput) throws -> CloudformationModel.DeleteChangeSetOutputForDeleteChangeSet
     typealias DeleteChangeSetAsyncType = (
@@ -94,6 +109,11 @@ public protocol CloudformationClientProtocol {
     typealias DescribeChangeSetAsyncType = (
             _ input: CloudformationModel.DescribeChangeSetInput, 
             _ completion: @escaping (Result<CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet, CloudformationError>) -> ()) throws -> ()
+    typealias DescribePublisherSyncType = (
+            _ input: CloudformationModel.DescribePublisherInput) throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher
+    typealias DescribePublisherAsyncType = (
+            _ input: CloudformationModel.DescribePublisherInput, 
+            _ completion: @escaping (Result<CloudformationModel.DescribePublisherOutputForDescribePublisher, CloudformationError>) -> ()) throws -> ()
     typealias DescribeStackDriftDetectionStatusSyncType = (
             _ input: CloudformationModel.DescribeStackDriftDetectionStatusInput) throws -> CloudformationModel.DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus
     typealias DescribeStackDriftDetectionStatusAsyncType = (
@@ -249,11 +269,21 @@ public protocol CloudformationClientProtocol {
     typealias ListTypesAsyncType = (
             _ input: CloudformationModel.ListTypesInput, 
             _ completion: @escaping (Result<CloudformationModel.ListTypesOutputForListTypes, CloudformationError>) -> ()) throws -> ()
+    typealias PublishTypeSyncType = (
+            _ input: CloudformationModel.PublishTypeInput) throws -> CloudformationModel.PublishTypeOutputForPublishType
+    typealias PublishTypeAsyncType = (
+            _ input: CloudformationModel.PublishTypeInput, 
+            _ completion: @escaping (Result<CloudformationModel.PublishTypeOutputForPublishType, CloudformationError>) -> ()) throws -> ()
     typealias RecordHandlerProgressSyncType = (
             _ input: CloudformationModel.RecordHandlerProgressInput) throws -> CloudformationModel.RecordHandlerProgressOutputForRecordHandlerProgress
     typealias RecordHandlerProgressAsyncType = (
             _ input: CloudformationModel.RecordHandlerProgressInput, 
             _ completion: @escaping (Result<CloudformationModel.RecordHandlerProgressOutputForRecordHandlerProgress, CloudformationError>) -> ()) throws -> ()
+    typealias RegisterPublisherSyncType = (
+            _ input: CloudformationModel.RegisterPublisherInput) throws -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher
+    typealias RegisterPublisherAsyncType = (
+            _ input: CloudformationModel.RegisterPublisherInput, 
+            _ completion: @escaping (Result<CloudformationModel.RegisterPublisherOutputForRegisterPublisher, CloudformationError>) -> ()) throws -> ()
     typealias RegisterTypeSyncType = (
             _ input: CloudformationModel.RegisterTypeInput) throws -> CloudformationModel.RegisterTypeOutputForRegisterType
     typealias RegisterTypeAsyncType = (
@@ -264,6 +294,11 @@ public protocol CloudformationClientProtocol {
     typealias SetStackPolicyAsyncType = (
             _ input: CloudformationModel.SetStackPolicyInput, 
             _ completion: @escaping (CloudformationError?) -> ()) throws -> ()
+    typealias SetTypeConfigurationSyncType = (
+            _ input: CloudformationModel.SetTypeConfigurationInput) throws -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration
+    typealias SetTypeConfigurationAsyncType = (
+            _ input: CloudformationModel.SetTypeConfigurationInput, 
+            _ completion: @escaping (Result<CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration, CloudformationError>) -> ()) throws -> ()
     typealias SetTypeDefaultVersionSyncType = (
             _ input: CloudformationModel.SetTypeDefaultVersionInput) throws -> CloudformationModel.SetTypeDefaultVersionOutputForSetTypeDefaultVersion
     typealias SetTypeDefaultVersionAsyncType = (
@@ -279,6 +314,11 @@ public protocol CloudformationClientProtocol {
     typealias StopStackSetOperationAsyncType = (
             _ input: CloudformationModel.StopStackSetOperationInput, 
             _ completion: @escaping (Result<CloudformationModel.StopStackSetOperationOutputForStopStackSetOperation, CloudformationError>) -> ()) throws -> ()
+    typealias TestTypeSyncType = (
+            _ input: CloudformationModel.TestTypeInput) throws -> CloudformationModel.TestTypeOutputForTestType
+    typealias TestTypeAsyncType = (
+            _ input: CloudformationModel.TestTypeInput, 
+            _ completion: @escaping (Result<CloudformationModel.TestTypeOutputForTestType, CloudformationError>) -> ()) throws -> ()
     typealias UpdateStackSyncType = (
             _ input: CloudformationModel.UpdateStackInput) throws -> CloudformationModel.UpdateStackOutputForUpdateStack
     typealias UpdateStackAsyncType = (
@@ -304,6 +344,58 @@ public protocol CloudformationClientProtocol {
     typealias ValidateTemplateAsyncType = (
             _ input: CloudformationModel.ValidateTemplateInput, 
             _ completion: @escaping (Result<CloudformationModel.ValidateTemplateOutputForValidateTemplate, CloudformationError>) -> ()) throws -> ()
+
+    /**
+     Invokes the ActivateType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+         - completion: The ActivateTypeOutputForActivateType object or an error will be passed to this 
+           callback when the operation is complete. The ActivateTypeOutputForActivateType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    func activateTypeAsync(
+            input: CloudformationModel.ActivateTypeInput, 
+            completion: @escaping (Result<CloudformationModel.ActivateTypeOutputForActivateType, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the ActivateType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+     - Returns: The ActivateTypeOutputForActivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    func activateTypeSync(
+            input: CloudformationModel.ActivateTypeInput) throws -> CloudformationModel.ActivateTypeOutputForActivateType
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+         - completion: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object or an error will be passed to this 
+           callback when the operation is complete. The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeConfigurationNotFound.
+     */
+    func batchDescribeTypeConfigurationsAsync(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput, 
+            completion: @escaping (Result<CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+     - Returns: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeConfigurationNotFound.
+     */
+    func batchDescribeTypeConfigurationsSync(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput) throws -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
 
     /**
      Invokes the CancelUpdateStack operation returning immediately and passing the response to a callback.
@@ -457,6 +549,32 @@ public protocol CloudformationClientProtocol {
      */
     func createStackSetSync(
             input: CloudformationModel.CreateStackSetInput) throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet
+
+    /**
+     Invokes the DeactivateType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+         - completion: The DeactivateTypeOutputForDeactivateType object or an error will be passed to this 
+           callback when the operation is complete. The DeactivateTypeOutputForDeactivateType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    func deactivateTypeAsync(
+            input: CloudformationModel.DeactivateTypeInput, 
+            completion: @escaping (Result<CloudformationModel.DeactivateTypeOutputForDeactivateType, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the DeactivateType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+     - Returns: The DeactivateTypeOutputForDeactivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    func deactivateTypeSync(
+            input: CloudformationModel.DeactivateTypeInput) throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType
 
     /**
      Invokes the DeleteChangeSet operation returning immediately and passing the response to a callback.
@@ -634,6 +752,32 @@ public protocol CloudformationClientProtocol {
      */
     func describeChangeSetSync(
             input: CloudformationModel.DescribeChangeSetInput) throws -> CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet
+
+    /**
+     Invokes the DescribePublisher operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+         - completion: The DescribePublisherOutputForDescribePublisher object or an error will be passed to this 
+           callback when the operation is complete. The DescribePublisherOutputForDescribePublisher
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry.
+     */
+    func describePublisherAsync(
+            input: CloudformationModel.DescribePublisherInput, 
+            completion: @escaping (Result<CloudformationModel.DescribePublisherOutputForDescribePublisher, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the DescribePublisher operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+     - Returns: The DescribePublisherOutputForDescribePublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    func describePublisherSync(
+            input: CloudformationModel.DescribePublisherInput) throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher
 
     /**
      Invokes the DescribeStackDriftDetectionStatus operation returning immediately and passing the response to a callback.
@@ -1410,6 +1554,32 @@ public protocol CloudformationClientProtocol {
             input: CloudformationModel.ListTypesInput) throws -> CloudformationModel.ListTypesOutputForListTypes
 
     /**
+     Invokes the PublishType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+         - completion: The PublishTypeOutputForPublishType object or an error will be passed to this 
+           callback when the operation is complete. The PublishTypeOutputForPublishType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    func publishTypeAsync(
+            input: CloudformationModel.PublishTypeInput, 
+            completion: @escaping (Result<CloudformationModel.PublishTypeOutputForPublishType, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the PublishType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+     - Returns: The PublishTypeOutputForPublishType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    func publishTypeSync(
+            input: CloudformationModel.PublishTypeInput) throws -> CloudformationModel.PublishTypeOutputForPublishType
+
+    /**
      Invokes the RecordHandlerProgress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1434,6 +1604,32 @@ public protocol CloudformationClientProtocol {
      */
     func recordHandlerProgressSync(
             input: CloudformationModel.RecordHandlerProgressInput) throws -> CloudformationModel.RecordHandlerProgressOutputForRecordHandlerProgress
+
+    /**
+     Invokes the RegisterPublisher operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+         - completion: The RegisterPublisherOutputForRegisterPublisher object or an error will be passed to this 
+           callback when the operation is complete. The RegisterPublisherOutputForRegisterPublisher
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry.
+     */
+    func registerPublisherAsync(
+            input: CloudformationModel.RegisterPublisherInput, 
+            completion: @escaping (Result<CloudformationModel.RegisterPublisherOutputForRegisterPublisher, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the RegisterPublisher operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+     - Returns: The RegisterPublisherOutputForRegisterPublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    func registerPublisherSync(
+            input: CloudformationModel.RegisterPublisherInput) throws -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher
 
     /**
      Invokes the RegisterType operation returning immediately and passing the response to a callback.
@@ -1481,6 +1677,32 @@ public protocol CloudformationClientProtocol {
      */
     func setStackPolicySync(
             input: CloudformationModel.SetStackPolicyInput) throws
+
+    /**
+     Invokes the SetTypeConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+         - completion: The SetTypeConfigurationOutputForSetTypeConfiguration object or an error will be passed to this 
+           callback when the operation is complete. The SetTypeConfigurationOutputForSetTypeConfiguration
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    func setTypeConfigurationAsync(
+            input: CloudformationModel.SetTypeConfigurationInput, 
+            completion: @escaping (Result<CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the SetTypeConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+     - Returns: The SetTypeConfigurationOutputForSetTypeConfiguration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    func setTypeConfigurationSync(
+            input: CloudformationModel.SetTypeConfigurationInput) throws -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration
 
     /**
      Invokes the SetTypeDefaultVersion operation returning immediately and passing the response to a callback.
@@ -1554,6 +1776,32 @@ public protocol CloudformationClientProtocol {
      */
     func stopStackSetOperationSync(
             input: CloudformationModel.StopStackSetOperationInput) throws -> CloudformationModel.StopStackSetOperationOutputForStopStackSetOperation
+
+    /**
+     Invokes the TestType operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+         - completion: The TestTypeOutputForTestType object or an error will be passed to this 
+           callback when the operation is complete. The TestTypeOutputForTestType
+           object will be validated before being returned to caller.
+           The possible errors are: cFNRegistry, typeNotFound.
+     */
+    func testTypeAsync(
+            input: CloudformationModel.TestTypeInput, 
+            completion: @escaping (Result<CloudformationModel.TestTypeOutputForTestType, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the TestType operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+     - Returns: The TestTypeOutputForTestType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    func testTypeSync(
+            input: CloudformationModel.TestTypeInput) throws -> CloudformationModel.TestTypeOutputForTestType
 
     /**
      Invokes the UpdateStack operation returning immediately and passing the response to a callback.

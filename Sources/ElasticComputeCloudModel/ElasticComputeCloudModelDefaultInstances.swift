@@ -826,6 +826,36 @@ public extension AssociateTransitGatewayRouteTableResult {
     }()
 }
 
+public extension AssociateTrunkInterfaceRequest {
+    /**
+     Default instance of the AssociateTrunkInterfaceRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest = {
+        let defaultInstance = ElasticComputeCloudModel.AssociateTrunkInterfaceRequest(
+            branchInterfaceId: "value",
+            clientToken: nil,
+            dryRun: nil,
+            greKey: nil,
+            trunkInterfaceId: "value",
+            vlanId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AssociateTrunkInterfaceResult {
+    /**
+     Default instance of the AssociateTrunkInterfaceResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.AssociateTrunkInterfaceResult = {
+        let defaultInstance = ElasticComputeCloudModel.AssociateTrunkInterfaceResult(
+            clientToken: nil,
+            interfaceAssociation: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AssociateVpcCidrBlockRequest {
     /**
      Default instance of the AssociateVpcCidrBlockRequest structure.
@@ -2526,6 +2556,7 @@ public extension CreateFleetRequest {
     static let __default: ElasticComputeCloudModel.CreateFleetRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateFleetRequest(
             clientToken: nil,
+            context: nil,
             dryRun: nil,
             excessCapacityTerminationPolicy: nil,
             launchTemplateConfigs: [],
@@ -2873,8 +2904,9 @@ public extension CreateNatGatewayRequest {
      */
     static let __default: ElasticComputeCloudModel.CreateNatGatewayRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateNatGatewayRequest(
-            allocationId: "value",
+            allocationId: nil,
             clientToken: nil,
+            connectivityType: nil,
             dryRun: nil,
             subnetId: "value",
             tagSpecifications: nil)
@@ -6553,6 +6585,7 @@ public extension DescribeImagesRequest {
             executableUsers: nil,
             filters: nil,
             imageIds: nil,
+            includeDeprecated: nil,
             owners: nil)
 
         return defaultInstance
@@ -8501,6 +8534,35 @@ public extension DescribeTransitGatewaysResult {
     }()
 }
 
+public extension DescribeTrunkInterfaceAssociationsRequest {
+    /**
+     Default instance of the DescribeTrunkInterfaceAssociationsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest(
+            associationIds: nil,
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeTrunkInterfaceAssociationsResult {
+    /**
+     Default instance of the DescribeTrunkInterfaceAssociationsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult(
+            interfaceAssociations: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeVolumeAttributeRequest {
     /**
      Default instance of the DescribeVolumeAttributeRequest structure.
@@ -9229,6 +9291,31 @@ public extension DisableFastSnapshotRestoresResult {
     }()
 }
 
+public extension DisableImageDeprecationRequest {
+    /**
+     Default instance of the DisableImageDeprecationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableImageDeprecationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisableImageDeprecationRequest(
+            dryRun: nil,
+            imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableImageDeprecationResult {
+    /**
+     Default instance of the DisableImageDeprecationResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableImageDeprecationResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisableImageDeprecationResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DisableSerialConsoleAccessRequest {
     /**
      Default instance of the DisableSerialConsoleAccessRequest structure.
@@ -9519,6 +9606,33 @@ public extension DisassociateTransitGatewayRouteTableResult {
     static let __default: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult = {
         let defaultInstance = ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult(
             association: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisassociateTrunkInterfaceRequest {
+    /**
+     Default instance of the DisassociateTrunkInterfaceRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest(
+            associationId: "value",
+            clientToken: nil,
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisassociateTrunkInterfaceResult {
+    /**
+     Default instance of the DisassociateTrunkInterfaceResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisassociateTrunkInterfaceResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisassociateTrunkInterfaceResult(
+            clientToken: nil,
+            return: nil)
 
         return defaultInstance
     }()
@@ -9956,6 +10070,32 @@ public extension EnableFastSnapshotRestoresResult {
         let defaultInstance = ElasticComputeCloudModel.EnableFastSnapshotRestoresResult(
             successful: nil,
             unsuccessful: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableImageDeprecationRequest {
+    /**
+     Default instance of the EnableImageDeprecationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableImageDeprecationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.EnableImageDeprecationRequest(
+            deprecateAt: "2013-02-18T17:00:00Z",
+            dryRun: nil,
+            imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableImageDeprecationResult {
+    /**
+     Default instance of the EnableImageDeprecationResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableImageDeprecationResult = {
+        let defaultInstance = ElasticComputeCloudModel.EnableImageDeprecationResult(
+            return: nil)
 
         return defaultInstance
     }()
@@ -10452,6 +10592,7 @@ public extension FleetData {
         let defaultInstance = ElasticComputeCloudModel.FleetData(
             activityStatus: nil,
             clientToken: nil,
+            context: nil,
             createTime: nil,
             errors: nil,
             excessCapacityTerminationPolicy: nil,
@@ -11681,6 +11822,7 @@ public extension Image {
             blockDeviceMappings: nil,
             bootMode: nil,
             creationDate: nil,
+            deprecationTime: nil,
             description: nil,
             enaSupport: nil,
             hypervisor: nil,
@@ -13863,6 +14005,7 @@ public extension ModifyFleetRequest {
      */
     static let __default: ElasticComputeCloudModel.ModifyFleetRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifyFleetRequest(
+            context: nil,
             dryRun: nil,
             excessCapacityTerminationPolicy: nil,
             fleetId: "value",
@@ -14285,6 +14428,7 @@ public extension ModifySpotFleetRequestRequest {
      */
     static let __default: ElasticComputeCloudModel.ModifySpotFleetRequestRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifySpotFleetRequestRequest(
+            context: nil,
             excessCapacityTerminationPolicy: nil,
             launchTemplateConfigs: nil,
             onDemandTargetCapacity: nil,
@@ -14987,6 +15131,7 @@ public extension NatGateway {
      */
     static let __default: ElasticComputeCloudModel.NatGateway = {
         let defaultInstance = ElasticComputeCloudModel.NatGateway(
+            connectivityType: nil,
             createTime: nil,
             deleteTime: nil,
             failureCode: nil,
@@ -15853,6 +15998,7 @@ public extension ProvisionByoipCidrRequest {
             cidrAuthorizationContext: nil,
             description: nil,
             dryRun: nil,
+            multiRegion: nil,
             poolTagSpecifications: nil,
             publiclyAdvertisable: nil)
 
@@ -18089,6 +18235,7 @@ public extension SpotFleetRequestConfigData {
         let defaultInstance = ElasticComputeCloudModel.SpotFleetRequestConfigData(
             allocationStrategy: nil,
             clientToken: nil,
+            context: nil,
             excessCapacityTerminationPolicy: nil,
             fulfilledCapacity: nil,
             iamFleetRole: "value",
@@ -19422,6 +19569,24 @@ public extension TransitGatewayVpcAttachmentOptions {
             applianceModeSupport: nil,
             dnsSupport: nil,
             ipv6Support: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TrunkInterfaceAssociation {
+    /**
+     Default instance of the TrunkInterfaceAssociation structure.
+     */
+    static let __default: ElasticComputeCloudModel.TrunkInterfaceAssociation = {
+        let defaultInstance = ElasticComputeCloudModel.TrunkInterfaceAssociation(
+            associationId: nil,
+            branchInterfaceId: nil,
+            greKey: nil,
+            interfaceProtocol: nil,
+            tags: nil,
+            trunkInterfaceId: nil,
+            vlanId: nil)
 
         return defaultInstance
     }()

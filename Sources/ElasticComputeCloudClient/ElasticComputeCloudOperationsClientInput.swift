@@ -130,6 +130,11 @@ public typealias AssociateTransitGatewayMulticastDomainOperationHTTPRequestInput
 public typealias AssociateTransitGatewayRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the AssociateTrunkInterface operation in a HTTP client.
+ */
+public typealias AssociateTrunkInterfaceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AssociateVpcCidrBlock operation in a HTTP client.
  */
 public typealias AssociateVpcCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1370,6 +1375,11 @@ public typealias DescribeTransitGatewayVpcAttachmentsOperationHTTPRequestInput =
 public typealias DescribeTransitGatewaysOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeTrunkInterfaceAssociations operation in a HTTP client.
+ */
+public typealias DescribeTrunkInterfaceAssociationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeVolumeAttribute operation in a HTTP client.
  */
 public typealias DescribeVolumeAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1490,6 +1500,11 @@ public typealias DisableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryH
 public typealias DisableFastSnapshotRestoresOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisableImageDeprecation operation in a HTTP client.
+ */
+public typealias DisableImageDeprecationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisableSerialConsoleAccess operation in a HTTP client.
  */
 public typealias DisableSerialConsoleAccessOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1555,6 +1570,11 @@ public typealias DisassociateTransitGatewayMulticastDomainOperationHTTPRequestIn
 public typealias DisassociateTransitGatewayRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisassociateTrunkInterface operation in a HTTP client.
+ */
+public typealias DisassociateTrunkInterfaceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisassociateVpcCidrBlock operation in a HTTP client.
  */
 public typealias DisassociateVpcCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1568,6 +1588,11 @@ public typealias EnableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHT
  Type to handle the input to the EnableFastSnapshotRestores operation in a HTTP client.
  */
 public typealias EnableFastSnapshotRestoresOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableImageDeprecation operation in a HTTP client.
+ */
+public typealias EnableImageDeprecationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the EnableSerialConsoleAccess operation in a HTTP client.

@@ -47,6 +47,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case associateSubnetCidrBlock = "AssociateSubnetCidrBlock"
     case associateTransitGatewayMulticastDomain = "AssociateTransitGatewayMulticastDomain"
     case associateTransitGatewayRouteTable = "AssociateTransitGatewayRouteTable"
+    case associateTrunkInterface = "AssociateTrunkInterface"
     case associateVpcCidrBlock = "AssociateVpcCidrBlock"
     case attachClassicLinkVpc = "AttachClassicLinkVpc"
     case attachInternetGateway = "AttachInternetGateway"
@@ -295,6 +296,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeTransitGatewayRouteTables = "DescribeTransitGatewayRouteTables"
     case describeTransitGatewayVpcAttachments = "DescribeTransitGatewayVpcAttachments"
     case describeTransitGateways = "DescribeTransitGateways"
+    case describeTrunkInterfaceAssociations = "DescribeTrunkInterfaceAssociations"
     case describeVolumeAttribute = "DescribeVolumeAttribute"
     case describeVolumeStatus = "DescribeVolumeStatus"
     case describeVolumes = "DescribeVolumes"
@@ -319,6 +321,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case detachVpnGateway = "DetachVpnGateway"
     case disableEbsEncryptionByDefault = "DisableEbsEncryptionByDefault"
     case disableFastSnapshotRestores = "DisableFastSnapshotRestores"
+    case disableImageDeprecation = "DisableImageDeprecation"
     case disableSerialConsoleAccess = "DisableSerialConsoleAccess"
     case disableTransitGatewayRouteTablePropagation = "DisableTransitGatewayRouteTablePropagation"
     case disableVgwRoutePropagation = "DisableVgwRoutePropagation"
@@ -332,9 +335,11 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disassociateSubnetCidrBlock = "DisassociateSubnetCidrBlock"
     case disassociateTransitGatewayMulticastDomain = "DisassociateTransitGatewayMulticastDomain"
     case disassociateTransitGatewayRouteTable = "DisassociateTransitGatewayRouteTable"
+    case disassociateTrunkInterface = "DisassociateTrunkInterface"
     case disassociateVpcCidrBlock = "DisassociateVpcCidrBlock"
     case enableEbsEncryptionByDefault = "EnableEbsEncryptionByDefault"
     case enableFastSnapshotRestores = "EnableFastSnapshotRestores"
+    case enableImageDeprecation = "EnableImageDeprecation"
     case enableSerialConsoleAccess = "EnableSerialConsoleAccess"
     case enableTransitGatewayRouteTablePropagation = "EnableTransitGatewayRouteTablePropagation"
     case enableVgwRoutePropagation = "EnableVgwRoutePropagation"
@@ -523,6 +528,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .associateTransitGatewayMulticastDomain:
             return "/"
         case .associateTransitGatewayRouteTable:
+            return "/"
+        case .associateTrunkInterface:
             return "/"
         case .associateVpcCidrBlock:
             return "/"
@@ -1020,6 +1027,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeTransitGateways:
             return "/"
+        case .describeTrunkInterfaceAssociations:
+            return "/"
         case .describeVolumeAttribute:
             return "/"
         case .describeVolumeStatus:
@@ -1068,6 +1077,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disableFastSnapshotRestores:
             return "/"
+        case .disableImageDeprecation:
+            return "/"
         case .disableSerialConsoleAccess:
             return "/"
         case .disableTransitGatewayRouteTablePropagation:
@@ -1094,11 +1105,15 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disassociateTransitGatewayRouteTable:
             return "/"
+        case .disassociateTrunkInterface:
+            return "/"
         case .disassociateVpcCidrBlock:
             return "/"
         case .enableEbsEncryptionByDefault:
             return "/"
         case .enableFastSnapshotRestores:
+            return "/"
+        case .enableImageDeprecation:
             return "/"
         case .enableSerialConsoleAccess:
             return "/"

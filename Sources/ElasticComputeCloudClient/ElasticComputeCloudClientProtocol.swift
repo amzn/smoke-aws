@@ -134,6 +134,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AssociateTransitGatewayRouteTableAsyncType = (
             _ input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AssociateTrunkInterfaceSyncType = (
+            _ input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.AssociateTrunkInterfaceResult
+    typealias AssociateTrunkInterfaceAsyncType = (
+            _ input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AssociateVpcCidrBlockSyncType = (
             _ input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult
     typealias AssociateVpcCidrBlockAsyncType = (
@@ -1374,6 +1379,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeTransitGatewaysAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeTransitGatewaysResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeTrunkInterfaceAssociationsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult
+    typealias DescribeTrunkInterfaceAssociationsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeVolumeAttributeSyncType = (
             _ input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult
     typealias DescribeVolumeAttributeAsyncType = (
@@ -1494,6 +1504,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisableFastSnapshotRestoresAsyncType = (
             _ input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisableImageDeprecationSyncType = (
+            _ input: ElasticComputeCloudModel.DisableImageDeprecationRequest) throws -> ElasticComputeCloudModel.DisableImageDeprecationResult
+    typealias DisableImageDeprecationAsyncType = (
+            _ input: ElasticComputeCloudModel.DisableImageDeprecationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisableSerialConsoleAccessSyncType = (
             _ input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult
     typealias DisableSerialConsoleAccessAsyncType = (
@@ -1559,6 +1574,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisassociateTransitGatewayRouteTableAsyncType = (
             _ input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisassociateTrunkInterfaceSyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.DisassociateTrunkInterfaceResult
+    typealias DisassociateTrunkInterfaceAsyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisassociateVpcCidrBlockSyncType = (
             _ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
     typealias DisassociateVpcCidrBlockAsyncType = (
@@ -1574,6 +1594,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias EnableFastSnapshotRestoresAsyncType = (
             _ input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.EnableFastSnapshotRestoresResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias EnableImageDeprecationSyncType = (
+            _ input: ElasticComputeCloudModel.EnableImageDeprecationRequest) throws -> ElasticComputeCloudModel.EnableImageDeprecationResult
+    typealias EnableImageDeprecationAsyncType = (
+            _ input: ElasticComputeCloudModel.EnableImageDeprecationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias EnableSerialConsoleAccessSyncType = (
             _ input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult
     typealias EnableSerialConsoleAccessAsyncType = (
@@ -2775,6 +2800,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func associateTransitGatewayRouteTableSync(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult
+
+    /**
+     Invokes the AssociateTrunkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTrunkInterfaceRequest object being passed to this operation.
+         - completion: The AssociateTrunkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTrunkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    func associateTrunkInterfaceAsync(
+            input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AssociateTrunkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTrunkInterfaceRequest object being passed to this operation.
+     - Returns: The AssociateTrunkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateTrunkInterfaceSync(
+            input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.AssociateTrunkInterfaceResult
 
     /**
      Invokes the AssociateVpcCidrBlock operation returning immediately and passing the response to a callback.
@@ -8642,6 +8691,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult
 
     /**
+     Invokes the DescribeTrunkInterfaceAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrunkInterfaceAssociationsRequest object being passed to this operation.
+         - completion: The DescribeTrunkInterfaceAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrunkInterfaceAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    func describeTrunkInterfaceAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeTrunkInterfaceAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrunkInterfaceAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeTrunkInterfaceAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTrunkInterfaceAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9209,6 +9282,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult
 
     /**
+     Invokes the DisableImageDeprecation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageDeprecationRequest object being passed to this operation.
+         - completion: The DisableImageDeprecationResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageDeprecationResult
+           object will be validated before being returned to caller.
+     */
+    func disableImageDeprecationAsync(
+            input: ElasticComputeCloudModel.DisableImageDeprecationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisableImageDeprecation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageDeprecationRequest object being passed to this operation.
+     - Returns: The DisableImageDeprecationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableImageDeprecationSync(
+            input: ElasticComputeCloudModel.DisableImageDeprecationRequest) throws -> ElasticComputeCloudModel.DisableImageDeprecationResult
+
+    /**
      Invokes the DisableSerialConsoleAccess operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9512,6 +9609,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult
 
     /**
+     Invokes the DisassociateTrunkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTrunkInterfaceRequest object being passed to this operation.
+         - completion: The DisassociateTrunkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTrunkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateTrunkInterfaceAsync(
+            input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisassociateTrunkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTrunkInterfaceRequest object being passed to this operation.
+     - Returns: The DisassociateTrunkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateTrunkInterfaceSync(
+            input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.DisassociateTrunkInterfaceResult
+
+    /**
      Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9582,6 +9703,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func enableFastSnapshotRestoresSync(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult
+
+    /**
+     Invokes the EnableImageDeprecation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageDeprecationRequest object being passed to this operation.
+         - completion: The EnableImageDeprecationResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageDeprecationResult
+           object will be validated before being returned to caller.
+     */
+    func enableImageDeprecationAsync(
+            input: ElasticComputeCloudModel.EnableImageDeprecationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the EnableImageDeprecation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageDeprecationRequest object being passed to this operation.
+     - Returns: The EnableImageDeprecationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableImageDeprecationSync(
+            input: ElasticComputeCloudModel.EnableImageDeprecationRequest) throws -> ElasticComputeCloudModel.EnableImageDeprecationResult
 
     /**
      Invokes the EnableSerialConsoleAccess operation returning immediately and passing the response to a callback.

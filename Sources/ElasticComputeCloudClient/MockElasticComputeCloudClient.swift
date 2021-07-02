@@ -71,6 +71,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let associateTransitGatewayMulticastDomainSyncOverride: AssociateTransitGatewayMulticastDomainSyncType?
     let associateTransitGatewayRouteTableAsyncOverride: AssociateTransitGatewayRouteTableAsyncType?
     let associateTransitGatewayRouteTableSyncOverride: AssociateTransitGatewayRouteTableSyncType?
+    let associateTrunkInterfaceAsyncOverride: AssociateTrunkInterfaceAsyncType?
+    let associateTrunkInterfaceSyncOverride: AssociateTrunkInterfaceSyncType?
     let associateVpcCidrBlockAsyncOverride: AssociateVpcCidrBlockAsyncType?
     let associateVpcCidrBlockSyncOverride: AssociateVpcCidrBlockSyncType?
     let attachClassicLinkVpcAsyncOverride: AttachClassicLinkVpcAsyncType?
@@ -567,6 +569,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeTransitGatewayVpcAttachmentsSyncOverride: DescribeTransitGatewayVpcAttachmentsSyncType?
     let describeTransitGatewaysAsyncOverride: DescribeTransitGatewaysAsyncType?
     let describeTransitGatewaysSyncOverride: DescribeTransitGatewaysSyncType?
+    let describeTrunkInterfaceAssociationsAsyncOverride: DescribeTrunkInterfaceAssociationsAsyncType?
+    let describeTrunkInterfaceAssociationsSyncOverride: DescribeTrunkInterfaceAssociationsSyncType?
     let describeVolumeAttributeAsyncOverride: DescribeVolumeAttributeAsyncType?
     let describeVolumeAttributeSyncOverride: DescribeVolumeAttributeSyncType?
     let describeVolumeStatusAsyncOverride: DescribeVolumeStatusAsyncType?
@@ -615,6 +619,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let disableEbsEncryptionByDefaultSyncOverride: DisableEbsEncryptionByDefaultSyncType?
     let disableFastSnapshotRestoresAsyncOverride: DisableFastSnapshotRestoresAsyncType?
     let disableFastSnapshotRestoresSyncOverride: DisableFastSnapshotRestoresSyncType?
+    let disableImageDeprecationAsyncOverride: DisableImageDeprecationAsyncType?
+    let disableImageDeprecationSyncOverride: DisableImageDeprecationSyncType?
     let disableSerialConsoleAccessAsyncOverride: DisableSerialConsoleAccessAsyncType?
     let disableSerialConsoleAccessSyncOverride: DisableSerialConsoleAccessSyncType?
     let disableTransitGatewayRouteTablePropagationAsyncOverride: DisableTransitGatewayRouteTablePropagationAsyncType?
@@ -641,12 +647,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let disassociateTransitGatewayMulticastDomainSyncOverride: DisassociateTransitGatewayMulticastDomainSyncType?
     let disassociateTransitGatewayRouteTableAsyncOverride: DisassociateTransitGatewayRouteTableAsyncType?
     let disassociateTransitGatewayRouteTableSyncOverride: DisassociateTransitGatewayRouteTableSyncType?
+    let disassociateTrunkInterfaceAsyncOverride: DisassociateTrunkInterfaceAsyncType?
+    let disassociateTrunkInterfaceSyncOverride: DisassociateTrunkInterfaceSyncType?
     let disassociateVpcCidrBlockAsyncOverride: DisassociateVpcCidrBlockAsyncType?
     let disassociateVpcCidrBlockSyncOverride: DisassociateVpcCidrBlockSyncType?
     let enableEbsEncryptionByDefaultAsyncOverride: EnableEbsEncryptionByDefaultAsyncType?
     let enableEbsEncryptionByDefaultSyncOverride: EnableEbsEncryptionByDefaultSyncType?
     let enableFastSnapshotRestoresAsyncOverride: EnableFastSnapshotRestoresAsyncType?
     let enableFastSnapshotRestoresSyncOverride: EnableFastSnapshotRestoresSyncType?
+    let enableImageDeprecationAsyncOverride: EnableImageDeprecationAsyncType?
+    let enableImageDeprecationSyncOverride: EnableImageDeprecationSyncType?
     let enableSerialConsoleAccessAsyncOverride: EnableSerialConsoleAccessAsyncType?
     let enableSerialConsoleAccessSyncOverride: EnableSerialConsoleAccessSyncType?
     let enableTransitGatewayRouteTablePropagationAsyncOverride: EnableTransitGatewayRouteTablePropagationAsyncType?
@@ -975,6 +985,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             associateTransitGatewayMulticastDomainSync: AssociateTransitGatewayMulticastDomainSyncType? = nil,
             associateTransitGatewayRouteTableAsync: AssociateTransitGatewayRouteTableAsyncType? = nil,
             associateTransitGatewayRouteTableSync: AssociateTransitGatewayRouteTableSyncType? = nil,
+            associateTrunkInterfaceAsync: AssociateTrunkInterfaceAsyncType? = nil,
+            associateTrunkInterfaceSync: AssociateTrunkInterfaceSyncType? = nil,
             associateVpcCidrBlockAsync: AssociateVpcCidrBlockAsyncType? = nil,
             associateVpcCidrBlockSync: AssociateVpcCidrBlockSyncType? = nil,
             attachClassicLinkVpcAsync: AttachClassicLinkVpcAsyncType? = nil,
@@ -1471,6 +1483,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeTransitGatewayVpcAttachmentsSync: DescribeTransitGatewayVpcAttachmentsSyncType? = nil,
             describeTransitGatewaysAsync: DescribeTransitGatewaysAsyncType? = nil,
             describeTransitGatewaysSync: DescribeTransitGatewaysSyncType? = nil,
+            describeTrunkInterfaceAssociationsAsync: DescribeTrunkInterfaceAssociationsAsyncType? = nil,
+            describeTrunkInterfaceAssociationsSync: DescribeTrunkInterfaceAssociationsSyncType? = nil,
             describeVolumeAttributeAsync: DescribeVolumeAttributeAsyncType? = nil,
             describeVolumeAttributeSync: DescribeVolumeAttributeSyncType? = nil,
             describeVolumeStatusAsync: DescribeVolumeStatusAsyncType? = nil,
@@ -1519,6 +1533,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             disableEbsEncryptionByDefaultSync: DisableEbsEncryptionByDefaultSyncType? = nil,
             disableFastSnapshotRestoresAsync: DisableFastSnapshotRestoresAsyncType? = nil,
             disableFastSnapshotRestoresSync: DisableFastSnapshotRestoresSyncType? = nil,
+            disableImageDeprecationAsync: DisableImageDeprecationAsyncType? = nil,
+            disableImageDeprecationSync: DisableImageDeprecationSyncType? = nil,
             disableSerialConsoleAccessAsync: DisableSerialConsoleAccessAsyncType? = nil,
             disableSerialConsoleAccessSync: DisableSerialConsoleAccessSyncType? = nil,
             disableTransitGatewayRouteTablePropagationAsync: DisableTransitGatewayRouteTablePropagationAsyncType? = nil,
@@ -1545,12 +1561,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             disassociateTransitGatewayMulticastDomainSync: DisassociateTransitGatewayMulticastDomainSyncType? = nil,
             disassociateTransitGatewayRouteTableAsync: DisassociateTransitGatewayRouteTableAsyncType? = nil,
             disassociateTransitGatewayRouteTableSync: DisassociateTransitGatewayRouteTableSyncType? = nil,
+            disassociateTrunkInterfaceAsync: DisassociateTrunkInterfaceAsyncType? = nil,
+            disassociateTrunkInterfaceSync: DisassociateTrunkInterfaceSyncType? = nil,
             disassociateVpcCidrBlockAsync: DisassociateVpcCidrBlockAsyncType? = nil,
             disassociateVpcCidrBlockSync: DisassociateVpcCidrBlockSyncType? = nil,
             enableEbsEncryptionByDefaultAsync: EnableEbsEncryptionByDefaultAsyncType? = nil,
             enableEbsEncryptionByDefaultSync: EnableEbsEncryptionByDefaultSyncType? = nil,
             enableFastSnapshotRestoresAsync: EnableFastSnapshotRestoresAsyncType? = nil,
             enableFastSnapshotRestoresSync: EnableFastSnapshotRestoresSyncType? = nil,
+            enableImageDeprecationAsync: EnableImageDeprecationAsyncType? = nil,
+            enableImageDeprecationSync: EnableImageDeprecationSyncType? = nil,
             enableSerialConsoleAccessAsync: EnableSerialConsoleAccessAsyncType? = nil,
             enableSerialConsoleAccessSync: EnableSerialConsoleAccessSyncType? = nil,
             enableTransitGatewayRouteTablePropagationAsync: EnableTransitGatewayRouteTablePropagationAsyncType? = nil,
@@ -1873,6 +1893,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.associateTransitGatewayMulticastDomainSyncOverride = associateTransitGatewayMulticastDomainSync
         self.associateTransitGatewayRouteTableAsyncOverride = associateTransitGatewayRouteTableAsync
         self.associateTransitGatewayRouteTableSyncOverride = associateTransitGatewayRouteTableSync
+        self.associateTrunkInterfaceAsyncOverride = associateTrunkInterfaceAsync
+        self.associateTrunkInterfaceSyncOverride = associateTrunkInterfaceSync
         self.associateVpcCidrBlockAsyncOverride = associateVpcCidrBlockAsync
         self.associateVpcCidrBlockSyncOverride = associateVpcCidrBlockSync
         self.attachClassicLinkVpcAsyncOverride = attachClassicLinkVpcAsync
@@ -2369,6 +2391,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeTransitGatewayVpcAttachmentsSyncOverride = describeTransitGatewayVpcAttachmentsSync
         self.describeTransitGatewaysAsyncOverride = describeTransitGatewaysAsync
         self.describeTransitGatewaysSyncOverride = describeTransitGatewaysSync
+        self.describeTrunkInterfaceAssociationsAsyncOverride = describeTrunkInterfaceAssociationsAsync
+        self.describeTrunkInterfaceAssociationsSyncOverride = describeTrunkInterfaceAssociationsSync
         self.describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsync
         self.describeVolumeAttributeSyncOverride = describeVolumeAttributeSync
         self.describeVolumeStatusAsyncOverride = describeVolumeStatusAsync
@@ -2417,6 +2441,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.disableEbsEncryptionByDefaultSyncOverride = disableEbsEncryptionByDefaultSync
         self.disableFastSnapshotRestoresAsyncOverride = disableFastSnapshotRestoresAsync
         self.disableFastSnapshotRestoresSyncOverride = disableFastSnapshotRestoresSync
+        self.disableImageDeprecationAsyncOverride = disableImageDeprecationAsync
+        self.disableImageDeprecationSyncOverride = disableImageDeprecationSync
         self.disableSerialConsoleAccessAsyncOverride = disableSerialConsoleAccessAsync
         self.disableSerialConsoleAccessSyncOverride = disableSerialConsoleAccessSync
         self.disableTransitGatewayRouteTablePropagationAsyncOverride = disableTransitGatewayRouteTablePropagationAsync
@@ -2443,12 +2469,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.disassociateTransitGatewayMulticastDomainSyncOverride = disassociateTransitGatewayMulticastDomainSync
         self.disassociateTransitGatewayRouteTableAsyncOverride = disassociateTransitGatewayRouteTableAsync
         self.disassociateTransitGatewayRouteTableSyncOverride = disassociateTransitGatewayRouteTableSync
+        self.disassociateTrunkInterfaceAsyncOverride = disassociateTrunkInterfaceAsync
+        self.disassociateTrunkInterfaceSyncOverride = disassociateTrunkInterfaceSync
         self.disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsync
         self.disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSync
         self.enableEbsEncryptionByDefaultAsyncOverride = enableEbsEncryptionByDefaultAsync
         self.enableEbsEncryptionByDefaultSyncOverride = enableEbsEncryptionByDefaultSync
         self.enableFastSnapshotRestoresAsyncOverride = enableFastSnapshotRestoresAsync
         self.enableFastSnapshotRestoresSyncOverride = enableFastSnapshotRestoresSync
+        self.enableImageDeprecationAsyncOverride = enableImageDeprecationAsync
+        self.enableImageDeprecationSyncOverride = enableImageDeprecationSync
         self.enableSerialConsoleAccessAsyncOverride = enableSerialConsoleAccessAsync
         self.enableSerialConsoleAccessSyncOverride = enableSerialConsoleAccessSync
         self.enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsync
@@ -3521,6 +3551,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return AssociateTransitGatewayRouteTableResult.__default
+    }
+
+    /**
+     Invokes the AssociateTrunkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTrunkInterfaceRequest object being passed to this operation.
+         - completion: The AssociateTrunkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTrunkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    public func associateTrunkInterfaceAsync(
+            input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let associateTrunkInterfaceAsyncOverride = associateTrunkInterfaceAsyncOverride {
+            return try associateTrunkInterfaceAsyncOverride(input, completion)
+        }
+
+        let result = AssociateTrunkInterfaceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the AssociateTrunkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTrunkInterfaceRequest object being passed to this operation.
+     - Returns: The AssociateTrunkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateTrunkInterfaceSync(
+            input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.AssociateTrunkInterfaceResult {
+        if let associateTrunkInterfaceSyncOverride = associateTrunkInterfaceSyncOverride {
+            return try associateTrunkInterfaceSyncOverride(input)
+        }
+
+        return AssociateTrunkInterfaceResult.__default
     }
 
     /**
@@ -12774,6 +12842,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeTrunkInterfaceAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrunkInterfaceAssociationsRequest object being passed to this operation.
+         - completion: The DescribeTrunkInterfaceAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrunkInterfaceAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrunkInterfaceAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeTrunkInterfaceAssociationsAsyncOverride = describeTrunkInterfaceAssociationsAsyncOverride {
+            return try describeTrunkInterfaceAssociationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeTrunkInterfaceAssociationsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeTrunkInterfaceAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrunkInterfaceAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeTrunkInterfaceAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrunkInterfaceAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult {
+        if let describeTrunkInterfaceAssociationsSyncOverride = describeTrunkInterfaceAssociationsSyncOverride {
+            return try describeTrunkInterfaceAssociationsSyncOverride(input)
+        }
+
+        return DescribeTrunkInterfaceAssociationsResult.__default
+    }
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13668,6 +13774,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableImageDeprecation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageDeprecationRequest object being passed to this operation.
+         - completion: The DisableImageDeprecationResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageDeprecationResult
+           object will be validated before being returned to caller.
+     */
+    public func disableImageDeprecationAsync(
+            input: ElasticComputeCloudModel.DisableImageDeprecationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disableImageDeprecationAsyncOverride = disableImageDeprecationAsyncOverride {
+            return try disableImageDeprecationAsyncOverride(input, completion)
+        }
+
+        let result = DisableImageDeprecationResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisableImageDeprecation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageDeprecationRequest object being passed to this operation.
+     - Returns: The DisableImageDeprecationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageDeprecationSync(
+            input: ElasticComputeCloudModel.DisableImageDeprecationRequest) throws -> ElasticComputeCloudModel.DisableImageDeprecationResult {
+        if let disableImageDeprecationSyncOverride = disableImageDeprecationSyncOverride {
+            return try disableImageDeprecationSyncOverride(input)
+        }
+
+        return DisableImageDeprecationResult.__default
+    }
+
+    /**
      Invokes the DisableSerialConsoleAccess operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14144,6 +14288,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateTrunkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTrunkInterfaceRequest object being passed to this operation.
+         - completion: The DisassociateTrunkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTrunkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateTrunkInterfaceAsync(
+            input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disassociateTrunkInterfaceAsyncOverride = disassociateTrunkInterfaceAsyncOverride {
+            return try disassociateTrunkInterfaceAsyncOverride(input, completion)
+        }
+
+        let result = DisassociateTrunkInterfaceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisassociateTrunkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTrunkInterfaceRequest object being passed to this operation.
+     - Returns: The DisassociateTrunkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateTrunkInterfaceSync(
+            input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.DisassociateTrunkInterfaceResult {
+        if let disassociateTrunkInterfaceSyncOverride = disassociateTrunkInterfaceSyncOverride {
+            return try disassociateTrunkInterfaceSyncOverride(input)
+        }
+
+        return DisassociateTrunkInterfaceResult.__default
+    }
+
+    /**
      Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14255,6 +14437,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return EnableFastSnapshotRestoresResult.__default
+    }
+
+    /**
+     Invokes the EnableImageDeprecation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageDeprecationRequest object being passed to this operation.
+         - completion: The EnableImageDeprecationResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageDeprecationResult
+           object will be validated before being returned to caller.
+     */
+    public func enableImageDeprecationAsync(
+            input: ElasticComputeCloudModel.EnableImageDeprecationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableImageDeprecationAsyncOverride = enableImageDeprecationAsyncOverride {
+            return try enableImageDeprecationAsyncOverride(input, completion)
+        }
+
+        let result = EnableImageDeprecationResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the EnableImageDeprecation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageDeprecationRequest object being passed to this operation.
+     - Returns: The EnableImageDeprecationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageDeprecationSync(
+            input: ElasticComputeCloudModel.EnableImageDeprecationRequest) throws -> ElasticComputeCloudModel.EnableImageDeprecationResult {
+        if let enableImageDeprecationSyncOverride = enableImageDeprecationSyncOverride {
+            return try enableImageDeprecationSyncOverride(input)
+        }
+
+        return EnableImageDeprecationResult.__default
     }
 
     /**

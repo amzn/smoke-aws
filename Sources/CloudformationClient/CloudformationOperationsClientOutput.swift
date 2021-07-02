@@ -25,6 +25,32 @@ import SmokeHTTPClient
 import CloudformationModel
 
 /**
+ Type to handle the output from the ActivateType operation in a HTTP client.
+ */
+extension ActivateTypeOutputForActivateType: HTTPResponseOutputProtocol {
+    public typealias BodyType = ActivateTypeOutputForActivateType
+    public typealias HeadersType = ActivateTypeOutputForActivateType
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ActivateTypeOutputForActivateType {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the BatchDescribeTypeConfigurations operation in a HTTP client.
+ */
+extension BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations: HTTPResponseOutputProtocol {
+    public typealias BodyType = BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
+    public typealias HeadersType = BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ContinueUpdateRollback operation in a HTTP client.
  */
 extension ContinueUpdateRollbackOutputForContinueUpdateRollback: HTTPResponseOutputProtocol {
@@ -85,6 +111,19 @@ extension CreateStackSetOutputForCreateStackSet: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateStackSetOutputForCreateStackSet {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeactivateType operation in a HTTP client.
+ */
+extension DeactivateTypeOutputForDeactivateType: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeactivateTypeOutputForDeactivateType
+    public typealias HeadersType = DeactivateTypeOutputForDeactivateType
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeactivateTypeOutputForDeactivateType {
         return try bodyDecodableProvider()
     }
 }
@@ -163,6 +202,19 @@ extension DescribeChangeSetOutputForDescribeChangeSet: HTTPResponseOutputProtoco
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeChangeSetOutputForDescribeChangeSet {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribePublisher operation in a HTTP client.
+ */
+extension DescribePublisherOutputForDescribePublisher: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribePublisherOutputForDescribePublisher
+    public typealias HeadersType = DescribePublisherOutputForDescribePublisher
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribePublisherOutputForDescribePublisher {
         return try bodyDecodableProvider()
     }
 }
@@ -571,6 +623,19 @@ extension ListTypesOutputForListTypes: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the PublishType operation in a HTTP client.
+ */
+extension PublishTypeOutputForPublishType: HTTPResponseOutputProtocol {
+    public typealias BodyType = PublishTypeOutputForPublishType
+    public typealias HeadersType = PublishTypeOutputForPublishType
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PublishTypeOutputForPublishType {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the RecordHandlerProgress operation in a HTTP client.
  */
 extension RecordHandlerProgressOutputForRecordHandlerProgress: HTTPResponseOutputProtocol {
@@ -584,6 +649,19 @@ extension RecordHandlerProgressOutputForRecordHandlerProgress: HTTPResponseOutpu
 }
 
 /**
+ Type to handle the output from the RegisterPublisher operation in a HTTP client.
+ */
+extension RegisterPublisherOutputForRegisterPublisher: HTTPResponseOutputProtocol {
+    public typealias BodyType = RegisterPublisherOutputForRegisterPublisher
+    public typealias HeadersType = RegisterPublisherOutputForRegisterPublisher
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RegisterPublisherOutputForRegisterPublisher {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the RegisterType operation in a HTTP client.
  */
 extension RegisterTypeOutputForRegisterType: HTTPResponseOutputProtocol {
@@ -592,6 +670,19 @@ extension RegisterTypeOutputForRegisterType: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> RegisterTypeOutputForRegisterType {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the SetTypeConfiguration operation in a HTTP client.
+ */
+extension SetTypeConfigurationOutputForSetTypeConfiguration: HTTPResponseOutputProtocol {
+    public typealias BodyType = SetTypeConfigurationOutputForSetTypeConfiguration
+    public typealias HeadersType = SetTypeConfigurationOutputForSetTypeConfiguration
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> SetTypeConfigurationOutputForSetTypeConfiguration {
         return try bodyDecodableProvider()
     }
 }
@@ -618,6 +709,19 @@ extension StopStackSetOperationOutputForStopStackSetOperation: HTTPResponseOutpu
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StopStackSetOperationOutputForStopStackSetOperation {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the TestType operation in a HTTP client.
+ */
+extension TestTypeOutputForTestType: HTTPResponseOutputProtocol {
+    public typealias BodyType = TestTypeOutputForTestType
+    public typealias HeadersType = TestTypeOutputForTestType
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> TestTypeOutputForTestType {
         return try bodyDecodableProvider()
     }
 }

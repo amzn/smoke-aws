@@ -2117,6 +2117,11 @@ public extension DBInstance {
      */
     static let __default: RDSModel.DBInstance = {
         let defaultInstance = RDSModel.DBInstance(
+            activityStreamEngineNativeAuditFieldsIncluded: nil,
+            activityStreamKinesisStreamName: nil,
+            activityStreamKmsKeyId: nil,
+            activityStreamMode: nil,
+            activityStreamStatus: nil,
             allocatedStorage: nil,
             associatedRoles: nil,
             autoMinorVersionUpgrade: nil,
@@ -6392,6 +6397,7 @@ public extension OrderableDBInstanceOption {
             outpostCapable: nil,
             readReplicaCapable: nil,
             storageType: nil,
+            supportedActivityStreamModes: nil,
             supportedEngineModes: nil,
             supportsEnhancedMonitoring: nil,
             supportsGlobalDatabases: nil,
@@ -7247,11 +7253,13 @@ public extension RestoreDBClusterToPointInTimeMessage {
             domainIAMRoleName: nil,
             enableCloudwatchLogsExports: nil,
             enableIAMDatabaseAuthentication: nil,
+            engineMode: nil,
             kmsKeyId: nil,
             optionGroupName: nil,
             port: nil,
             restoreToTime: nil,
             restoreType: nil,
+            scalingConfiguration: nil,
             sourceDBClusterIdentifier: "value",
             tags: nil,
             useLatestRestorableTime: nil,
@@ -7695,6 +7703,7 @@ public extension StartActivityStreamRequest {
     static let __default: RDSModel.StartActivityStreamRequest = {
         let defaultInstance = RDSModel.StartActivityStreamRequest(
             applyImmediately: nil,
+            engineNativeAuditFieldsIncluded: nil,
             kmsKeyId: "value",
             mode: .__default,
             resourceArn: "value")
@@ -7710,6 +7719,7 @@ public extension StartActivityStreamResponse {
     static let __default: RDSModel.StartActivityStreamResponse = {
         let defaultInstance = RDSModel.StartActivityStreamResponse(
             applyImmediately: nil,
+            engineNativeAuditFieldsIncluded: nil,
             kinesisStreamName: nil,
             kmsKeyId: nil,
             mode: nil,

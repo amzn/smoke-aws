@@ -49,6 +49,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateTrunkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let attachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let attachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -297,6 +298,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeTransitGatewayRouteTables: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeTransitGatewayVpcAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeTransitGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeTrunkInterfaceAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeVolumeStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeVolumes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -321,6 +323,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let detachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableImageDeprecation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableSerialConsoleAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -334,9 +337,11 @@ public struct ElasticComputeCloudOperationsReporting {
     public let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateTrunkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableImageDeprecation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableSerialConsoleAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -521,6 +526,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .associateTransitGatewayMulticastDomain, configuration: reportingConfiguration)
         self.associateTransitGatewayRouteTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateTransitGatewayRouteTable, configuration: reportingConfiguration)
+        self.associateTrunkInterface = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateTrunkInterface, configuration: reportingConfiguration)
         self.associateVpcCidrBlock = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateVpcCidrBlock, configuration: reportingConfiguration)
         self.attachClassicLinkVpc = StandardSmokeAWSOperationReporting(
@@ -1017,6 +1024,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeTransitGatewayVpcAttachments, configuration: reportingConfiguration)
         self.describeTransitGateways = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeTransitGateways, configuration: reportingConfiguration)
+        self.describeTrunkInterfaceAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeTrunkInterfaceAssociations, configuration: reportingConfiguration)
         self.describeVolumeAttribute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeVolumeAttribute, configuration: reportingConfiguration)
         self.describeVolumeStatus = StandardSmokeAWSOperationReporting(
@@ -1065,6 +1074,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disableEbsEncryptionByDefault, configuration: reportingConfiguration)
         self.disableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.disableImageDeprecation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableImageDeprecation, configuration: reportingConfiguration)
         self.disableSerialConsoleAccess = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableSerialConsoleAccess, configuration: reportingConfiguration)
         self.disableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(
@@ -1091,12 +1102,16 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disassociateTransitGatewayMulticastDomain, configuration: reportingConfiguration)
         self.disassociateTransitGatewayRouteTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateTransitGatewayRouteTable, configuration: reportingConfiguration)
+        self.disassociateTrunkInterface = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateTrunkInterface, configuration: reportingConfiguration)
         self.disassociateVpcCidrBlock = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateVpcCidrBlock, configuration: reportingConfiguration)
         self.enableEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableEbsEncryptionByDefault, configuration: reportingConfiguration)
         self.enableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.enableImageDeprecation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableImageDeprecation, configuration: reportingConfiguration)
         self.enableSerialConsoleAccess = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableSerialConsoleAccess, configuration: reportingConfiguration)
         self.enableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(

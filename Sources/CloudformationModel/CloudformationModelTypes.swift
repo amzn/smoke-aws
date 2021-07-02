@@ -23,6 +23,11 @@
 import Foundation
 
 /**
+ Type definition for the AcceptTermsAndConditions field.
+ */
+public typealias AcceptTermsAndConditions = Bool
+
+/**
  Type definition for the Account field.
  */
 public typealias Account = String
@@ -83,6 +88,16 @@ public typealias Arn = String
 public typealias AutoDeploymentNullable = Bool
 
 /**
+ Type definition for the AutoUpdate field.
+ */
+public typealias AutoUpdate = Bool
+
+/**
+ Type definition for the BatchDescribeTypeConfigurationsErrors field.
+ */
+public typealias BatchDescribeTypeConfigurationsErrors = [BatchDescribeTypeConfigurationsError]
+
+/**
  Type definition for the BoxedInteger field.
  */
 public typealias BoxedInteger = Int
@@ -129,6 +144,22 @@ public enum Capability: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: Capability = .capabilityAutoExpand
+}
+
+/**
+ Enumeration restricting the values of the Category field.
+ */
+public enum Category: String, Codable, CustomStringConvertible {
+    case activated = "ACTIVATED"
+    case awsTypes = "AWS_TYPES"
+    case registered = "REGISTERED"
+    case thirdParty = "THIRD_PARTY"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: Category = .activated
 }
 
 /**
@@ -259,6 +290,16 @@ public typealias ClientRequestToken = String
 public typealias ClientToken = String
 
 /**
+ Type definition for the ConfigurationSchema field.
+ */
+public typealias ConfigurationSchema = String
+
+/**
+ Type definition for the ConnectionArn field.
+ */
+public typealias ConnectionArn = String
+
+/**
  Type definition for the CreationTime field.
  */
 public typealias CreationTime = String
@@ -316,6 +357,11 @@ public typealias DriftedStackInstancesCount = Int
  Type definition for the EnableTerminationProtection field.
  */
 public typealias EnableTerminationProtection = Bool
+
+/**
+ Type definition for the ErrorCode field.
+ */
+public typealias ErrorCode = String
 
 /**
  Type definition for the ErrorMessage field.
@@ -404,6 +450,7 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
     case internalFailure = "InternalFailure"
     case invalidCredentials = "InvalidCredentials"
     case invalidRequest = "InvalidRequest"
+    case invalidTypeConfiguration = "InvalidTypeConfiguration"
     case networkFailure = "NetworkFailure"
     case notFound = "NotFound"
     case notStabilized = "NotStabilized"
@@ -418,6 +465,21 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: HandlerErrorCode = .accessDenied
+}
+
+/**
+ Enumeration restricting the values of the IdentityProvider field.
+ */
+public enum IdentityProvider: String, Codable, CustomStringConvertible {
+    case awsMarketplace = "AWS_Marketplace"
+    case bitbucket = "Bitbucket"
+    case github = "GitHub"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IdentityProvider = .awsMarketplace
 }
 
 /**
@@ -439,6 +501,16 @@ public typealias InSyncStackInstancesCount = Int
  Type definition for the IncludeNestedStacks field.
  */
 public typealias IncludeNestedStacks = Bool
+
+/**
+ Type definition for the IsActivated field.
+ */
+public typealias IsActivated = Bool
+
+/**
+ Type definition for the IsDefaultConfiguration field.
+ */
+public typealias IsDefaultConfiguration = Bool
 
 /**
  Type definition for the IsDefaultVersion field.
@@ -484,6 +556,11 @@ public typealias LogicalResourceId = String
  Type definition for the LogicalResourceIds field.
  */
 public typealias LogicalResourceIds = [LogicalResourceId]
+
+/**
+ Type definition for the MajorVersion field.
+ */
+public typealias MajorVersion = Int64
 
 /**
  Type definition for the MaxConcurrentCount field.
@@ -686,6 +763,40 @@ public enum ProvisioningType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the PublicVersionNumber field.
+ */
+public typealias PublicVersionNumber = String
+
+/**
+ Type definition for the PublisherId field.
+ */
+public typealias PublisherId = String
+
+/**
+ Type definition for the PublisherName field.
+ */
+public typealias PublisherName = String
+
+/**
+ Type definition for the PublisherProfile field.
+ */
+public typealias PublisherProfile = String
+
+/**
+ Enumeration restricting the values of the PublisherStatus field.
+ */
+public enum PublisherStatus: String, Codable, CustomStringConvertible {
+    case unverified = "UNVERIFIED"
+    case verified = "VERIFIED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PublisherStatus = .unverified
+}
+
+/**
  Type definition for the Reason field.
  */
 public typealias Reason = String
@@ -772,6 +883,11 @@ public enum Replacement: String, Codable, CustomStringConvertible {
  Type definition for the RequestToken field.
  */
 public typealias RequestToken = String
+
+/**
+ Type definition for the RequiredActivatedTypes field.
+ */
+public typealias RequiredActivatedTypes = [RequiredActivatedType]
 
 /**
  Enumeration restricting the values of the RequiresRecreation field.
@@ -957,6 +1073,11 @@ public typealias RoleArn = String
  Type definition for the RollbackTriggers field.
  */
 public typealias RollbackTriggers = [RollbackTrigger]
+
+/**
+ Type definition for the S3Bucket field.
+ */
+public typealias S3Bucket = String
 
 /**
  Type definition for the S3Url field.
@@ -1343,6 +1464,16 @@ public typealias StageList = [TemplateStage]
 public typealias StatusMessage = String
 
 /**
+ Type definition for the SupportedMajorVersion field.
+ */
+public typealias SupportedMajorVersion = Int
+
+/**
+ Type definition for the SupportedMajorVersions field.
+ */
+public typealias SupportedMajorVersions = [SupportedMajorVersion]
+
+/**
  Type definition for the TagKey field.
  */
 public typealias TagKey = String
@@ -1392,6 +1523,25 @@ public enum TemplateStage: String, Codable, CustomStringConvertible {
 public typealias TemplateURL = String
 
 /**
+ Enumeration restricting the values of the ThirdPartyType field.
+ */
+public enum ThirdPartyType: String, Codable, CustomStringConvertible {
+    case module = "MODULE"
+    case resource = "RESOURCE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ThirdPartyType = .module
+}
+
+/**
+ Type definition for the ThirdPartyTypeArn field.
+ */
+public typealias ThirdPartyTypeArn = String
+
+/**
  Type definition for the TimeoutMinutes field.
  */
 public typealias TimeoutMinutes = Int
@@ -1427,6 +1577,31 @@ public typealias Type = String
 public typealias TypeArn = String
 
 /**
+ Type definition for the TypeConfiguration field.
+ */
+public typealias TypeConfiguration = String
+
+/**
+ Type definition for the TypeConfigurationAlias field.
+ */
+public typealias TypeConfigurationAlias = String
+
+/**
+ Type definition for the TypeConfigurationArn field.
+ */
+public typealias TypeConfigurationArn = String
+
+/**
+ Type definition for the TypeConfigurationDetailsList field.
+ */
+public typealias TypeConfigurationDetailsList = [TypeConfigurationDetails]
+
+/**
+ Type definition for the TypeConfigurationIdentifiers field.
+ */
+public typealias TypeConfigurationIdentifiers = [TypeConfigurationIdentifier]
+
+/**
  Type definition for the TypeHierarchy field.
  */
 public typealias TypeHierarchy = String
@@ -1435,6 +1610,11 @@ public typealias TypeHierarchy = String
  Type definition for the TypeName field.
  */
 public typealias TypeName = String
+
+/**
+ Type definition for the TypeNamePrefix field.
+ */
+public typealias TypeNamePrefix = String
 
 /**
  Type definition for the TypeSchema field.
@@ -1447,6 +1627,27 @@ public typealias TypeSchema = String
 public typealias TypeSummaries = [TypeSummary]
 
 /**
+ Enumeration restricting the values of the TypeTestsStatus field.
+ */
+public enum TypeTestsStatus: String, Codable, CustomStringConvertible {
+    case failed = "FAILED"
+    case inProgress = "IN_PROGRESS"
+    case notTested = "NOT_TESTED"
+    case passed = "PASSED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TypeTestsStatus = .failed
+}
+
+/**
+ Type definition for the TypeTestsStatusDescription field.
+ */
+public typealias TypeTestsStatusDescription = String
+
+/**
  Type definition for the TypeVersionId field.
  */
 public typealias TypeVersionId = String
@@ -1455,6 +1656,11 @@ public typealias TypeVersionId = String
  Type definition for the TypeVersionSummaries field.
  */
 public typealias TypeVersionSummaries = [TypeVersionSummary]
+
+/**
+ Type definition for the UnprocessedTypeConfigurations field.
+ */
+public typealias UnprocessedTypeConfigurations = [TypeConfigurationIdentifier]
 
 /**
  Type definition for the Url field.
@@ -1480,6 +1686,20 @@ public typealias Value = String
  Type definition for the Version field.
  */
 public typealias Version = String
+
+/**
+ Enumeration restricting the values of the VersionBump field.
+ */
+public enum VersionBump: String, Codable, CustomStringConvertible {
+    case major = "MAJOR"
+    case minor = "MINOR"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VersionBump = .major
+}
 
 /**
  Enumeration restricting the values of the Visibility field.
@@ -1641,6 +1861,48 @@ extension CloudformationModel.ClientToken {
 }
 
 /**
+ Validation for the ConfigurationSchema field.
+*/
+extension CloudformationModel.ConfigurationSchema {
+    public func validateAsConfigurationSchema() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to ConfigurationSchema violated the minimum length constraint.")
+        }
+
+        if self.count > 60000 {
+            throw CloudformationError.validationError(reason: "The provided value to ConfigurationSchema violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\s\\S]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to ConfigurationSchema violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ConnectionArn field.
+*/
+extension CloudformationModel.ConnectionArn {
+    public func validateAsConnectionArn() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to ConnectionArn violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw CloudformationError.validationError(reason: "The provided value to ConnectionArn violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "arn:aws(-[\\w]+)*:.+:.+:[0-9]{12}:.+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to ConnectionArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the Description field.
 */
 extension CloudformationModel.Description {
@@ -1664,6 +1926,21 @@ extension CloudformationModel.DriftedStackInstancesCount {
             throw CloudformationError.validationError(reason: "The provided value to DriftedStackInstancesCount violated the minimum range constraint.")
         }
 
+    }
+}
+
+/**
+ Validation for the ErrorCode field.
+*/
+extension CloudformationModel.ErrorCode {
+    public func validateAsErrorCode() throws {
+        if self.count < 3 {
+            throw CloudformationError.validationError(reason: "The provided value to ErrorCode violated the minimum length constraint.")
+        }
+
+        if self.count > 3 {
+            throw CloudformationError.validationError(reason: "The provided value to ErrorCode violated the maximum length constraint.")
+        }
     }
 }
 
@@ -1803,6 +2080,21 @@ extension Array where Element == CloudformationModel.LogicalResourceId {
 }
 
 /**
+ Validation for the MajorVersion field.
+*/
+extension CloudformationModel.MajorVersion {
+    public func validateAsMajorVersion() throws {
+        if self < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to MajorVersion violated the minimum range constraint.")
+        }
+
+        if self > 100000 {
+            throw CloudformationError.validationError(reason: "The provided value to MajorVersion violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the MaxConcurrentCount field.
 */
 extension CloudformationModel.MaxConcurrentCount {
@@ -1937,6 +2229,84 @@ extension CloudformationModel.PrivateTypeArn {
             matchingRange == startIndex..<endIndex else {
                 throw CloudformationError.validationError(
                     reason: "The provided value to PrivateTypeArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PublicVersionNumber field.
+*/
+extension CloudformationModel.PublicVersionNumber {
+    public func validateAsPublicVersionNumber() throws {
+        if self.count < 5 {
+            throw CloudformationError.validationError(reason: "The provided value to PublicVersionNumber violated the minimum length constraint.")
+        }
+
+
+        guard let matchingRange = self.range(of: "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(.*)$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to PublicVersionNumber violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PublisherId field.
+*/
+extension CloudformationModel.PublisherId {
+    public func validateAsPublisherId() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to PublisherId violated the minimum length constraint.")
+        }
+
+        if self.count > 40 {
+            throw CloudformationError.validationError(reason: "The provided value to PublisherId violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[0-9a-zA-Z]{12,40}", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to PublisherId violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PublisherName field.
+*/
+extension CloudformationModel.PublisherName {
+    public func validateAsPublisherName() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to PublisherName violated the minimum length constraint.")
+        }
+
+        if self.count > 100 {
+            throw CloudformationError.validationError(reason: "The provided value to PublisherName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\s\\S]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to PublisherName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PublisherProfile field.
+*/
+extension CloudformationModel.PublisherProfile {
+    public func validateAsPublisherProfile() throws {
+
+        if self.count > 1024 {
+            throw CloudformationError.validationError(reason: "The provided value to PublisherProfile violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "(http:|https:)+[^\\s]+[\\w]", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to PublisherProfile violated the regular expression constraint.")
         }
     }
 }
@@ -2145,6 +2515,27 @@ extension Array where Element == CloudformationModel.RollbackTrigger {
 }
 
 /**
+ Validation for the S3Bucket field.
+*/
+extension CloudformationModel.S3Bucket {
+    public func validateAsS3Bucket() throws {
+        if self.count < 3 {
+            throw CloudformationError.validationError(reason: "The provided value to S3Bucket violated the minimum length constraint.")
+        }
+
+        if self.count > 63 {
+            throw CloudformationError.validationError(reason: "The provided value to S3Bucket violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\s\\S]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to S3Bucket violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the S3Url field.
 */
 extension CloudformationModel.S3Url {
@@ -2320,6 +2711,21 @@ extension CloudformationModel.StatusMessage {
 }
 
 /**
+ Validation for the SupportedMajorVersion field.
+*/
+extension CloudformationModel.SupportedMajorVersion {
+    public func validateAsSupportedMajorVersion() throws {
+        if self < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to SupportedMajorVersion violated the minimum range constraint.")
+        }
+
+        if self > 65535 {
+            throw CloudformationError.validationError(reason: "The provided value to SupportedMajorVersion violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the TagKey field.
 */
 extension CloudformationModel.TagKey {
@@ -2389,6 +2795,24 @@ extension CloudformationModel.TemplateURL {
 }
 
 /**
+ Validation for the ThirdPartyTypeArn field.
+*/
+extension CloudformationModel.ThirdPartyTypeArn {
+    public func validateAsThirdPartyTypeArn() throws {
+
+        if self.count > 1024 {
+            throw CloudformationError.validationError(reason: "The provided value to ThirdPartyTypeArn violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}::type/.+/[0-9a-zA-Z]{12,40}/.+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to ThirdPartyTypeArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the TimeoutMinutes field.
 */
 extension CloudformationModel.TimeoutMinutes {
@@ -2431,6 +2855,78 @@ extension CloudformationModel.TypeArn {
 }
 
 /**
+ Validation for the TypeConfiguration field.
+*/
+extension CloudformationModel.TypeConfiguration {
+    public func validateAsTypeConfiguration() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeConfiguration violated the minimum length constraint.")
+        }
+
+        if self.count > 204800 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeConfiguration violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\s\\S]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to TypeConfiguration violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TypeConfigurationAlias field.
+*/
+extension CloudformationModel.TypeConfigurationAlias {
+    public func validateAsTypeConfigurationAlias() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeConfigurationAlias violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeConfigurationAlias violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^[a-zA-Z0-9]{1,256}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to TypeConfigurationAlias violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TypeConfigurationArn field.
+*/
+extension CloudformationModel.TypeConfigurationArn {
+    public func validateAsTypeConfigurationArn() throws {
+
+        if self.count > 1024 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeConfigurationArn violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type-configuration/.+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to TypeConfigurationArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TypeConfigurationIdentifiers field.
+*/
+extension Array where Element == CloudformationModel.TypeConfigurationIdentifier {
+    public func validateAsTypeConfigurationIdentifiers() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeConfigurationIdentifiers violated the minimum length constraint.")
+        }
+
+    }
+}
+
+/**
  Validation for the TypeName field.
 */
 extension CloudformationModel.TypeName {
@@ -2452,6 +2948,27 @@ extension CloudformationModel.TypeName {
 }
 
 /**
+ Validation for the TypeNamePrefix field.
+*/
+extension CloudformationModel.TypeNamePrefix {
+    public func validateAsTypeNamePrefix() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeNamePrefix violated the minimum length constraint.")
+        }
+
+        if self.count > 204 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeNamePrefix violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "([A-Za-z0-9]{2,64}::){0,2}([A-Za-z0-9]{2,64}:?){0,1}", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to TypeNamePrefix violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the TypeSchema field.
 */
 extension CloudformationModel.TypeSchema {
@@ -2462,6 +2979,27 @@ extension CloudformationModel.TypeSchema {
 
         if self.count > 16777216 {
             throw CloudformationError.validationError(reason: "The provided value to TypeSchema violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TypeTestsStatusDescription field.
+*/
+extension CloudformationModel.TypeTestsStatusDescription {
+    public func validateAsTypeTestsStatusDescription() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeTestsStatusDescription violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw CloudformationError.validationError(reason: "The provided value to TypeTestsStatusDescription violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\s\\S]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to TypeTestsStatusDescription violated the regular expression constraint.")
         }
     }
 }

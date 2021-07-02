@@ -1725,6 +1725,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the AssociateTrunkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateTrunkInterfaceRequest object being passed to this operation.
+         - completion: The AssociateTrunkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateTrunkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    public func associateTrunkInterfaceAsync(
+            input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateTrunkInterface,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateTrunkInterfaceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateTrunkInterface.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateTrunkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateTrunkInterfaceRequest object being passed to this operation.
+     - Returns: The AssociateTrunkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateTrunkInterfaceSync(
+            input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.AssociateTrunkInterfaceResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateTrunkInterface,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateTrunkInterfaceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateTrunkInterface.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the AssociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -20486,6 +20562,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DescribeTrunkInterfaceAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeTrunkInterfaceAssociationsRequest object being passed to this operation.
+         - completion: The DescribeTrunkInterfaceAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeTrunkInterfaceAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeTrunkInterfaceAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTrunkInterfaceAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrunkInterfaceAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrunkInterfaceAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeTrunkInterfaceAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeTrunkInterfaceAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeTrunkInterfaceAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeTrunkInterfaceAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTrunkInterfaceAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTrunkInterfaceAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeTrunkInterfaceAssociations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -22301,6 +22453,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisableImageDeprecation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageDeprecationRequest object being passed to this operation.
+         - completion: The DisableImageDeprecationResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageDeprecationResult
+           object will be validated before being returned to caller.
+     */
+    public func disableImageDeprecationAsync(
+            input: ElasticComputeCloudModel.DisableImageDeprecationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImageDeprecation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageDeprecationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImageDeprecation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableImageDeprecation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageDeprecationRequest object being passed to this operation.
+     - Returns: The DisableImageDeprecationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageDeprecationSync(
+            input: ElasticComputeCloudModel.DisableImageDeprecationRequest) throws -> ElasticComputeCloudModel.DisableImageDeprecationResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImageDeprecation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageDeprecationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImageDeprecation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisableSerialConsoleAccess operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -23280,6 +23508,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisassociateTrunkInterface operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateTrunkInterfaceRequest object being passed to this operation.
+         - completion: The DisassociateTrunkInterfaceResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateTrunkInterfaceResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateTrunkInterfaceAsync(
+            input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateTrunkInterfaceResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateTrunkInterface,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateTrunkInterfaceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateTrunkInterface.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisassociateTrunkInterface operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateTrunkInterfaceRequest object being passed to this operation.
+     - Returns: The DisassociateTrunkInterfaceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateTrunkInterfaceSync(
+            input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest) throws -> ElasticComputeCloudModel.DisassociateTrunkInterfaceResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateTrunkInterface,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateTrunkInterfaceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateTrunkInterface.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisassociateVpcCidrBlock operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -23491,6 +23795,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableImageDeprecation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageDeprecationRequest object being passed to this operation.
+         - completion: The EnableImageDeprecationResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageDeprecationResult
+           object will be validated before being returned to caller.
+     */
+    public func enableImageDeprecationAsync(
+            input: ElasticComputeCloudModel.EnableImageDeprecationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImageDeprecation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageDeprecationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImageDeprecation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableImageDeprecation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageDeprecationRequest object being passed to this operation.
+     - Returns: The EnableImageDeprecationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageDeprecationSync(
+            input: ElasticComputeCloudModel.EnableImageDeprecationRequest) throws -> ElasticComputeCloudModel.EnableImageDeprecationResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImageDeprecation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageDeprecationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImageDeprecation.rawValue,
             version: apiVersion)
 
         do {
