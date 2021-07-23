@@ -31,9 +31,9 @@ public extension MockClientProtocol {
             eventLoop: EventLoop,
             functionOverride: ((InputType) throws -> OutputType)?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
-        let promise = eventLoop.makePromise(of: OutputType.self)
-        
         if let functionOverride = functionOverride {
+            let promise = eventLoop.makePromise(of: OutputType.self)
+            
             do {
                 let overrideResult = try functionOverride(input)
                 promise.succeed(overrideResult)
@@ -48,6 +48,7 @@ public extension MockClientProtocol {
             return eventLoopFutureFunctionOverride(input)
         }
 
+        let promise = eventLoop.makePromise(of: OutputType.self)
         promise.succeed(defaultResult)
         
         return promise.futureResult
@@ -58,9 +59,8 @@ public extension MockClientProtocol {
             eventLoop: EventLoop,
             functionOverride: ((InputType) throws -> ())?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
-        let promise = eventLoop.makePromise(of: Void.self)
-        
         if let functionOverride = functionOverride {
+            let promise = eventLoop.makePromise(of: Void.self)
             do {
                 try functionOverride(input)
                 promise.succeed(())
@@ -75,6 +75,7 @@ public extension MockClientProtocol {
             return eventLoopFutureFunctionOverride(input)
         }
 
+        let promise = eventLoop.makePromise(of: Void.self)
         promise.succeed(())
         
         return promise.futureResult
@@ -85,9 +86,9 @@ public extension MockClientProtocol {
             eventLoop: EventLoop,
             functionOverride: (() throws -> OutputType)?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
-        let promise = eventLoop.makePromise(of: OutputType.self)
-        
         if let functionOverride = functionOverride {
+            let promise = eventLoop.makePromise(of: OutputType.self)
+            
             do {
                 let overrideResult = try functionOverride()
                 promise.succeed(overrideResult)
@@ -102,6 +103,7 @@ public extension MockClientProtocol {
             return eventLoopFutureFunctionOverride()
         }
 
+        let promise = eventLoop.makePromise(of: OutputType.self)
         promise.succeed(defaultResult)
         
         return promise.futureResult
@@ -111,9 +113,9 @@ public extension MockClientProtocol {
             eventLoop: EventLoop,
             functionOverride: (() throws -> ())?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
-        let promise = eventLoop.makePromise(of: Void.self)
-        
         if let functionOverride = functionOverride {
+            let promise = eventLoop.makePromise(of: Void.self)
+            
             do {
                 try functionOverride()
                 promise.succeed(())
@@ -128,6 +130,7 @@ public extension MockClientProtocol {
             return eventLoopFutureFunctionOverride()
         }
 
+        let promise = eventLoop.makePromise(of: Void.self)
         promise.succeed(())
         
         return promise.futureResult
