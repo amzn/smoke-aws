@@ -114,6 +114,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AssociateIamInstanceProfileAsyncType = (
             _ input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AssociateInstanceEventWindowSyncType = (
+            _ input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult
+    typealias AssociateInstanceEventWindowAsyncType = (
+            _ input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AssociateRouteTableSyncType = (
             _ input: ElasticComputeCloudModel.AssociateRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateRouteTableResult
     typealias AssociateRouteTableAsyncType = (
@@ -175,15 +180,15 @@ public protocol ElasticComputeCloudClientProtocol {
             _ input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeClientVpnIngressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AuthorizeSecurityGroupEgressSyncType = (
-            _ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ()
+            _ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult
     typealias AuthorizeSecurityGroupEgressAsyncType = (
             _ input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AuthorizeSecurityGroupIngressSyncType = (
-            _ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ()
+            _ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult
     typealias AuthorizeSecurityGroupIngressAsyncType = (
             _ input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias BundleInstanceSyncType = (
             _ input: ElasticComputeCloudModel.BundleInstanceRequest) throws -> ElasticComputeCloudModel.BundleInstanceResult
     typealias BundleInstanceAsyncType = (
@@ -314,6 +319,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateImageAsyncType = (
             _ input: ElasticComputeCloudModel.CreateImageRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateInstanceEventWindowSyncType = (
+            _ input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.CreateInstanceEventWindowResult
+    typealias CreateInstanceEventWindowAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateInstanceExportTaskSyncType = (
             _ input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest) throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult
     typealias CreateInstanceExportTaskAsyncType = (
@@ -444,6 +454,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateSubnetAsyncType = (
             _ input: ElasticComputeCloudModel.CreateSubnetRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateSubnetCidrReservationSyncType = (
+            _ input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.CreateSubnetCidrReservationResult
+    typealias CreateSubnetCidrReservationAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateTagsSyncType = (
             _ input: ElasticComputeCloudModel.CreateTagsRequest) throws -> ()
     typealias CreateTagsAsyncType = (
@@ -604,6 +619,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteFpgaImageAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteInstanceEventWindowSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult
+    typealias DeleteInstanceEventWindowAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteInternetGatewaySyncType = (
             _ input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) throws -> ()
     typealias DeleteInternetGatewayAsyncType = (
@@ -714,6 +734,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteSubnetAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteSubnetRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias DeleteSubnetCidrReservationSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.DeleteSubnetCidrReservationResult
+    typealias DeleteSubnetCidrReservationAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteTagsSyncType = (
             _ input: ElasticComputeCloudModel.DeleteTagsRequest) throws -> ()
     typealias DeleteTagsAsyncType = (
@@ -1069,6 +1094,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeInstanceEventNotificationAttributesAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeInstanceEventWindowsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventWindowsResult
+    typealias DescribeInstanceEventWindowsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventWindowsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeInstanceStatusSyncType = (
             _ input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult
     typealias DescribeInstanceStatusAsyncType = (
@@ -1259,6 +1289,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeSecurityGroupReferencesAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeSecurityGroupRulesSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupRulesResult
+    typealias DescribeSecurityGroupRulesAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeSecurityGroupsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult
     typealias DescribeSecurityGroupsAsyncType = (
@@ -1554,6 +1589,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisassociateIamInstanceProfileAsyncType = (
             _ input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIamInstanceProfileResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisassociateInstanceEventWindowSyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult
+    typealias DisassociateInstanceEventWindowAsyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisassociateRouteTableSyncType = (
             _ input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws -> ()
     typealias DisassociateRouteTableAsyncType = (
@@ -1739,6 +1779,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetSerialConsoleAccessStatusAsyncType = (
             _ input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetSubnetCidrReservationsSyncType = (
+            _ input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) throws -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult
+    typealias GetSubnetCidrReservationsAsyncType = (
+            _ input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetSubnetCidrReservationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetTransitGatewayAttachmentPropagationsSyncType = (
             _ input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult
     typealias GetTransitGatewayAttachmentPropagationsAsyncType = (
@@ -1874,6 +1919,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyInstanceEventStartTimeAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyInstanceEventWindowSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventWindowResult
+    typealias ModifyInstanceEventWindowAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyInstanceMetadataOptionsSyncType = (
             _ input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest) throws -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult
     typealias ModifyInstanceMetadataOptionsAsyncType = (
@@ -1904,6 +1954,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyReservedInstancesAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyReservedInstancesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyReservedInstancesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifySecurityGroupRulesSyncType = (
+            _ input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.ModifySecurityGroupRulesResult
+    typealias ModifySecurityGroupRulesAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifySecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifySnapshotAttributeSyncType = (
             _ input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) throws -> ()
     typealias ModifySnapshotAttributeAsyncType = (
@@ -2706,6 +2761,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult
 
     /**
+     Invokes the AssociateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The AssociateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    func associateInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AssociateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The AssociateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult
+
+    /**
      Invokes the AssociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2995,42 +3074,48 @@ public protocol ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AuthorizeSecurityGroupEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeSecurityGroupEgressResult
+           object will be validated before being returned to caller.
      */
     func authorizeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws
 
     /**
      Invokes the AuthorizeSecurityGroupEgress operation waiting for the response before returning.
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
+     - Returns: The AuthorizeSecurityGroupEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     func authorizeSecurityGroupEgressSync(
-            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult
 
     /**
      Invokes the AuthorizeSecurityGroupIngress operation returning immediately and passing the response to a callback.
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AuthorizeSecurityGroupIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeSecurityGroupIngressResult
+           object will be validated before being returned to caller.
      */
     func authorizeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws
 
     /**
      Invokes the AuthorizeSecurityGroupIngress operation waiting for the response before returning.
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
+     - Returns: The AuthorizeSecurityGroupIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     func authorizeSecurityGroupIngressSync(
-            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult
 
     /**
      Invokes the BundleInstance operation returning immediately and passing the response to a callback.
@@ -3649,6 +3734,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createImageSync(
             input: ElasticComputeCloudModel.CreateImageRequest) throws -> ElasticComputeCloudModel.CreateImageResult
+
+    /**
+     Invokes the CreateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The CreateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    func createInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The CreateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.CreateInstanceEventWindowResult
 
     /**
      Invokes the CreateInstanceExportTask operation returning immediately and passing the response to a callback.
@@ -4270,6 +4379,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createSubnetSync(
             input: ElasticComputeCloudModel.CreateSubnetRequest) throws -> ElasticComputeCloudModel.CreateSubnetResult
+
+    /**
+     Invokes the CreateSubnetCidrReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSubnetCidrReservationRequest object being passed to this operation.
+         - completion: The CreateSubnetCidrReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSubnetCidrReservationResult
+           object will be validated before being returned to caller.
+     */
+    func createSubnetCidrReservationAsync(
+            input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateSubnetCidrReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSubnetCidrReservationRequest object being passed to this operation.
+     - Returns: The CreateSubnetCidrReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createSubnetCidrReservationSync(
+            input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.CreateSubnetCidrReservationResult
 
     /**
      Invokes the CreateTags operation returning immediately and passing the response to a callback.
@@ -5028,6 +5161,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult
 
     /**
+     Invokes the DeleteInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstanceEventWindowRequest object being passed to this operation.
+         - completion: The DeleteInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    func deleteInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The DeleteInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult
+
+    /**
      Invokes the DeleteInternetGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5518,6 +5675,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func deleteSubnetSync(
             input: ElasticComputeCloudModel.DeleteSubnetRequest) throws
+
+    /**
+     Invokes the DeleteSubnetCidrReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSubnetCidrReservationRequest object being passed to this operation.
+         - completion: The DeleteSubnetCidrReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteSubnetCidrReservationResult
+           object will be validated before being returned to caller.
+     */
+    func deleteSubnetCidrReservationAsync(
+            input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteSubnetCidrReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSubnetCidrReservationRequest object being passed to this operation.
+     - Returns: The DeleteSubnetCidrReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteSubnetCidrReservationSync(
+            input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.DeleteSubnetCidrReservationResult
 
     /**
      Invokes the DeleteTags operation returning immediately and passing the response to a callback.
@@ -7203,6 +7384,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult
 
     /**
+     Invokes the DescribeInstanceEventWindows operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventWindowsRequest object being passed to this operation.
+         - completion: The DescribeInstanceEventWindowsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceEventWindowsResult
+           object will be validated before being returned to caller.
+     */
+    func describeInstanceEventWindowsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventWindowsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeInstanceEventWindows operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventWindowsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceEventWindowsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeInstanceEventWindowsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventWindowsResult
+
+    /**
      Invokes the DescribeInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8113,6 +8318,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeSecurityGroupReferencesSync(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult
+
+    /**
+     Invokes the DescribeSecurityGroupRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupRulesRequest object being passed to this operation.
+         - completion: The DescribeSecurityGroupRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSecurityGroupRulesResult
+           object will be validated before being returned to caller.
+     */
+    func describeSecurityGroupRulesAsync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeSecurityGroupRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupRulesRequest object being passed to this operation.
+     - Returns: The DescribeSecurityGroupRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeSecurityGroupRulesSync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupRulesResult
 
     /**
      Invokes the DescribeSecurityGroups operation returning immediately and passing the response to a callback.
@@ -9516,6 +9745,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult
 
     /**
+     Invokes the DisassociateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The DisassociateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisassociateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The DisassociateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult
+
+    /**
      Invokes the DisassociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10395,6 +10648,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult
 
     /**
+     Invokes the GetSubnetCidrReservations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSubnetCidrReservationsRequest object being passed to this operation.
+         - completion: The GetSubnetCidrReservationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSubnetCidrReservationsResult
+           object will be validated before being returned to caller.
+     */
+    func getSubnetCidrReservationsAsync(
+            input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSubnetCidrReservationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetSubnetCidrReservations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSubnetCidrReservationsRequest object being passed to this operation.
+     - Returns: The GetSubnetCidrReservationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getSubnetCidrReservationsSync(
+            input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) throws -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult
+
+    /**
      Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11031,6 +11308,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult
 
     /**
+     Invokes the ModifyInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventWindowRequest object being passed to this operation.
+         - completion: The ModifyInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    func modifyInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The ModifyInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventWindowResult
+
+    /**
      Invokes the ModifyInstanceMetadataOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11170,6 +11471,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifyReservedInstancesSync(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult
+
+    /**
+     Invokes the ModifySecurityGroupRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifySecurityGroupRulesRequest object being passed to this operation.
+         - completion: The ModifySecurityGroupRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifySecurityGroupRulesResult
+           object will be validated before being returned to caller.
+     */
+    func modifySecurityGroupRulesAsync(
+            input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifySecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifySecurityGroupRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifySecurityGroupRulesRequest object being passed to this operation.
+     - Returns: The ModifySecurityGroupRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifySecurityGroupRulesSync(
+            input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.ModifySecurityGroupRulesResult
 
     /**
      Invokes the ModifySnapshotAttribute operation returning immediately and passing the response to a callback.

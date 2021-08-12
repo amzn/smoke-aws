@@ -1421,6 +1421,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the AssociateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The AssociateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func associateInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The AssociateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the AssociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2334,12 +2410,13 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AuthorizeSecurityGroupEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeSecurityGroupEgressResult
+           object will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2355,7 +2432,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupEgress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -2370,9 +2447,11 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
+     - Returns: The AuthorizeSecurityGroupEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupEgressSync(
-            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws {
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2389,7 +2468,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             version: apiVersion)
 
         do {
-            try httpClient.executeSyncRetriableWithoutOutput(
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -2407,12 +2486,13 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AuthorizeSecurityGroupIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeSecurityGroupIngressResult
+           object will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2428,7 +2508,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.authorizeSecurityGroupIngress.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -2443,9 +2523,11 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
+     - Returns: The AuthorizeSecurityGroupIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupIngressSync(
-            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws {
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -2462,7 +2544,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             version: apiVersion)
 
         do {
-            try httpClient.executeSyncRetriableWithoutOutput(
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -4446,6 +4528,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CreateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The CreateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func createInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The CreateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.CreateInstanceEventWindowResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateInstanceExportTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6402,6 +6560,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createSubnet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateSubnetCidrReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSubnetCidrReservationRequest object being passed to this operation.
+         - completion: The CreateSubnetCidrReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSubnetCidrReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func createSubnetCidrReservationAsync(
+            input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createSubnetCidrReservation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateSubnetCidrReservationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createSubnetCidrReservation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateSubnetCidrReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSubnetCidrReservationRequest object being passed to this operation.
+     - Returns: The CreateSubnetCidrReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSubnetCidrReservationSync(
+            input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.CreateSubnetCidrReservationResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createSubnetCidrReservation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateSubnetCidrReservationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createSubnetCidrReservation.rawValue,
             version: apiVersion)
 
         do {
@@ -8839,6 +9073,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DeleteInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstanceEventWindowRequest object being passed to this operation.
+         - completion: The DeleteInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The DeleteInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DeleteInternetGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10462,6 +10772,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteSubnetCidrReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSubnetCidrReservationRequest object being passed to this operation.
+         - completion: The DeleteSubnetCidrReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteSubnetCidrReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteSubnetCidrReservationAsync(
+            input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteSubnetCidrReservation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteSubnetCidrReservationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteSubnetCidrReservation.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteSubnetCidrReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSubnetCidrReservationRequest object being passed to this operation.
+     - Returns: The DeleteSubnetCidrReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteSubnetCidrReservationSync(
+            input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.DeleteSubnetCidrReservationResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteSubnetCidrReservation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteSubnetCidrReservationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteSubnetCidrReservation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -15850,6 +16236,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DescribeInstanceEventWindows operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventWindowsRequest object being passed to this operation.
+         - completion: The DescribeInstanceEventWindowsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceEventWindowsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceEventWindowsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventWindowsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceEventWindows,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceEventWindowsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceEventWindows.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceEventWindows operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventWindowsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceEventWindowsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceEventWindowsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventWindowsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceEventWindows,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceEventWindowsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceEventWindows.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -18721,6 +19183,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeSecurityGroupReferences.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeSecurityGroupRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupRulesRequest object being passed to this operation.
+         - completion: The DescribeSecurityGroupRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSecurityGroupRulesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupRulesAsync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeSecurityGroupRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeSecurityGroupRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeSecurityGroupRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeSecurityGroupRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupRulesRequest object being passed to this operation.
+     - Returns: The DescribeSecurityGroupRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupRulesSync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupRulesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeSecurityGroupRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeSecurityGroupRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeSecurityGroupRules.rawValue,
             version: apiVersion)
 
         do {
@@ -23207,6 +23745,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisassociateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The DisassociateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisassociateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The DisassociateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisassociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -26010,6 +26624,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetSubnetCidrReservations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSubnetCidrReservationsRequest object being passed to this operation.
+         - completion: The GetSubnetCidrReservationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSubnetCidrReservationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getSubnetCidrReservationsAsync(
+            input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSubnetCidrReservationsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSubnetCidrReservations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSubnetCidrReservationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSubnetCidrReservations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetSubnetCidrReservations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSubnetCidrReservationsRequest object being passed to this operation.
+     - Returns: The GetSubnetCidrReservationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSubnetCidrReservationsSync(
+            input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) throws -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSubnetCidrReservations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSubnetCidrReservationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSubnetCidrReservations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -28050,6 +28740,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the ModifyInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventWindowRequest object being passed to this operation.
+         - completion: The ModifyInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The ModifyInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventWindowResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyInstanceEventWindow,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyInstanceEventWindowOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ModifyInstanceMetadataOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -28486,6 +29252,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyReservedInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifySecurityGroupRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifySecurityGroupRulesRequest object being passed to this operation.
+         - completion: The ModifySecurityGroupRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifySecurityGroupRulesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifySecurityGroupRulesAsync(
+            input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifySecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifySecurityGroupRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifySecurityGroupRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifySecurityGroupRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifySecurityGroupRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifySecurityGroupRulesRequest object being passed to this operation.
+     - Returns: The ModifySecurityGroupRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifySecurityGroupRulesSync(
+            input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.ModifySecurityGroupRulesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifySecurityGroupRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifySecurityGroupRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifySecurityGroupRules.rawValue,
             version: apiVersion)
 
         do {

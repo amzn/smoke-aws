@@ -102,6 +102,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
     let getTemplateSyncOverride: GetTemplateSyncType?
     let getTemplateSummaryAsyncOverride: GetTemplateSummaryAsyncType?
     let getTemplateSummarySyncOverride: GetTemplateSummarySyncType?
+    let importStacksToStackSetAsyncOverride: ImportStacksToStackSetAsyncType?
+    let importStacksToStackSetSyncOverride: ImportStacksToStackSetSyncType?
     let listChangeSetsAsyncOverride: ListChangeSetsAsyncType?
     let listChangeSetsSyncOverride: ListChangeSetsSyncType?
     let listExportsAsyncOverride: ListExportsAsyncType?
@@ -234,6 +236,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
             getTemplateSync: GetTemplateSyncType? = nil,
             getTemplateSummaryAsync: GetTemplateSummaryAsyncType? = nil,
             getTemplateSummarySync: GetTemplateSummarySyncType? = nil,
+            importStacksToStackSetAsync: ImportStacksToStackSetAsyncType? = nil,
+            importStacksToStackSetSync: ImportStacksToStackSetSyncType? = nil,
             listChangeSetsAsync: ListChangeSetsAsyncType? = nil,
             listChangeSetsSync: ListChangeSetsSyncType? = nil,
             listExportsAsync: ListExportsAsyncType? = nil,
@@ -361,6 +365,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
         self.getTemplateSyncOverride = getTemplateSync
         self.getTemplateSummaryAsyncOverride = getTemplateSummaryAsync
         self.getTemplateSummarySyncOverride = getTemplateSummarySync
+        self.importStacksToStackSetAsyncOverride = importStacksToStackSetAsync
+        self.importStacksToStackSetSyncOverride = importStacksToStackSetSync
         self.listChangeSetsAsyncOverride = listChangeSetsAsync
         self.listChangeSetsSyncOverride = listChangeSetsSync
         self.listExportsAsyncOverride = listExportsAsync
@@ -1752,6 +1758,44 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
             input: CloudformationModel.GetTemplateSummaryInput) throws -> CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary {
         if let getTemplateSummarySyncOverride = getTemplateSummarySyncOverride {
             return try getTemplateSummarySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ImportStacksToStackSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+         - completion: The ImportStacksToStackSetOutputForImportStacksToStackSet object or an error will be passed to this 
+           callback when the operation is complete. The ImportStacksToStackSetOutputForImportStacksToStackSet
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    public func importStacksToStackSetAsync(
+            input: CloudformationModel.ImportStacksToStackSetInput, 
+            completion: @escaping (Result<CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet, CloudformationError>) -> ()) throws {
+        if let importStacksToStackSetAsyncOverride = importStacksToStackSetAsyncOverride {
+            return try importStacksToStackSetAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ImportStacksToStackSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+     - Returns: The ImportStacksToStackSetOutputForImportStacksToStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    public func importStacksToStackSetSync(
+            input: CloudformationModel.ImportStacksToStackSetInput) throws -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet {
+        if let importStacksToStackSetSyncOverride = importStacksToStackSetSyncOverride {
+            return try importStacksToStackSetSyncOverride(input)
         }
 
         throw error

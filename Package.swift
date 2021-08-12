@@ -35,6 +35,12 @@ let package = Package(
             name: "CloudformationModel",
             targets: ["CloudformationModel"]),
         .library(
+            name: "CodePipelineClient",
+            targets: ["CodePipelineClient"]),
+        .library(
+            name: "CodePipelineModel",
+            targets: ["CodePipelineModel"]),
+        .library(
             name: "DynamoDBClient",
             targets: ["DynamoDBClient"]),
         .library(
@@ -145,6 +151,15 @@ let package = Package(
             ]),
         .target(
             name: "CloudformationModel", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
+        .target(
+            name: "CodePipelineClient", dependencies: [
+                .target(name: "CodePipelineModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "CodePipelineModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
             ]),
         .target(

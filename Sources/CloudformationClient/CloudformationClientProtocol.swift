@@ -209,6 +209,11 @@ public protocol CloudformationClientProtocol {
     typealias GetTemplateSummaryAsyncType = (
             _ input: CloudformationModel.GetTemplateSummaryInput, 
             _ completion: @escaping (Result<CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary, CloudformationError>) -> ()) throws -> ()
+    typealias ImportStacksToStackSetSyncType = (
+            _ input: CloudformationModel.ImportStacksToStackSetInput) throws -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet
+    typealias ImportStacksToStackSetAsyncType = (
+            _ input: CloudformationModel.ImportStacksToStackSetInput, 
+            _ completion: @escaping (Result<CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet, CloudformationError>) -> ()) throws -> ()
     typealias ListChangeSetsSyncType = (
             _ input: CloudformationModel.ListChangeSetsInput) throws -> CloudformationModel.ListChangeSetsOutputForListChangeSets
     typealias ListChangeSetsAsyncType = (
@@ -1252,6 +1257,32 @@ public protocol CloudformationClientProtocol {
      */
     func getTemplateSummarySync(
             input: CloudformationModel.GetTemplateSummaryInput) throws -> CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary
+
+    /**
+     Invokes the ImportStacksToStackSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+         - completion: The ImportStacksToStackSetOutputForImportStacksToStackSet object or an error will be passed to this 
+           callback when the operation is complete. The ImportStacksToStackSetOutputForImportStacksToStackSet
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    func importStacksToStackSetAsync(
+            input: CloudformationModel.ImportStacksToStackSetInput, 
+            completion: @escaping (Result<CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the ImportStacksToStackSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+     - Returns: The ImportStacksToStackSetOutputForImportStacksToStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    func importStacksToStackSetSync(
+            input: CloudformationModel.ImportStacksToStackSetInput) throws -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet
 
     /**
      Invokes the ListChangeSets operation returning immediately and passing the response to a callback.

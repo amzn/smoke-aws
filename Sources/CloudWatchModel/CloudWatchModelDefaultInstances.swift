@@ -1301,6 +1301,7 @@ public extension MetricDataQuery {
      */
     static let __default: CloudWatchModel.MetricDataQuery = {
         let defaultInstance = CloudWatchModel.MetricDataQuery(
+            accountId: nil,
             expression: nil,
             id: "0",
             label: nil,

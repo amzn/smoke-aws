@@ -63,6 +63,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let associateEnclaveCertificateIamRoleSyncOverride: AssociateEnclaveCertificateIamRoleSyncType?
     let associateIamInstanceProfileAsyncOverride: AssociateIamInstanceProfileAsyncType?
     let associateIamInstanceProfileSyncOverride: AssociateIamInstanceProfileSyncType?
+    let associateInstanceEventWindowAsyncOverride: AssociateInstanceEventWindowAsyncType?
+    let associateInstanceEventWindowSyncOverride: AssociateInstanceEventWindowSyncType?
     let associateRouteTableAsyncOverride: AssociateRouteTableAsyncType?
     let associateRouteTableSyncOverride: AssociateRouteTableSyncType?
     let associateSubnetCidrBlockAsyncOverride: AssociateSubnetCidrBlockAsyncType?
@@ -143,6 +145,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createFpgaImageSyncOverride: CreateFpgaImageSyncType?
     let createImageAsyncOverride: CreateImageAsyncType?
     let createImageSyncOverride: CreateImageSyncType?
+    let createInstanceEventWindowAsyncOverride: CreateInstanceEventWindowAsyncType?
+    let createInstanceEventWindowSyncOverride: CreateInstanceEventWindowSyncType?
     let createInstanceExportTaskAsyncOverride: CreateInstanceExportTaskAsyncType?
     let createInstanceExportTaskSyncOverride: CreateInstanceExportTaskSyncType?
     let createInternetGatewayAsyncOverride: CreateInternetGatewayAsyncType?
@@ -195,6 +199,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createStoreImageTaskSyncOverride: CreateStoreImageTaskSyncType?
     let createSubnetAsyncOverride: CreateSubnetAsyncType?
     let createSubnetSyncOverride: CreateSubnetSyncType?
+    let createSubnetCidrReservationAsyncOverride: CreateSubnetCidrReservationAsyncType?
+    let createSubnetCidrReservationSyncOverride: CreateSubnetCidrReservationSyncType?
     let createTagsAsyncOverride: CreateTagsAsyncType?
     let createTagsSyncOverride: CreateTagsSyncType?
     let createTrafficMirrorFilterAsyncOverride: CreateTrafficMirrorFilterAsyncType?
@@ -259,6 +265,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteFlowLogsSyncOverride: DeleteFlowLogsSyncType?
     let deleteFpgaImageAsyncOverride: DeleteFpgaImageAsyncType?
     let deleteFpgaImageSyncOverride: DeleteFpgaImageSyncType?
+    let deleteInstanceEventWindowAsyncOverride: DeleteInstanceEventWindowAsyncType?
+    let deleteInstanceEventWindowSyncOverride: DeleteInstanceEventWindowSyncType?
     let deleteInternetGatewayAsyncOverride: DeleteInternetGatewayAsyncType?
     let deleteInternetGatewaySyncOverride: DeleteInternetGatewaySyncType?
     let deleteKeyPairAsyncOverride: DeleteKeyPairAsyncType?
@@ -303,6 +311,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteSpotDatafeedSubscriptionSyncOverride: DeleteSpotDatafeedSubscriptionSyncType?
     let deleteSubnetAsyncOverride: DeleteSubnetAsyncType?
     let deleteSubnetSyncOverride: DeleteSubnetSyncType?
+    let deleteSubnetCidrReservationAsyncOverride: DeleteSubnetCidrReservationAsyncType?
+    let deleteSubnetCidrReservationSyncOverride: DeleteSubnetCidrReservationSyncType?
     let deleteTagsAsyncOverride: DeleteTagsAsyncType?
     let deleteTagsSyncOverride: DeleteTagsSyncType?
     let deleteTrafficMirrorFilterAsyncOverride: DeleteTrafficMirrorFilterAsyncType?
@@ -445,6 +455,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeInstanceCreditSpecificationsSyncOverride: DescribeInstanceCreditSpecificationsSyncType?
     let describeInstanceEventNotificationAttributesAsyncOverride: DescribeInstanceEventNotificationAttributesAsyncType?
     let describeInstanceEventNotificationAttributesSyncOverride: DescribeInstanceEventNotificationAttributesSyncType?
+    let describeInstanceEventWindowsAsyncOverride: DescribeInstanceEventWindowsAsyncType?
+    let describeInstanceEventWindowsSyncOverride: DescribeInstanceEventWindowsSyncType?
     let describeInstanceStatusAsyncOverride: DescribeInstanceStatusAsyncType?
     let describeInstanceStatusSyncOverride: DescribeInstanceStatusSyncType?
     let describeInstanceTypeOfferingsAsyncOverride: DescribeInstanceTypeOfferingsAsyncType?
@@ -521,6 +533,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeScheduledInstancesSyncOverride: DescribeScheduledInstancesSyncType?
     let describeSecurityGroupReferencesAsyncOverride: DescribeSecurityGroupReferencesAsyncType?
     let describeSecurityGroupReferencesSyncOverride: DescribeSecurityGroupReferencesSyncType?
+    let describeSecurityGroupRulesAsyncOverride: DescribeSecurityGroupRulesAsyncType?
+    let describeSecurityGroupRulesSyncOverride: DescribeSecurityGroupRulesSyncType?
     let describeSecurityGroupsAsyncOverride: DescribeSecurityGroupsAsyncType?
     let describeSecurityGroupsSyncOverride: DescribeSecurityGroupsSyncType?
     let describeSnapshotAttributeAsyncOverride: DescribeSnapshotAttributeAsyncType?
@@ -639,6 +653,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let disassociateEnclaveCertificateIamRoleSyncOverride: DisassociateEnclaveCertificateIamRoleSyncType?
     let disassociateIamInstanceProfileAsyncOverride: DisassociateIamInstanceProfileAsyncType?
     let disassociateIamInstanceProfileSyncOverride: DisassociateIamInstanceProfileSyncType?
+    let disassociateInstanceEventWindowAsyncOverride: DisassociateInstanceEventWindowAsyncType?
+    let disassociateInstanceEventWindowSyncOverride: DisassociateInstanceEventWindowSyncType?
     let disassociateRouteTableAsyncOverride: DisassociateRouteTableAsyncType?
     let disassociateRouteTableSyncOverride: DisassociateRouteTableSyncType?
     let disassociateSubnetCidrBlockAsyncOverride: DisassociateSubnetCidrBlockAsyncType?
@@ -713,6 +729,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getReservedInstancesExchangeQuoteSyncOverride: GetReservedInstancesExchangeQuoteSyncType?
     let getSerialConsoleAccessStatusAsyncOverride: GetSerialConsoleAccessStatusAsyncType?
     let getSerialConsoleAccessStatusSyncOverride: GetSerialConsoleAccessStatusSyncType?
+    let getSubnetCidrReservationsAsyncOverride: GetSubnetCidrReservationsAsyncType?
+    let getSubnetCidrReservationsSyncOverride: GetSubnetCidrReservationsSyncType?
     let getTransitGatewayAttachmentPropagationsAsyncOverride: GetTransitGatewayAttachmentPropagationsAsyncType?
     let getTransitGatewayAttachmentPropagationsSyncOverride: GetTransitGatewayAttachmentPropagationsSyncType?
     let getTransitGatewayMulticastDomainAssociationsAsyncOverride: GetTransitGatewayMulticastDomainAssociationsAsyncType?
@@ -767,6 +785,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyInstanceCreditSpecificationSyncOverride: ModifyInstanceCreditSpecificationSyncType?
     let modifyInstanceEventStartTimeAsyncOverride: ModifyInstanceEventStartTimeAsyncType?
     let modifyInstanceEventStartTimeSyncOverride: ModifyInstanceEventStartTimeSyncType?
+    let modifyInstanceEventWindowAsyncOverride: ModifyInstanceEventWindowAsyncType?
+    let modifyInstanceEventWindowSyncOverride: ModifyInstanceEventWindowSyncType?
     let modifyInstanceMetadataOptionsAsyncOverride: ModifyInstanceMetadataOptionsAsyncType?
     let modifyInstanceMetadataOptionsSyncOverride: ModifyInstanceMetadataOptionsSyncType?
     let modifyInstancePlacementAsyncOverride: ModifyInstancePlacementAsyncType?
@@ -779,6 +799,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyNetworkInterfaceAttributeSyncOverride: ModifyNetworkInterfaceAttributeSyncType?
     let modifyReservedInstancesAsyncOverride: ModifyReservedInstancesAsyncType?
     let modifyReservedInstancesSyncOverride: ModifyReservedInstancesSyncType?
+    let modifySecurityGroupRulesAsyncOverride: ModifySecurityGroupRulesAsyncType?
+    let modifySecurityGroupRulesSyncOverride: ModifySecurityGroupRulesSyncType?
     let modifySnapshotAttributeAsyncOverride: ModifySnapshotAttributeAsyncType?
     let modifySnapshotAttributeSyncOverride: ModifySnapshotAttributeSyncType?
     let modifySpotFleetRequestAsyncOverride: ModifySpotFleetRequestAsyncType?
@@ -977,6 +999,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             associateEnclaveCertificateIamRoleSync: AssociateEnclaveCertificateIamRoleSyncType? = nil,
             associateIamInstanceProfileAsync: AssociateIamInstanceProfileAsyncType? = nil,
             associateIamInstanceProfileSync: AssociateIamInstanceProfileSyncType? = nil,
+            associateInstanceEventWindowAsync: AssociateInstanceEventWindowAsyncType? = nil,
+            associateInstanceEventWindowSync: AssociateInstanceEventWindowSyncType? = nil,
             associateRouteTableAsync: AssociateRouteTableAsyncType? = nil,
             associateRouteTableSync: AssociateRouteTableSyncType? = nil,
             associateSubnetCidrBlockAsync: AssociateSubnetCidrBlockAsyncType? = nil,
@@ -1057,6 +1081,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             createFpgaImageSync: CreateFpgaImageSyncType? = nil,
             createImageAsync: CreateImageAsyncType? = nil,
             createImageSync: CreateImageSyncType? = nil,
+            createInstanceEventWindowAsync: CreateInstanceEventWindowAsyncType? = nil,
+            createInstanceEventWindowSync: CreateInstanceEventWindowSyncType? = nil,
             createInstanceExportTaskAsync: CreateInstanceExportTaskAsyncType? = nil,
             createInstanceExportTaskSync: CreateInstanceExportTaskSyncType? = nil,
             createInternetGatewayAsync: CreateInternetGatewayAsyncType? = nil,
@@ -1109,6 +1135,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             createStoreImageTaskSync: CreateStoreImageTaskSyncType? = nil,
             createSubnetAsync: CreateSubnetAsyncType? = nil,
             createSubnetSync: CreateSubnetSyncType? = nil,
+            createSubnetCidrReservationAsync: CreateSubnetCidrReservationAsyncType? = nil,
+            createSubnetCidrReservationSync: CreateSubnetCidrReservationSyncType? = nil,
             createTagsAsync: CreateTagsAsyncType? = nil,
             createTagsSync: CreateTagsSyncType? = nil,
             createTrafficMirrorFilterAsync: CreateTrafficMirrorFilterAsyncType? = nil,
@@ -1173,6 +1201,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             deleteFlowLogsSync: DeleteFlowLogsSyncType? = nil,
             deleteFpgaImageAsync: DeleteFpgaImageAsyncType? = nil,
             deleteFpgaImageSync: DeleteFpgaImageSyncType? = nil,
+            deleteInstanceEventWindowAsync: DeleteInstanceEventWindowAsyncType? = nil,
+            deleteInstanceEventWindowSync: DeleteInstanceEventWindowSyncType? = nil,
             deleteInternetGatewayAsync: DeleteInternetGatewayAsyncType? = nil,
             deleteInternetGatewaySync: DeleteInternetGatewaySyncType? = nil,
             deleteKeyPairAsync: DeleteKeyPairAsyncType? = nil,
@@ -1217,6 +1247,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             deleteSpotDatafeedSubscriptionSync: DeleteSpotDatafeedSubscriptionSyncType? = nil,
             deleteSubnetAsync: DeleteSubnetAsyncType? = nil,
             deleteSubnetSync: DeleteSubnetSyncType? = nil,
+            deleteSubnetCidrReservationAsync: DeleteSubnetCidrReservationAsyncType? = nil,
+            deleteSubnetCidrReservationSync: DeleteSubnetCidrReservationSyncType? = nil,
             deleteTagsAsync: DeleteTagsAsyncType? = nil,
             deleteTagsSync: DeleteTagsSyncType? = nil,
             deleteTrafficMirrorFilterAsync: DeleteTrafficMirrorFilterAsyncType? = nil,
@@ -1359,6 +1391,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeInstanceCreditSpecificationsSync: DescribeInstanceCreditSpecificationsSyncType? = nil,
             describeInstanceEventNotificationAttributesAsync: DescribeInstanceEventNotificationAttributesAsyncType? = nil,
             describeInstanceEventNotificationAttributesSync: DescribeInstanceEventNotificationAttributesSyncType? = nil,
+            describeInstanceEventWindowsAsync: DescribeInstanceEventWindowsAsyncType? = nil,
+            describeInstanceEventWindowsSync: DescribeInstanceEventWindowsSyncType? = nil,
             describeInstanceStatusAsync: DescribeInstanceStatusAsyncType? = nil,
             describeInstanceStatusSync: DescribeInstanceStatusSyncType? = nil,
             describeInstanceTypeOfferingsAsync: DescribeInstanceTypeOfferingsAsyncType? = nil,
@@ -1435,6 +1469,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeScheduledInstancesSync: DescribeScheduledInstancesSyncType? = nil,
             describeSecurityGroupReferencesAsync: DescribeSecurityGroupReferencesAsyncType? = nil,
             describeSecurityGroupReferencesSync: DescribeSecurityGroupReferencesSyncType? = nil,
+            describeSecurityGroupRulesAsync: DescribeSecurityGroupRulesAsyncType? = nil,
+            describeSecurityGroupRulesSync: DescribeSecurityGroupRulesSyncType? = nil,
             describeSecurityGroupsAsync: DescribeSecurityGroupsAsyncType? = nil,
             describeSecurityGroupsSync: DescribeSecurityGroupsSyncType? = nil,
             describeSnapshotAttributeAsync: DescribeSnapshotAttributeAsyncType? = nil,
@@ -1553,6 +1589,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             disassociateEnclaveCertificateIamRoleSync: DisassociateEnclaveCertificateIamRoleSyncType? = nil,
             disassociateIamInstanceProfileAsync: DisassociateIamInstanceProfileAsyncType? = nil,
             disassociateIamInstanceProfileSync: DisassociateIamInstanceProfileSyncType? = nil,
+            disassociateInstanceEventWindowAsync: DisassociateInstanceEventWindowAsyncType? = nil,
+            disassociateInstanceEventWindowSync: DisassociateInstanceEventWindowSyncType? = nil,
             disassociateRouteTableAsync: DisassociateRouteTableAsyncType? = nil,
             disassociateRouteTableSync: DisassociateRouteTableSyncType? = nil,
             disassociateSubnetCidrBlockAsync: DisassociateSubnetCidrBlockAsyncType? = nil,
@@ -1627,6 +1665,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getReservedInstancesExchangeQuoteSync: GetReservedInstancesExchangeQuoteSyncType? = nil,
             getSerialConsoleAccessStatusAsync: GetSerialConsoleAccessStatusAsyncType? = nil,
             getSerialConsoleAccessStatusSync: GetSerialConsoleAccessStatusSyncType? = nil,
+            getSubnetCidrReservationsAsync: GetSubnetCidrReservationsAsyncType? = nil,
+            getSubnetCidrReservationsSync: GetSubnetCidrReservationsSyncType? = nil,
             getTransitGatewayAttachmentPropagationsAsync: GetTransitGatewayAttachmentPropagationsAsyncType? = nil,
             getTransitGatewayAttachmentPropagationsSync: GetTransitGatewayAttachmentPropagationsSyncType? = nil,
             getTransitGatewayMulticastDomainAssociationsAsync: GetTransitGatewayMulticastDomainAssociationsAsyncType? = nil,
@@ -1681,6 +1721,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             modifyInstanceCreditSpecificationSync: ModifyInstanceCreditSpecificationSyncType? = nil,
             modifyInstanceEventStartTimeAsync: ModifyInstanceEventStartTimeAsyncType? = nil,
             modifyInstanceEventStartTimeSync: ModifyInstanceEventStartTimeSyncType? = nil,
+            modifyInstanceEventWindowAsync: ModifyInstanceEventWindowAsyncType? = nil,
+            modifyInstanceEventWindowSync: ModifyInstanceEventWindowSyncType? = nil,
             modifyInstanceMetadataOptionsAsync: ModifyInstanceMetadataOptionsAsyncType? = nil,
             modifyInstanceMetadataOptionsSync: ModifyInstanceMetadataOptionsSyncType? = nil,
             modifyInstancePlacementAsync: ModifyInstancePlacementAsyncType? = nil,
@@ -1693,6 +1735,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             modifyNetworkInterfaceAttributeSync: ModifyNetworkInterfaceAttributeSyncType? = nil,
             modifyReservedInstancesAsync: ModifyReservedInstancesAsyncType? = nil,
             modifyReservedInstancesSync: ModifyReservedInstancesSyncType? = nil,
+            modifySecurityGroupRulesAsync: ModifySecurityGroupRulesAsyncType? = nil,
+            modifySecurityGroupRulesSync: ModifySecurityGroupRulesSyncType? = nil,
             modifySnapshotAttributeAsync: ModifySnapshotAttributeAsyncType? = nil,
             modifySnapshotAttributeSync: ModifySnapshotAttributeSyncType? = nil,
             modifySpotFleetRequestAsync: ModifySpotFleetRequestAsyncType? = nil,
@@ -1885,6 +1929,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.associateEnclaveCertificateIamRoleSyncOverride = associateEnclaveCertificateIamRoleSync
         self.associateIamInstanceProfileAsyncOverride = associateIamInstanceProfileAsync
         self.associateIamInstanceProfileSyncOverride = associateIamInstanceProfileSync
+        self.associateInstanceEventWindowAsyncOverride = associateInstanceEventWindowAsync
+        self.associateInstanceEventWindowSyncOverride = associateInstanceEventWindowSync
         self.associateRouteTableAsyncOverride = associateRouteTableAsync
         self.associateRouteTableSyncOverride = associateRouteTableSync
         self.associateSubnetCidrBlockAsyncOverride = associateSubnetCidrBlockAsync
@@ -1965,6 +2011,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.createFpgaImageSyncOverride = createFpgaImageSync
         self.createImageAsyncOverride = createImageAsync
         self.createImageSyncOverride = createImageSync
+        self.createInstanceEventWindowAsyncOverride = createInstanceEventWindowAsync
+        self.createInstanceEventWindowSyncOverride = createInstanceEventWindowSync
         self.createInstanceExportTaskAsyncOverride = createInstanceExportTaskAsync
         self.createInstanceExportTaskSyncOverride = createInstanceExportTaskSync
         self.createInternetGatewayAsyncOverride = createInternetGatewayAsync
@@ -2017,6 +2065,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.createStoreImageTaskSyncOverride = createStoreImageTaskSync
         self.createSubnetAsyncOverride = createSubnetAsync
         self.createSubnetSyncOverride = createSubnetSync
+        self.createSubnetCidrReservationAsyncOverride = createSubnetCidrReservationAsync
+        self.createSubnetCidrReservationSyncOverride = createSubnetCidrReservationSync
         self.createTagsAsyncOverride = createTagsAsync
         self.createTagsSyncOverride = createTagsSync
         self.createTrafficMirrorFilterAsyncOverride = createTrafficMirrorFilterAsync
@@ -2081,6 +2131,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.deleteFlowLogsSyncOverride = deleteFlowLogsSync
         self.deleteFpgaImageAsyncOverride = deleteFpgaImageAsync
         self.deleteFpgaImageSyncOverride = deleteFpgaImageSync
+        self.deleteInstanceEventWindowAsyncOverride = deleteInstanceEventWindowAsync
+        self.deleteInstanceEventWindowSyncOverride = deleteInstanceEventWindowSync
         self.deleteInternetGatewayAsyncOverride = deleteInternetGatewayAsync
         self.deleteInternetGatewaySyncOverride = deleteInternetGatewaySync
         self.deleteKeyPairAsyncOverride = deleteKeyPairAsync
@@ -2125,6 +2177,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.deleteSpotDatafeedSubscriptionSyncOverride = deleteSpotDatafeedSubscriptionSync
         self.deleteSubnetAsyncOverride = deleteSubnetAsync
         self.deleteSubnetSyncOverride = deleteSubnetSync
+        self.deleteSubnetCidrReservationAsyncOverride = deleteSubnetCidrReservationAsync
+        self.deleteSubnetCidrReservationSyncOverride = deleteSubnetCidrReservationSync
         self.deleteTagsAsyncOverride = deleteTagsAsync
         self.deleteTagsSyncOverride = deleteTagsSync
         self.deleteTrafficMirrorFilterAsyncOverride = deleteTrafficMirrorFilterAsync
@@ -2267,6 +2321,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeInstanceCreditSpecificationsSyncOverride = describeInstanceCreditSpecificationsSync
         self.describeInstanceEventNotificationAttributesAsyncOverride = describeInstanceEventNotificationAttributesAsync
         self.describeInstanceEventNotificationAttributesSyncOverride = describeInstanceEventNotificationAttributesSync
+        self.describeInstanceEventWindowsAsyncOverride = describeInstanceEventWindowsAsync
+        self.describeInstanceEventWindowsSyncOverride = describeInstanceEventWindowsSync
         self.describeInstanceStatusAsyncOverride = describeInstanceStatusAsync
         self.describeInstanceStatusSyncOverride = describeInstanceStatusSync
         self.describeInstanceTypeOfferingsAsyncOverride = describeInstanceTypeOfferingsAsync
@@ -2343,6 +2399,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeScheduledInstancesSyncOverride = describeScheduledInstancesSync
         self.describeSecurityGroupReferencesAsyncOverride = describeSecurityGroupReferencesAsync
         self.describeSecurityGroupReferencesSyncOverride = describeSecurityGroupReferencesSync
+        self.describeSecurityGroupRulesAsyncOverride = describeSecurityGroupRulesAsync
+        self.describeSecurityGroupRulesSyncOverride = describeSecurityGroupRulesSync
         self.describeSecurityGroupsAsyncOverride = describeSecurityGroupsAsync
         self.describeSecurityGroupsSyncOverride = describeSecurityGroupsSync
         self.describeSnapshotAttributeAsyncOverride = describeSnapshotAttributeAsync
@@ -2461,6 +2519,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.disassociateEnclaveCertificateIamRoleSyncOverride = disassociateEnclaveCertificateIamRoleSync
         self.disassociateIamInstanceProfileAsyncOverride = disassociateIamInstanceProfileAsync
         self.disassociateIamInstanceProfileSyncOverride = disassociateIamInstanceProfileSync
+        self.disassociateInstanceEventWindowAsyncOverride = disassociateInstanceEventWindowAsync
+        self.disassociateInstanceEventWindowSyncOverride = disassociateInstanceEventWindowSync
         self.disassociateRouteTableAsyncOverride = disassociateRouteTableAsync
         self.disassociateRouteTableSyncOverride = disassociateRouteTableSync
         self.disassociateSubnetCidrBlockAsyncOverride = disassociateSubnetCidrBlockAsync
@@ -2535,6 +2595,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSync
         self.getSerialConsoleAccessStatusAsyncOverride = getSerialConsoleAccessStatusAsync
         self.getSerialConsoleAccessStatusSyncOverride = getSerialConsoleAccessStatusSync
+        self.getSubnetCidrReservationsAsyncOverride = getSubnetCidrReservationsAsync
+        self.getSubnetCidrReservationsSyncOverride = getSubnetCidrReservationsSync
         self.getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsync
         self.getTransitGatewayAttachmentPropagationsSyncOverride = getTransitGatewayAttachmentPropagationsSync
         self.getTransitGatewayMulticastDomainAssociationsAsyncOverride = getTransitGatewayMulticastDomainAssociationsAsync
@@ -2589,6 +2651,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.modifyInstanceCreditSpecificationSyncOverride = modifyInstanceCreditSpecificationSync
         self.modifyInstanceEventStartTimeAsyncOverride = modifyInstanceEventStartTimeAsync
         self.modifyInstanceEventStartTimeSyncOverride = modifyInstanceEventStartTimeSync
+        self.modifyInstanceEventWindowAsyncOverride = modifyInstanceEventWindowAsync
+        self.modifyInstanceEventWindowSyncOverride = modifyInstanceEventWindowSync
         self.modifyInstanceMetadataOptionsAsyncOverride = modifyInstanceMetadataOptionsAsync
         self.modifyInstanceMetadataOptionsSyncOverride = modifyInstanceMetadataOptionsSync
         self.modifyInstancePlacementAsyncOverride = modifyInstancePlacementAsync
@@ -2601,6 +2665,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSync
         self.modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsync
         self.modifyReservedInstancesSyncOverride = modifyReservedInstancesSync
+        self.modifySecurityGroupRulesAsyncOverride = modifySecurityGroupRulesAsync
+        self.modifySecurityGroupRulesSyncOverride = modifySecurityGroupRulesSync
         self.modifySnapshotAttributeAsyncOverride = modifySnapshotAttributeAsync
         self.modifySnapshotAttributeSyncOverride = modifySnapshotAttributeSync
         self.modifySpotFleetRequestAsyncOverride = modifySpotFleetRequestAsync
@@ -3402,6 +3468,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the AssociateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The AssociateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func associateInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        if let associateInstanceEventWindowAsyncOverride = associateInstanceEventWindowAsyncOverride {
+            return try associateInstanceEventWindowAsyncOverride(input, completion)
+        }
+
+        let result = AssociateInstanceEventWindowResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the AssociateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The AssociateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult {
+        if let associateInstanceEventWindowSyncOverride = associateInstanceEventWindowSyncOverride {
+            return try associateInstanceEventWindowSyncOverride(input)
+        }
+
+        return AssociateInstanceEventWindowResult.__default
+    }
+
+    /**
      Invokes the AssociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3856,17 +3960,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AuthorizeSecurityGroupEgressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeSecurityGroupEgressResult
+           object will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupEgressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult, ElasticComputeCloudError>) -> ()) throws {
         if let authorizeSecurityGroupEgressAsyncOverride = authorizeSecurityGroupEgressAsyncOverride {
             return try authorizeSecurityGroupEgressAsyncOverride(input, completion)
         }
 
-        completion(nil)
+        let result = AuthorizeSecurityGroupEgressResult.__default
+        
+        completion(.success(result))
     }
 
     /**
@@ -3874,13 +3981,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupEgressRequest object being passed to this operation.
+     - Returns: The AuthorizeSecurityGroupEgressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupEgressSync(
-            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws {
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult {
         if let authorizeSecurityGroupEgressSyncOverride = authorizeSecurityGroupEgressSyncOverride {
             return try authorizeSecurityGroupEgressSyncOverride(input)
         }
 
+        return AuthorizeSecurityGroupEgressResult.__default
     }
 
     /**
@@ -3888,17 +3998,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The AuthorizeSecurityGroupIngressResult object or an error will be passed to this 
+           callback when the operation is complete. The AuthorizeSecurityGroupIngressResult
+           object will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupIngressAsync(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult, ElasticComputeCloudError>) -> ()) throws {
         if let authorizeSecurityGroupIngressAsyncOverride = authorizeSecurityGroupIngressAsyncOverride {
             return try authorizeSecurityGroupIngressAsyncOverride(input, completion)
         }
 
-        completion(nil)
+        let result = AuthorizeSecurityGroupIngressResult.__default
+        
+        completion(.success(result))
     }
 
     /**
@@ -3906,13 +4019,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated AuthorizeSecurityGroupIngressRequest object being passed to this operation.
+     - Returns: The AuthorizeSecurityGroupIngressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func authorizeSecurityGroupIngressSync(
-            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws {
+            input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult {
         if let authorizeSecurityGroupIngressSyncOverride = authorizeSecurityGroupIngressSyncOverride {
             return try authorizeSecurityGroupIngressSyncOverride(input)
         }
 
+        return AuthorizeSecurityGroupIngressResult.__default
     }
 
     /**
@@ -4889,6 +5005,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return CreateImageResult.__default
+    }
+
+    /**
+     Invokes the CreateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The CreateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func createInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createInstanceEventWindowAsyncOverride = createInstanceEventWindowAsyncOverride {
+            return try createInstanceEventWindowAsyncOverride(input, completion)
+        }
+
+        let result = CreateInstanceEventWindowResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The CreateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.CreateInstanceEventWindowResult {
+        if let createInstanceEventWindowSyncOverride = createInstanceEventWindowSyncOverride {
+            return try createInstanceEventWindowSyncOverride(input)
+        }
+
+        return CreateInstanceEventWindowResult.__default
     }
 
     /**
@@ -5871,6 +6025,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return CreateSubnetResult.__default
+    }
+
+    /**
+     Invokes the CreateSubnetCidrReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateSubnetCidrReservationRequest object being passed to this operation.
+         - completion: The CreateSubnetCidrReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateSubnetCidrReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func createSubnetCidrReservationAsync(
+            input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createSubnetCidrReservationAsyncOverride = createSubnetCidrReservationAsyncOverride {
+            return try createSubnetCidrReservationAsyncOverride(input, completion)
+        }
+
+        let result = CreateSubnetCidrReservationResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateSubnetCidrReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateSubnetCidrReservationRequest object being passed to this operation.
+     - Returns: The CreateSubnetCidrReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createSubnetCidrReservationSync(
+            input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.CreateSubnetCidrReservationResult {
+        if let createSubnetCidrReservationSyncOverride = createSubnetCidrReservationSyncOverride {
+            return try createSubnetCidrReservationSyncOverride(input)
+        }
+
+        return CreateSubnetCidrReservationResult.__default
     }
 
     /**
@@ -7066,6 +7258,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstanceEventWindowRequest object being passed to this operation.
+         - completion: The DeleteInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteInstanceEventWindowAsyncOverride = deleteInstanceEventWindowAsyncOverride {
+            return try deleteInstanceEventWindowAsyncOverride(input, completion)
+        }
+
+        let result = DeleteInstanceEventWindowResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The DeleteInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult {
+        if let deleteInstanceEventWindowSyncOverride = deleteInstanceEventWindowSyncOverride {
+            return try deleteInstanceEventWindowSyncOverride(input)
+        }
+
+        return DeleteInstanceEventWindowResult.__default
+    }
+
+    /**
      Invokes the DeleteInternetGateway operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7827,6 +8057,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             return try deleteSubnetSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the DeleteSubnetCidrReservation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteSubnetCidrReservationRequest object being passed to this operation.
+         - completion: The DeleteSubnetCidrReservationResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteSubnetCidrReservationResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteSubnetCidrReservationAsync(
+            input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteSubnetCidrReservationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteSubnetCidrReservationAsyncOverride = deleteSubnetCidrReservationAsyncOverride {
+            return try deleteSubnetCidrReservationAsyncOverride(input, completion)
+        }
+
+        let result = DeleteSubnetCidrReservationResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteSubnetCidrReservation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteSubnetCidrReservationRequest object being passed to this operation.
+     - Returns: The DeleteSubnetCidrReservationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteSubnetCidrReservationSync(
+            input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest) throws -> ElasticComputeCloudModel.DeleteSubnetCidrReservationResult {
+        if let deleteSubnetCidrReservationSyncOverride = deleteSubnetCidrReservationSyncOverride {
+            return try deleteSubnetCidrReservationSyncOverride(input)
+        }
+
+        return DeleteSubnetCidrReservationResult.__default
     }
 
     /**
@@ -10486,6 +10754,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeInstanceEventWindows operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventWindowsRequest object being passed to this operation.
+         - completion: The DescribeInstanceEventWindowsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceEventWindowsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceEventWindowsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceEventWindowsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeInstanceEventWindowsAsyncOverride = describeInstanceEventWindowsAsyncOverride {
+            return try describeInstanceEventWindowsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeInstanceEventWindowsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeInstanceEventWindows operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceEventWindowsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceEventWindowsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceEventWindowsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceEventWindowsResult {
+        if let describeInstanceEventWindowsSyncOverride = describeInstanceEventWindowsSyncOverride {
+            return try describeInstanceEventWindowsSyncOverride(input)
+        }
+
+        return DescribeInstanceEventWindowsResult.__default
+    }
+
+    /**
      Invokes the DescribeInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11927,6 +12233,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DescribeSecurityGroupReferencesResult.__default
+    }
+
+    /**
+     Invokes the DescribeSecurityGroupRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupRulesRequest object being passed to this operation.
+         - completion: The DescribeSecurityGroupRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeSecurityGroupRulesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupRulesAsync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeSecurityGroupRulesAsyncOverride = describeSecurityGroupRulesAsyncOverride {
+            return try describeSecurityGroupRulesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeSecurityGroupRulesResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeSecurityGroupRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeSecurityGroupRulesRequest object being passed to this operation.
+     - Returns: The DescribeSecurityGroupRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeSecurityGroupRulesSync(
+            input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.DescribeSecurityGroupRulesResult {
+        if let describeSecurityGroupRulesSyncOverride = describeSecurityGroupRulesSyncOverride {
+            return try describeSecurityGroupRulesSyncOverride(input)
+        }
+
+        return DescribeSecurityGroupRulesResult.__default
     }
 
     /**
@@ -14142,6 +14486,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateInstanceEventWindowRequest object being passed to this operation.
+         - completion: The DisassociateInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disassociateInstanceEventWindowAsyncOverride = disassociateInstanceEventWindowAsyncOverride {
+            return try disassociateInstanceEventWindowAsyncOverride(input, completion)
+        }
+
+        let result = DisassociateInstanceEventWindowResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisassociateInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The DisassociateInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult {
+        if let disassociateInstanceEventWindowSyncOverride = disassociateInstanceEventWindowSyncOverride {
+            return try disassociateInstanceEventWindowSyncOverride(input)
+        }
+
+        return DisassociateInstanceEventWindowResult.__default
+    }
+
+    /**
      Invokes the DisassociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15530,6 +15912,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetSubnetCidrReservations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSubnetCidrReservationsRequest object being passed to this operation.
+         - completion: The GetSubnetCidrReservationsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSubnetCidrReservationsResult
+           object will be validated before being returned to caller.
+     */
+    public func getSubnetCidrReservationsAsync(
+            input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSubnetCidrReservationsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getSubnetCidrReservationsAsyncOverride = getSubnetCidrReservationsAsyncOverride {
+            return try getSubnetCidrReservationsAsyncOverride(input, completion)
+        }
+
+        let result = GetSubnetCidrReservationsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetSubnetCidrReservations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSubnetCidrReservationsRequest object being passed to this operation.
+     - Returns: The GetSubnetCidrReservationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSubnetCidrReservationsSync(
+            input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) throws -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult {
+        if let getSubnetCidrReservationsSyncOverride = getSubnetCidrReservationsSyncOverride {
+            return try getSubnetCidrReservationsSyncOverride(input)
+        }
+
+        return GetSubnetCidrReservationsResult.__default
+    }
+
+    /**
      Invokes the GetTransitGatewayAttachmentPropagations operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16532,6 +16952,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyInstanceEventWindow operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventWindowRequest object being passed to this operation.
+         - completion: The ModifyInstanceEventWindowResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyInstanceEventWindowResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyInstanceEventWindowAsync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyInstanceEventWindowAsyncOverride = modifyInstanceEventWindowAsyncOverride {
+            return try modifyInstanceEventWindowAsyncOverride(input, completion)
+        }
+
+        let result = ModifyInstanceEventWindowResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyInstanceEventWindow operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyInstanceEventWindowRequest object being passed to this operation.
+     - Returns: The ModifyInstanceEventWindowResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyInstanceEventWindowSync(
+            input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.ModifyInstanceEventWindowResult {
+        if let modifyInstanceEventWindowSyncOverride = modifyInstanceEventWindowSyncOverride {
+            return try modifyInstanceEventWindowSyncOverride(input)
+        }
+
+        return ModifyInstanceEventWindowResult.__default
+    }
+
+    /**
      Invokes the ModifyInstanceMetadataOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16751,6 +17209,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return ModifyReservedInstancesResult.__default
+    }
+
+    /**
+     Invokes the ModifySecurityGroupRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifySecurityGroupRulesRequest object being passed to this operation.
+         - completion: The ModifySecurityGroupRulesResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifySecurityGroupRulesResult
+           object will be validated before being returned to caller.
+     */
+    public func modifySecurityGroupRulesAsync(
+            input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifySecurityGroupRulesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifySecurityGroupRulesAsyncOverride = modifySecurityGroupRulesAsyncOverride {
+            return try modifySecurityGroupRulesAsyncOverride(input, completion)
+        }
+
+        let result = ModifySecurityGroupRulesResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifySecurityGroupRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifySecurityGroupRulesRequest object being passed to this operation.
+     - Returns: The ModifySecurityGroupRulesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifySecurityGroupRulesSync(
+            input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest) throws -> ElasticComputeCloudModel.ModifySecurityGroupRulesResult {
+        if let modifySecurityGroupRulesSyncOverride = modifySecurityGroupRulesSyncOverride {
+            return try modifySecurityGroupRulesSyncOverride(input)
+        }
+
+        return ModifySecurityGroupRulesResult.__default
     }
 
     /**

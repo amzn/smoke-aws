@@ -63,6 +63,7 @@ private let optInRequiredIdentity = "OptInRequired"
 private let requestExpiredIdentity = "RequestExpired"
 private let serviceUnavailableIdentity = "ServiceUnavailable"
 private let stackInstanceNotFoundIdentity = "StackInstanceNotFoundException"
+private let stackNotFoundIdentity = "StackNotFoundException"
 private let stackSetNotEmptyIdentity = "StackSetNotEmptyException"
 private let stackSetNotFoundIdentity = "StackSetNotFoundException"
 private let staleRequestIdentity = "StaleRequestException"
@@ -113,6 +114,7 @@ public enum CloudformationError: Swift.Error, Decodable {
     case requestExpired(CloudformationErrorPayload)
     case serviceUnavailable(CloudformationErrorPayload)
     case stackInstanceNotFound(StackInstanceNotFoundException)
+    case stackNotFound(StackNotFoundException)
     case stackSetNotEmpty(StackSetNotEmptyException)
     case stackSetNotFound(StackSetNotFoundException)
     case staleRequest(StaleRequestException)
@@ -229,6 +231,9 @@ public enum CloudformationError: Swift.Error, Decodable {
         case stackInstanceNotFoundIdentity:
             let errorPayload = try StackInstanceNotFoundException(from: decoder)
             self = CloudformationError.stackInstanceNotFound(errorPayload)
+        case stackNotFoundIdentity:
+            let errorPayload = try StackNotFoundException(from: decoder)
+            self = CloudformationError.stackNotFound(errorPayload)
         case stackSetNotEmptyIdentity:
             let errorPayload = try StackSetNotEmptyException(from: decoder)
             self = CloudformationError.stackSetNotEmpty(errorPayload)

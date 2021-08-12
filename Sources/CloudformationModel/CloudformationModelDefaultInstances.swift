@@ -442,6 +442,7 @@ public extension CreateStackSetInput {
             executionRoleName: nil,
             parameters: nil,
             permissionModel: nil,
+            stackId: nil,
             stackSetName: "value",
             tags: nil,
             templateBody: nil,
@@ -1610,6 +1611,46 @@ public extension GetTemplateSummaryOutputForGetTemplateSummary {
     static let __default: CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary = {
         let defaultInstance = CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary(
             getTemplateSummaryResult: GetTemplateSummaryOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportStacksToStackSetInput {
+    /**
+     Default instance of the ImportStacksToStackSetInput structure.
+     */
+    static let __default: CloudformationModel.ImportStacksToStackSetInput = {
+        let defaultInstance = CloudformationModel.ImportStacksToStackSetInput(
+            callAs: nil,
+            operationId: nil,
+            operationPreferences: nil,
+            stackIds: [],
+            stackSetName: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportStacksToStackSetOutput {
+    /**
+     Default instance of the ImportStacksToStackSetOutput structure.
+     */
+    static let __default: CloudformationModel.ImportStacksToStackSetOutput = {
+        let defaultInstance = CloudformationModel.ImportStacksToStackSetOutput(
+            operationId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportStacksToStackSetOutputForImportStacksToStackSet {
+    /**
+     Default instance of the ImportStacksToStackSetOutputForImportStacksToStackSet structure.
+     */
+    static let __default: CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet = {
+        let defaultInstance = CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet(
+            importStacksToStackSetResult: ImportStacksToStackSetOutput.__default)
 
         return defaultInstance
     }()
@@ -2857,6 +2898,17 @@ public extension StackInstanceSummary {
             stackSetId: nil,
             status: nil,
             statusReason: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StackNotFoundException {
+    /**
+     Default instance of the StackNotFoundException structure.
+     */
+    static let __default: CloudformationModel.StackNotFoundException = {
+        let defaultInstance = CloudformationModel.StackNotFoundException()
 
         return defaultInstance
     }()

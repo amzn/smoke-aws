@@ -205,6 +205,11 @@ public typealias GetTemplateOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias GetTemplateSummaryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ImportStacksToStackSet operation in a HTTP client.
+ */
+public typealias ImportStacksToStackSetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListChangeSets operation in a HTTP client.
  */
 public typealias ListChangeSetsOperationHTTPRequestInput = QueryHTTPRequestInput

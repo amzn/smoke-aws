@@ -65,6 +65,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let getStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTemplateSummary: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let importStacksToStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listChangeSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listImports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -166,6 +167,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.getTemplate)
         self.getTemplateSummary = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getTemplateSummary)
+        self.importStacksToStackSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.importStacksToStackSet)
         self.listChangeSets = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listChangeSets)
         self.listExports = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

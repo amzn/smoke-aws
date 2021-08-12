@@ -64,6 +64,7 @@ public struct CloudformationOperationsReporting {
     public let getStackPolicy: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let getTemplate: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let getTemplateSummary: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let importStacksToStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listChangeSets: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listExports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listImports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -165,6 +166,8 @@ public struct CloudformationOperationsReporting {
             clientName: clientName, operation: .getTemplate, configuration: reportingConfiguration)
         self.getTemplateSummary = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getTemplateSummary, configuration: reportingConfiguration)
+        self.importStacksToStackSet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importStacksToStackSet, configuration: reportingConfiguration)
         self.listChangeSets = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listChangeSets, configuration: reportingConfiguration)
         self.listExports = StandardSmokeAWSOperationReporting(

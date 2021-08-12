@@ -467,6 +467,19 @@ extension GetTemplateSummaryOutputForGetTemplateSummary: HTTPResponseOutputProto
 }
 
 /**
+ Type to handle the output from the ImportStacksToStackSet operation in a HTTP client.
+ */
+extension ImportStacksToStackSetOutputForImportStacksToStackSet: HTTPResponseOutputProtocol {
+    public typealias BodyType = ImportStacksToStackSetOutputForImportStacksToStackSet
+    public typealias HeadersType = ImportStacksToStackSetOutputForImportStacksToStackSet
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ImportStacksToStackSetOutputForImportStacksToStackSet {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListChangeSets operation in a HTTP client.
  */
 extension ListChangeSetsOutputForListChangeSets: HTTPResponseOutputProtocol {
