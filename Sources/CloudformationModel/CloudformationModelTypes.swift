@@ -1141,6 +1141,11 @@ public typealias StackEvents = [StackEvent]
 public typealias StackId = String
 
 /**
+ Type definition for the StackIdList field.
+ */
+public typealias StackIdList = [StackId]
+
+/**
  Enumeration restricting the values of the StackInstanceDetailedStatus field.
  */
 public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertible {

@@ -777,6 +777,7 @@ public struct CreateStackSetInput: Codable, Equatable {
     public var executionRoleName: ExecutionRoleName?
     public var parameters: Parameters?
     public var permissionModel: PermissionModels?
+    public var stackId: StackId?
     public var stackSetName: StackSetName
     public var tags: Tags?
     public var templateBody: TemplateBody?
@@ -791,6 +792,7 @@ public struct CreateStackSetInput: Codable, Equatable {
                 executionRoleName: ExecutionRoleName? = nil,
                 parameters: Parameters? = nil,
                 permissionModel: PermissionModels? = nil,
+                stackId: StackId? = nil,
                 stackSetName: StackSetName,
                 tags: Tags? = nil,
                 templateBody: TemplateBody? = nil,
@@ -804,6 +806,7 @@ public struct CreateStackSetInput: Codable, Equatable {
         self.executionRoleName = executionRoleName
         self.parameters = parameters
         self.permissionModel = permissionModel
+        self.stackId = stackId
         self.stackSetName = stackSetName
         self.tags = tags
         self.templateBody = templateBody
@@ -820,6 +823,7 @@ public struct CreateStackSetInput: Codable, Equatable {
         case executionRoleName = "ExecutionRoleName"
         case parameters = "Parameters"
         case permissionModel = "PermissionModel"
+        case stackId = "StackId"
         case stackSetName = "StackSetName"
         case tags = "Tags"
         case templateBody = "TemplateBody"
@@ -2732,6 +2736,72 @@ public struct GetTemplateSummaryOutputForGetTemplateSummary: Codable, Equatable 
 
     public func validate() throws {
         try getTemplateSummaryResult.validate()
+    }
+}
+
+public struct ImportStacksToStackSetInput: Codable, Equatable {
+    public var callAs: CallAs?
+    public var operationId: ClientRequestToken?
+    public var operationPreferences: StackSetOperationPreferences?
+    public var stackIds: StackIdList
+    public var stackSetName: StackSetNameOrId
+
+    public init(callAs: CallAs? = nil,
+                operationId: ClientRequestToken? = nil,
+                operationPreferences: StackSetOperationPreferences? = nil,
+                stackIds: StackIdList,
+                stackSetName: StackSetNameOrId) {
+        self.callAs = callAs
+        self.operationId = operationId
+        self.operationPreferences = operationPreferences
+        self.stackIds = stackIds
+        self.stackSetName = stackSetName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
+        case operationId = "OperationId"
+        case operationPreferences = "OperationPreferences"
+        case stackIds = "StackIds"
+        case stackSetName = "StackSetName"
+    }
+
+    public func validate() throws {
+        try operationId?.validateAsClientRequestToken()
+        try operationPreferences?.validate()
+        try stackSetName.validateAsStackSetNameOrId()
+    }
+}
+
+public struct ImportStacksToStackSetOutput: Codable, Equatable {
+    public var operationId: ClientRequestToken?
+
+    public init(operationId: ClientRequestToken? = nil) {
+        self.operationId = operationId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case operationId = "OperationId"
+    }
+
+    public func validate() throws {
+        try operationId?.validateAsClientRequestToken()
+    }
+}
+
+public struct ImportStacksToStackSetOutputForImportStacksToStackSet: Codable, Equatable {
+    public var importStacksToStackSetResult: ImportStacksToStackSetOutput
+
+    public init(importStacksToStackSetResult: ImportStacksToStackSetOutput) {
+        self.importStacksToStackSetResult = importStacksToStackSetResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case importStacksToStackSetResult = "ImportStacksToStackSetResult"
+    }
+
+    public func validate() throws {
+        try importStacksToStackSetResult.validate()
     }
 }
 
@@ -4815,6 +4885,15 @@ public struct StackInstanceSummary: Codable, Equatable {
         try organizationalUnitId?.validateAsOrganizationalUnitId()
         try region?.validateAsRegion()
         try stackInstanceStatus?.validate()
+    }
+}
+
+public struct StackNotFoundException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
     }
 }
 

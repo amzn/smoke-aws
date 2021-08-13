@@ -62,6 +62,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case getStackPolicy = "GetStackPolicy"
     case getTemplate = "GetTemplate"
     case getTemplateSummary = "GetTemplateSummary"
+    case importStacksToStackSet = "ImportStacksToStackSet"
     case listChangeSets = "ListChangeSets"
     case listExports = "ListExports"
     case listImports = "ListImports"
@@ -167,6 +168,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .getTemplate:
             return "/"
         case .getTemplateSummary:
+            return "/"
+        case .importStacksToStackSet:
             return "/"
         case .listChangeSets:
             return "/"

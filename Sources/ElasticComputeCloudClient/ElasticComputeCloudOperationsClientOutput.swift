@@ -233,6 +233,19 @@ extension AssociateIamInstanceProfileResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the AssociateInstanceEventWindow operation in a HTTP client.
+ */
+extension AssociateInstanceEventWindowResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AssociateInstanceEventWindowResult
+    public typealias HeadersType = AssociateInstanceEventWindowResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AssociateInstanceEventWindowResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the AssociateRouteTable operation in a HTTP client.
  */
 extension AssociateRouteTableResult: HTTPResponseOutputProtocol {
@@ -371,6 +384,32 @@ extension AuthorizeClientVpnIngressResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> AuthorizeClientVpnIngressResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the AuthorizeSecurityGroupEgress operation in a HTTP client.
+ */
+extension AuthorizeSecurityGroupEgressResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AuthorizeSecurityGroupEgressResult
+    public typealias HeadersType = AuthorizeSecurityGroupEgressResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AuthorizeSecurityGroupEgressResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the AuthorizeSecurityGroupIngress operation in a HTTP client.
+ */
+extension AuthorizeSecurityGroupIngressResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AuthorizeSecurityGroupIngressResult
+    public typealias HeadersType = AuthorizeSecurityGroupIngressResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AuthorizeSecurityGroupIngressResult {
         return try bodyDecodableProvider()
     }
 }
@@ -683,6 +722,19 @@ extension CreateImageResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateImageResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateInstanceEventWindow operation in a HTTP client.
+ */
+extension CreateInstanceEventWindowResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateInstanceEventWindowResult
+    public typealias HeadersType = CreateInstanceEventWindowResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateInstanceEventWindowResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1008,6 +1060,19 @@ extension CreateSubnetResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateSubnetResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateSubnetCidrReservation operation in a HTTP client.
+ */
+extension CreateSubnetCidrReservationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateSubnetCidrReservationResult
+    public typealias HeadersType = CreateSubnetCidrReservationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateSubnetCidrReservationResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1377,6 +1442,19 @@ extension DeleteFpgaImageResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteInstanceEventWindow operation in a HTTP client.
+ */
+extension DeleteInstanceEventWindowResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteInstanceEventWindowResult
+    public typealias HeadersType = DeleteInstanceEventWindowResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteInstanceEventWindowResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteLaunchTemplate operation in a HTTP client.
  */
 extension DeleteLaunchTemplateResult: HTTPResponseOutputProtocol {
@@ -1502,6 +1580,19 @@ extension DeleteQueuedReservedInstancesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteQueuedReservedInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteSubnetCidrReservation operation in a HTTP client.
+ */
+extension DeleteSubnetCidrReservationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteSubnetCidrReservationResult
+    public typealias HeadersType = DeleteSubnetCidrReservationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteSubnetCidrReservationResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2339,6 +2430,19 @@ extension DescribeInstanceEventNotificationAttributesResult: HTTPResponseOutputP
 }
 
 /**
+ Type to handle the output from the DescribeInstanceEventWindows operation in a HTTP client.
+ */
+extension DescribeInstanceEventWindowsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeInstanceEventWindowsResult
+    public typealias HeadersType = DescribeInstanceEventWindowsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeInstanceEventWindowsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeInstanceStatus operation in a HTTP client.
  */
 extension DescribeInstanceStatusResult: HTTPResponseOutputProtocol {
@@ -2828,6 +2932,19 @@ extension DescribeSecurityGroupReferencesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeSecurityGroupReferencesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeSecurityGroupRules operation in a HTTP client.
+ */
+extension DescribeSecurityGroupRulesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeSecurityGroupRulesResult
+    public typealias HeadersType = DescribeSecurityGroupRulesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeSecurityGroupRulesResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3522,6 +3639,19 @@ extension DisassociateIamInstanceProfileResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisassociateInstanceEventWindow operation in a HTTP client.
+ */
+extension DisassociateInstanceEventWindowResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisassociateInstanceEventWindowResult
+    public typealias HeadersType = DisassociateInstanceEventWindowResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisassociateInstanceEventWindowResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisassociateSubnetCidrBlock operation in a HTTP client.
  */
 extension DisassociateSubnetCidrBlockResult: HTTPResponseOutputProtocol {
@@ -3964,6 +4094,19 @@ extension GetSerialConsoleAccessStatusResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetSubnetCidrReservations operation in a HTTP client.
+ */
+extension GetSubnetCidrReservationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetSubnetCidrReservationsResult
+    public typealias HeadersType = GetSubnetCidrReservationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetSubnetCidrReservationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetTransitGatewayAttachmentPropagations operation in a HTTP client.
  */
 extension GetTransitGatewayAttachmentPropagationsResult: HTTPResponseOutputProtocol {
@@ -4263,6 +4406,19 @@ extension ModifyInstanceEventStartTimeResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyInstanceEventWindow operation in a HTTP client.
+ */
+extension ModifyInstanceEventWindowResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyInstanceEventWindowResult
+    public typealias HeadersType = ModifyInstanceEventWindowResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyInstanceEventWindowResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyInstanceMetadataOptions operation in a HTTP client.
  */
 extension ModifyInstanceMetadataOptionsResult: HTTPResponseOutputProtocol {
@@ -4323,6 +4479,19 @@ extension ModifyReservedInstancesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyReservedInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifySecurityGroupRules operation in a HTTP client.
+ */
+extension ModifySecurityGroupRulesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifySecurityGroupRulesResult
+    public typealias HeadersType = ModifySecurityGroupRulesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifySecurityGroupRulesResult {
         return try bodyDecodableProvider()
     }
 }

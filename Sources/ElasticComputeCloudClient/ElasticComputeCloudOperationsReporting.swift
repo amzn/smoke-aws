@@ -45,6 +45,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let associateDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -85,6 +86,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let createFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createInstanceExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -111,6 +113,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let createSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createStoreImageTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createSubnetCidrReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -143,6 +146,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let deleteFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -165,6 +169,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let deleteSnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteSpotDatafeedSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteSubnet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteSubnetCidrReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteTags: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteTrafficMirrorFilter: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteTrafficMirrorFilterRule: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -236,6 +241,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceCreditSpecifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceEventWindows: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceTypeOfferings: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -274,6 +280,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeScheduledInstanceAvailability: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeScheduledInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeSecurityGroupReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeSecurityGroupRules: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeSecurityGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeSnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeSnapshots: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -333,6 +340,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let disassociateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -370,6 +378,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getSerialConsoleAccessStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getSubnetCidrReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayAttachmentPropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayPrefixListReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -397,12 +406,14 @@ public struct ElasticComputeCloudOperationsReporting {
     public let modifyInstanceCapacityReservationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyInstanceCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyInstanceEventStartTime: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyInstanceMetadataOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyInstancePlacement: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifySecurityGroupRules: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifySnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifySpotFleetRequest: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifySubnetAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -518,6 +529,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .associateEnclaveCertificateIamRole, configuration: reportingConfiguration)
         self.associateIamInstanceProfile = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateIamInstanceProfile, configuration: reportingConfiguration)
+        self.associateInstanceEventWindow = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateInstanceEventWindow, configuration: reportingConfiguration)
         self.associateRouteTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateRouteTable, configuration: reportingConfiguration)
         self.associateSubnetCidrBlock = StandardSmokeAWSOperationReporting(
@@ -598,6 +611,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createFpgaImage, configuration: reportingConfiguration)
         self.createImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createImage, configuration: reportingConfiguration)
+        self.createInstanceEventWindow = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createInstanceEventWindow, configuration: reportingConfiguration)
         self.createInstanceExportTask = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createInstanceExportTask, configuration: reportingConfiguration)
         self.createInternetGateway = StandardSmokeAWSOperationReporting(
@@ -650,6 +665,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createStoreImageTask, configuration: reportingConfiguration)
         self.createSubnet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createSubnet, configuration: reportingConfiguration)
+        self.createSubnetCidrReservation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createSubnetCidrReservation, configuration: reportingConfiguration)
         self.createTags = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createTags, configuration: reportingConfiguration)
         self.createTrafficMirrorFilter = StandardSmokeAWSOperationReporting(
@@ -714,6 +731,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteFlowLogs, configuration: reportingConfiguration)
         self.deleteFpgaImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteFpgaImage, configuration: reportingConfiguration)
+        self.deleteInstanceEventWindow = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteInstanceEventWindow, configuration: reportingConfiguration)
         self.deleteInternetGateway = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteInternetGateway, configuration: reportingConfiguration)
         self.deleteKeyPair = StandardSmokeAWSOperationReporting(
@@ -758,6 +777,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteSpotDatafeedSubscription, configuration: reportingConfiguration)
         self.deleteSubnet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteSubnet, configuration: reportingConfiguration)
+        self.deleteSubnetCidrReservation = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteSubnetCidrReservation, configuration: reportingConfiguration)
         self.deleteTags = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTags, configuration: reportingConfiguration)
         self.deleteTrafficMirrorFilter = StandardSmokeAWSOperationReporting(
@@ -900,6 +921,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeInstanceCreditSpecifications, configuration: reportingConfiguration)
         self.describeInstanceEventNotificationAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeInstanceEventNotificationAttributes, configuration: reportingConfiguration)
+        self.describeInstanceEventWindows = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceEventWindows, configuration: reportingConfiguration)
         self.describeInstanceStatus = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeInstanceStatus, configuration: reportingConfiguration)
         self.describeInstanceTypeOfferings = StandardSmokeAWSOperationReporting(
@@ -976,6 +999,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeScheduledInstances, configuration: reportingConfiguration)
         self.describeSecurityGroupReferences = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeSecurityGroupReferences, configuration: reportingConfiguration)
+        self.describeSecurityGroupRules = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeSecurityGroupRules, configuration: reportingConfiguration)
         self.describeSecurityGroups = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeSecurityGroups, configuration: reportingConfiguration)
         self.describeSnapshotAttribute = StandardSmokeAWSOperationReporting(
@@ -1094,6 +1119,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disassociateEnclaveCertificateIamRole, configuration: reportingConfiguration)
         self.disassociateIamInstanceProfile = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateIamInstanceProfile, configuration: reportingConfiguration)
+        self.disassociateInstanceEventWindow = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateInstanceEventWindow, configuration: reportingConfiguration)
         self.disassociateRouteTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateRouteTable, configuration: reportingConfiguration)
         self.disassociateSubnetCidrBlock = StandardSmokeAWSOperationReporting(
@@ -1168,6 +1195,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getReservedInstancesExchangeQuote, configuration: reportingConfiguration)
         self.getSerialConsoleAccessStatus = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getSerialConsoleAccessStatus, configuration: reportingConfiguration)
+        self.getSubnetCidrReservations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getSubnetCidrReservations, configuration: reportingConfiguration)
         self.getTransitGatewayAttachmentPropagations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getTransitGatewayAttachmentPropagations, configuration: reportingConfiguration)
         self.getTransitGatewayMulticastDomainAssociations = StandardSmokeAWSOperationReporting(
@@ -1222,6 +1251,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .modifyInstanceCreditSpecification, configuration: reportingConfiguration)
         self.modifyInstanceEventStartTime = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyInstanceEventStartTime, configuration: reportingConfiguration)
+        self.modifyInstanceEventWindow = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyInstanceEventWindow, configuration: reportingConfiguration)
         self.modifyInstanceMetadataOptions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyInstanceMetadataOptions, configuration: reportingConfiguration)
         self.modifyInstancePlacement = StandardSmokeAWSOperationReporting(
@@ -1234,6 +1265,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .modifyNetworkInterfaceAttribute, configuration: reportingConfiguration)
         self.modifyReservedInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyReservedInstances, configuration: reportingConfiguration)
+        self.modifySecurityGroupRules = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifySecurityGroupRules, configuration: reportingConfiguration)
         self.modifySnapshotAttribute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifySnapshotAttribute, configuration: reportingConfiguration)
         self.modifySpotFleetRequest = StandardSmokeAWSOperationReporting(

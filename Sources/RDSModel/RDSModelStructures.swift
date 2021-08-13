@@ -2436,6 +2436,7 @@ public struct DBCluster: Codable, Equatable {
     public var activityStreamStatus: ActivityStreamStatus?
     public var allocatedStorage: IntegerOptional?
     public var associatedRoles: DBClusterRoles?
+    public var automaticRestartTime: TStamp?
     public var availabilityZones: AvailabilityZones?
     public var backtrackConsumedChangeRecords: LongOptional?
     public var backtrackWindow: LongOptional?
@@ -2493,6 +2494,7 @@ public struct DBCluster: Codable, Equatable {
                 activityStreamStatus: ActivityStreamStatus? = nil,
                 allocatedStorage: IntegerOptional? = nil,
                 associatedRoles: DBClusterRoles? = nil,
+                automaticRestartTime: TStamp? = nil,
                 availabilityZones: AvailabilityZones? = nil,
                 backtrackConsumedChangeRecords: LongOptional? = nil,
                 backtrackWindow: LongOptional? = nil,
@@ -2549,6 +2551,7 @@ public struct DBCluster: Codable, Equatable {
         self.activityStreamStatus = activityStreamStatus
         self.allocatedStorage = allocatedStorage
         self.associatedRoles = associatedRoles
+        self.automaticRestartTime = automaticRestartTime
         self.availabilityZones = availabilityZones
         self.backtrackConsumedChangeRecords = backtrackConsumedChangeRecords
         self.backtrackWindow = backtrackWindow
@@ -2608,6 +2611,7 @@ public struct DBCluster: Codable, Equatable {
         case activityStreamStatus = "ActivityStreamStatus"
         case allocatedStorage = "AllocatedStorage"
         case associatedRoles = "AssociatedRoles"
+        case automaticRestartTime = "AutomaticRestartTime"
         case availabilityZones = "AvailabilityZones"
         case backtrackConsumedChangeRecords = "BacktrackConsumedChangeRecords"
         case backtrackWindow = "BacktrackWindow"
@@ -3598,6 +3602,7 @@ public struct DBInstance: Codable, Equatable {
     public var allocatedStorage: Integer?
     public var associatedRoles: DBInstanceRoles?
     public var autoMinorVersionUpgrade: Boolean?
+    public var automaticRestartTime: TStamp?
     public var availabilityZone: String?
     public var awsBackupRecoveryPointArn: String?
     public var backupRetentionPeriod: Integer?
@@ -3668,6 +3673,7 @@ public struct DBInstance: Codable, Equatable {
                 allocatedStorage: Integer? = nil,
                 associatedRoles: DBInstanceRoles? = nil,
                 autoMinorVersionUpgrade: Boolean? = nil,
+                automaticRestartTime: TStamp? = nil,
                 availabilityZone: String? = nil,
                 awsBackupRecoveryPointArn: String? = nil,
                 backupRetentionPeriod: Integer? = nil,
@@ -3737,6 +3743,7 @@ public struct DBInstance: Codable, Equatable {
         self.allocatedStorage = allocatedStorage
         self.associatedRoles = associatedRoles
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
+        self.automaticRestartTime = automaticRestartTime
         self.availabilityZone = availabilityZone
         self.awsBackupRecoveryPointArn = awsBackupRecoveryPointArn
         self.backupRetentionPeriod = backupRetentionPeriod
@@ -3809,6 +3816,7 @@ public struct DBInstance: Codable, Equatable {
         case allocatedStorage = "AllocatedStorage"
         case associatedRoles = "AssociatedRoles"
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
+        case automaticRestartTime = "AutomaticRestartTime"
         case availabilityZone = "AvailabilityZone"
         case awsBackupRecoveryPointArn = "AwsBackupRecoveryPointArn"
         case backupRetentionPeriod = "BackupRetentionPeriod"
@@ -4834,6 +4842,7 @@ public struct DBSnapshot: Codable, Equatable {
     public var licenseModel: String?
     public var masterUsername: String?
     public var optionGroupName: String?
+    public var originalSnapshotCreateTime: TStamp?
     public var percentProgress: Integer?
     public var port: Integer?
     public var processorFeatures: ProcessorFeatureList?
@@ -4864,6 +4873,7 @@ public struct DBSnapshot: Codable, Equatable {
                 licenseModel: String? = nil,
                 masterUsername: String? = nil,
                 optionGroupName: String? = nil,
+                originalSnapshotCreateTime: TStamp? = nil,
                 percentProgress: Integer? = nil,
                 port: Integer? = nil,
                 processorFeatures: ProcessorFeatureList? = nil,
@@ -4893,6 +4903,7 @@ public struct DBSnapshot: Codable, Equatable {
         self.licenseModel = licenseModel
         self.masterUsername = masterUsername
         self.optionGroupName = optionGroupName
+        self.originalSnapshotCreateTime = originalSnapshotCreateTime
         self.percentProgress = percentProgress
         self.port = port
         self.processorFeatures = processorFeatures
@@ -4925,6 +4936,7 @@ public struct DBSnapshot: Codable, Equatable {
         case licenseModel = "LicenseModel"
         case masterUsername = "MasterUsername"
         case optionGroupName = "OptionGroupName"
+        case originalSnapshotCreateTime = "OriginalSnapshotCreateTime"
         case percentProgress = "PercentProgress"
         case port = "Port"
         case processorFeatures = "ProcessorFeatures"

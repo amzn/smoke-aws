@@ -43,6 +43,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case associateDhcpOptions = "AssociateDhcpOptions"
     case associateEnclaveCertificateIamRole = "AssociateEnclaveCertificateIamRole"
     case associateIamInstanceProfile = "AssociateIamInstanceProfile"
+    case associateInstanceEventWindow = "AssociateInstanceEventWindow"
     case associateRouteTable = "AssociateRouteTable"
     case associateSubnetCidrBlock = "AssociateSubnetCidrBlock"
     case associateTransitGatewayMulticastDomain = "AssociateTransitGatewayMulticastDomain"
@@ -83,6 +84,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createFlowLogs = "CreateFlowLogs"
     case createFpgaImage = "CreateFpgaImage"
     case createImage = "CreateImage"
+    case createInstanceEventWindow = "CreateInstanceEventWindow"
     case createInstanceExportTask = "CreateInstanceExportTask"
     case createInternetGateway = "CreateInternetGateway"
     case createKeyPair = "CreateKeyPair"
@@ -109,6 +111,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createSpotDatafeedSubscription = "CreateSpotDatafeedSubscription"
     case createStoreImageTask = "CreateStoreImageTask"
     case createSubnet = "CreateSubnet"
+    case createSubnetCidrReservation = "CreateSubnetCidrReservation"
     case createTags = "CreateTags"
     case createTrafficMirrorFilter = "CreateTrafficMirrorFilter"
     case createTrafficMirrorFilterRule = "CreateTrafficMirrorFilterRule"
@@ -141,6 +144,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteFleets = "DeleteFleets"
     case deleteFlowLogs = "DeleteFlowLogs"
     case deleteFpgaImage = "DeleteFpgaImage"
+    case deleteInstanceEventWindow = "DeleteInstanceEventWindow"
     case deleteInternetGateway = "DeleteInternetGateway"
     case deleteKeyPair = "DeleteKeyPair"
     case deleteLaunchTemplate = "DeleteLaunchTemplate"
@@ -163,6 +167,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteSnapshot = "DeleteSnapshot"
     case deleteSpotDatafeedSubscription = "DeleteSpotDatafeedSubscription"
     case deleteSubnet = "DeleteSubnet"
+    case deleteSubnetCidrReservation = "DeleteSubnetCidrReservation"
     case deleteTags = "DeleteTags"
     case deleteTrafficMirrorFilter = "DeleteTrafficMirrorFilter"
     case deleteTrafficMirrorFilterRule = "DeleteTrafficMirrorFilterRule"
@@ -234,6 +239,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeInstanceAttribute = "DescribeInstanceAttribute"
     case describeInstanceCreditSpecifications = "DescribeInstanceCreditSpecifications"
     case describeInstanceEventNotificationAttributes = "DescribeInstanceEventNotificationAttributes"
+    case describeInstanceEventWindows = "DescribeInstanceEventWindows"
     case describeInstanceStatus = "DescribeInstanceStatus"
     case describeInstanceTypeOfferings = "DescribeInstanceTypeOfferings"
     case describeInstanceTypes = "DescribeInstanceTypes"
@@ -272,6 +278,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeScheduledInstanceAvailability = "DescribeScheduledInstanceAvailability"
     case describeScheduledInstances = "DescribeScheduledInstances"
     case describeSecurityGroupReferences = "DescribeSecurityGroupReferences"
+    case describeSecurityGroupRules = "DescribeSecurityGroupRules"
     case describeSecurityGroups = "DescribeSecurityGroups"
     case describeSnapshotAttribute = "DescribeSnapshotAttribute"
     case describeSnapshots = "DescribeSnapshots"
@@ -331,6 +338,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disassociateClientVpnTargetNetwork = "DisassociateClientVpnTargetNetwork"
     case disassociateEnclaveCertificateIamRole = "DisassociateEnclaveCertificateIamRole"
     case disassociateIamInstanceProfile = "DisassociateIamInstanceProfile"
+    case disassociateInstanceEventWindow = "DisassociateInstanceEventWindow"
     case disassociateRouteTable = "DisassociateRouteTable"
     case disassociateSubnetCidrBlock = "DisassociateSubnetCidrBlock"
     case disassociateTransitGatewayMulticastDomain = "DisassociateTransitGatewayMulticastDomain"
@@ -368,6 +376,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getPasswordData = "GetPasswordData"
     case getReservedInstancesExchangeQuote = "GetReservedInstancesExchangeQuote"
     case getSerialConsoleAccessStatus = "GetSerialConsoleAccessStatus"
+    case getSubnetCidrReservations = "GetSubnetCidrReservations"
     case getTransitGatewayAttachmentPropagations = "GetTransitGatewayAttachmentPropagations"
     case getTransitGatewayMulticastDomainAssociations = "GetTransitGatewayMulticastDomainAssociations"
     case getTransitGatewayPrefixListReferences = "GetTransitGatewayPrefixListReferences"
@@ -395,12 +404,14 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyInstanceCapacityReservationAttributes = "ModifyInstanceCapacityReservationAttributes"
     case modifyInstanceCreditSpecification = "ModifyInstanceCreditSpecification"
     case modifyInstanceEventStartTime = "ModifyInstanceEventStartTime"
+    case modifyInstanceEventWindow = "ModifyInstanceEventWindow"
     case modifyInstanceMetadataOptions = "ModifyInstanceMetadataOptions"
     case modifyInstancePlacement = "ModifyInstancePlacement"
     case modifyLaunchTemplate = "ModifyLaunchTemplate"
     case modifyManagedPrefixList = "ModifyManagedPrefixList"
     case modifyNetworkInterfaceAttribute = "ModifyNetworkInterfaceAttribute"
     case modifyReservedInstances = "ModifyReservedInstances"
+    case modifySecurityGroupRules = "ModifySecurityGroupRules"
     case modifySnapshotAttribute = "ModifySnapshotAttribute"
     case modifySpotFleetRequest = "ModifySpotFleetRequest"
     case modifySubnetAttribute = "ModifySubnetAttribute"
@@ -521,6 +532,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .associateIamInstanceProfile:
             return "/"
+        case .associateInstanceEventWindow:
+            return "/"
         case .associateRouteTable:
             return "/"
         case .associateSubnetCidrBlock:
@@ -601,6 +614,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .createImage:
             return "/"
+        case .createInstanceEventWindow:
+            return "/"
         case .createInstanceExportTask:
             return "/"
         case .createInternetGateway:
@@ -652,6 +667,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .createStoreImageTask:
             return "/"
         case .createSubnet:
+            return "/"
+        case .createSubnetCidrReservation:
             return "/"
         case .createTags:
             return "/"
@@ -717,6 +734,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .deleteFpgaImage:
             return "/"
+        case .deleteInstanceEventWindow:
+            return "/"
         case .deleteInternetGateway:
             return "/"
         case .deleteKeyPair:
@@ -760,6 +779,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .deleteSpotDatafeedSubscription:
             return "/"
         case .deleteSubnet:
+            return "/"
+        case .deleteSubnetCidrReservation:
             return "/"
         case .deleteTags:
             return "/"
@@ -903,6 +924,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeInstanceEventNotificationAttributes:
             return "/"
+        case .describeInstanceEventWindows:
+            return "/"
         case .describeInstanceStatus:
             return "/"
         case .describeInstanceTypeOfferings:
@@ -978,6 +1001,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeScheduledInstances:
             return "/"
         case .describeSecurityGroupReferences:
+            return "/"
+        case .describeSecurityGroupRules:
             return "/"
         case .describeSecurityGroups:
             return "/"
@@ -1097,6 +1122,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disassociateIamInstanceProfile:
             return "/"
+        case .disassociateInstanceEventWindow:
+            return "/"
         case .disassociateRouteTable:
             return "/"
         case .disassociateSubnetCidrBlock:
@@ -1171,6 +1198,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getSerialConsoleAccessStatus:
             return "/"
+        case .getSubnetCidrReservations:
+            return "/"
         case .getTransitGatewayAttachmentPropagations:
             return "/"
         case .getTransitGatewayMulticastDomainAssociations:
@@ -1225,6 +1254,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .modifyInstanceEventStartTime:
             return "/"
+        case .modifyInstanceEventWindow:
+            return "/"
         case .modifyInstanceMetadataOptions:
             return "/"
         case .modifyInstancePlacement:
@@ -1236,6 +1267,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyNetworkInterfaceAttribute:
             return "/"
         case .modifyReservedInstances:
+            return "/"
+        case .modifySecurityGroupRules:
             return "/"
         case .modifySnapshotAttribute:
             return "/"

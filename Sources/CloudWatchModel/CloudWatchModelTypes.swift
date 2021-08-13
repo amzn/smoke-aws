@@ -23,6 +23,11 @@
 import Foundation
 
 /**
+ Type definition for the AccountId field.
+ */
+public typealias AccountId = String
+
+/**
  Type definition for the ActionPrefix field.
  */
 public typealias ActionPrefix = String
@@ -811,6 +816,21 @@ public typealias TreatMissingData = String
  Type definition for the Values field.
  */
 public typealias Values = [DatapointValue]
+
+/**
+ Validation for the AccountId field.
+*/
+extension CloudWatchModel.AccountId {
+    public func validateAsAccountId() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to AccountId violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw CloudWatchError.validationError(reason: "The provided value to AccountId violated the maximum length constraint.")
+        }
+    }
+}
 
 /**
  Validation for the ActionPrefix field.

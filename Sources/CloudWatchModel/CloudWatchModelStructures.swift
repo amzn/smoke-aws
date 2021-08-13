@@ -2152,6 +2152,7 @@ public struct MetricAlarm: Codable, Equatable {
 }
 
 public struct MetricDataQuery: Codable, Equatable {
+    public var accountId: AccountId?
     public var expression: MetricExpression?
     public var id: MetricId
     public var label: MetricLabel?
@@ -2159,12 +2160,14 @@ public struct MetricDataQuery: Codable, Equatable {
     public var period: Period?
     public var returnData: ReturnData?
 
-    public init(expression: MetricExpression? = nil,
+    public init(accountId: AccountId? = nil,
+                expression: MetricExpression? = nil,
                 id: MetricId,
                 label: MetricLabel? = nil,
                 metricStat: MetricStat? = nil,
                 period: Period? = nil,
                 returnData: ReturnData? = nil) {
+        self.accountId = accountId
         self.expression = expression
         self.id = id
         self.label = label
@@ -2174,6 +2177,7 @@ public struct MetricDataQuery: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case accountId = "AccountId"
         case expression = "Expression"
         case id = "Id"
         case label = "Label"
@@ -2183,6 +2187,7 @@ public struct MetricDataQuery: Codable, Equatable {
     }
 
     public func validate() throws {
+        try accountId?.validateAsAccountId()
         try expression?.validateAsMetricExpression()
         try id.validateAsMetricId()
         try metricStat?.validate()

@@ -1185,6 +1185,11 @@ public typealias DedicatedHostFlag = Bool
 public typealias DedicatedHostId = String
 
 /**
+ Type definition for the DedicatedHostIdList field.
+ */
+public typealias DedicatedHostIdList = [DedicatedHostId]
+
+/**
  Type definition for the DefaultNetworkCardIndex field.
  */
 public typealias DefaultNetworkCardIndex = Int
@@ -1451,6 +1456,11 @@ public typealias DescribeRouteTablesMaxResults = Int
  Type definition for the DescribeScheduledInstanceAvailabilityMaxResults field.
  */
 public typealias DescribeScheduledInstanceAvailabilityMaxResults = Int
+
+/**
+ Type definition for the DescribeSecurityGroupRulesMaxResults field.
+ */
+public typealias DescribeSecurityGroupRulesMaxResults = Int
 
 /**
  Type definition for the DescribeSecurityGroupsMaxResults field.
@@ -2328,6 +2338,11 @@ public typealias GetGroupsForCapacityReservationRequestMaxResults = Int
 public typealias GetManagedPrefixListAssociationsMaxResults = Int
 
 /**
+ Type definition for the GetSubnetCidrReservationsMaxResults field.
+ */
+public typealias GetSubnetCidrReservationsMaxResults = Int
+
+/**
  Type definition for the GpuDeviceCount field.
  */
 public typealias GpuDeviceCount = Int
@@ -2449,6 +2464,11 @@ public enum HostTenancy: String, Codable, CustomStringConvertible {
     
     public static let __default: HostTenancy = .dedicated
 }
+
+/**
+ Type definition for the Hour field.
+ */
+public typealias Hour = Int
 
 /**
  Enumeration restricting the values of the HttpTokensState field.
@@ -2745,6 +2765,52 @@ public typealias InstanceCreditSpecificationListRequest = [InstanceCreditSpecifi
 public typealias InstanceEventId = String
 
 /**
+ Type definition for the InstanceEventWindowCronExpression field.
+ */
+public typealias InstanceEventWindowCronExpression = String
+
+/**
+ Type definition for the InstanceEventWindowId field.
+ */
+public typealias InstanceEventWindowId = String
+
+/**
+ Type definition for the InstanceEventWindowIdSet field.
+ */
+public typealias InstanceEventWindowIdSet = [InstanceEventWindowId]
+
+/**
+ Type definition for the InstanceEventWindowSet field.
+ */
+public typealias InstanceEventWindowSet = [InstanceEventWindow]
+
+/**
+ Enumeration restricting the values of the InstanceEventWindowState field.
+ */
+public enum InstanceEventWindowState: String, Codable, CustomStringConvertible {
+    case active
+    case creating
+    case deleted
+    case deleting
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceEventWindowState = .active
+}
+
+/**
+ Type definition for the InstanceEventWindowTimeRangeList field.
+ */
+public typealias InstanceEventWindowTimeRangeList = [InstanceEventWindowTimeRange]
+
+/**
+ Type definition for the InstanceEventWindowTimeRangeRequestSet field.
+ */
+public typealias InstanceEventWindowTimeRangeRequestSet = [InstanceEventWindowTimeRangeRequest]
+
+/**
  Enumeration restricting the values of the InstanceHealthStatus field.
  */
 public enum InstanceHealthStatus: String, Codable, CustomStringConvertible {
@@ -2762,6 +2828,11 @@ public enum InstanceHealthStatus: String, Codable, CustomStringConvertible {
  Type definition for the InstanceId field.
  */
 public typealias InstanceId = String
+
+/**
+ Type definition for the InstanceIdList field.
+ */
+public typealias InstanceIdList = [InstanceId]
 
 /**
  Type definition for the InstanceIdSet field.
@@ -2794,6 +2865,11 @@ public enum InstanceInterruptionBehavior: String, Codable, CustomStringConvertib
 }
 
 /**
+ Type definition for the InstanceIpv4PrefixList field.
+ */
+public typealias InstanceIpv4PrefixList = [InstanceIpv4Prefix]
+
+/**
  Type definition for the InstanceIpv6AddressList field.
  */
 public typealias InstanceIpv6AddressList = [InstanceIpv6Address]
@@ -2802,6 +2878,11 @@ public typealias InstanceIpv6AddressList = [InstanceIpv6Address]
  Type definition for the InstanceIpv6AddressListRequest field.
  */
 public typealias InstanceIpv6AddressListRequest = [InstanceIpv6AddressRequest]
+
+/**
+ Type definition for the InstanceIpv6PrefixList field.
+ */
+public typealias InstanceIpv6PrefixList = [InstanceIpv6Prefix]
 
 /**
  Enumeration restricting the values of the InstanceLifecycle field.
@@ -3063,8 +3144,10 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case g38xlarge = "g3.8xlarge"
     case g3sXlarge = "g3s.xlarge"
     case g4ad16xlarge = "g4ad.16xlarge"
+    case g4ad2xlarge = "g4ad.2xlarge"
     case g4ad4xlarge = "g4ad.4xlarge"
     case g4ad8xlarge = "g4ad.8xlarge"
+    case g4adXlarge = "g4ad.xlarge"
     case g4dn12xlarge = "g4dn.12xlarge"
     case g4dn16xlarge = "g4dn.16xlarge"
     case g4dn2xlarge = "g4dn.2xlarge"
@@ -3467,6 +3550,11 @@ public typealias IpAddressList = [IpAddress]
 public typealias IpPermissionList = [IpPermission]
 
 /**
+ Type definition for the IpPrefixList field.
+ */
+public typealias IpPrefixList = [String]
+
+/**
  Type definition for the IpRangeList field.
  */
 public typealias IpRangeList = [IpRange]
@@ -3480,6 +3568,21 @@ public typealias IpRanges = [String]
  Type definition for the Ipv4PoolEc2Id field.
  */
 public typealias Ipv4PoolEc2Id = String
+
+/**
+ Type definition for the Ipv4PrefixList field.
+ */
+public typealias Ipv4PrefixList = [Ipv4PrefixSpecificationRequest]
+
+/**
+ Type definition for the Ipv4PrefixListResponse field.
+ */
+public typealias Ipv4PrefixListResponse = [Ipv4PrefixSpecificationResponse]
+
+/**
+ Type definition for the Ipv4PrefixesList field.
+ */
+public typealias Ipv4PrefixesList = [Ipv4PrefixSpecification]
 
 /**
  Type definition for the Ipv6Address field.
@@ -3525,6 +3628,21 @@ public typealias Ipv6PoolMaxResults = Int
  Type definition for the Ipv6PoolSet field.
  */
 public typealias Ipv6PoolSet = [Ipv6Pool]
+
+/**
+ Type definition for the Ipv6PrefixList field.
+ */
+public typealias Ipv6PrefixList = [Ipv6PrefixSpecificationRequest]
+
+/**
+ Type definition for the Ipv6PrefixListResponse field.
+ */
+public typealias Ipv6PrefixListResponse = [Ipv6PrefixSpecificationResponse]
+
+/**
+ Type definition for the Ipv6PrefixesList field.
+ */
+public typealias Ipv6PrefixesList = [Ipv6PrefixSpecification]
 
 /**
  Type definition for the Ipv6RangeList field.
@@ -5245,6 +5363,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case importImageTask = "import-image-task"
     case importSnapshotTask = "import-snapshot-task"
     case instance
+    case instanceEventWindow = "instance-event-window"
     case internetGateway = "internet-gateway"
     case keyPair = "key-pair"
     case launchTemplate = "launch-template"
@@ -5258,6 +5377,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case reservedInstances = "reserved-instances"
     case routeTable = "route-table"
     case securityGroup = "security-group"
+    case securityGroupRule = "security-group-rule"
     case snapshot
     case spotFleetRequest = "spot-fleet-request"
     case spotInstancesRequest = "spot-instances-request"
@@ -5298,6 +5418,11 @@ public typealias ResponseHostIdSet = [String]
  Type definition for the RestorableByStringList field.
  */
 public typealias RestorableByStringList = [String]
+
+/**
+ Type definition for the ResultRange field.
+ */
+public typealias ResultRange = Int
 
 /**
  Enumeration restricting the values of the RootDeviceType field.
@@ -5482,6 +5607,31 @@ public typealias SecurityGroupName = String
  Type definition for the SecurityGroupReferences field.
  */
 public typealias SecurityGroupReferences = [SecurityGroupReference]
+
+/**
+ Type definition for the SecurityGroupRuleDescriptionList field.
+ */
+public typealias SecurityGroupRuleDescriptionList = [SecurityGroupRuleDescription]
+
+/**
+ Type definition for the SecurityGroupRuleId field.
+ */
+public typealias SecurityGroupRuleId = String
+
+/**
+ Type definition for the SecurityGroupRuleIdList field.
+ */
+public typealias SecurityGroupRuleIdList = [String]
+
+/**
+ Type definition for the SecurityGroupRuleList field.
+ */
+public typealias SecurityGroupRuleList = [SecurityGroupRule]
+
+/**
+ Type definition for the SecurityGroupRuleUpdateList field.
+ */
+public typealias SecurityGroupRuleUpdateList = [SecurityGroupRuleUpdate]
 
 /**
  Type definition for the SecurityGroupStringList field.
@@ -5848,6 +5998,30 @@ public enum SubnetCidrBlockStateCode: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: SubnetCidrBlockStateCode = .associated
+}
+
+/**
+ Type definition for the SubnetCidrReservationId field.
+ */
+public typealias SubnetCidrReservationId = String
+
+/**
+ Type definition for the SubnetCidrReservationList field.
+ */
+public typealias SubnetCidrReservationList = [SubnetCidrReservation]
+
+/**
+ Enumeration restricting the values of the SubnetCidrReservationType field.
+ */
+public enum SubnetCidrReservationType: String, Codable, CustomStringConvertible {
+    case explicit
+    case prefix
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: SubnetCidrReservationType = .explicit
 }
 
 /**
@@ -7180,6 +7354,25 @@ public enum VpnStaticRouteSource: String, Codable, CustomStringConvertible {
 public typealias VpnTunnelOptionsSpecificationsList = [VpnTunnelOptionsSpecification]
 
 /**
+ Enumeration restricting the values of the WeekDay field.
+ */
+public enum WeekDay: String, Codable, CustomStringConvertible {
+    case friday
+    case monday
+    case saturday
+    case sunday
+    case thursday
+    case tuesday
+    case wednesday
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: WeekDay = .friday
+}
+
+/**
  Type definition for the ZoneIdStringList field.
  */
 public typealias ZoneIdStringList = [String]
@@ -7769,6 +7962,21 @@ extension ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityMaxResul
 }
 
 /**
+ Validation for the DescribeSecurityGroupRulesMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeSecurityGroupRulesMaxResults {
+    public func validateAsDescribeSecurityGroupRulesMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSecurityGroupRulesMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeSecurityGroupRulesMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DescribeSecurityGroupsMaxResults field.
 */
 extension ElasticComputeCloudModel.DescribeSecurityGroupsMaxResults {
@@ -8021,6 +8229,36 @@ extension ElasticComputeCloudModel.GetManagedPrefixListAssociationsMaxResults {
 }
 
 /**
+ Validation for the GetSubnetCidrReservationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.GetSubnetCidrReservationsMaxResults {
+    public func validateAsGetSubnetCidrReservationsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GetSubnetCidrReservationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GetSubnetCidrReservationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the Hour field.
+*/
+extension ElasticComputeCloudModel.Hour {
+    public func validateAsHour() throws {
+        if self < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to Hour violated the minimum range constraint.")
+        }
+
+        if self > 23 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to Hour violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the IpAddress field.
 */
 extension ElasticComputeCloudModel.IpAddress {
@@ -8230,6 +8468,21 @@ extension ElasticComputeCloudModel.ResourceArn {
 
         if self.count > 1283 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to ResourceArn violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ResultRange field.
+*/
+extension ElasticComputeCloudModel.ResultRange {
+    public func validateAsResultRange() throws {
+        if self < 20 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ResultRange violated the minimum range constraint.")
+        }
+
+        if self > 500 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ResultRange violated the maximum range constraint.")
         }
     }
 }

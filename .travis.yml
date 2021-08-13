@@ -28,12 +28,6 @@ matrix:
       services: docker
       env: DOCKER_IMAGE_TAG=swift:5.3.3-bionic ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
 
-    - os: linux
-      dist: bionic
-      sudo: required
-      services: docker
-      env: DOCKER_IMAGE_TAG=swift:5.2.4-bionic ONLY_RUN_SWIFT_LINT=no USE_APT_GET=yes
-
     # Verify next version of Swift (5.5)
     - os: linux
       dist: bionic

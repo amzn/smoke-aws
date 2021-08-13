@@ -2912,6 +2912,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     }
 
     /**
+     Invokes the ImportStacksToStackSet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+         - completion: The ImportStacksToStackSetOutputForImportStacksToStackSet object or an error will be passed to this 
+           callback when the operation is complete. The ImportStacksToStackSetOutputForImportStacksToStackSet
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    public func importStacksToStackSetAsync(
+            input: CloudformationModel.ImportStacksToStackSetInput, 
+            completion: @escaping (Result<CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importStacksToStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ImportStacksToStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.importStacksToStackSet.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ImportStacksToStackSet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+     - Returns: The ImportStacksToStackSetOutputForImportStacksToStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    public func importStacksToStackSetSync(
+            input: CloudformationModel.ImportStacksToStackSetInput) throws -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importStacksToStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ImportStacksToStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.importStacksToStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListChangeSets operation returning immediately and passing the response to a callback.
 
      - Parameters:

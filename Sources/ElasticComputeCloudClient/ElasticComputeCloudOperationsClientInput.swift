@@ -110,6 +110,11 @@ public typealias AssociateEnclaveCertificateIamRoleOperationHTTPRequestInput = Q
 public typealias AssociateIamInstanceProfileOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the AssociateInstanceEventWindow operation in a HTTP client.
+ */
+public typealias AssociateInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AssociateRouteTable operation in a HTTP client.
  */
 public typealias AssociateRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -310,6 +315,11 @@ public typealias CreateFpgaImageOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias CreateImageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateInstanceEventWindow operation in a HTTP client.
+ */
+public typealias CreateInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateInstanceExportTask operation in a HTTP client.
  */
 public typealias CreateInstanceExportTaskOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -438,6 +448,11 @@ public typealias CreateStoreImageTaskOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the CreateSubnet operation in a HTTP client.
  */
 public typealias CreateSubnetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateSubnetCidrReservation operation in a HTTP client.
+ */
+public typealias CreateSubnetCidrReservationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateTags operation in a HTTP client.
@@ -600,6 +615,11 @@ public typealias DeleteFlowLogsOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias DeleteFpgaImageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteInstanceEventWindow operation in a HTTP client.
+ */
+public typealias DeleteInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteInternetGateway operation in a HTTP client.
  */
 public typealias DeleteInternetGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -708,6 +728,11 @@ public typealias DeleteSpotDatafeedSubscriptionOperationHTTPRequestInput = Query
  Type to handle the input to the DeleteSubnet operation in a HTTP client.
  */
 public typealias DeleteSubnetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteSubnetCidrReservation operation in a HTTP client.
+ */
+public typealias DeleteSubnetCidrReservationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteTags operation in a HTTP client.
@@ -1065,6 +1090,11 @@ public typealias DescribeInstanceCreditSpecificationsOperationHTTPRequestInput =
 public typealias DescribeInstanceEventNotificationAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeInstanceEventWindows operation in a HTTP client.
+ */
+public typealias DescribeInstanceEventWindowsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeInstanceStatus operation in a HTTP client.
  */
 public typealias DescribeInstanceStatusOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1253,6 +1283,11 @@ public typealias DescribeScheduledInstancesOperationHTTPRequestInput = QueryHTTP
  Type to handle the input to the DescribeSecurityGroupReferences operation in a HTTP client.
  */
 public typealias DescribeSecurityGroupReferencesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeSecurityGroupRules operation in a HTTP client.
+ */
+public typealias DescribeSecurityGroupRulesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeSecurityGroups operation in a HTTP client.
@@ -1550,6 +1585,11 @@ public typealias DisassociateEnclaveCertificateIamRoleOperationHTTPRequestInput 
 public typealias DisassociateIamInstanceProfileOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisassociateInstanceEventWindow operation in a HTTP client.
+ */
+public typealias DisassociateInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisassociateRouteTable operation in a HTTP client.
  */
 public typealias DisassociateRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1735,6 +1775,11 @@ public typealias GetReservedInstancesExchangeQuoteOperationHTTPRequestInput = Qu
 public typealias GetSerialConsoleAccessStatusOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetSubnetCidrReservations operation in a HTTP client.
+ */
+public typealias GetSubnetCidrReservationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetTransitGatewayAttachmentPropagations operation in a HTTP client.
  */
 public typealias GetTransitGatewayAttachmentPropagationsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1870,6 +1915,11 @@ public typealias ModifyInstanceCreditSpecificationOperationHTTPRequestInput = Qu
 public typealias ModifyInstanceEventStartTimeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyInstanceEventWindow operation in a HTTP client.
+ */
+public typealias ModifyInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyInstanceMetadataOptions operation in a HTTP client.
  */
 public typealias ModifyInstanceMetadataOptionsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1898,6 +1948,11 @@ public typealias ModifyNetworkInterfaceAttributeOperationHTTPRequestInput = Quer
  Type to handle the input to the ModifyReservedInstances operation in a HTTP client.
  */
 public typealias ModifyReservedInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifySecurityGroupRules operation in a HTTP client.
+ */
+public typealias ModifySecurityGroupRulesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifySnapshotAttribute operation in a HTTP client.
