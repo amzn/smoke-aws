@@ -461,7 +461,7 @@ public typealias LambdaFunctionArn = String
 /**
  Type definition for the LastChangedAt field.
  */
-public typealias LastChangedAt = String
+public typealias LastChangedAt = Double
 
 /**
  Type definition for the LastChangedBy field.
@@ -810,12 +810,12 @@ public typealias ThirdPartyJobList = [ThirdPartyJob]
 /**
  Type definition for the Time field.
  */
-public typealias Time = String
+public typealias Time = Double
 
 /**
  Type definition for the Timestamp field.
  */
-public typealias Timestamp = String
+public typealias Timestamp = Double
 
 /**
  Type definition for the TriggerDetail field.
@@ -903,7 +903,7 @@ public typealias WebhookFilters = [WebhookFilterRule]
 /**
  Type definition for the WebhookLastTriggered field.
  */
-public typealias WebhookLastTriggered = String
+public typealias WebhookLastTriggered = Double
 
 /**
  Type definition for the WebhookList field.

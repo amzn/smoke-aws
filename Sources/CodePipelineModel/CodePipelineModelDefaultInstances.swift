@@ -267,7 +267,7 @@ public extension ActionRevision {
      */
     static let __default: CodePipelineModel.ActionRevision = {
         let defaultInstance = CodePipelineModel.ActionRevision(
-            created: "2013-02-18T17:00:00Z",
+            created: 1.52953091375E9,
             revisionChangeId: "0",
             revisionId: "0")
 
