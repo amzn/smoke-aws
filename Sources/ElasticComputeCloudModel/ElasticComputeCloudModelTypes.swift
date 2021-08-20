@@ -3694,6 +3694,20 @@ public typealias KeyPairList = [KeyPairInfo]
 public typealias KeyPairName = String
 
 /**
+ Enumeration restricting the values of the KeyType field.
+ */
+public enum KeyType: String, Codable, CustomStringConvertible {
+    case ed25519
+    case rsa
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: KeyType = .ed25519
+}
+
+/**
  Type definition for the KmsKeyId field.
  */
 public typealias KmsKeyId = String

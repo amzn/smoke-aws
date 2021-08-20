@@ -2835,6 +2835,7 @@ public extension CreateKeyPairRequest {
         let defaultInstance = ElasticComputeCloudModel.CreateKeyPairRequest(
             dryRun: nil,
             keyName: "value",
+            keyType: nil,
             tagSpecifications: nil)
 
         return defaultInstance
@@ -12244,7 +12245,8 @@ public extension ImportImageRequest {
             licenseType: nil,
             platform: nil,
             roleName: nil,
-            tagSpecifications: nil)
+            tagSpecifications: nil,
+            usageOperation: nil)
 
         return defaultInstance
     }()
@@ -12270,7 +12272,8 @@ public extension ImportImageResult {
             snapshotDetails: nil,
             status: nil,
             statusMessage: nil,
-            tags: nil)
+            tags: nil,
+            usageOperation: nil)
 
         return defaultInstance
     }()
@@ -12296,7 +12299,8 @@ public extension ImportImageTask {
             snapshotDetails: nil,
             status: nil,
             statusMessage: nil,
-            tags: nil)
+            tags: nil,
+            usageOperation: nil)
 
         return defaultInstance
     }()
@@ -13453,6 +13457,7 @@ public extension KeyPairInfo {
             keyFingerprint: nil,
             keyName: nil,
             keyPairId: nil,
+            keyType: nil,
             tags: nil)
 
         return defaultInstance

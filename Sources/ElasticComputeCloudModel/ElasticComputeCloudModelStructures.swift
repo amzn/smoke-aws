@@ -4957,19 +4957,23 @@ public struct CreateInternetGatewayResult: Codable, Equatable {
 public struct CreateKeyPairRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var keyName: String
+    public var keyType: KeyType?
     public var tagSpecifications: TagSpecificationList?
 
     public init(dryRun: Boolean? = nil,
                 keyName: String,
+                keyType: KeyType? = nil,
                 tagSpecifications: TagSpecificationList? = nil) {
         self.dryRun = dryRun
         self.keyName = keyName
+        self.keyType = keyType
         self.tagSpecifications = tagSpecifications
     }
 
     enum CodingKeys: String, CodingKey {
         case dryRun
         case keyName = "KeyName"
+        case keyType = "KeyType"
         case tagSpecifications = "TagSpecification"
     }
 
@@ -20993,6 +20997,7 @@ public struct ImportImageRequest: Codable, Equatable {
     public var platform: String?
     public var roleName: String?
     public var tagSpecifications: TagSpecificationList?
+    public var usageOperation: String?
 
     public init(architecture: String? = nil,
                 clientData: ClientData? = nil,
@@ -21007,7 +21012,8 @@ public struct ImportImageRequest: Codable, Equatable {
                 licenseType: String? = nil,
                 platform: String? = nil,
                 roleName: String? = nil,
-                tagSpecifications: TagSpecificationList? = nil) {
+                tagSpecifications: TagSpecificationList? = nil,
+                usageOperation: String? = nil) {
         self.architecture = architecture
         self.clientData = clientData
         self.clientToken = clientToken
@@ -21022,6 +21028,7 @@ public struct ImportImageRequest: Codable, Equatable {
         self.platform = platform
         self.roleName = roleName
         self.tagSpecifications = tagSpecifications
+        self.usageOperation = usageOperation
     }
 
     enum CodingKeys: String, CodingKey {
@@ -21039,6 +21046,7 @@ public struct ImportImageRequest: Codable, Equatable {
         case platform = "Platform"
         case roleName = "RoleName"
         case tagSpecifications = "TagSpecification"
+        case usageOperation = "UsageOperation"
     }
 
     public func validate() throws {
@@ -21062,6 +21070,7 @@ public struct ImportImageResult: Codable, Equatable {
     public var status: String?
     public var statusMessage: String?
     public var tags: TagList?
+    public var usageOperation: String?
 
     public init(architecture: String? = nil,
                 description: String? = nil,
@@ -21077,7 +21086,8 @@ public struct ImportImageResult: Codable, Equatable {
                 snapshotDetails: SnapshotDetailList? = nil,
                 status: String? = nil,
                 statusMessage: String? = nil,
-                tags: TagList? = nil) {
+                tags: TagList? = nil,
+                usageOperation: String? = nil) {
         self.architecture = architecture
         self.description = description
         self.encrypted = encrypted
@@ -21093,6 +21103,7 @@ public struct ImportImageResult: Codable, Equatable {
         self.status = status
         self.statusMessage = statusMessage
         self.tags = tags
+        self.usageOperation = usageOperation
     }
 
     enum CodingKeys: String, CodingKey {
@@ -21111,6 +21122,7 @@ public struct ImportImageResult: Codable, Equatable {
         case status
         case statusMessage
         case tags = "tagSet"
+        case usageOperation
     }
 
     public func validate() throws {
@@ -21133,6 +21145,7 @@ public struct ImportImageTask: Codable, Equatable {
     public var status: String?
     public var statusMessage: String?
     public var tags: TagList?
+    public var usageOperation: String?
 
     public init(architecture: String? = nil,
                 description: String? = nil,
@@ -21148,7 +21161,8 @@ public struct ImportImageTask: Codable, Equatable {
                 snapshotDetails: SnapshotDetailList? = nil,
                 status: String? = nil,
                 statusMessage: String? = nil,
-                tags: TagList? = nil) {
+                tags: TagList? = nil,
+                usageOperation: String? = nil) {
         self.architecture = architecture
         self.description = description
         self.encrypted = encrypted
@@ -21164,6 +21178,7 @@ public struct ImportImageTask: Codable, Equatable {
         self.status = status
         self.statusMessage = statusMessage
         self.tags = tags
+        self.usageOperation = usageOperation
     }
 
     enum CodingKeys: String, CodingKey {
@@ -21182,6 +21197,7 @@ public struct ImportImageTask: Codable, Equatable {
         case status
         case statusMessage
         case tags = "tagSet"
+        case usageOperation
     }
 
     public func validate() throws {
@@ -23416,15 +23432,18 @@ public struct KeyPairInfo: Codable, Equatable {
     public var keyFingerprint: String?
     public var keyName: String?
     public var keyPairId: String?
+    public var keyType: KeyType?
     public var tags: TagList?
 
     public init(keyFingerprint: String? = nil,
                 keyName: String? = nil,
                 keyPairId: String? = nil,
+                keyType: KeyType? = nil,
                 tags: TagList? = nil) {
         self.keyFingerprint = keyFingerprint
         self.keyName = keyName
         self.keyPairId = keyPairId
+        self.keyType = keyType
         self.tags = tags
     }
 
@@ -23432,6 +23451,7 @@ public struct KeyPairInfo: Codable, Equatable {
         case keyFingerprint
         case keyName
         case keyPairId
+        case keyType
         case tags = "tagSet"
     }
 
