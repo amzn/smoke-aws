@@ -13,72 +13,92 @@ import AsyncHTTPClient
 import Logging
 
 class S3ClientTests: XCTestCase {
-    
+
     func testValidS3Uri() throws {
         let s3Uri = "s3://bucketName/the/key/path"
-        
+
         let identifier = s3Uri.asS3ObjectIdentifier()
-        
+
         let expected = S3ObjectIdentifer(bucketName: "bucketName",
                                          keyPath: "the/key/path")
-        
+
         XCTAssertEqual(expected, identifier)
     }
-    
+
     func testValidHttpsUri() throws {
-        let s3Uri = "https://host/bucketName/the/key/path"
-        
-        let identifier = s3Uri.asS3ObjectIdentifier()
-        
+        let s3Uris = [
+            "https://s3.amazonaws.com/bucketName/the/key/path",
+            "https://s3-abc.amazonaws.com/bucketName/the/key/path",
+            "https://s3.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "https://s3-abc.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "https://bucketName.s3.amazonaws.com/the/key/path",
+            "https://bucketName.s3-abc.amazonaws.com/the/key/path",
+            "https://bucketName.s3.us-east-1.amazonaws.com/the/key/path",
+            "https://bucketName.s3-abc.us-east-1.amazonaws.com/the/key/path",
+        ]
+
         let expected = S3ObjectIdentifer(bucketName: "bucketName",
                                          keyPath: "the/key/path")
-        
-        XCTAssertEqual(expected, identifier)
+
+        for s3Uri in s3Uris {
+            let identifier = s3Uri.asS3ObjectIdentifier()
+            XCTAssertEqual(expected, identifier)
+        }
     }
-    
+
     func testValidHttpUri() throws {
-        let s3Uri = "http://host/bucketName/the/key/path"
-        
-        let identifier = s3Uri.asS3ObjectIdentifier()
-        
+        let s3Uris = [
+            "http://s3.amazonaws.com/bucketName/the/key/path",
+            "http://s3-abc.amazonaws.com/bucketName/the/key/path",
+            "http://s3.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "http://s3-abc.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "http://bucketName.s3.amazonaws.com/the/key/path",
+            "http://bucketName.s3-abc.amazonaws.com/the/key/path",
+            "http://bucketName.s3.us-east-1.amazonaws.com/the/key/path",
+            "http://bucketName.s3-abc.us-east-1.amazonaws.com/the/key/path",
+        ]
+
         let expected = S3ObjectIdentifer(bucketName: "bucketName",
                                          keyPath: "the/key/path")
-        
-        XCTAssertEqual(expected, identifier)
+
+        for s3Uri in s3Uris {
+            let identifier = s3Uri.asS3ObjectIdentifier()
+            XCTAssertEqual(expected, identifier)
+        }
     }
-    
+
     func testInvalidS3UriPrefix() throws {
         let s3Uri = "ssh://bucketName/the/key/path"
-        
+
         let identifier = s3Uri.asS3ObjectIdentifier()
-        
+
         XCTAssertNil(identifier)
     }
-    
+
     func testS3UriNoSeparator() throws {
         let s3Uri = "s3://bucketName"
-        
+
         let identifier = s3Uri.asS3ObjectIdentifier()
-        
+
         XCTAssertNil(identifier)
     }
-    
+
     func testHttpsUriNoSeparatorForBucket() throws {
         let s3Uri = "https://bucketName"
-        
+
         let identifier = s3Uri.asS3ObjectIdentifier()
-        
+
         XCTAssertNil(identifier)
     }
-    
+
     func testHttpsUriNoSeparatorForKey() throws {
         let s3Uri = "https://host/bucketName"
-        
+
         let identifier = s3Uri.asS3ObjectIdentifier()
-        
+
         XCTAssertNil(identifier)
     }
-    
+
     func testAccessDeniedErrorDecode() throws {
         let message = "Access Denied"
         let errorResponse = """
@@ -88,7 +108,7 @@ class S3ClientTests: XCTestCase {
                 <Message>\(message)</Message>
             </Error>
             """
-        
+
         let response = HTTPClient.Response(host: "s3.us-west-2.amazonaws.com", status: .badRequest,
                                            version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
@@ -100,16 +120,16 @@ class S3ClientTests: XCTestCase {
         let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
-        
+
         guard case let S3Error.accessDenied(returnedMessage) = error.cause else {
             return XCTFail()
         }
-        
+
         guard message == returnedMessage else {
             return XCTFail()
         }
     }
-    
+
     func testAccessDeniedErrorDataAPIsDecode() throws {
         let message = "Access Denied"
         let errorResponse = """
@@ -119,7 +139,7 @@ class S3ClientTests: XCTestCase {
                 <Message>\(message)</Message>
             </Error>
             """
-        
+
         let response = HTTPClient.Response(host: "s3.us-west-2.amazonaws.com", status: .badRequest,
                                            version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
@@ -131,16 +151,16 @@ class S3ClientTests: XCTestCase {
         let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
-        
+
         guard case let S3Error.accessDenied(returnedMessage) = error.cause else {
             return XCTFail()
         }
-        
+
         guard message == returnedMessage else {
             return XCTFail()
         }
     }
-    
+
     func testKnownErrorDecode() throws {
         let message = "The specified key does not exist."
         let errorResponse = """
@@ -151,7 +171,7 @@ class S3ClientTests: XCTestCase {
                 <Key>myKey</Key>
             </Error>
             """
-        
+
         let response = HTTPClient.Response(host: "s3.us-west-2.amazonaws.com", status: .badRequest,
                                            version: HTTPVersion(major: 1, minor: 1),
                                            headers: HTTPHeaders(), body: nil)
@@ -163,7 +183,7 @@ class S3ClientTests: XCTestCase {
         let error = try clientDelegate.getResponseError(response: response,
                                                         responseComponents: components,
                                                         invocationReporting: invocationReporting)
-        
+
         guard case S3Error.noSuchKey = error.cause else {
             return XCTFail()
         }
