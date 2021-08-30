@@ -1,13 +1,13 @@
 ---
 date: 2021-08-30 11:00
 description: Smoke Roadmap 2021/22.
-tags: support policy
+tags: roadmap, async/await
 ---
 # So what has happened
 
 Today [AWS announced](https://aws.amazon.com/blogs/developer/announcing-new-aws-sdk-for-swift-alpha-release/) an alpha release of a new [AWS SDK](https://github.com/awslabs/aws-sdk-swift) for Swift, compatible with both Server Side Swift and Apple platforms (iOS, iPadOS, watchOS, macOS and tvOS). It is an early access preview and **is currently not suitable for production**.
 
-Given this development has significant impact to the collection of Smoke packages we have developed, along with the fact that there are upcoming changes related to the adoption of async/await, this document discusses the roadmap for these packages.
+Given this development has significant impact to the collection of Smoke packages we have developed, along with the fact that there are upcoming changes related to the adoption of async/await, this document discusses the future roadmap for these packages.
 
 # SmokeFramework
 
@@ -29,7 +29,7 @@ Version 2 of the SmokeDynamoDB library was released in May 2020. There is curren
 
 Version 3 of SmokeDynamoDB has been in development for some time, driven by our own experience of using the library. Version 3 makes some significant usability changes when making queries and adds additional support for operations such as execute. Version 3 also transitions its APIs to returning EventLoopFutures and will add support for async APIs prior to the release of Swift 5.5. It is expected Version 3 will be released around the same time as Swift 5.5.
 
-Beyond Version 3 of SmokeDynamoDB, the roadmap slightly is less clear. There will be a major version release that moves to the DynamoDB client provided by the new Swift SDK and there will be a major version release that removing support for the APIs returning EventLoopFutures and versions of Swift prior to 5.5. These may end up being the same release depending on timing. Other than changes in set up to accommodate the shift in underlying client, it is not expected there will be breaking changes to the package's APIs.
+Beyond Version 3 of SmokeDynamoDB, the roadmap slightly is less clear. There will be a major version release that moves to the DynamoDB client provided by the new Swift SDK and there will be a major version release that removes support for the APIs returning EventLoopFutures and versions of Swift prior to 5.5. These may end up being the same release depending on timing. Other than changes in set up to accommodate the shift in the underlying client, it is not expected there will be breaking changes to the package's APIs.
 
 # SmokeFrameworkApplicationGenerate
 
@@ -37,9 +37,9 @@ Beyond Version 3 of SmokeDynamoDB, the roadmap slightly is less clear. There wil
 
 The [SmokeFrameworkApplicationGenerate](https://github.com/amzn/smoke-framework-application-generate) and its dependencies provide a code generator for SmokeFramework-based applications.
 
-Version 3 of this code generator has been in development for some time and will shift to generating APIs that return EventLoopFutures and async functions (accessible when compiling under Swift 5.5 or greater). Our plan is to also make `SmokeFrameworkApplicationGenerate` and potentially `APIGatewayClientGenerate` available as SwiftPM plugins to avoid having to check in the generated code.
+Version 3 of this code generator has been in development for some time and will shift to generating APIs that return EventLoopFutures and async functions (accessible when compiling under Swift 5.5 or greater). Our plan is also to make `SmokeFrameworkApplicationGenerate` and potentially `APIGatewayClientGenerate` available as SwiftPM plugins to avoid having to check in the generated code.
 
-Beyond Version 3 of the generator, we plan to move the generated clients to the same AWSClientRuntime used by the new SDK. Other than changes in set up to accommodate the shift in underlying client, it is not expected there will be breaking changes the package's APIs. This change will allow the same credentials to be used access AWS service and APIGateway clients.
+Beyond Version 3 of the generator, we plan to move the generated clients to the same AWSClientRuntime used by the new SDK. Other than changes in set up to accommodate the shift in the underlying client, it is not expected there will be breaking changes the package's APIs. This change will allow the same credentials to be used access AWS service and APIGateway clients.
 
 # SmokeHTTP
 
@@ -57,7 +57,7 @@ The [SmokeAWS](https://github.com/amzn/smoke-dynamodb) library has provided clie
 
 Version 2 will be the final major version of this package. Prior to the release of Swift 5.5 we will add async/await support to the existing clients. We will provide a migration guide to the new SDK.
 
-Our plan is also to migrate the code generated APIGateway clients to the same AWSClientRuntime used by the new SDK which should result in this package no longer being needed going forward. According to our [Support Policy](https://github.com/amzn/smoke-aws/blob/main/docs/Support_Policy.md) Version 2 will be supported for **at least 6 months** following the initial release of the new SDK.
+Our plan is also to migrate the code generated APIGateway clients to the same AWSClientRuntime used by the new SDK which should result in this package no longer being needed going forward. According to our [Support Policy](https://github.com/amzn/smoke-aws/blob/main/docs/Support_Policy.md) Version 2 will be supported for **at least 6 months** following the GA launch of the new SDK.
 
 
 # SmokeAWSCredentials
@@ -66,4 +66,4 @@ Our plan is also to migrate the code generated APIGateway clients to the same AW
 
 The [SmokeAWSCredentials](https://github.com/amzn/smoke-aws-credentials) package is a library for obtaining or assuming short-lived rotating AWS IAM credentials, suitable for being passed to clients from SmokeAWS.
 
-The functionality of this package will be completely replaced by the new SDK. We will provide a migration guide to the new SDK and according to our [Support Policy](https://github.com/amzn/smoke-aws/blob/main/docs/Support_Policy.md) the current version (Version 2) will be supported for **at least 6 months** following the initial release of the new SDK.
+The functionality of this package will be completely replaced by the new SDK. We will provide a migration guide to the new SDK and according to our [Support Policy](https://github.com/amzn/smoke-aws/blob/main/docs/Support_Policy.md) the current version (Version 2) will be supported for **at least 6 months** following the GA launch of the new SDK.
