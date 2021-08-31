@@ -1850,6 +1850,11 @@ public typealias EnableFastSnapshotRestoreStateErrorSet = [EnableFastSnapshotRes
 public typealias EnableFastSnapshotRestoreSuccessSet = [EnableFastSnapshotRestoreSuccessItem]
 
 /**
+ Type definition for the EncryptionInTransitSupported field.
+ */
+public typealias EncryptionInTransitSupported = Bool
+
+/**
  Enumeration restricting the values of the EndDateType field.
  */
 public enum EndDateType: String, Codable, CustomStringConvertible {
@@ -2960,6 +2965,20 @@ public enum InstanceMetadataOptionsState: String, Codable, CustomStringConvertib
 }
 
 /**
+ Enumeration restricting the values of the InstanceMetadataProtocolState field.
+ */
+public enum InstanceMetadataProtocolState: String, Codable, CustomStringConvertible {
+    case disabled
+    case enabled
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceMetadataProtocolState = .disabled
+}
+
+/**
  Type definition for the InstanceMonitoringList field.
  */
 public typealias InstanceMonitoringList = [InstanceMonitoring]
@@ -3278,6 +3297,15 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m6gdMedium = "m6gd.medium"
     case m6gdMetal = "m6gd.metal"
     case m6gdXlarge = "m6gd.xlarge"
+    case m6i12xlarge = "m6i.12xlarge"
+    case m6i16xlarge = "m6i.16xlarge"
+    case m6i24xlarge = "m6i.24xlarge"
+    case m6i2xlarge = "m6i.2xlarge"
+    case m6i32xlarge = "m6i.32xlarge"
+    case m6i4xlarge = "m6i.4xlarge"
+    case m6i8xlarge = "m6i.8xlarge"
+    case m6iLarge = "m6i.large"
+    case m6iXlarge = "m6i.xlarge"
     case mac1Metal = "mac1.metal"
     case p216xlarge = "p2.16xlarge"
     case p28xlarge = "p2.8xlarge"

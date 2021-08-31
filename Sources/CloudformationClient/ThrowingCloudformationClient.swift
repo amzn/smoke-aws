@@ -136,6 +136,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
     let registerPublisherSyncOverride: RegisterPublisherSyncType?
     let registerTypeAsyncOverride: RegisterTypeAsyncType?
     let registerTypeSyncOverride: RegisterTypeSyncType?
+    let rollbackStackAsyncOverride: RollbackStackAsyncType?
+    let rollbackStackSyncOverride: RollbackStackSyncType?
     let setStackPolicyAsyncOverride: SetStackPolicyAsyncType?
     let setStackPolicySyncOverride: SetStackPolicySyncType?
     let setTypeConfigurationAsyncOverride: SetTypeConfigurationAsyncType?
@@ -270,6 +272,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
             registerPublisherSync: RegisterPublisherSyncType? = nil,
             registerTypeAsync: RegisterTypeAsyncType? = nil,
             registerTypeSync: RegisterTypeSyncType? = nil,
+            rollbackStackAsync: RollbackStackAsyncType? = nil,
+            rollbackStackSync: RollbackStackSyncType? = nil,
             setStackPolicyAsync: SetStackPolicyAsyncType? = nil,
             setStackPolicySync: SetStackPolicySyncType? = nil,
             setTypeConfigurationAsync: SetTypeConfigurationAsyncType? = nil,
@@ -399,6 +403,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
         self.registerPublisherSyncOverride = registerPublisherSync
         self.registerTypeAsyncOverride = registerTypeAsync
         self.registerTypeSyncOverride = registerTypeSync
+        self.rollbackStackAsyncOverride = rollbackStackAsync
+        self.rollbackStackSyncOverride = rollbackStackSync
         self.setStackPolicyAsyncOverride = setStackPolicyAsync
         self.setStackPolicySyncOverride = setStackPolicySync
         self.setTypeConfigurationAsyncOverride = setTypeConfigurationAsync
@@ -2392,6 +2398,44 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
             input: CloudformationModel.RegisterTypeInput) throws -> CloudformationModel.RegisterTypeOutputForRegisterType {
         if let registerTypeSyncOverride = registerTypeSyncOverride {
             return try registerTypeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the RollbackStack operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+         - completion: The RollbackStackOutputForRollbackStack object or an error will be passed to this 
+           callback when the operation is complete. The RollbackStackOutputForRollbackStack
+           object will be validated before being returned to caller.
+           The possible errors are: tokenAlreadyExists.
+     */
+    public func rollbackStackAsync(
+            input: CloudformationModel.RollbackStackInput, 
+            completion: @escaping (Result<CloudformationModel.RollbackStackOutputForRollbackStack, CloudformationError>) -> ()) throws {
+        if let rollbackStackAsyncOverride = rollbackStackAsyncOverride {
+            return try rollbackStackAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the RollbackStack operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+     - Returns: The RollbackStackOutputForRollbackStack object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: tokenAlreadyExists.
+     */
+    public func rollbackStackSync(
+            input: CloudformationModel.RollbackStackInput) throws -> CloudformationModel.RollbackStackOutputForRollbackStack {
+        if let rollbackStackSyncOverride = rollbackStackSyncOverride {
+            return try rollbackStackSyncOverride(input)
         }
 
         throw error

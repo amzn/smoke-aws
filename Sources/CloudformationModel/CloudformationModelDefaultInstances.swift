@@ -1450,6 +1450,7 @@ public extension ExecuteChangeSetInput {
         let defaultInstance = CloudformationModel.ExecuteChangeSetInput(
             changeSetName: "0",
             clientRequestToken: nil,
+            disableRollback: nil,
             stackName: nil)
 
         return defaultInstance
@@ -2623,6 +2624,44 @@ public extension RollbackConfiguration {
     }()
 }
 
+public extension RollbackStackInput {
+    /**
+     Default instance of the RollbackStackInput structure.
+     */
+    static let __default: CloudformationModel.RollbackStackInput = {
+        let defaultInstance = CloudformationModel.RollbackStackInput(
+            clientRequestToken: nil,
+            roleARN: nil,
+            stackName: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension RollbackStackOutput {
+    /**
+     Default instance of the RollbackStackOutput structure.
+     */
+    static let __default: CloudformationModel.RollbackStackOutput = {
+        let defaultInstance = CloudformationModel.RollbackStackOutput(
+            stackId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RollbackStackOutputForRollbackStack {
+    /**
+     Default instance of the RollbackStackOutputForRollbackStack structure.
+     */
+    static let __default: CloudformationModel.RollbackStackOutputForRollbackStack = {
+        let defaultInstance = CloudformationModel.RollbackStackOutputForRollbackStack(
+            rollbackStackResult: RollbackStackOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension RollbackTrigger {
     /**
      Default instance of the RollbackTrigger structure.
@@ -3455,6 +3494,7 @@ public extension UpdateStackInput {
         let defaultInstance = CloudformationModel.UpdateStackInput(
             capabilities: nil,
             clientRequestToken: nil,
+            disableRollback: nil,
             notificationARNs: nil,
             parameters: nil,
             resourceTypes: nil,

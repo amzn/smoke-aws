@@ -998,9 +998,15 @@ public enum ResourceStatus: String, Codable, CustomStringConvertible {
     case importRollbackComplete = "IMPORT_ROLLBACK_COMPLETE"
     case importRollbackFailed = "IMPORT_ROLLBACK_FAILED"
     case importRollbackInProgress = "IMPORT_ROLLBACK_IN_PROGRESS"
+    case rollbackComplete = "ROLLBACK_COMPLETE"
+    case rollbackFailed = "ROLLBACK_FAILED"
+    case rollbackInProgress = "ROLLBACK_IN_PROGRESS"
     case updateComplete = "UPDATE_COMPLETE"
     case updateFailed = "UPDATE_FAILED"
     case updateInProgress = "UPDATE_IN_PROGRESS"
+    case updateRollbackComplete = "UPDATE_ROLLBACK_COMPLETE"
+    case updateRollbackFailed = "UPDATE_ROLLBACK_FAILED"
+    case updateRollbackInProgress = "UPDATE_ROLLBACK_IN_PROGRESS"
 
     public var description: String {
         return rawValue
@@ -1425,6 +1431,7 @@ public enum StackStatus: String, Codable, CustomStringConvertible {
     case rollbackInProgress = "ROLLBACK_IN_PROGRESS"
     case updateComplete = "UPDATE_COMPLETE"
     case updateCompleteCleanupInProgress = "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"
+    case updateFailed = "UPDATE_FAILED"
     case updateInProgress = "UPDATE_IN_PROGRESS"
     case updateRollbackComplete = "UPDATE_ROLLBACK_COMPLETE"
     case updateRollbackCompleteCleanupInProgress = "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"

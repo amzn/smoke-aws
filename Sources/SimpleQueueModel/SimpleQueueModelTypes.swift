@@ -177,6 +177,7 @@ public enum QueueAttributeName: String, Codable, CustomStringConvertible {
     case policy = "Policy"
     case queuearn = "QueueArn"
     case receivemessagewaittimeseconds = "ReceiveMessageWaitTimeSeconds"
+    case redriveallowpolicy = "RedriveAllowPolicy"
     case redrivepolicy = "RedrivePolicy"
     case visibilitytimeout = "VisibilityTimeout"
 

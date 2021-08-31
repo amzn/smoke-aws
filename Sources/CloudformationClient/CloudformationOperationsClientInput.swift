@@ -290,6 +290,11 @@ public typealias RegisterPublisherOperationHTTPRequestInput = QueryHTTPRequestIn
 public typealias RegisterTypeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the RollbackStack operation in a HTTP client.
+ */
+public typealias RollbackStackOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the SetStackPolicy operation in a HTTP client.
  */
 public typealias SetStackPolicyOperationHTTPRequestInput = QueryHTTPRequestInput

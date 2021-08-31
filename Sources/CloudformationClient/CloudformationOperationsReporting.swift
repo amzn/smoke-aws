@@ -81,6 +81,7 @@ public struct CloudformationOperationsReporting {
     public let recordHandlerProgress: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let registerPublisher: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let registerType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let rollbackStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let setStackPolicy: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let setTypeConfiguration: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let setTypeDefaultVersion: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -200,6 +201,8 @@ public struct CloudformationOperationsReporting {
             clientName: clientName, operation: .registerPublisher, configuration: reportingConfiguration)
         self.registerType = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .registerType, configuration: reportingConfiguration)
+        self.rollbackStack = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rollbackStack, configuration: reportingConfiguration)
         self.setStackPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .setStackPolicy, configuration: reportingConfiguration)
         self.setTypeConfiguration = StandardSmokeAWSOperationReporting(

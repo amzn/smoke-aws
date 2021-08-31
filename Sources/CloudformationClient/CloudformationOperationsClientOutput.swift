@@ -688,6 +688,19 @@ extension RegisterTypeOutputForRegisterType: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the RollbackStack operation in a HTTP client.
+ */
+extension RollbackStackOutputForRollbackStack: HTTPResponseOutputProtocol {
+    public typealias BodyType = RollbackStackOutputForRollbackStack
+    public typealias HeadersType = RollbackStackOutputForRollbackStack
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RollbackStackOutputForRollbackStack {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the SetTypeConfiguration operation in a HTTP client.
  */
 extension SetTypeConfigurationOutputForSetTypeConfiguration: HTTPResponseOutputProtocol {

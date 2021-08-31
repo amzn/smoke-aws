@@ -79,6 +79,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case recordHandlerProgress = "RecordHandlerProgress"
     case registerPublisher = "RegisterPublisher"
     case registerType = "RegisterType"
+    case rollbackStack = "RollbackStack"
     case setStackPolicy = "SetStackPolicy"
     case setTypeConfiguration = "SetTypeConfiguration"
     case setTypeDefaultVersion = "SetTypeDefaultVersion"
@@ -202,6 +203,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .registerPublisher:
             return "/"
         case .registerType:
+            return "/"
+        case .rollbackStack:
             return "/"
         case .setStackPolicy:
             return "/"
