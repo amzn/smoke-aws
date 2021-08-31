@@ -13,6 +13,7 @@ public struct S3ObjectIdentifer: Equatable {
     internal static let s3Prefix = "s3://"
     internal static let httpsPrefix = "https://"
     internal static let httpPrefix = "http://"
+    internal static let s3EndpointRegex = #"^https?:\/\/(.+\.)?s3[.-][a-z0-9-]+\."#
     
     public let bucketName: String
     public let keyPath: String
@@ -41,41 +42,44 @@ public extension String {
             let nonPrefixedUrl = self.dropFirst(S3ObjectIdentifer.s3Prefix.count)
             
             return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
-        } else if self.starts(with: S3ObjectIdentifer.httpsPrefix) {
-            // get the url without the scheme - of the form {host}/{bucket}/{key+}
-            let droppedPrefix = self.dropFirst(S3ObjectIdentifer.httpsPrefix.count)
-            
-            // get the index of the separator between the host and the bucket
-            guard let nextUrlSeparator = getIndexOfNextUrlSeparator(url: droppedPrefix) else {
-                return nil
-            }
-            
-            let bucketStartIndex = droppedPrefix.index(nextUrlSeparator,
-                                                               offsetBy: 1)
-            // get the url without the scheme or the host -
-            // of the form {bucket}/{key+}
-            let nonPrefixedUrl = droppedPrefix[bucketStartIndex...]
-            
-            return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
-        } else if self.starts(with: S3ObjectIdentifer.httpPrefix) {
-            // get the url without the scheme - of the form {host}/{bucket}/{key+}
-            let droppedPrefix = self.dropFirst(S3ObjectIdentifer.httpPrefix.count)
-            
-            // get the index of the separator between the host and the bucket
-            guard let nextUrlSeparator = getIndexOfNextUrlSeparator(url: droppedPrefix) else {
-                return nil
-            }
-            
-            let bucketStartIndex = droppedPrefix.index(nextUrlSeparator,
-                                                               offsetBy: 1)
-            // get the url without the scheme or the host -
-            // of the form {bucket}/{key+}
-            let nonPrefixedUrl = droppedPrefix[bucketStartIndex...]
-            
-            return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
+        } else if self.starts(with: S3ObjectIdentifer.httpsPrefix) || self.starts(with: S3ObjectIdentifer.httpPrefix) {
+            return asS3ObjectIdentifierFromHttpOrHttps()
         }
         
         return nil
+    }
+    
+    /// Tries to parse the bucket and key names from an HTTP or HTTPS URL.
+    private func asS3ObjectIdentifierFromHttpOrHttps() -> S3ObjectIdentifer? {
+        guard let url = URL(string: self) else {
+            return nil
+        }
+        
+        let urlPath = url.path.dropFirst()
+        
+        guard let regex = try? NSRegularExpression(pattern: S3ObjectIdentifer.s3EndpointRegex, options: []) else {
+            return nil
+        }
+        
+        let searchRange = NSRange(self.startIndex..<self.endIndex, in: self)
+        let match = regex.firstMatch(in: self, options: [], range: searchRange)
+        if let match = match,
+            match.numberOfRanges > 0,
+            let bucketRange = Range(match.range(at: 1), in: self),
+            !bucketRange.isEmpty,
+            self[bucketRange].count > 1 {
+            // If the capture group for the regex is not empty, the URL is the virtual hosted style, for example:
+            // https://bucket.s3.amazonaws.com/key
+            // The capture group is the bucket name (with trailing dot) and the URL path is the key name
+            let bucketName = String(self[bucketRange].dropLast())
+            let keyName = String(urlPath)
+            return S3ObjectIdentifer(bucketName: bucketName, keyPath: keyName)
+        }
+        
+        // If the regex capture group is empty, the URL is in the path style, for example:
+        // https://s3.amazonaws.com/bucket/key
+        // Both the bucket and key names are in the URL path
+        return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: Substring(urlPath))
     }
     
     private func getIndexOfNextUrlSeparator(url: Substring) -> String.Index? {

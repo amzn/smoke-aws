@@ -26,25 +26,45 @@ class S3ClientTests: XCTestCase {
     }
     
     func testValidHttpsUri() throws {
-        let s3Uri = "https://host/bucketName/the/key/path"
-        
-        let identifier = s3Uri.asS3ObjectIdentifier()
+        let s3Uris = [
+            "https://s3.amazonaws.com/bucketName/the/key/path",
+            "https://s3-abc.amazonaws.com/bucketName/the/key/path",
+            "https://s3.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "https://s3-abc.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "https://bucketName.s3.amazonaws.com/the/key/path",
+            "https://bucketName.s3-abc.amazonaws.com/the/key/path",
+            "https://bucketName.s3.us-east-1.amazonaws.com/the/key/path",
+            "https://bucketName.s3-abc.us-east-1.amazonaws.com/the/key/path",
+        ]
         
         let expected = S3ObjectIdentifer(bucketName: "bucketName",
                                          keyPath: "the/key/path")
         
-        XCTAssertEqual(expected, identifier)
+        for s3Uri in s3Uris {
+            let identifier = s3Uri.asS3ObjectIdentifier()
+            XCTAssertEqual(expected, identifier)
+        }
     }
     
     func testValidHttpUri() throws {
-        let s3Uri = "http://host/bucketName/the/key/path"
-        
-        let identifier = s3Uri.asS3ObjectIdentifier()
+        let s3Uris = [
+            "http://s3.amazonaws.com/bucketName/the/key/path",
+            "http://s3-abc.amazonaws.com/bucketName/the/key/path",
+            "http://s3.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "http://s3-abc.us-east-1.amazonaws.com/bucketName/the/key/path",
+            "http://bucketName.s3.amazonaws.com/the/key/path",
+            "http://bucketName.s3-abc.amazonaws.com/the/key/path",
+            "http://bucketName.s3.us-east-1.amazonaws.com/the/key/path",
+            "http://bucketName.s3-abc.us-east-1.amazonaws.com/the/key/path",
+        ]
         
         let expected = S3ObjectIdentifer(bucketName: "bucketName",
                                          keyPath: "the/key/path")
         
-        XCTAssertEqual(expected, identifier)
+    for s3Uri in s3Uris {
+            let identifier = s3Uri.asS3ObjectIdentifier()
+            XCTAssertEqual(expected, identifier)
+        }
     }
     
     func testInvalidS3UriPrefix() throws {
