@@ -20984,6 +20984,7 @@ public struct ImportImageLicenseConfigurationResponse: Codable, Equatable {
 
 public struct ImportImageRequest: Codable, Equatable {
     public var architecture: String?
+    public var bootMode: BootModeValues?
     public var clientData: ClientData?
     public var clientToken: String?
     public var description: String?
@@ -21000,6 +21001,7 @@ public struct ImportImageRequest: Codable, Equatable {
     public var usageOperation: String?
 
     public init(architecture: String? = nil,
+                bootMode: BootModeValues? = nil,
                 clientData: ClientData? = nil,
                 clientToken: String? = nil,
                 description: String? = nil,
@@ -21015,6 +21017,7 @@ public struct ImportImageRequest: Codable, Equatable {
                 tagSpecifications: TagSpecificationList? = nil,
                 usageOperation: String? = nil) {
         self.architecture = architecture
+        self.bootMode = bootMode
         self.clientData = clientData
         self.clientToken = clientToken
         self.description = description
@@ -21033,6 +21036,7 @@ public struct ImportImageRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case architecture = "Architecture"
+        case bootMode = "BootMode"
         case clientData = "ClientData"
         case clientToken = "ClientToken"
         case description = "Description"
@@ -21131,6 +21135,7 @@ public struct ImportImageResult: Codable, Equatable {
 
 public struct ImportImageTask: Codable, Equatable {
     public var architecture: String?
+    public var bootMode: BootModeValues?
     public var description: String?
     public var encrypted: Boolean?
     public var hypervisor: String?
@@ -21148,6 +21153,7 @@ public struct ImportImageTask: Codable, Equatable {
     public var usageOperation: String?
 
     public init(architecture: String? = nil,
+                bootMode: BootModeValues? = nil,
                 description: String? = nil,
                 encrypted: Boolean? = nil,
                 hypervisor: String? = nil,
@@ -21164,6 +21170,7 @@ public struct ImportImageTask: Codable, Equatable {
                 tags: TagList? = nil,
                 usageOperation: String? = nil) {
         self.architecture = architecture
+        self.bootMode = bootMode
         self.description = description
         self.encrypted = encrypted
         self.hypervisor = hypervisor
@@ -21183,6 +21190,7 @@ public struct ImportImageTask: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case architecture
+        case bootMode
         case description
         case encrypted
         case hypervisor
@@ -22394,19 +22402,23 @@ public struct InstanceMarketOptionsRequest: Codable, Equatable {
 
 public struct InstanceMetadataOptionsRequest: Codable, Equatable {
     public var httpEndpoint: InstanceMetadataEndpointState?
+    public var httpProtocolIpv6: InstanceMetadataProtocolState?
     public var httpPutResponseHopLimit: Integer?
     public var httpTokens: HttpTokensState?
 
     public init(httpEndpoint: InstanceMetadataEndpointState? = nil,
+                httpProtocolIpv6: InstanceMetadataProtocolState? = nil,
                 httpPutResponseHopLimit: Integer? = nil,
                 httpTokens: HttpTokensState? = nil) {
         self.httpEndpoint = httpEndpoint
+        self.httpProtocolIpv6 = httpProtocolIpv6
         self.httpPutResponseHopLimit = httpPutResponseHopLimit
         self.httpTokens = httpTokens
     }
 
     enum CodingKeys: String, CodingKey {
         case httpEndpoint = "HttpEndpoint"
+        case httpProtocolIpv6 = "HttpProtocolIpv6"
         case httpPutResponseHopLimit = "HttpPutResponseHopLimit"
         case httpTokens = "HttpTokens"
     }
@@ -22417,15 +22429,18 @@ public struct InstanceMetadataOptionsRequest: Codable, Equatable {
 
 public struct InstanceMetadataOptionsResponse: Codable, Equatable {
     public var httpEndpoint: InstanceMetadataEndpointState?
+    public var httpProtocolIpv6: InstanceMetadataProtocolState?
     public var httpPutResponseHopLimit: Integer?
     public var httpTokens: HttpTokensState?
     public var state: InstanceMetadataOptionsState?
 
     public init(httpEndpoint: InstanceMetadataEndpointState? = nil,
+                httpProtocolIpv6: InstanceMetadataProtocolState? = nil,
                 httpPutResponseHopLimit: Integer? = nil,
                 httpTokens: HttpTokensState? = nil,
                 state: InstanceMetadataOptionsState? = nil) {
         self.httpEndpoint = httpEndpoint
+        self.httpProtocolIpv6 = httpProtocolIpv6
         self.httpPutResponseHopLimit = httpPutResponseHopLimit
         self.httpTokens = httpTokens
         self.state = state
@@ -22433,6 +22448,7 @@ public struct InstanceMetadataOptionsResponse: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case httpEndpoint
+        case httpProtocolIpv6
         case httpPutResponseHopLimit
         case httpTokens
         case state
@@ -25895,17 +25911,20 @@ public struct ModifyInstanceEventWindowResult: Codable, Equatable {
 public struct ModifyInstanceMetadataOptionsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var httpEndpoint: InstanceMetadataEndpointState?
+    public var httpProtocolIpv6: InstanceMetadataProtocolState?
     public var httpPutResponseHopLimit: Integer?
     public var httpTokens: HttpTokensState?
     public var instanceId: InstanceId
 
     public init(dryRun: Boolean? = nil,
                 httpEndpoint: InstanceMetadataEndpointState? = nil,
+                httpProtocolIpv6: InstanceMetadataProtocolState? = nil,
                 httpPutResponseHopLimit: Integer? = nil,
                 httpTokens: HttpTokensState? = nil,
                 instanceId: InstanceId) {
         self.dryRun = dryRun
         self.httpEndpoint = httpEndpoint
+        self.httpProtocolIpv6 = httpProtocolIpv6
         self.httpPutResponseHopLimit = httpPutResponseHopLimit
         self.httpTokens = httpTokens
         self.instanceId = instanceId
@@ -25914,6 +25933,7 @@ public struct ModifyInstanceMetadataOptionsRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dryRun = "DryRun"
         case httpEndpoint = "HttpEndpoint"
+        case httpProtocolIpv6 = "HttpProtocolIpv6"
         case httpPutResponseHopLimit = "HttpPutResponseHopLimit"
         case httpTokens = "HttpTokens"
         case instanceId = "InstanceId"
@@ -26049,6 +26069,7 @@ public struct ModifyManagedPrefixListRequest: Codable, Equatable {
     public var addEntries: AddPrefixListEntries?
     public var currentVersion: Long?
     public var dryRun: Boolean?
+    public var maxEntries: Integer?
     public var prefixListId: PrefixListResourceId
     public var prefixListName: String?
     public var removeEntries: RemovePrefixListEntries?
@@ -26056,12 +26077,14 @@ public struct ModifyManagedPrefixListRequest: Codable, Equatable {
     public init(addEntries: AddPrefixListEntries? = nil,
                 currentVersion: Long? = nil,
                 dryRun: Boolean? = nil,
+                maxEntries: Integer? = nil,
                 prefixListId: PrefixListResourceId,
                 prefixListName: String? = nil,
                 removeEntries: RemovePrefixListEntries? = nil) {
         self.addEntries = addEntries
         self.currentVersion = currentVersion
         self.dryRun = dryRun
+        self.maxEntries = maxEntries
         self.prefixListId = prefixListId
         self.prefixListName = prefixListName
         self.removeEntries = removeEntries
@@ -26071,6 +26094,7 @@ public struct ModifyManagedPrefixListRequest: Codable, Equatable {
         case addEntries = "AddEntry"
         case currentVersion = "CurrentVersion"
         case dryRun = "DryRun"
+        case maxEntries = "MaxEntries"
         case prefixListId = "PrefixListId"
         case prefixListName = "PrefixListName"
         case removeEntries = "RemoveEntry"
@@ -27728,6 +27752,7 @@ public struct NetworkInfo: Codable, Equatable {
     public var efaInfo: EfaInfo?
     public var efaSupported: EfaSupportedFlag?
     public var enaSupport: EnaSupport?
+    public var encryptionInTransitSupported: EncryptionInTransitSupported?
     public var ipv4AddressesPerInterface: MaxIpv4AddrPerInterface?
     public var ipv6AddressesPerInterface: MaxIpv6AddrPerInterface?
     public var ipv6Supported: Ipv6Flag?
@@ -27740,6 +27765,7 @@ public struct NetworkInfo: Codable, Equatable {
                 efaInfo: EfaInfo? = nil,
                 efaSupported: EfaSupportedFlag? = nil,
                 enaSupport: EnaSupport? = nil,
+                encryptionInTransitSupported: EncryptionInTransitSupported? = nil,
                 ipv4AddressesPerInterface: MaxIpv4AddrPerInterface? = nil,
                 ipv6AddressesPerInterface: MaxIpv6AddrPerInterface? = nil,
                 ipv6Supported: Ipv6Flag? = nil,
@@ -27751,6 +27777,7 @@ public struct NetworkInfo: Codable, Equatable {
         self.efaInfo = efaInfo
         self.efaSupported = efaSupported
         self.enaSupport = enaSupport
+        self.encryptionInTransitSupported = encryptionInTransitSupported
         self.ipv4AddressesPerInterface = ipv4AddressesPerInterface
         self.ipv6AddressesPerInterface = ipv6AddressesPerInterface
         self.ipv6Supported = ipv6Supported
@@ -27765,6 +27792,7 @@ public struct NetworkInfo: Codable, Equatable {
         case efaInfo
         case efaSupported
         case enaSupport
+        case encryptionInTransitSupported
         case ipv4AddressesPerInterface
         case ipv6AddressesPerInterface
         case ipv6Supported

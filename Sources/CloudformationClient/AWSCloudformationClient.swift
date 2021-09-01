@@ -4226,6 +4226,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     }
 
     /**
+     Invokes the RollbackStack operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+         - completion: The RollbackStackOutputForRollbackStack object or an error will be passed to this 
+           callback when the operation is complete. The RollbackStackOutputForRollbackStack
+           object will be validated before being returned to caller.
+           The possible errors are: tokenAlreadyExists.
+     */
+    public func rollbackStackAsync(
+            input: CloudformationModel.RollbackStackInput, 
+            completion: @escaping (Result<CloudformationModel.RollbackStackOutputForRollbackStack, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rollbackStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RollbackStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.rollbackStack.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the RollbackStack operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+     - Returns: The RollbackStackOutputForRollbackStack object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: tokenAlreadyExists.
+     */
+    public func rollbackStackSync(
+            input: CloudformationModel.RollbackStackInput) throws -> CloudformationModel.RollbackStackOutputForRollbackStack {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rollbackStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RollbackStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.rollbackStack.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the SetStackPolicy operation returning immediately and passing the response to a callback.
 
      - Parameters:

@@ -2462,19 +2462,23 @@ public struct EstimateTemplateCostOutputForEstimateTemplateCost: Codable, Equata
 public struct ExecuteChangeSetInput: Codable, Equatable {
     public var changeSetName: ChangeSetNameOrId
     public var clientRequestToken: ClientRequestToken?
+    public var disableRollback: DisableRollback?
     public var stackName: StackNameOrId?
 
     public init(changeSetName: ChangeSetNameOrId,
                 clientRequestToken: ClientRequestToken? = nil,
+                disableRollback: DisableRollback? = nil,
                 stackName: StackNameOrId? = nil) {
         self.changeSetName = changeSetName
         self.clientRequestToken = clientRequestToken
+        self.disableRollback = disableRollback
         self.stackName = stackName
     }
 
     enum CodingKeys: String, CodingKey {
         case changeSetName = "ChangeSetName"
         case clientRequestToken = "ClientRequestToken"
+        case disableRollback = "DisableRollback"
         case stackName = "StackName"
     }
 
@@ -4333,6 +4337,63 @@ public struct RollbackConfiguration: Codable, Equatable {
     }
 }
 
+public struct RollbackStackInput: Codable, Equatable {
+    public var clientRequestToken: ClientRequestToken?
+    public var roleARN: RoleARN?
+    public var stackName: StackNameOrId
+
+    public init(clientRequestToken: ClientRequestToken? = nil,
+                roleARN: RoleARN? = nil,
+                stackName: StackNameOrId) {
+        self.clientRequestToken = clientRequestToken
+        self.roleARN = roleARN
+        self.stackName = stackName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientRequestToken = "ClientRequestToken"
+        case roleARN = "RoleARN"
+        case stackName = "StackName"
+    }
+
+    public func validate() throws {
+        try clientRequestToken?.validateAsClientRequestToken()
+        try roleARN?.validateAsRoleARN()
+        try stackName.validateAsStackNameOrId()
+    }
+}
+
+public struct RollbackStackOutput: Codable, Equatable {
+    public var stackId: StackId?
+
+    public init(stackId: StackId? = nil) {
+        self.stackId = stackId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stackId = "StackId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RollbackStackOutputForRollbackStack: Codable, Equatable {
+    public var rollbackStackResult: RollbackStackOutput
+
+    public init(rollbackStackResult: RollbackStackOutput) {
+        self.rollbackStackResult = rollbackStackResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case rollbackStackResult = "RollbackStackResult"
+    }
+
+    public func validate() throws {
+        try rollbackStackResult.validate()
+    }
+}
+
 public struct RollbackTrigger: Codable, Equatable {
     public var arn: Arn
     public var type: Type
@@ -6009,6 +6070,7 @@ public struct TypeVersionSummary: Codable, Equatable {
 public struct UpdateStackInput: Codable, Equatable {
     public var capabilities: Capabilities?
     public var clientRequestToken: ClientRequestToken?
+    public var disableRollback: DisableRollback?
     public var notificationARNs: NotificationARNs?
     public var parameters: Parameters?
     public var resourceTypes: ResourceTypes?
@@ -6026,6 +6088,7 @@ public struct UpdateStackInput: Codable, Equatable {
 
     public init(capabilities: Capabilities? = nil,
                 clientRequestToken: ClientRequestToken? = nil,
+                disableRollback: DisableRollback? = nil,
                 notificationARNs: NotificationARNs? = nil,
                 parameters: Parameters? = nil,
                 resourceTypes: ResourceTypes? = nil,
@@ -6042,6 +6105,7 @@ public struct UpdateStackInput: Codable, Equatable {
                 usePreviousTemplate: UsePreviousTemplate? = nil) {
         self.capabilities = capabilities
         self.clientRequestToken = clientRequestToken
+        self.disableRollback = disableRollback
         self.notificationARNs = notificationARNs
         self.parameters = parameters
         self.resourceTypes = resourceTypes
@@ -6061,6 +6125,7 @@ public struct UpdateStackInput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case capabilities = "Capabilities"
         case clientRequestToken = "ClientRequestToken"
+        case disableRollback = "DisableRollback"
         case notificationARNs = "NotificationARNs"
         case parameters = "Parameters"
         case resourceTypes = "ResourceTypes"

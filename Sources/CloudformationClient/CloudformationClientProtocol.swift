@@ -294,6 +294,11 @@ public protocol CloudformationClientProtocol {
     typealias RegisterTypeAsyncType = (
             _ input: CloudformationModel.RegisterTypeInput, 
             _ completion: @escaping (Result<CloudformationModel.RegisterTypeOutputForRegisterType, CloudformationError>) -> ()) throws -> ()
+    typealias RollbackStackSyncType = (
+            _ input: CloudformationModel.RollbackStackInput) throws -> CloudformationModel.RollbackStackOutputForRollbackStack
+    typealias RollbackStackAsyncType = (
+            _ input: CloudformationModel.RollbackStackInput, 
+            _ completion: @escaping (Result<CloudformationModel.RollbackStackOutputForRollbackStack, CloudformationError>) -> ()) throws -> ()
     typealias SetStackPolicySyncType = (
             _ input: CloudformationModel.SetStackPolicyInput) throws -> ()
     typealias SetStackPolicyAsyncType = (
@@ -1687,6 +1692,32 @@ public protocol CloudformationClientProtocol {
      */
     func registerTypeSync(
             input: CloudformationModel.RegisterTypeInput) throws -> CloudformationModel.RegisterTypeOutputForRegisterType
+
+    /**
+     Invokes the RollbackStack operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+         - completion: The RollbackStackOutputForRollbackStack object or an error will be passed to this 
+           callback when the operation is complete. The RollbackStackOutputForRollbackStack
+           object will be validated before being returned to caller.
+           The possible errors are: tokenAlreadyExists.
+     */
+    func rollbackStackAsync(
+            input: CloudformationModel.RollbackStackInput, 
+            completion: @escaping (Result<CloudformationModel.RollbackStackOutputForRollbackStack, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the RollbackStack operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+     - Returns: The RollbackStackOutputForRollbackStack object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: tokenAlreadyExists.
+     */
+    func rollbackStackSync(
+            input: CloudformationModel.RollbackStackInput) throws -> CloudformationModel.RollbackStackOutputForRollbackStack
 
     /**
      Invokes the SetStackPolicy operation returning immediately and passing the response to a callback.

@@ -12233,6 +12233,7 @@ public extension ImportImageRequest {
     static let __default: ElasticComputeCloudModel.ImportImageRequest = {
         let defaultInstance = ElasticComputeCloudModel.ImportImageRequest(
             architecture: nil,
+            bootMode: nil,
             clientData: nil,
             clientToken: nil,
             description: nil,
@@ -12286,6 +12287,7 @@ public extension ImportImageTask {
     static let __default: ElasticComputeCloudModel.ImportImageTask = {
         let defaultInstance = ElasticComputeCloudModel.ImportImageTask(
             architecture: nil,
+            bootMode: nil,
             description: nil,
             encrypted: nil,
             hypervisor: nil,
@@ -12904,6 +12906,7 @@ public extension InstanceMetadataOptionsRequest {
     static let __default: ElasticComputeCloudModel.InstanceMetadataOptionsRequest = {
         let defaultInstance = ElasticComputeCloudModel.InstanceMetadataOptionsRequest(
             httpEndpoint: nil,
+            httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil)
 
@@ -12918,6 +12921,7 @@ public extension InstanceMetadataOptionsResponse {
     static let __default: ElasticComputeCloudModel.InstanceMetadataOptionsResponse = {
         let defaultInstance = ElasticComputeCloudModel.InstanceMetadataOptionsResponse(
             httpEndpoint: nil,
+            httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil,
             state: nil)
@@ -14786,6 +14790,7 @@ public extension ModifyInstanceMetadataOptionsRequest {
         let defaultInstance = ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest(
             dryRun: nil,
             httpEndpoint: nil,
+            httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil,
             instanceId: "value")
@@ -14874,6 +14879,7 @@ public extension ModifyManagedPrefixListRequest {
             addEntries: nil,
             currentVersion: nil,
             dryRun: nil,
+            maxEntries: nil,
             prefixListId: "value",
             prefixListName: nil,
             removeEntries: nil)
@@ -15797,6 +15803,7 @@ public extension NetworkInfo {
             efaInfo: nil,
             efaSupported: nil,
             enaSupport: nil,
+            encryptionInTransitSupported: nil,
             ipv4AddressesPerInterface: nil,
             ipv6AddressesPerInterface: nil,
             ipv6Supported: nil,

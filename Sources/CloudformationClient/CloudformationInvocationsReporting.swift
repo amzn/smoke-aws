@@ -82,6 +82,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let recordHandlerProgress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let registerPublisher: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let registerType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let rollbackStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setStackPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setTypeConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setTypeDefaultVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -201,6 +202,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.registerPublisher)
         self.registerType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.registerType)
+        self.rollbackStack = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.rollbackStack)
         self.setStackPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.setStackPolicy)
         self.setTypeConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
