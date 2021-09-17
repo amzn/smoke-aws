@@ -253,6 +253,7 @@ public enum ArchitectureValues: String, Codable, CustomStringConvertible {
     case arm64
     case i386
     case x8664 = "x86_64"
+    case x8664Mac = "x86_64_mac"
 
     public var description: String {
         return rawValue
@@ -3443,6 +3444,9 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case u6tb1Metal = "u-6tb1.metal"
     case u9tb1112xlarge = "u-9tb1.112xlarge"
     case u9tb1Metal = "u-9tb1.metal"
+    case vt124xlarge = "vt1.24xlarge"
+    case vt13xlarge = "vt1.3xlarge"
+    case vt16xlarge = "vt1.6xlarge"
     case x116xlarge = "x1.16xlarge"
     case x132xlarge = "x1.32xlarge"
     case x1e16xlarge = "x1e.16xlarge"
@@ -3848,6 +3852,20 @@ public enum LaunchTemplateInstanceMetadataOptionsState: String, Codable, CustomS
     }
     
     public static let __default: LaunchTemplateInstanceMetadataOptionsState = .applied
+}
+
+/**
+ Enumeration restricting the values of the LaunchTemplateInstanceMetadataProtocolIpv6 field.
+ */
+public enum LaunchTemplateInstanceMetadataProtocolIpv6: String, Codable, CustomStringConvertible {
+    case disabled
+    case enabled
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LaunchTemplateInstanceMetadataProtocolIpv6 = .disabled
 }
 
 /**
@@ -5389,6 +5407,8 @@ public typealias ResourceList = [String]
  Enumeration restricting the values of the ResourceType field.
  */
 public enum ResourceType: String, Codable, CustomStringConvertible {
+    case capacityReservation = "capacity-reservation"
+    case carrierGateway = "carrier-gateway"
     case clientVpnEndpoint = "client-vpn-endpoint"
     case customerGateway = "customer-gateway"
     case dedicatedHost = "dedicated-host"
@@ -5407,15 +5427,24 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case instance
     case instanceEventWindow = "instance-event-window"
     case internetGateway = "internet-gateway"
+    case ipv4poolEc2 = "ipv4pool-ec2"
+    case ipv6poolEc2 = "ipv6pool-ec2"
     case keyPair = "key-pair"
     case launchTemplate = "launch-template"
+    case localGateway = "local-gateway"
+    case localGatewayRouteTable = "local-gateway-route-table"
+    case localGatewayRouteTableVirtualInterfaceGroupAssociation = "local-gateway-route-table-virtual-interface-group-association"
     case localGatewayRouteTableVpcAssociation = "local-gateway-route-table-vpc-association"
+    case localGatewayVirtualInterface = "local-gateway-virtual-interface"
+    case localGatewayVirtualInterfaceGroup = "local-gateway-virtual-interface-group"
     case natgateway
     case networkAcl = "network-acl"
     case networkInsightsAnalysis = "network-insights-analysis"
     case networkInsightsPath = "network-insights-path"
     case networkInterface = "network-interface"
     case placementGroup = "placement-group"
+    case prefixList = "prefix-list"
+    case replaceRootVolumeTask = "replace-root-volume-task"
     case reservedInstances = "reserved-instances"
     case routeTable = "route-table"
     case securityGroup = "security-group"
@@ -5434,6 +5463,8 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case transitGatewayRouteTable = "transit-gateway-route-table"
     case volume
     case vpc
+    case vpcEndpoint = "vpc-endpoint"
+    case vpcEndpointService = "vpc-endpoint-service"
     case vpcFlowLog = "vpc-flow-log"
     case vpcPeeringConnection = "vpc-peering-connection"
     case vpnConnection = "vpn-connection"
@@ -5443,7 +5474,7 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ResourceType = .clientVpnEndpoint
+    public static let __default: ResourceType = .capacityReservation
 }
 
 /**

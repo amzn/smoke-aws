@@ -12658,17 +12658,20 @@ public struct ScalingConfiguration: Codable, Equatable {
     public var autoPause: BooleanOptional?
     public var maxCapacity: IntegerOptional?
     public var minCapacity: IntegerOptional?
+    public var secondsBeforeTimeout: IntegerOptional?
     public var secondsUntilAutoPause: IntegerOptional?
     public var timeoutAction: String?
 
     public init(autoPause: BooleanOptional? = nil,
                 maxCapacity: IntegerOptional? = nil,
                 minCapacity: IntegerOptional? = nil,
+                secondsBeforeTimeout: IntegerOptional? = nil,
                 secondsUntilAutoPause: IntegerOptional? = nil,
                 timeoutAction: String? = nil) {
         self.autoPause = autoPause
         self.maxCapacity = maxCapacity
         self.minCapacity = minCapacity
+        self.secondsBeforeTimeout = secondsBeforeTimeout
         self.secondsUntilAutoPause = secondsUntilAutoPause
         self.timeoutAction = timeoutAction
     }
@@ -12677,6 +12680,7 @@ public struct ScalingConfiguration: Codable, Equatable {
         case autoPause = "AutoPause"
         case maxCapacity = "MaxCapacity"
         case minCapacity = "MinCapacity"
+        case secondsBeforeTimeout = "SecondsBeforeTimeout"
         case secondsUntilAutoPause = "SecondsUntilAutoPause"
         case timeoutAction = "TimeoutAction"
     }
@@ -12689,17 +12693,20 @@ public struct ScalingConfigurationInfo: Codable, Equatable {
     public var autoPause: BooleanOptional?
     public var maxCapacity: IntegerOptional?
     public var minCapacity: IntegerOptional?
+    public var secondsBeforeTimeout: IntegerOptional?
     public var secondsUntilAutoPause: IntegerOptional?
     public var timeoutAction: String?
 
     public init(autoPause: BooleanOptional? = nil,
                 maxCapacity: IntegerOptional? = nil,
                 minCapacity: IntegerOptional? = nil,
+                secondsBeforeTimeout: IntegerOptional? = nil,
                 secondsUntilAutoPause: IntegerOptional? = nil,
                 timeoutAction: String? = nil) {
         self.autoPause = autoPause
         self.maxCapacity = maxCapacity
         self.minCapacity = minCapacity
+        self.secondsBeforeTimeout = secondsBeforeTimeout
         self.secondsUntilAutoPause = secondsUntilAutoPause
         self.timeoutAction = timeoutAction
     }
@@ -12708,6 +12715,7 @@ public struct ScalingConfigurationInfo: Codable, Equatable {
         case autoPause = "AutoPause"
         case maxCapacity = "MaxCapacity"
         case minCapacity = "MinCapacity"
+        case secondsBeforeTimeout = "SecondsBeforeTimeout"
         case secondsUntilAutoPause = "SecondsUntilAutoPause"
         case timeoutAction = "TimeoutAction"
     }

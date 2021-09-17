@@ -16983,7 +16983,7 @@ public struct EbsBlockDevice: Codable, Equatable {
     public var iops: Integer?
     public var kmsKeyId: String?
     public var outpostArn: String?
-    public var snapshotId: String?
+    public var snapshotId: SnapshotId?
     public var throughput: Integer?
     public var volumeSize: Integer?
     public var volumeType: VolumeType?
@@ -16993,7 +16993,7 @@ public struct EbsBlockDevice: Codable, Equatable {
                 iops: Integer? = nil,
                 kmsKeyId: String? = nil,
                 outpostArn: String? = nil,
-                snapshotId: String? = nil,
+                snapshotId: SnapshotId? = nil,
                 throughput: Integer? = nil,
                 volumeSize: Integer? = nil,
                 volumeType: VolumeType? = nil) {
@@ -24086,15 +24086,18 @@ public struct LaunchTemplateInstanceMarketOptionsRequest: Codable, Equatable {
 
 public struct LaunchTemplateInstanceMetadataOptions: Codable, Equatable {
     public var httpEndpoint: LaunchTemplateInstanceMetadataEndpointState?
+    public var httpProtocolIpv6: LaunchTemplateInstanceMetadataProtocolIpv6?
     public var httpPutResponseHopLimit: Integer?
     public var httpTokens: LaunchTemplateHttpTokensState?
     public var state: LaunchTemplateInstanceMetadataOptionsState?
 
     public init(httpEndpoint: LaunchTemplateInstanceMetadataEndpointState? = nil,
+                httpProtocolIpv6: LaunchTemplateInstanceMetadataProtocolIpv6? = nil,
                 httpPutResponseHopLimit: Integer? = nil,
                 httpTokens: LaunchTemplateHttpTokensState? = nil,
                 state: LaunchTemplateInstanceMetadataOptionsState? = nil) {
         self.httpEndpoint = httpEndpoint
+        self.httpProtocolIpv6 = httpProtocolIpv6
         self.httpPutResponseHopLimit = httpPutResponseHopLimit
         self.httpTokens = httpTokens
         self.state = state
@@ -24102,6 +24105,7 @@ public struct LaunchTemplateInstanceMetadataOptions: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case httpEndpoint
+        case httpProtocolIpv6
         case httpPutResponseHopLimit
         case httpTokens
         case state
@@ -24113,19 +24117,23 @@ public struct LaunchTemplateInstanceMetadataOptions: Codable, Equatable {
 
 public struct LaunchTemplateInstanceMetadataOptionsRequest: Codable, Equatable {
     public var httpEndpoint: LaunchTemplateInstanceMetadataEndpointState?
+    public var httpProtocolIpv6: LaunchTemplateInstanceMetadataProtocolIpv6?
     public var httpPutResponseHopLimit: Integer?
     public var httpTokens: LaunchTemplateHttpTokensState?
 
     public init(httpEndpoint: LaunchTemplateInstanceMetadataEndpointState? = nil,
+                httpProtocolIpv6: LaunchTemplateInstanceMetadataProtocolIpv6? = nil,
                 httpPutResponseHopLimit: Integer? = nil,
                 httpTokens: LaunchTemplateHttpTokensState? = nil) {
         self.httpEndpoint = httpEndpoint
+        self.httpProtocolIpv6 = httpProtocolIpv6
         self.httpPutResponseHopLimit = httpPutResponseHopLimit
         self.httpTokens = httpTokens
     }
 
     enum CodingKeys: String, CodingKey {
         case httpEndpoint = "HttpEndpoint"
+        case httpProtocolIpv6 = "HttpProtocolIpv6"
         case httpPutResponseHopLimit = "HttpPutResponseHopLimit"
         case httpTokens = "HttpTokens"
     }
@@ -28774,9 +28782,9 @@ public struct PlacementGroupInfo: Codable, Equatable {
 }
 
 public struct PlacementResponse: Codable, Equatable {
-    public var groupName: String?
+    public var groupName: PlacementGroupName?
 
-    public init(groupName: String? = nil) {
+    public init(groupName: PlacementGroupName? = nil) {
         self.groupName = groupName
     }
 
@@ -33603,17 +33611,17 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
     public var blockDeviceMappings: BlockDeviceMappingList?
     public var ebsOptimized: Boolean?
     public var iamInstanceProfile: IamInstanceProfileSpecification?
-    public var imageId: String?
+    public var imageId: ImageId?
     public var instanceType: InstanceType?
     public var kernelId: String?
-    public var keyName: String?
+    public var keyName: KeyPairName?
     public var monitoring: SpotFleetMonitoring?
     public var networkInterfaces: InstanceNetworkInterfaceSpecificationList?
     public var placement: SpotPlacement?
     public var ramdiskId: String?
     public var securityGroups: GroupIdentifierList?
     public var spotPrice: String?
-    public var subnetId: String?
+    public var subnetId: SubnetId?
     public var tagSpecifications: SpotFleetTagSpecificationList?
     public var userData: String?
     public var weightedCapacity: Double?
@@ -33622,17 +33630,17 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
                 blockDeviceMappings: BlockDeviceMappingList? = nil,
                 ebsOptimized: Boolean? = nil,
                 iamInstanceProfile: IamInstanceProfileSpecification? = nil,
-                imageId: String? = nil,
+                imageId: ImageId? = nil,
                 instanceType: InstanceType? = nil,
                 kernelId: String? = nil,
-                keyName: String? = nil,
+                keyName: KeyPairName? = nil,
                 monitoring: SpotFleetMonitoring? = nil,
                 networkInterfaces: InstanceNetworkInterfaceSpecificationList? = nil,
                 placement: SpotPlacement? = nil,
                 ramdiskId: String? = nil,
                 securityGroups: GroupIdentifierList? = nil,
                 spotPrice: String? = nil,
-                subnetId: String? = nil,
+                subnetId: SubnetId? = nil,
                 tagSpecifications: SpotFleetTagSpecificationList? = nil,
                 userData: String? = nil,
                 weightedCapacity: Double? = nil) {
@@ -34136,11 +34144,11 @@ public struct SpotOptionsRequest: Codable, Equatable {
 
 public struct SpotPlacement: Codable, Equatable {
     public var availabilityZone: String?
-    public var groupName: String?
+    public var groupName: PlacementGroupName?
     public var tenancy: Tenancy?
 
     public init(availabilityZone: String? = nil,
-                groupName: String? = nil,
+                groupName: PlacementGroupName? = nil,
                 tenancy: Tenancy? = nil) {
         self.availabilityZone = availabilityZone
         self.groupName = groupName

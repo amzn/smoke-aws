@@ -4752,16 +4752,20 @@ public struct Metrics: Codable, Equatable {
 }
 
 public struct MetricsAndOperator: Codable, Equatable {
+    public var accessPointArn: AccessPointArn?
     public var prefix: Prefix?
     public var tags: TagSet?
 
-    public init(prefix: Prefix? = nil,
+    public init(accessPointArn: AccessPointArn? = nil,
+                prefix: Prefix? = nil,
                 tags: TagSet? = nil) {
+        self.accessPointArn = accessPointArn
         self.prefix = prefix
         self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
+        case accessPointArn = "AccessPointArn"
         case prefix = "Prefix"
         case tags = "Tag"
     }
@@ -4791,19 +4795,23 @@ public struct MetricsConfiguration: Codable, Equatable {
 }
 
 public struct MetricsFilter: Codable, Equatable {
+    public var accessPointArn: AccessPointArn?
     public var and: MetricsAndOperator?
     public var prefix: Prefix?
     public var tag: Tag?
 
-    public init(and: MetricsAndOperator? = nil,
+    public init(accessPointArn: AccessPointArn? = nil,
+                and: MetricsAndOperator? = nil,
                 prefix: Prefix? = nil,
                 tag: Tag? = nil) {
+        self.accessPointArn = accessPointArn
         self.and = and
         self.prefix = prefix
         self.tag = tag
     }
 
     enum CodingKeys: String, CodingKey {
+        case accessPointArn = "AccessPointArn"
         case and = "And"
         case prefix = "Prefix"
         case tag = "Tag"

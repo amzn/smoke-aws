@@ -38,6 +38,11 @@ public typealias AbortRuleId = String
 public typealias AcceptRanges = String
 
 /**
+ Type definition for the AccessPointArn field.
+ */
+public typealias AccessPointArn = String
+
+/**
  Type definition for the AccountId field.
  */
 public typealias AccountId = String

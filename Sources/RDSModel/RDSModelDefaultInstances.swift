@@ -7603,6 +7603,7 @@ public extension ScalingConfiguration {
             autoPause: nil,
             maxCapacity: nil,
             minCapacity: nil,
+            secondsBeforeTimeout: nil,
             secondsUntilAutoPause: nil,
             timeoutAction: nil)
 
@@ -7619,6 +7620,7 @@ public extension ScalingConfigurationInfo {
             autoPause: nil,
             maxCapacity: nil,
             minCapacity: nil,
+            secondsBeforeTimeout: nil,
             secondsUntilAutoPause: nil,
             timeoutAction: nil)
 
