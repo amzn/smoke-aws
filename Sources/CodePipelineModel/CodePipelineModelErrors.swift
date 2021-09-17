@@ -119,7 +119,7 @@ public enum CodePipelineError: Swift.Error, Decodable {
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        var errorReason = try values.decode(String.self, forKey: .type)
+        var errorReason = try values.decodeIfPresent(String.self, forKey: .type) ?? "Unspecified"
         let errorMessage = try values.decodeIfPresent(String.self, forKey: .message)
         
         if let index = errorReason.firstIndex(of: "#") {

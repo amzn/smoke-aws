@@ -30,13 +30,19 @@ private let xAmzId2 = "x-amz-id-2"
  */
 public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     public typealias OutwardsRequestContext = String
+    
+    private let traceLoggingEnabled: Bool
         
-    public init() {
-        
+    public init(traceLoggingEnabled: Bool = true) {
+        self.traceLoggingEnabled = traceLoggingEnabled
     }
     
     public func handleOutwardsRequestStart(method: HTTPMethod, uri: String, logger: Logger, internalRequestId: String,
                                            headers: inout HTTPHeaders, bodyData: Data) -> String {
+        guard self.traceLoggingEnabled else {
+            return ""
+        }
+        
         logger.info("Starting outgoing \(method) request to endpoint '\(uri)'.")
         logger.debug("Outgoing request body: \(bodyData.debugString)")
         
@@ -45,6 +51,10 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     
     public func handleOutwardsRequestSuccess(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response, bodyData: Data?) {
+        guard self.traceLoggingEnabled else {
+            return
+        }
+        
         let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData, error: nil)
         
         logger.info("\(logLine)")
@@ -56,6 +66,10 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
                                              response: HTTPClient.Response?, bodyData: Data?, error: Error) {
+        guard self.traceLoggingEnabled else {
+            return
+        }
+        
         let logLine = getLogLine(successfullyCompletedRequest: false, response: response, bodyData: bodyData, error: error)
         
         // log at error if this is a server error
