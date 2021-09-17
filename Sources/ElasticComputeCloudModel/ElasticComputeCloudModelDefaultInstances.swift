@@ -13830,6 +13830,7 @@ public extension LaunchTemplateInstanceMetadataOptions {
     static let __default: ElasticComputeCloudModel.LaunchTemplateInstanceMetadataOptions = {
         let defaultInstance = ElasticComputeCloudModel.LaunchTemplateInstanceMetadataOptions(
             httpEndpoint: nil,
+            httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil,
             state: nil)
@@ -13845,6 +13846,7 @@ public extension LaunchTemplateInstanceMetadataOptionsRequest {
     static let __default: ElasticComputeCloudModel.LaunchTemplateInstanceMetadataOptionsRequest = {
         let defaultInstance = ElasticComputeCloudModel.LaunchTemplateInstanceMetadataOptionsRequest(
             httpEndpoint: nil,
+            httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil)
 

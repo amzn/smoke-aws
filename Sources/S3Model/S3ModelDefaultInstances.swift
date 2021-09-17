@@ -2644,6 +2644,7 @@ public extension MetricsAndOperator {
      */
     static let __default: S3Model.MetricsAndOperator = {
         let defaultInstance = S3Model.MetricsAndOperator(
+            accessPointArn: nil,
             prefix: nil,
             tags: nil)
 
@@ -2670,6 +2671,7 @@ public extension MetricsFilter {
      */
     static let __default: S3Model.MetricsFilter = {
         let defaultInstance = S3Model.MetricsFilter(
+            accessPointArn: nil,
             and: nil,
             prefix: nil,
             tag: nil)
