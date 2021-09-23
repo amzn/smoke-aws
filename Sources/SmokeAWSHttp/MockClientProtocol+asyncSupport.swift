@@ -1,12 +1,24 @@
+// Copyright 2018-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
-//  MockThrowingClientProtocol.swift
+// Licensed under the Apache License, Version 2.0 (the "License").
+// You may not use this file except in compliance with the License.
+// A copy of the License is located at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// or in the "license" file accompanying this file. This file is distributed
+// on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the License for the specific language governing
+// permissions and limitations under the License.
+//
+//  MockClientProtocol+asyncSupport.swift
+//  SmokeAWSHttp
 //
 
-#if compiler(>=5.5)
+#if compiler(>=5.5) && canImport(_Concurrency)
 
 import NIO
 import SmokeAWSHttp
-import _SmokeHTTPClientConcurrency
 
 /**
  Implementations for a mock service client.
@@ -21,14 +33,14 @@ import _SmokeHTTPClientConcurrency
  provided by the `EventLoopFuture` or will throw any error that fails the future. This override is ignored if the first
  function override is provided.
  
- Otherwise, the implementation will throw the error provided.
+ Otherwise, the implementation will return the default value provided.
  */
-public extension MockThrowingClientProtocol {
+public extension MockClientProtocol {
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
+    func mockAsyncAwareEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
-            defaultError: Error,
+            defaultResult: OutputType,
             eventLoop: EventLoop,
             functionOverride: ((InputType) async throws -> OutputType)?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
@@ -52,15 +64,15 @@ public extension MockThrowingClientProtocol {
         }
 
         let promise = eventLoop.makePromise(of: OutputType.self)
-        promise.fail(defaultError)
+        promise.succeed(defaultResult)
         
         return promise.futureResult
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingExecuteWithInputWithOutput<InputType, OutputType>(
+    func mockExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
-            defaultError: Error,
+            defaultResult: OutputType,
             eventLoop: EventLoop,
             functionOverride: ((InputType) async throws -> OutputType)?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) async throws -> OutputType {
@@ -71,14 +83,13 @@ public extension MockThrowingClientProtocol {
         if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
             return try await eventLoopFutureFunctionOverride(input).get()
         }
-
-        throw defaultError
+        
+        return defaultResult
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
+    func mockAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
-            defaultError: Error,
             eventLoop: EventLoop,
             functionOverride: ((InputType) async throws -> ())?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
@@ -102,21 +113,20 @@ public extension MockThrowingClientProtocol {
         }
 
         let promise = eventLoop.makePromise(of: Void.self)
-        promise.fail(defaultError)
+        promise.succeed(())
         
         return promise.futureResult
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingExecuteWithInputWithoutOutput<InputType>(
+    func mockExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
-            defaultError: Error,
             eventLoop: EventLoop,
             functionOverride: ((InputType) async throws -> ())?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) async throws {
         if let functionOverride = functionOverride {
             try await functionOverride(input)
-        
+            
             return
         }
 
@@ -125,13 +135,11 @@ public extension MockThrowingClientProtocol {
             
             return
         }
-
-        throw defaultError
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingAsyncAwareEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
-            defaultError: Error,
+    func mockAsyncAwareEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
+            defaultResult: OutputType,
             eventLoop: EventLoop,
             functionOverride: (() async throws -> OutputType)?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
@@ -155,14 +163,14 @@ public extension MockThrowingClientProtocol {
         }
 
         let promise = eventLoop.makePromise(of: OutputType.self)
-        promise.fail(defaultError)
+        promise.succeed(defaultResult)
         
         return promise.futureResult
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingExecuteWithoutInputWithOutput<OutputType>(
-            defaultError: Error,
+    func mockExecuteWithoutInputWithOutput<OutputType>(
+            defaultResult: OutputType,
             eventLoop: EventLoop,
             functionOverride: (() async throws -> OutputType)?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) async throws -> OutputType {
@@ -173,13 +181,12 @@ public extension MockThrowingClientProtocol {
         if let eventLoopFutureFunctionOverride = eventLoopFutureFunctionOverride {
             return try await eventLoopFutureFunctionOverride().get()
         }
-
-        throw defaultError
+        
+        return defaultResult
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingAsyncAwareEventLoopFutureExecuteWithoutInputWithoutOutput(
-            defaultError: Error,
+    func mockAsyncAwareEventLoopFutureExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
             functionOverride: (() async throws -> ())?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
@@ -203,14 +210,13 @@ public extension MockThrowingClientProtocol {
         }
 
         let promise = eventLoop.makePromise(of: Void.self)
-        promise.fail(defaultError)
+        promise.succeed(())
         
         return promise.futureResult
     }
     
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
-    func mockThrowingExecuteWithoutInputWithoutOutput(
-            defaultError: Error,
+    func mockExecuteWithoutInputWithoutOutput(
             eventLoop: EventLoop,
             functionOverride: (() async throws -> ())?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) async throws {
@@ -225,8 +231,6 @@ public extension MockThrowingClientProtocol {
             
             return
         }
-
-        throw defaultError
     }
 }
 
