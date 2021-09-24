@@ -20,7 +20,6 @@
 import SmokeHTTPClient
 import SmokeAWSCore
 import NIO
-import SmokeAWSHttp
 
 public extension AWSQueryClientProtocol {
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)

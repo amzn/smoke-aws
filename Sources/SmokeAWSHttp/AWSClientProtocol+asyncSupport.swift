@@ -23,7 +23,6 @@ import NIO
 import NIOHTTP1
 import NIOTransportServices
 import AsyncHTTPClient
-import SmokeAWSHttp
 
 public extension AWSClientProtocol {
     @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)

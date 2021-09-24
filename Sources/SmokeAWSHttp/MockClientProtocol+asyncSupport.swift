@@ -18,7 +18,6 @@
 #if compiler(>=5.5) && canImport(_Concurrency)
 
 import NIO
-import SmokeAWSHttp
 
 /**
  Implementations for a mock service client.
