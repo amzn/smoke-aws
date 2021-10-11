@@ -554,7 +554,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The DeleteRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, registryPolicyNotFound, server.
+           The possible errors are: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func deleteRegistryPolicyAsync(
             input: ECRModel.DeleteRegistryPolicyRequest, 
@@ -587,7 +587,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated DeleteRegistryPolicyRequest object being passed to this operation.
      - Returns: The DeleteRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, registryPolicyNotFound, server.
+     - Throws: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func deleteRegistryPolicySync(
             input: ECRModel.DeleteRegistryPolicyRequest) throws -> ECRModel.DeleteRegistryPolicyResponse {
@@ -741,6 +741,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteRepositoryPolicy,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteRepositoryPolicyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeImageReplicationStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImageReplicationStatusRequest object being passed to this operation.
+         - completion: The DescribeImageReplicationStatusResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImageReplicationStatusResponse
+           object will be validated before being returned to caller.
+           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, server, validation.
+     */
+    public func describeImageReplicationStatusAsync(
+            input: ECRModel.DescribeImageReplicationStatusRequest, 
+            completion: @escaping (Result<ECRModel.DescribeImageReplicationStatusResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.describeImageReplicationStatus.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeImageReplicationStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeImageReplicationStatusOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeImageReplicationStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImageReplicationStatusRequest object being passed to this operation.
+     - Returns: The DescribeImageReplicationStatusResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: imageNotFound, invalidParameter, repositoryNotFound, server, validation.
+     */
+    public func describeImageReplicationStatusSync(
+            input: ECRModel.DescribeImageReplicationStatusRequest) throws -> ECRModel.DescribeImageReplicationStatusResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.describeImageReplicationStatus.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeImageReplicationStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeImageReplicationStatusOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -1324,7 +1394,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The GetRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The GetRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, registryPolicyNotFound, server.
+           The possible errors are: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func getRegistryPolicyAsync(
             input: ECRModel.GetRegistryPolicyRequest, 
@@ -1357,7 +1427,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated GetRegistryPolicyRequest object being passed to this operation.
      - Returns: The GetRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, registryPolicyNotFound, server.
+     - Throws: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func getRegistryPolicySync(
             input: ECRModel.GetRegistryPolicyRequest) throws -> ECRModel.GetRegistryPolicyResponse {
@@ -1954,7 +2024,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The PutRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The PutRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, server.
+           The possible errors are: invalidParameter, server, validation.
      */
     public func putRegistryPolicyAsync(
             input: ECRModel.PutRegistryPolicyRequest, 
@@ -1987,7 +2057,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated PutRegistryPolicyRequest object being passed to this operation.
      - Returns: The PutRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, server.
+     - Throws: invalidParameter, server, validation.
      */
     public func putRegistryPolicySync(
             input: ECRModel.PutRegistryPolicyRequest) throws -> ECRModel.PutRegistryPolicyResponse {

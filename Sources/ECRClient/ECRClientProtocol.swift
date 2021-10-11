@@ -74,6 +74,11 @@ public protocol ECRClientProtocol {
     typealias DeleteRepositoryPolicyAsyncType = (
             _ input: ECRModel.DeleteRepositoryPolicyRequest, 
             _ completion: @escaping (Result<ECRModel.DeleteRepositoryPolicyResponse, ECRError>) -> ()) throws -> ()
+    typealias DescribeImageReplicationStatusSyncType = (
+            _ input: ECRModel.DescribeImageReplicationStatusRequest) throws -> ECRModel.DescribeImageReplicationStatusResponse
+    typealias DescribeImageReplicationStatusAsyncType = (
+            _ input: ECRModel.DescribeImageReplicationStatusRequest, 
+            _ completion: @escaping (Result<ECRModel.DescribeImageReplicationStatusResponse, ECRError>) -> ()) throws -> ()
     typealias DescribeImageScanFindingsSyncType = (
             _ input: ECRModel.DescribeImageScanFindingsRequest) throws -> ECRModel.DescribeImageScanFindingsResponse
     typealias DescribeImageScanFindingsAsyncType = (
@@ -364,7 +369,7 @@ public protocol ECRClientProtocol {
          - completion: The DeleteRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, registryPolicyNotFound, server.
+           The possible errors are: invalidParameter, registryPolicyNotFound, server, validation.
      */
     func deleteRegistryPolicyAsync(
             input: ECRModel.DeleteRegistryPolicyRequest, 
@@ -377,7 +382,7 @@ public protocol ECRClientProtocol {
          - input: The validated DeleteRegistryPolicyRequest object being passed to this operation.
      - Returns: The DeleteRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, registryPolicyNotFound, server.
+     - Throws: invalidParameter, registryPolicyNotFound, server, validation.
      */
     func deleteRegistryPolicySync(
             input: ECRModel.DeleteRegistryPolicyRequest) throws -> ECRModel.DeleteRegistryPolicyResponse
@@ -433,6 +438,32 @@ public protocol ECRClientProtocol {
      */
     func deleteRepositoryPolicySync(
             input: ECRModel.DeleteRepositoryPolicyRequest) throws -> ECRModel.DeleteRepositoryPolicyResponse
+
+    /**
+     Invokes the DescribeImageReplicationStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImageReplicationStatusRequest object being passed to this operation.
+         - completion: The DescribeImageReplicationStatusResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImageReplicationStatusResponse
+           object will be validated before being returned to caller.
+           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, server, validation.
+     */
+    func describeImageReplicationStatusAsync(
+            input: ECRModel.DescribeImageReplicationStatusRequest, 
+            completion: @escaping (Result<ECRModel.DescribeImageReplicationStatusResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the DescribeImageReplicationStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImageReplicationStatusRequest object being passed to this operation.
+     - Returns: The DescribeImageReplicationStatusResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: imageNotFound, invalidParameter, repositoryNotFound, server, validation.
+     */
+    func describeImageReplicationStatusSync(
+            input: ECRModel.DescribeImageReplicationStatusRequest) throws -> ECRModel.DescribeImageReplicationStatusResponse
 
     /**
      Invokes the DescribeImageScanFindings operation returning immediately and passing the response to a callback.
@@ -650,7 +681,7 @@ public protocol ECRClientProtocol {
          - completion: The GetRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The GetRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, registryPolicyNotFound, server.
+           The possible errors are: invalidParameter, registryPolicyNotFound, server, validation.
      */
     func getRegistryPolicyAsync(
             input: ECRModel.GetRegistryPolicyRequest, 
@@ -663,7 +694,7 @@ public protocol ECRClientProtocol {
          - input: The validated GetRegistryPolicyRequest object being passed to this operation.
      - Returns: The GetRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, registryPolicyNotFound, server.
+     - Throws: invalidParameter, registryPolicyNotFound, server, validation.
      */
     func getRegistryPolicySync(
             input: ECRModel.GetRegistryPolicyRequest) throws -> ECRModel.GetRegistryPolicyResponse
@@ -884,7 +915,7 @@ public protocol ECRClientProtocol {
          - completion: The PutRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The PutRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, server.
+           The possible errors are: invalidParameter, server, validation.
      */
     func putRegistryPolicyAsync(
             input: ECRModel.PutRegistryPolicyRequest, 
@@ -897,7 +928,7 @@ public protocol ECRClientProtocol {
          - input: The validated PutRegistryPolicyRequest object being passed to this operation.
      - Returns: The PutRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, server.
+     - Throws: invalidParameter, server, validation.
      */
     func putRegistryPolicySync(
             input: ECRModel.PutRegistryPolicyRequest) throws -> ECRModel.PutRegistryPolicyResponse

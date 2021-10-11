@@ -212,6 +212,11 @@ public typealias ImageList = [Image]
 public typealias ImageManifest = String
 
 /**
+ Type definition for the ImageReplicationStatusList field.
+ */
+public typealias ImageReplicationStatusList = [ImageReplicationStatus]
+
+/**
  Type definition for the ImageScanFindingList field.
  */
 public typealias ImageScanFindingList = [ImageScanFinding]
@@ -410,9 +415,52 @@ public typealias RegistryPolicyText = String
 public typealias ReplicationDestinationList = [ReplicationDestination]
 
 /**
+ Type definition for the ReplicationError field.
+ */
+public typealias ReplicationError = String
+
+/**
  Type definition for the ReplicationRuleList field.
  */
 public typealias ReplicationRuleList = [ReplicationRule]
+
+/**
+ Enumeration restricting the values of the ReplicationStatus field.
+ */
+public enum ReplicationStatus: String, Codable, CustomStringConvertible {
+    case complete = "COMPLETE"
+    case failed = "FAILED"
+    case inProgress = "IN_PROGRESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ReplicationStatus = .complete
+}
+
+/**
+ Type definition for the RepositoryFilterList field.
+ */
+public typealias RepositoryFilterList = [RepositoryFilter]
+
+/**
+ Enumeration restricting the values of the RepositoryFilterType field.
+ */
+public enum RepositoryFilterType: String, Codable, CustomStringConvertible {
+    case prefixMatch = "PREFIX_MATCH"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: RepositoryFilterType = .prefixMatch
+}
+
+/**
+ Type definition for the RepositoryFilterValue field.
+ */
+public typealias RepositoryFilterValue = String
 
 /**
  Type definition for the RepositoryList field.
@@ -879,8 +927,44 @@ extension Array where Element == ECRModel.ReplicationRule {
             throw ECRError.validationError(reason: "The provided value to ReplicationRuleList violated the minimum length constraint.")
         }
 
-        if self.count > 1 {
+        if self.count > 10 {
             throw ECRError.validationError(reason: "The provided value to ReplicationRuleList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the RepositoryFilterList field.
+*/
+extension Array where Element == ECRModel.RepositoryFilter {
+    public func validateAsRepositoryFilterList() throws {
+        if self.count < 1 {
+            throw ECRError.validationError(reason: "The provided value to RepositoryFilterList violated the minimum length constraint.")
+        }
+
+        if self.count > 100 {
+            throw ECRError.validationError(reason: "The provided value to RepositoryFilterList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the RepositoryFilterValue field.
+*/
+extension ECRModel.RepositoryFilterValue {
+    public func validateAsRepositoryFilterValue() throws {
+        if self.count < 2 {
+            throw ECRError.validationError(reason: "The provided value to RepositoryFilterValue violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw ECRError.validationError(reason: "The provided value to RepositoryFilterValue violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^(?:[a-z0-9]+(?:[._-][a-z0-9]*)*/)*[a-z0-9]*(?:[._-][a-z0-9]*)*$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ECRError.validationError(
+                    reason: "The provided value to RepositoryFilterValue violated the regular expression constraint.")
         }
     }
 }

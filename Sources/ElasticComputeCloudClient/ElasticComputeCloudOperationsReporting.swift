@@ -63,6 +63,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let bundleInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelBundleTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelCapacityReservationFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelConversionTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelImportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -74,6 +75,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let copyImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let copySnapshot: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createCapacityReservationFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createCarrierGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createClientVpnRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -205,6 +207,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeAvailabilityZones: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeBundleTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeByoipCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeCapacityReservationFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeCapacityReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeCarrierGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeClassicLinkInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -384,6 +387,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getTransitGatewayPrefixListReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayRouteTableAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayRouteTablePropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getVpnConnectionDeviceSampleConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getVpnConnectionDeviceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -393,6 +398,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let modifyAddressAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyAvailabilityZoneGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyCapacityReservationFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyClientVpnEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyDefaultCreditSpecification: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyEbsDefaultKmsKeyId: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -565,6 +571,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .cancelBundleTask, configuration: reportingConfiguration)
         self.cancelCapacityReservation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .cancelCapacityReservation, configuration: reportingConfiguration)
+        self.cancelCapacityReservationFleets = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelCapacityReservationFleets, configuration: reportingConfiguration)
         self.cancelConversionTask = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .cancelConversionTask, configuration: reportingConfiguration)
         self.cancelExportTask = StandardSmokeAWSOperationReporting(
@@ -587,6 +595,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .copySnapshot, configuration: reportingConfiguration)
         self.createCapacityReservation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createCapacityReservation, configuration: reportingConfiguration)
+        self.createCapacityReservationFleet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createCapacityReservationFleet, configuration: reportingConfiguration)
         self.createCarrierGateway = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createCarrierGateway, configuration: reportingConfiguration)
         self.createClientVpnEndpoint = StandardSmokeAWSOperationReporting(
@@ -849,6 +859,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeBundleTasks, configuration: reportingConfiguration)
         self.describeByoipCidrs = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeByoipCidrs, configuration: reportingConfiguration)
+        self.describeCapacityReservationFleets = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeCapacityReservationFleets, configuration: reportingConfiguration)
         self.describeCapacityReservations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeCapacityReservations, configuration: reportingConfiguration)
         self.describeCarrierGateways = StandardSmokeAWSOperationReporting(
@@ -1207,6 +1219,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getTransitGatewayRouteTableAssociations, configuration: reportingConfiguration)
         self.getTransitGatewayRouteTablePropagations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getTransitGatewayRouteTablePropagations, configuration: reportingConfiguration)
+        self.getVpnConnectionDeviceSampleConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getVpnConnectionDeviceSampleConfiguration, configuration: reportingConfiguration)
+        self.getVpnConnectionDeviceTypes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getVpnConnectionDeviceTypes, configuration: reportingConfiguration)
         self.importClientVpnClientCertificateRevocationList = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .importClientVpnClientCertificateRevocationList, configuration: reportingConfiguration)
         self.importImage = StandardSmokeAWSOperationReporting(
@@ -1225,6 +1241,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .modifyAvailabilityZoneGroup, configuration: reportingConfiguration)
         self.modifyCapacityReservation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyCapacityReservation, configuration: reportingConfiguration)
+        self.modifyCapacityReservationFleet = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyCapacityReservationFleet, configuration: reportingConfiguration)
         self.modifyClientVpnEndpoint = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyClientVpnEndpoint, configuration: reportingConfiguration)
         self.modifyDefaultCreditSpecification = StandardSmokeAWSOperationReporting(

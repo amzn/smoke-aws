@@ -38,6 +38,7 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let deleteRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeImageReplicationStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeImageScanFindings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeRegistry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -83,6 +84,8 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.deleteRepository)
         self.deleteRepositoryPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteRepositoryPolicy)
+        self.describeImageReplicationStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeImageReplicationStatus)
         self.describeImageScanFindings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeImageScanFindings)
         self.describeImages = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

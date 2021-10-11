@@ -1398,6 +1398,45 @@ public extension CancelBundleTaskResult {
     }()
 }
 
+public extension CancelCapacityReservationFleetError {
+    /**
+     Default instance of the CancelCapacityReservationFleetError structure.
+     */
+    static let __default: ElasticComputeCloudModel.CancelCapacityReservationFleetError = {
+        let defaultInstance = ElasticComputeCloudModel.CancelCapacityReservationFleetError(
+            code: nil,
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CancelCapacityReservationFleetsRequest {
+    /**
+     Default instance of the CancelCapacityReservationFleetsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest(
+            capacityReservationFleetIds: [],
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CancelCapacityReservationFleetsResult {
+    /**
+     Default instance of the CancelCapacityReservationFleetsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CancelCapacityReservationFleetsResult = {
+        let defaultInstance = ElasticComputeCloudModel.CancelCapacityReservationFleetsResult(
+            failedFleetCancellations: nil,
+            successfulFleetCancellations: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CancelCapacityReservationRequest {
     /**
      Default instance of the CancelCapacityReservationRequest structure.
@@ -1616,6 +1655,7 @@ public extension CapacityReservation {
             availabilityZoneId: nil,
             availableInstanceCount: nil,
             capacityReservationArn: nil,
+            capacityReservationFleetId: nil,
             capacityReservationId: nil,
             createDate: nil,
             ebsOptimized: nil,
@@ -1632,6 +1672,43 @@ public extension CapacityReservation {
             tags: nil,
             tenancy: nil,
             totalInstanceCount: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CapacityReservationFleet {
+    /**
+     Default instance of the CapacityReservationFleet structure.
+     */
+    static let __default: ElasticComputeCloudModel.CapacityReservationFleet = {
+        let defaultInstance = ElasticComputeCloudModel.CapacityReservationFleet(
+            allocationStrategy: nil,
+            capacityReservationFleetArn: nil,
+            capacityReservationFleetId: nil,
+            createTime: nil,
+            endDate: nil,
+            instanceMatchCriteria: nil,
+            instanceTypeSpecifications: nil,
+            state: nil,
+            tags: nil,
+            tenancy: nil,
+            totalFulfilledCapacity: nil,
+            totalTargetCapacity: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CapacityReservationFleetCancellationState {
+    /**
+     Default instance of the CapacityReservationFleetCancellationState structure.
+     */
+    static let __default: ElasticComputeCloudModel.CapacityReservationFleetCancellationState = {
+        let defaultInstance = ElasticComputeCloudModel.CapacityReservationFleetCancellationState(
+            capacityReservationFleetId: nil,
+            currentFleetState: nil,
+            previousFleetState: nil)
 
         return defaultInstance
     }()
@@ -2305,6 +2382,48 @@ public extension CpuOptionsRequest {
         let defaultInstance = ElasticComputeCloudModel.CpuOptionsRequest(
             coreCount: nil,
             threadsPerCore: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateCapacityReservationFleetRequest {
+    /**
+     Default instance of the CreateCapacityReservationFleetRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateCapacityReservationFleetRequest(
+            allocationStrategy: nil,
+            clientToken: nil,
+            dryRun: nil,
+            endDate: nil,
+            instanceMatchCriteria: nil,
+            instanceTypeSpecifications: [],
+            tagSpecifications: nil,
+            tenancy: nil,
+            totalTargetCapacity: 0)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateCapacityReservationFleetResult {
+    /**
+     Default instance of the CreateCapacityReservationFleetResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateCapacityReservationFleetResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateCapacityReservationFleetResult(
+            allocationStrategy: nil,
+            capacityReservationFleetId: nil,
+            createTime: nil,
+            endDate: nil,
+            fleetCapacityReservations: nil,
+            instanceMatchCriteria: nil,
+            state: nil,
+            tags: nil,
+            tenancy: nil,
+            totalFulfilledCapacity: nil,
+            totalTargetCapacity: nil)
 
         return defaultInstance
     }()
@@ -5853,6 +5972,35 @@ public extension DescribeByoipCidrsResult {
     static let __default: ElasticComputeCloudModel.DescribeByoipCidrsResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeByoipCidrsResult(
             byoipCidrs: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeCapacityReservationFleetsRequest {
+    /**
+     Default instance of the DescribeCapacityReservationFleetsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest(
+            capacityReservationFleetIds: nil,
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeCapacityReservationFleetsResult {
+    /**
+     Default instance of the DescribeCapacityReservationFleetsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult(
+            capacityReservationFleets: nil,
             nextToken: nil)
 
         return defaultInstance
@@ -10790,6 +10938,19 @@ public extension ExportTransitGatewayRoutesResult {
     }()
 }
 
+public extension FailedCapacityReservationFleetCancellationResult {
+    /**
+     Default instance of the FailedCapacityReservationFleetCancellationResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.FailedCapacityReservationFleetCancellationResult = {
+        let defaultInstance = ElasticComputeCloudModel.FailedCapacityReservationFleetCancellationResult(
+            cancelCapacityReservationFleetError: nil,
+            capacityReservationFleetId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension FailedQueuedPurchaseDeletion {
     /**
      Default instance of the FailedQueuedPurchaseDeletion structure.
@@ -10837,6 +10998,28 @@ public extension Filter {
         let defaultInstance = ElasticComputeCloudModel.Filter(
             name: nil,
             values: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FleetCapacityReservation {
+    /**
+     Default instance of the FleetCapacityReservation structure.
+     */
+    static let __default: ElasticComputeCloudModel.FleetCapacityReservation = {
+        let defaultInstance = ElasticComputeCloudModel.FleetCapacityReservation(
+            availabilityZone: nil,
+            availabilityZoneId: nil,
+            capacityReservationId: nil,
+            createDate: nil,
+            ebsOptimized: nil,
+            fulfilledCapacity: nil,
+            instancePlatform: nil,
+            instanceType: nil,
+            priority: nil,
+            totalInstanceCount: nil,
+            weight: nil)
 
         return defaultInstance
     }()
@@ -11801,6 +11984,60 @@ public extension GetTransitGatewayRouteTablePropagationsResult {
     }()
 }
 
+public extension GetVpnConnectionDeviceSampleConfigurationRequest {
+    /**
+     Default instance of the GetVpnConnectionDeviceSampleConfigurationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest(
+            dryRun: nil,
+            internetKeyExchangeVersion: nil,
+            vpnConnectionDeviceTypeId: "value",
+            vpnConnectionId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetVpnConnectionDeviceSampleConfigurationResult {
+    /**
+     Default instance of the GetVpnConnectionDeviceSampleConfigurationResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult(
+            vpnConnectionDeviceSampleConfiguration: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetVpnConnectionDeviceTypesRequest {
+    /**
+     Default instance of the GetVpnConnectionDeviceTypesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest(
+            dryRun: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetVpnConnectionDeviceTypesResult {
+    /**
+     Default instance of the GetVpnConnectionDeviceTypesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult(
+            nextToken: nil,
+            vpnConnectionDeviceTypes: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension GpuDeviceInfo {
     /**
      Default instance of the GpuDeviceInfo structure.
@@ -12577,6 +12814,7 @@ public extension Instance {
             outpostArn: nil,
             placement: nil,
             platform: nil,
+            platformDetails: nil,
             privateDnsName: nil,
             privateIpAddress: nil,
             productCodes: nil,
@@ -12594,6 +12832,8 @@ public extension Instance {
             stateTransitionReason: nil,
             subnetId: nil,
             tags: nil,
+            usageOperation: nil,
+            usageOperationUpdateTime: nil,
             virtualizationType: nil,
             vpcId: nil)
 
@@ -14389,6 +14629,34 @@ public extension ModifyAvailabilityZoneGroupResult {
      */
     static let __default: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult = {
         let defaultInstance = ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyCapacityReservationFleetRequest {
+    /**
+     Default instance of the ModifyCapacityReservationFleetRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest(
+            capacityReservationFleetId: "value",
+            dryRun: nil,
+            endDate: nil,
+            removeEndDate: nil,
+            totalTargetCapacity: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyCapacityReservationFleetResult {
+    /**
+     Default instance of the ModifyCapacityReservationFleetResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyCapacityReservationFleetResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyCapacityReservationFleetResult(
             return: nil)
 
         return defaultInstance
@@ -17466,6 +17734,24 @@ public extension Reservation {
     }()
 }
 
+public extension ReservationFleetInstanceSpecification {
+    /**
+     Default instance of the ReservationFleetInstanceSpecification structure.
+     */
+    static let __default: ElasticComputeCloudModel.ReservationFleetInstanceSpecification = {
+        let defaultInstance = ElasticComputeCloudModel.ReservationFleetInstanceSpecification(
+            availabilityZone: nil,
+            availabilityZoneId: nil,
+            ebsOptimized: nil,
+            instancePlatform: nil,
+            instanceType: nil,
+            priority: nil,
+            weight: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ReservationValue {
     /**
      Default instance of the ReservationValue structure.
@@ -18399,7 +18685,7 @@ public extension SearchLocalGatewayRoutesRequest {
     static let __default: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest = {
         let defaultInstance = ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest(
             dryRun: nil,
-            filters: [],
+            filters: nil,
             localGatewayRouteTableId: "value",
             maxResults: nil,
             nextToken: nil)
@@ -20976,6 +21262,21 @@ public extension VpnConnection {
             vgwTelemetry: nil,
             vpnConnectionId: nil,
             vpnGatewayId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension VpnConnectionDeviceType {
+    /**
+     Default instance of the VpnConnectionDeviceType structure.
+     */
+    static let __default: ElasticComputeCloudModel.VpnConnectionDeviceType = {
+        let defaultInstance = ElasticComputeCloudModel.VpnConnectionDeviceType(
+            platform: nil,
+            software: nil,
+            vendor: nil,
+            vpnConnectionDeviceTypeId: nil)
 
         return defaultInstance
     }()

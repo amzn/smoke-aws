@@ -2395,6 +2395,63 @@ public struct CancelBundleTaskResult: Codable, Equatable {
     }
 }
 
+public struct CancelCapacityReservationFleetError: Codable, Equatable {
+    public var code: CancelCapacityReservationFleetErrorCode?
+    public var message: CancelCapacityReservationFleetErrorMessage?
+
+    public init(code: CancelCapacityReservationFleetErrorCode? = nil,
+                message: CancelCapacityReservationFleetErrorMessage? = nil) {
+        self.code = code
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case code
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CancelCapacityReservationFleetsRequest: Codable, Equatable {
+    public var capacityReservationFleetIds: CapacityReservationFleetIdSet
+    public var dryRun: Boolean?
+
+    public init(capacityReservationFleetIds: CapacityReservationFleetIdSet,
+                dryRun: Boolean? = nil) {
+        self.capacityReservationFleetIds = capacityReservationFleetIds
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityReservationFleetIds = "CapacityReservationFleetId"
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CancelCapacityReservationFleetsResult: Codable, Equatable {
+    public var failedFleetCancellations: FailedCapacityReservationFleetCancellationResultSet?
+    public var successfulFleetCancellations: CapacityReservationFleetCancellationStateSet?
+
+    public init(failedFleetCancellations: FailedCapacityReservationFleetCancellationResultSet? = nil,
+                successfulFleetCancellations: CapacityReservationFleetCancellationStateSet? = nil) {
+        self.failedFleetCancellations = failedFleetCancellations
+        self.successfulFleetCancellations = successfulFleetCancellations
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failedFleetCancellations = "failedFleetCancellationSet"
+        case successfulFleetCancellations = "successfulFleetCancellationSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct CancelCapacityReservationRequest: Codable, Equatable {
     public var capacityReservationId: CapacityReservationId
     public var dryRun: Boolean?
@@ -2705,6 +2762,7 @@ public struct CapacityReservation: Codable, Equatable {
     public var availabilityZoneId: String?
     public var availableInstanceCount: Integer?
     public var capacityReservationArn: String?
+    public var capacityReservationFleetId: String?
     public var capacityReservationId: String?
     public var createDate: DateTime?
     public var ebsOptimized: Boolean?
@@ -2726,6 +2784,7 @@ public struct CapacityReservation: Codable, Equatable {
                 availabilityZoneId: String? = nil,
                 availableInstanceCount: Integer? = nil,
                 capacityReservationArn: String? = nil,
+                capacityReservationFleetId: String? = nil,
                 capacityReservationId: String? = nil,
                 createDate: DateTime? = nil,
                 ebsOptimized: Boolean? = nil,
@@ -2746,6 +2805,7 @@ public struct CapacityReservation: Codable, Equatable {
         self.availabilityZoneId = availabilityZoneId
         self.availableInstanceCount = availableInstanceCount
         self.capacityReservationArn = capacityReservationArn
+        self.capacityReservationFleetId = capacityReservationFleetId
         self.capacityReservationId = capacityReservationId
         self.createDate = createDate
         self.ebsOptimized = ebsOptimized
@@ -2769,6 +2829,7 @@ public struct CapacityReservation: Codable, Equatable {
         case availabilityZoneId
         case availableInstanceCount
         case capacityReservationArn
+        case capacityReservationFleetId
         case capacityReservationId
         case createDate
         case ebsOptimized
@@ -2789,6 +2850,88 @@ public struct CapacityReservation: Codable, Equatable {
 
     public func validate() throws {
         try outpostArn?.validateAsOutpostArn()
+    }
+}
+
+public struct CapacityReservationFleet: Codable, Equatable {
+    public var allocationStrategy: String?
+    public var capacityReservationFleetArn: String?
+    public var capacityReservationFleetId: CapacityReservationFleetId?
+    public var createTime: MillisecondDateTime?
+    public var endDate: MillisecondDateTime?
+    public var instanceMatchCriteria: FleetInstanceMatchCriteria?
+    public var instanceTypeSpecifications: FleetCapacityReservationSet?
+    public var state: CapacityReservationFleetState?
+    public var tags: TagList?
+    public var tenancy: FleetCapacityReservationTenancy?
+    public var totalFulfilledCapacity: Double?
+    public var totalTargetCapacity: Integer?
+
+    public init(allocationStrategy: String? = nil,
+                capacityReservationFleetArn: String? = nil,
+                capacityReservationFleetId: CapacityReservationFleetId? = nil,
+                createTime: MillisecondDateTime? = nil,
+                endDate: MillisecondDateTime? = nil,
+                instanceMatchCriteria: FleetInstanceMatchCriteria? = nil,
+                instanceTypeSpecifications: FleetCapacityReservationSet? = nil,
+                state: CapacityReservationFleetState? = nil,
+                tags: TagList? = nil,
+                tenancy: FleetCapacityReservationTenancy? = nil,
+                totalFulfilledCapacity: Double? = nil,
+                totalTargetCapacity: Integer? = nil) {
+        self.allocationStrategy = allocationStrategy
+        self.capacityReservationFleetArn = capacityReservationFleetArn
+        self.capacityReservationFleetId = capacityReservationFleetId
+        self.createTime = createTime
+        self.endDate = endDate
+        self.instanceMatchCriteria = instanceMatchCriteria
+        self.instanceTypeSpecifications = instanceTypeSpecifications
+        self.state = state
+        self.tags = tags
+        self.tenancy = tenancy
+        self.totalFulfilledCapacity = totalFulfilledCapacity
+        self.totalTargetCapacity = totalTargetCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationStrategy
+        case capacityReservationFleetArn
+        case capacityReservationFleetId
+        case createTime
+        case endDate
+        case instanceMatchCriteria
+        case instanceTypeSpecifications = "instanceTypeSpecificationSet"
+        case state
+        case tags = "tagSet"
+        case tenancy
+        case totalFulfilledCapacity
+        case totalTargetCapacity
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CapacityReservationFleetCancellationState: Codable, Equatable {
+    public var capacityReservationFleetId: CapacityReservationFleetId?
+    public var currentFleetState: CapacityReservationFleetState?
+    public var previousFleetState: CapacityReservationFleetState?
+
+    public init(capacityReservationFleetId: CapacityReservationFleetId? = nil,
+                currentFleetState: CapacityReservationFleetState? = nil,
+                previousFleetState: CapacityReservationFleetState? = nil) {
+        self.capacityReservationFleetId = capacityReservationFleetId
+        self.currentFleetState = currentFleetState
+        self.previousFleetState = previousFleetState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityReservationFleetId
+        case currentFleetState
+        case previousFleetState
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -3978,6 +4121,108 @@ public struct CpuOptionsRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case coreCount = "CoreCount"
         case threadsPerCore = "ThreadsPerCore"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateCapacityReservationFleetRequest: Codable, Equatable {
+    public var allocationStrategy: String?
+    public var clientToken: String?
+    public var dryRun: Boolean?
+    public var endDate: MillisecondDateTime?
+    public var instanceMatchCriteria: FleetInstanceMatchCriteria?
+    public var instanceTypeSpecifications: ReservationFleetInstanceSpecificationList
+    public var tagSpecifications: TagSpecificationList?
+    public var tenancy: FleetCapacityReservationTenancy?
+    public var totalTargetCapacity: Integer
+
+    public init(allocationStrategy: String? = nil,
+                clientToken: String? = nil,
+                dryRun: Boolean? = nil,
+                endDate: MillisecondDateTime? = nil,
+                instanceMatchCriteria: FleetInstanceMatchCriteria? = nil,
+                instanceTypeSpecifications: ReservationFleetInstanceSpecificationList,
+                tagSpecifications: TagSpecificationList? = nil,
+                tenancy: FleetCapacityReservationTenancy? = nil,
+                totalTargetCapacity: Integer) {
+        self.allocationStrategy = allocationStrategy
+        self.clientToken = clientToken
+        self.dryRun = dryRun
+        self.endDate = endDate
+        self.instanceMatchCriteria = instanceMatchCriteria
+        self.instanceTypeSpecifications = instanceTypeSpecifications
+        self.tagSpecifications = tagSpecifications
+        self.tenancy = tenancy
+        self.totalTargetCapacity = totalTargetCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationStrategy = "AllocationStrategy"
+        case clientToken = "ClientToken"
+        case dryRun = "DryRun"
+        case endDate = "EndDate"
+        case instanceMatchCriteria = "InstanceMatchCriteria"
+        case instanceTypeSpecifications = "InstanceTypeSpecification"
+        case tagSpecifications = "TagSpecification"
+        case tenancy = "Tenancy"
+        case totalTargetCapacity = "TotalTargetCapacity"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CreateCapacityReservationFleetResult: Codable, Equatable {
+    public var allocationStrategy: String?
+    public var capacityReservationFleetId: CapacityReservationFleetId?
+    public var createTime: MillisecondDateTime?
+    public var endDate: MillisecondDateTime?
+    public var fleetCapacityReservations: FleetCapacityReservationSet?
+    public var instanceMatchCriteria: FleetInstanceMatchCriteria?
+    public var state: CapacityReservationFleetState?
+    public var tags: TagList?
+    public var tenancy: FleetCapacityReservationTenancy?
+    public var totalFulfilledCapacity: Double?
+    public var totalTargetCapacity: Integer?
+
+    public init(allocationStrategy: String? = nil,
+                capacityReservationFleetId: CapacityReservationFleetId? = nil,
+                createTime: MillisecondDateTime? = nil,
+                endDate: MillisecondDateTime? = nil,
+                fleetCapacityReservations: FleetCapacityReservationSet? = nil,
+                instanceMatchCriteria: FleetInstanceMatchCriteria? = nil,
+                state: CapacityReservationFleetState? = nil,
+                tags: TagList? = nil,
+                tenancy: FleetCapacityReservationTenancy? = nil,
+                totalFulfilledCapacity: Double? = nil,
+                totalTargetCapacity: Integer? = nil) {
+        self.allocationStrategy = allocationStrategy
+        self.capacityReservationFleetId = capacityReservationFleetId
+        self.createTime = createTime
+        self.endDate = endDate
+        self.fleetCapacityReservations = fleetCapacityReservations
+        self.instanceMatchCriteria = instanceMatchCriteria
+        self.state = state
+        self.tags = tags
+        self.tenancy = tenancy
+        self.totalFulfilledCapacity = totalFulfilledCapacity
+        self.totalTargetCapacity = totalTargetCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationStrategy
+        case capacityReservationFleetId
+        case createTime
+        case endDate
+        case fleetCapacityReservations = "fleetCapacityReservationSet"
+        case instanceMatchCriteria
+        case state
+        case tags = "tagSet"
+        case tenancy
+        case totalFulfilledCapacity
+        case totalTargetCapacity
     }
 
     public func validate() throws {
@@ -9904,6 +10149,57 @@ public struct DescribeByoipCidrsResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case byoipCidrs = "byoipCidrSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeCapacityReservationFleetsRequest: Codable, Equatable {
+    public var capacityReservationFleetIds: CapacityReservationFleetIdSet?
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var maxResults: DescribeCapacityReservationFleetsMaxResults?
+    public var nextToken: String?
+
+    public init(capacityReservationFleetIds: CapacityReservationFleetIdSet? = nil,
+                dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                maxResults: DescribeCapacityReservationFleetsMaxResults? = nil,
+                nextToken: String? = nil) {
+        self.capacityReservationFleetIds = capacityReservationFleetIds
+        self.dryRun = dryRun
+        self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityReservationFleetIds = "CapacityReservationFleetId"
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsDescribeCapacityReservationFleetsMaxResults()
+    }
+}
+
+public struct DescribeCapacityReservationFleetsResult: Codable, Equatable {
+    public var capacityReservationFleets: CapacityReservationFleetSet?
+    public var nextToken: String?
+
+    public init(capacityReservationFleets: CapacityReservationFleetSet? = nil,
+                nextToken: String? = nil) {
+        self.capacityReservationFleets = capacityReservationFleets
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityReservationFleets = "capacityReservationFleetSet"
         case nextToken
     }
 
@@ -18393,6 +18689,26 @@ public struct ExportTransitGatewayRoutesResult: Codable, Equatable {
     }
 }
 
+public struct FailedCapacityReservationFleetCancellationResult: Codable, Equatable {
+    public var cancelCapacityReservationFleetError: CancelCapacityReservationFleetError?
+    public var capacityReservationFleetId: CapacityReservationFleetId?
+
+    public init(cancelCapacityReservationFleetError: CancelCapacityReservationFleetError? = nil,
+                capacityReservationFleetId: CapacityReservationFleetId? = nil) {
+        self.cancelCapacityReservationFleetError = cancelCapacityReservationFleetError
+        self.capacityReservationFleetId = capacityReservationFleetId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cancelCapacityReservationFleetError
+        case capacityReservationFleetId
+    }
+
+    public func validate() throws {
+        try cancelCapacityReservationFleetError?.validate()
+    }
+}
+
 public struct FailedQueuedPurchaseDeletion: Codable, Equatable {
     public var error: DeleteQueuedReservedInstancesError?
     public var reservedInstancesId: String?
@@ -18467,6 +18783,63 @@ public struct Filter: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct FleetCapacityReservation: Codable, Equatable {
+    public var availabilityZone: String?
+    public var availabilityZoneId: String?
+    public var capacityReservationId: CapacityReservationId?
+    public var createDate: MillisecondDateTime?
+    public var ebsOptimized: Boolean?
+    public var fulfilledCapacity: Double?
+    public var instancePlatform: CapacityReservationInstancePlatform?
+    public var instanceType: InstanceType?
+    public var priority: IntegerWithConstraints?
+    public var totalInstanceCount: Integer?
+    public var weight: DoubleWithConstraints?
+
+    public init(availabilityZone: String? = nil,
+                availabilityZoneId: String? = nil,
+                capacityReservationId: CapacityReservationId? = nil,
+                createDate: MillisecondDateTime? = nil,
+                ebsOptimized: Boolean? = nil,
+                fulfilledCapacity: Double? = nil,
+                instancePlatform: CapacityReservationInstancePlatform? = nil,
+                instanceType: InstanceType? = nil,
+                priority: IntegerWithConstraints? = nil,
+                totalInstanceCount: Integer? = nil,
+                weight: DoubleWithConstraints? = nil) {
+        self.availabilityZone = availabilityZone
+        self.availabilityZoneId = availabilityZoneId
+        self.capacityReservationId = capacityReservationId
+        self.createDate = createDate
+        self.ebsOptimized = ebsOptimized
+        self.fulfilledCapacity = fulfilledCapacity
+        self.instancePlatform = instancePlatform
+        self.instanceType = instanceType
+        self.priority = priority
+        self.totalInstanceCount = totalInstanceCount
+        self.weight = weight
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case availabilityZone
+        case availabilityZoneId
+        case capacityReservationId
+        case createDate
+        case ebsOptimized
+        case fulfilledCapacity
+        case instancePlatform
+        case instanceType
+        case priority
+        case totalInstanceCount
+        case weight
+    }
+
+    public func validate() throws {
+        try priority?.validateAsIntegerWithConstraints()
+        try weight?.validateAsDoubleWithConstraints()
     }
 }
 
@@ -20160,6 +20533,91 @@ public struct GetTransitGatewayRouteTablePropagationsResult: Codable, Equatable 
     }
 }
 
+public struct GetVpnConnectionDeviceSampleConfigurationRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var internetKeyExchangeVersion: String?
+    public var vpnConnectionDeviceTypeId: VpnConnectionDeviceTypeId
+    public var vpnConnectionId: VpnConnectionId
+
+    public init(dryRun: Boolean? = nil,
+                internetKeyExchangeVersion: String? = nil,
+                vpnConnectionDeviceTypeId: VpnConnectionDeviceTypeId,
+                vpnConnectionId: VpnConnectionId) {
+        self.dryRun = dryRun
+        self.internetKeyExchangeVersion = internetKeyExchangeVersion
+        self.vpnConnectionDeviceTypeId = vpnConnectionDeviceTypeId
+        self.vpnConnectionId = vpnConnectionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case internetKeyExchangeVersion = "InternetKeyExchangeVersion"
+        case vpnConnectionDeviceTypeId = "VpnConnectionDeviceTypeId"
+        case vpnConnectionId = "VpnConnectionId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetVpnConnectionDeviceSampleConfigurationResult: Codable, Equatable {
+    public var vpnConnectionDeviceSampleConfiguration: VpnConnectionDeviceSampleConfiguration?
+
+    public init(vpnConnectionDeviceSampleConfiguration: VpnConnectionDeviceSampleConfiguration? = nil) {
+        self.vpnConnectionDeviceSampleConfiguration = vpnConnectionDeviceSampleConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case vpnConnectionDeviceSampleConfiguration
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetVpnConnectionDeviceTypesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var maxResults: GVCDMaxResults?
+    public var nextToken: NextToken?
+
+    public init(dryRun: Boolean? = nil,
+                maxResults: GVCDMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.dryRun = dryRun
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsGVCDMaxResults()
+    }
+}
+
+public struct GetVpnConnectionDeviceTypesResult: Codable, Equatable {
+    public var nextToken: NextToken?
+    public var vpnConnectionDeviceTypes: VpnConnectionDeviceTypeList?
+
+    public init(nextToken: NextToken? = nil,
+                vpnConnectionDeviceTypes: VpnConnectionDeviceTypeList? = nil) {
+        self.nextToken = nextToken
+        self.vpnConnectionDeviceTypes = vpnConnectionDeviceTypes
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case vpnConnectionDeviceTypes = "vpnConnectionDeviceTypeSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct GpuDeviceInfo: Codable, Equatable {
     public var count: GpuDeviceCount?
     public var manufacturer: GpuDeviceManufacturerName?
@@ -21695,6 +22153,7 @@ public struct Instance: Codable, Equatable {
     public var outpostArn: String?
     public var placement: Placement?
     public var platform: PlatformValues?
+    public var platformDetails: String?
     public var privateDnsName: String?
     public var privateIpAddress: String?
     public var productCodes: ProductCodeList?
@@ -21712,6 +22171,8 @@ public struct Instance: Codable, Equatable {
     public var stateTransitionReason: String?
     public var subnetId: String?
     public var tags: TagList?
+    public var usageOperation: String?
+    public var usageOperationUpdateTime: MillisecondDateTime?
     public var virtualizationType: VirtualizationType?
     public var vpcId: String?
 
@@ -21745,6 +22206,7 @@ public struct Instance: Codable, Equatable {
                 outpostArn: String? = nil,
                 placement: Placement? = nil,
                 platform: PlatformValues? = nil,
+                platformDetails: String? = nil,
                 privateDnsName: String? = nil,
                 privateIpAddress: String? = nil,
                 productCodes: ProductCodeList? = nil,
@@ -21762,6 +22224,8 @@ public struct Instance: Codable, Equatable {
                 stateTransitionReason: String? = nil,
                 subnetId: String? = nil,
                 tags: TagList? = nil,
+                usageOperation: String? = nil,
+                usageOperationUpdateTime: MillisecondDateTime? = nil,
                 virtualizationType: VirtualizationType? = nil,
                 vpcId: String? = nil) {
         self.amiLaunchIndex = amiLaunchIndex
@@ -21794,6 +22258,7 @@ public struct Instance: Codable, Equatable {
         self.outpostArn = outpostArn
         self.placement = placement
         self.platform = platform
+        self.platformDetails = platformDetails
         self.privateDnsName = privateDnsName
         self.privateIpAddress = privateIpAddress
         self.productCodes = productCodes
@@ -21811,6 +22276,8 @@ public struct Instance: Codable, Equatable {
         self.stateTransitionReason = stateTransitionReason
         self.subnetId = subnetId
         self.tags = tags
+        self.usageOperation = usageOperation
+        self.usageOperationUpdateTime = usageOperationUpdateTime
         self.virtualizationType = virtualizationType
         self.vpcId = vpcId
     }
@@ -21846,6 +22313,7 @@ public struct Instance: Codable, Equatable {
         case outpostArn
         case placement
         case platform
+        case platformDetails
         case privateDnsName
         case privateIpAddress
         case productCodes
@@ -21863,6 +22331,8 @@ public struct Instance: Codable, Equatable {
         case stateTransitionReason = "reason"
         case subnetId
         case tags = "tagSet"
+        case usageOperation
+        case usageOperationUpdateTime
         case virtualizationType
         case vpcId
     }
@@ -22640,7 +23110,7 @@ public struct InstanceNetworkInterfaceSpecification: Codable, Equatable {
     public var ipv6PrefixCount: Integer?
     public var ipv6Prefixes: Ipv6PrefixList?
     public var networkCardIndex: Integer?
-    public var networkInterfaceId: String?
+    public var networkInterfaceId: NetworkInterfaceId?
     public var privateIpAddress: String?
     public var privateIpAddresses: PrivateIpAddressSpecificationList?
     public var secondaryPrivateIpAddressCount: Integer?
@@ -22660,7 +23130,7 @@ public struct InstanceNetworkInterfaceSpecification: Codable, Equatable {
                 ipv6PrefixCount: Integer? = nil,
                 ipv6Prefixes: Ipv6PrefixList? = nil,
                 networkCardIndex: Integer? = nil,
-                networkInterfaceId: String? = nil,
+                networkInterfaceId: NetworkInterfaceId? = nil,
                 privateIpAddress: String? = nil,
                 privateIpAddresses: PrivateIpAddressSpecificationList? = nil,
                 secondaryPrivateIpAddressCount: Integer? = nil,
@@ -24351,14 +24821,14 @@ public struct LaunchTemplateOverrides: Codable, Equatable {
     public var instanceType: InstanceType?
     public var priority: Double?
     public var spotPrice: String?
-    public var subnetId: String?
+    public var subnetId: SubnetId?
     public var weightedCapacity: Double?
 
     public init(availabilityZone: String? = nil,
                 instanceType: InstanceType? = nil,
                 priority: Double? = nil,
                 spotPrice: String? = nil,
-                subnetId: String? = nil,
+                subnetId: SubnetId? = nil,
                 weightedCapacity: Double? = nil) {
         self.availabilityZone = availabilityZone
         self.instanceType = instanceType
@@ -25181,6 +25651,52 @@ public struct ModifyAvailabilityZoneGroupRequest: Codable, Equatable {
 }
 
 public struct ModifyAvailabilityZoneGroupResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyCapacityReservationFleetRequest: Codable, Equatable {
+    public var capacityReservationFleetId: CapacityReservationFleetId
+    public var dryRun: Boolean?
+    public var endDate: MillisecondDateTime?
+    public var removeEndDate: Boolean?
+    public var totalTargetCapacity: Integer?
+
+    public init(capacityReservationFleetId: CapacityReservationFleetId,
+                dryRun: Boolean? = nil,
+                endDate: MillisecondDateTime? = nil,
+                removeEndDate: Boolean? = nil,
+                totalTargetCapacity: Integer? = nil) {
+        self.capacityReservationFleetId = capacityReservationFleetId
+        self.dryRun = dryRun
+        self.endDate = endDate
+        self.removeEndDate = removeEndDate
+        self.totalTargetCapacity = totalTargetCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case capacityReservationFleetId = "CapacityReservationFleetId"
+        case dryRun = "DryRun"
+        case endDate = "EndDate"
+        case removeEndDate = "RemoveEndDate"
+        case totalTargetCapacity = "TotalTargetCapacity"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyCapacityReservationFleetResult: Codable, Equatable {
     public var `return`: Boolean?
 
     public init(`return`: Boolean? = nil) {
@@ -28691,7 +29207,7 @@ public struct Phase2IntegrityAlgorithmsRequestListValue: Codable, Equatable {
 public struct Placement: Codable, Equatable {
     public var affinity: String?
     public var availabilityZone: String?
-    public var groupName: String?
+    public var groupName: PlacementGroupName?
     public var hostId: String?
     public var hostResourceGroupArn: String?
     public var partitionNumber: Integer?
@@ -28700,7 +29216,7 @@ public struct Placement: Codable, Equatable {
 
     public init(affinity: String? = nil,
                 availabilityZone: String? = nil,
-                groupName: String? = nil,
+                groupName: PlacementGroupName? = nil,
                 hostId: String? = nil,
                 hostResourceGroupArn: String? = nil,
                 partitionNumber: Integer? = nil,
@@ -30796,6 +31312,47 @@ public struct Reservation: Codable, Equatable {
     }
 }
 
+public struct ReservationFleetInstanceSpecification: Codable, Equatable {
+    public var availabilityZone: String?
+    public var availabilityZoneId: String?
+    public var ebsOptimized: Boolean?
+    public var instancePlatform: CapacityReservationInstancePlatform?
+    public var instanceType: InstanceType?
+    public var priority: IntegerWithConstraints?
+    public var weight: DoubleWithConstraints?
+
+    public init(availabilityZone: String? = nil,
+                availabilityZoneId: String? = nil,
+                ebsOptimized: Boolean? = nil,
+                instancePlatform: CapacityReservationInstancePlatform? = nil,
+                instanceType: InstanceType? = nil,
+                priority: IntegerWithConstraints? = nil,
+                weight: DoubleWithConstraints? = nil) {
+        self.availabilityZone = availabilityZone
+        self.availabilityZoneId = availabilityZoneId
+        self.ebsOptimized = ebsOptimized
+        self.instancePlatform = instancePlatform
+        self.instanceType = instanceType
+        self.priority = priority
+        self.weight = weight
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case availabilityZone = "AvailabilityZone"
+        case availabilityZoneId = "AvailabilityZoneId"
+        case ebsOptimized = "EbsOptimized"
+        case instancePlatform = "InstancePlatform"
+        case instanceType = "InstanceType"
+        case priority = "Priority"
+        case weight = "Weight"
+    }
+
+    public func validate() throws {
+        try priority?.validateAsIntegerWithConstraints()
+        try weight?.validateAsDoubleWithConstraints()
+    }
+}
+
 public struct ReservationValue: Codable, Equatable {
     public var hourlyPrice: String?
     public var remainingTotalValue: String?
@@ -32721,13 +33278,13 @@ public struct ScheduledInstancesPrivateIpAddressConfig: Codable, Equatable {
 
 public struct SearchLocalGatewayRoutesRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var filters: FilterList
+    public var filters: FilterList?
     public var localGatewayRouteTableId: LocalGatewayRoutetableId
     public var maxResults: MaxResults?
     public var nextToken: String?
 
     public init(dryRun: Boolean? = nil,
-                filters: FilterList,
+                filters: FilterList? = nil,
                 localGatewayRouteTableId: LocalGatewayRoutetableId,
                 maxResults: MaxResults? = nil,
                 nextToken: String? = nil) {
@@ -37780,6 +38337,33 @@ public struct VpnConnection: Codable, Equatable {
 
     public func validate() throws {
         try options?.validate()
+    }
+}
+
+public struct VpnConnectionDeviceType: Codable, Equatable {
+    public var platform: String?
+    public var software: String?
+    public var vendor: String?
+    public var vpnConnectionDeviceTypeId: String?
+
+    public init(platform: String? = nil,
+                software: String? = nil,
+                vendor: String? = nil,
+                vpnConnectionDeviceTypeId: String? = nil) {
+        self.platform = platform
+        self.software = software
+        self.vendor = vendor
+        self.vpnConnectionDeviceTypeId = vpnConnectionDeviceTypeId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case platform
+        case software
+        case vendor
+        case vpnConnectionDeviceTypeId
+    }
+
+    public func validate() throws {
     }
 }
 

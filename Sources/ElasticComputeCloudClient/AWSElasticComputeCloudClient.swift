@@ -2786,6 +2786,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CancelCapacityReservationFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationFleetsRequest object being passed to this operation.
+         - completion: The CancelCapacityReservationFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelCapacityReservationFleetsResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelCapacityReservationFleetsAsync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelCapacityReservationFleets,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelCapacityReservationFleetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.cancelCapacityReservationFleets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CancelCapacityReservationFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationFleetsRequest object being passed to this operation.
+     - Returns: The CancelCapacityReservationFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelCapacityReservationFleetsSync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationFleetsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelCapacityReservationFleets,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelCapacityReservationFleetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.cancelCapacityReservationFleets.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CancelConversionTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3599,6 +3675,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createCapacityReservation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateCapacityReservationFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationFleetRequest object being passed to this operation.
+         - completion: The CreateCapacityReservationFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityReservationFleetResult
+           object will be validated before being returned to caller.
+     */
+    public func createCapacityReservationFleetAsync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCapacityReservationFleet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCapacityReservationFleetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createCapacityReservationFleet.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateCapacityReservationFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationFleetRequest object being passed to this operation.
+     - Returns: The CreateCapacityReservationFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createCapacityReservationFleetSync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationFleetResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCapacityReservationFleet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCapacityReservationFleetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createCapacityReservationFleet.rawValue,
             version: apiVersion)
 
         do {
@@ -13483,6 +13635,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeByoipCidrs.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeCapacityReservationFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationFleetsRequest object being passed to this operation.
+         - completion: The DescribeCapacityReservationFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityReservationFleetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCapacityReservationFleetsAsync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCapacityReservationFleets,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCapacityReservationFleetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeCapacityReservationFleets.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeCapacityReservationFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationFleetsRequest object being passed to this operation.
+     - Returns: The DescribeCapacityReservationFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCapacityReservationFleetsSync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCapacityReservationFleets,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeCapacityReservationFleetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeCapacityReservationFleets.rawValue,
             version: apiVersion)
 
         do {
@@ -27080,6 +27308,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetVpnConnectionDeviceSampleConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceSampleConfigurationRequest object being passed to this operation.
+         - completion: The GetVpnConnectionDeviceSampleConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnConnectionDeviceSampleConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceSampleConfigurationAsync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnConnectionDeviceSampleConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnConnectionDeviceSampleConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnConnectionDeviceSampleConfiguration.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetVpnConnectionDeviceSampleConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceSampleConfigurationRequest object being passed to this operation.
+     - Returns: The GetVpnConnectionDeviceSampleConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceSampleConfigurationSync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnConnectionDeviceSampleConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnConnectionDeviceSampleConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnConnectionDeviceSampleConfiguration.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetVpnConnectionDeviceTypes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceTypesRequest object being passed to this operation.
+         - completion: The GetVpnConnectionDeviceTypesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnConnectionDeviceTypesResult
+           object will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceTypesAsync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnConnectionDeviceTypes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnConnectionDeviceTypesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnConnectionDeviceTypes.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetVpnConnectionDeviceTypes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceTypesRequest object being passed to this operation.
+     - Returns: The GetVpnConnectionDeviceTypesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceTypesSync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnConnectionDeviceTypes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnConnectionDeviceTypesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnConnectionDeviceTypes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -27747,6 +28127,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyCapacityReservation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyCapacityReservationFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationFleetRequest object being passed to this operation.
+         - completion: The ModifyCapacityReservationFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCapacityReservationFleetResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyCapacityReservationFleetAsync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCapacityReservationFleet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyCapacityReservationFleetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyCapacityReservationFleet.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyCapacityReservationFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationFleetRequest object being passed to this operation.
+     - Returns: The ModifyCapacityReservationFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyCapacityReservationFleetSync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationFleetResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCapacityReservationFleet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyCapacityReservationFleetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyCapacityReservationFleet.rawValue,
             version: apiVersion)
 
         do {

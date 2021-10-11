@@ -35,6 +35,7 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
     case deleteRegistryPolicy = "DeleteRegistryPolicy"
     case deleteRepository = "DeleteRepository"
     case deleteRepositoryPolicy = "DeleteRepositoryPolicy"
+    case describeImageReplicationStatus = "DescribeImageReplicationStatus"
     case describeImageScanFindings = "DescribeImageScanFindings"
     case describeImages = "DescribeImages"
     case describeRegistry = "DescribeRegistry"
@@ -84,6 +85,8 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
         case .deleteRepository:
             return "/"
         case .deleteRepositoryPolicy:
+            return "/"
+        case .describeImageReplicationStatus:
             return "/"
         case .describeImageScanFindings:
             return "/"

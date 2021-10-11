@@ -37,6 +37,7 @@ public struct ECROperationsReporting {
     public let deleteRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let deleteRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let deleteRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let describeImageReplicationStatus: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeImageScanFindings: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeRegistry: StandardSmokeAWSOperationReporting<ECRModelOperations>
@@ -82,6 +83,8 @@ public struct ECROperationsReporting {
             clientName: clientName, operation: .deleteRepository, configuration: reportingConfiguration)
         self.deleteRepositoryPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteRepositoryPolicy, configuration: reportingConfiguration)
+        self.describeImageReplicationStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeImageReplicationStatus, configuration: reportingConfiguration)
         self.describeImageScanFindings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeImageScanFindings, configuration: reportingConfiguration)
         self.describeImages = StandardSmokeAWSOperationReporting(

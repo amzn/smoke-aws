@@ -274,17 +274,20 @@ public struct CreateRepositoryRequest: Codable, Equatable {
     public var encryptionConfiguration: EncryptionConfiguration?
     public var imageScanningConfiguration: ImageScanningConfiguration?
     public var imageTagMutability: ImageTagMutability?
+    public var registryId: RegistryId?
     public var repositoryName: RepositoryName
     public var tags: TagList?
 
     public init(encryptionConfiguration: EncryptionConfiguration? = nil,
                 imageScanningConfiguration: ImageScanningConfiguration? = nil,
                 imageTagMutability: ImageTagMutability? = nil,
+                registryId: RegistryId? = nil,
                 repositoryName: RepositoryName,
                 tags: TagList? = nil) {
         self.encryptionConfiguration = encryptionConfiguration
         self.imageScanningConfiguration = imageScanningConfiguration
         self.imageTagMutability = imageTagMutability
+        self.registryId = registryId
         self.repositoryName = repositoryName
         self.tags = tags
     }
@@ -293,6 +296,7 @@ public struct CreateRepositoryRequest: Codable, Equatable {
         case encryptionConfiguration
         case imageScanningConfiguration
         case imageTagMutability
+        case registryId
         case repositoryName
         case tags
     }
@@ -300,6 +304,7 @@ public struct CreateRepositoryRequest: Codable, Equatable {
     public func validate() throws {
         try encryptionConfiguration?.validate()
         try imageScanningConfiguration?.validate()
+        try registryId?.validateAsRegistryId()
         try repositoryName.validateAsRepositoryName()
     }
 }
@@ -486,6 +491,57 @@ public struct DeleteRepositoryResponse: Codable, Equatable {
 
     public func validate() throws {
         try repository?.validate()
+    }
+}
+
+public struct DescribeImageReplicationStatusRequest: Codable, Equatable {
+    public var imageId: ImageIdentifier
+    public var registryId: RegistryId?
+    public var repositoryName: RepositoryName
+
+    public init(imageId: ImageIdentifier,
+                registryId: RegistryId? = nil,
+                repositoryName: RepositoryName) {
+        self.imageId = imageId
+        self.registryId = registryId
+        self.repositoryName = repositoryName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case imageId
+        case registryId
+        case repositoryName
+    }
+
+    public func validate() throws {
+        try imageId.validate()
+        try registryId?.validateAsRegistryId()
+        try repositoryName.validateAsRepositoryName()
+    }
+}
+
+public struct DescribeImageReplicationStatusResponse: Codable, Equatable {
+    public var imageId: ImageIdentifier?
+    public var replicationStatuses: ImageReplicationStatusList?
+    public var repositoryName: RepositoryName?
+
+    public init(imageId: ImageIdentifier? = nil,
+                replicationStatuses: ImageReplicationStatusList? = nil,
+                repositoryName: RepositoryName? = nil) {
+        self.imageId = imageId
+        self.replicationStatuses = replicationStatuses
+        self.repositoryName = repositoryName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case imageId
+        case replicationStatuses
+        case repositoryName
+    }
+
+    public func validate() throws {
+        try imageId?.validate()
+        try repositoryName?.validateAsRepositoryName()
     }
 }
 
@@ -1209,6 +1265,35 @@ public struct ImageNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ImageReplicationStatus: Codable, Equatable {
+    public var failureCode: ReplicationError?
+    public var region: Region?
+    public var registryId: RegistryId?
+    public var status: ReplicationStatus?
+
+    public init(failureCode: ReplicationError? = nil,
+                region: Region? = nil,
+                registryId: RegistryId? = nil,
+                status: ReplicationStatus? = nil) {
+        self.failureCode = failureCode
+        self.region = region
+        self.registryId = registryId
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failureCode
+        case region
+        case registryId
+        case status
+    }
+
+    public func validate() throws {
+        try region?.validateAsRegion()
+        try registryId?.validateAsRegistryId()
     }
 }
 
@@ -2182,17 +2267,22 @@ public struct ReplicationDestination: Codable, Equatable {
 
 public struct ReplicationRule: Codable, Equatable {
     public var destinations: ReplicationDestinationList
+    public var repositoryFilters: RepositoryFilterList?
 
-    public init(destinations: ReplicationDestinationList) {
+    public init(destinations: ReplicationDestinationList,
+                repositoryFilters: RepositoryFilterList? = nil) {
         self.destinations = destinations
+        self.repositoryFilters = repositoryFilters
     }
 
     enum CodingKeys: String, CodingKey {
         case destinations
+        case repositoryFilters
     }
 
     public func validate() throws {
         try destinations.validateAsReplicationDestinationList()
+        try repositoryFilters?.validateAsRepositoryFilterList()
     }
 }
 
@@ -2255,6 +2345,26 @@ public struct RepositoryAlreadyExistsException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct RepositoryFilter: Codable, Equatable {
+    public var filter: RepositoryFilterValue
+    public var filterType: RepositoryFilterType
+
+    public init(filter: RepositoryFilterValue,
+                filterType: RepositoryFilterType) {
+        self.filter = filter
+        self.filterType = filterType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case filter
+        case filterType
+    }
+
+    public func validate() throws {
+        try filter.validateAsRepositoryFilterValue()
     }
 }
 

@@ -200,6 +200,11 @@ public typealias CancelBundleTaskOperationHTTPRequestInput = QueryHTTPRequestInp
 public typealias CancelCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CancelCapacityReservationFleets operation in a HTTP client.
+ */
+public typealias CancelCapacityReservationFleetsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CancelConversionTask operation in a HTTP client.
  */
 public typealias CancelConversionTaskOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -253,6 +258,11 @@ public typealias CopySnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the CreateCapacityReservation operation in a HTTP client.
  */
 public typealias CreateCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateCapacityReservationFleet operation in a HTTP client.
+ */
+public typealias CreateCapacityReservationFleetOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateCarrierGateway operation in a HTTP client.
@@ -908,6 +918,11 @@ public typealias DescribeBundleTasksOperationHTTPRequestInput = QueryHTTPRequest
  Type to handle the input to the DescribeByoipCidrs operation in a HTTP client.
  */
 public typealias DescribeByoipCidrsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeCapacityReservationFleets operation in a HTTP client.
+ */
+public typealias DescribeCapacityReservationFleetsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeCapacityReservations operation in a HTTP client.
@@ -1805,6 +1820,16 @@ public typealias GetTransitGatewayRouteTableAssociationsOperationHTTPRequestInpu
 public typealias GetTransitGatewayRouteTablePropagationsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetVpnConnectionDeviceSampleConfiguration operation in a HTTP client.
+ */
+public typealias GetVpnConnectionDeviceSampleConfigurationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetVpnConnectionDeviceTypes operation in a HTTP client.
+ */
+public typealias GetVpnConnectionDeviceTypesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ImportClientVpnClientCertificateRevocationList operation in a HTTP client.
  */
 public typealias ImportClientVpnClientCertificateRevocationListOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1848,6 +1873,11 @@ public typealias ModifyAvailabilityZoneGroupOperationHTTPRequestInput = QueryHTT
  Type to handle the input to the ModifyCapacityReservation operation in a HTTP client.
  */
 public typealias ModifyCapacityReservationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyCapacityReservationFleet operation in a HTTP client.
+ */
+public typealias ModifyCapacityReservationFleetOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyClientVpnEndpoint operation in a HTTP client.

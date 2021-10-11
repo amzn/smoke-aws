@@ -170,6 +170,7 @@ public extension CreateRepositoryRequest {
             encryptionConfiguration: nil,
             imageScanningConfiguration: nil,
             imageTagMutability: nil,
+            registryId: nil,
             repositoryName: "01",
             tags: nil)
 
@@ -289,6 +290,34 @@ public extension DeleteRepositoryResponse {
     static let __default: ECRModel.DeleteRepositoryResponse = {
         let defaultInstance = ECRModel.DeleteRepositoryResponse(
             repository: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeImageReplicationStatusRequest {
+    /**
+     Default instance of the DescribeImageReplicationStatusRequest structure.
+     */
+    static let __default: ECRModel.DescribeImageReplicationStatusRequest = {
+        let defaultInstance = ECRModel.DescribeImageReplicationStatusRequest(
+            imageId: ImageIdentifier.__default,
+            registryId: nil,
+            repositoryName: "01")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeImageReplicationStatusResponse {
+    /**
+     Default instance of the DescribeImageReplicationStatusResponse structure.
+     */
+    static let __default: ECRModel.DescribeImageReplicationStatusResponse = {
+        let defaultInstance = ECRModel.DescribeImageReplicationStatusResponse(
+            imageId: nil,
+            replicationStatuses: nil,
+            repositoryName: nil)
 
         return defaultInstance
     }()
@@ -705,6 +734,21 @@ public extension ImageNotFoundException {
     static let __default: ECRModel.ImageNotFoundException = {
         let defaultInstance = ECRModel.ImageNotFoundException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImageReplicationStatus {
+    /**
+     Default instance of the ImageReplicationStatus structure.
+     */
+    static let __default: ECRModel.ImageReplicationStatus = {
+        let defaultInstance = ECRModel.ImageReplicationStatus(
+            failureCode: nil,
+            region: nil,
+            registryId: nil,
+            status: nil)
 
         return defaultInstance
     }()
@@ -1342,7 +1386,8 @@ public extension ReplicationRule {
      */
     static let __default: ECRModel.ReplicationRule = {
         let defaultInstance = ECRModel.ReplicationRule(
-            destinations: [])
+            destinations: [],
+            repositoryFilters: nil)
 
         return defaultInstance
     }()
@@ -1374,6 +1419,19 @@ public extension RepositoryAlreadyExistsException {
     static let __default: ECRModel.RepositoryAlreadyExistsException = {
         let defaultInstance = ECRModel.RepositoryAlreadyExistsException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RepositoryFilter {
+    /**
+     Default instance of the RepositoryFilter structure.
+     */
+    static let __default: ECRModel.RepositoryFilter = {
+        let defaultInstance = ECRModel.RepositoryFilter(
+            filter: "01",
+            filterType: .__default)
 
         return defaultInstance
     }()

@@ -204,6 +204,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CancelCapacityReservationAsyncType = (
             _ input: ElasticComputeCloudModel.CancelCapacityReservationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CancelCapacityReservationFleetsSyncType = (
+            _ input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationFleetsResult
+    typealias CancelCapacityReservationFleetsAsyncType = (
+            _ input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CancelConversionTaskSyncType = (
             _ input: ElasticComputeCloudModel.CancelConversionRequest) throws -> ()
     typealias CancelConversionTaskAsyncType = (
@@ -259,6 +264,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateCapacityReservationAsyncType = (
             _ input: ElasticComputeCloudModel.CreateCapacityReservationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateCapacityReservationFleetSyncType = (
+            _ input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationFleetResult
+    typealias CreateCapacityReservationFleetAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateCarrierGatewaySyncType = (
             _ input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) throws -> ElasticComputeCloudModel.CreateCarrierGatewayResult
     typealias CreateCarrierGatewayAsyncType = (
@@ -914,6 +924,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeByoipCidrsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeByoipCidrsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeByoipCidrsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeCapacityReservationFleetsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult
+    typealias DescribeCapacityReservationFleetsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeCapacityReservationsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult
     typealias DescribeCapacityReservationsAsyncType = (
@@ -1809,6 +1824,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetTransitGatewayRouteTablePropagationsAsyncType = (
             _ input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetVpnConnectionDeviceSampleConfigurationSyncType = (
+            _ input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult
+    typealias GetVpnConnectionDeviceSampleConfigurationAsyncType = (
+            _ input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetVpnConnectionDeviceTypesSyncType = (
+            _ input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult
+    typealias GetVpnConnectionDeviceTypesAsyncType = (
+            _ input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ImportClientVpnClientCertificateRevocationListSyncType = (
             _ input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult
     typealias ImportClientVpnClientCertificateRevocationListAsyncType = (
@@ -1854,6 +1879,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyCapacityReservationAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyCapacityReservationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyCapacityReservationFleetSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationFleetResult
+    typealias ModifyCapacityReservationFleetAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyClientVpnEndpointSyncType = (
             _ input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult
     typealias ModifyClientVpnEndpointAsyncType = (
@@ -3190,6 +3220,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationResult
 
     /**
+     Invokes the CancelCapacityReservationFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationFleetsRequest object being passed to this operation.
+         - completion: The CancelCapacityReservationFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelCapacityReservationFleetsResult
+           object will be validated before being returned to caller.
+     */
+    func cancelCapacityReservationFleetsAsync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CancelCapacityReservationFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationFleetsRequest object being passed to this operation.
+     - Returns: The CancelCapacityReservationFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func cancelCapacityReservationFleetsSync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationFleetsResult
+
+    /**
      Invokes the CancelConversionTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3446,6 +3500,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createCapacityReservationSync(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult
+
+    /**
+     Invokes the CreateCapacityReservationFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationFleetRequest object being passed to this operation.
+         - completion: The CreateCapacityReservationFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityReservationFleetResult
+           object will be validated before being returned to caller.
+     */
+    func createCapacityReservationFleetAsync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateCapacityReservationFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationFleetRequest object being passed to this operation.
+     - Returns: The CreateCapacityReservationFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createCapacityReservationFleetSync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationFleetResult
 
     /**
      Invokes the CreateCarrierGateway operation returning immediately and passing the response to a callback.
@@ -6518,6 +6596,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeByoipCidrsSync(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult
+
+    /**
+     Invokes the DescribeCapacityReservationFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationFleetsRequest object being passed to this operation.
+         - completion: The DescribeCapacityReservationFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityReservationFleetsResult
+           object will be validated before being returned to caller.
+     */
+    func describeCapacityReservationFleetsAsync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeCapacityReservationFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationFleetsRequest object being passed to this operation.
+     - Returns: The DescribeCapacityReservationFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeCapacityReservationFleetsSync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult
 
     /**
      Invokes the DescribeCapacityReservations operation returning immediately and passing the response to a callback.
@@ -10792,6 +10894,54 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult
 
     /**
+     Invokes the GetVpnConnectionDeviceSampleConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceSampleConfigurationRequest object being passed to this operation.
+         - completion: The GetVpnConnectionDeviceSampleConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnConnectionDeviceSampleConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    func getVpnConnectionDeviceSampleConfigurationAsync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetVpnConnectionDeviceSampleConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceSampleConfigurationRequest object being passed to this operation.
+     - Returns: The GetVpnConnectionDeviceSampleConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVpnConnectionDeviceSampleConfigurationSync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult
+
+    /**
+     Invokes the GetVpnConnectionDeviceTypes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceTypesRequest object being passed to this operation.
+         - completion: The GetVpnConnectionDeviceTypesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnConnectionDeviceTypesResult
+           object will be validated before being returned to caller.
+     */
+    func getVpnConnectionDeviceTypesAsync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetVpnConnectionDeviceTypes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceTypesRequest object being passed to this operation.
+     - Returns: The GetVpnConnectionDeviceTypesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVpnConnectionDeviceTypesSync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult
+
+    /**
      Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11006,6 +11156,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifyCapacityReservationSync(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult
+
+    /**
+     Invokes the ModifyCapacityReservationFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationFleetRequest object being passed to this operation.
+         - completion: The ModifyCapacityReservationFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCapacityReservationFleetResult
+           object will be validated before being returned to caller.
+     */
+    func modifyCapacityReservationFleetAsync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyCapacityReservationFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationFleetRequest object being passed to this operation.
+     - Returns: The ModifyCapacityReservationFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyCapacityReservationFleetSync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationFleetResult
 
     /**
      Invokes the ModifyClientVpnEndpoint operation returning immediately and passing the response to a callback.

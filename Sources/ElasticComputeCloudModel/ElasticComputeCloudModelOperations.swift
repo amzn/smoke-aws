@@ -61,6 +61,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case bundleInstance = "BundleInstance"
     case cancelBundleTask = "CancelBundleTask"
     case cancelCapacityReservation = "CancelCapacityReservation"
+    case cancelCapacityReservationFleets = "CancelCapacityReservationFleets"
     case cancelConversionTask = "CancelConversionTask"
     case cancelExportTask = "CancelExportTask"
     case cancelImportTask = "CancelImportTask"
@@ -72,6 +73,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case copyImage = "CopyImage"
     case copySnapshot = "CopySnapshot"
     case createCapacityReservation = "CreateCapacityReservation"
+    case createCapacityReservationFleet = "CreateCapacityReservationFleet"
     case createCarrierGateway = "CreateCarrierGateway"
     case createClientVpnEndpoint = "CreateClientVpnEndpoint"
     case createClientVpnRoute = "CreateClientVpnRoute"
@@ -203,6 +205,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeAvailabilityZones = "DescribeAvailabilityZones"
     case describeBundleTasks = "DescribeBundleTasks"
     case describeByoipCidrs = "DescribeByoipCidrs"
+    case describeCapacityReservationFleets = "DescribeCapacityReservationFleets"
     case describeCapacityReservations = "DescribeCapacityReservations"
     case describeCarrierGateways = "DescribeCarrierGateways"
     case describeClassicLinkInstances = "DescribeClassicLinkInstances"
@@ -382,6 +385,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getTransitGatewayPrefixListReferences = "GetTransitGatewayPrefixListReferences"
     case getTransitGatewayRouteTableAssociations = "GetTransitGatewayRouteTableAssociations"
     case getTransitGatewayRouteTablePropagations = "GetTransitGatewayRouteTablePropagations"
+    case getVpnConnectionDeviceSampleConfiguration = "GetVpnConnectionDeviceSampleConfiguration"
+    case getVpnConnectionDeviceTypes = "GetVpnConnectionDeviceTypes"
     case importClientVpnClientCertificateRevocationList = "ImportClientVpnClientCertificateRevocationList"
     case importImage = "ImportImage"
     case importInstance = "ImportInstance"
@@ -391,6 +396,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyAddressAttribute = "ModifyAddressAttribute"
     case modifyAvailabilityZoneGroup = "ModifyAvailabilityZoneGroup"
     case modifyCapacityReservation = "ModifyCapacityReservation"
+    case modifyCapacityReservationFleet = "ModifyCapacityReservationFleet"
     case modifyClientVpnEndpoint = "ModifyClientVpnEndpoint"
     case modifyDefaultCreditSpecification = "ModifyDefaultCreditSpecification"
     case modifyEbsDefaultKmsKeyId = "ModifyEbsDefaultKmsKeyId"
@@ -568,6 +574,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .cancelCapacityReservation:
             return "/"
+        case .cancelCapacityReservationFleets:
+            return "/"
         case .cancelConversionTask:
             return "/"
         case .cancelExportTask:
@@ -589,6 +597,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .copySnapshot:
             return "/"
         case .createCapacityReservation:
+            return "/"
+        case .createCapacityReservationFleet:
             return "/"
         case .createCarrierGateway:
             return "/"
@@ -851,6 +861,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeBundleTasks:
             return "/"
         case .describeByoipCidrs:
+            return "/"
+        case .describeCapacityReservationFleets:
             return "/"
         case .describeCapacityReservations:
             return "/"
@@ -1210,6 +1222,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getTransitGatewayRouteTablePropagations:
             return "/"
+        case .getVpnConnectionDeviceSampleConfiguration:
+            return "/"
+        case .getVpnConnectionDeviceTypes:
+            return "/"
         case .importClientVpnClientCertificateRevocationList:
             return "/"
         case .importImage:
@@ -1227,6 +1243,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyAvailabilityZoneGroup:
             return "/"
         case .modifyCapacityReservation:
+            return "/"
+        case .modifyCapacityReservationFleet:
             return "/"
         case .modifyClientVpnEndpoint:
             return "/"

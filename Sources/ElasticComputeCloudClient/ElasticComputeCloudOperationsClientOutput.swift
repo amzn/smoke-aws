@@ -454,6 +454,19 @@ extension CancelCapacityReservationResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CancelCapacityReservationFleets operation in a HTTP client.
+ */
+extension CancelCapacityReservationFleetsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CancelCapacityReservationFleetsResult
+    public typealias HeadersType = CancelCapacityReservationFleetsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CancelCapacityReservationFleetsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CancelImportTask operation in a HTTP client.
  */
 extension CancelImportTaskResult: HTTPResponseOutputProtocol {
@@ -566,6 +579,19 @@ extension CreateCapacityReservationResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateCapacityReservationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateCapacityReservationFleet operation in a HTTP client.
+ */
+extension CreateCapacityReservationFleetResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateCapacityReservationFleetResult
+    public typealias HeadersType = CreateCapacityReservationFleetResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateCapacityReservationFleetResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1957,6 +1983,19 @@ extension DescribeByoipCidrsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeByoipCidrsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeCapacityReservationFleets operation in a HTTP client.
+ */
+extension DescribeCapacityReservationFleetsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeCapacityReservationFleetsResult
+    public typealias HeadersType = DescribeCapacityReservationFleetsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeCapacityReservationFleetsResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4172,6 +4211,32 @@ extension GetTransitGatewayRouteTablePropagationsResult: HTTPResponseOutputProto
 }
 
 /**
+ Type to handle the output from the GetVpnConnectionDeviceSampleConfiguration operation in a HTTP client.
+ */
+extension GetVpnConnectionDeviceSampleConfigurationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetVpnConnectionDeviceSampleConfigurationResult
+    public typealias HeadersType = GetVpnConnectionDeviceSampleConfigurationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetVpnConnectionDeviceSampleConfigurationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetVpnConnectionDeviceTypes operation in a HTTP client.
+ */
+extension GetVpnConnectionDeviceTypesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetVpnConnectionDeviceTypesResult
+    public typealias HeadersType = GetVpnConnectionDeviceTypesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetVpnConnectionDeviceTypesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ImportClientVpnClientCertificateRevocationList operation in a HTTP client.
  */
 extension ImportClientVpnClientCertificateRevocationListResult: HTTPResponseOutputProtocol {
@@ -4284,6 +4349,19 @@ extension ModifyCapacityReservationResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyCapacityReservationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyCapacityReservationFleet operation in a HTTP client.
+ */
+extension ModifyCapacityReservationFleetResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyCapacityReservationFleetResult
+    public typealias HeadersType = ModifyCapacityReservationFleetResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyCapacityReservationFleetResult {
         return try bodyDecodableProvider()
     }
 }
