@@ -70,6 +70,11 @@ public typealias DeleteRepositoryOperationHTTPRequestInput = BodyHTTPRequestInpu
 public typealias DeleteRepositoryPolicyOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeImageReplicationStatus operation in a HTTP client.
+ */
+public typealias DescribeImageReplicationStatusOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeImageScanFindings operation in a HTTP client.
  */
 public typealias DescribeImageScanFindingsOperationHTTPRequestInput = BodyHTTPRequestInput

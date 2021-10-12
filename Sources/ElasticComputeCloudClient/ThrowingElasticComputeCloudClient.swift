@@ -100,6 +100,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let cancelBundleTaskSyncOverride: CancelBundleTaskSyncType?
     let cancelCapacityReservationAsyncOverride: CancelCapacityReservationAsyncType?
     let cancelCapacityReservationSyncOverride: CancelCapacityReservationSyncType?
+    let cancelCapacityReservationFleetsAsyncOverride: CancelCapacityReservationFleetsAsyncType?
+    let cancelCapacityReservationFleetsSyncOverride: CancelCapacityReservationFleetsSyncType?
     let cancelConversionTaskAsyncOverride: CancelConversionTaskAsyncType?
     let cancelConversionTaskSyncOverride: CancelConversionTaskSyncType?
     let cancelExportTaskAsyncOverride: CancelExportTaskAsyncType?
@@ -122,6 +124,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let copySnapshotSyncOverride: CopySnapshotSyncType?
     let createCapacityReservationAsyncOverride: CreateCapacityReservationAsyncType?
     let createCapacityReservationSyncOverride: CreateCapacityReservationSyncType?
+    let createCapacityReservationFleetAsyncOverride: CreateCapacityReservationFleetAsyncType?
+    let createCapacityReservationFleetSyncOverride: CreateCapacityReservationFleetSyncType?
     let createCarrierGatewayAsyncOverride: CreateCarrierGatewayAsyncType?
     let createCarrierGatewaySyncOverride: CreateCarrierGatewaySyncType?
     let createClientVpnEndpointAsyncOverride: CreateClientVpnEndpointAsyncType?
@@ -384,6 +388,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let describeBundleTasksSyncOverride: DescribeBundleTasksSyncType?
     let describeByoipCidrsAsyncOverride: DescribeByoipCidrsAsyncType?
     let describeByoipCidrsSyncOverride: DescribeByoipCidrsSyncType?
+    let describeCapacityReservationFleetsAsyncOverride: DescribeCapacityReservationFleetsAsyncType?
+    let describeCapacityReservationFleetsSyncOverride: DescribeCapacityReservationFleetsSyncType?
     let describeCapacityReservationsAsyncOverride: DescribeCapacityReservationsAsyncType?
     let describeCapacityReservationsSyncOverride: DescribeCapacityReservationsSyncType?
     let describeCarrierGatewaysAsyncOverride: DescribeCarrierGatewaysAsyncType?
@@ -742,6 +748,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let getTransitGatewayRouteTableAssociationsSyncOverride: GetTransitGatewayRouteTableAssociationsSyncType?
     let getTransitGatewayRouteTablePropagationsAsyncOverride: GetTransitGatewayRouteTablePropagationsAsyncType?
     let getTransitGatewayRouteTablePropagationsSyncOverride: GetTransitGatewayRouteTablePropagationsSyncType?
+    let getVpnConnectionDeviceSampleConfigurationAsyncOverride: GetVpnConnectionDeviceSampleConfigurationAsyncType?
+    let getVpnConnectionDeviceSampleConfigurationSyncOverride: GetVpnConnectionDeviceSampleConfigurationSyncType?
+    let getVpnConnectionDeviceTypesAsyncOverride: GetVpnConnectionDeviceTypesAsyncType?
+    let getVpnConnectionDeviceTypesSyncOverride: GetVpnConnectionDeviceTypesSyncType?
     let importClientVpnClientCertificateRevocationListAsyncOverride: ImportClientVpnClientCertificateRevocationListAsyncType?
     let importClientVpnClientCertificateRevocationListSyncOverride: ImportClientVpnClientCertificateRevocationListSyncType?
     let importImageAsyncOverride: ImportImageAsyncType?
@@ -760,6 +770,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifyAvailabilityZoneGroupSyncOverride: ModifyAvailabilityZoneGroupSyncType?
     let modifyCapacityReservationAsyncOverride: ModifyCapacityReservationAsyncType?
     let modifyCapacityReservationSyncOverride: ModifyCapacityReservationSyncType?
+    let modifyCapacityReservationFleetAsyncOverride: ModifyCapacityReservationFleetAsyncType?
+    let modifyCapacityReservationFleetSyncOverride: ModifyCapacityReservationFleetSyncType?
     let modifyClientVpnEndpointAsyncOverride: ModifyClientVpnEndpointAsyncType?
     let modifyClientVpnEndpointSyncOverride: ModifyClientVpnEndpointSyncType?
     let modifyDefaultCreditSpecificationAsyncOverride: ModifyDefaultCreditSpecificationAsyncType?
@@ -1036,6 +1048,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             cancelBundleTaskSync: CancelBundleTaskSyncType? = nil,
             cancelCapacityReservationAsync: CancelCapacityReservationAsyncType? = nil,
             cancelCapacityReservationSync: CancelCapacityReservationSyncType? = nil,
+            cancelCapacityReservationFleetsAsync: CancelCapacityReservationFleetsAsyncType? = nil,
+            cancelCapacityReservationFleetsSync: CancelCapacityReservationFleetsSyncType? = nil,
             cancelConversionTaskAsync: CancelConversionTaskAsyncType? = nil,
             cancelConversionTaskSync: CancelConversionTaskSyncType? = nil,
             cancelExportTaskAsync: CancelExportTaskAsyncType? = nil,
@@ -1058,6 +1072,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             copySnapshotSync: CopySnapshotSyncType? = nil,
             createCapacityReservationAsync: CreateCapacityReservationAsyncType? = nil,
             createCapacityReservationSync: CreateCapacityReservationSyncType? = nil,
+            createCapacityReservationFleetAsync: CreateCapacityReservationFleetAsyncType? = nil,
+            createCapacityReservationFleetSync: CreateCapacityReservationFleetSyncType? = nil,
             createCarrierGatewayAsync: CreateCarrierGatewayAsyncType? = nil,
             createCarrierGatewaySync: CreateCarrierGatewaySyncType? = nil,
             createClientVpnEndpointAsync: CreateClientVpnEndpointAsyncType? = nil,
@@ -1320,6 +1336,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             describeBundleTasksSync: DescribeBundleTasksSyncType? = nil,
             describeByoipCidrsAsync: DescribeByoipCidrsAsyncType? = nil,
             describeByoipCidrsSync: DescribeByoipCidrsSyncType? = nil,
+            describeCapacityReservationFleetsAsync: DescribeCapacityReservationFleetsAsyncType? = nil,
+            describeCapacityReservationFleetsSync: DescribeCapacityReservationFleetsSyncType? = nil,
             describeCapacityReservationsAsync: DescribeCapacityReservationsAsyncType? = nil,
             describeCapacityReservationsSync: DescribeCapacityReservationsSyncType? = nil,
             describeCarrierGatewaysAsync: DescribeCarrierGatewaysAsyncType? = nil,
@@ -1678,6 +1696,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             getTransitGatewayRouteTableAssociationsSync: GetTransitGatewayRouteTableAssociationsSyncType? = nil,
             getTransitGatewayRouteTablePropagationsAsync: GetTransitGatewayRouteTablePropagationsAsyncType? = nil,
             getTransitGatewayRouteTablePropagationsSync: GetTransitGatewayRouteTablePropagationsSyncType? = nil,
+            getVpnConnectionDeviceSampleConfigurationAsync: GetVpnConnectionDeviceSampleConfigurationAsyncType? = nil,
+            getVpnConnectionDeviceSampleConfigurationSync: GetVpnConnectionDeviceSampleConfigurationSyncType? = nil,
+            getVpnConnectionDeviceTypesAsync: GetVpnConnectionDeviceTypesAsyncType? = nil,
+            getVpnConnectionDeviceTypesSync: GetVpnConnectionDeviceTypesSyncType? = nil,
             importClientVpnClientCertificateRevocationListAsync: ImportClientVpnClientCertificateRevocationListAsyncType? = nil,
             importClientVpnClientCertificateRevocationListSync: ImportClientVpnClientCertificateRevocationListSyncType? = nil,
             importImageAsync: ImportImageAsyncType? = nil,
@@ -1696,6 +1718,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifyAvailabilityZoneGroupSync: ModifyAvailabilityZoneGroupSyncType? = nil,
             modifyCapacityReservationAsync: ModifyCapacityReservationAsyncType? = nil,
             modifyCapacityReservationSync: ModifyCapacityReservationSyncType? = nil,
+            modifyCapacityReservationFleetAsync: ModifyCapacityReservationFleetAsyncType? = nil,
+            modifyCapacityReservationFleetSync: ModifyCapacityReservationFleetSyncType? = nil,
             modifyClientVpnEndpointAsync: ModifyClientVpnEndpointAsyncType? = nil,
             modifyClientVpnEndpointSync: ModifyClientVpnEndpointSyncType? = nil,
             modifyDefaultCreditSpecificationAsync: ModifyDefaultCreditSpecificationAsyncType? = nil,
@@ -1967,6 +1991,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.cancelBundleTaskSyncOverride = cancelBundleTaskSync
         self.cancelCapacityReservationAsyncOverride = cancelCapacityReservationAsync
         self.cancelCapacityReservationSyncOverride = cancelCapacityReservationSync
+        self.cancelCapacityReservationFleetsAsyncOverride = cancelCapacityReservationFleetsAsync
+        self.cancelCapacityReservationFleetsSyncOverride = cancelCapacityReservationFleetsSync
         self.cancelConversionTaskAsyncOverride = cancelConversionTaskAsync
         self.cancelConversionTaskSyncOverride = cancelConversionTaskSync
         self.cancelExportTaskAsyncOverride = cancelExportTaskAsync
@@ -1989,6 +2015,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.copySnapshotSyncOverride = copySnapshotSync
         self.createCapacityReservationAsyncOverride = createCapacityReservationAsync
         self.createCapacityReservationSyncOverride = createCapacityReservationSync
+        self.createCapacityReservationFleetAsyncOverride = createCapacityReservationFleetAsync
+        self.createCapacityReservationFleetSyncOverride = createCapacityReservationFleetSync
         self.createCarrierGatewayAsyncOverride = createCarrierGatewayAsync
         self.createCarrierGatewaySyncOverride = createCarrierGatewaySync
         self.createClientVpnEndpointAsyncOverride = createClientVpnEndpointAsync
@@ -2251,6 +2279,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.describeBundleTasksSyncOverride = describeBundleTasksSync
         self.describeByoipCidrsAsyncOverride = describeByoipCidrsAsync
         self.describeByoipCidrsSyncOverride = describeByoipCidrsSync
+        self.describeCapacityReservationFleetsAsyncOverride = describeCapacityReservationFleetsAsync
+        self.describeCapacityReservationFleetsSyncOverride = describeCapacityReservationFleetsSync
         self.describeCapacityReservationsAsyncOverride = describeCapacityReservationsAsync
         self.describeCapacityReservationsSyncOverride = describeCapacityReservationsSync
         self.describeCarrierGatewaysAsyncOverride = describeCarrierGatewaysAsync
@@ -2609,6 +2639,10 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.getTransitGatewayRouteTableAssociationsSyncOverride = getTransitGatewayRouteTableAssociationsSync
         self.getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsync
         self.getTransitGatewayRouteTablePropagationsSyncOverride = getTransitGatewayRouteTablePropagationsSync
+        self.getVpnConnectionDeviceSampleConfigurationAsyncOverride = getVpnConnectionDeviceSampleConfigurationAsync
+        self.getVpnConnectionDeviceSampleConfigurationSyncOverride = getVpnConnectionDeviceSampleConfigurationSync
+        self.getVpnConnectionDeviceTypesAsyncOverride = getVpnConnectionDeviceTypesAsync
+        self.getVpnConnectionDeviceTypesSyncOverride = getVpnConnectionDeviceTypesSync
         self.importClientVpnClientCertificateRevocationListAsyncOverride = importClientVpnClientCertificateRevocationListAsync
         self.importClientVpnClientCertificateRevocationListSyncOverride = importClientVpnClientCertificateRevocationListSync
         self.importImageAsyncOverride = importImageAsync
@@ -2627,6 +2661,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifyAvailabilityZoneGroupSyncOverride = modifyAvailabilityZoneGroupSync
         self.modifyCapacityReservationAsyncOverride = modifyCapacityReservationAsync
         self.modifyCapacityReservationSyncOverride = modifyCapacityReservationSync
+        self.modifyCapacityReservationFleetAsyncOverride = modifyCapacityReservationFleetAsync
+        self.modifyCapacityReservationFleetSyncOverride = modifyCapacityReservationFleetSync
         self.modifyClientVpnEndpointAsyncOverride = modifyClientVpnEndpointAsync
         self.modifyClientVpnEndpointSyncOverride = modifyClientVpnEndpointSync
         self.modifyDefaultCreditSpecificationAsyncOverride = modifyDefaultCreditSpecificationAsync
@@ -4084,6 +4120,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the CancelCapacityReservationFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationFleetsRequest object being passed to this operation.
+         - completion: The CancelCapacityReservationFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelCapacityReservationFleetsResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelCapacityReservationFleetsAsync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let cancelCapacityReservationFleetsAsyncOverride = cancelCapacityReservationFleetsAsyncOverride {
+            return try cancelCapacityReservationFleetsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CancelCapacityReservationFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelCapacityReservationFleetsRequest object being passed to this operation.
+     - Returns: The CancelCapacityReservationFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelCapacityReservationFleetsSync(
+            input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.CancelCapacityReservationFleetsResult {
+        if let cancelCapacityReservationFleetsSyncOverride = cancelCapacityReservationFleetsSyncOverride {
+            return try cancelCapacityReservationFleetsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CancelConversionTask operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4468,6 +4540,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
         if let createCapacityReservationSyncOverride = createCapacityReservationSyncOverride {
             return try createCapacityReservationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateCapacityReservationFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationFleetRequest object being passed to this operation.
+         - completion: The CreateCapacityReservationFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateCapacityReservationFleetResult
+           object will be validated before being returned to caller.
+     */
+    public func createCapacityReservationFleetAsync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createCapacityReservationFleetAsyncOverride = createCapacityReservationFleetAsyncOverride {
+            return try createCapacityReservationFleetAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateCapacityReservationFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityReservationFleetRequest object being passed to this operation.
+     - Returns: The CreateCapacityReservationFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createCapacityReservationFleetSync(
+            input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.CreateCapacityReservationFleetResult {
+        if let createCapacityReservationFleetSyncOverride = createCapacityReservationFleetSyncOverride {
+            return try createCapacityReservationFleetSyncOverride(input)
         }
 
         throw error
@@ -9112,6 +9220,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
         if let describeByoipCidrsSyncOverride = describeByoipCidrsSyncOverride {
             return try describeByoipCidrsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeCapacityReservationFleets operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationFleetsRequest object being passed to this operation.
+         - completion: The DescribeCapacityReservationFleetsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeCapacityReservationFleetsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeCapacityReservationFleetsAsync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeCapacityReservationFleetsAsyncOverride = describeCapacityReservationFleetsAsyncOverride {
+            return try describeCapacityReservationFleetsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeCapacityReservationFleets operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityReservationFleetsRequest object being passed to this operation.
+     - Returns: The DescribeCapacityReservationFleetsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeCapacityReservationFleetsSync(
+            input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest) throws -> ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult {
+        if let describeCapacityReservationFleetsSyncOverride = describeCapacityReservationFleetsSyncOverride {
+            return try describeCapacityReservationFleetsSyncOverride(input)
         }
 
         throw error
@@ -15538,6 +15682,78 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     }
 
     /**
+     Invokes the GetVpnConnectionDeviceSampleConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceSampleConfigurationRequest object being passed to this operation.
+         - completion: The GetVpnConnectionDeviceSampleConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnConnectionDeviceSampleConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceSampleConfigurationAsync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getVpnConnectionDeviceSampleConfigurationAsyncOverride = getVpnConnectionDeviceSampleConfigurationAsyncOverride {
+            return try getVpnConnectionDeviceSampleConfigurationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetVpnConnectionDeviceSampleConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceSampleConfigurationRequest object being passed to this operation.
+     - Returns: The GetVpnConnectionDeviceSampleConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceSampleConfigurationSync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult {
+        if let getVpnConnectionDeviceSampleConfigurationSyncOverride = getVpnConnectionDeviceSampleConfigurationSyncOverride {
+            return try getVpnConnectionDeviceSampleConfigurationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetVpnConnectionDeviceTypes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceTypesRequest object being passed to this operation.
+         - completion: The GetVpnConnectionDeviceTypesResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnConnectionDeviceTypesResult
+           object will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceTypesAsync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getVpnConnectionDeviceTypesAsyncOverride = getVpnConnectionDeviceTypesAsyncOverride {
+            return try getVpnConnectionDeviceTypesAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetVpnConnectionDeviceTypes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnConnectionDeviceTypesRequest object being passed to this operation.
+     - Returns: The GetVpnConnectionDeviceTypesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnConnectionDeviceTypesSync(
+            input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult {
+        if let getVpnConnectionDeviceTypesSyncOverride = getVpnConnectionDeviceTypesSyncOverride {
+            return try getVpnConnectionDeviceTypesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15856,6 +16072,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
         if let modifyCapacityReservationSyncOverride = modifyCapacityReservationSyncOverride {
             return try modifyCapacityReservationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyCapacityReservationFleet operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationFleetRequest object being passed to this operation.
+         - completion: The ModifyCapacityReservationFleetResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyCapacityReservationFleetResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyCapacityReservationFleetAsync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyCapacityReservationFleetResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyCapacityReservationFleetAsyncOverride = modifyCapacityReservationFleetAsyncOverride {
+            return try modifyCapacityReservationFleetAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ModifyCapacityReservationFleet operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCapacityReservationFleetRequest object being passed to this operation.
+     - Returns: The ModifyCapacityReservationFleetResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyCapacityReservationFleetSync(
+            input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest) throws -> ElasticComputeCloudModel.ModifyCapacityReservationFleetResult {
+        if let modifyCapacityReservationFleetSyncOverride = modifyCapacityReservationFleetSyncOverride {
+            return try modifyCapacityReservationFleetSyncOverride(input)
         }
 
         throw error

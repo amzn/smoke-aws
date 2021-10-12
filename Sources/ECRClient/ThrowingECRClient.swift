@@ -48,6 +48,8 @@ public struct ThrowingECRClient: ECRClientProtocol {
     let deleteRepositorySyncOverride: DeleteRepositorySyncType?
     let deleteRepositoryPolicyAsyncOverride: DeleteRepositoryPolicyAsyncType?
     let deleteRepositoryPolicySyncOverride: DeleteRepositoryPolicySyncType?
+    let describeImageReplicationStatusAsyncOverride: DescribeImageReplicationStatusAsyncType?
+    let describeImageReplicationStatusSyncOverride: DescribeImageReplicationStatusSyncType?
     let describeImageScanFindingsAsyncOverride: DescribeImageScanFindingsAsyncType?
     let describeImageScanFindingsSyncOverride: DescribeImageScanFindingsSyncType?
     let describeImagesAsyncOverride: DescribeImagesAsyncType?
@@ -122,6 +124,8 @@ public struct ThrowingECRClient: ECRClientProtocol {
             deleteRepositorySync: DeleteRepositorySyncType? = nil,
             deleteRepositoryPolicyAsync: DeleteRepositoryPolicyAsyncType? = nil,
             deleteRepositoryPolicySync: DeleteRepositoryPolicySyncType? = nil,
+            describeImageReplicationStatusAsync: DescribeImageReplicationStatusAsyncType? = nil,
+            describeImageReplicationStatusSync: DescribeImageReplicationStatusSyncType? = nil,
             describeImageScanFindingsAsync: DescribeImageScanFindingsAsyncType? = nil,
             describeImageScanFindingsSync: DescribeImageScanFindingsSyncType? = nil,
             describeImagesAsync: DescribeImagesAsyncType? = nil,
@@ -191,6 +195,8 @@ public struct ThrowingECRClient: ECRClientProtocol {
         self.deleteRepositorySyncOverride = deleteRepositorySync
         self.deleteRepositoryPolicyAsyncOverride = deleteRepositoryPolicyAsync
         self.deleteRepositoryPolicySyncOverride = deleteRepositoryPolicySync
+        self.describeImageReplicationStatusAsyncOverride = describeImageReplicationStatusAsync
+        self.describeImageReplicationStatusSyncOverride = describeImageReplicationStatusSync
         self.describeImageScanFindingsAsyncOverride = describeImageScanFindingsAsync
         self.describeImageScanFindingsSyncOverride = describeImageScanFindingsSync
         self.describeImagesAsyncOverride = describeImagesAsync
@@ -479,7 +485,7 @@ public struct ThrowingECRClient: ECRClientProtocol {
          - completion: The DeleteRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, registryPolicyNotFound, server.
+           The possible errors are: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func deleteRegistryPolicyAsync(
             input: ECRModel.DeleteRegistryPolicyRequest, 
@@ -498,7 +504,7 @@ public struct ThrowingECRClient: ECRClientProtocol {
          - input: The validated DeleteRegistryPolicyRequest object being passed to this operation.
      - Returns: The DeleteRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, registryPolicyNotFound, server.
+     - Throws: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func deleteRegistryPolicySync(
             input: ECRModel.DeleteRegistryPolicyRequest) throws -> ECRModel.DeleteRegistryPolicyResponse {
@@ -580,6 +586,44 @@ public struct ThrowingECRClient: ECRClientProtocol {
             input: ECRModel.DeleteRepositoryPolicyRequest) throws -> ECRModel.DeleteRepositoryPolicyResponse {
         if let deleteRepositoryPolicySyncOverride = deleteRepositoryPolicySyncOverride {
             return try deleteRepositoryPolicySyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeImageReplicationStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImageReplicationStatusRequest object being passed to this operation.
+         - completion: The DescribeImageReplicationStatusResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImageReplicationStatusResponse
+           object will be validated before being returned to caller.
+           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, server, validation.
+     */
+    public func describeImageReplicationStatusAsync(
+            input: ECRModel.DescribeImageReplicationStatusRequest, 
+            completion: @escaping (Result<ECRModel.DescribeImageReplicationStatusResponse, ECRError>) -> ()) throws {
+        if let describeImageReplicationStatusAsyncOverride = describeImageReplicationStatusAsyncOverride {
+            return try describeImageReplicationStatusAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeImageReplicationStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImageReplicationStatusRequest object being passed to this operation.
+     - Returns: The DescribeImageReplicationStatusResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: imageNotFound, invalidParameter, repositoryNotFound, server, validation.
+     */
+    public func describeImageReplicationStatusSync(
+            input: ECRModel.DescribeImageReplicationStatusRequest) throws -> ECRModel.DescribeImageReplicationStatusResponse {
+        if let describeImageReplicationStatusSyncOverride = describeImageReplicationStatusSyncOverride {
+            return try describeImageReplicationStatusSyncOverride(input)
         }
 
         throw error
@@ -897,7 +941,7 @@ public struct ThrowingECRClient: ECRClientProtocol {
          - completion: The GetRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The GetRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, registryPolicyNotFound, server.
+           The possible errors are: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func getRegistryPolicyAsync(
             input: ECRModel.GetRegistryPolicyRequest, 
@@ -916,7 +960,7 @@ public struct ThrowingECRClient: ECRClientProtocol {
          - input: The validated GetRegistryPolicyRequest object being passed to this operation.
      - Returns: The GetRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, registryPolicyNotFound, server.
+     - Throws: invalidParameter, registryPolicyNotFound, server, validation.
      */
     public func getRegistryPolicySync(
             input: ECRModel.GetRegistryPolicyRequest) throws -> ECRModel.GetRegistryPolicyResponse {
@@ -1239,7 +1283,7 @@ public struct ThrowingECRClient: ECRClientProtocol {
          - completion: The PutRegistryPolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The PutRegistryPolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, server.
+           The possible errors are: invalidParameter, server, validation.
      */
     public func putRegistryPolicyAsync(
             input: ECRModel.PutRegistryPolicyRequest, 
@@ -1258,7 +1302,7 @@ public struct ThrowingECRClient: ECRClientProtocol {
          - input: The validated PutRegistryPolicyRequest object being passed to this operation.
      - Returns: The PutRegistryPolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, server.
+     - Throws: invalidParameter, server, validation.
      */
     public func putRegistryPolicySync(
             input: ECRModel.PutRegistryPolicyRequest) throws -> ECRModel.PutRegistryPolicyResponse {

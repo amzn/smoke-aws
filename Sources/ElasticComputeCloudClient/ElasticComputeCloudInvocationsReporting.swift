@@ -64,6 +64,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let bundleInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelBundleTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let cancelCapacityReservationFleets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelConversionTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelImportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -75,6 +76,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let copyImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let copySnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createCapacityReservationFleet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCarrierGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createClientVpnEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createClientVpnRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -206,6 +208,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let describeAvailabilityZones: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeBundleTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeByoipCidrs: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeCapacityReservationFleets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeCapacityReservations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeCarrierGateways: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeClassicLinkInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -385,6 +388,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let getTransitGatewayPrefixListReferences: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayRouteTableAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayRouteTablePropagations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getVpnConnectionDeviceSampleConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getVpnConnectionDeviceTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let importClientVpnClientCertificateRevocationList: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let importImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let importInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -394,6 +399,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let modifyAddressAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyAvailabilityZoneGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyCapacityReservationFleet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyClientVpnEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyDefaultCreditSpecification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyEbsDefaultKmsKeyId: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -566,6 +572,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.cancelBundleTask)
         self.cancelCapacityReservation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.cancelCapacityReservation)
+        self.cancelCapacityReservationFleets = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.cancelCapacityReservationFleets)
         self.cancelConversionTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.cancelConversionTask)
         self.cancelExportTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -588,6 +596,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.copySnapshot)
         self.createCapacityReservation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createCapacityReservation)
+        self.createCapacityReservationFleet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createCapacityReservationFleet)
         self.createCarrierGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createCarrierGateway)
         self.createClientVpnEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -850,6 +860,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeBundleTasks)
         self.describeByoipCidrs = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeByoipCidrs)
+        self.describeCapacityReservationFleets = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeCapacityReservationFleets)
         self.describeCapacityReservations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeCapacityReservations)
         self.describeCarrierGateways = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1208,6 +1220,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.getTransitGatewayRouteTableAssociations)
         self.getTransitGatewayRouteTablePropagations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getTransitGatewayRouteTablePropagations)
+        self.getVpnConnectionDeviceSampleConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getVpnConnectionDeviceSampleConfiguration)
+        self.getVpnConnectionDeviceTypes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getVpnConnectionDeviceTypes)
         self.importClientVpnClientCertificateRevocationList = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.importClientVpnClientCertificateRevocationList)
         self.importImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1226,6 +1242,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.modifyAvailabilityZoneGroup)
         self.modifyCapacityReservation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyCapacityReservation)
+        self.modifyCapacityReservationFleet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyCapacityReservationFleet)
         self.modifyClientVpnEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyClientVpnEndpoint)
         self.modifyDefaultCreditSpecification = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

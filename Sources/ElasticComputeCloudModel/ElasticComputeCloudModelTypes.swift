@@ -633,6 +633,16 @@ public enum CancelBatchErrorCode: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the CancelCapacityReservationFleetErrorCode field.
+ */
+public typealias CancelCapacityReservationFleetErrorCode = String
+
+/**
+ Type definition for the CancelCapacityReservationFleetErrorMessage field.
+ */
+public typealias CancelCapacityReservationFleetErrorMessage = String
+
+/**
  Type definition for the CancelSpotFleetRequestsErrorSet field.
  */
 public typealias CancelSpotFleetRequestsErrorSet = [CancelSpotFleetRequestsErrorItem]
@@ -663,6 +673,47 @@ public enum CancelSpotInstanceRequestState: String, Codable, CustomStringConvert
  Type definition for the CancelledSpotInstanceRequestList field.
  */
 public typealias CancelledSpotInstanceRequestList = [CancelledSpotInstanceRequest]
+
+/**
+ Type definition for the CapacityReservationFleetCancellationStateSet field.
+ */
+public typealias CapacityReservationFleetCancellationStateSet = [CapacityReservationFleetCancellationState]
+
+/**
+ Type definition for the CapacityReservationFleetId field.
+ */
+public typealias CapacityReservationFleetId = String
+
+/**
+ Type definition for the CapacityReservationFleetIdSet field.
+ */
+public typealias CapacityReservationFleetIdSet = [CapacityReservationFleetId]
+
+/**
+ Type definition for the CapacityReservationFleetSet field.
+ */
+public typealias CapacityReservationFleetSet = [CapacityReservationFleet]
+
+/**
+ Enumeration restricting the values of the CapacityReservationFleetState field.
+ */
+public enum CapacityReservationFleetState: String, Codable, CustomStringConvertible {
+    case active
+    case cancelled
+    case cancelling
+    case expired
+    case expiring
+    case failed
+    case modifying
+    case partiallyFulfilled = "partially_fulfilled"
+    case submitted
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CapacityReservationFleetState = .active
+}
 
 /**
  Type definition for the CapacityReservationGroupSet field.
@@ -1304,6 +1355,11 @@ public typealias DeleteQueuedReservedInstancesIdList = [ReservationId]
 public typealias DescribeByoipCidrsMaxResults = Int
 
 /**
+ Type definition for the DescribeCapacityReservationFleetsMaxResults field.
+ */
+public typealias DescribeCapacityReservationFleetsMaxResults = Int
+
+/**
  Type definition for the DescribeCapacityReservationsMaxResults field.
  */
 public typealias DescribeCapacityReservationsMaxResults = Int
@@ -1675,6 +1731,11 @@ public enum DomainType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the DoubleWithConstraints field.
+ */
+public typealias DoubleWithConstraints = Double
+
+/**
  Enumeration restricting the values of the EbsEncryptionSupport field.
  */
 public enum EbsEncryptionSupport: String, Codable, CustomStringConvertible {
@@ -2018,6 +2079,11 @@ public enum ExportTaskState: String, Codable, CustomStringConvertible {
 public typealias ExportVmTaskId = String
 
 /**
+ Type definition for the FailedCapacityReservationFleetCancellationResultSet field.
+ */
+public typealias FailedCapacityReservationFleetCancellationResultSet = [FailedCapacityReservationFleetCancellationResult]
+
+/**
  Type definition for the FailedQueuedPurchaseDeletionSet field.
  */
 public typealias FailedQueuedPurchaseDeletionSet = [FailedQueuedPurchaseDeletion]
@@ -2058,6 +2124,24 @@ public enum FleetActivityStatus: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: FleetActivityStatus = .error
+}
+
+/**
+ Type definition for the FleetCapacityReservationSet field.
+ */
+public typealias FleetCapacityReservationSet = [FleetCapacityReservation]
+
+/**
+ Enumeration restricting the values of the FleetCapacityReservationTenancy field.
+ */
+public enum FleetCapacityReservationTenancy: String, Codable, CustomStringConvertible {
+    case `default` = "default"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FleetCapacityReservationTenancy = .`default`
 }
 
 /**
@@ -2111,6 +2195,19 @@ public typealias FleetId = String
  Type definition for the FleetIdSet field.
  */
 public typealias FleetIdSet = [FleetId]
+
+/**
+ Enumeration restricting the values of the FleetInstanceMatchCriteria field.
+ */
+public enum FleetInstanceMatchCriteria: String, Codable, CustomStringConvertible {
+    case open
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FleetInstanceMatchCriteria = .open
+}
 
 /**
  Type definition for the FleetLaunchTemplateConfigList field.
@@ -2316,6 +2413,11 @@ public enum FpgaImageStateCode: String, Codable, CustomStringConvertible {
 public typealias FreeTierEligibleFlag = Bool
 
 /**
+ Type definition for the GVCDMaxResults field.
+ */
+public typealias GVCDMaxResults = Int
+
+/**
  Enumeration restricting the values of the GatewayType field.
  */
 public enum GatewayType: String, Codable, CustomStringConvertible {
@@ -2376,7 +2478,7 @@ public typealias GpuDeviceName = String
 /**
  Type definition for the GroupIdStringList field.
  */
-public typealias GroupIdStringList = [String]
+public typealias GroupIdStringList = [SecurityGroupId]
 
 /**
  Type definition for the GroupIdentifierList field.
@@ -3517,6 +3619,11 @@ public typealias InstanceUsageSet = [InstanceUsage]
  Type definition for the Integer field.
  */
 public typealias Integer = Int
+
+/**
+ Type definition for the IntegerWithConstraints field.
+ */
+public typealias IntegerWithConstraints = Int
 
 /**
  Enumeration restricting the values of the InterfacePermissionType field.
@@ -5242,6 +5349,11 @@ public typealias RequestSpotLaunchSpecificationSecurityGroupIdList = [SecurityGr
  Type definition for the RequestSpotLaunchSpecificationSecurityGroupList field.
  */
 public typealias RequestSpotLaunchSpecificationSecurityGroupList = [String]
+
+/**
+ Type definition for the ReservationFleetInstanceSpecificationList field.
+ */
+public typealias ReservationFleetInstanceSpecificationList = [ReservationFleetInstanceSpecification]
 
 /**
  Type definition for the ReservationId field.
@@ -7331,6 +7443,21 @@ public enum VpcTenancy: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the VpnConnectionDeviceSampleConfiguration field.
+ */
+public typealias VpnConnectionDeviceSampleConfiguration = String
+
+/**
+ Type definition for the VpnConnectionDeviceTypeId field.
+ */
+public typealias VpnConnectionDeviceTypeId = String
+
+/**
+ Type definition for the VpnConnectionDeviceTypeList field.
+ */
+public typealias VpnConnectionDeviceTypeList = [VpnConnectionDeviceType]
+
+/**
  Type definition for the VpnConnectionId field.
  */
 public typealias VpnConnectionId = String
@@ -7625,6 +7752,21 @@ extension ElasticComputeCloudModel.DescribeByoipCidrsMaxResults {
 
         if self > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeByoipCidrsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeCapacityReservationFleetsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeCapacityReservationFleetsMaxResults {
+    public func validateAsDescribeCapacityReservationFleetsMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeCapacityReservationFleetsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeCapacityReservationFleetsMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -8230,6 +8372,21 @@ extension ElasticComputeCloudModel.DescribeVpcsMaxResults {
 }
 
 /**
+ Validation for the DoubleWithConstraints field.
+*/
+extension ElasticComputeCloudModel.DoubleWithConstraints {
+    public func validateAsDoubleWithConstraints() throws {
+        if self < 0.001 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DoubleWithConstraints violated the minimum range constraint.")
+        }
+
+        if self > 99.999 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DoubleWithConstraints violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the ElasticInferenceAcceleratorCount field.
 */
 extension ElasticComputeCloudModel.ElasticInferenceAcceleratorCount {
@@ -8252,6 +8409,21 @@ extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateCon
 
         if self.count > 50 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to FleetLaunchTemplateConfigListRequest violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the GVCDMaxResults field.
+*/
+extension ElasticComputeCloudModel.GVCDMaxResults {
+    public func validateAsGVCDMaxResults() throws {
+        if self < 200 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GVCDMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GVCDMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -8328,6 +8500,18 @@ extension ElasticComputeCloudModel.Hour {
         if self > 23 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to Hour violated the maximum range constraint.")
         }
+    }
+}
+
+/**
+ Validation for the IntegerWithConstraints field.
+*/
+extension ElasticComputeCloudModel.IntegerWithConstraints {
+    public func validateAsIntegerWithConstraints() throws {
+        if self < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IntegerWithConstraints violated the minimum range constraint.")
+        }
+
     }
 }
 

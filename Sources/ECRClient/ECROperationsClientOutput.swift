@@ -142,6 +142,19 @@ extension DeleteRepositoryPolicyResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeImageReplicationStatus operation in a HTTP client.
+ */
+extension DescribeImageReplicationStatusResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeImageReplicationStatusResponse
+    public typealias HeadersType = DescribeImageReplicationStatusResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeImageReplicationStatusResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeImageScanFindings operation in a HTTP client.
  */
 extension DescribeImageScanFindingsResponse: HTTPResponseOutputProtocol {
