@@ -31,7 +31,8 @@ extension HTTPClientDelegate {
         var bodyAsStringDictionary = Dictionary(uniqueKeysWithValues: bodyAsDictionary.map { (key, value) in (key, value as? String ?? "") })
         
         // Add the type from the header, re-encode to JSON
-        bodyAsStringDictionary["__type"] = errorTypeHTTPHeaderValue.components(separatedBy: ":")[0]
+        let errorTypeCodingKey = "__type"
+        bodyAsStringDictionary[errorTypeCodingKey] = errorTypeHTTPHeaderValue.components(separatedBy: ":")[0]
         let bodyWithErrorTypeAsJSON = try JSONEncoder.awsCompatibleEncoder().encode(bodyAsStringDictionary)
         
         // Convert bodyWithErrorTypeAsJSON to a debug string only if debug logging is enabled
