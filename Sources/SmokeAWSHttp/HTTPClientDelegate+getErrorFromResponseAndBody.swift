@@ -24,7 +24,6 @@ extension HTTPClientDelegate {
                                                                    bodyData: Data,
                                                                    logger: Logger) throws -> ErrorType {
         // Decode the body to a [String: String] dictionary
-        //var bodyAsDictionary = try JSONDecoder.awsCompatibleDecoder().decode([String: Any].self, from: bodyData)
         let serializedBody = try JSONSerialization.jsonObject(with: bodyData)
         guard let bodyAsDictionary = serializedBody as? [String: Any] else {
             throw HTTPError.badResponse("Cannot serialize response body to JSON")
