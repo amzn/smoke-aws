@@ -233,6 +233,7 @@ public enum ArchitectureType: String, Codable, CustomStringConvertible {
     case arm64
     case i386
     case x8664 = "x86_64"
+    case x8664Mac = "x86_64_mac"
 
     public var description: String {
         return rawValue
@@ -1578,6 +1579,20 @@ public typealias DescribeVpcPeeringConnectionsMaxResults = Int
  Type definition for the DescribeVpcsMaxResults field.
  */
 public typealias DescribeVpcsMaxResults = Int
+
+/**
+ Enumeration restricting the values of the DestinationFileFormat field.
+ */
+public enum DestinationFileFormat: String, Codable, CustomStringConvertible {
+    case parquet
+    case plainText = "plain-text"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DestinationFileFormat = .parquet
+}
 
 /**
  Enumeration restricting the values of the DeviceType field.
@@ -3138,6 +3153,20 @@ public typealias InstanceStatusEventList = [InstanceStatusEvent]
  Type definition for the InstanceStatusList field.
  */
 public typealias InstanceStatusList = [InstanceStatus]
+
+/**
+ Enumeration restricting the values of the InstanceStorageEncryptionSupport field.
+ */
+public enum InstanceStorageEncryptionSupport: String, Codable, CustomStringConvertible {
+    case required
+    case unsupported
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceStorageEncryptionSupport = .required
+}
 
 /**
  Type definition for the InstanceStorageFlag field.

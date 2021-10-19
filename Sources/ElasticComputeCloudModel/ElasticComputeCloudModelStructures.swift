@@ -4876,6 +4876,7 @@ public struct CreateFleetResult: Codable, Equatable {
 public struct CreateFlowLogsRequest: Codable, Equatable {
     public var clientToken: String?
     public var deliverLogsPermissionArn: String?
+    public var destinationOptions: DestinationOptionsRequest?
     public var dryRun: Boolean?
     public var logDestination: String?
     public var logDestinationType: LogDestinationType?
@@ -4889,6 +4890,7 @@ public struct CreateFlowLogsRequest: Codable, Equatable {
 
     public init(clientToken: String? = nil,
                 deliverLogsPermissionArn: String? = nil,
+                destinationOptions: DestinationOptionsRequest? = nil,
                 dryRun: Boolean? = nil,
                 logDestination: String? = nil,
                 logDestinationType: LogDestinationType? = nil,
@@ -4901,6 +4903,7 @@ public struct CreateFlowLogsRequest: Codable, Equatable {
                 trafficType: TrafficType) {
         self.clientToken = clientToken
         self.deliverLogsPermissionArn = deliverLogsPermissionArn
+        self.destinationOptions = destinationOptions
         self.dryRun = dryRun
         self.logDestination = logDestination
         self.logDestinationType = logDestinationType
@@ -4916,6 +4919,7 @@ public struct CreateFlowLogsRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case clientToken = "ClientToken"
         case deliverLogsPermissionArn = "DeliverLogsPermissionArn"
+        case destinationOptions = "DestinationOptions"
         case dryRun = "DryRun"
         case logDestination = "LogDestination"
         case logDestinationType = "LogDestinationType"
@@ -4929,6 +4933,7 @@ public struct CreateFlowLogsRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+        try destinationOptions?.validate()
     }
 }
 
@@ -16134,6 +16139,52 @@ public struct DescribeVpnGatewaysResult: Codable, Equatable {
     }
 }
 
+public struct DestinationOptionsRequest: Codable, Equatable {
+    public var fileFormat: DestinationFileFormat?
+    public var hiveCompatiblePartitions: Boolean?
+    public var perHourPartition: Boolean?
+
+    public init(fileFormat: DestinationFileFormat? = nil,
+                hiveCompatiblePartitions: Boolean? = nil,
+                perHourPartition: Boolean? = nil) {
+        self.fileFormat = fileFormat
+        self.hiveCompatiblePartitions = hiveCompatiblePartitions
+        self.perHourPartition = perHourPartition
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case fileFormat = "FileFormat"
+        case hiveCompatiblePartitions = "HiveCompatiblePartitions"
+        case perHourPartition = "PerHourPartition"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DestinationOptionsResponse: Codable, Equatable {
+    public var fileFormat: DestinationFileFormat?
+    public var hiveCompatiblePartitions: Boolean?
+    public var perHourPartition: Boolean?
+
+    public init(fileFormat: DestinationFileFormat? = nil,
+                hiveCompatiblePartitions: Boolean? = nil,
+                perHourPartition: Boolean? = nil) {
+        self.fileFormat = fileFormat
+        self.hiveCompatiblePartitions = hiveCompatiblePartitions
+        self.perHourPartition = perHourPartition
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case fileFormat
+        case hiveCompatiblePartitions
+        case perHourPartition
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DetachClassicLinkVpcRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var instanceId: InstanceId
@@ -19176,6 +19227,7 @@ public struct FlowLog: Codable, Equatable {
     public var deliverLogsErrorMessage: String?
     public var deliverLogsPermissionArn: String?
     public var deliverLogsStatus: String?
+    public var destinationOptions: DestinationOptionsResponse?
     public var flowLogId: String?
     public var flowLogStatus: String?
     public var logDestination: String?
@@ -19191,6 +19243,7 @@ public struct FlowLog: Codable, Equatable {
                 deliverLogsErrorMessage: String? = nil,
                 deliverLogsPermissionArn: String? = nil,
                 deliverLogsStatus: String? = nil,
+                destinationOptions: DestinationOptionsResponse? = nil,
                 flowLogId: String? = nil,
                 flowLogStatus: String? = nil,
                 logDestination: String? = nil,
@@ -19205,6 +19258,7 @@ public struct FlowLog: Codable, Equatable {
         self.deliverLogsErrorMessage = deliverLogsErrorMessage
         self.deliverLogsPermissionArn = deliverLogsPermissionArn
         self.deliverLogsStatus = deliverLogsStatus
+        self.destinationOptions = destinationOptions
         self.flowLogId = flowLogId
         self.flowLogStatus = flowLogStatus
         self.logDestination = logDestination
@@ -19222,6 +19276,7 @@ public struct FlowLog: Codable, Equatable {
         case deliverLogsErrorMessage
         case deliverLogsPermissionArn
         case deliverLogsStatus
+        case destinationOptions
         case flowLogId
         case flowLogStatus
         case logDestination
@@ -19235,6 +19290,7 @@ public struct FlowLog: Codable, Equatable {
     }
 
     public func validate() throws {
+        try destinationOptions?.validate()
     }
 }
 
@@ -23394,19 +23450,23 @@ public struct InstanceStatusSummary: Codable, Equatable {
 
 public struct InstanceStorageInfo: Codable, Equatable {
     public var disks: DiskInfoList?
+    public var encryptionSupport: InstanceStorageEncryptionSupport?
     public var nvmeSupport: EphemeralNvmeSupport?
     public var totalSizeInGB: DiskSize?
 
     public init(disks: DiskInfoList? = nil,
+                encryptionSupport: InstanceStorageEncryptionSupport? = nil,
                 nvmeSupport: EphemeralNvmeSupport? = nil,
                 totalSizeInGB: DiskSize? = nil) {
         self.disks = disks
+        self.encryptionSupport = encryptionSupport
         self.nvmeSupport = nvmeSupport
         self.totalSizeInGB = totalSizeInGB
     }
 
     enum CodingKeys: String, CodingKey {
         case disks
+        case encryptionSupport
         case nvmeSupport
         case totalSizeInGB
     }
