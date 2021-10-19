@@ -39,10 +39,14 @@ enum DataAWSHttpClientDelegateError: Error {
 public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let requiresTLS: Bool
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
-    
-    public init(requiresTLS: Bool = true, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+    private let errorTypeHTTPHeader: String?
+
+    public init(requiresTLS: Bool = true,
+                inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil,
+                errorTypeHTTPHeader: String? = nil) {
         self.requiresTLS = requiresTLS
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
+        self.errorTypeHTTPHeader = errorTypeHTTPHeader
     }
     
     public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
@@ -53,10 +57,19 @@ public struct DataAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             throw HTTPError.unknownError("Error with status '\(response.status)' with empty body")
         }
         
-        // Convert bodyData to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
-        
-        let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
+        var cause: Error
+        if let errorTypeHTTPHeader = self.errorTypeHTTPHeader,
+           let errorType = response.headers.first(name: errorTypeHTTPHeader) {
+            let typedError: ErrorType = try getErrorFromResponseAndBody(errorTypeHTTPHeaderValue: errorType,
+                                                                        bodyData: bodyData,
+                                                                        logger: invocationReporting.logger)
+            cause = typedError
+        } else {
+            // Convert bodyData to a debug string only if debug logging is enabled
+            invocationReporting.logger.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
+            
+            cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
+        }
         
         return HTTPClientError(responseCode: Int(response.status.code), cause: cause)
     }

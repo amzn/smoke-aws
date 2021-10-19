@@ -23,6 +23,12 @@ let package = Package(
         ],
     products: [
         .library(
+            name: "AppConfigClient",
+            targets: ["AppConfigClient"]),
+        .library(
+            name: "AppConfigModel",
+            targets: ["AppConfigModel"]),
+        .library(
             name: "CloudWatchClient",
             targets: ["CloudWatchClient"]),
         .library(
@@ -135,6 +141,15 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0"),
     ],
     targets: [
+        .target(
+            name: "AppConfigClient", dependencies: [
+                .target(name: "AppConfigModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "AppConfigModel", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
         .target(
             name: "CloudWatchClient", dependencies: [
                 .target(name: "CloudWatchModel"),
@@ -322,6 +337,10 @@ let package = Package(
         .testTarget(
             name: "RDSClientTests", dependencies: [
                 .target(name: "RDSClient"),
+            ]),
+        .testTarget(
+            name: "AppConfigClientTests", dependencies: [
+                .target(name: "AppConfigClient"),
             ]),
     ],
     swiftLanguageVersions: [.v5]

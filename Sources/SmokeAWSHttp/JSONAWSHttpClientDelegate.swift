@@ -34,10 +34,14 @@ import Logging
 public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClientDelegate {
     private let requiresTLS: Bool
     private let inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?
+    private let errorTypeHTTPHeader: String?
     
-    public init(requiresTLS: Bool, inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil) {
+    public init(requiresTLS: Bool,
+                inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil,
+                errorTypeHTTPHeader: String? = nil) {
         self.requiresTLS = requiresTLS
         self.inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy
+        self.errorTypeHTTPHeader = errorTypeHTTPHeader
     }
     
     public func getResponseError<InvocationReportingType: HTTPClientInvocationReporting>(
@@ -48,11 +52,19 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             throw HTTPError.unknownError("Error with status '\(response.status)' with empty body")
         }
         
-        // Convert bodyData to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
-        
-        // attempt to get an error of Error type by decoding the body data
-        let cause = try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
+        var cause: ErrorType
+        if let errorTypeHTTPHeader = self.errorTypeHTTPHeader,
+           let errorType = response.headers.first(name: errorTypeHTTPHeader) {
+            cause = try getErrorFromResponseAndBody(errorTypeHTTPHeaderValue: errorType,
+                                                    bodyData: bodyData,
+                                                    logger: invocationReporting.logger)
+        } else {
+            // Convert bodyData to a debug string only if debug logging is enabled
+            invocationReporting.logger.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
+            
+            // attempt to get an error of Error type by decoding the body data
+            cause = try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
+        }
         
         return HTTPClientError(responseCode: Int(response.status.code), cause: cause)
     }
