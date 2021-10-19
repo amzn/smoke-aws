@@ -2775,6 +2775,7 @@ public extension CreateFlowLogsRequest {
         let defaultInstance = ElasticComputeCloudModel.CreateFlowLogsRequest(
             clientToken: nil,
             deliverLogsPermissionArn: nil,
+            destinationOptions: nil,
             dryRun: nil,
             logDestination: nil,
             logDestinationType: nil,
@@ -9423,6 +9424,34 @@ public extension DescribeVpnGatewaysResult {
     }()
 }
 
+public extension DestinationOptionsRequest {
+    /**
+     Default instance of the DestinationOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DestinationOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DestinationOptionsRequest(
+            fileFormat: nil,
+            hiveCompatiblePartitions: nil,
+            perHourPartition: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DestinationOptionsResponse {
+    /**
+     Default instance of the DestinationOptionsResponse structure.
+     */
+    static let __default: ElasticComputeCloudModel.DestinationOptionsResponse = {
+        let defaultInstance = ElasticComputeCloudModel.DestinationOptionsResponse(
+            fileFormat: nil,
+            hiveCompatiblePartitions: nil,
+            perHourPartition: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DetachClassicLinkVpcRequest {
     /**
      Default instance of the DetachClassicLinkVpcRequest structure.
@@ -11205,6 +11234,7 @@ public extension FlowLog {
             deliverLogsErrorMessage: nil,
             deliverLogsPermissionArn: nil,
             deliverLogsStatus: nil,
+            destinationOptions: nil,
             flowLogId: nil,
             flowLogStatus: nil,
             logDestination: nil,
@@ -13398,6 +13428,7 @@ public extension InstanceStorageInfo {
     static let __default: ElasticComputeCloudModel.InstanceStorageInfo = {
         let defaultInstance = ElasticComputeCloudModel.InstanceStorageInfo(
             disks: nil,
+            encryptionSupport: nil,
             nvmeSupport: nil,
             totalSizeInGB: nil)
 
