@@ -121,7 +121,7 @@ public class CloudWatchMetricsFactory: MetricsFactory {
             namespace = theNamespace
             
             // don't include this in the cloudWatchDimensions
-            dimensionsMap[metricNameDimension] = nil
+            dimensionsMap[namespaceDimension] = nil
         } else {
             namespace = unknownNamespace
         }
