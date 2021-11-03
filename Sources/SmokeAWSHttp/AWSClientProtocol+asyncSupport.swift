@@ -15,7 +15,7 @@
 //  SmokeAWSHttp
 //
 
-#if compiler(>=5.5) && canImport(_Concurrency)
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
 
 import SmokeHTTPClient
 import SmokeAWSCore
@@ -25,7 +25,6 @@ import NIOTransportServices
 import AsyncHTTPClient
 
 public extension AWSClientProtocol {
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func executeWithoutOutput<InvocationReportingType: HTTPClientInvocationReporting,
                               InputType: HTTPRequestInputProtocol, ErrorType: ConvertableError>(
             httpClient: HTTPOperationsClient,
@@ -61,7 +60,6 @@ public extension AWSClientProtocol {
         }
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func executeWithOutput<OutputType: HTTPResponseOutputProtocol, InvocationReportingType: HTTPClientInvocationReporting,
                            InputType: HTTPRequestInputProtocol, ErrorType: ConvertableError>(
             httpClient: HTTPOperationsClient,

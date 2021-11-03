@@ -15,7 +15,7 @@
 //  SmokeAWSHttp
 //
 
-#if compiler(>=5.5) && canImport(_Concurrency)
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
 
 import NIO
 
@@ -36,7 +36,6 @@ import NIO
  */
 public extension MockThrowingClientProtocol {
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
             defaultError: Error,
@@ -68,7 +67,6 @@ public extension MockThrowingClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingExecuteWithInputWithOutput<InputType, OutputType>(
             input: InputType,
             defaultError: Error,
@@ -86,7 +84,6 @@ public extension MockThrowingClientProtocol {
         throw defaultError
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             defaultError: Error,
@@ -118,7 +115,6 @@ public extension MockThrowingClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingExecuteWithInputWithoutOutput<InputType>(
             input: InputType,
             defaultError: Error,
@@ -140,7 +136,6 @@ public extension MockThrowingClientProtocol {
         throw defaultError
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingAsyncAwareEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
             defaultError: Error,
             eventLoop: EventLoop,
@@ -171,7 +166,6 @@ public extension MockThrowingClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingExecuteWithoutInputWithOutput<OutputType>(
             defaultError: Error,
             eventLoop: EventLoop,
@@ -188,7 +182,6 @@ public extension MockThrowingClientProtocol {
         throw defaultError
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingAsyncAwareEventLoopFutureExecuteWithoutInputWithoutOutput(
             defaultError: Error,
             eventLoop: EventLoop,
@@ -219,7 +212,6 @@ public extension MockThrowingClientProtocol {
         return promise.futureResult
     }
     
-    @available(macOS 12, iOS 15, tvOS 15, watchOS 8, *)
     func mockThrowingExecuteWithoutInputWithoutOutput(
             defaultError: Error,
             eventLoop: EventLoop,
