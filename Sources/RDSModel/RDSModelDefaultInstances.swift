@@ -682,6 +682,25 @@ public extension CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZo
     }()
 }
 
+public extension CreateCustomDBEngineVersionMessage {
+    /**
+     Default instance of the CreateCustomDBEngineVersionMessage structure.
+     */
+    static let __default: RDSModel.CreateCustomDBEngineVersionMessage = {
+        let defaultInstance = RDSModel.CreateCustomDBEngineVersionMessage(
+            databaseInstallationFilesS3BucketName: "012",
+            databaseInstallationFilesS3Prefix: nil,
+            description: nil,
+            engine: "0",
+            engineVersion: "0",
+            kMSKeyId: "0",
+            manifest: "0",
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateDBClusterEndpointMessage {
     /**
      Default instance of the CreateDBClusterEndpointMessage structure.
@@ -856,6 +875,7 @@ public extension CreateDBInstanceMessage {
             backupRetentionPeriod: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
+            customIamInstanceProfile: nil,
             dBClusterIdentifier: nil,
             dBInstanceClass: "value",
             dBInstanceIdentifier: "value",
@@ -912,6 +932,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             copyTagsToSnapshot: nil,
+            customIamInstanceProfile: nil,
             dBInstanceClass: nil,
             dBInstanceIdentifier: "value",
             dBParameterGroupName: nil,
@@ -1426,6 +1447,39 @@ public extension CustomAvailabilityZoneQuotaExceededFault {
      */
     static let __default: RDSModel.CustomAvailabilityZoneQuotaExceededFault = {
         let defaultInstance = RDSModel.CustomAvailabilityZoneQuotaExceededFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension CustomDBEngineVersionAlreadyExistsFault {
+    /**
+     Default instance of the CustomDBEngineVersionAlreadyExistsFault structure.
+     */
+    static let __default: RDSModel.CustomDBEngineVersionAlreadyExistsFault = {
+        let defaultInstance = RDSModel.CustomDBEngineVersionAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension CustomDBEngineVersionNotFoundFault {
+    /**
+     Default instance of the CustomDBEngineVersionNotFoundFault structure.
+     */
+    static let __default: RDSModel.CustomDBEngineVersionNotFoundFault = {
+        let defaultInstance = RDSModel.CustomDBEngineVersionNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension CustomDBEngineVersionQuotaExceededFault {
+    /**
+     Default instance of the CustomDBEngineVersionQuotaExceededFault structure.
+     */
+    static let __default: RDSModel.CustomDBEngineVersionQuotaExceededFault = {
+        let defaultInstance = RDSModel.CustomDBEngineVersionQuotaExceededFault()
 
         return defaultInstance
     }()
@@ -2064,13 +2118,19 @@ public extension DBEngineVersion {
      */
     static let __default: RDSModel.DBEngineVersion = {
         let defaultInstance = RDSModel.DBEngineVersion(
+            createTime: nil,
             dBEngineDescription: nil,
+            dBEngineVersionArn: nil,
             dBEngineVersionDescription: nil,
             dBParameterGroupFamily: nil,
+            databaseInstallationFilesS3BucketName: nil,
+            databaseInstallationFilesS3Prefix: nil,
             defaultCharacterSet: nil,
             engine: nil,
             engineVersion: nil,
             exportableLogTypes: nil,
+            kMSKeyId: nil,
+            majorEngineVersion: nil,
             status: nil,
             supportedCharacterSets: nil,
             supportedEngineModes: nil,
@@ -2081,7 +2141,44 @@ public extension DBEngineVersion {
             supportsLogExportsToCloudwatchLogs: nil,
             supportsParallelQuery: nil,
             supportsReadReplica: nil,
+            tagList: nil,
             validUpgradeTarget: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBEngineVersionForCreateCustomDBEngineVersion {
+    /**
+     Default instance of the DBEngineVersionForCreateCustomDBEngineVersion structure.
+     */
+    static let __default: RDSModel.DBEngineVersionForCreateCustomDBEngineVersion = {
+        let defaultInstance = RDSModel.DBEngineVersionForCreateCustomDBEngineVersion(
+            createCustomDBEngineVersionResult: DBEngineVersion.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBEngineVersionForDeleteCustomDBEngineVersion {
+    /**
+     Default instance of the DBEngineVersionForDeleteCustomDBEngineVersion structure.
+     */
+    static let __default: RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion = {
+        let defaultInstance = RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion(
+            deleteCustomDBEngineVersionResult: DBEngineVersion.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBEngineVersionForModifyCustomDBEngineVersion {
+    /**
+     Default instance of the DBEngineVersionForModifyCustomDBEngineVersion structure.
+     */
+    static let __default: RDSModel.DBEngineVersionForModifyCustomDBEngineVersion = {
+        let defaultInstance = RDSModel.DBEngineVersionForModifyCustomDBEngineVersion(
+            modifyCustomDBEngineVersionResult: DBEngineVersion.__default)
 
         return defaultInstance
     }()
@@ -2127,12 +2224,14 @@ public extension DBInstance {
             associatedRoles: nil,
             autoMinorVersionUpgrade: nil,
             automaticRestartTime: nil,
+            automationMode: nil,
             availabilityZone: nil,
             awsBackupRecoveryPointArn: nil,
             backupRetentionPeriod: nil,
             cACertificateIdentifier: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
+            customIamInstanceProfile: nil,
             customerOwnedIpEnabled: nil,
             dBClusterIdentifier: nil,
             dBInstanceArn: nil,
@@ -2180,6 +2279,7 @@ public extension DBInstance {
             readReplicaDBInstanceIdentifiers: nil,
             readReplicaSourceDBInstanceIdentifier: nil,
             replicaMode: nil,
+            resumeFullAutomationModeTime: nil,
             secondaryAvailabilityZone: nil,
             statusInfos: nil,
             storageEncrypted: nil,
@@ -3105,6 +3205,19 @@ public extension DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZo
     static let __default: RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone = {
         let defaultInstance = RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone(
             deleteCustomAvailabilityZoneResult: DeleteCustomAvailabilityZoneResult.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteCustomDBEngineVersionMessage {
+    /**
+     Default instance of the DeleteCustomDBEngineVersionMessage structure.
+     */
+    static let __default: RDSModel.DeleteCustomDBEngineVersionMessage = {
+        let defaultInstance = RDSModel.DeleteCustomDBEngineVersionMessage(
+            engine: "0",
+            engineVersion: "0")
 
         return defaultInstance
     }()
@@ -5220,6 +5333,17 @@ public extension InsufficientStorageClusterCapacityFault {
     }()
 }
 
+public extension InvalidCustomDBEngineVersionStateFault {
+    /**
+     Default instance of the InvalidCustomDBEngineVersionStateFault structure.
+     */
+    static let __default: RDSModel.InvalidCustomDBEngineVersionStateFault = {
+        let defaultInstance = RDSModel.InvalidCustomDBEngineVersionStateFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension InvalidDBClusterCapacityFault {
     /**
      Default instance of the InvalidDBClusterCapacityFault structure.
@@ -5573,6 +5697,21 @@ public extension ModifyCurrentDBClusterCapacityMessage {
     }()
 }
 
+public extension ModifyCustomDBEngineVersionMessage {
+    /**
+     Default instance of the ModifyCustomDBEngineVersionMessage structure.
+     */
+    static let __default: RDSModel.ModifyCustomDBEngineVersionMessage = {
+        let defaultInstance = RDSModel.ModifyCustomDBEngineVersionMessage(
+            description: nil,
+            engine: "0",
+            engineVersion: "0",
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifyDBClusterEndpointMessage {
     /**
      Default instance of the ModifyDBClusterEndpointMessage structure.
@@ -5709,6 +5848,7 @@ public extension ModifyDBInstanceMessage {
             allowMajorVersionUpgrade: nil,
             applyImmediately: nil,
             autoMinorVersionUpgrade: nil,
+            automationMode: nil,
             awsBackupRecoveryPointArn: nil,
             backupRetentionPeriod: nil,
             cACertificateIdentifier: nil,
@@ -5745,6 +5885,7 @@ public extension ModifyDBInstanceMessage {
             promotionTier: nil,
             publiclyAccessible: nil,
             replicaMode: nil,
+            resumeFullAutomationModeMinutes: nil,
             storageType: nil,
             tdeCredentialArn: nil,
             tdeCredentialPassword: nil,
@@ -6537,6 +6678,7 @@ public extension PendingModifiedValues {
     static let __default: RDSModel.PendingModifiedValues = {
         let defaultInstance = RDSModel.PendingModifiedValues(
             allocatedStorage: nil,
+            automationMode: nil,
             backupRetentionPeriod: nil,
             cACertificateIdentifier: nil,
             dBInstanceClass: nil,
@@ -6551,6 +6693,7 @@ public extension PendingModifiedValues {
             pendingCloudwatchLogsExports: nil,
             port: nil,
             processorFeatures: nil,
+            resumeFullAutomationModeTime: nil,
             storageType: nil)
 
         return defaultInstance
@@ -7305,6 +7448,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             copyTagsToSnapshot: nil,
+            customIamInstanceProfile: nil,
             dBInstanceClass: nil,
             dBInstanceIdentifier: "value",
             dBName: nil,
@@ -7448,6 +7592,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             copyTagsToSnapshot: nil,
+            customIamInstanceProfile: nil,
             dBInstanceClass: nil,
             dBName: nil,
             dBParameterGroupName: nil,

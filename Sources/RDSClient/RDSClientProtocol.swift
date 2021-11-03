@@ -99,6 +99,11 @@ public protocol RDSClientProtocol {
     typealias CreateCustomAvailabilityZoneAsyncType = (
             _ input: RDSModel.CreateCustomAvailabilityZoneMessage, 
             _ completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
+    typealias CreateCustomDBEngineVersionSyncType = (
+            _ input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion
+    typealias CreateCustomDBEngineVersionAsyncType = (
+            _ input: RDSModel.CreateCustomDBEngineVersionMessage, 
+            _ completion: @escaping (Result<RDSModel.DBEngineVersionForCreateCustomDBEngineVersion, RDSError>) -> ()) throws -> ()
     typealias CreateDBClusterSyncType = (
             _ input: RDSModel.CreateDBClusterMessage) throws -> RDSModel.CreateDBClusterResultForCreateDBCluster
     typealias CreateDBClusterAsyncType = (
@@ -179,6 +184,11 @@ public protocol RDSClientProtocol {
     typealias DeleteCustomAvailabilityZoneAsyncType = (
             _ input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
             _ completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
+    typealias DeleteCustomDBEngineVersionSyncType = (
+            _ input: RDSModel.DeleteCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion
+    typealias DeleteCustomDBEngineVersionAsyncType = (
+            _ input: RDSModel.DeleteCustomDBEngineVersionMessage, 
+            _ completion: @escaping (Result<RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion, RDSError>) -> ()) throws -> ()
     typealias DeleteDBClusterSyncType = (
             _ input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
     typealias DeleteDBClusterAsyncType = (
@@ -499,6 +509,11 @@ public protocol RDSClientProtocol {
     typealias ModifyCurrentDBClusterCapacityAsyncType = (
             _ input: RDSModel.ModifyCurrentDBClusterCapacityMessage, 
             _ completion: @escaping (Result<RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity, RDSError>) -> ()) throws -> ()
+    typealias ModifyCustomDBEngineVersionSyncType = (
+            _ input: RDSModel.ModifyCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForModifyCustomDBEngineVersion
+    typealias ModifyCustomDBEngineVersionAsyncType = (
+            _ input: RDSModel.ModifyCustomDBEngineVersionMessage, 
+            _ completion: @escaping (Result<RDSModel.DBEngineVersionForModifyCustomDBEngineVersion, RDSError>) -> ()) throws -> ()
     typealias ModifyDBClusterSyncType = (
             _ input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
     typealias ModifyDBClusterAsyncType = (
@@ -1071,6 +1086,32 @@ public protocol RDSClientProtocol {
             input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
 
     /**
+     Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForCreateCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForCreateCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     */
+    func createCustomDBEngineVersionAsync(
+            input: RDSModel.CreateCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForCreateCustomDBEngineVersion, RDSError>) -> ()) throws
+
+    /**
+     Invokes the CreateCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForCreateCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     */
+    func createCustomDBEngineVersionSync(
+            input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion
+
+    /**
      Invokes the CreateDBCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1485,6 +1526,32 @@ public protocol RDSClientProtocol {
      */
     func deleteCustomAvailabilityZoneSync(
             input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
+
+    /**
+     Invokes the DeleteCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForDeleteCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForDeleteCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    func deleteCustomDBEngineVersionAsync(
+            input: RDSModel.DeleteCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion, RDSError>) -> ()) throws
+
+    /**
+     Invokes the DeleteCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForDeleteCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    func deleteCustomDBEngineVersionSync(
+            input: RDSModel.DeleteCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion
 
     /**
      Invokes the DeleteDBCluster operation returning immediately and passing the response to a callback.
@@ -3116,6 +3183,32 @@ public protocol RDSClientProtocol {
      */
     func modifyCurrentDBClusterCapacitySync(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage) throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity
+
+    /**
+     Invokes the ModifyCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForModifyCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForModifyCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    func modifyCustomDBEngineVersionAsync(
+            input: RDSModel.ModifyCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForModifyCustomDBEngineVersion, RDSError>) -> ()) throws
+
+    /**
+     Invokes the ModifyCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForModifyCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    func modifyCustomDBEngineVersionSync(
+            input: RDSModel.ModifyCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForModifyCustomDBEngineVersion
 
     /**
      Invokes the ModifyDBCluster operation returning immediately and passing the response to a callback.

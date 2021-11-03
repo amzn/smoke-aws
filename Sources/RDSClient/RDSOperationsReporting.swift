@@ -42,6 +42,7 @@ public struct RDSOperationsReporting {
     public let copyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let copyOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let createCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -58,6 +59,7 @@ public struct RDSOperationsReporting {
     public let createGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -122,6 +124,7 @@ public struct RDSOperationsReporting {
     public let listTagsForResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCurrentDBClusterCapacity: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -195,6 +198,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .copyOptionGroup, configuration: reportingConfiguration)
         self.createCustomAvailabilityZone = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createCustomAvailabilityZone, configuration: reportingConfiguration)
+        self.createCustomDBEngineVersion = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createCustomDBEngineVersion, configuration: reportingConfiguration)
         self.createDBCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createDBCluster, configuration: reportingConfiguration)
         self.createDBClusterEndpoint = StandardSmokeAWSOperationReporting(
@@ -227,6 +232,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .createOptionGroup, configuration: reportingConfiguration)
         self.deleteCustomAvailabilityZone = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteCustomAvailabilityZone, configuration: reportingConfiguration)
+        self.deleteCustomDBEngineVersion = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteCustomDBEngineVersion, configuration: reportingConfiguration)
         self.deleteDBCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBCluster, configuration: reportingConfiguration)
         self.deleteDBClusterEndpoint = StandardSmokeAWSOperationReporting(
@@ -355,6 +362,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .modifyCertificates, configuration: reportingConfiguration)
         self.modifyCurrentDBClusterCapacity = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyCurrentDBClusterCapacity, configuration: reportingConfiguration)
+        self.modifyCustomDBEngineVersion = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyCustomDBEngineVersion, configuration: reportingConfiguration)
         self.modifyDBCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyDBCluster, configuration: reportingConfiguration)
         self.modifyDBClusterEndpoint = StandardSmokeAWSOperationReporting(

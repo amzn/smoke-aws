@@ -23,6 +23,71 @@
 import Foundation
 
 /**
+ Enumeration restricting the values of the AcceleratorManufacturer field.
+ */
+public enum AcceleratorManufacturer: String, Codable, CustomStringConvertible {
+    case amazonWebServices = "amazon-web-services"
+    case amd
+    case nvidia
+    case xilinx
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AcceleratorManufacturer = .amazonWebServices
+}
+
+/**
+ Type definition for the AcceleratorManufacturerSet field.
+ */
+public typealias AcceleratorManufacturerSet = [AcceleratorManufacturer]
+
+/**
+ Enumeration restricting the values of the AcceleratorName field.
+ */
+public enum AcceleratorName: String, Codable, CustomStringConvertible {
+    case a100
+    case k80
+    case m60
+    case radeonProV520 = "radeon-pro-v520"
+    case t4
+    case v100
+    case vu9p
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AcceleratorName = .a100
+}
+
+/**
+ Type definition for the AcceleratorNameSet field.
+ */
+public typealias AcceleratorNameSet = [AcceleratorName]
+
+/**
+ Enumeration restricting the values of the AcceleratorType field.
+ */
+public enum AcceleratorType: String, Codable, CustomStringConvertible {
+    case fpga
+    case gpu
+    case inference
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AcceleratorType = .fpga
+}
+
+/**
+ Type definition for the AcceleratorTypeSet field.
+ */
+public typealias AcceleratorTypeSet = [AcceleratorType]
+
+/**
  Type definition for the AccountAttributeList field.
  */
 public typealias AccountAttributeList = [AccountAttribute]
@@ -248,6 +313,11 @@ public enum ArchitectureType: String, Codable, CustomStringConvertible {
 public typealias ArchitectureTypeList = [ArchitectureType]
 
 /**
+ Type definition for the ArchitectureTypeSet field.
+ */
+public typealias ArchitectureTypeSet = [ArchitectureType]
+
+/**
  Enumeration restricting the values of the ArchitectureValues field.
  */
 public enum ArchitectureValues: String, Codable, CustomStringConvertible {
@@ -443,6 +513,21 @@ public typealias AvailabilityZoneStringList = [String]
 public typealias AvailableInstanceCapacityList = [InstanceCapacity]
 
 /**
+ Enumeration restricting the values of the BareMetal field.
+ */
+public enum BareMetal: String, Codable, CustomStringConvertible {
+    case excluded
+    case included
+    case required
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BareMetal = .excluded
+}
+
+/**
  Type definition for the BareMetalFlag field.
  */
 public typealias BareMetalFlag = Bool
@@ -585,6 +670,21 @@ public enum BundleTaskState: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: BundleTaskState = .bundling
+}
+
+/**
+ Enumeration restricting the values of the BurstablePerformance field.
+ */
+public enum BurstablePerformance: String, Codable, CustomStringConvertible {
+    case excluded
+    case included
+    case required
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BurstablePerformance = .excluded
 }
 
 /**
@@ -1149,6 +1249,26 @@ public typealias CoreCount = Int
  Type definition for the CoreCountList field.
  */
 public typealias CoreCountList = [CoreCount]
+
+/**
+ Enumeration restricting the values of the CpuManufacturer field.
+ */
+public enum CpuManufacturer: String, Codable, CustomStringConvertible {
+    case amazonWebServices = "amazon-web-services"
+    case amd
+    case intel
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CpuManufacturer = .amazonWebServices
+}
+
+/**
+ Type definition for the CpuManufacturerSet field.
+ */
+public typealias CpuManufacturerSet = [CpuManufacturer]
 
 /**
  Type definition for the CreateFleetErrorsSet field.
@@ -2016,6 +2136,16 @@ public enum ExcessCapacityTerminationPolicy: String, Codable, CustomStringConver
     
     public static let __default: ExcessCapacityTerminationPolicy = .`default`
 }
+
+/**
+ Type definition for the ExcludedInstanceType field.
+ */
+public typealias ExcludedInstanceType = String
+
+/**
+ Type definition for the ExcludedInstanceTypeSet field.
+ */
+public typealias ExcludedInstanceTypeSet = [ExcludedInstanceType]
 
 /**
  Type definition for the ExecutableByStringList field.
@@ -2934,6 +3064,25 @@ public typealias InstanceEventWindowTimeRangeList = [InstanceEventWindowTimeRang
 public typealias InstanceEventWindowTimeRangeRequestSet = [InstanceEventWindowTimeRangeRequest]
 
 /**
+ Enumeration restricting the values of the InstanceGeneration field.
+ */
+public enum InstanceGeneration: String, Codable, CustomStringConvertible {
+    case current
+    case previous
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceGeneration = .current
+}
+
+/**
+ Type definition for the InstanceGenerationSet field.
+ */
+public typealias InstanceGenerationSet = [InstanceGeneration]
+
+/**
  Enumeration restricting the values of the InstanceHealthStatus field.
  */
 public enum InstanceHealthStatus: String, Codable, CustomStringConvertible {
@@ -3285,6 +3434,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case d3en6xlarge = "d3en.6xlarge"
     case d3en8xlarge = "d3en.8xlarge"
     case d3enXlarge = "d3en.xlarge"
+    case dl124xlarge = "dl1.24xlarge"
     case f116xlarge = "f1.16xlarge"
     case f12xlarge = "f1.2xlarge"
     case f14xlarge = "f1.4xlarge"
@@ -3625,6 +3775,11 @@ public enum InstanceTypeHypervisor: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the InstanceTypeInfoFromInstanceRequirementsSet field.
+ */
+public typealias InstanceTypeInfoFromInstanceRequirementsSet = [InstanceTypeInfoFromInstanceRequirements]
+
+/**
  Type definition for the InstanceTypeInfoList field.
  */
 public typealias InstanceTypeInfoList = [InstanceTypeInfo]
@@ -3638,6 +3793,11 @@ public typealias InstanceTypeList = [InstanceType]
  Type definition for the InstanceTypeOfferingsList field.
  */
 public typealias InstanceTypeOfferingsList = [InstanceTypeOffering]
+
+/**
+ Type definition for the InstanceTypes field.
+ */
+public typealias InstanceTypes = [String]
 
 /**
  Type definition for the InstanceUsageSet field.
@@ -4243,6 +4403,40 @@ public typealias LocalGatewayVirtualInterfaceIdSet = [LocalGatewayVirtualInterfa
 public typealias LocalGatewayVirtualInterfaceSet = [LocalGatewayVirtualInterface]
 
 /**
+ Enumeration restricting the values of the LocalStorage field.
+ */
+public enum LocalStorage: String, Codable, CustomStringConvertible {
+    case excluded
+    case included
+    case required
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LocalStorage = .excluded
+}
+
+/**
+ Enumeration restricting the values of the LocalStorageType field.
+ */
+public enum LocalStorageType: String, Codable, CustomStringConvertible {
+    case hdd
+    case ssd
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LocalStorageType = .hdd
+}
+
+/**
+ Type definition for the LocalStorageTypeSet field.
+ */
+public typealias LocalStorageTypeSet = [LocalStorageType]
+
+/**
  Type definition for the Location field.
  */
 public typealias Location = String
@@ -4759,6 +4953,16 @@ public enum OperationType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the OrganizationArnStringList field.
+ */
+public typealias OrganizationArnStringList = [String]
+
+/**
+ Type definition for the OrganizationalUnitArnStringList field.
+ */
+public typealias OrganizationalUnitArnStringList = [String]
+
+/**
  Type definition for the OutpostArn field.
  */
 public typealias OutpostArn = String
@@ -5267,6 +5471,11 @@ public typealias RegionList = [Region]
  Type definition for the RegionNameStringList field.
  */
 public typealias RegionNameStringList = [String]
+
+/**
+ Type definition for the RegionNames field.
+ */
+public typealias RegionNames = [String]
 
 /**
  Type definition for the RemovePrefixListEntries field.
@@ -6084,6 +6293,21 @@ public enum SpotInstanceType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the SpotPlacementScores field.
+ */
+public typealias SpotPlacementScores = [SpotPlacementScore]
+
+/**
+ Type definition for the SpotPlacementScoresMaxResults field.
+ */
+public typealias SpotPlacementScoresMaxResults = Int
+
+/**
+ Type definition for the SpotPlacementScoresTargetCapacity field.
+ */
+public typealias SpotPlacementScoresTargetCapacity = Int
+
+/**
  Type definition for the SpotPriceHistoryList field.
  */
 public typealias SpotPriceHistoryList = [SpotPrice]
@@ -6318,6 +6542,21 @@ public typealias TagSpecificationList = [TagSpecification]
  Type definition for the TaggableResourceId field.
  */
 public typealias TaggableResourceId = String
+
+/**
+ Enumeration restricting the values of the TargetCapacityUnitType field.
+ */
+public enum TargetCapacityUnitType: String, Codable, CustomStringConvertible {
+    case memoryMib = "memory-mib"
+    case units
+    case vcpu
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TargetCapacityUnitType = .memoryMib
+}
 
 /**
  Type definition for the TargetConfigurationRequestSet field.
@@ -7104,6 +7343,11 @@ public enum VirtualizationType: String, Codable, CustomStringConvertible {
 public typealias VirtualizationTypeList = [VirtualizationType]
 
 /**
+ Type definition for the VirtualizationTypeSet field.
+ */
+public typealias VirtualizationTypeSet = [VirtualizationType]
+
+/**
  Type definition for the VolumeAttachmentList field.
  */
 public typealias VolumeAttachmentList = [VolumeAttachment]
@@ -7661,6 +7905,21 @@ extension ElasticComputeCloudModel.AddressMaxResults {
 
         if self > 1000 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AddressMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ArchitectureTypeSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.ArchitectureType {
+    public func validateAsArchitectureTypeSet() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ArchitectureTypeSet violated the minimum length constraint.")
+        }
+
+        if self.count > 3 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ArchitectureTypeSet violated the maximum length constraint.")
         }
     }
 }
@@ -8428,6 +8687,42 @@ extension ElasticComputeCloudModel.ElasticInferenceAcceleratorCount {
 }
 
 /**
+ Validation for the ExcludedInstanceType field.
+*/
+extension ElasticComputeCloudModel.ExcludedInstanceType {
+    public func validateAsExcludedInstanceType() throws {
+        if self.count < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ExcludedInstanceType violated the minimum length constraint.")
+        }
+
+        if self.count > 30 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ExcludedInstanceType violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticComputeCloudError.validationError(
+                    reason: "The provided value to ExcludedInstanceType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ExcludedInstanceTypeSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.ExcludedInstanceType {
+    public func validateAsExcludedInstanceTypeSet() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ExcludedInstanceTypeSet violated the minimum length constraint.")
+        }
+
+        if self.count > 400 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ExcludedInstanceTypeSet violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the FleetLaunchTemplateConfigListRequest field.
 */
 extension Array where Element == ElasticComputeCloudModel.FleetLaunchTemplateConfigRequest {
@@ -8528,6 +8823,21 @@ extension ElasticComputeCloudModel.Hour {
 
         if self > 23 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to Hour violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the InstanceTypes field.
+*/
+extension Array where Element == String {
+    public func validateAsInstanceTypes() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to InstanceTypes violated the minimum length constraint.")
+        }
+
+        if self.count > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to InstanceTypes violated the maximum length constraint.")
         }
     }
 }
@@ -8714,6 +9024,21 @@ extension Array where Element == ElasticComputeCloudModel.PurchaseRequest {
 }
 
 /**
+ Validation for the RegionNames field.
+*/
+extension Array where Element == String {
+    public func validateAsRegionNames() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to RegionNames violated the minimum length constraint.")
+        }
+
+        if self.count > 10 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to RegionNames violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the RemovePrefixListEntries field.
 */
 extension Array where Element == ElasticComputeCloudModel.RemovePrefixListEntry {
@@ -8774,6 +9099,36 @@ extension ElasticComputeCloudModel.ResultRange {
 }
 
 /**
+ Validation for the SpotPlacementScoresMaxResults field.
+*/
+extension ElasticComputeCloudModel.SpotPlacementScoresMaxResults {
+    public func validateAsSpotPlacementScoresMaxResults() throws {
+        if self < 10 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to SpotPlacementScoresMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to SpotPlacementScoresMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SpotPlacementScoresTargetCapacity field.
+*/
+extension ElasticComputeCloudModel.SpotPlacementScoresTargetCapacity {
+    public func validateAsSpotPlacementScoresTargetCapacity() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to SpotPlacementScoresTargetCapacity violated the minimum range constraint.")
+        }
+
+        if self > 2000000000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to SpotPlacementScoresTargetCapacity violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the TargetGroups field.
 */
 extension Array where Element == ElasticComputeCloudModel.TargetGroup {
@@ -8829,6 +9184,21 @@ extension ElasticComputeCloudModel.VersionDescription {
 
         if self.count > 255 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to VersionDescription violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the VirtualizationTypeSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.VirtualizationType {
+    public func validateAsVirtualizationTypeSet() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to VirtualizationTypeSet violated the minimum length constraint.")
+        }
+
+        if self.count > 2 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to VirtualizationTypeSet violated the maximum length constraint.")
         }
     }
 }

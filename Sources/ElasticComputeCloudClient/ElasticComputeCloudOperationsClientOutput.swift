@@ -4055,6 +4055,19 @@ extension GetHostReservationPurchasePreviewResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetInstanceTypesFromInstanceRequirements operation in a HTTP client.
+ */
+extension GetInstanceTypesFromInstanceRequirementsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetInstanceTypesFromInstanceRequirementsResult
+    public typealias HeadersType = GetInstanceTypesFromInstanceRequirementsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetInstanceTypesFromInstanceRequirementsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetLaunchTemplateData operation in a HTTP client.
  */
 extension GetLaunchTemplateDataResult: HTTPResponseOutputProtocol {
@@ -4128,6 +4141,19 @@ extension GetSerialConsoleAccessStatusResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetSerialConsoleAccessStatusResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetSpotPlacementScores operation in a HTTP client.
+ */
+extension GetSpotPlacementScoresResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetSpotPlacementScoresResult
+    public typealias HeadersType = GetSpotPlacementScoresResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetSpotPlacementScoresResult {
         return try bodyDecodableProvider()
     }
 }

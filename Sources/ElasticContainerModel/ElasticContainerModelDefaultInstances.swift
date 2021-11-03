@@ -735,6 +735,7 @@ public extension Deployment {
             launchType: nil,
             networkConfiguration: nil,
             pendingCount: nil,
+            platformFamily: nil,
             platformVersion: nil,
             rolloutState: nil,
             rolloutStateReason: nil,
@@ -2038,6 +2039,7 @@ public extension RegisterTaskDefinitionRequest {
             placementConstraints: nil,
             proxyConfiguration: nil,
             requiresCompatibilities: nil,
+            runtimePlatform: nil,
             tags: nil,
             taskRoleArn: nil,
             volumes: nil)
@@ -2164,6 +2166,19 @@ public extension RunTaskResponse {
     }()
 }
 
+public extension RuntimePlatform {
+    /**
+     Default instance of the RuntimePlatform structure.
+     */
+    static let __default: ElasticContainerModel.RuntimePlatform = {
+        let defaultInstance = ElasticContainerModel.RuntimePlatform(
+            cpuArchitecture: nil,
+            operatingSystemFamily: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Scale {
     /**
      Default instance of the Scale structure.
@@ -2226,6 +2241,7 @@ public extension Service {
             pendingCount: nil,
             placementConstraints: nil,
             placementStrategy: nil,
+            platformFamily: nil,
             platformVersion: nil,
             propagateTags: nil,
             roleArn: nil,
@@ -2573,6 +2589,7 @@ public extension Task {
             launchType: nil,
             memory: nil,
             overrides: nil,
+            platformFamily: nil,
             platformVersion: nil,
             pullStartedAt: nil,
             pullStoppedAt: nil,
@@ -2616,6 +2633,7 @@ public extension TaskDefinition {
             requiresAttributes: nil,
             requiresCompatibilities: nil,
             revision: nil,
+            runtimePlatform: nil,
             status: nil,
             taskDefinitionArn: nil,
             taskRoleArn: nil,
@@ -2672,6 +2690,7 @@ public extension TaskSet {
             loadBalancers: nil,
             networkConfiguration: nil,
             pendingCount: nil,
+            platformFamily: nil,
             platformVersion: nil,
             runningCount: nil,
             scale: nil,

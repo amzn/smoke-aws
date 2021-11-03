@@ -22,6 +22,82 @@
 
 import Foundation
 
+public struct AcceleratorCount: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct AcceleratorCountRequest: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct AcceleratorTotalMemoryMiB: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct AcceleratorTotalMemoryMiBRequest: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct AcceptReservedInstancesExchangeQuoteRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var reservedInstanceIds: ReservedInstanceIdSet
@@ -2180,6 +2256,44 @@ public struct AvailableCapacity: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case availableInstanceCapacity
         case availableVCpus
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct BaselineEbsBandwidthMbps: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct BaselineEbsBandwidthMbpsRequest: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
     }
 
     public func validate() throws {
@@ -19034,6 +19148,7 @@ public struct FleetLaunchTemplateConfigRequest: Codable, Equatable {
 
 public struct FleetLaunchTemplateOverrides: Codable, Equatable {
     public var availabilityZone: String?
+    public var instanceRequirements: InstanceRequirements?
     public var instanceType: InstanceType?
     public var maxPrice: String?
     public var placement: PlacementResponse?
@@ -19042,6 +19157,7 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
     public var weightedCapacity: Double?
 
     public init(availabilityZone: String? = nil,
+                instanceRequirements: InstanceRequirements? = nil,
                 instanceType: InstanceType? = nil,
                 maxPrice: String? = nil,
                 placement: PlacementResponse? = nil,
@@ -19049,6 +19165,7 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
                 subnetId: String? = nil,
                 weightedCapacity: Double? = nil) {
         self.availabilityZone = availabilityZone
+        self.instanceRequirements = instanceRequirements
         self.instanceType = instanceType
         self.maxPrice = maxPrice
         self.placement = placement
@@ -19059,6 +19176,7 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case availabilityZone
+        case instanceRequirements
         case instanceType
         case maxPrice
         case placement
@@ -19068,12 +19186,14 @@ public struct FleetLaunchTemplateOverrides: Codable, Equatable {
     }
 
     public func validate() throws {
+        try instanceRequirements?.validate()
         try placement?.validate()
     }
 }
 
 public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
     public var availabilityZone: String?
+    public var instanceRequirements: InstanceRequirementsRequest?
     public var instanceType: InstanceType?
     public var maxPrice: String?
     public var placement: Placement?
@@ -19082,6 +19202,7 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
     public var weightedCapacity: Double?
 
     public init(availabilityZone: String? = nil,
+                instanceRequirements: InstanceRequirementsRequest? = nil,
                 instanceType: InstanceType? = nil,
                 maxPrice: String? = nil,
                 placement: Placement? = nil,
@@ -19089,6 +19210,7 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
                 subnetId: SubnetId? = nil,
                 weightedCapacity: Double? = nil) {
         self.availabilityZone = availabilityZone
+        self.instanceRequirements = instanceRequirements
         self.instanceType = instanceType
         self.maxPrice = maxPrice
         self.placement = placement
@@ -19099,6 +19221,7 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case availabilityZone = "AvailabilityZone"
+        case instanceRequirements = "InstanceRequirements"
         case instanceType = "InstanceType"
         case maxPrice = "MaxPrice"
         case placement = "Placement"
@@ -19108,6 +19231,7 @@ public struct FleetLaunchTemplateOverridesRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+        try instanceRequirements?.validate()
         try placement?.validate()
     }
 }
@@ -20002,6 +20126,63 @@ public struct GetHostReservationPurchasePreviewResult: Codable, Equatable {
     }
 }
 
+public struct GetInstanceTypesFromInstanceRequirementsRequest: Codable, Equatable {
+    public var architectureTypes: ArchitectureTypeSet
+    public var dryRun: Boolean?
+    public var instanceRequirements: InstanceRequirementsRequest
+    public var maxResults: Integer?
+    public var nextToken: String?
+    public var virtualizationTypes: VirtualizationTypeSet
+
+    public init(architectureTypes: ArchitectureTypeSet,
+                dryRun: Boolean? = nil,
+                instanceRequirements: InstanceRequirementsRequest,
+                maxResults: Integer? = nil,
+                nextToken: String? = nil,
+                virtualizationTypes: VirtualizationTypeSet) {
+        self.architectureTypes = architectureTypes
+        self.dryRun = dryRun
+        self.instanceRequirements = instanceRequirements
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.virtualizationTypes = virtualizationTypes
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case architectureTypes = "ArchitectureType"
+        case dryRun = "DryRun"
+        case instanceRequirements = "InstanceRequirements"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case virtualizationTypes = "VirtualizationType"
+    }
+
+    public func validate() throws {
+        try architectureTypes.validateAsArchitectureTypeSet()
+        try instanceRequirements.validate()
+        try virtualizationTypes.validateAsVirtualizationTypeSet()
+    }
+}
+
+public struct GetInstanceTypesFromInstanceRequirementsResult: Codable, Equatable {
+    public var instanceTypes: InstanceTypeInfoFromInstanceRequirementsSet?
+    public var nextToken: String?
+
+    public init(instanceTypes: InstanceTypeInfoFromInstanceRequirementsSet? = nil,
+                nextToken: String? = nil) {
+        self.instanceTypes = instanceTypes
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceTypes = "instanceTypeSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct GetLaunchTemplateDataRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var instanceId: InstanceId
@@ -20273,6 +20454,77 @@ public struct GetSerialConsoleAccessStatusResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case serialConsoleAccessEnabled
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetSpotPlacementScoresRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceRequirementsWithMetadata: InstanceRequirementsWithMetadataRequest?
+    public var instanceTypes: InstanceTypes?
+    public var maxResults: SpotPlacementScoresMaxResults?
+    public var nextToken: String?
+    public var regionNames: RegionNames?
+    public var singleAvailabilityZone: Boolean?
+    public var targetCapacity: SpotPlacementScoresTargetCapacity
+    public var targetCapacityUnitType: TargetCapacityUnitType?
+
+    public init(dryRun: Boolean? = nil,
+                instanceRequirementsWithMetadata: InstanceRequirementsWithMetadataRequest? = nil,
+                instanceTypes: InstanceTypes? = nil,
+                maxResults: SpotPlacementScoresMaxResults? = nil,
+                nextToken: String? = nil,
+                regionNames: RegionNames? = nil,
+                singleAvailabilityZone: Boolean? = nil,
+                targetCapacity: SpotPlacementScoresTargetCapacity,
+                targetCapacityUnitType: TargetCapacityUnitType? = nil) {
+        self.dryRun = dryRun
+        self.instanceRequirementsWithMetadata = instanceRequirementsWithMetadata
+        self.instanceTypes = instanceTypes
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.regionNames = regionNames
+        self.singleAvailabilityZone = singleAvailabilityZone
+        self.targetCapacity = targetCapacity
+        self.targetCapacityUnitType = targetCapacityUnitType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceRequirementsWithMetadata = "InstanceRequirementsWithMetadata"
+        case instanceTypes = "InstanceType"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case regionNames = "RegionName"
+        case singleAvailabilityZone = "SingleAvailabilityZone"
+        case targetCapacity = "TargetCapacity"
+        case targetCapacityUnitType = "TargetCapacityUnitType"
+    }
+
+    public func validate() throws {
+        try instanceRequirementsWithMetadata?.validate()
+        try instanceTypes?.validateAsInstanceTypes()
+        try maxResults?.validateAsSpotPlacementScoresMaxResults()
+        try regionNames?.validateAsRegionNames()
+        try targetCapacity.validateAsSpotPlacementScoresTargetCapacity()
+    }
+}
+
+public struct GetSpotPlacementScoresResult: Codable, Equatable {
+    public var nextToken: String?
+    public var spotPlacementScores: SpotPlacementScores?
+
+    public init(nextToken: String? = nil,
+                spotPlacementScores: SpotPlacementScores? = nil) {
+        self.nextToken = nextToken
+        self.spotPlacementScores = spotPlacementScores
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case spotPlacementScores = "spotPlacementScoreSet"
     }
 
     public func validate() throws {
@@ -23266,6 +23518,240 @@ public struct InstancePrivateIpAddress: Codable, Equatable {
     }
 }
 
+public struct InstanceRequirements: Codable, Equatable {
+    public var acceleratorCount: AcceleratorCount?
+    public var acceleratorManufacturers: AcceleratorManufacturerSet?
+    public var acceleratorNames: AcceleratorNameSet?
+    public var acceleratorTotalMemoryMiB: AcceleratorTotalMemoryMiB?
+    public var acceleratorTypes: AcceleratorTypeSet?
+    public var bareMetal: BareMetal?
+    public var baselineEbsBandwidthMbps: BaselineEbsBandwidthMbps?
+    public var burstablePerformance: BurstablePerformance?
+    public var cpuManufacturers: CpuManufacturerSet?
+    public var excludedInstanceTypes: ExcludedInstanceTypeSet?
+    public var instanceGenerations: InstanceGenerationSet?
+    public var localStorage: LocalStorage?
+    public var localStorageTypes: LocalStorageTypeSet?
+    public var memoryGiBPerVCpu: MemoryGiBPerVCpu?
+    public var memoryMiB: MemoryMiB?
+    public var networkInterfaceCount: NetworkInterfaceCount?
+    public var onDemandMaxPricePercentageOverLowestPrice: Integer?
+    public var requireHibernateSupport: Boolean?
+    public var spotMaxPricePercentageOverLowestPrice: Integer?
+    public var totalLocalStorageGB: TotalLocalStorageGB?
+    public var vCpuCount: VCpuCountRange?
+
+    public init(acceleratorCount: AcceleratorCount? = nil,
+                acceleratorManufacturers: AcceleratorManufacturerSet? = nil,
+                acceleratorNames: AcceleratorNameSet? = nil,
+                acceleratorTotalMemoryMiB: AcceleratorTotalMemoryMiB? = nil,
+                acceleratorTypes: AcceleratorTypeSet? = nil,
+                bareMetal: BareMetal? = nil,
+                baselineEbsBandwidthMbps: BaselineEbsBandwidthMbps? = nil,
+                burstablePerformance: BurstablePerformance? = nil,
+                cpuManufacturers: CpuManufacturerSet? = nil,
+                excludedInstanceTypes: ExcludedInstanceTypeSet? = nil,
+                instanceGenerations: InstanceGenerationSet? = nil,
+                localStorage: LocalStorage? = nil,
+                localStorageTypes: LocalStorageTypeSet? = nil,
+                memoryGiBPerVCpu: MemoryGiBPerVCpu? = nil,
+                memoryMiB: MemoryMiB? = nil,
+                networkInterfaceCount: NetworkInterfaceCount? = nil,
+                onDemandMaxPricePercentageOverLowestPrice: Integer? = nil,
+                requireHibernateSupport: Boolean? = nil,
+                spotMaxPricePercentageOverLowestPrice: Integer? = nil,
+                totalLocalStorageGB: TotalLocalStorageGB? = nil,
+                vCpuCount: VCpuCountRange? = nil) {
+        self.acceleratorCount = acceleratorCount
+        self.acceleratorManufacturers = acceleratorManufacturers
+        self.acceleratorNames = acceleratorNames
+        self.acceleratorTotalMemoryMiB = acceleratorTotalMemoryMiB
+        self.acceleratorTypes = acceleratorTypes
+        self.bareMetal = bareMetal
+        self.baselineEbsBandwidthMbps = baselineEbsBandwidthMbps
+        self.burstablePerformance = burstablePerformance
+        self.cpuManufacturers = cpuManufacturers
+        self.excludedInstanceTypes = excludedInstanceTypes
+        self.instanceGenerations = instanceGenerations
+        self.localStorage = localStorage
+        self.localStorageTypes = localStorageTypes
+        self.memoryGiBPerVCpu = memoryGiBPerVCpu
+        self.memoryMiB = memoryMiB
+        self.networkInterfaceCount = networkInterfaceCount
+        self.onDemandMaxPricePercentageOverLowestPrice = onDemandMaxPricePercentageOverLowestPrice
+        self.requireHibernateSupport = requireHibernateSupport
+        self.spotMaxPricePercentageOverLowestPrice = spotMaxPricePercentageOverLowestPrice
+        self.totalLocalStorageGB = totalLocalStorageGB
+        self.vCpuCount = vCpuCount
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case acceleratorCount
+        case acceleratorManufacturers = "acceleratorManufacturerSet"
+        case acceleratorNames = "acceleratorNameSet"
+        case acceleratorTotalMemoryMiB
+        case acceleratorTypes = "acceleratorTypeSet"
+        case bareMetal
+        case baselineEbsBandwidthMbps
+        case burstablePerformance
+        case cpuManufacturers = "cpuManufacturerSet"
+        case excludedInstanceTypes = "excludedInstanceTypeSet"
+        case instanceGenerations = "instanceGenerationSet"
+        case localStorage
+        case localStorageTypes = "localStorageTypeSet"
+        case memoryGiBPerVCpu
+        case memoryMiB
+        case networkInterfaceCount
+        case onDemandMaxPricePercentageOverLowestPrice
+        case requireHibernateSupport
+        case spotMaxPricePercentageOverLowestPrice
+        case totalLocalStorageGB
+        case vCpuCount
+    }
+
+    public func validate() throws {
+        try acceleratorCount?.validate()
+        try acceleratorTotalMemoryMiB?.validate()
+        try baselineEbsBandwidthMbps?.validate()
+        try excludedInstanceTypes?.validateAsExcludedInstanceTypeSet()
+        try memoryGiBPerVCpu?.validate()
+        try memoryMiB?.validate()
+        try networkInterfaceCount?.validate()
+        try totalLocalStorageGB?.validate()
+        try vCpuCount?.validate()
+    }
+}
+
+public struct InstanceRequirementsRequest: Codable, Equatable {
+    public var acceleratorCount: AcceleratorCountRequest?
+    public var acceleratorManufacturers: AcceleratorManufacturerSet?
+    public var acceleratorNames: AcceleratorNameSet?
+    public var acceleratorTotalMemoryMiB: AcceleratorTotalMemoryMiBRequest?
+    public var acceleratorTypes: AcceleratorTypeSet?
+    public var bareMetal: BareMetal?
+    public var baselineEbsBandwidthMbps: BaselineEbsBandwidthMbpsRequest?
+    public var burstablePerformance: BurstablePerformance?
+    public var cpuManufacturers: CpuManufacturerSet?
+    public var excludedInstanceTypes: ExcludedInstanceTypeSet?
+    public var instanceGenerations: InstanceGenerationSet?
+    public var localStorage: LocalStorage?
+    public var localStorageTypes: LocalStorageTypeSet?
+    public var memoryGiBPerVCpu: MemoryGiBPerVCpuRequest?
+    public var memoryMiB: MemoryMiBRequest
+    public var networkInterfaceCount: NetworkInterfaceCountRequest?
+    public var onDemandMaxPricePercentageOverLowestPrice: Integer?
+    public var requireHibernateSupport: Boolean?
+    public var spotMaxPricePercentageOverLowestPrice: Integer?
+    public var totalLocalStorageGB: TotalLocalStorageGBRequest?
+    public var vCpuCount: VCpuCountRangeRequest
+
+    public init(acceleratorCount: AcceleratorCountRequest? = nil,
+                acceleratorManufacturers: AcceleratorManufacturerSet? = nil,
+                acceleratorNames: AcceleratorNameSet? = nil,
+                acceleratorTotalMemoryMiB: AcceleratorTotalMemoryMiBRequest? = nil,
+                acceleratorTypes: AcceleratorTypeSet? = nil,
+                bareMetal: BareMetal? = nil,
+                baselineEbsBandwidthMbps: BaselineEbsBandwidthMbpsRequest? = nil,
+                burstablePerformance: BurstablePerformance? = nil,
+                cpuManufacturers: CpuManufacturerSet? = nil,
+                excludedInstanceTypes: ExcludedInstanceTypeSet? = nil,
+                instanceGenerations: InstanceGenerationSet? = nil,
+                localStorage: LocalStorage? = nil,
+                localStorageTypes: LocalStorageTypeSet? = nil,
+                memoryGiBPerVCpu: MemoryGiBPerVCpuRequest? = nil,
+                memoryMiB: MemoryMiBRequest,
+                networkInterfaceCount: NetworkInterfaceCountRequest? = nil,
+                onDemandMaxPricePercentageOverLowestPrice: Integer? = nil,
+                requireHibernateSupport: Boolean? = nil,
+                spotMaxPricePercentageOverLowestPrice: Integer? = nil,
+                totalLocalStorageGB: TotalLocalStorageGBRequest? = nil,
+                vCpuCount: VCpuCountRangeRequest) {
+        self.acceleratorCount = acceleratorCount
+        self.acceleratorManufacturers = acceleratorManufacturers
+        self.acceleratorNames = acceleratorNames
+        self.acceleratorTotalMemoryMiB = acceleratorTotalMemoryMiB
+        self.acceleratorTypes = acceleratorTypes
+        self.bareMetal = bareMetal
+        self.baselineEbsBandwidthMbps = baselineEbsBandwidthMbps
+        self.burstablePerformance = burstablePerformance
+        self.cpuManufacturers = cpuManufacturers
+        self.excludedInstanceTypes = excludedInstanceTypes
+        self.instanceGenerations = instanceGenerations
+        self.localStorage = localStorage
+        self.localStorageTypes = localStorageTypes
+        self.memoryGiBPerVCpu = memoryGiBPerVCpu
+        self.memoryMiB = memoryMiB
+        self.networkInterfaceCount = networkInterfaceCount
+        self.onDemandMaxPricePercentageOverLowestPrice = onDemandMaxPricePercentageOverLowestPrice
+        self.requireHibernateSupport = requireHibernateSupport
+        self.spotMaxPricePercentageOverLowestPrice = spotMaxPricePercentageOverLowestPrice
+        self.totalLocalStorageGB = totalLocalStorageGB
+        self.vCpuCount = vCpuCount
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case acceleratorCount = "AcceleratorCount"
+        case acceleratorManufacturers = "AcceleratorManufacturer"
+        case acceleratorNames = "AcceleratorName"
+        case acceleratorTotalMemoryMiB = "AcceleratorTotalMemoryMiB"
+        case acceleratorTypes = "AcceleratorType"
+        case bareMetal = "BareMetal"
+        case baselineEbsBandwidthMbps = "BaselineEbsBandwidthMbps"
+        case burstablePerformance = "BurstablePerformance"
+        case cpuManufacturers = "CpuManufacturer"
+        case excludedInstanceTypes = "ExcludedInstanceType"
+        case instanceGenerations = "InstanceGeneration"
+        case localStorage = "LocalStorage"
+        case localStorageTypes = "LocalStorageType"
+        case memoryGiBPerVCpu = "MemoryGiBPerVCpu"
+        case memoryMiB = "MemoryMiB"
+        case networkInterfaceCount = "NetworkInterfaceCount"
+        case onDemandMaxPricePercentageOverLowestPrice = "OnDemandMaxPricePercentageOverLowestPrice"
+        case requireHibernateSupport = "RequireHibernateSupport"
+        case spotMaxPricePercentageOverLowestPrice = "SpotMaxPricePercentageOverLowestPrice"
+        case totalLocalStorageGB = "TotalLocalStorageGB"
+        case vCpuCount = "VCpuCount"
+    }
+
+    public func validate() throws {
+        try acceleratorCount?.validate()
+        try acceleratorTotalMemoryMiB?.validate()
+        try baselineEbsBandwidthMbps?.validate()
+        try excludedInstanceTypes?.validateAsExcludedInstanceTypeSet()
+        try memoryGiBPerVCpu?.validate()
+        try memoryMiB.validate()
+        try networkInterfaceCount?.validate()
+        try totalLocalStorageGB?.validate()
+        try vCpuCount.validate()
+    }
+}
+
+public struct InstanceRequirementsWithMetadataRequest: Codable, Equatable {
+    public var architectureTypes: ArchitectureTypeSet?
+    public var instanceRequirements: InstanceRequirementsRequest?
+    public var virtualizationTypes: VirtualizationTypeSet?
+
+    public init(architectureTypes: ArchitectureTypeSet? = nil,
+                instanceRequirements: InstanceRequirementsRequest? = nil,
+                virtualizationTypes: VirtualizationTypeSet? = nil) {
+        self.architectureTypes = architectureTypes
+        self.instanceRequirements = instanceRequirements
+        self.virtualizationTypes = virtualizationTypes
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case architectureTypes = "ArchitectureType"
+        case instanceRequirements = "InstanceRequirements"
+        case virtualizationTypes = "VirtualizationType"
+    }
+
+    public func validate() throws {
+        try architectureTypes?.validateAsArchitectureTypeSet()
+        try instanceRequirements?.validate()
+        try virtualizationTypes?.validateAsVirtualizationTypeSet()
+    }
+}
+
 public struct InstanceSpecification: Codable, Equatable {
     public var excludeBootVolume: Boolean?
     public var instanceId: InstanceId?
@@ -23608,6 +24094,21 @@ public struct InstanceTypeInfo: Codable, Equatable {
         try placementGroupInfo?.validate()
         try processorInfo?.validate()
         try vCpuInfo?.validate()
+    }
+}
+
+public struct InstanceTypeInfoFromInstanceRequirements: Codable, Equatable {
+    public var instanceType: String?
+
+    public init(instanceType: String? = nil) {
+        self.instanceType = instanceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceType
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -24026,16 +24527,24 @@ public struct LastError: Codable, Equatable {
 
 public struct LaunchPermission: Codable, Equatable {
     public var group: PermissionGroup?
+    public var organizationArn: String?
+    public var organizationalUnitArn: String?
     public var userId: String?
 
     public init(group: PermissionGroup? = nil,
+                organizationArn: String? = nil,
+                organizationalUnitArn: String? = nil,
                 userId: String? = nil) {
         self.group = group
+        self.organizationArn = organizationArn
+        self.organizationalUnitArn = organizationalUnitArn
         self.userId = userId
     }
 
     enum CodingKeys: String, CodingKey {
         case group
+        case organizationArn
+        case organizationalUnitArn
         case userId
     }
 
@@ -24878,6 +25387,7 @@ public struct LaunchTemplateLicenseConfigurationRequest: Codable, Equatable {
 
 public struct LaunchTemplateOverrides: Codable, Equatable {
     public var availabilityZone: String?
+    public var instanceRequirements: InstanceRequirements?
     public var instanceType: InstanceType?
     public var priority: Double?
     public var spotPrice: String?
@@ -24885,12 +25395,14 @@ public struct LaunchTemplateOverrides: Codable, Equatable {
     public var weightedCapacity: Double?
 
     public init(availabilityZone: String? = nil,
+                instanceRequirements: InstanceRequirements? = nil,
                 instanceType: InstanceType? = nil,
                 priority: Double? = nil,
                 spotPrice: String? = nil,
                 subnetId: SubnetId? = nil,
                 weightedCapacity: Double? = nil) {
         self.availabilityZone = availabilityZone
+        self.instanceRequirements = instanceRequirements
         self.instanceType = instanceType
         self.priority = priority
         self.spotPrice = spotPrice
@@ -24900,6 +25412,7 @@ public struct LaunchTemplateOverrides: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case availabilityZone
+        case instanceRequirements
         case instanceType
         case priority
         case spotPrice
@@ -24908,6 +25421,7 @@ public struct LaunchTemplateOverrides: Codable, Equatable {
     }
 
     public func validate() throws {
+        try instanceRequirements?.validate()
     }
 }
 
@@ -25633,6 +26147,44 @@ public struct ManagedPrefixList: Codable, Equatable {
     }
 }
 
+public struct MemoryGiBPerVCpu: Codable, Equatable {
+    public var max: Double?
+    public var min: Double?
+
+    public init(max: Double? = nil,
+                min: Double? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct MemoryGiBPerVCpuRequest: Codable, Equatable {
+    public var max: Double?
+    public var min: Double?
+
+    public init(max: Double? = nil,
+                min: Double? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct MemoryInfo: Codable, Equatable {
     public var sizeInMiB: MemorySize?
 
@@ -25642,6 +26194,44 @@ public struct MemoryInfo: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case sizeInMiB
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct MemoryMiB: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct MemoryMiBRequest: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer
+
+    public init(max: Integer? = nil,
+                min: Integer) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
     }
 
     public func validate() throws {
@@ -25773,6 +26363,7 @@ public struct ModifyCapacityReservationFleetResult: Codable, Equatable {
 
 public struct ModifyCapacityReservationRequest: Codable, Equatable {
     public var accept: Boolean?
+    public var additionalInfo: String?
     public var capacityReservationId: CapacityReservationId
     public var dryRun: Boolean?
     public var endDate: DateTime?
@@ -25780,12 +26371,14 @@ public struct ModifyCapacityReservationRequest: Codable, Equatable {
     public var instanceCount: Integer?
 
     public init(accept: Boolean? = nil,
+                additionalInfo: String? = nil,
                 capacityReservationId: CapacityReservationId,
                 dryRun: Boolean? = nil,
                 endDate: DateTime? = nil,
                 endDateType: EndDateType? = nil,
                 instanceCount: Integer? = nil) {
         self.accept = accept
+        self.additionalInfo = additionalInfo
         self.capacityReservationId = capacityReservationId
         self.dryRun = dryRun
         self.endDate = endDate
@@ -25795,6 +26388,7 @@ public struct ModifyCapacityReservationRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case accept = "Accept"
+        case additionalInfo = "AdditionalInfo"
         case capacityReservationId = "CapacityReservationId"
         case dryRun = "DryRun"
         case endDate = "EndDate"
@@ -26190,6 +26784,8 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
     public var imageId: ImageId
     public var launchPermission: LaunchPermissionModifications?
     public var operationType: OperationType?
+    public var organizationArns: OrganizationArnStringList?
+    public var organizationalUnitArns: OrganizationalUnitArnStringList?
     public var productCodes: ProductCodeStringList?
     public var userGroups: UserGroupStringList?
     public var userIds: UserIdStringList?
@@ -26201,6 +26797,8 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
                 imageId: ImageId,
                 launchPermission: LaunchPermissionModifications? = nil,
                 operationType: OperationType? = nil,
+                organizationArns: OrganizationArnStringList? = nil,
+                organizationalUnitArns: OrganizationalUnitArnStringList? = nil,
                 productCodes: ProductCodeStringList? = nil,
                 userGroups: UserGroupStringList? = nil,
                 userIds: UserIdStringList? = nil,
@@ -26211,6 +26809,8 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
         self.imageId = imageId
         self.launchPermission = launchPermission
         self.operationType = operationType
+        self.organizationArns = organizationArns
+        self.organizationalUnitArns = organizationalUnitArns
         self.productCodes = productCodes
         self.userGroups = userGroups
         self.userIds = userIds
@@ -26224,6 +26824,8 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
         case imageId = "ImageId"
         case launchPermission = "LaunchPermission"
         case operationType = "OperationType"
+        case organizationArns = "OrganizationArn"
+        case organizationalUnitArns = "OrganizationalUnitArn"
         case productCodes = "ProductCode"
         case userGroups = "UserGroup"
         case userIds = "UserId"
@@ -28513,6 +29115,7 @@ public struct NetworkInterface: Codable, Equatable {
     public var association: NetworkInterfaceAssociation?
     public var attachment: NetworkInterfaceAttachment?
     public var availabilityZone: String?
+    public var denyAllIgwTraffic: Boolean?
     public var description: String?
     public var groups: GroupIdentifierList?
     public var interfaceType: NetworkInterfaceType?
@@ -28537,6 +29140,7 @@ public struct NetworkInterface: Codable, Equatable {
     public init(association: NetworkInterfaceAssociation? = nil,
                 attachment: NetworkInterfaceAttachment? = nil,
                 availabilityZone: String? = nil,
+                denyAllIgwTraffic: Boolean? = nil,
                 description: String? = nil,
                 groups: GroupIdentifierList? = nil,
                 interfaceType: NetworkInterfaceType? = nil,
@@ -28560,6 +29164,7 @@ public struct NetworkInterface: Codable, Equatable {
         self.association = association
         self.attachment = attachment
         self.availabilityZone = availabilityZone
+        self.denyAllIgwTraffic = denyAllIgwTraffic
         self.description = description
         self.groups = groups
         self.interfaceType = interfaceType
@@ -28586,6 +29191,7 @@ public struct NetworkInterface: Codable, Equatable {
         case association
         case attachment
         case availabilityZone
+        case denyAllIgwTraffic
         case description
         case groups = "groupSet"
         case interfaceType
@@ -28709,6 +29315,44 @@ public struct NetworkInterfaceAttachmentChanges: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case attachmentId
         case deleteOnTermination
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct NetworkInterfaceCount: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct NetworkInterfaceCountRequest: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
     }
 
     public func validate() throws {
@@ -31035,6 +31679,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
     public var imageId: ImageId?
     public var instanceInitiatedShutdownBehavior: ShutdownBehavior?
     public var instanceMarketOptions: LaunchTemplateInstanceMarketOptionsRequest?
+    public var instanceRequirements: InstanceRequirementsRequest?
     public var instanceType: InstanceType?
     public var kernelId: KernelId?
     public var keyName: KeyPairName?
@@ -31063,6 +31708,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
                 imageId: ImageId? = nil,
                 instanceInitiatedShutdownBehavior: ShutdownBehavior? = nil,
                 instanceMarketOptions: LaunchTemplateInstanceMarketOptionsRequest? = nil,
+                instanceRequirements: InstanceRequirementsRequest? = nil,
                 instanceType: InstanceType? = nil,
                 kernelId: KernelId? = nil,
                 keyName: KeyPairName? = nil,
@@ -31090,6 +31736,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
         self.imageId = imageId
         self.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior
         self.instanceMarketOptions = instanceMarketOptions
+        self.instanceRequirements = instanceRequirements
         self.instanceType = instanceType
         self.kernelId = kernelId
         self.keyName = keyName
@@ -31120,6 +31767,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
         case imageId = "ImageId"
         case instanceInitiatedShutdownBehavior = "InstanceInitiatedShutdownBehavior"
         case instanceMarketOptions = "InstanceMarketOptions"
+        case instanceRequirements = "InstanceRequirements"
         case instanceType = "InstanceType"
         case kernelId = "KernelId"
         case keyName = "KeyName"
@@ -31143,6 +31791,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
         try hibernationOptions?.validate()
         try iamInstanceProfile?.validate()
         try instanceMarketOptions?.validate()
+        try instanceRequirements?.validate()
         try metadataOptions?.validate()
         try monitoring?.validate()
         try placement?.validate()
@@ -32026,6 +32675,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
     public var imageId: String?
     public var instanceInitiatedShutdownBehavior: ShutdownBehavior?
     public var instanceMarketOptions: LaunchTemplateInstanceMarketOptions?
+    public var instanceRequirements: InstanceRequirements?
     public var instanceType: InstanceType?
     public var kernelId: String?
     public var keyName: String?
@@ -32054,6 +32704,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
                 imageId: String? = nil,
                 instanceInitiatedShutdownBehavior: ShutdownBehavior? = nil,
                 instanceMarketOptions: LaunchTemplateInstanceMarketOptions? = nil,
+                instanceRequirements: InstanceRequirements? = nil,
                 instanceType: InstanceType? = nil,
                 kernelId: String? = nil,
                 keyName: String? = nil,
@@ -32081,6 +32732,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
         self.imageId = imageId
         self.instanceInitiatedShutdownBehavior = instanceInitiatedShutdownBehavior
         self.instanceMarketOptions = instanceMarketOptions
+        self.instanceRequirements = instanceRequirements
         self.instanceType = instanceType
         self.kernelId = kernelId
         self.keyName = keyName
@@ -32111,6 +32763,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
         case imageId
         case instanceInitiatedShutdownBehavior
         case instanceMarketOptions
+        case instanceRequirements
         case instanceType
         case kernelId
         case keyName
@@ -32134,6 +32787,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
         try hibernationOptions?.validate()
         try iamInstanceProfile?.validate()
         try instanceMarketOptions?.validate()
+        try instanceRequirements?.validate()
         try metadataOptions?.validate()
         try monitoring?.validate()
         try placement?.validate()
@@ -34229,6 +34883,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
     public var ebsOptimized: Boolean?
     public var iamInstanceProfile: IamInstanceProfileSpecification?
     public var imageId: ImageId?
+    public var instanceRequirements: InstanceRequirements?
     public var instanceType: InstanceType?
     public var kernelId: String?
     public var keyName: KeyPairName?
@@ -34248,6 +34903,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
                 ebsOptimized: Boolean? = nil,
                 iamInstanceProfile: IamInstanceProfileSpecification? = nil,
                 imageId: ImageId? = nil,
+                instanceRequirements: InstanceRequirements? = nil,
                 instanceType: InstanceType? = nil,
                 kernelId: String? = nil,
                 keyName: KeyPairName? = nil,
@@ -34266,6 +34922,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
         self.ebsOptimized = ebsOptimized
         self.iamInstanceProfile = iamInstanceProfile
         self.imageId = imageId
+        self.instanceRequirements = instanceRequirements
         self.instanceType = instanceType
         self.kernelId = kernelId
         self.keyName = keyName
@@ -34287,6 +34944,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
         case ebsOptimized
         case iamInstanceProfile
         case imageId
+        case instanceRequirements
         case instanceType
         case kernelId
         case keyName
@@ -34304,6 +34962,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
 
     public func validate() throws {
         try iamInstanceProfile?.validate()
+        try instanceRequirements?.validate()
         try monitoring?.validate()
         try placement?.validate()
     }
@@ -34382,6 +35041,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
     public var spotPrice: String?
     public var tagSpecifications: TagSpecificationList?
     public var targetCapacity: Integer
+    public var targetCapacityUnitType: TargetCapacityUnitType?
     public var terminateInstancesWithExpiration: Boolean?
     public var type: FleetType?
     public var validFrom: DateTime?
@@ -34408,6 +35068,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
                 spotPrice: String? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 targetCapacity: Integer,
+                targetCapacityUnitType: TargetCapacityUnitType? = nil,
                 terminateInstancesWithExpiration: Boolean? = nil,
                 type: FleetType? = nil,
                 validFrom: DateTime? = nil,
@@ -34433,6 +35094,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
         self.spotPrice = spotPrice
         self.tagSpecifications = tagSpecifications
         self.targetCapacity = targetCapacity
+        self.targetCapacityUnitType = targetCapacityUnitType
         self.terminateInstancesWithExpiration = terminateInstancesWithExpiration
         self.type = type
         self.validFrom = validFrom
@@ -34461,6 +35123,7 @@ public struct SpotFleetRequestConfigData: Codable, Equatable {
         case spotPrice
         case tagSpecifications = "TagSpecification"
         case targetCapacity
+        case targetCapacityUnitType
         case terminateInstancesWithExpiration
         case type
         case validFrom
@@ -34776,6 +35439,29 @@ public struct SpotPlacement: Codable, Equatable {
         case availabilityZone
         case groupName
         case tenancy
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct SpotPlacementScore: Codable, Equatable {
+    public var availabilityZoneId: String?
+    public var region: String?
+    public var score: Integer?
+
+    public init(availabilityZoneId: String? = nil,
+                region: String? = nil,
+                score: Integer? = nil) {
+        self.availabilityZoneId = availabilityZoneId
+        self.region = region
+        self.score = score
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case availabilityZoneId
+        case region
+        case score
     }
 
     public func validate() throws {
@@ -35416,15 +36102,18 @@ public struct TargetCapacitySpecification: Codable, Equatable {
     public var defaultTargetCapacityType: DefaultTargetCapacityType?
     public var onDemandTargetCapacity: Integer?
     public var spotTargetCapacity: Integer?
+    public var targetCapacityUnitType: TargetCapacityUnitType?
     public var totalTargetCapacity: Integer?
 
     public init(defaultTargetCapacityType: DefaultTargetCapacityType? = nil,
                 onDemandTargetCapacity: Integer? = nil,
                 spotTargetCapacity: Integer? = nil,
+                targetCapacityUnitType: TargetCapacityUnitType? = nil,
                 totalTargetCapacity: Integer? = nil) {
         self.defaultTargetCapacityType = defaultTargetCapacityType
         self.onDemandTargetCapacity = onDemandTargetCapacity
         self.spotTargetCapacity = spotTargetCapacity
+        self.targetCapacityUnitType = targetCapacityUnitType
         self.totalTargetCapacity = totalTargetCapacity
     }
 
@@ -35432,6 +36121,7 @@ public struct TargetCapacitySpecification: Codable, Equatable {
         case defaultTargetCapacityType
         case onDemandTargetCapacity
         case spotTargetCapacity
+        case targetCapacityUnitType
         case totalTargetCapacity
     }
 
@@ -35443,15 +36133,18 @@ public struct TargetCapacitySpecificationRequest: Codable, Equatable {
     public var defaultTargetCapacityType: DefaultTargetCapacityType?
     public var onDemandTargetCapacity: Integer?
     public var spotTargetCapacity: Integer?
+    public var targetCapacityUnitType: TargetCapacityUnitType?
     public var totalTargetCapacity: Integer
 
     public init(defaultTargetCapacityType: DefaultTargetCapacityType? = nil,
                 onDemandTargetCapacity: Integer? = nil,
                 spotTargetCapacity: Integer? = nil,
+                targetCapacityUnitType: TargetCapacityUnitType? = nil,
                 totalTargetCapacity: Integer) {
         self.defaultTargetCapacityType = defaultTargetCapacityType
         self.onDemandTargetCapacity = onDemandTargetCapacity
         self.spotTargetCapacity = spotTargetCapacity
+        self.targetCapacityUnitType = targetCapacityUnitType
         self.totalTargetCapacity = totalTargetCapacity
     }
 
@@ -35459,6 +36152,7 @@ public struct TargetCapacitySpecificationRequest: Codable, Equatable {
         case defaultTargetCapacityType = "DefaultTargetCapacityType"
         case onDemandTargetCapacity = "OnDemandTargetCapacity"
         case spotTargetCapacity = "SpotTargetCapacity"
+        case targetCapacityUnitType = "TargetCapacityUnitType"
         case totalTargetCapacity = "TotalTargetCapacity"
     }
 
@@ -35695,6 +36389,44 @@ public struct TerminateInstancesResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case terminatingInstances = "instancesSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TotalLocalStorageGB: Codable, Equatable {
+    public var max: Double?
+    public var min: Double?
+
+    public init(max: Double? = nil,
+                min: Double? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TotalLocalStorageGBRequest: Codable, Equatable {
+    public var max: Double?
+    public var min: Double?
+
+    public init(max: Double? = nil,
+                min: Double? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
     }
 
     public func validate() throws {
@@ -37470,6 +38202,44 @@ public struct UserIdGroupPair: Codable, Equatable {
     }
 }
 
+public struct VCpuCountRange: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer?
+
+    public init(max: Integer? = nil,
+                min: Integer? = nil) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max
+        case min
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VCpuCountRangeRequest: Codable, Equatable {
+    public var max: Integer?
+    public var min: Integer
+
+    public init(max: Integer? = nil,
+                min: Integer) {
+        self.max = max
+        self.min = min
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case max = "Max"
+        case min = "Min"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct VCpuInfo: Codable, Equatable {
     public var defaultCores: CoreCount?
     public var defaultThreadsPerCore: ThreadsPerCore?
@@ -38342,8 +39112,11 @@ public struct VpcPeeringConnectionVpcInfo: Codable, Equatable {
 
 public struct VpnConnection: Codable, Equatable {
     public var category: String?
+    public var coreNetworkArn: String?
+    public var coreNetworkAttachmentArn: String?
     public var customerGatewayConfiguration: String?
     public var customerGatewayId: String?
+    public var gatewayAssociationState: String?
     public var options: VpnConnectionOptions?
     public var routes: VpnStaticRouteList?
     public var state: VpnState?
@@ -38355,8 +39128,11 @@ public struct VpnConnection: Codable, Equatable {
     public var vpnGatewayId: String?
 
     public init(category: String? = nil,
+                coreNetworkArn: String? = nil,
+                coreNetworkAttachmentArn: String? = nil,
                 customerGatewayConfiguration: String? = nil,
                 customerGatewayId: String? = nil,
+                gatewayAssociationState: String? = nil,
                 options: VpnConnectionOptions? = nil,
                 routes: VpnStaticRouteList? = nil,
                 state: VpnState? = nil,
@@ -38367,8 +39143,11 @@ public struct VpnConnection: Codable, Equatable {
                 vpnConnectionId: String? = nil,
                 vpnGatewayId: String? = nil) {
         self.category = category
+        self.coreNetworkArn = coreNetworkArn
+        self.coreNetworkAttachmentArn = coreNetworkAttachmentArn
         self.customerGatewayConfiguration = customerGatewayConfiguration
         self.customerGatewayId = customerGatewayId
+        self.gatewayAssociationState = gatewayAssociationState
         self.options = options
         self.routes = routes
         self.state = state
@@ -38382,8 +39161,11 @@ public struct VpnConnection: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case category
+        case coreNetworkArn
+        case coreNetworkAttachmentArn
         case customerGatewayConfiguration
         case customerGatewayId
+        case gatewayAssociationState
         case options
         case routes
         case state

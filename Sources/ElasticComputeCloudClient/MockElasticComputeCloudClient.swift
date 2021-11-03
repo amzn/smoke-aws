@@ -723,6 +723,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getGroupsForCapacityReservationSyncOverride: GetGroupsForCapacityReservationSyncType?
     let getHostReservationPurchasePreviewAsyncOverride: GetHostReservationPurchasePreviewAsyncType?
     let getHostReservationPurchasePreviewSyncOverride: GetHostReservationPurchasePreviewSyncType?
+    let getInstanceTypesFromInstanceRequirementsAsyncOverride: GetInstanceTypesFromInstanceRequirementsAsyncType?
+    let getInstanceTypesFromInstanceRequirementsSyncOverride: GetInstanceTypesFromInstanceRequirementsSyncType?
     let getLaunchTemplateDataAsyncOverride: GetLaunchTemplateDataAsyncType?
     let getLaunchTemplateDataSyncOverride: GetLaunchTemplateDataSyncType?
     let getManagedPrefixListAssociationsAsyncOverride: GetManagedPrefixListAssociationsAsyncType?
@@ -735,6 +737,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getReservedInstancesExchangeQuoteSyncOverride: GetReservedInstancesExchangeQuoteSyncType?
     let getSerialConsoleAccessStatusAsyncOverride: GetSerialConsoleAccessStatusAsyncType?
     let getSerialConsoleAccessStatusSyncOverride: GetSerialConsoleAccessStatusSyncType?
+    let getSpotPlacementScoresAsyncOverride: GetSpotPlacementScoresAsyncType?
+    let getSpotPlacementScoresSyncOverride: GetSpotPlacementScoresSyncType?
     let getSubnetCidrReservationsAsyncOverride: GetSubnetCidrReservationsAsyncType?
     let getSubnetCidrReservationsSyncOverride: GetSubnetCidrReservationsSyncType?
     let getTransitGatewayAttachmentPropagationsAsyncOverride: GetTransitGatewayAttachmentPropagationsAsyncType?
@@ -1671,6 +1675,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getGroupsForCapacityReservationSync: GetGroupsForCapacityReservationSyncType? = nil,
             getHostReservationPurchasePreviewAsync: GetHostReservationPurchasePreviewAsyncType? = nil,
             getHostReservationPurchasePreviewSync: GetHostReservationPurchasePreviewSyncType? = nil,
+            getInstanceTypesFromInstanceRequirementsAsync: GetInstanceTypesFromInstanceRequirementsAsyncType? = nil,
+            getInstanceTypesFromInstanceRequirementsSync: GetInstanceTypesFromInstanceRequirementsSyncType? = nil,
             getLaunchTemplateDataAsync: GetLaunchTemplateDataAsyncType? = nil,
             getLaunchTemplateDataSync: GetLaunchTemplateDataSyncType? = nil,
             getManagedPrefixListAssociationsAsync: GetManagedPrefixListAssociationsAsyncType? = nil,
@@ -1683,6 +1689,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getReservedInstancesExchangeQuoteSync: GetReservedInstancesExchangeQuoteSyncType? = nil,
             getSerialConsoleAccessStatusAsync: GetSerialConsoleAccessStatusAsyncType? = nil,
             getSerialConsoleAccessStatusSync: GetSerialConsoleAccessStatusSyncType? = nil,
+            getSpotPlacementScoresAsync: GetSpotPlacementScoresAsyncType? = nil,
+            getSpotPlacementScoresSync: GetSpotPlacementScoresSyncType? = nil,
             getSubnetCidrReservationsAsync: GetSubnetCidrReservationsAsyncType? = nil,
             getSubnetCidrReservationsSync: GetSubnetCidrReservationsSyncType? = nil,
             getTransitGatewayAttachmentPropagationsAsync: GetTransitGatewayAttachmentPropagationsAsyncType? = nil,
@@ -2613,6 +2621,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getGroupsForCapacityReservationSyncOverride = getGroupsForCapacityReservationSync
         self.getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsync
         self.getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSync
+        self.getInstanceTypesFromInstanceRequirementsAsyncOverride = getInstanceTypesFromInstanceRequirementsAsync
+        self.getInstanceTypesFromInstanceRequirementsSyncOverride = getInstanceTypesFromInstanceRequirementsSync
         self.getLaunchTemplateDataAsyncOverride = getLaunchTemplateDataAsync
         self.getLaunchTemplateDataSyncOverride = getLaunchTemplateDataSync
         self.getManagedPrefixListAssociationsAsyncOverride = getManagedPrefixListAssociationsAsync
@@ -2625,6 +2635,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSync
         self.getSerialConsoleAccessStatusAsyncOverride = getSerialConsoleAccessStatusAsync
         self.getSerialConsoleAccessStatusSyncOverride = getSerialConsoleAccessStatusSync
+        self.getSpotPlacementScoresAsyncOverride = getSpotPlacementScoresAsync
+        self.getSpotPlacementScoresSyncOverride = getSpotPlacementScoresSync
         self.getSubnetCidrReservationsAsyncOverride = getSubnetCidrReservationsAsync
         self.getSubnetCidrReservationsSyncOverride = getSubnetCidrReservationsSync
         self.getTransitGatewayAttachmentPropagationsAsyncOverride = getTransitGatewayAttachmentPropagationsAsync
@@ -15834,6 +15846,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetInstanceTypesFromInstanceRequirements operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetInstanceTypesFromInstanceRequirementsRequest object being passed to this operation.
+         - completion: The GetInstanceTypesFromInstanceRequirementsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetInstanceTypesFromInstanceRequirementsResult
+           object will be validated before being returned to caller.
+     */
+    public func getInstanceTypesFromInstanceRequirementsAsync(
+            input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getInstanceTypesFromInstanceRequirementsAsyncOverride = getInstanceTypesFromInstanceRequirementsAsyncOverride {
+            return try getInstanceTypesFromInstanceRequirementsAsyncOverride(input, completion)
+        }
+
+        let result = GetInstanceTypesFromInstanceRequirementsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetInstanceTypesFromInstanceRequirements operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetInstanceTypesFromInstanceRequirementsRequest object being passed to this operation.
+     - Returns: The GetInstanceTypesFromInstanceRequirementsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getInstanceTypesFromInstanceRequirementsSync(
+            input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult {
+        if let getInstanceTypesFromInstanceRequirementsSyncOverride = getInstanceTypesFromInstanceRequirementsSyncOverride {
+            return try getInstanceTypesFromInstanceRequirementsSyncOverride(input)
+        }
+
+        return GetInstanceTypesFromInstanceRequirementsResult.__default
+    }
+
+    /**
      Invokes the GetLaunchTemplateData operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16059,6 +16109,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return GetSerialConsoleAccessStatusResult.__default
+    }
+
+    /**
+     Invokes the GetSpotPlacementScores operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSpotPlacementScoresRequest object being passed to this operation.
+         - completion: The GetSpotPlacementScoresResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSpotPlacementScoresResult
+           object will be validated before being returned to caller.
+     */
+    public func getSpotPlacementScoresAsync(
+            input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSpotPlacementScoresResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getSpotPlacementScoresAsyncOverride = getSpotPlacementScoresAsyncOverride {
+            return try getSpotPlacementScoresAsyncOverride(input, completion)
+        }
+
+        let result = GetSpotPlacementScoresResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetSpotPlacementScores operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSpotPlacementScoresRequest object being passed to this operation.
+     - Returns: The GetSpotPlacementScoresResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSpotPlacementScoresSync(
+            input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest) throws -> ElasticComputeCloudModel.GetSpotPlacementScoresResult {
+        if let getSpotPlacementScoresSyncOverride = getSpotPlacementScoresSyncOverride {
+            return try getSpotPlacementScoresSyncOverride(input)
+        }
+
+        return GetSpotPlacementScoresResult.__default
     }
 
     /**

@@ -1213,6 +1213,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForCreateCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForCreateCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomDBEngineVersionAsync(
+            input: RDSModel.CreateCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForCreateCustomDBEngineVersion, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomDBEngineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCustomDBEngineVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createCustomDBEngineVersion.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForCreateCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomDBEngineVersionSync(
+            input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomDBEngineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateCustomDBEngineVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.createCustomDBEngineVersion.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateDBCluster operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2444,6 +2522,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForDeleteCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForDeleteCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func deleteCustomDBEngineVersionAsync(
+            input: RDSModel.DeleteCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomDBEngineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteCustomDBEngineVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteCustomDBEngineVersion.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForDeleteCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func deleteCustomDBEngineVersionSync(
+            input: RDSModel.DeleteCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomDBEngineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteCustomDBEngineVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteCustomDBEngineVersion.rawValue,
             version: apiVersion)
 
         do {
@@ -7403,6 +7559,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.modifyCurrentDBClusterCapacity.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForModifyCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForModifyCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func modifyCustomDBEngineVersionAsync(
+            input: RDSModel.ModifyCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForModifyCustomDBEngineVersion, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCustomDBEngineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyCustomDBEngineVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyCustomDBEngineVersion.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForModifyCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func modifyCustomDBEngineVersionSync(
+            input: RDSModel.ModifyCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForModifyCustomDBEngineVersion {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyCustomDBEngineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyCustomDBEngineVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyCustomDBEngineVersion.rawValue,
             version: apiVersion)
 
         do {
