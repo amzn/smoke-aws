@@ -26396,6 +26396,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetInstanceTypesFromInstanceRequirements operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetInstanceTypesFromInstanceRequirementsRequest object being passed to this operation.
+         - completion: The GetInstanceTypesFromInstanceRequirementsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetInstanceTypesFromInstanceRequirementsResult
+           object will be validated before being returned to caller.
+     */
+    public func getInstanceTypesFromInstanceRequirementsAsync(
+            input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getInstanceTypesFromInstanceRequirements,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetInstanceTypesFromInstanceRequirementsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getInstanceTypesFromInstanceRequirements.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetInstanceTypesFromInstanceRequirements operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetInstanceTypesFromInstanceRequirementsRequest object being passed to this operation.
+     - Returns: The GetInstanceTypesFromInstanceRequirementsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getInstanceTypesFromInstanceRequirementsSync(
+            input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getInstanceTypesFromInstanceRequirements,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetInstanceTypesFromInstanceRequirementsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getInstanceTypesFromInstanceRequirements.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetLaunchTemplateData operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -26835,6 +26911,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getSerialConsoleAccessStatus.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetSpotPlacementScores operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSpotPlacementScoresRequest object being passed to this operation.
+         - completion: The GetSpotPlacementScoresResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSpotPlacementScoresResult
+           object will be validated before being returned to caller.
+     */
+    public func getSpotPlacementScoresAsync(
+            input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSpotPlacementScoresResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSpotPlacementScores,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSpotPlacementScoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSpotPlacementScores.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetSpotPlacementScores operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSpotPlacementScoresRequest object being passed to this operation.
+     - Returns: The GetSpotPlacementScoresResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSpotPlacementScoresSync(
+            input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest) throws -> ElasticComputeCloudModel.GetSpotPlacementScoresResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSpotPlacementScores,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSpotPlacementScoresOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSpotPlacementScores.rawValue,
             version: apiVersion)
 
         do {

@@ -41,6 +41,9 @@ private let certificateNotFoundIdentity = "CertificateNotFound"
 private let customAvailabilityZoneAlreadyExistsIdentity = "CustomAvailabilityZoneAlreadyExists"
 private let customAvailabilityZoneNotFoundIdentity = "CustomAvailabilityZoneNotFound"
 private let customAvailabilityZoneQuotaExceededIdentity = "CustomAvailabilityZoneQuotaExceeded"
+private let customDBEngineVersionAlreadyExistsIdentity = "CustomDBEngineVersionAlreadyExistsFault"
+private let customDBEngineVersionNotFoundIdentity = "CustomDBEngineVersionNotFoundFault"
+private let customDBEngineVersionQuotaExceededIdentity = "CustomDBEngineVersionQuotaExceededFault"
 private let dBClusterAlreadyExistsIdentity = "DBClusterAlreadyExistsFault"
 private let dBClusterBacktrackNotFoundIdentity = "DBClusterBacktrackNotFoundFault"
 private let dBClusterEndpointAlreadyExistsIdentity = "DBClusterEndpointAlreadyExistsFault"
@@ -103,6 +106,7 @@ private let insufficientAvailableIPsInSubnetIdentity = "InsufficientAvailableIPs
 private let insufficientDBClusterCapacityIdentity = "InsufficientDBClusterCapacityFault"
 private let insufficientDBInstanceCapacityIdentity = "InsufficientDBInstanceCapacity"
 private let insufficientStorageClusterCapacityIdentity = "InsufficientStorageClusterCapacity"
+private let invalidCustomDBEngineVersionStateIdentity = "InvalidCustomDBEngineVersionStateFault"
 private let invalidDBClusterCapacityIdentity = "InvalidDBClusterCapacityFault"
 private let invalidDBClusterEndpointStateIdentity = "InvalidDBClusterEndpointStateFault"
 private let invalidDBClusterSnapshotStateIdentity = "InvalidDBClusterSnapshotStateFault"
@@ -161,6 +165,9 @@ public enum RDSError: Swift.Error, Decodable {
     case customAvailabilityZoneAlreadyExists(CustomAvailabilityZoneAlreadyExistsFault)
     case customAvailabilityZoneNotFound(CustomAvailabilityZoneNotFoundFault)
     case customAvailabilityZoneQuotaExceeded(CustomAvailabilityZoneQuotaExceededFault)
+    case customDBEngineVersionAlreadyExists(CustomDBEngineVersionAlreadyExistsFault)
+    case customDBEngineVersionNotFound(CustomDBEngineVersionNotFoundFault)
+    case customDBEngineVersionQuotaExceeded(CustomDBEngineVersionQuotaExceededFault)
     case dBClusterAlreadyExists(DBClusterAlreadyExistsFault)
     case dBClusterBacktrackNotFound(DBClusterBacktrackNotFoundFault)
     case dBClusterEndpointAlreadyExists(DBClusterEndpointAlreadyExistsFault)
@@ -223,6 +230,7 @@ public enum RDSError: Swift.Error, Decodable {
     case insufficientDBClusterCapacity(InsufficientDBClusterCapacityFault)
     case insufficientDBInstanceCapacity(InsufficientDBInstanceCapacityFault)
     case insufficientStorageClusterCapacity(InsufficientStorageClusterCapacityFault)
+    case invalidCustomDBEngineVersionState(InvalidCustomDBEngineVersionStateFault)
     case invalidDBClusterCapacity(InvalidDBClusterCapacityFault)
     case invalidDBClusterEndpointState(InvalidDBClusterEndpointStateFault)
     case invalidDBClusterSnapshotState(InvalidDBClusterSnapshotStateFault)
@@ -313,6 +321,15 @@ public enum RDSError: Swift.Error, Decodable {
         case customAvailabilityZoneQuotaExceededIdentity:
             let errorPayload = try CustomAvailabilityZoneQuotaExceededFault(from: decoder)
             self = RDSError.customAvailabilityZoneQuotaExceeded(errorPayload)
+        case customDBEngineVersionAlreadyExistsIdentity:
+            let errorPayload = try CustomDBEngineVersionAlreadyExistsFault(from: decoder)
+            self = RDSError.customDBEngineVersionAlreadyExists(errorPayload)
+        case customDBEngineVersionNotFoundIdentity:
+            let errorPayload = try CustomDBEngineVersionNotFoundFault(from: decoder)
+            self = RDSError.customDBEngineVersionNotFound(errorPayload)
+        case customDBEngineVersionQuotaExceededIdentity:
+            let errorPayload = try CustomDBEngineVersionQuotaExceededFault(from: decoder)
+            self = RDSError.customDBEngineVersionQuotaExceeded(errorPayload)
         case dBClusterAlreadyExistsIdentity:
             let errorPayload = try DBClusterAlreadyExistsFault(from: decoder)
             self = RDSError.dBClusterAlreadyExists(errorPayload)
@@ -499,6 +516,9 @@ public enum RDSError: Swift.Error, Decodable {
         case insufficientStorageClusterCapacityIdentity:
             let errorPayload = try InsufficientStorageClusterCapacityFault(from: decoder)
             self = RDSError.insufficientStorageClusterCapacity(errorPayload)
+        case invalidCustomDBEngineVersionStateIdentity:
+            let errorPayload = try InvalidCustomDBEngineVersionStateFault(from: decoder)
+            self = RDSError.invalidCustomDBEngineVersionState(errorPayload)
         case invalidDBClusterCapacityIdentity:
             let errorPayload = try InvalidDBClusterCapacityFault(from: decoder)
             self = RDSError.invalidDBClusterCapacity(errorPayload)

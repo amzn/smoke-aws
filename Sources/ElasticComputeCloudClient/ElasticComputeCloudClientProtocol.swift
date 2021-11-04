@@ -1764,6 +1764,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetHostReservationPurchasePreviewAsyncType = (
             _ input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetInstanceTypesFromInstanceRequirementsSyncType = (
+            _ input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult
+    typealias GetInstanceTypesFromInstanceRequirementsAsyncType = (
+            _ input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetLaunchTemplateDataSyncType = (
             _ input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult
     typealias GetLaunchTemplateDataAsyncType = (
@@ -1794,6 +1799,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetSerialConsoleAccessStatusAsyncType = (
             _ input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetSpotPlacementScoresSyncType = (
+            _ input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest) throws -> ElasticComputeCloudModel.GetSpotPlacementScoresResult
+    typealias GetSpotPlacementScoresAsyncType = (
+            _ input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetSpotPlacementScoresResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetSubnetCidrReservationsSyncType = (
             _ input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) throws -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult
     typealias GetSubnetCidrReservationsAsyncType = (
@@ -10606,6 +10616,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult
 
     /**
+     Invokes the GetInstanceTypesFromInstanceRequirements operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetInstanceTypesFromInstanceRequirementsRequest object being passed to this operation.
+         - completion: The GetInstanceTypesFromInstanceRequirementsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetInstanceTypesFromInstanceRequirementsResult
+           object will be validated before being returned to caller.
+     */
+    func getInstanceTypesFromInstanceRequirementsAsync(
+            input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetInstanceTypesFromInstanceRequirements operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetInstanceTypesFromInstanceRequirementsRequest object being passed to this operation.
+     - Returns: The GetInstanceTypesFromInstanceRequirementsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getInstanceTypesFromInstanceRequirementsSync(
+            input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult
+
+    /**
      Invokes the GetLaunchTemplateData operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10748,6 +10782,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getSerialConsoleAccessStatusSync(
             input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult
+
+    /**
+     Invokes the GetSpotPlacementScores operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSpotPlacementScoresRequest object being passed to this operation.
+         - completion: The GetSpotPlacementScoresResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSpotPlacementScoresResult
+           object will be validated before being returned to caller.
+     */
+    func getSpotPlacementScoresAsync(
+            input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSpotPlacementScoresResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetSpotPlacementScores operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSpotPlacementScoresRequest object being passed to this operation.
+     - Returns: The GetSpotPlacementScoresResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getSpotPlacementScoresSync(
+            input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest) throws -> ElasticComputeCloudModel.GetSpotPlacementScoresResult
 
     /**
      Invokes the GetSubnetCidrReservations operation returning immediately and passing the response to a callback.

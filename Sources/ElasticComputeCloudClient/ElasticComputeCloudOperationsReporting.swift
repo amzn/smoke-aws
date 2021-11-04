@@ -375,12 +375,14 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getFlowLogsIntegrationTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getGroupsForCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getHostReservationPurchasePreview: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getInstanceTypesFromInstanceRequirements: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getLaunchTemplateData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getManagedPrefixListAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getManagedPrefixListEntries: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getSerialConsoleAccessStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getSpotPlacementScores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getSubnetCidrReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayAttachmentPropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -1195,6 +1197,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getGroupsForCapacityReservation, configuration: reportingConfiguration)
         self.getHostReservationPurchasePreview = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getHostReservationPurchasePreview, configuration: reportingConfiguration)
+        self.getInstanceTypesFromInstanceRequirements = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getInstanceTypesFromInstanceRequirements, configuration: reportingConfiguration)
         self.getLaunchTemplateData = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getLaunchTemplateData, configuration: reportingConfiguration)
         self.getManagedPrefixListAssociations = StandardSmokeAWSOperationReporting(
@@ -1207,6 +1211,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getReservedInstancesExchangeQuote, configuration: reportingConfiguration)
         self.getSerialConsoleAccessStatus = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getSerialConsoleAccessStatus, configuration: reportingConfiguration)
+        self.getSpotPlacementScores = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getSpotPlacementScores, configuration: reportingConfiguration)
         self.getSubnetCidrReservations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getSubnetCidrReservations, configuration: reportingConfiguration)
         self.getTransitGatewayAttachmentPropagations = StandardSmokeAWSOperationReporting(

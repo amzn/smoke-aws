@@ -90,6 +90,20 @@ public typealias BoxedBoolean = Bool
 public typealias BoxedInteger = Int
 
 /**
+ Enumeration restricting the values of the CPUArchitecture field.
+ */
+public enum CPUArchitecture: String, Codable, CustomStringConvertible {
+    case arm64 = "ARM64"
+    case x8664 = "X86_64"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CPUArchitecture = .arm64
+}
+
+/**
  Enumeration restricting the values of the CapacityProviderField field.
  */
 public enum CapacityProviderField: String, Codable, CustomStringConvertible {
@@ -689,6 +703,26 @@ public enum NetworkMode: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: NetworkMode = .awsvpc
+}
+
+/**
+ Enumeration restricting the values of the OSFamily field.
+ */
+public enum OSFamily: String, Codable, CustomStringConvertible {
+    case linux = "LINUX"
+    case windowsServer2004Core = "WINDOWS_SERVER_2004_CORE"
+    case windowsServer2016Full = "WINDOWS_SERVER_2016_FULL"
+    case windowsServer2019Core = "WINDOWS_SERVER_2019_CORE"
+    case windowsServer2019Full = "WINDOWS_SERVER_2019_FULL"
+    case windowsServer2022Core = "WINDOWS_SERVER_2022_CORE"
+    case windowsServer2022Full = "WINDOWS_SERVER_2022_FULL"
+    case windowsServer20h2Core = "WINDOWS_SERVER_20H2_CORE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: OSFamily = .linux
 }
 
 /**

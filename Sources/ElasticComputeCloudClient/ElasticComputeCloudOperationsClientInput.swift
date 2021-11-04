@@ -1760,6 +1760,11 @@ public typealias GetGroupsForCapacityReservationOperationHTTPRequestInput = Quer
 public typealias GetHostReservationPurchasePreviewOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetInstanceTypesFromInstanceRequirements operation in a HTTP client.
+ */
+public typealias GetInstanceTypesFromInstanceRequirementsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetLaunchTemplateData operation in a HTTP client.
  */
 public typealias GetLaunchTemplateDataOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1788,6 +1793,11 @@ public typealias GetReservedInstancesExchangeQuoteOperationHTTPRequestInput = Qu
  Type to handle the input to the GetSerialConsoleAccessStatus operation in a HTTP client.
  */
 public typealias GetSerialConsoleAccessStatusOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetSpotPlacementScores operation in a HTTP client.
+ */
+public typealias GetSpotPlacementScoresOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetSubnetCidrReservations operation in a HTTP client.

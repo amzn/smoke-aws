@@ -1023,6 +1023,56 @@ public struct CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone:
     }
 }
 
+public struct CreateCustomDBEngineVersionMessage: Codable, Equatable {
+    public var databaseInstallationFilesS3BucketName: BucketName
+    public var databaseInstallationFilesS3Prefix: String255?
+    public var description: Description?
+    public var engine: CustomEngineName
+    public var engineVersion: CustomEngineVersion
+    public var kMSKeyId: KmsKeyIdOrArn
+    public var manifest: CustomDBEngineVersionManifest
+    public var tags: TagList?
+
+    public init(databaseInstallationFilesS3BucketName: BucketName,
+                databaseInstallationFilesS3Prefix: String255? = nil,
+                description: Description? = nil,
+                engine: CustomEngineName,
+                engineVersion: CustomEngineVersion,
+                kMSKeyId: KmsKeyIdOrArn,
+                manifest: CustomDBEngineVersionManifest,
+                tags: TagList? = nil) {
+        self.databaseInstallationFilesS3BucketName = databaseInstallationFilesS3BucketName
+        self.databaseInstallationFilesS3Prefix = databaseInstallationFilesS3Prefix
+        self.description = description
+        self.engine = engine
+        self.engineVersion = engineVersion
+        self.kMSKeyId = kMSKeyId
+        self.manifest = manifest
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case databaseInstallationFilesS3BucketName = "DatabaseInstallationFilesS3BucketName"
+        case databaseInstallationFilesS3Prefix = "DatabaseInstallationFilesS3Prefix"
+        case description = "Description"
+        case engine = "Engine"
+        case engineVersion = "EngineVersion"
+        case kMSKeyId = "KMSKeyId"
+        case manifest = "Manifest"
+        case tags = "Tags"
+    }
+
+    public func validate() throws {
+        try databaseInstallationFilesS3BucketName.validateAsBucketName()
+        try databaseInstallationFilesS3Prefix?.validateAsString255()
+        try description?.validateAsDescription()
+        try engine.validateAsCustomEngineName()
+        try engineVersion.validateAsCustomEngineVersion()
+        try kMSKeyId.validateAsKmsKeyIdOrArn()
+        try manifest.validateAsCustomDBEngineVersionManifest()
+    }
+}
+
 public struct CreateDBClusterEndpointMessage: Codable, Equatable {
     public var dBClusterEndpointIdentifier: String
     public var dBClusterIdentifier: String
@@ -1355,6 +1405,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
     public var backupRetentionPeriod: IntegerOptional?
     public var characterSetName: String?
     public var copyTagsToSnapshot: BooleanOptional?
+    public var customIamInstanceProfile: String?
     public var dBClusterIdentifier: String?
     public var dBInstanceClass: String
     public var dBInstanceIdentifier: String
@@ -1404,6 +1455,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
                 backupRetentionPeriod: IntegerOptional? = nil,
                 characterSetName: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
+                customIamInstanceProfile: String? = nil,
                 dBClusterIdentifier: String? = nil,
                 dBInstanceClass: String,
                 dBInstanceIdentifier: String,
@@ -1452,6 +1504,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         self.backupRetentionPeriod = backupRetentionPeriod
         self.characterSetName = characterSetName
         self.copyTagsToSnapshot = copyTagsToSnapshot
+        self.customIamInstanceProfile = customIamInstanceProfile
         self.dBClusterIdentifier = dBClusterIdentifier
         self.dBInstanceClass = dBInstanceClass
         self.dBInstanceIdentifier = dBInstanceIdentifier
@@ -1503,6 +1556,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case characterSetName = "CharacterSetName"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
+        case customIamInstanceProfile = "CustomIamInstanceProfile"
         case dBClusterIdentifier = "DBClusterIdentifier"
         case dBInstanceClass = "DBInstanceClass"
         case dBInstanceIdentifier = "DBInstanceIdentifier"
@@ -1555,6 +1609,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var copyTagsToSnapshot: BooleanOptional?
+    public var customIamInstanceProfile: String?
     public var dBInstanceClass: String?
     public var dBInstanceIdentifier: String
     public var dBParameterGroupName: String?
@@ -1588,6 +1643,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
     public init(autoMinorVersionUpgrade: BooleanOptional? = nil,
                 availabilityZone: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
+                customIamInstanceProfile: String? = nil,
                 dBInstanceClass: String? = nil,
                 dBInstanceIdentifier: String,
                 dBParameterGroupName: String? = nil,
@@ -1620,6 +1676,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
         self.copyTagsToSnapshot = copyTagsToSnapshot
+        self.customIamInstanceProfile = customIamInstanceProfile
         self.dBInstanceClass = dBInstanceClass
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dBParameterGroupName = dBParameterGroupName
@@ -1655,6 +1712,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
+        case customIamInstanceProfile = "CustomIamInstanceProfile"
         case dBInstanceClass = "DBInstanceClass"
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dBParameterGroupName = "DBParameterGroupName"
@@ -2421,6 +2479,33 @@ public struct CustomAvailabilityZoneNotFoundFault: Codable, Equatable {
 }
 
 public struct CustomAvailabilityZoneQuotaExceededFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CustomDBEngineVersionAlreadyExistsFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CustomDBEngineVersionNotFoundFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CustomDBEngineVersionQuotaExceededFault: Codable, Equatable {
 
     public init() {
     }
@@ -3475,13 +3560,19 @@ public struct DBClusterSnapshotNotFoundFault: Codable, Equatable {
 }
 
 public struct DBEngineVersion: Codable, Equatable {
+    public var createTime: TStamp?
     public var dBEngineDescription: String?
+    public var dBEngineVersionArn: String?
     public var dBEngineVersionDescription: String?
     public var dBParameterGroupFamily: String?
+    public var databaseInstallationFilesS3BucketName: String?
+    public var databaseInstallationFilesS3Prefix: String?
     public var defaultCharacterSet: CharacterSet?
     public var engine: String?
     public var engineVersion: String?
     public var exportableLogTypes: LogTypeList?
+    public var kMSKeyId: String?
+    public var majorEngineVersion: String?
     public var status: String?
     public var supportedCharacterSets: SupportedCharacterSetsList?
     public var supportedEngineModes: EngineModeList?
@@ -3492,15 +3583,22 @@ public struct DBEngineVersion: Codable, Equatable {
     public var supportsLogExportsToCloudwatchLogs: Boolean?
     public var supportsParallelQuery: Boolean?
     public var supportsReadReplica: Boolean?
+    public var tagList: TagList?
     public var validUpgradeTarget: ValidUpgradeTargetList?
 
-    public init(dBEngineDescription: String? = nil,
+    public init(createTime: TStamp? = nil,
+                dBEngineDescription: String? = nil,
+                dBEngineVersionArn: String? = nil,
                 dBEngineVersionDescription: String? = nil,
                 dBParameterGroupFamily: String? = nil,
+                databaseInstallationFilesS3BucketName: String? = nil,
+                databaseInstallationFilesS3Prefix: String? = nil,
                 defaultCharacterSet: CharacterSet? = nil,
                 engine: String? = nil,
                 engineVersion: String? = nil,
                 exportableLogTypes: LogTypeList? = nil,
+                kMSKeyId: String? = nil,
+                majorEngineVersion: String? = nil,
                 status: String? = nil,
                 supportedCharacterSets: SupportedCharacterSetsList? = nil,
                 supportedEngineModes: EngineModeList? = nil,
@@ -3511,14 +3609,21 @@ public struct DBEngineVersion: Codable, Equatable {
                 supportsLogExportsToCloudwatchLogs: Boolean? = nil,
                 supportsParallelQuery: Boolean? = nil,
                 supportsReadReplica: Boolean? = nil,
+                tagList: TagList? = nil,
                 validUpgradeTarget: ValidUpgradeTargetList? = nil) {
+        self.createTime = createTime
         self.dBEngineDescription = dBEngineDescription
+        self.dBEngineVersionArn = dBEngineVersionArn
         self.dBEngineVersionDescription = dBEngineVersionDescription
         self.dBParameterGroupFamily = dBParameterGroupFamily
+        self.databaseInstallationFilesS3BucketName = databaseInstallationFilesS3BucketName
+        self.databaseInstallationFilesS3Prefix = databaseInstallationFilesS3Prefix
         self.defaultCharacterSet = defaultCharacterSet
         self.engine = engine
         self.engineVersion = engineVersion
         self.exportableLogTypes = exportableLogTypes
+        self.kMSKeyId = kMSKeyId
+        self.majorEngineVersion = majorEngineVersion
         self.status = status
         self.supportedCharacterSets = supportedCharacterSets
         self.supportedEngineModes = supportedEngineModes
@@ -3529,17 +3634,24 @@ public struct DBEngineVersion: Codable, Equatable {
         self.supportsLogExportsToCloudwatchLogs = supportsLogExportsToCloudwatchLogs
         self.supportsParallelQuery = supportsParallelQuery
         self.supportsReadReplica = supportsReadReplica
+        self.tagList = tagList
         self.validUpgradeTarget = validUpgradeTarget
     }
 
     enum CodingKeys: String, CodingKey {
+        case createTime = "CreateTime"
         case dBEngineDescription = "DBEngineDescription"
+        case dBEngineVersionArn = "DBEngineVersionArn"
         case dBEngineVersionDescription = "DBEngineVersionDescription"
         case dBParameterGroupFamily = "DBParameterGroupFamily"
+        case databaseInstallationFilesS3BucketName = "DatabaseInstallationFilesS3BucketName"
+        case databaseInstallationFilesS3Prefix = "DatabaseInstallationFilesS3Prefix"
         case defaultCharacterSet = "DefaultCharacterSet"
         case engine = "Engine"
         case engineVersion = "EngineVersion"
         case exportableLogTypes = "ExportableLogTypes"
+        case kMSKeyId = "KMSKeyId"
+        case majorEngineVersion = "MajorEngineVersion"
         case status = "Status"
         case supportedCharacterSets = "SupportedCharacterSets"
         case supportedEngineModes = "SupportedEngineModes"
@@ -3550,11 +3662,60 @@ public struct DBEngineVersion: Codable, Equatable {
         case supportsLogExportsToCloudwatchLogs = "SupportsLogExportsToCloudwatchLogs"
         case supportsParallelQuery = "SupportsParallelQuery"
         case supportsReadReplica = "SupportsReadReplica"
+        case tagList = "TagList"
         case validUpgradeTarget = "ValidUpgradeTarget"
     }
 
     public func validate() throws {
         try defaultCharacterSet?.validate()
+    }
+}
+
+public struct DBEngineVersionForCreateCustomDBEngineVersion: Codable, Equatable {
+    public var createCustomDBEngineVersionResult: DBEngineVersion
+
+    public init(createCustomDBEngineVersionResult: DBEngineVersion) {
+        self.createCustomDBEngineVersionResult = createCustomDBEngineVersionResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createCustomDBEngineVersionResult = "CreateCustomDBEngineVersionResult"
+    }
+
+    public func validate() throws {
+        try createCustomDBEngineVersionResult.validate()
+    }
+}
+
+public struct DBEngineVersionForDeleteCustomDBEngineVersion: Codable, Equatable {
+    public var deleteCustomDBEngineVersionResult: DBEngineVersion
+
+    public init(deleteCustomDBEngineVersionResult: DBEngineVersion) {
+        self.deleteCustomDBEngineVersionResult = deleteCustomDBEngineVersionResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteCustomDBEngineVersionResult = "DeleteCustomDBEngineVersionResult"
+    }
+
+    public func validate() throws {
+        try deleteCustomDBEngineVersionResult.validate()
+    }
+}
+
+public struct DBEngineVersionForModifyCustomDBEngineVersion: Codable, Equatable {
+    public var modifyCustomDBEngineVersionResult: DBEngineVersion
+
+    public init(modifyCustomDBEngineVersionResult: DBEngineVersion) {
+        self.modifyCustomDBEngineVersionResult = modifyCustomDBEngineVersionResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case modifyCustomDBEngineVersionResult = "ModifyCustomDBEngineVersionResult"
+    }
+
+    public func validate() throws {
+        try modifyCustomDBEngineVersionResult.validate()
     }
 }
 
@@ -3603,12 +3764,14 @@ public struct DBInstance: Codable, Equatable {
     public var associatedRoles: DBInstanceRoles?
     public var autoMinorVersionUpgrade: Boolean?
     public var automaticRestartTime: TStamp?
+    public var automationMode: AutomationMode?
     public var availabilityZone: String?
     public var awsBackupRecoveryPointArn: String?
     public var backupRetentionPeriod: Integer?
     public var cACertificateIdentifier: String?
     public var characterSetName: String?
     public var copyTagsToSnapshot: Boolean?
+    public var customIamInstanceProfile: String?
     public var customerOwnedIpEnabled: BooleanOptional?
     public var dBClusterIdentifier: String?
     public var dBInstanceArn: String?
@@ -3656,6 +3819,7 @@ public struct DBInstance: Codable, Equatable {
     public var readReplicaDBInstanceIdentifiers: ReadReplicaDBInstanceIdentifierList?
     public var readReplicaSourceDBInstanceIdentifier: String?
     public var replicaMode: ReplicaMode?
+    public var resumeFullAutomationModeTime: TStamp?
     public var secondaryAvailabilityZone: String?
     public var statusInfos: DBInstanceStatusInfoList?
     public var storageEncrypted: Boolean?
@@ -3674,12 +3838,14 @@ public struct DBInstance: Codable, Equatable {
                 associatedRoles: DBInstanceRoles? = nil,
                 autoMinorVersionUpgrade: Boolean? = nil,
                 automaticRestartTime: TStamp? = nil,
+                automationMode: AutomationMode? = nil,
                 availabilityZone: String? = nil,
                 awsBackupRecoveryPointArn: String? = nil,
                 backupRetentionPeriod: Integer? = nil,
                 cACertificateIdentifier: String? = nil,
                 characterSetName: String? = nil,
                 copyTagsToSnapshot: Boolean? = nil,
+                customIamInstanceProfile: String? = nil,
                 customerOwnedIpEnabled: BooleanOptional? = nil,
                 dBClusterIdentifier: String? = nil,
                 dBInstanceArn: String? = nil,
@@ -3727,6 +3893,7 @@ public struct DBInstance: Codable, Equatable {
                 readReplicaDBInstanceIdentifiers: ReadReplicaDBInstanceIdentifierList? = nil,
                 readReplicaSourceDBInstanceIdentifier: String? = nil,
                 replicaMode: ReplicaMode? = nil,
+                resumeFullAutomationModeTime: TStamp? = nil,
                 secondaryAvailabilityZone: String? = nil,
                 statusInfos: DBInstanceStatusInfoList? = nil,
                 storageEncrypted: Boolean? = nil,
@@ -3744,12 +3911,14 @@ public struct DBInstance: Codable, Equatable {
         self.associatedRoles = associatedRoles
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.automaticRestartTime = automaticRestartTime
+        self.automationMode = automationMode
         self.availabilityZone = availabilityZone
         self.awsBackupRecoveryPointArn = awsBackupRecoveryPointArn
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cACertificateIdentifier = cACertificateIdentifier
         self.characterSetName = characterSetName
         self.copyTagsToSnapshot = copyTagsToSnapshot
+        self.customIamInstanceProfile = customIamInstanceProfile
         self.customerOwnedIpEnabled = customerOwnedIpEnabled
         self.dBClusterIdentifier = dBClusterIdentifier
         self.dBInstanceArn = dBInstanceArn
@@ -3797,6 +3966,7 @@ public struct DBInstance: Codable, Equatable {
         self.readReplicaDBInstanceIdentifiers = readReplicaDBInstanceIdentifiers
         self.readReplicaSourceDBInstanceIdentifier = readReplicaSourceDBInstanceIdentifier
         self.replicaMode = replicaMode
+        self.resumeFullAutomationModeTime = resumeFullAutomationModeTime
         self.secondaryAvailabilityZone = secondaryAvailabilityZone
         self.statusInfos = statusInfos
         self.storageEncrypted = storageEncrypted
@@ -3817,12 +3987,14 @@ public struct DBInstance: Codable, Equatable {
         case associatedRoles = "AssociatedRoles"
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case automaticRestartTime = "AutomaticRestartTime"
+        case automationMode = "AutomationMode"
         case availabilityZone = "AvailabilityZone"
         case awsBackupRecoveryPointArn = "AwsBackupRecoveryPointArn"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cACertificateIdentifier = "CACertificateIdentifier"
         case characterSetName = "CharacterSetName"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
+        case customIamInstanceProfile = "CustomIamInstanceProfile"
         case customerOwnedIpEnabled = "CustomerOwnedIpEnabled"
         case dBClusterIdentifier = "DBClusterIdentifier"
         case dBInstanceArn = "DBInstanceArn"
@@ -3870,6 +4042,7 @@ public struct DBInstance: Codable, Equatable {
         case readReplicaDBInstanceIdentifiers = "ReadReplicaDBInstanceIdentifiers"
         case readReplicaSourceDBInstanceIdentifier = "ReadReplicaSourceDBInstanceIdentifier"
         case replicaMode = "ReplicaMode"
+        case resumeFullAutomationModeTime = "ResumeFullAutomationModeTime"
         case secondaryAvailabilityZone = "SecondaryAvailabilityZone"
         case statusInfos = "StatusInfos"
         case storageEncrypted = "StorageEncrypted"
@@ -5224,6 +5397,27 @@ public struct DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone:
 
     public func validate() throws {
         try deleteCustomAvailabilityZoneResult.validate()
+    }
+}
+
+public struct DeleteCustomDBEngineVersionMessage: Codable, Equatable {
+    public var engine: CustomEngineName
+    public var engineVersion: CustomEngineVersion
+
+    public init(engine: CustomEngineName,
+                engineVersion: CustomEngineVersion) {
+        self.engine = engine
+        self.engineVersion = engineVersion
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case engine = "Engine"
+        case engineVersion = "EngineVersion"
+    }
+
+    public func validate() throws {
+        try engine.validateAsCustomEngineName()
+        try engineVersion.validateAsCustomEngineVersion()
     }
 }
 
@@ -8544,6 +8738,15 @@ public struct InsufficientStorageClusterCapacityFault: Codable, Equatable {
     }
 }
 
+public struct InvalidCustomDBEngineVersionStateFault: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct InvalidDBClusterCapacityFault: Codable, Equatable {
 
     public init() {
@@ -8885,6 +9088,36 @@ public struct ModifyCurrentDBClusterCapacityMessage: Codable, Equatable {
     }
 }
 
+public struct ModifyCustomDBEngineVersionMessage: Codable, Equatable {
+    public var description: Description?
+    public var engine: CustomEngineName
+    public var engineVersion: CustomEngineVersion
+    public var status: CustomEngineVersionStatus?
+
+    public init(description: Description? = nil,
+                engine: CustomEngineName,
+                engineVersion: CustomEngineVersion,
+                status: CustomEngineVersionStatus? = nil) {
+        self.description = description
+        self.engine = engine
+        self.engineVersion = engineVersion
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case description = "Description"
+        case engine = "Engine"
+        case engineVersion = "EngineVersion"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+        try description?.validateAsDescription()
+        try engine.validateAsCustomEngineName()
+        try engineVersion.validateAsCustomEngineVersion()
+    }
+}
+
 public struct ModifyDBClusterEndpointMessage: Codable, Equatable {
     public var dBClusterEndpointIdentifier: String
     public var endpointType: String?
@@ -9136,6 +9369,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     public var allowMajorVersionUpgrade: Boolean?
     public var applyImmediately: Boolean?
     public var autoMinorVersionUpgrade: BooleanOptional?
+    public var automationMode: AutomationMode?
     public var awsBackupRecoveryPointArn: AwsBackupRecoveryPointArn?
     public var backupRetentionPeriod: IntegerOptional?
     public var cACertificateIdentifier: String?
@@ -9172,6 +9406,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     public var promotionTier: IntegerOptional?
     public var publiclyAccessible: BooleanOptional?
     public var replicaMode: ReplicaMode?
+    public var resumeFullAutomationModeMinutes: IntegerOptional?
     public var storageType: String?
     public var tdeCredentialArn: String?
     public var tdeCredentialPassword: String?
@@ -9182,6 +9417,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
                 allowMajorVersionUpgrade: Boolean? = nil,
                 applyImmediately: Boolean? = nil,
                 autoMinorVersionUpgrade: BooleanOptional? = nil,
+                automationMode: AutomationMode? = nil,
                 awsBackupRecoveryPointArn: AwsBackupRecoveryPointArn? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
                 cACertificateIdentifier: String? = nil,
@@ -9218,6 +9454,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
                 promotionTier: IntegerOptional? = nil,
                 publiclyAccessible: BooleanOptional? = nil,
                 replicaMode: ReplicaMode? = nil,
+                resumeFullAutomationModeMinutes: IntegerOptional? = nil,
                 storageType: String? = nil,
                 tdeCredentialArn: String? = nil,
                 tdeCredentialPassword: String? = nil,
@@ -9227,6 +9464,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         self.allowMajorVersionUpgrade = allowMajorVersionUpgrade
         self.applyImmediately = applyImmediately
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
+        self.automationMode = automationMode
         self.awsBackupRecoveryPointArn = awsBackupRecoveryPointArn
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cACertificateIdentifier = cACertificateIdentifier
@@ -9263,6 +9501,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         self.promotionTier = promotionTier
         self.publiclyAccessible = publiclyAccessible
         self.replicaMode = replicaMode
+        self.resumeFullAutomationModeMinutes = resumeFullAutomationModeMinutes
         self.storageType = storageType
         self.tdeCredentialArn = tdeCredentialArn
         self.tdeCredentialPassword = tdeCredentialPassword
@@ -9275,6 +9514,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         case allowMajorVersionUpgrade = "AllowMajorVersionUpgrade"
         case applyImmediately = "ApplyImmediately"
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
+        case automationMode = "AutomationMode"
         case awsBackupRecoveryPointArn = "AwsBackupRecoveryPointArn"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cACertificateIdentifier = "CACertificateIdentifier"
@@ -9311,6 +9551,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         case promotionTier = "PromotionTier"
         case publiclyAccessible = "PubliclyAccessible"
         case replicaMode = "ReplicaMode"
+        case resumeFullAutomationModeMinutes = "ResumeFullAutomationModeMinutes"
         case storageType = "StorageType"
         case tdeCredentialArn = "TdeCredentialArn"
         case tdeCredentialPassword = "TdeCredentialPassword"
@@ -10665,6 +10906,7 @@ public struct PendingMaintenanceActionsMessageForDescribePendingMaintenanceActio
 
 public struct PendingModifiedValues: Codable, Equatable {
     public var allocatedStorage: IntegerOptional?
+    public var automationMode: AutomationMode?
     public var backupRetentionPeriod: IntegerOptional?
     public var cACertificateIdentifier: String?
     public var dBInstanceClass: String?
@@ -10679,9 +10921,11 @@ public struct PendingModifiedValues: Codable, Equatable {
     public var pendingCloudwatchLogsExports: PendingCloudwatchLogsExports?
     public var port: IntegerOptional?
     public var processorFeatures: ProcessorFeatureList?
+    public var resumeFullAutomationModeTime: TStamp?
     public var storageType: String?
 
     public init(allocatedStorage: IntegerOptional? = nil,
+                automationMode: AutomationMode? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
                 cACertificateIdentifier: String? = nil,
                 dBInstanceClass: String? = nil,
@@ -10696,8 +10940,10 @@ public struct PendingModifiedValues: Codable, Equatable {
                 pendingCloudwatchLogsExports: PendingCloudwatchLogsExports? = nil,
                 port: IntegerOptional? = nil,
                 processorFeatures: ProcessorFeatureList? = nil,
+                resumeFullAutomationModeTime: TStamp? = nil,
                 storageType: String? = nil) {
         self.allocatedStorage = allocatedStorage
+        self.automationMode = automationMode
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cACertificateIdentifier = cACertificateIdentifier
         self.dBInstanceClass = dBInstanceClass
@@ -10712,11 +10958,13 @@ public struct PendingModifiedValues: Codable, Equatable {
         self.pendingCloudwatchLogsExports = pendingCloudwatchLogsExports
         self.port = port
         self.processorFeatures = processorFeatures
+        self.resumeFullAutomationModeTime = resumeFullAutomationModeTime
         self.storageType = storageType
     }
 
     enum CodingKeys: String, CodingKey {
         case allocatedStorage = "AllocatedStorage"
+        case automationMode = "AutomationMode"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cACertificateIdentifier = "CACertificateIdentifier"
         case dBInstanceClass = "DBInstanceClass"
@@ -10731,6 +10979,7 @@ public struct PendingModifiedValues: Codable, Equatable {
         case pendingCloudwatchLogsExports = "PendingCloudwatchLogsExports"
         case port = "Port"
         case processorFeatures = "ProcessorFeatures"
+        case resumeFullAutomationModeTime = "ResumeFullAutomationModeTime"
         case storageType = "StorageType"
     }
 
@@ -11992,6 +12241,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var copyTagsToSnapshot: BooleanOptional?
+    public var customIamInstanceProfile: String?
     public var dBInstanceClass: String?
     public var dBInstanceIdentifier: String
     public var dBName: String?
@@ -12022,6 +12272,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     public init(autoMinorVersionUpgrade: BooleanOptional? = nil,
                 availabilityZone: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
+                customIamInstanceProfile: String? = nil,
                 dBInstanceClass: String? = nil,
                 dBInstanceIdentifier: String,
                 dBName: String? = nil,
@@ -12051,6 +12302,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
         self.copyTagsToSnapshot = copyTagsToSnapshot
+        self.customIamInstanceProfile = customIamInstanceProfile
         self.dBInstanceClass = dBInstanceClass
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dBName = dBName
@@ -12083,6 +12335,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
+        case customIamInstanceProfile = "CustomIamInstanceProfile"
         case dBInstanceClass = "DBInstanceClass"
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dBName = "DBName"
@@ -12370,6 +12623,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var copyTagsToSnapshot: BooleanOptional?
+    public var customIamInstanceProfile: String?
     public var dBInstanceClass: String?
     public var dBName: String?
     public var dBParameterGroupName: String?
@@ -12405,6 +12659,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     public init(autoMinorVersionUpgrade: BooleanOptional? = nil,
                 availabilityZone: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
+                customIamInstanceProfile: String? = nil,
                 dBInstanceClass: String? = nil,
                 dBName: String? = nil,
                 dBParameterGroupName: String? = nil,
@@ -12439,6 +12694,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
         self.copyTagsToSnapshot = copyTagsToSnapshot
+        self.customIamInstanceProfile = customIamInstanceProfile
         self.dBInstanceClass = dBInstanceClass
         self.dBName = dBName
         self.dBParameterGroupName = dBParameterGroupName
@@ -12476,6 +12732,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
+        case customIamInstanceProfile = "CustomIamInstanceProfile"
         case dBInstanceClass = "DBInstanceClass"
         case dBName = "DBName"
         case dBParameterGroupName = "DBParameterGroupName"

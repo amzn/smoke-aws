@@ -22,6 +22,58 @@
 
 import Foundation
 
+public extension AcceleratorCount {
+    /**
+     Default instance of the AcceleratorCount structure.
+     */
+    static let __default: ElasticComputeCloudModel.AcceleratorCount = {
+        let defaultInstance = ElasticComputeCloudModel.AcceleratorCount(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AcceleratorCountRequest {
+    /**
+     Default instance of the AcceleratorCountRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.AcceleratorCountRequest = {
+        let defaultInstance = ElasticComputeCloudModel.AcceleratorCountRequest(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AcceleratorTotalMemoryMiB {
+    /**
+     Default instance of the AcceleratorTotalMemoryMiB structure.
+     */
+    static let __default: ElasticComputeCloudModel.AcceleratorTotalMemoryMiB = {
+        let defaultInstance = ElasticComputeCloudModel.AcceleratorTotalMemoryMiB(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AcceleratorTotalMemoryMiBRequest {
+    /**
+     Default instance of the AcceleratorTotalMemoryMiBRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.AcceleratorTotalMemoryMiBRequest = {
+        let defaultInstance = ElasticComputeCloudModel.AcceleratorTotalMemoryMiBRequest(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AcceptReservedInstancesExchangeQuoteRequest {
     /**
      Default instance of the AcceptReservedInstancesExchangeQuoteRequest structure.
@@ -1268,6 +1320,32 @@ public extension AvailableCapacity {
         let defaultInstance = ElasticComputeCloudModel.AvailableCapacity(
             availableInstanceCapacity: nil,
             availableVCpus: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BaselineEbsBandwidthMbps {
+    /**
+     Default instance of the BaselineEbsBandwidthMbps structure.
+     */
+    static let __default: ElasticComputeCloudModel.BaselineEbsBandwidthMbps = {
+        let defaultInstance = ElasticComputeCloudModel.BaselineEbsBandwidthMbps(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BaselineEbsBandwidthMbpsRequest {
+    /**
+     Default instance of the BaselineEbsBandwidthMbpsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.BaselineEbsBandwidthMbpsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.BaselineEbsBandwidthMbpsRequest(
+            max: nil,
+            min: nil)
 
         return defaultInstance
     }()
@@ -11119,6 +11197,7 @@ public extension FleetLaunchTemplateOverrides {
     static let __default: ElasticComputeCloudModel.FleetLaunchTemplateOverrides = {
         let defaultInstance = ElasticComputeCloudModel.FleetLaunchTemplateOverrides(
             availabilityZone: nil,
+            instanceRequirements: nil,
             instanceType: nil,
             maxPrice: nil,
             placement: nil,
@@ -11137,6 +11216,7 @@ public extension FleetLaunchTemplateOverridesRequest {
     static let __default: ElasticComputeCloudModel.FleetLaunchTemplateOverridesRequest = {
         let defaultInstance = ElasticComputeCloudModel.FleetLaunchTemplateOverridesRequest(
             availabilityZone: nil,
+            instanceRequirements: nil,
             instanceType: nil,
             maxPrice: nil,
             placement: nil,
@@ -11672,6 +11752,36 @@ public extension GetHostReservationPurchasePreviewResult {
     }()
 }
 
+public extension GetInstanceTypesFromInstanceRequirementsRequest {
+    /**
+     Default instance of the GetInstanceTypesFromInstanceRequirementsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest(
+            architectureTypes: [],
+            dryRun: nil,
+            instanceRequirements: InstanceRequirementsRequest.__default,
+            maxResults: nil,
+            nextToken: nil,
+            virtualizationTypes: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension GetInstanceTypesFromInstanceRequirementsResult {
+    /**
+     Default instance of the GetInstanceTypesFromInstanceRequirementsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult(
+            instanceTypes: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetLaunchTemplateDataRequest {
     /**
      Default instance of the GetLaunchTemplateDataRequest structure.
@@ -11834,6 +11944,39 @@ public extension GetSerialConsoleAccessStatusResult {
     static let __default: ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult = {
         let defaultInstance = ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult(
             serialConsoleAccessEnabled: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSpotPlacementScoresRequest {
+    /**
+     Default instance of the GetSpotPlacementScoresRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetSpotPlacementScoresRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetSpotPlacementScoresRequest(
+            dryRun: nil,
+            instanceRequirementsWithMetadata: nil,
+            instanceTypes: nil,
+            maxResults: nil,
+            nextToken: nil,
+            regionNames: nil,
+            singleAvailabilityZone: nil,
+            targetCapacity: 0,
+            targetCapacityUnitType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSpotPlacementScoresResult {
+    /**
+     Default instance of the GetSpotPlacementScoresResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetSpotPlacementScoresResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetSpotPlacementScoresResult(
+            nextToken: nil,
+            spotPlacementScores: nil)
 
         return defaultInstance
     }()
@@ -13319,6 +13462,84 @@ public extension InstancePrivateIpAddress {
     }()
 }
 
+public extension InstanceRequirements {
+    /**
+     Default instance of the InstanceRequirements structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceRequirements = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceRequirements(
+            acceleratorCount: nil,
+            acceleratorManufacturers: nil,
+            acceleratorNames: nil,
+            acceleratorTotalMemoryMiB: nil,
+            acceleratorTypes: nil,
+            bareMetal: nil,
+            baselineEbsBandwidthMbps: nil,
+            burstablePerformance: nil,
+            cpuManufacturers: nil,
+            excludedInstanceTypes: nil,
+            instanceGenerations: nil,
+            localStorage: nil,
+            localStorageTypes: nil,
+            memoryGiBPerVCpu: nil,
+            memoryMiB: nil,
+            networkInterfaceCount: nil,
+            onDemandMaxPricePercentageOverLowestPrice: nil,
+            requireHibernateSupport: nil,
+            spotMaxPricePercentageOverLowestPrice: nil,
+            totalLocalStorageGB: nil,
+            vCpuCount: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InstanceRequirementsRequest {
+    /**
+     Default instance of the InstanceRequirementsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceRequirementsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceRequirementsRequest(
+            acceleratorCount: nil,
+            acceleratorManufacturers: nil,
+            acceleratorNames: nil,
+            acceleratorTotalMemoryMiB: nil,
+            acceleratorTypes: nil,
+            bareMetal: nil,
+            baselineEbsBandwidthMbps: nil,
+            burstablePerformance: nil,
+            cpuManufacturers: nil,
+            excludedInstanceTypes: nil,
+            instanceGenerations: nil,
+            localStorage: nil,
+            localStorageTypes: nil,
+            memoryGiBPerVCpu: nil,
+            memoryMiB: MemoryMiBRequest.__default,
+            networkInterfaceCount: nil,
+            onDemandMaxPricePercentageOverLowestPrice: nil,
+            requireHibernateSupport: nil,
+            spotMaxPricePercentageOverLowestPrice: nil,
+            totalLocalStorageGB: nil,
+            vCpuCount: VCpuCountRangeRequest.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension InstanceRequirementsWithMetadataRequest {
+    /**
+     Default instance of the InstanceRequirementsWithMetadataRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceRequirementsWithMetadataRequest = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceRequirementsWithMetadataRequest(
+            architectureTypes: nil,
+            instanceRequirements: nil,
+            virtualizationTypes: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InstanceSpecification {
     /**
      Default instance of the InstanceSpecification structure.
@@ -13479,6 +13700,18 @@ public extension InstanceTypeInfo {
             supportedUsageClasses: nil,
             supportedVirtualizationTypes: nil,
             vCpuInfo: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InstanceTypeInfoFromInstanceRequirements {
+    /**
+     Default instance of the InstanceTypeInfoFromInstanceRequirements structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceTypeInfoFromInstanceRequirements = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceTypeInfoFromInstanceRequirements(
+            instanceType: nil)
 
         return defaultInstance
     }()
@@ -13759,6 +13992,8 @@ public extension LaunchPermission {
     static let __default: ElasticComputeCloudModel.LaunchPermission = {
         let defaultInstance = ElasticComputeCloudModel.LaunchPermission(
             group: nil,
+            organizationArn: nil,
+            organizationalUnitArn: nil,
             userId: nil)
 
         return defaultInstance
@@ -14216,6 +14451,7 @@ public extension LaunchTemplateOverrides {
     static let __default: ElasticComputeCloudModel.LaunchTemplateOverrides = {
         let defaultInstance = ElasticComputeCloudModel.LaunchTemplateOverrides(
             availabilityZone: nil,
+            instanceRequirements: nil,
             instanceType: nil,
             priority: nil,
             spotPrice: nil,
@@ -14602,6 +14838,32 @@ public extension ManagedPrefixList {
     }()
 }
 
+public extension MemoryGiBPerVCpu {
+    /**
+     Default instance of the MemoryGiBPerVCpu structure.
+     */
+    static let __default: ElasticComputeCloudModel.MemoryGiBPerVCpu = {
+        let defaultInstance = ElasticComputeCloudModel.MemoryGiBPerVCpu(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MemoryGiBPerVCpuRequest {
+    /**
+     Default instance of the MemoryGiBPerVCpuRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.MemoryGiBPerVCpuRequest = {
+        let defaultInstance = ElasticComputeCloudModel.MemoryGiBPerVCpuRequest(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MemoryInfo {
     /**
      Default instance of the MemoryInfo structure.
@@ -14609,6 +14871,32 @@ public extension MemoryInfo {
     static let __default: ElasticComputeCloudModel.MemoryInfo = {
         let defaultInstance = ElasticComputeCloudModel.MemoryInfo(
             sizeInMiB: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MemoryMiB {
+    /**
+     Default instance of the MemoryMiB structure.
+     */
+    static let __default: ElasticComputeCloudModel.MemoryMiB = {
+        let defaultInstance = ElasticComputeCloudModel.MemoryMiB(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MemoryMiBRequest {
+    /**
+     Default instance of the MemoryMiBRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.MemoryMiBRequest = {
+        let defaultInstance = ElasticComputeCloudModel.MemoryMiBRequest(
+            max: nil,
+            min: 0)
 
         return defaultInstance
     }()
@@ -14701,6 +14989,7 @@ public extension ModifyCapacityReservationRequest {
     static let __default: ElasticComputeCloudModel.ModifyCapacityReservationRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifyCapacityReservationRequest(
             accept: nil,
+            additionalInfo: nil,
             capacityReservationId: "value",
             dryRun: nil,
             endDate: nil,
@@ -14939,6 +15228,8 @@ public extension ModifyImageAttributeRequest {
             imageId: "value",
             launchPermission: nil,
             operationType: nil,
+            organizationArns: nil,
+            organizationalUnitArns: nil,
             productCodes: nil,
             userGroups: nil,
             userIds: nil,
@@ -16171,6 +16462,7 @@ public extension NetworkInterface {
             association: nil,
             attachment: nil,
             availabilityZone: nil,
+            denyAllIgwTraffic: nil,
             description: nil,
             groups: nil,
             interfaceType: nil,
@@ -16241,6 +16533,32 @@ public extension NetworkInterfaceAttachmentChanges {
         let defaultInstance = ElasticComputeCloudModel.NetworkInterfaceAttachmentChanges(
             attachmentId: nil,
             deleteOnTermination: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension NetworkInterfaceCount {
+    /**
+     Default instance of the NetworkInterfaceCount structure.
+     */
+    static let __default: ElasticComputeCloudModel.NetworkInterfaceCount = {
+        let defaultInstance = ElasticComputeCloudModel.NetworkInterfaceCount(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension NetworkInterfaceCountRequest {
+    /**
+     Default instance of the NetworkInterfaceCountRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.NetworkInterfaceCountRequest = {
+        let defaultInstance = ElasticComputeCloudModel.NetworkInterfaceCountRequest(
+            max: nil,
+            min: nil)
 
         return defaultInstance
     }()
@@ -17643,6 +17961,7 @@ public extension RequestLaunchTemplateData {
             imageId: nil,
             instanceInitiatedShutdownBehavior: nil,
             instanceMarketOptions: nil,
+            instanceRequirements: nil,
             instanceType: nil,
             kernelId: nil,
             keyName: nil,
@@ -18125,6 +18444,7 @@ public extension ResponseLaunchTemplateData {
             imageId: nil,
             instanceInitiatedShutdownBehavior: nil,
             instanceMarketOptions: nil,
+            instanceRequirements: nil,
             instanceType: nil,
             kernelId: nil,
             keyName: nil,
@@ -19154,6 +19474,7 @@ public extension SpotFleetLaunchSpecification {
             ebsOptimized: nil,
             iamInstanceProfile: nil,
             imageId: nil,
+            instanceRequirements: nil,
             instanceType: nil,
             kernelId: nil,
             keyName: nil,
@@ -19228,6 +19549,7 @@ public extension SpotFleetRequestConfigData {
             spotPrice: nil,
             tagSpecifications: nil,
             targetCapacity: 0,
+            targetCapacityUnitType: nil,
             terminateInstancesWithExpiration: nil,
             type: nil,
             validFrom: nil,
@@ -19382,6 +19704,20 @@ public extension SpotPlacement {
             availabilityZone: nil,
             groupName: nil,
             tenancy: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SpotPlacementScore {
+    /**
+     Default instance of the SpotPlacementScore structure.
+     */
+    static let __default: ElasticComputeCloudModel.SpotPlacementScore = {
+        let defaultInstance = ElasticComputeCloudModel.SpotPlacementScore(
+            availabilityZoneId: nil,
+            region: nil,
+            score: nil)
 
         return defaultInstance
     }()
@@ -19759,6 +20095,7 @@ public extension TargetCapacitySpecification {
             defaultTargetCapacityType: nil,
             onDemandTargetCapacity: nil,
             spotTargetCapacity: nil,
+            targetCapacityUnitType: nil,
             totalTargetCapacity: nil)
 
         return defaultInstance
@@ -19774,6 +20111,7 @@ public extension TargetCapacitySpecificationRequest {
             defaultTargetCapacityType: nil,
             onDemandTargetCapacity: nil,
             spotTargetCapacity: nil,
+            targetCapacityUnitType: nil,
             totalTargetCapacity: 0)
 
         return defaultInstance
@@ -19923,6 +20261,32 @@ public extension TerminateInstancesResult {
     static let __default: ElasticComputeCloudModel.TerminateInstancesResult = {
         let defaultInstance = ElasticComputeCloudModel.TerminateInstancesResult(
             terminatingInstances: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TotalLocalStorageGB {
+    /**
+     Default instance of the TotalLocalStorageGB structure.
+     */
+    static let __default: ElasticComputeCloudModel.TotalLocalStorageGB = {
+        let defaultInstance = ElasticComputeCloudModel.TotalLocalStorageGB(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TotalLocalStorageGBRequest {
+    /**
+     Default instance of the TotalLocalStorageGBRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.TotalLocalStorageGBRequest = {
+        let defaultInstance = ElasticComputeCloudModel.TotalLocalStorageGBRequest(
+            max: nil,
+            min: nil)
 
         return defaultInstance
     }()
@@ -20845,6 +21209,32 @@ public extension UserIdGroupPair {
     }()
 }
 
+public extension VCpuCountRange {
+    /**
+     Default instance of the VCpuCountRange structure.
+     */
+    static let __default: ElasticComputeCloudModel.VCpuCountRange = {
+        let defaultInstance = ElasticComputeCloudModel.VCpuCountRange(
+            max: nil,
+            min: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension VCpuCountRangeRequest {
+    /**
+     Default instance of the VCpuCountRangeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.VCpuCountRangeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.VCpuCountRangeRequest(
+            max: nil,
+            min: 0)
+
+        return defaultInstance
+    }()
+}
+
 public extension VCpuInfo {
     /**
      Default instance of the VCpuInfo structure.
@@ -21282,8 +21672,11 @@ public extension VpnConnection {
     static let __default: ElasticComputeCloudModel.VpnConnection = {
         let defaultInstance = ElasticComputeCloudModel.VpnConnection(
             category: nil,
+            coreNetworkArn: nil,
+            coreNetworkAttachmentArn: nil,
             customerGatewayConfiguration: nil,
             customerGatewayId: nil,
+            gatewayAssociationState: nil,
             options: nil,
             routes: nil,
             state: nil,

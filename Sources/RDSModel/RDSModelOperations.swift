@@ -40,6 +40,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case copyDBSnapshot = "CopyDBSnapshot"
     case copyOptionGroup = "CopyOptionGroup"
     case createCustomAvailabilityZone = "CreateCustomAvailabilityZone"
+    case createCustomDBEngineVersion = "CreateCustomDBEngineVersion"
     case createDBCluster = "CreateDBCluster"
     case createDBClusterEndpoint = "CreateDBClusterEndpoint"
     case createDBClusterParameterGroup = "CreateDBClusterParameterGroup"
@@ -56,6 +57,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case createGlobalCluster = "CreateGlobalCluster"
     case createOptionGroup = "CreateOptionGroup"
     case deleteCustomAvailabilityZone = "DeleteCustomAvailabilityZone"
+    case deleteCustomDBEngineVersion = "DeleteCustomDBEngineVersion"
     case deleteDBCluster = "DeleteDBCluster"
     case deleteDBClusterEndpoint = "DeleteDBClusterEndpoint"
     case deleteDBClusterParameterGroup = "DeleteDBClusterParameterGroup"
@@ -120,6 +122,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case listTagsForResource = "ListTagsForResource"
     case modifyCertificates = "ModifyCertificates"
     case modifyCurrentDBClusterCapacity = "ModifyCurrentDBClusterCapacity"
+    case modifyCustomDBEngineVersion = "ModifyCustomDBEngineVersion"
     case modifyDBCluster = "ModifyDBCluster"
     case modifyDBClusterEndpoint = "ModifyDBClusterEndpoint"
     case modifyDBClusterParameterGroup = "ModifyDBClusterParameterGroup"
@@ -198,6 +201,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .createCustomAvailabilityZone:
             return "/"
+        case .createCustomDBEngineVersion:
+            return "/"
         case .createDBCluster:
             return "/"
         case .createDBClusterEndpoint:
@@ -229,6 +234,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .createOptionGroup:
             return "/"
         case .deleteCustomAvailabilityZone:
+            return "/"
+        case .deleteCustomDBEngineVersion:
             return "/"
         case .deleteDBCluster:
             return "/"
@@ -357,6 +364,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .modifyCertificates:
             return "/"
         case .modifyCurrentDBClusterCapacity:
+            return "/"
+        case .modifyCustomDBEngineVersion:
             return "/"
         case .modifyDBCluster:
             return "/"

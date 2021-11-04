@@ -95,6 +95,20 @@ public enum AuthScheme: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the AutomationMode field.
+ */
+public enum AutomationMode: String, Codable, CustomStringConvertible {
+    case allPaused = "all-paused"
+    case full
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AutomationMode = .allPaused
+}
+
+/**
  Type definition for the AvailabilityZoneList field.
  */
 public typealias AvailabilityZoneList = [AvailabilityZone]
@@ -125,6 +139,11 @@ public typealias Boolean = Bool
 public typealias BooleanOptional = Bool
 
 /**
+ Type definition for the BucketName field.
+ */
+public typealias BucketName = String
+
+/**
  Type definition for the CertificateList field.
  */
 public typealias CertificateList = [Certificate]
@@ -133,6 +152,36 @@ public typealias CertificateList = [Certificate]
  Type definition for the CustomAvailabilityZoneList field.
  */
 public typealias CustomAvailabilityZoneList = [CustomAvailabilityZone]
+
+/**
+ Type definition for the CustomDBEngineVersionManifest field.
+ */
+public typealias CustomDBEngineVersionManifest = String
+
+/**
+ Type definition for the CustomEngineName field.
+ */
+public typealias CustomEngineName = String
+
+/**
+ Type definition for the CustomEngineVersion field.
+ */
+public typealias CustomEngineVersion = String
+
+/**
+ Enumeration restricting the values of the CustomEngineVersionStatus field.
+ */
+public enum CustomEngineVersionStatus: String, Codable, CustomStringConvertible {
+    case available
+    case inactive
+    case inactiveExceptRestore = "inactive-except-restore"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: CustomEngineVersionStatus = .available
+}
 
 /**
  Type definition for the DBClusterBacktrackList field.
@@ -333,6 +382,11 @@ public typealias DBSubnetGroups = [DBSubnetGroup]
 public typealias DescribeDBLogFilesList = [DescribeDBLogFilesDetails]
 
 /**
+ Type definition for the Description field.
+ */
+public typealias Description = String
+
+/**
  Type definition for the DomainMembershipList field.
  */
 public typealias DomainMembershipList = [DomainMembership]
@@ -479,6 +533,11 @@ public typealias IntegerOptional = Int
  Type definition for the KeyList field.
  */
 public typealias KeyList = [String]
+
+/**
+ Type definition for the KmsKeyIdOrArn field.
+ */
+public typealias KmsKeyIdOrArn = String
 
 /**
  Type definition for the LogTypeList field.
@@ -658,6 +717,7 @@ public typealias SourceRegionList = [SourceRegion]
  Enumeration restricting the values of the SourceType field.
  */
 public enum SourceType: String, Codable, CustomStringConvertible {
+    case customEngineVersion = "custom-engine-version"
     case dbCluster = "db-cluster"
     case dbClusterSnapshot = "db-cluster-snapshot"
     case dbInstance = "db-instance"
@@ -669,8 +729,13 @@ public enum SourceType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: SourceType = .dbCluster
+    public static let __default: SourceType = .customEngineVersion
 }
+
+/**
+ Type definition for the String255 field.
+ */
+public typealias String255 = String
 
 /**
  Type definition for the StringList field.
@@ -853,6 +918,90 @@ extension RDSModel.AwsBackupRecoveryPointArn {
 }
 
 /**
+ Validation for the BucketName field.
+*/
+extension RDSModel.BucketName {
+    public func validateAsBucketName() throws {
+        if self.count < 3 {
+            throw RDSError.validationError(reason: "The provided value to BucketName violated the minimum length constraint.")
+        }
+
+        if self.count > 63 {
+            throw RDSError.validationError(reason: "The provided value to BucketName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to BucketName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CustomDBEngineVersionManifest field.
+*/
+extension RDSModel.CustomDBEngineVersionManifest {
+    public func validateAsCustomDBEngineVersionManifest() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to CustomDBEngineVersionManifest violated the minimum length constraint.")
+        }
+
+        if self.count > 51000 {
+            throw RDSError.validationError(reason: "The provided value to CustomDBEngineVersionManifest violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\s\\S]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to CustomDBEngineVersionManifest violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CustomEngineName field.
+*/
+extension RDSModel.CustomEngineName {
+    public func validateAsCustomEngineName() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to CustomEngineName violated the minimum length constraint.")
+        }
+
+        if self.count > 35 {
+            throw RDSError.validationError(reason: "The provided value to CustomEngineName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^[A-Za-z0-9-]{1,35}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to CustomEngineName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CustomEngineVersion field.
+*/
+extension RDSModel.CustomEngineVersion {
+    public func validateAsCustomEngineVersion() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to CustomEngineVersion violated the minimum length constraint.")
+        }
+
+        if self.count > 60 {
+            throw RDSError.validationError(reason: "The provided value to CustomEngineVersion violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^(11\\.\\d{1}|12\\.\\d{1}|18|19)(\\.[a-zA-Z0-9_.-]{1,50})$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to CustomEngineVersion violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DBClusterIdentifier field.
 */
 extension RDSModel.DBClusterIdentifier {
@@ -916,6 +1065,27 @@ extension RDSModel.DBProxyName {
 }
 
 /**
+ Validation for the Description field.
+*/
+extension RDSModel.Description {
+    public func validateAsDescription() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to Description violated the minimum length constraint.")
+        }
+
+        if self.count > 1000 {
+            throw RDSError.validationError(reason: "The provided value to Description violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to Description violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the GlobalClusterIdentifier field.
 */
 extension RDSModel.GlobalClusterIdentifier {
@@ -937,6 +1107,27 @@ extension RDSModel.GlobalClusterIdentifier {
 }
 
 /**
+ Validation for the KmsKeyIdOrArn field.
+*/
+extension RDSModel.KmsKeyIdOrArn {
+    public func validateAsKmsKeyIdOrArn() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to KmsKeyIdOrArn violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw RDSError.validationError(reason: "The provided value to KmsKeyIdOrArn violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9_:\\-\\/]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to KmsKeyIdOrArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the MaxRecords field.
 */
 extension RDSModel.MaxRecords {
@@ -947,6 +1138,27 @@ extension RDSModel.MaxRecords {
 
         if self > 100 {
             throw RDSError.validationError(reason: "The provided value to MaxRecords violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the String255 field.
+*/
+extension RDSModel.String255 {
+    public func validateAsString255() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to String255 violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw RDSError.validationError(reason: "The provided value to String255 violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to String255 violated the regular expression constraint.")
         }
     }
 }

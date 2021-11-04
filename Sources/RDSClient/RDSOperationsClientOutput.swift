@@ -168,6 +168,19 @@ extension CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone: HTT
 }
 
 /**
+ Type to handle the output from the CreateCustomDBEngineVersion operation in a HTTP client.
+ */
+extension DBEngineVersionForCreateCustomDBEngineVersion: HTTPResponseOutputProtocol {
+    public typealias BodyType = DBEngineVersionForCreateCustomDBEngineVersion
+    public typealias HeadersType = DBEngineVersionForCreateCustomDBEngineVersion
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DBEngineVersionForCreateCustomDBEngineVersion {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateDBCluster operation in a HTTP client.
  */
 extension CreateDBClusterResultForCreateDBCluster: HTTPResponseOutputProtocol {
@@ -371,6 +384,19 @@ extension DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone: HTT
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteCustomDBEngineVersion operation in a HTTP client.
+ */
+extension DBEngineVersionForDeleteCustomDBEngineVersion: HTTPResponseOutputProtocol {
+    public typealias BodyType = DBEngineVersionForDeleteCustomDBEngineVersion
+    public typealias HeadersType = DBEngineVersionForDeleteCustomDBEngineVersion
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DBEngineVersionForDeleteCustomDBEngineVersion {
         return try bodyDecodableProvider()
     }
 }
@@ -1138,6 +1164,19 @@ extension DBClusterCapacityInfoForModifyCurrentDBClusterCapacity: HTTPResponseOu
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyCustomDBEngineVersion operation in a HTTP client.
+ */
+extension DBEngineVersionForModifyCustomDBEngineVersion: HTTPResponseOutputProtocol {
+    public typealias BodyType = DBEngineVersionForModifyCustomDBEngineVersion
+    public typealias HeadersType = DBEngineVersionForModifyCustomDBEngineVersion
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DBEngineVersionForModifyCustomDBEngineVersion {
         return try bodyDecodableProvider()
     }
 }

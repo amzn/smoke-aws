@@ -1364,6 +1364,7 @@ public struct Deployment: Codable, Equatable {
     public var launchType: LaunchType?
     public var networkConfiguration: NetworkConfiguration?
     public var pendingCount: Integer?
+    public var platformFamily: String?
     public var platformVersion: String?
     public var rolloutState: DeploymentRolloutState?
     public var rolloutStateReason: String?
@@ -1380,6 +1381,7 @@ public struct Deployment: Codable, Equatable {
                 launchType: LaunchType? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
                 pendingCount: Integer? = nil,
+                platformFamily: String? = nil,
                 platformVersion: String? = nil,
                 rolloutState: DeploymentRolloutState? = nil,
                 rolloutStateReason: String? = nil,
@@ -1395,6 +1397,7 @@ public struct Deployment: Codable, Equatable {
         self.launchType = launchType
         self.networkConfiguration = networkConfiguration
         self.pendingCount = pendingCount
+        self.platformFamily = platformFamily
         self.platformVersion = platformVersion
         self.rolloutState = rolloutState
         self.rolloutStateReason = rolloutStateReason
@@ -1413,6 +1416,7 @@ public struct Deployment: Codable, Equatable {
         case launchType
         case networkConfiguration
         case pendingCount
+        case platformFamily
         case platformVersion
         case rolloutState
         case rolloutStateReason
@@ -3470,6 +3474,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     public var placementConstraints: TaskDefinitionPlacementConstraints?
     public var proxyConfiguration: ProxyConfiguration?
     public var requiresCompatibilities: CompatibilityList?
+    public var runtimePlatform: RuntimePlatform?
     public var tags: Tags?
     public var taskRoleArn: String?
     public var volumes: VolumeList?
@@ -3487,6 +3492,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
                 placementConstraints: TaskDefinitionPlacementConstraints? = nil,
                 proxyConfiguration: ProxyConfiguration? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
+                runtimePlatform: RuntimePlatform? = nil,
                 tags: Tags? = nil,
                 taskRoleArn: String? = nil,
                 volumes: VolumeList? = nil) {
@@ -3503,6 +3509,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         self.placementConstraints = placementConstraints
         self.proxyConfiguration = proxyConfiguration
         self.requiresCompatibilities = requiresCompatibilities
+        self.runtimePlatform = runtimePlatform
         self.tags = tags
         self.taskRoleArn = taskRoleArn
         self.volumes = volumes
@@ -3522,6 +3529,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
         case placementConstraints
         case proxyConfiguration
         case requiresCompatibilities
+        case runtimePlatform
         case tags
         case taskRoleArn
         case volumes
@@ -3530,6 +3538,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     public func validate() throws {
         try ephemeralStorage?.validate()
         try proxyConfiguration?.validate()
+        try runtimePlatform?.validate()
         try tags?.validateAsTags()
     }
 }
@@ -3743,6 +3752,25 @@ public struct RunTaskResponse: Codable, Equatable {
     }
 }
 
+public struct RuntimePlatform: Codable, Equatable {
+    public var cpuArchitecture: CPUArchitecture?
+    public var operatingSystemFamily: OSFamily?
+
+    public init(cpuArchitecture: CPUArchitecture? = nil,
+                operatingSystemFamily: OSFamily? = nil) {
+        self.cpuArchitecture = cpuArchitecture
+        self.operatingSystemFamily = operatingSystemFamily
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cpuArchitecture
+        case operatingSystemFamily
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Scale: Codable, Equatable {
     public var unit: ScaleUnit?
     public var value: Double?
@@ -3815,6 +3843,7 @@ public struct Service: Codable, Equatable {
     public var pendingCount: Integer?
     public var placementConstraints: PlacementConstraints?
     public var placementStrategy: PlacementStrategies?
+    public var platformFamily: String?
     public var platformVersion: String?
     public var propagateTags: PropagateTags?
     public var roleArn: String?
@@ -3846,6 +3875,7 @@ public struct Service: Codable, Equatable {
                 pendingCount: Integer? = nil,
                 placementConstraints: PlacementConstraints? = nil,
                 placementStrategy: PlacementStrategies? = nil,
+                platformFamily: String? = nil,
                 platformVersion: String? = nil,
                 propagateTags: PropagateTags? = nil,
                 roleArn: String? = nil,
@@ -3876,6 +3906,7 @@ public struct Service: Codable, Equatable {
         self.pendingCount = pendingCount
         self.placementConstraints = placementConstraints
         self.placementStrategy = placementStrategy
+        self.platformFamily = platformFamily
         self.platformVersion = platformVersion
         self.propagateTags = propagateTags
         self.roleArn = roleArn
@@ -3909,6 +3940,7 @@ public struct Service: Codable, Equatable {
         case pendingCount
         case placementConstraints
         case placementStrategy
+        case platformFamily
         case platformVersion
         case propagateTags
         case roleArn
@@ -4433,6 +4465,7 @@ public struct Task: Codable, Equatable {
     public var launchType: LaunchType?
     public var memory: String?
     public var overrides: TaskOverride?
+    public var platformFamily: String?
     public var platformVersion: String?
     public var pullStartedAt: Timestamp?
     public var pullStoppedAt: Timestamp?
@@ -4469,6 +4502,7 @@ public struct Task: Codable, Equatable {
                 launchType: LaunchType? = nil,
                 memory: String? = nil,
                 overrides: TaskOverride? = nil,
+                platformFamily: String? = nil,
                 platformVersion: String? = nil,
                 pullStartedAt: Timestamp? = nil,
                 pullStoppedAt: Timestamp? = nil,
@@ -4504,6 +4538,7 @@ public struct Task: Codable, Equatable {
         self.launchType = launchType
         self.memory = memory
         self.overrides = overrides
+        self.platformFamily = platformFamily
         self.platformVersion = platformVersion
         self.pullStartedAt = pullStartedAt
         self.pullStoppedAt = pullStoppedAt
@@ -4542,6 +4577,7 @@ public struct Task: Codable, Equatable {
         case launchType
         case memory
         case overrides
+        case platformFamily
         case platformVersion
         case pullStartedAt
         case pullStoppedAt
@@ -4584,6 +4620,7 @@ public struct TaskDefinition: Codable, Equatable {
     public var requiresAttributes: RequiresAttributes?
     public var requiresCompatibilities: CompatibilityList?
     public var revision: Integer?
+    public var runtimePlatform: RuntimePlatform?
     public var status: TaskDefinitionStatus?
     public var taskDefinitionArn: String?
     public var taskRoleArn: String?
@@ -4608,6 +4645,7 @@ public struct TaskDefinition: Codable, Equatable {
                 requiresAttributes: RequiresAttributes? = nil,
                 requiresCompatibilities: CompatibilityList? = nil,
                 revision: Integer? = nil,
+                runtimePlatform: RuntimePlatform? = nil,
                 status: TaskDefinitionStatus? = nil,
                 taskDefinitionArn: String? = nil,
                 taskRoleArn: String? = nil,
@@ -4631,6 +4669,7 @@ public struct TaskDefinition: Codable, Equatable {
         self.requiresAttributes = requiresAttributes
         self.requiresCompatibilities = requiresCompatibilities
         self.revision = revision
+        self.runtimePlatform = runtimePlatform
         self.status = status
         self.taskDefinitionArn = taskDefinitionArn
         self.taskRoleArn = taskRoleArn
@@ -4657,6 +4696,7 @@ public struct TaskDefinition: Codable, Equatable {
         case requiresAttributes
         case requiresCompatibilities
         case revision
+        case runtimePlatform
         case status
         case taskDefinitionArn
         case taskRoleArn
@@ -4666,6 +4706,7 @@ public struct TaskDefinition: Codable, Equatable {
     public func validate() throws {
         try ephemeralStorage?.validate()
         try proxyConfiguration?.validate()
+        try runtimePlatform?.validate()
     }
 }
 
@@ -4739,6 +4780,7 @@ public struct TaskSet: Codable, Equatable {
     public var loadBalancers: LoadBalancers?
     public var networkConfiguration: NetworkConfiguration?
     public var pendingCount: Integer?
+    public var platformFamily: String?
     public var platformVersion: String?
     public var runningCount: Integer?
     public var scale: Scale?
@@ -4763,6 +4805,7 @@ public struct TaskSet: Codable, Equatable {
                 loadBalancers: LoadBalancers? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
                 pendingCount: Integer? = nil,
+                platformFamily: String? = nil,
                 platformVersion: String? = nil,
                 runningCount: Integer? = nil,
                 scale: Scale? = nil,
@@ -4786,6 +4829,7 @@ public struct TaskSet: Codable, Equatable {
         self.loadBalancers = loadBalancers
         self.networkConfiguration = networkConfiguration
         self.pendingCount = pendingCount
+        self.platformFamily = platformFamily
         self.platformVersion = platformVersion
         self.runningCount = runningCount
         self.scale = scale
@@ -4812,6 +4856,7 @@ public struct TaskSet: Codable, Equatable {
         case loadBalancers
         case networkConfiguration
         case pendingCount
+        case platformFamily
         case platformVersion
         case runningCount
         case scale

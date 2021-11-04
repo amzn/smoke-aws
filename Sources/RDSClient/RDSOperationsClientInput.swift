@@ -95,6 +95,11 @@ public typealias CopyOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias CreateCustomAvailabilityZoneOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateCustomDBEngineVersion operation in a HTTP client.
+ */
+public typealias CreateCustomDBEngineVersionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateDBCluster operation in a HTTP client.
  */
 public typealias CreateDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -173,6 +178,11 @@ public typealias CreateOptionGroupOperationHTTPRequestInput = QueryHTTPRequestIn
  Type to handle the input to the DeleteCustomAvailabilityZone operation in a HTTP client.
  */
 public typealias DeleteCustomAvailabilityZoneOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteCustomDBEngineVersion operation in a HTTP client.
+ */
+public typealias DeleteCustomDBEngineVersionOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteDBCluster operation in a HTTP client.
@@ -493,6 +503,11 @@ public typealias ModifyCertificatesOperationHTTPRequestInput = QueryHTTPRequestI
  Type to handle the input to the ModifyCurrentDBClusterCapacity operation in a HTTP client.
  */
 public typealias ModifyCurrentDBClusterCapacityOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyCustomDBEngineVersion operation in a HTTP client.
+ */
+public typealias ModifyCustomDBEngineVersionOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyDBCluster operation in a HTTP client.

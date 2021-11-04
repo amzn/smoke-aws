@@ -373,12 +373,14 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getFlowLogsIntegrationTemplate = "GetFlowLogsIntegrationTemplate"
     case getGroupsForCapacityReservation = "GetGroupsForCapacityReservation"
     case getHostReservationPurchasePreview = "GetHostReservationPurchasePreview"
+    case getInstanceTypesFromInstanceRequirements = "GetInstanceTypesFromInstanceRequirements"
     case getLaunchTemplateData = "GetLaunchTemplateData"
     case getManagedPrefixListAssociations = "GetManagedPrefixListAssociations"
     case getManagedPrefixListEntries = "GetManagedPrefixListEntries"
     case getPasswordData = "GetPasswordData"
     case getReservedInstancesExchangeQuote = "GetReservedInstancesExchangeQuote"
     case getSerialConsoleAccessStatus = "GetSerialConsoleAccessStatus"
+    case getSpotPlacementScores = "GetSpotPlacementScores"
     case getSubnetCidrReservations = "GetSubnetCidrReservations"
     case getTransitGatewayAttachmentPropagations = "GetTransitGatewayAttachmentPropagations"
     case getTransitGatewayMulticastDomainAssociations = "GetTransitGatewayMulticastDomainAssociations"
@@ -1198,6 +1200,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getHostReservationPurchasePreview:
             return "/"
+        case .getInstanceTypesFromInstanceRequirements:
+            return "/"
         case .getLaunchTemplateData:
             return "/"
         case .getManagedPrefixListAssociations:
@@ -1209,6 +1213,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getReservedInstancesExchangeQuote:
             return "/"
         case .getSerialConsoleAccessStatus:
+            return "/"
+        case .getSpotPlacementScores:
             return "/"
         case .getSubnetCidrReservations:
             return "/"

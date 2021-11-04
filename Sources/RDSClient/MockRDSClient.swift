@@ -57,6 +57,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let copyOptionGroupSyncOverride: CopyOptionGroupSyncType?
     let createCustomAvailabilityZoneAsyncOverride: CreateCustomAvailabilityZoneAsyncType?
     let createCustomAvailabilityZoneSyncOverride: CreateCustomAvailabilityZoneSyncType?
+    let createCustomDBEngineVersionAsyncOverride: CreateCustomDBEngineVersionAsyncType?
+    let createCustomDBEngineVersionSyncOverride: CreateCustomDBEngineVersionSyncType?
     let createDBClusterAsyncOverride: CreateDBClusterAsyncType?
     let createDBClusterSyncOverride: CreateDBClusterSyncType?
     let createDBClusterEndpointAsyncOverride: CreateDBClusterEndpointAsyncType?
@@ -89,6 +91,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let createOptionGroupSyncOverride: CreateOptionGroupSyncType?
     let deleteCustomAvailabilityZoneAsyncOverride: DeleteCustomAvailabilityZoneAsyncType?
     let deleteCustomAvailabilityZoneSyncOverride: DeleteCustomAvailabilityZoneSyncType?
+    let deleteCustomDBEngineVersionAsyncOverride: DeleteCustomDBEngineVersionAsyncType?
+    let deleteCustomDBEngineVersionSyncOverride: DeleteCustomDBEngineVersionSyncType?
     let deleteDBClusterAsyncOverride: DeleteDBClusterAsyncType?
     let deleteDBClusterSyncOverride: DeleteDBClusterSyncType?
     let deleteDBClusterEndpointAsyncOverride: DeleteDBClusterEndpointAsyncType?
@@ -217,6 +221,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let modifyCertificatesSyncOverride: ModifyCertificatesSyncType?
     let modifyCurrentDBClusterCapacityAsyncOverride: ModifyCurrentDBClusterCapacityAsyncType?
     let modifyCurrentDBClusterCapacitySyncOverride: ModifyCurrentDBClusterCapacitySyncType?
+    let modifyCustomDBEngineVersionAsyncOverride: ModifyCustomDBEngineVersionAsyncType?
+    let modifyCustomDBEngineVersionSyncOverride: ModifyCustomDBEngineVersionSyncType?
     let modifyDBClusterAsyncOverride: ModifyDBClusterAsyncType?
     let modifyDBClusterSyncOverride: ModifyDBClusterSyncType?
     let modifyDBClusterEndpointAsyncOverride: ModifyDBClusterEndpointAsyncType?
@@ -337,6 +343,8 @@ public struct MockRDSClient: RDSClientProtocol {
             copyOptionGroupSync: CopyOptionGroupSyncType? = nil,
             createCustomAvailabilityZoneAsync: CreateCustomAvailabilityZoneAsyncType? = nil,
             createCustomAvailabilityZoneSync: CreateCustomAvailabilityZoneSyncType? = nil,
+            createCustomDBEngineVersionAsync: CreateCustomDBEngineVersionAsyncType? = nil,
+            createCustomDBEngineVersionSync: CreateCustomDBEngineVersionSyncType? = nil,
             createDBClusterAsync: CreateDBClusterAsyncType? = nil,
             createDBClusterSync: CreateDBClusterSyncType? = nil,
             createDBClusterEndpointAsync: CreateDBClusterEndpointAsyncType? = nil,
@@ -369,6 +377,8 @@ public struct MockRDSClient: RDSClientProtocol {
             createOptionGroupSync: CreateOptionGroupSyncType? = nil,
             deleteCustomAvailabilityZoneAsync: DeleteCustomAvailabilityZoneAsyncType? = nil,
             deleteCustomAvailabilityZoneSync: DeleteCustomAvailabilityZoneSyncType? = nil,
+            deleteCustomDBEngineVersionAsync: DeleteCustomDBEngineVersionAsyncType? = nil,
+            deleteCustomDBEngineVersionSync: DeleteCustomDBEngineVersionSyncType? = nil,
             deleteDBClusterAsync: DeleteDBClusterAsyncType? = nil,
             deleteDBClusterSync: DeleteDBClusterSyncType? = nil,
             deleteDBClusterEndpointAsync: DeleteDBClusterEndpointAsyncType? = nil,
@@ -497,6 +507,8 @@ public struct MockRDSClient: RDSClientProtocol {
             modifyCertificatesSync: ModifyCertificatesSyncType? = nil,
             modifyCurrentDBClusterCapacityAsync: ModifyCurrentDBClusterCapacityAsyncType? = nil,
             modifyCurrentDBClusterCapacitySync: ModifyCurrentDBClusterCapacitySyncType? = nil,
+            modifyCustomDBEngineVersionAsync: ModifyCustomDBEngineVersionAsyncType? = nil,
+            modifyCustomDBEngineVersionSync: ModifyCustomDBEngineVersionSyncType? = nil,
             modifyDBClusterAsync: ModifyDBClusterAsyncType? = nil,
             modifyDBClusterSync: ModifyDBClusterSyncType? = nil,
             modifyDBClusterEndpointAsync: ModifyDBClusterEndpointAsyncType? = nil,
@@ -611,6 +623,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.copyOptionGroupSyncOverride = copyOptionGroupSync
         self.createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsync
         self.createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSync
+        self.createCustomDBEngineVersionAsyncOverride = createCustomDBEngineVersionAsync
+        self.createCustomDBEngineVersionSyncOverride = createCustomDBEngineVersionSync
         self.createDBClusterAsyncOverride = createDBClusterAsync
         self.createDBClusterSyncOverride = createDBClusterSync
         self.createDBClusterEndpointAsyncOverride = createDBClusterEndpointAsync
@@ -643,6 +657,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.createOptionGroupSyncOverride = createOptionGroupSync
         self.deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsync
         self.deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSync
+        self.deleteCustomDBEngineVersionAsyncOverride = deleteCustomDBEngineVersionAsync
+        self.deleteCustomDBEngineVersionSyncOverride = deleteCustomDBEngineVersionSync
         self.deleteDBClusterAsyncOverride = deleteDBClusterAsync
         self.deleteDBClusterSyncOverride = deleteDBClusterSync
         self.deleteDBClusterEndpointAsyncOverride = deleteDBClusterEndpointAsync
@@ -771,6 +787,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.modifyCertificatesSyncOverride = modifyCertificatesSync
         self.modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsync
         self.modifyCurrentDBClusterCapacitySyncOverride = modifyCurrentDBClusterCapacitySync
+        self.modifyCustomDBEngineVersionAsyncOverride = modifyCustomDBEngineVersionAsync
+        self.modifyCustomDBEngineVersionSyncOverride = modifyCustomDBEngineVersionSync
         self.modifyDBClusterAsyncOverride = modifyDBClusterAsync
         self.modifyDBClusterSyncOverride = modifyDBClusterSync
         self.modifyDBClusterEndpointAsyncOverride = modifyDBClusterEndpointAsync
@@ -1399,6 +1417,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
+    }
+
+    /**
+     Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForCreateCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForCreateCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomDBEngineVersionAsync(
+            input: RDSModel.CreateCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForCreateCustomDBEngineVersion, RDSError>) -> ()) throws {
+        if let createCustomDBEngineVersionAsyncOverride = createCustomDBEngineVersionAsyncOverride {
+            return try createCustomDBEngineVersionAsyncOverride(input, completion)
+        }
+
+        let result = DBEngineVersionForCreateCustomDBEngineVersion.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForCreateCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     */
+    public func createCustomDBEngineVersionSync(
+            input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion {
+        if let createCustomDBEngineVersionSyncOverride = createCustomDBEngineVersionSyncOverride {
+            return try createCustomDBEngineVersionSyncOverride(input)
+        }
+
+        return DBEngineVersionForCreateCustomDBEngineVersion.__default
     }
 
     /**
@@ -2039,6 +2097,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
+    }
+
+    /**
+     Invokes the DeleteCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForDeleteCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForDeleteCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func deleteCustomDBEngineVersionAsync(
+            input: RDSModel.DeleteCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion, RDSError>) -> ()) throws {
+        if let deleteCustomDBEngineVersionAsyncOverride = deleteCustomDBEngineVersionAsyncOverride {
+            return try deleteCustomDBEngineVersionAsyncOverride(input, completion)
+        }
+
+        let result = DBEngineVersionForDeleteCustomDBEngineVersion.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForDeleteCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func deleteCustomDBEngineVersionSync(
+            input: RDSModel.DeleteCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion {
+        if let deleteCustomDBEngineVersionSyncOverride = deleteCustomDBEngineVersionSyncOverride {
+            return try deleteCustomDBEngineVersionSyncOverride(input)
+        }
+
+        return DBEngineVersionForDeleteCustomDBEngineVersion.__default
     }
 
     /**
@@ -4551,6 +4649,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return DBClusterCapacityInfoForModifyCurrentDBClusterCapacity.__default
+    }
+
+    /**
+     Invokes the ModifyCustomDBEngineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyCustomDBEngineVersionMessage object being passed to this operation.
+         - completion: The DBEngineVersionForModifyCustomDBEngineVersion object or an error will be passed to this 
+           callback when the operation is complete. The DBEngineVersionForModifyCustomDBEngineVersion
+           object will be validated before being returned to caller.
+           The possible errors are: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func modifyCustomDBEngineVersionAsync(
+            input: RDSModel.ModifyCustomDBEngineVersionMessage, 
+            completion: @escaping (Result<RDSModel.DBEngineVersionForModifyCustomDBEngineVersion, RDSError>) -> ()) throws {
+        if let modifyCustomDBEngineVersionAsyncOverride = modifyCustomDBEngineVersionAsyncOverride {
+            return try modifyCustomDBEngineVersionAsyncOverride(input, completion)
+        }
+
+        let result = DBEngineVersionForModifyCustomDBEngineVersion.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyCustomDBEngineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyCustomDBEngineVersionMessage object being passed to this operation.
+     - Returns: The DBEngineVersionForModifyCustomDBEngineVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: customDBEngineVersionNotFound, invalidCustomDBEngineVersionState.
+     */
+    public func modifyCustomDBEngineVersionSync(
+            input: RDSModel.ModifyCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForModifyCustomDBEngineVersion {
+        if let modifyCustomDBEngineVersionSyncOverride = modifyCustomDBEngineVersionSyncOverride {
+            return try modifyCustomDBEngineVersionSyncOverride(input)
+        }
+
+        return DBEngineVersionForModifyCustomDBEngineVersion.__default
     }
 
     /**
