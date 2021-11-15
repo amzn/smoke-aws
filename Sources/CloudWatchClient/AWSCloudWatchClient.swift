@@ -91,6 +91,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -104,7 +105,8 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service

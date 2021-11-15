@@ -55,6 +55,7 @@ public struct AWSAppConfigClientGenerator {
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<AppConfigModelOperations>
                     = SmokeAWSClientReportingConfiguration<AppConfigModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -70,14 +71,16 @@ public struct AWSAppConfigClientGenerator {
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.dataHttpClient = HTTPOperationsClient(
             endpointHostName: endpointHostName,
             endpointPort: endpointPort,
             contentType: contentType,
             clientDelegate: clientDelegateForDataHttpClient,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target

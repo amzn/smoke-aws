@@ -91,6 +91,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -102,7 +103,8 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
