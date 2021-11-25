@@ -68,18 +68,42 @@ public struct Applications: Codable, Equatable {
     }
 }
 
-public struct BadRequestException: Codable, Equatable {
-    public var message: String?
+public struct BadRequestDetails: Codable, Equatable {
+    public var invalidConfiguration: InvalidConfigurationDetailList?
 
-    public init(message: String? = nil) {
-        self.message = message
+    public init(invalidConfiguration: InvalidConfigurationDetailList? = nil) {
+        self.invalidConfiguration = invalidConfiguration
     }
 
     enum CodingKeys: String, CodingKey {
-        case message = "Message"
+        case invalidConfiguration = "InvalidConfiguration"
     }
 
     public func validate() throws {
+    }
+}
+
+public struct BadRequestException: Codable, Equatable {
+    public var details: BadRequestDetails?
+    public var message: String?
+    public var reason: BadRequestReason?
+
+    public init(details: BadRequestDetails? = nil,
+                message: String? = nil,
+                reason: BadRequestReason? = nil) {
+        self.details = details
+        self.message = message
+        self.reason = reason
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case details = "Details"
+        case message = "Message"
+        case reason = "Reason"
+    }
+
+    public func validate() throws {
+        try details?.validate()
     }
 }
 
@@ -114,6 +138,7 @@ public struct ConfigurationProfile: Codable, Equatable {
     public var locationUri: Uri?
     public var name: Name?
     public var retrievalRoleArn: RoleArn?
+    public var type: ConfigurationProfileType?
     public var validators: ValidatorList?
 
     public init(applicationId: Id? = nil,
@@ -122,6 +147,7 @@ public struct ConfigurationProfile: Codable, Equatable {
                 locationUri: Uri? = nil,
                 name: Name? = nil,
                 retrievalRoleArn: RoleArn? = nil,
+                type: ConfigurationProfileType? = nil,
                 validators: ValidatorList? = nil) {
         self.applicationId = applicationId
         self.description = description
@@ -129,6 +155,7 @@ public struct ConfigurationProfile: Codable, Equatable {
         self.locationUri = locationUri
         self.name = name
         self.retrievalRoleArn = retrievalRoleArn
+        self.type = type
         self.validators = validators
     }
 
@@ -139,6 +166,7 @@ public struct ConfigurationProfile: Codable, Equatable {
         case locationUri = "LocationUri"
         case name = "Name"
         case retrievalRoleArn = "RetrievalRoleArn"
+        case type = "Type"
         case validators = "Validators"
     }
 
@@ -149,6 +177,7 @@ public struct ConfigurationProfile: Codable, Equatable {
         try locationUri?.validateAsUri()
         try name?.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
+        try type?.validateAsConfigurationProfileType()
         try validators?.validateAsValidatorList()
     }
 }
@@ -158,17 +187,20 @@ public struct ConfigurationProfileSummary: Codable, Equatable {
     public var id: Id?
     public var locationUri: Uri?
     public var name: Name?
+    public var type: ConfigurationProfileType?
     public var validatorTypes: ValidatorTypeList?
 
     public init(applicationId: Id? = nil,
                 id: Id? = nil,
                 locationUri: Uri? = nil,
                 name: Name? = nil,
+                type: ConfigurationProfileType? = nil,
                 validatorTypes: ValidatorTypeList? = nil) {
         self.applicationId = applicationId
         self.id = id
         self.locationUri = locationUri
         self.name = name
+        self.type = type
         self.validatorTypes = validatorTypes
     }
 
@@ -177,6 +209,7 @@ public struct ConfigurationProfileSummary: Codable, Equatable {
         case id = "Id"
         case locationUri = "LocationUri"
         case name = "Name"
+        case type = "Type"
         case validatorTypes = "ValidatorTypes"
     }
 
@@ -185,6 +218,7 @@ public struct ConfigurationProfileSummary: Codable, Equatable {
         try id?.validateAsId()
         try locationUri?.validateAsUri()
         try name?.validateAsName()
+        try type?.validateAsConfigurationProfileType()
         try validatorTypes?.validateAsValidatorTypeList()
     }
 }
@@ -256,6 +290,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
     public var name: Name
     public var retrievalRoleArn: RoleArn?
     public var tags: TagMap?
+    public var type: ConfigurationProfileType?
     public var validators: ValidatorList?
 
     public init(applicationId: Id,
@@ -264,6 +299,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
                 name: Name,
                 retrievalRoleArn: RoleArn? = nil,
                 tags: TagMap? = nil,
+                type: ConfigurationProfileType? = nil,
                 validators: ValidatorList? = nil) {
         self.applicationId = applicationId
         self.description = description
@@ -271,6 +307,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
         self.name = name
         self.retrievalRoleArn = retrievalRoleArn
         self.tags = tags
+        self.type = type
         self.validators = validators
     }
 
@@ -281,6 +318,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
         case name = "Name"
         case retrievalRoleArn = "RetrievalRoleArn"
         case tags = "Tags"
+        case type = "Type"
         case validators = "Validators"
     }
 
@@ -290,6 +328,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
         try locationUri.validateAsUri()
         try name.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
+        try type?.validateAsConfigurationProfileType()
         try validators?.validateAsValidatorList()
     }
 }
@@ -1117,6 +1156,33 @@ public struct InternalServerException: Codable, Equatable {
     }
 }
 
+public struct InvalidConfigurationDetail: Codable, Equatable {
+    public var constraint: String?
+    public var location: String?
+    public var reason: String?
+    public var type: String?
+
+    public init(constraint: String? = nil,
+                location: String? = nil,
+                reason: String? = nil,
+                type: String? = nil) {
+        self.constraint = constraint
+        self.location = location
+        self.reason = reason
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case constraint = "Constraint"
+        case location = "Location"
+        case reason = "Reason"
+        case type = "Type"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ListApplicationsRequest: Codable, Equatable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -1142,25 +1208,30 @@ public struct ListConfigurationProfilesRequest: Codable, Equatable {
     public var applicationId: Id
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
+    public var type: ConfigurationProfileType?
 
     public init(applicationId: Id,
                 maxResults: MaxResults? = nil,
-                nextToken: NextToken? = nil) {
+                nextToken: NextToken? = nil,
+                type: ConfigurationProfileType? = nil) {
         self.applicationId = applicationId
         self.maxResults = maxResults
         self.nextToken = nextToken
+        self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case applicationId = "ApplicationId"
         case maxResults = "max_results"
         case nextToken = "next_token"
+        case type
     }
 
     public func validate() throws {
         try applicationId.validateAsId()
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
+        try type?.validateAsConfigurationProfileType()
     }
 }
 
@@ -1290,10 +1361,10 @@ public struct ListTagsForResourceRequest: Codable, Equatable {
 }
 
 public struct Monitor: Codable, Equatable {
-    public var alarmArn: Arn?
+    public var alarmArn: StringWithLengthBetween1And2048
     public var alarmRoleArn: RoleArn?
 
-    public init(alarmArn: Arn? = nil,
+    public init(alarmArn: StringWithLengthBetween1And2048,
                 alarmRoleArn: RoleArn? = nil) {
         self.alarmArn = alarmArn
         self.alarmRoleArn = alarmRoleArn
@@ -1305,7 +1376,7 @@ public struct Monitor: Codable, Equatable {
     }
 
     public func validate() throws {
-        try alarmArn?.validateAsArn()
+        try alarmArn.validateAsStringWithLengthBetween1And2048()
         try alarmRoleArn?.validateAsRoleArn()
     }
 }

@@ -33,6 +33,11 @@ public typealias ActionsList = [Action]
 public typealias AmazonResourceName = String
 
 /**
+ Type definition for the BatchResultErrorEntryList field.
+ */
+public typealias BatchResultErrorEntryList = [BatchResultErrorEntry]
+
+/**
  Type definition for the Binary field.
  */
 public typealias Binary = Data
@@ -151,6 +156,16 @@ public typealias PhoneNumberList = [PhoneNumber]
  Type definition for the PhoneNumberString field.
  */
 public typealias PhoneNumberString = String
+
+/**
+ Type definition for the PublishBatchRequestEntryList field.
+ */
+public typealias PublishBatchRequestEntryList = [PublishBatchRequestEntry]
+
+/**
+ Type definition for the PublishBatchResultEntryList field.
+ */
+public typealias PublishBatchResultEntryList = [PublishBatchResultEntry]
 
 /**
  Enumeration restricting the values of the RouteType field.

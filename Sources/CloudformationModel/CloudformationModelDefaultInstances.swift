@@ -440,6 +440,7 @@ public extension CreateStackSetInput {
             clientRequestToken: nil,
             description: nil,
             executionRoleName: nil,
+            managedExecution: nil,
             parameters: nil,
             permissionModel: nil,
             stackId: nil,
@@ -1626,7 +1627,9 @@ public extension ImportStacksToStackSetInput {
             callAs: nil,
             operationId: nil,
             operationPreferences: nil,
-            stackIds: [],
+            organizationalUnitIds: nil,
+            stackIds: nil,
+            stackIdsUrl: nil,
             stackSetName: "")
 
         return defaultInstance
@@ -2201,6 +2204,18 @@ public extension LoggingConfig {
         let defaultInstance = CloudformationModel.LoggingConfig(
             logGroupName: "0",
             logRoleArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ManagedExecution {
+    /**
+     Default instance of the ManagedExecution structure.
+     */
+    static let __default: CloudformationModel.ManagedExecution = {
+        let defaultInstance = CloudformationModel.ManagedExecution(
+            active: nil)
 
         return defaultInstance
     }()
@@ -3076,6 +3091,7 @@ public extension StackSet {
             capabilities: nil,
             description: nil,
             executionRoleName: nil,
+            managedExecution: nil,
             organizationalUnitIds: nil,
             parameters: nil,
             permissionModel: nil,
@@ -3215,6 +3231,7 @@ public extension StackSetSummary {
             description: nil,
             driftStatus: nil,
             lastDriftCheckTimestamp: nil,
+            managedExecution: nil,
             permissionModel: nil,
             stackSetId: nil,
             stackSetName: nil,
@@ -3595,6 +3612,7 @@ public extension UpdateStackSetInput {
             deploymentTargets: nil,
             description: nil,
             executionRoleName: nil,
+            managedExecution: nil,
             operationId: nil,
             operationPreferences: nil,
             parameters: nil,

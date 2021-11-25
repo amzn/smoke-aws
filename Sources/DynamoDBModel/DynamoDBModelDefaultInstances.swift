@@ -254,6 +254,7 @@ public extension BatchExecuteStatementInput {
      */
     static let __default: DynamoDBModel.BatchExecuteStatementInput = {
         let defaultInstance = DynamoDBModel.BatchExecuteStatementInput(
+            returnConsumedCapacity: nil,
             statements: [BatchStatementRequest.__default])
 
         return defaultInstance
@@ -266,6 +267,7 @@ public extension BatchExecuteStatementOutput {
      */
     static let __default: DynamoDBModel.BatchExecuteStatementOutput = {
         let defaultInstance = DynamoDBModel.BatchExecuteStatementOutput(
+            consumedCapacity: nil,
             responses: nil)
 
         return defaultInstance
@@ -1112,6 +1114,7 @@ public extension ExecuteStatementInput {
             consistentRead: nil,
             nextToken: nil,
             parameters: nil,
+            returnConsumedCapacity: nil,
             statement: "0")
 
         return defaultInstance
@@ -1124,6 +1127,7 @@ public extension ExecuteStatementOutput {
      */
     static let __default: DynamoDBModel.ExecuteStatementOutput = {
         let defaultInstance = DynamoDBModel.ExecuteStatementOutput(
+            consumedCapacity: nil,
             items: nil,
             nextToken: nil)
 
@@ -1138,6 +1142,7 @@ public extension ExecuteTransactionInput {
     static let __default: DynamoDBModel.ExecuteTransactionInput = {
         let defaultInstance = DynamoDBModel.ExecuteTransactionInput(
             clientRequestToken: nil,
+            returnConsumedCapacity: nil,
             transactStatements: [ParameterizedStatement.__default])
 
         return defaultInstance
@@ -1150,6 +1155,7 @@ public extension ExecuteTransactionOutput {
      */
     static let __default: DynamoDBModel.ExecuteTransactionOutput = {
         let defaultInstance = DynamoDBModel.ExecuteTransactionOutput(
+            consumedCapacity: nil,
             responses: nil)
 
         return defaultInstance

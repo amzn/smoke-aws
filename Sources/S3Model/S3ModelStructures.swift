@@ -3908,16 +3908,24 @@ public struct LifecycleRule: Codable, Equatable {
 }
 
 public struct LifecycleRuleAndOperator: Codable, Equatable {
+    public var objectSizeGreaterThan: ObjectSizeGreaterThanBytes?
+    public var objectSizeLessThan: ObjectSizeLessThanBytes?
     public var prefix: Prefix?
     public var tags: TagSet?
 
-    public init(prefix: Prefix? = nil,
+    public init(objectSizeGreaterThan: ObjectSizeGreaterThanBytes? = nil,
+                objectSizeLessThan: ObjectSizeLessThanBytes? = nil,
+                prefix: Prefix? = nil,
                 tags: TagSet? = nil) {
+        self.objectSizeGreaterThan = objectSizeGreaterThan
+        self.objectSizeLessThan = objectSizeLessThan
         self.prefix = prefix
         self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
+        case objectSizeGreaterThan = "ObjectSizeGreaterThan"
+        case objectSizeLessThan = "ObjectSizeLessThan"
         case prefix = "Prefix"
         case tags = "Tag"
     }
@@ -3928,19 +3936,27 @@ public struct LifecycleRuleAndOperator: Codable, Equatable {
 
 public struct LifecycleRuleFilter: Codable, Equatable {
     public var and: LifecycleRuleAndOperator?
+    public var objectSizeGreaterThan: ObjectSizeGreaterThanBytes?
+    public var objectSizeLessThan: ObjectSizeLessThanBytes?
     public var prefix: Prefix?
     public var tag: Tag?
 
     public init(and: LifecycleRuleAndOperator? = nil,
+                objectSizeGreaterThan: ObjectSizeGreaterThanBytes? = nil,
+                objectSizeLessThan: ObjectSizeLessThanBytes? = nil,
                 prefix: Prefix? = nil,
                 tag: Tag? = nil) {
         self.and = and
+        self.objectSizeGreaterThan = objectSizeGreaterThan
+        self.objectSizeLessThan = objectSizeLessThan
         self.prefix = prefix
         self.tag = tag
     }
 
     enum CodingKeys: String, CodingKey {
         case and = "And"
+        case objectSizeGreaterThan = "ObjectSizeGreaterThan"
+        case objectSizeLessThan = "ObjectSizeLessThan"
         case prefix = "Prefix"
         case tag = "Tag"
     }
@@ -4889,13 +4905,17 @@ public struct NoSuchUpload: Codable, Equatable {
 }
 
 public struct NoncurrentVersionExpiration: Codable, Equatable {
+    public var newerNoncurrentVersions: VersionCount?
     public var noncurrentDays: Days?
 
-    public init(noncurrentDays: Days? = nil) {
+    public init(newerNoncurrentVersions: VersionCount? = nil,
+                noncurrentDays: Days? = nil) {
+        self.newerNoncurrentVersions = newerNoncurrentVersions
         self.noncurrentDays = noncurrentDays
     }
 
     enum CodingKeys: String, CodingKey {
+        case newerNoncurrentVersions = "NewerNoncurrentVersions"
         case noncurrentDays = "NoncurrentDays"
     }
 
@@ -4904,16 +4924,20 @@ public struct NoncurrentVersionExpiration: Codable, Equatable {
 }
 
 public struct NoncurrentVersionTransition: Codable, Equatable {
+    public var newerNoncurrentVersions: VersionCount?
     public var noncurrentDays: Days?
     public var storageClass: TransitionStorageClass?
 
-    public init(noncurrentDays: Days? = nil,
+    public init(newerNoncurrentVersions: VersionCount? = nil,
+                noncurrentDays: Days? = nil,
                 storageClass: TransitionStorageClass? = nil) {
+        self.newerNoncurrentVersions = newerNoncurrentVersions
         self.noncurrentDays = noncurrentDays
         self.storageClass = storageClass
     }
 
     enum CodingKeys: String, CodingKey {
+        case newerNoncurrentVersions = "NewerNoncurrentVersions"
         case noncurrentDays = "NoncurrentDays"
         case storageClass = "StorageClass"
     }

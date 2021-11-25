@@ -56,6 +56,7 @@ public struct SimpleNotificationOperationsReporting {
     public let listTopics: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let optInPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let publish: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let publishBatch: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let removePermission: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let setEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let setPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
@@ -125,6 +126,8 @@ public struct SimpleNotificationOperationsReporting {
             clientName: clientName, operation: .optInPhoneNumber, configuration: reportingConfiguration)
         self.publish = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .publish, configuration: reportingConfiguration)
+        self.publishBatch = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .publishBatch, configuration: reportingConfiguration)
         self.removePermission = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .removePermission, configuration: reportingConfiguration)
         self.setEndpointAttributes = StandardSmokeAWSOperationReporting(

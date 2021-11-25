@@ -775,6 +775,7 @@ public struct CreateStackSetInput: Codable, Equatable {
     public var clientRequestToken: ClientRequestToken?
     public var description: Description?
     public var executionRoleName: ExecutionRoleName?
+    public var managedExecution: ManagedExecution?
     public var parameters: Parameters?
     public var permissionModel: PermissionModels?
     public var stackId: StackId?
@@ -790,6 +791,7 @@ public struct CreateStackSetInput: Codable, Equatable {
                 clientRequestToken: ClientRequestToken? = nil,
                 description: Description? = nil,
                 executionRoleName: ExecutionRoleName? = nil,
+                managedExecution: ManagedExecution? = nil,
                 parameters: Parameters? = nil,
                 permissionModel: PermissionModels? = nil,
                 stackId: StackId? = nil,
@@ -804,6 +806,7 @@ public struct CreateStackSetInput: Codable, Equatable {
         self.clientRequestToken = clientRequestToken
         self.description = description
         self.executionRoleName = executionRoleName
+        self.managedExecution = managedExecution
         self.parameters = parameters
         self.permissionModel = permissionModel
         self.stackId = stackId
@@ -821,6 +824,7 @@ public struct CreateStackSetInput: Codable, Equatable {
         case clientRequestToken = "ClientRequestToken"
         case description = "Description"
         case executionRoleName = "ExecutionRoleName"
+        case managedExecution = "ManagedExecution"
         case parameters = "Parameters"
         case permissionModel = "PermissionModel"
         case stackId = "StackId"
@@ -836,6 +840,7 @@ public struct CreateStackSetInput: Codable, Equatable {
         try clientRequestToken?.validateAsClientRequestToken()
         try description?.validateAsDescription()
         try executionRoleName?.validateAsExecutionRoleName()
+        try managedExecution?.validate()
         try tags?.validateAsTags()
         try templateBody?.validateAsTemplateBody()
         try templateURL?.validateAsTemplateURL()
@@ -2747,18 +2752,24 @@ public struct ImportStacksToStackSetInput: Codable, Equatable {
     public var callAs: CallAs?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
-    public var stackIds: StackIdList
+    public var organizationalUnitIds: OrganizationalUnitIdList?
+    public var stackIds: StackIdList?
+    public var stackIdsUrl: StackIdsUrl?
     public var stackSetName: StackSetNameOrId
 
     public init(callAs: CallAs? = nil,
                 operationId: ClientRequestToken? = nil,
                 operationPreferences: StackSetOperationPreferences? = nil,
-                stackIds: StackIdList,
+                organizationalUnitIds: OrganizationalUnitIdList? = nil,
+                stackIds: StackIdList? = nil,
+                stackIdsUrl: StackIdsUrl? = nil,
                 stackSetName: StackSetNameOrId) {
         self.callAs = callAs
         self.operationId = operationId
         self.operationPreferences = operationPreferences
+        self.organizationalUnitIds = organizationalUnitIds
         self.stackIds = stackIds
+        self.stackIdsUrl = stackIdsUrl
         self.stackSetName = stackSetName
     }
 
@@ -2766,13 +2777,16 @@ public struct ImportStacksToStackSetInput: Codable, Equatable {
         case callAs = "CallAs"
         case operationId = "OperationId"
         case operationPreferences = "OperationPreferences"
+        case organizationalUnitIds = "OrganizationalUnitIds"
         case stackIds = "StackIds"
+        case stackIdsUrl = "StackIdsUrl"
         case stackSetName = "StackSetName"
     }
 
     public func validate() throws {
         try operationId?.validateAsClientRequestToken()
         try operationPreferences?.validate()
+        try stackIdsUrl?.validateAsStackIdsUrl()
         try stackSetName.validateAsStackSetNameOrId()
     }
 }
@@ -3662,6 +3676,21 @@ public struct LoggingConfig: Codable, Equatable {
     public func validate() throws {
         try logGroupName.validateAsLogGroupName()
         try logRoleArn.validateAsRoleArn()
+    }
+}
+
+public struct ManagedExecution: Codable, Equatable {
+    public var active: ManagedExecutionNullable?
+
+    public init(active: ManagedExecutionNullable? = nil) {
+        self.active = active
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case active = "Active"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -5228,6 +5257,7 @@ public struct StackSet: Codable, Equatable {
     public var capabilities: Capabilities?
     public var description: Description?
     public var executionRoleName: ExecutionRoleName?
+    public var managedExecution: ManagedExecution?
     public var organizationalUnitIds: OrganizationalUnitIdList?
     public var parameters: Parameters?
     public var permissionModel: PermissionModels?
@@ -5244,6 +5274,7 @@ public struct StackSet: Codable, Equatable {
                 capabilities: Capabilities? = nil,
                 description: Description? = nil,
                 executionRoleName: ExecutionRoleName? = nil,
+                managedExecution: ManagedExecution? = nil,
                 organizationalUnitIds: OrganizationalUnitIdList? = nil,
                 parameters: Parameters? = nil,
                 permissionModel: PermissionModels? = nil,
@@ -5259,6 +5290,7 @@ public struct StackSet: Codable, Equatable {
         self.capabilities = capabilities
         self.description = description
         self.executionRoleName = executionRoleName
+        self.managedExecution = managedExecution
         self.organizationalUnitIds = organizationalUnitIds
         self.parameters = parameters
         self.permissionModel = permissionModel
@@ -5277,6 +5309,7 @@ public struct StackSet: Codable, Equatable {
         case capabilities = "Capabilities"
         case description = "Description"
         case executionRoleName = "ExecutionRoleName"
+        case managedExecution = "ManagedExecution"
         case organizationalUnitIds = "OrganizationalUnitIds"
         case parameters = "Parameters"
         case permissionModel = "PermissionModel"
@@ -5294,6 +5327,7 @@ public struct StackSet: Codable, Equatable {
         try autoDeployment?.validate()
         try description?.validateAsDescription()
         try executionRoleName?.validateAsExecutionRoleName()
+        try managedExecution?.validate()
         try stackSetDriftDetectionDetails?.validate()
         try tags?.validateAsTags()
         try templateBody?.validateAsTemplateBody()
@@ -5546,6 +5580,7 @@ public struct StackSetSummary: Codable, Equatable {
     public var description: Description?
     public var driftStatus: StackDriftStatus?
     public var lastDriftCheckTimestamp: Timestamp?
+    public var managedExecution: ManagedExecution?
     public var permissionModel: PermissionModels?
     public var stackSetId: StackSetId?
     public var stackSetName: StackSetName?
@@ -5555,6 +5590,7 @@ public struct StackSetSummary: Codable, Equatable {
                 description: Description? = nil,
                 driftStatus: StackDriftStatus? = nil,
                 lastDriftCheckTimestamp: Timestamp? = nil,
+                managedExecution: ManagedExecution? = nil,
                 permissionModel: PermissionModels? = nil,
                 stackSetId: StackSetId? = nil,
                 stackSetName: StackSetName? = nil,
@@ -5563,6 +5599,7 @@ public struct StackSetSummary: Codable, Equatable {
         self.description = description
         self.driftStatus = driftStatus
         self.lastDriftCheckTimestamp = lastDriftCheckTimestamp
+        self.managedExecution = managedExecution
         self.permissionModel = permissionModel
         self.stackSetId = stackSetId
         self.stackSetName = stackSetName
@@ -5574,6 +5611,7 @@ public struct StackSetSummary: Codable, Equatable {
         case description = "Description"
         case driftStatus = "DriftStatus"
         case lastDriftCheckTimestamp = "LastDriftCheckTimestamp"
+        case managedExecution = "ManagedExecution"
         case permissionModel = "PermissionModel"
         case stackSetId = "StackSetId"
         case stackSetName = "StackSetName"
@@ -5583,6 +5621,7 @@ public struct StackSetSummary: Codable, Equatable {
     public func validate() throws {
         try autoDeployment?.validate()
         try description?.validateAsDescription()
+        try managedExecution?.validate()
     }
 }
 
@@ -6276,6 +6315,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
     public var deploymentTargets: DeploymentTargets?
     public var description: Description?
     public var executionRoleName: ExecutionRoleName?
+    public var managedExecution: ManagedExecution?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
     public var parameters: Parameters?
@@ -6295,6 +6335,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
                 deploymentTargets: DeploymentTargets? = nil,
                 description: Description? = nil,
                 executionRoleName: ExecutionRoleName? = nil,
+                managedExecution: ManagedExecution? = nil,
                 operationId: ClientRequestToken? = nil,
                 operationPreferences: StackSetOperationPreferences? = nil,
                 parameters: Parameters? = nil,
@@ -6313,6 +6354,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
         self.deploymentTargets = deploymentTargets
         self.description = description
         self.executionRoleName = executionRoleName
+        self.managedExecution = managedExecution
         self.operationId = operationId
         self.operationPreferences = operationPreferences
         self.parameters = parameters
@@ -6334,6 +6376,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
         case deploymentTargets = "DeploymentTargets"
         case description = "Description"
         case executionRoleName = "ExecutionRoleName"
+        case managedExecution = "ManagedExecution"
         case operationId = "OperationId"
         case operationPreferences = "OperationPreferences"
         case parameters = "Parameters"
@@ -6352,6 +6395,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
         try deploymentTargets?.validate()
         try description?.validateAsDescription()
         try executionRoleName?.validateAsExecutionRoleName()
+        try managedExecution?.validate()
         try operationId?.validateAsClientRequestToken()
         try operationPreferences?.validate()
         try tags?.validateAsTags()

@@ -1985,6 +1985,11 @@ public typealias ModifyManagedPrefixListOperationHTTPRequestInput = QueryHTTPReq
 public typealias ModifyNetworkInterfaceAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyPrivateDnsNameOptions operation in a HTTP client.
+ */
+public typealias ModifyPrivateDnsNameOptionsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyReservedInstances operation in a HTTP client.
  */
 public typealias ModifyReservedInstancesOperationHTTPRequestInput = QueryHTTPRequestInput

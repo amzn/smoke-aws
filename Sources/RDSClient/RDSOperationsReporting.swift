@@ -143,6 +143,7 @@ public struct RDSOperationsReporting {
     public let promoteReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let promoteReadReplicaDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let purchaseReservedDBInstancesOffering: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let rebootDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let rebootDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let registerDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let removeFromGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -400,6 +401,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .promoteReadReplicaDBCluster, configuration: reportingConfiguration)
         self.purchaseReservedDBInstancesOffering = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .purchaseReservedDBInstancesOffering, configuration: reportingConfiguration)
+        self.rebootDBCluster = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .rebootDBCluster, configuration: reportingConfiguration)
         self.rebootDBInstance = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .rebootDBInstance, configuration: reportingConfiguration)
         self.registerDBProxyTargets = StandardSmokeAWSOperationReporting(

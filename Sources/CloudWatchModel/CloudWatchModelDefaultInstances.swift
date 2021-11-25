@@ -46,10 +46,8 @@ public extension AnomalyDetector {
     static let __default: CloudWatchModel.AnomalyDetector = {
         let defaultInstance = CloudWatchModel.AnomalyDetector(
             configuration: nil,
-            dimensions: nil,
-            metricName: nil,
-            namespace: nil,
-            stat: nil,
+            metricMathAnomalyDetector: nil,
+            singleMetricAnomalyDetector: nil,
             stateValue: nil)
 
         return defaultInstance
@@ -194,10 +192,8 @@ public extension DeleteAnomalyDetectorInput {
      */
     static let __default: CloudWatchModel.DeleteAnomalyDetectorInput = {
         let defaultInstance = CloudWatchModel.DeleteAnomalyDetectorInput(
-            dimensions: nil,
-            metricName: "0",
-            namespace: "0",
-            stat: "")
+            metricMathAnomalyDetector: nil,
+            singleMetricAnomalyDetector: nil)
 
         return defaultInstance
     }()
@@ -470,6 +466,7 @@ public extension DescribeAnomalyDetectorsInput {
      */
     static let __default: CloudWatchModel.DescribeAnomalyDetectorsInput = {
         let defaultInstance = CloudWatchModel.DescribeAnomalyDetectorsInput(
+            anomalyDetectorTypes: nil,
             dimensions: nil,
             maxResults: nil,
             metricName: nil,
@@ -1350,6 +1347,18 @@ public extension MetricDatum {
     }()
 }
 
+public extension MetricMathAnomalyDetector {
+    /**
+     Default instance of the MetricMathAnomalyDetector structure.
+     */
+    static let __default: CloudWatchModel.MetricMathAnomalyDetector = {
+        let defaultInstance = CloudWatchModel.MetricMathAnomalyDetector(
+            metricDataQueries: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MetricStat {
     /**
      Default instance of the MetricStat structure.
@@ -1429,10 +1438,8 @@ public extension PutAnomalyDetectorInput {
     static let __default: CloudWatchModel.PutAnomalyDetectorInput = {
         let defaultInstance = CloudWatchModel.PutAnomalyDetectorInput(
             configuration: nil,
-            dimensions: nil,
-            metricName: "0",
-            namespace: "0",
-            stat: "")
+            metricMathAnomalyDetector: nil,
+            singleMetricAnomalyDetector: nil)
 
         return defaultInstance
     }()
@@ -1691,6 +1698,21 @@ public extension SetAlarmStateInput {
             stateReason: "",
             stateReasonData: nil,
             stateValue: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension SingleMetricAnomalyDetector {
+    /**
+     Default instance of the SingleMetricAnomalyDetector structure.
+     */
+    static let __default: CloudWatchModel.SingleMetricAnomalyDetector = {
+        let defaultInstance = CloudWatchModel.SingleMetricAnomalyDetector(
+            dimensions: nil,
+            metricName: nil,
+            namespace: nil,
+            stat: nil)
 
         return defaultInstance
     }()

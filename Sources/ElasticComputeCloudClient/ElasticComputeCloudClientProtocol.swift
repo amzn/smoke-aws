@@ -1989,6 +1989,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyNetworkInterfaceAttributeAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias ModifyPrivateDnsNameOptionsSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest) throws -> ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult
+    typealias ModifyPrivateDnsNameOptionsAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyReservedInstancesSyncType = (
             _ input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult
     typealias ModifyReservedInstancesAsyncType = (
@@ -11679,6 +11684,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifyNetworkInterfaceAttributeSync(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws
+
+    /**
+     Invokes the ModifyPrivateDnsNameOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyPrivateDnsNameOptionsRequest object being passed to this operation.
+         - completion: The ModifyPrivateDnsNameOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyPrivateDnsNameOptionsResult
+           object will be validated before being returned to caller.
+     */
+    func modifyPrivateDnsNameOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyPrivateDnsNameOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyPrivateDnsNameOptionsRequest object being passed to this operation.
+     - Returns: The ModifyPrivateDnsNameOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyPrivateDnsNameOptionsSync(
+            input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest) throws -> ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult
 
     /**
      Invokes the ModifyReservedInstances operation returning immediately and passing the response to a callback.

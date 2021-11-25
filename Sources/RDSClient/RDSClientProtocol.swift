@@ -604,6 +604,11 @@ public protocol RDSClientProtocol {
     typealias PurchaseReservedDBInstancesOfferingAsyncType = (
             _ input: RDSModel.PurchaseReservedDBInstancesOfferingMessage, 
             _ completion: @escaping (Result<RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering, RDSError>) -> ()) throws -> ()
+    typealias RebootDBClusterSyncType = (
+            _ input: RDSModel.RebootDBClusterMessage) throws -> RDSModel.RebootDBClusterResultForRebootDBCluster
+    typealias RebootDBClusterAsyncType = (
+            _ input: RDSModel.RebootDBClusterMessage, 
+            _ completion: @escaping (Result<RDSModel.RebootDBClusterResultForRebootDBCluster, RDSError>) -> ()) throws -> ()
     typealias RebootDBInstanceSyncType = (
             _ input: RDSModel.RebootDBInstanceMessage) throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance
     typealias RebootDBInstanceAsyncType = (
@@ -3677,6 +3682,32 @@ public protocol RDSClientProtocol {
      */
     func purchaseReservedDBInstancesOfferingSync(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering
+
+    /**
+     Invokes the RebootDBCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RebootDBClusterMessage object being passed to this operation.
+         - completion: The RebootDBClusterResultForRebootDBCluster object or an error will be passed to this 
+           callback when the operation is complete. The RebootDBClusterResultForRebootDBCluster
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    func rebootDBClusterAsync(
+            input: RDSModel.RebootDBClusterMessage, 
+            completion: @escaping (Result<RDSModel.RebootDBClusterResultForRebootDBCluster, RDSError>) -> ()) throws
+
+    /**
+     Invokes the RebootDBCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RebootDBClusterMessage object being passed to this operation.
+     - Returns: The RebootDBClusterResultForRebootDBCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    func rebootDBClusterSync(
+            input: RDSModel.RebootDBClusterMessage) throws -> RDSModel.RebootDBClusterResultForRebootDBCluster
 
     /**
      Invokes the RebootDBInstance operation returning immediately and passing the response to a callback.

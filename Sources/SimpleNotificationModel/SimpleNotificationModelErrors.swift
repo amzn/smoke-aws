@@ -34,10 +34,14 @@ public extension Swift.Error {
 }
 
 private let authorizationErrorIdentity = "AuthorizationError"
+private let batchEntryIdsNotDistinctIdentity = "BatchEntryIdsNotDistinct"
+private let batchRequestTooLongIdentity = "BatchRequestTooLong"
 private let concurrentAccessIdentity = "ConcurrentAccess"
+private let emptyBatchRequestIdentity = "EmptyBatchRequest"
 private let endpointDisabledIdentity = "EndpointDisabled"
 private let filterPolicyLimitExceededIdentity = "FilterPolicyLimitExceeded"
 private let internalErrorIdentity = "InternalError"
+private let invalidBatchEntryIdIdentity = "InvalidBatchEntryId"
 private let invalidParameterIdentity = "InvalidParameter"
 private let invalidParameterValueIdentity = "ParameterValueInvalid"
 private let invalidSecurityIdentity = "InvalidSecurity"
@@ -56,6 +60,7 @@ private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceeded"
 private let tagLimitExceededIdentity = "TagLimitExceeded"
 private let tagPolicyIdentity = "TagPolicy"
 private let throttledIdentity = "Throttled"
+private let tooManyEntriesInBatchRequestIdentity = "TooManyEntriesInBatchRequest"
 private let topicLimitExceededIdentity = "TopicLimitExceeded"
 private let userErrorIdentity = "UserError"
 private let validationIdentity = "ValidationException"
@@ -64,10 +69,14 @@ private let __accessDeniedIdentity = "AccessDenied"
 
 public enum SimpleNotificationError: Swift.Error, Decodable {
     case authorizationError(AuthorizationErrorException)
+    case batchEntryIdsNotDistinct(BatchEntryIdsNotDistinctException)
+    case batchRequestTooLong(BatchRequestTooLongException)
     case concurrentAccess(ConcurrentAccessException)
+    case emptyBatchRequest(EmptyBatchRequestException)
     case endpointDisabled(EndpointDisabledException)
     case filterPolicyLimitExceeded(FilterPolicyLimitExceededException)
     case internalError(InternalErrorException)
+    case invalidBatchEntryId(InvalidBatchEntryIdException)
     case invalidParameter(InvalidParameterException)
     case invalidParameterValue(InvalidParameterValueException)
     case invalidSecurity(InvalidSecurityException)
@@ -86,6 +95,7 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case tagLimitExceeded(TagLimitExceededException)
     case tagPolicy(TagPolicyException)
     case throttled(ThrottledException)
+    case tooManyEntriesInBatchRequest(TooManyEntriesInBatchRequestException)
     case topicLimitExceeded(TopicLimitExceededException)
     case userError(UserErrorException)
     case validation(ValidationException)
@@ -112,9 +122,18 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case authorizationErrorIdentity:
             let errorPayload = try AuthorizationErrorException(from: decoder)
             self = SimpleNotificationError.authorizationError(errorPayload)
+        case batchEntryIdsNotDistinctIdentity:
+            let errorPayload = try BatchEntryIdsNotDistinctException(from: decoder)
+            self = SimpleNotificationError.batchEntryIdsNotDistinct(errorPayload)
+        case batchRequestTooLongIdentity:
+            let errorPayload = try BatchRequestTooLongException(from: decoder)
+            self = SimpleNotificationError.batchRequestTooLong(errorPayload)
         case concurrentAccessIdentity:
             let errorPayload = try ConcurrentAccessException(from: decoder)
             self = SimpleNotificationError.concurrentAccess(errorPayload)
+        case emptyBatchRequestIdentity:
+            let errorPayload = try EmptyBatchRequestException(from: decoder)
+            self = SimpleNotificationError.emptyBatchRequest(errorPayload)
         case endpointDisabledIdentity:
             let errorPayload = try EndpointDisabledException(from: decoder)
             self = SimpleNotificationError.endpointDisabled(errorPayload)
@@ -124,6 +143,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case internalErrorIdentity:
             let errorPayload = try InternalErrorException(from: decoder)
             self = SimpleNotificationError.internalError(errorPayload)
+        case invalidBatchEntryIdIdentity:
+            let errorPayload = try InvalidBatchEntryIdException(from: decoder)
+            self = SimpleNotificationError.invalidBatchEntryId(errorPayload)
         case invalidParameterIdentity:
             let errorPayload = try InvalidParameterException(from: decoder)
             self = SimpleNotificationError.invalidParameter(errorPayload)
@@ -178,6 +200,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case throttledIdentity:
             let errorPayload = try ThrottledException(from: decoder)
             self = SimpleNotificationError.throttled(errorPayload)
+        case tooManyEntriesInBatchRequestIdentity:
+            let errorPayload = try TooManyEntriesInBatchRequestException(from: decoder)
+            self = SimpleNotificationError.tooManyEntriesInBatchRequest(errorPayload)
         case topicLimitExceededIdentity:
             let errorPayload = try TopicLimitExceededException(from: decoder)
             self = SimpleNotificationError.topicLimitExceeded(errorPayload)

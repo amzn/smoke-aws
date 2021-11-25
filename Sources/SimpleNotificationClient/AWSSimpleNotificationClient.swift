@@ -91,6 +91,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -102,7 +103,8 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
@@ -2304,6 +2306,84 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: SimpleNotificationModelOperations.publish.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PublishBatch operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+         - completion: The PublishBatchResponseForPublishBatch object or an error will be passed to this 
+           callback when the operation is complete. The PublishBatchResponseForPublishBatch
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     */
+    public func publishBatchAsync(
+            input: SimpleNotificationModel.PublishBatchInput, 
+            completion: @escaping (Result<SimpleNotificationModel.PublishBatchResponseForPublishBatch, SimpleNotificationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishBatch,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishBatchOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.publishBatch.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PublishBatch operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+     - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     */
+    public func publishBatchSync(
+            input: SimpleNotificationModel.PublishBatchInput) throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishBatch,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishBatchOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.publishBatch.rawValue,
             version: apiVersion)
 
         do {

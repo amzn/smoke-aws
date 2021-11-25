@@ -165,6 +165,11 @@ public typealias OptInPhoneNumberOperationHTTPRequestInput = QueryHTTPRequestInp
 public typealias PublishOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the PublishBatch operation in a HTTP client.
+ */
+public typealias PublishBatchOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the RemovePermission operation in a HTTP client.
  */
 public typealias RemovePermissionOperationHTTPRequestInput = QueryHTTPRequestInput

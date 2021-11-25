@@ -814,6 +814,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
     let modifyManagedPrefixListSyncOverride: ModifyManagedPrefixListSyncType?
     let modifyNetworkInterfaceAttributeAsyncOverride: ModifyNetworkInterfaceAttributeAsyncType?
     let modifyNetworkInterfaceAttributeSyncOverride: ModifyNetworkInterfaceAttributeSyncType?
+    let modifyPrivateDnsNameOptionsAsyncOverride: ModifyPrivateDnsNameOptionsAsyncType?
+    let modifyPrivateDnsNameOptionsSyncOverride: ModifyPrivateDnsNameOptionsSyncType?
     let modifyReservedInstancesAsyncOverride: ModifyReservedInstancesAsyncType?
     let modifyReservedInstancesSyncOverride: ModifyReservedInstancesSyncType?
     let modifySecurityGroupRulesAsyncOverride: ModifySecurityGroupRulesAsyncType?
@@ -1766,6 +1768,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             modifyManagedPrefixListSync: ModifyManagedPrefixListSyncType? = nil,
             modifyNetworkInterfaceAttributeAsync: ModifyNetworkInterfaceAttributeAsyncType? = nil,
             modifyNetworkInterfaceAttributeSync: ModifyNetworkInterfaceAttributeSyncType? = nil,
+            modifyPrivateDnsNameOptionsAsync: ModifyPrivateDnsNameOptionsAsyncType? = nil,
+            modifyPrivateDnsNameOptionsSync: ModifyPrivateDnsNameOptionsSyncType? = nil,
             modifyReservedInstancesAsync: ModifyReservedInstancesAsyncType? = nil,
             modifyReservedInstancesSync: ModifyReservedInstancesSyncType? = nil,
             modifySecurityGroupRulesAsync: ModifySecurityGroupRulesAsyncType? = nil,
@@ -2713,6 +2717,8 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
         self.modifyManagedPrefixListSyncOverride = modifyManagedPrefixListSync
         self.modifyNetworkInterfaceAttributeAsyncOverride = modifyNetworkInterfaceAttributeAsync
         self.modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSync
+        self.modifyPrivateDnsNameOptionsAsyncOverride = modifyPrivateDnsNameOptionsAsync
+        self.modifyPrivateDnsNameOptionsSyncOverride = modifyPrivateDnsNameOptionsSync
         self.modifyReservedInstancesAsyncOverride = modifyReservedInstancesAsync
         self.modifyReservedInstancesSyncOverride = modifyReservedInstancesSync
         self.modifySecurityGroupRulesAsyncOverride = modifySecurityGroupRulesAsync
@@ -16861,6 +16867,42 @@ public struct ThrowingElasticComputeCloudClient: ElasticComputeCloudClientProtoc
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) throws {
         if let modifyNetworkInterfaceAttributeSyncOverride = modifyNetworkInterfaceAttributeSyncOverride {
             return try modifyNetworkInterfaceAttributeSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyPrivateDnsNameOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyPrivateDnsNameOptionsRequest object being passed to this operation.
+         - completion: The ModifyPrivateDnsNameOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyPrivateDnsNameOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyPrivateDnsNameOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyPrivateDnsNameOptionsAsyncOverride = modifyPrivateDnsNameOptionsAsyncOverride {
+            return try modifyPrivateDnsNameOptionsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ModifyPrivateDnsNameOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyPrivateDnsNameOptionsRequest object being passed to this operation.
+     - Returns: The ModifyPrivateDnsNameOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyPrivateDnsNameOptionsSync(
+            input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest) throws -> ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult {
+        if let modifyPrivateDnsNameOptionsSyncOverride = modifyPrivateDnsNameOptionsSyncOverride {
+            return try modifyPrivateDnsNameOptionsSyncOverride(input)
         }
 
         throw error

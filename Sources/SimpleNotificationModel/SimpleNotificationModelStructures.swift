@@ -64,6 +64,63 @@ public struct AuthorizationErrorException: Codable, Equatable {
     }
 }
 
+public struct BatchEntryIdsNotDistinctException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct BatchRequestTooLongException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct BatchResultErrorEntry: Codable, Equatable {
+    public var code: String
+    public var id: String
+    public var message: String?
+    public var senderFault: Boolean
+
+    public init(code: String,
+                id: String,
+                message: String? = nil,
+                senderFault: Boolean) {
+        self.code = code
+        self.id = id
+        self.message = message
+        self.senderFault = senderFault
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case code = "Code"
+        case id = "Id"
+        case message = "Message"
+        case senderFault = "SenderFault"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct CheckIfPhoneNumberIsOptedOutInput: Codable, Equatable {
     public var phoneNumber: PhoneNumber
 
@@ -476,6 +533,21 @@ public struct DeleteTopicInput: Codable, Equatable {
     }
 }
 
+public struct EmptyBatchRequestException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Endpoint: Codable, Equatable {
     public var attributes: MapStringToString?
     public var endpointArn: String?
@@ -804,6 +876,21 @@ public struct InternalErrorException: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case message = "Message"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InvalidBatchEntryIdException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
     }
 
     public func validate() throws {
@@ -1573,6 +1660,122 @@ public struct PlatformApplicationDisabledException: Codable, Equatable {
     }
 }
 
+public struct PublishBatchInput: Codable, Equatable {
+    public var publishBatchRequestEntries: PublishBatchRequestEntryList
+    public var topicArn: TopicARN
+
+    public init(publishBatchRequestEntries: PublishBatchRequestEntryList,
+                topicArn: TopicARN) {
+        self.publishBatchRequestEntries = publishBatchRequestEntries
+        self.topicArn = topicArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case publishBatchRequestEntries = "PublishBatchRequestEntries"
+        case topicArn = "TopicArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PublishBatchRequestEntry: Codable, Equatable {
+    public var id: String
+    public var message: Message
+    public var messageAttributes: MessageAttributeMap?
+    public var messageDeduplicationId: String?
+    public var messageGroupId: String?
+    public var messageStructure: MessageStructure?
+    public var subject: Subject?
+
+    public init(id: String,
+                message: Message,
+                messageAttributes: MessageAttributeMap? = nil,
+                messageDeduplicationId: String? = nil,
+                messageGroupId: String? = nil,
+                messageStructure: MessageStructure? = nil,
+                subject: Subject? = nil) {
+        self.id = id
+        self.message = message
+        self.messageAttributes = messageAttributes
+        self.messageDeduplicationId = messageDeduplicationId
+        self.messageGroupId = messageGroupId
+        self.messageStructure = messageStructure
+        self.subject = subject
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case message = "Message"
+        case messageAttributes = "MessageAttributes"
+        case messageDeduplicationId = "MessageDeduplicationId"
+        case messageGroupId = "MessageGroupId"
+        case messageStructure = "MessageStructure"
+        case subject = "Subject"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PublishBatchResponse: Codable, Equatable {
+    public var failed: BatchResultErrorEntryList?
+    public var successful: PublishBatchResultEntryList?
+
+    public init(failed: BatchResultErrorEntryList? = nil,
+                successful: PublishBatchResultEntryList? = nil) {
+        self.failed = failed
+        self.successful = successful
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failed = "Failed"
+        case successful = "Successful"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PublishBatchResponseForPublishBatch: Codable, Equatable {
+    public var publishBatchResult: PublishBatchResponse
+
+    public init(publishBatchResult: PublishBatchResponse) {
+        self.publishBatchResult = publishBatchResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case publishBatchResult = "PublishBatchResult"
+    }
+
+    public func validate() throws {
+        try publishBatchResult.validate()
+    }
+}
+
+public struct PublishBatchResultEntry: Codable, Equatable {
+    public var id: String?
+    public var messageId: MessageId?
+    public var sequenceNumber: String?
+
+    public init(id: String? = nil,
+                messageId: MessageId? = nil,
+                sequenceNumber: String? = nil) {
+        self.id = id
+        self.messageId = messageId
+        self.sequenceNumber = sequenceNumber
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case messageId = "MessageId"
+        case sequenceNumber = "SequenceNumber"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct PublishInput: Codable, Equatable {
     public var message: Message
     public var messageAttributes: MessageAttributeMap?
@@ -2061,6 +2264,21 @@ public struct ThrottledException: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case message = "Message"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct TooManyEntriesInBatchRequestException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
     }
 
     public func validate() throws {

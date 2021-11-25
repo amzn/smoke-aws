@@ -54,6 +54,7 @@ public struct AWSCodePipelineClientGenerator {
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CodePipelineModelOperations>
                     = SmokeAWSClientReportingConfiguration<CodePipelineModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -65,7 +66,8 @@ public struct AWSCodePipelineClientGenerator {
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.awsRegion = awsRegion
         self.service = service
         self.target = target

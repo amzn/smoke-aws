@@ -295,7 +295,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object or an error will be passed to this 
            callback when the operation is complete. The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector
            object will be validated before being returned to caller.
-           The possible errors are: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+           The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
     public func deleteAnomalyDetectorAsync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput, 
@@ -316,7 +316,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated DeleteAnomalyDetectorInput object being passed to this operation.
      - Returns: The DeleteAnomalyDetectorOutputForDeleteAnomalyDetector object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalService, invalidParameterValue, missingRequiredParameter, resourceNotFound.
+     - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter, resourceNotFound.
      */
     public func deleteAnomalyDetectorSync(
             input: CloudWatchModel.DeleteAnomalyDetectorInput) throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
@@ -573,7 +573,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object or an error will be passed to this 
            callback when the operation is complete. The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors
            object will be validated before being returned to caller.
-           The possible errors are: internalService, invalidNextToken, invalidParameterValue.
+           The possible errors are: internalService, invalidNextToken, invalidParameterCombination, invalidParameterValue.
      */
     public func describeAnomalyDetectorsAsync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput, 
@@ -594,7 +594,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated DescribeAnomalyDetectorsInput object being passed to this operation.
      - Returns: The DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalService, invalidNextToken, invalidParameterValue.
+     - Throws: internalService, invalidNextToken, invalidParameterCombination, invalidParameterValue.
      */
     public func describeAnomalyDetectorsSync(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput) throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
@@ -1195,7 +1195,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - completion: The PutAnomalyDetectorOutputForPutAnomalyDetector object or an error will be passed to this 
            callback when the operation is complete. The PutAnomalyDetectorOutputForPutAnomalyDetector
            object will be validated before being returned to caller.
-           The possible errors are: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+           The possible errors are: internalService, invalidParameterCombination, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
     public func putAnomalyDetectorAsync(
             input: CloudWatchModel.PutAnomalyDetectorInput, 
@@ -1216,7 +1216,7 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
          - input: The validated PutAnomalyDetectorInput object being passed to this operation.
      - Returns: The PutAnomalyDetectorOutputForPutAnomalyDetector object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: internalService, invalidParameterValue, limitExceeded, missingRequiredParameter.
+     - Throws: internalService, invalidParameterCombination, invalidParameterValue, limitExceeded, missingRequiredParameter.
      */
     public func putAnomalyDetectorSync(
             input: CloudWatchModel.PutAnomalyDetectorInput) throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {

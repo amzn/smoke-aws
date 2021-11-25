@@ -141,6 +141,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case promoteReadReplica = "PromoteReadReplica"
     case promoteReadReplicaDBCluster = "PromoteReadReplicaDBCluster"
     case purchaseReservedDBInstancesOffering = "PurchaseReservedDBInstancesOffering"
+    case rebootDBCluster = "RebootDBCluster"
     case rebootDBInstance = "RebootDBInstance"
     case registerDBProxyTargets = "RegisterDBProxyTargets"
     case removeFromGlobalCluster = "RemoveFromGlobalCluster"
@@ -402,6 +403,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .promoteReadReplicaDBCluster:
             return "/"
         case .purchaseReservedDBInstancesOffering:
+            return "/"
+        case .rebootDBCluster:
             return "/"
         case .rebootDBInstance:
             return "/"

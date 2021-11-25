@@ -90,6 +90,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleWorkflowModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -101,7 +102,8 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service

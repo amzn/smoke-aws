@@ -2679,7 +2679,8 @@ public extension CreateDefaultSubnetRequest {
     static let __default: ElasticComputeCloudModel.CreateDefaultSubnetRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateDefaultSubnetRequest(
             availabilityZone: "value",
-            dryRun: nil)
+            dryRun: nil,
+            ipv6Native: nil)
 
         return defaultInstance
     }()
@@ -3480,6 +3481,7 @@ public extension CreateRouteRequest {
     static let __default: ElasticComputeCloudModel.CreateRouteRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateRouteRequest(
             carrierGatewayId: nil,
+            coreNetworkArn: nil,
             destinationCidrBlock: nil,
             destinationIpv6CidrBlock: nil,
             destinationPrefixListId: nil,
@@ -3701,9 +3703,10 @@ public extension CreateSubnetRequest {
         let defaultInstance = ElasticComputeCloudModel.CreateSubnetRequest(
             availabilityZone: nil,
             availabilityZoneId: nil,
-            cidrBlock: "value",
+            cidrBlock: nil,
             dryRun: nil,
             ipv6CidrBlock: nil,
+            ipv6Native: nil,
             outpostArn: nil,
             tagSpecifications: nil,
             vpcId: "value")
@@ -11262,7 +11265,8 @@ public extension FleetSpotCapacityRebalance {
      */
     static let __default: ElasticComputeCloudModel.FleetSpotCapacityRebalance = {
         let defaultInstance = ElasticComputeCloudModel.FleetSpotCapacityRebalance(
-            replacementStrategy: nil)
+            replacementStrategy: nil,
+            terminationDelay: nil)
 
         return defaultInstance
     }()
@@ -11274,7 +11278,8 @@ public extension FleetSpotCapacityRebalanceRequest {
      */
     static let __default: ElasticComputeCloudModel.FleetSpotCapacityRebalanceRequest = {
         let defaultInstance = ElasticComputeCloudModel.FleetSpotCapacityRebalanceRequest(
-            replacementStrategy: nil)
+            replacementStrategy: nil,
+            terminationDelay: nil)
 
         return defaultInstance
     }()
@@ -12977,6 +12982,7 @@ public extension Instance {
             instanceId: nil,
             instanceLifecycle: nil,
             instanceType: nil,
+            ipv6Address: nil,
             kernelId: nil,
             keyName: nil,
             launchTime: nil,
@@ -12989,6 +12995,7 @@ public extension Instance {
             platform: nil,
             platformDetails: nil,
             privateDnsName: nil,
+            privateDnsNameOptions: nil,
             privateIpAddress: nil,
             productCodes: nil,
             publicDnsName: nil,
@@ -13392,6 +13399,7 @@ public extension InstanceNetworkInterfaceAssociation {
     static let __default: ElasticComputeCloudModel.InstanceNetworkInterfaceAssociation = {
         let defaultInstance = ElasticComputeCloudModel.InstanceNetworkInterfaceAssociation(
             carrierIp: nil,
+            customerOwnedIp: nil,
             ipOwnerId: nil,
             publicDnsName: nil,
             publicIp: nil)
@@ -14500,6 +14508,34 @@ public extension LaunchTemplatePlacementRequest {
     }()
 }
 
+public extension LaunchTemplatePrivateDnsNameOptions {
+    /**
+     Default instance of the LaunchTemplatePrivateDnsNameOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.LaunchTemplatePrivateDnsNameOptions = {
+        let defaultInstance = ElasticComputeCloudModel.LaunchTemplatePrivateDnsNameOptions(
+            enableResourceNameDnsAAAARecord: nil,
+            enableResourceNameDnsARecord: nil,
+            hostnameType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LaunchTemplatePrivateDnsNameOptionsRequest {
+    /**
+     Default instance of the LaunchTemplatePrivateDnsNameOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.LaunchTemplatePrivateDnsNameOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.LaunchTemplatePrivateDnsNameOptionsRequest(
+            enableResourceNameDnsAAAARecord: nil,
+            enableResourceNameDnsARecord: nil,
+            hostnameType: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension LaunchTemplateSpecification {
     /**
      Default instance of the LaunchTemplateSpecification structure.
@@ -15509,6 +15545,34 @@ public extension ModifyNetworkInterfaceAttributeRequest {
     }()
 }
 
+public extension ModifyPrivateDnsNameOptionsRequest {
+    /**
+     Default instance of the ModifyPrivateDnsNameOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest(
+            dryRun: nil,
+            enableResourceNameDnsAAAARecord: nil,
+            enableResourceNameDnsARecord: nil,
+            instanceId: nil,
+            privateDnsHostnameType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyPrivateDnsNameOptionsResult {
+    /**
+     Default instance of the ModifyPrivateDnsNameOptionsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifyReservedInstancesRequest {
     /**
      Default instance of the ModifyReservedInstancesRequest structure.
@@ -15616,8 +15680,12 @@ public extension ModifySubnetAttributeRequest {
         let defaultInstance = ElasticComputeCloudModel.ModifySubnetAttributeRequest(
             assignIpv6AddressOnCreation: nil,
             customerOwnedIpv4Pool: nil,
+            enableDns64: nil,
+            enableResourceNameDnsAAAARecordOnLaunch: nil,
+            enableResourceNameDnsARecordOnLaunch: nil,
             mapCustomerOwnedIpOnLaunch: nil,
             mapPublicIpOnLaunch: nil,
+            privateDnsHostnameTypeOnLaunch: nil,
             subnetId: "value")
 
         return defaultInstance
@@ -16467,7 +16535,9 @@ public extension NetworkInterface {
             groups: nil,
             interfaceType: nil,
             ipv4Prefixes: nil,
+            ipv6Address: nil,
             ipv6Addresses: nil,
+            ipv6Native: nil,
             ipv6Prefixes: nil,
             macAddress: nil,
             networkInterfaceId: nil,
@@ -17119,6 +17189,48 @@ public extension PrivateDnsNameConfiguration {
             state: nil,
             type: nil,
             value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PrivateDnsNameOptionsOnLaunch {
+    /**
+     Default instance of the PrivateDnsNameOptionsOnLaunch structure.
+     */
+    static let __default: ElasticComputeCloudModel.PrivateDnsNameOptionsOnLaunch = {
+        let defaultInstance = ElasticComputeCloudModel.PrivateDnsNameOptionsOnLaunch(
+            enableResourceNameDnsAAAARecord: nil,
+            enableResourceNameDnsARecord: nil,
+            hostnameType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PrivateDnsNameOptionsRequest {
+    /**
+     Default instance of the PrivateDnsNameOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.PrivateDnsNameOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.PrivateDnsNameOptionsRequest(
+            enableResourceNameDnsAAAARecord: nil,
+            enableResourceNameDnsARecord: nil,
+            hostnameType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PrivateDnsNameOptionsResponse {
+    /**
+     Default instance of the PrivateDnsNameOptionsResponse structure.
+     */
+    static let __default: ElasticComputeCloudModel.PrivateDnsNameOptionsResponse = {
+        let defaultInstance = ElasticComputeCloudModel.PrivateDnsNameOptionsResponse(
+            enableResourceNameDnsAAAARecord: nil,
+            enableResourceNameDnsARecord: nil,
+            hostnameType: nil)
 
         return defaultInstance
     }()
@@ -17848,6 +17960,7 @@ public extension ReplaceRouteRequest {
     static let __default: ElasticComputeCloudModel.ReplaceRouteRequest = {
         let defaultInstance = ElasticComputeCloudModel.ReplaceRouteRequest(
             carrierGatewayId: nil,
+            coreNetworkArn: nil,
             destinationCidrBlock: nil,
             destinationIpv6CidrBlock: nil,
             destinationPrefixListId: nil,
@@ -17970,6 +18083,7 @@ public extension RequestLaunchTemplateData {
             monitoring: nil,
             networkInterfaces: nil,
             placement: nil,
+            privateDnsNameOptions: nil,
             ramDiskId: nil,
             securityGroupIds: nil,
             securityGroups: nil,
@@ -18453,6 +18567,7 @@ public extension ResponseLaunchTemplateData {
             monitoring: nil,
             networkInterfaces: nil,
             placement: nil,
+            privateDnsNameOptions: nil,
             ramDiskId: nil,
             securityGroupIds: nil,
             securityGroups: nil,
@@ -18620,6 +18735,7 @@ public extension Route {
     static let __default: ElasticComputeCloudModel.Route = {
         let defaultInstance = ElasticComputeCloudModel.Route(
             carrierGatewayId: nil,
+            coreNetworkArn: nil,
             destinationCidrBlock: nil,
             destinationIpv6CidrBlock: nil,
             destinationPrefixListId: nil,
@@ -18735,6 +18851,7 @@ public extension RunInstancesRequest {
             monitoring: nil,
             networkInterfaces: nil,
             placement: nil,
+            privateDnsNameOptions: nil,
             privateIpAddress: nil,
             ramdiskId: nil,
             securityGroupIds: nil,
@@ -19441,7 +19558,8 @@ public extension SpotCapacityRebalance {
      */
     static let __default: ElasticComputeCloudModel.SpotCapacityRebalance = {
         let defaultInstance = ElasticComputeCloudModel.SpotCapacityRebalance(
-            replacementStrategy: nil)
+            replacementStrategy: nil,
+            terminationDelay: nil)
 
         return defaultInstance
     }()
@@ -19948,11 +20066,14 @@ public extension Subnet {
             cidrBlock: nil,
             customerOwnedIpv4Pool: nil,
             defaultForAz: nil,
+            enableDns64: nil,
             ipv6CidrBlockAssociationSet: nil,
+            ipv6Native: nil,
             mapCustomerOwnedIpOnLaunch: nil,
             mapPublicIpOnLaunch: nil,
             outpostArn: nil,
             ownerId: nil,
+            privateDnsNameOptionsOnLaunch: nil,
             state: nil,
             subnetArn: nil,
             subnetId: nil,

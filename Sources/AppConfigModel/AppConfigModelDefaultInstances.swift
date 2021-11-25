@@ -53,13 +53,27 @@ public extension Applications {
     }()
 }
 
+public extension BadRequestDetails {
+    /**
+     Default instance of the BadRequestDetails structure.
+     */
+    static let __default: AppConfigModel.BadRequestDetails = {
+        let defaultInstance = AppConfigModel.BadRequestDetails(
+            invalidConfiguration: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension BadRequestException {
     /**
      Default instance of the BadRequestException structure.
      */
     static let __default: AppConfigModel.BadRequestException = {
         let defaultInstance = AppConfigModel.BadRequestException(
-            message: nil)
+            details: nil,
+            message: nil,
+            reason: nil)
 
         return defaultInstance
     }()
@@ -91,6 +105,7 @@ public extension ConfigurationProfile {
             locationUri: nil,
             name: nil,
             retrievalRoleArn: nil,
+            type: nil,
             validators: nil)
 
         return defaultInstance
@@ -107,6 +122,7 @@ public extension ConfigurationProfileSummary {
             id: nil,
             locationUri: nil,
             name: nil,
+            type: nil,
             validatorTypes: nil)
 
         return defaultInstance
@@ -164,6 +180,7 @@ public extension CreateConfigurationProfileRequest {
             name: "0",
             retrievalRoleArn: nil,
             tags: nil,
+            type: nil,
             validators: nil)
 
         return defaultInstance
@@ -579,6 +596,21 @@ public extension InternalServerException {
     }()
 }
 
+public extension InvalidConfigurationDetail {
+    /**
+     Default instance of the InvalidConfigurationDetail structure.
+     */
+    static let __default: AppConfigModel.InvalidConfigurationDetail = {
+        let defaultInstance = AppConfigModel.InvalidConfigurationDetail(
+            constraint: nil,
+            location: nil,
+            reason: nil,
+            type: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListApplicationsRequest {
     /**
      Default instance of the ListApplicationsRequest structure.
@@ -600,7 +632,8 @@ public extension ListConfigurationProfilesRequest {
         let defaultInstance = AppConfigModel.ListConfigurationProfilesRequest(
             applicationId: "",
             maxResults: nil,
-            nextToken: nil)
+            nextToken: nil,
+            type: nil)
 
         return defaultInstance
     }()
@@ -681,7 +714,7 @@ public extension Monitor {
      */
     static let __default: AppConfigModel.Monitor = {
         let defaultInstance = AppConfigModel.Monitor(
-            alarmArn: nil,
+            alarmArn: "0",
             alarmRoleArn: nil)
 
         return defaultInstance
