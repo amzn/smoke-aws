@@ -259,6 +259,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let promoteReadReplicaDBClusterSyncOverride: PromoteReadReplicaDBClusterSyncType?
     let purchaseReservedDBInstancesOfferingAsyncOverride: PurchaseReservedDBInstancesOfferingAsyncType?
     let purchaseReservedDBInstancesOfferingSyncOverride: PurchaseReservedDBInstancesOfferingSyncType?
+    let rebootDBClusterAsyncOverride: RebootDBClusterAsyncType?
+    let rebootDBClusterSyncOverride: RebootDBClusterSyncType?
     let rebootDBInstanceAsyncOverride: RebootDBInstanceAsyncType?
     let rebootDBInstanceSyncOverride: RebootDBInstanceSyncType?
     let registerDBProxyTargetsAsyncOverride: RegisterDBProxyTargetsAsyncType?
@@ -545,6 +547,8 @@ public struct MockRDSClient: RDSClientProtocol {
             promoteReadReplicaDBClusterSync: PromoteReadReplicaDBClusterSyncType? = nil,
             purchaseReservedDBInstancesOfferingAsync: PurchaseReservedDBInstancesOfferingAsyncType? = nil,
             purchaseReservedDBInstancesOfferingSync: PurchaseReservedDBInstancesOfferingSyncType? = nil,
+            rebootDBClusterAsync: RebootDBClusterAsyncType? = nil,
+            rebootDBClusterSync: RebootDBClusterSyncType? = nil,
             rebootDBInstanceAsync: RebootDBInstanceAsyncType? = nil,
             rebootDBInstanceSync: RebootDBInstanceSyncType? = nil,
             registerDBProxyTargetsAsync: RegisterDBProxyTargetsAsyncType? = nil,
@@ -825,6 +829,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.promoteReadReplicaDBClusterSyncOverride = promoteReadReplicaDBClusterSync
         self.purchaseReservedDBInstancesOfferingAsyncOverride = purchaseReservedDBInstancesOfferingAsync
         self.purchaseReservedDBInstancesOfferingSyncOverride = purchaseReservedDBInstancesOfferingSync
+        self.rebootDBClusterAsyncOverride = rebootDBClusterAsync
+        self.rebootDBClusterSyncOverride = rebootDBClusterSync
         self.rebootDBInstanceAsyncOverride = rebootDBInstanceAsync
         self.rebootDBInstanceSyncOverride = rebootDBInstanceSync
         self.registerDBProxyTargetsAsyncOverride = registerDBProxyTargetsAsync
@@ -5409,6 +5415,46 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering.__default
+    }
+
+    /**
+     Invokes the RebootDBCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated RebootDBClusterMessage object being passed to this operation.
+         - completion: The RebootDBClusterResultForRebootDBCluster object or an error will be passed to this 
+           callback when the operation is complete. The RebootDBClusterResultForRebootDBCluster
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    public func rebootDBClusterAsync(
+            input: RDSModel.RebootDBClusterMessage, 
+            completion: @escaping (Result<RDSModel.RebootDBClusterResultForRebootDBCluster, RDSError>) -> ()) throws {
+        if let rebootDBClusterAsyncOverride = rebootDBClusterAsyncOverride {
+            return try rebootDBClusterAsyncOverride(input, completion)
+        }
+
+        let result = RebootDBClusterResultForRebootDBCluster.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the RebootDBCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated RebootDBClusterMessage object being passed to this operation.
+     - Returns: The RebootDBClusterResultForRebootDBCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, invalidDBClusterState, invalidDBInstanceState.
+     */
+    public func rebootDBClusterSync(
+            input: RDSModel.RebootDBClusterMessage) throws -> RDSModel.RebootDBClusterResultForRebootDBCluster {
+        if let rebootDBClusterSyncOverride = rebootDBClusterSyncOverride {
+            return try rebootDBClusterSyncOverride(input)
+        }
+
+        return RebootDBClusterResultForRebootDBCluster.__default
     }
 
     /**

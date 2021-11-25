@@ -127,6 +127,25 @@ public enum AnomalyDetectorStateValue: String, Codable, CustomStringConvertible 
 }
 
 /**
+ Enumeration restricting the values of the AnomalyDetectorType field.
+ */
+public enum AnomalyDetectorType: String, Codable, CustomStringConvertible {
+    case metricMath = "METRIC_MATH"
+    case singleMetric = "SINGLE_METRIC"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AnomalyDetectorType = .metricMath
+}
+
+/**
+ Type definition for the AnomalyDetectorTypes field.
+ */
+public typealias AnomalyDetectorTypes = [AnomalyDetectorType]
+
+/**
  Type definition for the AnomalyDetectors field.
  */
 public typealias AnomalyDetectors = [AnomalyDetector]
@@ -954,7 +973,12 @@ extension CloudWatchModel.AmazonResourceName {
 */
 extension CloudWatchModel.AnomalyDetectorMetricStat {
     public func validateAsAnomalyDetectorMetricStat() throws {
-        guard let matchingRange = self.range(of: "(SampleCount|Average|Sum|Minimum|Maximum|p(\\d{1,2}|100)(\\.\\d{0,2})?|[ou]\\d+(\\.\\d*)?)(_E|_L|_H)?", options: .regularExpression),
+
+        if self.count > 50 {
+            throw CloudWatchError.validationError(reason: "The provided value to AnomalyDetectorMetricStat violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "(SampleCount|Average|Sum|Minimum|Maximum|IQM|(p|tc|tm|ts|wm)(\\d{1,2}(\\.\\d{0,10})?|100)|[ou]\\d+(\\.\\d*)?)(_E|_L|_H)?|(TM|TC|TS|WM)\\(((((\\d{1,2})(\\.\\d{0,10})?|100(\\.0{0,10})?)%)?:((\\d{1,2})(\\.\\d{0,10})?|100(\\.0{0,10})?)%|((\\d{1,2})(\\.\\d{0,10})?|100(\\.0{0,10})?)%:(((\\d{1,2})(\\.\\d{0,10})?|100(\\.0{0,10})?)%)?)\\)|(TM|TC|TS|WM|PR)\\(((\\d+(\\.\\d{0,10})?|(\\d+(\\.\\d{0,10})?[Ee][+-]?\\d+)):((\\d+(\\.\\d{0,10})?|(\\d+(\\.\\d{0,10})?[Ee][+-]?\\d+)))?|((\\d+(\\.\\d{0,10})?|(\\d+(\\.\\d{0,10})?[Ee][+-]?\\d+)))?:(\\d+(\\.\\d{0,10})?|(\\d+(\\.\\d{0,10})?[Ee][+-]?\\d+)))\\)", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw CloudWatchError.validationError(
                     reason: "The provided value to AnomalyDetectorMetricStat violated the regular expression constraint.")
@@ -976,6 +1000,18 @@ extension CloudWatchModel.AnomalyDetectorMetricTimezone {
             matchingRange == startIndex..<endIndex else {
                 throw CloudWatchError.validationError(
                     reason: "The provided value to AnomalyDetectorMetricTimezone violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AnomalyDetectorTypes field.
+*/
+extension Array where Element == CloudWatchModel.AnomalyDetectorType {
+    public func validateAsAnomalyDetectorTypes() throws {
+
+        if self.count > 2 {
+            throw CloudWatchError.validationError(reason: "The provided value to AnomalyDetectorTypes violated the maximum length constraint.")
         }
     }
 }

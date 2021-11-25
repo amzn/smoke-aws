@@ -4684,16 +4684,20 @@ public struct CreateCustomerGatewayResult: Codable, Equatable {
 public struct CreateDefaultSubnetRequest: Codable, Equatable {
     public var availabilityZone: String
     public var dryRun: Boolean?
+    public var ipv6Native: Boolean?
 
     public init(availabilityZone: String,
-                dryRun: Boolean? = nil) {
+                dryRun: Boolean? = nil,
+                ipv6Native: Boolean? = nil) {
         self.availabilityZone = availabilityZone
         self.dryRun = dryRun
+        self.ipv6Native = ipv6Native
     }
 
     enum CodingKeys: String, CodingKey {
         case availabilityZone = "AvailabilityZone"
         case dryRun = "DryRun"
+        case ipv6Native = "Ipv6Native"
     }
 
     public func validate() throws {
@@ -6148,6 +6152,7 @@ public struct CreateRestoreImageTaskResult: Codable, Equatable {
 
 public struct CreateRouteRequest: Codable, Equatable {
     public var carrierGatewayId: CarrierGatewayId?
+    public var coreNetworkArn: CoreNetworkArn?
     public var destinationCidrBlock: String?
     public var destinationIpv6CidrBlock: String?
     public var destinationPrefixListId: PrefixListResourceId?
@@ -6164,6 +6169,7 @@ public struct CreateRouteRequest: Codable, Equatable {
     public var vpcPeeringConnectionId: VpcPeeringConnectionId?
 
     public init(carrierGatewayId: CarrierGatewayId? = nil,
+                coreNetworkArn: CoreNetworkArn? = nil,
                 destinationCidrBlock: String? = nil,
                 destinationIpv6CidrBlock: String? = nil,
                 destinationPrefixListId: PrefixListResourceId? = nil,
@@ -6179,6 +6185,7 @@ public struct CreateRouteRequest: Codable, Equatable {
                 vpcEndpointId: VpcEndpointId? = nil,
                 vpcPeeringConnectionId: VpcPeeringConnectionId? = nil) {
         self.carrierGatewayId = carrierGatewayId
+        self.coreNetworkArn = coreNetworkArn
         self.destinationCidrBlock = destinationCidrBlock
         self.destinationIpv6CidrBlock = destinationIpv6CidrBlock
         self.destinationPrefixListId = destinationPrefixListId
@@ -6197,6 +6204,7 @@ public struct CreateRouteRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case carrierGatewayId = "CarrierGatewayId"
+        case coreNetworkArn = "CoreNetworkArn"
         case destinationCidrBlock
         case destinationIpv6CidrBlock
         case destinationPrefixListId = "DestinationPrefixListId"
@@ -6538,18 +6546,20 @@ public struct CreateSubnetCidrReservationResult: Codable, Equatable {
 public struct CreateSubnetRequest: Codable, Equatable {
     public var availabilityZone: String?
     public var availabilityZoneId: String?
-    public var cidrBlock: String
+    public var cidrBlock: String?
     public var dryRun: Boolean?
     public var ipv6CidrBlock: String?
+    public var ipv6Native: Boolean?
     public var outpostArn: String?
     public var tagSpecifications: TagSpecificationList?
     public var vpcId: VpcId
 
     public init(availabilityZone: String? = nil,
                 availabilityZoneId: String? = nil,
-                cidrBlock: String,
+                cidrBlock: String? = nil,
                 dryRun: Boolean? = nil,
                 ipv6CidrBlock: String? = nil,
+                ipv6Native: Boolean? = nil,
                 outpostArn: String? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 vpcId: VpcId) {
@@ -6558,6 +6568,7 @@ public struct CreateSubnetRequest: Codable, Equatable {
         self.cidrBlock = cidrBlock
         self.dryRun = dryRun
         self.ipv6CidrBlock = ipv6CidrBlock
+        self.ipv6Native = ipv6Native
         self.outpostArn = outpostArn
         self.tagSpecifications = tagSpecifications
         self.vpcId = vpcId
@@ -6569,6 +6580,7 @@ public struct CreateSubnetRequest: Codable, Equatable {
         case cidrBlock = "CidrBlock"
         case dryRun
         case ipv6CidrBlock = "Ipv6CidrBlock"
+        case ipv6Native = "Ipv6Native"
         case outpostArn = "OutpostArn"
         case tagSpecifications = "TagSpecification"
         case vpcId = "VpcId"
@@ -19286,13 +19298,17 @@ public struct FleetLaunchTemplateSpecificationRequest: Codable, Equatable {
 
 public struct FleetSpotCapacityRebalance: Codable, Equatable {
     public var replacementStrategy: FleetReplacementStrategy?
+    public var terminationDelay: Integer?
 
-    public init(replacementStrategy: FleetReplacementStrategy? = nil) {
+    public init(replacementStrategy: FleetReplacementStrategy? = nil,
+                terminationDelay: Integer? = nil) {
         self.replacementStrategy = replacementStrategy
+        self.terminationDelay = terminationDelay
     }
 
     enum CodingKeys: String, CodingKey {
         case replacementStrategy
+        case terminationDelay
     }
 
     public func validate() throws {
@@ -19301,13 +19317,17 @@ public struct FleetSpotCapacityRebalance: Codable, Equatable {
 
 public struct FleetSpotCapacityRebalanceRequest: Codable, Equatable {
     public var replacementStrategy: FleetReplacementStrategy?
+    public var terminationDelay: Integer?
 
-    public init(replacementStrategy: FleetReplacementStrategy? = nil) {
+    public init(replacementStrategy: FleetReplacementStrategy? = nil,
+                terminationDelay: Integer? = nil) {
         self.replacementStrategy = replacementStrategy
+        self.terminationDelay = terminationDelay
     }
 
     enum CodingKeys: String, CodingKey {
         case replacementStrategy = "ReplacementStrategy"
+        case terminationDelay = "TerminationDelay"
     }
 
     public func validate() throws {
@@ -22451,6 +22471,7 @@ public struct Instance: Codable, Equatable {
     public var instanceId: String?
     public var instanceLifecycle: InstanceLifecycleType?
     public var instanceType: InstanceType?
+    public var ipv6Address: String?
     public var kernelId: String?
     public var keyName: String?
     public var launchTime: DateTime?
@@ -22463,6 +22484,7 @@ public struct Instance: Codable, Equatable {
     public var platform: PlatformValues?
     public var platformDetails: String?
     public var privateDnsName: String?
+    public var privateDnsNameOptions: PrivateDnsNameOptionsResponse?
     public var privateIpAddress: String?
     public var productCodes: ProductCodeList?
     public var publicDnsName: String?
@@ -22504,6 +22526,7 @@ public struct Instance: Codable, Equatable {
                 instanceId: String? = nil,
                 instanceLifecycle: InstanceLifecycleType? = nil,
                 instanceType: InstanceType? = nil,
+                ipv6Address: String? = nil,
                 kernelId: String? = nil,
                 keyName: String? = nil,
                 launchTime: DateTime? = nil,
@@ -22516,6 +22539,7 @@ public struct Instance: Codable, Equatable {
                 platform: PlatformValues? = nil,
                 platformDetails: String? = nil,
                 privateDnsName: String? = nil,
+                privateDnsNameOptions: PrivateDnsNameOptionsResponse? = nil,
                 privateIpAddress: String? = nil,
                 productCodes: ProductCodeList? = nil,
                 publicDnsName: String? = nil,
@@ -22556,6 +22580,7 @@ public struct Instance: Codable, Equatable {
         self.instanceId = instanceId
         self.instanceLifecycle = instanceLifecycle
         self.instanceType = instanceType
+        self.ipv6Address = ipv6Address
         self.kernelId = kernelId
         self.keyName = keyName
         self.launchTime = launchTime
@@ -22568,6 +22593,7 @@ public struct Instance: Codable, Equatable {
         self.platform = platform
         self.platformDetails = platformDetails
         self.privateDnsName = privateDnsName
+        self.privateDnsNameOptions = privateDnsNameOptions
         self.privateIpAddress = privateIpAddress
         self.productCodes = productCodes
         self.publicDnsName = publicDnsName
@@ -22611,6 +22637,7 @@ public struct Instance: Codable, Equatable {
         case instanceId
         case instanceLifecycle
         case instanceType
+        case ipv6Address
         case kernelId
         case keyName
         case launchTime
@@ -22623,6 +22650,7 @@ public struct Instance: Codable, Equatable {
         case platform
         case platformDetails
         case privateDnsName
+        case privateDnsNameOptions
         case privateIpAddress
         case productCodes
         case publicDnsName = "dnsName"
@@ -22654,6 +22682,7 @@ public struct Instance: Codable, Equatable {
         try metadataOptions?.validate()
         try monitoring?.validate()
         try placement?.validate()
+        try privateDnsNameOptions?.validate()
         try state?.validate()
         try stateReason?.validate()
     }
@@ -23343,15 +23372,18 @@ public struct InstanceNetworkInterface: Codable, Equatable {
 
 public struct InstanceNetworkInterfaceAssociation: Codable, Equatable {
     public var carrierIp: String?
+    public var customerOwnedIp: String?
     public var ipOwnerId: String?
     public var publicDnsName: String?
     public var publicIp: String?
 
     public init(carrierIp: String? = nil,
+                customerOwnedIp: String? = nil,
                 ipOwnerId: String? = nil,
                 publicDnsName: String? = nil,
                 publicIp: String? = nil) {
         self.carrierIp = carrierIp
+        self.customerOwnedIp = customerOwnedIp
         self.ipOwnerId = ipOwnerId
         self.publicDnsName = publicDnsName
         self.publicIp = publicIp
@@ -23359,6 +23391,7 @@ public struct InstanceNetworkInterfaceAssociation: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case carrierIp
+        case customerOwnedIp
         case ipOwnerId
         case publicDnsName
         case publicIp
@@ -25511,6 +25544,52 @@ public struct LaunchTemplatePlacementRequest: Codable, Equatable {
     }
 }
 
+public struct LaunchTemplatePrivateDnsNameOptions: Codable, Equatable {
+    public var enableResourceNameDnsAAAARecord: Boolean?
+    public var enableResourceNameDnsARecord: Boolean?
+    public var hostnameType: HostnameType?
+
+    public init(enableResourceNameDnsAAAARecord: Boolean? = nil,
+                enableResourceNameDnsARecord: Boolean? = nil,
+                hostnameType: HostnameType? = nil) {
+        self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
+        self.enableResourceNameDnsARecord = enableResourceNameDnsARecord
+        self.hostnameType = hostnameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enableResourceNameDnsAAAARecord
+        case enableResourceNameDnsARecord
+        case hostnameType
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct LaunchTemplatePrivateDnsNameOptionsRequest: Codable, Equatable {
+    public var enableResourceNameDnsAAAARecord: Boolean?
+    public var enableResourceNameDnsARecord: Boolean?
+    public var hostnameType: HostnameType?
+
+    public init(enableResourceNameDnsAAAARecord: Boolean? = nil,
+                enableResourceNameDnsARecord: Boolean? = nil,
+                hostnameType: HostnameType? = nil) {
+        self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
+        self.enableResourceNameDnsARecord = enableResourceNameDnsARecord
+        self.hostnameType = hostnameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enableResourceNameDnsAAAARecord = "EnableResourceNameDnsAAAARecord"
+        case enableResourceNameDnsARecord = "EnableResourceNameDnsARecord"
+        case hostnameType = "HostnameType"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct LaunchTemplateSpecification: Codable, Equatable {
     public var launchTemplateId: LaunchTemplateId?
     public var launchTemplateName: String?
@@ -27346,6 +27425,52 @@ public struct ModifyNetworkInterfaceAttributeRequest: Codable, Equatable {
     }
 }
 
+public struct ModifyPrivateDnsNameOptionsRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var enableResourceNameDnsAAAARecord: Boolean?
+    public var enableResourceNameDnsARecord: Boolean?
+    public var instanceId: InstanceId?
+    public var privateDnsHostnameType: HostnameType?
+
+    public init(dryRun: Boolean? = nil,
+                enableResourceNameDnsAAAARecord: Boolean? = nil,
+                enableResourceNameDnsARecord: Boolean? = nil,
+                instanceId: InstanceId? = nil,
+                privateDnsHostnameType: HostnameType? = nil) {
+        self.dryRun = dryRun
+        self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
+        self.enableResourceNameDnsARecord = enableResourceNameDnsARecord
+        self.instanceId = instanceId
+        self.privateDnsHostnameType = privateDnsHostnameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case enableResourceNameDnsAAAARecord = "EnableResourceNameDnsAAAARecord"
+        case enableResourceNameDnsARecord = "EnableResourceNameDnsARecord"
+        case instanceId = "InstanceId"
+        case privateDnsHostnameType = "PrivateDnsHostnameType"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyPrivateDnsNameOptionsResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ModifyReservedInstancesRequest: Codable, Equatable {
     public var clientToken: String?
     public var reservedInstancesIds: ReservedInstancesIdStringList
@@ -27515,32 +27640,51 @@ public struct ModifySpotFleetRequestResponse: Codable, Equatable {
 public struct ModifySubnetAttributeRequest: Codable, Equatable {
     public var assignIpv6AddressOnCreation: AttributeBooleanValue?
     public var customerOwnedIpv4Pool: CoipPoolId?
+    public var enableDns64: AttributeBooleanValue?
+    public var enableResourceNameDnsAAAARecordOnLaunch: AttributeBooleanValue?
+    public var enableResourceNameDnsARecordOnLaunch: AttributeBooleanValue?
     public var mapCustomerOwnedIpOnLaunch: AttributeBooleanValue?
     public var mapPublicIpOnLaunch: AttributeBooleanValue?
+    public var privateDnsHostnameTypeOnLaunch: HostnameType?
     public var subnetId: SubnetId
 
     public init(assignIpv6AddressOnCreation: AttributeBooleanValue? = nil,
                 customerOwnedIpv4Pool: CoipPoolId? = nil,
+                enableDns64: AttributeBooleanValue? = nil,
+                enableResourceNameDnsAAAARecordOnLaunch: AttributeBooleanValue? = nil,
+                enableResourceNameDnsARecordOnLaunch: AttributeBooleanValue? = nil,
                 mapCustomerOwnedIpOnLaunch: AttributeBooleanValue? = nil,
                 mapPublicIpOnLaunch: AttributeBooleanValue? = nil,
+                privateDnsHostnameTypeOnLaunch: HostnameType? = nil,
                 subnetId: SubnetId) {
         self.assignIpv6AddressOnCreation = assignIpv6AddressOnCreation
         self.customerOwnedIpv4Pool = customerOwnedIpv4Pool
+        self.enableDns64 = enableDns64
+        self.enableResourceNameDnsAAAARecordOnLaunch = enableResourceNameDnsAAAARecordOnLaunch
+        self.enableResourceNameDnsARecordOnLaunch = enableResourceNameDnsARecordOnLaunch
         self.mapCustomerOwnedIpOnLaunch = mapCustomerOwnedIpOnLaunch
         self.mapPublicIpOnLaunch = mapPublicIpOnLaunch
+        self.privateDnsHostnameTypeOnLaunch = privateDnsHostnameTypeOnLaunch
         self.subnetId = subnetId
     }
 
     enum CodingKeys: String, CodingKey {
         case assignIpv6AddressOnCreation = "AssignIpv6AddressOnCreation"
         case customerOwnedIpv4Pool = "CustomerOwnedIpv4Pool"
+        case enableDns64 = "EnableDns64"
+        case enableResourceNameDnsAAAARecordOnLaunch = "EnableResourceNameDnsAAAARecordOnLaunch"
+        case enableResourceNameDnsARecordOnLaunch = "EnableResourceNameDnsARecordOnLaunch"
         case mapCustomerOwnedIpOnLaunch = "MapCustomerOwnedIpOnLaunch"
         case mapPublicIpOnLaunch = "MapPublicIpOnLaunch"
+        case privateDnsHostnameTypeOnLaunch = "PrivateDnsHostnameTypeOnLaunch"
         case subnetId
     }
 
     public func validate() throws {
         try assignIpv6AddressOnCreation?.validate()
+        try enableDns64?.validate()
+        try enableResourceNameDnsAAAARecordOnLaunch?.validate()
+        try enableResourceNameDnsARecordOnLaunch?.validate()
         try mapCustomerOwnedIpOnLaunch?.validate()
         try mapPublicIpOnLaunch?.validate()
     }
@@ -29120,7 +29264,9 @@ public struct NetworkInterface: Codable, Equatable {
     public var groups: GroupIdentifierList?
     public var interfaceType: NetworkInterfaceType?
     public var ipv4Prefixes: Ipv4PrefixesList?
+    public var ipv6Address: String?
     public var ipv6Addresses: NetworkInterfaceIpv6AddressesList?
+    public var ipv6Native: Boolean?
     public var ipv6Prefixes: Ipv6PrefixesList?
     public var macAddress: String?
     public var networkInterfaceId: String?
@@ -29145,7 +29291,9 @@ public struct NetworkInterface: Codable, Equatable {
                 groups: GroupIdentifierList? = nil,
                 interfaceType: NetworkInterfaceType? = nil,
                 ipv4Prefixes: Ipv4PrefixesList? = nil,
+                ipv6Address: String? = nil,
                 ipv6Addresses: NetworkInterfaceIpv6AddressesList? = nil,
+                ipv6Native: Boolean? = nil,
                 ipv6Prefixes: Ipv6PrefixesList? = nil,
                 macAddress: String? = nil,
                 networkInterfaceId: String? = nil,
@@ -29169,7 +29317,9 @@ public struct NetworkInterface: Codable, Equatable {
         self.groups = groups
         self.interfaceType = interfaceType
         self.ipv4Prefixes = ipv4Prefixes
+        self.ipv6Address = ipv6Address
         self.ipv6Addresses = ipv6Addresses
+        self.ipv6Native = ipv6Native
         self.ipv6Prefixes = ipv6Prefixes
         self.macAddress = macAddress
         self.networkInterfaceId = networkInterfaceId
@@ -29196,7 +29346,9 @@ public struct NetworkInterface: Codable, Equatable {
         case groups = "groupSet"
         case interfaceType
         case ipv4Prefixes = "ipv4PrefixSet"
+        case ipv6Address
         case ipv6Addresses = "ipv6AddressesSet"
+        case ipv6Native
         case ipv6Prefixes = "ipv6PrefixSet"
         case macAddress
         case networkInterfaceId
@@ -30254,6 +30406,75 @@ public struct PrivateDnsNameConfiguration: Codable, Equatable {
         case state
         case type
         case value
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PrivateDnsNameOptionsOnLaunch: Codable, Equatable {
+    public var enableResourceNameDnsAAAARecord: Boolean?
+    public var enableResourceNameDnsARecord: Boolean?
+    public var hostnameType: HostnameType?
+
+    public init(enableResourceNameDnsAAAARecord: Boolean? = nil,
+                enableResourceNameDnsARecord: Boolean? = nil,
+                hostnameType: HostnameType? = nil) {
+        self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
+        self.enableResourceNameDnsARecord = enableResourceNameDnsARecord
+        self.hostnameType = hostnameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enableResourceNameDnsAAAARecord
+        case enableResourceNameDnsARecord
+        case hostnameType
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PrivateDnsNameOptionsRequest: Codable, Equatable {
+    public var enableResourceNameDnsAAAARecord: Boolean?
+    public var enableResourceNameDnsARecord: Boolean?
+    public var hostnameType: HostnameType?
+
+    public init(enableResourceNameDnsAAAARecord: Boolean? = nil,
+                enableResourceNameDnsARecord: Boolean? = nil,
+                hostnameType: HostnameType? = nil) {
+        self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
+        self.enableResourceNameDnsARecord = enableResourceNameDnsARecord
+        self.hostnameType = hostnameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enableResourceNameDnsAAAARecord = "EnableResourceNameDnsAAAARecord"
+        case enableResourceNameDnsARecord = "EnableResourceNameDnsARecord"
+        case hostnameType = "HostnameType"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PrivateDnsNameOptionsResponse: Codable, Equatable {
+    public var enableResourceNameDnsAAAARecord: Boolean?
+    public var enableResourceNameDnsARecord: Boolean?
+    public var hostnameType: HostnameType?
+
+    public init(enableResourceNameDnsAAAARecord: Boolean? = nil,
+                enableResourceNameDnsARecord: Boolean? = nil,
+                hostnameType: HostnameType? = nil) {
+        self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
+        self.enableResourceNameDnsARecord = enableResourceNameDnsARecord
+        self.hostnameType = hostnameType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enableResourceNameDnsAAAARecord
+        case enableResourceNameDnsARecord
+        case hostnameType
     }
 
     public func validate() throws {
@@ -31462,6 +31683,7 @@ public struct ReplaceRootVolumeTask: Codable, Equatable {
 
 public struct ReplaceRouteRequest: Codable, Equatable {
     public var carrierGatewayId: CarrierGatewayId?
+    public var coreNetworkArn: CoreNetworkArn?
     public var destinationCidrBlock: String?
     public var destinationIpv6CidrBlock: String?
     public var destinationPrefixListId: PrefixListResourceId?
@@ -31479,6 +31701,7 @@ public struct ReplaceRouteRequest: Codable, Equatable {
     public var vpcPeeringConnectionId: VpcPeeringConnectionId?
 
     public init(carrierGatewayId: CarrierGatewayId? = nil,
+                coreNetworkArn: CoreNetworkArn? = nil,
                 destinationCidrBlock: String? = nil,
                 destinationIpv6CidrBlock: String? = nil,
                 destinationPrefixListId: PrefixListResourceId? = nil,
@@ -31495,6 +31718,7 @@ public struct ReplaceRouteRequest: Codable, Equatable {
                 vpcEndpointId: VpcEndpointId? = nil,
                 vpcPeeringConnectionId: VpcPeeringConnectionId? = nil) {
         self.carrierGatewayId = carrierGatewayId
+        self.coreNetworkArn = coreNetworkArn
         self.destinationCidrBlock = destinationCidrBlock
         self.destinationIpv6CidrBlock = destinationIpv6CidrBlock
         self.destinationPrefixListId = destinationPrefixListId
@@ -31514,6 +31738,7 @@ public struct ReplaceRouteRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case carrierGatewayId = "CarrierGatewayId"
+        case coreNetworkArn = "CoreNetworkArn"
         case destinationCidrBlock
         case destinationIpv6CidrBlock
         case destinationPrefixListId = "DestinationPrefixListId"
@@ -31688,6 +31913,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
     public var monitoring: LaunchTemplatesMonitoringRequest?
     public var networkInterfaces: LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList?
     public var placement: LaunchTemplatePlacementRequest?
+    public var privateDnsNameOptions: LaunchTemplatePrivateDnsNameOptionsRequest?
     public var ramDiskId: RamdiskId?
     public var securityGroupIds: SecurityGroupIdStringList?
     public var securityGroups: SecurityGroupStringList?
@@ -31717,6 +31943,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
                 monitoring: LaunchTemplatesMonitoringRequest? = nil,
                 networkInterfaces: LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList? = nil,
                 placement: LaunchTemplatePlacementRequest? = nil,
+                privateDnsNameOptions: LaunchTemplatePrivateDnsNameOptionsRequest? = nil,
                 ramDiskId: RamdiskId? = nil,
                 securityGroupIds: SecurityGroupIdStringList? = nil,
                 securityGroups: SecurityGroupStringList? = nil,
@@ -31745,6 +31972,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
         self.monitoring = monitoring
         self.networkInterfaces = networkInterfaces
         self.placement = placement
+        self.privateDnsNameOptions = privateDnsNameOptions
         self.ramDiskId = ramDiskId
         self.securityGroupIds = securityGroupIds
         self.securityGroups = securityGroups
@@ -31776,6 +32004,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
         case monitoring = "Monitoring"
         case networkInterfaces = "NetworkInterface"
         case placement = "Placement"
+        case privateDnsNameOptions = "PrivateDnsNameOptions"
         case ramDiskId = "RamDiskId"
         case securityGroupIds = "SecurityGroupId"
         case securityGroups = "SecurityGroup"
@@ -31795,6 +32024,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
         try metadataOptions?.validate()
         try monitoring?.validate()
         try placement?.validate()
+        try privateDnsNameOptions?.validate()
     }
 }
 
@@ -32684,6 +32914,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
     public var monitoring: LaunchTemplatesMonitoring?
     public var networkInterfaces: LaunchTemplateInstanceNetworkInterfaceSpecificationList?
     public var placement: LaunchTemplatePlacement?
+    public var privateDnsNameOptions: LaunchTemplatePrivateDnsNameOptions?
     public var ramDiskId: String?
     public var securityGroupIds: ValueStringList?
     public var securityGroups: ValueStringList?
@@ -32713,6 +32944,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
                 monitoring: LaunchTemplatesMonitoring? = nil,
                 networkInterfaces: LaunchTemplateInstanceNetworkInterfaceSpecificationList? = nil,
                 placement: LaunchTemplatePlacement? = nil,
+                privateDnsNameOptions: LaunchTemplatePrivateDnsNameOptions? = nil,
                 ramDiskId: String? = nil,
                 securityGroupIds: ValueStringList? = nil,
                 securityGroups: ValueStringList? = nil,
@@ -32741,6 +32973,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
         self.monitoring = monitoring
         self.networkInterfaces = networkInterfaces
         self.placement = placement
+        self.privateDnsNameOptions = privateDnsNameOptions
         self.ramDiskId = ramDiskId
         self.securityGroupIds = securityGroupIds
         self.securityGroups = securityGroups
@@ -32772,6 +33005,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
         case monitoring
         case networkInterfaces = "networkInterfaceSet"
         case placement
+        case privateDnsNameOptions
         case ramDiskId
         case securityGroupIds = "securityGroupIdSet"
         case securityGroups = "securityGroupSet"
@@ -32791,6 +33025,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
         try metadataOptions?.validate()
         try monitoring?.validate()
         try placement?.validate()
+        try privateDnsNameOptions?.validate()
     }
 }
 
@@ -33068,6 +33303,7 @@ public struct RevokeSecurityGroupIngressResult: Codable, Equatable {
 
 public struct Route: Codable, Equatable {
     public var carrierGatewayId: CarrierGatewayId?
+    public var coreNetworkArn: CoreNetworkArn?
     public var destinationCidrBlock: String?
     public var destinationIpv6CidrBlock: String?
     public var destinationPrefixListId: String?
@@ -33084,6 +33320,7 @@ public struct Route: Codable, Equatable {
     public var vpcPeeringConnectionId: String?
 
     public init(carrierGatewayId: CarrierGatewayId? = nil,
+                coreNetworkArn: CoreNetworkArn? = nil,
                 destinationCidrBlock: String? = nil,
                 destinationIpv6CidrBlock: String? = nil,
                 destinationPrefixListId: String? = nil,
@@ -33099,6 +33336,7 @@ public struct Route: Codable, Equatable {
                 transitGatewayId: String? = nil,
                 vpcPeeringConnectionId: String? = nil) {
         self.carrierGatewayId = carrierGatewayId
+        self.coreNetworkArn = coreNetworkArn
         self.destinationCidrBlock = destinationCidrBlock
         self.destinationIpv6CidrBlock = destinationIpv6CidrBlock
         self.destinationPrefixListId = destinationPrefixListId
@@ -33117,6 +33355,7 @@ public struct Route: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case carrierGatewayId
+        case coreNetworkArn
         case destinationCidrBlock
         case destinationIpv6CidrBlock
         case destinationPrefixListId
@@ -33277,6 +33516,7 @@ public struct RunInstancesRequest: Codable, Equatable {
     public var monitoring: RunInstancesMonitoringEnabled?
     public var networkInterfaces: InstanceNetworkInterfaceSpecificationList?
     public var placement: Placement?
+    public var privateDnsNameOptions: PrivateDnsNameOptionsRequest?
     public var privateIpAddress: String?
     public var ramdiskId: RamdiskId?
     public var securityGroupIds: SecurityGroupIdStringList?
@@ -33315,6 +33555,7 @@ public struct RunInstancesRequest: Codable, Equatable {
                 monitoring: RunInstancesMonitoringEnabled? = nil,
                 networkInterfaces: InstanceNetworkInterfaceSpecificationList? = nil,
                 placement: Placement? = nil,
+                privateDnsNameOptions: PrivateDnsNameOptionsRequest? = nil,
                 privateIpAddress: String? = nil,
                 ramdiskId: RamdiskId? = nil,
                 securityGroupIds: SecurityGroupIdStringList? = nil,
@@ -33352,6 +33593,7 @@ public struct RunInstancesRequest: Codable, Equatable {
         self.monitoring = monitoring
         self.networkInterfaces = networkInterfaces
         self.placement = placement
+        self.privateDnsNameOptions = privateDnsNameOptions
         self.privateIpAddress = privateIpAddress
         self.ramdiskId = ramdiskId
         self.securityGroupIds = securityGroupIds
@@ -33392,6 +33634,7 @@ public struct RunInstancesRequest: Codable, Equatable {
         case monitoring = "Monitoring"
         case networkInterfaces = "networkInterface"
         case placement = "Placement"
+        case privateDnsNameOptions = "PrivateDnsNameOptions"
         case privateIpAddress
         case ramdiskId = "RamdiskId"
         case securityGroupIds = "SecurityGroupId"
@@ -33413,6 +33656,7 @@ public struct RunInstancesRequest: Codable, Equatable {
         try metadataOptions?.validate()
         try monitoring?.validate()
         try placement?.validate()
+        try privateDnsNameOptions?.validate()
     }
 }
 
@@ -34832,13 +35076,17 @@ public struct SnapshotTaskDetail: Codable, Equatable {
 
 public struct SpotCapacityRebalance: Codable, Equatable {
     public var replacementStrategy: ReplacementStrategy?
+    public var terminationDelay: Integer?
 
-    public init(replacementStrategy: ReplacementStrategy? = nil) {
+    public init(replacementStrategy: ReplacementStrategy? = nil,
+                terminationDelay: Integer? = nil) {
         self.replacementStrategy = replacementStrategy
+        self.terminationDelay = terminationDelay
     }
 
     enum CodingKeys: String, CodingKey {
         case replacementStrategy
+        case terminationDelay
     }
 
     public func validate() throws {
@@ -35831,11 +36079,14 @@ public struct Subnet: Codable, Equatable {
     public var cidrBlock: String?
     public var customerOwnedIpv4Pool: CoipPoolId?
     public var defaultForAz: Boolean?
+    public var enableDns64: Boolean?
     public var ipv6CidrBlockAssociationSet: SubnetIpv6CidrBlockAssociationSet?
+    public var ipv6Native: Boolean?
     public var mapCustomerOwnedIpOnLaunch: Boolean?
     public var mapPublicIpOnLaunch: Boolean?
     public var outpostArn: String?
     public var ownerId: String?
+    public var privateDnsNameOptionsOnLaunch: PrivateDnsNameOptionsOnLaunch?
     public var state: SubnetState?
     public var subnetArn: String?
     public var subnetId: String?
@@ -35849,11 +36100,14 @@ public struct Subnet: Codable, Equatable {
                 cidrBlock: String? = nil,
                 customerOwnedIpv4Pool: CoipPoolId? = nil,
                 defaultForAz: Boolean? = nil,
+                enableDns64: Boolean? = nil,
                 ipv6CidrBlockAssociationSet: SubnetIpv6CidrBlockAssociationSet? = nil,
+                ipv6Native: Boolean? = nil,
                 mapCustomerOwnedIpOnLaunch: Boolean? = nil,
                 mapPublicIpOnLaunch: Boolean? = nil,
                 outpostArn: String? = nil,
                 ownerId: String? = nil,
+                privateDnsNameOptionsOnLaunch: PrivateDnsNameOptionsOnLaunch? = nil,
                 state: SubnetState? = nil,
                 subnetArn: String? = nil,
                 subnetId: String? = nil,
@@ -35866,11 +36120,14 @@ public struct Subnet: Codable, Equatable {
         self.cidrBlock = cidrBlock
         self.customerOwnedIpv4Pool = customerOwnedIpv4Pool
         self.defaultForAz = defaultForAz
+        self.enableDns64 = enableDns64
         self.ipv6CidrBlockAssociationSet = ipv6CidrBlockAssociationSet
+        self.ipv6Native = ipv6Native
         self.mapCustomerOwnedIpOnLaunch = mapCustomerOwnedIpOnLaunch
         self.mapPublicIpOnLaunch = mapPublicIpOnLaunch
         self.outpostArn = outpostArn
         self.ownerId = ownerId
+        self.privateDnsNameOptionsOnLaunch = privateDnsNameOptionsOnLaunch
         self.state = state
         self.subnetArn = subnetArn
         self.subnetId = subnetId
@@ -35886,11 +36143,14 @@ public struct Subnet: Codable, Equatable {
         case cidrBlock
         case customerOwnedIpv4Pool
         case defaultForAz
+        case enableDns64
         case ipv6CidrBlockAssociationSet
+        case ipv6Native
         case mapCustomerOwnedIpOnLaunch
         case mapPublicIpOnLaunch
         case outpostArn
         case ownerId
+        case privateDnsNameOptionsOnLaunch
         case state
         case subnetArn
         case subnetId
@@ -35899,6 +36159,7 @@ public struct Subnet: Codable, Equatable {
     }
 
     public func validate() throws {
+        try privateDnsNameOptionsOnLaunch?.validate()
     }
 }
 
@@ -39116,7 +39377,7 @@ public struct VpnConnection: Codable, Equatable {
     public var coreNetworkAttachmentArn: String?
     public var customerGatewayConfiguration: String?
     public var customerGatewayId: String?
-    public var gatewayAssociationState: String?
+    public var gatewayAssociationState: GatewayAssociationState?
     public var options: VpnConnectionOptions?
     public var routes: VpnStaticRouteList?
     public var state: VpnState?
@@ -39132,7 +39393,7 @@ public struct VpnConnection: Codable, Equatable {
                 coreNetworkAttachmentArn: String? = nil,
                 customerGatewayConfiguration: String? = nil,
                 customerGatewayId: String? = nil,
-                gatewayAssociationState: String? = nil,
+                gatewayAssociationState: GatewayAssociationState? = nil,
                 options: VpnConnectionOptions? = nil,
                 routes: VpnStaticRouteList? = nil,
                 state: VpnState? = nil,

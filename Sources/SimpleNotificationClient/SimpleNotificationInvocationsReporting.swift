@@ -57,6 +57,7 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
     public let listTopics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let optInPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let publish: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let publishBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let removePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -126,6 +127,8 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
             smokeAWSOperationReporting: operationsReporting.optInPhoneNumber)
         self.publish = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.publish)
+        self.publishBatch = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.publishBatch)
         self.removePermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.removePermission)
         self.setEndpointAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

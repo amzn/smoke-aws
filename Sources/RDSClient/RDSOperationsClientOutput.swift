@@ -1416,6 +1416,19 @@ extension PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstance
 }
 
 /**
+ Type to handle the output from the RebootDBCluster operation in a HTTP client.
+ */
+extension RebootDBClusterResultForRebootDBCluster: HTTPResponseOutputProtocol {
+    public typealias BodyType = RebootDBClusterResultForRebootDBCluster
+    public typealias HeadersType = RebootDBClusterResultForRebootDBCluster
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RebootDBClusterResultForRebootDBCluster {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the RebootDBInstance operation in a HTTP client.
  */
 extension RebootDBInstanceResultForRebootDBInstance: HTTPResponseOutputProtocol {

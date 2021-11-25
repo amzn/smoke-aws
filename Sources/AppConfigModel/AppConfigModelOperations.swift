@@ -173,6 +173,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
     public var name: Name
     public var retrievalRoleArn: RoleArn?
     public var tags: TagMap?
+    public var type: ConfigurationProfileType?
     public var validators: ValidatorList?
 
     public init(description: Description? = nil,
@@ -180,12 +181,14 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
                 name: Name,
                 retrievalRoleArn: RoleArn? = nil,
                 tags: TagMap? = nil,
+                type: ConfigurationProfileType? = nil,
                 validators: ValidatorList? = nil) {
         self.description = description
         self.locationUri = locationUri
         self.name = name
         self.retrievalRoleArn = retrievalRoleArn
         self.tags = tags
+        self.type = type
         self.validators = validators
     }
 
@@ -195,6 +198,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
         case name = "Name"
         case retrievalRoleArn = "RetrievalRoleArn"
         case tags = "Tags"
+        case type = "Type"
         case validators = "Validators"
     }
 
@@ -203,6 +207,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
         try locationUri.validateAsUri()
         try name.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
+        try type?.validateAsConfigurationProfileType()
         try validators?.validateAsValidatorList()
     }
 }
@@ -215,6 +220,7 @@ public extension CreateConfigurationProfileRequest {
             name: name,
             retrievalRoleArn: retrievalRoleArn,
             tags: tags,
+            type: type,
             validators: validators)
     }
 }
@@ -936,21 +942,26 @@ public extension ListConfigurationProfilesRequest {
 public struct ListConfigurationProfilesOperationInputQuery: Codable, Equatable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
+    public var type: ConfigurationProfileType?
 
     public init(maxResults: MaxResults? = nil,
-                nextToken: NextToken? = nil) {
+                nextToken: NextToken? = nil,
+                type: ConfigurationProfileType? = nil) {
         self.maxResults = maxResults
         self.nextToken = nextToken
+        self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
         case maxResults = "max_results"
         case nextToken = "next_token"
+        case type
     }
 
     public func validate() throws {
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
+        try type?.validateAsConfigurationProfileType()
     }
 }
 
@@ -958,7 +969,8 @@ public extension ListConfigurationProfilesRequest {
     func asAppConfigModelListConfigurationProfilesOperationInputQuery() -> ListConfigurationProfilesOperationInputQuery {
         return ListConfigurationProfilesOperationInputQuery(
             maxResults: maxResults,
-            nextToken: nextToken)
+            nextToken: nextToken,
+            type: type)
     }
 }
 

@@ -2237,6 +2237,8 @@ public extension LifecycleRuleAndOperator {
      */
     static let __default: S3Model.LifecycleRuleAndOperator = {
         let defaultInstance = S3Model.LifecycleRuleAndOperator(
+            objectSizeGreaterThan: nil,
+            objectSizeLessThan: nil,
             prefix: nil,
             tags: nil)
 
@@ -2251,6 +2253,8 @@ public extension LifecycleRuleFilter {
     static let __default: S3Model.LifecycleRuleFilter = {
         let defaultInstance = S3Model.LifecycleRuleFilter(
             and: nil,
+            objectSizeGreaterThan: nil,
+            objectSizeLessThan: nil,
             prefix: nil,
             tag: nil)
 
@@ -2736,6 +2740,7 @@ public extension NoncurrentVersionExpiration {
      */
     static let __default: S3Model.NoncurrentVersionExpiration = {
         let defaultInstance = S3Model.NoncurrentVersionExpiration(
+            newerNoncurrentVersions: nil,
             noncurrentDays: nil)
 
         return defaultInstance
@@ -2748,6 +2753,7 @@ public extension NoncurrentVersionTransition {
      */
     static let __default: S3Model.NoncurrentVersionTransition = {
         let defaultInstance = S3Model.NoncurrentVersionTransition(
+            newerNoncurrentVersions: nil,
             noncurrentDays: nil,
             storageClass: nil)
 

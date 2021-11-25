@@ -144,6 +144,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let promoteReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let promoteReadReplicaDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let purchaseReservedDBInstancesOffering: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let rebootDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let rebootDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let registerDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let removeFromGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -401,6 +402,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.promoteReadReplicaDBCluster)
         self.purchaseReservedDBInstancesOffering = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.purchaseReservedDBInstancesOffering)
+        self.rebootDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.rebootDBCluster)
         self.rebootDBInstance = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.rebootDBInstance)
         self.registerDBProxyTargets = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

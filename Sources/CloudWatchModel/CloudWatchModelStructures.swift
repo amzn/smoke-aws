@@ -62,41 +62,31 @@ public struct AlarmHistoryItem: Codable, Equatable {
 
 public struct AnomalyDetector: Codable, Equatable {
     public var configuration: AnomalyDetectorConfiguration?
-    public var dimensions: Dimensions?
-    public var metricName: MetricName?
-    public var namespace: Namespace?
-    public var stat: AnomalyDetectorMetricStat?
+    public var metricMathAnomalyDetector: MetricMathAnomalyDetector?
+    public var singleMetricAnomalyDetector: SingleMetricAnomalyDetector?
     public var stateValue: AnomalyDetectorStateValue?
 
     public init(configuration: AnomalyDetectorConfiguration? = nil,
-                dimensions: Dimensions? = nil,
-                metricName: MetricName? = nil,
-                namespace: Namespace? = nil,
-                stat: AnomalyDetectorMetricStat? = nil,
+                metricMathAnomalyDetector: MetricMathAnomalyDetector? = nil,
+                singleMetricAnomalyDetector: SingleMetricAnomalyDetector? = nil,
                 stateValue: AnomalyDetectorStateValue? = nil) {
         self.configuration = configuration
-        self.dimensions = dimensions
-        self.metricName = metricName
-        self.namespace = namespace
-        self.stat = stat
+        self.metricMathAnomalyDetector = metricMathAnomalyDetector
+        self.singleMetricAnomalyDetector = singleMetricAnomalyDetector
         self.stateValue = stateValue
     }
 
     enum CodingKeys: String, CodingKey {
         case configuration = "Configuration"
-        case dimensions = "Dimensions"
-        case metricName = "MetricName"
-        case namespace = "Namespace"
-        case stat = "Stat"
+        case metricMathAnomalyDetector = "MetricMathAnomalyDetector"
+        case singleMetricAnomalyDetector = "SingleMetricAnomalyDetector"
         case stateValue = "StateValue"
     }
 
     public func validate() throws {
         try configuration?.validate()
-        try dimensions?.validateAsDimensions()
-        try metricName?.validateAsMetricName()
-        try namespace?.validateAsNamespace()
-        try stat?.validateAsAnomalyDetectorMetricStat()
+        try metricMathAnomalyDetector?.validate()
+        try singleMetricAnomalyDetector?.validate()
     }
 }
 
@@ -341,33 +331,23 @@ public struct DeleteAlarmsInput: Codable, Equatable {
 }
 
 public struct DeleteAnomalyDetectorInput: Codable, Equatable {
-    public var dimensions: Dimensions?
-    public var metricName: MetricName
-    public var namespace: Namespace
-    public var stat: AnomalyDetectorMetricStat
+    public var metricMathAnomalyDetector: MetricMathAnomalyDetector?
+    public var singleMetricAnomalyDetector: SingleMetricAnomalyDetector?
 
-    public init(dimensions: Dimensions? = nil,
-                metricName: MetricName,
-                namespace: Namespace,
-                stat: AnomalyDetectorMetricStat) {
-        self.dimensions = dimensions
-        self.metricName = metricName
-        self.namespace = namespace
-        self.stat = stat
+    public init(metricMathAnomalyDetector: MetricMathAnomalyDetector? = nil,
+                singleMetricAnomalyDetector: SingleMetricAnomalyDetector? = nil) {
+        self.metricMathAnomalyDetector = metricMathAnomalyDetector
+        self.singleMetricAnomalyDetector = singleMetricAnomalyDetector
     }
 
     enum CodingKeys: String, CodingKey {
-        case dimensions = "Dimensions"
-        case metricName = "MetricName"
-        case namespace = "Namespace"
-        case stat = "Stat"
+        case metricMathAnomalyDetector = "MetricMathAnomalyDetector"
+        case singleMetricAnomalyDetector = "SingleMetricAnomalyDetector"
     }
 
     public func validate() throws {
-        try dimensions?.validateAsDimensions()
-        try metricName.validateAsMetricName()
-        try namespace.validateAsNamespace()
-        try stat.validateAsAnomalyDetectorMetricStat()
+        try metricMathAnomalyDetector?.validate()
+        try singleMetricAnomalyDetector?.validate()
     }
 }
 
@@ -771,17 +751,20 @@ public struct DescribeAlarmsOutputForDescribeAlarms: Codable, Equatable {
 }
 
 public struct DescribeAnomalyDetectorsInput: Codable, Equatable {
+    public var anomalyDetectorTypes: AnomalyDetectorTypes?
     public var dimensions: Dimensions?
     public var maxResults: MaxReturnedResultsCount?
     public var metricName: MetricName?
     public var namespace: Namespace?
     public var nextToken: NextToken?
 
-    public init(dimensions: Dimensions? = nil,
+    public init(anomalyDetectorTypes: AnomalyDetectorTypes? = nil,
+                dimensions: Dimensions? = nil,
                 maxResults: MaxReturnedResultsCount? = nil,
                 metricName: MetricName? = nil,
                 namespace: Namespace? = nil,
                 nextToken: NextToken? = nil) {
+        self.anomalyDetectorTypes = anomalyDetectorTypes
         self.dimensions = dimensions
         self.maxResults = maxResults
         self.metricName = metricName
@@ -790,6 +773,7 @@ public struct DescribeAnomalyDetectorsInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case anomalyDetectorTypes = "AnomalyDetectorTypes"
         case dimensions = "Dimensions"
         case maxResults = "MaxResults"
         case metricName = "MetricName"
@@ -798,6 +782,7 @@ public struct DescribeAnomalyDetectorsInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try anomalyDetectorTypes?.validateAsAnomalyDetectorTypes()
         try dimensions?.validateAsDimensions()
         try maxResults?.validateAsMaxReturnedResultsCount()
         try metricName?.validateAsMetricName()
@@ -2282,6 +2267,21 @@ public struct MetricDatum: Codable, Equatable {
     }
 }
 
+public struct MetricMathAnomalyDetector: Codable, Equatable {
+    public var metricDataQueries: MetricDataQueries?
+
+    public init(metricDataQueries: MetricDataQueries? = nil) {
+        self.metricDataQueries = metricDataQueries
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case metricDataQueries = "MetricDataQueries"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct MetricStat: Codable, Equatable {
     public var metric: Metric
     public var period: Period
@@ -2413,37 +2413,27 @@ public struct PartialFailure: Codable, Equatable {
 
 public struct PutAnomalyDetectorInput: Codable, Equatable {
     public var configuration: AnomalyDetectorConfiguration?
-    public var dimensions: Dimensions?
-    public var metricName: MetricName
-    public var namespace: Namespace
-    public var stat: AnomalyDetectorMetricStat
+    public var metricMathAnomalyDetector: MetricMathAnomalyDetector?
+    public var singleMetricAnomalyDetector: SingleMetricAnomalyDetector?
 
     public init(configuration: AnomalyDetectorConfiguration? = nil,
-                dimensions: Dimensions? = nil,
-                metricName: MetricName,
-                namespace: Namespace,
-                stat: AnomalyDetectorMetricStat) {
+                metricMathAnomalyDetector: MetricMathAnomalyDetector? = nil,
+                singleMetricAnomalyDetector: SingleMetricAnomalyDetector? = nil) {
         self.configuration = configuration
-        self.dimensions = dimensions
-        self.metricName = metricName
-        self.namespace = namespace
-        self.stat = stat
+        self.metricMathAnomalyDetector = metricMathAnomalyDetector
+        self.singleMetricAnomalyDetector = singleMetricAnomalyDetector
     }
 
     enum CodingKeys: String, CodingKey {
         case configuration = "Configuration"
-        case dimensions = "Dimensions"
-        case metricName = "MetricName"
-        case namespace = "Namespace"
-        case stat = "Stat"
+        case metricMathAnomalyDetector = "MetricMathAnomalyDetector"
+        case singleMetricAnomalyDetector = "SingleMetricAnomalyDetector"
     }
 
     public func validate() throws {
         try configuration?.validate()
-        try dimensions?.validateAsDimensions()
-        try metricName.validateAsMetricName()
-        try namespace.validateAsNamespace()
-        try stat.validateAsAnomalyDetectorMetricStat()
+        try metricMathAnomalyDetector?.validate()
+        try singleMetricAnomalyDetector?.validate()
     }
 }
 
@@ -2915,6 +2905,37 @@ public struct SetAlarmStateInput: Codable, Equatable {
         try alarmName.validateAsAlarmName()
         try stateReason.validateAsStateReason()
         try stateReasonData?.validateAsStateReasonData()
+    }
+}
+
+public struct SingleMetricAnomalyDetector: Codable, Equatable {
+    public var dimensions: Dimensions?
+    public var metricName: MetricName?
+    public var namespace: Namespace?
+    public var stat: AnomalyDetectorMetricStat?
+
+    public init(dimensions: Dimensions? = nil,
+                metricName: MetricName? = nil,
+                namespace: Namespace? = nil,
+                stat: AnomalyDetectorMetricStat? = nil) {
+        self.dimensions = dimensions
+        self.metricName = metricName
+        self.namespace = namespace
+        self.stat = stat
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dimensions = "Dimensions"
+        case metricName = "MetricName"
+        case namespace = "Namespace"
+        case stat = "Stat"
+    }
+
+    public func validate() throws {
+        try dimensions?.validateAsDimensions()
+        try metricName?.validateAsMetricName()
+        try namespace?.validateAsNamespace()
+        try stat?.validateAsAnomalyDetectorMetricStat()
     }
 }
 

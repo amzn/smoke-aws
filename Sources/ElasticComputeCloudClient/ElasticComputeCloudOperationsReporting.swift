@@ -420,6 +420,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let modifyLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyManagedPrefixList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyNetworkInterfaceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyPrivateDnsNameOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyReservedInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifySecurityGroupRules: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifySnapshotAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -1287,6 +1288,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .modifyManagedPrefixList, configuration: reportingConfiguration)
         self.modifyNetworkInterfaceAttribute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyNetworkInterfaceAttribute, configuration: reportingConfiguration)
+        self.modifyPrivateDnsNameOptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyPrivateDnsNameOptions, configuration: reportingConfiguration)
         self.modifyReservedInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyReservedInstances, configuration: reportingConfiguration)
         self.modifySecurityGroupRules = StandardSmokeAWSOperationReporting(

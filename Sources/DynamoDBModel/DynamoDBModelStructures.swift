@@ -456,13 +456,17 @@ public struct BackupSummary: Codable, Equatable {
 }
 
 public struct BatchExecuteStatementInput: Codable, Equatable {
+    public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var statements: PartiQLBatchRequest
 
-    public init(statements: PartiQLBatchRequest) {
+    public init(returnConsumedCapacity: ReturnConsumedCapacity? = nil,
+                statements: PartiQLBatchRequest) {
+        self.returnConsumedCapacity = returnConsumedCapacity
         self.statements = statements
     }
 
     enum CodingKeys: String, CodingKey {
+        case returnConsumedCapacity = "ReturnConsumedCapacity"
         case statements = "Statements"
     }
 
@@ -472,13 +476,17 @@ public struct BatchExecuteStatementInput: Codable, Equatable {
 }
 
 public struct BatchExecuteStatementOutput: Codable, Equatable {
+    public var consumedCapacity: ConsumedCapacityMultiple?
     public var responses: PartiQLBatchResponse?
 
-    public init(responses: PartiQLBatchResponse? = nil) {
+    public init(consumedCapacity: ConsumedCapacityMultiple? = nil,
+                responses: PartiQLBatchResponse? = nil) {
+        self.consumedCapacity = consumedCapacity
         self.responses = responses
     }
 
     enum CodingKeys: String, CodingKey {
+        case consumedCapacity = "ConsumedCapacity"
         case responses = "Responses"
     }
 
@@ -1794,15 +1802,18 @@ public struct ExecuteStatementInput: Codable, Equatable {
     public var consistentRead: ConsistentRead?
     public var nextToken: PartiQLNextToken?
     public var parameters: PreparedStatementParameters?
+    public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var statement: PartiQLStatement
 
     public init(consistentRead: ConsistentRead? = nil,
                 nextToken: PartiQLNextToken? = nil,
                 parameters: PreparedStatementParameters? = nil,
+                returnConsumedCapacity: ReturnConsumedCapacity? = nil,
                 statement: PartiQLStatement) {
         self.consistentRead = consistentRead
         self.nextToken = nextToken
         self.parameters = parameters
+        self.returnConsumedCapacity = returnConsumedCapacity
         self.statement = statement
     }
 
@@ -1810,6 +1821,7 @@ public struct ExecuteStatementInput: Codable, Equatable {
         case consistentRead = "ConsistentRead"
         case nextToken = "NextToken"
         case parameters = "Parameters"
+        case returnConsumedCapacity = "ReturnConsumedCapacity"
         case statement = "Statement"
     }
 
@@ -1821,37 +1833,46 @@ public struct ExecuteStatementInput: Codable, Equatable {
 }
 
 public struct ExecuteStatementOutput: Codable, Equatable {
+    public var consumedCapacity: ConsumedCapacity?
     public var items: ItemList?
     public var nextToken: PartiQLNextToken?
 
-    public init(items: ItemList? = nil,
+    public init(consumedCapacity: ConsumedCapacity? = nil,
+                items: ItemList? = nil,
                 nextToken: PartiQLNextToken? = nil) {
+        self.consumedCapacity = consumedCapacity
         self.items = items
         self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
+        case consumedCapacity = "ConsumedCapacity"
         case items = "Items"
         case nextToken = "NextToken"
     }
 
     public func validate() throws {
+        try consumedCapacity?.validate()
         try nextToken?.validateAsPartiQLNextToken()
     }
 }
 
 public struct ExecuteTransactionInput: Codable, Equatable {
     public var clientRequestToken: ClientRequestToken?
+    public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var transactStatements: ParameterizedStatements
 
     public init(clientRequestToken: ClientRequestToken? = nil,
+                returnConsumedCapacity: ReturnConsumedCapacity? = nil,
                 transactStatements: ParameterizedStatements) {
         self.clientRequestToken = clientRequestToken
+        self.returnConsumedCapacity = returnConsumedCapacity
         self.transactStatements = transactStatements
     }
 
     enum CodingKeys: String, CodingKey {
         case clientRequestToken = "ClientRequestToken"
+        case returnConsumedCapacity = "ReturnConsumedCapacity"
         case transactStatements = "TransactStatements"
     }
 
@@ -1862,13 +1883,17 @@ public struct ExecuteTransactionInput: Codable, Equatable {
 }
 
 public struct ExecuteTransactionOutput: Codable, Equatable {
+    public var consumedCapacity: ConsumedCapacityMultiple?
     public var responses: ItemResponseList?
 
-    public init(responses: ItemResponseList? = nil) {
+    public init(consumedCapacity: ConsumedCapacityMultiple? = nil,
+                responses: ItemResponseList? = nil) {
+        self.consumedCapacity = consumedCapacity
         self.responses = responses
     }
 
     enum CodingKeys: String, CodingKey {
+        case consumedCapacity = "ConsumedCapacity"
         case responses = "Responses"
     }
 

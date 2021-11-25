@@ -33,6 +33,19 @@ public typealias ApplicationList = [Application]
 public typealias Arn = String
 
 /**
+ Enumeration restricting the values of the BadRequestReason field.
+ */
+public enum BadRequestReason: String, Codable, CustomStringConvertible {
+    case invalidconfiguration = "InvalidConfiguration"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: BadRequestReason = .invalidconfiguration
+}
+
+/**
  Type definition for the Blob field.
  */
 public typealias Blob = Data
@@ -54,6 +67,11 @@ public enum BytesMeasure: String, Codable, CustomStringConvertible {
  Type definition for the ConfigurationProfileSummaryList field.
  */
 public typealias ConfigurationProfileSummaryList = [ConfigurationProfileSummary]
+
+/**
+ Type definition for the ConfigurationProfileType field.
+ */
+public typealias ConfigurationProfileType = String
 
 /**
  Enumeration restricting the values of the DeploymentEventType field.
@@ -177,6 +195,11 @@ public typealias Id = String
 public typealias Integer = Int
 
 /**
+ Type definition for the InvalidConfigurationDetailList field.
+ */
+public typealias InvalidConfigurationDetailList = [InvalidConfigurationDetail]
+
+/**
  Type definition for the Iso8601DateTime field.
  */
 public typealias Iso8601DateTime = String
@@ -234,6 +257,11 @@ public typealias RoleArn = String
  Type definition for the StringWithLengthBetween0And32768 field.
  */
 public typealias StringWithLengthBetween0And32768 = String
+
+/**
+ Type definition for the StringWithLengthBetween1And2048 field.
+ */
+public typealias StringWithLengthBetween1And2048 = String
 
 /**
  Type definition for the StringWithLengthBetween1And255 field.
@@ -332,6 +360,19 @@ extension AppConfigModel.Arn {
             matchingRange == startIndex..<endIndex else {
                 throw AppConfigError.validationError(
                     reason: "The provided value to Arn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ConfigurationProfileType field.
+*/
+extension AppConfigModel.ConfigurationProfileType {
+    public func validateAsConfigurationProfileType() throws {
+        guard let matchingRange = self.range(of: "^[a-zA-Z\\.]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw AppConfigError.validationError(
+                    reason: "The provided value to ConfigurationProfileType violated the regular expression constraint.")
         }
     }
 }
@@ -514,6 +555,21 @@ extension AppConfigModel.StringWithLengthBetween0And32768 {
 
         if self.count > 32768 {
             throw AppConfigError.validationError(reason: "The provided value to StringWithLengthBetween0And32768 violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the StringWithLengthBetween1And2048 field.
+*/
+extension AppConfigModel.StringWithLengthBetween1And2048 {
+    public func validateAsStringWithLengthBetween1And2048() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to StringWithLengthBetween1And2048 violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw AppConfigError.validationError(reason: "The provided value to StringWithLengthBetween1And2048 violated the maximum length constraint.")
         }
     }
 }

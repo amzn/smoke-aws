@@ -421,6 +421,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let modifyLaunchTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyManagedPrefixList: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyNetworkInterfaceAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyPrivateDnsNameOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyReservedInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifySecurityGroupRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifySnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -1288,6 +1289,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.modifyManagedPrefixList)
         self.modifyNetworkInterfaceAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyNetworkInterfaceAttribute)
+        self.modifyPrivateDnsNameOptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyPrivateDnsNameOptions)
         self.modifyReservedInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyReservedInstances)
         self.modifySecurityGroupRules = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -282,13 +282,14 @@ public typealias ContainerDependencies = [ContainerDependency]
  Enumeration restricting the values of the ContainerInstanceField field.
  */
 public enum ContainerInstanceField: String, Codable, CustomStringConvertible {
+    case containerInstanceHealth = "CONTAINER_INSTANCE_HEALTH"
     case tags = "TAGS"
 
     public var description: String {
         return rawValue
     }
     
-    public static let __default: ContainerInstanceField = .tags
+    public static let __default: ContainerInstanceField = .containerInstanceHealth
 }
 
 /**
@@ -537,6 +538,40 @@ public typealias InferenceAcceleratorOverrides = [InferenceAcceleratorOverride]
  Type definition for the InferenceAccelerators field.
  */
 public typealias InferenceAccelerators = [InferenceAccelerator]
+
+/**
+ Type definition for the InstanceHealthCheckResultList field.
+ */
+public typealias InstanceHealthCheckResultList = [InstanceHealthCheckResult]
+
+/**
+ Enumeration restricting the values of the InstanceHealthCheckState field.
+ */
+public enum InstanceHealthCheckState: String, Codable, CustomStringConvertible {
+    case impaired = "IMPAIRED"
+    case initializing = "INITIALIZING"
+    case insufficientData = "INSUFFICIENT_DATA"
+    case ok = "OK"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceHealthCheckState = .impaired
+}
+
+/**
+ Enumeration restricting the values of the InstanceHealthCheckType field.
+ */
+public enum InstanceHealthCheckType: String, Codable, CustomStringConvertible {
+    case containerRuntime = "CONTAINER_RUNTIME"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceHealthCheckType = .containerRuntime
+}
 
 /**
  Type definition for the Integer field.

@@ -54,6 +54,7 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
     case listTopics = "ListTopics"
     case optInPhoneNumber = "OptInPhoneNumber"
     case publish = "Publish"
+    case publishBatch = "PublishBatch"
     case removePermission = "RemovePermission"
     case setEndpointAttributes = "SetEndpointAttributes"
     case setPlatformApplicationAttributes = "SetPlatformApplicationAttributes"
@@ -127,6 +128,8 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
         case .optInPhoneNumber:
             return "/"
         case .publish:
+            return "/"
+        case .publishBatch:
             return "/"
         case .removePermission:
             return "/"

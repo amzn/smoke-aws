@@ -724,12 +724,15 @@ public extension CreateDBClusterMessage {
      */
     static let __default: RDSModel.CreateDBClusterMessage = {
         let defaultInstance = RDSModel.CreateDBClusterMessage(
+            allocatedStorage: nil,
+            autoMinorVersionUpgrade: nil,
             availabilityZones: nil,
             backtrackWindow: nil,
             backupRetentionPeriod: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
             dBClusterIdentifier: "value",
+            dBClusterInstanceClass: nil,
             dBClusterParameterGroupName: nil,
             dBSubnetGroupName: nil,
             databaseName: nil,
@@ -740,21 +743,29 @@ public extension CreateDBClusterMessage {
             enableGlobalWriteForwarding: nil,
             enableHttpEndpoint: nil,
             enableIAMDatabaseAuthentication: nil,
+            enablePerformanceInsights: nil,
             engine: "value",
             engineMode: nil,
             engineVersion: nil,
             globalClusterIdentifier: nil,
+            iops: nil,
             kmsKeyId: nil,
             masterUserPassword: nil,
             masterUsername: nil,
+            monitoringInterval: nil,
+            monitoringRoleArn: nil,
             optionGroupName: nil,
+            performanceInsightsKMSKeyId: nil,
+            performanceInsightsRetentionPeriod: nil,
             port: nil,
             preSignedUrl: nil,
             preferredBackupWindow: nil,
             preferredMaintenanceWindow: nil,
+            publiclyAccessible: nil,
             replicationSourceIdentifier: nil,
             scalingConfiguration: nil,
             storageEncrypted: nil,
+            storageType: nil,
             tags: nil,
             vpcSecurityGroupIds: nil)
 
@@ -873,6 +884,7 @@ public extension CreateDBInstanceMessage {
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             backupRetentionPeriod: nil,
+            backupTarget: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
             customIamInstanceProfile: nil,
@@ -1497,6 +1509,7 @@ public extension DBCluster {
             activityStreamStatus: nil,
             allocatedStorage: nil,
             associatedRoles: nil,
+            autoMinorVersionUpgrade: nil,
             automaticRestartTime: nil,
             availabilityZones: nil,
             backtrackConsumedChangeRecords: nil,
@@ -1511,6 +1524,7 @@ public extension DBCluster {
             customEndpoints: nil,
             dBClusterArn: nil,
             dBClusterIdentifier: nil,
+            dBClusterInstanceClass: nil,
             dBClusterMembers: nil,
             dBClusterOptionGroupMemberships: nil,
             dBClusterParameterGroup: nil,
@@ -1531,21 +1545,29 @@ public extension DBCluster {
             hostedZoneId: nil,
             httpEndpointEnabled: nil,
             iAMDatabaseAuthenticationEnabled: nil,
+            iops: nil,
             kmsKeyId: nil,
             latestRestorableTime: nil,
             masterUsername: nil,
+            monitoringInterval: nil,
+            monitoringRoleArn: nil,
             multiAZ: nil,
             pendingModifiedValues: nil,
             percentProgress: nil,
+            performanceInsightsEnabled: nil,
+            performanceInsightsKMSKeyId: nil,
+            performanceInsightsRetentionPeriod: nil,
             port: nil,
             preferredBackupWindow: nil,
             preferredMaintenanceWindow: nil,
+            publiclyAccessible: nil,
             readReplicaIdentifiers: nil,
             readerEndpoint: nil,
             replicationSourceIdentifier: nil,
             scalingConfigurationInfo: nil,
             status: nil,
             storageEncrypted: nil,
+            storageType: nil,
             tagList: nil,
             vpcSecurityGroups: nil)
 
@@ -2228,6 +2250,7 @@ public extension DBInstance {
             availabilityZone: nil,
             awsBackupRecoveryPointArn: nil,
             backupRetentionPeriod: nil,
+            backupTarget: nil,
             cACertificateIdentifier: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
@@ -2313,6 +2336,7 @@ public extension DBInstanceAutomatedBackup {
             allocatedStorage: nil,
             availabilityZone: nil,
             backupRetentionPeriod: nil,
+            backupTarget: nil,
             dBInstanceArn: nil,
             dBInstanceAutomatedBackupsArn: nil,
             dBInstanceAutomatedBackupsReplications: nil,
@@ -2968,6 +2992,7 @@ public extension DBSnapshot {
             port: nil,
             processorFeatures: nil,
             snapshotCreateTime: nil,
+            snapshotTarget: nil,
             snapshotType: nil,
             sourceDBSnapshotIdentifier: nil,
             sourceRegion: nil,
@@ -5733,13 +5758,16 @@ public extension ModifyDBClusterMessage {
      */
     static let __default: RDSModel.ModifyDBClusterMessage = {
         let defaultInstance = RDSModel.ModifyDBClusterMessage(
+            allocatedStorage: nil,
             allowMajorVersionUpgrade: nil,
             applyImmediately: nil,
+            autoMinorVersionUpgrade: nil,
             backtrackWindow: nil,
             backupRetentionPeriod: nil,
             cloudwatchLogsExportConfiguration: nil,
             copyTagsToSnapshot: nil,
             dBClusterIdentifier: "value",
+            dBClusterInstanceClass: nil,
             dBClusterParameterGroupName: nil,
             dBInstanceParameterGroupName: nil,
             deletionProtection: nil,
@@ -5748,14 +5776,21 @@ public extension ModifyDBClusterMessage {
             enableGlobalWriteForwarding: nil,
             enableHttpEndpoint: nil,
             enableIAMDatabaseAuthentication: nil,
+            enablePerformanceInsights: nil,
             engineVersion: nil,
+            iops: nil,
             masterUserPassword: nil,
+            monitoringInterval: nil,
+            monitoringRoleArn: nil,
             newDBClusterIdentifier: nil,
             optionGroupName: nil,
+            performanceInsightsKMSKeyId: nil,
+            performanceInsightsRetentionPeriod: nil,
             port: nil,
             preferredBackupWindow: nil,
             preferredMaintenanceWindow: nil,
             scalingConfiguration: nil,
+            storageType: nil,
             vpcSecurityGroupIds: nil)
 
         return defaultInstance
@@ -6543,6 +6578,7 @@ public extension OrderableDBInstanceOption {
             storageType: nil,
             supportedActivityStreamModes: nil,
             supportedEngineModes: nil,
+            supportsClusters: nil,
             supportsEnhancedMonitoring: nil,
             supportsGlobalDatabases: nil,
             supportsIAMDatabaseAuthentication: nil,
@@ -6857,6 +6893,42 @@ public extension Range {
             from: nil,
             step: nil,
             to: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RebootDBClusterMessage {
+    /**
+     Default instance of the RebootDBClusterMessage structure.
+     */
+    static let __default: RDSModel.RebootDBClusterMessage = {
+        let defaultInstance = RDSModel.RebootDBClusterMessage(
+            dBClusterIdentifier: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension RebootDBClusterResult {
+    /**
+     Default instance of the RebootDBClusterResult structure.
+     */
+    static let __default: RDSModel.RebootDBClusterResult = {
+        let defaultInstance = RDSModel.RebootDBClusterResult(
+            dBCluster: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RebootDBClusterResultForRebootDBCluster {
+    /**
+     Default instance of the RebootDBClusterResultForRebootDBCluster structure.
+     */
+    static let __default: RDSModel.RebootDBClusterResultForRebootDBCluster = {
+        let defaultInstance = RDSModel.RebootDBClusterResultForRebootDBCluster(
+            rebootDBClusterResult: RebootDBClusterResult.__default)
 
         return defaultInstance
     }()
@@ -7336,6 +7408,7 @@ public extension RestoreDBClusterFromSnapshotMessage {
             backtrackWindow: nil,
             copyTagsToSnapshot: nil,
             dBClusterIdentifier: "value",
+            dBClusterInstanceClass: nil,
             dBClusterParameterGroupName: nil,
             dBSubnetGroupName: nil,
             databaseName: nil,
@@ -7347,11 +7420,14 @@ public extension RestoreDBClusterFromSnapshotMessage {
             engine: "value",
             engineMode: nil,
             engineVersion: nil,
+            iops: nil,
             kmsKeyId: nil,
             optionGroupName: nil,
             port: nil,
+            publiclyAccessible: nil,
             scalingConfiguration: nil,
             snapshotIdentifier: "value",
+            storageType: nil,
             tags: nil,
             vpcSecurityGroupIds: nil)
 
@@ -7392,6 +7468,7 @@ public extension RestoreDBClusterToPointInTimeMessage {
             backtrackWindow: nil,
             copyTagsToSnapshot: nil,
             dBClusterIdentifier: "value",
+            dBClusterInstanceClass: nil,
             dBClusterParameterGroupName: nil,
             dBSubnetGroupName: nil,
             deletionProtection: nil,
@@ -7400,13 +7477,16 @@ public extension RestoreDBClusterToPointInTimeMessage {
             enableCloudwatchLogsExports: nil,
             enableIAMDatabaseAuthentication: nil,
             engineMode: nil,
+            iops: nil,
             kmsKeyId: nil,
             optionGroupName: nil,
             port: nil,
+            publiclyAccessible: nil,
             restoreToTime: nil,
             restoreType: nil,
             scalingConfiguration: nil,
             sourceDBClusterIdentifier: "value",
+            storageType: nil,
             tags: nil,
             useLatestRestorableTime: nil,
             vpcSecurityGroupIds: nil)
@@ -7447,6 +7527,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
         let defaultInstance = RDSModel.RestoreDBInstanceFromDBSnapshotMessage(
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
+            backupTarget: nil,
             copyTagsToSnapshot: nil,
             customIamInstanceProfile: nil,
             dBInstanceClass: nil,
@@ -7591,6 +7672,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
         let defaultInstance = RDSModel.RestoreDBInstanceToPointInTimeMessage(
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
+            backupTarget: nil,
             copyTagsToSnapshot: nil,
             customIamInstanceProfile: nil,
             dBInstanceClass: nil,

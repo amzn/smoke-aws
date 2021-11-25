@@ -1255,6 +1255,16 @@ public enum ObjectOwnership: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ObjectSizeGreaterThanBytes field.
+ */
+public typealias ObjectSizeGreaterThanBytes = Int
+
+/**
+ Type definition for the ObjectSizeLessThanBytes field.
+ */
+public typealias ObjectSizeLessThanBytes = Int
+
+/**
  Enumeration restricting the values of the ObjectStorageClass field.
  */
 public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
@@ -1877,6 +1887,11 @@ public typealias UserMetadata = [MetadataEntry]
  Type definition for the Value field.
  */
 public typealias Value = String
+
+/**
+ Type definition for the VersionCount field.
+ */
+public typealias VersionCount = Int
 
 /**
  Type definition for the VersionIdMarker field.

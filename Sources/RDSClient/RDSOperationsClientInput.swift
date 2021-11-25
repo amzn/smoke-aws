@@ -600,6 +600,11 @@ public typealias PromoteReadReplicaDBClusterOperationHTTPRequestInput = QueryHTT
 public typealias PurchaseReservedDBInstancesOfferingOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the RebootDBCluster operation in a HTTP client.
+ */
+public typealias RebootDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the RebootDBInstance operation in a HTTP client.
  */
 public typealias RebootDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput

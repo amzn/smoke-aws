@@ -563,6 +563,11 @@ public typealias LogicalResourceIds = [LogicalResourceId]
 public typealias MajorVersion = Int64
 
 /**
+ Type definition for the ManagedExecutionNullable field.
+ */
+public typealias ManagedExecutionNullable = Bool
+
+/**
  Type definition for the MaxConcurrentCount field.
  */
 public typealias MaxConcurrentCount = Int
@@ -1150,6 +1155,11 @@ public typealias StackId = String
  Type definition for the StackIdList field.
  */
 public typealias StackIdList = [StackId]
+
+/**
+ Type definition for the StackIdsUrl field.
+ */
+public typealias StackIdsUrl = String
 
 /**
  Enumeration restricting the values of the StackInstanceDetailedStatus field.
@@ -2573,6 +2583,27 @@ extension CloudformationModel.StackDriftDetectionId {
 
         if self.count > 36 {
             throw CloudformationError.validationError(reason: "The provided value to StackDriftDetectionId violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the StackIdsUrl field.
+*/
+extension CloudformationModel.StackIdsUrl {
+    public func validateAsStackIdsUrl() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to StackIdsUrl violated the minimum length constraint.")
+        }
+
+        if self.count > 5120 {
+            throw CloudformationError.validationError(reason: "The provided value to StackIdsUrl violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "(s3://|http(s?)://).+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to StackIdsUrl violated the regular expression constraint.")
         }
     }
 }

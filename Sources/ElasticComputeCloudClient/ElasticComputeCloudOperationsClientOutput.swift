@@ -4575,6 +4575,19 @@ extension ModifyManagedPrefixListResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyPrivateDnsNameOptions operation in a HTTP client.
+ */
+extension ModifyPrivateDnsNameOptionsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyPrivateDnsNameOptionsResult
+    public typealias HeadersType = ModifyPrivateDnsNameOptionsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyPrivateDnsNameOptionsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyReservedInstances operation in a HTTP client.
  */
 extension ModifyReservedInstancesResult: HTTPResponseOutputProtocol {

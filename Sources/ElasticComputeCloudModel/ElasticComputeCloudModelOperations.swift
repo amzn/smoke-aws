@@ -418,6 +418,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyLaunchTemplate = "ModifyLaunchTemplate"
     case modifyManagedPrefixList = "ModifyManagedPrefixList"
     case modifyNetworkInterfaceAttribute = "ModifyNetworkInterfaceAttribute"
+    case modifyPrivateDnsNameOptions = "ModifyPrivateDnsNameOptions"
     case modifyReservedInstances = "ModifyReservedInstances"
     case modifySecurityGroupRules = "ModifySecurityGroupRules"
     case modifySnapshotAttribute = "ModifySnapshotAttribute"
@@ -1289,6 +1290,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyManagedPrefixList:
             return "/"
         case .modifyNetworkInterfaceAttribute:
+            return "/"
+        case .modifyPrivateDnsNameOptions:
             return "/"
         case .modifyReservedInstances:
             return "/"

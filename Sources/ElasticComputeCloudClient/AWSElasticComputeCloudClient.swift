@@ -72,6 +72,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
+                connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>
                     = SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
@@ -85,7 +86,8 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             contentType: contentType,
             clientDelegate: clientDelegate,
             connectionTimeoutSeconds: connectionTimeoutSeconds,
-            eventLoopProvider: eventLoopProvider)
+            eventLoopProvider: eventLoopProvider,
+            connectionPoolConfiguration: connectionPoolConfiguration)
         self.ownsHttpClients = true
         self.awsRegion = awsRegion
         self.service = service
@@ -29788,6 +29790,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyPrivateDnsNameOptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyPrivateDnsNameOptionsRequest object being passed to this operation.
+         - completion: The ModifyPrivateDnsNameOptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyPrivateDnsNameOptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyPrivateDnsNameOptionsAsync(
+            input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyPrivateDnsNameOptions,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyPrivateDnsNameOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyPrivateDnsNameOptions.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyPrivateDnsNameOptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyPrivateDnsNameOptionsRequest object being passed to this operation.
+     - Returns: The ModifyPrivateDnsNameOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyPrivateDnsNameOptionsSync(
+            input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest) throws -> ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyPrivateDnsNameOptions,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyPrivateDnsNameOptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyPrivateDnsNameOptions.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,

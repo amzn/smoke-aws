@@ -1109,12 +1109,15 @@ public struct CreateDBClusterEndpointMessage: Codable, Equatable {
 }
 
 public struct CreateDBClusterMessage: Codable, Equatable {
+    public var allocatedStorage: IntegerOptional?
+    public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZones: AvailabilityZones?
     public var backtrackWindow: LongOptional?
     public var backupRetentionPeriod: IntegerOptional?
     public var characterSetName: String?
     public var copyTagsToSnapshot: BooleanOptional?
     public var dBClusterIdentifier: String
+    public var dBClusterInstanceClass: String?
     public var dBClusterParameterGroupName: String?
     public var dBSubnetGroupName: String?
     public var databaseName: String?
@@ -1125,30 +1128,41 @@ public struct CreateDBClusterMessage: Codable, Equatable {
     public var enableGlobalWriteForwarding: BooleanOptional?
     public var enableHttpEndpoint: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
+    public var enablePerformanceInsights: BooleanOptional?
     public var engine: String
     public var engineMode: String?
     public var engineVersion: String?
     public var globalClusterIdentifier: String?
+    public var iops: IntegerOptional?
     public var kmsKeyId: String?
     public var masterUserPassword: String?
     public var masterUsername: String?
+    public var monitoringInterval: IntegerOptional?
+    public var monitoringRoleArn: String?
     public var optionGroupName: String?
+    public var performanceInsightsKMSKeyId: String?
+    public var performanceInsightsRetentionPeriod: IntegerOptional?
     public var port: IntegerOptional?
     public var preSignedUrl: String?
     public var preferredBackupWindow: String?
     public var preferredMaintenanceWindow: String?
+    public var publiclyAccessible: BooleanOptional?
     public var replicationSourceIdentifier: String?
     public var scalingConfiguration: ScalingConfiguration?
     public var storageEncrypted: BooleanOptional?
+    public var storageType: String?
     public var tags: TagList?
     public var vpcSecurityGroupIds: VpcSecurityGroupIdList?
 
-    public init(availabilityZones: AvailabilityZones? = nil,
+    public init(allocatedStorage: IntegerOptional? = nil,
+                autoMinorVersionUpgrade: BooleanOptional? = nil,
+                availabilityZones: AvailabilityZones? = nil,
                 backtrackWindow: LongOptional? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
                 characterSetName: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 dBClusterIdentifier: String,
+                dBClusterInstanceClass: String? = nil,
                 dBClusterParameterGroupName: String? = nil,
                 dBSubnetGroupName: String? = nil,
                 databaseName: String? = nil,
@@ -1159,29 +1173,40 @@ public struct CreateDBClusterMessage: Codable, Equatable {
                 enableGlobalWriteForwarding: BooleanOptional? = nil,
                 enableHttpEndpoint: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
+                enablePerformanceInsights: BooleanOptional? = nil,
                 engine: String,
                 engineMode: String? = nil,
                 engineVersion: String? = nil,
                 globalClusterIdentifier: String? = nil,
+                iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
                 masterUserPassword: String? = nil,
                 masterUsername: String? = nil,
+                monitoringInterval: IntegerOptional? = nil,
+                monitoringRoleArn: String? = nil,
                 optionGroupName: String? = nil,
+                performanceInsightsKMSKeyId: String? = nil,
+                performanceInsightsRetentionPeriod: IntegerOptional? = nil,
                 port: IntegerOptional? = nil,
                 preSignedUrl: String? = nil,
                 preferredBackupWindow: String? = nil,
                 preferredMaintenanceWindow: String? = nil,
+                publiclyAccessible: BooleanOptional? = nil,
                 replicationSourceIdentifier: String? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
                 storageEncrypted: BooleanOptional? = nil,
+                storageType: String? = nil,
                 tags: TagList? = nil,
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
+        self.allocatedStorage = allocatedStorage
+        self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZones = availabilityZones
         self.backtrackWindow = backtrackWindow
         self.backupRetentionPeriod = backupRetentionPeriod
         self.characterSetName = characterSetName
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.dBClusterInstanceClass = dBClusterInstanceClass
         self.dBClusterParameterGroupName = dBClusterParameterGroupName
         self.dBSubnetGroupName = dBSubnetGroupName
         self.databaseName = databaseName
@@ -1192,32 +1217,43 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         self.enableGlobalWriteForwarding = enableGlobalWriteForwarding
         self.enableHttpEndpoint = enableHttpEndpoint
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
+        self.enablePerformanceInsights = enablePerformanceInsights
         self.engine = engine
         self.engineMode = engineMode
         self.engineVersion = engineVersion
         self.globalClusterIdentifier = globalClusterIdentifier
+        self.iops = iops
         self.kmsKeyId = kmsKeyId
         self.masterUserPassword = masterUserPassword
         self.masterUsername = masterUsername
+        self.monitoringInterval = monitoringInterval
+        self.monitoringRoleArn = monitoringRoleArn
         self.optionGroupName = optionGroupName
+        self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
+        self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
         self.port = port
         self.preSignedUrl = preSignedUrl
         self.preferredBackupWindow = preferredBackupWindow
         self.preferredMaintenanceWindow = preferredMaintenanceWindow
+        self.publiclyAccessible = publiclyAccessible
         self.replicationSourceIdentifier = replicationSourceIdentifier
         self.scalingConfiguration = scalingConfiguration
         self.storageEncrypted = storageEncrypted
+        self.storageType = storageType
         self.tags = tags
         self.vpcSecurityGroupIds = vpcSecurityGroupIds
     }
 
     enum CodingKeys: String, CodingKey {
+        case allocatedStorage = "AllocatedStorage"
+        case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZones = "AvailabilityZones"
         case backtrackWindow = "BacktrackWindow"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case characterSetName = "CharacterSetName"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case dBClusterInstanceClass = "DBClusterInstanceClass"
         case dBClusterParameterGroupName = "DBClusterParameterGroupName"
         case dBSubnetGroupName = "DBSubnetGroupName"
         case databaseName = "DatabaseName"
@@ -1228,21 +1264,29 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         case enableGlobalWriteForwarding = "EnableGlobalWriteForwarding"
         case enableHttpEndpoint = "EnableHttpEndpoint"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
+        case enablePerformanceInsights = "EnablePerformanceInsights"
         case engine = "Engine"
         case engineMode = "EngineMode"
         case engineVersion = "EngineVersion"
         case globalClusterIdentifier = "GlobalClusterIdentifier"
+        case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
         case masterUserPassword = "MasterUserPassword"
         case masterUsername = "MasterUsername"
+        case monitoringInterval = "MonitoringInterval"
+        case monitoringRoleArn = "MonitoringRoleArn"
         case optionGroupName = "OptionGroupName"
+        case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
+        case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
         case port = "Port"
         case preSignedUrl = "PreSignedUrl"
         case preferredBackupWindow = "PreferredBackupWindow"
         case preferredMaintenanceWindow = "PreferredMaintenanceWindow"
+        case publiclyAccessible = "PubliclyAccessible"
         case replicationSourceIdentifier = "ReplicationSourceIdentifier"
         case scalingConfiguration = "ScalingConfiguration"
         case storageEncrypted = "StorageEncrypted"
+        case storageType = "StorageType"
         case tags = "Tags"
         case vpcSecurityGroupIds = "VpcSecurityGroupIds"
     }
@@ -1403,6 +1447,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var backupRetentionPeriod: IntegerOptional?
+    public var backupTarget: String?
     public var characterSetName: String?
     public var copyTagsToSnapshot: BooleanOptional?
     public var customIamInstanceProfile: String?
@@ -1453,6 +1498,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
                 autoMinorVersionUpgrade: BooleanOptional? = nil,
                 availabilityZone: String? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
+                backupTarget: String? = nil,
                 characterSetName: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 customIamInstanceProfile: String? = nil,
@@ -1502,6 +1548,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
         self.backupRetentionPeriod = backupRetentionPeriod
+        self.backupTarget = backupTarget
         self.characterSetName = characterSetName
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.customIamInstanceProfile = customIamInstanceProfile
@@ -1554,6 +1601,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
         case backupRetentionPeriod = "BackupRetentionPeriod"
+        case backupTarget = "BackupTarget"
         case characterSetName = "CharacterSetName"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case customIamInstanceProfile = "CustomIamInstanceProfile"
@@ -2521,6 +2569,7 @@ public struct DBCluster: Codable, Equatable {
     public var activityStreamStatus: ActivityStreamStatus?
     public var allocatedStorage: IntegerOptional?
     public var associatedRoles: DBClusterRoles?
+    public var autoMinorVersionUpgrade: Boolean?
     public var automaticRestartTime: TStamp?
     public var availabilityZones: AvailabilityZones?
     public var backtrackConsumedChangeRecords: LongOptional?
@@ -2535,6 +2584,7 @@ public struct DBCluster: Codable, Equatable {
     public var customEndpoints: StringList?
     public var dBClusterArn: String?
     public var dBClusterIdentifier: String?
+    public var dBClusterInstanceClass: String?
     public var dBClusterMembers: DBClusterMemberList?
     public var dBClusterOptionGroupMemberships: DBClusterOptionGroupMemberships?
     public var dBClusterParameterGroup: String?
@@ -2555,21 +2605,29 @@ public struct DBCluster: Codable, Equatable {
     public var hostedZoneId: String?
     public var httpEndpointEnabled: BooleanOptional?
     public var iAMDatabaseAuthenticationEnabled: BooleanOptional?
+    public var iops: IntegerOptional?
     public var kmsKeyId: String?
     public var latestRestorableTime: TStamp?
     public var masterUsername: String?
+    public var monitoringInterval: IntegerOptional?
+    public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
     public var pendingModifiedValues: ClusterPendingModifiedValues?
     public var percentProgress: String?
+    public var performanceInsightsEnabled: BooleanOptional?
+    public var performanceInsightsKMSKeyId: String?
+    public var performanceInsightsRetentionPeriod: IntegerOptional?
     public var port: IntegerOptional?
     public var preferredBackupWindow: String?
     public var preferredMaintenanceWindow: String?
+    public var publiclyAccessible: BooleanOptional?
     public var readReplicaIdentifiers: ReadReplicaIdentifierList?
     public var readerEndpoint: String?
     public var replicationSourceIdentifier: String?
     public var scalingConfigurationInfo: ScalingConfigurationInfo?
     public var status: String?
     public var storageEncrypted: Boolean?
+    public var storageType: String?
     public var tagList: TagList?
     public var vpcSecurityGroups: VpcSecurityGroupMembershipList?
 
@@ -2579,6 +2637,7 @@ public struct DBCluster: Codable, Equatable {
                 activityStreamStatus: ActivityStreamStatus? = nil,
                 allocatedStorage: IntegerOptional? = nil,
                 associatedRoles: DBClusterRoles? = nil,
+                autoMinorVersionUpgrade: Boolean? = nil,
                 automaticRestartTime: TStamp? = nil,
                 availabilityZones: AvailabilityZones? = nil,
                 backtrackConsumedChangeRecords: LongOptional? = nil,
@@ -2593,6 +2652,7 @@ public struct DBCluster: Codable, Equatable {
                 customEndpoints: StringList? = nil,
                 dBClusterArn: String? = nil,
                 dBClusterIdentifier: String? = nil,
+                dBClusterInstanceClass: String? = nil,
                 dBClusterMembers: DBClusterMemberList? = nil,
                 dBClusterOptionGroupMemberships: DBClusterOptionGroupMemberships? = nil,
                 dBClusterParameterGroup: String? = nil,
@@ -2613,21 +2673,29 @@ public struct DBCluster: Codable, Equatable {
                 hostedZoneId: String? = nil,
                 httpEndpointEnabled: BooleanOptional? = nil,
                 iAMDatabaseAuthenticationEnabled: BooleanOptional? = nil,
+                iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
                 latestRestorableTime: TStamp? = nil,
                 masterUsername: String? = nil,
+                monitoringInterval: IntegerOptional? = nil,
+                monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
                 pendingModifiedValues: ClusterPendingModifiedValues? = nil,
                 percentProgress: String? = nil,
+                performanceInsightsEnabled: BooleanOptional? = nil,
+                performanceInsightsKMSKeyId: String? = nil,
+                performanceInsightsRetentionPeriod: IntegerOptional? = nil,
                 port: IntegerOptional? = nil,
                 preferredBackupWindow: String? = nil,
                 preferredMaintenanceWindow: String? = nil,
+                publiclyAccessible: BooleanOptional? = nil,
                 readReplicaIdentifiers: ReadReplicaIdentifierList? = nil,
                 readerEndpoint: String? = nil,
                 replicationSourceIdentifier: String? = nil,
                 scalingConfigurationInfo: ScalingConfigurationInfo? = nil,
                 status: String? = nil,
                 storageEncrypted: Boolean? = nil,
+                storageType: String? = nil,
                 tagList: TagList? = nil,
                 vpcSecurityGroups: VpcSecurityGroupMembershipList? = nil) {
         self.activityStreamKinesisStreamName = activityStreamKinesisStreamName
@@ -2636,6 +2704,7 @@ public struct DBCluster: Codable, Equatable {
         self.activityStreamStatus = activityStreamStatus
         self.allocatedStorage = allocatedStorage
         self.associatedRoles = associatedRoles
+        self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.automaticRestartTime = automaticRestartTime
         self.availabilityZones = availabilityZones
         self.backtrackConsumedChangeRecords = backtrackConsumedChangeRecords
@@ -2650,6 +2719,7 @@ public struct DBCluster: Codable, Equatable {
         self.customEndpoints = customEndpoints
         self.dBClusterArn = dBClusterArn
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.dBClusterInstanceClass = dBClusterInstanceClass
         self.dBClusterMembers = dBClusterMembers
         self.dBClusterOptionGroupMemberships = dBClusterOptionGroupMemberships
         self.dBClusterParameterGroup = dBClusterParameterGroup
@@ -2670,21 +2740,29 @@ public struct DBCluster: Codable, Equatable {
         self.hostedZoneId = hostedZoneId
         self.httpEndpointEnabled = httpEndpointEnabled
         self.iAMDatabaseAuthenticationEnabled = iAMDatabaseAuthenticationEnabled
+        self.iops = iops
         self.kmsKeyId = kmsKeyId
         self.latestRestorableTime = latestRestorableTime
         self.masterUsername = masterUsername
+        self.monitoringInterval = monitoringInterval
+        self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
         self.pendingModifiedValues = pendingModifiedValues
         self.percentProgress = percentProgress
+        self.performanceInsightsEnabled = performanceInsightsEnabled
+        self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
+        self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
         self.port = port
         self.preferredBackupWindow = preferredBackupWindow
         self.preferredMaintenanceWindow = preferredMaintenanceWindow
+        self.publiclyAccessible = publiclyAccessible
         self.readReplicaIdentifiers = readReplicaIdentifiers
         self.readerEndpoint = readerEndpoint
         self.replicationSourceIdentifier = replicationSourceIdentifier
         self.scalingConfigurationInfo = scalingConfigurationInfo
         self.status = status
         self.storageEncrypted = storageEncrypted
+        self.storageType = storageType
         self.tagList = tagList
         self.vpcSecurityGroups = vpcSecurityGroups
     }
@@ -2696,6 +2774,7 @@ public struct DBCluster: Codable, Equatable {
         case activityStreamStatus = "ActivityStreamStatus"
         case allocatedStorage = "AllocatedStorage"
         case associatedRoles = "AssociatedRoles"
+        case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case automaticRestartTime = "AutomaticRestartTime"
         case availabilityZones = "AvailabilityZones"
         case backtrackConsumedChangeRecords = "BacktrackConsumedChangeRecords"
@@ -2710,6 +2789,7 @@ public struct DBCluster: Codable, Equatable {
         case customEndpoints = "CustomEndpoints"
         case dBClusterArn = "DBClusterArn"
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case dBClusterInstanceClass = "DBClusterInstanceClass"
         case dBClusterMembers = "DBClusterMembers"
         case dBClusterOptionGroupMemberships = "DBClusterOptionGroupMemberships"
         case dBClusterParameterGroup = "DBClusterParameterGroup"
@@ -2730,21 +2810,29 @@ public struct DBCluster: Codable, Equatable {
         case hostedZoneId = "HostedZoneId"
         case httpEndpointEnabled = "HttpEndpointEnabled"
         case iAMDatabaseAuthenticationEnabled = "IAMDatabaseAuthenticationEnabled"
+        case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
         case latestRestorableTime = "LatestRestorableTime"
         case masterUsername = "MasterUsername"
+        case monitoringInterval = "MonitoringInterval"
+        case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
         case pendingModifiedValues = "PendingModifiedValues"
         case percentProgress = "PercentProgress"
+        case performanceInsightsEnabled = "PerformanceInsightsEnabled"
+        case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
+        case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
         case port = "Port"
         case preferredBackupWindow = "PreferredBackupWindow"
         case preferredMaintenanceWindow = "PreferredMaintenanceWindow"
+        case publiclyAccessible = "PubliclyAccessible"
         case readReplicaIdentifiers = "ReadReplicaIdentifiers"
         case readerEndpoint = "ReaderEndpoint"
         case replicationSourceIdentifier = "ReplicationSourceIdentifier"
         case scalingConfigurationInfo = "ScalingConfigurationInfo"
         case status = "Status"
         case storageEncrypted = "StorageEncrypted"
+        case storageType = "StorageType"
         case tagList = "TagList"
         case vpcSecurityGroups = "VpcSecurityGroups"
     }
@@ -3768,6 +3856,7 @@ public struct DBInstance: Codable, Equatable {
     public var availabilityZone: String?
     public var awsBackupRecoveryPointArn: String?
     public var backupRetentionPeriod: Integer?
+    public var backupTarget: String?
     public var cACertificateIdentifier: String?
     public var characterSetName: String?
     public var copyTagsToSnapshot: Boolean?
@@ -3842,6 +3931,7 @@ public struct DBInstance: Codable, Equatable {
                 availabilityZone: String? = nil,
                 awsBackupRecoveryPointArn: String? = nil,
                 backupRetentionPeriod: Integer? = nil,
+                backupTarget: String? = nil,
                 cACertificateIdentifier: String? = nil,
                 characterSetName: String? = nil,
                 copyTagsToSnapshot: Boolean? = nil,
@@ -3915,6 +4005,7 @@ public struct DBInstance: Codable, Equatable {
         self.availabilityZone = availabilityZone
         self.awsBackupRecoveryPointArn = awsBackupRecoveryPointArn
         self.backupRetentionPeriod = backupRetentionPeriod
+        self.backupTarget = backupTarget
         self.cACertificateIdentifier = cACertificateIdentifier
         self.characterSetName = characterSetName
         self.copyTagsToSnapshot = copyTagsToSnapshot
@@ -3991,6 +4082,7 @@ public struct DBInstance: Codable, Equatable {
         case availabilityZone = "AvailabilityZone"
         case awsBackupRecoveryPointArn = "AwsBackupRecoveryPointArn"
         case backupRetentionPeriod = "BackupRetentionPeriod"
+        case backupTarget = "BackupTarget"
         case cACertificateIdentifier = "CACertificateIdentifier"
         case characterSetName = "CharacterSetName"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
@@ -4074,6 +4166,7 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
     public var allocatedStorage: Integer?
     public var availabilityZone: String?
     public var backupRetentionPeriod: IntegerOptional?
+    public var backupTarget: String?
     public var dBInstanceArn: String?
     public var dBInstanceAutomatedBackupsArn: String?
     public var dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList?
@@ -4101,6 +4194,7 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
     public init(allocatedStorage: Integer? = nil,
                 availabilityZone: String? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
+                backupTarget: String? = nil,
                 dBInstanceArn: String? = nil,
                 dBInstanceAutomatedBackupsArn: String? = nil,
                 dBInstanceAutomatedBackupsReplications: DBInstanceAutomatedBackupsReplicationList? = nil,
@@ -4127,6 +4221,7 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
         self.allocatedStorage = allocatedStorage
         self.availabilityZone = availabilityZone
         self.backupRetentionPeriod = backupRetentionPeriod
+        self.backupTarget = backupTarget
         self.dBInstanceArn = dBInstanceArn
         self.dBInstanceAutomatedBackupsArn = dBInstanceAutomatedBackupsArn
         self.dBInstanceAutomatedBackupsReplications = dBInstanceAutomatedBackupsReplications
@@ -4156,6 +4251,7 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
         case allocatedStorage = "AllocatedStorage"
         case availabilityZone = "AvailabilityZone"
         case backupRetentionPeriod = "BackupRetentionPeriod"
+        case backupTarget = "BackupTarget"
         case dBInstanceArn = "DBInstanceArn"
         case dBInstanceAutomatedBackupsArn = "DBInstanceAutomatedBackupsArn"
         case dBInstanceAutomatedBackupsReplications = "DBInstanceAutomatedBackupsReplications"
@@ -5020,6 +5116,7 @@ public struct DBSnapshot: Codable, Equatable {
     public var port: Integer?
     public var processorFeatures: ProcessorFeatureList?
     public var snapshotCreateTime: TStamp?
+    public var snapshotTarget: String?
     public var snapshotType: String?
     public var sourceDBSnapshotIdentifier: String?
     public var sourceRegion: String?
@@ -5051,6 +5148,7 @@ public struct DBSnapshot: Codable, Equatable {
                 port: Integer? = nil,
                 processorFeatures: ProcessorFeatureList? = nil,
                 snapshotCreateTime: TStamp? = nil,
+                snapshotTarget: String? = nil,
                 snapshotType: String? = nil,
                 sourceDBSnapshotIdentifier: String? = nil,
                 sourceRegion: String? = nil,
@@ -5081,6 +5179,7 @@ public struct DBSnapshot: Codable, Equatable {
         self.port = port
         self.processorFeatures = processorFeatures
         self.snapshotCreateTime = snapshotCreateTime
+        self.snapshotTarget = snapshotTarget
         self.snapshotType = snapshotType
         self.sourceDBSnapshotIdentifier = sourceDBSnapshotIdentifier
         self.sourceRegion = sourceRegion
@@ -5114,6 +5213,7 @@ public struct DBSnapshot: Codable, Equatable {
         case port = "Port"
         case processorFeatures = "ProcessorFeatures"
         case snapshotCreateTime = "SnapshotCreateTime"
+        case snapshotTarget = "SnapshotTarget"
         case snapshotType = "SnapshotType"
         case sourceDBSnapshotIdentifier = "SourceDBSnapshotIdentifier"
         case sourceRegion = "SourceRegion"
@@ -9146,13 +9246,16 @@ public struct ModifyDBClusterEndpointMessage: Codable, Equatable {
 }
 
 public struct ModifyDBClusterMessage: Codable, Equatable {
+    public var allocatedStorage: IntegerOptional?
     public var allowMajorVersionUpgrade: Boolean?
     public var applyImmediately: Boolean?
+    public var autoMinorVersionUpgrade: BooleanOptional?
     public var backtrackWindow: LongOptional?
     public var backupRetentionPeriod: IntegerOptional?
     public var cloudwatchLogsExportConfiguration: CloudwatchLogsExportConfiguration?
     public var copyTagsToSnapshot: BooleanOptional?
     public var dBClusterIdentifier: String
+    public var dBClusterInstanceClass: String?
     public var dBClusterParameterGroupName: String?
     public var dBInstanceParameterGroupName: String?
     public var deletionProtection: BooleanOptional?
@@ -9161,23 +9264,33 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     public var enableGlobalWriteForwarding: BooleanOptional?
     public var enableHttpEndpoint: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
+    public var enablePerformanceInsights: BooleanOptional?
     public var engineVersion: String?
+    public var iops: IntegerOptional?
     public var masterUserPassword: String?
+    public var monitoringInterval: IntegerOptional?
+    public var monitoringRoleArn: String?
     public var newDBClusterIdentifier: String?
     public var optionGroupName: String?
+    public var performanceInsightsKMSKeyId: String?
+    public var performanceInsightsRetentionPeriod: IntegerOptional?
     public var port: IntegerOptional?
     public var preferredBackupWindow: String?
     public var preferredMaintenanceWindow: String?
     public var scalingConfiguration: ScalingConfiguration?
+    public var storageType: String?
     public var vpcSecurityGroupIds: VpcSecurityGroupIdList?
 
-    public init(allowMajorVersionUpgrade: Boolean? = nil,
+    public init(allocatedStorage: IntegerOptional? = nil,
+                allowMajorVersionUpgrade: Boolean? = nil,
                 applyImmediately: Boolean? = nil,
+                autoMinorVersionUpgrade: BooleanOptional? = nil,
                 backtrackWindow: LongOptional? = nil,
                 backupRetentionPeriod: IntegerOptional? = nil,
                 cloudwatchLogsExportConfiguration: CloudwatchLogsExportConfiguration? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 dBClusterIdentifier: String,
+                dBClusterInstanceClass: String? = nil,
                 dBClusterParameterGroupName: String? = nil,
                 dBInstanceParameterGroupName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
@@ -9186,22 +9299,32 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
                 enableGlobalWriteForwarding: BooleanOptional? = nil,
                 enableHttpEndpoint: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
+                enablePerformanceInsights: BooleanOptional? = nil,
                 engineVersion: String? = nil,
+                iops: IntegerOptional? = nil,
                 masterUserPassword: String? = nil,
+                monitoringInterval: IntegerOptional? = nil,
+                monitoringRoleArn: String? = nil,
                 newDBClusterIdentifier: String? = nil,
                 optionGroupName: String? = nil,
+                performanceInsightsKMSKeyId: String? = nil,
+                performanceInsightsRetentionPeriod: IntegerOptional? = nil,
                 port: IntegerOptional? = nil,
                 preferredBackupWindow: String? = nil,
                 preferredMaintenanceWindow: String? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
+                storageType: String? = nil,
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
+        self.allocatedStorage = allocatedStorage
         self.allowMajorVersionUpgrade = allowMajorVersionUpgrade
         self.applyImmediately = applyImmediately
+        self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.backtrackWindow = backtrackWindow
         self.backupRetentionPeriod = backupRetentionPeriod
         self.cloudwatchLogsExportConfiguration = cloudwatchLogsExportConfiguration
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.dBClusterInstanceClass = dBClusterInstanceClass
         self.dBClusterParameterGroupName = dBClusterParameterGroupName
         self.dBInstanceParameterGroupName = dBInstanceParameterGroupName
         self.deletionProtection = deletionProtection
@@ -9210,25 +9333,35 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         self.enableGlobalWriteForwarding = enableGlobalWriteForwarding
         self.enableHttpEndpoint = enableHttpEndpoint
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
+        self.enablePerformanceInsights = enablePerformanceInsights
         self.engineVersion = engineVersion
+        self.iops = iops
         self.masterUserPassword = masterUserPassword
+        self.monitoringInterval = monitoringInterval
+        self.monitoringRoleArn = monitoringRoleArn
         self.newDBClusterIdentifier = newDBClusterIdentifier
         self.optionGroupName = optionGroupName
+        self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
+        self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
         self.port = port
         self.preferredBackupWindow = preferredBackupWindow
         self.preferredMaintenanceWindow = preferredMaintenanceWindow
         self.scalingConfiguration = scalingConfiguration
+        self.storageType = storageType
         self.vpcSecurityGroupIds = vpcSecurityGroupIds
     }
 
     enum CodingKeys: String, CodingKey {
+        case allocatedStorage = "AllocatedStorage"
         case allowMajorVersionUpgrade = "AllowMajorVersionUpgrade"
         case applyImmediately = "ApplyImmediately"
+        case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case backtrackWindow = "BacktrackWindow"
         case backupRetentionPeriod = "BackupRetentionPeriod"
         case cloudwatchLogsExportConfiguration = "CloudwatchLogsExportConfiguration"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case dBClusterInstanceClass = "DBClusterInstanceClass"
         case dBClusterParameterGroupName = "DBClusterParameterGroupName"
         case dBInstanceParameterGroupName = "DBInstanceParameterGroupName"
         case deletionProtection = "DeletionProtection"
@@ -9237,14 +9370,21 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         case enableGlobalWriteForwarding = "EnableGlobalWriteForwarding"
         case enableHttpEndpoint = "EnableHttpEndpoint"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
+        case enablePerformanceInsights = "EnablePerformanceInsights"
         case engineVersion = "EngineVersion"
+        case iops = "Iops"
         case masterUserPassword = "MasterUserPassword"
+        case monitoringInterval = "MonitoringInterval"
+        case monitoringRoleArn = "MonitoringRoleArn"
         case newDBClusterIdentifier = "NewDBClusterIdentifier"
         case optionGroupName = "OptionGroupName"
+        case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
+        case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
         case port = "Port"
         case preferredBackupWindow = "PreferredBackupWindow"
         case preferredMaintenanceWindow = "PreferredMaintenanceWindow"
         case scalingConfiguration = "ScalingConfiguration"
+        case storageType = "StorageType"
         case vpcSecurityGroupIds = "VpcSecurityGroupIds"
     }
 
@@ -10607,6 +10747,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
     public var storageType: String?
     public var supportedActivityStreamModes: ActivityStreamModeList?
     public var supportedEngineModes: EngineModeList?
+    public var supportsClusters: Boolean?
     public var supportsEnhancedMonitoring: Boolean?
     public var supportsGlobalDatabases: Boolean?
     public var supportsIAMDatabaseAuthentication: Boolean?
@@ -10636,6 +10777,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
                 storageType: String? = nil,
                 supportedActivityStreamModes: ActivityStreamModeList? = nil,
                 supportedEngineModes: EngineModeList? = nil,
+                supportsClusters: Boolean? = nil,
                 supportsEnhancedMonitoring: Boolean? = nil,
                 supportsGlobalDatabases: Boolean? = nil,
                 supportsIAMDatabaseAuthentication: Boolean? = nil,
@@ -10664,6 +10806,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
         self.storageType = storageType
         self.supportedActivityStreamModes = supportedActivityStreamModes
         self.supportedEngineModes = supportedEngineModes
+        self.supportsClusters = supportsClusters
         self.supportsEnhancedMonitoring = supportsEnhancedMonitoring
         self.supportsGlobalDatabases = supportsGlobalDatabases
         self.supportsIAMDatabaseAuthentication = supportsIAMDatabaseAuthentication
@@ -10695,6 +10838,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
         case storageType = "StorageType"
         case supportedActivityStreamModes = "SupportedActivityStreamModes"
         case supportedEngineModes = "SupportedEngineModes"
+        case supportsClusters = "SupportsClusters"
         case supportsEnhancedMonitoring = "SupportsEnhancedMonitoring"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
         case supportsIAMDatabaseAuthentication = "SupportsIAMDatabaseAuthentication"
@@ -11206,6 +11350,53 @@ public struct Range: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct RebootDBClusterMessage: Codable, Equatable {
+    public var dBClusterIdentifier: String
+
+    public init(dBClusterIdentifier: String) {
+        self.dBClusterIdentifier = dBClusterIdentifier
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBClusterIdentifier = "DBClusterIdentifier"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RebootDBClusterResult: Codable, Equatable {
+    public var dBCluster: DBCluster?
+
+    public init(dBCluster: DBCluster? = nil) {
+        self.dBCluster = dBCluster
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBCluster = "DBCluster"
+    }
+
+    public func validate() throws {
+        try dBCluster?.validate()
+    }
+}
+
+public struct RebootDBClusterResultForRebootDBCluster: Codable, Equatable {
+    public var rebootDBClusterResult: RebootDBClusterResult
+
+    public init(rebootDBClusterResult: RebootDBClusterResult) {
+        self.rebootDBClusterResult = rebootDBClusterResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case rebootDBClusterResult = "RebootDBClusterResult"
+    }
+
+    public func validate() throws {
+        try rebootDBClusterResult.validate()
     }
 }
 
@@ -11982,6 +12173,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
     public var backtrackWindow: LongOptional?
     public var copyTagsToSnapshot: BooleanOptional?
     public var dBClusterIdentifier: String
+    public var dBClusterInstanceClass: String?
     public var dBClusterParameterGroupName: String?
     public var dBSubnetGroupName: String?
     public var databaseName: String?
@@ -11993,11 +12185,14 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
     public var engine: String
     public var engineMode: String?
     public var engineVersion: String?
+    public var iops: IntegerOptional?
     public var kmsKeyId: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
+    public var publiclyAccessible: BooleanOptional?
     public var scalingConfiguration: ScalingConfiguration?
     public var snapshotIdentifier: String
+    public var storageType: String?
     public var tags: TagList?
     public var vpcSecurityGroupIds: VpcSecurityGroupIdList?
 
@@ -12005,6 +12200,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
                 backtrackWindow: LongOptional? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 dBClusterIdentifier: String,
+                dBClusterInstanceClass: String? = nil,
                 dBClusterParameterGroupName: String? = nil,
                 dBSubnetGroupName: String? = nil,
                 databaseName: String? = nil,
@@ -12016,17 +12212,21 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
                 engine: String,
                 engineMode: String? = nil,
                 engineVersion: String? = nil,
+                iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
+                publiclyAccessible: BooleanOptional? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
                 snapshotIdentifier: String,
+                storageType: String? = nil,
                 tags: TagList? = nil,
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
         self.availabilityZones = availabilityZones
         self.backtrackWindow = backtrackWindow
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.dBClusterInstanceClass = dBClusterInstanceClass
         self.dBClusterParameterGroupName = dBClusterParameterGroupName
         self.dBSubnetGroupName = dBSubnetGroupName
         self.databaseName = databaseName
@@ -12038,11 +12238,14 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         self.engine = engine
         self.engineMode = engineMode
         self.engineVersion = engineVersion
+        self.iops = iops
         self.kmsKeyId = kmsKeyId
         self.optionGroupName = optionGroupName
         self.port = port
+        self.publiclyAccessible = publiclyAccessible
         self.scalingConfiguration = scalingConfiguration
         self.snapshotIdentifier = snapshotIdentifier
+        self.storageType = storageType
         self.tags = tags
         self.vpcSecurityGroupIds = vpcSecurityGroupIds
     }
@@ -12052,6 +12255,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         case backtrackWindow = "BacktrackWindow"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case dBClusterInstanceClass = "DBClusterInstanceClass"
         case dBClusterParameterGroupName = "DBClusterParameterGroupName"
         case dBSubnetGroupName = "DBSubnetGroupName"
         case databaseName = "DatabaseName"
@@ -12063,11 +12267,14 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         case engine = "Engine"
         case engineMode = "EngineMode"
         case engineVersion = "EngineVersion"
+        case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
+        case publiclyAccessible = "PubliclyAccessible"
         case scalingConfiguration = "ScalingConfiguration"
         case snapshotIdentifier = "SnapshotIdentifier"
+        case storageType = "StorageType"
         case tags = "Tags"
         case vpcSecurityGroupIds = "VpcSecurityGroupIds"
     }
@@ -12113,6 +12320,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public var backtrackWindow: LongOptional?
     public var copyTagsToSnapshot: BooleanOptional?
     public var dBClusterIdentifier: String
+    public var dBClusterInstanceClass: String?
     public var dBClusterParameterGroupName: String?
     public var dBSubnetGroupName: String?
     public var deletionProtection: BooleanOptional?
@@ -12121,13 +12329,16 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public var enableCloudwatchLogsExports: LogTypeList?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
     public var engineMode: String?
+    public var iops: IntegerOptional?
     public var kmsKeyId: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
+    public var publiclyAccessible: BooleanOptional?
     public var restoreToTime: TStamp?
     public var restoreType: String?
     public var scalingConfiguration: ScalingConfiguration?
     public var sourceDBClusterIdentifier: String
+    public var storageType: String?
     public var tags: TagList?
     public var useLatestRestorableTime: Boolean?
     public var vpcSecurityGroupIds: VpcSecurityGroupIdList?
@@ -12135,6 +12346,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public init(backtrackWindow: LongOptional? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 dBClusterIdentifier: String,
+                dBClusterInstanceClass: String? = nil,
                 dBClusterParameterGroupName: String? = nil,
                 dBSubnetGroupName: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
@@ -12143,19 +12355,23 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
                 enableCloudwatchLogsExports: LogTypeList? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
                 engineMode: String? = nil,
+                iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
+                publiclyAccessible: BooleanOptional? = nil,
                 restoreToTime: TStamp? = nil,
                 restoreType: String? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
                 sourceDBClusterIdentifier: String,
+                storageType: String? = nil,
                 tags: TagList? = nil,
                 useLatestRestorableTime: Boolean? = nil,
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
         self.backtrackWindow = backtrackWindow
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.dBClusterIdentifier = dBClusterIdentifier
+        self.dBClusterInstanceClass = dBClusterInstanceClass
         self.dBClusterParameterGroupName = dBClusterParameterGroupName
         self.dBSubnetGroupName = dBSubnetGroupName
         self.deletionProtection = deletionProtection
@@ -12164,13 +12380,16 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         self.enableCloudwatchLogsExports = enableCloudwatchLogsExports
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
         self.engineMode = engineMode
+        self.iops = iops
         self.kmsKeyId = kmsKeyId
         self.optionGroupName = optionGroupName
         self.port = port
+        self.publiclyAccessible = publiclyAccessible
         self.restoreToTime = restoreToTime
         self.restoreType = restoreType
         self.scalingConfiguration = scalingConfiguration
         self.sourceDBClusterIdentifier = sourceDBClusterIdentifier
+        self.storageType = storageType
         self.tags = tags
         self.useLatestRestorableTime = useLatestRestorableTime
         self.vpcSecurityGroupIds = vpcSecurityGroupIds
@@ -12180,6 +12399,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         case backtrackWindow = "BacktrackWindow"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case dBClusterIdentifier = "DBClusterIdentifier"
+        case dBClusterInstanceClass = "DBClusterInstanceClass"
         case dBClusterParameterGroupName = "DBClusterParameterGroupName"
         case dBSubnetGroupName = "DBSubnetGroupName"
         case deletionProtection = "DeletionProtection"
@@ -12188,13 +12408,16 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         case enableCloudwatchLogsExports = "EnableCloudwatchLogsExports"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
         case engineMode = "EngineMode"
+        case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
+        case publiclyAccessible = "PubliclyAccessible"
         case restoreToTime = "RestoreToTime"
         case restoreType = "RestoreType"
         case scalingConfiguration = "ScalingConfiguration"
         case sourceDBClusterIdentifier = "SourceDBClusterIdentifier"
+        case storageType = "StorageType"
         case tags = "Tags"
         case useLatestRestorableTime = "UseLatestRestorableTime"
         case vpcSecurityGroupIds = "VpcSecurityGroupIds"
@@ -12240,6 +12463,7 @@ public struct RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTim
 public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
+    public var backupTarget: String?
     public var copyTagsToSnapshot: BooleanOptional?
     public var customIamInstanceProfile: String?
     public var dBInstanceClass: String?
@@ -12271,6 +12495,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
 
     public init(autoMinorVersionUpgrade: BooleanOptional? = nil,
                 availabilityZone: String? = nil,
+                backupTarget: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 customIamInstanceProfile: String? = nil,
                 dBInstanceClass: String? = nil,
@@ -12301,6 +12526,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
+        self.backupTarget = backupTarget
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.customIamInstanceProfile = customIamInstanceProfile
         self.dBInstanceClass = dBInstanceClass
@@ -12334,6 +12560,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
+        case backupTarget = "BackupTarget"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case customIamInstanceProfile = "CustomIamInstanceProfile"
         case dBInstanceClass = "DBInstanceClass"
@@ -12622,6 +12849,7 @@ public struct RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3: Codable, 
 public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
+    public var backupTarget: String?
     public var copyTagsToSnapshot: BooleanOptional?
     public var customIamInstanceProfile: String?
     public var dBInstanceClass: String?
@@ -12658,6 +12886,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
 
     public init(autoMinorVersionUpgrade: BooleanOptional? = nil,
                 availabilityZone: String? = nil,
+                backupTarget: String? = nil,
                 copyTagsToSnapshot: BooleanOptional? = nil,
                 customIamInstanceProfile: String? = nil,
                 dBInstanceClass: String? = nil,
@@ -12693,6 +12922,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
         self.autoMinorVersionUpgrade = autoMinorVersionUpgrade
         self.availabilityZone = availabilityZone
+        self.backupTarget = backupTarget
         self.copyTagsToSnapshot = copyTagsToSnapshot
         self.customIamInstanceProfile = customIamInstanceProfile
         self.dBInstanceClass = dBInstanceClass
@@ -12731,6 +12961,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case autoMinorVersionUpgrade = "AutoMinorVersionUpgrade"
         case availabilityZone = "AvailabilityZone"
+        case backupTarget = "BackupTarget"
         case copyTagsToSnapshot = "CopyTagsToSnapshot"
         case customIamInstanceProfile = "CustomIamInstanceProfile"
         case dBInstanceClass = "DBInstanceClass"

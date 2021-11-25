@@ -49,6 +49,45 @@ public extension AuthorizationErrorException {
     }()
 }
 
+public extension BatchEntryIdsNotDistinctException {
+    /**
+     Default instance of the BatchEntryIdsNotDistinctException structure.
+     */
+    static let __default: SimpleNotificationModel.BatchEntryIdsNotDistinctException = {
+        let defaultInstance = SimpleNotificationModel.BatchEntryIdsNotDistinctException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchRequestTooLongException {
+    /**
+     Default instance of the BatchRequestTooLongException structure.
+     */
+    static let __default: SimpleNotificationModel.BatchRequestTooLongException = {
+        let defaultInstance = SimpleNotificationModel.BatchRequestTooLongException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchResultErrorEntry {
+    /**
+     Default instance of the BatchResultErrorEntry structure.
+     */
+    static let __default: SimpleNotificationModel.BatchResultErrorEntry = {
+        let defaultInstance = SimpleNotificationModel.BatchResultErrorEntry(
+            code: "value",
+            id: "value",
+            message: nil,
+            senderFault: false)
+
+        return defaultInstance
+    }()
+}
+
 public extension CheckIfPhoneNumberIsOptedOutInput {
     /**
      Default instance of the CheckIfPhoneNumberIsOptedOutInput structure.
@@ -357,6 +396,18 @@ public extension DeleteTopicInput {
     }()
 }
 
+public extension EmptyBatchRequestException {
+    /**
+     Default instance of the EmptyBatchRequestException structure.
+     */
+    static let __default: SimpleNotificationModel.EmptyBatchRequestException = {
+        let defaultInstance = SimpleNotificationModel.EmptyBatchRequestException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Endpoint {
     /**
      Default instance of the Endpoint structure.
@@ -615,6 +666,18 @@ public extension InternalErrorException {
      */
     static let __default: SimpleNotificationModel.InternalErrorException = {
         let defaultInstance = SimpleNotificationModel.InternalErrorException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidBatchEntryIdException {
+    /**
+     Default instance of the InvalidBatchEntryIdException structure.
+     */
+    static let __default: SimpleNotificationModel.InvalidBatchEntryIdException = {
+        let defaultInstance = SimpleNotificationModel.InvalidBatchEntryIdException(
             message: nil)
 
         return defaultInstance
@@ -1180,6 +1243,76 @@ public extension PlatformApplicationDisabledException {
     }()
 }
 
+public extension PublishBatchInput {
+    /**
+     Default instance of the PublishBatchInput structure.
+     */
+    static let __default: SimpleNotificationModel.PublishBatchInput = {
+        let defaultInstance = SimpleNotificationModel.PublishBatchInput(
+            publishBatchRequestEntries: [],
+            topicArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishBatchRequestEntry {
+    /**
+     Default instance of the PublishBatchRequestEntry structure.
+     */
+    static let __default: SimpleNotificationModel.PublishBatchRequestEntry = {
+        let defaultInstance = SimpleNotificationModel.PublishBatchRequestEntry(
+            id: "value",
+            message: "value",
+            messageAttributes: nil,
+            messageDeduplicationId: nil,
+            messageGroupId: nil,
+            messageStructure: nil,
+            subject: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishBatchResponse {
+    /**
+     Default instance of the PublishBatchResponse structure.
+     */
+    static let __default: SimpleNotificationModel.PublishBatchResponse = {
+        let defaultInstance = SimpleNotificationModel.PublishBatchResponse(
+            failed: nil,
+            successful: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishBatchResponseForPublishBatch {
+    /**
+     Default instance of the PublishBatchResponseForPublishBatch structure.
+     */
+    static let __default: SimpleNotificationModel.PublishBatchResponseForPublishBatch = {
+        let defaultInstance = SimpleNotificationModel.PublishBatchResponseForPublishBatch(
+            publishBatchResult: PublishBatchResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishBatchResultEntry {
+    /**
+     Default instance of the PublishBatchResultEntry structure.
+     */
+    static let __default: SimpleNotificationModel.PublishBatchResultEntry = {
+        let defaultInstance = SimpleNotificationModel.PublishBatchResultEntry(
+            id: nil,
+            messageId: nil,
+            sequenceNumber: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PublishInput {
     /**
      Default instance of the PublishInput structure.
@@ -1511,6 +1644,18 @@ public extension ThrottledException {
      */
     static let __default: SimpleNotificationModel.ThrottledException = {
         let defaultInstance = SimpleNotificationModel.ThrottledException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TooManyEntriesInBatchRequestException {
+    /**
+     Default instance of the TooManyEntriesInBatchRequestException structure.
+     */
+    static let __default: SimpleNotificationModel.TooManyEntriesInBatchRequestException = {
+        let defaultInstance = SimpleNotificationModel.TooManyEntriesInBatchRequestException(
             message: nil)
 
         return defaultInstance

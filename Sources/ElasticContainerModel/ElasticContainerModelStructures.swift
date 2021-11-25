@@ -692,6 +692,7 @@ public struct ContainerInstance: Codable, Equatable {
     public var capacityProviderName: String?
     public var containerInstanceArn: String?
     public var ec2InstanceId: String?
+    public var healthStatus: ContainerInstanceHealthStatus?
     public var pendingTasksCount: Integer?
     public var registeredAt: Timestamp?
     public var registeredResources: Resources?
@@ -710,6 +711,7 @@ public struct ContainerInstance: Codable, Equatable {
                 capacityProviderName: String? = nil,
                 containerInstanceArn: String? = nil,
                 ec2InstanceId: String? = nil,
+                healthStatus: ContainerInstanceHealthStatus? = nil,
                 pendingTasksCount: Integer? = nil,
                 registeredAt: Timestamp? = nil,
                 registeredResources: Resources? = nil,
@@ -727,6 +729,7 @@ public struct ContainerInstance: Codable, Equatable {
         self.capacityProviderName = capacityProviderName
         self.containerInstanceArn = containerInstanceArn
         self.ec2InstanceId = ec2InstanceId
+        self.healthStatus = healthStatus
         self.pendingTasksCount = pendingTasksCount
         self.registeredAt = registeredAt
         self.registeredResources = registeredResources
@@ -747,6 +750,7 @@ public struct ContainerInstance: Codable, Equatable {
         case capacityProviderName
         case containerInstanceArn
         case ec2InstanceId
+        case healthStatus
         case pendingTasksCount
         case registeredAt
         case registeredResources
@@ -760,8 +764,28 @@ public struct ContainerInstance: Codable, Equatable {
     }
 
     public func validate() throws {
+        try healthStatus?.validate()
         try tags?.validateAsTags()
         try versionInfo?.validate()
+    }
+}
+
+public struct ContainerInstanceHealthStatus: Codable, Equatable {
+    public var details: InstanceHealthCheckResultList?
+    public var overallStatus: InstanceHealthCheckState?
+
+    public init(details: InstanceHealthCheckResultList? = nil,
+                overallStatus: InstanceHealthCheckState? = nil) {
+        self.details = details
+        self.overallStatus = overallStatus
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case details
+        case overallStatus
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -2340,6 +2364,33 @@ public struct InferenceAcceleratorOverride: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case deviceName
         case deviceType
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct InstanceHealthCheckResult: Codable, Equatable {
+    public var lastStatusChange: Timestamp?
+    public var lastUpdated: Timestamp?
+    public var status: InstanceHealthCheckState?
+    public var type: InstanceHealthCheckType?
+
+    public init(lastStatusChange: Timestamp? = nil,
+                lastUpdated: Timestamp? = nil,
+                status: InstanceHealthCheckState? = nil,
+                type: InstanceHealthCheckType? = nil) {
+        self.lastStatusChange = lastStatusChange
+        self.lastUpdated = lastUpdated
+        self.status = status
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case lastStatusChange
+        case lastUpdated
+        case status
+        case type
     }
 
     public func validate() throws {

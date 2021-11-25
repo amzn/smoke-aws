@@ -1251,6 +1251,11 @@ public typealias CoreCount = Int
 public typealias CoreCountList = [CoreCount]
 
 /**
+ Type definition for the CoreNetworkArn field.
+ */
+public typealias CoreNetworkArn = String
+
+/**
  Enumeration restricting the values of the CpuManufacturer field.
  */
 public enum CpuManufacturer: String, Codable, CustomStringConvertible {
@@ -2393,6 +2398,7 @@ public enum FleetOnDemandAllocationStrategy: String, Codable, CustomStringConver
  */
 public enum FleetReplacementStrategy: String, Codable, CustomStringConvertible {
     case launch
+    case launchBeforeTerminate = "launch-before-terminate"
 
     public var description: String {
         return rawValue
@@ -2563,6 +2569,22 @@ public typealias FreeTierEligibleFlag = Bool
 public typealias GVCDMaxResults = Int
 
 /**
+ Enumeration restricting the values of the GatewayAssociationState field.
+ */
+public enum GatewayAssociationState: String, Codable, CustomStringConvertible {
+    case associated
+    case associating
+    case disassociating
+    case notAssociated = "not-associated"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: GatewayAssociationState = .associated
+}
+
+/**
  Enumeration restricting the values of the GatewayType field.
  */
 public enum GatewayType: String, Codable, CustomStringConvertible {
@@ -2716,6 +2738,20 @@ public enum HostTenancy: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: HostTenancy = .dedicated
+}
+
+/**
+ Enumeration restricting the values of the HostnameType field.
+ */
+public enum HostnameType: String, Codable, CustomStringConvertible {
+    case ipName = "ip-name"
+    case resourceName = "resource-name"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: HostnameType = .ipName
 }
 
 /**
@@ -3416,6 +3452,15 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case c6gnLarge = "c6gn.large"
     case c6gnMedium = "c6gn.medium"
     case c6gnXlarge = "c6gn.xlarge"
+    case c6i12xlarge = "c6i.12xlarge"
+    case c6i16xlarge = "c6i.16xlarge"
+    case c6i24xlarge = "c6i.24xlarge"
+    case c6i2xlarge = "c6i.2xlarge"
+    case c6i32xlarge = "c6i.32xlarge"
+    case c6i4xlarge = "c6i.4xlarge"
+    case c6i8xlarge = "c6i.8xlarge"
+    case c6iLarge = "c6i.large"
+    case c6iXlarge = "c6i.xlarge"
     case cc14xlarge = "cc1.4xlarge"
     case cc28xlarge = "cc2.8xlarge"
     case cg14xlarge = "cg1.4xlarge"
@@ -3456,6 +3501,14 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case g4dn8xlarge = "g4dn.8xlarge"
     case g4dnMetal = "g4dn.metal"
     case g4dnXlarge = "g4dn.xlarge"
+    case g512xlarge = "g5.12xlarge"
+    case g516xlarge = "g5.16xlarge"
+    case g524xlarge = "g5.24xlarge"
+    case g52xlarge = "g5.2xlarge"
+    case g548xlarge = "g5.48xlarge"
+    case g54xlarge = "g5.4xlarge"
+    case g58xlarge = "g5.8xlarge"
+    case g5Xlarge = "g5.xlarge"
     case h116xlarge = "h1.16xlarge"
     case h12xlarge = "h1.2xlarge"
     case h14xlarge = "h1.4xlarge"
@@ -5520,6 +5573,7 @@ public typealias ReplaceRootVolumeTasks = [ReplaceRootVolumeTask]
  */
 public enum ReplacementStrategy: String, Codable, CustomStringConvertible {
     case launch
+    case launchBeforeTerminate = "launch-before-terminate"
 
     public var description: String {
         return rawValue

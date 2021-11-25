@@ -337,6 +337,19 @@ extension PublishResponseForPublish: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the PublishBatch operation in a HTTP client.
+ */
+extension PublishBatchResponseForPublishBatch: HTTPResponseOutputProtocol {
+    public typealias BodyType = PublishBatchResponseForPublishBatch
+    public typealias HeadersType = PublishBatchResponseForPublishBatch
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PublishBatchResponseForPublishBatch {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the SetSMSAttributes operation in a HTTP client.
  */
 extension SetSMSAttributesResponseForSetSMSAttributes: HTTPResponseOutputProtocol {

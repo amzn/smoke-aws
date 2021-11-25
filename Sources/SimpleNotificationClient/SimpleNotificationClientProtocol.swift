@@ -169,6 +169,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias PublishAsyncType = (
             _ input: SimpleNotificationModel.PublishInput, 
             _ completion: @escaping (Result<SimpleNotificationModel.PublishResponseForPublish, SimpleNotificationError>) -> ()) throws -> ()
+    typealias PublishBatchSyncType = (
+            _ input: SimpleNotificationModel.PublishBatchInput) throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch
+    typealias PublishBatchAsyncType = (
+            _ input: SimpleNotificationModel.PublishBatchInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.PublishBatchResponseForPublishBatch, SimpleNotificationError>) -> ()) throws -> ()
     typealias RemovePermissionSyncType = (
             _ input: SimpleNotificationModel.RemovePermissionInput) throws -> ()
     typealias RemovePermissionAsyncType = (
@@ -940,6 +945,32 @@ public protocol SimpleNotificationClientProtocol {
      */
     func publishSync(
             input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish
+
+    /**
+     Invokes the PublishBatch operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+         - completion: The PublishBatchResponseForPublishBatch object or an error will be passed to this 
+           callback when the operation is complete. The PublishBatchResponseForPublishBatch
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     */
+    func publishBatchAsync(
+            input: SimpleNotificationModel.PublishBatchInput, 
+            completion: @escaping (Result<SimpleNotificationModel.PublishBatchResponseForPublishBatch, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the PublishBatch operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+     - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     */
+    func publishBatchSync(
+            input: SimpleNotificationModel.PublishBatchInput) throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch
 
     /**
      Invokes the RemovePermission operation returning immediately and passing the response to a callback.

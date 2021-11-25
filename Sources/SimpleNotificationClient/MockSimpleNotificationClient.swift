@@ -85,6 +85,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
     let optInPhoneNumberSyncOverride: OptInPhoneNumberSyncType?
     let publishAsyncOverride: PublishAsyncType?
     let publishSyncOverride: PublishSyncType?
+    let publishBatchAsyncOverride: PublishBatchAsyncType?
+    let publishBatchSyncOverride: PublishBatchSyncType?
     let removePermissionAsyncOverride: RemovePermissionAsyncType?
     let removePermissionSyncOverride: RemovePermissionSyncType?
     let setEndpointAttributesAsyncOverride: SetEndpointAttributesAsyncType?
@@ -169,6 +171,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
             optInPhoneNumberSync: OptInPhoneNumberSyncType? = nil,
             publishAsync: PublishAsyncType? = nil,
             publishSync: PublishSyncType? = nil,
+            publishBatchAsync: PublishBatchAsyncType? = nil,
+            publishBatchSync: PublishBatchSyncType? = nil,
             removePermissionAsync: RemovePermissionAsyncType? = nil,
             removePermissionSync: RemovePermissionSyncType? = nil,
             setEndpointAttributesAsync: SetEndpointAttributesAsyncType? = nil,
@@ -247,6 +251,8 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         self.optInPhoneNumberSyncOverride = optInPhoneNumberSync
         self.publishAsyncOverride = publishAsync
         self.publishSyncOverride = publishSync
+        self.publishBatchAsyncOverride = publishBatchAsync
+        self.publishBatchSyncOverride = publishBatchSync
         self.removePermissionAsyncOverride = removePermissionAsync
         self.removePermissionSyncOverride = removePermissionSync
         self.setEndpointAttributesAsyncOverride = setEndpointAttributesAsync
@@ -1365,6 +1371,46 @@ public struct MockSimpleNotificationClient: SimpleNotificationClientProtocol {
         }
 
         return PublishResponseForPublish.__default
+    }
+
+    /**
+     Invokes the PublishBatch operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+         - completion: The PublishBatchResponseForPublishBatch object or an error will be passed to this 
+           callback when the operation is complete. The PublishBatchResponseForPublishBatch
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     */
+    public func publishBatchAsync(
+            input: SimpleNotificationModel.PublishBatchInput, 
+            completion: @escaping (Result<SimpleNotificationModel.PublishBatchResponseForPublishBatch, SimpleNotificationError>) -> ()) throws {
+        if let publishBatchAsyncOverride = publishBatchAsyncOverride {
+            return try publishBatchAsyncOverride(input, completion)
+        }
+
+        let result = PublishBatchResponseForPublishBatch.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the PublishBatch operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+     - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     */
+    public func publishBatchSync(
+            input: SimpleNotificationModel.PublishBatchInput) throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
+        if let publishBatchSyncOverride = publishBatchSyncOverride {
+            return try publishBatchSyncOverride(input)
+        }
+
+        return PublishBatchResponseForPublishBatch.__default
     }
 
     /**

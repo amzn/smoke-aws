@@ -382,6 +382,7 @@ public extension ContainerInstance {
             capacityProviderName: nil,
             containerInstanceArn: nil,
             ec2InstanceId: nil,
+            healthStatus: nil,
             pendingTasksCount: nil,
             registeredAt: nil,
             registeredResources: nil,
@@ -392,6 +393,19 @@ public extension ContainerInstance {
             tags: nil,
             version: nil,
             versionInfo: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ContainerInstanceHealthStatus {
+    /**
+     Default instance of the ContainerInstanceHealthStatus structure.
+     */
+    static let __default: ElasticContainerModel.ContainerInstanceHealthStatus = {
+        let defaultInstance = ElasticContainerModel.ContainerInstanceHealthStatus(
+            details: nil,
+            overallStatus: nil)
 
         return defaultInstance
     }()
@@ -1316,6 +1330,21 @@ public extension InferenceAcceleratorOverride {
         let defaultInstance = ElasticContainerModel.InferenceAcceleratorOverride(
             deviceName: nil,
             deviceType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InstanceHealthCheckResult {
+    /**
+     Default instance of the InstanceHealthCheckResult structure.
+     */
+    static let __default: ElasticContainerModel.InstanceHealthCheckResult = {
+        let defaultInstance = ElasticContainerModel.InstanceHealthCheckResult(
+            lastStatusChange: nil,
+            lastUpdated: nil,
+            status: nil,
+            type: nil)
 
         return defaultInstance
     }()
