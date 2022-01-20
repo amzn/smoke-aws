@@ -142,6 +142,19 @@ extension AllocateHostsResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the AllocateIpamPoolCidr operation in a HTTP client.
+ */
+extension AllocateIpamPoolCidrResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AllocateIpamPoolCidrResult
+    public typealias HeadersType = AllocateIpamPoolCidrResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AllocateIpamPoolCidrResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ApplySecurityGroupsToClientVpnTargetNetwork operation in a HTTP client.
  */
 extension ApplySecurityGroupsToClientVpnTargetNetworkResult: HTTPResponseOutputProtocol {
@@ -792,6 +805,45 @@ extension CreateInternetGatewayResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateIpam operation in a HTTP client.
+ */
+extension CreateIpamResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateIpamResult
+    public typealias HeadersType = CreateIpamResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateIpamResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateIpamPool operation in a HTTP client.
+ */
+extension CreateIpamPoolResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateIpamPoolResult
+    public typealias HeadersType = CreateIpamPoolResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateIpamPoolResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateIpamScope operation in a HTTP client.
+ */
+extension CreateIpamScopeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateIpamScopeResult
+    public typealias HeadersType = CreateIpamScopeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateIpamScopeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateKeyPair operation in a HTTP client.
  */
 extension KeyPair: HTTPResponseOutputProtocol {
@@ -896,6 +948,19 @@ extension CreateNetworkAclResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateNetworkInsightsAccessScope operation in a HTTP client.
+ */
+extension CreateNetworkInsightsAccessScopeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateNetworkInsightsAccessScopeResult
+    public typealias HeadersType = CreateNetworkInsightsAccessScopeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateNetworkInsightsAccessScopeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateNetworkInsightsPath operation in a HTTP client.
  */
 extension CreateNetworkInsightsPathResult: HTTPResponseOutputProtocol {
@@ -943,6 +1008,19 @@ extension CreatePlacementGroupResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreatePlacementGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreatePublicIpv4Pool operation in a HTTP client.
+ */
+extension CreatePublicIpv4PoolResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreatePublicIpv4PoolResult
+    public typealias HeadersType = CreatePublicIpv4PoolResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreatePublicIpv4PoolResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1481,6 +1559,45 @@ extension DeleteInstanceEventWindowResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteIpam operation in a HTTP client.
+ */
+extension DeleteIpamResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteIpamResult
+    public typealias HeadersType = DeleteIpamResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteIpamResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteIpamPool operation in a HTTP client.
+ */
+extension DeleteIpamPoolResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteIpamPoolResult
+    public typealias HeadersType = DeleteIpamPoolResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteIpamPoolResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteIpamScope operation in a HTTP client.
+ */
+extension DeleteIpamScopeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteIpamScopeResult
+    public typealias HeadersType = DeleteIpamScopeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteIpamScopeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteLaunchTemplate operation in a HTTP client.
  */
 extension DeleteLaunchTemplateResult: HTTPResponseOutputProtocol {
@@ -1559,6 +1676,32 @@ extension DeleteNatGatewayResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteNetworkInsightsAccessScope operation in a HTTP client.
+ */
+extension DeleteNetworkInsightsAccessScopeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteNetworkInsightsAccessScopeResult
+    public typealias HeadersType = DeleteNetworkInsightsAccessScopeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteNetworkInsightsAccessScopeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteNetworkInsightsAccessScopeAnalysis operation in a HTTP client.
+ */
+extension DeleteNetworkInsightsAccessScopeAnalysisResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteNetworkInsightsAccessScopeAnalysisResult
+    public typealias HeadersType = DeleteNetworkInsightsAccessScopeAnalysisResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteNetworkInsightsAccessScopeAnalysisResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteNetworkInsightsAnalysis operation in a HTTP client.
  */
 extension DeleteNetworkInsightsAnalysisResult: HTTPResponseOutputProtocol {
@@ -1593,6 +1736,19 @@ extension DeleteNetworkInterfacePermissionResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteNetworkInterfacePermissionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeletePublicIpv4Pool operation in a HTTP client.
+ */
+extension DeletePublicIpv4PoolResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeletePublicIpv4PoolResult
+    public typealias HeadersType = DeletePublicIpv4PoolResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeletePublicIpv4PoolResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1853,6 +2009,32 @@ extension DeprovisionByoipCidrResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeprovisionByoipCidrResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeprovisionIpamPoolCidr operation in a HTTP client.
+ */
+extension DeprovisionIpamPoolCidrResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeprovisionIpamPoolCidrResult
+    public typealias HeadersType = DeprovisionIpamPoolCidrResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeprovisionIpamPoolCidrResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeprovisionPublicIpv4PoolCidr operation in a HTTP client.
+ */
+extension DeprovisionPublicIpv4PoolCidrResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeprovisionPublicIpv4PoolCidrResult
+    public typealias HeadersType = DeprovisionPublicIpv4PoolCidrResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeprovisionPublicIpv4PoolCidrResult {
         return try bodyDecodableProvider()
     }
 }
@@ -2209,6 +2391,19 @@ extension DescribeExportTasksResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeFastLaunchImages operation in a HTTP client.
+ */
+extension DescribeFastLaunchImagesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeFastLaunchImagesResult
+    public typealias HeadersType = DescribeFastLaunchImagesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeFastLaunchImagesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeFastSnapshotRestores operation in a HTTP client.
  */
 extension DescribeFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
@@ -2547,6 +2742,45 @@ extension DescribeInternetGatewaysResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeIpamPools operation in a HTTP client.
+ */
+extension DescribeIpamPoolsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeIpamPoolsResult
+    public typealias HeadersType = DescribeIpamPoolsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeIpamPoolsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeIpamScopes operation in a HTTP client.
+ */
+extension DescribeIpamScopesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeIpamScopesResult
+    public typealias HeadersType = DescribeIpamScopesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeIpamScopesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeIpams operation in a HTTP client.
+ */
+extension DescribeIpamsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeIpamsResult
+    public typealias HeadersType = DescribeIpamsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeIpamsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeIpv6Pools operation in a HTTP client.
  */
 extension DescribeIpv6PoolsResult: HTTPResponseOutputProtocol {
@@ -2724,6 +2958,32 @@ extension DescribeNetworkAclsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeNetworkAclsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeNetworkInsightsAccessScopeAnalyses operation in a HTTP client.
+ */
+extension DescribeNetworkInsightsAccessScopeAnalysesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeNetworkInsightsAccessScopeAnalysesResult
+    public typealias HeadersType = DescribeNetworkInsightsAccessScopeAnalysesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeNetworkInsightsAccessScopeAnalysesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeNetworkInsightsAccessScopes operation in a HTTP client.
+ */
+extension DescribeNetworkInsightsAccessScopesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeNetworkInsightsAccessScopesResult
+    public typealias HeadersType = DescribeNetworkInsightsAccessScopesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeNetworkInsightsAccessScopesResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3010,6 +3270,19 @@ extension DescribeSnapshotAttributeResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeSnapshotAttributeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeSnapshotTierStatus operation in a HTTP client.
+ */
+extension DescribeSnapshotTierStatusResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeSnapshotTierStatusResult
+    public typealias HeadersType = DescribeSnapshotTierStatusResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeSnapshotTierStatusResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3561,6 +3834,19 @@ extension DisableEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisableFastLaunch operation in a HTTP client.
+ */
+extension DisableFastLaunchResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableFastLaunchResult
+    public typealias HeadersType = DisableFastLaunchResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableFastLaunchResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisableFastSnapshotRestores operation in a HTTP client.
  */
 extension DisableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
@@ -3582,6 +3868,19 @@ extension DisableImageDeprecationResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DisableImageDeprecationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DisableIpamOrganizationAdminAccount operation in a HTTP client.
+ */
+extension DisableIpamOrganizationAdminAccountResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableIpamOrganizationAdminAccountResult
+    public typealias HeadersType = DisableIpamOrganizationAdminAccountResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableIpamOrganizationAdminAccountResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3769,6 +4068,19 @@ extension EnableEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the EnableFastLaunch operation in a HTTP client.
+ */
+extension EnableFastLaunchResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableFastLaunchResult
+    public typealias HeadersType = EnableFastLaunchResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableFastLaunchResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the EnableFastSnapshotRestores operation in a HTTP client.
  */
 extension EnableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
@@ -3790,6 +4102,19 @@ extension EnableImageDeprecationResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> EnableImageDeprecationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableIpamOrganizationAdminAccount operation in a HTTP client.
+ */
+extension EnableIpamOrganizationAdminAccountResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableIpamOrganizationAdminAccountResult
+    public typealias HeadersType = EnableIpamOrganizationAdminAccountResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableIpamOrganizationAdminAccountResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4068,6 +4393,58 @@ extension GetInstanceTypesFromInstanceRequirementsResult: HTTPResponseOutputProt
 }
 
 /**
+ Type to handle the output from the GetIpamAddressHistory operation in a HTTP client.
+ */
+extension GetIpamAddressHistoryResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetIpamAddressHistoryResult
+    public typealias HeadersType = GetIpamAddressHistoryResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetIpamAddressHistoryResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetIpamPoolAllocations operation in a HTTP client.
+ */
+extension GetIpamPoolAllocationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetIpamPoolAllocationsResult
+    public typealias HeadersType = GetIpamPoolAllocationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetIpamPoolAllocationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetIpamPoolCidrs operation in a HTTP client.
+ */
+extension GetIpamPoolCidrsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetIpamPoolCidrsResult
+    public typealias HeadersType = GetIpamPoolCidrsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetIpamPoolCidrsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetIpamResourceCidrs operation in a HTTP client.
+ */
+extension GetIpamResourceCidrsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetIpamResourceCidrsResult
+    public typealias HeadersType = GetIpamResourceCidrsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetIpamResourceCidrsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetLaunchTemplateData operation in a HTTP client.
  */
 extension GetLaunchTemplateDataResult: HTTPResponseOutputProtocol {
@@ -4102,6 +4479,32 @@ extension GetManagedPrefixListEntriesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetManagedPrefixListEntriesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetNetworkInsightsAccessScopeAnalysisFindings operation in a HTTP client.
+ */
+extension GetNetworkInsightsAccessScopeAnalysisFindingsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetNetworkInsightsAccessScopeAnalysisFindingsResult
+    public typealias HeadersType = GetNetworkInsightsAccessScopeAnalysisFindingsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetNetworkInsightsAccessScopeAnalysisFindingsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetNetworkInsightsAccessScopeContent operation in a HTTP client.
+ */
+extension GetNetworkInsightsAccessScopeContentResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetNetworkInsightsAccessScopeContentResult
+    public typealias HeadersType = GetNetworkInsightsAccessScopeContentResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetNetworkInsightsAccessScopeContentResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4341,6 +4744,19 @@ extension ImportVolumeResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListSnapshotsInRecycleBin operation in a HTTP client.
+ */
+extension ListSnapshotsInRecycleBinResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListSnapshotsInRecycleBinResult
+    public typealias HeadersType = ListSnapshotsInRecycleBinResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListSnapshotsInRecycleBinResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyAddressAttribute operation in a HTTP client.
  */
 extension ModifyAddressAttributeResult: HTTPResponseOutputProtocol {
@@ -4549,6 +4965,58 @@ extension ModifyInstancePlacementResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyIpam operation in a HTTP client.
+ */
+extension ModifyIpamResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyIpamResult
+    public typealias HeadersType = ModifyIpamResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyIpamResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyIpamPool operation in a HTTP client.
+ */
+extension ModifyIpamPoolResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyIpamPoolResult
+    public typealias HeadersType = ModifyIpamPoolResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyIpamPoolResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyIpamResourceCidr operation in a HTTP client.
+ */
+extension ModifyIpamResourceCidrResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyIpamResourceCidrResult
+    public typealias HeadersType = ModifyIpamResourceCidrResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyIpamResourceCidrResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyIpamScope operation in a HTTP client.
+ */
+extension ModifyIpamScopeResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyIpamScopeResult
+    public typealias HeadersType = ModifyIpamScopeResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyIpamScopeResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyLaunchTemplate operation in a HTTP client.
  */
 extension ModifyLaunchTemplateResult: HTTPResponseOutputProtocol {
@@ -4609,6 +5077,19 @@ extension ModifySecurityGroupRulesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifySecurityGroupRulesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifySnapshotTier operation in a HTTP client.
+ */
+extension ModifySnapshotTierResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifySnapshotTierResult
+    public typealias HeadersType = ModifySnapshotTierResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifySnapshotTierResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4757,6 +5238,19 @@ extension ModifyVpcEndpointServiceConfigurationResult: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the ModifyVpcEndpointServicePayerResponsibility operation in a HTTP client.
+ */
+extension ModifyVpcEndpointServicePayerResponsibilityResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVpcEndpointServicePayerResponsibilityResult
+    public typealias HeadersType = ModifyVpcEndpointServicePayerResponsibilityResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVpcEndpointServicePayerResponsibilityResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyVpcEndpointServicePermissions operation in a HTTP client.
  */
 extension ModifyVpcEndpointServicePermissionsResult: HTTPResponseOutputProtocol {
@@ -4874,6 +5368,19 @@ extension MoveAddressToVpcResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the MoveByoipCidrToIpam operation in a HTTP client.
+ */
+extension MoveByoipCidrToIpamResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = MoveByoipCidrToIpamResult
+    public typealias HeadersType = MoveByoipCidrToIpamResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> MoveByoipCidrToIpamResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ProvisionByoipCidr operation in a HTTP client.
  */
 extension ProvisionByoipCidrResult: HTTPResponseOutputProtocol {
@@ -4882,6 +5389,32 @@ extension ProvisionByoipCidrResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ProvisionByoipCidrResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ProvisionIpamPoolCidr operation in a HTTP client.
+ */
+extension ProvisionIpamPoolCidrResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ProvisionIpamPoolCidrResult
+    public typealias HeadersType = ProvisionIpamPoolCidrResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ProvisionIpamPoolCidrResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ProvisionPublicIpv4PoolCidr operation in a HTTP client.
+ */
+extension ProvisionPublicIpv4PoolCidrResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ProvisionPublicIpv4PoolCidrResult
+    public typealias HeadersType = ProvisionPublicIpv4PoolCidrResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ProvisionPublicIpv4PoolCidrResult {
         return try bodyDecodableProvider()
     }
 }
@@ -5056,6 +5589,19 @@ extension ReleaseHostsResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ReleaseIpamPoolAllocation operation in a HTTP client.
+ */
+extension ReleaseIpamPoolAllocationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ReleaseIpamPoolAllocationResult
+    public typealias HeadersType = ReleaseIpamPoolAllocationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ReleaseIpamPoolAllocationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ReplaceIamInstanceProfileAssociation operation in a HTTP client.
  */
 extension ReplaceIamInstanceProfileAssociationResult: HTTPResponseOutputProtocol {
@@ -5199,6 +5745,32 @@ extension RestoreManagedPrefixListVersionResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the RestoreSnapshotFromRecycleBin operation in a HTTP client.
+ */
+extension RestoreSnapshotFromRecycleBinResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RestoreSnapshotFromRecycleBinResult
+    public typealias HeadersType = RestoreSnapshotFromRecycleBinResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RestoreSnapshotFromRecycleBinResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the RestoreSnapshotTier operation in a HTTP client.
+ */
+extension RestoreSnapshotTierResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = RestoreSnapshotTierResult
+    public typealias HeadersType = RestoreSnapshotTierResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> RestoreSnapshotTierResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the RevokeClientVpnIngress operation in a HTTP client.
  */
 extension RevokeClientVpnIngressResult: HTTPResponseOutputProtocol {
@@ -5311,6 +5883,19 @@ extension StartInstancesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StartInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StartNetworkInsightsAccessScopeAnalysis operation in a HTTP client.
+ */
+extension StartNetworkInsightsAccessScopeAnalysisResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartNetworkInsightsAccessScopeAnalysisResult
+    public typealias HeadersType = StartNetworkInsightsAccessScopeAnalysisResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartNetworkInsightsAccessScopeAnalysisResult {
         return try bodyDecodableProvider()
     }
 }

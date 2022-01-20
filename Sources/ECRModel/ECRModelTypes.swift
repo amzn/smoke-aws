@@ -23,6 +23,11 @@
 import Foundation
 
 /**
+ Type definition for the Arch field.
+ */
+public typealias Arch = String
+
+/**
  Type definition for the Arn field.
  */
 public typealias Arn = String
@@ -43,6 +48,11 @@ public typealias AttributeList = [Attribute]
 public typealias AttributeValue = String
 
 /**
+ Type definition for the Author field.
+ */
+public typealias Author = String
+
+/**
  Type definition for the AuthorizationDataList field.
  */
 public typealias AuthorizationDataList = [AuthorizationData]
@@ -51,6 +61,11 @@ public typealias AuthorizationDataList = [AuthorizationData]
  Type definition for the Base64 field.
  */
 public typealias Base64 = String
+
+/**
+ Type definition for the BaseScore field.
+ */
+public typealias BaseScore = Double
 
 /**
  Type definition for the BatchedOperationLayerDigest field.
@@ -68,6 +83,21 @@ public typealias BatchedOperationLayerDigestList = [BatchedOperationLayerDigest]
 public typealias CreationTimestamp = Int64
 
 /**
+ Type definition for the CvssScoreAdjustmentList field.
+ */
+public typealias CvssScoreAdjustmentList = [CvssScoreAdjustment]
+
+/**
+ Type definition for the CvssScoreList field.
+ */
+public typealias CvssScoreList = [CvssScore]
+
+/**
+ Type definition for the Date field.
+ */
+public typealias Date = Int64
+
+/**
  Enumeration restricting the values of the EncryptionType field.
  */
 public enum EncryptionType: String, Codable, CustomStringConvertible {
@@ -80,6 +110,16 @@ public enum EncryptionType: String, Codable, CustomStringConvertible {
     
     public static let __default: EncryptionType = .aes256
 }
+
+/**
+ Type definition for the EnhancedImageScanFindingList field.
+ */
+public typealias EnhancedImageScanFindingList = [EnhancedImageScanFinding]
+
+/**
+ Type definition for the Epoch field.
+ */
+public typealias Epoch = Int
 
 /**
  Type definition for the EvaluationTimestamp field.
@@ -95,6 +135,16 @@ public typealias ExceptionMessage = String
  Type definition for the ExpirationTimestamp field.
  */
 public typealias ExpirationTimestamp = Int64
+
+/**
+ Type definition for the FilePath field.
+ */
+public typealias FilePath = String
+
+/**
+ Type definition for the FindingArn field.
+ */
+public typealias FindingArn = String
 
 /**
  Type definition for the FindingDescription field.
@@ -251,6 +301,11 @@ public enum ImageTagMutability: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ImageTagsList field.
+ */
+public typealias ImageTagsList = [ImageTag]
+
+/**
  Type definition for the KmsError field.
  */
 public typealias KmsError = String
@@ -375,9 +430,19 @@ public typealias MediaType = String
 public typealias MediaTypeList = [MediaType]
 
 /**
+ Type definition for the Metric field.
+ */
+public typealias Metric = String
+
+/**
  Type definition for the NextToken field.
  */
 public typealias NextToken = String
+
+/**
+ Type definition for the PackageManager field.
+ */
+public typealias PackageManager = String
 
 /**
  Type definition for the PartSize field.
@@ -385,14 +450,49 @@ public typealias NextToken = String
 public typealias PartSize = Int64
 
 /**
+ Type definition for the Platform field.
+ */
+public typealias Platform = String
+
+/**
  Type definition for the ProxyEndpoint field.
  */
 public typealias ProxyEndpoint = String
 
 /**
+ Type definition for the PullThroughCacheRuleList field.
+ */
+public typealias PullThroughCacheRuleList = [PullThroughCacheRule]
+
+/**
+ Type definition for the PullThroughCacheRuleRepositoryPrefix field.
+ */
+public typealias PullThroughCacheRuleRepositoryPrefix = String
+
+/**
+ Type definition for the PullThroughCacheRuleRepositoryPrefixList field.
+ */
+public typealias PullThroughCacheRuleRepositoryPrefixList = [PullThroughCacheRuleRepositoryPrefix]
+
+/**
  Type definition for the PushTimestamp field.
  */
 public typealias PushTimestamp = Int64
+
+/**
+ Type definition for the Reason field.
+ */
+public typealias Reason = String
+
+/**
+ Type definition for the RecommendationText field.
+ */
+public typealias RecommendationText = String
+
+/**
+ Type definition for the ReferenceUrlsList field.
+ */
+public typealias ReferenceUrlsList = [Url]
 
 /**
  Type definition for the Region field.
@@ -408,6 +508,26 @@ public typealias RegistryId = String
  Type definition for the RegistryPolicyText field.
  */
 public typealias RegistryPolicyText = String
+
+/**
+ Type definition for the RegistryScanningRuleList field.
+ */
+public typealias RegistryScanningRuleList = [RegistryScanningRule]
+
+/**
+ Type definition for the RelatedVulnerabilitiesList field.
+ */
+public typealias RelatedVulnerabilitiesList = [RelatedVulnerability]
+
+/**
+ Type definition for the RelatedVulnerability field.
+ */
+public typealias RelatedVulnerability = String
+
+/**
+ Type definition for the Release field.
+ */
+public typealias Release = String
 
 /**
  Type definition for the ReplicationDestinationList field.
@@ -483,6 +603,41 @@ public typealias RepositoryNameList = [RepositoryName]
 public typealias RepositoryPolicyText = String
 
 /**
+ Type definition for the RepositoryScanningConfigurationFailureList field.
+ */
+public typealias RepositoryScanningConfigurationFailureList = [RepositoryScanningConfigurationFailure]
+
+/**
+ Type definition for the RepositoryScanningConfigurationList field.
+ */
+public typealias RepositoryScanningConfigurationList = [RepositoryScanningConfiguration]
+
+/**
+ Type definition for the ResourceId field.
+ */
+public typealias ResourceId = String
+
+/**
+ Type definition for the ResourceList field.
+ */
+public typealias ResourceList = [Resource]
+
+/**
+ Enumeration restricting the values of the ScanFrequency field.
+ */
+public enum ScanFrequency: String, Codable, CustomStringConvertible {
+    case continuousScan = "CONTINUOUS_SCAN"
+    case manual = "MANUAL"
+    case scanOnPush = "SCAN_ON_PUSH"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ScanFrequency = .continuousScan
+}
+
+/**
  Type definition for the ScanOnPushFlag field.
  */
 public typealias ScanOnPushFlag = Bool
@@ -491,15 +646,20 @@ public typealias ScanOnPushFlag = Bool
  Enumeration restricting the values of the ScanStatus field.
  */
 public enum ScanStatus: String, Codable, CustomStringConvertible {
+    case active = "ACTIVE"
     case complete = "COMPLETE"
     case failed = "FAILED"
+    case findingsUnavailable = "FINDINGS_UNAVAILABLE"
     case inProgress = "IN_PROGRESS"
+    case pending = "PENDING"
+    case scanEligibilityExpired = "SCAN_ELIGIBILITY_EXPIRED"
+    case unsupportedImage = "UNSUPPORTED_IMAGE"
 
     public var description: String {
         return rawValue
     }
     
-    public static let __default: ScanStatus = .complete
+    public static let __default: ScanStatus = .active
 }
 
 /**
@@ -513,9 +673,99 @@ public typealias ScanStatusDescription = String
 public typealias ScanTimestamp = Int64
 
 /**
+ Enumeration restricting the values of the ScanType field.
+ */
+public enum ScanType: String, Codable, CustomStringConvertible {
+    case basic = "BASIC"
+    case enhanced = "ENHANCED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ScanType = .basic
+}
+
+/**
+ Enumeration restricting the values of the ScanningConfigurationFailureCode field.
+ */
+public enum ScanningConfigurationFailureCode: String, Codable, CustomStringConvertible {
+    case repositoryNotFound = "REPOSITORY_NOT_FOUND"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ScanningConfigurationFailureCode = .repositoryNotFound
+}
+
+/**
+ Type definition for the ScanningConfigurationFailureReason field.
+ */
+public typealias ScanningConfigurationFailureReason = String
+
+/**
+ Type definition for the ScanningConfigurationRepositoryNameList field.
+ */
+public typealias ScanningConfigurationRepositoryNameList = [RepositoryName]
+
+/**
+ Type definition for the ScanningRepositoryFilterList field.
+ */
+public typealias ScanningRepositoryFilterList = [ScanningRepositoryFilter]
+
+/**
+ Enumeration restricting the values of the ScanningRepositoryFilterType field.
+ */
+public enum ScanningRepositoryFilterType: String, Codable, CustomStringConvertible {
+    case wildcard = "WILDCARD"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ScanningRepositoryFilterType = .wildcard
+}
+
+/**
+ Type definition for the ScanningRepositoryFilterValue field.
+ */
+public typealias ScanningRepositoryFilterValue = String
+
+/**
+ Type definition for the Score field.
+ */
+public typealias Score = Double
+
+/**
+ Type definition for the ScoringVector field.
+ */
+public typealias ScoringVector = String
+
+/**
+ Type definition for the Severity field.
+ */
+public typealias Severity = String
+
+/**
  Type definition for the SeverityCount field.
  */
 public typealias SeverityCount = Int
+
+/**
+ Type definition for the Source field.
+ */
+public typealias Source = String
+
+/**
+ Type definition for the SourceLayerHash field.
+ */
+public typealias SourceLayerHash = String
+
+/**
+ Type definition for the Status field.
+ */
+public typealias Status = String
 
 /**
  Type definition for the TagKey field.
@@ -553,6 +803,21 @@ public enum TagStatus: String, Codable, CustomStringConvertible {
 public typealias TagValue = String
 
 /**
+ Type definition for the Tags field.
+ */
+public typealias Tags = [TagKey: TagValue]
+
+/**
+ Type definition for the Title field.
+ */
+public typealias Title = String
+
+/**
+ Type definition for the Type field.
+ */
+public typealias Type = String
+
+/**
  Type definition for the UploadId field.
  */
 public typealias UploadId = String
@@ -563,9 +828,29 @@ public typealias UploadId = String
 public typealias Url = String
 
 /**
+ Type definition for the Version field.
+ */
+public typealias Version = String
+
+/**
+ Type definition for the VulnerabilityId field.
+ */
+public typealias VulnerabilityId = String
+
+/**
  Type definition for the VulnerabilitySourceUpdateTimestamp field.
  */
 public typealias VulnerabilitySourceUpdateTimestamp = Int64
+
+/**
+ Type definition for the VulnerablePackageName field.
+ */
+public typealias VulnerablePackageName = String
+
+/**
+ Type definition for the VulnerablePackagesList field.
+ */
+public typealias VulnerablePackagesList = [VulnerablePackage]
 
 /**
  Validation for the AttributeKey field.
@@ -855,6 +1140,42 @@ extension ECRModel.PartSize {
 }
 
 /**
+ Validation for the PullThroughCacheRuleRepositoryPrefix field.
+*/
+extension ECRModel.PullThroughCacheRuleRepositoryPrefix {
+    public func validateAsPullThroughCacheRuleRepositoryPrefix() throws {
+        if self.count < 2 {
+            throw ECRError.validationError(reason: "The provided value to PullThroughCacheRuleRepositoryPrefix violated the minimum length constraint.")
+        }
+
+        if self.count > 20 {
+            throw ECRError.validationError(reason: "The provided value to PullThroughCacheRuleRepositoryPrefix violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-z0-9]+(?:[._-][a-z0-9]+)*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ECRError.validationError(
+                    reason: "The provided value to PullThroughCacheRuleRepositoryPrefix violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PullThroughCacheRuleRepositoryPrefixList field.
+*/
+extension Array where Element == ECRModel.PullThroughCacheRuleRepositoryPrefix {
+    public func validateAsPullThroughCacheRuleRepositoryPrefixList() throws {
+        if self.count < 1 {
+            throw ECRError.validationError(reason: "The provided value to PullThroughCacheRuleRepositoryPrefixList violated the minimum length constraint.")
+        }
+
+        if self.count > 100 {
+            throw ECRError.validationError(reason: "The provided value to PullThroughCacheRuleRepositoryPrefixList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the Region field.
 */
 extension ECRModel.Region {
@@ -899,6 +1220,21 @@ extension ECRModel.RegistryPolicyText {
 
         if self.count > 10240 {
             throw ECRError.validationError(reason: "The provided value to RegistryPolicyText violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the RegistryScanningRuleList field.
+*/
+extension Array where Element == ECRModel.RegistryScanningRule {
+    public func validateAsRegistryScanningRuleList() throws {
+        if self.count < 0 {
+            throw ECRError.validationError(reason: "The provided value to RegistryScanningRuleList violated the minimum length constraint.")
+        }
+
+        if self.count > 2 {
+            throw ECRError.validationError(reason: "The provided value to RegistryScanningRuleList violated the maximum length constraint.")
         }
     }
 }
@@ -1016,6 +1352,57 @@ extension ECRModel.RepositoryPolicyText {
 
         if self.count > 10240 {
             throw ECRError.validationError(reason: "The provided value to RepositoryPolicyText violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ScanningConfigurationRepositoryNameList field.
+*/
+extension Array where Element == ECRModel.RepositoryName {
+    public func validateAsScanningConfigurationRepositoryNameList() throws {
+        if self.count < 1 {
+            throw ECRError.validationError(reason: "The provided value to ScanningConfigurationRepositoryNameList violated the minimum length constraint.")
+        }
+
+        if self.count > 25 {
+            throw ECRError.validationError(reason: "The provided value to ScanningConfigurationRepositoryNameList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ScanningRepositoryFilterList field.
+*/
+extension Array where Element == ECRModel.ScanningRepositoryFilter {
+    public func validateAsScanningRepositoryFilterList() throws {
+        if self.count < 0 {
+            throw ECRError.validationError(reason: "The provided value to ScanningRepositoryFilterList violated the minimum length constraint.")
+        }
+
+        if self.count > 100 {
+            throw ECRError.validationError(reason: "The provided value to ScanningRepositoryFilterList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ScanningRepositoryFilterValue field.
+*/
+extension ECRModel.ScanningRepositoryFilterValue {
+    public func validateAsScanningRepositoryFilterValue() throws {
+        if self.count < 1 {
+            throw ECRError.validationError(reason: "The provided value to ScanningRepositoryFilterValue violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw ECRError.validationError(reason: "The provided value to ScanningRepositoryFilterValue violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^[a-z0-9*](?:[._\\-/a-z0-9*]?[a-z0-9*]+)*$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ECRError.validationError(
+                    reason: "The provided value to ScanningRepositoryFilterValue violated the regular expression constraint.")
         }
     }
 }

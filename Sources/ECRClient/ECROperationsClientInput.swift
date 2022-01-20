@@ -40,9 +40,19 @@ public typealias BatchDeleteImageOperationHTTPRequestInput = BodyHTTPRequestInpu
 public typealias BatchGetImageOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the BatchGetRepositoryScanningConfiguration operation in a HTTP client.
+ */
+public typealias BatchGetRepositoryScanningConfigurationOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the CompleteLayerUpload operation in a HTTP client.
  */
 public typealias CompleteLayerUploadOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the CreatePullThroughCacheRule operation in a HTTP client.
+ */
+public typealias CreatePullThroughCacheRuleOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the CreateRepository operation in a HTTP client.
@@ -53,6 +63,11 @@ public typealias CreateRepositoryOperationHTTPRequestInput = BodyHTTPRequestInpu
  Type to handle the input to the DeleteLifecyclePolicy operation in a HTTP client.
  */
 public typealias DeleteLifecyclePolicyOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DeletePullThroughCacheRule operation in a HTTP client.
+ */
+public typealias DeletePullThroughCacheRuleOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteRegistryPolicy operation in a HTTP client.
@@ -83,6 +98,11 @@ public typealias DescribeImageScanFindingsOperationHTTPRequestInput = BodyHTTPRe
  Type to handle the input to the DescribeImages operation in a HTTP client.
  */
 public typealias DescribeImagesOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribePullThroughCacheRules operation in a HTTP client.
+ */
+public typealias DescribePullThroughCacheRulesOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeRegistry operation in a HTTP client.
@@ -118,6 +138,11 @@ public typealias GetLifecyclePolicyPreviewOperationHTTPRequestInput = BodyHTTPRe
  Type to handle the input to the GetRegistryPolicy operation in a HTTP client.
  */
 public typealias GetRegistryPolicyOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the GetRegistryScanningConfiguration operation in a HTTP client.
+ */
+public typealias GetRegistryScanningConfigurationOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the GetRepositoryPolicy operation in a HTTP client.
@@ -163,6 +188,11 @@ public typealias PutLifecyclePolicyOperationHTTPRequestInput = BodyHTTPRequestIn
  Type to handle the input to the PutRegistryPolicy operation in a HTTP client.
  */
 public typealias PutRegistryPolicyOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the PutRegistryScanningConfiguration operation in a HTTP client.
+ */
+public typealias PutRegistryScanningConfigurationOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the PutReplicationConfiguration operation in a HTTP client.

@@ -540,7 +540,8 @@ public extension CreateBucketRequest {
             grantReadACP: nil,
             grantWrite: nil,
             grantWriteACP: nil,
-            objectLockEnabledForBucket: nil)
+            objectLockEnabledForBucket: nil,
+            objectOwnership: nil)
 
         return defaultInstance
     }()
@@ -1031,6 +1032,17 @@ public extension ErrorDocument {
     static let __default: S3Model.ErrorDocument = {
         let defaultInstance = S3Model.ErrorDocument(
             key: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension EventBridgeConfiguration {
+    /**
+     Default instance of the EventBridgeConfiguration structure.
+     */
+    static let __default: S3Model.EventBridgeConfiguration = {
+        let defaultInstance = S3Model.EventBridgeConfiguration()
 
         return defaultInstance
     }()
@@ -2767,6 +2779,7 @@ public extension NotificationConfiguration {
      */
     static let __default: S3Model.NotificationConfiguration = {
         let defaultInstance = S3Model.NotificationConfiguration(
+            eventBridgeConfiguration: nil,
             lambdaFunctionConfigurations: nil,
             queueConfigurations: nil,
             topicConfigurations: nil)
@@ -3239,7 +3252,8 @@ public extension PutBucketNotificationConfigurationRequest {
         let defaultInstance = S3Model.PutBucketNotificationConfigurationRequest(
             bucket: "value",
             expectedBucketOwner: nil,
-            notificationConfiguration: NotificationConfiguration.__default)
+            notificationConfiguration: NotificationConfiguration.__default,
+            skipDestinationValidation: nil)
 
         return defaultInstance
     }()

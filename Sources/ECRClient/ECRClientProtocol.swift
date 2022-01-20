@@ -44,11 +44,21 @@ public protocol ECRClientProtocol {
     typealias BatchGetImageAsyncType = (
             _ input: ECRModel.BatchGetImageRequest, 
             _ completion: @escaping (Result<ECRModel.BatchGetImageResponse, ECRError>) -> ()) throws -> ()
+    typealias BatchGetRepositoryScanningConfigurationSyncType = (
+            _ input: ECRModel.BatchGetRepositoryScanningConfigurationRequest) throws -> ECRModel.BatchGetRepositoryScanningConfigurationResponse
+    typealias BatchGetRepositoryScanningConfigurationAsyncType = (
+            _ input: ECRModel.BatchGetRepositoryScanningConfigurationRequest, 
+            _ completion: @escaping (Result<ECRModel.BatchGetRepositoryScanningConfigurationResponse, ECRError>) -> ()) throws -> ()
     typealias CompleteLayerUploadSyncType = (
             _ input: ECRModel.CompleteLayerUploadRequest) throws -> ECRModel.CompleteLayerUploadResponse
     typealias CompleteLayerUploadAsyncType = (
             _ input: ECRModel.CompleteLayerUploadRequest, 
             _ completion: @escaping (Result<ECRModel.CompleteLayerUploadResponse, ECRError>) -> ()) throws -> ()
+    typealias CreatePullThroughCacheRuleSyncType = (
+            _ input: ECRModel.CreatePullThroughCacheRuleRequest) throws -> ECRModel.CreatePullThroughCacheRuleResponse
+    typealias CreatePullThroughCacheRuleAsyncType = (
+            _ input: ECRModel.CreatePullThroughCacheRuleRequest, 
+            _ completion: @escaping (Result<ECRModel.CreatePullThroughCacheRuleResponse, ECRError>) -> ()) throws -> ()
     typealias CreateRepositorySyncType = (
             _ input: ECRModel.CreateRepositoryRequest) throws -> ECRModel.CreateRepositoryResponse
     typealias CreateRepositoryAsyncType = (
@@ -59,6 +69,11 @@ public protocol ECRClientProtocol {
     typealias DeleteLifecyclePolicyAsyncType = (
             _ input: ECRModel.DeleteLifecyclePolicyRequest, 
             _ completion: @escaping (Result<ECRModel.DeleteLifecyclePolicyResponse, ECRError>) -> ()) throws -> ()
+    typealias DeletePullThroughCacheRuleSyncType = (
+            _ input: ECRModel.DeletePullThroughCacheRuleRequest) throws -> ECRModel.DeletePullThroughCacheRuleResponse
+    typealias DeletePullThroughCacheRuleAsyncType = (
+            _ input: ECRModel.DeletePullThroughCacheRuleRequest, 
+            _ completion: @escaping (Result<ECRModel.DeletePullThroughCacheRuleResponse, ECRError>) -> ()) throws -> ()
     typealias DeleteRegistryPolicySyncType = (
             _ input: ECRModel.DeleteRegistryPolicyRequest) throws -> ECRModel.DeleteRegistryPolicyResponse
     typealias DeleteRegistryPolicyAsyncType = (
@@ -89,6 +104,11 @@ public protocol ECRClientProtocol {
     typealias DescribeImagesAsyncType = (
             _ input: ECRModel.DescribeImagesRequest, 
             _ completion: @escaping (Result<ECRModel.DescribeImagesResponse, ECRError>) -> ()) throws -> ()
+    typealias DescribePullThroughCacheRulesSyncType = (
+            _ input: ECRModel.DescribePullThroughCacheRulesRequest) throws -> ECRModel.DescribePullThroughCacheRulesResponse
+    typealias DescribePullThroughCacheRulesAsyncType = (
+            _ input: ECRModel.DescribePullThroughCacheRulesRequest, 
+            _ completion: @escaping (Result<ECRModel.DescribePullThroughCacheRulesResponse, ECRError>) -> ()) throws -> ()
     typealias DescribeRegistrySyncType = (
             _ input: ECRModel.DescribeRegistryRequest) throws -> ECRModel.DescribeRegistryResponse
     typealias DescribeRegistryAsyncType = (
@@ -124,6 +144,11 @@ public protocol ECRClientProtocol {
     typealias GetRegistryPolicyAsyncType = (
             _ input: ECRModel.GetRegistryPolicyRequest, 
             _ completion: @escaping (Result<ECRModel.GetRegistryPolicyResponse, ECRError>) -> ()) throws -> ()
+    typealias GetRegistryScanningConfigurationSyncType = (
+            _ input: ECRModel.GetRegistryScanningConfigurationRequest) throws -> ECRModel.GetRegistryScanningConfigurationResponse
+    typealias GetRegistryScanningConfigurationAsyncType = (
+            _ input: ECRModel.GetRegistryScanningConfigurationRequest, 
+            _ completion: @escaping (Result<ECRModel.GetRegistryScanningConfigurationResponse, ECRError>) -> ()) throws -> ()
     typealias GetRepositoryPolicySyncType = (
             _ input: ECRModel.GetRepositoryPolicyRequest) throws -> ECRModel.GetRepositoryPolicyResponse
     typealias GetRepositoryPolicyAsyncType = (
@@ -169,6 +194,11 @@ public protocol ECRClientProtocol {
     typealias PutRegistryPolicyAsyncType = (
             _ input: ECRModel.PutRegistryPolicyRequest, 
             _ completion: @escaping (Result<ECRModel.PutRegistryPolicyResponse, ECRError>) -> ()) throws -> ()
+    typealias PutRegistryScanningConfigurationSyncType = (
+            _ input: ECRModel.PutRegistryScanningConfigurationRequest) throws -> ECRModel.PutRegistryScanningConfigurationResponse
+    typealias PutRegistryScanningConfigurationAsyncType = (
+            _ input: ECRModel.PutRegistryScanningConfigurationRequest, 
+            _ completion: @escaping (Result<ECRModel.PutRegistryScanningConfigurationResponse, ECRError>) -> ()) throws -> ()
     typealias PutReplicationConfigurationSyncType = (
             _ input: ECRModel.PutReplicationConfigurationRequest) throws -> ECRModel.PutReplicationConfigurationResponse
     typealias PutReplicationConfigurationAsyncType = (
@@ -284,6 +314,32 @@ public protocol ECRClientProtocol {
             input: ECRModel.BatchGetImageRequest) throws -> ECRModel.BatchGetImageResponse
 
     /**
+     Invokes the BatchGetRepositoryScanningConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchGetRepositoryScanningConfigurationRequest object being passed to this operation.
+         - completion: The BatchGetRepositoryScanningConfigurationResponse object or an error will be passed to this 
+           callback when the operation is complete. The BatchGetRepositoryScanningConfigurationResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, repositoryNotFound, server, validation.
+     */
+    func batchGetRepositoryScanningConfigurationAsync(
+            input: ECRModel.BatchGetRepositoryScanningConfigurationRequest, 
+            completion: @escaping (Result<ECRModel.BatchGetRepositoryScanningConfigurationResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the BatchGetRepositoryScanningConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchGetRepositoryScanningConfigurationRequest object being passed to this operation.
+     - Returns: The BatchGetRepositoryScanningConfigurationResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, repositoryNotFound, server, validation.
+     */
+    func batchGetRepositoryScanningConfigurationSync(
+            input: ECRModel.BatchGetRepositoryScanningConfigurationRequest) throws -> ECRModel.BatchGetRepositoryScanningConfigurationResponse
+
+    /**
      Invokes the CompleteLayerUpload operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -308,6 +364,32 @@ public protocol ECRClientProtocol {
      */
     func completeLayerUploadSync(
             input: ECRModel.CompleteLayerUploadRequest) throws -> ECRModel.CompleteLayerUploadResponse
+
+    /**
+     Invokes the CreatePullThroughCacheRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreatePullThroughCacheRuleRequest object being passed to this operation.
+         - completion: The CreatePullThroughCacheRuleResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreatePullThroughCacheRuleResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, limitExceeded, pullThroughCacheRuleAlreadyExists, server, unsupportedUpstreamRegistry, validation.
+     */
+    func createPullThroughCacheRuleAsync(
+            input: ECRModel.CreatePullThroughCacheRuleRequest, 
+            completion: @escaping (Result<ECRModel.CreatePullThroughCacheRuleResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the CreatePullThroughCacheRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreatePullThroughCacheRuleRequest object being passed to this operation.
+     - Returns: The CreatePullThroughCacheRuleResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, limitExceeded, pullThroughCacheRuleAlreadyExists, server, unsupportedUpstreamRegistry, validation.
+     */
+    func createPullThroughCacheRuleSync(
+            input: ECRModel.CreatePullThroughCacheRuleRequest) throws -> ECRModel.CreatePullThroughCacheRuleResponse
 
     /**
      Invokes the CreateRepository operation returning immediately and passing the response to a callback.
@@ -360,6 +442,32 @@ public protocol ECRClientProtocol {
      */
     func deleteLifecyclePolicySync(
             input: ECRModel.DeleteLifecyclePolicyRequest) throws -> ECRModel.DeleteLifecyclePolicyResponse
+
+    /**
+     Invokes the DeletePullThroughCacheRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeletePullThroughCacheRuleRequest object being passed to this operation.
+         - completion: The DeletePullThroughCacheRuleResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeletePullThroughCacheRuleResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    func deletePullThroughCacheRuleAsync(
+            input: ECRModel.DeletePullThroughCacheRuleRequest, 
+            completion: @escaping (Result<ECRModel.DeletePullThroughCacheRuleResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the DeletePullThroughCacheRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeletePullThroughCacheRuleRequest object being passed to this operation.
+     - Returns: The DeletePullThroughCacheRuleResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    func deletePullThroughCacheRuleSync(
+            input: ECRModel.DeletePullThroughCacheRuleRequest) throws -> ECRModel.DeletePullThroughCacheRuleResponse
 
     /**
      Invokes the DeleteRegistryPolicy operation returning immediately and passing the response to a callback.
@@ -473,7 +581,7 @@ public protocol ECRClientProtocol {
          - completion: The DescribeImageScanFindingsResponse object or an error will be passed to this 
            callback when the operation is complete. The DescribeImageScanFindingsResponse
            object will be validated before being returned to caller.
-           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server.
+           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server, validation.
      */
     func describeImageScanFindingsAsync(
             input: ECRModel.DescribeImageScanFindingsRequest, 
@@ -486,7 +594,7 @@ public protocol ECRClientProtocol {
          - input: The validated DescribeImageScanFindingsRequest object being passed to this operation.
      - Returns: The DescribeImageScanFindingsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server.
+     - Throws: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server, validation.
      */
     func describeImageScanFindingsSync(
             input: ECRModel.DescribeImageScanFindingsRequest) throws -> ECRModel.DescribeImageScanFindingsResponse
@@ -516,6 +624,32 @@ public protocol ECRClientProtocol {
      */
     func describeImagesSync(
             input: ECRModel.DescribeImagesRequest) throws -> ECRModel.DescribeImagesResponse
+
+    /**
+     Invokes the DescribePullThroughCacheRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePullThroughCacheRulesRequest object being passed to this operation.
+         - completion: The DescribePullThroughCacheRulesResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribePullThroughCacheRulesResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    func describePullThroughCacheRulesAsync(
+            input: ECRModel.DescribePullThroughCacheRulesRequest, 
+            completion: @escaping (Result<ECRModel.DescribePullThroughCacheRulesResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the DescribePullThroughCacheRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePullThroughCacheRulesRequest object being passed to this operation.
+     - Returns: The DescribePullThroughCacheRulesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    func describePullThroughCacheRulesSync(
+            input: ECRModel.DescribePullThroughCacheRulesRequest) throws -> ECRModel.DescribePullThroughCacheRulesResponse
 
     /**
      Invokes the DescribeRegistry operation returning immediately and passing the response to a callback.
@@ -700,6 +834,32 @@ public protocol ECRClientProtocol {
             input: ECRModel.GetRegistryPolicyRequest) throws -> ECRModel.GetRegistryPolicyResponse
 
     /**
+     Invokes the GetRegistryScanningConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetRegistryScanningConfigurationRequest object being passed to this operation.
+         - completion: The GetRegistryScanningConfigurationResponse object or an error will be passed to this 
+           callback when the operation is complete. The GetRegistryScanningConfigurationResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, server, validation.
+     */
+    func getRegistryScanningConfigurationAsync(
+            input: ECRModel.GetRegistryScanningConfigurationRequest, 
+            completion: @escaping (Result<ECRModel.GetRegistryScanningConfigurationResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the GetRegistryScanningConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetRegistryScanningConfigurationRequest object being passed to this operation.
+     - Returns: The GetRegistryScanningConfigurationResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, server, validation.
+     */
+    func getRegistryScanningConfigurationSync(
+            input: ECRModel.GetRegistryScanningConfigurationRequest) throws -> ECRModel.GetRegistryScanningConfigurationResponse
+
+    /**
      Invokes the GetRepositoryPolicy operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -837,7 +997,7 @@ public protocol ECRClientProtocol {
          - completion: The PutImageScanningConfigurationResponse object or an error will be passed to this 
            callback when the operation is complete. The PutImageScanningConfigurationResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, repositoryNotFound, server.
+           The possible errors are: invalidParameter, repositoryNotFound, server, validation.
      */
     func putImageScanningConfigurationAsync(
             input: ECRModel.PutImageScanningConfigurationRequest, 
@@ -850,7 +1010,7 @@ public protocol ECRClientProtocol {
          - input: The validated PutImageScanningConfigurationRequest object being passed to this operation.
      - Returns: The PutImageScanningConfigurationResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, repositoryNotFound, server.
+     - Throws: invalidParameter, repositoryNotFound, server, validation.
      */
     func putImageScanningConfigurationSync(
             input: ECRModel.PutImageScanningConfigurationRequest) throws -> ECRModel.PutImageScanningConfigurationResponse
@@ -934,6 +1094,32 @@ public protocol ECRClientProtocol {
             input: ECRModel.PutRegistryPolicyRequest) throws -> ECRModel.PutRegistryPolicyResponse
 
     /**
+     Invokes the PutRegistryScanningConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutRegistryScanningConfigurationRequest object being passed to this operation.
+         - completion: The PutRegistryScanningConfigurationResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutRegistryScanningConfigurationResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, server, validation.
+     */
+    func putRegistryScanningConfigurationAsync(
+            input: ECRModel.PutRegistryScanningConfigurationRequest, 
+            completion: @escaping (Result<ECRModel.PutRegistryScanningConfigurationResponse, ECRError>) -> ()) throws
+
+    /**
+     Invokes the PutRegistryScanningConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutRegistryScanningConfigurationRequest object being passed to this operation.
+     - Returns: The PutRegistryScanningConfigurationResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, server, validation.
+     */
+    func putRegistryScanningConfigurationSync(
+            input: ECRModel.PutRegistryScanningConfigurationRequest) throws -> ECRModel.PutRegistryScanningConfigurationResponse
+
+    /**
      Invokes the PutReplicationConfiguration operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -993,7 +1179,7 @@ public protocol ECRClientProtocol {
          - completion: The StartImageScanResponse object or an error will be passed to this 
            callback when the operation is complete. The StartImageScanResponse
            object will be validated before being returned to caller.
-           The possible errors are: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType.
+           The possible errors are: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType, validation.
      */
     func startImageScanAsync(
             input: ECRModel.StartImageScanRequest, 
@@ -1006,7 +1192,7 @@ public protocol ECRClientProtocol {
          - input: The validated StartImageScanRequest object being passed to this operation.
      - Returns: The StartImageScanResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType.
+     - Throws: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType, validation.
      */
     func startImageScanSync(
             input: ECRModel.StartImageScanRequest) throws -> ECRModel.StartImageScanResponse

@@ -596,7 +596,8 @@ public extension CreateReplicationGroupMemberAction {
             globalSecondaryIndexes: nil,
             kMSMasterKeyId: nil,
             provisionedThroughputOverride: nil,
-            regionName: "value")
+            regionName: "value",
+            tableClassOverride: nil)
 
         return defaultInstance
     }()
@@ -616,6 +617,7 @@ public extension CreateTableInput {
             provisionedThroughput: nil,
             sSESpecification: nil,
             streamSpecification: nil,
+            tableClass: nil,
             tableName: "012",
             tags: nil)
 
@@ -2158,7 +2160,8 @@ public extension ReplicaDescription {
             replicaInaccessibleDateTime: nil,
             replicaStatus: nil,
             replicaStatusDescription: nil,
-            replicaStatusPercentProgress: nil)
+            replicaStatusPercentProgress: nil,
+            replicaTableClassSummary: nil)
 
         return defaultInstance
     }()
@@ -2274,7 +2277,8 @@ public extension ReplicaSettingsDescription {
             replicaProvisionedReadCapacityUnits: nil,
             replicaProvisionedWriteCapacityAutoScalingSettings: nil,
             replicaProvisionedWriteCapacityUnits: nil,
-            replicaStatus: nil)
+            replicaStatus: nil,
+            replicaTableClassSummary: nil)
 
         return defaultInstance
     }()
@@ -2289,7 +2293,8 @@ public extension ReplicaSettingsUpdate {
             regionName: "value",
             replicaGlobalSecondaryIndexSettingsUpdate: nil,
             replicaProvisionedReadCapacityAutoScalingSettingsUpdate: nil,
-            replicaProvisionedReadCapacityUnits: nil)
+            replicaProvisionedReadCapacityUnits: nil,
+            replicaTableClass: nil)
 
         return defaultInstance
     }()
@@ -2583,6 +2588,19 @@ public extension TableAutoScalingDescription {
     }()
 }
 
+public extension TableClassSummary {
+    /**
+     Default instance of the TableClassSummary structure.
+     */
+    static let __default: DynamoDBModel.TableClassSummary = {
+        let defaultInstance = DynamoDBModel.TableClassSummary(
+            lastUpdateDateTime: nil,
+            tableClass: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension TableDescription {
     /**
      Default instance of the TableDescription structure.
@@ -2606,6 +2624,7 @@ public extension TableDescription {
             sSEDescription: nil,
             streamSpecification: nil,
             tableArn: nil,
+            tableClassSummary: nil,
             tableId: nil,
             tableName: nil,
             tableSizeBytes: nil,
@@ -3007,7 +3026,8 @@ public extension UpdateReplicationGroupMemberAction {
             globalSecondaryIndexes: nil,
             kMSMasterKeyId: nil,
             provisionedThroughputOverride: nil,
-            regionName: "value")
+            regionName: "value",
+            tableClassOverride: nil)
 
         return defaultInstance
     }()
@@ -3026,6 +3046,7 @@ public extension UpdateTableInput {
             replicaUpdates: nil,
             sSESpecification: nil,
             streamSpecification: nil,
+            tableClass: nil,
             tableName: "012")
 
         return defaultInstance

@@ -64,6 +64,19 @@ extension BatchGetImageResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the BatchGetRepositoryScanningConfiguration operation in a HTTP client.
+ */
+extension BatchGetRepositoryScanningConfigurationResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = BatchGetRepositoryScanningConfigurationResponse
+    public typealias HeadersType = BatchGetRepositoryScanningConfigurationResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> BatchGetRepositoryScanningConfigurationResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CompleteLayerUpload operation in a HTTP client.
  */
 extension CompleteLayerUploadResponse: HTTPResponseOutputProtocol {
@@ -72,6 +85,19 @@ extension CompleteLayerUploadResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CompleteLayerUploadResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreatePullThroughCacheRule operation in a HTTP client.
+ */
+extension CreatePullThroughCacheRuleResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreatePullThroughCacheRuleResponse
+    public typealias HeadersType = CreatePullThroughCacheRuleResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreatePullThroughCacheRuleResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -98,6 +124,19 @@ extension DeleteLifecyclePolicyResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteLifecyclePolicyResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeletePullThroughCacheRule operation in a HTTP client.
+ */
+extension DeletePullThroughCacheRuleResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeletePullThroughCacheRuleResponse
+    public typealias HeadersType = DeletePullThroughCacheRuleResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeletePullThroughCacheRuleResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -176,6 +215,19 @@ extension DescribeImagesResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeImagesResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribePullThroughCacheRules operation in a HTTP client.
+ */
+extension DescribePullThroughCacheRulesResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribePullThroughCacheRulesResponse
+    public typealias HeadersType = DescribePullThroughCacheRulesResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribePullThroughCacheRulesResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -267,6 +319,19 @@ extension GetRegistryPolicyResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetRegistryPolicyResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetRegistryScanningConfiguration operation in a HTTP client.
+ */
+extension GetRegistryScanningConfigurationResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetRegistryScanningConfigurationResponse
+    public typealias HeadersType = GetRegistryScanningConfigurationResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetRegistryScanningConfigurationResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -384,6 +449,19 @@ extension PutRegistryPolicyResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutRegistryPolicyResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutRegistryScanningConfiguration operation in a HTTP client.
+ */
+extension PutRegistryScanningConfigurationResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutRegistryScanningConfigurationResponse
+    public typealias HeadersType = PutRegistryScanningConfigurationResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutRegistryScanningConfigurationResponse {
         return try bodyDecodableProvider()
     }
 }
