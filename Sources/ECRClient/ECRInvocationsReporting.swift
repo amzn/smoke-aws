@@ -32,15 +32,19 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let batchCheckLayerAvailability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchDeleteImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchGetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let batchGetRepositoryScanningConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let completeLayerUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createPullThroughCacheRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deletePullThroughCacheRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRepository: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeImageReplicationStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeImageScanFindings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describePullThroughCacheRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeRegistry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeRepositories: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getAuthorizationToken: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -48,6 +52,7 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let getLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getLifecyclePolicyPreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getRegistryScanningConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let initiateLayerUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -57,6 +62,7 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let putImageTagMutability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putLifecyclePolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putRegistryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putRegistryScanningConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putReplicationConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setRepositoryPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let startImageScan: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -72,12 +78,18 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.batchDeleteImage)
         self.batchGetImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.batchGetImage)
+        self.batchGetRepositoryScanningConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.batchGetRepositoryScanningConfiguration)
         self.completeLayerUpload = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.completeLayerUpload)
+        self.createPullThroughCacheRule = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createPullThroughCacheRule)
         self.createRepository = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createRepository)
         self.deleteLifecyclePolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteLifecyclePolicy)
+        self.deletePullThroughCacheRule = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deletePullThroughCacheRule)
         self.deleteRegistryPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteRegistryPolicy)
         self.deleteRepository = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -90,6 +102,8 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.describeImageScanFindings)
         self.describeImages = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeImages)
+        self.describePullThroughCacheRules = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describePullThroughCacheRules)
         self.describeRegistry = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeRegistry)
         self.describeRepositories = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -104,6 +118,8 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.getLifecyclePolicyPreview)
         self.getRegistryPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getRegistryPolicy)
+        self.getRegistryScanningConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getRegistryScanningConfiguration)
         self.getRepositoryPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getRepositoryPolicy)
         self.initiateLayerUpload = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -122,6 +138,8 @@ public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.putLifecyclePolicy)
         self.putRegistryPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putRegistryPolicy)
+        self.putRegistryScanningConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putRegistryScanningConfiguration)
         self.putReplicationConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putReplicationConfiguration)
         self.setRepositoryPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

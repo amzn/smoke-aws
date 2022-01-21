@@ -521,6 +521,12 @@ public typealias Errors = [Error]
  Enumeration restricting the values of the Event field.
  */
 public enum Event: String, Codable, CustomStringConvertible {
+    case s3IntelligentTiering = "s3:IntelligentTiering"
+    case s3LifecycleExpirationStar = "s3:LifecycleExpiration:*"
+    case s3LifecycleExpirationDelete = "s3:LifecycleExpiration:Delete"
+    case s3LifecycleExpirationDeleteMarkerCreated = "s3:LifecycleExpiration:DeleteMarkerCreated"
+    case s3LifecycleTransition = "s3:LifecycleTransition"
+    case s3ObjectAclPut = "s3:ObjectAcl:Put"
     case s3ObjectCreatedStar = "s3:ObjectCreated:*"
     case s3ObjectCreatedCompleteMultipartUpload = "s3:ObjectCreated:CompleteMultipartUpload"
     case s3ObjectCreatedCopy = "s3:ObjectCreated:Copy"
@@ -531,7 +537,11 @@ public enum Event: String, Codable, CustomStringConvertible {
     case s3ObjectRemovedDeleteMarkerCreated = "s3:ObjectRemoved:DeleteMarkerCreated"
     case s3ObjectRestoreStar = "s3:ObjectRestore:*"
     case s3ObjectRestoreCompleted = "s3:ObjectRestore:Completed"
+    case s3ObjectRestoreDelete = "s3:ObjectRestore:Delete"
     case s3ObjectRestorePost = "s3:ObjectRestore:Post"
+    case s3ObjectTaggingStar = "s3:ObjectTagging:*"
+    case s3ObjectTaggingDelete = "s3:ObjectTagging:Delete"
+    case s3ObjectTaggingPut = "s3:ObjectTagging:Put"
     case s3ReducedRedundancyLostObject = "s3:ReducedRedundancyLostObject"
     case s3ReplicationStar = "s3:Replication:*"
     case s3ReplicationOperationFailedReplication = "s3:Replication:OperationFailedReplication"
@@ -543,7 +553,7 @@ public enum Event: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: Event = .s3ObjectCreatedStar
+    public static let __default: Event = .s3IntelligentTiering
 }
 
 /**
@@ -1244,6 +1254,7 @@ public typealias ObjectLockToken = String
  Enumeration restricting the values of the ObjectOwnership field.
  */
 public enum ObjectOwnership: String, Codable, CustomStringConvertible {
+    case bucketownerenforced = "BucketOwnerEnforced"
     case bucketownerpreferred = "BucketOwnerPreferred"
     case objectwriter = "ObjectWriter"
 
@@ -1251,7 +1262,7 @@ public enum ObjectOwnership: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ObjectOwnership = .bucketownerpreferred
+    public static let __default: ObjectOwnership = .bucketownerenforced
 }
 
 /**
@@ -1270,6 +1281,7 @@ public typealias ObjectSizeLessThanBytes = Int
 public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
     case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
+    case glacierIr = "GLACIER_IR"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
     case outposts = "OUTPOSTS"
@@ -1691,6 +1703,11 @@ public typealias Setting = Bool
 public typealias Size = Int
 
 /**
+ Type definition for the SkipValidation field.
+ */
+public typealias SkipValidation = Bool
+
+/**
  Enumeration restricting the values of the SseKmsEncryptedObjectsStatus field.
  */
 public enum SseKmsEncryptedObjectsStatus: String, Codable, CustomStringConvertible {
@@ -1720,6 +1737,7 @@ public typealias StartAfter = String
 public enum StorageClass: String, Codable, CustomStringConvertible {
     case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
+    case glacierIr = "GLACIER_IR"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
     case outposts = "OUTPOSTS"
@@ -1842,6 +1860,7 @@ public typealias TransitionList = [Transition]
 public enum TransitionStorageClass: String, Codable, CustomStringConvertible {
     case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
+    case glacierIr = "GLACIER_IR"
     case intelligentTiering = "INTELLIGENT_TIERING"
     case onezoneIa = "ONEZONE_IA"
     case standardIa = "STANDARD_IA"

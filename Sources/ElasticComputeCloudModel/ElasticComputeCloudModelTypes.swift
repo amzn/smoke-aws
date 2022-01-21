@@ -88,6 +88,21 @@ public enum AcceleratorType: String, Codable, CustomStringConvertible {
 public typealias AcceleratorTypeSet = [AcceleratorType]
 
 /**
+ Type definition for the AccessScopeAnalysisFindingList field.
+ */
+public typealias AccessScopeAnalysisFindingList = [AccessScopeAnalysisFinding]
+
+/**
+ Type definition for the AccessScopePathList field.
+ */
+public typealias AccessScopePathList = [AccessScopePath]
+
+/**
+ Type definition for the AccessScopePathListRequest field.
+ */
+public typealias AccessScopePathListRequest = [AccessScopePathRequest]
+
+/**
  Type definition for the AccountAttributeList field.
  */
 public typealias AccountAttributeList = [AccountAttribute]
@@ -138,6 +153,11 @@ public enum ActivityStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the AddIpamOperatingRegionSet field.
+ */
+public typealias AddIpamOperatingRegionSet = [AddIpamOperatingRegion]
+
+/**
  Type definition for the AddPrefixListEntries field.
  */
 public typealias AddPrefixListEntries = [AddPrefixListEntry]
@@ -153,6 +173,20 @@ public enum AddressAttributeName: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: AddressAttributeName = .domainName
+}
+
+/**
+ Enumeration restricting the values of the AddressFamily field.
+ */
+public enum AddressFamily: String, Codable, CustomStringConvertible {
+    case ipv4
+    case ipv6
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AddressFamily = .ipv4
 }
 
 /**
@@ -639,6 +673,11 @@ public enum BootModeValues: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the BoxedDouble field.
+ */
+public typealias BoxedDouble = Double
+
+/**
  Type definition for the BundleId field.
  */
 public typealias BundleId = String
@@ -839,6 +878,12 @@ public enum CapacityReservationInstancePlatform: String, Codable, CustomStringCo
     case linuxWithSqlServerStandard = "Linux with SQL Server Standard"
     case linuxWithSqlServerWeb = "Linux with SQL Server Web"
     case linuxUnix = "Linux/UNIX"
+    case rhelWithHa = "RHEL with HA"
+    case rhelWithHaAndSqlServerEnterprise = "RHEL with HA and SQL Server Enterprise"
+    case rhelWithHaAndSqlServerStandard = "RHEL with HA and SQL Server Standard"
+    case rhelWithSqlServerEnterprise = "RHEL with SQL Server Enterprise"
+    case rhelWithSqlServerStandard = "RHEL with SQL Server Standard"
+    case rhelWithSqlServerWeb = "RHEL with SQL Server Web"
     case redHatEnterpriseLinux = "Red Hat Enterprise Linux"
     case suseLinux = "SUSE Linux"
     case windows = "Windows"
@@ -1476,6 +1521,11 @@ public enum DeleteQueuedReservedInstancesErrorCode: String, Codable, CustomStrin
 public typealias DeleteQueuedReservedInstancesIdList = [ReservationId]
 
 /**
+ Type definition for the DeprovisionedAddressSet field.
+ */
+public typealias DeprovisionedAddressSet = [String]
+
+/**
  Type definition for the DescribeByoipCidrsMaxResults field.
  */
 public typealias DescribeByoipCidrsMaxResults = Int
@@ -1544,6 +1594,16 @@ public typealias DescribeElasticGpusMaxResults = Int
  Type definition for the DescribeExportImageTasksMaxResults field.
  */
 public typealias DescribeExportImageTasksMaxResults = Int
+
+/**
+ Type definition for the DescribeFastLaunchImagesRequestMaxResults field.
+ */
+public typealias DescribeFastLaunchImagesRequestMaxResults = Int
+
+/**
+ Type definition for the DescribeFastLaunchImagesSuccessSet field.
+ */
+public typealias DescribeFastLaunchImagesSuccessSet = [DescribeFastLaunchImagesSuccessItem]
 
 /**
  Type definition for the DescribeFastSnapshotRestoreSuccessSet field.
@@ -1649,6 +1709,11 @@ public typealias DescribeSecurityGroupRulesMaxResults = Int
  Type definition for the DescribeSecurityGroupsMaxResults field.
  */
 public typealias DescribeSecurityGroupsMaxResults = Int
+
+/**
+ Type definition for the DescribeSnapshotTierStatusMaxResults field.
+ */
+public typealias DescribeSnapshotTierStatusMaxResults = Int
 
 /**
  Type definition for the DescribeSpotFleetInstancesMaxResults field.
@@ -2239,6 +2304,42 @@ public typealias FailedCapacityReservationFleetCancellationResultSet = [FailedCa
 public typealias FailedQueuedPurchaseDeletionSet = [FailedQueuedPurchaseDeletion]
 
 /**
+ Type definition for the FastLaunchImageIdList field.
+ */
+public typealias FastLaunchImageIdList = [ImageId]
+
+/**
+ Enumeration restricting the values of the FastLaunchResourceType field.
+ */
+public enum FastLaunchResourceType: String, Codable, CustomStringConvertible {
+    case snapshot
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FastLaunchResourceType = .snapshot
+}
+
+/**
+ Enumeration restricting the values of the FastLaunchStateCode field.
+ */
+public enum FastLaunchStateCode: String, Codable, CustomStringConvertible {
+    case disabling
+    case disablingFailed = "disabling-failed"
+    case enabled
+    case enabledFailed = "enabled-failed"
+    case enabling
+    case enablingFailed = "enabling-failed"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FastLaunchStateCode = .disabling
+}
+
+/**
  Enumeration restricting the values of the FastSnapshotRestoreStateCode field.
  */
 public enum FastSnapshotRestoreStateCode: String, Codable, CustomStringConvertible {
@@ -2259,6 +2360,21 @@ public enum FastSnapshotRestoreStateCode: String, Codable, CustomStringConvertib
  Type definition for the FilterList field.
  */
 public typealias FilterList = [Filter]
+
+/**
+ Enumeration restricting the values of the FindingsFound field.
+ */
+public enum FindingsFound: String, Codable, CustomStringConvertible {
+    case `false` = "false"
+    case `true` = "true"
+    case unknown
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: FindingsFound = .`false`
+}
 
 /**
  Enumeration restricting the values of the FleetActivityStatus field.
@@ -2606,6 +2722,11 @@ public typealias GetCapacityReservationUsageRequestMaxResults = Int
  Type definition for the GetGroupsForCapacityReservationRequestMaxResults field.
  */
 public typealias GetGroupsForCapacityReservationRequestMaxResults = Int
+
+/**
+ Type definition for the GetIpamPoolAllocationsMaxResults field.
+ */
+public typealias GetIpamPoolAllocationsMaxResults = Int
 
 /**
  Type definition for the GetManagedPrefixListAssociationsMaxResults field.
@@ -3282,6 +3403,20 @@ public enum InstanceMetadataProtocolState: String, Codable, CustomStringConverti
 }
 
 /**
+ Enumeration restricting the values of the InstanceMetadataTagsState field.
+ */
+public enum InstanceMetadataTagsState: String, Codable, CustomStringConvertible {
+    case disabled
+    case enabled
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InstanceMetadataTagsState = .disabled
+}
+
+/**
  Type definition for the InstanceMonitoringList field.
  */
 public typealias InstanceMonitoringList = [InstanceMonitoring]
@@ -3509,11 +3644,18 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case g54xlarge = "g5.4xlarge"
     case g58xlarge = "g5.8xlarge"
     case g5Xlarge = "g5.xlarge"
+    case g5g16xlarge = "g5g.16xlarge"
+    case g5g2xlarge = "g5g.2xlarge"
+    case g5g4xlarge = "g5g.4xlarge"
+    case g5g8xlarge = "g5g.8xlarge"
+    case g5gMetal = "g5g.metal"
+    case g5gXlarge = "g5g.xlarge"
     case h116xlarge = "h1.16xlarge"
     case h12xlarge = "h1.2xlarge"
     case h14xlarge = "h1.4xlarge"
     case h18xlarge = "h1.8xlarge"
     case hi14xlarge = "hi1.4xlarge"
+    case hpc6a48xlarge = "hpc6a.48xlarge"
     case hs18xlarge = "hs1.8xlarge"
     case i22xlarge = "i2.2xlarge"
     case i24xlarge = "i2.4xlarge"
@@ -3534,10 +3676,22 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case i3enLarge = "i3en.large"
     case i3enMetal = "i3en.metal"
     case i3enXlarge = "i3en.xlarge"
+    case im4gn16xlarge = "im4gn.16xlarge"
+    case im4gn2xlarge = "im4gn.2xlarge"
+    case im4gn4xlarge = "im4gn.4xlarge"
+    case im4gn8xlarge = "im4gn.8xlarge"
+    case im4gnLarge = "im4gn.large"
+    case im4gnXlarge = "im4gn.xlarge"
     case inf124xlarge = "inf1.24xlarge"
     case inf12xlarge = "inf1.2xlarge"
     case inf16xlarge = "inf1.6xlarge"
     case inf1Xlarge = "inf1.xlarge"
+    case is4gen2xlarge = "is4gen.2xlarge"
+    case is4gen4xlarge = "is4gen.4xlarge"
+    case is4gen8xlarge = "is4gen.8xlarge"
+    case is4genLarge = "is4gen.large"
+    case is4genMedium = "is4gen.medium"
+    case is4genXlarge = "is4gen.xlarge"
     case m1Large = "m1.large"
     case m1Medium = "m1.medium"
     case m1Small = "m1.small"
@@ -3614,6 +3768,16 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m5znLarge = "m5zn.large"
     case m5znMetal = "m5zn.metal"
     case m5znXlarge = "m5zn.xlarge"
+    case m6a12xlarge = "m6a.12xlarge"
+    case m6a16xlarge = "m6a.16xlarge"
+    case m6a24xlarge = "m6a.24xlarge"
+    case m6a2xlarge = "m6a.2xlarge"
+    case m6a32xlarge = "m6a.32xlarge"
+    case m6a48xlarge = "m6a.48xlarge"
+    case m6a4xlarge = "m6a.4xlarge"
+    case m6a8xlarge = "m6a.8xlarge"
+    case m6aLarge = "m6a.large"
+    case m6aXlarge = "m6a.xlarge"
     case m6g12xlarge = "m6g.12xlarge"
     case m6g16xlarge = "m6g.16xlarge"
     case m6g2xlarge = "m6g.2xlarge"
@@ -3946,6 +4110,310 @@ public typealias IpRangeList = [IpRange]
 public typealias IpRanges = [String]
 
 /**
+ Type definition for the IpamAddressHistoryMaxResults field.
+ */
+public typealias IpamAddressHistoryMaxResults = Int
+
+/**
+ Type definition for the IpamAddressHistoryRecordSet field.
+ */
+public typealias IpamAddressHistoryRecordSet = [IpamAddressHistoryRecord]
+
+/**
+ Enumeration restricting the values of the IpamAddressHistoryResourceType field.
+ */
+public enum IpamAddressHistoryResourceType: String, Codable, CustomStringConvertible {
+    case eip
+    case instance
+    case networkInterface = "network-interface"
+    case subnet
+    case vpc
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamAddressHistoryResourceType = .eip
+}
+
+/**
+ Enumeration restricting the values of the IpamComplianceStatus field.
+ */
+public enum IpamComplianceStatus: String, Codable, CustomStringConvertible {
+    case compliant
+    case ignored
+    case noncompliant
+    case unmanaged
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamComplianceStatus = .compliant
+}
+
+/**
+ Type definition for the IpamId field.
+ */
+public typealias IpamId = String
+
+/**
+ Enumeration restricting the values of the IpamManagementState field.
+ */
+public enum IpamManagementState: String, Codable, CustomStringConvertible {
+    case ignored
+    case managed
+    case unmanaged
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamManagementState = .ignored
+}
+
+/**
+ Type definition for the IpamMaxResults field.
+ */
+public typealias IpamMaxResults = Int
+
+/**
+ Type definition for the IpamNetmaskLength field.
+ */
+public typealias IpamNetmaskLength = Int
+
+/**
+ Type definition for the IpamOperatingRegionSet field.
+ */
+public typealias IpamOperatingRegionSet = [IpamOperatingRegion]
+
+/**
+ Enumeration restricting the values of the IpamOverlapStatus field.
+ */
+public enum IpamOverlapStatus: String, Codable, CustomStringConvertible {
+    case ignored
+    case nonoverlapping
+    case overlapping
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamOverlapStatus = .ignored
+}
+
+/**
+ Type definition for the IpamPoolAllocationDisallowedCidrs field.
+ */
+public typealias IpamPoolAllocationDisallowedCidrs = [String]
+
+/**
+ Type definition for the IpamPoolAllocationId field.
+ */
+public typealias IpamPoolAllocationId = String
+
+/**
+ Enumeration restricting the values of the IpamPoolAllocationResourceType field.
+ */
+public enum IpamPoolAllocationResourceType: String, Codable, CustomStringConvertible {
+    case custom
+    case ec2PublicIpv4Pool = "ec2-public-ipv4-pool"
+    case ipamPool = "ipam-pool"
+    case vpc
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamPoolAllocationResourceType = .custom
+}
+
+/**
+ Type definition for the IpamPoolAllocationSet field.
+ */
+public typealias IpamPoolAllocationSet = [IpamPoolAllocation]
+
+/**
+ Enumeration restricting the values of the IpamPoolAwsService field.
+ */
+public enum IpamPoolAwsService: String, Codable, CustomStringConvertible {
+    case ec2
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamPoolAwsService = .ec2
+}
+
+/**
+ Enumeration restricting the values of the IpamPoolCidrFailureCode field.
+ */
+public enum IpamPoolCidrFailureCode: String, Codable, CustomStringConvertible {
+    case cidrNotAvailable = "cidr-not-available"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamPoolCidrFailureCode = .cidrNotAvailable
+}
+
+/**
+ Type definition for the IpamPoolCidrSet field.
+ */
+public typealias IpamPoolCidrSet = [IpamPoolCidr]
+
+/**
+ Enumeration restricting the values of the IpamPoolCidrState field.
+ */
+public enum IpamPoolCidrState: String, Codable, CustomStringConvertible {
+    case deprovisioned
+    case failedDeprovision = "failed-deprovision"
+    case failedImport = "failed-import"
+    case failedProvision = "failed-provision"
+    case pendingDeprovision = "pending-deprovision"
+    case pendingImport = "pending-import"
+    case pendingProvision = "pending-provision"
+    case provisioned
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamPoolCidrState = .deprovisioned
+}
+
+/**
+ Type definition for the IpamPoolId field.
+ */
+public typealias IpamPoolId = String
+
+/**
+ Type definition for the IpamPoolSet field.
+ */
+public typealias IpamPoolSet = [IpamPool]
+
+/**
+ Enumeration restricting the values of the IpamPoolState field.
+ */
+public enum IpamPoolState: String, Codable, CustomStringConvertible {
+    case createComplete = "create-complete"
+    case createFailed = "create-failed"
+    case createInProgress = "create-in-progress"
+    case deleteComplete = "delete-complete"
+    case deleteFailed = "delete-failed"
+    case deleteInProgress = "delete-in-progress"
+    case modifyComplete = "modify-complete"
+    case modifyFailed = "modify-failed"
+    case modifyInProgress = "modify-in-progress"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamPoolState = .createComplete
+}
+
+/**
+ Type definition for the IpamResourceCidrSet field.
+ */
+public typealias IpamResourceCidrSet = [IpamResourceCidr]
+
+/**
+ Type definition for the IpamResourceTagList field.
+ */
+public typealias IpamResourceTagList = [IpamResourceTag]
+
+/**
+ Enumeration restricting the values of the IpamResourceType field.
+ */
+public enum IpamResourceType: String, Codable, CustomStringConvertible {
+    case eip
+    case ipv6Pool = "ipv6-pool"
+    case publicIpv4Pool = "public-ipv4-pool"
+    case subnet
+    case vpc
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamResourceType = .eip
+}
+
+/**
+ Type definition for the IpamScopeId field.
+ */
+public typealias IpamScopeId = String
+
+/**
+ Type definition for the IpamScopeSet field.
+ */
+public typealias IpamScopeSet = [IpamScope]
+
+/**
+ Enumeration restricting the values of the IpamScopeState field.
+ */
+public enum IpamScopeState: String, Codable, CustomStringConvertible {
+    case createComplete = "create-complete"
+    case createFailed = "create-failed"
+    case createInProgress = "create-in-progress"
+    case deleteComplete = "delete-complete"
+    case deleteFailed = "delete-failed"
+    case deleteInProgress = "delete-in-progress"
+    case modifyComplete = "modify-complete"
+    case modifyFailed = "modify-failed"
+    case modifyInProgress = "modify-in-progress"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamScopeState = .createComplete
+}
+
+/**
+ Enumeration restricting the values of the IpamScopeType field.
+ */
+public enum IpamScopeType: String, Codable, CustomStringConvertible {
+    case `private` = "private"
+    case `public` = "public"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamScopeType = .`private`
+}
+
+/**
+ Type definition for the IpamSet field.
+ */
+public typealias IpamSet = [Ipam]
+
+/**
+ Enumeration restricting the values of the IpamState field.
+ */
+public enum IpamState: String, Codable, CustomStringConvertible {
+    case createComplete = "create-complete"
+    case createFailed = "create-failed"
+    case createInProgress = "create-in-progress"
+    case deleteComplete = "delete-complete"
+    case deleteFailed = "delete-failed"
+    case deleteInProgress = "delete-in-progress"
+    case modifyComplete = "modify-complete"
+    case modifyFailed = "modify-failed"
+    case modifyInProgress = "modify-in-progress"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: IpamState = .createComplete
+}
+
+/**
  Type definition for the Ipv4PoolEc2Id field.
  */
 public typealias Ipv4PoolEc2Id = String
@@ -4218,6 +4686,20 @@ public enum LaunchTemplateInstanceMetadataProtocolIpv6: String, Codable, CustomS
 }
 
 /**
+ Enumeration restricting the values of the LaunchTemplateInstanceMetadataTagsState field.
+ */
+public enum LaunchTemplateInstanceMetadataTagsState: String, Codable, CustomStringConvertible {
+    case disabled
+    case enabled
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LaunchTemplateInstanceMetadataTagsState = .disabled
+}
+
+/**
  Type definition for the LaunchTemplateInstanceNetworkInterfaceSpecificationList field.
  */
 public typealias LaunchTemplateInstanceNetworkInterfaceSpecificationList = [LaunchTemplateInstanceNetworkInterfaceSpecification]
@@ -4281,6 +4763,11 @@ public typealias LicenseList = [LicenseConfiguration]
  Type definition for the LicenseSpecificationListRequest field.
  */
 public typealias LicenseSpecificationListRequest = [LicenseConfigurationRequest]
+
+/**
+ Type definition for the ListSnapshotsInRecycleBinMaxResults field.
+ */
+public typealias ListSnapshotsInRecycleBinMaxResults = Int
 
 /**
  Enumeration restricting the values of the ListingState field.
@@ -4716,6 +5203,11 @@ public enum NatGatewayState: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the NetmaskLength field.
+ */
+public typealias NetmaskLength = Int
+
+/**
  Type definition for the NetworkAclAssociationId field.
  */
 public typealias NetworkAclAssociationId = String
@@ -4756,6 +5248,36 @@ public typealias NetworkCardIndex = Int
 public typealias NetworkCardInfoList = [NetworkCardInfo]
 
 /**
+ Type definition for the NetworkInsightsAccessScopeAnalysisId field.
+ */
+public typealias NetworkInsightsAccessScopeAnalysisId = String
+
+/**
+ Type definition for the NetworkInsightsAccessScopeAnalysisIdList field.
+ */
+public typealias NetworkInsightsAccessScopeAnalysisIdList = [NetworkInsightsAccessScopeAnalysisId]
+
+/**
+ Type definition for the NetworkInsightsAccessScopeAnalysisList field.
+ */
+public typealias NetworkInsightsAccessScopeAnalysisList = [NetworkInsightsAccessScopeAnalysis]
+
+/**
+ Type definition for the NetworkInsightsAccessScopeId field.
+ */
+public typealias NetworkInsightsAccessScopeId = String
+
+/**
+ Type definition for the NetworkInsightsAccessScopeIdList field.
+ */
+public typealias NetworkInsightsAccessScopeIdList = [NetworkInsightsAccessScopeId]
+
+/**
+ Type definition for the NetworkInsightsAccessScopeList field.
+ */
+public typealias NetworkInsightsAccessScopeList = [NetworkInsightsAccessScope]
+
+/**
  Type definition for the NetworkInsightsAnalysisId field.
  */
 public typealias NetworkInsightsAnalysisId = String
@@ -4789,6 +5311,11 @@ public typealias NetworkInsightsPathIdList = [NetworkInsightsPathId]
  Type definition for the NetworkInsightsPathList field.
  */
 public typealias NetworkInsightsPathList = [NetworkInsightsPath]
+
+/**
+ Type definition for the NetworkInsightsResourceId field.
+ */
+public typealias NetworkInsightsResourceId = String
 
 /**
  Type definition for the NetworkInterfaceAttachmentId field.
@@ -5047,6 +5574,19 @@ public enum PartitionLoadFrequency: String, Codable, CustomStringConvertible {
 public typealias PathComponentList = [PathComponent]
 
 /**
+ Enumeration restricting the values of the PayerResponsibility field.
+ */
+public enum PayerResponsibility: String, Codable, CustomStringConvertible {
+    case serviceowner = "ServiceOwner"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PayerResponsibility = .serviceowner
+}
+
+/**
  Enumeration restricting the values of the PaymentOption field.
  */
 public enum PaymentOption: String, Codable, CustomStringConvertible {
@@ -5133,6 +5673,11 @@ public typealias Phase2IntegrityAlgorithmsList = [Phase2IntegrityAlgorithmsListV
  Type definition for the Phase2IntegrityAlgorithmsRequestList field.
  */
 public typealias Phase2IntegrityAlgorithmsRequestList = [Phase2IntegrityAlgorithmsRequestListValue]
+
+/**
+ Type definition for the PlacementGroupArn field.
+ */
+public typealias PlacementGroupArn = String
 
 /**
  Type definition for the PlacementGroupId field.
@@ -5419,6 +5964,11 @@ public enum Protocol: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ProtocolList field.
+ */
+public typealias ProtocolList = [Protocol]
+
+/**
  Enumeration restricting the values of the ProtocolValue field.
  */
 public enum ProtocolValue: String, Codable, CustomStringConvertible {
@@ -5531,6 +6081,11 @@ public typealias RegionNameStringList = [String]
 public typealias RegionNames = [String]
 
 /**
+ Type definition for the RemoveIpamOperatingRegionSet field.
+ */
+public typealias RemoveIpamOperatingRegionSet = [RemoveIpamOperatingRegion]
+
+/**
  Type definition for the RemovePrefixListEntries field.
  */
 public typealias RemovePrefixListEntries = [RemovePrefixListEntry]
@@ -5631,6 +6186,11 @@ public typealias RequestHostIdSet = [DedicatedHostId]
  Type definition for the RequestInstanceTypeList field.
  */
 public typealias RequestInstanceTypeList = [InstanceType]
+
+/**
+ Type definition for the RequestIpamResourceTagList field.
+ */
+public typealias RequestIpamResourceTagList = [RequestIpamResourceTag]
 
 /**
  Type definition for the RequestSpotLaunchSpecificationSecurityGroupIdList field.
@@ -5831,6 +6391,9 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case instance
     case instanceEventWindow = "instance-event-window"
     case internetGateway = "internet-gateway"
+    case ipam
+    case ipamPool = "ipam-pool"
+    case ipamScope = "ipam-scope"
     case ipv4poolEc2 = "ipv4pool-ec2"
     case ipv6poolEc2 = "ipv6pool-ec2"
     case keyPair = "key-pair"
@@ -5843,6 +6406,8 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case localGatewayVirtualInterfaceGroup = "local-gateway-virtual-interface-group"
     case natgateway
     case networkAcl = "network-acl"
+    case networkInsightsAccessScope = "network-insights-access-scope"
+    case networkInsightsAccessScopeAnalysis = "network-insights-access-scope-analysis"
     case networkInsightsAnalysis = "network-insights-analysis"
     case networkInsightsPath = "network-insights-path"
     case networkInterface = "network-interface"
@@ -5895,6 +6460,11 @@ public typealias ResponseHostIdSet = [String]
  Type definition for the RestorableByStringList field.
  */
 public typealias RestorableByStringList = [String]
+
+/**
+ Type definition for the RestoreSnapshotTierRequestTemporaryRestoreDays field.
+ */
+public typealias RestoreSnapshotTierRequestTemporaryRestoreDays = Int
 
 /**
  Type definition for the ResultRange field.
@@ -6230,6 +6800,11 @@ public typealias SnapshotIdStringList = [SnapshotId]
 public typealias SnapshotList = [Snapshot]
 
 /**
+ Type definition for the SnapshotRecycleBinInfoList field.
+ */
+public typealias SnapshotRecycleBinInfoList = [SnapshotRecycleBinInfo]
+
+/**
  Type definition for the SnapshotSet field.
  */
 public typealias SnapshotSet = [SnapshotInfo]
@@ -6241,6 +6816,8 @@ public enum SnapshotState: String, Codable, CustomStringConvertible {
     case completed
     case error
     case pending
+    case recoverable
+    case recovering
 
     public var description: String {
         return rawValue
@@ -6455,6 +7032,20 @@ public enum StatusType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the StorageTier field.
+ */
+public enum StorageTier: String, Codable, CustomStringConvertible {
+    case archive
+    case standard
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StorageTier = .archive
+}
+
+/**
  Type definition for the StoreImageTaskResultSet field.
  */
 public typealias StoreImageTaskResultSet = [StoreImageTaskResult]
@@ -6633,6 +7224,19 @@ public typealias TargetNetworkSet = [TargetNetwork]
 public typealias TargetReservationValueSet = [TargetReservationValue]
 
 /**
+ Enumeration restricting the values of the TargetStorageTier field.
+ */
+public enum TargetStorageTier: String, Codable, CustomStringConvertible {
+    case archive
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TargetStorageTier = .archive
+}
+
+/**
  Enumeration restricting the values of the TelemetryStatus field.
  */
 public enum TelemetryStatus: String, Codable, CustomStringConvertible {
@@ -6675,6 +7279,37 @@ public typealias ThreadsPerCore = Int
  Type definition for the ThreadsPerCoreList field.
  */
 public typealias ThreadsPerCoreList = [ThreadsPerCore]
+
+/**
+ Type definition for the ThroughResourcesStatementList field.
+ */
+public typealias ThroughResourcesStatementList = [ThroughResourcesStatement]
+
+/**
+ Type definition for the ThroughResourcesStatementRequestList field.
+ */
+public typealias ThroughResourcesStatementRequestList = [ThroughResourcesStatementRequest]
+
+/**
+ Enumeration restricting the values of the TieringOperationStatus field.
+ */
+public enum TieringOperationStatus: String, Codable, CustomStringConvertible {
+    case archivalCompleted = "archival-completed"
+    case archivalFailed = "archival-failed"
+    case archivalInProgress = "archival-in-progress"
+    case permanentRestoreCompleted = "permanent-restore-completed"
+    case permanentRestoreFailed = "permanent-restore-failed"
+    case permanentRestoreInProgress = "permanent-restore-in-progress"
+    case temporaryRestoreCompleted = "temporary-restore-completed"
+    case temporaryRestoreFailed = "temporary-restore-failed"
+    case temporaryRestoreInProgress = "temporary-restore-in-progress"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TieringOperationStatus = .archivalCompleted
+}
 
 /**
  Enumeration restricting the values of the TrafficDirection field.
@@ -7924,6 +8559,11 @@ public enum Scope: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the SnapshotTierStatusSet field.
+ */
+public typealias SnapshotTierStatusSet = [SnapshotTierStatus]
+
+/**
  Type definition for the TotalFpgaMemory field.
  */
 public typealias TotalFpgaMemory = Int
@@ -7932,6 +8572,21 @@ public typealias TotalFpgaMemory = Int
  Type definition for the TotalGpuMemory field.
  */
 public typealias TotalGpuMemory = Int
+
+/**
+ Validation for the AddIpamOperatingRegionSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.AddIpamOperatingRegion {
+    public func validateAsAddIpamOperatingRegionSet() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AddIpamOperatingRegionSet violated the minimum length constraint.")
+        }
+
+        if self.count > 50 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AddIpamOperatingRegionSet violated the maximum length constraint.")
+        }
+    }
+}
 
 /**
  Validation for the AddPrefixListEntries field.
@@ -8274,6 +8929,21 @@ extension ElasticComputeCloudModel.DescribeExportImageTasksMaxResults {
 
         if self > 500 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeExportImageTasksMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeFastLaunchImagesRequestMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeFastLaunchImagesRequestMaxResults {
+    public func validateAsDescribeFastLaunchImagesRequestMaxResults() throws {
+        if self < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeFastLaunchImagesRequestMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 200 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeFastLaunchImagesRequestMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -8837,6 +9507,21 @@ extension ElasticComputeCloudModel.GetGroupsForCapacityReservationRequestMaxResu
 }
 
 /**
+ Validation for the GetIpamPoolAllocationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.GetIpamPoolAllocationsMaxResults {
+    public func validateAsGetIpamPoolAllocationsMaxResults() throws {
+        if self < 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GetIpamPoolAllocationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 100000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GetIpamPoolAllocationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the GetManagedPrefixListAssociationsMaxResults field.
 */
 extension ElasticComputeCloudModel.GetManagedPrefixListAssociationsMaxResults {
@@ -8930,6 +9615,51 @@ extension ElasticComputeCloudModel.IpAddress {
 }
 
 /**
+ Validation for the IpamAddressHistoryMaxResults field.
+*/
+extension ElasticComputeCloudModel.IpamAddressHistoryMaxResults {
+    public func validateAsIpamAddressHistoryMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpamAddressHistoryMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpamAddressHistoryMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the IpamMaxResults field.
+*/
+extension ElasticComputeCloudModel.IpamMaxResults {
+    public func validateAsIpamMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpamMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpamMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the IpamNetmaskLength field.
+*/
+extension ElasticComputeCloudModel.IpamNetmaskLength {
+    public func validateAsIpamNetmaskLength() throws {
+        if self < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpamNetmaskLength violated the minimum range constraint.")
+        }
+
+        if self > 128 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to IpamNetmaskLength violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the Ipv6PoolMaxResults field.
 */
 extension ElasticComputeCloudModel.Ipv6PoolMaxResults {
@@ -8978,6 +9708,21 @@ extension ElasticComputeCloudModel.LaunchTemplateName {
 }
 
 /**
+ Validation for the ListSnapshotsInRecycleBinMaxResults field.
+*/
+extension ElasticComputeCloudModel.ListSnapshotsInRecycleBinMaxResults {
+    public func validateAsListSnapshotsInRecycleBinMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ListSnapshotsInRecycleBinMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to ListSnapshotsInRecycleBinMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the LocalGatewayMaxResults field.
 */
 extension ElasticComputeCloudModel.LocalGatewayMaxResults {
@@ -9016,6 +9761,19 @@ extension ElasticComputeCloudModel.OutpostArn {
             matchingRange == startIndex..<endIndex else {
                 throw ElasticComputeCloudError.validationError(
                     reason: "The provided value to OutpostArn violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PlacementGroupArn field.
+*/
+extension ElasticComputeCloudModel.PlacementGroupArn {
+    public func validateAsPlacementGroupArn() throws {
+        guard let matchingRange = self.range(of: "^arn:aws([a-z-]+)?:ec2:[a-z\\d-]+:\\d{12}:placement-group/([^\\s].+[^\\s]){1,255}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticComputeCloudError.validationError(
+                    reason: "The provided value to PlacementGroupArn violated the regular expression constraint.")
         }
     }
 }
@@ -9088,6 +9846,21 @@ extension Array where Element == String {
 
         if self.count > 10 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to RegionNames violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the RemoveIpamOperatingRegionSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.RemoveIpamOperatingRegion {
+    public func validateAsRemoveIpamOperatingRegionSet() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to RemoveIpamOperatingRegionSet violated the minimum length constraint.")
+        }
+
+        if self.count > 50 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to RemoveIpamOperatingRegionSet violated the maximum length constraint.")
         }
     }
 }

@@ -49,6 +49,25 @@ public extension AuthorizationData {
     }()
 }
 
+public extension AwsEcrContainerImageDetails {
+    /**
+     Default instance of the AwsEcrContainerImageDetails structure.
+     */
+    static let __default: ECRModel.AwsEcrContainerImageDetails = {
+        let defaultInstance = ECRModel.AwsEcrContainerImageDetails(
+            architecture: nil,
+            author: nil,
+            imageHash: nil,
+            imageTags: nil,
+            platform: nil,
+            pushedAt: nil,
+            registry: nil,
+            repositoryName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension BatchCheckLayerAvailabilityRequest {
     /**
      Default instance of the BatchCheckLayerAvailabilityRequest structure.
@@ -131,6 +150,31 @@ public extension BatchGetImageResponse {
     }()
 }
 
+public extension BatchGetRepositoryScanningConfigurationRequest {
+    /**
+     Default instance of the BatchGetRepositoryScanningConfigurationRequest structure.
+     */
+    static let __default: ECRModel.BatchGetRepositoryScanningConfigurationRequest = {
+        let defaultInstance = ECRModel.BatchGetRepositoryScanningConfigurationRequest(
+            repositoryNames: ["01"])
+
+        return defaultInstance
+    }()
+}
+
+public extension BatchGetRepositoryScanningConfigurationResponse {
+    /**
+     Default instance of the BatchGetRepositoryScanningConfigurationResponse structure.
+     */
+    static let __default: ECRModel.BatchGetRepositoryScanningConfigurationResponse = {
+        let defaultInstance = ECRModel.BatchGetRepositoryScanningConfigurationResponse(
+            failures: nil,
+            scanningConfigurations: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CompleteLayerUploadRequest {
     /**
      Default instance of the CompleteLayerUploadRequest structure.
@@ -156,6 +200,35 @@ public extension CompleteLayerUploadResponse {
             registryId: nil,
             repositoryName: nil,
             uploadId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreatePullThroughCacheRuleRequest {
+    /**
+     Default instance of the CreatePullThroughCacheRuleRequest structure.
+     */
+    static let __default: ECRModel.CreatePullThroughCacheRuleRequest = {
+        let defaultInstance = ECRModel.CreatePullThroughCacheRuleRequest(
+            ecrRepositoryPrefix: "01",
+            registryId: nil,
+            upstreamRegistryUrl: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension CreatePullThroughCacheRuleResponse {
+    /**
+     Default instance of the CreatePullThroughCacheRuleResponse structure.
+     */
+    static let __default: ECRModel.CreatePullThroughCacheRuleResponse = {
+        let defaultInstance = ECRModel.CreatePullThroughCacheRuleResponse(
+            createdAt: nil,
+            ecrRepositoryPrefix: nil,
+            registryId: nil,
+            upstreamRegistryUrl: nil)
 
         return defaultInstance
     }()
@@ -190,6 +263,50 @@ public extension CreateRepositoryResponse {
     }()
 }
 
+public extension CvssScore {
+    /**
+     Default instance of the CvssScore structure.
+     */
+    static let __default: ECRModel.CvssScore = {
+        let defaultInstance = ECRModel.CvssScore(
+            baseScore: nil,
+            scoringVector: nil,
+            source: nil,
+            version: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CvssScoreAdjustment {
+    /**
+     Default instance of the CvssScoreAdjustment structure.
+     */
+    static let __default: ECRModel.CvssScoreAdjustment = {
+        let defaultInstance = ECRModel.CvssScoreAdjustment(
+            metric: nil,
+            reason: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CvssScoreDetails {
+    /**
+     Default instance of the CvssScoreDetails structure.
+     */
+    static let __default: ECRModel.CvssScoreDetails = {
+        let defaultInstance = ECRModel.CvssScoreDetails(
+            adjustments: nil,
+            score: nil,
+            scoreSource: nil,
+            scoringVector: nil,
+            version: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteLifecyclePolicyRequest {
     /**
      Default instance of the DeleteLifecyclePolicyRequest structure.
@@ -213,6 +330,34 @@ public extension DeleteLifecyclePolicyResponse {
             lifecyclePolicyText: nil,
             registryId: nil,
             repositoryName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeletePullThroughCacheRuleRequest {
+    /**
+     Default instance of the DeletePullThroughCacheRuleRequest structure.
+     */
+    static let __default: ECRModel.DeletePullThroughCacheRuleRequest = {
+        let defaultInstance = ECRModel.DeletePullThroughCacheRuleRequest(
+            ecrRepositoryPrefix: "01",
+            registryId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeletePullThroughCacheRuleResponse {
+    /**
+     Default instance of the DeletePullThroughCacheRuleResponse structure.
+     */
+    static let __default: ECRModel.DeletePullThroughCacheRuleResponse = {
+        let defaultInstance = ECRModel.DeletePullThroughCacheRuleResponse(
+            createdAt: nil,
+            ecrRepositoryPrefix: nil,
+            registryId: nil,
+            upstreamRegistryUrl: nil)
 
         return defaultInstance
     }()
@@ -398,6 +543,34 @@ public extension DescribeImagesResponse {
     }()
 }
 
+public extension DescribePullThroughCacheRulesRequest {
+    /**
+     Default instance of the DescribePullThroughCacheRulesRequest structure.
+     */
+    static let __default: ECRModel.DescribePullThroughCacheRulesRequest = {
+        let defaultInstance = ECRModel.DescribePullThroughCacheRulesRequest(
+            ecrRepositoryPrefixes: nil,
+            maxResults: nil,
+            nextToken: nil,
+            registryId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribePullThroughCacheRulesResponse {
+    /**
+     Default instance of the DescribePullThroughCacheRulesResponse structure.
+     */
+    static let __default: ECRModel.DescribePullThroughCacheRulesResponse = {
+        let defaultInstance = ECRModel.DescribePullThroughCacheRulesResponse(
+            nextToken: nil,
+            pullThroughCacheRules: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeRegistryRequest {
     /**
      Default instance of the DescribeRegistryRequest structure.
@@ -470,6 +643,32 @@ public extension EncryptionConfiguration {
         let defaultInstance = ECRModel.EncryptionConfiguration(
             encryptionType: .__default,
             kmsKey: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnhancedImageScanFinding {
+    /**
+     Default instance of the EnhancedImageScanFinding structure.
+     */
+    static let __default: ECRModel.EnhancedImageScanFinding = {
+        let defaultInstance = ECRModel.EnhancedImageScanFinding(
+            awsAccountId: nil,
+            description: nil,
+            findingArn: nil,
+            firstObservedAt: nil,
+            lastObservedAt: nil,
+            packageVulnerabilityDetails: nil,
+            remediation: nil,
+            resources: nil,
+            score: nil,
+            scoreDetails: nil,
+            severity: nil,
+            status: nil,
+            title: nil,
+            type: nil,
+            updatedAt: nil)
 
         return defaultInstance
     }()
@@ -607,6 +806,30 @@ public extension GetRegistryPolicyResponse {
         let defaultInstance = ECRModel.GetRegistryPolicyResponse(
             policyText: nil,
             registryId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetRegistryScanningConfigurationRequest {
+    /**
+     Default instance of the GetRegistryScanningConfigurationRequest structure.
+     */
+    static let __default: ECRModel.GetRegistryScanningConfigurationRequest = {
+        let defaultInstance = ECRModel.GetRegistryScanningConfigurationRequest()
+
+        return defaultInstance
+    }()
+}
+
+public extension GetRegistryScanningConfigurationResponse {
+    /**
+     Default instance of the GetRegistryScanningConfigurationResponse structure.
+     */
+    static let __default: ECRModel.GetRegistryScanningConfigurationResponse = {
+        let defaultInstance = ECRModel.GetRegistryScanningConfigurationResponse(
+            registryId: nil,
+            scanningConfiguration: nil)
 
         return defaultInstance
     }()
@@ -776,6 +999,7 @@ public extension ImageScanFindings {
      */
     static let __default: ECRModel.ImageScanFindings = {
         let defaultInstance = ECRModel.ImageScanFindings(
+            enhancedFindings: nil,
             findingSeverityCounts: nil,
             findings: nil,
             imageScanCompletedAt: nil,
@@ -1169,6 +1393,66 @@ public extension ListTagsForResourceResponse {
     }()
 }
 
+public extension PackageVulnerabilityDetails {
+    /**
+     Default instance of the PackageVulnerabilityDetails structure.
+     */
+    static let __default: ECRModel.PackageVulnerabilityDetails = {
+        let defaultInstance = ECRModel.PackageVulnerabilityDetails(
+            cvss: nil,
+            referenceUrls: nil,
+            relatedVulnerabilities: nil,
+            source: nil,
+            sourceUrl: nil,
+            vendorCreatedAt: nil,
+            vendorSeverity: nil,
+            vendorUpdatedAt: nil,
+            vulnerabilityId: nil,
+            vulnerablePackages: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PullThroughCacheRule {
+    /**
+     Default instance of the PullThroughCacheRule structure.
+     */
+    static let __default: ECRModel.PullThroughCacheRule = {
+        let defaultInstance = ECRModel.PullThroughCacheRule(
+            createdAt: nil,
+            ecrRepositoryPrefix: nil,
+            registryId: nil,
+            upstreamRegistryUrl: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PullThroughCacheRuleAlreadyExistsException {
+    /**
+     Default instance of the PullThroughCacheRuleAlreadyExistsException structure.
+     */
+    static let __default: ECRModel.PullThroughCacheRuleAlreadyExistsException = {
+        let defaultInstance = ECRModel.PullThroughCacheRuleAlreadyExistsException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PullThroughCacheRuleNotFoundException {
+    /**
+     Default instance of the PullThroughCacheRuleNotFoundException structure.
+     */
+    static let __default: ECRModel.PullThroughCacheRuleNotFoundException = {
+        let defaultInstance = ECRModel.PullThroughCacheRuleNotFoundException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PutImageRequest {
     /**
      Default instance of the PutImageRequest structure.
@@ -1307,6 +1591,31 @@ public extension PutRegistryPolicyResponse {
     }()
 }
 
+public extension PutRegistryScanningConfigurationRequest {
+    /**
+     Default instance of the PutRegistryScanningConfigurationRequest structure.
+     */
+    static let __default: ECRModel.PutRegistryScanningConfigurationRequest = {
+        let defaultInstance = ECRModel.PutRegistryScanningConfigurationRequest(
+            rules: nil,
+            scanType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutRegistryScanningConfigurationResponse {
+    /**
+     Default instance of the PutRegistryScanningConfigurationResponse structure.
+     */
+    static let __default: ECRModel.PutRegistryScanningConfigurationResponse = {
+        let defaultInstance = ECRModel.PutRegistryScanningConfigurationResponse(
+            registryScanningConfiguration: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PutReplicationConfigurationRequest {
     /**
      Default instance of the PutReplicationConfigurationRequest structure.
@@ -1331,6 +1640,19 @@ public extension PutReplicationConfigurationResponse {
     }()
 }
 
+public extension Recommendation {
+    /**
+     Default instance of the Recommendation structure.
+     */
+    static let __default: ECRModel.Recommendation = {
+        let defaultInstance = ECRModel.Recommendation(
+            text: nil,
+            url: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ReferencedImagesNotFoundException {
     /**
      Default instance of the ReferencedImagesNotFoundException structure.
@@ -1350,6 +1672,44 @@ public extension RegistryPolicyNotFoundException {
     static let __default: ECRModel.RegistryPolicyNotFoundException = {
         let defaultInstance = ECRModel.RegistryPolicyNotFoundException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegistryScanningConfiguration {
+    /**
+     Default instance of the RegistryScanningConfiguration structure.
+     */
+    static let __default: ECRModel.RegistryScanningConfiguration = {
+        let defaultInstance = ECRModel.RegistryScanningConfiguration(
+            rules: nil,
+            scanType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RegistryScanningRule {
+    /**
+     Default instance of the RegistryScanningRule structure.
+     */
+    static let __default: ECRModel.RegistryScanningRule = {
+        let defaultInstance = ECRModel.RegistryScanningRule(
+            repositoryFilters: [],
+            scanFrequency: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension Remediation {
+    /**
+     Default instance of the Remediation structure.
+     */
+    static let __default: ECRModel.Remediation = {
+        let defaultInstance = ECRModel.Remediation(
+            recommendation: nil)
 
         return defaultInstance
     }()
@@ -1473,6 +1833,63 @@ public extension RepositoryPolicyNotFoundException {
     }()
 }
 
+public extension RepositoryScanningConfiguration {
+    /**
+     Default instance of the RepositoryScanningConfiguration structure.
+     */
+    static let __default: ECRModel.RepositoryScanningConfiguration = {
+        let defaultInstance = ECRModel.RepositoryScanningConfiguration(
+            appliedScanFilters: nil,
+            repositoryArn: nil,
+            repositoryName: nil,
+            scanFrequency: nil,
+            scanOnPush: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RepositoryScanningConfigurationFailure {
+    /**
+     Default instance of the RepositoryScanningConfigurationFailure structure.
+     */
+    static let __default: ECRModel.RepositoryScanningConfigurationFailure = {
+        let defaultInstance = ECRModel.RepositoryScanningConfigurationFailure(
+            failureCode: nil,
+            failureReason: nil,
+            repositoryName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Resource {
+    /**
+     Default instance of the Resource structure.
+     */
+    static let __default: ECRModel.Resource = {
+        let defaultInstance = ECRModel.Resource(
+            details: nil,
+            id: nil,
+            tags: nil,
+            type: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ResourceDetails {
+    /**
+     Default instance of the ResourceDetails structure.
+     */
+    static let __default: ECRModel.ResourceDetails = {
+        let defaultInstance = ECRModel.ResourceDetails(
+            awsEcrContainerImage: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ScanNotFoundException {
     /**
      Default instance of the ScanNotFoundException structure.
@@ -1480,6 +1897,31 @@ public extension ScanNotFoundException {
     static let __default: ECRModel.ScanNotFoundException = {
         let defaultInstance = ECRModel.ScanNotFoundException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ScanningRepositoryFilter {
+    /**
+     Default instance of the ScanningRepositoryFilter structure.
+     */
+    static let __default: ECRModel.ScanningRepositoryFilter = {
+        let defaultInstance = ECRModel.ScanningRepositoryFilter(
+            filter: "0",
+            filterType: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ScoreDetails {
+    /**
+     Default instance of the ScoreDetails structure.
+     */
+    static let __default: ECRModel.ScoreDetails = {
+        let defaultInstance = ECRModel.ScoreDetails(
+            cvss: nil)
 
         return defaultInstance
     }()
@@ -1645,6 +2087,18 @@ public extension UnsupportedImageTypeException {
     }()
 }
 
+public extension UnsupportedUpstreamRegistryException {
+    /**
+     Default instance of the UnsupportedUpstreamRegistryException structure.
+     */
+    static let __default: ECRModel.UnsupportedUpstreamRegistryException = {
+        let defaultInstance = ECRModel.UnsupportedUpstreamRegistryException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension UntagResourceRequest {
     /**
      Default instance of the UntagResourceRequest structure.
@@ -1720,6 +2174,25 @@ public extension ValidationException {
     static let __default: ECRModel.ValidationException = {
         let defaultInstance = ECRModel.ValidationException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension VulnerablePackage {
+    /**
+     Default instance of the VulnerablePackage structure.
+     */
+    static let __default: ECRModel.VulnerablePackage = {
+        let defaultInstance = ECRModel.VulnerablePackage(
+            arch: nil,
+            epoch: nil,
+            filePath: nil,
+            name: nil,
+            packageManager: nil,
+            release: nil,
+            sourceLayerHash: nil,
+            version: nil)
 
         return defaultInstance
     }()

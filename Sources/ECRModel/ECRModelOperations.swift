@@ -29,15 +29,19 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
     case batchCheckLayerAvailability = "BatchCheckLayerAvailability"
     case batchDeleteImage = "BatchDeleteImage"
     case batchGetImage = "BatchGetImage"
+    case batchGetRepositoryScanningConfiguration = "BatchGetRepositoryScanningConfiguration"
     case completeLayerUpload = "CompleteLayerUpload"
+    case createPullThroughCacheRule = "CreatePullThroughCacheRule"
     case createRepository = "CreateRepository"
     case deleteLifecyclePolicy = "DeleteLifecyclePolicy"
+    case deletePullThroughCacheRule = "DeletePullThroughCacheRule"
     case deleteRegistryPolicy = "DeleteRegistryPolicy"
     case deleteRepository = "DeleteRepository"
     case deleteRepositoryPolicy = "DeleteRepositoryPolicy"
     case describeImageReplicationStatus = "DescribeImageReplicationStatus"
     case describeImageScanFindings = "DescribeImageScanFindings"
     case describeImages = "DescribeImages"
+    case describePullThroughCacheRules = "DescribePullThroughCacheRules"
     case describeRegistry = "DescribeRegistry"
     case describeRepositories = "DescribeRepositories"
     case getAuthorizationToken = "GetAuthorizationToken"
@@ -45,6 +49,7 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
     case getLifecyclePolicy = "GetLifecyclePolicy"
     case getLifecyclePolicyPreview = "GetLifecyclePolicyPreview"
     case getRegistryPolicy = "GetRegistryPolicy"
+    case getRegistryScanningConfiguration = "GetRegistryScanningConfiguration"
     case getRepositoryPolicy = "GetRepositoryPolicy"
     case initiateLayerUpload = "InitiateLayerUpload"
     case listImages = "ListImages"
@@ -54,6 +59,7 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
     case putImageTagMutability = "PutImageTagMutability"
     case putLifecyclePolicy = "PutLifecyclePolicy"
     case putRegistryPolicy = "PutRegistryPolicy"
+    case putRegistryScanningConfiguration = "PutRegistryScanningConfiguration"
     case putReplicationConfiguration = "PutReplicationConfiguration"
     case setRepositoryPolicy = "SetRepositoryPolicy"
     case startImageScan = "StartImageScan"
@@ -74,11 +80,17 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .batchGetImage:
             return "/"
+        case .batchGetRepositoryScanningConfiguration:
+            return "/"
         case .completeLayerUpload:
+            return "/"
+        case .createPullThroughCacheRule:
             return "/"
         case .createRepository:
             return "/"
         case .deleteLifecyclePolicy:
+            return "/"
+        case .deletePullThroughCacheRule:
             return "/"
         case .deleteRegistryPolicy:
             return "/"
@@ -91,6 +103,8 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
         case .describeImageScanFindings:
             return "/"
         case .describeImages:
+            return "/"
+        case .describePullThroughCacheRules:
             return "/"
         case .describeRegistry:
             return "/"
@@ -105,6 +119,8 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
         case .getLifecyclePolicyPreview:
             return "/"
         case .getRegistryPolicy:
+            return "/"
+        case .getRegistryScanningConfiguration:
             return "/"
         case .getRepositoryPolicy:
             return "/"
@@ -123,6 +139,8 @@ public enum ECRModelOperations: String, Hashable, CustomStringConvertible {
         case .putLifecyclePolicy:
             return "/"
         case .putRegistryPolicy:
+            return "/"
+        case .putRegistryScanningConfiguration:
             return "/"
         case .putReplicationConfiguration:
             return "/"

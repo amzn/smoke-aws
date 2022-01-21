@@ -120,13 +120,33 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
 
     /**
      Gracefully shuts down this client. This function is idempotent and
-     will handle being called multiple times.
+     will handle being called multiple times. Will block until shutdown is complete.
      */
-    public func close() throws {
+    public func syncShutdown() throws {
         if self.ownsHttpClients {
-            try httpClient.close()
+            try self.httpClient.syncShutdown()
         }
     }
+
+    // renamed `syncShutdown` to make it clearer this version of shutdown will block.
+    @available(*, deprecated, renamed: "syncShutdown")
+    public func close() throws {
+        if self.ownsHttpClients {
+            try self.httpClient.close()
+        }
+    }
+
+    /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times. Will return when shutdown is complete.
+     */
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    public func shutdown() async throws {
+        if self.ownsHttpClients {
+            try await self.httpClient.shutdown()
+        }
+    }
+    #endif
 
     /**
      Invokes the BatchCheckLayerAvailability operation returning immediately and passing the response to a callback.
@@ -339,6 +359,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the BatchGetRepositoryScanningConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated BatchGetRepositoryScanningConfigurationRequest object being passed to this operation.
+         - completion: The BatchGetRepositoryScanningConfigurationResponse object or an error will be passed to this 
+           callback when the operation is complete. The BatchGetRepositoryScanningConfigurationResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, repositoryNotFound, server, validation.
+     */
+    public func batchGetRepositoryScanningConfigurationAsync(
+            input: ECRModel.BatchGetRepositoryScanningConfigurationRequest, 
+            completion: @escaping (Result<ECRModel.BatchGetRepositoryScanningConfigurationResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.batchGetRepositoryScanningConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchGetRepositoryScanningConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BatchGetRepositoryScanningConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the BatchGetRepositoryScanningConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated BatchGetRepositoryScanningConfigurationRequest object being passed to this operation.
+     - Returns: The BatchGetRepositoryScanningConfigurationResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, repositoryNotFound, server, validation.
+     */
+    public func batchGetRepositoryScanningConfigurationSync(
+            input: ECRModel.BatchGetRepositoryScanningConfigurationRequest) throws -> ECRModel.BatchGetRepositoryScanningConfigurationResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.batchGetRepositoryScanningConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchGetRepositoryScanningConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BatchGetRepositoryScanningConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CompleteLayerUpload operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -393,6 +483,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.completeLayerUpload,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CompleteLayerUploadOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreatePullThroughCacheRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreatePullThroughCacheRuleRequest object being passed to this operation.
+         - completion: The CreatePullThroughCacheRuleResponse object or an error will be passed to this 
+           callback when the operation is complete. The CreatePullThroughCacheRuleResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, limitExceeded, pullThroughCacheRuleAlreadyExists, server, unsupportedUpstreamRegistry, validation.
+     */
+    public func createPullThroughCacheRuleAsync(
+            input: ECRModel.CreatePullThroughCacheRuleRequest, 
+            completion: @escaping (Result<ECRModel.CreatePullThroughCacheRuleResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.createPullThroughCacheRule.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPullThroughCacheRule,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreatePullThroughCacheRuleOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreatePullThroughCacheRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreatePullThroughCacheRuleRequest object being passed to this operation.
+     - Returns: The CreatePullThroughCacheRuleResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, limitExceeded, pullThroughCacheRuleAlreadyExists, server, unsupportedUpstreamRegistry, validation.
+     */
+    public func createPullThroughCacheRuleSync(
+            input: ECRModel.CreatePullThroughCacheRuleRequest) throws -> ECRModel.CreatePullThroughCacheRuleResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.createPullThroughCacheRule.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPullThroughCacheRule,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreatePullThroughCacheRuleOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -533,6 +693,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteLifecyclePolicy,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteLifecyclePolicyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeletePullThroughCacheRule operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeletePullThroughCacheRuleRequest object being passed to this operation.
+         - completion: The DeletePullThroughCacheRuleResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeletePullThroughCacheRuleResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    public func deletePullThroughCacheRuleAsync(
+            input: ECRModel.DeletePullThroughCacheRuleRequest, 
+            completion: @escaping (Result<ECRModel.DeletePullThroughCacheRuleResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.deletePullThroughCacheRule.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePullThroughCacheRule,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeletePullThroughCacheRuleOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeletePullThroughCacheRule operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeletePullThroughCacheRuleRequest object being passed to this operation.
+     - Returns: The DeletePullThroughCacheRuleResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    public func deletePullThroughCacheRuleSync(
+            input: ECRModel.DeletePullThroughCacheRuleRequest) throws -> ECRModel.DeletePullThroughCacheRuleResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.deletePullThroughCacheRule.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePullThroughCacheRule,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeletePullThroughCacheRuleOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -836,7 +1066,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The DescribeImageScanFindingsResponse object or an error will be passed to this 
            callback when the operation is complete. The DescribeImageScanFindingsResponse
            object will be validated before being returned to caller.
-           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server.
+           The possible errors are: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server, validation.
      */
     public func describeImageScanFindingsAsync(
             input: ECRModel.DescribeImageScanFindingsRequest, 
@@ -869,7 +1099,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated DescribeImageScanFindingsRequest object being passed to this operation.
      - Returns: The DescribeImageScanFindingsResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server.
+     - Throws: imageNotFound, invalidParameter, repositoryNotFound, scanNotFound, server, validation.
      */
     public func describeImageScanFindingsSync(
             input: ECRModel.DescribeImageScanFindingsRequest) throws -> ECRModel.DescribeImageScanFindingsResponse {
@@ -953,6 +1183,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeImages,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeImagesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribePullThroughCacheRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribePullThroughCacheRulesRequest object being passed to this operation.
+         - completion: The DescribePullThroughCacheRulesResponse object or an error will be passed to this 
+           callback when the operation is complete. The DescribePullThroughCacheRulesResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    public func describePullThroughCacheRulesAsync(
+            input: ECRModel.DescribePullThroughCacheRulesRequest, 
+            completion: @escaping (Result<ECRModel.DescribePullThroughCacheRulesResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.describePullThroughCacheRules.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePullThroughCacheRules,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribePullThroughCacheRulesOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribePullThroughCacheRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribePullThroughCacheRulesRequest object being passed to this operation.
+     - Returns: The DescribePullThroughCacheRulesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, pullThroughCacheRuleNotFound, server, validation.
+     */
+    public func describePullThroughCacheRulesSync(
+            input: ECRModel.DescribePullThroughCacheRulesRequest) throws -> ECRModel.DescribePullThroughCacheRulesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.describePullThroughCacheRules.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePullThroughCacheRules,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribePullThroughCacheRulesOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -1459,6 +1759,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the GetRegistryScanningConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetRegistryScanningConfigurationRequest object being passed to this operation.
+         - completion: The GetRegistryScanningConfigurationResponse object or an error will be passed to this 
+           callback when the operation is complete. The GetRegistryScanningConfigurationResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, server, validation.
+     */
+    public func getRegistryScanningConfigurationAsync(
+            input: ECRModel.GetRegistryScanningConfigurationRequest, 
+            completion: @escaping (Result<ECRModel.GetRegistryScanningConfigurationResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.getRegistryScanningConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getRegistryScanningConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetRegistryScanningConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetRegistryScanningConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetRegistryScanningConfigurationRequest object being passed to this operation.
+     - Returns: The GetRegistryScanningConfigurationResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, server, validation.
+     */
+    public func getRegistryScanningConfigurationSync(
+            input: ECRModel.GetRegistryScanningConfigurationRequest) throws -> ECRModel.GetRegistryScanningConfigurationResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.getRegistryScanningConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getRegistryScanningConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetRegistryScanningConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetRepositoryPolicy operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1816,7 +2186,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The PutImageScanningConfigurationResponse object or an error will be passed to this 
            callback when the operation is complete. The PutImageScanningConfigurationResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, repositoryNotFound, server.
+           The possible errors are: invalidParameter, repositoryNotFound, server, validation.
      */
     public func putImageScanningConfigurationAsync(
             input: ECRModel.PutImageScanningConfigurationRequest, 
@@ -1849,7 +2219,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated PutImageScanningConfigurationRequest object being passed to this operation.
      - Returns: The PutImageScanningConfigurationResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, repositoryNotFound, server.
+     - Throws: invalidParameter, repositoryNotFound, server, validation.
      */
     public func putImageScanningConfigurationSync(
             input: ECRModel.PutImageScanningConfigurationRequest) throws -> ECRModel.PutImageScanningConfigurationResponse {
@@ -2089,6 +2459,76 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the PutRegistryScanningConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutRegistryScanningConfigurationRequest object being passed to this operation.
+         - completion: The PutRegistryScanningConfigurationResponse object or an error will be passed to this 
+           callback when the operation is complete. The PutRegistryScanningConfigurationResponse
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameter, server, validation.
+     */
+    public func putRegistryScanningConfigurationAsync(
+            input: ECRModel.PutRegistryScanningConfigurationRequest, 
+            completion: @escaping (Result<ECRModel.PutRegistryScanningConfigurationResponse, ECRError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.putRegistryScanningConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putRegistryScanningConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutRegistryScanningConfigurationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutRegistryScanningConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutRegistryScanningConfigurationRequest object being passed to this operation.
+     - Returns: The PutRegistryScanningConfigurationResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameter, server, validation.
+     */
+    public func putRegistryScanningConfigurationSync(
+            input: ECRModel.PutRegistryScanningConfigurationRequest) throws -> ECRModel.PutRegistryScanningConfigurationResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ECRModelOperations.putRegistryScanningConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putRegistryScanningConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutRegistryScanningConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ECRError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the PutReplicationConfiguration operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2236,7 +2676,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The StartImageScanResponse object or an error will be passed to this 
            callback when the operation is complete. The StartImageScanResponse
            object will be validated before being returned to caller.
-           The possible errors are: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType.
+           The possible errors are: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType, validation.
      */
     public func startImageScanAsync(
             input: ECRModel.StartImageScanRequest, 
@@ -2269,7 +2709,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated StartImageScanRequest object being passed to this operation.
      - Returns: The StartImageScanResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType.
+     - Throws: imageNotFound, invalidParameter, limitExceeded, repositoryNotFound, server, unsupportedImageType, validation.
      */
     public func startImageScanSync(
             input: ECRModel.StartImageScanRequest) throws -> ECRModel.StartImageScanResponse {
