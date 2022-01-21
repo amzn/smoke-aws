@@ -156,7 +156,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
 
     /**
      Gracefully shuts down this client. This function is idempotent and
-     will handle being called multiple times. Will block until shutdown is complete.
+     will handle being called multiple times.
      */
     public func close() throws {
         if self.ownsHttpClients {
