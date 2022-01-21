@@ -44,11 +44,20 @@ private struct Entry {
     let data: MetricDatum
 }
 
+private struct QueueShutdownDetails {
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    let awaitingContinuations: [UnsafeContinuation<Void, Error>]
+#endif
+}
+
 internal class CloudWatchPendingMetricsQueue {
     private var pendingEntries: [Entry]
     private let logger: Logger
     private let cloudWatchClient: CloudWatchClientProtocol
     private let shutdownDispatchGroup: DispatchGroup
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    private var shutdownWaitingContinuations: [UnsafeContinuation<Void, Error>] = []
+#endif
     
     private let accessQueue = DispatchQueue(label: "com.amazon.SmokeAWSMetrics.CloudWatchPendingMetricsQueue.accessQueue")
     private let queueConsumingTaskIntervalInSeconds = 2
@@ -106,6 +115,19 @@ internal class CloudWatchPendingMetricsQueue {
         }
     }
     
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    public func untilShutdown() async throws {
+        return try await withUnsafeThrowingContinuation { cont in
+            if !isShutdownOtherwiseAddContinuation(newContinuation: cont) {
+                // continuation will be resumed when the server shuts down
+            } else {
+                // server is already shutdown
+                cont.resume(returning: ())
+            }
+        }
+    }
+#endif
+    
     func submit(namespace: String, data: MetricDatum) {
         let entry = Entry(namespace: namespace, data: data)
         
@@ -119,7 +141,8 @@ internal class CloudWatchPendingMetricsQueue {
         let deadline = DispatchTime.now() + .seconds(queueConsumingTaskIntervalInSeconds)
         
         let newWorker = { [unowned self] in
-            let isQueueShuttingDown = self.isShuttingDown()
+            let queueShutdownDetails = self.isShuttingDown()
+            let isQueueShuttingDown = (queueShutdownDetails != nil)
             
             // if another queue consuming task should be scheduled
             if !isQueueShuttingDown {
@@ -161,7 +184,12 @@ internal class CloudWatchPendingMetricsQueue {
             }
             
             // shutdown the queue if required
-            if isQueueShuttingDown {
+            if let queueShutdownDetails = queueShutdownDetails {
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+                // resume any continuations
+                queueShutdownDetails.awaitingContinuations.forEach { $0.resume(returning: ()) }
+#endif
+                
                 self.updateStateOnShutdownComplete()
                 
                 // release any waiters for shutdown
@@ -259,22 +287,46 @@ internal class CloudWatchPendingMetricsQueue {
         return false
     }
     
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    public func isShutdownOtherwiseAddContinuation(newContinuation: UnsafeContinuation<Void, Error>) -> Bool {
+        stateLock.lock()
+        defer {
+            stateLock.unlock()
+        }
+        
+        if case .shutDown = state {
+            return true
+        }
+        
+        self.shutdownWaitingContinuations.append(newContinuation)
+        
+        return false
+    }
+#endif
+    
     /**
      Indicates if the queue is currently shutting down.
 
      - Returns: if the queue is currently shutting down.
      */
-    private func isShuttingDown() -> Bool {
+    private func isShuttingDown() -> QueueShutdownDetails? {
         stateLock.lock()
         defer {
             stateLock.unlock()
         }
         
         if case .shuttingDown = state {
-            return true
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+            let waitingContinuations = self.shutdownWaitingContinuations
+            self.shutdownWaitingContinuations = []
+        
+            return QueueShutdownDetails(awaitingContinuations: waitingContinuations)
+#else
+            return QueueShutdownDetails()
+#endif
         }
         
-        return false
+        return nil
     }
 }
 

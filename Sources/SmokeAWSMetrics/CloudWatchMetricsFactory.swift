@@ -60,6 +60,12 @@ public class CloudWatchMetricsFactory: MetricsFactory {
         try self.cloudWatchPendingMetricsQueue.waitUntilShutdown()
     }
     
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    public func untilShutdown() async throws {
+        try await self.cloudWatchPendingMetricsQueue.untilShutdown()
+    }
+#endif
+    
     public static var logger: Logger {
         var newLogger = Logger(label: "com.amazon.SmokeAWS.SmokeAWSMetrics.CloudWatchMetricsFactory")
         newLogger[metadataKey: "lifecycle"] = "CloudWatchMetricsFactory"
