@@ -67,6 +67,51 @@ public struct AuthorizationData: Codable, Equatable {
     }
 }
 
+public struct AwsEcrContainerImageDetails: Codable, Equatable {
+    public var architecture: Arch?
+    public var author: Author?
+    public var imageHash: ImageDigest?
+    public var imageTags: ImageTagsList?
+    public var platform: Platform?
+    public var pushedAt: Date?
+    public var registry: RegistryId?
+    public var repositoryName: RepositoryName?
+
+    public init(architecture: Arch? = nil,
+                author: Author? = nil,
+                imageHash: ImageDigest? = nil,
+                imageTags: ImageTagsList? = nil,
+                platform: Platform? = nil,
+                pushedAt: Date? = nil,
+                registry: RegistryId? = nil,
+                repositoryName: RepositoryName? = nil) {
+        self.architecture = architecture
+        self.author = author
+        self.imageHash = imageHash
+        self.imageTags = imageTags
+        self.platform = platform
+        self.pushedAt = pushedAt
+        self.registry = registry
+        self.repositoryName = repositoryName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case architecture
+        case author
+        case imageHash
+        case imageTags
+        case platform
+        case pushedAt
+        case registry
+        case repositoryName
+    }
+
+    public func validate() throws {
+        try registry?.validateAsRegistryId()
+        try repositoryName?.validateAsRepositoryName()
+    }
+}
+
 public struct BatchCheckLayerAvailabilityRequest: Codable, Equatable {
     public var layerDigests: BatchedOperationLayerDigestList
     public var registryId: RegistryId?
@@ -208,6 +253,41 @@ public struct BatchGetImageResponse: Codable, Equatable {
     }
 }
 
+public struct BatchGetRepositoryScanningConfigurationRequest: Codable, Equatable {
+    public var repositoryNames: ScanningConfigurationRepositoryNameList
+
+    public init(repositoryNames: ScanningConfigurationRepositoryNameList) {
+        self.repositoryNames = repositoryNames
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case repositoryNames
+    }
+
+    public func validate() throws {
+        try repositoryNames.validateAsScanningConfigurationRepositoryNameList()
+    }
+}
+
+public struct BatchGetRepositoryScanningConfigurationResponse: Codable, Equatable {
+    public var failures: RepositoryScanningConfigurationFailureList?
+    public var scanningConfigurations: RepositoryScanningConfigurationList?
+
+    public init(failures: RepositoryScanningConfigurationFailureList? = nil,
+                scanningConfigurations: RepositoryScanningConfigurationList? = nil) {
+        self.failures = failures
+        self.scanningConfigurations = scanningConfigurations
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures
+        case scanningConfigurations
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct CompleteLayerUploadRequest: Codable, Equatable {
     public var layerDigests: LayerDigestList
     public var registryId: RegistryId?
@@ -270,6 +350,60 @@ public struct CompleteLayerUploadResponse: Codable, Equatable {
     }
 }
 
+public struct CreatePullThroughCacheRuleRequest: Codable, Equatable {
+    public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix
+    public var registryId: RegistryId?
+    public var upstreamRegistryUrl: Url
+
+    public init(ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix,
+                registryId: RegistryId? = nil,
+                upstreamRegistryUrl: Url) {
+        self.ecrRepositoryPrefix = ecrRepositoryPrefix
+        self.registryId = registryId
+        self.upstreamRegistryUrl = upstreamRegistryUrl
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ecrRepositoryPrefix
+        case registryId
+        case upstreamRegistryUrl
+    }
+
+    public func validate() throws {
+        try ecrRepositoryPrefix.validateAsPullThroughCacheRuleRepositoryPrefix()
+        try registryId?.validateAsRegistryId()
+    }
+}
+
+public struct CreatePullThroughCacheRuleResponse: Codable, Equatable {
+    public var createdAt: CreationTimestamp?
+    public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix?
+    public var registryId: RegistryId?
+    public var upstreamRegistryUrl: Url?
+
+    public init(createdAt: CreationTimestamp? = nil,
+                ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix? = nil,
+                registryId: RegistryId? = nil,
+                upstreamRegistryUrl: Url? = nil) {
+        self.createdAt = createdAt
+        self.ecrRepositoryPrefix = ecrRepositoryPrefix
+        self.registryId = registryId
+        self.upstreamRegistryUrl = upstreamRegistryUrl
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt
+        case ecrRepositoryPrefix
+        case registryId
+        case upstreamRegistryUrl
+    }
+
+    public func validate() throws {
+        try ecrRepositoryPrefix?.validateAsPullThroughCacheRuleRepositoryPrefix()
+        try registryId?.validateAsRegistryId()
+    }
+}
+
 public struct CreateRepositoryRequest: Codable, Equatable {
     public var encryptionConfiguration: EncryptionConfiguration?
     public var imageScanningConfiguration: ImageScanningConfiguration?
@@ -325,6 +459,83 @@ public struct CreateRepositoryResponse: Codable, Equatable {
     }
 }
 
+public struct CvssScore: Codable, Equatable {
+    public var baseScore: BaseScore?
+    public var scoringVector: ScoringVector?
+    public var source: Source?
+    public var version: Version?
+
+    public init(baseScore: BaseScore? = nil,
+                scoringVector: ScoringVector? = nil,
+                source: Source? = nil,
+                version: Version? = nil) {
+        self.baseScore = baseScore
+        self.scoringVector = scoringVector
+        self.source = source
+        self.version = version
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case baseScore
+        case scoringVector
+        case source
+        case version
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CvssScoreAdjustment: Codable, Equatable {
+    public var metric: Metric?
+    public var reason: Reason?
+
+    public init(metric: Metric? = nil,
+                reason: Reason? = nil) {
+        self.metric = metric
+        self.reason = reason
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case metric
+        case reason
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CvssScoreDetails: Codable, Equatable {
+    public var adjustments: CvssScoreAdjustmentList?
+    public var score: Score?
+    public var scoreSource: Source?
+    public var scoringVector: ScoringVector?
+    public var version: Version?
+
+    public init(adjustments: CvssScoreAdjustmentList? = nil,
+                score: Score? = nil,
+                scoreSource: Source? = nil,
+                scoringVector: ScoringVector? = nil,
+                version: Version? = nil) {
+        self.adjustments = adjustments
+        self.score = score
+        self.scoreSource = scoreSource
+        self.scoringVector = scoringVector
+        self.version = version
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case adjustments
+        case score
+        case scoreSource
+        case scoringVector
+        case version
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeleteLifecyclePolicyRequest: Codable, Equatable {
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -373,6 +584,56 @@ public struct DeleteLifecyclePolicyResponse: Codable, Equatable {
         try lifecyclePolicyText?.validateAsLifecyclePolicyText()
         try registryId?.validateAsRegistryId()
         try repositoryName?.validateAsRepositoryName()
+    }
+}
+
+public struct DeletePullThroughCacheRuleRequest: Codable, Equatable {
+    public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix
+    public var registryId: RegistryId?
+
+    public init(ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix,
+                registryId: RegistryId? = nil) {
+        self.ecrRepositoryPrefix = ecrRepositoryPrefix
+        self.registryId = registryId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ecrRepositoryPrefix
+        case registryId
+    }
+
+    public func validate() throws {
+        try ecrRepositoryPrefix.validateAsPullThroughCacheRuleRepositoryPrefix()
+        try registryId?.validateAsRegistryId()
+    }
+}
+
+public struct DeletePullThroughCacheRuleResponse: Codable, Equatable {
+    public var createdAt: CreationTimestamp?
+    public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix?
+    public var registryId: RegistryId?
+    public var upstreamRegistryUrl: Url?
+
+    public init(createdAt: CreationTimestamp? = nil,
+                ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix? = nil,
+                registryId: RegistryId? = nil,
+                upstreamRegistryUrl: Url? = nil) {
+        self.createdAt = createdAt
+        self.ecrRepositoryPrefix = ecrRepositoryPrefix
+        self.registryId = registryId
+        self.upstreamRegistryUrl = upstreamRegistryUrl
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt
+        case ecrRepositoryPrefix
+        case registryId
+        case upstreamRegistryUrl
+    }
+
+    public func validate() throws {
+        try ecrRepositoryPrefix?.validateAsPullThroughCacheRuleRepositoryPrefix()
+        try registryId?.validateAsRegistryId()
     }
 }
 
@@ -694,6 +955,55 @@ public struct DescribeImagesResponse: Codable, Equatable {
     }
 }
 
+public struct DescribePullThroughCacheRulesRequest: Codable, Equatable {
+    public var ecrRepositoryPrefixes: PullThroughCacheRuleRepositoryPrefixList?
+    public var maxResults: MaxResults?
+    public var nextToken: NextToken?
+    public var registryId: RegistryId?
+
+    public init(ecrRepositoryPrefixes: PullThroughCacheRuleRepositoryPrefixList? = nil,
+                maxResults: MaxResults? = nil,
+                nextToken: NextToken? = nil,
+                registryId: RegistryId? = nil) {
+        self.ecrRepositoryPrefixes = ecrRepositoryPrefixes
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.registryId = registryId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ecrRepositoryPrefixes
+        case maxResults
+        case nextToken
+        case registryId
+    }
+
+    public func validate() throws {
+        try ecrRepositoryPrefixes?.validateAsPullThroughCacheRuleRepositoryPrefixList()
+        try maxResults?.validateAsMaxResults()
+        try registryId?.validateAsRegistryId()
+    }
+}
+
+public struct DescribePullThroughCacheRulesResponse: Codable, Equatable {
+    public var nextToken: NextToken?
+    public var pullThroughCacheRules: PullThroughCacheRuleList?
+
+    public init(nextToken: NextToken? = nil,
+                pullThroughCacheRules: PullThroughCacheRuleList? = nil) {
+        self.nextToken = nextToken
+        self.pullThroughCacheRules = pullThroughCacheRules
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case pullThroughCacheRules
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DescribeRegistryRequest: Codable, Equatable {
 
     public init() {
@@ -805,6 +1115,81 @@ public struct EncryptionConfiguration: Codable, Equatable {
 
     public func validate() throws {
         try kmsKey?.validateAsKmsKey()
+    }
+}
+
+public struct EnhancedImageScanFinding: Codable, Equatable {
+    public var awsAccountId: RegistryId?
+    public var description: FindingDescription?
+    public var findingArn: FindingArn?
+    public var firstObservedAt: Date?
+    public var lastObservedAt: Date?
+    public var packageVulnerabilityDetails: PackageVulnerabilityDetails?
+    public var remediation: Remediation?
+    public var resources: ResourceList?
+    public var score: Score?
+    public var scoreDetails: ScoreDetails?
+    public var severity: Severity?
+    public var status: Status?
+    public var title: Title?
+    public var type: Type?
+    public var updatedAt: Date?
+
+    public init(awsAccountId: RegistryId? = nil,
+                description: FindingDescription? = nil,
+                findingArn: FindingArn? = nil,
+                firstObservedAt: Date? = nil,
+                lastObservedAt: Date? = nil,
+                packageVulnerabilityDetails: PackageVulnerabilityDetails? = nil,
+                remediation: Remediation? = nil,
+                resources: ResourceList? = nil,
+                score: Score? = nil,
+                scoreDetails: ScoreDetails? = nil,
+                severity: Severity? = nil,
+                status: Status? = nil,
+                title: Title? = nil,
+                type: Type? = nil,
+                updatedAt: Date? = nil) {
+        self.awsAccountId = awsAccountId
+        self.description = description
+        self.findingArn = findingArn
+        self.firstObservedAt = firstObservedAt
+        self.lastObservedAt = lastObservedAt
+        self.packageVulnerabilityDetails = packageVulnerabilityDetails
+        self.remediation = remediation
+        self.resources = resources
+        self.score = score
+        self.scoreDetails = scoreDetails
+        self.severity = severity
+        self.status = status
+        self.title = title
+        self.type = type
+        self.updatedAt = updatedAt
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case awsAccountId
+        case description
+        case findingArn
+        case firstObservedAt
+        case lastObservedAt
+        case packageVulnerabilityDetails
+        case remediation
+        case resources
+        case score
+        case scoreDetails
+        case severity
+        case status
+        case title
+        case type
+        case updatedAt
+    }
+
+    public func validate() throws {
+        try awsAccountId?.validateAsRegistryId()
+        try packageVulnerabilityDetails?.validate()
+        try remediation?.validate()
+        try scoreDetails?.validate()
     }
 }
 
@@ -1039,6 +1424,36 @@ public struct GetRegistryPolicyResponse: Codable, Equatable {
     public func validate() throws {
         try policyText?.validateAsRegistryPolicyText()
         try registryId?.validateAsRegistryId()
+    }
+}
+
+public struct GetRegistryScanningConfigurationRequest: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetRegistryScanningConfigurationResponse: Codable, Equatable {
+    public var registryId: RegistryId?
+    public var scanningConfiguration: RegistryScanningConfiguration?
+
+    public init(registryId: RegistryId? = nil,
+                scanningConfiguration: RegistryScanningConfiguration? = nil) {
+        self.registryId = registryId
+        self.scanningConfiguration = scanningConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case registryId
+        case scanningConfiguration
+    }
+
+    public func validate() throws {
+        try registryId?.validateAsRegistryId()
+        try scanningConfiguration?.validate()
     }
 }
 
@@ -1330,15 +1745,18 @@ public struct ImageScanFinding: Codable, Equatable {
 }
 
 public struct ImageScanFindings: Codable, Equatable {
+    public var enhancedFindings: EnhancedImageScanFindingList?
     public var findingSeverityCounts: FindingSeverityCounts?
     public var findings: ImageScanFindingList?
     public var imageScanCompletedAt: ScanTimestamp?
     public var vulnerabilitySourceUpdatedAt: VulnerabilitySourceUpdateTimestamp?
 
-    public init(findingSeverityCounts: FindingSeverityCounts? = nil,
+    public init(enhancedFindings: EnhancedImageScanFindingList? = nil,
+                findingSeverityCounts: FindingSeverityCounts? = nil,
                 findings: ImageScanFindingList? = nil,
                 imageScanCompletedAt: ScanTimestamp? = nil,
                 vulnerabilitySourceUpdatedAt: VulnerabilitySourceUpdateTimestamp? = nil) {
+        self.enhancedFindings = enhancedFindings
         self.findingSeverityCounts = findingSeverityCounts
         self.findings = findings
         self.imageScanCompletedAt = imageScanCompletedAt
@@ -1346,6 +1764,7 @@ public struct ImageScanFindings: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case enhancedFindings
         case findingSeverityCounts
         case findings
         case imageScanCompletedAt
@@ -1920,6 +2339,116 @@ public struct ListTagsForResourceResponse: Codable, Equatable {
     }
 }
 
+public struct PackageVulnerabilityDetails: Codable, Equatable {
+    public var cvss: CvssScoreList?
+    public var referenceUrls: ReferenceUrlsList?
+    public var relatedVulnerabilities: RelatedVulnerabilitiesList?
+    public var source: Source?
+    public var sourceUrl: Url?
+    public var vendorCreatedAt: Date?
+    public var vendorSeverity: Severity?
+    public var vendorUpdatedAt: Date?
+    public var vulnerabilityId: VulnerabilityId?
+    public var vulnerablePackages: VulnerablePackagesList?
+
+    public init(cvss: CvssScoreList? = nil,
+                referenceUrls: ReferenceUrlsList? = nil,
+                relatedVulnerabilities: RelatedVulnerabilitiesList? = nil,
+                source: Source? = nil,
+                sourceUrl: Url? = nil,
+                vendorCreatedAt: Date? = nil,
+                vendorSeverity: Severity? = nil,
+                vendorUpdatedAt: Date? = nil,
+                vulnerabilityId: VulnerabilityId? = nil,
+                vulnerablePackages: VulnerablePackagesList? = nil) {
+        self.cvss = cvss
+        self.referenceUrls = referenceUrls
+        self.relatedVulnerabilities = relatedVulnerabilities
+        self.source = source
+        self.sourceUrl = sourceUrl
+        self.vendorCreatedAt = vendorCreatedAt
+        self.vendorSeverity = vendorSeverity
+        self.vendorUpdatedAt = vendorUpdatedAt
+        self.vulnerabilityId = vulnerabilityId
+        self.vulnerablePackages = vulnerablePackages
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cvss
+        case referenceUrls
+        case relatedVulnerabilities
+        case source
+        case sourceUrl
+        case vendorCreatedAt
+        case vendorSeverity
+        case vendorUpdatedAt
+        case vulnerabilityId
+        case vulnerablePackages
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PullThroughCacheRule: Codable, Equatable {
+    public var createdAt: CreationTimestamp?
+    public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix?
+    public var registryId: RegistryId?
+    public var upstreamRegistryUrl: Url?
+
+    public init(createdAt: CreationTimestamp? = nil,
+                ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix? = nil,
+                registryId: RegistryId? = nil,
+                upstreamRegistryUrl: Url? = nil) {
+        self.createdAt = createdAt
+        self.ecrRepositoryPrefix = ecrRepositoryPrefix
+        self.registryId = registryId
+        self.upstreamRegistryUrl = upstreamRegistryUrl
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt
+        case ecrRepositoryPrefix
+        case registryId
+        case upstreamRegistryUrl
+    }
+
+    public func validate() throws {
+        try ecrRepositoryPrefix?.validateAsPullThroughCacheRuleRepositoryPrefix()
+        try registryId?.validateAsRegistryId()
+    }
+}
+
+public struct PullThroughCacheRuleAlreadyExistsException: Codable, Equatable {
+    public var message: ExceptionMessage?
+
+    public init(message: ExceptionMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PullThroughCacheRuleNotFoundException: Codable, Equatable {
+    public var message: ExceptionMessage?
+
+    public init(message: ExceptionMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct PutImageRequest: Codable, Equatable {
     public var imageDigest: ImageDigest?
     public var imageManifest: ImageManifest
@@ -2166,6 +2695,42 @@ public struct PutRegistryPolicyResponse: Codable, Equatable {
     }
 }
 
+public struct PutRegistryScanningConfigurationRequest: Codable, Equatable {
+    public var rules: RegistryScanningRuleList?
+    public var scanType: ScanType?
+
+    public init(rules: RegistryScanningRuleList? = nil,
+                scanType: ScanType? = nil) {
+        self.rules = rules
+        self.scanType = scanType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case rules
+        case scanType
+    }
+
+    public func validate() throws {
+        try rules?.validateAsRegistryScanningRuleList()
+    }
+}
+
+public struct PutRegistryScanningConfigurationResponse: Codable, Equatable {
+    public var registryScanningConfiguration: RegistryScanningConfiguration?
+
+    public init(registryScanningConfiguration: RegistryScanningConfiguration? = nil) {
+        self.registryScanningConfiguration = registryScanningConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case registryScanningConfiguration
+    }
+
+    public func validate() throws {
+        try registryScanningConfiguration?.validate()
+    }
+}
+
 public struct PutReplicationConfigurationRequest: Codable, Equatable {
     public var replicationConfiguration: ReplicationConfiguration
 
@@ -2198,6 +2763,25 @@ public struct PutReplicationConfigurationResponse: Codable, Equatable {
     }
 }
 
+public struct Recommendation: Codable, Equatable {
+    public var text: RecommendationText?
+    public var url: Url?
+
+    public init(text: RecommendationText? = nil,
+                url: Url? = nil) {
+        self.text = text
+        self.url = url
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case text
+        case url
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ReferencedImagesNotFoundException: Codable, Equatable {
     public var message: ExceptionMessage?
 
@@ -2225,6 +2809,62 @@ public struct RegistryPolicyNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct RegistryScanningConfiguration: Codable, Equatable {
+    public var rules: RegistryScanningRuleList?
+    public var scanType: ScanType?
+
+    public init(rules: RegistryScanningRuleList? = nil,
+                scanType: ScanType? = nil) {
+        self.rules = rules
+        self.scanType = scanType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case rules
+        case scanType
+    }
+
+    public func validate() throws {
+        try rules?.validateAsRegistryScanningRuleList()
+    }
+}
+
+public struct RegistryScanningRule: Codable, Equatable {
+    public var repositoryFilters: ScanningRepositoryFilterList
+    public var scanFrequency: ScanFrequency
+
+    public init(repositoryFilters: ScanningRepositoryFilterList,
+                scanFrequency: ScanFrequency) {
+        self.repositoryFilters = repositoryFilters
+        self.scanFrequency = scanFrequency
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case repositoryFilters
+        case scanFrequency
+    }
+
+    public func validate() throws {
+        try repositoryFilters.validateAsScanningRepositoryFilterList()
+    }
+}
+
+public struct Remediation: Codable, Equatable {
+    public var recommendation: Recommendation?
+
+    public init(recommendation: Recommendation? = nil) {
+        self.recommendation = recommendation
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case recommendation
+    }
+
+    public func validate() throws {
+        try recommendation?.validate()
     }
 }
 
@@ -2413,6 +3053,107 @@ public struct RepositoryPolicyNotFoundException: Codable, Equatable {
     }
 }
 
+public struct RepositoryScanningConfiguration: Codable, Equatable {
+    public var appliedScanFilters: ScanningRepositoryFilterList?
+    public var repositoryArn: Arn?
+    public var repositoryName: RepositoryName?
+    public var scanFrequency: ScanFrequency?
+    public var scanOnPush: ScanOnPushFlag?
+
+    public init(appliedScanFilters: ScanningRepositoryFilterList? = nil,
+                repositoryArn: Arn? = nil,
+                repositoryName: RepositoryName? = nil,
+                scanFrequency: ScanFrequency? = nil,
+                scanOnPush: ScanOnPushFlag? = nil) {
+        self.appliedScanFilters = appliedScanFilters
+        self.repositoryArn = repositoryArn
+        self.repositoryName = repositoryName
+        self.scanFrequency = scanFrequency
+        self.scanOnPush = scanOnPush
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case appliedScanFilters
+        case repositoryArn
+        case repositoryName
+        case scanFrequency
+        case scanOnPush
+    }
+
+    public func validate() throws {
+        try appliedScanFilters?.validateAsScanningRepositoryFilterList()
+        try repositoryName?.validateAsRepositoryName()
+    }
+}
+
+public struct RepositoryScanningConfigurationFailure: Codable, Equatable {
+    public var failureCode: ScanningConfigurationFailureCode?
+    public var failureReason: ScanningConfigurationFailureReason?
+    public var repositoryName: RepositoryName?
+
+    public init(failureCode: ScanningConfigurationFailureCode? = nil,
+                failureReason: ScanningConfigurationFailureReason? = nil,
+                repositoryName: RepositoryName? = nil) {
+        self.failureCode = failureCode
+        self.failureReason = failureReason
+        self.repositoryName = repositoryName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failureCode
+        case failureReason
+        case repositoryName
+    }
+
+    public func validate() throws {
+        try repositoryName?.validateAsRepositoryName()
+    }
+}
+
+public struct Resource: Codable, Equatable {
+    public var details: ResourceDetails?
+    public var id: ResourceId?
+    public var tags: Tags?
+    public var type: Type?
+
+    public init(details: ResourceDetails? = nil,
+                id: ResourceId? = nil,
+                tags: Tags? = nil,
+                type: Type? = nil) {
+        self.details = details
+        self.id = id
+        self.tags = tags
+        self.type = type
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case details
+        case id
+        case tags
+        case type
+    }
+
+    public func validate() throws {
+        try details?.validate()
+    }
+}
+
+public struct ResourceDetails: Codable, Equatable {
+    public var awsEcrContainerImage: AwsEcrContainerImageDetails?
+
+    public init(awsEcrContainerImage: AwsEcrContainerImageDetails? = nil) {
+        self.awsEcrContainerImage = awsEcrContainerImage
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case awsEcrContainerImage
+    }
+
+    public func validate() throws {
+        try awsEcrContainerImage?.validate()
+    }
+}
+
 public struct ScanNotFoundException: Codable, Equatable {
     public var message: ExceptionMessage?
 
@@ -2425,6 +3166,42 @@ public struct ScanNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct ScanningRepositoryFilter: Codable, Equatable {
+    public var filter: ScanningRepositoryFilterValue
+    public var filterType: ScanningRepositoryFilterType
+
+    public init(filter: ScanningRepositoryFilterValue,
+                filterType: ScanningRepositoryFilterType) {
+        self.filter = filter
+        self.filterType = filterType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case filter
+        case filterType
+    }
+
+    public func validate() throws {
+        try filter.validateAsScanningRepositoryFilterValue()
+    }
+}
+
+public struct ScoreDetails: Codable, Equatable {
+    public var cvss: CvssScoreDetails?
+
+    public init(cvss: CvssScoreDetails? = nil) {
+        self.cvss = cvss
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cvss
+    }
+
+    public func validate() throws {
+        try cvss?.validate()
     }
 }
 
@@ -2689,6 +3466,21 @@ public struct UnsupportedImageTypeException: Codable, Equatable {
     }
 }
 
+public struct UnsupportedUpstreamRegistryException: Codable, Equatable {
+    public var message: ExceptionMessage?
+
+    public init(message: ExceptionMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct UntagResourceRequest: Codable, Equatable {
     public var resourceArn: Arn
     public var tagKeys: TagKeyList
@@ -2812,6 +3604,49 @@ public struct ValidationException: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VulnerablePackage: Codable, Equatable {
+    public var arch: Arch?
+    public var epoch: Epoch?
+    public var filePath: FilePath?
+    public var name: VulnerablePackageName?
+    public var packageManager: PackageManager?
+    public var release: Release?
+    public var sourceLayerHash: SourceLayerHash?
+    public var version: Version?
+
+    public init(arch: Arch? = nil,
+                epoch: Epoch? = nil,
+                filePath: FilePath? = nil,
+                name: VulnerablePackageName? = nil,
+                packageManager: PackageManager? = nil,
+                release: Release? = nil,
+                sourceLayerHash: SourceLayerHash? = nil,
+                version: Version? = nil) {
+        self.arch = arch
+        self.epoch = epoch
+        self.filePath = filePath
+        self.name = name
+        self.packageManager = packageManager
+        self.release = release
+        self.sourceLayerHash = sourceLayerHash
+        self.version = version
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case arch
+        case epoch
+        case filePath
+        case name
+        case packageManager
+        case release
+        case sourceLayerHash
+        case version
     }
 
     public func validate() throws {

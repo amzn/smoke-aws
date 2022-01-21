@@ -1212,6 +1212,20 @@ public typealias StringSetAttributeValue = [StringAttributeValue]
 public typealias TableArn = String
 
 /**
+ Enumeration restricting the values of the TableClass field.
+ */
+public enum TableClass: String, Codable, CustomStringConvertible {
+    case standard = "STANDARD"
+    case standardInfrequentAccess = "STANDARD_INFREQUENT_ACCESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TableClass = .standard
+}
+
+/**
  Type definition for the TableCreationDateTime field.
  */
 public typealias TableCreationDateTime = String

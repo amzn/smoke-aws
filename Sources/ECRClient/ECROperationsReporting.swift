@@ -31,15 +31,19 @@ public struct ECROperationsReporting {
     public let batchCheckLayerAvailability: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let batchDeleteImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let batchGetImage: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let batchGetRepositoryScanningConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let completeLayerUpload: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let createPullThroughCacheRule: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let createRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let deleteLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let deletePullThroughCacheRule: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let deleteRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let deleteRepository: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let deleteRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeImageReplicationStatus: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeImageScanFindings: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let describePullThroughCacheRules: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeRegistry: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let describeRepositories: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let getAuthorizationToken: StandardSmokeAWSOperationReporting<ECRModelOperations>
@@ -47,6 +51,7 @@ public struct ECROperationsReporting {
     public let getLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let getLifecyclePolicyPreview: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let getRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let getRegistryScanningConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let getRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let initiateLayerUpload: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let listImages: StandardSmokeAWSOperationReporting<ECRModelOperations>
@@ -56,6 +61,7 @@ public struct ECROperationsReporting {
     public let putImageTagMutability: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let putLifecyclePolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let putRegistryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
+    public let putRegistryScanningConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let putReplicationConfiguration: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let setRepositoryPolicy: StandardSmokeAWSOperationReporting<ECRModelOperations>
     public let startImageScan: StandardSmokeAWSOperationReporting<ECRModelOperations>
@@ -71,12 +77,18 @@ public struct ECROperationsReporting {
             clientName: clientName, operation: .batchDeleteImage, configuration: reportingConfiguration)
         self.batchGetImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .batchGetImage, configuration: reportingConfiguration)
+        self.batchGetRepositoryScanningConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .batchGetRepositoryScanningConfiguration, configuration: reportingConfiguration)
         self.completeLayerUpload = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .completeLayerUpload, configuration: reportingConfiguration)
+        self.createPullThroughCacheRule = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createPullThroughCacheRule, configuration: reportingConfiguration)
         self.createRepository = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createRepository, configuration: reportingConfiguration)
         self.deleteLifecyclePolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteLifecyclePolicy, configuration: reportingConfiguration)
+        self.deletePullThroughCacheRule = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deletePullThroughCacheRule, configuration: reportingConfiguration)
         self.deleteRegistryPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteRegistryPolicy, configuration: reportingConfiguration)
         self.deleteRepository = StandardSmokeAWSOperationReporting(
@@ -89,6 +101,8 @@ public struct ECROperationsReporting {
             clientName: clientName, operation: .describeImageScanFindings, configuration: reportingConfiguration)
         self.describeImages = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeImages, configuration: reportingConfiguration)
+        self.describePullThroughCacheRules = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describePullThroughCacheRules, configuration: reportingConfiguration)
         self.describeRegistry = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeRegistry, configuration: reportingConfiguration)
         self.describeRepositories = StandardSmokeAWSOperationReporting(
@@ -103,6 +117,8 @@ public struct ECROperationsReporting {
             clientName: clientName, operation: .getLifecyclePolicyPreview, configuration: reportingConfiguration)
         self.getRegistryPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getRegistryPolicy, configuration: reportingConfiguration)
+        self.getRegistryScanningConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getRegistryScanningConfiguration, configuration: reportingConfiguration)
         self.getRepositoryPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getRepositoryPolicy, configuration: reportingConfiguration)
         self.initiateLayerUpload = StandardSmokeAWSOperationReporting(
@@ -121,6 +137,8 @@ public struct ECROperationsReporting {
             clientName: clientName, operation: .putLifecyclePolicy, configuration: reportingConfiguration)
         self.putRegistryPolicy = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putRegistryPolicy, configuration: reportingConfiguration)
+        self.putRegistryScanningConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putRegistryScanningConfiguration, configuration: reportingConfiguration)
         self.putReplicationConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putReplicationConfiguration, configuration: reportingConfiguration)
         self.setRepositoryPolicy = StandardSmokeAWSOperationReporting(

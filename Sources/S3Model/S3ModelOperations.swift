@@ -949,6 +949,7 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantWrite: GrantWrite?
     public var grantWriteACP: GrantWriteACP?
     public var objectLockEnabledForBucket: ObjectLockEnabledForBucket?
+    public var objectOwnership: ObjectOwnership?
 
     public init(aCL: BucketCannedACL? = nil,
                 grantFullControl: GrantFullControl? = nil,
@@ -956,7 +957,8 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
                 grantReadACP: GrantReadACP? = nil,
                 grantWrite: GrantWrite? = nil,
                 grantWriteACP: GrantWriteACP? = nil,
-                objectLockEnabledForBucket: ObjectLockEnabledForBucket? = nil) {
+                objectLockEnabledForBucket: ObjectLockEnabledForBucket? = nil,
+                objectOwnership: ObjectOwnership? = nil) {
         self.aCL = aCL
         self.grantFullControl = grantFullControl
         self.grantRead = grantRead
@@ -964,6 +966,7 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
         self.grantWrite = grantWrite
         self.grantWriteACP = grantWriteACP
         self.objectLockEnabledForBucket = objectLockEnabledForBucket
+        self.objectOwnership = objectOwnership
     }
 
     enum CodingKeys: String, CodingKey {
@@ -974,6 +977,7 @@ public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
         case grantWrite = "x-amz-grant-write"
         case grantWriteACP = "x-amz-grant-write-acp"
         case objectLockEnabledForBucket = "x-amz-bucket-object-lock-enabled"
+        case objectOwnership = "x-amz-object-ownership"
     }
 
     public func validate() throws {
@@ -989,7 +993,8 @@ public extension CreateBucketRequest {
             grantReadACP: grantReadACP,
             grantWrite: grantWrite,
             grantWriteACP: grantWriteACP,
-            objectLockEnabledForBucket: objectLockEnabledForBucket)
+            objectLockEnabledForBucket: objectLockEnabledForBucket,
+            objectOwnership: objectOwnership)
     }
 }
 
@@ -6520,13 +6525,17 @@ public extension PutBucketNotificationConfigurationRequest {
  */
 public struct PutBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var skipDestinationValidation: SkipValidation?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                skipDestinationValidation: SkipValidation? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.skipDestinationValidation = skipDestinationValidation
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case skipDestinationValidation = "x-amz-skip-destination-validation"
     }
 
     public func validate() throws {
@@ -6536,7 +6545,8 @@ public struct PutBucketNotificationConfigurationOperationInputAdditionalHeaders:
 public extension PutBucketNotificationConfigurationRequest {
     func asS3ModelPutBucketNotificationConfigurationOperationInputAdditionalHeaders() -> PutBucketNotificationConfigurationOperationInputAdditionalHeaders {
         return PutBucketNotificationConfigurationOperationInputAdditionalHeaders(
-            expectedBucketOwner: expectedBucketOwner)
+            expectedBucketOwner: expectedBucketOwner,
+            skipDestinationValidation: skipDestinationValidation)
     }
 }
 

@@ -51,6 +51,8 @@ private let lifecyclePolicyNotFoundIdentity = "LifecyclePolicyNotFoundException"
 private let lifecyclePolicyPreviewInProgressIdentity = "LifecyclePolicyPreviewInProgressException"
 private let lifecyclePolicyPreviewNotFoundIdentity = "LifecyclePolicyPreviewNotFoundException"
 private let limitExceededIdentity = "LimitExceededException"
+private let pullThroughCacheRuleAlreadyExistsIdentity = "PullThroughCacheRuleAlreadyExistsException"
+private let pullThroughCacheRuleNotFoundIdentity = "PullThroughCacheRuleNotFoundException"
 private let referencedImagesNotFoundIdentity = "ReferencedImagesNotFoundException"
 private let registryPolicyNotFoundIdentity = "RegistryPolicyNotFoundException"
 private let repositoryAlreadyExistsIdentity = "RepositoryAlreadyExistsException"
@@ -61,6 +63,7 @@ private let scanNotFoundIdentity = "ScanNotFoundException"
 private let serverIdentity = "ServerException"
 private let tooManyTagsIdentity = "TooManyTagsException"
 private let unsupportedImageTypeIdentity = "UnsupportedImageTypeException"
+private let unsupportedUpstreamRegistryIdentity = "UnsupportedUpstreamRegistryException"
 private let uploadNotFoundIdentity = "UploadNotFoundException"
 private let validationIdentity = "ValidationException"
 private let __accessDeniedIdentity = "AccessDenied"
@@ -84,6 +87,8 @@ public enum ECRError: Swift.Error, Decodable {
     case lifecyclePolicyPreviewInProgress(LifecyclePolicyPreviewInProgressException)
     case lifecyclePolicyPreviewNotFound(LifecyclePolicyPreviewNotFoundException)
     case limitExceeded(LimitExceededException)
+    case pullThroughCacheRuleAlreadyExists(PullThroughCacheRuleAlreadyExistsException)
+    case pullThroughCacheRuleNotFound(PullThroughCacheRuleNotFoundException)
     case referencedImagesNotFound(ReferencedImagesNotFoundException)
     case registryPolicyNotFound(RegistryPolicyNotFoundException)
     case repositoryAlreadyExists(RepositoryAlreadyExistsException)
@@ -94,6 +99,7 @@ public enum ECRError: Swift.Error, Decodable {
     case server(ServerException)
     case tooManyTags(TooManyTagsException)
     case unsupportedImageType(UnsupportedImageTypeException)
+    case unsupportedUpstreamRegistry(UnsupportedUpstreamRegistryException)
     case uploadNotFound(UploadNotFoundException)
     case validation(ValidationException)
     case accessDenied(message: String?)
@@ -169,6 +175,12 @@ public enum ECRError: Swift.Error, Decodable {
         case limitExceededIdentity:
             let errorPayload = try LimitExceededException(from: decoder)
             self = ECRError.limitExceeded(errorPayload)
+        case pullThroughCacheRuleAlreadyExistsIdentity:
+            let errorPayload = try PullThroughCacheRuleAlreadyExistsException(from: decoder)
+            self = ECRError.pullThroughCacheRuleAlreadyExists(errorPayload)
+        case pullThroughCacheRuleNotFoundIdentity:
+            let errorPayload = try PullThroughCacheRuleNotFoundException(from: decoder)
+            self = ECRError.pullThroughCacheRuleNotFound(errorPayload)
         case referencedImagesNotFoundIdentity:
             let errorPayload = try ReferencedImagesNotFoundException(from: decoder)
             self = ECRError.referencedImagesNotFound(errorPayload)
@@ -199,6 +211,9 @@ public enum ECRError: Swift.Error, Decodable {
         case unsupportedImageTypeIdentity:
             let errorPayload = try UnsupportedImageTypeException(from: decoder)
             self = ECRError.unsupportedImageType(errorPayload)
+        case unsupportedUpstreamRegistryIdentity:
+            let errorPayload = try UnsupportedUpstreamRegistryException(from: decoder)
+            self = ECRError.unsupportedUpstreamRegistry(errorPayload)
         case uploadNotFoundIdentity:
             let errorPayload = try UploadNotFoundException(from: decoder)
             self = ECRError.uploadNotFound(errorPayload)

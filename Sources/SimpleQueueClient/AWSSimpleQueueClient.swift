@@ -156,14 +156,36 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
 
     /**
      Gracefully shuts down this client. This function is idempotent and
-     will handle being called multiple times.
+     will handle being called multiple times. Will block until shutdown is complete.
      */
-    public func close() throws {
+    public func syncShutdown() throws {
         if self.ownsHttpClients {
-            try httpClient.close()
-            try listHttpClient.close()
+            try self.httpClient.syncShutdown()
+            try self.listHttpClient.syncShutdown()
         }
     }
+
+    // renamed `syncShutdown` to make it clearer this version of shutdown will block.
+    @available(*, deprecated, renamed: "syncShutdown")
+    public func close() throws {
+        if self.ownsHttpClients {
+            try self.httpClient.close()
+            try self.listHttpClient.close()
+        }
+    }
+
+    /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times. Will return when shutdown is complete.
+     */
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    public func shutdown() async throws {
+        if self.ownsHttpClients {
+            try await self.httpClient.shutdown()
+            try await self.listHttpClient.shutdown()
+        }
+    }
+    #endif
 
     /**
      Invokes the AddPermission operation returning immediately and passing the response to a callback.

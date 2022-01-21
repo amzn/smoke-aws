@@ -934,6 +934,7 @@ public struct CreateBucketRequest: Codable, Equatable {
     public var grantWrite: GrantWrite?
     public var grantWriteACP: GrantWriteACP?
     public var objectLockEnabledForBucket: ObjectLockEnabledForBucket?
+    public var objectOwnership: ObjectOwnership?
 
     public init(aCL: BucketCannedACL? = nil,
                 bucket: BucketName,
@@ -943,7 +944,8 @@ public struct CreateBucketRequest: Codable, Equatable {
                 grantReadACP: GrantReadACP? = nil,
                 grantWrite: GrantWrite? = nil,
                 grantWriteACP: GrantWriteACP? = nil,
-                objectLockEnabledForBucket: ObjectLockEnabledForBucket? = nil) {
+                objectLockEnabledForBucket: ObjectLockEnabledForBucket? = nil,
+                objectOwnership: ObjectOwnership? = nil) {
         self.aCL = aCL
         self.bucket = bucket
         self.createBucketConfiguration = createBucketConfiguration
@@ -953,6 +955,7 @@ public struct CreateBucketRequest: Codable, Equatable {
         self.grantWrite = grantWrite
         self.grantWriteACP = grantWriteACP
         self.objectLockEnabledForBucket = objectLockEnabledForBucket
+        self.objectOwnership = objectOwnership
     }
 
     enum CodingKeys: String, CodingKey {
@@ -965,6 +968,7 @@ public struct CreateBucketRequest: Codable, Equatable {
         case grantWrite = "x-amz-grant-write"
         case grantWriteACP = "x-amz-grant-write-acp"
         case objectLockEnabledForBucket = "x-amz-bucket-object-lock-enabled"
+        case objectOwnership = "x-amz-object-ownership"
     }
 
     public func validate() throws {
@@ -1852,6 +1856,15 @@ public struct ErrorDocument: Codable, Equatable {
 
     public func validate() throws {
         try key.validateAsObjectKey()
+    }
+}
+
+public struct EventBridgeConfiguration: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -4947,25 +4960,30 @@ public struct NoncurrentVersionTransition: Codable, Equatable {
 }
 
 public struct NotificationConfiguration: Codable, Equatable {
+    public var eventBridgeConfiguration: EventBridgeConfiguration?
     public var lambdaFunctionConfigurations: LambdaFunctionConfigurationList?
     public var queueConfigurations: QueueConfigurationList?
     public var topicConfigurations: TopicConfigurationList?
 
-    public init(lambdaFunctionConfigurations: LambdaFunctionConfigurationList? = nil,
+    public init(eventBridgeConfiguration: EventBridgeConfiguration? = nil,
+                lambdaFunctionConfigurations: LambdaFunctionConfigurationList? = nil,
                 queueConfigurations: QueueConfigurationList? = nil,
                 topicConfigurations: TopicConfigurationList? = nil) {
+        self.eventBridgeConfiguration = eventBridgeConfiguration
         self.lambdaFunctionConfigurations = lambdaFunctionConfigurations
         self.queueConfigurations = queueConfigurations
         self.topicConfigurations = topicConfigurations
     }
 
     enum CodingKeys: String, CodingKey {
+        case eventBridgeConfiguration = "EventBridgeConfiguration"
         case lambdaFunctionConfigurations = "CloudFunctionConfiguration"
         case queueConfigurations = "QueueConfiguration"
         case topicConfigurations = "TopicConfiguration"
     }
 
     public func validate() throws {
+        try eventBridgeConfiguration?.validate()
     }
 }
 
@@ -5728,19 +5746,23 @@ public struct PutBucketNotificationConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var notificationConfiguration: NotificationConfiguration
+    public var skipDestinationValidation: SkipValidation?
 
     public init(bucket: BucketName,
                 expectedBucketOwner: AccountId? = nil,
-                notificationConfiguration: NotificationConfiguration) {
+                notificationConfiguration: NotificationConfiguration,
+                skipDestinationValidation: SkipValidation? = nil) {
         self.bucket = bucket
         self.expectedBucketOwner = expectedBucketOwner
         self.notificationConfiguration = notificationConfiguration
+        self.skipDestinationValidation = skipDestinationValidation
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case notificationConfiguration = "NotificationConfiguration"
+        case skipDestinationValidation = "x-amz-skip-destination-validation"
     }
 
     public func validate() throws {

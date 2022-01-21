@@ -1011,15 +1011,18 @@ public struct CreateReplicationGroupMemberAction: Codable, Equatable {
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
     public var regionName: RegionName
+    public var tableClassOverride: TableClass?
 
     public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList? = nil,
                 kMSMasterKeyId: KMSMasterKeyId? = nil,
                 provisionedThroughputOverride: ProvisionedThroughputOverride? = nil,
-                regionName: RegionName) {
+                regionName: RegionName,
+                tableClassOverride: TableClass? = nil) {
         self.globalSecondaryIndexes = globalSecondaryIndexes
         self.kMSMasterKeyId = kMSMasterKeyId
         self.provisionedThroughputOverride = provisionedThroughputOverride
         self.regionName = regionName
+        self.tableClassOverride = tableClassOverride
     }
 
     enum CodingKeys: String, CodingKey {
@@ -1027,6 +1030,7 @@ public struct CreateReplicationGroupMemberAction: Codable, Equatable {
         case kMSMasterKeyId = "KMSMasterKeyId"
         case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case regionName = "RegionName"
+        case tableClassOverride = "TableClassOverride"
     }
 
     public func validate() throws {
@@ -1044,6 +1048,7 @@ public struct CreateTableInput: Codable, Equatable {
     public var provisionedThroughput: ProvisionedThroughput?
     public var sSESpecification: SSESpecification?
     public var streamSpecification: StreamSpecification?
+    public var tableClass: TableClass?
     public var tableName: TableName
     public var tags: TagList?
 
@@ -1055,6 +1060,7 @@ public struct CreateTableInput: Codable, Equatable {
                 provisionedThroughput: ProvisionedThroughput? = nil,
                 sSESpecification: SSESpecification? = nil,
                 streamSpecification: StreamSpecification? = nil,
+                tableClass: TableClass? = nil,
                 tableName: TableName,
                 tags: TagList? = nil) {
         self.attributeDefinitions = attributeDefinitions
@@ -1065,6 +1071,7 @@ public struct CreateTableInput: Codable, Equatable {
         self.provisionedThroughput = provisionedThroughput
         self.sSESpecification = sSESpecification
         self.streamSpecification = streamSpecification
+        self.tableClass = tableClass
         self.tableName = tableName
         self.tags = tags
     }
@@ -1078,6 +1085,7 @@ public struct CreateTableInput: Codable, Equatable {
         case provisionedThroughput = "ProvisionedThroughput"
         case sSESpecification = "SSESpecification"
         case streamSpecification = "StreamSpecification"
+        case tableClass = "TableClass"
         case tableName = "TableName"
         case tags = "Tags"
     }
@@ -3653,6 +3661,7 @@ public struct ReplicaDescription: Codable, Equatable {
     public var replicaStatus: ReplicaStatus?
     public var replicaStatusDescription: ReplicaStatusDescription?
     public var replicaStatusPercentProgress: ReplicaStatusPercentProgress?
+    public var replicaTableClassSummary: TableClassSummary?
 
     public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexDescriptionList? = nil,
                 kMSMasterKeyId: KMSMasterKeyId? = nil,
@@ -3661,7 +3670,8 @@ public struct ReplicaDescription: Codable, Equatable {
                 replicaInaccessibleDateTime: Date? = nil,
                 replicaStatus: ReplicaStatus? = nil,
                 replicaStatusDescription: ReplicaStatusDescription? = nil,
-                replicaStatusPercentProgress: ReplicaStatusPercentProgress? = nil) {
+                replicaStatusPercentProgress: ReplicaStatusPercentProgress? = nil,
+                replicaTableClassSummary: TableClassSummary? = nil) {
         self.globalSecondaryIndexes = globalSecondaryIndexes
         self.kMSMasterKeyId = kMSMasterKeyId
         self.provisionedThroughputOverride = provisionedThroughputOverride
@@ -3670,6 +3680,7 @@ public struct ReplicaDescription: Codable, Equatable {
         self.replicaStatus = replicaStatus
         self.replicaStatusDescription = replicaStatusDescription
         self.replicaStatusPercentProgress = replicaStatusPercentProgress
+        self.replicaTableClassSummary = replicaTableClassSummary
     }
 
     enum CodingKeys: String, CodingKey {
@@ -3681,10 +3692,12 @@ public struct ReplicaDescription: Codable, Equatable {
         case replicaStatus = "ReplicaStatus"
         case replicaStatusDescription = "ReplicaStatusDescription"
         case replicaStatusPercentProgress = "ReplicaStatusPercentProgress"
+        case replicaTableClassSummary = "ReplicaTableClassSummary"
     }
 
     public func validate() throws {
         try provisionedThroughputOverride?.validate()
+        try replicaTableClassSummary?.validate()
     }
 }
 
@@ -3871,6 +3884,7 @@ public struct ReplicaSettingsDescription: Codable, Equatable {
     public var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     public var replicaProvisionedWriteCapacityUnits: NonNegativeLongObject?
     public var replicaStatus: ReplicaStatus?
+    public var replicaTableClassSummary: TableClassSummary?
 
     public init(regionName: RegionName,
                 replicaBillingModeSummary: BillingModeSummary? = nil,
@@ -3879,7 +3893,8 @@ public struct ReplicaSettingsDescription: Codable, Equatable {
                 replicaProvisionedReadCapacityUnits: NonNegativeLongObject? = nil,
                 replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription? = nil,
                 replicaProvisionedWriteCapacityUnits: NonNegativeLongObject? = nil,
-                replicaStatus: ReplicaStatus? = nil) {
+                replicaStatus: ReplicaStatus? = nil,
+                replicaTableClassSummary: TableClassSummary? = nil) {
         self.regionName = regionName
         self.replicaBillingModeSummary = replicaBillingModeSummary
         self.replicaGlobalSecondaryIndexSettings = replicaGlobalSecondaryIndexSettings
@@ -3888,6 +3903,7 @@ public struct ReplicaSettingsDescription: Codable, Equatable {
         self.replicaProvisionedWriteCapacityAutoScalingSettings = replicaProvisionedWriteCapacityAutoScalingSettings
         self.replicaProvisionedWriteCapacityUnits = replicaProvisionedWriteCapacityUnits
         self.replicaStatus = replicaStatus
+        self.replicaTableClassSummary = replicaTableClassSummary
     }
 
     enum CodingKeys: String, CodingKey {
@@ -3899,6 +3915,7 @@ public struct ReplicaSettingsDescription: Codable, Equatable {
         case replicaProvisionedWriteCapacityAutoScalingSettings = "ReplicaProvisionedWriteCapacityAutoScalingSettings"
         case replicaProvisionedWriteCapacityUnits = "ReplicaProvisionedWriteCapacityUnits"
         case replicaStatus = "ReplicaStatus"
+        case replicaTableClassSummary = "ReplicaTableClassSummary"
     }
 
     public func validate() throws {
@@ -3907,6 +3924,7 @@ public struct ReplicaSettingsDescription: Codable, Equatable {
         try replicaProvisionedReadCapacityUnits?.validateAsNonNegativeLongObject()
         try replicaProvisionedWriteCapacityAutoScalingSettings?.validate()
         try replicaProvisionedWriteCapacityUnits?.validateAsNonNegativeLongObject()
+        try replicaTableClassSummary?.validate()
     }
 }
 
@@ -3915,15 +3933,18 @@ public struct ReplicaSettingsUpdate: Codable, Equatable {
     public var replicaGlobalSecondaryIndexSettingsUpdate: ReplicaGlobalSecondaryIndexSettingsUpdateList?
     public var replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     public var replicaProvisionedReadCapacityUnits: PositiveLongObject?
+    public var replicaTableClass: TableClass?
 
     public init(regionName: RegionName,
                 replicaGlobalSecondaryIndexSettingsUpdate: ReplicaGlobalSecondaryIndexSettingsUpdateList? = nil,
                 replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate? = nil,
-                replicaProvisionedReadCapacityUnits: PositiveLongObject? = nil) {
+                replicaProvisionedReadCapacityUnits: PositiveLongObject? = nil,
+                replicaTableClass: TableClass? = nil) {
         self.regionName = regionName
         self.replicaGlobalSecondaryIndexSettingsUpdate = replicaGlobalSecondaryIndexSettingsUpdate
         self.replicaProvisionedReadCapacityAutoScalingSettingsUpdate = replicaProvisionedReadCapacityAutoScalingSettingsUpdate
         self.replicaProvisionedReadCapacityUnits = replicaProvisionedReadCapacityUnits
+        self.replicaTableClass = replicaTableClass
     }
 
     enum CodingKeys: String, CodingKey {
@@ -3931,6 +3952,7 @@ public struct ReplicaSettingsUpdate: Codable, Equatable {
         case replicaGlobalSecondaryIndexSettingsUpdate = "ReplicaGlobalSecondaryIndexSettingsUpdate"
         case replicaProvisionedReadCapacityAutoScalingSettingsUpdate = "ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate"
         case replicaProvisionedReadCapacityUnits = "ReplicaProvisionedReadCapacityUnits"
+        case replicaTableClass = "ReplicaTableClass"
     }
 
     public func validate() throws {
@@ -4497,6 +4519,25 @@ public struct TableAutoScalingDescription: Codable, Equatable {
     }
 }
 
+public struct TableClassSummary: Codable, Equatable {
+    public var lastUpdateDateTime: Date?
+    public var tableClass: TableClass?
+
+    public init(lastUpdateDateTime: Date? = nil,
+                tableClass: TableClass? = nil) {
+        self.lastUpdateDateTime = lastUpdateDateTime
+        self.tableClass = tableClass
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case lastUpdateDateTime = "LastUpdateDateTime"
+        case tableClass = "TableClass"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct TableDescription: Codable, Equatable {
     public var archivalSummary: ArchivalSummary?
     public var attributeDefinitions: AttributeDefinitions?
@@ -4515,6 +4556,7 @@ public struct TableDescription: Codable, Equatable {
     public var sSEDescription: SSEDescription?
     public var streamSpecification: StreamSpecification?
     public var tableArn: String?
+    public var tableClassSummary: TableClassSummary?
     public var tableId: TableId?
     public var tableName: TableName?
     public var tableSizeBytes: Long?
@@ -4537,6 +4579,7 @@ public struct TableDescription: Codable, Equatable {
                 sSEDescription: SSEDescription? = nil,
                 streamSpecification: StreamSpecification? = nil,
                 tableArn: String? = nil,
+                tableClassSummary: TableClassSummary? = nil,
                 tableId: TableId? = nil,
                 tableName: TableName? = nil,
                 tableSizeBytes: Long? = nil,
@@ -4558,6 +4601,7 @@ public struct TableDescription: Codable, Equatable {
         self.sSEDescription = sSEDescription
         self.streamSpecification = streamSpecification
         self.tableArn = tableArn
+        self.tableClassSummary = tableClassSummary
         self.tableId = tableId
         self.tableName = tableName
         self.tableSizeBytes = tableSizeBytes
@@ -4582,6 +4626,7 @@ public struct TableDescription: Codable, Equatable {
         case sSEDescription = "SSEDescription"
         case streamSpecification = "StreamSpecification"
         case tableArn = "TableArn"
+        case tableClassSummary = "TableClassSummary"
         case tableId = "TableId"
         case tableName = "TableName"
         case tableSizeBytes = "TableSizeBytes"
@@ -4597,6 +4642,7 @@ public struct TableDescription: Codable, Equatable {
         try restoreSummary?.validate()
         try sSEDescription?.validate()
         try streamSpecification?.validate()
+        try tableClassSummary?.validate()
         try tableId?.validateAsTableId()
         try tableName?.validateAsTableName()
     }
@@ -5252,15 +5298,18 @@ public struct UpdateReplicationGroupMemberAction: Codable, Equatable {
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
     public var regionName: RegionName
+    public var tableClassOverride: TableClass?
 
     public init(globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList? = nil,
                 kMSMasterKeyId: KMSMasterKeyId? = nil,
                 provisionedThroughputOverride: ProvisionedThroughputOverride? = nil,
-                regionName: RegionName) {
+                regionName: RegionName,
+                tableClassOverride: TableClass? = nil) {
         self.globalSecondaryIndexes = globalSecondaryIndexes
         self.kMSMasterKeyId = kMSMasterKeyId
         self.provisionedThroughputOverride = provisionedThroughputOverride
         self.regionName = regionName
+        self.tableClassOverride = tableClassOverride
     }
 
     enum CodingKeys: String, CodingKey {
@@ -5268,6 +5317,7 @@ public struct UpdateReplicationGroupMemberAction: Codable, Equatable {
         case kMSMasterKeyId = "KMSMasterKeyId"
         case provisionedThroughputOverride = "ProvisionedThroughputOverride"
         case regionName = "RegionName"
+        case tableClassOverride = "TableClassOverride"
     }
 
     public func validate() throws {
@@ -5284,6 +5334,7 @@ public struct UpdateTableInput: Codable, Equatable {
     public var replicaUpdates: ReplicationGroupUpdateList?
     public var sSESpecification: SSESpecification?
     public var streamSpecification: StreamSpecification?
+    public var tableClass: TableClass?
     public var tableName: TableName
 
     public init(attributeDefinitions: AttributeDefinitions? = nil,
@@ -5293,6 +5344,7 @@ public struct UpdateTableInput: Codable, Equatable {
                 replicaUpdates: ReplicationGroupUpdateList? = nil,
                 sSESpecification: SSESpecification? = nil,
                 streamSpecification: StreamSpecification? = nil,
+                tableClass: TableClass? = nil,
                 tableName: TableName) {
         self.attributeDefinitions = attributeDefinitions
         self.billingMode = billingMode
@@ -5301,6 +5353,7 @@ public struct UpdateTableInput: Codable, Equatable {
         self.replicaUpdates = replicaUpdates
         self.sSESpecification = sSESpecification
         self.streamSpecification = streamSpecification
+        self.tableClass = tableClass
         self.tableName = tableName
     }
 
@@ -5312,6 +5365,7 @@ public struct UpdateTableInput: Codable, Equatable {
         case replicaUpdates = "ReplicaUpdates"
         case sSESpecification = "SSESpecification"
         case streamSpecification = "StreamSpecification"
+        case tableClass = "TableClass"
         case tableName = "TableName"
     }
 

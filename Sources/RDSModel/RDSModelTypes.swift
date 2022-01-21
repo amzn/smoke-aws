@@ -722,6 +722,7 @@ public enum SourceType: String, Codable, CustomStringConvertible {
     case dbClusterSnapshot = "db-cluster-snapshot"
     case dbInstance = "db-instance"
     case dbParameterGroup = "db-parameter-group"
+    case dbProxy = "db-proxy"
     case dbSecurityGroup = "db-security-group"
     case dbSnapshot = "db-snapshot"
 
