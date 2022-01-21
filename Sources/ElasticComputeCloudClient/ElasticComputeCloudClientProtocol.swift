@@ -74,11 +74,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AllocateHostsAsyncType = (
             _ input: ElasticComputeCloudModel.AllocateHostsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AllocateHostsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias AllocateIpamPoolCidrSyncType = (
-            _ input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest) throws -> ElasticComputeCloudModel.AllocateIpamPoolCidrResult
-    typealias AllocateIpamPoolCidrAsyncType = (
-            _ input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.AllocateIpamPoolCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ApplySecurityGroupsToClientVpnTargetNetworkSyncType = (
             _ input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult
     typealias ApplySecurityGroupsToClientVpnTargetNetworkAsyncType = (
@@ -349,21 +344,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateInternetGatewayAsyncType = (
             _ input: ElasticComputeCloudModel.CreateInternetGatewayRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateInternetGatewayResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias CreateIpamSyncType = (
-            _ input: ElasticComputeCloudModel.CreateIpamRequest) throws -> ElasticComputeCloudModel.CreateIpamResult
-    typealias CreateIpamAsyncType = (
-            _ input: ElasticComputeCloudModel.CreateIpamRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias CreateIpamPoolSyncType = (
-            _ input: ElasticComputeCloudModel.CreateIpamPoolRequest) throws -> ElasticComputeCloudModel.CreateIpamPoolResult
-    typealias CreateIpamPoolAsyncType = (
-            _ input: ElasticComputeCloudModel.CreateIpamPoolRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamPoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias CreateIpamScopeSyncType = (
-            _ input: ElasticComputeCloudModel.CreateIpamScopeRequest) throws -> ElasticComputeCloudModel.CreateIpamScopeResult
-    typealias CreateIpamScopeAsyncType = (
-            _ input: ElasticComputeCloudModel.CreateIpamScopeRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamScopeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateKeyPairSyncType = (
             _ input: ElasticComputeCloudModel.CreateKeyPairRequest) throws -> ElasticComputeCloudModel.KeyPair
     typealias CreateKeyPairAsyncType = (
@@ -409,11 +389,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateNetworkAclEntryAsyncType = (
             _ input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
-    typealias CreateNetworkInsightsAccessScopeSyncType = (
-            _ input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult
-    typealias CreateNetworkInsightsAccessScopeAsyncType = (
-            _ input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateNetworkInsightsPathSyncType = (
             _ input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult
     typealias CreateNetworkInsightsPathAsyncType = (
@@ -434,11 +409,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreatePlacementGroupAsyncType = (
             _ input: ElasticComputeCloudModel.CreatePlacementGroupRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreatePlacementGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias CreatePublicIpv4PoolSyncType = (
-            _ input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest) throws -> ElasticComputeCloudModel.CreatePublicIpv4PoolResult
-    typealias CreatePublicIpv4PoolAsyncType = (
-            _ input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.CreatePublicIpv4PoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateReplaceRootVolumeTaskSyncType = (
             _ input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest) throws -> ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult
     typealias CreateReplaceRootVolumeTaskAsyncType = (
@@ -669,21 +639,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteInternetGatewayAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteInternetGatewayRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
-    typealias DeleteIpamSyncType = (
-            _ input: ElasticComputeCloudModel.DeleteIpamRequest) throws -> ElasticComputeCloudModel.DeleteIpamResult
-    typealias DeleteIpamAsyncType = (
-            _ input: ElasticComputeCloudModel.DeleteIpamRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DeleteIpamPoolSyncType = (
-            _ input: ElasticComputeCloudModel.DeleteIpamPoolRequest) throws -> ElasticComputeCloudModel.DeleteIpamPoolResult
-    typealias DeleteIpamPoolAsyncType = (
-            _ input: ElasticComputeCloudModel.DeleteIpamPoolRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamPoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DeleteIpamScopeSyncType = (
-            _ input: ElasticComputeCloudModel.DeleteIpamScopeRequest) throws -> ElasticComputeCloudModel.DeleteIpamScopeResult
-    typealias DeleteIpamScopeAsyncType = (
-            _ input: ElasticComputeCloudModel.DeleteIpamScopeRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamScopeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteKeyPairSyncType = (
             _ input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws -> ()
     typealias DeleteKeyPairAsyncType = (
@@ -729,16 +684,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteNetworkAclEntryAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
-    typealias DeleteNetworkInsightsAccessScopeSyncType = (
-            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult
-    typealias DeleteNetworkInsightsAccessScopeAsyncType = (
-            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DeleteNetworkInsightsAccessScopeAnalysisSyncType = (
-            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult
-    typealias DeleteNetworkInsightsAccessScopeAnalysisAsyncType = (
-            _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteNetworkInsightsAnalysisSyncType = (
             _ input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult
     typealias DeleteNetworkInsightsAnalysisAsyncType = (
@@ -764,11 +709,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeletePlacementGroupAsyncType = (
             _ input: ElasticComputeCloudModel.DeletePlacementGroupRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
-    typealias DeletePublicIpv4PoolSyncType = (
-            _ input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest) throws -> ElasticComputeCloudModel.DeletePublicIpv4PoolResult
-    typealias DeletePublicIpv4PoolAsyncType = (
-            _ input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeletePublicIpv4PoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteQueuedReservedInstancesSyncType = (
             _ input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest) throws -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult
     typealias DeleteQueuedReservedInstancesAsyncType = (
@@ -929,16 +869,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeprovisionByoipCidrAsyncType = (
             _ input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DeprovisionIpamPoolCidrSyncType = (
-            _ input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult
-    typealias DeprovisionIpamPoolCidrAsyncType = (
-            _ input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DeprovisionPublicIpv4PoolCidrSyncType = (
-            _ input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult
-    typealias DeprovisionPublicIpv4PoolCidrAsyncType = (
-            _ input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeregisterImageSyncType = (
             _ input: ElasticComputeCloudModel.DeregisterImageRequest) throws -> ()
     typealias DeregisterImageAsyncType = (
@@ -1079,11 +1009,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeExportTasksAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeExportTasksRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeExportTasksResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeFastLaunchImagesSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest) throws -> ElasticComputeCloudModel.DescribeFastLaunchImagesResult
-    typealias DescribeFastLaunchImagesAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastLaunchImagesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeFastSnapshotRestoresSyncType = (
             _ input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult
     typealias DescribeFastSnapshotRestoresAsyncType = (
@@ -1214,21 +1139,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeInternetGatewaysAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeInternetGatewaysResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeIpamPoolsSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) throws -> ElasticComputeCloudModel.DescribeIpamPoolsResult
-    typealias DescribeIpamPoolsAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeIpamPoolsRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamPoolsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeIpamScopesSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeIpamScopesRequest) throws -> ElasticComputeCloudModel.DescribeIpamScopesResult
-    typealias DescribeIpamScopesAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeIpamScopesRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamScopesResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeIpamsSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeIpamsRequest) throws -> ElasticComputeCloudModel.DescribeIpamsResult
-    typealias DescribeIpamsAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeIpamsRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeIpv6PoolsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest) throws -> ElasticComputeCloudModel.DescribeIpv6PoolsResult
     typealias DescribeIpv6PoolsAsyncType = (
@@ -1299,16 +1209,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeNetworkAclsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeNetworkAclsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkAclsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeNetworkInsightsAccessScopeAnalysesSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult
-    typealias DescribeNetworkInsightsAccessScopeAnalysesAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeNetworkInsightsAccessScopesSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult
-    typealias DescribeNetworkInsightsAccessScopesAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeNetworkInsightsAnalysesSyncType = (
             _ input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult
     typealias DescribeNetworkInsightsAnalysesAsyncType = (
@@ -1419,11 +1319,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeSnapshotAttributeAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotAttributeResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DescribeSnapshotTierStatusSyncType = (
-            _ input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotTierStatusResult
-    typealias DescribeSnapshotTierStatusAsyncType = (
-            _ input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotTierStatusResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeSnapshotsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeSnapshotsRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotsResult
     typealias DescribeSnapshotsAsyncType = (
@@ -1654,11 +1549,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisableEbsEncryptionByDefaultAsyncType = (
             _ input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DisableFastLaunchSyncType = (
-            _ input: ElasticComputeCloudModel.DisableFastLaunchRequest) throws -> ElasticComputeCloudModel.DisableFastLaunchResult
-    typealias DisableFastLaunchAsyncType = (
-            _ input: ElasticComputeCloudModel.DisableFastLaunchRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DisableFastLaunchResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisableFastSnapshotRestoresSyncType = (
             _ input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult
     typealias DisableFastSnapshotRestoresAsyncType = (
@@ -1669,11 +1559,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisableImageDeprecationAsyncType = (
             _ input: ElasticComputeCloudModel.DisableImageDeprecationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias DisableIpamOrganizationAdminAccountSyncType = (
-            _ input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest) throws -> ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult
-    typealias DisableIpamOrganizationAdminAccountAsyncType = (
-            _ input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisableSerialConsoleAccessSyncType = (
             _ input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult
     typealias DisableSerialConsoleAccessAsyncType = (
@@ -1759,11 +1644,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias EnableEbsEncryptionByDefaultAsyncType = (
             _ input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias EnableFastLaunchSyncType = (
-            _ input: ElasticComputeCloudModel.EnableFastLaunchRequest) throws -> ElasticComputeCloudModel.EnableFastLaunchResult
-    typealias EnableFastLaunchAsyncType = (
-            _ input: ElasticComputeCloudModel.EnableFastLaunchRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableFastLaunchResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias EnableFastSnapshotRestoresSyncType = (
             _ input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult
     typealias EnableFastSnapshotRestoresAsyncType = (
@@ -1774,11 +1654,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias EnableImageDeprecationAsyncType = (
             _ input: ElasticComputeCloudModel.EnableImageDeprecationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.EnableImageDeprecationResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias EnableIpamOrganizationAdminAccountSyncType = (
-            _ input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest) throws -> ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult
-    typealias EnableIpamOrganizationAdminAccountAsyncType = (
-            _ input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias EnableSerialConsoleAccessSyncType = (
             _ input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult
     typealias EnableSerialConsoleAccessAsyncType = (
@@ -1894,26 +1769,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetInstanceTypesFromInstanceRequirementsAsyncType = (
             _ input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias GetIpamAddressHistorySyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest) throws -> ElasticComputeCloudModel.GetIpamAddressHistoryResult
-    typealias GetIpamAddressHistoryAsyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamAddressHistoryResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias GetIpamPoolAllocationsSyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest) throws -> ElasticComputeCloudModel.GetIpamPoolAllocationsResult
-    typealias GetIpamPoolAllocationsAsyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamPoolAllocationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias GetIpamPoolCidrsSyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamPoolCidrsResult
-    typealias GetIpamPoolCidrsAsyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamPoolCidrsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias GetIpamResourceCidrsSyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamResourceCidrsResult
-    typealias GetIpamResourceCidrsAsyncType = (
-            _ input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamResourceCidrsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetLaunchTemplateDataSyncType = (
             _ input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult
     typealias GetLaunchTemplateDataAsyncType = (
@@ -1929,16 +1784,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetManagedPrefixListEntriesAsyncType = (
             _ input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetManagedPrefixListEntriesResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias GetNetworkInsightsAccessScopeAnalysisFindingsSyncType = (
-            _ input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest) throws -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult
-    typealias GetNetworkInsightsAccessScopeAnalysisFindingsAsyncType = (
-            _ input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias GetNetworkInsightsAccessScopeContentSyncType = (
-            _ input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest) throws -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult
-    typealias GetNetworkInsightsAccessScopeContentAsyncType = (
-            _ input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetPasswordDataSyncType = (
             _ input: ElasticComputeCloudModel.GetPasswordDataRequest) throws -> ElasticComputeCloudModel.GetPasswordDataResult
     typealias GetPasswordDataAsyncType = (
@@ -2029,11 +1874,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ImportVolumeAsyncType = (
             _ input: ElasticComputeCloudModel.ImportVolumeRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ImportVolumeResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ListSnapshotsInRecycleBinSyncType = (
-            _ input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest) throws -> ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult
-    typealias ListSnapshotsInRecycleBinAsyncType = (
-            _ input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyAddressAttributeSyncType = (
             _ input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) throws -> ElasticComputeCloudModel.ModifyAddressAttributeResult
     typealias ModifyAddressAttributeAsyncType = (
@@ -2134,26 +1974,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyInstancePlacementAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyInstancePlacementRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyInstancePlacementResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ModifyIpamSyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamRequest) throws -> ElasticComputeCloudModel.ModifyIpamResult
-    typealias ModifyIpamAsyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ModifyIpamPoolSyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamPoolRequest) throws -> ElasticComputeCloudModel.ModifyIpamPoolResult
-    typealias ModifyIpamPoolAsyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamPoolRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamPoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ModifyIpamResourceCidrSyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) throws -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult
-    typealias ModifyIpamResourceCidrAsyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResourceCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ModifyIpamScopeSyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamScopeRequest) throws -> ElasticComputeCloudModel.ModifyIpamScopeResult
-    typealias ModifyIpamScopeAsyncType = (
-            _ input: ElasticComputeCloudModel.ModifyIpamScopeRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamScopeResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyLaunchTemplateSyncType = (
             _ input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult
     typealias ModifyLaunchTemplateAsyncType = (
@@ -2189,11 +2009,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifySnapshotAttributeAsyncType = (
             _ input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
-    typealias ModifySnapshotTierSyncType = (
-            _ input: ElasticComputeCloudModel.ModifySnapshotTierRequest) throws -> ElasticComputeCloudModel.ModifySnapshotTierResult
-    typealias ModifySnapshotTierAsyncType = (
-            _ input: ElasticComputeCloudModel.ModifySnapshotTierRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifySnapshotTierResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifySpotFleetRequestSyncType = (
             _ input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse
     typealias ModifySpotFleetRequestAsyncType = (
@@ -2264,11 +2079,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyVpcEndpointServiceConfigurationAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ModifyVpcEndpointServicePayerResponsibilitySyncType = (
-            _ input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult
-    typealias ModifyVpcEndpointServicePayerResponsibilityAsyncType = (
-            _ input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyVpcEndpointServicePermissionsSyncType = (
             _ input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult
     typealias ModifyVpcEndpointServicePermissionsAsyncType = (
@@ -2314,26 +2124,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias MoveAddressToVpcAsyncType = (
             _ input: ElasticComputeCloudModel.MoveAddressToVpcRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.MoveAddressToVpcResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias MoveByoipCidrToIpamSyncType = (
-            _ input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest) throws -> ElasticComputeCloudModel.MoveByoipCidrToIpamResult
-    typealias MoveByoipCidrToIpamAsyncType = (
-            _ input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.MoveByoipCidrToIpamResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ProvisionByoipCidrSyncType = (
             _ input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult
     typealias ProvisionByoipCidrAsyncType = (
             _ input: ElasticComputeCloudModel.ProvisionByoipCidrRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ProvisionByoipCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ProvisionIpamPoolCidrSyncType = (
-            _ input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest) throws -> ElasticComputeCloudModel.ProvisionIpamPoolCidrResult
-    typealias ProvisionIpamPoolCidrAsyncType = (
-            _ input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ProvisionIpamPoolCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ProvisionPublicIpv4PoolCidrSyncType = (
-            _ input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest) throws -> ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult
-    typealias ProvisionPublicIpv4PoolCidrAsyncType = (
-            _ input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias PurchaseHostReservationSyncType = (
             _ input: ElasticComputeCloudModel.PurchaseHostReservationRequest) throws -> ElasticComputeCloudModel.PurchaseHostReservationResult
     typealias PurchaseHostReservationAsyncType = (
@@ -2409,11 +2204,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ReleaseHostsAsyncType = (
             _ input: ElasticComputeCloudModel.ReleaseHostsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ReleaseHostsResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias ReleaseIpamPoolAllocationSyncType = (
-            _ input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest) throws -> ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult
-    typealias ReleaseIpamPoolAllocationAsyncType = (
-            _ input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ReplaceIamInstanceProfileAssociationSyncType = (
             _ input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult
     typealias ReplaceIamInstanceProfileAssociationAsyncType = (
@@ -2504,16 +2294,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias RestoreManagedPrefixListVersionAsyncType = (
             _ input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias RestoreSnapshotFromRecycleBinSyncType = (
-            _ input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest) throws -> ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult
-    typealias RestoreSnapshotFromRecycleBinAsyncType = (
-            _ input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias RestoreSnapshotTierSyncType = (
-            _ input: ElasticComputeCloudModel.RestoreSnapshotTierRequest) throws -> ElasticComputeCloudModel.RestoreSnapshotTierResult
-    typealias RestoreSnapshotTierAsyncType = (
-            _ input: ElasticComputeCloudModel.RestoreSnapshotTierRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.RestoreSnapshotTierResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias RevokeClientVpnIngressSyncType = (
             _ input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult
     typealias RevokeClientVpnIngressAsyncType = (
@@ -2564,11 +2344,6 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias StartInstancesAsyncType = (
             _ input: ElasticComputeCloudModel.StartInstancesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.StartInstancesResult, ElasticComputeCloudError>) -> ()) throws -> ()
-    typealias StartNetworkInsightsAccessScopeAnalysisSyncType = (
-            _ input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult
-    typealias StartNetworkInsightsAccessScopeAnalysisAsyncType = (
-            _ input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest, 
-            _ completion: @escaping (Result<ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias StartNetworkInsightsAnalysisSyncType = (
             _ input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult
     typealias StartNetworkInsightsAnalysisAsyncType = (
@@ -2840,30 +2615,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func allocateHostsSync(
             input: ElasticComputeCloudModel.AllocateHostsRequest) throws -> ElasticComputeCloudModel.AllocateHostsResult
-
-    /**
-     Invokes the AllocateIpamPoolCidr operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated AllocateIpamPoolCidrRequest object being passed to this operation.
-         - completion: The AllocateIpamPoolCidrResult object or an error will be passed to this 
-           callback when the operation is complete. The AllocateIpamPoolCidrResult
-           object will be validated before being returned to caller.
-     */
-    func allocateIpamPoolCidrAsync(
-            input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.AllocateIpamPoolCidrResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the AllocateIpamPoolCidr operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated AllocateIpamPoolCidrRequest object being passed to this operation.
-     - Returns: The AllocateIpamPoolCidrResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func allocateIpamPoolCidrSync(
-            input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest) throws -> ElasticComputeCloudModel.AllocateIpamPoolCidrResult
 
     /**
      Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation returning immediately and passing the response to a callback.
@@ -4150,78 +3901,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest) throws -> ElasticComputeCloudModel.CreateInternetGatewayResult
 
     /**
-     Invokes the CreateIpam operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateIpamRequest object being passed to this operation.
-         - completion: The CreateIpamResult object or an error will be passed to this 
-           callback when the operation is complete. The CreateIpamResult
-           object will be validated before being returned to caller.
-     */
-    func createIpamAsync(
-            input: ElasticComputeCloudModel.CreateIpamRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the CreateIpam operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateIpamRequest object being passed to this operation.
-     - Returns: The CreateIpamResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func createIpamSync(
-            input: ElasticComputeCloudModel.CreateIpamRequest) throws -> ElasticComputeCloudModel.CreateIpamResult
-
-    /**
-     Invokes the CreateIpamPool operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateIpamPoolRequest object being passed to this operation.
-         - completion: The CreateIpamPoolResult object or an error will be passed to this 
-           callback when the operation is complete. The CreateIpamPoolResult
-           object will be validated before being returned to caller.
-     */
-    func createIpamPoolAsync(
-            input: ElasticComputeCloudModel.CreateIpamPoolRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamPoolResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the CreateIpamPool operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateIpamPoolRequest object being passed to this operation.
-     - Returns: The CreateIpamPoolResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func createIpamPoolSync(
-            input: ElasticComputeCloudModel.CreateIpamPoolRequest) throws -> ElasticComputeCloudModel.CreateIpamPoolResult
-
-    /**
-     Invokes the CreateIpamScope operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateIpamScopeRequest object being passed to this operation.
-         - completion: The CreateIpamScopeResult object or an error will be passed to this 
-           callback when the operation is complete. The CreateIpamScopeResult
-           object will be validated before being returned to caller.
-     */
-    func createIpamScopeAsync(
-            input: ElasticComputeCloudModel.CreateIpamScopeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamScopeResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the CreateIpamScope operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateIpamScopeRequest object being passed to this operation.
-     - Returns: The CreateIpamScopeResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func createIpamScopeSync(
-            input: ElasticComputeCloudModel.CreateIpamScopeRequest) throws -> ElasticComputeCloudModel.CreateIpamScopeResult
-
-    /**
      Invokes the CreateKeyPair operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4435,30 +4114,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) throws
 
     /**
-     Invokes the CreateNetworkInsightsAccessScope operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateNetworkInsightsAccessScopeRequest object being passed to this operation.
-         - completion: The CreateNetworkInsightsAccessScopeResult object or an error will be passed to this 
-           callback when the operation is complete. The CreateNetworkInsightsAccessScopeResult
-           object will be validated before being returned to caller.
-     */
-    func createNetworkInsightsAccessScopeAsync(
-            input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the CreateNetworkInsightsAccessScope operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateNetworkInsightsAccessScopeRequest object being passed to this operation.
-     - Returns: The CreateNetworkInsightsAccessScopeResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func createNetworkInsightsAccessScopeSync(
-            input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest) throws -> ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult
-
-    /**
      Invokes the CreateNetworkInsightsPath operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4553,30 +4208,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func createPlacementGroupSync(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest) throws -> ElasticComputeCloudModel.CreatePlacementGroupResult
-
-    /**
-     Invokes the CreatePublicIpv4Pool operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreatePublicIpv4PoolRequest object being passed to this operation.
-         - completion: The CreatePublicIpv4PoolResult object or an error will be passed to this 
-           callback when the operation is complete. The CreatePublicIpv4PoolResult
-           object will be validated before being returned to caller.
-     */
-    func createPublicIpv4PoolAsync(
-            input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.CreatePublicIpv4PoolResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the CreatePublicIpv4Pool operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreatePublicIpv4PoolRequest object being passed to this operation.
-     - Returns: The CreatePublicIpv4PoolResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func createPublicIpv4PoolSync(
-            input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest) throws -> ElasticComputeCloudModel.CreatePublicIpv4PoolResult
 
     /**
      Invokes the CreateReplaceRootVolumeTask operation returning immediately and passing the response to a callback.
@@ -5668,78 +5299,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) throws
 
     /**
-     Invokes the DeleteIpam operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteIpamRequest object being passed to this operation.
-         - completion: The DeleteIpamResult object or an error will be passed to this 
-           callback when the operation is complete. The DeleteIpamResult
-           object will be validated before being returned to caller.
-     */
-    func deleteIpamAsync(
-            input: ElasticComputeCloudModel.DeleteIpamRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeleteIpam operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteIpamRequest object being passed to this operation.
-     - Returns: The DeleteIpamResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deleteIpamSync(
-            input: ElasticComputeCloudModel.DeleteIpamRequest) throws -> ElasticComputeCloudModel.DeleteIpamResult
-
-    /**
-     Invokes the DeleteIpamPool operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteIpamPoolRequest object being passed to this operation.
-         - completion: The DeleteIpamPoolResult object or an error will be passed to this 
-           callback when the operation is complete. The DeleteIpamPoolResult
-           object will be validated before being returned to caller.
-     */
-    func deleteIpamPoolAsync(
-            input: ElasticComputeCloudModel.DeleteIpamPoolRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamPoolResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeleteIpamPool operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteIpamPoolRequest object being passed to this operation.
-     - Returns: The DeleteIpamPoolResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deleteIpamPoolSync(
-            input: ElasticComputeCloudModel.DeleteIpamPoolRequest) throws -> ElasticComputeCloudModel.DeleteIpamPoolResult
-
-    /**
-     Invokes the DeleteIpamScope operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteIpamScopeRequest object being passed to this operation.
-         - completion: The DeleteIpamScopeResult object or an error will be passed to this 
-           callback when the operation is complete. The DeleteIpamScopeResult
-           object will be validated before being returned to caller.
-     */
-    func deleteIpamScopeAsync(
-            input: ElasticComputeCloudModel.DeleteIpamScopeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamScopeResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeleteIpamScope operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteIpamScopeRequest object being passed to this operation.
-     - Returns: The DeleteIpamScopeResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deleteIpamScopeSync(
-            input: ElasticComputeCloudModel.DeleteIpamScopeRequest) throws -> ElasticComputeCloudModel.DeleteIpamScopeResult
-
-    /**
      Invokes the DeleteKeyPair operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5947,54 +5506,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) throws
 
     /**
-     Invokes the DeleteNetworkInsightsAccessScope operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteNetworkInsightsAccessScopeRequest object being passed to this operation.
-         - completion: The DeleteNetworkInsightsAccessScopeResult object or an error will be passed to this 
-           callback when the operation is complete. The DeleteNetworkInsightsAccessScopeResult
-           object will be validated before being returned to caller.
-     */
-    func deleteNetworkInsightsAccessScopeAsync(
-            input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeleteNetworkInsightsAccessScope operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteNetworkInsightsAccessScopeRequest object being passed to this operation.
-     - Returns: The DeleteNetworkInsightsAccessScopeResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deleteNetworkInsightsAccessScopeSync(
-            input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult
-
-    /**
-     Invokes the DeleteNetworkInsightsAccessScopeAnalysis operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteNetworkInsightsAccessScopeAnalysisRequest object being passed to this operation.
-         - completion: The DeleteNetworkInsightsAccessScopeAnalysisResult object or an error will be passed to this 
-           callback when the operation is complete. The DeleteNetworkInsightsAccessScopeAnalysisResult
-           object will be validated before being returned to caller.
-     */
-    func deleteNetworkInsightsAccessScopeAnalysisAsync(
-            input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeleteNetworkInsightsAccessScopeAnalysis operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteNetworkInsightsAccessScopeAnalysisRequest object being passed to this operation.
-     - Returns: The DeleteNetworkInsightsAccessScopeAnalysisResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deleteNetworkInsightsAccessScopeAnalysisSync(
-            input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest) throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult
-
-    /**
      Invokes the DeleteNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6107,30 +5618,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func deletePlacementGroupSync(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest) throws
-
-    /**
-     Invokes the DeletePublicIpv4Pool operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeletePublicIpv4PoolRequest object being passed to this operation.
-         - completion: The DeletePublicIpv4PoolResult object or an error will be passed to this 
-           callback when the operation is complete. The DeletePublicIpv4PoolResult
-           object will be validated before being returned to caller.
-     */
-    func deletePublicIpv4PoolAsync(
-            input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeletePublicIpv4PoolResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeletePublicIpv4Pool operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeletePublicIpv4PoolRequest object being passed to this operation.
-     - Returns: The DeletePublicIpv4PoolResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deletePublicIpv4PoolSync(
-            input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest) throws -> ElasticComputeCloudModel.DeletePublicIpv4PoolResult
 
     /**
      Invokes the DeleteQueuedReservedInstances operation returning immediately and passing the response to a callback.
@@ -6865,54 +6352,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult
 
     /**
-     Invokes the DeprovisionIpamPoolCidr operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeprovisionIpamPoolCidrRequest object being passed to this operation.
-         - completion: The DeprovisionIpamPoolCidrResult object or an error will be passed to this 
-           callback when the operation is complete. The DeprovisionIpamPoolCidrResult
-           object will be validated before being returned to caller.
-     */
-    func deprovisionIpamPoolCidrAsync(
-            input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeprovisionIpamPoolCidr operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeprovisionIpamPoolCidrRequest object being passed to this operation.
-     - Returns: The DeprovisionIpamPoolCidrResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deprovisionIpamPoolCidrSync(
-            input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult
-
-    /**
-     Invokes the DeprovisionPublicIpv4PoolCidr operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeprovisionPublicIpv4PoolCidrRequest object being passed to this operation.
-         - completion: The DeprovisionPublicIpv4PoolCidrResult object or an error will be passed to this 
-           callback when the operation is complete. The DeprovisionPublicIpv4PoolCidrResult
-           object will be validated before being returned to caller.
-     */
-    func deprovisionPublicIpv4PoolCidrAsync(
-            input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DeprovisionPublicIpv4PoolCidr operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeprovisionPublicIpv4PoolCidrRequest object being passed to this operation.
-     - Returns: The DeprovisionPublicIpv4PoolCidrResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func deprovisionPublicIpv4PoolCidrSync(
-            input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest) throws -> ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult
-
-    /**
      Invokes the DeregisterImage operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7582,30 +7021,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeExportTasksRequest) throws -> ElasticComputeCloudModel.DescribeExportTasksResult
 
     /**
-     Invokes the DescribeFastLaunchImages operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeFastLaunchImagesRequest object being passed to this operation.
-         - completion: The DescribeFastLaunchImagesResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeFastLaunchImagesResult
-           object will be validated before being returned to caller.
-     */
-    func describeFastLaunchImagesAsync(
-            input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeFastLaunchImagesResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeFastLaunchImages operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeFastLaunchImagesRequest object being passed to this operation.
-     - Returns: The DescribeFastLaunchImagesResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeFastLaunchImagesSync(
-            input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest) throws -> ElasticComputeCloudModel.DescribeFastLaunchImagesResult
-
-    /**
      Invokes the DescribeFastSnapshotRestores operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8230,78 +7645,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest) throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult
 
     /**
-     Invokes the DescribeIpamPools operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeIpamPoolsRequest object being passed to this operation.
-         - completion: The DescribeIpamPoolsResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeIpamPoolsResult
-           object will be validated before being returned to caller.
-     */
-    func describeIpamPoolsAsync(
-            input: ElasticComputeCloudModel.DescribeIpamPoolsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamPoolsResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeIpamPools operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeIpamPoolsRequest object being passed to this operation.
-     - Returns: The DescribeIpamPoolsResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeIpamPoolsSync(
-            input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) throws -> ElasticComputeCloudModel.DescribeIpamPoolsResult
-
-    /**
-     Invokes the DescribeIpamScopes operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeIpamScopesRequest object being passed to this operation.
-         - completion: The DescribeIpamScopesResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeIpamScopesResult
-           object will be validated before being returned to caller.
-     */
-    func describeIpamScopesAsync(
-            input: ElasticComputeCloudModel.DescribeIpamScopesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamScopesResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeIpamScopes operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeIpamScopesRequest object being passed to this operation.
-     - Returns: The DescribeIpamScopesResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeIpamScopesSync(
-            input: ElasticComputeCloudModel.DescribeIpamScopesRequest) throws -> ElasticComputeCloudModel.DescribeIpamScopesResult
-
-    /**
-     Invokes the DescribeIpams operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeIpamsRequest object being passed to this operation.
-         - completion: The DescribeIpamsResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeIpamsResult
-           object will be validated before being returned to caller.
-     */
-    func describeIpamsAsync(
-            input: ElasticComputeCloudModel.DescribeIpamsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamsResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeIpams operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeIpamsRequest object being passed to this operation.
-     - Returns: The DescribeIpamsResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeIpamsSync(
-            input: ElasticComputeCloudModel.DescribeIpamsRequest) throws -> ElasticComputeCloudModel.DescribeIpamsResult
-
-    /**
      Invokes the DescribeIpv6Pools operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -8636,54 +7979,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeNetworkAclsSync(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult
-
-    /**
-     Invokes the DescribeNetworkInsightsAccessScopeAnalyses operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeNetworkInsightsAccessScopeAnalysesRequest object being passed to this operation.
-         - completion: The DescribeNetworkInsightsAccessScopeAnalysesResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeNetworkInsightsAccessScopeAnalysesResult
-           object will be validated before being returned to caller.
-     */
-    func describeNetworkInsightsAccessScopeAnalysesAsync(
-            input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeNetworkInsightsAccessScopeAnalyses operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeNetworkInsightsAccessScopeAnalysesRequest object being passed to this operation.
-     - Returns: The DescribeNetworkInsightsAccessScopeAnalysesResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeNetworkInsightsAccessScopeAnalysesSync(
-            input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult
-
-    /**
-     Invokes the DescribeNetworkInsightsAccessScopes operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeNetworkInsightsAccessScopesRequest object being passed to this operation.
-         - completion: The DescribeNetworkInsightsAccessScopesResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeNetworkInsightsAccessScopesResult
-           object will be validated before being returned to caller.
-     */
-    func describeNetworkInsightsAccessScopesAsync(
-            input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeNetworkInsightsAccessScopes operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeNetworkInsightsAccessScopesRequest object being passed to this operation.
-     - Returns: The DescribeNetworkInsightsAccessScopesResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeNetworkInsightsAccessScopesSync(
-            input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest) throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult
 
     /**
      Invokes the DescribeNetworkInsightsAnalyses operation returning immediately and passing the response to a callback.
@@ -9212,30 +8507,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeSnapshotAttributeSync(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult
-
-    /**
-     Invokes the DescribeSnapshotTierStatus operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeSnapshotTierStatusRequest object being passed to this operation.
-         - completion: The DescribeSnapshotTierStatusResult object or an error will be passed to this 
-           callback when the operation is complete. The DescribeSnapshotTierStatusResult
-           object will be validated before being returned to caller.
-     */
-    func describeSnapshotTierStatusAsync(
-            input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DescribeSnapshotTierStatusResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DescribeSnapshotTierStatus operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeSnapshotTierStatusRequest object being passed to this operation.
-     - Returns: The DescribeSnapshotTierStatusResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func describeSnapshotTierStatusSync(
-            input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest) throws -> ElasticComputeCloudModel.DescribeSnapshotTierStatusResult
 
     /**
      Invokes the DescribeSnapshots operation returning immediately and passing the response to a callback.
@@ -10333,30 +9604,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult
 
     /**
-     Invokes the DisableFastLaunch operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DisableFastLaunchRequest object being passed to this operation.
-         - completion: The DisableFastLaunchResult object or an error will be passed to this 
-           callback when the operation is complete. The DisableFastLaunchResult
-           object will be validated before being returned to caller.
-     */
-    func disableFastLaunchAsync(
-            input: ElasticComputeCloudModel.DisableFastLaunchRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableFastLaunchResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DisableFastLaunch operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DisableFastLaunchRequest object being passed to this operation.
-     - Returns: The DisableFastLaunchResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func disableFastLaunchSync(
-            input: ElasticComputeCloudModel.DisableFastLaunchRequest) throws -> ElasticComputeCloudModel.DisableFastLaunchResult
-
-    /**
      Invokes the DisableFastSnapshotRestores operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10403,30 +9650,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func disableImageDeprecationSync(
             input: ElasticComputeCloudModel.DisableImageDeprecationRequest) throws -> ElasticComputeCloudModel.DisableImageDeprecationResult
-
-    /**
-     Invokes the DisableIpamOrganizationAdminAccount operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DisableIpamOrganizationAdminAccountRequest object being passed to this operation.
-         - completion: The DisableIpamOrganizationAdminAccountResult object or an error will be passed to this 
-           callback when the operation is complete. The DisableIpamOrganizationAdminAccountResult
-           object will be validated before being returned to caller.
-     */
-    func disableIpamOrganizationAdminAccountAsync(
-            input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the DisableIpamOrganizationAdminAccount operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DisableIpamOrganizationAdminAccountRequest object being passed to this operation.
-     - Returns: The DisableIpamOrganizationAdminAccountResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func disableIpamOrganizationAdminAccountSync(
-            input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest) throws -> ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult
 
     /**
      Invokes the DisableSerialConsoleAccess operation returning immediately and passing the response to a callback.
@@ -10828,30 +10051,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult
 
     /**
-     Invokes the EnableFastLaunch operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated EnableFastLaunchRequest object being passed to this operation.
-         - completion: The EnableFastLaunchResult object or an error will be passed to this 
-           callback when the operation is complete. The EnableFastLaunchResult
-           object will be validated before being returned to caller.
-     */
-    func enableFastLaunchAsync(
-            input: ElasticComputeCloudModel.EnableFastLaunchRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableFastLaunchResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the EnableFastLaunch operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated EnableFastLaunchRequest object being passed to this operation.
-     - Returns: The EnableFastLaunchResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func enableFastLaunchSync(
-            input: ElasticComputeCloudModel.EnableFastLaunchRequest) throws -> ElasticComputeCloudModel.EnableFastLaunchResult
-
-    /**
      Invokes the EnableFastSnapshotRestores operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10898,30 +10097,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func enableImageDeprecationSync(
             input: ElasticComputeCloudModel.EnableImageDeprecationRequest) throws -> ElasticComputeCloudModel.EnableImageDeprecationResult
-
-    /**
-     Invokes the EnableIpamOrganizationAdminAccount operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated EnableIpamOrganizationAdminAccountRequest object being passed to this operation.
-         - completion: The EnableIpamOrganizationAdminAccountResult object or an error will be passed to this 
-           callback when the operation is complete. The EnableIpamOrganizationAdminAccountResult
-           object will be validated before being returned to caller.
-     */
-    func enableIpamOrganizationAdminAccountAsync(
-            input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the EnableIpamOrganizationAdminAccount operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated EnableIpamOrganizationAdminAccountRequest object being passed to this operation.
-     - Returns: The EnableIpamOrganizationAdminAccountResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func enableIpamOrganizationAdminAccountSync(
-            input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest) throws -> ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult
 
     /**
      Invokes the EnableSerialConsoleAccess operation returning immediately and passing the response to a callback.
@@ -11470,102 +10645,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult
 
     /**
-     Invokes the GetIpamAddressHistory operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated GetIpamAddressHistoryRequest object being passed to this operation.
-         - completion: The GetIpamAddressHistoryResult object or an error will be passed to this 
-           callback when the operation is complete. The GetIpamAddressHistoryResult
-           object will be validated before being returned to caller.
-     */
-    func getIpamAddressHistoryAsync(
-            input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamAddressHistoryResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the GetIpamAddressHistory operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated GetIpamAddressHistoryRequest object being passed to this operation.
-     - Returns: The GetIpamAddressHistoryResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func getIpamAddressHistorySync(
-            input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest) throws -> ElasticComputeCloudModel.GetIpamAddressHistoryResult
-
-    /**
-     Invokes the GetIpamPoolAllocations operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated GetIpamPoolAllocationsRequest object being passed to this operation.
-         - completion: The GetIpamPoolAllocationsResult object or an error will be passed to this 
-           callback when the operation is complete. The GetIpamPoolAllocationsResult
-           object will be validated before being returned to caller.
-     */
-    func getIpamPoolAllocationsAsync(
-            input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamPoolAllocationsResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the GetIpamPoolAllocations operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated GetIpamPoolAllocationsRequest object being passed to this operation.
-     - Returns: The GetIpamPoolAllocationsResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func getIpamPoolAllocationsSync(
-            input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest) throws -> ElasticComputeCloudModel.GetIpamPoolAllocationsResult
-
-    /**
-     Invokes the GetIpamPoolCidrs operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated GetIpamPoolCidrsRequest object being passed to this operation.
-         - completion: The GetIpamPoolCidrsResult object or an error will be passed to this 
-           callback when the operation is complete. The GetIpamPoolCidrsResult
-           object will be validated before being returned to caller.
-     */
-    func getIpamPoolCidrsAsync(
-            input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamPoolCidrsResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the GetIpamPoolCidrs operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated GetIpamPoolCidrsRequest object being passed to this operation.
-     - Returns: The GetIpamPoolCidrsResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func getIpamPoolCidrsSync(
-            input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamPoolCidrsResult
-
-    /**
-     Invokes the GetIpamResourceCidrs operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated GetIpamResourceCidrsRequest object being passed to this operation.
-         - completion: The GetIpamResourceCidrsResult object or an error will be passed to this 
-           callback when the operation is complete. The GetIpamResourceCidrsResult
-           object will be validated before being returned to caller.
-     */
-    func getIpamResourceCidrsAsync(
-            input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamResourceCidrsResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the GetIpamResourceCidrs operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated GetIpamResourceCidrsRequest object being passed to this operation.
-     - Returns: The GetIpamResourceCidrsResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func getIpamResourceCidrsSync(
-            input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamResourceCidrsResult
-
-    /**
      Invokes the GetLaunchTemplateData operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11636,54 +10715,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getManagedPrefixListEntriesSync(
             input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) throws -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult
-
-    /**
-     Invokes the GetNetworkInsightsAccessScopeAnalysisFindings operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated GetNetworkInsightsAccessScopeAnalysisFindingsRequest object being passed to this operation.
-         - completion: The GetNetworkInsightsAccessScopeAnalysisFindingsResult object or an error will be passed to this 
-           callback when the operation is complete. The GetNetworkInsightsAccessScopeAnalysisFindingsResult
-           object will be validated before being returned to caller.
-     */
-    func getNetworkInsightsAccessScopeAnalysisFindingsAsync(
-            input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the GetNetworkInsightsAccessScopeAnalysisFindings operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated GetNetworkInsightsAccessScopeAnalysisFindingsRequest object being passed to this operation.
-     - Returns: The GetNetworkInsightsAccessScopeAnalysisFindingsResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func getNetworkInsightsAccessScopeAnalysisFindingsSync(
-            input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest) throws -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult
-
-    /**
-     Invokes the GetNetworkInsightsAccessScopeContent operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated GetNetworkInsightsAccessScopeContentRequest object being passed to this operation.
-         - completion: The GetNetworkInsightsAccessScopeContentResult object or an error will be passed to this 
-           callback when the operation is complete. The GetNetworkInsightsAccessScopeContentResult
-           object will be validated before being returned to caller.
-     */
-    func getNetworkInsightsAccessScopeContentAsync(
-            input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the GetNetworkInsightsAccessScopeContent operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated GetNetworkInsightsAccessScopeContentRequest object being passed to this operation.
-     - Returns: The GetNetworkInsightsAccessScopeContentResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func getNetworkInsightsAccessScopeContentSync(
-            input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest) throws -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult
 
     /**
      Invokes the GetPasswordData operation returning immediately and passing the response to a callback.
@@ -12116,30 +11147,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func importVolumeSync(
             input: ElasticComputeCloudModel.ImportVolumeRequest) throws -> ElasticComputeCloudModel.ImportVolumeResult
-
-    /**
-     Invokes the ListSnapshotsInRecycleBin operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ListSnapshotsInRecycleBinRequest object being passed to this operation.
-         - completion: The ListSnapshotsInRecycleBinResult object or an error will be passed to this 
-           callback when the operation is complete. The ListSnapshotsInRecycleBinResult
-           object will be validated before being returned to caller.
-     */
-    func listSnapshotsInRecycleBinAsync(
-            input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ListSnapshotsInRecycleBin operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ListSnapshotsInRecycleBinRequest object being passed to this operation.
-     - Returns: The ListSnapshotsInRecycleBinResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func listSnapshotsInRecycleBinSync(
-            input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest) throws -> ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult
 
     /**
      Invokes the ModifyAddressAttribute operation returning immediately and passing the response to a callback.
@@ -12610,102 +11617,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult
 
     /**
-     Invokes the ModifyIpam operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ModifyIpamRequest object being passed to this operation.
-         - completion: The ModifyIpamResult object or an error will be passed to this 
-           callback when the operation is complete. The ModifyIpamResult
-           object will be validated before being returned to caller.
-     */
-    func modifyIpamAsync(
-            input: ElasticComputeCloudModel.ModifyIpamRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ModifyIpam operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ModifyIpamRequest object being passed to this operation.
-     - Returns: The ModifyIpamResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func modifyIpamSync(
-            input: ElasticComputeCloudModel.ModifyIpamRequest) throws -> ElasticComputeCloudModel.ModifyIpamResult
-
-    /**
-     Invokes the ModifyIpamPool operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ModifyIpamPoolRequest object being passed to this operation.
-         - completion: The ModifyIpamPoolResult object or an error will be passed to this 
-           callback when the operation is complete. The ModifyIpamPoolResult
-           object will be validated before being returned to caller.
-     */
-    func modifyIpamPoolAsync(
-            input: ElasticComputeCloudModel.ModifyIpamPoolRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamPoolResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ModifyIpamPool operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ModifyIpamPoolRequest object being passed to this operation.
-     - Returns: The ModifyIpamPoolResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func modifyIpamPoolSync(
-            input: ElasticComputeCloudModel.ModifyIpamPoolRequest) throws -> ElasticComputeCloudModel.ModifyIpamPoolResult
-
-    /**
-     Invokes the ModifyIpamResourceCidr operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ModifyIpamResourceCidrRequest object being passed to this operation.
-         - completion: The ModifyIpamResourceCidrResult object or an error will be passed to this 
-           callback when the operation is complete. The ModifyIpamResourceCidrResult
-           object will be validated before being returned to caller.
-     */
-    func modifyIpamResourceCidrAsync(
-            input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResourceCidrResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ModifyIpamResourceCidr operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ModifyIpamResourceCidrRequest object being passed to this operation.
-     - Returns: The ModifyIpamResourceCidrResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func modifyIpamResourceCidrSync(
-            input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) throws -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult
-
-    /**
-     Invokes the ModifyIpamScope operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ModifyIpamScopeRequest object being passed to this operation.
-         - completion: The ModifyIpamScopeResult object or an error will be passed to this 
-           callback when the operation is complete. The ModifyIpamScopeResult
-           object will be validated before being returned to caller.
-     */
-    func modifyIpamScopeAsync(
-            input: ElasticComputeCloudModel.ModifyIpamScopeRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamScopeResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ModifyIpamScope operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ModifyIpamScopeRequest object being passed to this operation.
-     - Returns: The ModifyIpamScopeResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func modifyIpamScopeSync(
-            input: ElasticComputeCloudModel.ModifyIpamScopeRequest) throws -> ElasticComputeCloudModel.ModifyIpamScopeResult
-
-    /**
      Invokes the ModifyLaunchTemplate operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12866,30 +11777,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifySnapshotAttributeSync(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) throws
-
-    /**
-     Invokes the ModifySnapshotTier operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ModifySnapshotTierRequest object being passed to this operation.
-         - completion: The ModifySnapshotTierResult object or an error will be passed to this 
-           callback when the operation is complete. The ModifySnapshotTierResult
-           object will be validated before being returned to caller.
-     */
-    func modifySnapshotTierAsync(
-            input: ElasticComputeCloudModel.ModifySnapshotTierRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifySnapshotTierResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ModifySnapshotTier operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ModifySnapshotTierRequest object being passed to this operation.
-     - Returns: The ModifySnapshotTierResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func modifySnapshotTierSync(
-            input: ElasticComputeCloudModel.ModifySnapshotTierRequest) throws -> ElasticComputeCloudModel.ModifySnapshotTierResult
 
     /**
      Invokes the ModifySpotFleetRequest operation returning immediately and passing the response to a callback.
@@ -13219,30 +12106,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult
 
     /**
-     Invokes the ModifyVpcEndpointServicePayerResponsibility operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ModifyVpcEndpointServicePayerResponsibilityRequest object being passed to this operation.
-         - completion: The ModifyVpcEndpointServicePayerResponsibilityResult object or an error will be passed to this 
-           callback when the operation is complete. The ModifyVpcEndpointServicePayerResponsibilityResult
-           object will be validated before being returned to caller.
-     */
-    func modifyVpcEndpointServicePayerResponsibilityAsync(
-            input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ModifyVpcEndpointServicePayerResponsibility operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ModifyVpcEndpointServicePayerResponsibilityRequest object being passed to this operation.
-     - Returns: The ModifyVpcEndpointServicePayerResponsibilityResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func modifyVpcEndpointServicePayerResponsibilitySync(
-            input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest) throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult
-
-    /**
      Invokes the ModifyVpcEndpointServicePermissions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13459,30 +12322,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest) throws -> ElasticComputeCloudModel.MoveAddressToVpcResult
 
     /**
-     Invokes the MoveByoipCidrToIpam operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated MoveByoipCidrToIpamRequest object being passed to this operation.
-         - completion: The MoveByoipCidrToIpamResult object or an error will be passed to this 
-           callback when the operation is complete. The MoveByoipCidrToIpamResult
-           object will be validated before being returned to caller.
-     */
-    func moveByoipCidrToIpamAsync(
-            input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.MoveByoipCidrToIpamResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the MoveByoipCidrToIpam operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated MoveByoipCidrToIpamRequest object being passed to this operation.
-     - Returns: The MoveByoipCidrToIpamResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func moveByoipCidrToIpamSync(
-            input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest) throws -> ElasticComputeCloudModel.MoveByoipCidrToIpamResult
-
-    /**
      Invokes the ProvisionByoipCidr operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13505,54 +12344,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func provisionByoipCidrSync(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult
-
-    /**
-     Invokes the ProvisionIpamPoolCidr operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ProvisionIpamPoolCidrRequest object being passed to this operation.
-         - completion: The ProvisionIpamPoolCidrResult object or an error will be passed to this 
-           callback when the operation is complete. The ProvisionIpamPoolCidrResult
-           object will be validated before being returned to caller.
-     */
-    func provisionIpamPoolCidrAsync(
-            input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionIpamPoolCidrResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ProvisionIpamPoolCidr operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ProvisionIpamPoolCidrRequest object being passed to this operation.
-     - Returns: The ProvisionIpamPoolCidrResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func provisionIpamPoolCidrSync(
-            input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest) throws -> ElasticComputeCloudModel.ProvisionIpamPoolCidrResult
-
-    /**
-     Invokes the ProvisionPublicIpv4PoolCidr operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ProvisionPublicIpv4PoolCidrRequest object being passed to this operation.
-         - completion: The ProvisionPublicIpv4PoolCidrResult object or an error will be passed to this 
-           callback when the operation is complete. The ProvisionPublicIpv4PoolCidrResult
-           object will be validated before being returned to caller.
-     */
-    func provisionPublicIpv4PoolCidrAsync(
-            input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ProvisionPublicIpv4PoolCidr operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ProvisionPublicIpv4PoolCidrRequest object being passed to this operation.
-     - Returns: The ProvisionPublicIpv4PoolCidrResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func provisionPublicIpv4PoolCidrSync(
-            input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest) throws -> ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult
 
     /**
      Invokes the PurchaseHostReservation operation returning immediately and passing the response to a callback.
@@ -13907,30 +12698,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func releaseHostsSync(
             input: ElasticComputeCloudModel.ReleaseHostsRequest) throws -> ElasticComputeCloudModel.ReleaseHostsResult
-
-    /**
-     Invokes the ReleaseIpamPoolAllocation operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ReleaseIpamPoolAllocationRequest object being passed to this operation.
-         - completion: The ReleaseIpamPoolAllocationResult object or an error will be passed to this 
-           callback when the operation is complete. The ReleaseIpamPoolAllocationResult
-           object will be validated before being returned to caller.
-     */
-    func releaseIpamPoolAllocationAsync(
-            input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the ReleaseIpamPoolAllocation operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ReleaseIpamPoolAllocationRequest object being passed to this operation.
-     - Returns: The ReleaseIpamPoolAllocationResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func releaseIpamPoolAllocationSync(
-            input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest) throws -> ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult
 
     /**
      Invokes the ReplaceIamInstanceProfileAssociation operation returning immediately and passing the response to a callback.
@@ -14344,54 +13111,6 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) throws -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult
 
     /**
-     Invokes the RestoreSnapshotFromRecycleBin operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated RestoreSnapshotFromRecycleBinRequest object being passed to this operation.
-         - completion: The RestoreSnapshotFromRecycleBinResult object or an error will be passed to this 
-           callback when the operation is complete. The RestoreSnapshotFromRecycleBinResult
-           object will be validated before being returned to caller.
-     */
-    func restoreSnapshotFromRecycleBinAsync(
-            input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the RestoreSnapshotFromRecycleBin operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated RestoreSnapshotFromRecycleBinRequest object being passed to this operation.
-     - Returns: The RestoreSnapshotFromRecycleBinResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func restoreSnapshotFromRecycleBinSync(
-            input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest) throws -> ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult
-
-    /**
-     Invokes the RestoreSnapshotTier operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated RestoreSnapshotTierRequest object being passed to this operation.
-         - completion: The RestoreSnapshotTierResult object or an error will be passed to this 
-           callback when the operation is complete. The RestoreSnapshotTierResult
-           object will be validated before being returned to caller.
-     */
-    func restoreSnapshotTierAsync(
-            input: ElasticComputeCloudModel.RestoreSnapshotTierRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.RestoreSnapshotTierResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the RestoreSnapshotTier operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated RestoreSnapshotTierRequest object being passed to this operation.
-     - Returns: The RestoreSnapshotTierResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func restoreSnapshotTierSync(
-            input: ElasticComputeCloudModel.RestoreSnapshotTierRequest) throws -> ElasticComputeCloudModel.RestoreSnapshotTierResult
-
-    /**
      Invokes the RevokeClientVpnIngress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -14627,30 +13346,6 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func startInstancesSync(
             input: ElasticComputeCloudModel.StartInstancesRequest) throws -> ElasticComputeCloudModel.StartInstancesResult
-
-    /**
-     Invokes the StartNetworkInsightsAccessScopeAnalysis operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated StartNetworkInsightsAccessScopeAnalysisRequest object being passed to this operation.
-         - completion: The StartNetworkInsightsAccessScopeAnalysisResult object or an error will be passed to this 
-           callback when the operation is complete. The StartNetworkInsightsAccessScopeAnalysisResult
-           object will be validated before being returned to caller.
-     */
-    func startNetworkInsightsAccessScopeAnalysisAsync(
-            input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest, 
-            completion: @escaping (Result<ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult, ElasticComputeCloudError>) -> ()) throws
-
-    /**
-     Invokes the StartNetworkInsightsAccessScopeAnalysis operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated StartNetworkInsightsAccessScopeAnalysisRequest object being passed to this operation.
-     - Returns: The StartNetworkInsightsAccessScopeAnalysisResult object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     */
-    func startNetworkInsightsAccessScopeAnalysisSync(
-            input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest) throws -> ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult
 
     /**
      Invokes the StartNetworkInsightsAnalysis operation returning immediately and passing the response to a callback.
