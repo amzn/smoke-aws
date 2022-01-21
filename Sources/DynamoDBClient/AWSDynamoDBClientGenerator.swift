@@ -94,16 +94,6 @@ public struct AWSDynamoDBClientGenerator {
     public func close() throws {
         try self.httpClient.close()
     }
-
-    /**
-     Gracefully shuts down this client. This function is idempotent and
-     will handle being called multiple times. Will return when shutdown is complete.
-     */
-    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
-    public func shutdown() async throws {
-        try await self.httpClient.shutdown()
-    }
-    #endif
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
             reporting: NewInvocationReportingType) -> AWSDynamoDBClient<NewInvocationReportingType> {

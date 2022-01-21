@@ -142,19 +142,6 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     }
 
     /**
-     Gracefully shuts down this client. This function is idempotent and
-     will handle being called multiple times. Will return when shutdown is complete.
-     */
-    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
-    public func shutdown() async throws {
-        if self.ownsHttpClients {
-            try await self.httpClient.shutdown()
-            try await self.dataHttpClient.shutdown()
-        }
-    }
-    #endif
-
-    /**
      Invokes the AbortMultipartUpload operation returning immediately and passing the response to a callback.
 
      - Parameters:
