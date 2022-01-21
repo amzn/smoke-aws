@@ -100,8 +100,8 @@ public struct AWSS3ClientGenerator {
     // renamed `syncShutdown` to make it clearer this version of shutdown will block.
     @available(*, deprecated, renamed: "syncShutdown")
     public func close() throws {
-        try self.httpClient.close()
-        try self.dataHttpClient.close()
+        try self.httpClient.syncShutdown()
+        try self.dataHttpClient.syncShutdown()
     }
 
     /**

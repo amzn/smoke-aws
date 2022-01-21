@@ -169,8 +169,8 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     @available(*, deprecated, renamed: "syncShutdown")
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
-            try self.listHttpClient.close()
+            try self.httpClient.syncShutdown()
+            try self.listHttpClient.syncShutdown()
         }
     }
 

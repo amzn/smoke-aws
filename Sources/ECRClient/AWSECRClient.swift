@@ -132,7 +132,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     @available(*, deprecated, renamed: "syncShutdown")
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
+            try self.httpClient.syncShutdown()
         }
     }
 

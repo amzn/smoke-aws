@@ -114,8 +114,8 @@ public struct AWSSimpleQueueClientGenerator {
     // renamed `syncShutdown` to make it clearer this version of shutdown will block.
     @available(*, deprecated, renamed: "syncShutdown")
     public func close() throws {
-        try self.httpClient.close()
-        try self.listHttpClient.close()
+        try self.httpClient.syncShutdown()
+        try self.listHttpClient.syncShutdown()
     }
 
     /**
