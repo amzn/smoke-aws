@@ -141,17 +141,9 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      Gracefully shuts down this client. This function is idempotent and
      will handle being called multiple times. Will block until shutdown is complete.
      */
-    public func syncShutdown() throws {
-        if self.ownsHttpClients {
-            try self.httpClient.syncShutdown()
-        }
-    }
-
-    // renamed `syncShutdown` to make it clearer this version of shutdown will block.
-    @available(*, deprecated, renamed: "syncShutdown")
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.syncShutdown()
+            try self.httpClient.close()
         }
     }
 
