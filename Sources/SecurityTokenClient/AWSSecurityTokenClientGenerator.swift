@@ -84,7 +84,7 @@ public struct AWSSecurityTokenClientGenerator {
      will handle being called multiple times. Will block until shutdown is complete.
      */
     public func close() throws {
-        try self.httpClient.close()
+        try httpClient.close()
     }
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(

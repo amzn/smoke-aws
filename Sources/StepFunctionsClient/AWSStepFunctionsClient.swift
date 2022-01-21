@@ -143,7 +143,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
+            try httpClient.close()
         }
     }
 

@@ -93,8 +93,8 @@ public struct AWSS3ClientGenerator {
      will handle being called multiple times. Will block until shutdown is complete.
      */
     public func close() throws {
-        try self.httpClient.close()
-        try self.dataHttpClient.close()
+        try httpClient.close()
+        try dataHttpClient.close()
     }
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(

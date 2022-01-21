@@ -107,8 +107,8 @@ public struct AWSSimpleQueueClientGenerator {
      will handle being called multiple times. Will block until shutdown is complete.
      */
     public func close() throws {
-        try self.httpClient.close()
-        try self.listHttpClient.close()
+        try httpClient.close()
+        try listHttpClient.close()
     }
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(

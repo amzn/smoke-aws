@@ -160,8 +160,8 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
-            try self.listHttpClient.close()
+            try httpClient.close()
+            try listHttpClient.close()
         }
     }
 

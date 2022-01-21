@@ -146,7 +146,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
+            try httpClient.close()
         }
     }
 

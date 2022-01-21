@@ -124,7 +124,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
+            try httpClient.close()
         }
     }
 

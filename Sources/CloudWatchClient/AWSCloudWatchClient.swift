@@ -148,7 +148,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func close() throws {
         if self.ownsHttpClients {
-            try self.httpClient.close()
+            try httpClient.close()
         }
     }
 
