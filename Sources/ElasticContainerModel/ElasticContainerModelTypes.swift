@@ -1213,7 +1213,7 @@ public typealias Tasks = [Task]
 /**
  Type definition for the Timestamp field.
  */
-public typealias Timestamp = String
+public typealias Timestamp = Double
 
 /**
  Type definition for the TmpfsList field.
