@@ -289,6 +289,21 @@ public extension CSVOutput {
     }()
 }
 
+public extension Checksum {
+    /**
+     Default instance of the Checksum structure.
+     */
+    static let __default: S3Model.Checksum = {
+        let defaultInstance = S3Model.Checksum(
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CloudFunctionConfiguration {
     /**
      Default instance of the CloudFunctionConfiguration structure.
@@ -324,6 +339,10 @@ public extension CompleteMultipartUploadOutput {
         let defaultInstance = S3Model.CompleteMultipartUploadOutput(
             bucket: nil,
             bucketKeyEnabled: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             expiration: nil,
             key: nil,
@@ -344,10 +363,17 @@ public extension CompleteMultipartUploadRequest {
     static let __default: S3Model.CompleteMultipartUploadRequest = {
         let defaultInstance = S3Model.CompleteMultipartUploadRequest(
             bucket: "value",
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             expectedBucketOwner: nil,
             key: "0",
             multipartUpload: nil,
             requestPayer: nil,
+            sSECustomerAlgorithm: nil,
+            sSECustomerKey: nil,
+            sSECustomerKeyMD5: nil,
             uploadId: "value")
 
         return defaultInstance
@@ -372,6 +398,10 @@ public extension CompletedPart {
      */
     static let __default: S3Model.CompletedPart = {
         let defaultInstance = S3Model.CompletedPart(
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             partNumber: nil)
 
@@ -435,6 +465,7 @@ public extension CopyObjectRequest {
             bucket: "value",
             bucketKeyEnabled: nil,
             cacheControl: nil,
+            checksumAlgorithm: nil,
             contentDisposition: nil,
             contentEncoding: nil,
             contentLanguage: nil,
@@ -482,6 +513,10 @@ public extension CopyObjectResult {
      */
     static let __default: S3Model.CopyObjectResult = {
         let defaultInstance = S3Model.CopyObjectResult(
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             lastModified: nil)
 
@@ -495,6 +530,10 @@ public extension CopyPartResult {
      */
     static let __default: S3Model.CopyPartResult = {
         let defaultInstance = S3Model.CopyPartResult(
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             lastModified: nil)
 
@@ -557,6 +596,7 @@ public extension CreateMultipartUploadOutput {
             abortRuleId: nil,
             bucket: nil,
             bucketKeyEnabled: nil,
+            checksumAlgorithm: nil,
             key: nil,
             requestCharged: nil,
             sSECustomerAlgorithm: nil,
@@ -580,6 +620,7 @@ public extension CreateMultipartUploadRequest {
             bucket: "value",
             bucketKeyEnabled: nil,
             cacheControl: nil,
+            checksumAlgorithm: nil,
             contentDisposition: nil,
             contentEncoding: nil,
             contentLanguage: nil,
@@ -918,6 +959,7 @@ public extension DeleteObjectsRequest {
         let defaultInstance = S3Model.DeleteObjectsRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
+            checksumAlgorithm: nil,
             delete: Delete.__default,
             expectedBucketOwner: nil,
             mFA: nil,
@@ -1624,6 +1666,65 @@ public extension GetObjectAclRequest {
     }()
 }
 
+public extension GetObjectAttributesOutput {
+    /**
+     Default instance of the GetObjectAttributesOutput structure.
+     */
+    static let __default: S3Model.GetObjectAttributesOutput = {
+        let defaultInstance = S3Model.GetObjectAttributesOutput(
+            checksum: nil,
+            deleteMarker: nil,
+            eTag: nil,
+            lastModified: nil,
+            objectParts: nil,
+            objectSize: nil,
+            requestCharged: nil,
+            storageClass: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectAttributesParts {
+    /**
+     Default instance of the GetObjectAttributesParts structure.
+     */
+    static let __default: S3Model.GetObjectAttributesParts = {
+        let defaultInstance = S3Model.GetObjectAttributesParts(
+            isTruncated: nil,
+            maxParts: nil,
+            nextPartNumberMarker: nil,
+            partNumberMarker: nil,
+            parts: nil,
+            totalPartsCount: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetObjectAttributesRequest {
+    /**
+     Default instance of the GetObjectAttributesRequest structure.
+     */
+    static let __default: S3Model.GetObjectAttributesRequest = {
+        let defaultInstance = S3Model.GetObjectAttributesRequest(
+            bucket: "value",
+            expectedBucketOwner: nil,
+            key: "0",
+            maxParts: nil,
+            objectAttributes: [],
+            partNumberMarker: nil,
+            requestPayer: nil,
+            sSECustomerAlgorithm: nil,
+            sSECustomerKey: nil,
+            sSECustomerKeyMD5: nil,
+            versionId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetObjectLegalHoldOutput {
     /**
      Default instance of the GetObjectLegalHoldOutput structure.
@@ -1687,6 +1788,10 @@ public extension GetObjectOutput {
             body: nil,
             bucketKeyEnabled: nil,
             cacheControl: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             contentDisposition: nil,
             contentEncoding: nil,
             contentLanguage: nil,
@@ -1727,6 +1832,7 @@ public extension GetObjectRequest {
     static let __default: S3Model.GetObjectRequest = {
         let defaultInstance = S3Model.GetObjectRequest(
             bucket: "value",
+            checksumMode: nil,
             expectedBucketOwner: nil,
             ifMatch: nil,
             ifModifiedSince: nil,
@@ -1925,6 +2031,10 @@ public extension HeadObjectOutput {
             archiveStatus: nil,
             bucketKeyEnabled: nil,
             cacheControl: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             contentDisposition: nil,
             contentEncoding: nil,
             contentLanguage: nil,
@@ -1963,6 +2073,7 @@ public extension HeadObjectRequest {
     static let __default: S3Model.HeadObjectRequest = {
         let defaultInstance = S3Model.HeadObjectRequest(
             bucket: "value",
+            checksumMode: nil,
             expectedBucketOwner: nil,
             ifMatch: nil,
             ifModifiedSince: nil,
@@ -2580,6 +2691,7 @@ public extension ListPartsOutput {
             abortDate: nil,
             abortRuleId: nil,
             bucket: nil,
+            checksumAlgorithm: nil,
             initiator: nil,
             isTruncated: nil,
             key: nil,
@@ -2608,6 +2720,9 @@ public extension ListPartsRequest {
             maxParts: nil,
             partNumberMarker: nil,
             requestPayer: nil,
+            sSECustomerAlgorithm: nil,
+            sSECustomerKey: nil,
+            sSECustomerKeyMD5: nil,
             uploadId: "value")
 
         return defaultInstance
@@ -2702,6 +2817,7 @@ public extension MultipartUpload {
      */
     static let __default: S3Model.MultipartUpload = {
         let defaultInstance = S3Model.MultipartUpload(
+            checksumAlgorithm: nil,
             initiated: nil,
             initiator: nil,
             key: nil,
@@ -2820,6 +2936,7 @@ public extension Object {
      */
     static let __default: S3Model.Object = {
         let defaultInstance = S3Model.Object(
+            checksumAlgorithm: nil,
             eTag: nil,
             key: nil,
             lastModified: nil,
@@ -2916,12 +3033,30 @@ public extension ObjectNotInActiveTierError {
     }()
 }
 
+public extension ObjectPart {
+    /**
+     Default instance of the ObjectPart structure.
+     */
+    static let __default: S3Model.ObjectPart = {
+        let defaultInstance = S3Model.ObjectPart(
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
+            partNumber: nil,
+            size: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ObjectVersion {
     /**
      Default instance of the ObjectVersion structure.
      */
     static let __default: S3Model.ObjectVersion = {
         let defaultInstance = S3Model.ObjectVersion(
+            checksumAlgorithm: nil,
             eTag: nil,
             isLatest: nil,
             key: nil,
@@ -3014,6 +3149,10 @@ public extension Part {
      */
     static let __default: S3Model.Part = {
         let defaultInstance = S3Model.Part(
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             lastModified: nil,
             partNumber: nil,
@@ -3084,6 +3223,7 @@ public extension PutBucketAccelerateConfigurationRequest {
         let defaultInstance = S3Model.PutBucketAccelerateConfigurationRequest(
             accelerateConfiguration: AccelerateConfiguration.__default,
             bucket: "value",
+            checksumAlgorithm: nil,
             expectedBucketOwner: nil)
 
         return defaultInstance
@@ -3099,6 +3239,7 @@ public extension PutBucketAclRequest {
             aCL: nil,
             accessControlPolicy: nil,
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             grantFullControl: nil,
@@ -3134,6 +3275,7 @@ public extension PutBucketCorsRequest {
         let defaultInstance = S3Model.PutBucketCorsRequest(
             bucket: "value",
             cORSConfiguration: CORSConfiguration.__default,
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil)
 
@@ -3148,6 +3290,7 @@ public extension PutBucketEncryptionRequest {
     static let __default: S3Model.PutBucketEncryptionRequest = {
         let defaultInstance = S3Model.PutBucketEncryptionRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration.__default)
@@ -3192,6 +3335,7 @@ public extension PutBucketLifecycleConfigurationRequest {
     static let __default: S3Model.PutBucketLifecycleConfigurationRequest = {
         let defaultInstance = S3Model.PutBucketLifecycleConfigurationRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             expectedBucketOwner: nil,
             lifecycleConfiguration: nil)
 
@@ -3206,6 +3350,7 @@ public extension PutBucketLifecycleRequest {
     static let __default: S3Model.PutBucketLifecycleRequest = {
         let defaultInstance = S3Model.PutBucketLifecycleRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             lifecycleConfiguration: nil)
@@ -3222,6 +3367,7 @@ public extension PutBucketLoggingRequest {
         let defaultInstance = S3Model.PutBucketLoggingRequest(
             bucket: "value",
             bucketLoggingStatus: BucketLoggingStatus.__default,
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil)
 
@@ -3266,6 +3412,7 @@ public extension PutBucketNotificationRequest {
     static let __default: S3Model.PutBucketNotificationRequest = {
         let defaultInstance = S3Model.PutBucketNotificationRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             notificationConfiguration: NotificationConfigurationDeprecated.__default)
@@ -3296,6 +3443,7 @@ public extension PutBucketPolicyRequest {
     static let __default: S3Model.PutBucketPolicyRequest = {
         let defaultInstance = S3Model.PutBucketPolicyRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             confirmRemoveSelfBucketAccess: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
@@ -3312,6 +3460,7 @@ public extension PutBucketReplicationRequest {
     static let __default: S3Model.PutBucketReplicationRequest = {
         let defaultInstance = S3Model.PutBucketReplicationRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             replicationConfiguration: ReplicationConfiguration.__default,
@@ -3328,6 +3477,7 @@ public extension PutBucketRequestPaymentRequest {
     static let __default: S3Model.PutBucketRequestPaymentRequest = {
         let defaultInstance = S3Model.PutBucketRequestPaymentRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             requestPaymentConfiguration: RequestPaymentConfiguration.__default)
@@ -3343,6 +3493,7 @@ public extension PutBucketTaggingRequest {
     static let __default: S3Model.PutBucketTaggingRequest = {
         let defaultInstance = S3Model.PutBucketTaggingRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             tagging: Tagging.__default)
@@ -3358,6 +3509,7 @@ public extension PutBucketVersioningRequest {
     static let __default: S3Model.PutBucketVersioningRequest = {
         let defaultInstance = S3Model.PutBucketVersioningRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             mFA: nil,
@@ -3374,6 +3526,7 @@ public extension PutBucketWebsiteRequest {
     static let __default: S3Model.PutBucketWebsiteRequest = {
         let defaultInstance = S3Model.PutBucketWebsiteRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             websiteConfiguration: WebsiteConfiguration.__default)
@@ -3403,6 +3556,7 @@ public extension PutObjectAclRequest {
             aCL: nil,
             accessControlPolicy: nil,
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             grantFullControl: nil,
@@ -3437,6 +3591,7 @@ public extension PutObjectLegalHoldRequest {
     static let __default: S3Model.PutObjectLegalHoldRequest = {
         let defaultInstance = S3Model.PutObjectLegalHoldRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
@@ -3467,6 +3622,7 @@ public extension PutObjectLockConfigurationRequest {
     static let __default: S3Model.PutObjectLockConfigurationRequest = {
         let defaultInstance = S3Model.PutObjectLockConfigurationRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             objectLockConfiguration: nil,
@@ -3484,6 +3640,10 @@ public extension PutObjectOutput {
     static let __default: S3Model.PutObjectOutput = {
         let defaultInstance = S3Model.PutObjectOutput(
             bucketKeyEnabled: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             expiration: nil,
             requestCharged: nil,
@@ -3509,6 +3669,11 @@ public extension PutObjectRequest {
             bucket: "value",
             bucketKeyEnabled: nil,
             cacheControl: nil,
+            checksumAlgorithm: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             contentDisposition: nil,
             contentEncoding: nil,
             contentLanguage: nil,
@@ -3561,6 +3726,7 @@ public extension PutObjectRetentionRequest {
         let defaultInstance = S3Model.PutObjectRetentionRequest(
             bucket: "value",
             bypassGovernanceRetention: nil,
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
@@ -3591,6 +3757,7 @@ public extension PutObjectTaggingRequest {
     static let __default: S3Model.PutObjectTaggingRequest = {
         let defaultInstance = S3Model.PutObjectTaggingRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             key: "0",
@@ -3609,6 +3776,7 @@ public extension PutPublicAccessBlockRequest {
     static let __default: S3Model.PutPublicAccessBlockRequest = {
         let defaultInstance = S3Model.PutPublicAccessBlockRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
             publicAccessBlockConfiguration: PublicAccessBlockConfiguration.__default)
@@ -3827,6 +3995,7 @@ public extension RestoreObjectRequest {
     static let __default: S3Model.RestoreObjectRequest = {
         let defaultInstance = S3Model.RestoreObjectRequest(
             bucket: "value",
+            checksumAlgorithm: nil,
             expectedBucketOwner: nil,
             key: "0",
             requestPayer: nil,
@@ -4284,6 +4453,10 @@ public extension UploadPartOutput {
     static let __default: S3Model.UploadPartOutput = {
         let defaultInstance = S3Model.UploadPartOutput(
             bucketKeyEnabled: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             eTag: nil,
             requestCharged: nil,
             sSECustomerAlgorithm: nil,
@@ -4303,6 +4476,11 @@ public extension UploadPartRequest {
         let defaultInstance = S3Model.UploadPartRequest(
             body: nil,
             bucket: "value",
+            checksumAlgorithm: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             contentLength: nil,
             contentMD5: nil,
             expectedBucketOwner: nil,
@@ -4356,6 +4534,10 @@ public extension WriteGetObjectResponseRequest {
             body: nil,
             bucketKeyEnabled: nil,
             cacheControl: nil,
+            checksumCRC32: nil,
+            checksumCRC32C: nil,
+            checksumSHA1: nil,
+            checksumSHA256: nil,
             contentDisposition: nil,
             contentEncoding: nil,
             contentLanguage: nil,

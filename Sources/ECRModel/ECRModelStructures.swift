@@ -1563,6 +1563,7 @@ public struct ImageDetail: Codable, Equatable {
     public var imageScanStatus: ImageScanStatus?
     public var imageSizeInBytes: ImageSizeInBytes?
     public var imageTags: ImageTagList?
+    public var lastRecordedPullTime: RecordedPullTimestamp?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
 
@@ -1574,6 +1575,7 @@ public struct ImageDetail: Codable, Equatable {
                 imageScanStatus: ImageScanStatus? = nil,
                 imageSizeInBytes: ImageSizeInBytes? = nil,
                 imageTags: ImageTagList? = nil,
+                lastRecordedPullTime: RecordedPullTimestamp? = nil,
                 registryId: RegistryId? = nil,
                 repositoryName: RepositoryName? = nil) {
         self.artifactMediaType = artifactMediaType
@@ -1584,6 +1586,7 @@ public struct ImageDetail: Codable, Equatable {
         self.imageScanStatus = imageScanStatus
         self.imageSizeInBytes = imageSizeInBytes
         self.imageTags = imageTags
+        self.lastRecordedPullTime = lastRecordedPullTime
         self.registryId = registryId
         self.repositoryName = repositoryName
     }
@@ -1597,6 +1600,7 @@ public struct ImageDetail: Codable, Equatable {
         case imageScanStatus
         case imageSizeInBytes
         case imageTags
+        case lastRecordedPullTime
         case registryId
         case repositoryName
     }

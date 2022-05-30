@@ -5263,41 +5263,53 @@ public struct UpdateServiceRequest: Codable, Equatable {
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
     public var desiredCount: BoxedInteger?
+    public var enableECSManagedTags: BoxedBoolean?
     public var enableExecuteCommand: BoxedBoolean?
     public var forceNewDeployment: Boolean?
     public var healthCheckGracePeriodSeconds: BoxedInteger?
+    public var loadBalancers: LoadBalancers?
     public var networkConfiguration: NetworkConfiguration?
     public var placementConstraints: PlacementConstraints?
     public var placementStrategy: PlacementStrategies?
     public var platformVersion: String?
+    public var propagateTags: PropagateTags?
     public var service: String
+    public var serviceRegistries: ServiceRegistries?
     public var taskDefinition: String?
 
     public init(capacityProviderStrategy: CapacityProviderStrategy? = nil,
                 cluster: String? = nil,
                 deploymentConfiguration: DeploymentConfiguration? = nil,
                 desiredCount: BoxedInteger? = nil,
+                enableECSManagedTags: BoxedBoolean? = nil,
                 enableExecuteCommand: BoxedBoolean? = nil,
                 forceNewDeployment: Boolean? = nil,
                 healthCheckGracePeriodSeconds: BoxedInteger? = nil,
+                loadBalancers: LoadBalancers? = nil,
                 networkConfiguration: NetworkConfiguration? = nil,
                 placementConstraints: PlacementConstraints? = nil,
                 placementStrategy: PlacementStrategies? = nil,
                 platformVersion: String? = nil,
+                propagateTags: PropagateTags? = nil,
                 service: String,
+                serviceRegistries: ServiceRegistries? = nil,
                 taskDefinition: String? = nil) {
         self.capacityProviderStrategy = capacityProviderStrategy
         self.cluster = cluster
         self.deploymentConfiguration = deploymentConfiguration
         self.desiredCount = desiredCount
+        self.enableECSManagedTags = enableECSManagedTags
         self.enableExecuteCommand = enableExecuteCommand
         self.forceNewDeployment = forceNewDeployment
         self.healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds
+        self.loadBalancers = loadBalancers
         self.networkConfiguration = networkConfiguration
         self.placementConstraints = placementConstraints
         self.placementStrategy = placementStrategy
         self.platformVersion = platformVersion
+        self.propagateTags = propagateTags
         self.service = service
+        self.serviceRegistries = serviceRegistries
         self.taskDefinition = taskDefinition
     }
 
@@ -5306,14 +5318,18 @@ public struct UpdateServiceRequest: Codable, Equatable {
         case cluster
         case deploymentConfiguration
         case desiredCount
+        case enableECSManagedTags
         case enableExecuteCommand
         case forceNewDeployment
         case healthCheckGracePeriodSeconds
+        case loadBalancers
         case networkConfiguration
         case placementConstraints
         case placementStrategy
         case platformVersion
+        case propagateTags
         case service
+        case serviceRegistries
         case taskDefinition
     }
 

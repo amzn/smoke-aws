@@ -1387,6 +1387,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
     public var outputFormat: MetricStreamOutputFormat?
     public var roleArn: AmazonResourceName?
     public var state: MetricStreamState?
+    public var statisticsConfigurations: MetricStreamStatisticsConfigurations?
 
     public init(arn: AmazonResourceName? = nil,
                 creationDate: Timestamp? = nil,
@@ -1397,7 +1398,8 @@ public struct GetMetricStreamOutput: Codable, Equatable {
                 name: MetricStreamName? = nil,
                 outputFormat: MetricStreamOutputFormat? = nil,
                 roleArn: AmazonResourceName? = nil,
-                state: MetricStreamState? = nil) {
+                state: MetricStreamState? = nil,
+                statisticsConfigurations: MetricStreamStatisticsConfigurations? = nil) {
         self.arn = arn
         self.creationDate = creationDate
         self.excludeFilters = excludeFilters
@@ -1408,6 +1410,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
         self.outputFormat = outputFormat
         self.roleArn = roleArn
         self.state = state
+        self.statisticsConfigurations = statisticsConfigurations
     }
 
     enum CodingKeys: String, CodingKey {
@@ -1421,6 +1424,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
         case outputFormat = "OutputFormat"
         case roleArn = "RoleArn"
         case state = "State"
+        case statisticsConfigurations = "StatisticsConfigurations"
     }
 
     public func validate() throws {
@@ -2369,6 +2373,46 @@ public struct MetricStreamFilter: Codable, Equatable {
     }
 }
 
+public struct MetricStreamStatisticsConfiguration: Codable, Equatable {
+    public var additionalStatistics: MetricStreamStatisticsAdditionalStatistics
+    public var includeMetrics: MetricStreamStatisticsIncludeMetrics
+
+    public init(additionalStatistics: MetricStreamStatisticsAdditionalStatistics,
+                includeMetrics: MetricStreamStatisticsIncludeMetrics) {
+        self.additionalStatistics = additionalStatistics
+        self.includeMetrics = includeMetrics
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case additionalStatistics = "AdditionalStatistics"
+        case includeMetrics = "IncludeMetrics"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct MetricStreamStatisticsMetric: Codable, Equatable {
+    public var metricName: MetricName
+    public var namespace: Namespace
+
+    public init(metricName: MetricName,
+                namespace: Namespace) {
+        self.metricName = metricName
+        self.namespace = namespace
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case metricName = "MetricName"
+        case namespace = "Namespace"
+    }
+
+    public func validate() throws {
+        try metricName.validateAsMetricName()
+        try namespace.validateAsNamespace()
+    }
+}
+
 public struct MissingRequiredParameterException: Codable, Equatable {
     public var message: AwsQueryErrorMessage?
 
@@ -2757,6 +2801,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
     public var name: MetricStreamName
     public var outputFormat: MetricStreamOutputFormat
     public var roleArn: AmazonResourceName
+    public var statisticsConfigurations: MetricStreamStatisticsConfigurations?
     public var tags: TagList?
 
     public init(excludeFilters: MetricStreamFilters? = nil,
@@ -2765,6 +2810,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
                 name: MetricStreamName,
                 outputFormat: MetricStreamOutputFormat,
                 roleArn: AmazonResourceName,
+                statisticsConfigurations: MetricStreamStatisticsConfigurations? = nil,
                 tags: TagList? = nil) {
         self.excludeFilters = excludeFilters
         self.firehoseArn = firehoseArn
@@ -2772,6 +2818,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
         self.name = name
         self.outputFormat = outputFormat
         self.roleArn = roleArn
+        self.statisticsConfigurations = statisticsConfigurations
         self.tags = tags
     }
 
@@ -2782,6 +2829,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
         case name = "Name"
         case outputFormat = "OutputFormat"
         case roleArn = "RoleArn"
+        case statisticsConfigurations = "StatisticsConfigurations"
         case tags = "Tags"
     }
 

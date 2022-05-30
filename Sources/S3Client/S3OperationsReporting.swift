@@ -74,6 +74,7 @@ public struct S3OperationsReporting {
     public let getBucketWebsite: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let getObject: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let getObjectAcl: StandardSmokeAWSOperationReporting<S3ModelOperations>
+    public let getObjectAttributes: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let getObjectLegalHold: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let getObjectLockConfiguration: StandardSmokeAWSOperationReporting<S3ModelOperations>
     public let getObjectRetention: StandardSmokeAWSOperationReporting<S3ModelOperations>
@@ -218,6 +219,8 @@ public struct S3OperationsReporting {
             clientName: clientName, operation: .getObject, configuration: reportingConfiguration)
         self.getObjectAcl = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getObjectAcl, configuration: reportingConfiguration)
+        self.getObjectAttributes = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getObjectAttributes, configuration: reportingConfiguration)
         self.getObjectLegalHold = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getObjectLegalHold, configuration: reportingConfiguration)
         self.getObjectLockConfiguration = StandardSmokeAWSOperationReporting(

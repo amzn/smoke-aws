@@ -61,6 +61,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     let describeAccountLimitsSyncOverride: DescribeAccountLimitsSyncType?
     let describeChangeSetAsyncOverride: DescribeChangeSetAsyncType?
     let describeChangeSetSyncOverride: DescribeChangeSetSyncType?
+    let describeChangeSetHooksAsyncOverride: DescribeChangeSetHooksAsyncType?
+    let describeChangeSetHooksSyncOverride: DescribeChangeSetHooksSyncType?
     let describePublisherAsyncOverride: DescribePublisherAsyncType?
     let describePublisherSyncOverride: DescribePublisherSyncType?
     let describeStackDriftDetectionStatusAsyncOverride: DescribeStackDriftDetectionStatusAsyncType?
@@ -197,6 +199,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             describeAccountLimitsSync: DescribeAccountLimitsSyncType? = nil,
             describeChangeSetAsync: DescribeChangeSetAsyncType? = nil,
             describeChangeSetSync: DescribeChangeSetSyncType? = nil,
+            describeChangeSetHooksAsync: DescribeChangeSetHooksAsyncType? = nil,
+            describeChangeSetHooksSync: DescribeChangeSetHooksSyncType? = nil,
             describePublisherAsync: DescribePublisherAsyncType? = nil,
             describePublisherSync: DescribePublisherSyncType? = nil,
             describeStackDriftDetectionStatusAsync: DescribeStackDriftDetectionStatusAsyncType? = nil,
@@ -327,6 +331,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.describeAccountLimitsSyncOverride = describeAccountLimitsSync
         self.describeChangeSetAsyncOverride = describeChangeSetAsync
         self.describeChangeSetSyncOverride = describeChangeSetSync
+        self.describeChangeSetHooksAsyncOverride = describeChangeSetHooksAsync
+        self.describeChangeSetHooksSyncOverride = describeChangeSetHooksSync
         self.describePublisherAsyncOverride = describePublisherAsync
         self.describePublisherSyncOverride = describePublisherSync
         self.describeStackDriftDetectionStatusAsyncOverride = describeStackDriftDetectionStatusAsync
@@ -1051,6 +1057,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return DescribeChangeSetOutputForDescribeChangeSet.__default
+    }
+
+    /**
+     Invokes the DescribeChangeSetHooks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+         - completion: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object or an error will be passed to this 
+           callback when the operation is complete. The DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+           object will be validated before being returned to caller.
+           The possible errors are: changeSetNotFound.
+     */
+    public func describeChangeSetHooksAsync(
+            input: CloudformationModel.DescribeChangeSetHooksInput, 
+            completion: @escaping (Result<CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks, CloudformationError>) -> ()) throws {
+        if let describeChangeSetHooksAsyncOverride = describeChangeSetHooksAsyncOverride {
+            return try describeChangeSetHooksAsyncOverride(input, completion)
+        }
+
+        let result = DescribeChangeSetHooksOutputForDescribeChangeSetHooks.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeChangeSetHooks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+     - Returns: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    public func describeChangeSetHooksSync(
+            input: CloudformationModel.DescribeChangeSetHooksInput) throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+        if let describeChangeSetHooksSyncOverride = describeChangeSetHooksSyncOverride {
+            return try describeChangeSetHooksSyncOverride(input)
+        }
+
+        return DescribeChangeSetHooksOutputForDescribeChangeSetHooks.__default
     }
 
     /**

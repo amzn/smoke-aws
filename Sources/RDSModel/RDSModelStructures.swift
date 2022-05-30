@@ -964,65 +964,6 @@ public struct CopyOptionGroupResultForCopyOptionGroup: Codable, Equatable {
     }
 }
 
-public struct CreateCustomAvailabilityZoneMessage: Codable, Equatable {
-    public var customAvailabilityZoneName: String
-    public var existingVpnId: String?
-    public var newVpnTunnelName: String?
-    public var vpnTunnelOriginatorIP: String?
-
-    public init(customAvailabilityZoneName: String,
-                existingVpnId: String? = nil,
-                newVpnTunnelName: String? = nil,
-                vpnTunnelOriginatorIP: String? = nil) {
-        self.customAvailabilityZoneName = customAvailabilityZoneName
-        self.existingVpnId = existingVpnId
-        self.newVpnTunnelName = newVpnTunnelName
-        self.vpnTunnelOriginatorIP = vpnTunnelOriginatorIP
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZoneName = "CustomAvailabilityZoneName"
-        case existingVpnId = "ExistingVpnId"
-        case newVpnTunnelName = "NewVpnTunnelName"
-        case vpnTunnelOriginatorIP = "VpnTunnelOriginatorIP"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct CreateCustomAvailabilityZoneResult: Codable, Equatable {
-    public var customAvailabilityZone: CustomAvailabilityZone?
-
-    public init(customAvailabilityZone: CustomAvailabilityZone? = nil) {
-        self.customAvailabilityZone = customAvailabilityZone
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZone = "CustomAvailabilityZone"
-    }
-
-    public func validate() throws {
-        try customAvailabilityZone?.validate()
-    }
-}
-
-public struct CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone: Codable, Equatable {
-    public var createCustomAvailabilityZoneResult: CreateCustomAvailabilityZoneResult
-
-    public init(createCustomAvailabilityZoneResult: CreateCustomAvailabilityZoneResult) {
-        self.createCustomAvailabilityZoneResult = createCustomAvailabilityZoneResult
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case createCustomAvailabilityZoneResult = "CreateCustomAvailabilityZoneResult"
-    }
-
-    public func validate() throws {
-        try createCustomAvailabilityZoneResult.validate()
-    }
-}
-
 public struct CreateCustomDBEngineVersionMessage: Codable, Equatable {
     public var databaseInstallationFilesS3BucketName: BucketName
     public var databaseInstallationFilesS3Prefix: String255?
@@ -1149,6 +1090,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
     public var publiclyAccessible: BooleanOptional?
     public var replicationSourceIdentifier: String?
     public var scalingConfiguration: ScalingConfiguration?
+    public var serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration?
     public var storageEncrypted: BooleanOptional?
     public var storageType: String?
     public var tags: TagList?
@@ -1194,6 +1136,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
                 publiclyAccessible: BooleanOptional? = nil,
                 replicationSourceIdentifier: String? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
+                serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration? = nil,
                 storageEncrypted: BooleanOptional? = nil,
                 storageType: String? = nil,
                 tags: TagList? = nil,
@@ -1238,6 +1181,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         self.publiclyAccessible = publiclyAccessible
         self.replicationSourceIdentifier = replicationSourceIdentifier
         self.scalingConfiguration = scalingConfiguration
+        self.serverlessV2ScalingConfiguration = serverlessV2ScalingConfiguration
         self.storageEncrypted = storageEncrypted
         self.storageType = storageType
         self.tags = tags
@@ -1285,6 +1229,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         case publiclyAccessible = "PubliclyAccessible"
         case replicationSourceIdentifier = "ReplicationSourceIdentifier"
         case scalingConfiguration = "ScalingConfiguration"
+        case serverlessV2ScalingConfiguration = "ServerlessV2ScalingConfiguration"
         case storageEncrypted = "StorageEncrypted"
         case storageType = "StorageType"
         case tags = "Tags"
@@ -1293,6 +1238,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
 
     public func validate() throws {
         try scalingConfiguration?.validate()
+        try serverlessV2ScalingConfiguration?.validate()
     }
 }
 
@@ -1477,6 +1423,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
     public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
     public var ncharCharacterSetName: String?
+    public var networkType: String?
     public var optionGroupName: String?
     public var performanceInsightsKMSKeyId: String?
     public var performanceInsightsRetentionPeriod: IntegerOptional?
@@ -1528,6 +1475,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
                 monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
                 ncharCharacterSetName: String? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
                 performanceInsightsRetentionPeriod: IntegerOptional? = nil,
@@ -1578,6 +1526,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
         self.ncharCharacterSetName = ncharCharacterSetName
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
         self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
@@ -1631,6 +1580,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
         case ncharCharacterSetName = "NcharCharacterSetName"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
         case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
@@ -1674,6 +1624,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
+    public var networkType: String?
     public var optionGroupName: String?
     public var performanceInsightsKMSKeyId: String?
     public var performanceInsightsRetentionPeriod: IntegerOptional?
@@ -1708,6 +1659,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
                 performanceInsightsRetentionPeriod: IntegerOptional? = nil,
@@ -1741,6 +1693,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
         self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
@@ -1777,6 +1730,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
         case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
@@ -2445,88 +2399,7 @@ public struct CreateOptionGroupResultForCreateOptionGroup: Codable, Equatable {
     }
 }
 
-public struct CustomAvailabilityZone: Codable, Equatable {
-    public var customAvailabilityZoneId: String?
-    public var customAvailabilityZoneName: String?
-    public var customAvailabilityZoneStatus: String?
-    public var vpnDetails: VpnDetails?
-
-    public init(customAvailabilityZoneId: String? = nil,
-                customAvailabilityZoneName: String? = nil,
-                customAvailabilityZoneStatus: String? = nil,
-                vpnDetails: VpnDetails? = nil) {
-        self.customAvailabilityZoneId = customAvailabilityZoneId
-        self.customAvailabilityZoneName = customAvailabilityZoneName
-        self.customAvailabilityZoneStatus = customAvailabilityZoneStatus
-        self.vpnDetails = vpnDetails
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
-        case customAvailabilityZoneName = "CustomAvailabilityZoneName"
-        case customAvailabilityZoneStatus = "CustomAvailabilityZoneStatus"
-        case vpnDetails = "VpnDetails"
-    }
-
-    public func validate() throws {
-        try vpnDetails?.validate()
-    }
-}
-
-public struct CustomAvailabilityZoneAlreadyExistsFault: Codable, Equatable {
-
-    public init() {
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct CustomAvailabilityZoneMessage: Codable, Equatable {
-    public var customAvailabilityZones: CustomAvailabilityZoneList?
-    public var marker: String?
-
-    public init(customAvailabilityZones: CustomAvailabilityZoneList? = nil,
-                marker: String? = nil) {
-        self.customAvailabilityZones = customAvailabilityZones
-        self.marker = marker
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZones = "CustomAvailabilityZones"
-        case marker = "Marker"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones: Codable, Equatable {
-    public var describeCustomAvailabilityZonesResult: CustomAvailabilityZoneMessage
-
-    public init(describeCustomAvailabilityZonesResult: CustomAvailabilityZoneMessage) {
-        self.describeCustomAvailabilityZonesResult = describeCustomAvailabilityZonesResult
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case describeCustomAvailabilityZonesResult = "DescribeCustomAvailabilityZonesResult"
-    }
-
-    public func validate() throws {
-        try describeCustomAvailabilityZonesResult.validate()
-    }
-}
-
 public struct CustomAvailabilityZoneNotFoundFault: Codable, Equatable {
-
-    public init() {
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct CustomAvailabilityZoneQuotaExceededFault: Codable, Equatable {
 
     public init() {
     }
@@ -2625,6 +2498,7 @@ public struct DBCluster: Codable, Equatable {
     public var readerEndpoint: String?
     public var replicationSourceIdentifier: String?
     public var scalingConfigurationInfo: ScalingConfigurationInfo?
+    public var serverlessV2ScalingConfiguration: ServerlessV2ScalingConfigurationInfo?
     public var status: String?
     public var storageEncrypted: Boolean?
     public var storageType: String?
@@ -2693,6 +2567,7 @@ public struct DBCluster: Codable, Equatable {
                 readerEndpoint: String? = nil,
                 replicationSourceIdentifier: String? = nil,
                 scalingConfigurationInfo: ScalingConfigurationInfo? = nil,
+                serverlessV2ScalingConfiguration: ServerlessV2ScalingConfigurationInfo? = nil,
                 status: String? = nil,
                 storageEncrypted: Boolean? = nil,
                 storageType: String? = nil,
@@ -2760,6 +2635,7 @@ public struct DBCluster: Codable, Equatable {
         self.readerEndpoint = readerEndpoint
         self.replicationSourceIdentifier = replicationSourceIdentifier
         self.scalingConfigurationInfo = scalingConfigurationInfo
+        self.serverlessV2ScalingConfiguration = serverlessV2ScalingConfiguration
         self.status = status
         self.storageEncrypted = storageEncrypted
         self.storageType = storageType
@@ -2830,6 +2706,7 @@ public struct DBCluster: Codable, Equatable {
         case readerEndpoint = "ReaderEndpoint"
         case replicationSourceIdentifier = "ReplicationSourceIdentifier"
         case scalingConfigurationInfo = "ScalingConfigurationInfo"
+        case serverlessV2ScalingConfiguration = "ServerlessV2ScalingConfiguration"
         case status = "Status"
         case storageEncrypted = "StorageEncrypted"
         case storageType = "StorageType"
@@ -2840,6 +2717,7 @@ public struct DBCluster: Codable, Equatable {
     public func validate() throws {
         try pendingModifiedValues?.validate()
         try scalingConfigurationInfo?.validate()
+        try serverlessV2ScalingConfiguration?.validate()
     }
 }
 
@@ -3667,6 +3545,7 @@ public struct DBEngineVersion: Codable, Equatable {
     public var supportedFeatureNames: FeatureNameList?
     public var supportedNcharCharacterSets: SupportedCharacterSetsList?
     public var supportedTimezones: SupportedTimezonesList?
+    public var supportsBabelfish: Boolean?
     public var supportsGlobalDatabases: Boolean?
     public var supportsLogExportsToCloudwatchLogs: Boolean?
     public var supportsParallelQuery: Boolean?
@@ -3693,6 +3572,7 @@ public struct DBEngineVersion: Codable, Equatable {
                 supportedFeatureNames: FeatureNameList? = nil,
                 supportedNcharCharacterSets: SupportedCharacterSetsList? = nil,
                 supportedTimezones: SupportedTimezonesList? = nil,
+                supportsBabelfish: Boolean? = nil,
                 supportsGlobalDatabases: Boolean? = nil,
                 supportsLogExportsToCloudwatchLogs: Boolean? = nil,
                 supportsParallelQuery: Boolean? = nil,
@@ -3718,6 +3598,7 @@ public struct DBEngineVersion: Codable, Equatable {
         self.supportedFeatureNames = supportedFeatureNames
         self.supportedNcharCharacterSets = supportedNcharCharacterSets
         self.supportedTimezones = supportedTimezones
+        self.supportsBabelfish = supportsBabelfish
         self.supportsGlobalDatabases = supportsGlobalDatabases
         self.supportsLogExportsToCloudwatchLogs = supportsLogExportsToCloudwatchLogs
         self.supportsParallelQuery = supportsParallelQuery
@@ -3746,6 +3627,7 @@ public struct DBEngineVersion: Codable, Equatable {
         case supportedFeatureNames = "SupportedFeatureNames"
         case supportedNcharCharacterSets = "SupportedNcharCharacterSets"
         case supportedTimezones = "SupportedTimezones"
+        case supportsBabelfish = "SupportsBabelfish"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
         case supportsLogExportsToCloudwatchLogs = "SupportsLogExportsToCloudwatchLogs"
         case supportsParallelQuery = "SupportsParallelQuery"
@@ -3894,6 +3776,7 @@ public struct DBInstance: Codable, Equatable {
     public var monitoringRoleArn: String?
     public var multiAZ: Boolean?
     public var ncharCharacterSetName: String?
+    public var networkType: String?
     public var optionGroupMemberships: OptionGroupMembershipList?
     public var pendingModifiedValues: PendingModifiedValues?
     public var performanceInsightsEnabled: BooleanOptional?
@@ -3969,6 +3852,7 @@ public struct DBInstance: Codable, Equatable {
                 monitoringRoleArn: String? = nil,
                 multiAZ: Boolean? = nil,
                 ncharCharacterSetName: String? = nil,
+                networkType: String? = nil,
                 optionGroupMemberships: OptionGroupMembershipList? = nil,
                 pendingModifiedValues: PendingModifiedValues? = nil,
                 performanceInsightsEnabled: BooleanOptional? = nil,
@@ -4043,6 +3927,7 @@ public struct DBInstance: Codable, Equatable {
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
         self.ncharCharacterSetName = ncharCharacterSetName
+        self.networkType = networkType
         self.optionGroupMemberships = optionGroupMemberships
         self.pendingModifiedValues = pendingModifiedValues
         self.performanceInsightsEnabled = performanceInsightsEnabled
@@ -4120,6 +4005,7 @@ public struct DBInstance: Codable, Equatable {
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
         case ncharCharacterSetName = "NcharCharacterSetName"
+        case networkType = "NetworkType"
         case optionGroupMemberships = "OptionGroupMemberships"
         case pendingModifiedValues = "PendingModifiedValues"
         case performanceInsightsEnabled = "PerformanceInsightsEnabled"
@@ -5326,6 +5212,7 @@ public struct DBSubnetGroup: Codable, Equatable {
     public var dBSubnetGroupName: String?
     public var subnetGroupStatus: String?
     public var subnets: SubnetList?
+    public var supportedNetworkTypes: StringList?
     public var vpcId: String?
 
     public init(dBSubnetGroupArn: String? = nil,
@@ -5333,12 +5220,14 @@ public struct DBSubnetGroup: Codable, Equatable {
                 dBSubnetGroupName: String? = nil,
                 subnetGroupStatus: String? = nil,
                 subnets: SubnetList? = nil,
+                supportedNetworkTypes: StringList? = nil,
                 vpcId: String? = nil) {
         self.dBSubnetGroupArn = dBSubnetGroupArn
         self.dBSubnetGroupDescription = dBSubnetGroupDescription
         self.dBSubnetGroupName = dBSubnetGroupName
         self.subnetGroupStatus = subnetGroupStatus
         self.subnets = subnets
+        self.supportedNetworkTypes = supportedNetworkTypes
         self.vpcId = vpcId
     }
 
@@ -5348,6 +5237,7 @@ public struct DBSubnetGroup: Codable, Equatable {
         case dBSubnetGroupName = "DBSubnetGroupName"
         case subnetGroupStatus = "SubnetGroupStatus"
         case subnets = "Subnets"
+        case supportedNetworkTypes = "SupportedNetworkTypes"
         case vpcId = "VpcId"
     }
 
@@ -5450,53 +5340,6 @@ public struct DBUpgradeDependencyFailureFault: Codable, Equatable {
     }
 
     public func validate() throws {
-    }
-}
-
-public struct DeleteCustomAvailabilityZoneMessage: Codable, Equatable {
-    public var customAvailabilityZoneId: String
-
-    public init(customAvailabilityZoneId: String) {
-        self.customAvailabilityZoneId = customAvailabilityZoneId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct DeleteCustomAvailabilityZoneResult: Codable, Equatable {
-    public var customAvailabilityZone: CustomAvailabilityZone?
-
-    public init(customAvailabilityZone: CustomAvailabilityZone? = nil) {
-        self.customAvailabilityZone = customAvailabilityZone
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZone = "CustomAvailabilityZone"
-    }
-
-    public func validate() throws {
-        try customAvailabilityZone?.validate()
-    }
-}
-
-public struct DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone: Codable, Equatable {
-    public var deleteCustomAvailabilityZoneResult: DeleteCustomAvailabilityZoneResult
-
-    public init(deleteCustomAvailabilityZoneResult: DeleteCustomAvailabilityZoneResult) {
-        self.deleteCustomAvailabilityZoneResult = deleteCustomAvailabilityZoneResult
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case deleteCustomAvailabilityZoneResult = "DeleteCustomAvailabilityZoneResult"
-    }
-
-    public func validate() throws {
-        try deleteCustomAvailabilityZoneResult.validate()
     }
 }
 
@@ -6044,21 +5887,6 @@ public struct DeleteGlobalClusterResultForDeleteGlobalCluster: Codable, Equatabl
     }
 }
 
-public struct DeleteInstallationMediaMessage: Codable, Equatable {
-    public var installationMediaId: String
-
-    public init(installationMediaId: String) {
-        self.installationMediaId = installationMediaId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case installationMediaId = "InstallationMediaId"
-    }
-
-    public func validate() throws {
-    }
-}
-
 public struct DeleteOptionGroupMessage: Codable, Equatable {
     public var optionGroupName: String
 
@@ -6153,33 +5981,6 @@ public struct DescribeCertificatesMessage: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case certificateIdentifier = "CertificateIdentifier"
-        case filters = "Filters"
-        case marker = "Marker"
-        case maxRecords = "MaxRecords"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct DescribeCustomAvailabilityZonesMessage: Codable, Equatable {
-    public var customAvailabilityZoneId: String?
-    public var filters: FilterList?
-    public var marker: String?
-    public var maxRecords: IntegerOptional?
-
-    public init(customAvailabilityZoneId: String? = nil,
-                filters: FilterList? = nil,
-                marker: String? = nil,
-                maxRecords: IntegerOptional? = nil) {
-        self.customAvailabilityZoneId = customAvailabilityZoneId
-        self.filters = filters
-        self.marker = marker
-        self.maxRecords = maxRecords
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
         case filters = "Filters"
         case marker = "Marker"
         case maxRecords = "MaxRecords"
@@ -7374,33 +7175,6 @@ public struct DescribeGlobalClustersMessage: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case filters = "Filters"
         case globalClusterIdentifier = "GlobalClusterIdentifier"
-        case marker = "Marker"
-        case maxRecords = "MaxRecords"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct DescribeInstallationMediaMessage: Codable, Equatable {
-    public var filters: FilterList?
-    public var installationMediaId: String?
-    public var marker: String?
-    public var maxRecords: IntegerOptional?
-
-    public init(filters: FilterList? = nil,
-                installationMediaId: String? = nil,
-                marker: String? = nil,
-                maxRecords: IntegerOptional? = nil) {
-        self.filters = filters
-        self.installationMediaId = installationMediaId
-        self.marker = marker
-        self.maxRecords = maxRecords
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case filters = "Filters"
-        case installationMediaId = "InstallationMediaId"
         case marker = "Marker"
         case maxRecords = "MaxRecords"
     }
@@ -8618,181 +8392,6 @@ public struct IamRoleNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct ImportInstallationMediaMessage: Codable, Equatable {
-    public var customAvailabilityZoneId: String
-    public var engine: String
-    public var engineInstallationMediaPath: String
-    public var engineVersion: String
-    public var oSInstallationMediaPath: String
-
-    public init(customAvailabilityZoneId: String,
-                engine: String,
-                engineInstallationMediaPath: String,
-                engineVersion: String,
-                oSInstallationMediaPath: String) {
-        self.customAvailabilityZoneId = customAvailabilityZoneId
-        self.engine = engine
-        self.engineInstallationMediaPath = engineInstallationMediaPath
-        self.engineVersion = engineVersion
-        self.oSInstallationMediaPath = oSInstallationMediaPath
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
-        case engine = "Engine"
-        case engineInstallationMediaPath = "EngineInstallationMediaPath"
-        case engineVersion = "EngineVersion"
-        case oSInstallationMediaPath = "OSInstallationMediaPath"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct InstallationMedia: Codable, Equatable {
-    public var customAvailabilityZoneId: String?
-    public var engine: String?
-    public var engineInstallationMediaPath: String?
-    public var engineVersion: String?
-    public var failureCause: InstallationMediaFailureCause?
-    public var installationMediaId: String?
-    public var oSInstallationMediaPath: String?
-    public var status: String?
-
-    public init(customAvailabilityZoneId: String? = nil,
-                engine: String? = nil,
-                engineInstallationMediaPath: String? = nil,
-                engineVersion: String? = nil,
-                failureCause: InstallationMediaFailureCause? = nil,
-                installationMediaId: String? = nil,
-                oSInstallationMediaPath: String? = nil,
-                status: String? = nil) {
-        self.customAvailabilityZoneId = customAvailabilityZoneId
-        self.engine = engine
-        self.engineInstallationMediaPath = engineInstallationMediaPath
-        self.engineVersion = engineVersion
-        self.failureCause = failureCause
-        self.installationMediaId = installationMediaId
-        self.oSInstallationMediaPath = oSInstallationMediaPath
-        self.status = status
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case customAvailabilityZoneId = "CustomAvailabilityZoneId"
-        case engine = "Engine"
-        case engineInstallationMediaPath = "EngineInstallationMediaPath"
-        case engineVersion = "EngineVersion"
-        case failureCause = "FailureCause"
-        case installationMediaId = "InstallationMediaId"
-        case oSInstallationMediaPath = "OSInstallationMediaPath"
-        case status = "Status"
-    }
-
-    public func validate() throws {
-        try failureCause?.validate()
-    }
-}
-
-public struct InstallationMediaAlreadyExistsFault: Codable, Equatable {
-
-    public init() {
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct InstallationMediaFailureCause: Codable, Equatable {
-    public var message: String?
-
-    public init(message: String? = nil) {
-        self.message = message
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case message = "Message"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct InstallationMediaForDeleteInstallationMedia: Codable, Equatable {
-    public var deleteInstallationMediaResult: InstallationMedia
-
-    public init(deleteInstallationMediaResult: InstallationMedia) {
-        self.deleteInstallationMediaResult = deleteInstallationMediaResult
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case deleteInstallationMediaResult = "DeleteInstallationMediaResult"
-    }
-
-    public func validate() throws {
-        try deleteInstallationMediaResult.validate()
-    }
-}
-
-public struct InstallationMediaForImportInstallationMedia: Codable, Equatable {
-    public var importInstallationMediaResult: InstallationMedia
-
-    public init(importInstallationMediaResult: InstallationMedia) {
-        self.importInstallationMediaResult = importInstallationMediaResult
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case importInstallationMediaResult = "ImportInstallationMediaResult"
-    }
-
-    public func validate() throws {
-        try importInstallationMediaResult.validate()
-    }
-}
-
-public struct InstallationMediaMessage: Codable, Equatable {
-    public var installationMedia: InstallationMediaList?
-    public var marker: String?
-
-    public init(installationMedia: InstallationMediaList? = nil,
-                marker: String? = nil) {
-        self.installationMedia = installationMedia
-        self.marker = marker
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case installationMedia = "InstallationMedia"
-        case marker = "Marker"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct InstallationMediaMessageForDescribeInstallationMedia: Codable, Equatable {
-    public var describeInstallationMediaResult: InstallationMediaMessage
-
-    public init(describeInstallationMediaResult: InstallationMediaMessage) {
-        self.describeInstallationMediaResult = describeInstallationMediaResult
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case describeInstallationMediaResult = "DescribeInstallationMediaResult"
-    }
-
-    public func validate() throws {
-        try describeInstallationMediaResult.validate()
-    }
-}
-
-public struct InstallationMediaNotFoundFault: Codable, Equatable {
-
-    public init() {
-    }
-
-    public func validate() throws {
-    }
-}
-
 public struct InstanceQuotaExceededFault: Codable, Equatable {
 
     public init() {
@@ -9278,6 +8877,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     public var preferredBackupWindow: String?
     public var preferredMaintenanceWindow: String?
     public var scalingConfiguration: ScalingConfiguration?
+    public var serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration?
     public var storageType: String?
     public var vpcSecurityGroupIds: VpcSecurityGroupIdList?
 
@@ -9313,6 +8913,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
                 preferredBackupWindow: String? = nil,
                 preferredMaintenanceWindow: String? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
+                serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration? = nil,
                 storageType: String? = nil,
                 vpcSecurityGroupIds: VpcSecurityGroupIdList? = nil) {
         self.allocatedStorage = allocatedStorage
@@ -9347,6 +8948,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         self.preferredBackupWindow = preferredBackupWindow
         self.preferredMaintenanceWindow = preferredMaintenanceWindow
         self.scalingConfiguration = scalingConfiguration
+        self.serverlessV2ScalingConfiguration = serverlessV2ScalingConfiguration
         self.storageType = storageType
         self.vpcSecurityGroupIds = vpcSecurityGroupIds
     }
@@ -9384,6 +8986,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         case preferredBackupWindow = "PreferredBackupWindow"
         case preferredMaintenanceWindow = "PreferredMaintenanceWindow"
         case scalingConfiguration = "ScalingConfiguration"
+        case serverlessV2ScalingConfiguration = "ServerlessV2ScalingConfiguration"
         case storageType = "StorageType"
         case vpcSecurityGroupIds = "VpcSecurityGroupIds"
     }
@@ -9391,6 +8994,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     public func validate() throws {
         try cloudwatchLogsExportConfiguration?.validate()
         try scalingConfiguration?.validate()
+        try serverlessV2ScalingConfiguration?.validate()
     }
 }
 
@@ -9536,6 +9140,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
+    public var networkType: String?
     public var newDBInstanceIdentifier: String?
     public var optionGroupName: String?
     public var performanceInsightsKMSKeyId: String?
@@ -9584,6 +9189,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
+                networkType: String? = nil,
                 newDBInstanceIdentifier: String? = nil,
                 optionGroupName: String? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
@@ -9631,6 +9237,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
+        self.networkType = networkType
         self.newDBInstanceIdentifier = newDBInstanceIdentifier
         self.optionGroupName = optionGroupName
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
@@ -9681,6 +9288,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
+        case networkType = "NetworkType"
         case newDBInstanceIdentifier = "NewDBInstanceIdentifier"
         case optionGroupName = "OptionGroupName"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
@@ -10302,6 +9910,15 @@ public struct ModifyOptionGroupResultForModifyOptionGroup: Codable, Equatable {
     }
 }
 
+public struct NetworkTypeNotSupported: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct Option: Codable, Equatable {
     public var dBSecurityGroupMemberships: DBSecurityGroupMembershipList?
     public var optionDescription: String?
@@ -10747,6 +10364,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
     public var storageType: String?
     public var supportedActivityStreamModes: ActivityStreamModeList?
     public var supportedEngineModes: EngineModeList?
+    public var supportedNetworkTypes: StringList?
     public var supportsClusters: Boolean?
     public var supportsEnhancedMonitoring: Boolean?
     public var supportsGlobalDatabases: Boolean?
@@ -10777,6 +10395,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
                 storageType: String? = nil,
                 supportedActivityStreamModes: ActivityStreamModeList? = nil,
                 supportedEngineModes: EngineModeList? = nil,
+                supportedNetworkTypes: StringList? = nil,
                 supportsClusters: Boolean? = nil,
                 supportsEnhancedMonitoring: Boolean? = nil,
                 supportsGlobalDatabases: Boolean? = nil,
@@ -10806,6 +10425,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
         self.storageType = storageType
         self.supportedActivityStreamModes = supportedActivityStreamModes
         self.supportedEngineModes = supportedEngineModes
+        self.supportedNetworkTypes = supportedNetworkTypes
         self.supportsClusters = supportsClusters
         self.supportsEnhancedMonitoring = supportsEnhancedMonitoring
         self.supportsGlobalDatabases = supportsGlobalDatabases
@@ -10838,6 +10458,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
         case storageType = "StorageType"
         case supportedActivityStreamModes = "SupportedActivityStreamModes"
         case supportedEngineModes = "SupportedEngineModes"
+        case supportedNetworkTypes = "SupportedNetworkTypes"
         case supportsClusters = "SupportsClusters"
         case supportsEnhancedMonitoring = "SupportsEnhancedMonitoring"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
@@ -12028,6 +11649,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
     public var s3BucketName: String
     public var s3IngestionRoleArn: String
     public var s3Prefix: String?
+    public var serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration?
     public var sourceEngine: String
     public var sourceEngineVersion: String
     public var storageEncrypted: BooleanOptional?
@@ -12060,6 +11682,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
                 s3BucketName: String,
                 s3IngestionRoleArn: String,
                 s3Prefix: String? = nil,
+                serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration? = nil,
                 sourceEngine: String,
                 sourceEngineVersion: String,
                 storageEncrypted: BooleanOptional? = nil,
@@ -12091,6 +11714,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
         self.s3BucketName = s3BucketName
         self.s3IngestionRoleArn = s3IngestionRoleArn
         self.s3Prefix = s3Prefix
+        self.serverlessV2ScalingConfiguration = serverlessV2ScalingConfiguration
         self.sourceEngine = sourceEngine
         self.sourceEngineVersion = sourceEngineVersion
         self.storageEncrypted = storageEncrypted
@@ -12125,6 +11749,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
         case s3BucketName = "S3BucketName"
         case s3IngestionRoleArn = "S3IngestionRoleArn"
         case s3Prefix = "S3Prefix"
+        case serverlessV2ScalingConfiguration = "ServerlessV2ScalingConfiguration"
         case sourceEngine = "SourceEngine"
         case sourceEngineVersion = "SourceEngineVersion"
         case storageEncrypted = "StorageEncrypted"
@@ -12133,6 +11758,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
     }
 
     public func validate() throws {
+        try serverlessV2ScalingConfiguration?.validate()
     }
 }
 
@@ -12191,6 +11817,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
     public var port: IntegerOptional?
     public var publiclyAccessible: BooleanOptional?
     public var scalingConfiguration: ScalingConfiguration?
+    public var serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration?
     public var snapshotIdentifier: String
     public var storageType: String?
     public var tags: TagList?
@@ -12218,6 +11845,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
                 port: IntegerOptional? = nil,
                 publiclyAccessible: BooleanOptional? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
+                serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration? = nil,
                 snapshotIdentifier: String,
                 storageType: String? = nil,
                 tags: TagList? = nil,
@@ -12244,6 +11872,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         self.port = port
         self.publiclyAccessible = publiclyAccessible
         self.scalingConfiguration = scalingConfiguration
+        self.serverlessV2ScalingConfiguration = serverlessV2ScalingConfiguration
         self.snapshotIdentifier = snapshotIdentifier
         self.storageType = storageType
         self.tags = tags
@@ -12273,6 +11902,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         case port = "Port"
         case publiclyAccessible = "PubliclyAccessible"
         case scalingConfiguration = "ScalingConfiguration"
+        case serverlessV2ScalingConfiguration = "ServerlessV2ScalingConfiguration"
         case snapshotIdentifier = "SnapshotIdentifier"
         case storageType = "StorageType"
         case tags = "Tags"
@@ -12281,6 +11911,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
 
     public func validate() throws {
         try scalingConfiguration?.validate()
+        try serverlessV2ScalingConfiguration?.validate()
     }
 }
 
@@ -12337,6 +11968,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public var restoreToTime: TStamp?
     public var restoreType: String?
     public var scalingConfiguration: ScalingConfiguration?
+    public var serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration?
     public var sourceDBClusterIdentifier: String
     public var storageType: String?
     public var tags: TagList?
@@ -12363,6 +11995,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
                 restoreToTime: TStamp? = nil,
                 restoreType: String? = nil,
                 scalingConfiguration: ScalingConfiguration? = nil,
+                serverlessV2ScalingConfiguration: ServerlessV2ScalingConfiguration? = nil,
                 sourceDBClusterIdentifier: String,
                 storageType: String? = nil,
                 tags: TagList? = nil,
@@ -12388,6 +12021,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         self.restoreToTime = restoreToTime
         self.restoreType = restoreType
         self.scalingConfiguration = scalingConfiguration
+        self.serverlessV2ScalingConfiguration = serverlessV2ScalingConfiguration
         self.sourceDBClusterIdentifier = sourceDBClusterIdentifier
         self.storageType = storageType
         self.tags = tags
@@ -12416,6 +12050,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         case restoreToTime = "RestoreToTime"
         case restoreType = "RestoreType"
         case scalingConfiguration = "ScalingConfiguration"
+        case serverlessV2ScalingConfiguration = "ServerlessV2ScalingConfiguration"
         case sourceDBClusterIdentifier = "SourceDBClusterIdentifier"
         case storageType = "StorageType"
         case tags = "Tags"
@@ -12425,6 +12060,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
 
     public func validate() throws {
         try scalingConfiguration?.validate()
+        try serverlessV2ScalingConfiguration?.validate()
     }
 }
 
@@ -12482,6 +12118,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     public var iops: IntegerOptional?
     public var licenseModel: String?
     public var multiAZ: BooleanOptional?
+    public var networkType: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
     public var processorFeatures: ProcessorFeatureList?
@@ -12514,6 +12151,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
                 iops: IntegerOptional? = nil,
                 licenseModel: String? = nil,
                 multiAZ: BooleanOptional? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
                 processorFeatures: ProcessorFeatureList? = nil,
@@ -12545,6 +12183,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
         self.iops = iops
         self.licenseModel = licenseModel
         self.multiAZ = multiAZ
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.port = port
         self.processorFeatures = processorFeatures
@@ -12579,6 +12218,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
         case iops = "Iops"
         case licenseModel = "LicenseModel"
         case multiAZ = "MultiAZ"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
         case processorFeatures = "ProcessorFeatures"
@@ -12654,6 +12294,7 @@ public struct RestoreDBInstanceFromS3Message: Codable, Equatable {
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
+    public var networkType: String?
     public var optionGroupName: String?
     public var performanceInsightsKMSKeyId: String?
     public var performanceInsightsRetentionPeriod: IntegerOptional?
@@ -12699,6 +12340,7 @@ public struct RestoreDBInstanceFromS3Message: Codable, Equatable {
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
                 performanceInsightsRetentionPeriod: IntegerOptional? = nil,
@@ -12743,6 +12385,7 @@ public struct RestoreDBInstanceFromS3Message: Codable, Equatable {
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
         self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
@@ -12790,6 +12433,7 @@ public struct RestoreDBInstanceFromS3Message: Codable, Equatable {
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
         case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
@@ -12867,6 +12511,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     public var licenseModel: String?
     public var maxAllocatedStorage: IntegerOptional?
     public var multiAZ: BooleanOptional?
+    public var networkType: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
     public var processorFeatures: ProcessorFeatureList?
@@ -12904,6 +12549,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
                 licenseModel: String? = nil,
                 maxAllocatedStorage: IntegerOptional? = nil,
                 multiAZ: BooleanOptional? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
                 processorFeatures: ProcessorFeatureList? = nil,
@@ -12940,6 +12586,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         self.licenseModel = licenseModel
         self.maxAllocatedStorage = maxAllocatedStorage
         self.multiAZ = multiAZ
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.port = port
         self.processorFeatures = processorFeatures
@@ -12979,6 +12626,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
         case licenseModel = "LicenseModel"
         case maxAllocatedStorage = "MaxAllocatedStorage"
         case multiAZ = "MultiAZ"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
         case processorFeatures = "ProcessorFeatures"
@@ -13206,6 +12854,44 @@ public struct ScalingConfigurationInfo: Codable, Equatable {
         case secondsBeforeTimeout = "SecondsBeforeTimeout"
         case secondsUntilAutoPause = "SecondsUntilAutoPause"
         case timeoutAction = "TimeoutAction"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ServerlessV2ScalingConfiguration: Codable, Equatable {
+    public var maxCapacity: DoubleOptional?
+    public var minCapacity: DoubleOptional?
+
+    public init(maxCapacity: DoubleOptional? = nil,
+                minCapacity: DoubleOptional? = nil) {
+        self.maxCapacity = maxCapacity
+        self.minCapacity = minCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxCapacity = "MaxCapacity"
+        case minCapacity = "MinCapacity"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ServerlessV2ScalingConfigurationInfo: Codable, Equatable {
+    public var maxCapacity: DoubleOptional?
+    public var minCapacity: DoubleOptional?
+
+    public init(maxCapacity: DoubleOptional? = nil,
+                minCapacity: DoubleOptional? = nil) {
+        self.maxCapacity = maxCapacity
+        self.minCapacity = minCapacity
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxCapacity = "MaxCapacity"
+        case minCapacity = "MinCapacity"
     }
 
     public func validate() throws {
@@ -13956,6 +13642,7 @@ public struct UpgradeTarget: Codable, Equatable {
     public var engineVersion: String?
     public var isMajorVersionUpgrade: Boolean?
     public var supportedEngineModes: EngineModeList?
+    public var supportsBabelfish: BooleanOptional?
     public var supportsGlobalDatabases: BooleanOptional?
     public var supportsParallelQuery: BooleanOptional?
 
@@ -13965,6 +13652,7 @@ public struct UpgradeTarget: Codable, Equatable {
                 engineVersion: String? = nil,
                 isMajorVersionUpgrade: Boolean? = nil,
                 supportedEngineModes: EngineModeList? = nil,
+                supportsBabelfish: BooleanOptional? = nil,
                 supportsGlobalDatabases: BooleanOptional? = nil,
                 supportsParallelQuery: BooleanOptional? = nil) {
         self.autoUpgrade = autoUpgrade
@@ -13973,6 +13661,7 @@ public struct UpgradeTarget: Codable, Equatable {
         self.engineVersion = engineVersion
         self.isMajorVersionUpgrade = isMajorVersionUpgrade
         self.supportedEngineModes = supportedEngineModes
+        self.supportsBabelfish = supportsBabelfish
         self.supportsGlobalDatabases = supportsGlobalDatabases
         self.supportsParallelQuery = supportsParallelQuery
     }
@@ -13984,6 +13673,7 @@ public struct UpgradeTarget: Codable, Equatable {
         case engineVersion = "EngineVersion"
         case isMajorVersionUpgrade = "IsMajorVersionUpgrade"
         case supportedEngineModes = "SupportedEngineModes"
+        case supportsBabelfish = "SupportsBabelfish"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
         case supportsParallelQuery = "SupportsParallelQuery"
     }
@@ -14117,41 +13807,6 @@ public struct VpcSecurityGroupMembership: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case status = "Status"
         case vpcSecurityGroupId = "VpcSecurityGroupId"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public struct VpnDetails: Codable, Equatable {
-    public var vpnGatewayIp: String?
-    public var vpnId: String?
-    public var vpnName: String?
-    public var vpnPSK: StringSensitive?
-    public var vpnState: String?
-    public var vpnTunnelOriginatorIP: String?
-
-    public init(vpnGatewayIp: String? = nil,
-                vpnId: String? = nil,
-                vpnName: String? = nil,
-                vpnPSK: StringSensitive? = nil,
-                vpnState: String? = nil,
-                vpnTunnelOriginatorIP: String? = nil) {
-        self.vpnGatewayIp = vpnGatewayIp
-        self.vpnId = vpnId
-        self.vpnName = vpnName
-        self.vpnPSK = vpnPSK
-        self.vpnState = vpnState
-        self.vpnTunnelOriginatorIP = vpnTunnelOriginatorIP
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case vpnGatewayIp = "VpnGatewayIp"
-        case vpnId = "VpnId"
-        case vpnName = "VpnName"
-        case vpnPSK = "VpnPSK"
-        case vpnState = "VpnState"
-        case vpnTunnelOriginatorIP = "VpnTunnelOriginatorIP"
     }
 
     public func validate() throws {

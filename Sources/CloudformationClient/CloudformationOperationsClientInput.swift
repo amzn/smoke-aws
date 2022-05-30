@@ -105,6 +105,11 @@ public typealias DescribeAccountLimitsOperationHTTPRequestInput = QueryHTTPReque
 public typealias DescribeChangeSetOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeChangeSetHooks operation in a HTTP client.
+ */
+public typealias DescribeChangeSetHooksOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribePublisher operation in a HTTP client.
  */
 public typealias DescribePublisherOperationHTTPRequestInput = QueryHTTPRequestInput

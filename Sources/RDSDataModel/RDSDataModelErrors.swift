@@ -33,22 +33,22 @@ public extension Swift.Error {
     }
 }
 
+private let accessDeniedIdentity = "AccessDeniedException"
 private let badRequestIdentity = "BadRequestException"
 private let forbiddenIdentity = "ForbiddenException"
 private let internalServerErrorIdentity = "InternalServerErrorException"
 private let notFoundIdentity = "NotFoundException"
 private let serviceUnavailableIdentity = "ServiceUnavailableError"
 private let statementTimeoutIdentity = "StatementTimeoutException"
-private let __accessDeniedIdentity = "AccessDenied"
 
 public enum RDSDataError: Swift.Error, Decodable {
+    case accessDenied(AccessDeniedException)
     case badRequest(BadRequestException)
     case forbidden(ForbiddenException)
     case internalServerError(InternalServerErrorException)
     case notFound(NotFoundException)
     case serviceUnavailable(ServiceUnavailableError)
     case statementTimeout(StatementTimeoutException)
-    case accessDenied(message: String?)
     case validationError(reason: String)
     case unrecognizedError(String, String?)
 
@@ -67,6 +67,9 @@ public enum RDSDataError: Swift.Error, Decodable {
         }
 
         switch errorReason {
+        case accessDeniedIdentity:
+            let errorPayload = try AccessDeniedException(from: decoder)
+            self = RDSDataError.accessDenied(errorPayload)
         case badRequestIdentity:
             let errorPayload = try BadRequestException(from: decoder)
             self = RDSDataError.badRequest(errorPayload)
@@ -85,8 +88,6 @@ public enum RDSDataError: Swift.Error, Decodable {
         case statementTimeoutIdentity:
             let errorPayload = try StatementTimeoutException(from: decoder)
             self = RDSDataError.statementTimeout(errorPayload)
-        case __accessDeniedIdentity:
-            self = .accessDenied(message: errorMessage)
         default:
             self = RDSDataError.unrecognizedError(errorReason, errorMessage)
         }

@@ -904,6 +904,7 @@ public extension ImageDetail {
             imageScanStatus: nil,
             imageSizeInBytes: nil,
             imageTags: nil,
+            lastRecordedPullTime: nil,
             registryId: nil,
             repositoryName: nil)
 

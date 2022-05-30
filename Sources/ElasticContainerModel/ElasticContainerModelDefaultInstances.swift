@@ -2987,14 +2987,18 @@ public extension UpdateServiceRequest {
             cluster: nil,
             deploymentConfiguration: nil,
             desiredCount: nil,
+            enableECSManagedTags: nil,
             enableExecuteCommand: nil,
             forceNewDeployment: nil,
             healthCheckGracePeriodSeconds: nil,
+            loadBalancers: nil,
             networkConfiguration: nil,
             placementConstraints: nil,
             placementStrategy: nil,
             platformVersion: nil,
+            propagateTags: nil,
             service: "value",
+            serviceRegistries: nil,
             taskDefinition: nil)
 
         return defaultInstance

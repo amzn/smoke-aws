@@ -90,11 +90,6 @@ public typealias CopyDBSnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias CopyOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
- Type to handle the input to the CreateCustomAvailabilityZone operation in a HTTP client.
- */
-public typealias CreateCustomAvailabilityZoneOperationHTTPRequestInput = QueryHTTPRequestInput
-
-/**
  Type to handle the input to the CreateCustomDBEngineVersion operation in a HTTP client.
  */
 public typealias CreateCustomDBEngineVersionOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -175,11 +170,6 @@ public typealias CreateGlobalClusterOperationHTTPRequestInput = QueryHTTPRequest
 public typealias CreateOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
- Type to handle the input to the DeleteCustomAvailabilityZone operation in a HTTP client.
- */
-public typealias DeleteCustomAvailabilityZoneOperationHTTPRequestInput = QueryHTTPRequestInput
-
-/**
  Type to handle the input to the DeleteCustomDBEngineVersion operation in a HTTP client.
  */
 public typealias DeleteCustomDBEngineVersionOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -255,11 +245,6 @@ public typealias DeleteEventSubscriptionOperationHTTPRequestInput = QueryHTTPReq
 public typealias DeleteGlobalClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
- Type to handle the input to the DeleteInstallationMedia operation in a HTTP client.
- */
-public typealias DeleteInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput
-
-/**
  Type to handle the input to the DeleteOptionGroup operation in a HTTP client.
  */
 public typealias DeleteOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -278,11 +263,6 @@ public typealias DescribeAccountAttributesOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the DescribeCertificates operation in a HTTP client.
  */
 public typealias DescribeCertificatesOperationHTTPRequestInput = QueryHTTPRequestInput
-
-/**
- Type to handle the input to the DescribeCustomAvailabilityZones operation in a HTTP client.
- */
-public typealias DescribeCustomAvailabilityZonesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeDBClusterBacktracks operation in a HTTP client.
@@ -425,11 +405,6 @@ public typealias DescribeExportTasksOperationHTTPRequestInput = QueryHTTPRequest
 public typealias DescribeGlobalClustersOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
- Type to handle the input to the DescribeInstallationMedia operation in a HTTP client.
- */
-public typealias DescribeInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput
-
-/**
  Type to handle the input to the DescribeOptionGroupOptions operation in a HTTP client.
  */
 public typealias DescribeOptionGroupOptionsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -483,11 +458,6 @@ public typealias FailoverDBClusterOperationHTTPRequestInput = QueryHTTPRequestIn
  Type to handle the input to the FailoverGlobalCluster operation in a HTTP client.
  */
 public typealias FailoverGlobalClusterOperationHTTPRequestInput = QueryHTTPRequestInput
-
-/**
- Type to handle the input to the ImportInstallationMedia operation in a HTTP client.
- */
-public typealias ImportInstallationMediaOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ListTagsForResource operation in a HTTP client.

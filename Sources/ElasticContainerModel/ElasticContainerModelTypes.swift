@@ -840,6 +840,7 @@ public typealias PortMappingList = [PortMapping]
  Enumeration restricting the values of the PropagateTags field.
  */
 public enum PropagateTags: String, Codable, CustomStringConvertible {
+    case none = "NONE"
     case service = "SERVICE"
     case taskDefinition = "TASK_DEFINITION"
 
@@ -847,7 +848,7 @@ public enum PropagateTags: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: PropagateTags = .service
+    public static let __default: PropagateTags = .none
 }
 
 /**

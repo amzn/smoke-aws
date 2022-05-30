@@ -45,6 +45,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let deregisterType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAccountLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeChangeSetHooks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describePublisher: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackDriftDetectionStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -128,6 +129,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.describeAccountLimits)
         self.describeChangeSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeChangeSet)
+        self.describeChangeSetHooks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeChangeSetHooks)
         self.describePublisher = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describePublisher)
         self.describeStackDriftDetectionStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

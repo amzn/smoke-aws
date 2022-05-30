@@ -22,6 +22,18 @@
 
 import Foundation
 
+public extension AccessDeniedException {
+    /**
+     Default instance of the AccessDeniedException structure.
+     */
+    static let __default: RDSDataModel.AccessDeniedException = {
+        let defaultInstance = RDSDataModel.AccessDeniedException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ArrayValue {
     /**
      Default instance of the ArrayValue structure.
@@ -194,6 +206,7 @@ public extension ExecuteStatementRequest {
         let defaultInstance = RDSDataModel.ExecuteStatementRequest(
             continueAfterTimeout: nil,
             database: nil,
+            formatRecordsAs: nil,
             includeResultMetadata: nil,
             parameters: nil,
             resourceArn: "01234567890",
@@ -214,6 +227,7 @@ public extension ExecuteStatementResponse {
     static let __default: RDSDataModel.ExecuteStatementResponse = {
         let defaultInstance = RDSDataModel.ExecuteStatementResponse(
             columnMetadata: nil,
+            formattedRecords: nil,
             generatedFields: nil,
             numberOfRecordsUpdated: nil,
             records: nil)
@@ -319,7 +333,8 @@ public extension ResultSetOptions {
      */
     static let __default: RDSDataModel.ResultSetOptions = {
         let defaultInstance = RDSDataModel.ResultSetOptions(
-            decimalReturnType: nil)
+            decimalReturnType: nil,
+            longReturnType: nil)
 
         return defaultInstance
     }()

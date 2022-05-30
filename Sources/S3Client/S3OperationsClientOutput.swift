@@ -52,6 +52,10 @@ extension CompleteMultipartUploadOutput: HTTPResponseOutputProtocol {
         return S3Model.CompleteMultipartUploadOutput(
             bucket: body.bucket,
             bucketKeyEnabled: headers.bucketKeyEnabled,
+            checksumCRC32: body.checksumCRC32,
+            checksumCRC32C: body.checksumCRC32C,
+            checksumSHA1: body.checksumSHA1,
+            checksumSHA256: body.checksumSHA256,
             eTag: body.eTag,
             expiration: headers.expiration,
             key: body.key,
@@ -120,6 +124,7 @@ extension CreateMultipartUploadOutput: HTTPResponseOutputProtocol {
             abortRuleId: headers.abortRuleId,
             bucket: body.bucket,
             bucketKeyEnabled: headers.bucketKeyEnabled,
+            checksumAlgorithm: headers.checksumAlgorithm,
             key: body.key,
             requestCharged: headers.requestCharged,
             sSECustomerAlgorithm: headers.sSECustomerAlgorithm,
@@ -479,6 +484,10 @@ extension GetObjectOutput: HTTPResponseOutputProtocol {
             body: body,
             bucketKeyEnabled: headers.bucketKeyEnabled,
             cacheControl: headers.cacheControl,
+            checksumCRC32: headers.checksumCRC32,
+            checksumCRC32C: headers.checksumCRC32C,
+            checksumSHA1: headers.checksumSHA1,
+            checksumSHA256: headers.checksumSHA256,
             contentDisposition: headers.contentDisposition,
             contentEncoding: headers.contentEncoding,
             contentLanguage: headers.contentLanguage,
@@ -526,6 +535,31 @@ extension GetObjectAclOutput: HTTPResponseOutputProtocol {
             grants: body.grants,
             owner: body.owner,
             requestCharged: headers.requestCharged)
+    }
+}
+
+/**
+ Type to handle the output from the GetObjectAttributes operation in a HTTP client.
+ */
+extension GetObjectAttributesOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetObjectAttributesOperationOutputBody
+    public typealias HeadersType = GetObjectAttributesOperationOutputHeaders
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetObjectAttributesOutput {
+        let body = try bodyDecodableProvider()
+        let headers = try headersDecodableProvider()
+
+        return S3Model.GetObjectAttributesOutput(
+            checksum: body.checksum,
+            deleteMarker: headers.deleteMarker,
+            eTag: body.eTag,
+            lastModified: headers.lastModified,
+            objectParts: body.objectParts,
+            objectSize: body.objectSize,
+            requestCharged: headers.requestCharged,
+            storageClass: body.storageClass,
+            versionId: headers.versionId)
     }
 }
 
@@ -763,6 +797,7 @@ extension ListPartsOutput: HTTPResponseOutputProtocol {
             abortDate: headers.abortDate,
             abortRuleId: headers.abortRuleId,
             bucket: body.bucket,
+            checksumAlgorithm: body.checksumAlgorithm,
             initiator: body.initiator,
             isTruncated: body.isTruncated,
             key: body.key,

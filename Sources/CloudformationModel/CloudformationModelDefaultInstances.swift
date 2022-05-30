@@ -200,8 +200,53 @@ public extension Change {
      */
     static let __default: CloudformationModel.Change = {
         let defaultInstance = CloudformationModel.Change(
+            hookInvocationCount: nil,
             resourceChange: nil,
             type: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ChangeSetHook {
+    /**
+     Default instance of the ChangeSetHook structure.
+     */
+    static let __default: CloudformationModel.ChangeSetHook = {
+        let defaultInstance = CloudformationModel.ChangeSetHook(
+            failureMode: nil,
+            invocationPoint: nil,
+            targetDetails: nil,
+            typeConfigurationVersionId: nil,
+            typeName: nil,
+            typeVersionId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ChangeSetHookResourceTargetDetails {
+    /**
+     Default instance of the ChangeSetHookResourceTargetDetails structure.
+     */
+    static let __default: CloudformationModel.ChangeSetHookResourceTargetDetails = {
+        let defaultInstance = CloudformationModel.ChangeSetHookResourceTargetDetails(
+            logicalResourceId: nil,
+            resourceAction: nil,
+            resourceType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ChangeSetHookTargetDetails {
+    /**
+     Default instance of the ChangeSetHookTargetDetails structure.
+     */
+    static let __default: CloudformationModel.ChangeSetHookTargetDetails = {
+        let defaultInstance = CloudformationModel.ChangeSetHookTargetDetails(
+            resourceTargetDetails: nil,
+            targetType: nil)
 
         return defaultInstance
     }()
@@ -739,6 +784,51 @@ public extension DescribeAccountLimitsOutputForDescribeAccountLimits {
     static let __default: CloudformationModel.DescribeAccountLimitsOutputForDescribeAccountLimits = {
         let defaultInstance = CloudformationModel.DescribeAccountLimitsOutputForDescribeAccountLimits(
             describeAccountLimitsResult: DescribeAccountLimitsOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeChangeSetHooksInput {
+    /**
+     Default instance of the DescribeChangeSetHooksInput structure.
+     */
+    static let __default: CloudformationModel.DescribeChangeSetHooksInput = {
+        let defaultInstance = CloudformationModel.DescribeChangeSetHooksInput(
+            changeSetName: "0",
+            logicalResourceId: nil,
+            nextToken: nil,
+            stackName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeChangeSetHooksOutput {
+    /**
+     Default instance of the DescribeChangeSetHooksOutput structure.
+     */
+    static let __default: CloudformationModel.DescribeChangeSetHooksOutput = {
+        let defaultInstance = CloudformationModel.DescribeChangeSetHooksOutput(
+            changeSetId: nil,
+            changeSetName: nil,
+            hooks: nil,
+            nextToken: nil,
+            stackId: nil,
+            stackName: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+    /**
+     Default instance of the DescribeChangeSetHooksOutputForDescribeChangeSetHooks structure.
+     */
+    static let __default: CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks = {
+        let defaultInstance = CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks(
+            describeChangeSetHooksResult: DescribeChangeSetHooksOutput.__default)
 
         return defaultInstance
     }()
@@ -2864,6 +2954,11 @@ public extension StackEvent {
         let defaultInstance = CloudformationModel.StackEvent(
             clientRequestToken: nil,
             eventId: "value",
+            hookFailureMode: nil,
+            hookInvocationPoint: nil,
+            hookStatus: nil,
+            hookStatusReason: nil,
+            hookType: nil,
             logicalResourceId: nil,
             physicalResourceId: nil,
             resourceProperties: nil,
@@ -3165,7 +3260,8 @@ public extension StackSetOperation {
             retainStacks: nil,
             stackSetDriftDetectionDetails: nil,
             stackSetId: nil,
-            status: nil)
+            status: nil,
+            statusReason: nil)
 
         return defaultInstance
     }()
@@ -3215,7 +3311,8 @@ public extension StackSetOperationSummary {
             creationTimestamp: nil,
             endTimestamp: nil,
             operationId: nil,
-            status: nil)
+            status: nil,
+            statusReason: nil)
 
         return defaultInstance
     }()

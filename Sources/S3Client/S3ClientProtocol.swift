@@ -259,6 +259,11 @@ public protocol S3ClientProtocol {
     typealias GetObjectAclAsyncType = (
             _ input: S3Model.GetObjectAclRequest, 
             _ completion: @escaping (Result<S3Model.GetObjectAclOutput, S3Error>) -> ()) throws -> ()
+    typealias GetObjectAttributesSyncType = (
+            _ input: S3Model.GetObjectAttributesRequest) throws -> S3Model.GetObjectAttributesOutput
+    typealias GetObjectAttributesAsyncType = (
+            _ input: S3Model.GetObjectAttributesRequest, 
+            _ completion: @escaping (Result<S3Model.GetObjectAttributesOutput, S3Error>) -> ()) throws -> ()
     typealias GetObjectLegalHoldSyncType = (
             _ input: S3Model.GetObjectLegalHoldRequest) throws -> S3Model.GetObjectLegalHoldOutput
     typealias GetObjectLegalHoldAsyncType = (
@@ -1579,6 +1584,32 @@ public protocol S3ClientProtocol {
      */
     func getObjectAclSync(
             input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput
+
+    /**
+     Invokes the GetObjectAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+         - completion: The GetObjectAttributesOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectAttributesOutput
+           object will be validated before being returned to caller.
+           The possible errors are: noSuchKey.
+     */
+    func getObjectAttributesAsync(
+            input: S3Model.GetObjectAttributesRequest, 
+            completion: @escaping (Result<S3Model.GetObjectAttributesOutput, S3Error>) -> ()) throws
+
+    /**
+     Invokes the GetObjectAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+     - Returns: The GetObjectAttributesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    func getObjectAttributesSync(
+            input: S3Model.GetObjectAttributesRequest) throws -> S3Model.GetObjectAttributesOutput
 
     /**
      Invokes the GetObjectLegalHold operation returning immediately and passing the response to a callback.

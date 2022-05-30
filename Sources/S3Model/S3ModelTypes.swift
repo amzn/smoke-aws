@@ -266,6 +266,60 @@ public typealias CORSRules = [CORSRule]
 public typealias CacheControl = String
 
 /**
+ Enumeration restricting the values of the ChecksumAlgorithm field.
+ */
+public enum ChecksumAlgorithm: String, Codable, CustomStringConvertible {
+    case crc32 = "CRC32"
+    case crc32c = "CRC32C"
+    case sha1 = "SHA1"
+    case sha256 = "SHA256"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ChecksumAlgorithm = .crc32
+}
+
+/**
+ Type definition for the ChecksumAlgorithmList field.
+ */
+public typealias ChecksumAlgorithmList = [ChecksumAlgorithm]
+
+/**
+ Type definition for the ChecksumCRC32 field.
+ */
+public typealias ChecksumCRC32 = String
+
+/**
+ Type definition for the ChecksumCRC32C field.
+ */
+public typealias ChecksumCRC32C = String
+
+/**
+ Enumeration restricting the values of the ChecksumMode field.
+ */
+public enum ChecksumMode: String, Codable, CustomStringConvertible {
+    case enabled = "ENABLED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ChecksumMode = .enabled
+}
+
+/**
+ Type definition for the ChecksumSHA1 field.
+ */
+public typealias ChecksumSHA1 = String
+
+/**
+ Type definition for the ChecksumSHA256 field.
+ */
+public typealias ChecksumSHA256 = String
+
+/**
  Type definition for the CloudFunction field.
  */
 public typealias CloudFunction = String
@@ -862,6 +916,7 @@ public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConver
  */
 public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
     case bucketkeystatus = "BucketKeyStatus"
+    case checksumalgorithm = "ChecksumAlgorithm"
     case etag = "ETag"
     case encryptionstatus = "EncryptionStatus"
     case intelligenttieringaccesstier = "IntelligentTieringAccessTier"
@@ -1147,6 +1202,28 @@ public typealias NoncurrentVersionTransitionList = [NoncurrentVersionTransition]
 public typealias NotificationId = String
 
 /**
+ Enumeration restricting the values of the ObjectAttributes field.
+ */
+public enum ObjectAttributes: String, Codable, CustomStringConvertible {
+    case checksum = "Checksum"
+    case etag = "ETag"
+    case objectparts = "ObjectParts"
+    case objectsize = "ObjectSize"
+    case storageclass = "StorageClass"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ObjectAttributes = .checksum
+}
+
+/**
+ Type definition for the ObjectAttributesList field.
+ */
+public typealias ObjectAttributesList = [ObjectAttributes]
+
+/**
  Enumeration restricting the values of the ObjectCannedACL field.
  */
 public enum ObjectCannedACL: String, Codable, CustomStringConvertible {
@@ -1266,6 +1343,11 @@ public enum ObjectOwnership: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ObjectSize field.
+ */
+public typealias ObjectSize = Int
+
+/**
  Type definition for the ObjectSizeGreaterThanBytes field.
  */
 public typealias ObjectSizeGreaterThanBytes = Int
@@ -1356,6 +1438,11 @@ public typealias Parts = [Part]
  Type definition for the PartsCount field.
  */
 public typealias PartsCount = Int
+
+/**
+ Type definition for the PartsList field.
+ */
+public typealias PartsList = [ObjectPart]
 
 /**
  Enumeration restricting the values of the Payer field.

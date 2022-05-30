@@ -589,6 +589,26 @@ public enum MetricStreamOutputFormat: String, Codable, CustomStringConvertible {
 public typealias MetricStreamState = String
 
 /**
+ Type definition for the MetricStreamStatistic field.
+ */
+public typealias MetricStreamStatistic = String
+
+/**
+ Type definition for the MetricStreamStatisticsAdditionalStatistics field.
+ */
+public typealias MetricStreamStatisticsAdditionalStatistics = [MetricStreamStatistic]
+
+/**
+ Type definition for the MetricStreamStatisticsConfigurations field.
+ */
+public typealias MetricStreamStatisticsConfigurations = [MetricStreamStatisticsConfiguration]
+
+/**
+ Type definition for the MetricStreamStatisticsIncludeMetrics field.
+ */
+public typealias MetricStreamStatisticsIncludeMetrics = [MetricStreamStatisticsMetric]
+
+/**
  Type definition for the MetricWidget field.
  */
 public typealias MetricWidget = String

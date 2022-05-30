@@ -1157,84 +1157,6 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
-     Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-         - completion: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object or an error will be passed to this 
-           callback when the operation is complete. The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    public func createCustomAvailabilityZoneAsync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomAvailabilityZone,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = CreateCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
-            version: apiVersion)
-
-        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            completion: completion,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
-    }
-
-    /**
-     Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    public func createCustomAvailabilityZoneSync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomAvailabilityZone,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = CreateCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.createCustomAvailabilityZone.rawValue,
-            version: apiVersion)
-
-        do {
-            return try httpClient.executeSyncRetriableWithOutput(
-                endpointPath: "/",
-                httpMethod: .POST,
-                input: requestInput,
-                invocationContext: invocationContext,
-                retryConfiguration: retryConfiguration,
-                retryOnError: retryOnErrorProvider)
-        } catch {
-            let typedError: RDSError = error.asTypedError()
-            throw typedError
-        }
-    }
-
-    /**
      Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1632,7 +1554,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The CreateDBInstanceResultForCreateDBInstance object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceResultForCreateDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
@@ -1669,7 +1591,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated CreateDBInstanceMessage object being passed to this operation.
      - Returns: The CreateDBInstanceResultForCreateDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceSync(
             input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
@@ -1710,7 +1632,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
            object will be validated before being returned to caller.
-           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
@@ -1747,7 +1669,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated CreateDBInstanceReadReplicaMessage object being passed to this operation.
      - Returns: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaSync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
@@ -2466,84 +2388,6 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.createOptionGroup.rawValue,
-            version: apiVersion)
-
-        do {
-            return try httpClient.executeSyncRetriableWithOutput(
-                endpointPath: "/",
-                httpMethod: .POST,
-                input: requestInput,
-                invocationContext: invocationContext,
-                retryConfiguration: retryConfiguration,
-                retryOnError: retryOnErrorProvider)
-        } catch {
-            let typedError: RDSError = error.asTypedError()
-            throw typedError
-        }
-    }
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-         - completion: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object or an error will be passed to this 
-           callback when the operation is complete. The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    public func deleteCustomAvailabilityZoneAsync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomAvailabilityZone,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DeleteCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
-            version: apiVersion)
-
-        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            completion: completion,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
-    }
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    public func deleteCustomAvailabilityZoneSync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomAvailabilityZone,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DeleteCustomAvailabilityZoneOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.deleteCustomAvailabilityZone.rawValue,
             version: apiVersion)
 
         do {
@@ -3719,84 +3563,6 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
-     Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaForDeleteInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaForDeleteInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: installationMediaNotFound.
-     */
-    public func deleteInstallationMediaAsync(
-            input: RDSModel.DeleteInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstallationMedia,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DeleteInstallationMediaOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.deleteInstallationMedia.rawValue,
-            version: apiVersion)
-
-        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            completion: completion,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
-    }
-
-    /**
-     Invokes the DeleteInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    public func deleteInstallationMediaSync(
-            input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstallationMedia,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DeleteInstallationMediaOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.deleteInstallationMedia.rawValue,
-            version: apiVersion)
-
-        do {
-            return try httpClient.executeSyncRetriableWithOutput(
-                endpointPath: "/",
-                httpMethod: .POST,
-                input: requestInput,
-                invocationContext: invocationContext,
-                retryConfiguration: retryConfiguration,
-                retryOnError: retryOnErrorProvider)
-        } catch {
-            let typedError: RDSError = error.asTypedError()
-            throw typedError
-        }
-    }
-
-    /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4087,84 +3853,6 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.describeCertificates.rawValue,
-            version: apiVersion)
-
-        do {
-            return try httpClient.executeSyncRetriableWithOutput(
-                endpointPath: "/",
-                httpMethod: .POST,
-                input: requestInput,
-                invocationContext: invocationContext,
-                retryConfiguration: retryConfiguration,
-                retryOnError: retryOnErrorProvider)
-        } catch {
-            let typedError: RDSError = error.asTypedError()
-            throw typedError
-        }
-    }
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-         - completion: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object or an error will be passed to this 
-           callback when the operation is complete. The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound.
-     */
-    public func describeCustomAvailabilityZonesAsync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCustomAvailabilityZones,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DescribeCustomAvailabilityZonesOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
-            version: apiVersion)
-
-        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            completion: completion,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
-    }
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound.
-     */
-    public func describeCustomAvailabilityZonesSync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCustomAvailabilityZones,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DescribeCustomAvailabilityZonesOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.describeCustomAvailabilityZones.rawValue,
             version: apiVersion)
 
         do {
@@ -6356,84 +6044,6 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
-     Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaMessageForDescribeInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaMessageForDescribeInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: installationMediaNotFound.
-     */
-    public func describeInstallationMediaAsync(
-            input: RDSModel.DescribeInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstallationMedia,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DescribeInstallationMediaOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.describeInstallationMedia.rawValue,
-            version: apiVersion)
-
-        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            completion: completion,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
-    }
-
-    /**
-     Invokes the DescribeInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    public func describeInstallationMediaSync(
-            input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstallationMedia,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = DescribeInstallationMediaOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.describeInstallationMedia.rawValue,
-            version: apiVersion)
-
-        do {
-            return try httpClient.executeSyncRetriableWithOutput(
-                endpointPath: "/",
-                httpMethod: .POST,
-                input: requestInput,
-                invocationContext: invocationContext,
-                retryConfiguration: retryConfiguration,
-                retryOnError: retryOnErrorProvider)
-        } catch {
-            let typedError: RDSError = error.asTypedError()
-            throw typedError
-        }
-    }
-
-    /**
      Invokes the DescribeOptionGroupOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7286,84 +6896,6 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
-     Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaForImportInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaForImportInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    public func importInstallationMediaAsync(
-            input: RDSModel.ImportInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importInstallationMedia,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = ImportInstallationMediaOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.importInstallationMedia.rawValue,
-            version: apiVersion)
-
-        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
-            endpointPath: "/",
-            httpMethod: .POST,
-            input: requestInput,
-            completion: completion,
-            invocationContext: invocationContext,
-            retryConfiguration: retryConfiguration,
-            retryOnError: retryOnErrorProvider)
-    }
-
-    /**
-     Invokes the ImportInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    public func importInstallationMediaSync(
-            input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
-        let handlerDelegate = AWSClientInvocationDelegate(
-                    credentialsProvider: credentialsProvider,
-                    awsRegion: awsRegion,
-                    service: service,
-                    target: target)
-        
-        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importInstallationMedia,
-                                                            handlerDelegate: handlerDelegate)
-        let wrappedInput = ImportInstallationMediaOperationHTTPRequestInput(encodable: input)
-        
-        let requestInput = QueryWrapperHTTPRequestInput(
-            wrappedInput: wrappedInput,
-            action: RDSModelOperations.importInstallationMedia.rawValue,
-            version: apiVersion)
-
-        do {
-            return try httpClient.executeSyncRetriableWithOutput(
-                endpointPath: "/",
-                httpMethod: .POST,
-                input: requestInput,
-                invocationContext: invocationContext,
-                retryConfiguration: retryConfiguration,
-                retryOnError: retryOnErrorProvider)
-        } catch {
-            let typedError: RDSError = error.asTypedError()
-            throw typedError
-        }
-    }
-
-    /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7995,7 +7527,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The ModifyDBInstanceResultForModifyDBInstance object or an error will be passed to this 
            callback when the operation is complete. The ModifyDBInstanceResultForModifyDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
@@ -8032,7 +7564,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated ModifyDBInstanceMessage object being passed to this operation.
      - Returns: The ModifyDBInstanceResultForModifyDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func modifyDBInstanceSync(
             input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
@@ -10092,7 +9624,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
@@ -10129,7 +9661,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBInstanceFromDBSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotSync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
@@ -10170,7 +9702,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
@@ -10207,7 +9739,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBInstanceFromS3Message object being passed to this operation.
      - Returns: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromS3Sync(
             input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
@@ -10248,7 +9780,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
@@ -10285,7 +9817,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBInstanceToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceToPointInTimeSync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {

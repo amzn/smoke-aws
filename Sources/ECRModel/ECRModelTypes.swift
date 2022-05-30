@@ -490,6 +490,11 @@ public typealias Reason = String
 public typealias RecommendationText = String
 
 /**
+ Type definition for the RecordedPullTimestamp field.
+ */
+public typealias RecordedPullTimestamp = Int64
+
+/**
  Type definition for the ReferenceUrlsList field.
  */
 public typealias ReferenceUrlsList = [Url]

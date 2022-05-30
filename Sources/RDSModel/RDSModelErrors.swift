@@ -38,9 +38,7 @@ private let authorizationNotFoundIdentity = "AuthorizationNotFound"
 private let authorizationQuotaExceededIdentity = "AuthorizationQuotaExceeded"
 private let backupPolicyNotFoundIdentity = "BackupPolicyNotFoundFault"
 private let certificateNotFoundIdentity = "CertificateNotFound"
-private let customAvailabilityZoneAlreadyExistsIdentity = "CustomAvailabilityZoneAlreadyExists"
 private let customAvailabilityZoneNotFoundIdentity = "CustomAvailabilityZoneNotFound"
-private let customAvailabilityZoneQuotaExceededIdentity = "CustomAvailabilityZoneQuotaExceeded"
 private let customDBEngineVersionAlreadyExistsIdentity = "CustomDBEngineVersionAlreadyExistsFault"
 private let customDBEngineVersionNotFoundIdentity = "CustomDBEngineVersionNotFoundFault"
 private let customDBEngineVersionQuotaExceededIdentity = "CustomDBEngineVersionQuotaExceededFault"
@@ -99,8 +97,6 @@ private let globalClusterNotFoundIdentity = "GlobalClusterNotFoundFault"
 private let globalClusterQuotaExceededIdentity = "GlobalClusterQuotaExceededFault"
 private let iamRoleMissingPermissionsIdentity = "IamRoleMissingPermissions"
 private let iamRoleNotFoundIdentity = "IamRoleNotFound"
-private let installationMediaAlreadyExistsIdentity = "InstallationMediaAlreadyExists"
-private let installationMediaNotFoundIdentity = "InstallationMediaNotFound"
 private let instanceQuotaExceededIdentity = "InstanceQuotaExceeded"
 private let insufficientAvailableIPsInSubnetIdentity = "InsufficientAvailableIPsInSubnetFault"
 private let insufficientDBClusterCapacityIdentity = "InsufficientDBClusterCapacityFault"
@@ -132,6 +128,7 @@ private let invalidS3BucketIdentity = "InvalidS3BucketFault"
 private let invalidSubnetIdentity = "InvalidSubnet"
 private let invalidVPCNetworkStateIdentity = "InvalidVPCNetworkStateFault"
 private let kMSKeyNotAccessibleIdentity = "KMSKeyNotAccessibleFault"
+private let networkTypeNotSupportedIdentity = "NetworkTypeNotSupported"
 private let optionGroupAlreadyExistsIdentity = "OptionGroupAlreadyExistsFault"
 private let optionGroupNotFoundIdentity = "OptionGroupNotFoundFault"
 private let optionGroupQuotaExceededIdentity = "OptionGroupQuotaExceededFault"
@@ -162,9 +159,7 @@ public enum RDSError: Swift.Error, Decodable {
     case authorizationQuotaExceeded(AuthorizationQuotaExceededFault)
     case backupPolicyNotFound(BackupPolicyNotFoundFault)
     case certificateNotFound(CertificateNotFoundFault)
-    case customAvailabilityZoneAlreadyExists(CustomAvailabilityZoneAlreadyExistsFault)
     case customAvailabilityZoneNotFound(CustomAvailabilityZoneNotFoundFault)
-    case customAvailabilityZoneQuotaExceeded(CustomAvailabilityZoneQuotaExceededFault)
     case customDBEngineVersionAlreadyExists(CustomDBEngineVersionAlreadyExistsFault)
     case customDBEngineVersionNotFound(CustomDBEngineVersionNotFoundFault)
     case customDBEngineVersionQuotaExceeded(CustomDBEngineVersionQuotaExceededFault)
@@ -223,8 +218,6 @@ public enum RDSError: Swift.Error, Decodable {
     case globalClusterQuotaExceeded(GlobalClusterQuotaExceededFault)
     case iamRoleMissingPermissions(IamRoleMissingPermissionsFault)
     case iamRoleNotFound(IamRoleNotFoundFault)
-    case installationMediaAlreadyExists(InstallationMediaAlreadyExistsFault)
-    case installationMediaNotFound(InstallationMediaNotFoundFault)
     case instanceQuotaExceeded(InstanceQuotaExceededFault)
     case insufficientAvailableIPsInSubnet(InsufficientAvailableIPsInSubnetFault)
     case insufficientDBClusterCapacity(InsufficientDBClusterCapacityFault)
@@ -256,6 +249,7 @@ public enum RDSError: Swift.Error, Decodable {
     case invalidSubnet(InvalidSubnet)
     case invalidVPCNetworkState(InvalidVPCNetworkStateFault)
     case kMSKeyNotAccessible(KMSKeyNotAccessibleFault)
+    case networkTypeNotSupported(NetworkTypeNotSupported)
     case optionGroupAlreadyExists(OptionGroupAlreadyExistsFault)
     case optionGroupNotFound(OptionGroupNotFoundFault)
     case optionGroupQuotaExceeded(OptionGroupQuotaExceededFault)
@@ -312,15 +306,9 @@ public enum RDSError: Swift.Error, Decodable {
         case certificateNotFoundIdentity:
             let errorPayload = try CertificateNotFoundFault(from: decoder)
             self = RDSError.certificateNotFound(errorPayload)
-        case customAvailabilityZoneAlreadyExistsIdentity:
-            let errorPayload = try CustomAvailabilityZoneAlreadyExistsFault(from: decoder)
-            self = RDSError.customAvailabilityZoneAlreadyExists(errorPayload)
         case customAvailabilityZoneNotFoundIdentity:
             let errorPayload = try CustomAvailabilityZoneNotFoundFault(from: decoder)
             self = RDSError.customAvailabilityZoneNotFound(errorPayload)
-        case customAvailabilityZoneQuotaExceededIdentity:
-            let errorPayload = try CustomAvailabilityZoneQuotaExceededFault(from: decoder)
-            self = RDSError.customAvailabilityZoneQuotaExceeded(errorPayload)
         case customDBEngineVersionAlreadyExistsIdentity:
             let errorPayload = try CustomDBEngineVersionAlreadyExistsFault(from: decoder)
             self = RDSError.customDBEngineVersionAlreadyExists(errorPayload)
@@ -495,12 +483,6 @@ public enum RDSError: Swift.Error, Decodable {
         case iamRoleNotFoundIdentity:
             let errorPayload = try IamRoleNotFoundFault(from: decoder)
             self = RDSError.iamRoleNotFound(errorPayload)
-        case installationMediaAlreadyExistsIdentity:
-            let errorPayload = try InstallationMediaAlreadyExistsFault(from: decoder)
-            self = RDSError.installationMediaAlreadyExists(errorPayload)
-        case installationMediaNotFoundIdentity:
-            let errorPayload = try InstallationMediaNotFoundFault(from: decoder)
-            self = RDSError.installationMediaNotFound(errorPayload)
         case instanceQuotaExceededIdentity:
             let errorPayload = try InstanceQuotaExceededFault(from: decoder)
             self = RDSError.instanceQuotaExceeded(errorPayload)
@@ -594,6 +576,9 @@ public enum RDSError: Swift.Error, Decodable {
         case kMSKeyNotAccessibleIdentity:
             let errorPayload = try KMSKeyNotAccessibleFault(from: decoder)
             self = RDSError.kMSKeyNotAccessible(errorPayload)
+        case networkTypeNotSupportedIdentity:
+            let errorPayload = try NetworkTypeNotSupported(from: decoder)
+            self = RDSError.networkTypeNotSupported(errorPayload)
         case optionGroupAlreadyExistsIdentity:
             let errorPayload = try OptionGroupAlreadyExistsFault(from: decoder)
             self = RDSError.optionGroupAlreadyExists(errorPayload)

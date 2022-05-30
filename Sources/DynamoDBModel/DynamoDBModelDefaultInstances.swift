@@ -1114,6 +1114,7 @@ public extension ExecuteStatementInput {
     static let __default: DynamoDBModel.ExecuteStatementInput = {
         let defaultInstance = DynamoDBModel.ExecuteStatementInput(
             consistentRead: nil,
+            limit: nil,
             nextToken: nil,
             parameters: nil,
             returnConsumedCapacity: nil,
@@ -1131,6 +1132,7 @@ public extension ExecuteStatementOutput {
         let defaultInstance = DynamoDBModel.ExecuteStatementOutput(
             consumedCapacity: nil,
             items: nil,
+            lastEvaluatedKey: nil,
             nextToken: nil)
 
         return defaultInstance

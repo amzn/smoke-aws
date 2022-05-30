@@ -42,6 +42,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case deregisterType = "DeregisterType"
     case describeAccountLimits = "DescribeAccountLimits"
     case describeChangeSet = "DescribeChangeSet"
+    case describeChangeSetHooks = "DescribeChangeSetHooks"
     case describePublisher = "DescribePublisher"
     case describeStackDriftDetectionStatus = "DescribeStackDriftDetectionStatus"
     case describeStackEvents = "DescribeStackEvents"
@@ -129,6 +130,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .describeAccountLimits:
             return "/"
         case .describeChangeSet:
+            return "/"
+        case .describeChangeSetHooks:
             return "/"
         case .describePublisher:
             return "/"

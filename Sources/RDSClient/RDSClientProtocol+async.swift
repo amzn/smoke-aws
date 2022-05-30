@@ -370,33 +370,6 @@ public extension RDSClientProtocol {
     }
 
     /**
-     Invokes the CreateCustomAvailabilityZone operation and asynchronously returning the response.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    func createCustomAvailabilityZone(input: RDSModel.CreateCustomAvailabilityZoneMessage) async throws
-     -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
-        return try await withUnsafeThrowingContinuation { cont in
-            do {
-                try createCustomAvailabilityZoneAsync(input: input) { result in
-                    switch result {
-                    case .failure(let error):
-                        cont.resume(throwing: error)
-                    case .success(let response):
-                        cont.resume(returning: response)
-                    }
-                }
-            } catch {
-                cont.resume(throwing: error)
-            }
-        }
-    }
-
-    /**
      Invokes the CreateCustomDBEngineVersion operation and asynchronously returning the response.
 
      - Parameters:
@@ -538,7 +511,7 @@ public extension RDSClientProtocol {
          - input: The validated CreateDBInstanceMessage object being passed to this operation.
      - Returns: The CreateDBInstanceResultForCreateDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstance(input: RDSModel.CreateDBInstanceMessage) async throws
      -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
@@ -565,7 +538,7 @@ public extension RDSClientProtocol {
          - input: The validated CreateDBInstanceReadReplicaMessage object being passed to this operation.
      - Returns: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceReadReplica(input: RDSModel.CreateDBInstanceReadReplicaMessage) async throws
      -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
@@ -815,33 +788,6 @@ public extension RDSClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try createOptionGroupAsync(input: input) { result in
-                    switch result {
-                    case .failure(let error):
-                        cont.resume(throwing: error)
-                    case .success(let response):
-                        cont.resume(returning: response)
-                    }
-                }
-            } catch {
-                cont.resume(throwing: error)
-            }
-        }
-    }
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation and asynchronously returning the response.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    func deleteCustomAvailabilityZone(input: RDSModel.DeleteCustomAvailabilityZoneMessage) async throws
-     -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
-        return try await withUnsafeThrowingContinuation { cont in
-            do {
-                try deleteCustomAvailabilityZoneAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -1245,33 +1191,6 @@ public extension RDSClientProtocol {
     }
 
     /**
-     Invokes the DeleteInstallationMedia operation and asynchronously returning the response.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    func deleteInstallationMedia(input: RDSModel.DeleteInstallationMediaMessage) async throws
-     -> RDSModel.InstallationMediaForDeleteInstallationMedia {
-        return try await withUnsafeThrowingContinuation { cont in
-            do {
-                try deleteInstallationMediaAsync(input: input) { result in
-                    switch result {
-                    case .failure(let error):
-                        cont.resume(throwing: error)
-                    case .success(let response):
-                        cont.resume(returning: response)
-                    }
-                }
-            } catch {
-                cont.resume(throwing: error)
-            }
-        }
-    }
-
-    /**
      Invokes the DeleteOptionGroup operation and asynchronously returning the response.
 
      - Parameters:
@@ -1361,33 +1280,6 @@ public extension RDSClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try describeCertificatesAsync(input: input) { result in
-                    switch result {
-                    case .failure(let error):
-                        cont.resume(throwing: error)
-                    case .success(let response):
-                        cont.resume(returning: response)
-                    }
-                }
-            } catch {
-                cont.resume(throwing: error)
-            }
-        }
-    }
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation and asynchronously returning the response.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound.
-     */
-    func describeCustomAvailabilityZones(input: RDSModel.DescribeCustomAvailabilityZonesMessage) async throws
-     -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
-        return try await withUnsafeThrowingContinuation { cont in
-            do {
-                try describeCustomAvailabilityZonesAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -2153,33 +2045,6 @@ public extension RDSClientProtocol {
     }
 
     /**
-     Invokes the DescribeInstallationMedia operation and asynchronously returning the response.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    func describeInstallationMedia(input: RDSModel.DescribeInstallationMediaMessage) async throws
-     -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
-        return try await withUnsafeThrowingContinuation { cont in
-            do {
-                try describeInstallationMediaAsync(input: input) { result in
-                    switch result {
-                    case .failure(let error):
-                        cont.resume(throwing: error)
-                    case .success(let response):
-                        cont.resume(returning: response)
-                    }
-                }
-            } catch {
-                cont.resume(throwing: error)
-            }
-        }
-    }
-
-    /**
      Invokes the DescribeOptionGroupOptions operation and asynchronously returning the response.
 
      - Parameters:
@@ -2474,33 +2339,6 @@ public extension RDSClientProtocol {
     }
 
     /**
-     Invokes the ImportInstallationMedia operation and asynchronously returning the response.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    func importInstallationMedia(input: RDSModel.ImportInstallationMediaMessage) async throws
-     -> RDSModel.InstallationMediaForImportInstallationMedia {
-        return try await withUnsafeThrowingContinuation { cont in
-            do {
-                try importInstallationMediaAsync(input: input) { result in
-                    switch result {
-                    case .failure(let error):
-                        cont.resume(throwing: error)
-                    case .success(let response):
-                        cont.resume(returning: response)
-                    }
-                }
-            } catch {
-                cont.resume(throwing: error)
-            }
-        }
-    }
-
-    /**
      Invokes the ListTagsForResource operation and asynchronously returning the response.
 
      - Parameters:
@@ -2723,7 +2561,7 @@ public extension RDSClientProtocol {
          - input: The validated ModifyDBInstanceMessage object being passed to this operation.
      - Returns: The ModifyDBInstanceResultForModifyDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func modifyDBInstance(input: RDSModel.ModifyDBInstanceMessage) async throws
      -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
@@ -3440,7 +3278,7 @@ public extension RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromDBSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromDBSnapshot(input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) async throws
      -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
@@ -3467,7 +3305,7 @@ public extension RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromS3Message object being passed to this operation.
      - Returns: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromS3(input: RDSModel.RestoreDBInstanceFromS3Message) async throws
      -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
@@ -3494,7 +3332,7 @@ public extension RDSClientProtocol {
          - input: The validated RestoreDBInstanceToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceToPointInTime(input: RDSModel.RestoreDBInstanceToPointInTimeMessage) async throws
      -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {

@@ -39,7 +39,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case copyDBParameterGroup = "CopyDBParameterGroup"
     case copyDBSnapshot = "CopyDBSnapshot"
     case copyOptionGroup = "CopyOptionGroup"
-    case createCustomAvailabilityZone = "CreateCustomAvailabilityZone"
     case createCustomDBEngineVersion = "CreateCustomDBEngineVersion"
     case createDBCluster = "CreateDBCluster"
     case createDBClusterEndpoint = "CreateDBClusterEndpoint"
@@ -56,7 +55,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case createEventSubscription = "CreateEventSubscription"
     case createGlobalCluster = "CreateGlobalCluster"
     case createOptionGroup = "CreateOptionGroup"
-    case deleteCustomAvailabilityZone = "DeleteCustomAvailabilityZone"
     case deleteCustomDBEngineVersion = "DeleteCustomDBEngineVersion"
     case deleteDBCluster = "DeleteDBCluster"
     case deleteDBClusterEndpoint = "DeleteDBClusterEndpoint"
@@ -72,12 +70,10 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case deleteDBSubnetGroup = "DeleteDBSubnetGroup"
     case deleteEventSubscription = "DeleteEventSubscription"
     case deleteGlobalCluster = "DeleteGlobalCluster"
-    case deleteInstallationMedia = "DeleteInstallationMedia"
     case deleteOptionGroup = "DeleteOptionGroup"
     case deregisterDBProxyTargets = "DeregisterDBProxyTargets"
     case describeAccountAttributes = "DescribeAccountAttributes"
     case describeCertificates = "DescribeCertificates"
-    case describeCustomAvailabilityZones = "DescribeCustomAvailabilityZones"
     case describeDBClusterBacktracks = "DescribeDBClusterBacktracks"
     case describeDBClusterEndpoints = "DescribeDBClusterEndpoints"
     case describeDBClusterParameterGroups = "DescribeDBClusterParameterGroups"
@@ -106,7 +102,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case describeEvents = "DescribeEvents"
     case describeExportTasks = "DescribeExportTasks"
     case describeGlobalClusters = "DescribeGlobalClusters"
-    case describeInstallationMedia = "DescribeInstallationMedia"
     case describeOptionGroupOptions = "DescribeOptionGroupOptions"
     case describeOptionGroups = "DescribeOptionGroups"
     case describeOrderableDBInstanceOptions = "DescribeOrderableDBInstanceOptions"
@@ -118,7 +113,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case downloadDBLogFilePortion = "DownloadDBLogFilePortion"
     case failoverDBCluster = "FailoverDBCluster"
     case failoverGlobalCluster = "FailoverGlobalCluster"
-    case importInstallationMedia = "ImportInstallationMedia"
     case listTagsForResource = "ListTagsForResource"
     case modifyCertificates = "ModifyCertificates"
     case modifyCurrentDBClusterCapacity = "ModifyCurrentDBClusterCapacity"
@@ -200,8 +194,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .copyOptionGroup:
             return "/"
-        case .createCustomAvailabilityZone:
-            return "/"
         case .createCustomDBEngineVersion:
             return "/"
         case .createDBCluster:
@@ -234,8 +226,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .createOptionGroup:
             return "/"
-        case .deleteCustomAvailabilityZone:
-            return "/"
         case .deleteCustomDBEngineVersion:
             return "/"
         case .deleteDBCluster:
@@ -266,8 +256,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .deleteGlobalCluster:
             return "/"
-        case .deleteInstallationMedia:
-            return "/"
         case .deleteOptionGroup:
             return "/"
         case .deregisterDBProxyTargets:
@@ -275,8 +263,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .describeAccountAttributes:
             return "/"
         case .describeCertificates:
-            return "/"
-        case .describeCustomAvailabilityZones:
             return "/"
         case .describeDBClusterBacktracks:
             return "/"
@@ -334,8 +320,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeGlobalClusters:
             return "/"
-        case .describeInstallationMedia:
-            return "/"
         case .describeOptionGroupOptions:
             return "/"
         case .describeOptionGroups:
@@ -357,8 +341,6 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .failoverDBCluster:
             return "/"
         case .failoverGlobalCluster:
-            return "/"
-        case .importInstallationMedia:
             return "/"
         case .listTagsForResource:
             return "/"

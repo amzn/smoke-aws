@@ -207,6 +207,19 @@ extension DescribeChangeSetOutputForDescribeChangeSet: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the DescribeChangeSetHooks operation in a HTTP client.
+ */
+extension DescribeChangeSetHooksOutputForDescribeChangeSetHooks: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+    public typealias HeadersType = DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribePublisher operation in a HTTP client.
  */
 extension DescribePublisherOutputForDescribePublisher: HTTPResponseOutputProtocol {

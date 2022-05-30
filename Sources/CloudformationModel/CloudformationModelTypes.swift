@@ -185,6 +185,26 @@ public enum ChangeAction: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ChangeSetHooks field.
+ */
+public typealias ChangeSetHooks = [ChangeSetHook]
+
+/**
+ Enumeration restricting the values of the ChangeSetHooksStatus field.
+ */
+public enum ChangeSetHooksStatus: String, Codable, CustomStringConvertible {
+    case planned = "PLANNED"
+    case planning = "PLANNING"
+    case unavailable = "UNAVAILABLE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ChangeSetHooksStatus = .planned
+}
+
+/**
  Type definition for the ChangeSetId field.
  */
 public typealias ChangeSetId = String
@@ -447,11 +467,13 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
     case accessDenied = "AccessDenied"
     case alreadyExists = "AlreadyExists"
     case generalServiceException = "GeneralServiceException"
+    case handlerInternalFailure = "HandlerInternalFailure"
     case internalFailure = "InternalFailure"
     case invalidCredentials = "InvalidCredentials"
     case invalidRequest = "InvalidRequest"
     case invalidTypeConfiguration = "InvalidTypeConfiguration"
     case networkFailure = "NetworkFailure"
+    case nonCompliant = "NonCompliant"
     case notFound = "NotFound"
     case notStabilized = "NotStabilized"
     case notUpdatable = "NotUpdatable"
@@ -459,6 +481,7 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
     case serviceInternalError = "ServiceInternalError"
     case serviceLimitExceeded = "ServiceLimitExceeded"
     case throttling = "Throttling"
+    case unknown = "Unknown"
 
     public var description: String {
         return rawValue
@@ -466,6 +489,97 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
     
     public static let __default: HandlerErrorCode = .accessDenied
 }
+
+/**
+ Enumeration restricting the values of the HookFailureMode field.
+ */
+public enum HookFailureMode: String, Codable, CustomStringConvertible {
+    case fail = "FAIL"
+    case warn = "WARN"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: HookFailureMode = .fail
+}
+
+/**
+ Type definition for the HookInvocationCount field.
+ */
+public typealias HookInvocationCount = Int
+
+/**
+ Enumeration restricting the values of the HookInvocationPoint field.
+ */
+public enum HookInvocationPoint: String, Codable, CustomStringConvertible {
+    case preProvision = "PRE_PROVISION"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: HookInvocationPoint = .preProvision
+}
+
+/**
+ Enumeration restricting the values of the HookStatus field.
+ */
+public enum HookStatus: String, Codable, CustomStringConvertible {
+    case hookCompleteFailed = "HOOK_COMPLETE_FAILED"
+    case hookCompleteSucceeded = "HOOK_COMPLETE_SUCCEEDED"
+    case hookFailed = "HOOK_FAILED"
+    case hookInProgress = "HOOK_IN_PROGRESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: HookStatus = .hookCompleteFailed
+}
+
+/**
+ Type definition for the HookStatusReason field.
+ */
+public typealias HookStatusReason = String
+
+/**
+ Enumeration restricting the values of the HookTargetType field.
+ */
+public enum HookTargetType: String, Codable, CustomStringConvertible {
+    case resource = "RESOURCE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: HookTargetType = .resource
+}
+
+/**
+ Type definition for the HookTargetTypeName field.
+ */
+public typealias HookTargetTypeName = String
+
+/**
+ Type definition for the HookType field.
+ */
+public typealias HookType = String
+
+/**
+ Type definition for the HookTypeConfigurationVersionId field.
+ */
+public typealias HookTypeConfigurationVersionId = String
+
+/**
+ Type definition for the HookTypeName field.
+ */
+public typealias HookTypeName = String
+
+/**
+ Type definition for the HookTypeVersionId field.
+ */
+public typealias HookTypeVersionId = String
 
 /**
  Enumeration restricting the values of the IdentityProvider field.
@@ -859,6 +973,7 @@ public typealias RegistrationTokenList = [RegistrationToken]
  Enumeration restricting the values of the RegistryType field.
  */
 public enum RegistryType: String, Codable, CustomStringConvertible {
+    case hook = "HOOK"
     case module = "MODULE"
     case resource = "RESOURCE"
 
@@ -866,7 +981,7 @@ public enum RegistryType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: RegistryType = .module
+    public static let __default: RegistryType = .hook
 }
 
 /**
@@ -1397,6 +1512,11 @@ public enum StackSetOperationStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the StackSetOperationStatusReason field.
+ */
+public typealias StackSetOperationStatusReason = String
+
+/**
  Type definition for the StackSetOperationSummaries field.
  */
 public typealias StackSetOperationSummaries = [StackSetOperationSummary]
@@ -1548,6 +1668,7 @@ public typealias TemplateURL = String
  Enumeration restricting the values of the ThirdPartyType field.
  */
 public enum ThirdPartyType: String, Codable, CustomStringConvertible {
+    case hook = "HOOK"
     case module = "MODULE"
     case resource = "RESOURCE"
 
@@ -1555,7 +1676,7 @@ public enum ThirdPartyType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: ThirdPartyType = .module
+    public static let __default: ThirdPartyType = .hook
 }
 
 /**
@@ -2037,6 +2158,129 @@ extension CloudformationModel.FailureTolerancePercentage {
 
         if self > 100 {
             throw CloudformationError.validationError(reason: "The provided value to FailureTolerancePercentage violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookInvocationCount field.
+*/
+extension CloudformationModel.HookInvocationCount {
+    public func validateAsHookInvocationCount() throws {
+        if self < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to HookInvocationCount violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw CloudformationError.validationError(reason: "The provided value to HookInvocationCount violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookStatusReason field.
+*/
+extension CloudformationModel.HookStatusReason {
+    public func validateAsHookStatusReason() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to HookStatusReason violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw CloudformationError.validationError(reason: "The provided value to HookStatusReason violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookTargetTypeName field.
+*/
+extension CloudformationModel.HookTargetTypeName {
+    public func validateAsHookTargetTypeName() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTargetTypeName violated the minimum length constraint.")
+        }
+
+        if self.count > 256 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTargetTypeName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^[a-zA-Z0-9]{2,64}::[a-zA-Z0-9]{2,64}::[a-zA-Z0-9]{2,64}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to HookTargetTypeName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookType field.
+*/
+extension CloudformationModel.HookType {
+    public func validateAsHookType() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to HookType violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw CloudformationError.validationError(reason: "The provided value to HookType violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookTypeConfigurationVersionId field.
+*/
+extension CloudformationModel.HookTypeConfigurationVersionId {
+    public func validateAsHookTypeConfigurationVersionId() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTypeConfigurationVersionId violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTypeConfigurationVersionId violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z0-9-]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to HookTypeConfigurationVersionId violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookTypeName field.
+*/
+extension CloudformationModel.HookTypeName {
+    public func validateAsHookTypeName() throws {
+        if self.count < 10 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTypeName violated the minimum length constraint.")
+        }
+
+        if self.count > 196 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTypeName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the HookTypeVersionId field.
+*/
+extension CloudformationModel.HookTypeVersionId {
+    public func validateAsHookTypeVersionId() throws {
+        if self.count < 1 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTypeVersionId violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw CloudformationError.validationError(reason: "The provided value to HookTypeVersionId violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z0-9-]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to HookTypeVersionId violated the regular expression constraint.")
         }
     }
 }

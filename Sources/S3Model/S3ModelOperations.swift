@@ -72,6 +72,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
     case getBucketWebsite = "GetBucketWebsite"
     case getObject = "GetObject"
     case getObjectAcl = "GetObjectAcl"
+    case getObjectAttributes = "GetObjectAttributes"
     case getObjectLegalHold = "GetObjectLegalHold"
     case getObjectLockConfiguration = "GetObjectLockConfiguration"
     case getObjectRetention = "GetObjectRetention"
@@ -221,6 +222,8 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
             return "/{Bucket}/{Key+}"
         case .getObjectAcl:
             return "/{Bucket}/{Key+}?acl"
+        case .getObjectAttributes:
+            return "/{Bucket}/{Key+}?attributes"
         case .getObjectLegalHold:
             return "/{Bucket}/{Key+}?legal-hold"
         case .getObjectLockConfiguration:
@@ -477,18 +480,46 @@ public extension CompleteMultipartUploadRequest {
  operation.
  */
 public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumCRC32: ChecksumCRC32?
+    public var checksumCRC32C: ChecksumCRC32C?
+    public var checksumSHA1: ChecksumSHA1?
+    public var checksumSHA256: ChecksumSHA256?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
+    public var sSECustomerAlgorithm: SSECustomerAlgorithm?
+    public var sSECustomerKey: SSECustomerKey?
+    public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(expectedBucketOwner: AccountId? = nil,
-                requestPayer: RequestPayer? = nil) {
+    public init(checksumCRC32: ChecksumCRC32? = nil,
+                checksumCRC32C: ChecksumCRC32C? = nil,
+                checksumSHA1: ChecksumSHA1? = nil,
+                checksumSHA256: ChecksumSHA256? = nil,
+                expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil,
+                sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
+                sSECustomerKey: SSECustomerKey? = nil,
+                sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.checksumCRC32 = checksumCRC32
+        self.checksumCRC32C = checksumCRC32C
+        self.checksumSHA1 = checksumSHA1
+        self.checksumSHA256 = checksumSHA256
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
+        self.sSECustomerAlgorithm = sSECustomerAlgorithm
+        self.sSECustomerKey = sSECustomerKey
+        self.sSECustomerKeyMD5 = sSECustomerKeyMD5
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumCRC32 = "x-amz-checksum-crc32"
+        case checksumCRC32C = "x-amz-checksum-crc32c"
+        case checksumSHA1 = "x-amz-checksum-sha1"
+        case checksumSHA256 = "x-amz-checksum-sha256"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
+        case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
+        case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
+        case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
     }
 
     public func validate() throws {
@@ -498,8 +529,15 @@ public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, E
 public extension CompleteMultipartUploadRequest {
     func asS3ModelCompleteMultipartUploadOperationInputAdditionalHeaders() -> CompleteMultipartUploadOperationInputAdditionalHeaders {
         return CompleteMultipartUploadOperationInputAdditionalHeaders(
+            checksumCRC32: checksumCRC32,
+            checksumCRC32C: checksumCRC32C,
+            checksumSHA1: checksumSHA1,
+            checksumSHA256: checksumSHA256,
             expectedBucketOwner: expectedBucketOwner,
-            requestPayer: requestPayer)
+            requestPayer: requestPayer,
+            sSECustomerAlgorithm: sSECustomerAlgorithm,
+            sSECustomerKey: sSECustomerKey,
+            sSECustomerKeyMD5: sSECustomerKeyMD5)
     }
 }
 
@@ -509,15 +547,27 @@ public extension CompleteMultipartUploadRequest {
  */
 public struct CompleteMultipartUploadOperationOutputBody: Codable, Equatable {
     public var bucket: BucketName?
+    public var checksumCRC32: ChecksumCRC32?
+    public var checksumCRC32C: ChecksumCRC32C?
+    public var checksumSHA1: ChecksumSHA1?
+    public var checksumSHA256: ChecksumSHA256?
     public var eTag: ETag?
     public var key: ObjectKey?
     public var location: Location?
 
     public init(bucket: BucketName? = nil,
+                checksumCRC32: ChecksumCRC32? = nil,
+                checksumCRC32C: ChecksumCRC32C? = nil,
+                checksumSHA1: ChecksumSHA1? = nil,
+                checksumSHA256: ChecksumSHA256? = nil,
                 eTag: ETag? = nil,
                 key: ObjectKey? = nil,
                 location: Location? = nil) {
         self.bucket = bucket
+        self.checksumCRC32 = checksumCRC32
+        self.checksumCRC32C = checksumCRC32C
+        self.checksumSHA1 = checksumSHA1
+        self.checksumSHA256 = checksumSHA256
         self.eTag = eTag
         self.key = key
         self.location = location
@@ -525,6 +575,10 @@ public struct CompleteMultipartUploadOperationOutputBody: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case checksumCRC32 = "ChecksumCRC32"
+        case checksumCRC32C = "ChecksumCRC32C"
+        case checksumSHA1 = "ChecksumSHA1"
+        case checksumSHA256 = "ChecksumSHA256"
         case eTag = "ETag"
         case key = "Key"
         case location = "Location"
@@ -539,6 +593,10 @@ public extension CompleteMultipartUploadOutput {
     func asS3ModelCompleteMultipartUploadOperationOutputBody() -> CompleteMultipartUploadOperationOutputBody {
         return CompleteMultipartUploadOperationOutputBody(
             bucket: bucket,
+            checksumCRC32: checksumCRC32,
+            checksumCRC32C: checksumCRC32C,
+            checksumSHA1: checksumSHA1,
+            checksumSHA256: checksumSHA256,
             eTag: eTag,
             key: key,
             location: location)
@@ -636,6 +694,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
@@ -675,6 +734,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public init(aCL: ObjectCannedACL? = nil,
                 bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
@@ -713,6 +773,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.aCL = aCL
         self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
@@ -754,6 +815,7 @@ public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case aCL = "x-amz-acl"
         case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
+        case checksumAlgorithm = "x-amz-checksum-algorithm"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
         case contentLanguage = "Content-Language"
@@ -802,6 +864,7 @@ public extension CopyObjectRequest {
             aCL: aCL,
             bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
+            checksumAlgorithm: checksumAlgorithm,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
             contentLanguage: contentLanguage,
@@ -1038,6 +1101,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public var aCL: ObjectCannedACL?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
@@ -1066,6 +1130,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
     public init(aCL: ObjectCannedACL? = nil,
                 bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
@@ -1093,6 +1158,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         self.aCL = aCL
         self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
@@ -1123,6 +1189,7 @@ public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equ
         case aCL = "x-amz-acl"
         case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
+        case checksumAlgorithm = "x-amz-checksum-algorithm"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
         case contentLanguage = "Content-Language"
@@ -1159,6 +1226,7 @@ public extension CreateMultipartUploadRequest {
             aCL: aCL,
             bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
+            checksumAlgorithm: checksumAlgorithm,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
             contentLanguage: contentLanguage,
@@ -1231,6 +1299,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
     public var abortDate: AbortDate?
     public var abortRuleId: AbortRuleId?
     public var bucketKeyEnabled: BucketKeyEnabled?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var requestCharged: RequestCharged?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
@@ -1241,6 +1310,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
     public init(abortDate: AbortDate? = nil,
                 abortRuleId: AbortRuleId? = nil,
                 bucketKeyEnabled: BucketKeyEnabled? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 requestCharged: RequestCharged? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil,
@@ -1250,6 +1320,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
         self.abortDate = abortDate
         self.abortRuleId = abortRuleId
         self.bucketKeyEnabled = bucketKeyEnabled
+        self.checksumAlgorithm = checksumAlgorithm
         self.requestCharged = requestCharged
         self.sSECustomerAlgorithm = sSECustomerAlgorithm
         self.sSECustomerKeyMD5 = sSECustomerKeyMD5
@@ -1262,6 +1333,7 @@ public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
         case abortDate = "x-amz-abort-date"
         case abortRuleId = "x-amz-abort-rule-id"
         case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
+        case checksumAlgorithm = "x-amz-checksum-algorithm"
         case requestCharged = "x-amz-request-charged"
         case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
         case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
@@ -1280,6 +1352,7 @@ public extension CreateMultipartUploadOutput {
             abortDate: abortDate,
             abortRuleId: abortRuleId,
             bucketKeyEnabled: bucketKeyEnabled,
+            checksumAlgorithm: checksumAlgorithm,
             requestCharged: requestCharged,
             sSECustomerAlgorithm: sSECustomerAlgorithm,
             sSECustomerKeyMD5: sSECustomerKeyMD5,
@@ -2258,15 +2331,18 @@ public extension DeleteObjectsRequest {
  */
 public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.checksumAlgorithm = checksumAlgorithm
         self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
         self.requestPayer = requestPayer
@@ -2274,6 +2350,7 @@ public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
         case requestPayer = "x-amz-request-payer"
@@ -2287,6 +2364,7 @@ public extension DeleteObjectsRequest {
     func asS3ModelDeleteObjectsOperationInputAdditionalHeaders() -> DeleteObjectsOperationInputAdditionalHeaders {
         return DeleteObjectsOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
+            checksumAlgorithm: checksumAlgorithm,
             expectedBucketOwner: expectedBucketOwner,
             mFA: mFA,
             requestPayer: requestPayer)
@@ -3722,6 +3800,7 @@ public extension GetObjectRequest {
  operation.
  */
 public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumMode: ChecksumMode?
     public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
     public var ifModifiedSince: IfModifiedSince?
@@ -3733,7 +3812,8 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(checksumMode: ChecksumMode? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 ifMatch: IfMatch? = nil,
                 ifModifiedSince: IfModifiedSince? = nil,
                 ifNoneMatch: IfNoneMatch? = nil,
@@ -3743,6 +3823,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.checksumMode = checksumMode
         self.expectedBucketOwner = expectedBucketOwner
         self.ifMatch = ifMatch
         self.ifModifiedSince = ifModifiedSince
@@ -3756,6 +3837,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumMode = "x-amz-checksum-mode"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case ifMatch = "If-Match"
         case ifModifiedSince = "If-Modified-Since"
@@ -3775,6 +3857,7 @@ public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension GetObjectRequest {
     func asS3ModelGetObjectOperationInputAdditionalHeaders() -> GetObjectOperationInputAdditionalHeaders {
         return GetObjectOperationInputAdditionalHeaders(
+            checksumMode: checksumMode,
             expectedBucketOwner: expectedBucketOwner,
             ifMatch: ifMatch,
             ifModifiedSince: ifModifiedSince,
@@ -3796,6 +3879,10 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
     public var acceptRanges: AcceptRanges?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
+    public var checksumCRC32: ChecksumCRC32?
+    public var checksumCRC32C: ChecksumCRC32C?
+    public var checksumSHA1: ChecksumSHA1?
+    public var checksumSHA256: ChecksumSHA256?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
@@ -3828,6 +3915,10 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
     public init(acceptRanges: AcceptRanges? = nil,
                 bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
+                checksumCRC32: ChecksumCRC32? = nil,
+                checksumCRC32C: ChecksumCRC32C? = nil,
+                checksumSHA1: ChecksumSHA1? = nil,
+                checksumSHA256: ChecksumSHA256? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
@@ -3859,6 +3950,10 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
         self.acceptRanges = acceptRanges
         self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
+        self.checksumCRC32 = checksumCRC32
+        self.checksumCRC32C = checksumCRC32C
+        self.checksumSHA1 = checksumSHA1
+        self.checksumSHA256 = checksumSHA256
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
@@ -3893,6 +3988,10 @@ public struct GetObjectOperationOutputHeaders: Codable, Equatable {
         case acceptRanges = "accept-ranges"
         case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
+        case checksumCRC32 = "x-amz-checksum-crc32"
+        case checksumCRC32C = "x-amz-checksum-crc32c"
+        case checksumSHA1 = "x-amz-checksum-sha1"
+        case checksumSHA256 = "x-amz-checksum-sha256"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
         case contentLanguage = "Content-Language"
@@ -3933,6 +4032,10 @@ public extension GetObjectOutput {
             acceptRanges: acceptRanges,
             bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
+            checksumCRC32: checksumCRC32,
+            checksumCRC32C: checksumCRC32C,
+            checksumSHA1: checksumSHA1,
+            checksumSHA256: checksumSHA256,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
             contentLanguage: contentLanguage,
@@ -4108,6 +4211,214 @@ public extension GetObjectAclOutput {
     func asS3ModelGetObjectAclOperationOutputHeaders() -> GetObjectAclOperationOutputHeaders {
         return GetObjectAclOperationOutputHeaders(
             requestCharged: requestCharged)
+    }
+}
+
+/**
+ Structure to encode the path input for the GetObjectAttributes
+ operation.
+ */
+public struct GetObjectAttributesOperationInputPath: Codable, Equatable {
+    public var bucket: BucketName
+    public var key: ObjectKey
+
+    public init(bucket: BucketName,
+                key: ObjectKey) {
+        self.bucket = bucket
+        self.key = key
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case key = "Key"
+    }
+
+    public func validate() throws {
+        try key.validateAsObjectKey()
+    }
+}
+
+public extension GetObjectAttributesRequest {
+    func asS3ModelGetObjectAttributesOperationInputPath() -> GetObjectAttributesOperationInputPath {
+        return GetObjectAttributesOperationInputPath(
+            bucket: bucket,
+            key: key)
+    }
+}
+
+/**
+ Structure to encode the query input for the GetObjectAttributes
+ operation.
+ */
+public struct GetObjectAttributesOperationInputQuery: Codable, Equatable {
+    public var versionId: ObjectVersionId?
+
+    public init(versionId: ObjectVersionId? = nil) {
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case versionId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectAttributesRequest {
+    func asS3ModelGetObjectAttributesOperationInputQuery() -> GetObjectAttributesOperationInputQuery {
+        return GetObjectAttributesOperationInputQuery(
+            versionId: versionId)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetObjectAttributes
+ operation.
+ */
+public struct GetObjectAttributesOperationInputAdditionalHeaders: Codable, Equatable {
+    public var expectedBucketOwner: AccountId?
+    public var maxParts: MaxParts?
+    public var objectAttributes: ObjectAttributesList
+    public var partNumberMarker: PartNumberMarker?
+    public var requestPayer: RequestPayer?
+    public var sSECustomerAlgorithm: SSECustomerAlgorithm?
+    public var sSECustomerKey: SSECustomerKey?
+    public var sSECustomerKeyMD5: SSECustomerKeyMD5?
+
+    public init(expectedBucketOwner: AccountId? = nil,
+                maxParts: MaxParts? = nil,
+                objectAttributes: ObjectAttributesList,
+                partNumberMarker: PartNumberMarker? = nil,
+                requestPayer: RequestPayer? = nil,
+                sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
+                sSECustomerKey: SSECustomerKey? = nil,
+                sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.expectedBucketOwner = expectedBucketOwner
+        self.maxParts = maxParts
+        self.objectAttributes = objectAttributes
+        self.partNumberMarker = partNumberMarker
+        self.requestPayer = requestPayer
+        self.sSECustomerAlgorithm = sSECustomerAlgorithm
+        self.sSECustomerKey = sSECustomerKey
+        self.sSECustomerKeyMD5 = sSECustomerKeyMD5
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case maxParts = "x-amz-max-parts"
+        case objectAttributes = "x-amz-object-attributes"
+        case partNumberMarker = "x-amz-part-number-marker"
+        case requestPayer = "x-amz-request-payer"
+        case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
+        case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
+        case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectAttributesRequest {
+    func asS3ModelGetObjectAttributesOperationInputAdditionalHeaders() -> GetObjectAttributesOperationInputAdditionalHeaders {
+        return GetObjectAttributesOperationInputAdditionalHeaders(
+            expectedBucketOwner: expectedBucketOwner,
+            maxParts: maxParts,
+            objectAttributes: objectAttributes,
+            partNumberMarker: partNumberMarker,
+            requestPayer: requestPayer,
+            sSECustomerAlgorithm: sSECustomerAlgorithm,
+            sSECustomerKey: sSECustomerKey,
+            sSECustomerKeyMD5: sSECustomerKeyMD5)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetObjectAttributes
+ operation.
+ */
+public struct GetObjectAttributesOperationOutputBody: Codable, Equatable {
+    public var checksum: Checksum?
+    public var eTag: ETag?
+    public var objectParts: GetObjectAttributesParts?
+    public var objectSize: ObjectSize?
+    public var storageClass: StorageClass?
+
+    public init(checksum: Checksum? = nil,
+                eTag: ETag? = nil,
+                objectParts: GetObjectAttributesParts? = nil,
+                objectSize: ObjectSize? = nil,
+                storageClass: StorageClass? = nil) {
+        self.checksum = checksum
+        self.eTag = eTag
+        self.objectParts = objectParts
+        self.objectSize = objectSize
+        self.storageClass = storageClass
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case checksum = "Checksum"
+        case eTag = "ETag"
+        case objectParts = "ObjectParts"
+        case objectSize = "ObjectSize"
+        case storageClass = "StorageClass"
+    }
+
+    public func validate() throws {
+        try checksum?.validate()
+        try objectParts?.validate()
+    }
+}
+
+public extension GetObjectAttributesOutput {
+    func asS3ModelGetObjectAttributesOperationOutputBody() -> GetObjectAttributesOperationOutputBody {
+        return GetObjectAttributesOperationOutputBody(
+            checksum: checksum,
+            eTag: eTag,
+            objectParts: objectParts,
+            objectSize: objectSize,
+            storageClass: storageClass)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetObjectAttributes
+ operation.
+ */
+public struct GetObjectAttributesOperationOutputHeaders: Codable, Equatable {
+    public var deleteMarker: DeleteMarker?
+    public var lastModified: LastModified?
+    public var requestCharged: RequestCharged?
+    public var versionId: ObjectVersionId?
+
+    public init(deleteMarker: DeleteMarker? = nil,
+                lastModified: LastModified? = nil,
+                requestCharged: RequestCharged? = nil,
+                versionId: ObjectVersionId? = nil) {
+        self.deleteMarker = deleteMarker
+        self.lastModified = lastModified
+        self.requestCharged = requestCharged
+        self.versionId = versionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deleteMarker = "x-amz-delete-marker"
+        case lastModified = "Last-Modified"
+        case requestCharged = "x-amz-request-charged"
+        case versionId = "x-amz-version-id"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetObjectAttributesOutput {
+    func asS3ModelGetObjectAttributesOperationOutputHeaders() -> GetObjectAttributesOperationOutputHeaders {
+        return GetObjectAttributesOperationOutputHeaders(
+            deleteMarker: deleteMarker,
+            lastModified: lastModified,
+            requestCharged: requestCharged,
+            versionId: versionId)
     }
 }
 
@@ -4743,6 +5054,7 @@ public extension HeadObjectRequest {
  operation.
  */
 public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumMode: ChecksumMode?
     public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
     public var ifModifiedSince: IfModifiedSince?
@@ -4754,7 +5066,8 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(checksumMode: ChecksumMode? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 ifMatch: IfMatch? = nil,
                 ifModifiedSince: IfModifiedSince? = nil,
                 ifNoneMatch: IfNoneMatch? = nil,
@@ -4764,6 +5077,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.checksumMode = checksumMode
         self.expectedBucketOwner = expectedBucketOwner
         self.ifMatch = ifMatch
         self.ifModifiedSince = ifModifiedSince
@@ -4777,6 +5091,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumMode = "x-amz-checksum-mode"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case ifMatch = "If-Match"
         case ifModifiedSince = "If-Modified-Since"
@@ -4796,6 +5111,7 @@ public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension HeadObjectRequest {
     func asS3ModelHeadObjectOperationInputAdditionalHeaders() -> HeadObjectOperationInputAdditionalHeaders {
         return HeadObjectOperationInputAdditionalHeaders(
+            checksumMode: checksumMode,
             expectedBucketOwner: expectedBucketOwner,
             ifMatch: ifMatch,
             ifModifiedSince: ifModifiedSince,
@@ -5592,16 +5908,28 @@ public extension ListPartsRequest {
 public struct ListPartsOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
+    public var sSECustomerAlgorithm: SSECustomerAlgorithm?
+    public var sSECustomerKey: SSECustomerKey?
+    public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
     public init(expectedBucketOwner: AccountId? = nil,
-                requestPayer: RequestPayer? = nil) {
+                requestPayer: RequestPayer? = nil,
+                sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
+                sSECustomerKey: SSECustomerKey? = nil,
+                sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
+        self.sSECustomerAlgorithm = sSECustomerAlgorithm
+        self.sSECustomerKey = sSECustomerKey
+        self.sSECustomerKeyMD5 = sSECustomerKeyMD5
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
+        case sSECustomerAlgorithm = "x-amz-server-side-encryption-customer-algorithm"
+        case sSECustomerKey = "x-amz-server-side-encryption-customer-key"
+        case sSECustomerKeyMD5 = "x-amz-server-side-encryption-customer-key-MD5"
     }
 
     public func validate() throws {
@@ -5612,7 +5940,10 @@ public extension ListPartsRequest {
     func asS3ModelListPartsOperationInputAdditionalHeaders() -> ListPartsOperationInputAdditionalHeaders {
         return ListPartsOperationInputAdditionalHeaders(
             expectedBucketOwner: expectedBucketOwner,
-            requestPayer: requestPayer)
+            requestPayer: requestPayer,
+            sSECustomerAlgorithm: sSECustomerAlgorithm,
+            sSECustomerKey: sSECustomerKey,
+            sSECustomerKeyMD5: sSECustomerKeyMD5)
     }
 }
 
@@ -5622,6 +5953,7 @@ public extension ListPartsRequest {
  */
 public struct ListPartsOperationOutputBody: Codable, Equatable {
     public var bucket: BucketName?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var initiator: Initiator?
     public var isTruncated: IsTruncated?
     public var key: ObjectKey?
@@ -5634,6 +5966,7 @@ public struct ListPartsOperationOutputBody: Codable, Equatable {
     public var uploadId: MultipartUploadId?
 
     public init(bucket: BucketName? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 initiator: Initiator? = nil,
                 isTruncated: IsTruncated? = nil,
                 key: ObjectKey? = nil,
@@ -5645,6 +5978,7 @@ public struct ListPartsOperationOutputBody: Codable, Equatable {
                 storageClass: StorageClass? = nil,
                 uploadId: MultipartUploadId? = nil) {
         self.bucket = bucket
+        self.checksumAlgorithm = checksumAlgorithm
         self.initiator = initiator
         self.isTruncated = isTruncated
         self.key = key
@@ -5659,6 +5993,7 @@ public struct ListPartsOperationOutputBody: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
+        case checksumAlgorithm = "ChecksumAlgorithm"
         case initiator = "Initiator"
         case isTruncated = "IsTruncated"
         case key = "Key"
@@ -5682,6 +6017,7 @@ public extension ListPartsOutput {
     func asS3ModelListPartsOperationOutputBody() -> ListPartsOperationOutputBody {
         return ListPartsOperationOutputBody(
             bucket: bucket,
+            checksumAlgorithm: checksumAlgorithm,
             initiator: initiator,
             isTruncated: isTruncated,
             key: key,
@@ -5762,13 +6098,17 @@ public extension PutBucketAccelerateConfigurationRequest {
  operation.
  */
 public struct PutBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -5779,6 +6119,7 @@ public struct PutBucketAccelerateConfigurationOperationInputAdditionalHeaders: C
 public extension PutBucketAccelerateConfigurationRequest {
     func asS3ModelPutBucketAccelerateConfigurationOperationInputAdditionalHeaders() -> PutBucketAccelerateConfigurationOperationInputAdditionalHeaders {
         return PutBucketAccelerateConfigurationOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -5815,6 +6156,7 @@ public extension PutBucketAclRequest {
  */
 public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: BucketCannedACL?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
@@ -5824,6 +6166,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var grantWriteACP: GrantWriteACP?
 
     public init(aCL: BucketCannedACL? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
@@ -5832,6 +6175,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWrite: GrantWrite? = nil,
                 grantWriteACP: GrantWriteACP? = nil) {
         self.aCL = aCL
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
@@ -5843,6 +6187,7 @@ public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
@@ -5860,6 +6205,7 @@ public extension PutBucketAclRequest {
     func asS3ModelPutBucketAclOperationInputAdditionalHeaders() -> PutBucketAclOperationInputAdditionalHeaders {
         return PutBucketAclOperationInputAdditionalHeaders(
             aCL: aCL,
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             grantFullControl: grantFullControl,
@@ -5979,16 +6325,20 @@ public extension PutBucketCorsRequest {
  operation.
  */
 public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6000,6 +6350,7 @@ public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
 public extension PutBucketCorsRequest {
     func asS3ModelPutBucketCorsOperationInputAdditionalHeaders() -> PutBucketCorsOperationInputAdditionalHeaders {
         return PutBucketCorsOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6036,16 +6387,20 @@ public extension PutBucketEncryptionRequest {
  operation.
  */
 public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6057,6 +6412,7 @@ public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equat
 public extension PutBucketEncryptionRequest {
     func asS3ModelPutBucketEncryptionOperationInputAdditionalHeaders() -> PutBucketEncryptionOperationInputAdditionalHeaders {
         return PutBucketEncryptionOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6223,16 +6579,20 @@ public extension PutBucketLifecycleRequest {
  operation.
  */
 public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6244,6 +6604,7 @@ public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equata
 public extension PutBucketLifecycleRequest {
     func asS3ModelPutBucketLifecycleOperationInputAdditionalHeaders() -> PutBucketLifecycleOperationInputAdditionalHeaders {
         return PutBucketLifecycleOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6280,13 +6641,17 @@ public extension PutBucketLifecycleConfigurationRequest {
  operation.
  */
 public struct PutBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
 
@@ -6297,6 +6662,7 @@ public struct PutBucketLifecycleConfigurationOperationInputAdditionalHeaders: Co
 public extension PutBucketLifecycleConfigurationRequest {
     func asS3ModelPutBucketLifecycleConfigurationOperationInputAdditionalHeaders() -> PutBucketLifecycleConfigurationOperationInputAdditionalHeaders {
         return PutBucketLifecycleConfigurationOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             expectedBucketOwner: expectedBucketOwner)
     }
 }
@@ -6332,16 +6698,20 @@ public extension PutBucketLoggingRequest {
  operation.
  */
 public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6353,6 +6723,7 @@ public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutBucketLoggingRequest {
     func asS3ModelPutBucketLoggingOperationInputAdditionalHeaders() -> PutBucketLoggingOperationInputAdditionalHeaders {
         return PutBucketLoggingOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6467,16 +6838,20 @@ public extension PutBucketNotificationRequest {
  operation.
  */
 public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6488,6 +6863,7 @@ public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equ
 public extension PutBucketNotificationRequest {
     func asS3ModelPutBucketNotificationOperationInputAdditionalHeaders() -> PutBucketNotificationOperationInputAdditionalHeaders {
         return PutBucketNotificationOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6638,19 +7014,23 @@ public extension PutBucketPolicyRequest {
  operation.
  */
 public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess? = nil,
                 contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.confirmRemoveSelfBucketAccess = confirmRemoveSelfBucketAccess
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case confirmRemoveSelfBucketAccess = "x-amz-confirm-remove-self-bucket-access"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
@@ -6663,6 +7043,7 @@ public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable
 public extension PutBucketPolicyRequest {
     func asS3ModelPutBucketPolicyOperationInputAdditionalHeaders() -> PutBucketPolicyOperationInputAdditionalHeaders {
         return PutBucketPolicyOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             confirmRemoveSelfBucketAccess: confirmRemoveSelfBucketAccess,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
@@ -6700,19 +7081,23 @@ public extension PutBucketReplicationRequest {
  operation.
  */
 public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var token: ObjectLockToken?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 token: ObjectLockToken? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.token = token
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case token = "x-amz-bucket-object-lock-token"
@@ -6725,6 +7110,7 @@ public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equa
 public extension PutBucketReplicationRequest {
     func asS3ModelPutBucketReplicationOperationInputAdditionalHeaders() -> PutBucketReplicationOperationInputAdditionalHeaders {
         return PutBucketReplicationOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             token: token)
@@ -6762,16 +7148,20 @@ public extension PutBucketRequestPaymentRequest {
  operation.
  */
 public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6783,6 +7173,7 @@ public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, E
 public extension PutBucketRequestPaymentRequest {
     func asS3ModelPutBucketRequestPaymentOperationInputAdditionalHeaders() -> PutBucketRequestPaymentOperationInputAdditionalHeaders {
         return PutBucketRequestPaymentOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6819,16 +7210,20 @@ public extension PutBucketTaggingRequest {
  operation.
  */
 public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6840,6 +7235,7 @@ public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutBucketTaggingRequest {
     func asS3ModelPutBucketTaggingOperationInputAdditionalHeaders() -> PutBucketTaggingOperationInputAdditionalHeaders {
         return PutBucketTaggingOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -6876,19 +7272,23 @@ public extension PutBucketVersioningRequest {
  operation.
  */
 public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 mFA: MFA? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.mFA = mFA
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case mFA = "x-amz-mfa"
@@ -6901,6 +7301,7 @@ public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equat
 public extension PutBucketVersioningRequest {
     func asS3ModelPutBucketVersioningOperationInputAdditionalHeaders() -> PutBucketVersioningOperationInputAdditionalHeaders {
         return PutBucketVersioningOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             mFA: mFA)
@@ -6938,16 +7339,20 @@ public extension PutBucketWebsiteRequest {
  operation.
  */
 public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -6959,6 +7364,7 @@ public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutBucketWebsiteRequest {
     func asS3ModelPutBucketWebsiteOperationInputAdditionalHeaders() -> PutBucketWebsiteOperationInputAdditionalHeaders {
         return PutBucketWebsiteOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -7004,6 +7410,11 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
+    public var checksumAlgorithm: ChecksumAlgorithm?
+    public var checksumCRC32: ChecksumCRC32?
+    public var checksumCRC32C: ChecksumCRC32C?
+    public var checksumSHA1: ChecksumSHA1?
+    public var checksumSHA256: ChecksumSHA256?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
@@ -7034,6 +7445,11 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
     public init(aCL: ObjectCannedACL? = nil,
                 bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
+                checksumCRC32: ChecksumCRC32? = nil,
+                checksumCRC32C: ChecksumCRC32C? = nil,
+                checksumSHA1: ChecksumSHA1? = nil,
+                checksumSHA256: ChecksumSHA256? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
@@ -7063,6 +7479,11 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         self.aCL = aCL
         self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
+        self.checksumAlgorithm = checksumAlgorithm
+        self.checksumCRC32 = checksumCRC32
+        self.checksumCRC32C = checksumCRC32C
+        self.checksumSHA1 = checksumSHA1
+        self.checksumSHA256 = checksumSHA256
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
@@ -7095,6 +7516,11 @@ public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
         case aCL = "x-amz-acl"
         case bucketKeyEnabled = "x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "Cache-Control"
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
+        case checksumCRC32 = "x-amz-checksum-crc32"
+        case checksumCRC32C = "x-amz-checksum-crc32c"
+        case checksumSHA1 = "x-amz-checksum-sha1"
+        case checksumSHA256 = "x-amz-checksum-sha256"
         case contentDisposition = "Content-Disposition"
         case contentEncoding = "Content-Encoding"
         case contentLanguage = "Content-Language"
@@ -7133,6 +7559,11 @@ public extension PutObjectRequest {
             aCL: aCL,
             bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
+            checksumAlgorithm: checksumAlgorithm,
+            checksumCRC32: checksumCRC32,
+            checksumCRC32C: checksumCRC32C,
+            checksumSHA1: checksumSHA1,
+            checksumSHA256: checksumSHA256,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
             contentLanguage: contentLanguage,
@@ -7226,6 +7657,7 @@ public extension PutObjectAclRequest {
  */
 public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var aCL: ObjectCannedACL?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var grantFullControl: GrantFullControl?
@@ -7236,6 +7668,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
     public var requestPayer: RequestPayer?
 
     public init(aCL: ObjectCannedACL? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 grantFullControl: GrantFullControl? = nil,
@@ -7245,6 +7678,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
                 grantWriteACP: GrantWriteACP? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.aCL = aCL
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.grantFullControl = grantFullControl
@@ -7257,6 +7691,7 @@ public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case aCL = "x-amz-acl"
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case grantFullControl = "x-amz-grant-full-control"
@@ -7275,6 +7710,7 @@ public extension PutObjectAclRequest {
     func asS3ModelPutObjectAclOperationInputAdditionalHeaders() -> PutObjectAclOperationInputAdditionalHeaders {
         return PutObjectAclOperationInputAdditionalHeaders(
             aCL: aCL,
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             grantFullControl: grantFullControl,
@@ -7349,19 +7785,23 @@ public extension PutObjectLegalHoldRequest {
  operation.
  */
 public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
@@ -7374,6 +7814,7 @@ public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equata
 public extension PutObjectLegalHoldRequest {
     func asS3ModelPutObjectLegalHoldOperationInputAdditionalHeaders() -> PutObjectLegalHoldOperationInputAdditionalHeaders {
         return PutObjectLegalHoldOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
@@ -7411,15 +7852,18 @@ public extension PutObjectLockConfigurationRequest {
  operation.
  */
 public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
     public var token: ObjectLockToken?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil,
                 token: ObjectLockToken? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
@@ -7427,6 +7871,7 @@ public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
@@ -7440,6 +7885,7 @@ public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable
 public extension PutObjectLockConfigurationRequest {
     func asS3ModelPutObjectLockConfigurationOperationInputAdditionalHeaders() -> PutObjectLockConfigurationOperationInputAdditionalHeaders {
         return PutObjectLockConfigurationOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer,
@@ -7511,15 +7957,18 @@ public extension PutObjectRetentionRequest {
  */
 public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
     public init(bypassGovernanceRetention: BypassGovernanceRetention? = nil,
+                checksumAlgorithm: ChecksumAlgorithm? = nil,
                 contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bypassGovernanceRetention = bypassGovernanceRetention
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
@@ -7527,6 +7976,7 @@ public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equata
 
     enum CodingKeys: String, CodingKey {
         case bypassGovernanceRetention = "x-amz-bypass-governance-retention"
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
@@ -7540,6 +7990,7 @@ public extension PutObjectRetentionRequest {
     func asS3ModelPutObjectRetentionOperationInputAdditionalHeaders() -> PutObjectRetentionOperationInputAdditionalHeaders {
         return PutObjectRetentionOperationInputAdditionalHeaders(
             bypassGovernanceRetention: bypassGovernanceRetention,
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
@@ -7609,19 +8060,23 @@ public extension PutObjectTaggingRequest {
  operation.
  */
 public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
@@ -7634,6 +8089,7 @@ public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatabl
 public extension PutObjectTaggingRequest {
     func asS3ModelPutObjectTaggingOperationInputAdditionalHeaders() -> PutObjectTaggingOperationInputAdditionalHeaders {
         return PutObjectTaggingOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
@@ -7671,16 +8127,20 @@ public extension PutPublicAccessBlockRequest {
  operation.
  */
 public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
-    public init(contentMD5: ContentMD5? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
     }
@@ -7692,6 +8152,7 @@ public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equa
 public extension PutPublicAccessBlockRequest {
     func asS3ModelPutPublicAccessBlockOperationInputAdditionalHeaders() -> PutPublicAccessBlockOperationInputAdditionalHeaders {
         return PutPublicAccessBlockOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner)
     }
@@ -7760,16 +8221,20 @@ public extension RestoreObjectRequest {
  operation.
  */
 public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
-    public init(expectedBucketOwner: AccountId? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
         self.expectedBucketOwner = expectedBucketOwner
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case requestPayer = "x-amz-request-payer"
     }
@@ -7781,6 +8246,7 @@ public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable {
 public extension RestoreObjectRequest {
     func asS3ModelRestoreObjectOperationInputAdditionalHeaders() -> RestoreObjectOperationInputAdditionalHeaders {
         return RestoreObjectOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
             expectedBucketOwner: expectedBucketOwner,
             requestPayer: requestPayer)
     }
@@ -7982,6 +8448,11 @@ public extension UploadPartRequest {
  operation.
  */
 public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
+    public var checksumAlgorithm: ChecksumAlgorithm?
+    public var checksumCRC32: ChecksumCRC32?
+    public var checksumCRC32C: ChecksumCRC32C?
+    public var checksumSHA1: ChecksumSHA1?
+    public var checksumSHA256: ChecksumSHA256?
     public var contentLength: ContentLength?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7990,13 +8461,23 @@ public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
     public var sSECustomerKey: SSECustomerKey?
     public var sSECustomerKeyMD5: SSECustomerKeyMD5?
 
-    public init(contentLength: ContentLength? = nil,
+    public init(checksumAlgorithm: ChecksumAlgorithm? = nil,
+                checksumCRC32: ChecksumCRC32? = nil,
+                checksumCRC32C: ChecksumCRC32C? = nil,
+                checksumSHA1: ChecksumSHA1? = nil,
+                checksumSHA256: ChecksumSHA256? = nil,
+                contentLength: ContentLength? = nil,
                 contentMD5: ContentMD5? = nil,
                 expectedBucketOwner: AccountId? = nil,
                 requestPayer: RequestPayer? = nil,
                 sSECustomerAlgorithm: SSECustomerAlgorithm? = nil,
                 sSECustomerKey: SSECustomerKey? = nil,
                 sSECustomerKeyMD5: SSECustomerKeyMD5? = nil) {
+        self.checksumAlgorithm = checksumAlgorithm
+        self.checksumCRC32 = checksumCRC32
+        self.checksumCRC32C = checksumCRC32C
+        self.checksumSHA1 = checksumSHA1
+        self.checksumSHA256 = checksumSHA256
         self.contentLength = contentLength
         self.contentMD5 = contentMD5
         self.expectedBucketOwner = expectedBucketOwner
@@ -8007,6 +8488,11 @@ public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case checksumAlgorithm = "x-amz-sdk-checksum-algorithm"
+        case checksumCRC32 = "x-amz-checksum-crc32"
+        case checksumCRC32C = "x-amz-checksum-crc32c"
+        case checksumSHA1 = "x-amz-checksum-sha1"
+        case checksumSHA256 = "x-amz-checksum-sha256"
         case contentLength = "Content-Length"
         case contentMD5 = "Content-MD5"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
@@ -8023,6 +8509,11 @@ public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
 public extension UploadPartRequest {
     func asS3ModelUploadPartOperationInputAdditionalHeaders() -> UploadPartOperationInputAdditionalHeaders {
         return UploadPartOperationInputAdditionalHeaders(
+            checksumAlgorithm: checksumAlgorithm,
+            checksumCRC32: checksumCRC32,
+            checksumCRC32C: checksumCRC32C,
+            checksumSHA1: checksumSHA1,
+            checksumSHA256: checksumSHA256,
             contentLength: contentLength,
             contentMD5: contentMD5,
             expectedBucketOwner: expectedBucketOwner,
@@ -8257,6 +8748,10 @@ public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Eq
     public var acceptRanges: AcceptRanges?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
+    public var checksumCRC32: ChecksumCRC32?
+    public var checksumCRC32C: ChecksumCRC32C?
+    public var checksumSHA1: ChecksumSHA1?
+    public var checksumSHA256: ChecksumSHA256?
     public var contentDisposition: ContentDisposition?
     public var contentEncoding: ContentEncoding?
     public var contentLanguage: ContentLanguage?
@@ -8293,6 +8788,10 @@ public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Eq
     public init(acceptRanges: AcceptRanges? = nil,
                 bucketKeyEnabled: BucketKeyEnabled? = nil,
                 cacheControl: CacheControl? = nil,
+                checksumCRC32: ChecksumCRC32? = nil,
+                checksumCRC32C: ChecksumCRC32C? = nil,
+                checksumSHA1: ChecksumSHA1? = nil,
+                checksumSHA256: ChecksumSHA256? = nil,
                 contentDisposition: ContentDisposition? = nil,
                 contentEncoding: ContentEncoding? = nil,
                 contentLanguage: ContentLanguage? = nil,
@@ -8328,6 +8827,10 @@ public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Eq
         self.acceptRanges = acceptRanges
         self.bucketKeyEnabled = bucketKeyEnabled
         self.cacheControl = cacheControl
+        self.checksumCRC32 = checksumCRC32
+        self.checksumCRC32C = checksumCRC32C
+        self.checksumSHA1 = checksumSHA1
+        self.checksumSHA256 = checksumSHA256
         self.contentDisposition = contentDisposition
         self.contentEncoding = contentEncoding
         self.contentLanguage = contentLanguage
@@ -8366,6 +8869,10 @@ public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Eq
         case acceptRanges = "x-amz-fwd-header-accept-ranges"
         case bucketKeyEnabled = "x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled"
         case cacheControl = "x-amz-fwd-header-Cache-Control"
+        case checksumCRC32 = "x-amz-fwd-header-x-amz-checksum-crc32"
+        case checksumCRC32C = "x-amz-fwd-header-x-amz-checksum-crc32c"
+        case checksumSHA1 = "x-amz-fwd-header-x-amz-checksum-sha1"
+        case checksumSHA256 = "x-amz-fwd-header-x-amz-checksum-sha256"
         case contentDisposition = "x-amz-fwd-header-Content-Disposition"
         case contentEncoding = "x-amz-fwd-header-Content-Encoding"
         case contentLanguage = "x-amz-fwd-header-Content-Language"
@@ -8410,6 +8917,10 @@ public extension WriteGetObjectResponseRequest {
             acceptRanges: acceptRanges,
             bucketKeyEnabled: bucketKeyEnabled,
             cacheControl: cacheControl,
+            checksumCRC32: checksumCRC32,
+            checksumCRC32C: checksumCRC32C,
+            checksumSHA1: checksumSHA1,
+            checksumSHA256: checksumSHA256,
             contentDisposition: contentDisposition,
             contentEncoding: contentEncoding,
             contentLanguage: contentLanguage,

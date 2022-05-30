@@ -149,11 +149,6 @@ public typealias BucketName = String
 public typealias CertificateList = [Certificate]
 
 /**
- Type definition for the CustomAvailabilityZoneList field.
- */
-public typealias CustomAvailabilityZoneList = [CustomAvailabilityZone]
-
-/**
  Type definition for the CustomDBEngineVersionManifest field.
  */
 public typealias CustomDBEngineVersionManifest = String
@@ -515,11 +510,6 @@ public enum IAMAuthMode: String, Codable, CustomStringConvertible {
 public typealias IPRangeList = [IPRange]
 
 /**
- Type definition for the InstallationMediaList field.
- */
-public typealias InstallationMediaList = [InstallationMedia]
-
-/**
  Type definition for the Integer field.
  */
 public typealias Integer = Int
@@ -742,11 +732,6 @@ public typealias String255 = String
  Type definition for the StringList field.
  */
 public typealias StringList = [String]
-
-/**
- Type definition for the StringSensitive field.
- */
-public typealias StringSensitive = String
 
 /**
  Type definition for the SubnetIdentifierList field.
