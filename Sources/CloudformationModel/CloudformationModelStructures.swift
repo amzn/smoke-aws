@@ -296,22 +296,110 @@ public struct CancelUpdateStackInput: Codable, Equatable {
 }
 
 public struct Change: Codable, Equatable {
+    public var hookInvocationCount: HookInvocationCount?
     public var resourceChange: ResourceChange?
     public var type: ChangeType?
 
-    public init(resourceChange: ResourceChange? = nil,
+    public init(hookInvocationCount: HookInvocationCount? = nil,
+                resourceChange: ResourceChange? = nil,
                 type: ChangeType? = nil) {
+        self.hookInvocationCount = hookInvocationCount
         self.resourceChange = resourceChange
         self.type = type
     }
 
     enum CodingKeys: String, CodingKey {
+        case hookInvocationCount = "HookInvocationCount"
         case resourceChange = "ResourceChange"
         case type = "Type"
     }
 
     public func validate() throws {
+        try hookInvocationCount?.validateAsHookInvocationCount()
         try resourceChange?.validate()
+    }
+}
+
+public struct ChangeSetHook: Codable, Equatable {
+    public var failureMode: HookFailureMode?
+    public var invocationPoint: HookInvocationPoint?
+    public var targetDetails: ChangeSetHookTargetDetails?
+    public var typeConfigurationVersionId: HookTypeConfigurationVersionId?
+    public var typeName: HookTypeName?
+    public var typeVersionId: HookTypeVersionId?
+
+    public init(failureMode: HookFailureMode? = nil,
+                invocationPoint: HookInvocationPoint? = nil,
+                targetDetails: ChangeSetHookTargetDetails? = nil,
+                typeConfigurationVersionId: HookTypeConfigurationVersionId? = nil,
+                typeName: HookTypeName? = nil,
+                typeVersionId: HookTypeVersionId? = nil) {
+        self.failureMode = failureMode
+        self.invocationPoint = invocationPoint
+        self.targetDetails = targetDetails
+        self.typeConfigurationVersionId = typeConfigurationVersionId
+        self.typeName = typeName
+        self.typeVersionId = typeVersionId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failureMode = "FailureMode"
+        case invocationPoint = "InvocationPoint"
+        case targetDetails = "TargetDetails"
+        case typeConfigurationVersionId = "TypeConfigurationVersionId"
+        case typeName = "TypeName"
+        case typeVersionId = "TypeVersionId"
+    }
+
+    public func validate() throws {
+        try targetDetails?.validate()
+        try typeConfigurationVersionId?.validateAsHookTypeConfigurationVersionId()
+        try typeName?.validateAsHookTypeName()
+        try typeVersionId?.validateAsHookTypeVersionId()
+    }
+}
+
+public struct ChangeSetHookResourceTargetDetails: Codable, Equatable {
+    public var logicalResourceId: LogicalResourceId?
+    public var resourceAction: ChangeAction?
+    public var resourceType: HookTargetTypeName?
+
+    public init(logicalResourceId: LogicalResourceId? = nil,
+                resourceAction: ChangeAction? = nil,
+                resourceType: HookTargetTypeName? = nil) {
+        self.logicalResourceId = logicalResourceId
+        self.resourceAction = resourceAction
+        self.resourceType = resourceType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case logicalResourceId = "LogicalResourceId"
+        case resourceAction = "ResourceAction"
+        case resourceType = "ResourceType"
+    }
+
+    public func validate() throws {
+        try resourceType?.validateAsHookTargetTypeName()
+    }
+}
+
+public struct ChangeSetHookTargetDetails: Codable, Equatable {
+    public var resourceTargetDetails: ChangeSetHookResourceTargetDetails?
+    public var targetType: HookTargetType?
+
+    public init(resourceTargetDetails: ChangeSetHookResourceTargetDetails? = nil,
+                targetType: HookTargetType? = nil) {
+        self.resourceTargetDetails = resourceTargetDetails
+        self.targetType = targetType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceTargetDetails = "ResourceTargetDetails"
+        case targetType = "TargetType"
+    }
+
+    public func validate() throws {
+        try resourceTargetDetails?.validate()
     }
 }
 
@@ -1262,6 +1350,94 @@ public struct DescribeAccountLimitsOutputForDescribeAccountLimits: Codable, Equa
 
     public func validate() throws {
         try describeAccountLimitsResult.validate()
+    }
+}
+
+public struct DescribeChangeSetHooksInput: Codable, Equatable {
+    public var changeSetName: ChangeSetNameOrId
+    public var logicalResourceId: LogicalResourceId?
+    public var nextToken: NextToken?
+    public var stackName: StackNameOrId?
+
+    public init(changeSetName: ChangeSetNameOrId,
+                logicalResourceId: LogicalResourceId? = nil,
+                nextToken: NextToken? = nil,
+                stackName: StackNameOrId? = nil) {
+        self.changeSetName = changeSetName
+        self.logicalResourceId = logicalResourceId
+        self.nextToken = nextToken
+        self.stackName = stackName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case changeSetName = "ChangeSetName"
+        case logicalResourceId = "LogicalResourceId"
+        case nextToken = "NextToken"
+        case stackName = "StackName"
+    }
+
+    public func validate() throws {
+        try changeSetName.validateAsChangeSetNameOrId()
+        try nextToken?.validateAsNextToken()
+        try stackName?.validateAsStackNameOrId()
+    }
+}
+
+public struct DescribeChangeSetHooksOutput: Codable, Equatable {
+    public var changeSetId: ChangeSetId?
+    public var changeSetName: ChangeSetName?
+    public var hooks: ChangeSetHooks?
+    public var nextToken: NextToken?
+    public var stackId: StackId?
+    public var stackName: StackName?
+    public var status: ChangeSetHooksStatus?
+
+    public init(changeSetId: ChangeSetId? = nil,
+                changeSetName: ChangeSetName? = nil,
+                hooks: ChangeSetHooks? = nil,
+                nextToken: NextToken? = nil,
+                stackId: StackId? = nil,
+                stackName: StackName? = nil,
+                status: ChangeSetHooksStatus? = nil) {
+        self.changeSetId = changeSetId
+        self.changeSetName = changeSetName
+        self.hooks = hooks
+        self.nextToken = nextToken
+        self.stackId = stackId
+        self.stackName = stackName
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case changeSetId = "ChangeSetId"
+        case changeSetName = "ChangeSetName"
+        case hooks = "Hooks"
+        case nextToken = "NextToken"
+        case stackId = "StackId"
+        case stackName = "StackName"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+        try changeSetId?.validateAsChangeSetId()
+        try changeSetName?.validateAsChangeSetName()
+        try nextToken?.validateAsNextToken()
+    }
+}
+
+public struct DescribeChangeSetHooksOutputForDescribeChangeSetHooks: Codable, Equatable {
+    public var describeChangeSetHooksResult: DescribeChangeSetHooksOutput
+
+    public init(describeChangeSetHooksResult: DescribeChangeSetHooksOutput) {
+        self.describeChangeSetHooksResult = describeChangeSetHooksResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeChangeSetHooksResult = "DescribeChangeSetHooksResult"
+    }
+
+    public func validate() throws {
+        try describeChangeSetHooksResult.validate()
     }
 }
 
@@ -4766,6 +4942,11 @@ public struct StackDriftInformationSummary: Codable, Equatable {
 public struct StackEvent: Codable, Equatable {
     public var clientRequestToken: ClientRequestToken?
     public var eventId: EventId
+    public var hookFailureMode: HookFailureMode?
+    public var hookInvocationPoint: HookInvocationPoint?
+    public var hookStatus: HookStatus?
+    public var hookStatusReason: HookStatusReason?
+    public var hookType: HookType?
     public var logicalResourceId: LogicalResourceId?
     public var physicalResourceId: PhysicalResourceId?
     public var resourceProperties: ResourceProperties?
@@ -4778,6 +4959,11 @@ public struct StackEvent: Codable, Equatable {
 
     public init(clientRequestToken: ClientRequestToken? = nil,
                 eventId: EventId,
+                hookFailureMode: HookFailureMode? = nil,
+                hookInvocationPoint: HookInvocationPoint? = nil,
+                hookStatus: HookStatus? = nil,
+                hookStatusReason: HookStatusReason? = nil,
+                hookType: HookType? = nil,
                 logicalResourceId: LogicalResourceId? = nil,
                 physicalResourceId: PhysicalResourceId? = nil,
                 resourceProperties: ResourceProperties? = nil,
@@ -4789,6 +4975,11 @@ public struct StackEvent: Codable, Equatable {
                 timestamp: Timestamp) {
         self.clientRequestToken = clientRequestToken
         self.eventId = eventId
+        self.hookFailureMode = hookFailureMode
+        self.hookInvocationPoint = hookInvocationPoint
+        self.hookStatus = hookStatus
+        self.hookStatusReason = hookStatusReason
+        self.hookType = hookType
         self.logicalResourceId = logicalResourceId
         self.physicalResourceId = physicalResourceId
         self.resourceProperties = resourceProperties
@@ -4803,6 +4994,11 @@ public struct StackEvent: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case clientRequestToken = "ClientRequestToken"
         case eventId = "EventId"
+        case hookFailureMode = "HookFailureMode"
+        case hookInvocationPoint = "HookInvocationPoint"
+        case hookStatus = "HookStatus"
+        case hookStatusReason = "HookStatusReason"
+        case hookType = "HookType"
         case logicalResourceId = "LogicalResourceId"
         case physicalResourceId = "PhysicalResourceId"
         case resourceProperties = "ResourceProperties"
@@ -4816,6 +5012,8 @@ public struct StackEvent: Codable, Equatable {
 
     public func validate() throws {
         try clientRequestToken?.validateAsClientRequestToken()
+        try hookStatusReason?.validateAsHookStatusReason()
+        try hookType?.validateAsHookType()
         try resourceType?.validateAsResourceType()
     }
 }
@@ -5413,6 +5611,7 @@ public struct StackSetOperation: Codable, Equatable {
     public var stackSetDriftDetectionDetails: StackSetDriftDetectionDetails?
     public var stackSetId: StackSetId?
     public var status: StackSetOperationStatus?
+    public var statusReason: StackSetOperationStatusReason?
 
     public init(action: StackSetOperationAction? = nil,
                 administrationRoleARN: RoleARN? = nil,
@@ -5425,7 +5624,8 @@ public struct StackSetOperation: Codable, Equatable {
                 retainStacks: RetainStacksNullable? = nil,
                 stackSetDriftDetectionDetails: StackSetDriftDetectionDetails? = nil,
                 stackSetId: StackSetId? = nil,
-                status: StackSetOperationStatus? = nil) {
+                status: StackSetOperationStatus? = nil,
+                statusReason: StackSetOperationStatusReason? = nil) {
         self.action = action
         self.administrationRoleARN = administrationRoleARN
         self.creationTimestamp = creationTimestamp
@@ -5438,6 +5638,7 @@ public struct StackSetOperation: Codable, Equatable {
         self.stackSetDriftDetectionDetails = stackSetDriftDetectionDetails
         self.stackSetId = stackSetId
         self.status = status
+        self.statusReason = statusReason
     }
 
     enum CodingKeys: String, CodingKey {
@@ -5453,6 +5654,7 @@ public struct StackSetOperation: Codable, Equatable {
         case stackSetDriftDetectionDetails = "StackSetDriftDetectionDetails"
         case stackSetId = "StackSetId"
         case status = "Status"
+        case statusReason = "StatusReason"
     }
 
     public func validate() throws {
@@ -5549,17 +5751,20 @@ public struct StackSetOperationSummary: Codable, Equatable {
     public var endTimestamp: Timestamp?
     public var operationId: ClientRequestToken?
     public var status: StackSetOperationStatus?
+    public var statusReason: StackSetOperationStatusReason?
 
     public init(action: StackSetOperationAction? = nil,
                 creationTimestamp: Timestamp? = nil,
                 endTimestamp: Timestamp? = nil,
                 operationId: ClientRequestToken? = nil,
-                status: StackSetOperationStatus? = nil) {
+                status: StackSetOperationStatus? = nil,
+                statusReason: StackSetOperationStatusReason? = nil) {
         self.action = action
         self.creationTimestamp = creationTimestamp
         self.endTimestamp = endTimestamp
         self.operationId = operationId
         self.status = status
+        self.statusReason = statusReason
     }
 
     enum CodingKeys: String, CodingKey {
@@ -5568,6 +5773,7 @@ public struct StackSetOperationSummary: Codable, Equatable {
         case endTimestamp = "EndTimestamp"
         case operationId = "OperationId"
         case status = "Status"
+        case statusReason = "StatusReason"
     }
 
     public func validate() throws {

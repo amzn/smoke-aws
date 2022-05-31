@@ -3352,6 +3352,78 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
     }
 
     /**
+     Invokes the GetObjectAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+         - completion: The GetObjectAttributesOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectAttributesOutput
+           object will be validated before being returned to caller.
+           The possible errors are: noSuchKey.
+     */
+    public func getObjectAttributesAsync(
+            input: S3Model.GetObjectAttributesRequest, 
+            completion: @escaping (Result<S3Model.GetObjectAttributesOutput, S3Error>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectAttributes.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectAttributesOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/{Bucket}/{Key+}?attributes",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetObjectAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+     - Returns: The GetObjectAttributesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    public func getObjectAttributesSync(
+            input: S3Model.GetObjectAttributesRequest) throws -> S3Model.GetObjectAttributesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectAttributes.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectAttributesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?attributes",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetObjectLegalHold operation returning immediately and passing the response to a callback.
 
      - Parameters:

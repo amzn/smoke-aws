@@ -94,11 +94,6 @@ public protocol RDSClientProtocol {
     typealias CopyOptionGroupAsyncType = (
             _ input: RDSModel.CopyOptionGroupMessage, 
             _ completion: @escaping (Result<RDSModel.CopyOptionGroupResultForCopyOptionGroup, RDSError>) -> ()) throws -> ()
-    typealias CreateCustomAvailabilityZoneSyncType = (
-            _ input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
-    typealias CreateCustomAvailabilityZoneAsyncType = (
-            _ input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            _ completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
     typealias CreateCustomDBEngineVersionSyncType = (
             _ input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion
     typealias CreateCustomDBEngineVersionAsyncType = (
@@ -179,11 +174,6 @@ public protocol RDSClientProtocol {
     typealias CreateOptionGroupAsyncType = (
             _ input: RDSModel.CreateOptionGroupMessage, 
             _ completion: @escaping (Result<RDSModel.CreateOptionGroupResultForCreateOptionGroup, RDSError>) -> ()) throws -> ()
-    typealias DeleteCustomAvailabilityZoneSyncType = (
-            _ input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
-    typealias DeleteCustomAvailabilityZoneAsyncType = (
-            _ input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            _ completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws -> ()
     typealias DeleteCustomDBEngineVersionSyncType = (
             _ input: RDSModel.DeleteCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion
     typealias DeleteCustomDBEngineVersionAsyncType = (
@@ -259,11 +249,6 @@ public protocol RDSClientProtocol {
     typealias DeleteGlobalClusterAsyncType = (
             _ input: RDSModel.DeleteGlobalClusterMessage, 
             _ completion: @escaping (Result<RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster, RDSError>) -> ()) throws -> ()
-    typealias DeleteInstallationMediaSyncType = (
-            _ input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
-    typealias DeleteInstallationMediaAsyncType = (
-            _ input: RDSModel.DeleteInstallationMediaMessage, 
-            _ completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias DeleteOptionGroupSyncType = (
             _ input: RDSModel.DeleteOptionGroupMessage) throws -> ()
     typealias DeleteOptionGroupAsyncType = (
@@ -284,11 +269,6 @@ public protocol RDSClientProtocol {
     typealias DescribeCertificatesAsyncType = (
             _ input: RDSModel.DescribeCertificatesMessage, 
             _ completion: @escaping (Result<RDSModel.CertificateMessageForDescribeCertificates, RDSError>) -> ()) throws -> ()
-    typealias DescribeCustomAvailabilityZonesSyncType = (
-            _ input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
-    typealias DescribeCustomAvailabilityZonesAsyncType = (
-            _ input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            _ completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws -> ()
     typealias DescribeDBClusterBacktracksSyncType = (
             _ input: RDSModel.DescribeDBClusterBacktracksMessage) throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
     typealias DescribeDBClusterBacktracksAsyncType = (
@@ -429,11 +409,6 @@ public protocol RDSClientProtocol {
     typealias DescribeGlobalClustersAsyncType = (
             _ input: RDSModel.DescribeGlobalClustersMessage, 
             _ completion: @escaping (Result<RDSModel.GlobalClustersMessageForDescribeGlobalClusters, RDSError>) -> ()) throws -> ()
-    typealias DescribeInstallationMediaSyncType = (
-            _ input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
-    typealias DescribeInstallationMediaAsyncType = (
-            _ input: RDSModel.DescribeInstallationMediaMessage, 
-            _ completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias DescribeOptionGroupOptionsSyncType = (
             _ input: RDSModel.DescribeOptionGroupOptionsMessage) throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions
     typealias DescribeOptionGroupOptionsAsyncType = (
@@ -489,11 +464,6 @@ public protocol RDSClientProtocol {
     typealias FailoverGlobalClusterAsyncType = (
             _ input: RDSModel.FailoverGlobalClusterMessage, 
             _ completion: @escaping (Result<RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster, RDSError>) -> ()) throws -> ()
-    typealias ImportInstallationMediaSyncType = (
-            _ input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
-    typealias ImportInstallationMediaAsyncType = (
-            _ input: RDSModel.ImportInstallationMediaMessage, 
-            _ completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
     typealias ListTagsForResourceAsyncType = (
@@ -1065,32 +1035,6 @@ public protocol RDSClientProtocol {
             input: RDSModel.CopyOptionGroupMessage) throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup
 
     /**
-     Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-         - completion: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object or an error will be passed to this 
-           callback when the operation is complete. The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    func createCustomAvailabilityZoneAsync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws
-
-    /**
-     Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    func createCustomAvailabilityZoneSync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
-
-    /**
      Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1228,7 +1172,7 @@ public protocol RDSClientProtocol {
          - completion: The CreateDBInstanceResultForCreateDBInstance object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceResultForCreateDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
@@ -1241,7 +1185,7 @@ public protocol RDSClientProtocol {
          - input: The validated CreateDBInstanceMessage object being passed to this operation.
      - Returns: The CreateDBInstanceResultForCreateDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceSync(
             input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance
@@ -1254,7 +1198,7 @@ public protocol RDSClientProtocol {
          - completion: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
            object will be validated before being returned to caller.
-           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
@@ -1267,7 +1211,7 @@ public protocol RDSClientProtocol {
          - input: The validated CreateDBInstanceReadReplicaMessage object being passed to this operation.
      - Returns: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceReadReplicaSync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
@@ -1505,32 +1449,6 @@ public protocol RDSClientProtocol {
      */
     func createOptionGroupSync(
             input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-         - completion: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object or an error will be passed to this 
-           callback when the operation is complete. The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    func deleteCustomAvailabilityZoneAsync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    func deleteCustomAvailabilityZoneSync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
 
     /**
      Invokes the DeleteCustomDBEngineVersion operation returning immediately and passing the response to a callback.
@@ -1911,32 +1829,6 @@ public protocol RDSClientProtocol {
             input: RDSModel.DeleteGlobalClusterMessage) throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster
 
     /**
-     Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaForDeleteInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaForDeleteInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: installationMediaNotFound.
-     */
-    func deleteInstallationMediaAsync(
-            input: RDSModel.DeleteInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws
-
-    /**
-     Invokes the DeleteInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    func deleteInstallationMediaSync(
-            input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia
-
-    /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2034,32 +1926,6 @@ public protocol RDSClientProtocol {
      */
     func describeCertificatesSync(
             input: RDSModel.DescribeCertificatesMessage) throws -> RDSModel.CertificateMessageForDescribeCertificates
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-         - completion: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object or an error will be passed to this 
-           callback when the operation is complete. The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound.
-     */
-    func describeCustomAvailabilityZonesAsync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound.
-     */
-    func describeCustomAvailabilityZonesSync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
 
     /**
      Invokes the DescribeDBClusterBacktracks operation returning immediately and passing the response to a callback.
@@ -2780,32 +2646,6 @@ public protocol RDSClientProtocol {
             input: RDSModel.DescribeGlobalClustersMessage) throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters
 
     /**
-     Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaMessageForDescribeInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaMessageForDescribeInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: installationMediaNotFound.
-     */
-    func describeInstallationMediaAsync(
-            input: RDSModel.DescribeInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws
-
-    /**
-     Invokes the DescribeInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    func describeInstallationMediaSync(
-            input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia
-
-    /**
      Invokes the DescribeOptionGroupOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3086,32 +2926,6 @@ public protocol RDSClientProtocol {
             input: RDSModel.FailoverGlobalClusterMessage) throws -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster
 
     /**
-     Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaForImportInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaForImportInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    func importInstallationMediaAsync(
-            input: RDSModel.ImportInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws
-
-    /**
-     Invokes the ImportInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    func importInstallationMediaSync(
-            input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia
-
-    /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3327,7 +3141,7 @@ public protocol RDSClientProtocol {
          - completion: The ModifyDBInstanceResultForModifyDBInstance object or an error will be passed to this 
            callback when the operation is complete. The ModifyDBInstanceResultForModifyDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
@@ -3340,7 +3154,7 @@ public protocol RDSClientProtocol {
          - input: The validated ModifyDBInstanceMessage object being passed to this operation.
      - Returns: The ModifyDBInstanceResultForModifyDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func modifyDBInstanceSync(
             input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance
@@ -4020,7 +3834,7 @@ public protocol RDSClientProtocol {
          - completion: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
@@ -4033,7 +3847,7 @@ public protocol RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromDBSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromDBSnapshotSync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
@@ -4046,7 +3860,7 @@ public protocol RDSClientProtocol {
          - completion: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
@@ -4059,7 +3873,7 @@ public protocol RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromS3Message object being passed to this operation.
      - Returns: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromS3Sync(
             input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
@@ -4072,7 +3886,7 @@ public protocol RDSClientProtocol {
          - completion: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
@@ -4085,7 +3899,7 @@ public protocol RDSClientProtocol {
          - input: The validated RestoreDBInstanceToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceToPointInTimeSync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime

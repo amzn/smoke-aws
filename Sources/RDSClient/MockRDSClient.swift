@@ -55,8 +55,6 @@ public struct MockRDSClient: RDSClientProtocol {
     let copyDBSnapshotSyncOverride: CopyDBSnapshotSyncType?
     let copyOptionGroupAsyncOverride: CopyOptionGroupAsyncType?
     let copyOptionGroupSyncOverride: CopyOptionGroupSyncType?
-    let createCustomAvailabilityZoneAsyncOverride: CreateCustomAvailabilityZoneAsyncType?
-    let createCustomAvailabilityZoneSyncOverride: CreateCustomAvailabilityZoneSyncType?
     let createCustomDBEngineVersionAsyncOverride: CreateCustomDBEngineVersionAsyncType?
     let createCustomDBEngineVersionSyncOverride: CreateCustomDBEngineVersionSyncType?
     let createDBClusterAsyncOverride: CreateDBClusterAsyncType?
@@ -89,8 +87,6 @@ public struct MockRDSClient: RDSClientProtocol {
     let createGlobalClusterSyncOverride: CreateGlobalClusterSyncType?
     let createOptionGroupAsyncOverride: CreateOptionGroupAsyncType?
     let createOptionGroupSyncOverride: CreateOptionGroupSyncType?
-    let deleteCustomAvailabilityZoneAsyncOverride: DeleteCustomAvailabilityZoneAsyncType?
-    let deleteCustomAvailabilityZoneSyncOverride: DeleteCustomAvailabilityZoneSyncType?
     let deleteCustomDBEngineVersionAsyncOverride: DeleteCustomDBEngineVersionAsyncType?
     let deleteCustomDBEngineVersionSyncOverride: DeleteCustomDBEngineVersionSyncType?
     let deleteDBClusterAsyncOverride: DeleteDBClusterAsyncType?
@@ -121,8 +117,6 @@ public struct MockRDSClient: RDSClientProtocol {
     let deleteEventSubscriptionSyncOverride: DeleteEventSubscriptionSyncType?
     let deleteGlobalClusterAsyncOverride: DeleteGlobalClusterAsyncType?
     let deleteGlobalClusterSyncOverride: DeleteGlobalClusterSyncType?
-    let deleteInstallationMediaAsyncOverride: DeleteInstallationMediaAsyncType?
-    let deleteInstallationMediaSyncOverride: DeleteInstallationMediaSyncType?
     let deleteOptionGroupAsyncOverride: DeleteOptionGroupAsyncType?
     let deleteOptionGroupSyncOverride: DeleteOptionGroupSyncType?
     let deregisterDBProxyTargetsAsyncOverride: DeregisterDBProxyTargetsAsyncType?
@@ -131,8 +125,6 @@ public struct MockRDSClient: RDSClientProtocol {
     let describeAccountAttributesSyncOverride: DescribeAccountAttributesSyncType?
     let describeCertificatesAsyncOverride: DescribeCertificatesAsyncType?
     let describeCertificatesSyncOverride: DescribeCertificatesSyncType?
-    let describeCustomAvailabilityZonesAsyncOverride: DescribeCustomAvailabilityZonesAsyncType?
-    let describeCustomAvailabilityZonesSyncOverride: DescribeCustomAvailabilityZonesSyncType?
     let describeDBClusterBacktracksAsyncOverride: DescribeDBClusterBacktracksAsyncType?
     let describeDBClusterBacktracksSyncOverride: DescribeDBClusterBacktracksSyncType?
     let describeDBClusterEndpointsAsyncOverride: DescribeDBClusterEndpointsAsyncType?
@@ -189,8 +181,6 @@ public struct MockRDSClient: RDSClientProtocol {
     let describeExportTasksSyncOverride: DescribeExportTasksSyncType?
     let describeGlobalClustersAsyncOverride: DescribeGlobalClustersAsyncType?
     let describeGlobalClustersSyncOverride: DescribeGlobalClustersSyncType?
-    let describeInstallationMediaAsyncOverride: DescribeInstallationMediaAsyncType?
-    let describeInstallationMediaSyncOverride: DescribeInstallationMediaSyncType?
     let describeOptionGroupOptionsAsyncOverride: DescribeOptionGroupOptionsAsyncType?
     let describeOptionGroupOptionsSyncOverride: DescribeOptionGroupOptionsSyncType?
     let describeOptionGroupsAsyncOverride: DescribeOptionGroupsAsyncType?
@@ -213,8 +203,6 @@ public struct MockRDSClient: RDSClientProtocol {
     let failoverDBClusterSyncOverride: FailoverDBClusterSyncType?
     let failoverGlobalClusterAsyncOverride: FailoverGlobalClusterAsyncType?
     let failoverGlobalClusterSyncOverride: FailoverGlobalClusterSyncType?
-    let importInstallationMediaAsyncOverride: ImportInstallationMediaAsyncType?
-    let importInstallationMediaSyncOverride: ImportInstallationMediaSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
     let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
     let modifyCertificatesAsyncOverride: ModifyCertificatesAsyncType?
@@ -343,8 +331,6 @@ public struct MockRDSClient: RDSClientProtocol {
             copyDBSnapshotSync: CopyDBSnapshotSyncType? = nil,
             copyOptionGroupAsync: CopyOptionGroupAsyncType? = nil,
             copyOptionGroupSync: CopyOptionGroupSyncType? = nil,
-            createCustomAvailabilityZoneAsync: CreateCustomAvailabilityZoneAsyncType? = nil,
-            createCustomAvailabilityZoneSync: CreateCustomAvailabilityZoneSyncType? = nil,
             createCustomDBEngineVersionAsync: CreateCustomDBEngineVersionAsyncType? = nil,
             createCustomDBEngineVersionSync: CreateCustomDBEngineVersionSyncType? = nil,
             createDBClusterAsync: CreateDBClusterAsyncType? = nil,
@@ -377,8 +363,6 @@ public struct MockRDSClient: RDSClientProtocol {
             createGlobalClusterSync: CreateGlobalClusterSyncType? = nil,
             createOptionGroupAsync: CreateOptionGroupAsyncType? = nil,
             createOptionGroupSync: CreateOptionGroupSyncType? = nil,
-            deleteCustomAvailabilityZoneAsync: DeleteCustomAvailabilityZoneAsyncType? = nil,
-            deleteCustomAvailabilityZoneSync: DeleteCustomAvailabilityZoneSyncType? = nil,
             deleteCustomDBEngineVersionAsync: DeleteCustomDBEngineVersionAsyncType? = nil,
             deleteCustomDBEngineVersionSync: DeleteCustomDBEngineVersionSyncType? = nil,
             deleteDBClusterAsync: DeleteDBClusterAsyncType? = nil,
@@ -409,8 +393,6 @@ public struct MockRDSClient: RDSClientProtocol {
             deleteEventSubscriptionSync: DeleteEventSubscriptionSyncType? = nil,
             deleteGlobalClusterAsync: DeleteGlobalClusterAsyncType? = nil,
             deleteGlobalClusterSync: DeleteGlobalClusterSyncType? = nil,
-            deleteInstallationMediaAsync: DeleteInstallationMediaAsyncType? = nil,
-            deleteInstallationMediaSync: DeleteInstallationMediaSyncType? = nil,
             deleteOptionGroupAsync: DeleteOptionGroupAsyncType? = nil,
             deleteOptionGroupSync: DeleteOptionGroupSyncType? = nil,
             deregisterDBProxyTargetsAsync: DeregisterDBProxyTargetsAsyncType? = nil,
@@ -419,8 +401,6 @@ public struct MockRDSClient: RDSClientProtocol {
             describeAccountAttributesSync: DescribeAccountAttributesSyncType? = nil,
             describeCertificatesAsync: DescribeCertificatesAsyncType? = nil,
             describeCertificatesSync: DescribeCertificatesSyncType? = nil,
-            describeCustomAvailabilityZonesAsync: DescribeCustomAvailabilityZonesAsyncType? = nil,
-            describeCustomAvailabilityZonesSync: DescribeCustomAvailabilityZonesSyncType? = nil,
             describeDBClusterBacktracksAsync: DescribeDBClusterBacktracksAsyncType? = nil,
             describeDBClusterBacktracksSync: DescribeDBClusterBacktracksSyncType? = nil,
             describeDBClusterEndpointsAsync: DescribeDBClusterEndpointsAsyncType? = nil,
@@ -477,8 +457,6 @@ public struct MockRDSClient: RDSClientProtocol {
             describeExportTasksSync: DescribeExportTasksSyncType? = nil,
             describeGlobalClustersAsync: DescribeGlobalClustersAsyncType? = nil,
             describeGlobalClustersSync: DescribeGlobalClustersSyncType? = nil,
-            describeInstallationMediaAsync: DescribeInstallationMediaAsyncType? = nil,
-            describeInstallationMediaSync: DescribeInstallationMediaSyncType? = nil,
             describeOptionGroupOptionsAsync: DescribeOptionGroupOptionsAsyncType? = nil,
             describeOptionGroupOptionsSync: DescribeOptionGroupOptionsSyncType? = nil,
             describeOptionGroupsAsync: DescribeOptionGroupsAsyncType? = nil,
@@ -501,8 +479,6 @@ public struct MockRDSClient: RDSClientProtocol {
             failoverDBClusterSync: FailoverDBClusterSyncType? = nil,
             failoverGlobalClusterAsync: FailoverGlobalClusterAsyncType? = nil,
             failoverGlobalClusterSync: FailoverGlobalClusterSyncType? = nil,
-            importInstallationMediaAsync: ImportInstallationMediaAsyncType? = nil,
-            importInstallationMediaSync: ImportInstallationMediaSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
             listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
             modifyCertificatesAsync: ModifyCertificatesAsyncType? = nil,
@@ -625,8 +601,6 @@ public struct MockRDSClient: RDSClientProtocol {
         self.copyDBSnapshotSyncOverride = copyDBSnapshotSync
         self.copyOptionGroupAsyncOverride = copyOptionGroupAsync
         self.copyOptionGroupSyncOverride = copyOptionGroupSync
-        self.createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsync
-        self.createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSync
         self.createCustomDBEngineVersionAsyncOverride = createCustomDBEngineVersionAsync
         self.createCustomDBEngineVersionSyncOverride = createCustomDBEngineVersionSync
         self.createDBClusterAsyncOverride = createDBClusterAsync
@@ -659,8 +633,6 @@ public struct MockRDSClient: RDSClientProtocol {
         self.createGlobalClusterSyncOverride = createGlobalClusterSync
         self.createOptionGroupAsyncOverride = createOptionGroupAsync
         self.createOptionGroupSyncOverride = createOptionGroupSync
-        self.deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsync
-        self.deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSync
         self.deleteCustomDBEngineVersionAsyncOverride = deleteCustomDBEngineVersionAsync
         self.deleteCustomDBEngineVersionSyncOverride = deleteCustomDBEngineVersionSync
         self.deleteDBClusterAsyncOverride = deleteDBClusterAsync
@@ -691,8 +663,6 @@ public struct MockRDSClient: RDSClientProtocol {
         self.deleteEventSubscriptionSyncOverride = deleteEventSubscriptionSync
         self.deleteGlobalClusterAsyncOverride = deleteGlobalClusterAsync
         self.deleteGlobalClusterSyncOverride = deleteGlobalClusterSync
-        self.deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsync
-        self.deleteInstallationMediaSyncOverride = deleteInstallationMediaSync
         self.deleteOptionGroupAsyncOverride = deleteOptionGroupAsync
         self.deleteOptionGroupSyncOverride = deleteOptionGroupSync
         self.deregisterDBProxyTargetsAsyncOverride = deregisterDBProxyTargetsAsync
@@ -701,8 +671,6 @@ public struct MockRDSClient: RDSClientProtocol {
         self.describeAccountAttributesSyncOverride = describeAccountAttributesSync
         self.describeCertificatesAsyncOverride = describeCertificatesAsync
         self.describeCertificatesSyncOverride = describeCertificatesSync
-        self.describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsync
-        self.describeCustomAvailabilityZonesSyncOverride = describeCustomAvailabilityZonesSync
         self.describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsync
         self.describeDBClusterBacktracksSyncOverride = describeDBClusterBacktracksSync
         self.describeDBClusterEndpointsAsyncOverride = describeDBClusterEndpointsAsync
@@ -759,8 +727,6 @@ public struct MockRDSClient: RDSClientProtocol {
         self.describeExportTasksSyncOverride = describeExportTasksSync
         self.describeGlobalClustersAsyncOverride = describeGlobalClustersAsync
         self.describeGlobalClustersSyncOverride = describeGlobalClustersSync
-        self.describeInstallationMediaAsyncOverride = describeInstallationMediaAsync
-        self.describeInstallationMediaSyncOverride = describeInstallationMediaSync
         self.describeOptionGroupOptionsAsyncOverride = describeOptionGroupOptionsAsync
         self.describeOptionGroupOptionsSyncOverride = describeOptionGroupOptionsSync
         self.describeOptionGroupsAsyncOverride = describeOptionGroupsAsync
@@ -783,8 +749,6 @@ public struct MockRDSClient: RDSClientProtocol {
         self.failoverDBClusterSyncOverride = failoverDBClusterSync
         self.failoverGlobalClusterAsyncOverride = failoverGlobalClusterAsync
         self.failoverGlobalClusterSyncOverride = failoverGlobalClusterSync
-        self.importInstallationMediaAsyncOverride = importInstallationMediaAsync
-        self.importInstallationMediaSyncOverride = importInstallationMediaSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
         self.listTagsForResourceSyncOverride = listTagsForResourceSync
         self.modifyCertificatesAsyncOverride = modifyCertificatesAsync
@@ -1386,46 +1350,6 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
-     Invokes the CreateCustomAvailabilityZone operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-         - completion: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object or an error will be passed to this 
-           callback when the operation is complete. The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    public func createCustomAvailabilityZoneAsync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone, RDSError>) -> ()) throws {
-        if let createCustomAvailabilityZoneAsyncOverride = createCustomAvailabilityZoneAsyncOverride {
-            return try createCustomAvailabilityZoneAsyncOverride(input, completion)
-        }
-
-        let result = CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
-        
-        completion(.success(result))
-    }
-
-    /**
-     Invokes the CreateCustomAvailabilityZone operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated CreateCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneAlreadyExists, customAvailabilityZoneQuotaExceeded, kMSKeyNotAccessible.
-     */
-    public func createCustomAvailabilityZoneSync(
-            input: RDSModel.CreateCustomAvailabilityZoneMessage) throws -> RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
-        if let createCustomAvailabilityZoneSyncOverride = createCustomAvailabilityZoneSyncOverride {
-            return try createCustomAvailabilityZoneSyncOverride(input)
-        }
-
-        return CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone.__default
-    }
-
-    /**
      Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1633,7 +1557,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The CreateDBInstanceResultForCreateDBInstance object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceResultForCreateDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
@@ -1654,7 +1578,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated CreateDBInstanceMessage object being passed to this operation.
      - Returns: The CreateDBInstanceResultForCreateDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceSync(
             input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
@@ -1673,7 +1597,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
            object will be validated before being returned to caller.
-           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
@@ -1694,7 +1618,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated CreateDBInstanceReadReplicaMessage object being passed to this operation.
      - Returns: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceReadReplicaSync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
@@ -2063,46 +1987,6 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return CreateOptionGroupResultForCreateOptionGroup.__default
-    }
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-         - completion: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object or an error will be passed to this 
-           callback when the operation is complete. The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    public func deleteCustomAvailabilityZoneAsync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage, 
-            completion: @escaping (Result<RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone, RDSError>) -> ()) throws {
-        if let deleteCustomAvailabilityZoneAsyncOverride = deleteCustomAvailabilityZoneAsyncOverride {
-            return try deleteCustomAvailabilityZoneAsyncOverride(input, completion)
-        }
-
-        let result = DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
-        
-        completion(.success(result))
-    }
-
-    /**
-     Invokes the DeleteCustomAvailabilityZone operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteCustomAvailabilityZoneMessage object being passed to this operation.
-     - Returns: The DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, kMSKeyNotAccessible.
-     */
-    public func deleteCustomAvailabilityZoneSync(
-            input: RDSModel.DeleteCustomAvailabilityZoneMessage) throws -> RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
-        if let deleteCustomAvailabilityZoneSyncOverride = deleteCustomAvailabilityZoneSyncOverride {
-            return try deleteCustomAvailabilityZoneSyncOverride(input)
-        }
-
-        return DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone.__default
     }
 
     /**
@@ -2682,46 +2566,6 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
-     Invokes the DeleteInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaForDeleteInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaForDeleteInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: installationMediaNotFound.
-     */
-    public func deleteInstallationMediaAsync(
-            input: RDSModel.DeleteInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForDeleteInstallationMedia, RDSError>) -> ()) throws {
-        if let deleteInstallationMediaAsyncOverride = deleteInstallationMediaAsyncOverride {
-            return try deleteInstallationMediaAsyncOverride(input, completion)
-        }
-
-        let result = InstallationMediaForDeleteInstallationMedia.__default
-        
-        completion(.success(result))
-    }
-
-    /**
-     Invokes the DeleteInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DeleteInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForDeleteInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    public func deleteInstallationMediaSync(
-            input: RDSModel.DeleteInstallationMediaMessage) throws -> RDSModel.InstallationMediaForDeleteInstallationMedia {
-        if let deleteInstallationMediaSyncOverride = deleteInstallationMediaSyncOverride {
-            return try deleteInstallationMediaSyncOverride(input)
-        }
-
-        return InstallationMediaForDeleteInstallationMedia.__default
-    }
-
-    /**
      Invokes the DeleteOptionGroup operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2871,46 +2715,6 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return CertificateMessageForDescribeCertificates.__default
-    }
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-         - completion: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object or an error will be passed to this 
-           callback when the operation is complete. The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound.
-     */
-    public func describeCustomAvailabilityZonesAsync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage, 
-            completion: @escaping (Result<RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones, RDSError>) -> ()) throws {
-        if let describeCustomAvailabilityZonesAsyncOverride = describeCustomAvailabilityZonesAsyncOverride {
-            return try describeCustomAvailabilityZonesAsyncOverride(input, completion)
-        }
-
-        let result = CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones.__default
-        
-        completion(.success(result))
-    }
-
-    /**
-     Invokes the DescribeCustomAvailabilityZones operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeCustomAvailabilityZonesMessage object being passed to this operation.
-     - Returns: The CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound.
-     */
-    public func describeCustomAvailabilityZonesSync(
-            input: RDSModel.DescribeCustomAvailabilityZonesMessage) throws -> RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
-        if let describeCustomAvailabilityZonesSyncOverride = describeCustomAvailabilityZonesSyncOverride {
-            return try describeCustomAvailabilityZonesSyncOverride(input)
-        }
-
-        return CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones.__default
     }
 
     /**
@@ -4024,46 +3828,6 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
-     Invokes the DescribeInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaMessageForDescribeInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaMessageForDescribeInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: installationMediaNotFound.
-     */
-    public func describeInstallationMediaAsync(
-            input: RDSModel.DescribeInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaMessageForDescribeInstallationMedia, RDSError>) -> ()) throws {
-        if let describeInstallationMediaAsyncOverride = describeInstallationMediaAsyncOverride {
-            return try describeInstallationMediaAsyncOverride(input, completion)
-        }
-
-        let result = InstallationMediaMessageForDescribeInstallationMedia.__default
-        
-        completion(.success(result))
-    }
-
-    /**
-     Invokes the DescribeInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated DescribeInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaMessageForDescribeInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: installationMediaNotFound.
-     */
-    public func describeInstallationMediaSync(
-            input: RDSModel.DescribeInstallationMediaMessage) throws -> RDSModel.InstallationMediaMessageForDescribeInstallationMedia {
-        if let describeInstallationMediaSyncOverride = describeInstallationMediaSyncOverride {
-            return try describeInstallationMediaSyncOverride(input)
-        }
-
-        return InstallationMediaMessageForDescribeInstallationMedia.__default
-    }
-
-    /**
      Invokes the DescribeOptionGroupOptions operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4498,46 +4262,6 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
-     Invokes the ImportInstallationMedia operation returning immediately and passing the response to a callback.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-         - completion: The InstallationMediaForImportInstallationMedia object or an error will be passed to this 
-           callback when the operation is complete. The InstallationMediaForImportInstallationMedia
-           object will be validated before being returned to caller.
-           The possible errors are: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    public func importInstallationMediaAsync(
-            input: RDSModel.ImportInstallationMediaMessage, 
-            completion: @escaping (Result<RDSModel.InstallationMediaForImportInstallationMedia, RDSError>) -> ()) throws {
-        if let importInstallationMediaAsyncOverride = importInstallationMediaAsyncOverride {
-            return try importInstallationMediaAsyncOverride(input, completion)
-        }
-
-        let result = InstallationMediaForImportInstallationMedia.__default
-        
-        completion(.success(result))
-    }
-
-    /**
-     Invokes the ImportInstallationMedia operation waiting for the response before returning.
-
-     - Parameters:
-         - input: The validated ImportInstallationMediaMessage object being passed to this operation.
-     - Returns: The InstallationMediaForImportInstallationMedia object to be passed back from the caller of this operation.
-         Will be validated before being returned to caller.
-     - Throws: customAvailabilityZoneNotFound, installationMediaAlreadyExists.
-     */
-    public func importInstallationMediaSync(
-            input: RDSModel.ImportInstallationMediaMessage) throws -> RDSModel.InstallationMediaForImportInstallationMedia {
-        if let importInstallationMediaSyncOverride = importInstallationMediaSyncOverride {
-            return try importInstallationMediaSyncOverride(input)
-        }
-
-        return InstallationMediaForImportInstallationMedia.__default
-    }
-
-    /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4865,7 +4589,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The ModifyDBInstanceResultForModifyDBInstance object or an error will be passed to this 
            callback when the operation is complete. The ModifyDBInstanceResultForModifyDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func modifyDBInstanceAsync(
             input: RDSModel.ModifyDBInstanceMessage, 
@@ -4886,7 +4610,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated ModifyDBInstanceMessage object being passed to this operation.
      - Returns: The ModifyDBInstanceResultForModifyDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBUpgradeDependencyFailure, domainNotFound, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func modifyDBInstanceSync(
             input: RDSModel.ModifyDBInstanceMessage) throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
@@ -5927,7 +5651,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
@@ -5948,7 +5672,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromDBSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotSync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
@@ -5967,7 +5691,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromS3Async(
             input: RDSModel.RestoreDBInstanceFromS3Message, 
@@ -5988,7 +5712,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromS3Message object being passed to this operation.
      - Returns: The RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromS3Sync(
             input: RDSModel.RestoreDBInstanceFromS3Message) throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
@@ -6007,7 +5731,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - completion: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceToPointInTimeAsync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage, 
@@ -6028,7 +5752,7 @@ public struct MockRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBInstanceToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBInstanceAutomatedBackupNotFound, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, pointInTimeRestoreNotEnabled, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceToPointInTimeSync(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage) throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {

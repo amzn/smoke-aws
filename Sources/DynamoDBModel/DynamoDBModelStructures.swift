@@ -1808,17 +1808,20 @@ public struct Endpoint: Codable, Equatable {
 
 public struct ExecuteStatementInput: Codable, Equatable {
     public var consistentRead: ConsistentRead?
+    public var limit: PositiveIntegerObject?
     public var nextToken: PartiQLNextToken?
     public var parameters: PreparedStatementParameters?
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var statement: PartiQLStatement
 
     public init(consistentRead: ConsistentRead? = nil,
+                limit: PositiveIntegerObject? = nil,
                 nextToken: PartiQLNextToken? = nil,
                 parameters: PreparedStatementParameters? = nil,
                 returnConsumedCapacity: ReturnConsumedCapacity? = nil,
                 statement: PartiQLStatement) {
         self.consistentRead = consistentRead
+        self.limit = limit
         self.nextToken = nextToken
         self.parameters = parameters
         self.returnConsumedCapacity = returnConsumedCapacity
@@ -1827,6 +1830,7 @@ public struct ExecuteStatementInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case consistentRead = "ConsistentRead"
+        case limit = "Limit"
         case nextToken = "NextToken"
         case parameters = "Parameters"
         case returnConsumedCapacity = "ReturnConsumedCapacity"
@@ -1834,6 +1838,7 @@ public struct ExecuteStatementInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try limit?.validateAsPositiveIntegerObject()
         try nextToken?.validateAsPartiQLNextToken()
         try parameters?.validateAsPreparedStatementParameters()
         try statement.validateAsPartiQLStatement()
@@ -1843,19 +1848,23 @@ public struct ExecuteStatementInput: Codable, Equatable {
 public struct ExecuteStatementOutput: Codable, Equatable {
     public var consumedCapacity: ConsumedCapacity?
     public var items: ItemList?
+    public var lastEvaluatedKey: Key?
     public var nextToken: PartiQLNextToken?
 
     public init(consumedCapacity: ConsumedCapacity? = nil,
                 items: ItemList? = nil,
+                lastEvaluatedKey: Key? = nil,
                 nextToken: PartiQLNextToken? = nil) {
         self.consumedCapacity = consumedCapacity
         self.items = items
+        self.lastEvaluatedKey = lastEvaluatedKey
         self.nextToken = nextToken
     }
 
     enum CodingKeys: String, CodingKey {
         case consumedCapacity = "ConsumedCapacity"
         case items = "Items"
+        case lastEvaluatedKey = "LastEvaluatedKey"
         case nextToken = "NextToken"
     }
 

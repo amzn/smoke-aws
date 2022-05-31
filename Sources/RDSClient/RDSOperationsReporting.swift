@@ -41,7 +41,6 @@ public struct RDSOperationsReporting {
     public let copyDBParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let copyDBSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let copyOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    public let createCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -58,7 +57,6 @@ public struct RDSOperationsReporting {
     public let createEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let createOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    public let deleteCustomAvailabilityZone: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -74,12 +72,10 @@ public struct RDSOperationsReporting {
     public let deleteDBSubnetGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteEventSubscription: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    public let deleteInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteOptionGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deregisterDBProxyTargets: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeAccountAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    public let describeCustomAvailabilityZones: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeDBClusterBacktracks: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeDBClusterEndpoints: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeDBClusterParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -108,7 +104,6 @@ public struct RDSOperationsReporting {
     public let describeEvents: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeExportTasks: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeGlobalClusters: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    public let describeInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeOptionGroupOptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeOptionGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeOrderableDBInstanceOptions: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -120,7 +115,6 @@ public struct RDSOperationsReporting {
     public let downloadDBLogFilePortion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let failoverDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let failoverGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
-    public let importInstallationMedia: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCurrentDBClusterCapacity: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -197,8 +191,6 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .copyDBSnapshot, configuration: reportingConfiguration)
         self.copyOptionGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .copyOptionGroup, configuration: reportingConfiguration)
-        self.createCustomAvailabilityZone = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .createCustomAvailabilityZone, configuration: reportingConfiguration)
         self.createCustomDBEngineVersion = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createCustomDBEngineVersion, configuration: reportingConfiguration)
         self.createDBCluster = StandardSmokeAWSOperationReporting(
@@ -231,8 +223,6 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .createGlobalCluster, configuration: reportingConfiguration)
         self.createOptionGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createOptionGroup, configuration: reportingConfiguration)
-        self.deleteCustomAvailabilityZone = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .deleteCustomAvailabilityZone, configuration: reportingConfiguration)
         self.deleteCustomDBEngineVersion = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteCustomDBEngineVersion, configuration: reportingConfiguration)
         self.deleteDBCluster = StandardSmokeAWSOperationReporting(
@@ -263,8 +253,6 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .deleteEventSubscription, configuration: reportingConfiguration)
         self.deleteGlobalCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteGlobalCluster, configuration: reportingConfiguration)
-        self.deleteInstallationMedia = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .deleteInstallationMedia, configuration: reportingConfiguration)
         self.deleteOptionGroup = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteOptionGroup, configuration: reportingConfiguration)
         self.deregisterDBProxyTargets = StandardSmokeAWSOperationReporting(
@@ -273,8 +261,6 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .describeAccountAttributes, configuration: reportingConfiguration)
         self.describeCertificates = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeCertificates, configuration: reportingConfiguration)
-        self.describeCustomAvailabilityZones = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .describeCustomAvailabilityZones, configuration: reportingConfiguration)
         self.describeDBClusterBacktracks = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeDBClusterBacktracks, configuration: reportingConfiguration)
         self.describeDBClusterEndpoints = StandardSmokeAWSOperationReporting(
@@ -331,8 +317,6 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .describeExportTasks, configuration: reportingConfiguration)
         self.describeGlobalClusters = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeGlobalClusters, configuration: reportingConfiguration)
-        self.describeInstallationMedia = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .describeInstallationMedia, configuration: reportingConfiguration)
         self.describeOptionGroupOptions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeOptionGroupOptions, configuration: reportingConfiguration)
         self.describeOptionGroups = StandardSmokeAWSOperationReporting(
@@ -355,8 +339,6 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .failoverDBCluster, configuration: reportingConfiguration)
         self.failoverGlobalCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .failoverGlobalCluster, configuration: reportingConfiguration)
-        self.importInstallationMedia = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .importInstallationMedia, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listTagsForResource, configuration: reportingConfiguration)
         self.modifyCertificates = StandardSmokeAWSOperationReporting(

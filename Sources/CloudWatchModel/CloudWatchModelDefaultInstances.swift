@@ -863,7 +863,8 @@ public extension GetMetricStreamOutput {
             name: nil,
             outputFormat: nil,
             roleArn: nil,
-            state: nil)
+            state: nil,
+            statisticsConfigurations: nil)
 
         return defaultInstance
     }()
@@ -1404,6 +1405,32 @@ public extension MetricStreamFilter {
     }()
 }
 
+public extension MetricStreamStatisticsConfiguration {
+    /**
+     Default instance of the MetricStreamStatisticsConfiguration structure.
+     */
+    static let __default: CloudWatchModel.MetricStreamStatisticsConfiguration = {
+        let defaultInstance = CloudWatchModel.MetricStreamStatisticsConfiguration(
+            additionalStatistics: [],
+            includeMetrics: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension MetricStreamStatisticsMetric {
+    /**
+     Default instance of the MetricStreamStatisticsMetric structure.
+     */
+    static let __default: CloudWatchModel.MetricStreamStatisticsMetric = {
+        let defaultInstance = CloudWatchModel.MetricStreamStatisticsMetric(
+            metricName: "0",
+            namespace: "0")
+
+        return defaultInstance
+    }()
+}
+
 public extension MissingRequiredParameterException {
     /**
      Default instance of the MissingRequiredParameterException structure.
@@ -1620,6 +1647,7 @@ public extension PutMetricStreamInput {
             name: "0",
             outputFormat: .__default,
             roleArn: "0",
+            statisticsConfigurations: nil,
             tags: nil)
 
         return defaultInstance

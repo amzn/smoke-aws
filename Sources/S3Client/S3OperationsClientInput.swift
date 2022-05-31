@@ -899,6 +899,25 @@ public struct GetObjectAclOperationHTTPRequestInput: HTTPRequestInputProtocol {
 }
 
 /**
+ Type to handle the input to the GetObjectAttributes operation in a HTTP client.
+ */
+public struct GetObjectAttributesOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: GetObjectAttributesOperationInputQuery?
+    public let pathEncodable: GetObjectAttributesOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: GetObjectAttributesOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: GetObjectAttributesRequest) {
+        self.queryEncodable = encodable.asS3ModelGetObjectAttributesOperationInputQuery()
+        self.pathEncodable = encodable.asS3ModelGetObjectAttributesOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = encodable.asS3ModelGetObjectAttributesOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
  Type to handle the input to the GetObjectLegalHold operation in a HTTP client.
  */
 public struct GetObjectLegalHoldOperationHTTPRequestInput: HTTPRequestInputProtocol {

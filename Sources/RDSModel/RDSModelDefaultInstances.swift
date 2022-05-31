@@ -643,45 +643,6 @@ public extension CopyOptionGroupResultForCopyOptionGroup {
     }()
 }
 
-public extension CreateCustomAvailabilityZoneMessage {
-    /**
-     Default instance of the CreateCustomAvailabilityZoneMessage structure.
-     */
-    static let __default: RDSModel.CreateCustomAvailabilityZoneMessage = {
-        let defaultInstance = RDSModel.CreateCustomAvailabilityZoneMessage(
-            customAvailabilityZoneName: "value",
-            existingVpnId: nil,
-            newVpnTunnelName: nil,
-            vpnTunnelOriginatorIP: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension CreateCustomAvailabilityZoneResult {
-    /**
-     Default instance of the CreateCustomAvailabilityZoneResult structure.
-     */
-    static let __default: RDSModel.CreateCustomAvailabilityZoneResult = {
-        let defaultInstance = RDSModel.CreateCustomAvailabilityZoneResult(
-            customAvailabilityZone: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone {
-    /**
-     Default instance of the CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone structure.
-     */
-    static let __default: RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone = {
-        let defaultInstance = RDSModel.CreateCustomAvailabilityZoneResultForCreateCustomAvailabilityZone(
-            createCustomAvailabilityZoneResult: CreateCustomAvailabilityZoneResult.__default)
-
-        return defaultInstance
-    }()
-}
-
 public extension CreateCustomDBEngineVersionMessage {
     /**
      Default instance of the CreateCustomDBEngineVersionMessage structure.
@@ -764,6 +725,7 @@ public extension CreateDBClusterMessage {
             publiclyAccessible: nil,
             replicationSourceIdentifier: nil,
             scalingConfiguration: nil,
+            serverlessV2ScalingConfiguration: nil,
             storageEncrypted: nil,
             storageType: nil,
             tags: nil,
@@ -914,6 +876,7 @@ public extension CreateDBInstanceMessage {
             monitoringRoleArn: nil,
             multiAZ: nil,
             ncharCharacterSetName: nil,
+            networkType: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
             performanceInsightsRetentionPeriod: nil,
@@ -961,6 +924,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
+            networkType: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
             performanceInsightsRetentionPeriod: nil,
@@ -1391,74 +1355,12 @@ public extension CreateOptionGroupResultForCreateOptionGroup {
     }()
 }
 
-public extension CustomAvailabilityZone {
-    /**
-     Default instance of the CustomAvailabilityZone structure.
-     */
-    static let __default: RDSModel.CustomAvailabilityZone = {
-        let defaultInstance = RDSModel.CustomAvailabilityZone(
-            customAvailabilityZoneId: nil,
-            customAvailabilityZoneName: nil,
-            customAvailabilityZoneStatus: nil,
-            vpnDetails: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension CustomAvailabilityZoneAlreadyExistsFault {
-    /**
-     Default instance of the CustomAvailabilityZoneAlreadyExistsFault structure.
-     */
-    static let __default: RDSModel.CustomAvailabilityZoneAlreadyExistsFault = {
-        let defaultInstance = RDSModel.CustomAvailabilityZoneAlreadyExistsFault()
-
-        return defaultInstance
-    }()
-}
-
-public extension CustomAvailabilityZoneMessage {
-    /**
-     Default instance of the CustomAvailabilityZoneMessage structure.
-     */
-    static let __default: RDSModel.CustomAvailabilityZoneMessage = {
-        let defaultInstance = RDSModel.CustomAvailabilityZoneMessage(
-            customAvailabilityZones: nil,
-            marker: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones {
-    /**
-     Default instance of the CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones structure.
-     */
-    static let __default: RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones = {
-        let defaultInstance = RDSModel.CustomAvailabilityZoneMessageForDescribeCustomAvailabilityZones(
-            describeCustomAvailabilityZonesResult: CustomAvailabilityZoneMessage.__default)
-
-        return defaultInstance
-    }()
-}
-
 public extension CustomAvailabilityZoneNotFoundFault {
     /**
      Default instance of the CustomAvailabilityZoneNotFoundFault structure.
      */
     static let __default: RDSModel.CustomAvailabilityZoneNotFoundFault = {
         let defaultInstance = RDSModel.CustomAvailabilityZoneNotFoundFault()
-
-        return defaultInstance
-    }()
-}
-
-public extension CustomAvailabilityZoneQuotaExceededFault {
-    /**
-     Default instance of the CustomAvailabilityZoneQuotaExceededFault structure.
-     */
-    static let __default: RDSModel.CustomAvailabilityZoneQuotaExceededFault = {
-        let defaultInstance = RDSModel.CustomAvailabilityZoneQuotaExceededFault()
 
         return defaultInstance
     }()
@@ -1565,6 +1467,7 @@ public extension DBCluster {
             readerEndpoint: nil,
             replicationSourceIdentifier: nil,
             scalingConfigurationInfo: nil,
+            serverlessV2ScalingConfiguration: nil,
             status: nil,
             storageEncrypted: nil,
             storageType: nil,
@@ -2159,6 +2062,7 @@ public extension DBEngineVersion {
             supportedFeatureNames: nil,
             supportedNcharCharacterSets: nil,
             supportedTimezones: nil,
+            supportsBabelfish: nil,
             supportsGlobalDatabases: nil,
             supportsLogExportsToCloudwatchLogs: nil,
             supportsParallelQuery: nil,
@@ -2288,6 +2192,7 @@ public extension DBInstance {
             monitoringRoleArn: nil,
             multiAZ: nil,
             ncharCharacterSetName: nil,
+            networkType: nil,
             optionGroupMemberships: nil,
             pendingModifiedValues: nil,
             performanceInsightsEnabled: nil,
@@ -3091,6 +2996,7 @@ public extension DBSubnetGroup {
             dBSubnetGroupName: nil,
             subnetGroupStatus: nil,
             subnets: nil,
+            supportedNetworkTypes: nil,
             vpcId: nil)
 
         return defaultInstance
@@ -3194,42 +3100,6 @@ public extension DBUpgradeDependencyFailureFault {
      */
     static let __default: RDSModel.DBUpgradeDependencyFailureFault = {
         let defaultInstance = RDSModel.DBUpgradeDependencyFailureFault()
-
-        return defaultInstance
-    }()
-}
-
-public extension DeleteCustomAvailabilityZoneMessage {
-    /**
-     Default instance of the DeleteCustomAvailabilityZoneMessage structure.
-     */
-    static let __default: RDSModel.DeleteCustomAvailabilityZoneMessage = {
-        let defaultInstance = RDSModel.DeleteCustomAvailabilityZoneMessage(
-            customAvailabilityZoneId: "value")
-
-        return defaultInstance
-    }()
-}
-
-public extension DeleteCustomAvailabilityZoneResult {
-    /**
-     Default instance of the DeleteCustomAvailabilityZoneResult structure.
-     */
-    static let __default: RDSModel.DeleteCustomAvailabilityZoneResult = {
-        let defaultInstance = RDSModel.DeleteCustomAvailabilityZoneResult(
-            customAvailabilityZone: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone {
-    /**
-     Default instance of the DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone structure.
-     */
-    static let __default: RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone = {
-        let defaultInstance = RDSModel.DeleteCustomAvailabilityZoneResultForDeleteCustomAvailabilityZone(
-            deleteCustomAvailabilityZoneResult: DeleteCustomAvailabilityZoneResult.__default)
 
         return defaultInstance
     }()
@@ -3638,18 +3508,6 @@ public extension DeleteGlobalClusterResultForDeleteGlobalCluster {
     }()
 }
 
-public extension DeleteInstallationMediaMessage {
-    /**
-     Default instance of the DeleteInstallationMediaMessage structure.
-     */
-    static let __default: RDSModel.DeleteInstallationMediaMessage = {
-        let defaultInstance = RDSModel.DeleteInstallationMediaMessage(
-            installationMediaId: "value")
-
-        return defaultInstance
-    }()
-}
-
 public extension DeleteOptionGroupMessage {
     /**
      Default instance of the DeleteOptionGroupMessage structure.
@@ -3718,21 +3576,6 @@ public extension DescribeCertificatesMessage {
     static let __default: RDSModel.DescribeCertificatesMessage = {
         let defaultInstance = RDSModel.DescribeCertificatesMessage(
             certificateIdentifier: nil,
-            filters: nil,
-            marker: nil,
-            maxRecords: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension DescribeCustomAvailabilityZonesMessage {
-    /**
-     Default instance of the DescribeCustomAvailabilityZonesMessage structure.
-     */
-    static let __default: RDSModel.DescribeCustomAvailabilityZonesMessage = {
-        let defaultInstance = RDSModel.DescribeCustomAvailabilityZonesMessage(
-            customAvailabilityZoneId: nil,
             filters: nil,
             marker: nil,
             maxRecords: nil)
@@ -4415,21 +4258,6 @@ public extension DescribeGlobalClustersMessage {
         let defaultInstance = RDSModel.DescribeGlobalClustersMessage(
             filters: nil,
             globalClusterIdentifier: nil,
-            marker: nil,
-            maxRecords: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension DescribeInstallationMediaMessage {
-    /**
-     Default instance of the DescribeInstallationMediaMessage structure.
-     */
-    static let __default: RDSModel.DescribeInstallationMediaMessage = {
-        let defaultInstance = RDSModel.DescribeInstallationMediaMessage(
-            filters: nil,
-            installationMediaId: nil,
             marker: nil,
             maxRecords: nil)
 
@@ -5185,124 +5013,6 @@ public extension IamRoleNotFoundFault {
     }()
 }
 
-public extension ImportInstallationMediaMessage {
-    /**
-     Default instance of the ImportInstallationMediaMessage structure.
-     */
-    static let __default: RDSModel.ImportInstallationMediaMessage = {
-        let defaultInstance = RDSModel.ImportInstallationMediaMessage(
-            customAvailabilityZoneId: "value",
-            engine: "value",
-            engineInstallationMediaPath: "value",
-            engineVersion: "value",
-            oSInstallationMediaPath: "value")
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMedia {
-    /**
-     Default instance of the InstallationMedia structure.
-     */
-    static let __default: RDSModel.InstallationMedia = {
-        let defaultInstance = RDSModel.InstallationMedia(
-            customAvailabilityZoneId: nil,
-            engine: nil,
-            engineInstallationMediaPath: nil,
-            engineVersion: nil,
-            failureCause: nil,
-            installationMediaId: nil,
-            oSInstallationMediaPath: nil,
-            status: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaAlreadyExistsFault {
-    /**
-     Default instance of the InstallationMediaAlreadyExistsFault structure.
-     */
-    static let __default: RDSModel.InstallationMediaAlreadyExistsFault = {
-        let defaultInstance = RDSModel.InstallationMediaAlreadyExistsFault()
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaFailureCause {
-    /**
-     Default instance of the InstallationMediaFailureCause structure.
-     */
-    static let __default: RDSModel.InstallationMediaFailureCause = {
-        let defaultInstance = RDSModel.InstallationMediaFailureCause(
-            message: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaForDeleteInstallationMedia {
-    /**
-     Default instance of the InstallationMediaForDeleteInstallationMedia structure.
-     */
-    static let __default: RDSModel.InstallationMediaForDeleteInstallationMedia = {
-        let defaultInstance = RDSModel.InstallationMediaForDeleteInstallationMedia(
-            deleteInstallationMediaResult: InstallationMedia.__default)
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaForImportInstallationMedia {
-    /**
-     Default instance of the InstallationMediaForImportInstallationMedia structure.
-     */
-    static let __default: RDSModel.InstallationMediaForImportInstallationMedia = {
-        let defaultInstance = RDSModel.InstallationMediaForImportInstallationMedia(
-            importInstallationMediaResult: InstallationMedia.__default)
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaMessage {
-    /**
-     Default instance of the InstallationMediaMessage structure.
-     */
-    static let __default: RDSModel.InstallationMediaMessage = {
-        let defaultInstance = RDSModel.InstallationMediaMessage(
-            installationMedia: nil,
-            marker: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaMessageForDescribeInstallationMedia {
-    /**
-     Default instance of the InstallationMediaMessageForDescribeInstallationMedia structure.
-     */
-    static let __default: RDSModel.InstallationMediaMessageForDescribeInstallationMedia = {
-        let defaultInstance = RDSModel.InstallationMediaMessageForDescribeInstallationMedia(
-            describeInstallationMediaResult: InstallationMediaMessage.__default)
-
-        return defaultInstance
-    }()
-}
-
-public extension InstallationMediaNotFoundFault {
-    /**
-     Default instance of the InstallationMediaNotFoundFault structure.
-     */
-    static let __default: RDSModel.InstallationMediaNotFoundFault = {
-        let defaultInstance = RDSModel.InstallationMediaNotFoundFault()
-
-        return defaultInstance
-    }()
-}
-
 public extension InstanceQuotaExceededFault {
     /**
      Default instance of the InstanceQuotaExceededFault structure.
@@ -5790,6 +5500,7 @@ public extension ModifyDBClusterMessage {
             preferredBackupWindow: nil,
             preferredMaintenanceWindow: nil,
             scalingConfiguration: nil,
+            serverlessV2ScalingConfiguration: nil,
             storageType: nil,
             vpcSecurityGroupIds: nil)
 
@@ -5910,6 +5621,7 @@ public extension ModifyDBInstanceMessage {
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
+            networkType: nil,
             newDBInstanceIdentifier: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
@@ -6322,6 +6034,17 @@ public extension ModifyOptionGroupResultForModifyOptionGroup {
     }()
 }
 
+public extension NetworkTypeNotSupported {
+    /**
+     Default instance of the NetworkTypeNotSupported structure.
+     */
+    static let __default: RDSModel.NetworkTypeNotSupported = {
+        let defaultInstance = RDSModel.NetworkTypeNotSupported()
+
+        return defaultInstance
+    }()
+}
+
 public extension Option {
     /**
      Default instance of the Option structure.
@@ -6578,6 +6301,7 @@ public extension OrderableDBInstanceOption {
             storageType: nil,
             supportedActivityStreamModes: nil,
             supportedEngineModes: nil,
+            supportedNetworkTypes: nil,
             supportsClusters: nil,
             supportsEnhancedMonitoring: nil,
             supportsGlobalDatabases: nil,
@@ -7364,6 +7088,7 @@ public extension RestoreDBClusterFromS3Message {
             s3BucketName: "value",
             s3IngestionRoleArn: "value",
             s3Prefix: nil,
+            serverlessV2ScalingConfiguration: nil,
             sourceEngine: "value",
             sourceEngineVersion: "value",
             storageEncrypted: nil,
@@ -7426,6 +7151,7 @@ public extension RestoreDBClusterFromSnapshotMessage {
             port: nil,
             publiclyAccessible: nil,
             scalingConfiguration: nil,
+            serverlessV2ScalingConfiguration: nil,
             snapshotIdentifier: "value",
             storageType: nil,
             tags: nil,
@@ -7485,6 +7211,7 @@ public extension RestoreDBClusterToPointInTimeMessage {
             restoreToTime: nil,
             restoreType: nil,
             scalingConfiguration: nil,
+            serverlessV2ScalingConfiguration: nil,
             sourceDBClusterIdentifier: "value",
             storageType: nil,
             tags: nil,
@@ -7546,6 +7273,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             iops: nil,
             licenseModel: nil,
             multiAZ: nil,
+            networkType: nil,
             optionGroupName: nil,
             port: nil,
             processorFeatures: nil,
@@ -7617,6 +7345,7 @@ public extension RestoreDBInstanceFromS3Message {
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
+            networkType: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
             performanceInsightsRetentionPeriod: nil,
@@ -7690,6 +7419,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             licenseModel: nil,
             maxAllocatedStorage: nil,
             multiAZ: nil,
+            networkType: nil,
             optionGroupName: nil,
             port: nil,
             processorFeatures: nil,
@@ -7850,6 +7580,32 @@ public extension ScalingConfigurationInfo {
             secondsBeforeTimeout: nil,
             secondsUntilAutoPause: nil,
             timeoutAction: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ServerlessV2ScalingConfiguration {
+    /**
+     Default instance of the ServerlessV2ScalingConfiguration structure.
+     */
+    static let __default: RDSModel.ServerlessV2ScalingConfiguration = {
+        let defaultInstance = RDSModel.ServerlessV2ScalingConfiguration(
+            maxCapacity: nil,
+            minCapacity: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ServerlessV2ScalingConfigurationInfo {
+    /**
+     Default instance of the ServerlessV2ScalingConfigurationInfo structure.
+     */
+    static let __default: RDSModel.ServerlessV2ScalingConfigurationInfo = {
+        let defaultInstance = RDSModel.ServerlessV2ScalingConfigurationInfo(
+            maxCapacity: nil,
+            minCapacity: nil)
 
         return defaultInstance
     }()
@@ -8406,6 +8162,7 @@ public extension UpgradeTarget {
             engineVersion: nil,
             isMajorVersionUpgrade: nil,
             supportedEngineModes: nil,
+            supportsBabelfish: nil,
             supportsGlobalDatabases: nil,
             supportsParallelQuery: nil)
 
@@ -8482,23 +8239,6 @@ public extension VpcSecurityGroupMembership {
         let defaultInstance = RDSModel.VpcSecurityGroupMembership(
             status: nil,
             vpcSecurityGroupId: nil)
-
-        return defaultInstance
-    }()
-}
-
-public extension VpnDetails {
-    /**
-     Default instance of the VpnDetails structure.
-     */
-    static let __default: RDSModel.VpnDetails = {
-        let defaultInstance = RDSModel.VpnDetails(
-            vpnGatewayIp: nil,
-            vpnId: nil,
-            vpnName: nil,
-            vpnPSK: nil,
-            vpnState: nil,
-            vpnTunnelOriginatorIP: nil)
 
         return defaultInstance
     }()

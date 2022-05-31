@@ -37,7 +37,7 @@ public extension RDSDataClientProtocol {
          - input: The validated BatchExecuteStatementRequest object being passed to this operation.
      - Returns: The BatchExecuteStatementResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     func batchExecuteStatement(input: RDSDataModel.BatchExecuteStatementRequest) async throws
      -> RDSDataModel.BatchExecuteStatementResponse {
@@ -64,7 +64,7 @@ public extension RDSDataClientProtocol {
          - input: The validated BeginTransactionRequest object being passed to this operation.
      - Returns: The BeginTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     func beginTransaction(input: RDSDataModel.BeginTransactionRequest) async throws
      -> RDSDataModel.BeginTransactionResponse {
@@ -91,7 +91,7 @@ public extension RDSDataClientProtocol {
          - input: The validated CommitTransactionRequest object being passed to this operation.
      - Returns: The CommitTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     func commitTransaction(input: RDSDataModel.CommitTransactionRequest) async throws
      -> RDSDataModel.CommitTransactionResponse {
@@ -118,7 +118,7 @@ public extension RDSDataClientProtocol {
          - input: The validated ExecuteSqlRequest object being passed to this operation.
      - Returns: The ExecuteSqlResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable.
      */
     func executeSql(input: RDSDataModel.ExecuteSqlRequest) async throws
      -> RDSDataModel.ExecuteSqlResponse {
@@ -145,7 +145,7 @@ public extension RDSDataClientProtocol {
          - input: The validated ExecuteStatementRequest object being passed to this operation.
      - Returns: The ExecuteStatementResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     func executeStatement(input: RDSDataModel.ExecuteStatementRequest) async throws
      -> RDSDataModel.ExecuteStatementResponse {
@@ -172,7 +172,7 @@ public extension RDSDataClientProtocol {
          - input: The validated RollbackTransactionRequest object being passed to this operation.
      - Returns: The RollbackTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     func rollbackTransaction(input: RDSDataModel.RollbackTransactionRequest) async throws
      -> RDSDataModel.RollbackTransactionResponse {

@@ -75,6 +75,7 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
     public let getBucketWebsite: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getObjectAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getObjectAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getObjectLegalHold: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getObjectLockConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getObjectRetention: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -219,6 +220,8 @@ public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvo
             smokeAWSOperationReporting: operationsReporting.getObject)
         self.getObjectAcl = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getObjectAcl)
+        self.getObjectAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getObjectAttributes)
         self.getObjectLegalHold = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getObjectLegalHold)
         self.getObjectLockConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

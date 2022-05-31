@@ -109,6 +109,11 @@ public protocol CloudformationClientProtocol {
     typealias DescribeChangeSetAsyncType = (
             _ input: CloudformationModel.DescribeChangeSetInput, 
             _ completion: @escaping (Result<CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet, CloudformationError>) -> ()) throws -> ()
+    typealias DescribeChangeSetHooksSyncType = (
+            _ input: CloudformationModel.DescribeChangeSetHooksInput) throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+    typealias DescribeChangeSetHooksAsyncType = (
+            _ input: CloudformationModel.DescribeChangeSetHooksInput, 
+            _ completion: @escaping (Result<CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks, CloudformationError>) -> ()) throws -> ()
     typealias DescribePublisherSyncType = (
             _ input: CloudformationModel.DescribePublisherInput) throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher
     typealias DescribePublisherAsyncType = (
@@ -762,6 +767,32 @@ public protocol CloudformationClientProtocol {
      */
     func describeChangeSetSync(
             input: CloudformationModel.DescribeChangeSetInput) throws -> CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet
+
+    /**
+     Invokes the DescribeChangeSetHooks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+         - completion: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object or an error will be passed to this 
+           callback when the operation is complete. The DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+           object will be validated before being returned to caller.
+           The possible errors are: changeSetNotFound.
+     */
+    func describeChangeSetHooksAsync(
+            input: CloudformationModel.DescribeChangeSetHooksInput, 
+            completion: @escaping (Result<CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the DescribeChangeSetHooks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+     - Returns: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    func describeChangeSetHooksSync(
+            input: CloudformationModel.DescribeChangeSetHooksInput) throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks
 
     /**
      Invokes the DescribePublisher operation returning immediately and passing the response to a callback.

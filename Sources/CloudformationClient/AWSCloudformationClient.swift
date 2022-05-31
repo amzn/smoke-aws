@@ -1394,6 +1394,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     }
 
     /**
+     Invokes the DescribeChangeSetHooks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+         - completion: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object or an error will be passed to this 
+           callback when the operation is complete. The DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+           object will be validated before being returned to caller.
+           The possible errors are: changeSetNotFound.
+     */
+    public func describeChangeSetHooksAsync(
+            input: CloudformationModel.DescribeChangeSetHooksInput, 
+            completion: @escaping (Result<CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeChangeSetHooks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeChangeSetHooksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeChangeSetHooks.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeChangeSetHooks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+     - Returns: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    public func describeChangeSetHooksSync(
+            input: CloudformationModel.DescribeChangeSetHooksInput) throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeChangeSetHooks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeChangeSetHooksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeChangeSetHooks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribePublisher operation returning immediately and passing the response to a callback.
 
      - Parameters:

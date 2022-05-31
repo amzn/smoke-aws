@@ -44,6 +44,7 @@ public struct CloudformationOperationsReporting {
     public let deregisterType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeAccountLimits: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeChangeSetHooks: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describePublisher: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeStackDriftDetectionStatus: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeStackEvents: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -127,6 +128,8 @@ public struct CloudformationOperationsReporting {
             clientName: clientName, operation: .describeAccountLimits, configuration: reportingConfiguration)
         self.describeChangeSet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeChangeSet, configuration: reportingConfiguration)
+        self.describeChangeSetHooks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeChangeSetHooks, configuration: reportingConfiguration)
         self.describePublisher = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describePublisher, configuration: reportingConfiguration)
         self.describeStackDriftDetectionStatus = StandardSmokeAWSOperationReporting(

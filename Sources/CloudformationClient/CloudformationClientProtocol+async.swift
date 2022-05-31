@@ -454,6 +454,33 @@ public extension CloudformationClientProtocol {
     }
 
     /**
+     Invokes the DescribeChangeSetHooks operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+     - Returns: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    func describeChangeSetHooks(input: CloudformationModel.DescribeChangeSetHooksInput) async throws
+     -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeChangeSetHooksAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribePublisher operation and asynchronously returning the response.
 
      - Parameters:

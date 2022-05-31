@@ -156,7 +156,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - completion: The BatchExecuteStatementResponse object or an error will be passed to this 
            callback when the operation is complete. The BatchExecuteStatementResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+           The possible errors are: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func batchExecuteStatementAsync(
             input: RDSDataModel.BatchExecuteStatementRequest, 
@@ -189,7 +189,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - input: The validated BatchExecuteStatementRequest object being passed to this operation.
      - Returns: The BatchExecuteStatementResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func batchExecuteStatementSync(
             input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse {
@@ -226,7 +226,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - completion: The BeginTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The BeginTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+           The possible errors are: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func beginTransactionAsync(
             input: RDSDataModel.BeginTransactionRequest, 
@@ -259,7 +259,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - input: The validated BeginTransactionRequest object being passed to this operation.
      - Returns: The BeginTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func beginTransactionSync(
             input: RDSDataModel.BeginTransactionRequest) throws -> RDSDataModel.BeginTransactionResponse {
@@ -296,7 +296,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - completion: The CommitTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The CommitTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+           The possible errors are: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func commitTransactionAsync(
             input: RDSDataModel.CommitTransactionRequest, 
@@ -329,7 +329,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - input: The validated CommitTransactionRequest object being passed to this operation.
      - Returns: The CommitTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func commitTransactionSync(
             input: RDSDataModel.CommitTransactionRequest) throws -> RDSDataModel.CommitTransactionResponse {
@@ -366,7 +366,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - completion: The ExecuteSqlResponse object or an error will be passed to this 
            callback when the operation is complete. The ExecuteSqlResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable.
+           The possible errors are: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable.
      */
     public func executeSqlAsync(
             input: RDSDataModel.ExecuteSqlRequest, 
@@ -399,7 +399,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - input: The validated ExecuteSqlRequest object being passed to this operation.
      - Returns: The ExecuteSqlResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable.
      */
     public func executeSqlSync(
             input: RDSDataModel.ExecuteSqlRequest) throws -> RDSDataModel.ExecuteSqlResponse {
@@ -436,7 +436,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - completion: The ExecuteStatementResponse object or an error will be passed to this 
            callback when the operation is complete. The ExecuteStatementResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+           The possible errors are: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func executeStatementAsync(
             input: RDSDataModel.ExecuteStatementRequest, 
@@ -469,7 +469,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - input: The validated ExecuteStatementRequest object being passed to this operation.
      - Returns: The ExecuteStatementResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
      */
     public func executeStatementSync(
             input: RDSDataModel.ExecuteStatementRequest) throws -> RDSDataModel.ExecuteStatementResponse {
@@ -506,7 +506,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - completion: The RollbackTransactionResponse object or an error will be passed to this 
            callback when the operation is complete. The RollbackTransactionResponse
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+           The possible errors are: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func rollbackTransactionAsync(
             input: RDSDataModel.RollbackTransactionRequest, 
@@ -539,7 +539,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
          - input: The validated RollbackTransactionRequest object being passed to this operation.
      - Returns: The RollbackTransactionResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
      */
     public func rollbackTransactionSync(
             input: RDSDataModel.RollbackTransactionRequest) throws -> RDSDataModel.RollbackTransactionResponse {

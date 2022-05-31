@@ -122,6 +122,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
     let getObjectSyncOverride: GetObjectSyncType?
     let getObjectAclAsyncOverride: GetObjectAclAsyncType?
     let getObjectAclSyncOverride: GetObjectAclSyncType?
+    let getObjectAttributesAsyncOverride: GetObjectAttributesAsyncType?
+    let getObjectAttributesSyncOverride: GetObjectAttributesSyncType?
     let getObjectLegalHoldAsyncOverride: GetObjectLegalHoldAsyncType?
     let getObjectLegalHoldSyncOverride: GetObjectLegalHoldSyncType?
     let getObjectLockConfigurationAsyncOverride: GetObjectLockConfigurationAsyncType?
@@ -320,6 +322,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
             getObjectSync: GetObjectSyncType? = nil,
             getObjectAclAsync: GetObjectAclAsyncType? = nil,
             getObjectAclSync: GetObjectAclSyncType? = nil,
+            getObjectAttributesAsync: GetObjectAttributesAsyncType? = nil,
+            getObjectAttributesSync: GetObjectAttributesSyncType? = nil,
             getObjectLegalHoldAsync: GetObjectLegalHoldAsyncType? = nil,
             getObjectLegalHoldSync: GetObjectLegalHoldSyncType? = nil,
             getObjectLockConfigurationAsync: GetObjectLockConfigurationAsyncType? = nil,
@@ -513,6 +517,8 @@ public struct ThrowingS3Client: S3ClientProtocol {
         self.getObjectSyncOverride = getObjectSync
         self.getObjectAclAsyncOverride = getObjectAclAsync
         self.getObjectAclSyncOverride = getObjectAclSync
+        self.getObjectAttributesAsyncOverride = getObjectAttributesAsync
+        self.getObjectAttributesSyncOverride = getObjectAttributesSync
         self.getObjectLegalHoldAsyncOverride = getObjectLegalHoldAsync
         self.getObjectLegalHoldSyncOverride = getObjectLegalHoldSync
         self.getObjectLockConfigurationAsyncOverride = getObjectLockConfigurationAsync
@@ -2234,6 +2240,44 @@ public struct ThrowingS3Client: S3ClientProtocol {
             input: S3Model.GetObjectAclRequest) throws -> S3Model.GetObjectAclOutput {
         if let getObjectAclSyncOverride = getObjectAclSyncOverride {
             return try getObjectAclSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetObjectAttributes operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+         - completion: The GetObjectAttributesOutput object or an error will be passed to this 
+           callback when the operation is complete. The GetObjectAttributesOutput
+           object will be validated before being returned to caller.
+           The possible errors are: noSuchKey.
+     */
+    public func getObjectAttributesAsync(
+            input: S3Model.GetObjectAttributesRequest, 
+            completion: @escaping (Result<S3Model.GetObjectAttributesOutput, S3Error>) -> ()) throws {
+        if let getObjectAttributesAsyncOverride = getObjectAttributesAsyncOverride {
+            return try getObjectAttributesAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetObjectAttributes operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+     - Returns: The GetObjectAttributesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    public func getObjectAttributesSync(
+            input: S3Model.GetObjectAttributesRequest) throws -> S3Model.GetObjectAttributesOutput {
+        if let getObjectAttributesSyncOverride = getObjectAttributesSyncOverride {
+            return try getObjectAttributesSyncOverride(input)
         }
 
         throw error

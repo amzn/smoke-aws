@@ -22,6 +22,21 @@
 
 import Foundation
 
+public struct AccessDeniedException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ArrayValue: Codable, Equatable {
     public var arrayValues: ArrayOfArray?
     public var booleanValues: BooleanArray?
@@ -338,6 +353,7 @@ public struct ExecuteSqlResponse: Codable, Equatable {
 public struct ExecuteStatementRequest: Codable, Equatable {
     public var continueAfterTimeout: Boolean?
     public var database: DbName?
+    public var formatRecordsAs: RecordsFormatType?
     public var includeResultMetadata: Boolean?
     public var parameters: SqlParametersList?
     public var resourceArn: Arn
@@ -349,6 +365,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
 
     public init(continueAfterTimeout: Boolean? = nil,
                 database: DbName? = nil,
+                formatRecordsAs: RecordsFormatType? = nil,
                 includeResultMetadata: Boolean? = nil,
                 parameters: SqlParametersList? = nil,
                 resourceArn: Arn,
@@ -359,6 +376,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
                 transactionId: Id? = nil) {
         self.continueAfterTimeout = continueAfterTimeout
         self.database = database
+        self.formatRecordsAs = formatRecordsAs
         self.includeResultMetadata = includeResultMetadata
         self.parameters = parameters
         self.resourceArn = resourceArn
@@ -372,6 +390,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case continueAfterTimeout
         case database
+        case formatRecordsAs
         case includeResultMetadata
         case parameters
         case resourceArn
@@ -395,15 +414,18 @@ public struct ExecuteStatementRequest: Codable, Equatable {
 
 public struct ExecuteStatementResponse: Codable, Equatable {
     public var columnMetadata: Metadata?
+    public var formattedRecords: FormattedSqlRecords?
     public var generatedFields: FieldList?
     public var numberOfRecordsUpdated: RecordsUpdated?
     public var records: SqlRecords?
 
     public init(columnMetadata: Metadata? = nil,
+                formattedRecords: FormattedSqlRecords? = nil,
                 generatedFields: FieldList? = nil,
                 numberOfRecordsUpdated: RecordsUpdated? = nil,
                 records: SqlRecords? = nil) {
         self.columnMetadata = columnMetadata
+        self.formattedRecords = formattedRecords
         self.generatedFields = generatedFields
         self.numberOfRecordsUpdated = numberOfRecordsUpdated
         self.records = records
@@ -411,6 +433,7 @@ public struct ExecuteStatementResponse: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case columnMetadata
+        case formattedRecords
         case generatedFields
         case numberOfRecordsUpdated
         case records
@@ -555,13 +578,17 @@ public struct ResultSetMetadata: Codable, Equatable {
 
 public struct ResultSetOptions: Codable, Equatable {
     public var decimalReturnType: DecimalReturnType?
+    public var longReturnType: LongReturnType?
 
-    public init(decimalReturnType: DecimalReturnType? = nil) {
+    public init(decimalReturnType: DecimalReturnType? = nil,
+                longReturnType: LongReturnType? = nil) {
         self.decimalReturnType = decimalReturnType
+        self.longReturnType = longReturnType
     }
 
     enum CodingKeys: String, CodingKey {
         case decimalReturnType
+        case longReturnType
     }
 
     public func validate() throws {

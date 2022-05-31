@@ -112,6 +112,11 @@ public typealias ErrorMessage = String
 public typealias FieldList = [Field]
 
 /**
+ Type definition for the FormattedSqlRecords field.
+ */
+public typealias FormattedSqlRecords = String
+
+/**
  Type definition for the Id field.
  */
 public typealias Id = String
@@ -132,6 +137,20 @@ public typealias Long = Int
 public typealias LongArray = [BoxedLong]
 
 /**
+ Enumeration restricting the values of the LongReturnType field.
+ */
+public enum LongReturnType: String, Codable, CustomStringConvertible {
+    case long = "LONG"
+    case string = "STRING"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LongReturnType = .long
+}
+
+/**
  Type definition for the Metadata field.
  */
 public typealias Metadata = [ColumnMetadata]
@@ -145,6 +164,20 @@ public typealias ParameterName = String
  Type definition for the Records field.
  */
 public typealias Records = [Record]
+
+/**
+ Enumeration restricting the values of the RecordsFormatType field.
+ */
+public enum RecordsFormatType: String, Codable, CustomStringConvertible {
+    case json = "JSON"
+    case none = "NONE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: RecordsFormatType = .json
+}
 
 /**
  Type definition for the RecordsUpdated field.

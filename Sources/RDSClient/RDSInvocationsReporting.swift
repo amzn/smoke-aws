@@ -42,7 +42,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let copyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let copyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let copyOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    public let createCustomAvailabilityZone: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCustomDBEngineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -59,7 +58,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let createEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    public let deleteCustomAvailabilityZone: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteCustomDBEngineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -75,12 +73,10 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let deleteDBSubnetGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    public let deleteInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deregisterDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    public let describeCustomAvailabilityZones: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterBacktracks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -109,7 +105,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let describeEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeExportTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeGlobalClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    public let describeInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeOptionGroupOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeOptionGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeOrderableDBInstanceOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -121,7 +116,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let downloadDBLogFilePortion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let failoverDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let failoverGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
-    public let importInstallationMedia: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCurrentDBClusterCapacity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -198,8 +192,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.copyDBSnapshot)
         self.copyOptionGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.copyOptionGroup)
-        self.createCustomAvailabilityZone = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-            smokeAWSOperationReporting: operationsReporting.createCustomAvailabilityZone)
         self.createCustomDBEngineVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createCustomDBEngineVersion)
         self.createDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -232,8 +224,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.createGlobalCluster)
         self.createOptionGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createOptionGroup)
-        self.deleteCustomAvailabilityZone = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-            smokeAWSOperationReporting: operationsReporting.deleteCustomAvailabilityZone)
         self.deleteCustomDBEngineVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteCustomDBEngineVersion)
         self.deleteDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -264,8 +254,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.deleteEventSubscription)
         self.deleteGlobalCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteGlobalCluster)
-        self.deleteInstallationMedia = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-            smokeAWSOperationReporting: operationsReporting.deleteInstallationMedia)
         self.deleteOptionGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteOptionGroup)
         self.deregisterDBProxyTargets = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -274,8 +262,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.describeAccountAttributes)
         self.describeCertificates = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeCertificates)
-        self.describeCustomAvailabilityZones = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-            smokeAWSOperationReporting: operationsReporting.describeCustomAvailabilityZones)
         self.describeDBClusterBacktracks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeDBClusterBacktracks)
         self.describeDBClusterEndpoints = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -332,8 +318,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.describeExportTasks)
         self.describeGlobalClusters = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeGlobalClusters)
-        self.describeInstallationMedia = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-            smokeAWSOperationReporting: operationsReporting.describeInstallationMedia)
         self.describeOptionGroupOptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeOptionGroupOptions)
         self.describeOptionGroups = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -356,8 +340,6 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.failoverDBCluster)
         self.failoverGlobalCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.failoverGlobalCluster)
-        self.importInstallationMedia = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
-            smokeAWSOperationReporting: operationsReporting.importInstallationMedia)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listTagsForResource)
         self.modifyCertificates = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -1176,6 +1176,33 @@ public extension S3ClientProtocol {
     }
 
     /**
+     Invokes the GetObjectAttributes operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+     - Returns: The GetObjectAttributesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    func getObjectAttributes(input: S3Model.GetObjectAttributesRequest) async throws
+     -> S3Model.GetObjectAttributesOutput {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getObjectAttributesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the GetObjectLegalHold operation and asynchronously returning the response.
 
      - Parameters:
