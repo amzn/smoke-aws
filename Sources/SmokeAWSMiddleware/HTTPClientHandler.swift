@@ -61,6 +61,24 @@ public struct HTTPClientHandler: HandlerProtocol {
         self.logger = logger
     }
     
+    /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times. Will block until shutdown is complete.
+     */
+    public func syncShutdown() throws {
+        try self.httpClient.syncShutdown()
+    }
+
+    /**
+     Gracefully shuts down this client. This function is idempotent and
+     will handle being called multiple times. Will return when shutdown is complete.
+     */
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    public func shutdown() async throws {
+        try await self.httpClient.shutdown()
+    }
+    #endif
+    
     public func handle(input: HTTPClientRequest) async throws -> HTTPClientResponse {
         return try await self.httpClient.execute(input, deadline: deadline, logger: logger)
     }
