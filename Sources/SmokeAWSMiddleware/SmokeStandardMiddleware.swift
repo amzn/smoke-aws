@@ -41,6 +41,7 @@ public struct SmokeStandardMiddleware {
         endpointHostName: String,
         endpointPort: Int,
         urlProtocolType: ProtocolType,
+        httpMethod: HttpMethod,
         contentType: String,
         specifyContentHeadersForZeroLengthBody: Bool = true,
         httpPath: String = "/",
@@ -105,6 +106,10 @@ public struct SmokeStandardMiddleware {
         
         let jsonBodyMiddleware = SmokeHTTPClientJSONBodyMiddleware<InputType>(encoder: jsonEncoder, bodyContext: bodyContext)
         operationStack.serializeInputPhase.intercept(position: .last, middleware: jsonBodyMiddleware)
+        
+        operationStack.buildPhase.intercept(position: .last, middleware: RequestHttpMethodMiddleware(httpMethod: httpMethod))
+        operationStack.buildPhase.intercept(position: .last, middleware: AcceptHeaderMiddleware(accept: "*/*"))
+        operationStack.buildPhase.intercept(position: .last, middleware: UserAgentHeaderMiddleware(userAgent: "SmokeHTTPClient"))
         
         operationStack.buildPhase.intercept(position: .last,
                                             middleware: RequestURLHostMiddleware(urlHost: endpointHostName, addHeader: false))
