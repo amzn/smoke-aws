@@ -36,7 +36,7 @@ public struct SmokeStandardMiddleware {
         service: String,
         operation: String?,
         target: String?,
-        httpPath: String,
+        httpPath: String = "/",
         retryConfiguration: HTTPClientRetryConfiguration,
         errorStatusFunction: @escaping (Swift.Error) -> (isRetriable: Bool, code: UInt),
         invocationMetrics: HTTPClientInvocationMetrics?,
@@ -44,7 +44,7 @@ public struct SmokeStandardMiddleware {
         inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?,
         signAllHeaders: Bool,
         logger: Logger,
-        maxBytes: Int,
+        maxBytes: Int = 1000000, // 1 MB
         errorType: ErrorType.Type)
     -> OperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse> {
         let jsonDecoder = JSONDecoder.awsCompatibleDecoder()
