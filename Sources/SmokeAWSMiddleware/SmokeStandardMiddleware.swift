@@ -28,9 +28,9 @@ import Logging
 
 public struct SmokeStandardMiddleware {
     
-    public func createStandardOperationStack<InputType: HTTPRequestInputProtocol,
-                                             OutputType: HTTPResponseOutputProtocol,
-                                             ErrorType: Decodable & Error>(
+    public static func createStack<InputType: HTTPRequestInputProtocol,
+                                   OutputType: HTTPResponseOutputProtocol,
+                                   ErrorType: Decodable & Error>(
         credentialsProvider: CredentialsProvider,
         awsRegion: AWSRegion,
         service: String,
