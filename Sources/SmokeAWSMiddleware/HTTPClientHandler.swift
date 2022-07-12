@@ -28,14 +28,14 @@ public struct HTTPClientHandler: HandlerProtocol {
     let contentType: String
     let endpointHostName: String
     let deadline: NIODeadline
-    let logger: Logger?
+    let logger: Logger
     
     public init(endpointHostName: String,
                 endpointPort: Int,
                 contentType: String,
                 tlsConfiguration: TLSConfiguration?,
                 timeoutConfiguration timeoutConfigurationOptional: HTTPClient.Configuration.Timeout?,
-                logger: Logger?,
+                logger: Logger,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 connectionPoolConfiguration connectionPoolConfigurationOptional: HTTPClient.Configuration.ConnectionPool? = nil) {
         self.endpointHostName = endpointHostName
