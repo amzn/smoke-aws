@@ -19,6 +19,7 @@ import HttpClientMiddleware
 import AsyncHTTPClient
 import SmokeHTTPClientMiddleware
 import AsyncHttpMiddlewareClient
+import StandardHttpClientMiddleware
 import HTTPHeadersCoding
 import HTTPPathCoding
 import QueryCoding
@@ -37,6 +38,11 @@ public struct SmokeStandardMiddleware {
         service: String,
         operation: String?,
         target: String?,
+        endpointHostName: String,
+        endpointPort: Int,
+        urlProtocolType: ProtocolType,
+        contentType: String,
+        specifyContentHeadersForZeroLengthBody: Bool = true,
         httpPath: String = "/",
         retryConfiguration: HTTPClientRetryConfiguration,
         invocationMetrics: HTTPClientInvocationMetrics?,
@@ -99,6 +105,18 @@ public struct SmokeStandardMiddleware {
         
         let jsonBodyMiddleware = SmokeHTTPClientJSONBodyMiddleware<InputType>(encoder: jsonEncoder, bodyContext: bodyContext)
         operationStack.serializeInputPhase.intercept(position: .last, middleware: jsonBodyMiddleware)
+        
+        operationStack.buildPhase.intercept(position: .last,
+                                            middleware: RequestURLHostMiddleware(urlHost: endpointHostName, addHeader: false))
+        operationStack.buildPhase.intercept(position: .last,
+                                            middleware: RequestURLProtocolTypeMiddleware(urlProtocolType: urlProtocolType))
+        operationStack.buildPhase.intercept(position: .last,
+                                            middleware: RequestURLPortMiddleware(urlPort: Int16(endpointPort)))
+        operationStack.buildPhase.intercept(position: .last,
+                                            middleware: ContentTypeHeaderMiddleware(contentType: contentType,
+                                                                                    omitHeaderForZeroLengthBody: specifyContentHeadersForZeroLengthBody))
+        operationStack.buildPhase.intercept(position: .last,
+                                            middleware: ContentLengthHeaderMiddleware(omitHeaderForZeroLengthBody: specifyContentHeadersForZeroLengthBody))
         
         let sigV4HeaderMiddleware = SigV4HeaderMiddleware(
             credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service,
