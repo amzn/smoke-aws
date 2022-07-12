@@ -21,7 +21,7 @@
 import Foundation
 import SmokeAWSCore
 
-struct V4Signer {
+public struct V4Signer {
     let credentials: Credentials
     let region: AWSRegion
     let service: String
@@ -37,15 +37,15 @@ struct V4Signer {
         return data.sha256.hexdigest
     }
 
-    init(credentials: Credentials, region: AWSRegion, service: String,
-         signAllHeaders: Bool = false) {
+    public init(credentials: Credentials, region: AWSRegion, service: String,
+                signAllHeaders: Bool = false) {
         self.credentials = credentials
         self.region = region
         self.service = service
         self.signAllHeaders = signAllHeaders
     }
 
-    func getSignedURL(url: URL, date: Date = Date(), expires: Int = 86400) -> URL {
+    public func getSignedURL(url: URL, date: Date = Date(), expires: Int = 86400) -> URL {
         let datetime = getXAmzDateValue(date)
         let headers = ["Host": url.hostWithPort!]
         let bodyDigest = hexEncodedBodyHash(Data())
@@ -83,8 +83,8 @@ struct V4Signer {
         return URL(string: url.absoluteString+"&X-Amz-Signature="+sig)!
     }
 
-    func getSignedHeaders(url: URL, headers: [String: String], method: String,
-                          date: Date = Date(), bodyData: Data) -> [(String, String)] {
+    public func getSignedHeaders(url: URL, headers: [String: String], method: String,
+                                 date: Date = Date(), bodyData: Data) -> [(String, String)] {
         let datetime = getXAmzDateValue(date)
         let bodyDigest = hexEncodedBodyHash(bodyData)
         

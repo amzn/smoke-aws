@@ -130,6 +130,9 @@ let package = Package(
         .library(
             name: "SmokeAWSMetrics",
             targets: ["SmokeAWSMetrics"]),
+        .library(
+            name: "SmokeAWSMiddleware",
+            targets: ["SmokeAWSMiddleware"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.33.0"),
@@ -137,8 +140,10 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0"..<"3.0.0"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.4.1"),
-        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.12.0"),
+        .package(url: "https://github.com/amzn/smoke-http.git", .branch("middleware_poc")),
         .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0"),
+        .package(url: "https://github.com/tachyonics/swift-http-client-middleware", .branch("poc")),
+        .package(url: "https://github.com/tachyonics/async-http-middleware-client", .branch("poc")),
     ],
     targets: [
         .target(
@@ -303,6 +308,14 @@ let package = Package(
                 .product(name: "HTTPPathCoding", package: "smoke-http"),
                 .product(name: "HTTPHeadersCoding", package: "smoke-http"),
                 .product(name: "Crypto", package: "swift-crypto"),
+            ]),
+        .target(
+            name: "SmokeAWSMiddleware", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+                .product(name: "HttpClientMiddleware", package: "swift-http-client-middleware"),
+                .product(name: "AsyncHttpMiddlewareClient", package: "async-http-middleware-client"),
+                .product(name: "SmokeHTTPClientMiddleware", package: "smoke-http"),
+                .target(name: "SmokeAWSHttp"),
             ]),
         .target(
             name: "_SmokeAWSHttpConcurrency", dependencies: [
