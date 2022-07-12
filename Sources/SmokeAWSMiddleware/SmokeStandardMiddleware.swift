@@ -41,8 +41,8 @@ public struct SmokeStandardMiddleware {
         errorStatusFunction: @escaping (Swift.Error) -> (isRetriable: Bool, code: UInt),
         invocationMetrics: HTTPClientInvocationMetrics?,
         requestTags: [String],
-        inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy?,
-        signAllHeaders: Bool,
+        inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil,
+        signAllHeaders: Bool = false,
         logger: Logger,
         maxBytes: Int = 1000000, // 1 MB
         errorType: ErrorType.Type)
