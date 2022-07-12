@@ -22,13 +22,13 @@ import NIOSSL
 import Logging
 
 public struct HTTPClientHandler: HandlerProtocol {
-    let httpClient: HTTPClient
-    let endpointPort: Int
-    let protocolType: ProtocolType
-    let contentType: String
-    let endpointHostName: String
-    let deadline: NIODeadline
-    let logger: Logger
+    public let httpClient: HTTPClient
+    public let endpointPort: Int
+    public let protocolType: ProtocolType
+    public let contentType: String
+    public let endpointHostName: String
+    public let deadline: NIODeadline
+    public let logger: Logger
     
     public init(endpointHostName: String,
                 endpointPort: Int,
