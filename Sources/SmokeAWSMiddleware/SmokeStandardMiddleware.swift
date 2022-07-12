@@ -87,7 +87,7 @@ public struct SmokeStandardMiddleware {
         
         let urlPathMiddleware = SmokeHTTPClientURLPathMiddleware<InputType>(encoder: HTTPPathEncoder(),
                                                                             httpPath: httpPath)
-        operationStack.serializeInputPhase.intercept(position: .last, middleware: urlPathMiddleware)
+        operationStack.serializeInputPhase.intercept(with: urlPathMiddleware)
         
         let queryEncoder: QueryEncoder
         if let inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy {
@@ -98,40 +98,34 @@ public struct SmokeStandardMiddleware {
         
         let queryItemsMiddleware = SmokeHTTPClientQueryItemsMiddleware<InputType>(encoder: queryEncoder,
                                                                                   allowedCharacterSet: .uriAWSQueryValueAllowed)
-        operationStack.serializeInputPhase.intercept(position: .last, middleware: queryItemsMiddleware)
+        operationStack.serializeInputPhase.intercept(with: queryItemsMiddleware)
         
         let additionalHeadersMiddleware = SmokeHTTPClientAdditionalHeadersMiddleware<InputType>(
             encoder: HTTPHeadersEncoder(keyEncodingStrategy: .noSeparator))
-        operationStack.serializeInputPhase.intercept(position: .last, middleware: additionalHeadersMiddleware)
+        operationStack.serializeInputPhase.intercept(with: additionalHeadersMiddleware)
         
         let jsonBodyMiddleware = SmokeHTTPClientJSONBodyMiddleware<InputType>(encoder: jsonEncoder, bodyContext: bodyContext)
-        operationStack.serializeInputPhase.intercept(position: .last, middleware: jsonBodyMiddleware)
+        operationStack.serializeInputPhase.intercept(with: jsonBodyMiddleware)
         
-        operationStack.buildPhase.intercept(position: .last, middleware: RequestHttpMethodMiddleware(httpMethod: httpMethod))
-        operationStack.buildPhase.intercept(position: .last, middleware: AcceptHeaderMiddleware(accept: "*/*"))
-        operationStack.buildPhase.intercept(position: .last, middleware: UserAgentHeaderMiddleware(userAgent: "SmokeHTTPClient"))
+        operationStack.buildPhase.intercept(with: RequestHttpMethodMiddleware(httpMethod: httpMethod))
+        operationStack.buildPhase.intercept(with: AcceptHeaderMiddleware(accept: "*/*"))
+        operationStack.buildPhase.intercept(with: UserAgentHeaderMiddleware(userAgent: "SmokeHTTPClient"))
         
-        operationStack.buildPhase.intercept(position: .last,
-                                            middleware: RequestURLHostMiddleware(urlHost: endpointHostName, addHeader: false))
-        operationStack.buildPhase.intercept(position: .last,
-                                            middleware: RequestURLProtocolTypeMiddleware(urlProtocolType: urlProtocolType))
-        operationStack.buildPhase.intercept(position: .last,
-                                            middleware: RequestURLPortMiddleware(urlPort: Int16(endpointPort)))
-        operationStack.buildPhase.intercept(position: .last,
-                                            middleware: ContentTypeHeaderMiddleware(contentType: contentType,
+        operationStack.buildPhase.intercept(with: RequestURLHostMiddleware(urlHost: endpointHostName, addHeader: false))
+        operationStack.buildPhase.intercept(with: RequestURLProtocolTypeMiddleware(urlProtocolType: urlProtocolType))
+        operationStack.buildPhase.intercept(with: RequestURLPortMiddleware(urlPort: Int16(endpointPort)))
+        operationStack.buildPhase.intercept(with: ContentTypeHeaderMiddleware(contentType: contentType,
                                                                                     omitHeaderForZeroLengthBody: specifyContentHeadersForZeroLengthBody))
-        operationStack.buildPhase.intercept(position: .last,
-                                            middleware: ContentLengthHeaderMiddleware(omitHeaderForZeroLengthBody: specifyContentHeadersForZeroLengthBody))
+        operationStack.buildPhase.intercept(with: ContentLengthHeaderMiddleware(omitHeaderForZeroLengthBody: specifyContentHeadersForZeroLengthBody))
         
         let sigV4HeaderMiddleware = SigV4HeaderMiddleware(
             credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service,
             operation: operation, target: target, signAllHeaders: signAllHeaders, bodyContext: bodyContext)
-        operationStack.buildPhase.intercept(position: .last, middleware: sigV4HeaderMiddleware)
+        operationStack.buildPhase.intercept(with: sigV4HeaderMiddleware)
         
-        operationStack.finalizePhase.intercept(position: .last,
-                                               middleware: JSONTypedErrorMiddleware<ErrorType>(maxBytes: maxBytes, decoder: jsonDecoder))
-        operationStack.finalizePhase.intercept(position: .last, middleware: ClientErrorMiddleware())
-        operationStack.finalizePhase.intercept(position: .last, middleware: SmokeRequestRetryerMiddleware(
+        operationStack.finalizePhase.intercept(with: JSONTypedErrorMiddleware<ErrorType>(maxBytes: maxBytes, decoder: jsonDecoder))
+        operationStack.finalizePhase.intercept(with: ClientErrorMiddleware())
+        operationStack.finalizePhase.intercept(with: SmokeRequestRetryerMiddleware(
             retryConfiguration: retryConfiguration, errorStatusFunction: errorStatusFunction,
             invocationMetrics: invocationMetrics, requestTags: requestTags))
         
