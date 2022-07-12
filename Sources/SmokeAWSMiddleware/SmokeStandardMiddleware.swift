@@ -18,6 +18,7 @@
 import HttpClientMiddleware
 import AsyncHTTPClient
 import SmokeHTTPClientMiddleware
+import AsyncHttpMiddlewareClient
 import HTTPHeadersCoding
 import HTTPPathCoding
 import QueryCoding
@@ -38,17 +39,33 @@ public struct SmokeStandardMiddleware {
         target: String?,
         httpPath: String = "/",
         retryConfiguration: HTTPClientRetryConfiguration,
-        errorStatusFunction: @escaping (Swift.Error) -> (isRetriable: Bool, code: UInt),
         invocationMetrics: HTTPClientInvocationMetrics?,
         requestTags: [String],
         inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil,
         signAllHeaders: Bool = false,
         logger: Logger,
         maxBytes: Int = 1000000, // 1 MB
+        inputType: InputType.Type,
+        outputType: OutputType.Type,
         errorType: ErrorType.Type)
     -> OperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse> {
         let jsonDecoder = JSONDecoder.awsCompatibleDecoder()
         let jsonEncoder = JSONEncoder.awsCompatibleEncoder()
+        
+        func errorStatusFunction(error: Swift.Error) -> (isRetriable: Bool, code: UInt) {
+            if let httpClientError = error as? AsyncHTTPClient.HTTPClientError {
+                if httpClientError.isRetriable {
+                    // The error is a retriable client error
+                    return (true, 500)
+                } else {
+                    // The error is not a retriable client error
+                    return (false, 400)
+                }
+            } else {
+                // unknown error, fall back to retriable
+                return (true, 500)
+            }
+        }
         
         let deserializationTransform = HTTPClientResponseJSONBodyDeserializationTransform<OutputType>(
             maxBytes: maxBytes,
