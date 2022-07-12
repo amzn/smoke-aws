@@ -24,7 +24,9 @@ import SmokeHTTPClientMiddleware
 import AsyncHTTPClient
 import AsyncHttpMiddlewareClient
 
-public struct SigV4HeaderMiddleware: UserAgentHeaderMiddlewareProtocol {
+public struct SigV4HeaderMiddleware: MiddlewareProtocol {
+    public var id = "SigV4Headers"
+    
     public typealias InputType = HttpRequestBuilder<HTTPClientRequest>
     public typealias OutputType = HTTPClientResponse
     
