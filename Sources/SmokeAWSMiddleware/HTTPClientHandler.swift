@@ -34,7 +34,7 @@ public struct HTTPClientHandler: HandlerProtocol {
                 endpointPort: Int,
                 contentType: String,
                 tlsConfiguration: TLSConfiguration?,
-                timeoutConfiguration: HTTPClient.Configuration.Timeout,
+                timeoutConfiguration timeoutConfigurationOptional: HTTPClient.Configuration.Timeout?,
                 logger: Logger?,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 connectionPoolConfiguration connectionPoolConfigurationOptional: HTTPClient.Configuration.ConnectionPool? = nil) {
@@ -49,6 +49,7 @@ public struct HTTPClientHandler: HandlerProtocol {
         }
         
         let connectionPool = connectionPoolConfigurationOptional ?? HTTPClient.Configuration.ConnectionPool()
+        let timeoutConfiguration = timeoutConfigurationOptional ?? HTTPClient.Configuration.Timeout()
         
         let clientConfiguration = HTTPClient.Configuration(
             tlsConfiguration: tlsConfiguration,
