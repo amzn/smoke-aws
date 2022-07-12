@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/tachyonics/async-http-middleware-client",
         "state": {
           "branch": "poc",
-          "revision": "259142dd63e8bb83b8ae7358fb2761c39cefb09c",
+          "revision": "a9688f30180f69e7a37b30458e8eacd629eafb66",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
           "branch": "middleware_poc",
-          "revision": "e408f0f823ce67a485421958a63a7941c82492f4",
+          "revision": "76d7aa4dac1b09eb1b00d5249b35944ee3f47a84",
           "version": null
         }
       },
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/tachyonics/swift-http-client-middleware",
         "state": {
           "branch": "poc",
-          "revision": "d40604ddf447c7f521f19e29de8b30389ca959b6",
+          "revision": "3aad4ec45bfae9b3551271557a8ed803942e4fdf",
           "version": null
         }
       },

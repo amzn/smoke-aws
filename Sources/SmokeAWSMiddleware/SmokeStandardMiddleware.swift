@@ -15,6 +15,7 @@
 //  SmokeAWSMiddleware
 //
 
+import HttpMiddleware
 import HttpClientMiddleware
 import AsyncHTTPClient
 import SmokeHTTPClientMiddleware
@@ -55,7 +56,7 @@ public struct SmokeStandardMiddleware {
         inputType: InputType.Type,
         outputType: OutputType.Type,
         errorType: ErrorType.Type)
-    -> OperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse> {
+    -> ClientOperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse> {
         let jsonDecoder = JSONDecoder.awsCompatibleDecoder()
         let jsonEncoder = JSONEncoder.awsCompatibleEncoder()
         
@@ -79,7 +80,7 @@ public struct SmokeStandardMiddleware {
             logger: logger,
             jsonDecoder: jsonDecoder,
             headersDecoder: HTTPHeadersDecoder(keyDecodingStrategy: .useShapePrefix))
-        var operationStack = OperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse>(
+        var operationStack = ClientOperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse>(
             id: "SmokeStandardMiddleware",
             deserializationTransform: deserializationTransform)
         
@@ -87,7 +88,7 @@ public struct SmokeStandardMiddleware {
         
         let urlPathMiddleware = SmokeHTTPClientURLPathMiddleware<InputType>(encoder: HTTPPathEncoder(),
                                                                             httpPath: httpPath)
-        operationStack.serializeInputPhase.intercept(with: urlPathMiddleware)
+        operationStack.serializePhase.intercept(with: urlPathMiddleware)
         
         let queryEncoder: QueryEncoder
         if let inputQueryMapDecodingStrategy = inputQueryMapDecodingStrategy {
@@ -98,14 +99,14 @@ public struct SmokeStandardMiddleware {
         
         let queryItemsMiddleware = SmokeHTTPClientQueryItemsMiddleware<InputType>(encoder: queryEncoder,
                                                                                   allowedCharacterSet: .uriAWSQueryValueAllowed)
-        operationStack.serializeInputPhase.intercept(with: queryItemsMiddleware)
+        operationStack.serializePhase.intercept(with: queryItemsMiddleware)
         
         let additionalHeadersMiddleware = SmokeHTTPClientAdditionalHeadersMiddleware<InputType>(
             encoder: HTTPHeadersEncoder(keyEncodingStrategy: .noSeparator))
-        operationStack.serializeInputPhase.intercept(with: additionalHeadersMiddleware)
+        operationStack.serializePhase.intercept(with: additionalHeadersMiddleware)
         
         let jsonBodyMiddleware = SmokeHTTPClientJSONBodyMiddleware<InputType>(encoder: jsonEncoder, bodyContext: bodyContext)
-        operationStack.serializeInputPhase.intercept(with: jsonBodyMiddleware)
+        operationStack.serializePhase.intercept(with: jsonBodyMiddleware)
         
         operationStack.buildPhase.intercept(with: RequestHttpMethodMiddleware(httpMethod: httpMethod))
         operationStack.buildPhase.intercept(with: AcceptHeaderMiddleware(accept: "*/*"))

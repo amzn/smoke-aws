@@ -16,6 +16,7 @@
 //
 
 import Foundation
+import HttpMiddleware
 import HttpClientMiddleware
 import SmokeAWSCore
 import SmokeAWSHttp
@@ -27,7 +28,7 @@ import AsyncHttpMiddlewareClient
 public struct SigV4HeaderMiddleware: MiddlewareProtocol {
     public var id = "SigV4Headers"
     
-    public typealias InputType = HttpRequestBuilder<HTTPClientRequest>
+    public typealias InputType = HttpClientRequestBuilder<HTTPClientRequest>
     public typealias OutputType = HTTPClientResponse
     
     private let credentialsProvider: CredentialsProvider
@@ -54,9 +55,9 @@ public struct SigV4HeaderMiddleware: MiddlewareProtocol {
         self.bodyContext = bodyContext
     }
     
-    public func handle<HandlerType>(input: HttpRequestBuilder<HTTPClientRequest>, next: HandlerType) async throws
+    public func handle<HandlerType>(input: HttpClientRequestBuilder<HTTPClientRequest>, next: HandlerType) async throws
     -> HTTPClientResponse
-    where HandlerType : HandlerProtocol, HttpRequestBuilder<HTTPClientRequest> == HandlerType.InputType,
+    where HandlerType : HandlerProtocol, HttpClientRequestBuilder<HTTPClientRequest> == HandlerType.InputType,
     HTTPClientResponse == HandlerType.OutputType {
         let v4Signer = V4Signer(credentials: self.credentialsProvider.credentials, region: self.awsRegion,
                                 service: self.service,

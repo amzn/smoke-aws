@@ -16,7 +16,7 @@
 //
 
 import AsyncHTTPClient
-import HttpClientMiddleware
+import HttpMiddleware
 import NIOCore
 import NIOSSL
 import Logging
