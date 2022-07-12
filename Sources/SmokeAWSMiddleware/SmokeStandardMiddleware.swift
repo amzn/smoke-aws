@@ -41,7 +41,7 @@ public struct SmokeStandardMiddleware {
         endpointHostName: String,
         endpointPort: Int,
         urlProtocolType: ProtocolType,
-        httpMethod: HttpMethod,
+        httpMethod: HttpMethod = .POST,
         contentType: String,
         specifyContentHeadersForZeroLengthBody: Bool = true,
         httpPath: String = "/",
