@@ -21,7 +21,7 @@ import NIOCore
 import NIOSSL
 import Logging
 
-public struct HTTPClientHandler: HandlerProtocol {
+public struct HTTPClientHandler: MiddlewareHandlerProtocol {
     public let httpClient: HTTPClient
     public let endpointPort: Int
     public let protocolType: ProtocolType
