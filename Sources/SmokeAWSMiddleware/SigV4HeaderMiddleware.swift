@@ -55,9 +55,10 @@ public struct SigV4HeaderMiddleware: MiddlewareProtocol {
         self.bodyContext = bodyContext
     }
     
-    public func handle<HandlerType>(input: HttpClientRequestBuilder<HTTPClientRequest>, next: HandlerType) async throws
+    public func handle<HandlerType>(input: HttpClientRequestBuilder<HTTPClientRequest>,
+                                    context: MiddlewareContext, next: HandlerType) async throws
     -> HTTPClientResponse
-    where HandlerType : HandlerProtocol, HttpClientRequestBuilder<HTTPClientRequest> == HandlerType.InputType,
+    where HandlerType : MiddlewareHandlerProtocol, HttpClientRequestBuilder<HTTPClientRequest> == HandlerType.InputType,
     HTTPClientResponse == HandlerType.OutputType {
         let v4Signer = V4Signer(credentials: self.credentialsProvider.credentials, region: self.awsRegion,
                                 service: self.service,
@@ -85,7 +86,7 @@ public struct SigV4HeaderMiddleware: MiddlewareProtocol {
         
         input.withHeaders(HTTPHeaders(headers))
         
-        return try await next.handle(input: input)
+        return try await next.handle(input: input, context: context)
     }
     
     /// The headers that need to be signed for this request

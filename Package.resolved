@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/tachyonics/async-http-middleware-client",
         "state": {
           "branch": "poc",
-          "revision": "a9688f30180f69e7a37b30458e8eacd629eafb66",
+          "revision": "f59ea717b1fed9a54682d1e9a283f9daacf7e206",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
           "branch": "middleware_poc",
-          "revision": "76d7aa4dac1b09eb1b00d5249b35944ee3f47a84",
+          "revision": "00e0fd163fab5f5bac4ae00ac7ded0193104f9dc",
           "version": null
         }
       },
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/tachyonics/swift-http-client-middleware",
         "state": {
           "branch": "poc",
-          "revision": "3aad4ec45bfae9b3551271557a8ed803942e4fdf",
+          "revision": "1e12c87dd544a590d4f9c34b110c268ec6bf4c5d",
           "version": null
         }
       },
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio-ssl.git",
         "state": {
           "branch": null,
-          "revision": "fd5f38b0039148e76c2e863a2fc868cc39bb451b",
-          "version": "2.20.1"
+          "revision": "c30c680c78c99afdabf84805a83c8745387c4ac7",
+          "version": "2.20.2"
         }
       },
       {

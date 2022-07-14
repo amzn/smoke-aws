@@ -28,14 +28,12 @@ public struct HTTPClientHandler: HandlerProtocol {
     public let contentType: String
     public let endpointHostName: String
     public let deadline: NIODeadline
-    public let logger: Logger?
     
     public init(endpointHostName: String,
                 endpointPort: Int,
                 contentType: String,
                 tlsConfiguration: TLSConfiguration?,
                 timeoutConfiguration timeoutConfigurationOptional: HTTPClient.Configuration.Timeout?,
-                logger: Logger?,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 connectionPoolConfiguration connectionPoolConfigurationOptional: HTTPClient.Configuration.ConnectionPool? = nil) {
         self.endpointHostName = endpointHostName
@@ -59,7 +57,6 @@ public struct HTTPClientHandler: HandlerProtocol {
         self.httpClient = HTTPClient(eventLoopGroupProvider: eventLoopProvider,
                                      configuration: clientConfiguration)
         self.deadline = .distantFuture
-        self.logger = logger
     }
     
     /**
@@ -80,7 +77,8 @@ public struct HTTPClientHandler: HandlerProtocol {
     }
     #endif
     
-    public func handle(input: HTTPClientRequest) async throws -> HTTPClientResponse {
-        return try await self.httpClient.execute(input, deadline: deadline, logger: logger)
+    public func handle(input: HTTPClientRequest, context: MiddlewareContext) async throws -> HTTPClientResponse {
+        return try await self.httpClient.execute(input, deadline: deadline,
+                                                 logger: context.logger)
     }
 }
