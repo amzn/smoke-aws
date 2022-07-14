@@ -51,7 +51,6 @@ public struct SmokeStandardMiddleware {
         requestTags: [String],
         inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil,
         signAllHeaders: Bool = false,
-        logger: Logger,
         maxBytes: Int = 1000000, // 1 MB
         inputType: InputType.Type,
         outputType: OutputType.Type,
@@ -77,7 +76,6 @@ public struct SmokeStandardMiddleware {
         
         let deserializationTransform = HTTPClientResponseJSONBodyDeserializationTransform<OutputType>(
             maxBytes: maxBytes,
-            logger: logger,
             jsonDecoder: jsonDecoder,
             headersDecoder: HTTPHeadersDecoder(keyDecodingStrategy: .useShapePrefix))
         var operationStack = ClientOperationMiddlewareStack<InputType, OutputType, HTTPClientRequest, HTTPClientResponse>(
