@@ -193,7 +193,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             } else {
                 additionalHeaders = []
             }
-            
+
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
                 let encoder = XMLEncoder.awsCompatibleEncoder()
@@ -207,7 +207,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             } else {
                 body = Data()
             }
-            
+
             let query: String
             if let queryEncodable = input.queryEncodable {
                 let queryEncoder = QueryEncoder(
@@ -215,10 +215,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                     mapEncodingStrategy: self.inputQueryMapEncodingStrategy,
                     listEncodingStrategy: self.inputQueryListEncodingStrategy,
                     keyEncodeTransformStrategy: self.inputQueryKeyEncodeTransformStrategy)
-  
+
                 let encodedQuery = try queryEncoder.encode(queryEncodable,
                                                            allowedCharacterSet: .uriAWSQueryValueAllowed)
-                
+
                 if !encodedQuery.isEmpty {
                     query = "?" + encodedQuery
                 } else {
@@ -227,7 +227,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             } else {
                 query = ""
             }
-            
+
             let pathWithQuery = path + query
             
             return HTTPRequestComponents(pathWithQuery: pathWithQuery,
