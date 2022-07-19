@@ -60,7 +60,8 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
                                                     logger: invocationReporting.logger)
         } else {
             // Convert bodyData to a debug string only if debug logging is enabled
-            invocationReporting.logger.debug("Attempting to decode error data into JSON: \(bodyData.debugString)")
+            invocationReporting.logger.trace("Attempting to decode error data from JSON to \(ErrorType.self)",
+                                             metadata: ["body": "\(bodyData.debugString)"])
             
             // attempt to get an error of Error type by decoding the body data
             cause = try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyData)
@@ -146,7 +147,8 @@ public struct JSONAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClien
             headers: [(String, String)],
             invocationReporting: InvocationReportingType) throws -> OutputType where OutputType: HTTPResponseOutputProtocol {
         // Convert output to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode result data into JSON: \(output.debugString)")
+        invocationReporting.logger.trace("Attempting to decode result data from JSON to \(OutputType.self)",
+                                         metadata: ["body": "\(output.debugString)"])
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body

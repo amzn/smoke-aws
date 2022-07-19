@@ -43,8 +43,13 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
             return ""
         }
         
-        logger.info("Starting outgoing \(method) request to endpoint '\(uri)'.")
-        logger.debug("Outgoing request body: \(bodyData.debugString)")
+        let metadata: Logger.Metadata = ["method": "\(method)",
+                                         "uri": "\(uri)",
+                                         "bodyDataSize": "\(bodyData.count)",
+                                         "bodyData": "\(bodyData.debugString)"]
+        
+        logger.trace("Starting outgoing request.",
+                     metadata: metadata)
         
         return ""
     }
@@ -55,13 +60,8 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
             return
         }
         
-        let logLine = getLogLine(successfullyCompletedRequest: true, response: response, bodyData: bodyData, error: nil)
-        
-        logger.info("\(logLine)")
-        
-        if let bodyData = bodyData {
-            logger.debug("Outgoing response body: \(bodyData.debugString)")
-        }
+        logCompletion(logger: logger, level: .trace, successfullyCompletedRequest: true,
+                      response: response, bodyData: bodyData, error: nil)
     }
     
     public func handleOutwardsRequestFailure(outwardsRequestContext: String?, logger: Logger, internalRequestId: String,
@@ -70,49 +70,51 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
             return
         }
         
-        let logLine = getLogLine(successfullyCompletedRequest: false, response: response, bodyData: bodyData, error: error)
-        
         // log at error if this is a server error
+        let level: Logger.Level
         if let response = response, response.status.code >= 500 && response.status.code < 600 {
-            logger.error("\(logLine)")
+            level = .error
         } else {
-            logger.info("\(logLine)")
+            level = .trace
         }
         
-        if let bodyData = bodyData {
-            logger.debug("Outgoing response body: \(bodyData.debugString)")
-        }
+        logCompletion(logger: logger, level: level, successfullyCompletedRequest: false,
+                      response: response, bodyData: bodyData, error: error)
     }
     
-    private func getLogLine(successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?,
-                            error: Error?) -> String {
-        var logElements: [String] = []
+    private func logCompletion(logger: Logger, level: Logger.Level, successfullyCompletedRequest: Bool, response: HTTPClient.Response?, bodyData: Data?,
+                               error: Error?) {
         let completionString = successfullyCompletedRequest ? "Successfully" : "Unsuccessfully"
-        logElements.append("\(completionString) completed outgoing request.")
+        
+        var metadata: Logger.Metadata = [:]
         
         if let errorUnwrapped = error {
-            logElements.append("Error occurred: \(errorUnwrapped).")
+            metadata["error"] = "\(errorUnwrapped)"
         }
         
         if let code = response?.status.code {
-            logElements.append("Returned status code: \(code)")
+            metadata["code"] = "\(code)"
         }
         
         // check the variants of request id
         if let requestIds = response?.headers[xAmzRequestId], !requestIds.isEmpty {
-            logElements.append("Returned \(xAmzRequestId) header '\(requestIds.joined(separator: ","))'")
+            metadata["\(xAmzRequestId)"] = "\(requestIds.joined(separator: ","))"
         } else if let requestIds = response?.headers[xAmzRequestIdAlt], !requestIds.isEmpty {
-            logElements.append("Returned \(xAmzRequestId) header '\(requestIds.joined(separator: ","))'")
+            metadata["\(xAmzRequestId)"] = "\(requestIds.joined(separator: ","))"
         }
         
         if let id2s = response?.headers[xAmzId2], !id2s.isEmpty {
-            logElements.append("Returned \(xAmzId2) header '\(id2s.joined(separator: ","))'")
+            metadata["\(xAmzId2)"] = "\(id2s.joined(separator: ","))"
         }
         
         if let bodyData = bodyData {
-            logElements.append("Returned body with size \(bodyData.count)")
+            metadata["bodyDataSize"] = "\(bodyData.count)"
+            
+            if logger.logLevel <= .trace {
+                metadata["bodyData"] = "\(bodyData.debugString)"
+            }
         }
         
-        return logElements.joined(separator: " ")
+        logger.log(level: level, "\(completionString) completed outgoing request.", metadata: metadata)
     }
 }
