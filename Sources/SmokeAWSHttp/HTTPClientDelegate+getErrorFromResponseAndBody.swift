@@ -36,7 +36,8 @@ extension HTTPClientDelegate {
         let bodyWithErrorTypeAsJSON = try JSONEncoder.awsCompatibleEncoder().encode(bodyAsStringDictionary)
         
         // Convert bodyWithErrorTypeAsJSON to a debug string only if debug logging is enabled
-        logger.debug("Attempting to decode error data into JSON: \(bodyWithErrorTypeAsJSON.debugString)")
+        logger.trace("Attempting to decode error data from JSON to \(ErrorType.self).",
+                     metadata: ["body": "\(bodyWithErrorTypeAsJSON.debugString)"])
         
         // attempt to get an error of Error type by decoding the body data
         return try JSONDecoder.awsCompatibleDecoder().decode(ErrorType.self, from: bodyWithErrorTypeAsJSON)

@@ -156,7 +156,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
+        invocationReporting.logger.trace("Attempting to decode error data from XML to \(ErrorType.self)",
+                                         metadata: ["body": "\(bodyData.debugString)"])
         
         let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
         
@@ -250,7 +251,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         }
         
         // Convert output to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode result data into XML: \(output.debugString)")
+        invocationReporting.logger.trace("Attempting to decode result data from XML to \(OutputType.self)",
+                                         metadata: ["body": "\(output.debugString)"])
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body
