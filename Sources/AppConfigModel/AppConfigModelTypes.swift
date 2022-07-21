@@ -23,9 +23,48 @@
 import Foundation
 
 /**
+ Type definition for the ActionInvocations field.
+ */
+public typealias ActionInvocations = [ActionInvocation]
+
+/**
+ Type definition for the ActionList field.
+ */
+public typealias ActionList = [Action]
+
+/**
+ Enumeration restricting the values of the ActionPoint field.
+ */
+public enum ActionPoint: String, Codable, CustomStringConvertible {
+    case onDeploymentBaking = "ON_DEPLOYMENT_BAKING"
+    case onDeploymentComplete = "ON_DEPLOYMENT_COMPLETE"
+    case onDeploymentRolledBack = "ON_DEPLOYMENT_ROLLED_BACK"
+    case onDeploymentStart = "ON_DEPLOYMENT_START"
+    case onDeploymentStep = "ON_DEPLOYMENT_STEP"
+    case preCreateHostedConfigurationVersion = "PRE_CREATE_HOSTED_CONFIGURATION_VERSION"
+    case preStartDeployment = "PRE_START_DEPLOYMENT"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ActionPoint = .onDeploymentBaking
+}
+
+/**
+ Type definition for the ActionsMap field.
+ */
+public typealias ActionsMap = [ActionPoint: ActionList]
+
+/**
  Type definition for the ApplicationList field.
  */
 public typealias ApplicationList = [Application]
+
+/**
+ Type definition for the AppliedExtensions field.
+ */
+public typealias AppliedExtensions = [AppliedExtension]
 
 /**
  Type definition for the Arn field.
@@ -49,6 +88,11 @@ public enum BadRequestReason: String, Codable, CustomStringConvertible {
  Type definition for the Blob field.
  */
 public typealias Blob = Data
+
+/**
+ Type definition for the Boolean field.
+ */
+public typealias Boolean = Bool
 
 /**
  Enumeration restricting the values of the BytesMeasure field.
@@ -156,6 +200,16 @@ public enum EnvironmentState: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ExtensionAssociationSummaries field.
+ */
+public typealias ExtensionAssociationSummaries = [ExtensionAssociationSummary]
+
+/**
+ Type definition for the ExtensionSummaries field.
+ */
+public typealias ExtensionSummaries = [ExtensionSummary]
+
+/**
  Type definition for the Float field.
  */
 public typealias Float = Double
@@ -190,6 +244,11 @@ public typealias HostedConfigurationVersionSummaryList = [HostedConfigurationVer
 public typealias Id = String
 
 /**
+ Type definition for the Identifier field.
+ */
+public typealias Identifier = String
+
+/**
  Type definition for the Integer field.
  */
 public typealias Integer = Int
@@ -203,6 +262,11 @@ public typealias InvalidConfigurationDetailList = [InvalidConfigurationDetail]
  Type definition for the Iso8601DateTime field.
  */
 public typealias Iso8601DateTime = String
+
+/**
+ Type definition for the LongName field.
+ */
+public typealias LongName = String
 
 /**
  Type definition for the MaxResults field.
@@ -230,9 +294,24 @@ public typealias Name = String
 public typealias NextToken = String
 
 /**
+ Type definition for the ParameterMap field.
+ */
+public typealias ParameterMap = [Name: Parameter]
+
+/**
+ Type definition for the ParameterValueMap field.
+ */
+public typealias ParameterValueMap = [Name: StringWithLengthBetween1And2048]
+
+/**
  Type definition for the Percentage field.
  */
 public typealias Percentage = Double
+
+/**
+ Type definition for the QueryName field.
+ */
+public typealias QueryName = String
 
 /**
  Enumeration restricting the values of the ReplicateTo field.
@@ -344,6 +423,21 @@ public typealias ValidatorTypeList = [ValidatorType]
 public typealias Version = String
 
 /**
+ Validation for the ActionList field.
+*/
+extension Array where Element == AppConfigModel.Action {
+    public func validateAsActionList() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to ActionList violated the minimum length constraint.")
+        }
+
+        if self.count > 1 {
+            throw AppConfigError.validationError(reason: "The provided value to ActionList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the Arn field.
 */
 extension AppConfigModel.Arn {
@@ -434,6 +528,36 @@ extension AppConfigModel.Id {
 }
 
 /**
+ Validation for the Identifier field.
+*/
+extension AppConfigModel.Identifier {
+    public func validateAsIdentifier() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to Identifier violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw AppConfigError.validationError(reason: "The provided value to Identifier violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the LongName field.
+*/
+extension AppConfigModel.LongName {
+    public func validateAsLongName() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to LongName violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw AppConfigError.validationError(reason: "The provided value to LongName violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the MaxResults field.
 */
 extension AppConfigModel.MaxResults {
@@ -519,6 +643,21 @@ extension AppConfigModel.Percentage {
 
         if self > 100.0 {
             throw AppConfigError.validationError(reason: "The provided value to Percentage violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the QueryName field.
+*/
+extension AppConfigModel.QueryName {
+    public func validateAsQueryName() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to QueryName violated the minimum length constraint.")
+        }
+
+        if self.count > 64 {
+            throw AppConfigError.validationError(reason: "The provided value to QueryName violated the maximum length constraint.")
         }
     }
 }

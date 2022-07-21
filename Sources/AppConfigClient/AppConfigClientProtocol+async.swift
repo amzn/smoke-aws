@@ -139,6 +139,60 @@ public extension AppConfigClientProtocol {
     }
 
     /**
+     Invokes the CreateExtension operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    func createExtension(input: AppConfigModel.CreateExtensionRequest) async throws
+     -> AppConfigModel.Extension {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createExtensionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateExtensionAssociation operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    func createExtensionAssociation(input: AppConfigModel.CreateExtensionAssociationRequest) async throws
+     -> AppConfigModel.ExtensionAssociation {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createExtensionAssociationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateHostedConfigurationVersion operation and asynchronously returning the response.
 
      - Parameters:
@@ -245,6 +299,52 @@ public extension AppConfigClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try deleteEnvironmentAsync(input: input) { error in
+                    if let error = error {
+                        cont.resume(throwing: error)
+                    } else {
+                        cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteExtension operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func deleteExtension(input: AppConfigModel.DeleteExtensionRequest) async throws {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteExtensionAsync(input: input) { error in
+                    if let error = error {
+                        cont.resume(throwing: error)
+                    } else {
+                        cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteExtensionAssociation operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func deleteExtensionAssociation(input: AppConfigModel.DeleteExtensionAssociationRequest) async throws {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteExtensionAssociationAsync(input: input) { error in
                     if let error = error {
                         cont.resume(throwing: error)
                     } else {
@@ -443,6 +543,60 @@ public extension AppConfigClientProtocol {
     }
 
     /**
+     Invokes the GetExtension operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func getExtension(input: AppConfigModel.GetExtensionRequest) async throws
+     -> AppConfigModel.Extension {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getExtensionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetExtensionAssociation operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func getExtensionAssociation(input: AppConfigModel.GetExtensionAssociationRequest) async throws
+     -> AppConfigModel.ExtensionAssociation {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getExtensionAssociationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the GetHostedConfigurationVersion operation and asynchronously returning the response.
 
      - Parameters:
@@ -591,6 +745,60 @@ public extension AppConfigClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try listEnvironmentsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListExtensionAssociations operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+     - Returns: The ExtensionAssociations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    func listExtensionAssociations(input: AppConfigModel.ListExtensionAssociationsRequest) async throws
+     -> AppConfigModel.ExtensionAssociations {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try listExtensionAssociationsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListExtensions operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+     - Returns: The Extensions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    func listExtensions(input: AppConfigModel.ListExtensionsRequest) async throws
+     -> AppConfigModel.Extensions {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try listExtensionsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -853,6 +1061,60 @@ public extension AppConfigClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try updateEnvironmentAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the UpdateExtension operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    func updateExtension(input: AppConfigModel.UpdateExtensionRequest) async throws
+     -> AppConfigModel.Extension {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try updateExtensionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the UpdateExtensionAssociation operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func updateExtensionAssociation(input: AppConfigModel.UpdateExtensionAssociationRequest) async throws
+     -> AppConfigModel.ExtensionAssociation {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try updateExtensionAssociationAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

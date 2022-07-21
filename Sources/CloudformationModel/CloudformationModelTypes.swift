@@ -33,6 +33,22 @@ public typealias AcceptTermsAndConditions = Bool
 public typealias Account = String
 
 /**
+ Enumeration restricting the values of the AccountFilterType field.
+ */
+public enum AccountFilterType: String, Codable, CustomStringConvertible {
+    case difference = "DIFFERENCE"
+    case intersection = "INTERSECTION"
+    case none = "NONE"
+    case union = "UNION"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AccountFilterType = .difference
+}
+
+/**
  Enumeration restricting the values of the AccountGateStatus field.
  */
 public enum AccountGateStatus: String, Codable, CustomStringConvertible {

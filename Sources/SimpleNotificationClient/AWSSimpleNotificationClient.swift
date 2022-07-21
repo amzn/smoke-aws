@@ -86,7 +86,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 endpointPort: Int = 443,
                 requiresTLS: Bool? = nil,
                 service: String = "sns",
-                contentType: String = "application/x-www-form-urlencoded; charset=utf-8",
+                contentType: String = "application/octet-stream",
                 apiVersion: String = "2010-03-31",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
@@ -95,7 +95,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>
                     = SmokeAWSClientReportingConfiguration<SimpleNotificationModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
-        let clientDelegate = FormEncodedXMLAWSHttpClientDelegate<SimpleNotificationError>(requiresTLS: useTLS)
+        let clientDelegate = XMLAWSHttpClientDelegate<SimpleNotificationError>(requiresTLS: useTLS)
 
         self.httpClient = HTTPOperationsClient(
             endpointHostName: endpointHostName,

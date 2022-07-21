@@ -706,6 +706,7 @@ public extension DeploymentTargets {
      */
     static let __default: CloudformationModel.DeploymentTargets = {
         let defaultInstance = CloudformationModel.DeploymentTargets(
+            accountFilterType: nil,
             accounts: nil,
             accountsUrl: nil,
             organizationalUnitIds: nil)
