@@ -74,6 +74,11 @@ public extension CompositeAlarm {
     static let __default: CloudWatchModel.CompositeAlarm = {
         let defaultInstance = CloudWatchModel.CompositeAlarm(
             actionsEnabled: nil,
+            actionsSuppressedBy: nil,
+            actionsSuppressedReason: nil,
+            actionsSuppressor: nil,
+            actionsSuppressorExtensionPeriod: nil,
+            actionsSuppressorWaitPeriod: nil,
             alarmActions: nil,
             alarmArn: nil,
             alarmConfigurationUpdatedTimestamp: nil,
@@ -84,6 +89,7 @@ public extension CompositeAlarm {
             oKActions: nil,
             stateReason: nil,
             stateReasonData: nil,
+            stateTransitionedTimestamp: nil,
             stateUpdatedTimestamp: nil,
             stateValue: nil)
 
@@ -1502,6 +1508,9 @@ public extension PutCompositeAlarmInput {
     static let __default: CloudWatchModel.PutCompositeAlarmInput = {
         let defaultInstance = CloudWatchModel.PutCompositeAlarmInput(
             actionsEnabled: nil,
+            actionsSuppressor: nil,
+            actionsSuppressorExtensionPeriod: nil,
+            actionsSuppressorWaitPeriod: nil,
             alarmActions: nil,
             alarmDescription: nil,
             alarmName: "0",
