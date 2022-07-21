@@ -33,11 +33,15 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
     public let createConfigurationProfile: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDeploymentStrategy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createEnvironment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createExtension: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createExtensionAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createHostedConfigurationVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteConfigurationProfile: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDeploymentStrategy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteEnvironment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteExtension: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteExtensionAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteHostedConfigurationVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -45,12 +49,16 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
     public let getDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getDeploymentStrategy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getEnvironment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getExtension: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getExtensionAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getHostedConfigurationVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listApplications: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listConfigurationProfiles: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listDeploymentStrategies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listDeployments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listEnvironments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listExtensionAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listExtensions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listHostedConfigurationVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let startDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -61,6 +69,8 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
     public let updateConfigurationProfile: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateDeploymentStrategy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateEnvironment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateExtension: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateExtensionAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let validateConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: AppConfigOperationsReporting) {
@@ -72,6 +82,10 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
             smokeAWSOperationReporting: operationsReporting.createDeploymentStrategy)
         self.createEnvironment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createEnvironment)
+        self.createExtension = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createExtension)
+        self.createExtensionAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createExtensionAssociation)
         self.createHostedConfigurationVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createHostedConfigurationVersion)
         self.deleteApplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -82,6 +96,10 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
             smokeAWSOperationReporting: operationsReporting.deleteDeploymentStrategy)
         self.deleteEnvironment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteEnvironment)
+        self.deleteExtension = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteExtension)
+        self.deleteExtensionAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteExtensionAssociation)
         self.deleteHostedConfigurationVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteHostedConfigurationVersion)
         self.getApplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -96,6 +114,10 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
             smokeAWSOperationReporting: operationsReporting.getDeploymentStrategy)
         self.getEnvironment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getEnvironment)
+        self.getExtension = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getExtension)
+        self.getExtensionAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getExtensionAssociation)
         self.getHostedConfigurationVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getHostedConfigurationVersion)
         self.listApplications = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -108,6 +130,10 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
             smokeAWSOperationReporting: operationsReporting.listDeployments)
         self.listEnvironments = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listEnvironments)
+        self.listExtensionAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listExtensionAssociations)
+        self.listExtensions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listExtensions)
         self.listHostedConfigurationVersions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listHostedConfigurationVersions)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -128,6 +154,10 @@ public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientC
             smokeAWSOperationReporting: operationsReporting.updateDeploymentStrategy)
         self.updateEnvironment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateEnvironment)
+        self.updateExtension = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateExtension)
+        self.updateExtensionAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateExtensionAssociation)
         self.validateConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.validateConfiguration)
     }

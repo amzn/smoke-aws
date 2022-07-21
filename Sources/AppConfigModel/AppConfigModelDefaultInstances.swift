@@ -26,6 +26,39 @@ private struct DefaultValues {
     static let tags = [:] as [String:String]
 }
 
+public extension Action {
+    /**
+     Default instance of the Action structure.
+     */
+    static let __default: AppConfigModel.Action = {
+        let defaultInstance = AppConfigModel.Action(
+            description: nil,
+            name: nil,
+            roleArn: nil,
+            uri: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ActionInvocation {
+    /**
+     Default instance of the ActionInvocation structure.
+     */
+    static let __default: AppConfigModel.ActionInvocation = {
+        let defaultInstance = AppConfigModel.ActionInvocation(
+            actionName: nil,
+            errorCode: nil,
+            errorMessage: nil,
+            extensionIdentifier: nil,
+            invocationId: nil,
+            roleArn: nil,
+            uri: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Application {
     /**
      Default instance of the Application structure.
@@ -48,6 +81,21 @@ public extension Applications {
         let defaultInstance = AppConfigModel.Applications(
             items: nil,
             nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AppliedExtension {
+    /**
+     Default instance of the AppliedExtension structure.
+     */
+    static let __default: AppConfigModel.AppliedExtension = {
+        let defaultInstance = AppConfigModel.AppliedExtension(
+            extensionAssociationId: nil,
+            extensionId: nil,
+            parameters: nil,
+            versionNumber: nil)
 
         return defaultInstance
     }()
@@ -199,7 +247,7 @@ public extension CreateDeploymentStrategyRequest {
             growthFactor: 0.0,
             growthType: nil,
             name: "0",
-            replicateTo: .__default,
+            replicateTo: nil,
             tags: nil)
 
         return defaultInstance
@@ -216,6 +264,39 @@ public extension CreateEnvironmentRequest {
             description: nil,
             monitors: nil,
             name: "0",
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateExtensionAssociationRequest {
+    /**
+     Default instance of the CreateExtensionAssociationRequest structure.
+     */
+    static let __default: AppConfigModel.CreateExtensionAssociationRequest = {
+        let defaultInstance = AppConfigModel.CreateExtensionAssociationRequest(
+            extensionIdentifier: "0",
+            extensionVersionNumber: nil,
+            parameters: nil,
+            resourceIdentifier: "0",
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateExtensionRequest {
+    /**
+     Default instance of the CreateExtensionRequest structure.
+     */
+    static let __default: AppConfigModel.CreateExtensionRequest = {
+        let defaultInstance = AppConfigModel.CreateExtensionRequest(
+            actions: [.onDeploymentBaking: [Action.__default]],
+            description: nil,
+            latestVersionNumber: nil,
+            name: "0",
+            parameters: nil,
             tags: nil)
 
         return defaultInstance
@@ -289,6 +370,31 @@ public extension DeleteEnvironmentRequest {
     }()
 }
 
+public extension DeleteExtensionAssociationRequest {
+    /**
+     Default instance of the DeleteExtensionAssociationRequest structure.
+     */
+    static let __default: AppConfigModel.DeleteExtensionAssociationRequest = {
+        let defaultInstance = AppConfigModel.DeleteExtensionAssociationRequest(
+            extensionAssociationId: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteExtensionRequest {
+    /**
+     Default instance of the DeleteExtensionRequest structure.
+     */
+    static let __default: AppConfigModel.DeleteExtensionRequest = {
+        let defaultInstance = AppConfigModel.DeleteExtensionRequest(
+            extensionIdentifier: "0",
+            versionNumber: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteHostedConfigurationVersionRequest {
     /**
      Default instance of the DeleteHostedConfigurationVersionRequest structure.
@@ -310,6 +416,7 @@ public extension Deployment {
     static let __default: AppConfigModel.Deployment = {
         let defaultInstance = AppConfigModel.Deployment(
             applicationId: nil,
+            appliedExtensions: nil,
             completedAt: nil,
             configurationLocationUri: nil,
             configurationName: nil,
@@ -338,6 +445,7 @@ public extension DeploymentEvent {
      */
     static let __default: AppConfigModel.DeploymentEvent = {
         let defaultInstance = AppConfigModel.DeploymentEvent(
+            actionInvocations: nil,
             description: nil,
             eventType: nil,
             occurredAt: nil,
@@ -444,6 +552,97 @@ public extension Environments {
     }()
 }
 
+public extension Extension {
+    /**
+     Default instance of the Extension structure.
+     */
+    static let __default: AppConfigModel.Extension = {
+        let defaultInstance = AppConfigModel.Extension(
+            actions: nil,
+            arn: nil,
+            description: nil,
+            id: nil,
+            name: nil,
+            parameters: nil,
+            versionNumber: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExtensionAssociation {
+    /**
+     Default instance of the ExtensionAssociation structure.
+     */
+    static let __default: AppConfigModel.ExtensionAssociation = {
+        let defaultInstance = AppConfigModel.ExtensionAssociation(
+            arn: nil,
+            extensionArn: nil,
+            extensionVersionNumber: nil,
+            id: nil,
+            parameters: nil,
+            resourceArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExtensionAssociationSummary {
+    /**
+     Default instance of the ExtensionAssociationSummary structure.
+     */
+    static let __default: AppConfigModel.ExtensionAssociationSummary = {
+        let defaultInstance = AppConfigModel.ExtensionAssociationSummary(
+            extensionArn: nil,
+            id: nil,
+            resourceArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExtensionAssociations {
+    /**
+     Default instance of the ExtensionAssociations structure.
+     */
+    static let __default: AppConfigModel.ExtensionAssociations = {
+        let defaultInstance = AppConfigModel.ExtensionAssociations(
+            items: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ExtensionSummary {
+    /**
+     Default instance of the ExtensionSummary structure.
+     */
+    static let __default: AppConfigModel.ExtensionSummary = {
+        let defaultInstance = AppConfigModel.ExtensionSummary(
+            arn: nil,
+            description: nil,
+            id: nil,
+            name: nil,
+            versionNumber: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Extensions {
+    /**
+     Default instance of the Extensions structure.
+     */
+    static let __default: AppConfigModel.Extensions = {
+        let defaultInstance = AppConfigModel.Extensions(
+            items: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetApplicationRequest {
     /**
      Default instance of the GetApplicationRequest structure.
@@ -519,6 +718,31 @@ public extension GetEnvironmentRequest {
         let defaultInstance = AppConfigModel.GetEnvironmentRequest(
             applicationId: "",
             environmentId: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetExtensionAssociationRequest {
+    /**
+     Default instance of the GetExtensionAssociationRequest structure.
+     */
+    static let __default: AppConfigModel.GetExtensionAssociationRequest = {
+        let defaultInstance = AppConfigModel.GetExtensionAssociationRequest(
+            extensionAssociationId: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetExtensionRequest {
+    /**
+     Default instance of the GetExtensionRequest structure.
+     */
+    static let __default: AppConfigModel.GetExtensionRequest = {
+        let defaultInstance = AppConfigModel.GetExtensionRequest(
+            extensionIdentifier: "0",
+            versionNumber: nil)
 
         return defaultInstance
     }()
@@ -605,7 +829,8 @@ public extension InvalidConfigurationDetail {
             constraint: nil,
             location: nil,
             reason: nil,
-            type: nil)
+            type: nil,
+            value: nil)
 
         return defaultInstance
     }()
@@ -681,6 +906,36 @@ public extension ListEnvironmentsRequest {
     }()
 }
 
+public extension ListExtensionAssociationsRequest {
+    /**
+     Default instance of the ListExtensionAssociationsRequest structure.
+     */
+    static let __default: AppConfigModel.ListExtensionAssociationsRequest = {
+        let defaultInstance = AppConfigModel.ListExtensionAssociationsRequest(
+            extensionIdentifier: nil,
+            extensionVersionNumber: nil,
+            maxResults: nil,
+            nextToken: nil,
+            resourceIdentifier: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListExtensionsRequest {
+    /**
+     Default instance of the ListExtensionsRequest structure.
+     */
+    static let __default: AppConfigModel.ListExtensionsRequest = {
+        let defaultInstance = AppConfigModel.ListExtensionsRequest(
+            maxResults: nil,
+            name: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListHostedConfigurationVersionsRequest {
     /**
      Default instance of the ListHostedConfigurationVersionsRequest structure.
@@ -716,6 +971,19 @@ public extension Monitor {
         let defaultInstance = AppConfigModel.Monitor(
             alarmArn: "0",
             alarmRoleArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension Parameter {
+    /**
+     Default instance of the Parameter structure.
+     */
+    static let __default: AppConfigModel.Parameter = {
+        let defaultInstance = AppConfigModel.Parameter(
+            description: nil,
+            required: nil)
 
         return defaultInstance
     }()
@@ -890,6 +1158,35 @@ public extension UpdateEnvironmentRequest {
             environmentId: "",
             monitors: nil,
             name: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateExtensionAssociationRequest {
+    /**
+     Default instance of the UpdateExtensionAssociationRequest structure.
+     */
+    static let __default: AppConfigModel.UpdateExtensionAssociationRequest = {
+        let defaultInstance = AppConfigModel.UpdateExtensionAssociationRequest(
+            extensionAssociationId: "",
+            parameters: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateExtensionRequest {
+    /**
+     Default instance of the UpdateExtensionRequest structure.
+     */
+    static let __default: AppConfigModel.UpdateExtensionRequest = {
+        let defaultInstance = AppConfigModel.UpdateExtensionRequest(
+            actions: nil,
+            description: nil,
+            extensionIdentifier: "0",
+            parameters: nil,
+            versionNumber: nil)
 
         return defaultInstance
     }()

@@ -38,6 +38,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
     let createDeploymentStrategySyncOverride: CreateDeploymentStrategySyncType?
     let createEnvironmentAsyncOverride: CreateEnvironmentAsyncType?
     let createEnvironmentSyncOverride: CreateEnvironmentSyncType?
+    let createExtensionAsyncOverride: CreateExtensionAsyncType?
+    let createExtensionSyncOverride: CreateExtensionSyncType?
+    let createExtensionAssociationAsyncOverride: CreateExtensionAssociationAsyncType?
+    let createExtensionAssociationSyncOverride: CreateExtensionAssociationSyncType?
     let createHostedConfigurationVersionAsyncOverride: CreateHostedConfigurationVersionAsyncType?
     let createHostedConfigurationVersionSyncOverride: CreateHostedConfigurationVersionSyncType?
     let deleteApplicationAsyncOverride: DeleteApplicationAsyncType?
@@ -48,6 +52,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
     let deleteDeploymentStrategySyncOverride: DeleteDeploymentStrategySyncType?
     let deleteEnvironmentAsyncOverride: DeleteEnvironmentAsyncType?
     let deleteEnvironmentSyncOverride: DeleteEnvironmentSyncType?
+    let deleteExtensionAsyncOverride: DeleteExtensionAsyncType?
+    let deleteExtensionSyncOverride: DeleteExtensionSyncType?
+    let deleteExtensionAssociationAsyncOverride: DeleteExtensionAssociationAsyncType?
+    let deleteExtensionAssociationSyncOverride: DeleteExtensionAssociationSyncType?
     let deleteHostedConfigurationVersionAsyncOverride: DeleteHostedConfigurationVersionAsyncType?
     let deleteHostedConfigurationVersionSyncOverride: DeleteHostedConfigurationVersionSyncType?
     let getApplicationAsyncOverride: GetApplicationAsyncType?
@@ -62,6 +70,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
     let getDeploymentStrategySyncOverride: GetDeploymentStrategySyncType?
     let getEnvironmentAsyncOverride: GetEnvironmentAsyncType?
     let getEnvironmentSyncOverride: GetEnvironmentSyncType?
+    let getExtensionAsyncOverride: GetExtensionAsyncType?
+    let getExtensionSyncOverride: GetExtensionSyncType?
+    let getExtensionAssociationAsyncOverride: GetExtensionAssociationAsyncType?
+    let getExtensionAssociationSyncOverride: GetExtensionAssociationSyncType?
     let getHostedConfigurationVersionAsyncOverride: GetHostedConfigurationVersionAsyncType?
     let getHostedConfigurationVersionSyncOverride: GetHostedConfigurationVersionSyncType?
     let listApplicationsAsyncOverride: ListApplicationsAsyncType?
@@ -74,6 +86,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
     let listDeploymentsSyncOverride: ListDeploymentsSyncType?
     let listEnvironmentsAsyncOverride: ListEnvironmentsAsyncType?
     let listEnvironmentsSyncOverride: ListEnvironmentsSyncType?
+    let listExtensionAssociationsAsyncOverride: ListExtensionAssociationsAsyncType?
+    let listExtensionAssociationsSyncOverride: ListExtensionAssociationsSyncType?
+    let listExtensionsAsyncOverride: ListExtensionsAsyncType?
+    let listExtensionsSyncOverride: ListExtensionsSyncType?
     let listHostedConfigurationVersionsAsyncOverride: ListHostedConfigurationVersionsAsyncType?
     let listHostedConfigurationVersionsSyncOverride: ListHostedConfigurationVersionsSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
@@ -94,6 +110,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
     let updateDeploymentStrategySyncOverride: UpdateDeploymentStrategySyncType?
     let updateEnvironmentAsyncOverride: UpdateEnvironmentAsyncType?
     let updateEnvironmentSyncOverride: UpdateEnvironmentSyncType?
+    let updateExtensionAsyncOverride: UpdateExtensionAsyncType?
+    let updateExtensionSyncOverride: UpdateExtensionSyncType?
+    let updateExtensionAssociationAsyncOverride: UpdateExtensionAssociationAsyncType?
+    let updateExtensionAssociationSyncOverride: UpdateExtensionAssociationSyncType?
     let validateConfigurationAsyncOverride: ValidateConfigurationAsyncType?
     let validateConfigurationSyncOverride: ValidateConfigurationSyncType?
 
@@ -110,6 +130,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             createDeploymentStrategySync: CreateDeploymentStrategySyncType? = nil,
             createEnvironmentAsync: CreateEnvironmentAsyncType? = nil,
             createEnvironmentSync: CreateEnvironmentSyncType? = nil,
+            createExtensionAsync: CreateExtensionAsyncType? = nil,
+            createExtensionSync: CreateExtensionSyncType? = nil,
+            createExtensionAssociationAsync: CreateExtensionAssociationAsyncType? = nil,
+            createExtensionAssociationSync: CreateExtensionAssociationSyncType? = nil,
             createHostedConfigurationVersionAsync: CreateHostedConfigurationVersionAsyncType? = nil,
             createHostedConfigurationVersionSync: CreateHostedConfigurationVersionSyncType? = nil,
             deleteApplicationAsync: DeleteApplicationAsyncType? = nil,
@@ -120,6 +144,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             deleteDeploymentStrategySync: DeleteDeploymentStrategySyncType? = nil,
             deleteEnvironmentAsync: DeleteEnvironmentAsyncType? = nil,
             deleteEnvironmentSync: DeleteEnvironmentSyncType? = nil,
+            deleteExtensionAsync: DeleteExtensionAsyncType? = nil,
+            deleteExtensionSync: DeleteExtensionSyncType? = nil,
+            deleteExtensionAssociationAsync: DeleteExtensionAssociationAsyncType? = nil,
+            deleteExtensionAssociationSync: DeleteExtensionAssociationSyncType? = nil,
             deleteHostedConfigurationVersionAsync: DeleteHostedConfigurationVersionAsyncType? = nil,
             deleteHostedConfigurationVersionSync: DeleteHostedConfigurationVersionSyncType? = nil,
             getApplicationAsync: GetApplicationAsyncType? = nil,
@@ -134,6 +162,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             getDeploymentStrategySync: GetDeploymentStrategySyncType? = nil,
             getEnvironmentAsync: GetEnvironmentAsyncType? = nil,
             getEnvironmentSync: GetEnvironmentSyncType? = nil,
+            getExtensionAsync: GetExtensionAsyncType? = nil,
+            getExtensionSync: GetExtensionSyncType? = nil,
+            getExtensionAssociationAsync: GetExtensionAssociationAsyncType? = nil,
+            getExtensionAssociationSync: GetExtensionAssociationSyncType? = nil,
             getHostedConfigurationVersionAsync: GetHostedConfigurationVersionAsyncType? = nil,
             getHostedConfigurationVersionSync: GetHostedConfigurationVersionSyncType? = nil,
             listApplicationsAsync: ListApplicationsAsyncType? = nil,
@@ -146,6 +178,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             listDeploymentsSync: ListDeploymentsSyncType? = nil,
             listEnvironmentsAsync: ListEnvironmentsAsyncType? = nil,
             listEnvironmentsSync: ListEnvironmentsSyncType? = nil,
+            listExtensionAssociationsAsync: ListExtensionAssociationsAsyncType? = nil,
+            listExtensionAssociationsSync: ListExtensionAssociationsSyncType? = nil,
+            listExtensionsAsync: ListExtensionsAsyncType? = nil,
+            listExtensionsSync: ListExtensionsSyncType? = nil,
             listHostedConfigurationVersionsAsync: ListHostedConfigurationVersionsAsyncType? = nil,
             listHostedConfigurationVersionsSync: ListHostedConfigurationVersionsSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
@@ -166,6 +202,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             updateDeploymentStrategySync: UpdateDeploymentStrategySyncType? = nil,
             updateEnvironmentAsync: UpdateEnvironmentAsyncType? = nil,
             updateEnvironmentSync: UpdateEnvironmentSyncType? = nil,
+            updateExtensionAsync: UpdateExtensionAsyncType? = nil,
+            updateExtensionSync: UpdateExtensionSyncType? = nil,
+            updateExtensionAssociationAsync: UpdateExtensionAssociationAsyncType? = nil,
+            updateExtensionAssociationSync: UpdateExtensionAssociationSyncType? = nil,
             validateConfigurationAsync: ValidateConfigurationAsyncType? = nil,
             validateConfigurationSync: ValidateConfigurationSyncType? = nil) {
         self.error = error
@@ -177,6 +217,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
         self.createDeploymentStrategySyncOverride = createDeploymentStrategySync
         self.createEnvironmentAsyncOverride = createEnvironmentAsync
         self.createEnvironmentSyncOverride = createEnvironmentSync
+        self.createExtensionAsyncOverride = createExtensionAsync
+        self.createExtensionSyncOverride = createExtensionSync
+        self.createExtensionAssociationAsyncOverride = createExtensionAssociationAsync
+        self.createExtensionAssociationSyncOverride = createExtensionAssociationSync
         self.createHostedConfigurationVersionAsyncOverride = createHostedConfigurationVersionAsync
         self.createHostedConfigurationVersionSyncOverride = createHostedConfigurationVersionSync
         self.deleteApplicationAsyncOverride = deleteApplicationAsync
@@ -187,6 +231,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
         self.deleteDeploymentStrategySyncOverride = deleteDeploymentStrategySync
         self.deleteEnvironmentAsyncOverride = deleteEnvironmentAsync
         self.deleteEnvironmentSyncOverride = deleteEnvironmentSync
+        self.deleteExtensionAsyncOverride = deleteExtensionAsync
+        self.deleteExtensionSyncOverride = deleteExtensionSync
+        self.deleteExtensionAssociationAsyncOverride = deleteExtensionAssociationAsync
+        self.deleteExtensionAssociationSyncOverride = deleteExtensionAssociationSync
         self.deleteHostedConfigurationVersionAsyncOverride = deleteHostedConfigurationVersionAsync
         self.deleteHostedConfigurationVersionSyncOverride = deleteHostedConfigurationVersionSync
         self.getApplicationAsyncOverride = getApplicationAsync
@@ -201,6 +249,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
         self.getDeploymentStrategySyncOverride = getDeploymentStrategySync
         self.getEnvironmentAsyncOverride = getEnvironmentAsync
         self.getEnvironmentSyncOverride = getEnvironmentSync
+        self.getExtensionAsyncOverride = getExtensionAsync
+        self.getExtensionSyncOverride = getExtensionSync
+        self.getExtensionAssociationAsyncOverride = getExtensionAssociationAsync
+        self.getExtensionAssociationSyncOverride = getExtensionAssociationSync
         self.getHostedConfigurationVersionAsyncOverride = getHostedConfigurationVersionAsync
         self.getHostedConfigurationVersionSyncOverride = getHostedConfigurationVersionSync
         self.listApplicationsAsyncOverride = listApplicationsAsync
@@ -213,6 +265,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
         self.listDeploymentsSyncOverride = listDeploymentsSync
         self.listEnvironmentsAsyncOverride = listEnvironmentsAsync
         self.listEnvironmentsSyncOverride = listEnvironmentsSync
+        self.listExtensionAssociationsAsyncOverride = listExtensionAssociationsAsync
+        self.listExtensionAssociationsSyncOverride = listExtensionAssociationsSync
+        self.listExtensionsAsyncOverride = listExtensionsAsync
+        self.listExtensionsSyncOverride = listExtensionsSync
         self.listHostedConfigurationVersionsAsyncOverride = listHostedConfigurationVersionsAsync
         self.listHostedConfigurationVersionsSyncOverride = listHostedConfigurationVersionsSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
@@ -233,6 +289,10 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
         self.updateDeploymentStrategySyncOverride = updateDeploymentStrategySync
         self.updateEnvironmentAsyncOverride = updateEnvironmentAsync
         self.updateEnvironmentSyncOverride = updateEnvironmentSync
+        self.updateExtensionAsyncOverride = updateExtensionAsync
+        self.updateExtensionSyncOverride = updateExtensionSync
+        self.updateExtensionAssociationAsyncOverride = updateExtensionAssociationAsync
+        self.updateExtensionAssociationSyncOverride = updateExtensionAssociationSync
         self.validateConfigurationAsyncOverride = validateConfigurationAsync
         self.validateConfigurationSyncOverride = validateConfigurationSync
     }
@@ -384,6 +444,82 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             input: AppConfigModel.CreateEnvironmentRequest) throws -> AppConfigModel.Environment {
         if let createEnvironmentSyncOverride = createEnvironmentSyncOverride {
             return try createEnvironmentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    public func createExtensionAsync(
+            input: AppConfigModel.CreateExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws {
+        if let createExtensionAsyncOverride = createExtensionAsyncOverride {
+            return try createExtensionAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    public func createExtensionSync(
+            input: AppConfigModel.CreateExtensionRequest) throws -> AppConfigModel.Extension {
+        if let createExtensionSyncOverride = createExtensionSyncOverride {
+            return try createExtensionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    public func createExtensionAssociationAsync(
+            input: AppConfigModel.CreateExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws {
+        if let createExtensionAssociationAsyncOverride = createExtensionAssociationAsyncOverride {
+            return try createExtensionAssociationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    public func createExtensionAssociationSync(
+            input: AppConfigModel.CreateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation {
+        if let createExtensionAssociationSyncOverride = createExtensionAssociationSyncOverride {
+            return try createExtensionAssociationSyncOverride(input)
         }
 
         throw error
@@ -562,6 +698,76 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             input: AppConfigModel.DeleteEnvironmentRequest) throws {
         if let deleteEnvironmentSyncOverride = deleteEnvironmentSyncOverride {
             return try deleteEnvironmentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAsync(
+            input: AppConfigModel.DeleteExtensionRequest, 
+            completion: @escaping (AppConfigError?) -> ()) throws {
+        if let deleteExtensionAsyncOverride = deleteExtensionAsyncOverride {
+            return try deleteExtensionAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the DeleteExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionSync(
+            input: AppConfigModel.DeleteExtensionRequest) throws {
+        if let deleteExtensionSyncOverride = deleteExtensionSyncOverride {
+            return try deleteExtensionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAssociationAsync(
+            input: AppConfigModel.DeleteExtensionAssociationRequest, 
+            completion: @escaping (AppConfigError?) -> ()) throws {
+        if let deleteExtensionAssociationAsyncOverride = deleteExtensionAssociationAsyncOverride {
+            return try deleteExtensionAssociationAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the DeleteExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAssociationSync(
+            input: AppConfigModel.DeleteExtensionAssociationRequest) throws {
+        if let deleteExtensionAssociationSyncOverride = deleteExtensionAssociationSyncOverride {
+            return try deleteExtensionAssociationSyncOverride(input)
         }
 
         throw error
@@ -831,6 +1037,82 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
     }
 
     /**
+     Invokes the GetExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAsync(
+            input: AppConfigModel.GetExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws {
+        if let getExtensionAsyncOverride = getExtensionAsyncOverride {
+            return try getExtensionAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionSync(
+            input: AppConfigModel.GetExtensionRequest) throws -> AppConfigModel.Extension {
+        if let getExtensionSyncOverride = getExtensionSyncOverride {
+            return try getExtensionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAssociationAsync(
+            input: AppConfigModel.GetExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws {
+        if let getExtensionAssociationAsyncOverride = getExtensionAssociationAsyncOverride {
+            return try getExtensionAssociationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAssociationSync(
+            input: AppConfigModel.GetExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation {
+        if let getExtensionAssociationSyncOverride = getExtensionAssociationSyncOverride {
+            return try getExtensionAssociationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the GetHostedConfigurationVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1053,6 +1335,82 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             input: AppConfigModel.ListEnvironmentsRequest) throws -> AppConfigModel.Environments {
         if let listEnvironmentsSyncOverride = listEnvironmentsSyncOverride {
             return try listEnvironmentsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListExtensionAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+         - completion: The ExtensionAssociations object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociations
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer.
+     */
+    public func listExtensionAssociationsAsync(
+            input: AppConfigModel.ListExtensionAssociationsRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociations, AppConfigError>) -> ()) throws {
+        if let listExtensionAssociationsAsyncOverride = listExtensionAssociationsAsyncOverride {
+            return try listExtensionAssociationsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListExtensionAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+     - Returns: The ExtensionAssociations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listExtensionAssociationsSync(
+            input: AppConfigModel.ListExtensionAssociationsRequest) throws -> AppConfigModel.ExtensionAssociations {
+        if let listExtensionAssociationsSyncOverride = listExtensionAssociationsSyncOverride {
+            return try listExtensionAssociationsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListExtensions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+         - completion: The Extensions object or an error will be passed to this 
+           callback when the operation is complete. The Extensions
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer.
+     */
+    public func listExtensionsAsync(
+            input: AppConfigModel.ListExtensionsRequest, 
+            completion: @escaping (Result<AppConfigModel.Extensions, AppConfigError>) -> ()) throws {
+        if let listExtensionsAsyncOverride = listExtensionsAsyncOverride {
+            return try listExtensionsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListExtensions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+     - Returns: The Extensions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listExtensionsSync(
+            input: AppConfigModel.ListExtensionsRequest) throws -> AppConfigModel.Extensions {
+        if let listExtensionsSyncOverride = listExtensionsSyncOverride {
+            return try listExtensionsSyncOverride(input)
         }
 
         throw error
@@ -1427,6 +1785,82 @@ public struct ThrowingAppConfigClient: AppConfigClientProtocol {
             input: AppConfigModel.UpdateEnvironmentRequest) throws -> AppConfigModel.Environment {
         if let updateEnvironmentSyncOverride = updateEnvironmentSyncOverride {
             return try updateEnvironmentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAsync(
+            input: AppConfigModel.UpdateExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws {
+        if let updateExtensionAsyncOverride = updateExtensionAsyncOverride {
+            return try updateExtensionAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the UpdateExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func updateExtensionSync(
+            input: AppConfigModel.UpdateExtensionRequest) throws -> AppConfigModel.Extension {
+        if let updateExtensionSyncOverride = updateExtensionSyncOverride {
+            return try updateExtensionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAssociationAsync(
+            input: AppConfigModel.UpdateExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws {
+        if let updateExtensionAssociationAsyncOverride = updateExtensionAssociationAsyncOverride {
+            return try updateExtensionAssociationAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the UpdateExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAssociationSync(
+            input: AppConfigModel.UpdateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation {
+        if let updateExtensionAssociationSyncOverride = updateExtensionAssociationSyncOverride {
+            return try updateExtensionAssociationSyncOverride(input)
         }
 
         throw error
