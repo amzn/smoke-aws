@@ -32,9 +32,12 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
     public typealias OutwardsRequestContext = String
     
     private let traceLoggingEnabled: Bool
+    private let log4xxResponsesAsError: Bool
         
-    public init(traceLoggingEnabled: Bool = true) {
+    public init(traceLoggingEnabled: Bool = true,
+                log4xxResponsesAsError: Bool = false) {
         self.traceLoggingEnabled = traceLoggingEnabled
+        self.log4xxResponsesAsError = log4xxResponsesAsError
     }
     
     public func handleOutwardsRequestStart(method: HTTPMethod, uri: String, logger: Logger, internalRequestId: String,
@@ -70,9 +73,8 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
             return
         }
         
-        // log at error if this is a server error
         let level: Logger.Level
-        if let response = response, response.status.code >= 500 && response.status.code < 600 {
+        if let response = response, response.logResponseAsError(log4xxResponsesAsError: self.log4xxResponsesAsError) {
             level = .error
         } else {
             level = .trace
@@ -116,5 +118,20 @@ public struct AWSClientInvocationTraceContext: InvocationTraceContext {
         }
         
         logger.log(level: level, "\(completionString) completed outgoing request.", metadata: metadata)
+    }
+}
+
+internal extension HTTPClient.Response {
+    func logResponseAsError(log4xxResponsesAsError: Bool) -> Bool {
+        // if this is a server error
+        if self.status.code >= 500 && self.status.code < 600 {
+            return true
+        // if this is a client error and log4xxResponsesAsError is true
+        } else if log4xxResponsesAsError && self.status.code >= 400 && self.status.code < 500 {
+            return true
+        }
+        
+        // otherwise don't log as an error
+        return false
     }
 }
