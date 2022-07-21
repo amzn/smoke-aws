@@ -112,6 +112,11 @@ public struct AnomalyDetectorConfiguration: Codable, Equatable {
 
 public struct CompositeAlarm: Codable, Equatable {
     public var actionsEnabled: ActionsEnabled?
+    public var actionsSuppressedBy: ActionsSuppressedBy?
+    public var actionsSuppressedReason: ActionsSuppressedReason?
+    public var actionsSuppressor: AlarmArn?
+    public var actionsSuppressorExtensionPeriod: SuppressorPeriod?
+    public var actionsSuppressorWaitPeriod: SuppressorPeriod?
     public var alarmActions: ResourceList?
     public var alarmArn: AlarmArn?
     public var alarmConfigurationUpdatedTimestamp: Timestamp?
@@ -122,10 +127,16 @@ public struct CompositeAlarm: Codable, Equatable {
     public var oKActions: ResourceList?
     public var stateReason: StateReason?
     public var stateReasonData: StateReasonData?
+    public var stateTransitionedTimestamp: Timestamp?
     public var stateUpdatedTimestamp: Timestamp?
     public var stateValue: StateValue?
 
     public init(actionsEnabled: ActionsEnabled? = nil,
+                actionsSuppressedBy: ActionsSuppressedBy? = nil,
+                actionsSuppressedReason: ActionsSuppressedReason? = nil,
+                actionsSuppressor: AlarmArn? = nil,
+                actionsSuppressorExtensionPeriod: SuppressorPeriod? = nil,
+                actionsSuppressorWaitPeriod: SuppressorPeriod? = nil,
                 alarmActions: ResourceList? = nil,
                 alarmArn: AlarmArn? = nil,
                 alarmConfigurationUpdatedTimestamp: Timestamp? = nil,
@@ -136,9 +147,15 @@ public struct CompositeAlarm: Codable, Equatable {
                 oKActions: ResourceList? = nil,
                 stateReason: StateReason? = nil,
                 stateReasonData: StateReasonData? = nil,
+                stateTransitionedTimestamp: Timestamp? = nil,
                 stateUpdatedTimestamp: Timestamp? = nil,
                 stateValue: StateValue? = nil) {
         self.actionsEnabled = actionsEnabled
+        self.actionsSuppressedBy = actionsSuppressedBy
+        self.actionsSuppressedReason = actionsSuppressedReason
+        self.actionsSuppressor = actionsSuppressor
+        self.actionsSuppressorExtensionPeriod = actionsSuppressorExtensionPeriod
+        self.actionsSuppressorWaitPeriod = actionsSuppressorWaitPeriod
         self.alarmActions = alarmActions
         self.alarmArn = alarmArn
         self.alarmConfigurationUpdatedTimestamp = alarmConfigurationUpdatedTimestamp
@@ -149,12 +166,18 @@ public struct CompositeAlarm: Codable, Equatable {
         self.oKActions = oKActions
         self.stateReason = stateReason
         self.stateReasonData = stateReasonData
+        self.stateTransitionedTimestamp = stateTransitionedTimestamp
         self.stateUpdatedTimestamp = stateUpdatedTimestamp
         self.stateValue = stateValue
     }
 
     enum CodingKeys: String, CodingKey {
         case actionsEnabled = "ActionsEnabled"
+        case actionsSuppressedBy = "ActionsSuppressedBy"
+        case actionsSuppressedReason = "ActionsSuppressedReason"
+        case actionsSuppressor = "ActionsSuppressor"
+        case actionsSuppressorExtensionPeriod = "ActionsSuppressorExtensionPeriod"
+        case actionsSuppressorWaitPeriod = "ActionsSuppressorWaitPeriod"
         case alarmActions = "AlarmActions"
         case alarmArn = "AlarmArn"
         case alarmConfigurationUpdatedTimestamp = "AlarmConfigurationUpdatedTimestamp"
@@ -165,11 +188,14 @@ public struct CompositeAlarm: Codable, Equatable {
         case oKActions = "OKActions"
         case stateReason = "StateReason"
         case stateReasonData = "StateReasonData"
+        case stateTransitionedTimestamp = "StateTransitionedTimestamp"
         case stateUpdatedTimestamp = "StateUpdatedTimestamp"
         case stateValue = "StateValue"
     }
 
     public func validate() throws {
+        try actionsSuppressedReason?.validateAsActionsSuppressedReason()
+        try actionsSuppressor?.validateAsAlarmArn()
         try alarmActions?.validateAsResourceList()
         try alarmArn?.validateAsAlarmArn()
         try alarmDescription?.validateAsAlarmDescription()
@@ -2508,6 +2534,9 @@ public struct PutAnomalyDetectorOutputForPutAnomalyDetector: Codable, Equatable 
 
 public struct PutCompositeAlarmInput: Codable, Equatable {
     public var actionsEnabled: ActionsEnabled?
+    public var actionsSuppressor: AlarmArn?
+    public var actionsSuppressorExtensionPeriod: SuppressorPeriod?
+    public var actionsSuppressorWaitPeriod: SuppressorPeriod?
     public var alarmActions: ResourceList?
     public var alarmDescription: AlarmDescription?
     public var alarmName: AlarmName
@@ -2517,6 +2546,9 @@ public struct PutCompositeAlarmInput: Codable, Equatable {
     public var tags: TagList?
 
     public init(actionsEnabled: ActionsEnabled? = nil,
+                actionsSuppressor: AlarmArn? = nil,
+                actionsSuppressorExtensionPeriod: SuppressorPeriod? = nil,
+                actionsSuppressorWaitPeriod: SuppressorPeriod? = nil,
                 alarmActions: ResourceList? = nil,
                 alarmDescription: AlarmDescription? = nil,
                 alarmName: AlarmName,
@@ -2525,6 +2557,9 @@ public struct PutCompositeAlarmInput: Codable, Equatable {
                 oKActions: ResourceList? = nil,
                 tags: TagList? = nil) {
         self.actionsEnabled = actionsEnabled
+        self.actionsSuppressor = actionsSuppressor
+        self.actionsSuppressorExtensionPeriod = actionsSuppressorExtensionPeriod
+        self.actionsSuppressorWaitPeriod = actionsSuppressorWaitPeriod
         self.alarmActions = alarmActions
         self.alarmDescription = alarmDescription
         self.alarmName = alarmName
@@ -2536,6 +2571,9 @@ public struct PutCompositeAlarmInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case actionsEnabled = "ActionsEnabled"
+        case actionsSuppressor = "ActionsSuppressor"
+        case actionsSuppressorExtensionPeriod = "ActionsSuppressorExtensionPeriod"
+        case actionsSuppressorWaitPeriod = "ActionsSuppressorWaitPeriod"
         case alarmActions = "AlarmActions"
         case alarmDescription = "AlarmDescription"
         case alarmName = "AlarmName"
@@ -2546,6 +2584,7 @@ public struct PutCompositeAlarmInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try actionsSuppressor?.validateAsAlarmArn()
         try alarmActions?.validateAsResourceList()
         try alarmDescription?.validateAsAlarmDescription()
         try alarmName.validateAsAlarmName()
