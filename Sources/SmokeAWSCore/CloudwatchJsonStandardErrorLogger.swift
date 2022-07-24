@@ -18,7 +18,6 @@
 import Foundation
 import Logging
 
-private var standardError = FileHandle.standardError
 private let sourcesSubString = "Sources/"
 
 /**
@@ -30,6 +29,7 @@ public struct CloudwatchJsonStandardErrorLogger: LogHandler {
     public var logLevel: Logger.Level
     
     private let jsonEncoder: JSONEncoder
+    private let stream: TextOutputStream
     
     private init(minimumLogLevel: Logger.Level) {
         self.logLevel = minimumLogLevel
@@ -39,6 +39,7 @@ public struct CloudwatchJsonStandardErrorLogger: LogHandler {
         theJsonEncoder.outputFormatting = [.sortedKeys]
         
         self.jsonEncoder = theJsonEncoder
+        self.stream = StdioOutputStream.stderr
     }
     
     public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
@@ -99,7 +100,8 @@ public struct CloudwatchJsonStandardErrorLogger: LogHandler {
         
         if let jsonData = try? self.jsonEncoder.encode(codableMetadata),
            let jsonMessage = String(data: jsonData, encoding: .utf8) {
-            print(jsonMessage)
+            var stream = self.stream
+            stream.write("\(jsonMessage)\n")
         }
     }
 }

@@ -73,6 +73,30 @@ public struct CreateEnvironmentOperationHTTPRequestInput: HTTPRequestInputProtoc
 }
 
 /**
+ Type to handle the input to the CreateExtension operation in a HTTP client.
+ */
+public struct CreateExtensionOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: String?
+    public let bodyEncodable: CreateExtensionOperationInputBody?
+    public let additionalHeadersEncodable: CreateExtensionOperationInputAdditionalHeaders?
+    public let pathPostfix: String?
+
+    public init(encodable: CreateExtensionRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = nil
+        self.bodyEncodable = encodable.asAppConfigModelCreateExtensionOperationInputBody()
+        self.additionalHeadersEncodable = encodable.asAppConfigModelCreateExtensionOperationInputAdditionalHeaders()
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the CreateExtensionAssociation operation in a HTTP client.
+ */
+public typealias CreateExtensionAssociationOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the CreateHostedConfigurationVersion operation in a HTTP client.
  */
 public struct CreateHostedConfigurationVersionOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -161,6 +185,44 @@ public struct DeleteEnvironmentOperationHTTPRequestInput: HTTPRequestInputProtoc
     public init(encodable: DeleteEnvironmentRequest) {
         self.queryEncodable = nil
         self.pathEncodable = encodable.asAppConfigModelDeleteEnvironmentOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the DeleteExtension operation in a HTTP client.
+ */
+public struct DeleteExtensionOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: DeleteExtensionOperationInputQuery?
+    public let pathEncodable: DeleteExtensionOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: DeleteExtensionRequest) {
+        self.queryEncodable = encodable.asAppConfigModelDeleteExtensionOperationInputQuery()
+        self.pathEncodable = encodable.asAppConfigModelDeleteExtensionOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the DeleteExtensionAssociation operation in a HTTP client.
+ */
+public struct DeleteExtensionAssociationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: DeleteExtensionAssociationOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: DeleteExtensionAssociationRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asAppConfigModelDeleteExtensionAssociationOperationInputPath()
         self.bodyEncodable = nil
         self.additionalHeadersEncodable = nil
         self.pathPostfix = nil
@@ -301,6 +363,44 @@ public struct GetEnvironmentOperationHTTPRequestInput: HTTPRequestInputProtocol 
 }
 
 /**
+ Type to handle the input to the GetExtension operation in a HTTP client.
+ */
+public struct GetExtensionOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: GetExtensionOperationInputQuery?
+    public let pathEncodable: GetExtensionOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: GetExtensionRequest) {
+        self.queryEncodable = encodable.asAppConfigModelGetExtensionOperationInputQuery()
+        self.pathEncodable = encodable.asAppConfigModelGetExtensionOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the GetExtensionAssociation operation in a HTTP client.
+ */
+public struct GetExtensionAssociationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: GetExtensionAssociationOperationInputPath?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: GetExtensionAssociationRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asAppConfigModelGetExtensionAssociationOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
  Type to handle the input to the GetHostedConfigurationVersion operation in a HTTP client.
  */
 public struct GetHostedConfigurationVersionOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -408,6 +508,44 @@ public struct ListEnvironmentsOperationHTTPRequestInput: HTTPRequestInputProtoco
     public init(encodable: ListEnvironmentsRequest) {
         self.queryEncodable = encodable.asAppConfigModelListEnvironmentsOperationInputQuery()
         self.pathEncodable = encodable.asAppConfigModelListEnvironmentsOperationInputPath()
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the ListExtensionAssociations operation in a HTTP client.
+ */
+public struct ListExtensionAssociationsOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: ListExtensionAssociationsOperationInputQuery?
+    public let pathEncodable: String?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: ListExtensionAssociationsRequest) {
+        self.queryEncodable = encodable.asAppConfigModelListExtensionAssociationsOperationInputQuery()
+        self.pathEncodable = nil
+        self.bodyEncodable = nil
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the ListExtensions operation in a HTTP client.
+ */
+public struct ListExtensionsOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: ListExtensionsOperationInputQuery?
+    public let pathEncodable: String?
+    public let bodyEncodable: String?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: ListExtensionsRequest) {
+        self.queryEncodable = encodable.asAppConfigModelListExtensionsOperationInputQuery()
+        self.pathEncodable = nil
         self.bodyEncodable = nil
         self.additionalHeadersEncodable = nil
         self.pathPostfix = nil
@@ -599,6 +737,44 @@ public struct UpdateEnvironmentOperationHTTPRequestInput: HTTPRequestInputProtoc
         self.queryEncodable = nil
         self.pathEncodable = encodable.asAppConfigModelUpdateEnvironmentOperationInputPath()
         self.bodyEncodable = encodable.asAppConfigModelUpdateEnvironmentOperationInputBody()
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the UpdateExtension operation in a HTTP client.
+ */
+public struct UpdateExtensionOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: UpdateExtensionOperationInputPath?
+    public let bodyEncodable: UpdateExtensionOperationInputBody?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: UpdateExtensionRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asAppConfigModelUpdateExtensionOperationInputPath()
+        self.bodyEncodable = encodable.asAppConfigModelUpdateExtensionOperationInputBody()
+        self.additionalHeadersEncodable = nil
+        self.pathPostfix = nil
+    }
+}
+
+/**
+ Type to handle the input to the UpdateExtensionAssociation operation in a HTTP client.
+ */
+public struct UpdateExtensionAssociationOperationHTTPRequestInput: HTTPRequestInputProtocol {
+    public let queryEncodable: String?
+    public let pathEncodable: UpdateExtensionAssociationOperationInputPath?
+    public let bodyEncodable: UpdateExtensionAssociationOperationInputBody?
+    public let additionalHeadersEncodable: String?
+    public let pathPostfix: String?
+
+    public init(encodable: UpdateExtensionAssociationRequest) {
+        self.queryEncodable = nil
+        self.pathEncodable = encodable.asAppConfigModelUpdateExtensionAssociationOperationInputPath()
+        self.bodyEncodable = encodable.asAppConfigModelUpdateExtensionAssociationOperationInputBody()
         self.additionalHeadersEncodable = nil
         self.pathPostfix = nil
     }

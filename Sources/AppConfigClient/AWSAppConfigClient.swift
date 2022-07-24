@@ -446,6 +446,146 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
     }
 
     /**
+     Invokes the CreateExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    public func createExtensionAsync(
+            input: AppConfigModel.CreateExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateExtensionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensions",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    public func createExtensionSync(
+            input: AppConfigModel.CreateExtensionRequest) throws -> AppConfigModel.Extension {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensions",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    public func createExtensionAssociationAsync(
+            input: AppConfigModel.CreateExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensionassociations",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    public func createExtensionAssociationSync(
+            input: AppConfigModel.CreateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensionassociations",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateHostedConfigurationVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -772,6 +912,140 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
         do {
             try httpClient.executeSyncRetriableWithoutOutput(
                 endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAsync(
+            input: AppConfigModel.DeleteExtensionRequest, 
+            completion: @escaping (AppConfigError?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteExtensionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/extensions/{ExtensionIdentifier}",
+            httpMethod: .DELETE,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionSync(
+            input: AppConfigModel.DeleteExtensionRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/extensions/{ExtensionIdentifier}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAssociationAsync(
+            input: AppConfigModel.DeleteExtensionAssociationRequest, 
+            completion: @escaping (AppConfigError?) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+            endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+            httpMethod: .DELETE,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAssociationSync(
+            input: AppConfigModel.DeleteExtensionAssociationRequest) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try httpClient.executeSyncRetriableWithoutOutput(
+                endpointPath: "/extensionassociations/{ExtensionAssociationId}",
                 httpMethod: .DELETE,
                 input: requestInput,
                 invocationContext: invocationContext,
@@ -1271,6 +1545,146 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
     }
 
     /**
+     Invokes the GetExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAsync(
+            input: AppConfigModel.GetExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExtensionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensions/{ExtensionIdentifier}",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionSync(
+            input: AppConfigModel.GetExtensionRequest) throws -> AppConfigModel.Extension {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensions/{ExtensionIdentifier}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAssociationAsync(
+            input: AppConfigModel.GetExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAssociationSync(
+            input: AppConfigModel.GetExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetHostedConfigurationVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1679,6 +2093,146 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
         do {
             return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/applications/{ApplicationId}/environments",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExtensionAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+         - completion: The ExtensionAssociations object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociations
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer.
+     */
+    public func listExtensionAssociationsAsync(
+            input: AppConfigModel.ListExtensionAssociationsRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociations, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listExtensionAssociations.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExtensionAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExtensionAssociationsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensionassociations",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListExtensionAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+     - Returns: The ExtensionAssociations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listExtensionAssociationsSync(
+            input: AppConfigModel.ListExtensionAssociationsRequest) throws -> AppConfigModel.ExtensionAssociations {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listExtensionAssociations.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExtensionAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExtensionAssociationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensionassociations",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExtensions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+         - completion: The Extensions object or an error will be passed to this 
+           callback when the operation is complete. The Extensions
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer.
+     */
+    public func listExtensionsAsync(
+            input: AppConfigModel.ListExtensionsRequest, 
+            completion: @escaping (Result<AppConfigModel.Extensions, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listExtensions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExtensions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExtensionsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensions",
+            httpMethod: .GET,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListExtensions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+     - Returns: The Extensions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listExtensionsSync(
+            input: AppConfigModel.ListExtensionsRequest) throws -> AppConfigModel.Extensions {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listExtensions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExtensions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExtensionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensions",
                 httpMethod: .GET,
                 input: requestInput,
                 invocationContext: invocationContext,
@@ -2373,6 +2927,146 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
         do {
             return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAsync(
+            input: AppConfigModel.UpdateExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateExtensionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensions/{ExtensionIdentifier}",
+            httpMethod: .PATCH,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func updateExtensionSync(
+            input: AppConfigModel.UpdateExtensionRequest) throws -> AppConfigModel.Extension {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensions/{ExtensionIdentifier}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAssociationAsync(
+            input: AppConfigModel.UpdateExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+            httpMethod: .PATCH,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAssociationSync(
+            input: AppConfigModel.UpdateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/extensionassociations/{ExtensionAssociationId}",
                 httpMethod: .PATCH,
                 input: requestInput,
                 invocationContext: invocationContext,

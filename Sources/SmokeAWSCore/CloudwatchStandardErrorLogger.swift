@@ -18,7 +18,6 @@
 import Foundation
 import Logging
 
-private var standardError = FileHandle.standardError
 private let sourcesSubString = "Sources/"
 
 /**
@@ -29,9 +28,12 @@ public struct CloudwatchStandardErrorLogger: LogHandler {
     public var metadata: Logger.Metadata
     public var logLevel: Logger.Level
     
+    private let stream: TextOutputStream
+    
     private init(minimumLogLevel: Logger.Level) {
         self.logLevel = minimumLogLevel
         self.metadata = [:]
+        self.stream = StdioOutputStream.stderr
     }
     
     public subscript(metadataKey metadataKey: String) -> Logger.Metadata.Value? {
@@ -90,8 +92,8 @@ public struct CloudwatchStandardErrorLogger: LogHandler {
             tagString = ""
         }
         
-        print("\(shortFileName):\(line):\(function) [\(levelString)] \(tagString)\(message)",
-            to: &standardError)
+        var stream = self.stream
+        stream.write("\(shortFileName):\(line):\(function) [\(levelString)] \(tagString)\(message)\n")
     }
 }
 

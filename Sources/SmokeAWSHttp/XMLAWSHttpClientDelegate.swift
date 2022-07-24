@@ -156,7 +156,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         }
         
         // Convert bodyData to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode error data into XML: \(bodyData.debugString)")
+        invocationReporting.logger.trace("Attempting to decode error data from XML to \(ErrorType.self)",
+                                         metadata: ["body": "\(bodyData.debugString)"])
         
         let cause = try ErrorWrapper<ErrorType>.errorFromBodyData(errorType: ErrorType.self, bodyData: bodyData)
         
@@ -193,7 +194,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             } else {
                 additionalHeaders = []
             }
-            
+
             let body: Data
             if let bodyEncodable = input.bodyEncodable {
                 let encoder = XMLEncoder.awsCompatibleEncoder()
@@ -207,7 +208,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             } else {
                 body = Data()
             }
-            
+
             let query: String
             if let queryEncodable = input.queryEncodable {
                 let queryEncoder = QueryEncoder(
@@ -215,10 +216,10 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
                     mapEncodingStrategy: self.inputQueryMapEncodingStrategy,
                     listEncodingStrategy: self.inputQueryListEncodingStrategy,
                     keyEncodeTransformStrategy: self.inputQueryKeyEncodeTransformStrategy)
-  
+
                 let encodedQuery = try queryEncoder.encode(queryEncodable,
                                                            allowedCharacterSet: .uriAWSQueryValueAllowed)
-                
+
                 if !encodedQuery.isEmpty {
                     query = "?" + encodedQuery
                 } else {
@@ -227,7 +228,7 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
             } else {
                 query = ""
             }
-            
+
             let pathWithQuery = path + query
             
             return HTTPRequestComponents(pathWithQuery: pathWithQuery,
@@ -250,7 +251,8 @@ public struct XMLAWSHttpClientDelegate<ErrorType: Error & Decodable>: HTTPClient
         }
         
         // Convert output to a debug string only if debug logging is enabled
-        invocationReporting.logger.debug("Attempting to decode result data into XML: \(output.debugString)")
+        invocationReporting.logger.trace("Attempting to decode result data from XML to \(OutputType.self)",
+                                         metadata: ["body": "\(output.debugString)"])
         
         func bodyDecodableProvider() throws -> OutputType.BodyType {
             // we are expecting a response body

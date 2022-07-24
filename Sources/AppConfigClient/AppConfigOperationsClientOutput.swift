@@ -77,6 +77,32 @@ extension Environment: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateExtension operation in a HTTP client.
+ */
+extension Extension: HTTPResponseOutputProtocol {
+    public typealias BodyType = Extension
+    public typealias HeadersType = Extension
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> Extension {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateExtensionAssociation operation in a HTTP client.
+ */
+extension ExtensionAssociation: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExtensionAssociation
+    public typealias HeadersType = ExtensionAssociation
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExtensionAssociation {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateHostedConfigurationVersion operation in a HTTP client.
  */
 extension HostedConfigurationVersion: HTTPResponseOutputProtocol {
@@ -191,6 +217,32 @@ extension Environments: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> Environments {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListExtensionAssociations operation in a HTTP client.
+ */
+extension ExtensionAssociations: HTTPResponseOutputProtocol {
+    public typealias BodyType = ExtensionAssociations
+    public typealias HeadersType = ExtensionAssociations
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ExtensionAssociations {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListExtensions operation in a HTTP client.
+ */
+extension Extensions: HTTPResponseOutputProtocol {
+    public typealias BodyType = Extensions
+    public typealias HeadersType = Extensions
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> Extensions {
         return try bodyDecodableProvider()
     }
 }

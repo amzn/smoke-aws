@@ -49,6 +49,16 @@ public protocol AppConfigClientProtocol {
     typealias CreateEnvironmentAsyncType = (
             _ input: AppConfigModel.CreateEnvironmentRequest, 
             _ completion: @escaping (Result<AppConfigModel.Environment, AppConfigError>) -> ()) throws -> ()
+    typealias CreateExtensionSyncType = (
+            _ input: AppConfigModel.CreateExtensionRequest) throws -> AppConfigModel.Extension
+    typealias CreateExtensionAsyncType = (
+            _ input: AppConfigModel.CreateExtensionRequest, 
+            _ completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws -> ()
+    typealias CreateExtensionAssociationSyncType = (
+            _ input: AppConfigModel.CreateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation
+    typealias CreateExtensionAssociationAsyncType = (
+            _ input: AppConfigModel.CreateExtensionAssociationRequest, 
+            _ completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws -> ()
     typealias CreateHostedConfigurationVersionSyncType = (
             _ input: AppConfigModel.CreateHostedConfigurationVersionRequest) throws -> AppConfigModel.HostedConfigurationVersion
     typealias CreateHostedConfigurationVersionAsyncType = (
@@ -73,6 +83,16 @@ public protocol AppConfigClientProtocol {
             _ input: AppConfigModel.DeleteEnvironmentRequest) throws -> ()
     typealias DeleteEnvironmentAsyncType = (
             _ input: AppConfigModel.DeleteEnvironmentRequest, 
+            _ completion: @escaping (AppConfigError?) -> ()) throws -> ()
+    typealias DeleteExtensionSyncType = (
+            _ input: AppConfigModel.DeleteExtensionRequest) throws -> ()
+    typealias DeleteExtensionAsyncType = (
+            _ input: AppConfigModel.DeleteExtensionRequest, 
+            _ completion: @escaping (AppConfigError?) -> ()) throws -> ()
+    typealias DeleteExtensionAssociationSyncType = (
+            _ input: AppConfigModel.DeleteExtensionAssociationRequest) throws -> ()
+    typealias DeleteExtensionAssociationAsyncType = (
+            _ input: AppConfigModel.DeleteExtensionAssociationRequest, 
             _ completion: @escaping (AppConfigError?) -> ()) throws -> ()
     typealias DeleteHostedConfigurationVersionSyncType = (
             _ input: AppConfigModel.DeleteHostedConfigurationVersionRequest) throws -> ()
@@ -109,6 +129,16 @@ public protocol AppConfigClientProtocol {
     typealias GetEnvironmentAsyncType = (
             _ input: AppConfigModel.GetEnvironmentRequest, 
             _ completion: @escaping (Result<AppConfigModel.Environment, AppConfigError>) -> ()) throws -> ()
+    typealias GetExtensionSyncType = (
+            _ input: AppConfigModel.GetExtensionRequest) throws -> AppConfigModel.Extension
+    typealias GetExtensionAsyncType = (
+            _ input: AppConfigModel.GetExtensionRequest, 
+            _ completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws -> ()
+    typealias GetExtensionAssociationSyncType = (
+            _ input: AppConfigModel.GetExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation
+    typealias GetExtensionAssociationAsyncType = (
+            _ input: AppConfigModel.GetExtensionAssociationRequest, 
+            _ completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws -> ()
     typealias GetHostedConfigurationVersionSyncType = (
             _ input: AppConfigModel.GetHostedConfigurationVersionRequest) throws -> AppConfigModel.HostedConfigurationVersion
     typealias GetHostedConfigurationVersionAsyncType = (
@@ -139,6 +169,16 @@ public protocol AppConfigClientProtocol {
     typealias ListEnvironmentsAsyncType = (
             _ input: AppConfigModel.ListEnvironmentsRequest, 
             _ completion: @escaping (Result<AppConfigModel.Environments, AppConfigError>) -> ()) throws -> ()
+    typealias ListExtensionAssociationsSyncType = (
+            _ input: AppConfigModel.ListExtensionAssociationsRequest) throws -> AppConfigModel.ExtensionAssociations
+    typealias ListExtensionAssociationsAsyncType = (
+            _ input: AppConfigModel.ListExtensionAssociationsRequest, 
+            _ completion: @escaping (Result<AppConfigModel.ExtensionAssociations, AppConfigError>) -> ()) throws -> ()
+    typealias ListExtensionsSyncType = (
+            _ input: AppConfigModel.ListExtensionsRequest) throws -> AppConfigModel.Extensions
+    typealias ListExtensionsAsyncType = (
+            _ input: AppConfigModel.ListExtensionsRequest, 
+            _ completion: @escaping (Result<AppConfigModel.Extensions, AppConfigError>) -> ()) throws -> ()
     typealias ListHostedConfigurationVersionsSyncType = (
             _ input: AppConfigModel.ListHostedConfigurationVersionsRequest) throws -> AppConfigModel.HostedConfigurationVersions
     typealias ListHostedConfigurationVersionsAsyncType = (
@@ -189,6 +229,16 @@ public protocol AppConfigClientProtocol {
     typealias UpdateEnvironmentAsyncType = (
             _ input: AppConfigModel.UpdateEnvironmentRequest, 
             _ completion: @escaping (Result<AppConfigModel.Environment, AppConfigError>) -> ()) throws -> ()
+    typealias UpdateExtensionSyncType = (
+            _ input: AppConfigModel.UpdateExtensionRequest) throws -> AppConfigModel.Extension
+    typealias UpdateExtensionAsyncType = (
+            _ input: AppConfigModel.UpdateExtensionRequest, 
+            _ completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws -> ()
+    typealias UpdateExtensionAssociationSyncType = (
+            _ input: AppConfigModel.UpdateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation
+    typealias UpdateExtensionAssociationAsyncType = (
+            _ input: AppConfigModel.UpdateExtensionAssociationRequest, 
+            _ completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws -> ()
     typealias ValidateConfigurationSyncType = (
             _ input: AppConfigModel.ValidateConfigurationRequest) throws -> ()
     typealias ValidateConfigurationAsyncType = (
@@ -298,6 +348,58 @@ public protocol AppConfigClientProtocol {
      */
     func createEnvironmentSync(
             input: AppConfigModel.CreateEnvironmentRequest) throws -> AppConfigModel.Environment
+
+    /**
+     Invokes the CreateExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    func createExtensionAsync(
+            input: AppConfigModel.CreateExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the CreateExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    func createExtensionSync(
+            input: AppConfigModel.CreateExtensionRequest) throws -> AppConfigModel.Extension
+
+    /**
+     Invokes the CreateExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    func createExtensionAssociationAsync(
+            input: AppConfigModel.CreateExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the CreateExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    func createExtensionAssociationSync(
+            input: AppConfigModel.CreateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation
 
     /**
      Invokes the CreateHostedConfigurationVersion operation returning immediately and passing the response to a callback.
@@ -416,6 +518,52 @@ public protocol AppConfigClientProtocol {
      */
     func deleteEnvironmentSync(
             input: AppConfigModel.DeleteEnvironmentRequest) throws
+
+    /**
+     Invokes the DeleteExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    func deleteExtensionAsync(
+            input: AppConfigModel.DeleteExtensionRequest, 
+            completion: @escaping (AppConfigError?) -> ()) throws
+
+    /**
+     Invokes the DeleteExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func deleteExtensionSync(
+            input: AppConfigModel.DeleteExtensionRequest) throws
+
+    /**
+     Invokes the DeleteExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    func deleteExtensionAssociationAsync(
+            input: AppConfigModel.DeleteExtensionAssociationRequest, 
+            completion: @escaping (AppConfigError?) -> ()) throws
+
+    /**
+     Invokes the DeleteExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func deleteExtensionAssociationSync(
+            input: AppConfigModel.DeleteExtensionAssociationRequest) throws
 
     /**
      Invokes the DeleteHostedConfigurationVersion operation returning immediately and passing the response to a callback.
@@ -597,6 +745,58 @@ public protocol AppConfigClientProtocol {
             input: AppConfigModel.GetEnvironmentRequest) throws -> AppConfigModel.Environment
 
     /**
+     Invokes the GetExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    func getExtensionAsync(
+            input: AppConfigModel.GetExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the GetExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func getExtensionSync(
+            input: AppConfigModel.GetExtensionRequest) throws -> AppConfigModel.Extension
+
+    /**
+     Invokes the GetExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    func getExtensionAssociationAsync(
+            input: AppConfigModel.GetExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the GetExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func getExtensionAssociationSync(
+            input: AppConfigModel.GetExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation
+
+    /**
      Invokes the GetHostedConfigurationVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -751,6 +951,58 @@ public protocol AppConfigClientProtocol {
      */
     func listEnvironmentsSync(
             input: AppConfigModel.ListEnvironmentsRequest) throws -> AppConfigModel.Environments
+
+    /**
+     Invokes the ListExtensionAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+         - completion: The ExtensionAssociations object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociations
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer.
+     */
+    func listExtensionAssociationsAsync(
+            input: AppConfigModel.ListExtensionAssociationsRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociations, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the ListExtensionAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+     - Returns: The ExtensionAssociations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    func listExtensionAssociationsSync(
+            input: AppConfigModel.ListExtensionAssociationsRequest) throws -> AppConfigModel.ExtensionAssociations
+
+    /**
+     Invokes the ListExtensions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+         - completion: The Extensions object or an error will be passed to this 
+           callback when the operation is complete. The Extensions
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer.
+     */
+    func listExtensionsAsync(
+            input: AppConfigModel.ListExtensionsRequest, 
+            completion: @escaping (Result<AppConfigModel.Extensions, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the ListExtensions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+     - Returns: The Extensions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    func listExtensionsSync(
+            input: AppConfigModel.ListExtensionsRequest) throws -> AppConfigModel.Extensions
 
     /**
      Invokes the ListHostedConfigurationVersions operation returning immediately and passing the response to a callback.
@@ -1005,6 +1257,58 @@ public protocol AppConfigClientProtocol {
      */
     func updateEnvironmentSync(
             input: AppConfigModel.UpdateEnvironmentRequest) throws -> AppConfigModel.Environment
+
+    /**
+     Invokes the UpdateExtension operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+         - completion: The Extension object or an error will be passed to this 
+           callback when the operation is complete. The Extension
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    func updateExtensionAsync(
+            input: AppConfigModel.UpdateExtensionRequest, 
+            completion: @escaping (Result<AppConfigModel.Extension, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the UpdateExtension operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    func updateExtensionSync(
+            input: AppConfigModel.UpdateExtensionRequest) throws -> AppConfigModel.Extension
+
+    /**
+     Invokes the UpdateExtensionAssociation operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+         - completion: The ExtensionAssociation object or an error will be passed to this 
+           callback when the operation is complete. The ExtensionAssociation
+           object will be validated before being returned to caller.
+           The possible errors are: badRequest, internalServer, resourceNotFound.
+     */
+    func updateExtensionAssociationAsync(
+            input: AppConfigModel.UpdateExtensionAssociationRequest, 
+            completion: @escaping (Result<AppConfigModel.ExtensionAssociation, AppConfigError>) -> ()) throws
+
+    /**
+     Invokes the UpdateExtensionAssociation operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    func updateExtensionAssociationSync(
+            input: AppConfigModel.UpdateExtensionAssociationRequest) throws -> AppConfigModel.ExtensionAssociation
 
     /**
      Invokes the ValidateConfiguration operation returning immediately and passing the response to a callback.

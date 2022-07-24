@@ -56,12 +56,12 @@ public struct AWSClientInvocationDelegate : HTTPClientInvocationDelegate {
         var headersToBeSigned: [String: String] = [:]
         
         guard let operation = operation else {
-            logger.debug("Operation not found for HTTP header for \(service) request, no headers needed for signing.")
+            logger.trace("Operation not found for HTTP header for \(service) request, no headers needed for signing.")
             return headersToBeSigned
         }
         
         guard let target = target else {
-            logger.debug("Target not found for HTTP header, assigning \(operation) to x-amzn-target header.")
+            logger.trace("Target not found for HTTP header, assigning \(operation) to x-amzn-target header.")
             headersToBeSigned["x-amz-target"] = operation
             return headersToBeSigned
         }

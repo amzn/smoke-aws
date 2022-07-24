@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/tachyonics/async-http-middleware-client",
         "state": {
           "branch": "poc",
-          "revision": "6f0f1db03e9042241a6893efad92552cb9f3ae89",
+          "revision": "c25aaec4c12871c25dae8a21286fc73f7553cdfb",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
           "branch": "middleware_poc",
-          "revision": "ffad7307beb5559489261c7cb7966d0d030df00e",
+          "revision": "f114fddd5aa9e8bf5d2213e80d761fa6867e67a8",
           "version": null
         }
       },
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/tachyonics/swift-http-client-middleware",
         "state": {
           "branch": "poc",
-          "revision": "629c5eef202d76f5ec4edb82042005131a0511f4",
+          "revision": "1562e5f8d9704f9e4c8b1c5a63c742ae3e86b724",
           "version": null
         }
       },
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/apple/swift-metrics.git",
         "state": {
           "branch": null,
-          "revision": "1c1408bf8fc21be93713e897d2badf500ea38419",
-          "version": "2.3.1"
+          "revision": "53be78637ecd165d1ddedc4e20de69b8f43ec3b7",
+          "version": "2.3.2"
         }
       },
       {
