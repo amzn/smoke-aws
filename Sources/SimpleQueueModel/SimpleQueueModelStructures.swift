@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AddPermissionRequest: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AddPermissionRequest: Codable, Equatable, Sendable {
     public var aWSAccountIds: AWSAccountIdList
     public var actions: ActionNameList
     public var label: String
@@ -49,7 +51,7 @@ public struct AddPermissionRequest: Codable, Equatable {
     }
 }
 
-public struct BatchEntryIdsNotDistinct: Codable, Equatable {
+public struct BatchEntryIdsNotDistinct: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -58,7 +60,7 @@ public struct BatchEntryIdsNotDistinct: Codable, Equatable {
     }
 }
 
-public struct BatchRequestTooLong: Codable, Equatable {
+public struct BatchRequestTooLong: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -67,7 +69,7 @@ public struct BatchRequestTooLong: Codable, Equatable {
     }
 }
 
-public struct BatchResultErrorEntry: Codable, Equatable {
+public struct BatchResultErrorEntry: Codable, Equatable, Sendable {
     public var code: String
     public var id: String
     public var message: String?
@@ -94,7 +96,7 @@ public struct BatchResultErrorEntry: Codable, Equatable {
     }
 }
 
-public struct ChangeMessageVisibilityBatchRequest: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchRequest: Codable, Equatable, Sendable {
     public var entries: ChangeMessageVisibilityBatchRequestEntryList
     public var queueUrl: String
 
@@ -113,7 +115,7 @@ public struct ChangeMessageVisibilityBatchRequest: Codable, Equatable {
     }
 }
 
-public struct ChangeMessageVisibilityBatchRequestEntry: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchRequestEntry: Codable, Equatable, Sendable {
     public var id: String
     public var receiptHandle: String
     public var visibilityTimeout: Integer?
@@ -136,7 +138,7 @@ public struct ChangeMessageVisibilityBatchRequestEntry: Codable, Equatable {
     }
 }
 
-public struct ChangeMessageVisibilityBatchResult: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchResult: Codable, Equatable, Sendable {
     public var failed: BatchResultErrorEntryList?
     public var successful: ChangeMessageVisibilityBatchResultEntryList?
 
@@ -155,7 +157,7 @@ public struct ChangeMessageVisibilityBatchResult: Codable, Equatable {
     }
 }
 
-public struct ChangeMessageVisibilityBatchResultEntry: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchResultEntry: Codable, Equatable, Sendable {
     public var id: String
 
     public init(id: String) {
@@ -170,7 +172,7 @@ public struct ChangeMessageVisibilityBatchResultEntry: Codable, Equatable {
     }
 }
 
-public struct ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch: Codable, Equatable, Sendable {
     public var changeMessageVisibilityBatchResult: ChangeMessageVisibilityBatchResult
 
     public init(changeMessageVisibilityBatchResult: ChangeMessageVisibilityBatchResult) {
@@ -186,7 +188,7 @@ public struct ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch:
     }
 }
 
-public struct ChangeMessageVisibilityRequest: Codable, Equatable {
+public struct ChangeMessageVisibilityRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
     public var receiptHandle: String
     public var visibilityTimeout: Integer
@@ -209,7 +211,7 @@ public struct ChangeMessageVisibilityRequest: Codable, Equatable {
     }
 }
 
-public struct CreateQueueRequest: Codable, Equatable {
+public struct CreateQueueRequest: Codable, Equatable, Sendable {
     public var attributes: QueueAttributeMap?
     public var queueName: String
     public var tags: TagMap?
@@ -232,7 +234,7 @@ public struct CreateQueueRequest: Codable, Equatable {
     }
 }
 
-public struct CreateQueueResult: Codable, Equatable {
+public struct CreateQueueResult: Codable, Equatable, Sendable {
     public var queueUrl: String?
 
     public init(queueUrl: String? = nil) {
@@ -247,7 +249,7 @@ public struct CreateQueueResult: Codable, Equatable {
     }
 }
 
-public struct CreateQueueResultForCreateQueue: Codable, Equatable {
+public struct CreateQueueResultForCreateQueue: Codable, Equatable, Sendable {
     public var createQueueResult: CreateQueueResult
 
     public init(createQueueResult: CreateQueueResult) {
@@ -263,7 +265,7 @@ public struct CreateQueueResultForCreateQueue: Codable, Equatable {
     }
 }
 
-public struct DeleteMessageBatchRequest: Codable, Equatable {
+public struct DeleteMessageBatchRequest: Codable, Equatable, Sendable {
     public var entries: DeleteMessageBatchRequestEntryList
     public var queueUrl: String
 
@@ -282,7 +284,7 @@ public struct DeleteMessageBatchRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteMessageBatchRequestEntry: Codable, Equatable {
+public struct DeleteMessageBatchRequestEntry: Codable, Equatable, Sendable {
     public var id: String
     public var receiptHandle: String
 
@@ -301,7 +303,7 @@ public struct DeleteMessageBatchRequestEntry: Codable, Equatable {
     }
 }
 
-public struct DeleteMessageBatchResult: Codable, Equatable {
+public struct DeleteMessageBatchResult: Codable, Equatable, Sendable {
     public var failed: BatchResultErrorEntryList?
     public var successful: DeleteMessageBatchResultEntryList?
 
@@ -320,7 +322,7 @@ public struct DeleteMessageBatchResult: Codable, Equatable {
     }
 }
 
-public struct DeleteMessageBatchResultEntry: Codable, Equatable {
+public struct DeleteMessageBatchResultEntry: Codable, Equatable, Sendable {
     public var id: String
 
     public init(id: String) {
@@ -335,7 +337,7 @@ public struct DeleteMessageBatchResultEntry: Codable, Equatable {
     }
 }
 
-public struct DeleteMessageBatchResultForDeleteMessageBatch: Codable, Equatable {
+public struct DeleteMessageBatchResultForDeleteMessageBatch: Codable, Equatable, Sendable {
     public var deleteMessageBatchResult: DeleteMessageBatchResult
 
     public init(deleteMessageBatchResult: DeleteMessageBatchResult) {
@@ -351,7 +353,7 @@ public struct DeleteMessageBatchResultForDeleteMessageBatch: Codable, Equatable 
     }
 }
 
-public struct DeleteMessageRequest: Codable, Equatable {
+public struct DeleteMessageRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
     public var receiptHandle: String
 
@@ -370,7 +372,7 @@ public struct DeleteMessageRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteQueueRequest: Codable, Equatable {
+public struct DeleteQueueRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
 
     public init(queueUrl: String) {
@@ -385,7 +387,7 @@ public struct DeleteQueueRequest: Codable, Equatable {
     }
 }
 
-public struct EmptyBatchRequest: Codable, Equatable {
+public struct EmptyBatchRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -394,7 +396,7 @@ public struct EmptyBatchRequest: Codable, Equatable {
     }
 }
 
-public struct GetQueueAttributesRequest: Codable, Equatable {
+public struct GetQueueAttributesRequest: Codable, Equatable, Sendable {
     public var attributeNames: AttributeNameList?
     public var queueUrl: String
 
@@ -413,7 +415,7 @@ public struct GetQueueAttributesRequest: Codable, Equatable {
     }
 }
 
-public struct GetQueueAttributesResult: Codable, Equatable {
+public struct GetQueueAttributesResult: Codable, Equatable, Sendable {
     public var attributes: QueueAttributeMap?
 
     public init(attributes: QueueAttributeMap? = nil) {
@@ -428,7 +430,7 @@ public struct GetQueueAttributesResult: Codable, Equatable {
     }
 }
 
-public struct GetQueueAttributesResultForGetQueueAttributes: Codable, Equatable {
+public struct GetQueueAttributesResultForGetQueueAttributes: Codable, Equatable, Sendable {
     public var getQueueAttributesResult: GetQueueAttributesResult
 
     public init(getQueueAttributesResult: GetQueueAttributesResult) {
@@ -444,7 +446,7 @@ public struct GetQueueAttributesResultForGetQueueAttributes: Codable, Equatable 
     }
 }
 
-public struct GetQueueUrlRequest: Codable, Equatable {
+public struct GetQueueUrlRequest: Codable, Equatable, Sendable {
     public var queueName: String
     public var queueOwnerAWSAccountId: String?
 
@@ -463,7 +465,7 @@ public struct GetQueueUrlRequest: Codable, Equatable {
     }
 }
 
-public struct GetQueueUrlResult: Codable, Equatable {
+public struct GetQueueUrlResult: Codable, Equatable, Sendable {
     public var queueUrl: String?
 
     public init(queueUrl: String? = nil) {
@@ -478,7 +480,7 @@ public struct GetQueueUrlResult: Codable, Equatable {
     }
 }
 
-public struct GetQueueUrlResultForGetQueueUrl: Codable, Equatable {
+public struct GetQueueUrlResultForGetQueueUrl: Codable, Equatable, Sendable {
     public var getQueueUrlResult: GetQueueUrlResult
 
     public init(getQueueUrlResult: GetQueueUrlResult) {
@@ -494,7 +496,7 @@ public struct GetQueueUrlResultForGetQueueUrl: Codable, Equatable {
     }
 }
 
-public struct InvalidAttributeName: Codable, Equatable {
+public struct InvalidAttributeName: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -503,7 +505,7 @@ public struct InvalidAttributeName: Codable, Equatable {
     }
 }
 
-public struct InvalidBatchEntryId: Codable, Equatable {
+public struct InvalidBatchEntryId: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -512,7 +514,7 @@ public struct InvalidBatchEntryId: Codable, Equatable {
     }
 }
 
-public struct InvalidIdFormat: Codable, Equatable {
+public struct InvalidIdFormat: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -521,7 +523,7 @@ public struct InvalidIdFormat: Codable, Equatable {
     }
 }
 
-public struct InvalidMessageContents: Codable, Equatable {
+public struct InvalidMessageContents: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -530,7 +532,7 @@ public struct InvalidMessageContents: Codable, Equatable {
     }
 }
 
-public struct ListDeadLetterSourceQueuesRequest: Codable, Equatable {
+public struct ListDeadLetterSourceQueuesRequest: Codable, Equatable, Sendable {
     public var maxResults: BoxedInteger?
     public var nextToken: Token?
     public var queueUrl: String
@@ -553,7 +555,7 @@ public struct ListDeadLetterSourceQueuesRequest: Codable, Equatable {
     }
 }
 
-public struct ListDeadLetterSourceQueuesResult: Codable, Equatable {
+public struct ListDeadLetterSourceQueuesResult: Codable, Equatable, Sendable {
     public var nextToken: Token?
     public var queueUrls: QueueUrlList?
 
@@ -572,7 +574,7 @@ public struct ListDeadLetterSourceQueuesResult: Codable, Equatable {
     }
 }
 
-public struct ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues: Codable, Equatable {
+public struct ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues: Codable, Equatable, Sendable {
     public var listDeadLetterSourceQueuesResult: ListDeadLetterSourceQueuesResult
 
     public init(listDeadLetterSourceQueuesResult: ListDeadLetterSourceQueuesResult) {
@@ -588,7 +590,7 @@ public struct ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues: Cod
     }
 }
 
-public struct ListQueueTagsRequest: Codable, Equatable {
+public struct ListQueueTagsRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
 
     public init(queueUrl: String) {
@@ -603,7 +605,7 @@ public struct ListQueueTagsRequest: Codable, Equatable {
     }
 }
 
-public struct ListQueueTagsResult: Codable, Equatable {
+public struct ListQueueTagsResult: Codable, Equatable, Sendable {
     public var tags: TagMap?
 
     public init(tags: TagMap? = nil) {
@@ -618,7 +620,7 @@ public struct ListQueueTagsResult: Codable, Equatable {
     }
 }
 
-public struct ListQueueTagsResultForListQueueTags: Codable, Equatable {
+public struct ListQueueTagsResultForListQueueTags: Codable, Equatable, Sendable {
     public var listQueueTagsResult: ListQueueTagsResult
 
     public init(listQueueTagsResult: ListQueueTagsResult) {
@@ -634,7 +636,7 @@ public struct ListQueueTagsResultForListQueueTags: Codable, Equatable {
     }
 }
 
-public struct ListQueuesRequest: Codable, Equatable {
+public struct ListQueuesRequest: Codable, Equatable, Sendable {
     public var maxResults: BoxedInteger?
     public var nextToken: Token?
     public var queueNamePrefix: String?
@@ -657,7 +659,7 @@ public struct ListQueuesRequest: Codable, Equatable {
     }
 }
 
-public struct ListQueuesResult: Codable, Equatable {
+public struct ListQueuesResult: Codable, Equatable, Sendable {
     public var nextToken: Token?
     public var queueUrls: QueueUrlList?
 
@@ -676,7 +678,7 @@ public struct ListQueuesResult: Codable, Equatable {
     }
 }
 
-public struct ListQueuesResultForListQueues: Codable, Equatable {
+public struct ListQueuesResultForListQueues: Codable, Equatable, Sendable {
     public var listQueuesResult: ListQueuesResult
 
     public init(listQueuesResult: ListQueuesResult) {
@@ -692,7 +694,7 @@ public struct ListQueuesResultForListQueues: Codable, Equatable {
     }
 }
 
-public struct Message: Codable, Equatable {
+public struct Message: Codable, Equatable, Sendable {
     public var attributes: MessageSystemAttributeMap?
     public var body: String?
     public var mD5OfBody: String?
@@ -731,7 +733,7 @@ public struct Message: Codable, Equatable {
     }
 }
 
-public struct MessageAttributeValue: Codable, Equatable {
+public struct MessageAttributeValue: Codable, Equatable, Sendable {
     public var binaryListValues: BinaryList?
     public var binaryValue: Binary?
     public var dataType: String
@@ -762,7 +764,7 @@ public struct MessageAttributeValue: Codable, Equatable {
     }
 }
 
-public struct MessageNotInflight: Codable, Equatable {
+public struct MessageNotInflight: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -771,7 +773,7 @@ public struct MessageNotInflight: Codable, Equatable {
     }
 }
 
-public struct MessageSystemAttributeValue: Codable, Equatable {
+public struct MessageSystemAttributeValue: Codable, Equatable, Sendable {
     public var binaryListValues: BinaryList?
     public var binaryValue: Binary?
     public var dataType: String
@@ -802,7 +804,7 @@ public struct MessageSystemAttributeValue: Codable, Equatable {
     }
 }
 
-public struct OverLimit: Codable, Equatable {
+public struct OverLimit: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -811,7 +813,7 @@ public struct OverLimit: Codable, Equatable {
     }
 }
 
-public struct PurgeQueueInProgress: Codable, Equatable {
+public struct PurgeQueueInProgress: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -820,7 +822,7 @@ public struct PurgeQueueInProgress: Codable, Equatable {
     }
 }
 
-public struct PurgeQueueRequest: Codable, Equatable {
+public struct PurgeQueueRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
 
     public init(queueUrl: String) {
@@ -835,7 +837,7 @@ public struct PurgeQueueRequest: Codable, Equatable {
     }
 }
 
-public struct QueueDeletedRecently: Codable, Equatable {
+public struct QueueDeletedRecently: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -844,7 +846,7 @@ public struct QueueDeletedRecently: Codable, Equatable {
     }
 }
 
-public struct QueueDoesNotExist: Codable, Equatable {
+public struct QueueDoesNotExist: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -853,7 +855,7 @@ public struct QueueDoesNotExist: Codable, Equatable {
     }
 }
 
-public struct QueueNameExists: Codable, Equatable {
+public struct QueueNameExists: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -862,7 +864,7 @@ public struct QueueNameExists: Codable, Equatable {
     }
 }
 
-public struct ReceiptHandleIsInvalid: Codable, Equatable {
+public struct ReceiptHandleIsInvalid: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -871,7 +873,7 @@ public struct ReceiptHandleIsInvalid: Codable, Equatable {
     }
 }
 
-public struct ReceiveMessageRequest: Codable, Equatable {
+public struct ReceiveMessageRequest: Codable, Equatable, Sendable {
     public var attributeNames: AttributeNameList?
     public var maxNumberOfMessages: Integer?
     public var messageAttributeNames: MessageAttributeNameList?
@@ -910,7 +912,7 @@ public struct ReceiveMessageRequest: Codable, Equatable {
     }
 }
 
-public struct ReceiveMessageResult: Codable, Equatable {
+public struct ReceiveMessageResult: Codable, Equatable, Sendable {
     public var messages: MessageList?
 
     public init(messages: MessageList? = nil) {
@@ -925,7 +927,7 @@ public struct ReceiveMessageResult: Codable, Equatable {
     }
 }
 
-public struct ReceiveMessageResultForReceiveMessage: Codable, Equatable {
+public struct ReceiveMessageResultForReceiveMessage: Codable, Equatable, Sendable {
     public var receiveMessageResult: ReceiveMessageResult
 
     public init(receiveMessageResult: ReceiveMessageResult) {
@@ -941,7 +943,7 @@ public struct ReceiveMessageResultForReceiveMessage: Codable, Equatable {
     }
 }
 
-public struct RemovePermissionRequest: Codable, Equatable {
+public struct RemovePermissionRequest: Codable, Equatable, Sendable {
     public var label: String
     public var queueUrl: String
 
@@ -960,7 +962,7 @@ public struct RemovePermissionRequest: Codable, Equatable {
     }
 }
 
-public struct SendMessageBatchRequest: Codable, Equatable {
+public struct SendMessageBatchRequest: Codable, Equatable, Sendable {
     public var entries: SendMessageBatchRequestEntryList
     public var queueUrl: String
 
@@ -979,7 +981,7 @@ public struct SendMessageBatchRequest: Codable, Equatable {
     }
 }
 
-public struct SendMessageBatchRequestEntry: Codable, Equatable {
+public struct SendMessageBatchRequestEntry: Codable, Equatable, Sendable {
     public var delaySeconds: Integer?
     public var id: String
     public var messageAttributes: MessageBodyAttributeMap?
@@ -1018,7 +1020,7 @@ public struct SendMessageBatchRequestEntry: Codable, Equatable {
     }
 }
 
-public struct SendMessageBatchResult: Codable, Equatable {
+public struct SendMessageBatchResult: Codable, Equatable, Sendable {
     public var failed: BatchResultErrorEntryList?
     public var successful: SendMessageBatchResultEntryList?
 
@@ -1037,7 +1039,7 @@ public struct SendMessageBatchResult: Codable, Equatable {
     }
 }
 
-public struct SendMessageBatchResultEntry: Codable, Equatable {
+public struct SendMessageBatchResultEntry: Codable, Equatable, Sendable {
     public var id: String
     public var mD5OfMessageAttributes: String?
     public var mD5OfMessageBody: String
@@ -1072,7 +1074,7 @@ public struct SendMessageBatchResultEntry: Codable, Equatable {
     }
 }
 
-public struct SendMessageBatchResultForSendMessageBatch: Codable, Equatable {
+public struct SendMessageBatchResultForSendMessageBatch: Codable, Equatable, Sendable {
     public var sendMessageBatchResult: SendMessageBatchResult
 
     public init(sendMessageBatchResult: SendMessageBatchResult) {
@@ -1088,7 +1090,7 @@ public struct SendMessageBatchResultForSendMessageBatch: Codable, Equatable {
     }
 }
 
-public struct SendMessageRequest: Codable, Equatable {
+public struct SendMessageRequest: Codable, Equatable, Sendable {
     public var delaySeconds: Integer?
     public var messageAttributes: MessageBodyAttributeMap?
     public var messageBody: String
@@ -1127,7 +1129,7 @@ public struct SendMessageRequest: Codable, Equatable {
     }
 }
 
-public struct SendMessageResult: Codable, Equatable {
+public struct SendMessageResult: Codable, Equatable, Sendable {
     public var mD5OfMessageAttributes: String?
     public var mD5OfMessageBody: String?
     public var mD5OfMessageSystemAttributes: String?
@@ -1158,7 +1160,7 @@ public struct SendMessageResult: Codable, Equatable {
     }
 }
 
-public struct SendMessageResultForSendMessage: Codable, Equatable {
+public struct SendMessageResultForSendMessage: Codable, Equatable, Sendable {
     public var sendMessageResult: SendMessageResult
 
     public init(sendMessageResult: SendMessageResult) {
@@ -1174,7 +1176,7 @@ public struct SendMessageResultForSendMessage: Codable, Equatable {
     }
 }
 
-public struct SetQueueAttributesRequest: Codable, Equatable {
+public struct SetQueueAttributesRequest: Codable, Equatable, Sendable {
     public var attributes: QueueAttributeMap
     public var queueUrl: String
 
@@ -1193,7 +1195,7 @@ public struct SetQueueAttributesRequest: Codable, Equatable {
     }
 }
 
-public struct TagQueueRequest: Codable, Equatable {
+public struct TagQueueRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
     public var tags: TagMap
 
@@ -1212,7 +1214,7 @@ public struct TagQueueRequest: Codable, Equatable {
     }
 }
 
-public struct TooManyEntriesInBatchRequest: Codable, Equatable {
+public struct TooManyEntriesInBatchRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1221,7 +1223,7 @@ public struct TooManyEntriesInBatchRequest: Codable, Equatable {
     }
 }
 
-public struct UnsupportedOperation: Codable, Equatable {
+public struct UnsupportedOperation: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1230,7 +1232,7 @@ public struct UnsupportedOperation: Codable, Equatable {
     }
 }
 
-public struct UntagQueueRequest: Codable, Equatable {
+public struct UntagQueueRequest: Codable, Equatable, Sendable {
     public var queueUrl: String
     public var tagKeys: TagKeyList
 

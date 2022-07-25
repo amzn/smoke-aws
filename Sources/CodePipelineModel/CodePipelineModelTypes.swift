@@ -40,7 +40,7 @@ public typealias AccountId = String
 /**
  Enumeration restricting the values of the ActionCategory field.
  */
-public enum ActionCategory: String, Codable, CustomStringConvertible {
+public enum ActionCategory: String, Codable, CustomStringConvertible, Sendable {
     case approval = "Approval"
     case build = "Build"
     case deploy = "Deploy"
@@ -73,7 +73,7 @@ public typealias ActionConfigurationPropertyList = [ActionConfigurationProperty]
 /**
  Enumeration restricting the values of the ActionConfigurationPropertyType field.
  */
-public enum ActionConfigurationPropertyType: String, Codable, CustomStringConvertible {
+public enum ActionConfigurationPropertyType: String, Codable, CustomStringConvertible, Sendable {
     case boolean = "Boolean"
     case number = "Number"
     case string = "String"
@@ -108,7 +108,7 @@ public typealias ActionExecutionId = String
 /**
  Enumeration restricting the values of the ActionExecutionStatus field.
  */
-public enum ActionExecutionStatus: String, Codable, CustomStringConvertible {
+public enum ActionExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case abandoned = "Abandoned"
     case failed = "Failed"
     case inProgress = "InProgress"
@@ -139,7 +139,7 @@ public typealias ActionNamespace = String
 /**
  Enumeration restricting the values of the ActionOwner field.
  */
-public enum ActionOwner: String, Codable, CustomStringConvertible {
+public enum ActionOwner: String, Codable, CustomStringConvertible, Sendable {
     case aws = "AWS"
     case custom = "Custom"
     case thirdParty = "ThirdParty"
@@ -199,7 +199,7 @@ public typealias AllowedAccounts = [AllowedAccount]
 /**
  Enumeration restricting the values of the ApprovalStatus field.
  */
-public enum ApprovalStatus: String, Codable, CustomStringConvertible {
+public enum ApprovalStatus: String, Codable, CustomStringConvertible, Sendable {
     case approved = "Approved"
     case rejected = "Rejected"
 
@@ -233,7 +233,7 @@ public typealias ArtifactList = [Artifact]
 /**
  Enumeration restricting the values of the ArtifactLocationType field.
  */
-public enum ArtifactLocationType: String, Codable, CustomStringConvertible {
+public enum ArtifactLocationType: String, Codable, CustomStringConvertible, Sendable {
     case s3 = "S3"
 
     public var description: String {
@@ -266,7 +266,7 @@ public typealias ArtifactStoreMap = [AWSRegionName: ArtifactStore]
 /**
  Enumeration restricting the values of the ArtifactStoreType field.
  */
-public enum ArtifactStoreType: String, Codable, CustomStringConvertible {
+public enum ArtifactStoreType: String, Codable, CustomStringConvertible, Sendable {
     case s3 = "S3"
 
     public var description: String {
@@ -284,7 +284,7 @@ public typealias BlockerName = String
 /**
  Enumeration restricting the values of the BlockerType field.
  */
-public enum BlockerType: String, Codable, CustomStringConvertible {
+public enum BlockerType: String, Codable, CustomStringConvertible, Sendable {
     case schedule = "Schedule"
 
     public var description: String {
@@ -347,7 +347,7 @@ public typealias EncryptionKeyId = String
 /**
  Enumeration restricting the values of the EncryptionKeyType field.
  */
-public enum EncryptionKeyType: String, Codable, CustomStringConvertible {
+public enum EncryptionKeyType: String, Codable, CustomStringConvertible, Sendable {
     case kms = "KMS"
 
     public var description: String {
@@ -370,7 +370,7 @@ public typealias ExecutionSummary = String
 /**
  Enumeration restricting the values of the ExecutorType field.
  */
-public enum ExecutorType: String, Codable, CustomStringConvertible {
+public enum ExecutorType: String, Codable, CustomStringConvertible, Sendable {
     case jobWorker = "JobWorker"
     case lambda = "Lambda"
 
@@ -394,7 +394,7 @@ public typealias ExternalExecutionSummary = String
 /**
  Enumeration restricting the values of the FailureType field.
  */
-public enum FailureType: String, Codable, CustomStringConvertible {
+public enum FailureType: String, Codable, CustomStringConvertible, Sendable {
     case configurationError = "ConfigurationError"
     case jobFailed = "JobFailed"
     case permissionError = "PermissionError"
@@ -427,7 +427,7 @@ public typealias JobList = [Job]
 /**
  Enumeration restricting the values of the JobStatus field.
  */
-public enum JobStatus: String, Codable, CustomStringConvertible {
+public enum JobStatus: String, Codable, CustomStringConvertible, Sendable {
     case created = "Created"
     case dispatched = "Dispatched"
     case failed = "Failed"
@@ -566,7 +566,7 @@ public typealias PipelineExecutionId = String
 /**
  Enumeration restricting the values of the PipelineExecutionStatus field.
  */
-public enum PipelineExecutionStatus: String, Codable, CustomStringConvertible {
+public enum PipelineExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case cancelled = "Cancelled"
     case failed = "Failed"
     case inProgress = "InProgress"
@@ -720,7 +720,7 @@ public typealias StageBlockerDeclarationList = [BlockerDeclaration]
 /**
  Enumeration restricting the values of the StageExecutionStatus field.
  */
-public enum StageExecutionStatus: String, Codable, CustomStringConvertible {
+public enum StageExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case cancelled = "Cancelled"
     case failed = "Failed"
     case inProgress = "InProgress"
@@ -743,7 +743,7 @@ public typealias StageName = String
 /**
  Enumeration restricting the values of the StageRetryMode field.
  */
-public enum StageRetryMode: String, Codable, CustomStringConvertible {
+public enum StageRetryMode: String, Codable, CustomStringConvertible, Sendable {
     case failedActions = "FAILED_ACTIONS"
 
     public var description: String {
@@ -761,7 +761,7 @@ public typealias StageStateList = [StageState]
 /**
  Enumeration restricting the values of the StageTransitionType field.
  */
-public enum StageTransitionType: String, Codable, CustomStringConvertible {
+public enum StageTransitionType: String, Codable, CustomStringConvertible, Sendable {
     case inbound = "Inbound"
     case outbound = "Outbound"
 
@@ -825,7 +825,7 @@ public typealias TriggerDetail = String
 /**
  Enumeration restricting the values of the TriggerType field.
  */
-public enum TriggerType: String, Codable, CustomStringConvertible {
+public enum TriggerType: String, Codable, CustomStringConvertible, Sendable {
     case cloudWatchEvent = "CloudWatchEvent"
     case createPipeline = "CreatePipeline"
     case pollForSourceChanges = "PollForSourceChanges"
@@ -873,7 +873,7 @@ public typealias WebhookAuthConfigurationSecretToken = String
 /**
  Enumeration restricting the values of the WebhookAuthenticationType field.
  */
-public enum WebhookAuthenticationType: String, Codable, CustomStringConvertible {
+public enum WebhookAuthenticationType: String, Codable, CustomStringConvertible, Sendable {
     case githubHmac = "GITHUB_HMAC"
     case ip = "IP"
     case unauthenticated = "UNAUTHENTICATED"

@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AccessDeniedException: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AccessDeniedException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -31,7 +33,7 @@ public struct AccessDeniedException: Codable, Equatable {
     }
 }
 
-public struct Attachment: Codable, Equatable {
+public struct Attachment: Codable, Equatable, Sendable {
     public var details: AttachmentDetails?
     public var id: String?
     public var status: String?
@@ -58,7 +60,7 @@ public struct Attachment: Codable, Equatable {
     }
 }
 
-public struct AttachmentStateChange: Codable, Equatable {
+public struct AttachmentStateChange: Codable, Equatable, Sendable {
     public var attachmentArn: String
     public var status: String
 
@@ -77,7 +79,7 @@ public struct AttachmentStateChange: Codable, Equatable {
     }
 }
 
-public struct Attribute: Codable, Equatable {
+public struct Attribute: Codable, Equatable, Sendable {
     public var name: String
     public var targetId: String?
     public var targetType: TargetType?
@@ -104,7 +106,7 @@ public struct Attribute: Codable, Equatable {
     }
 }
 
-public struct AttributeLimitExceededException: Codable, Equatable {
+public struct AttributeLimitExceededException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -113,7 +115,7 @@ public struct AttributeLimitExceededException: Codable, Equatable {
     }
 }
 
-public struct AutoScalingGroupProvider: Codable, Equatable {
+public struct AutoScalingGroupProvider: Codable, Equatable, Sendable {
     public var autoScalingGroupArn: String
     public var managedScaling: ManagedScaling?
     public var managedTerminationProtection: ManagedTerminationProtection?
@@ -137,7 +139,7 @@ public struct AutoScalingGroupProvider: Codable, Equatable {
     }
 }
 
-public struct AutoScalingGroupProviderUpdate: Codable, Equatable {
+public struct AutoScalingGroupProviderUpdate: Codable, Equatable, Sendable {
     public var managedScaling: ManagedScaling?
     public var managedTerminationProtection: ManagedTerminationProtection?
 
@@ -157,7 +159,7 @@ public struct AutoScalingGroupProviderUpdate: Codable, Equatable {
     }
 }
 
-public struct AwsVpcConfiguration: Codable, Equatable {
+public struct AwsVpcConfiguration: Codable, Equatable, Sendable {
     public var assignPublicIp: AssignPublicIp?
     public var securityGroups: StringList?
     public var subnets: StringList
@@ -180,7 +182,7 @@ public struct AwsVpcConfiguration: Codable, Equatable {
     }
 }
 
-public struct BlockedException: Codable, Equatable {
+public struct BlockedException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -189,7 +191,7 @@ public struct BlockedException: Codable, Equatable {
     }
 }
 
-public struct CapacityProvider: Codable, Equatable {
+public struct CapacityProvider: Codable, Equatable, Sendable {
     public var autoScalingGroupProvider: AutoScalingGroupProvider?
     public var capacityProviderArn: String?
     public var name: String?
@@ -230,7 +232,7 @@ public struct CapacityProvider: Codable, Equatable {
     }
 }
 
-public struct CapacityProviderStrategyItem: Codable, Equatable {
+public struct CapacityProviderStrategyItem: Codable, Equatable, Sendable {
     public var base: CapacityProviderStrategyItemBase?
     public var capacityProvider: String
     public var weight: CapacityProviderStrategyItemWeight?
@@ -255,7 +257,7 @@ public struct CapacityProviderStrategyItem: Codable, Equatable {
     }
 }
 
-public struct ClientException: Codable, Equatable {
+public struct ClientException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -270,7 +272,7 @@ public struct ClientException: Codable, Equatable {
     }
 }
 
-public struct Cluster: Codable, Equatable {
+public struct Cluster: Codable, Equatable, Sendable {
     public var activeServicesCount: Integer?
     public var attachments: Attachments?
     public var attachmentsStatus: String?
@@ -343,7 +345,7 @@ public struct Cluster: Codable, Equatable {
     }
 }
 
-public struct ClusterConfiguration: Codable, Equatable {
+public struct ClusterConfiguration: Codable, Equatable, Sendable {
     public var executeCommandConfiguration: ExecuteCommandConfiguration?
 
     public init(executeCommandConfiguration: ExecuteCommandConfiguration? = nil) {
@@ -359,7 +361,7 @@ public struct ClusterConfiguration: Codable, Equatable {
     }
 }
 
-public struct ClusterContainsContainerInstancesException: Codable, Equatable {
+public struct ClusterContainsContainerInstancesException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -368,7 +370,7 @@ public struct ClusterContainsContainerInstancesException: Codable, Equatable {
     }
 }
 
-public struct ClusterContainsServicesException: Codable, Equatable {
+public struct ClusterContainsServicesException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -377,7 +379,7 @@ public struct ClusterContainsServicesException: Codable, Equatable {
     }
 }
 
-public struct ClusterContainsTasksException: Codable, Equatable {
+public struct ClusterContainsTasksException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -386,7 +388,7 @@ public struct ClusterContainsTasksException: Codable, Equatable {
     }
 }
 
-public struct ClusterNotFoundException: Codable, Equatable {
+public struct ClusterNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -395,7 +397,7 @@ public struct ClusterNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ClusterSetting: Codable, Equatable {
+public struct ClusterSetting: Codable, Equatable, Sendable {
     public var name: ClusterSettingName?
     public var value: String?
 
@@ -414,7 +416,7 @@ public struct ClusterSetting: Codable, Equatable {
     }
 }
 
-public struct Container: Codable, Equatable {
+public struct Container: Codable, Equatable, Sendable {
     public var containerArn: String?
     public var cpu: String?
     public var exitCode: BoxedInteger?
@@ -493,7 +495,7 @@ public struct Container: Codable, Equatable {
     }
 }
 
-public struct ContainerDefinition: Codable, Equatable {
+public struct ContainerDefinition: Codable, Equatable, Sendable {
     public var command: StringList?
     public var cpu: Integer?
     public var dependsOn: ContainerDependencies?
@@ -665,7 +667,7 @@ public struct ContainerDefinition: Codable, Equatable {
     }
 }
 
-public struct ContainerDependency: Codable, Equatable {
+public struct ContainerDependency: Codable, Equatable, Sendable {
     public var condition: ContainerCondition
     public var containerName: String
 
@@ -684,7 +686,7 @@ public struct ContainerDependency: Codable, Equatable {
     }
 }
 
-public struct ContainerInstance: Codable, Equatable {
+public struct ContainerInstance: Codable, Equatable, Sendable {
     public var agentConnected: Boolean?
     public var agentUpdateStatus: AgentUpdateStatus?
     public var attachments: Attachments?
@@ -770,7 +772,7 @@ public struct ContainerInstance: Codable, Equatable {
     }
 }
 
-public struct ContainerInstanceHealthStatus: Codable, Equatable {
+public struct ContainerInstanceHealthStatus: Codable, Equatable, Sendable {
     public var details: InstanceHealthCheckResultList?
     public var overallStatus: InstanceHealthCheckState?
 
@@ -789,7 +791,7 @@ public struct ContainerInstanceHealthStatus: Codable, Equatable {
     }
 }
 
-public struct ContainerOverride: Codable, Equatable {
+public struct ContainerOverride: Codable, Equatable, Sendable {
     public var command: StringList?
     public var cpu: BoxedInteger?
     public var environment: EnvironmentVariables?
@@ -832,7 +834,7 @@ public struct ContainerOverride: Codable, Equatable {
     }
 }
 
-public struct ContainerStateChange: Codable, Equatable {
+public struct ContainerStateChange: Codable, Equatable, Sendable {
     public var containerName: String?
     public var exitCode: BoxedInteger?
     public var imageDigest: String?
@@ -871,7 +873,7 @@ public struct ContainerStateChange: Codable, Equatable {
     }
 }
 
-public struct CreateCapacityProviderRequest: Codable, Equatable {
+public struct CreateCapacityProviderRequest: Codable, Equatable, Sendable {
     public var autoScalingGroupProvider: AutoScalingGroupProvider
     public var name: String
     public var tags: Tags?
@@ -896,7 +898,7 @@ public struct CreateCapacityProviderRequest: Codable, Equatable {
     }
 }
 
-public struct CreateCapacityProviderResponse: Codable, Equatable {
+public struct CreateCapacityProviderResponse: Codable, Equatable, Sendable {
     public var capacityProvider: CapacityProvider?
 
     public init(capacityProvider: CapacityProvider? = nil) {
@@ -912,7 +914,7 @@ public struct CreateCapacityProviderResponse: Codable, Equatable {
     }
 }
 
-public struct CreateClusterRequest: Codable, Equatable {
+public struct CreateClusterRequest: Codable, Equatable, Sendable {
     public var capacityProviders: StringList?
     public var clusterName: String?
     public var configuration: ClusterConfiguration?
@@ -949,7 +951,7 @@ public struct CreateClusterRequest: Codable, Equatable {
     }
 }
 
-public struct CreateClusterResponse: Codable, Equatable {
+public struct CreateClusterResponse: Codable, Equatable, Sendable {
     public var cluster: Cluster?
 
     public init(cluster: Cluster? = nil) {
@@ -965,7 +967,7 @@ public struct CreateClusterResponse: Codable, Equatable {
     }
 }
 
-public struct CreateServiceRequest: Codable, Equatable {
+public struct CreateServiceRequest: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clientToken: String?
     public var cluster: String?
@@ -1068,7 +1070,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     }
 }
 
-public struct CreateServiceResponse: Codable, Equatable {
+public struct CreateServiceResponse: Codable, Equatable, Sendable {
     public var service: Service?
 
     public init(service: Service? = nil) {
@@ -1084,7 +1086,7 @@ public struct CreateServiceResponse: Codable, Equatable {
     }
 }
 
-public struct CreateTaskSetRequest: Codable, Equatable {
+public struct CreateTaskSetRequest: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clientToken: String?
     public var cluster: String
@@ -1150,7 +1152,7 @@ public struct CreateTaskSetRequest: Codable, Equatable {
     }
 }
 
-public struct CreateTaskSetResponse: Codable, Equatable {
+public struct CreateTaskSetResponse: Codable, Equatable, Sendable {
     public var taskSet: TaskSet?
 
     public init(taskSet: TaskSet? = nil) {
@@ -1166,7 +1168,7 @@ public struct CreateTaskSetResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteAccountSettingRequest: Codable, Equatable {
+public struct DeleteAccountSettingRequest: Codable, Equatable, Sendable {
     public var name: SettingName
     public var principalArn: String?
 
@@ -1185,7 +1187,7 @@ public struct DeleteAccountSettingRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteAccountSettingResponse: Codable, Equatable {
+public struct DeleteAccountSettingResponse: Codable, Equatable, Sendable {
     public var setting: Setting?
 
     public init(setting: Setting? = nil) {
@@ -1201,7 +1203,7 @@ public struct DeleteAccountSettingResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteAttributesRequest: Codable, Equatable {
+public struct DeleteAttributesRequest: Codable, Equatable, Sendable {
     public var attributes: Attributes
     public var cluster: String?
 
@@ -1220,7 +1222,7 @@ public struct DeleteAttributesRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteAttributesResponse: Codable, Equatable {
+public struct DeleteAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: Attributes?
 
     public init(attributes: Attributes? = nil) {
@@ -1235,7 +1237,7 @@ public struct DeleteAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteCapacityProviderRequest: Codable, Equatable {
+public struct DeleteCapacityProviderRequest: Codable, Equatable, Sendable {
     public var capacityProvider: String
 
     public init(capacityProvider: String) {
@@ -1250,7 +1252,7 @@ public struct DeleteCapacityProviderRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteCapacityProviderResponse: Codable, Equatable {
+public struct DeleteCapacityProviderResponse: Codable, Equatable, Sendable {
     public var capacityProvider: CapacityProvider?
 
     public init(capacityProvider: CapacityProvider? = nil) {
@@ -1266,7 +1268,7 @@ public struct DeleteCapacityProviderResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteClusterRequest: Codable, Equatable {
+public struct DeleteClusterRequest: Codable, Equatable, Sendable {
     public var cluster: String
 
     public init(cluster: String) {
@@ -1281,7 +1283,7 @@ public struct DeleteClusterRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteClusterResponse: Codable, Equatable {
+public struct DeleteClusterResponse: Codable, Equatable, Sendable {
     public var cluster: Cluster?
 
     public init(cluster: Cluster? = nil) {
@@ -1297,7 +1299,7 @@ public struct DeleteClusterResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteServiceRequest: Codable, Equatable {
+public struct DeleteServiceRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var force: BoxedBoolean?
     public var service: String
@@ -1320,7 +1322,7 @@ public struct DeleteServiceRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteServiceResponse: Codable, Equatable {
+public struct DeleteServiceResponse: Codable, Equatable, Sendable {
     public var service: Service?
 
     public init(service: Service? = nil) {
@@ -1336,7 +1338,7 @@ public struct DeleteServiceResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteTaskSetRequest: Codable, Equatable {
+public struct DeleteTaskSetRequest: Codable, Equatable, Sendable {
     public var cluster: String
     public var force: BoxedBoolean?
     public var service: String
@@ -1363,7 +1365,7 @@ public struct DeleteTaskSetRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteTaskSetResponse: Codable, Equatable {
+public struct DeleteTaskSetResponse: Codable, Equatable, Sendable {
     public var taskSet: TaskSet?
 
     public init(taskSet: TaskSet? = nil) {
@@ -1379,7 +1381,7 @@ public struct DeleteTaskSetResponse: Codable, Equatable {
     }
 }
 
-public struct Deployment: Codable, Equatable {
+public struct Deployment: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var createdAt: Timestamp?
     public var desiredCount: Integer?
@@ -1455,7 +1457,7 @@ public struct Deployment: Codable, Equatable {
     }
 }
 
-public struct DeploymentCircuitBreaker: Codable, Equatable {
+public struct DeploymentCircuitBreaker: Codable, Equatable, Sendable {
     public var enable: Boolean
     public var rollback: Boolean
 
@@ -1474,7 +1476,7 @@ public struct DeploymentCircuitBreaker: Codable, Equatable {
     }
 }
 
-public struct DeploymentConfiguration: Codable, Equatable {
+public struct DeploymentConfiguration: Codable, Equatable, Sendable {
     public var deploymentCircuitBreaker: DeploymentCircuitBreaker?
     public var maximumPercent: BoxedInteger?
     public var minimumHealthyPercent: BoxedInteger?
@@ -1498,7 +1500,7 @@ public struct DeploymentConfiguration: Codable, Equatable {
     }
 }
 
-public struct DeploymentController: Codable, Equatable {
+public struct DeploymentController: Codable, Equatable, Sendable {
     public var type: DeploymentControllerType
 
     public init(type: DeploymentControllerType) {
@@ -1513,7 +1515,7 @@ public struct DeploymentController: Codable, Equatable {
     }
 }
 
-public struct DeregisterContainerInstanceRequest: Codable, Equatable {
+public struct DeregisterContainerInstanceRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstance: String
     public var force: BoxedBoolean?
@@ -1536,7 +1538,7 @@ public struct DeregisterContainerInstanceRequest: Codable, Equatable {
     }
 }
 
-public struct DeregisterContainerInstanceResponse: Codable, Equatable {
+public struct DeregisterContainerInstanceResponse: Codable, Equatable, Sendable {
     public var containerInstance: ContainerInstance?
 
     public init(containerInstance: ContainerInstance? = nil) {
@@ -1552,7 +1554,7 @@ public struct DeregisterContainerInstanceResponse: Codable, Equatable {
     }
 }
 
-public struct DeregisterTaskDefinitionRequest: Codable, Equatable {
+public struct DeregisterTaskDefinitionRequest: Codable, Equatable, Sendable {
     public var taskDefinition: String
 
     public init(taskDefinition: String) {
@@ -1567,7 +1569,7 @@ public struct DeregisterTaskDefinitionRequest: Codable, Equatable {
     }
 }
 
-public struct DeregisterTaskDefinitionResponse: Codable, Equatable {
+public struct DeregisterTaskDefinitionResponse: Codable, Equatable, Sendable {
     public var taskDefinition: TaskDefinition?
 
     public init(taskDefinition: TaskDefinition? = nil) {
@@ -1583,7 +1585,7 @@ public struct DeregisterTaskDefinitionResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeCapacityProvidersRequest: Codable, Equatable {
+public struct DescribeCapacityProvidersRequest: Codable, Equatable, Sendable {
     public var capacityProviders: StringList?
     public var include: CapacityProviderFieldList?
     public var maxResults: BoxedInteger?
@@ -1610,7 +1612,7 @@ public struct DescribeCapacityProvidersRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeCapacityProvidersResponse: Codable, Equatable {
+public struct DescribeCapacityProvidersResponse: Codable, Equatable, Sendable {
     public var capacityProviders: CapacityProviders?
     public var failures: Failures?
     public var nextToken: String?
@@ -1633,7 +1635,7 @@ public struct DescribeCapacityProvidersResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeClustersRequest: Codable, Equatable {
+public struct DescribeClustersRequest: Codable, Equatable, Sendable {
     public var clusters: StringList?
     public var include: ClusterFieldList?
 
@@ -1652,7 +1654,7 @@ public struct DescribeClustersRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeClustersResponse: Codable, Equatable {
+public struct DescribeClustersResponse: Codable, Equatable, Sendable {
     public var clusters: Clusters?
     public var failures: Failures?
 
@@ -1671,7 +1673,7 @@ public struct DescribeClustersResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeContainerInstancesRequest: Codable, Equatable {
+public struct DescribeContainerInstancesRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstances: StringList
     public var include: ContainerInstanceFieldList?
@@ -1694,7 +1696,7 @@ public struct DescribeContainerInstancesRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeContainerInstancesResponse: Codable, Equatable {
+public struct DescribeContainerInstancesResponse: Codable, Equatable, Sendable {
     public var containerInstances: ContainerInstances?
     public var failures: Failures?
 
@@ -1713,7 +1715,7 @@ public struct DescribeContainerInstancesResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeServicesRequest: Codable, Equatable {
+public struct DescribeServicesRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var include: ServiceFieldList?
     public var services: StringList
@@ -1736,7 +1738,7 @@ public struct DescribeServicesRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeServicesResponse: Codable, Equatable {
+public struct DescribeServicesResponse: Codable, Equatable, Sendable {
     public var failures: Failures?
     public var services: Services?
 
@@ -1755,7 +1757,7 @@ public struct DescribeServicesResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeTaskDefinitionRequest: Codable, Equatable {
+public struct DescribeTaskDefinitionRequest: Codable, Equatable, Sendable {
     public var include: TaskDefinitionFieldList?
     public var taskDefinition: String
 
@@ -1774,7 +1776,7 @@ public struct DescribeTaskDefinitionRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeTaskDefinitionResponse: Codable, Equatable {
+public struct DescribeTaskDefinitionResponse: Codable, Equatable, Sendable {
     public var tags: Tags?
     public var taskDefinition: TaskDefinition?
 
@@ -1795,7 +1797,7 @@ public struct DescribeTaskDefinitionResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeTaskSetsRequest: Codable, Equatable {
+public struct DescribeTaskSetsRequest: Codable, Equatable, Sendable {
     public var cluster: String
     public var include: TaskSetFieldList?
     public var service: String
@@ -1822,7 +1824,7 @@ public struct DescribeTaskSetsRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeTaskSetsResponse: Codable, Equatable {
+public struct DescribeTaskSetsResponse: Codable, Equatable, Sendable {
     public var failures: Failures?
     public var taskSets: TaskSets?
 
@@ -1841,7 +1843,7 @@ public struct DescribeTaskSetsResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeTasksRequest: Codable, Equatable {
+public struct DescribeTasksRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var include: TaskFieldList?
     public var tasks: StringList
@@ -1864,7 +1866,7 @@ public struct DescribeTasksRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeTasksResponse: Codable, Equatable {
+public struct DescribeTasksResponse: Codable, Equatable, Sendable {
     public var failures: Failures?
     public var tasks: Tasks?
 
@@ -1883,7 +1885,7 @@ public struct DescribeTasksResponse: Codable, Equatable {
     }
 }
 
-public struct Device: Codable, Equatable {
+public struct Device: Codable, Equatable, Sendable {
     public var containerPath: String?
     public var hostPath: String
     public var permissions: DeviceCgroupPermissions?
@@ -1906,7 +1908,7 @@ public struct Device: Codable, Equatable {
     }
 }
 
-public struct DiscoverPollEndpointRequest: Codable, Equatable {
+public struct DiscoverPollEndpointRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstance: String?
 
@@ -1925,7 +1927,7 @@ public struct DiscoverPollEndpointRequest: Codable, Equatable {
     }
 }
 
-public struct DiscoverPollEndpointResponse: Codable, Equatable {
+public struct DiscoverPollEndpointResponse: Codable, Equatable, Sendable {
     public var endpoint: String?
     public var telemetryEndpoint: String?
 
@@ -1944,7 +1946,7 @@ public struct DiscoverPollEndpointResponse: Codable, Equatable {
     }
 }
 
-public struct DockerVolumeConfiguration: Codable, Equatable {
+public struct DockerVolumeConfiguration: Codable, Equatable, Sendable {
     public var autoprovision: BoxedBoolean?
     public var driver: String?
     public var driverOpts: StringMap?
@@ -1975,7 +1977,7 @@ public struct DockerVolumeConfiguration: Codable, Equatable {
     }
 }
 
-public struct EFSAuthorizationConfig: Codable, Equatable {
+public struct EFSAuthorizationConfig: Codable, Equatable, Sendable {
     public var accessPointId: String?
     public var iam: EFSAuthorizationConfigIAM?
 
@@ -1994,7 +1996,7 @@ public struct EFSAuthorizationConfig: Codable, Equatable {
     }
 }
 
-public struct EFSVolumeConfiguration: Codable, Equatable {
+public struct EFSVolumeConfiguration: Codable, Equatable, Sendable {
     public var authorizationConfig: EFSAuthorizationConfig?
     public var fileSystemId: String
     public var rootDirectory: String?
@@ -2026,7 +2028,7 @@ public struct EFSVolumeConfiguration: Codable, Equatable {
     }
 }
 
-public struct EnvironmentFile: Codable, Equatable {
+public struct EnvironmentFile: Codable, Equatable, Sendable {
     public var type: EnvironmentFileType
     public var value: String
 
@@ -2045,7 +2047,7 @@ public struct EnvironmentFile: Codable, Equatable {
     }
 }
 
-public struct EphemeralStorage: Codable, Equatable {
+public struct EphemeralStorage: Codable, Equatable, Sendable {
     public var sizeInGiB: Integer
 
     public init(sizeInGiB: Integer) {
@@ -2060,7 +2062,7 @@ public struct EphemeralStorage: Codable, Equatable {
     }
 }
 
-public struct ExecuteCommandConfiguration: Codable, Equatable {
+public struct ExecuteCommandConfiguration: Codable, Equatable, Sendable {
     public var kmsKeyId: String?
     public var logConfiguration: ExecuteCommandLogConfiguration?
     public var logging: ExecuteCommandLogging?
@@ -2084,7 +2086,7 @@ public struct ExecuteCommandConfiguration: Codable, Equatable {
     }
 }
 
-public struct ExecuteCommandLogConfiguration: Codable, Equatable {
+public struct ExecuteCommandLogConfiguration: Codable, Equatable, Sendable {
     public var cloudWatchEncryptionEnabled: Boolean?
     public var cloudWatchLogGroupName: String?
     public var s3BucketName: String?
@@ -2115,7 +2117,7 @@ public struct ExecuteCommandLogConfiguration: Codable, Equatable {
     }
 }
 
-public struct ExecuteCommandRequest: Codable, Equatable {
+public struct ExecuteCommandRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var command: String
     public var container: String?
@@ -2146,7 +2148,7 @@ public struct ExecuteCommandRequest: Codable, Equatable {
     }
 }
 
-public struct ExecuteCommandResponse: Codable, Equatable {
+public struct ExecuteCommandResponse: Codable, Equatable, Sendable {
     public var clusterArn: String?
     public var containerArn: String?
     public var containerName: String?
@@ -2182,7 +2184,7 @@ public struct ExecuteCommandResponse: Codable, Equatable {
     }
 }
 
-public struct FSxWindowsFileServerAuthorizationConfig: Codable, Equatable {
+public struct FSxWindowsFileServerAuthorizationConfig: Codable, Equatable, Sendable {
     public var credentialsParameter: String
     public var domain: String
 
@@ -2201,7 +2203,7 @@ public struct FSxWindowsFileServerAuthorizationConfig: Codable, Equatable {
     }
 }
 
-public struct FSxWindowsFileServerVolumeConfiguration: Codable, Equatable {
+public struct FSxWindowsFileServerVolumeConfiguration: Codable, Equatable, Sendable {
     public var authorizationConfig: FSxWindowsFileServerAuthorizationConfig
     public var fileSystemId: String
     public var rootDirectory: String
@@ -2225,7 +2227,7 @@ public struct FSxWindowsFileServerVolumeConfiguration: Codable, Equatable {
     }
 }
 
-public struct Failure: Codable, Equatable {
+public struct Failure: Codable, Equatable, Sendable {
     public var arn: String?
     public var detail: String?
     public var reason: String?
@@ -2248,7 +2250,7 @@ public struct Failure: Codable, Equatable {
     }
 }
 
-public struct FirelensConfiguration: Codable, Equatable {
+public struct FirelensConfiguration: Codable, Equatable, Sendable {
     public var options: FirelensConfigurationOptionsMap?
     public var type: FirelensConfigurationType
 
@@ -2267,7 +2269,7 @@ public struct FirelensConfiguration: Codable, Equatable {
     }
 }
 
-public struct HealthCheck: Codable, Equatable {
+public struct HealthCheck: Codable, Equatable, Sendable {
     public var command: StringList
     public var interval: BoxedInteger?
     public var retries: BoxedInteger?
@@ -2298,7 +2300,7 @@ public struct HealthCheck: Codable, Equatable {
     }
 }
 
-public struct HostEntry: Codable, Equatable {
+public struct HostEntry: Codable, Equatable, Sendable {
     public var hostname: String
     public var ipAddress: String
 
@@ -2317,7 +2319,7 @@ public struct HostEntry: Codable, Equatable {
     }
 }
 
-public struct HostVolumeProperties: Codable, Equatable {
+public struct HostVolumeProperties: Codable, Equatable, Sendable {
     public var sourcePath: String?
 
     public init(sourcePath: String? = nil) {
@@ -2332,7 +2334,7 @@ public struct HostVolumeProperties: Codable, Equatable {
     }
 }
 
-public struct InferenceAccelerator: Codable, Equatable {
+public struct InferenceAccelerator: Codable, Equatable, Sendable {
     public var deviceName: String
     public var deviceType: String
 
@@ -2351,7 +2353,7 @@ public struct InferenceAccelerator: Codable, Equatable {
     }
 }
 
-public struct InferenceAcceleratorOverride: Codable, Equatable {
+public struct InferenceAcceleratorOverride: Codable, Equatable, Sendable {
     public var deviceName: String?
     public var deviceType: String?
 
@@ -2370,7 +2372,7 @@ public struct InferenceAcceleratorOverride: Codable, Equatable {
     }
 }
 
-public struct InstanceHealthCheckResult: Codable, Equatable {
+public struct InstanceHealthCheckResult: Codable, Equatable, Sendable {
     public var lastStatusChange: Timestamp?
     public var lastUpdated: Timestamp?
     public var status: InstanceHealthCheckState?
@@ -2397,7 +2399,7 @@ public struct InstanceHealthCheckResult: Codable, Equatable {
     }
 }
 
-public struct InvalidParameterException: Codable, Equatable {
+public struct InvalidParameterException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2406,7 +2408,7 @@ public struct InvalidParameterException: Codable, Equatable {
     }
 }
 
-public struct KernelCapabilities: Codable, Equatable {
+public struct KernelCapabilities: Codable, Equatable, Sendable {
     public var add: StringList?
     public var drop: StringList?
 
@@ -2425,7 +2427,7 @@ public struct KernelCapabilities: Codable, Equatable {
     }
 }
 
-public struct KeyValuePair: Codable, Equatable {
+public struct KeyValuePair: Codable, Equatable, Sendable {
     public var name: String?
     public var value: String?
 
@@ -2444,7 +2446,7 @@ public struct KeyValuePair: Codable, Equatable {
     }
 }
 
-public struct LimitExceededException: Codable, Equatable {
+public struct LimitExceededException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2453,7 +2455,7 @@ public struct LimitExceededException: Codable, Equatable {
     }
 }
 
-public struct LinuxParameters: Codable, Equatable {
+public struct LinuxParameters: Codable, Equatable, Sendable {
     public var capabilities: KernelCapabilities?
     public var devices: DevicesList?
     public var initProcessEnabled: BoxedBoolean?
@@ -2493,7 +2495,7 @@ public struct LinuxParameters: Codable, Equatable {
     }
 }
 
-public struct ListAccountSettingsRequest: Codable, Equatable {
+public struct ListAccountSettingsRequest: Codable, Equatable, Sendable {
     public var effectiveSettings: Boolean?
     public var maxResults: Integer?
     public var name: SettingName?
@@ -2528,7 +2530,7 @@ public struct ListAccountSettingsRequest: Codable, Equatable {
     }
 }
 
-public struct ListAccountSettingsResponse: Codable, Equatable {
+public struct ListAccountSettingsResponse: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var settings: Settings?
 
@@ -2547,7 +2549,7 @@ public struct ListAccountSettingsResponse: Codable, Equatable {
     }
 }
 
-public struct ListAttributesRequest: Codable, Equatable {
+public struct ListAttributesRequest: Codable, Equatable, Sendable {
     public var attributeName: String?
     public var attributeValue: String?
     public var cluster: String?
@@ -2582,7 +2584,7 @@ public struct ListAttributesRequest: Codable, Equatable {
     }
 }
 
-public struct ListAttributesResponse: Codable, Equatable {
+public struct ListAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: Attributes?
     public var nextToken: String?
 
@@ -2601,7 +2603,7 @@ public struct ListAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct ListClustersRequest: Codable, Equatable {
+public struct ListClustersRequest: Codable, Equatable, Sendable {
     public var maxResults: BoxedInteger?
     public var nextToken: String?
 
@@ -2620,7 +2622,7 @@ public struct ListClustersRequest: Codable, Equatable {
     }
 }
 
-public struct ListClustersResponse: Codable, Equatable {
+public struct ListClustersResponse: Codable, Equatable, Sendable {
     public var clusterArns: StringList?
     public var nextToken: String?
 
@@ -2639,7 +2641,7 @@ public struct ListClustersResponse: Codable, Equatable {
     }
 }
 
-public struct ListContainerInstancesRequest: Codable, Equatable {
+public struct ListContainerInstancesRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var filter: String?
     public var maxResults: BoxedInteger?
@@ -2670,7 +2672,7 @@ public struct ListContainerInstancesRequest: Codable, Equatable {
     }
 }
 
-public struct ListContainerInstancesResponse: Codable, Equatable {
+public struct ListContainerInstancesResponse: Codable, Equatable, Sendable {
     public var containerInstanceArns: StringList?
     public var nextToken: String?
 
@@ -2689,7 +2691,7 @@ public struct ListContainerInstancesResponse: Codable, Equatable {
     }
 }
 
-public struct ListServicesRequest: Codable, Equatable {
+public struct ListServicesRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var launchType: LaunchType?
     public var maxResults: BoxedInteger?
@@ -2720,7 +2722,7 @@ public struct ListServicesRequest: Codable, Equatable {
     }
 }
 
-public struct ListServicesResponse: Codable, Equatable {
+public struct ListServicesResponse: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var serviceArns: StringList?
 
@@ -2739,7 +2741,7 @@ public struct ListServicesResponse: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceRequest: Codable, Equatable {
+public struct ListTagsForResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: String
 
     public init(resourceArn: String) {
@@ -2754,7 +2756,7 @@ public struct ListTagsForResourceRequest: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceResponse: Codable, Equatable {
+public struct ListTagsForResourceResponse: Codable, Equatable, Sendable {
     public var tags: Tags?
 
     public init(tags: Tags? = nil) {
@@ -2770,7 +2772,7 @@ public struct ListTagsForResourceResponse: Codable, Equatable {
     }
 }
 
-public struct ListTaskDefinitionFamiliesRequest: Codable, Equatable {
+public struct ListTaskDefinitionFamiliesRequest: Codable, Equatable, Sendable {
     public var familyPrefix: String?
     public var maxResults: BoxedInteger?
     public var nextToken: String?
@@ -2797,7 +2799,7 @@ public struct ListTaskDefinitionFamiliesRequest: Codable, Equatable {
     }
 }
 
-public struct ListTaskDefinitionFamiliesResponse: Codable, Equatable {
+public struct ListTaskDefinitionFamiliesResponse: Codable, Equatable, Sendable {
     public var families: StringList?
     public var nextToken: String?
 
@@ -2816,7 +2818,7 @@ public struct ListTaskDefinitionFamiliesResponse: Codable, Equatable {
     }
 }
 
-public struct ListTaskDefinitionsRequest: Codable, Equatable {
+public struct ListTaskDefinitionsRequest: Codable, Equatable, Sendable {
     public var familyPrefix: String?
     public var maxResults: BoxedInteger?
     public var nextToken: String?
@@ -2847,7 +2849,7 @@ public struct ListTaskDefinitionsRequest: Codable, Equatable {
     }
 }
 
-public struct ListTaskDefinitionsResponse: Codable, Equatable {
+public struct ListTaskDefinitionsResponse: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var taskDefinitionArns: StringList?
 
@@ -2866,7 +2868,7 @@ public struct ListTaskDefinitionsResponse: Codable, Equatable {
     }
 }
 
-public struct ListTasksRequest: Codable, Equatable {
+public struct ListTasksRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstance: String?
     public var desiredStatus: DesiredStatus?
@@ -2913,7 +2915,7 @@ public struct ListTasksRequest: Codable, Equatable {
     }
 }
 
-public struct ListTasksResponse: Codable, Equatable {
+public struct ListTasksResponse: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var taskArns: StringList?
 
@@ -2932,7 +2934,7 @@ public struct ListTasksResponse: Codable, Equatable {
     }
 }
 
-public struct LoadBalancer: Codable, Equatable {
+public struct LoadBalancer: Codable, Equatable, Sendable {
     public var containerName: String?
     public var containerPort: BoxedInteger?
     public var loadBalancerName: String?
@@ -2959,7 +2961,7 @@ public struct LoadBalancer: Codable, Equatable {
     }
 }
 
-public struct LogConfiguration: Codable, Equatable {
+public struct LogConfiguration: Codable, Equatable, Sendable {
     public var logDriver: LogDriver
     public var options: LogConfigurationOptionsMap?
     public var secretOptions: SecretList?
@@ -2982,7 +2984,7 @@ public struct LogConfiguration: Codable, Equatable {
     }
 }
 
-public struct ManagedAgent: Codable, Equatable {
+public struct ManagedAgent: Codable, Equatable, Sendable {
     public var lastStartedAt: Timestamp?
     public var lastStatus: String?
     public var name: ManagedAgentName?
@@ -3009,7 +3011,7 @@ public struct ManagedAgent: Codable, Equatable {
     }
 }
 
-public struct ManagedAgentStateChange: Codable, Equatable {
+public struct ManagedAgentStateChange: Codable, Equatable, Sendable {
     public var containerName: String
     public var managedAgentName: ManagedAgentName
     public var reason: String?
@@ -3036,7 +3038,7 @@ public struct ManagedAgentStateChange: Codable, Equatable {
     }
 }
 
-public struct ManagedScaling: Codable, Equatable {
+public struct ManagedScaling: Codable, Equatable, Sendable {
     public var instanceWarmupPeriod: ManagedScalingInstanceWarmupPeriod?
     public var maximumScalingStepSize: ManagedScalingStepSize?
     public var minimumScalingStepSize: ManagedScalingStepSize?
@@ -3071,7 +3073,7 @@ public struct ManagedScaling: Codable, Equatable {
     }
 }
 
-public struct MissingVersionException: Codable, Equatable {
+public struct MissingVersionException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3080,7 +3082,7 @@ public struct MissingVersionException: Codable, Equatable {
     }
 }
 
-public struct MountPoint: Codable, Equatable {
+public struct MountPoint: Codable, Equatable, Sendable {
     public var containerPath: String?
     public var readOnly: BoxedBoolean?
     public var sourceVolume: String?
@@ -3103,7 +3105,7 @@ public struct MountPoint: Codable, Equatable {
     }
 }
 
-public struct NetworkBinding: Codable, Equatable {
+public struct NetworkBinding: Codable, Equatable, Sendable {
     public var bindIP: String?
     public var containerPort: BoxedInteger?
     public var hostPort: BoxedInteger?
@@ -3130,7 +3132,7 @@ public struct NetworkBinding: Codable, Equatable {
     }
 }
 
-public struct NetworkConfiguration: Codable, Equatable {
+public struct NetworkConfiguration: Codable, Equatable, Sendable {
     public var awsvpcConfiguration: AwsVpcConfiguration?
 
     public init(awsvpcConfiguration: AwsVpcConfiguration? = nil) {
@@ -3146,7 +3148,7 @@ public struct NetworkConfiguration: Codable, Equatable {
     }
 }
 
-public struct NetworkInterface: Codable, Equatable {
+public struct NetworkInterface: Codable, Equatable, Sendable {
     public var attachmentId: String?
     public var ipv6Address: String?
     public var privateIpv4Address: String?
@@ -3169,7 +3171,7 @@ public struct NetworkInterface: Codable, Equatable {
     }
 }
 
-public struct NoUpdateAvailableException: Codable, Equatable {
+public struct NoUpdateAvailableException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3178,7 +3180,7 @@ public struct NoUpdateAvailableException: Codable, Equatable {
     }
 }
 
-public struct PlacementConstraint: Codable, Equatable {
+public struct PlacementConstraint: Codable, Equatable, Sendable {
     public var expression: String?
     public var type: PlacementConstraintType?
 
@@ -3197,7 +3199,7 @@ public struct PlacementConstraint: Codable, Equatable {
     }
 }
 
-public struct PlacementStrategy: Codable, Equatable {
+public struct PlacementStrategy: Codable, Equatable, Sendable {
     public var field: String?
     public var type: PlacementStrategyType?
 
@@ -3216,7 +3218,7 @@ public struct PlacementStrategy: Codable, Equatable {
     }
 }
 
-public struct PlatformDevice: Codable, Equatable {
+public struct PlatformDevice: Codable, Equatable, Sendable {
     public var id: String
     public var type: PlatformDeviceType
 
@@ -3235,7 +3237,7 @@ public struct PlatformDevice: Codable, Equatable {
     }
 }
 
-public struct PlatformTaskDefinitionIncompatibilityException: Codable, Equatable {
+public struct PlatformTaskDefinitionIncompatibilityException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3244,7 +3246,7 @@ public struct PlatformTaskDefinitionIncompatibilityException: Codable, Equatable
     }
 }
 
-public struct PlatformUnknownException: Codable, Equatable {
+public struct PlatformUnknownException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3253,7 +3255,7 @@ public struct PlatformUnknownException: Codable, Equatable {
     }
 }
 
-public struct PortMapping: Codable, Equatable {
+public struct PortMapping: Codable, Equatable, Sendable {
     public var containerPort: BoxedInteger?
     public var hostPort: BoxedInteger?
     public var `protocol`: TransportProtocol?
@@ -3276,7 +3278,7 @@ public struct PortMapping: Codable, Equatable {
     }
 }
 
-public struct ProxyConfiguration: Codable, Equatable {
+public struct ProxyConfiguration: Codable, Equatable, Sendable {
     public var containerName: String
     public var properties: ProxyConfigurationProperties?
     public var type: ProxyConfigurationType?
@@ -3299,7 +3301,7 @@ public struct ProxyConfiguration: Codable, Equatable {
     }
 }
 
-public struct PutAccountSettingDefaultRequest: Codable, Equatable {
+public struct PutAccountSettingDefaultRequest: Codable, Equatable, Sendable {
     public var name: SettingName
     public var value: String
 
@@ -3318,7 +3320,7 @@ public struct PutAccountSettingDefaultRequest: Codable, Equatable {
     }
 }
 
-public struct PutAccountSettingDefaultResponse: Codable, Equatable {
+public struct PutAccountSettingDefaultResponse: Codable, Equatable, Sendable {
     public var setting: Setting?
 
     public init(setting: Setting? = nil) {
@@ -3334,7 +3336,7 @@ public struct PutAccountSettingDefaultResponse: Codable, Equatable {
     }
 }
 
-public struct PutAccountSettingRequest: Codable, Equatable {
+public struct PutAccountSettingRequest: Codable, Equatable, Sendable {
     public var name: SettingName
     public var principalArn: String?
     public var value: String
@@ -3357,7 +3359,7 @@ public struct PutAccountSettingRequest: Codable, Equatable {
     }
 }
 
-public struct PutAccountSettingResponse: Codable, Equatable {
+public struct PutAccountSettingResponse: Codable, Equatable, Sendable {
     public var setting: Setting?
 
     public init(setting: Setting? = nil) {
@@ -3373,7 +3375,7 @@ public struct PutAccountSettingResponse: Codable, Equatable {
     }
 }
 
-public struct PutAttributesRequest: Codable, Equatable {
+public struct PutAttributesRequest: Codable, Equatable, Sendable {
     public var attributes: Attributes
     public var cluster: String?
 
@@ -3392,7 +3394,7 @@ public struct PutAttributesRequest: Codable, Equatable {
     }
 }
 
-public struct PutAttributesResponse: Codable, Equatable {
+public struct PutAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: Attributes?
 
     public init(attributes: Attributes? = nil) {
@@ -3407,7 +3409,7 @@ public struct PutAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct PutClusterCapacityProvidersRequest: Codable, Equatable {
+public struct PutClusterCapacityProvidersRequest: Codable, Equatable, Sendable {
     public var capacityProviders: StringList
     public var cluster: String
     public var defaultCapacityProviderStrategy: CapacityProviderStrategy
@@ -3430,7 +3432,7 @@ public struct PutClusterCapacityProvidersRequest: Codable, Equatable {
     }
 }
 
-public struct PutClusterCapacityProvidersResponse: Codable, Equatable {
+public struct PutClusterCapacityProvidersResponse: Codable, Equatable, Sendable {
     public var cluster: Cluster?
 
     public init(cluster: Cluster? = nil) {
@@ -3446,7 +3448,7 @@ public struct PutClusterCapacityProvidersResponse: Codable, Equatable {
     }
 }
 
-public struct RegisterContainerInstanceRequest: Codable, Equatable {
+public struct RegisterContainerInstanceRequest: Codable, Equatable, Sendable {
     public var attributes: Attributes?
     public var cluster: String?
     public var containerInstanceArn: String?
@@ -3495,7 +3497,7 @@ public struct RegisterContainerInstanceRequest: Codable, Equatable {
     }
 }
 
-public struct RegisterContainerInstanceResponse: Codable, Equatable {
+public struct RegisterContainerInstanceResponse: Codable, Equatable, Sendable {
     public var containerInstance: ContainerInstance?
 
     public init(containerInstance: ContainerInstance? = nil) {
@@ -3511,7 +3513,7 @@ public struct RegisterContainerInstanceResponse: Codable, Equatable {
     }
 }
 
-public struct RegisterTaskDefinitionRequest: Codable, Equatable {
+public struct RegisterTaskDefinitionRequest: Codable, Equatable, Sendable {
     public var containerDefinitions: ContainerDefinitions
     public var cpu: String?
     public var ephemeralStorage: EphemeralStorage?
@@ -3594,7 +3596,7 @@ public struct RegisterTaskDefinitionRequest: Codable, Equatable {
     }
 }
 
-public struct RegisterTaskDefinitionResponse: Codable, Equatable {
+public struct RegisterTaskDefinitionResponse: Codable, Equatable, Sendable {
     public var tags: Tags?
     public var taskDefinition: TaskDefinition?
 
@@ -3615,7 +3617,7 @@ public struct RegisterTaskDefinitionResponse: Codable, Equatable {
     }
 }
 
-public struct RepositoryCredentials: Codable, Equatable {
+public struct RepositoryCredentials: Codable, Equatable, Sendable {
     public var credentialsParameter: String
 
     public init(credentialsParameter: String) {
@@ -3630,7 +3632,7 @@ public struct RepositoryCredentials: Codable, Equatable {
     }
 }
 
-public struct Resource: Codable, Equatable {
+public struct Resource: Codable, Equatable, Sendable {
     public var doubleValue: Double?
     public var integerValue: Integer?
     public var longValue: Long?
@@ -3665,7 +3667,7 @@ public struct Resource: Codable, Equatable {
     }
 }
 
-public struct ResourceInUseException: Codable, Equatable {
+public struct ResourceInUseException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3674,7 +3676,7 @@ public struct ResourceInUseException: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundException: Codable, Equatable {
+public struct ResourceNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3683,7 +3685,7 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ResourceRequirement: Codable, Equatable {
+public struct ResourceRequirement: Codable, Equatable, Sendable {
     public var type: ResourceType
     public var value: String
 
@@ -3702,7 +3704,7 @@ public struct ResourceRequirement: Codable, Equatable {
     }
 }
 
-public struct RunTaskRequest: Codable, Equatable {
+public struct RunTaskRequest: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var cluster: String?
     public var count: BoxedInteger?
@@ -3784,7 +3786,7 @@ public struct RunTaskRequest: Codable, Equatable {
     }
 }
 
-public struct RunTaskResponse: Codable, Equatable {
+public struct RunTaskResponse: Codable, Equatable, Sendable {
     public var failures: Failures?
     public var tasks: Tasks?
 
@@ -3803,7 +3805,7 @@ public struct RunTaskResponse: Codable, Equatable {
     }
 }
 
-public struct RuntimePlatform: Codable, Equatable {
+public struct RuntimePlatform: Codable, Equatable, Sendable {
     public var cpuArchitecture: CPUArchitecture?
     public var operatingSystemFamily: OSFamily?
 
@@ -3822,7 +3824,7 @@ public struct RuntimePlatform: Codable, Equatable {
     }
 }
 
-public struct Scale: Codable, Equatable {
+public struct Scale: Codable, Equatable, Sendable {
     public var unit: ScaleUnit?
     public var value: Double?
 
@@ -3841,7 +3843,7 @@ public struct Scale: Codable, Equatable {
     }
 }
 
-public struct Secret: Codable, Equatable {
+public struct Secret: Codable, Equatable, Sendable {
     public var name: String
     public var valueFrom: String
 
@@ -3860,7 +3862,7 @@ public struct Secret: Codable, Equatable {
     }
 }
 
-public struct ServerException: Codable, Equatable {
+public struct ServerException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -3875,7 +3877,7 @@ public struct ServerException: Codable, Equatable {
     }
 }
 
-public struct Service: Codable, Equatable {
+public struct Service: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clusterArn: String?
     public var createdAt: Timestamp?
@@ -4014,7 +4016,7 @@ public struct Service: Codable, Equatable {
     }
 }
 
-public struct ServiceEvent: Codable, Equatable {
+public struct ServiceEvent: Codable, Equatable, Sendable {
     public var createdAt: Timestamp?
     public var id: String?
     public var message: String?
@@ -4037,7 +4039,7 @@ public struct ServiceEvent: Codable, Equatable {
     }
 }
 
-public struct ServiceNotActiveException: Codable, Equatable {
+public struct ServiceNotActiveException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4046,7 +4048,7 @@ public struct ServiceNotActiveException: Codable, Equatable {
     }
 }
 
-public struct ServiceNotFoundException: Codable, Equatable {
+public struct ServiceNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4055,7 +4057,7 @@ public struct ServiceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ServiceRegistry: Codable, Equatable {
+public struct ServiceRegistry: Codable, Equatable, Sendable {
     public var containerName: String?
     public var containerPort: BoxedInteger?
     public var port: BoxedInteger?
@@ -4082,7 +4084,7 @@ public struct ServiceRegistry: Codable, Equatable {
     }
 }
 
-public struct Session: Codable, Equatable {
+public struct Session: Codable, Equatable, Sendable {
     public var sessionId: String?
     public var streamUrl: String?
     public var tokenValue: SensitiveString?
@@ -4105,7 +4107,7 @@ public struct Session: Codable, Equatable {
     }
 }
 
-public struct Setting: Codable, Equatable {
+public struct Setting: Codable, Equatable, Sendable {
     public var name: SettingName?
     public var principalArn: String?
     public var value: String?
@@ -4128,7 +4130,7 @@ public struct Setting: Codable, Equatable {
     }
 }
 
-public struct StartTaskRequest: Codable, Equatable {
+public struct StartTaskRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstances: StringList
     public var enableECSManagedTags: Boolean?
@@ -4190,7 +4192,7 @@ public struct StartTaskRequest: Codable, Equatable {
     }
 }
 
-public struct StartTaskResponse: Codable, Equatable {
+public struct StartTaskResponse: Codable, Equatable, Sendable {
     public var failures: Failures?
     public var tasks: Tasks?
 
@@ -4209,7 +4211,7 @@ public struct StartTaskResponse: Codable, Equatable {
     }
 }
 
-public struct StopTaskRequest: Codable, Equatable {
+public struct StopTaskRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var reason: String?
     public var task: String
@@ -4232,7 +4234,7 @@ public struct StopTaskRequest: Codable, Equatable {
     }
 }
 
-public struct StopTaskResponse: Codable, Equatable {
+public struct StopTaskResponse: Codable, Equatable, Sendable {
     public var task: Task?
 
     public init(task: Task? = nil) {
@@ -4248,7 +4250,7 @@ public struct StopTaskResponse: Codable, Equatable {
     }
 }
 
-public struct SubmitAttachmentStateChangesRequest: Codable, Equatable {
+public struct SubmitAttachmentStateChangesRequest: Codable, Equatable, Sendable {
     public var attachments: AttachmentStateChanges
     public var cluster: String?
 
@@ -4267,7 +4269,7 @@ public struct SubmitAttachmentStateChangesRequest: Codable, Equatable {
     }
 }
 
-public struct SubmitAttachmentStateChangesResponse: Codable, Equatable {
+public struct SubmitAttachmentStateChangesResponse: Codable, Equatable, Sendable {
     public var acknowledgment: String?
 
     public init(acknowledgment: String? = nil) {
@@ -4282,7 +4284,7 @@ public struct SubmitAttachmentStateChangesResponse: Codable, Equatable {
     }
 }
 
-public struct SubmitContainerStateChangeRequest: Codable, Equatable {
+public struct SubmitContainerStateChangeRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerName: String?
     public var exitCode: BoxedInteger?
@@ -4325,7 +4327,7 @@ public struct SubmitContainerStateChangeRequest: Codable, Equatable {
     }
 }
 
-public struct SubmitContainerStateChangeResponse: Codable, Equatable {
+public struct SubmitContainerStateChangeResponse: Codable, Equatable, Sendable {
     public var acknowledgment: String?
 
     public init(acknowledgment: String? = nil) {
@@ -4340,7 +4342,7 @@ public struct SubmitContainerStateChangeResponse: Codable, Equatable {
     }
 }
 
-public struct SubmitTaskStateChangeRequest: Codable, Equatable {
+public struct SubmitTaskStateChangeRequest: Codable, Equatable, Sendable {
     public var attachments: AttachmentStateChanges?
     public var cluster: String?
     public var containers: ContainerStateChanges?
@@ -4391,7 +4393,7 @@ public struct SubmitTaskStateChangeRequest: Codable, Equatable {
     }
 }
 
-public struct SubmitTaskStateChangeResponse: Codable, Equatable {
+public struct SubmitTaskStateChangeResponse: Codable, Equatable, Sendable {
     public var acknowledgment: String?
 
     public init(acknowledgment: String? = nil) {
@@ -4406,7 +4408,7 @@ public struct SubmitTaskStateChangeResponse: Codable, Equatable {
     }
 }
 
-public struct SystemControl: Codable, Equatable {
+public struct SystemControl: Codable, Equatable, Sendable {
     public var namespace: String?
     public var value: String?
 
@@ -4425,7 +4427,7 @@ public struct SystemControl: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey?
     public var value: TagValue?
 
@@ -4446,7 +4448,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagResourceRequest: Codable, Equatable {
+public struct TagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: String
     public var tags: Tags
 
@@ -4466,7 +4468,7 @@ public struct TagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct TagResourceResponse: Codable, Equatable {
+public struct TagResourceResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4475,7 +4477,7 @@ public struct TagResourceResponse: Codable, Equatable {
     }
 }
 
-public struct TargetNotConnectedException: Codable, Equatable {
+public struct TargetNotConnectedException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4484,7 +4486,7 @@ public struct TargetNotConnectedException: Codable, Equatable {
     }
 }
 
-public struct TargetNotFoundException: Codable, Equatable {
+public struct TargetNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4493,7 +4495,7 @@ public struct TargetNotFoundException: Codable, Equatable {
     }
 }
 
-public struct Task: Codable, Equatable {
+public struct Task: Codable, Equatable, Sendable {
     public var attachments: Attachments?
     public var attributes: Attributes?
     public var availabilityZone: String?
@@ -4651,7 +4653,7 @@ public struct Task: Codable, Equatable {
     }
 }
 
-public struct TaskDefinition: Codable, Equatable {
+public struct TaskDefinition: Codable, Equatable, Sendable {
     public var compatibilities: CompatibilityList?
     public var containerDefinitions: ContainerDefinitions?
     public var cpu: String?
@@ -4761,7 +4763,7 @@ public struct TaskDefinition: Codable, Equatable {
     }
 }
 
-public struct TaskDefinitionPlacementConstraint: Codable, Equatable {
+public struct TaskDefinitionPlacementConstraint: Codable, Equatable, Sendable {
     public var expression: String?
     public var type: TaskDefinitionPlacementConstraintType?
 
@@ -4780,7 +4782,7 @@ public struct TaskDefinitionPlacementConstraint: Codable, Equatable {
     }
 }
 
-public struct TaskOverride: Codable, Equatable {
+public struct TaskOverride: Codable, Equatable, Sendable {
     public var containerOverrides: ContainerOverrides?
     public var cpu: String?
     public var ephemeralStorage: EphemeralStorage?
@@ -4820,7 +4822,7 @@ public struct TaskOverride: Codable, Equatable {
     }
 }
 
-public struct TaskSet: Codable, Equatable {
+public struct TaskSet: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var clusterArn: String?
     public var computedDesiredCount: Integer?
@@ -4930,7 +4932,7 @@ public struct TaskSet: Codable, Equatable {
     }
 }
 
-public struct TaskSetNotFoundException: Codable, Equatable {
+public struct TaskSetNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4939,7 +4941,7 @@ public struct TaskSetNotFoundException: Codable, Equatable {
     }
 }
 
-public struct Tmpfs: Codable, Equatable {
+public struct Tmpfs: Codable, Equatable, Sendable {
     public var containerPath: String
     public var mountOptions: StringList?
     public var size: Integer
@@ -4962,7 +4964,7 @@ public struct Tmpfs: Codable, Equatable {
     }
 }
 
-public struct Ulimit: Codable, Equatable {
+public struct Ulimit: Codable, Equatable, Sendable {
     public var hardLimit: Integer
     public var name: UlimitName
     public var softLimit: Integer
@@ -4985,7 +4987,7 @@ public struct Ulimit: Codable, Equatable {
     }
 }
 
-public struct UnsupportedFeatureException: Codable, Equatable {
+public struct UnsupportedFeatureException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4994,7 +4996,7 @@ public struct UnsupportedFeatureException: Codable, Equatable {
     }
 }
 
-public struct UntagResourceRequest: Codable, Equatable {
+public struct UntagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: String
     public var tagKeys: TagKeys
 
@@ -5013,7 +5015,7 @@ public struct UntagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct UntagResourceResponse: Codable, Equatable {
+public struct UntagResourceResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5022,7 +5024,7 @@ public struct UntagResourceResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateCapacityProviderRequest: Codable, Equatable {
+public struct UpdateCapacityProviderRequest: Codable, Equatable, Sendable {
     public var autoScalingGroupProvider: AutoScalingGroupProviderUpdate
     public var name: String
 
@@ -5042,7 +5044,7 @@ public struct UpdateCapacityProviderRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateCapacityProviderResponse: Codable, Equatable {
+public struct UpdateCapacityProviderResponse: Codable, Equatable, Sendable {
     public var capacityProvider: CapacityProvider?
 
     public init(capacityProvider: CapacityProvider? = nil) {
@@ -5058,7 +5060,7 @@ public struct UpdateCapacityProviderResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateClusterRequest: Codable, Equatable {
+public struct UpdateClusterRequest: Codable, Equatable, Sendable {
     public var cluster: String
     public var configuration: ClusterConfiguration?
     public var settings: ClusterSettings?
@@ -5082,7 +5084,7 @@ public struct UpdateClusterRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateClusterResponse: Codable, Equatable {
+public struct UpdateClusterResponse: Codable, Equatable, Sendable {
     public var cluster: Cluster?
 
     public init(cluster: Cluster? = nil) {
@@ -5098,7 +5100,7 @@ public struct UpdateClusterResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateClusterSettingsRequest: Codable, Equatable {
+public struct UpdateClusterSettingsRequest: Codable, Equatable, Sendable {
     public var cluster: String
     public var settings: ClusterSettings
 
@@ -5117,7 +5119,7 @@ public struct UpdateClusterSettingsRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateClusterSettingsResponse: Codable, Equatable {
+public struct UpdateClusterSettingsResponse: Codable, Equatable, Sendable {
     public var cluster: Cluster?
 
     public init(cluster: Cluster? = nil) {
@@ -5133,7 +5135,7 @@ public struct UpdateClusterSettingsResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateContainerAgentRequest: Codable, Equatable {
+public struct UpdateContainerAgentRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstance: String
 
@@ -5152,7 +5154,7 @@ public struct UpdateContainerAgentRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateContainerAgentResponse: Codable, Equatable {
+public struct UpdateContainerAgentResponse: Codable, Equatable, Sendable {
     public var containerInstance: ContainerInstance?
 
     public init(containerInstance: ContainerInstance? = nil) {
@@ -5168,7 +5170,7 @@ public struct UpdateContainerAgentResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateContainerInstancesStateRequest: Codable, Equatable {
+public struct UpdateContainerInstancesStateRequest: Codable, Equatable, Sendable {
     public var cluster: String?
     public var containerInstances: StringList
     public var status: ContainerInstanceStatus
@@ -5191,7 +5193,7 @@ public struct UpdateContainerInstancesStateRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateContainerInstancesStateResponse: Codable, Equatable {
+public struct UpdateContainerInstancesStateResponse: Codable, Equatable, Sendable {
     public var containerInstances: ContainerInstances?
     public var failures: Failures?
 
@@ -5210,7 +5212,7 @@ public struct UpdateContainerInstancesStateResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateInProgressException: Codable, Equatable {
+public struct UpdateInProgressException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5219,7 +5221,7 @@ public struct UpdateInProgressException: Codable, Equatable {
     }
 }
 
-public struct UpdateServicePrimaryTaskSetRequest: Codable, Equatable {
+public struct UpdateServicePrimaryTaskSetRequest: Codable, Equatable, Sendable {
     public var cluster: String
     public var primaryTaskSet: String
     public var service: String
@@ -5242,7 +5244,7 @@ public struct UpdateServicePrimaryTaskSetRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateServicePrimaryTaskSetResponse: Codable, Equatable {
+public struct UpdateServicePrimaryTaskSetResponse: Codable, Equatable, Sendable {
     public var taskSet: TaskSet?
 
     public init(taskSet: TaskSet? = nil) {
@@ -5258,7 +5260,7 @@ public struct UpdateServicePrimaryTaskSetResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateServiceRequest: Codable, Equatable {
+public struct UpdateServiceRequest: Codable, Equatable, Sendable {
     public var capacityProviderStrategy: CapacityProviderStrategy?
     public var cluster: String?
     public var deploymentConfiguration: DeploymentConfiguration?
@@ -5339,7 +5341,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateServiceResponse: Codable, Equatable {
+public struct UpdateServiceResponse: Codable, Equatable, Sendable {
     public var service: Service?
 
     public init(service: Service? = nil) {
@@ -5355,7 +5357,7 @@ public struct UpdateServiceResponse: Codable, Equatable {
     }
 }
 
-public struct UpdateTaskSetRequest: Codable, Equatable {
+public struct UpdateTaskSetRequest: Codable, Equatable, Sendable {
     public var cluster: String
     public var scale: Scale
     public var service: String
@@ -5383,7 +5385,7 @@ public struct UpdateTaskSetRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateTaskSetResponse: Codable, Equatable {
+public struct UpdateTaskSetResponse: Codable, Equatable, Sendable {
     public var taskSet: TaskSet?
 
     public init(taskSet: TaskSet? = nil) {
@@ -5399,7 +5401,7 @@ public struct UpdateTaskSetResponse: Codable, Equatable {
     }
 }
 
-public struct VersionInfo: Codable, Equatable {
+public struct VersionInfo: Codable, Equatable, Sendable {
     public var agentHash: String?
     public var agentVersion: String?
     public var dockerVersion: String?
@@ -5422,7 +5424,7 @@ public struct VersionInfo: Codable, Equatable {
     }
 }
 
-public struct Volume: Codable, Equatable {
+public struct Volume: Codable, Equatable, Sendable {
     public var dockerVolumeConfiguration: DockerVolumeConfiguration?
     public var efsVolumeConfiguration: EFSVolumeConfiguration?
     public var fsxWindowsFileServerVolumeConfiguration: FSxWindowsFileServerVolumeConfiguration?
@@ -5457,7 +5459,7 @@ public struct Volume: Codable, Equatable {
     }
 }
 
-public struct VolumeFrom: Codable, Equatable {
+public struct VolumeFrom: Codable, Equatable, Sendable {
     public var readOnly: BoxedBoolean?
     public var sourceContainer: String?
 

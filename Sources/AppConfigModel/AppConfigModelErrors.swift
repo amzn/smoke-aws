@@ -41,7 +41,7 @@ private let payloadTooLargeIdentity = "PayloadTooLargeException"
 private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let serviceQuotaExceededIdentity = "ServiceQuotaExceededException"
 
-public struct AppConfigErrorPayload: Codable {
+public struct AppConfigErrorPayload: Codable, Sendable {
     public let type: String
     public let message: String
 

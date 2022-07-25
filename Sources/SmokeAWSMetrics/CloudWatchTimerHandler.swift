@@ -19,14 +19,14 @@ import Foundation
 import Metrics
 import CloudWatchClient
 import CloudWatchModel
-import Logging
+@preconcurrency import Logging
 
 private let microToNanoSecondsFactor: Int64 = 1000
 
 /**
  Class conforming to `TimerHandler` that emits a CloudWatch metric.
  */
-internal class CloudWatchTimerHandler: TimerHandler {
+internal final class CloudWatchTimerHandler: TimerHandler {
     private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
     private let metricName: String
     private let namespace: String

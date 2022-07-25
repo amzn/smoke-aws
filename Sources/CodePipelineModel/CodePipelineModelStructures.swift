@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AWSSessionCredentials: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AWSSessionCredentials: Codable, Equatable, Sendable {
     public var accessKeyId: AccessKeyId
     public var secretAccessKey: SecretAccessKey
     public var sessionToken: SessionToken
@@ -45,7 +47,7 @@ public struct AWSSessionCredentials: Codable, Equatable {
     }
 }
 
-public struct AcknowledgeJobInput: Codable, Equatable {
+public struct AcknowledgeJobInput: Codable, Equatable, Sendable {
     public var jobId: JobId
     public var nonce: Nonce
 
@@ -66,7 +68,7 @@ public struct AcknowledgeJobInput: Codable, Equatable {
     }
 }
 
-public struct AcknowledgeJobOutput: Codable, Equatable {
+public struct AcknowledgeJobOutput: Codable, Equatable, Sendable {
     public var status: JobStatus?
 
     public init(status: JobStatus? = nil) {
@@ -81,7 +83,7 @@ public struct AcknowledgeJobOutput: Codable, Equatable {
     }
 }
 
-public struct AcknowledgeThirdPartyJobInput: Codable, Equatable {
+public struct AcknowledgeThirdPartyJobInput: Codable, Equatable, Sendable {
     public var clientToken: ClientToken
     public var jobId: ThirdPartyJobId
     public var nonce: Nonce
@@ -107,7 +109,7 @@ public struct AcknowledgeThirdPartyJobInput: Codable, Equatable {
     }
 }
 
-public struct AcknowledgeThirdPartyJobOutput: Codable, Equatable {
+public struct AcknowledgeThirdPartyJobOutput: Codable, Equatable, Sendable {
     public var status: JobStatus?
 
     public init(status: JobStatus? = nil) {
@@ -122,7 +124,7 @@ public struct AcknowledgeThirdPartyJobOutput: Codable, Equatable {
     }
 }
 
-public struct ActionConfiguration: Codable, Equatable {
+public struct ActionConfiguration: Codable, Equatable, Sendable {
     public var configuration: ActionConfigurationMap?
 
     public init(configuration: ActionConfigurationMap? = nil) {
@@ -137,7 +139,7 @@ public struct ActionConfiguration: Codable, Equatable {
     }
 }
 
-public struct ActionConfigurationProperty: Codable, Equatable {
+public struct ActionConfigurationProperty: Codable, Equatable, Sendable {
     public var description: Description?
     public var key: Boolean
     public var name: ActionConfigurationKey
@@ -178,7 +180,7 @@ public struct ActionConfigurationProperty: Codable, Equatable {
     }
 }
 
-public struct ActionContext: Codable, Equatable {
+public struct ActionContext: Codable, Equatable, Sendable {
     public var actionExecutionId: ActionExecutionId?
     public var name: ActionName?
 
@@ -198,7 +200,7 @@ public struct ActionContext: Codable, Equatable {
     }
 }
 
-public struct ActionDeclaration: Codable, Equatable {
+public struct ActionDeclaration: Codable, Equatable, Sendable {
     public var actionTypeId: ActionTypeId
     public var configuration: ActionConfigurationMap?
     public var inputArtifacts: InputArtifactList?
@@ -251,7 +253,7 @@ public struct ActionDeclaration: Codable, Equatable {
     }
 }
 
-public struct ActionExecution: Codable, Equatable {
+public struct ActionExecution: Codable, Equatable, Sendable {
     public var actionExecutionId: ActionExecutionId?
     public var errorDetails: ErrorDetails?
     public var externalExecutionId: ExecutionId?
@@ -307,7 +309,7 @@ public struct ActionExecution: Codable, Equatable {
     }
 }
 
-public struct ActionExecutionDetail: Codable, Equatable {
+public struct ActionExecutionDetail: Codable, Equatable, Sendable {
     public var actionExecutionId: ActionExecutionId?
     public var actionName: ActionName?
     public var input: ActionExecutionInput?
@@ -364,7 +366,7 @@ public struct ActionExecutionDetail: Codable, Equatable {
     }
 }
 
-public struct ActionExecutionFilter: Codable, Equatable {
+public struct ActionExecutionFilter: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId?
 
     public init(pipelineExecutionId: PipelineExecutionId? = nil) {
@@ -380,7 +382,7 @@ public struct ActionExecutionFilter: Codable, Equatable {
     }
 }
 
-public struct ActionExecutionInput: Codable, Equatable {
+public struct ActionExecutionInput: Codable, Equatable, Sendable {
     public var actionTypeId: ActionTypeId?
     public var configuration: ActionConfigurationMap?
     public var inputArtifacts: ArtifactDetailList?
@@ -423,7 +425,7 @@ public struct ActionExecutionInput: Codable, Equatable {
     }
 }
 
-public struct ActionExecutionOutput: Codable, Equatable {
+public struct ActionExecutionOutput: Codable, Equatable, Sendable {
     public var executionResult: ActionExecutionResult?
     public var outputArtifacts: ArtifactDetailList?
     public var outputVariables: OutputVariablesMap?
@@ -447,7 +449,7 @@ public struct ActionExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct ActionExecutionResult: Codable, Equatable {
+public struct ActionExecutionResult: Codable, Equatable, Sendable {
     public var externalExecutionId: ExternalExecutionId?
     public var externalExecutionSummary: ExternalExecutionSummary?
     public var externalExecutionUrl: Url?
@@ -471,7 +473,7 @@ public struct ActionExecutionResult: Codable, Equatable {
     }
 }
 
-public struct ActionNotFoundException: Codable, Equatable {
+public struct ActionNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -480,7 +482,7 @@ public struct ActionNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ActionRevision: Codable, Equatable {
+public struct ActionRevision: Codable, Equatable, Sendable {
     public var created: Timestamp
     public var revisionChangeId: RevisionChangeIdentifier
     public var revisionId: Revision
@@ -505,7 +507,7 @@ public struct ActionRevision: Codable, Equatable {
     }
 }
 
-public struct ActionState: Codable, Equatable {
+public struct ActionState: Codable, Equatable, Sendable {
     public var actionName: ActionName?
     public var currentRevision: ActionRevision?
     public var entityUrl: Url?
@@ -541,7 +543,7 @@ public struct ActionState: Codable, Equatable {
     }
 }
 
-public struct ActionType: Codable, Equatable {
+public struct ActionType: Codable, Equatable, Sendable {
     public var actionConfigurationProperties: ActionConfigurationPropertyList?
     public var id: ActionTypeId
     public var inputArtifactDetails: ArtifactDetails
@@ -577,7 +579,7 @@ public struct ActionType: Codable, Equatable {
     }
 }
 
-public struct ActionTypeAlreadyExistsException: Codable, Equatable {
+public struct ActionTypeAlreadyExistsException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -586,7 +588,7 @@ public struct ActionTypeAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct ActionTypeArtifactDetails: Codable, Equatable {
+public struct ActionTypeArtifactDetails: Codable, Equatable, Sendable {
     public var maximumCount: MaximumActionTypeArtifactCount
     public var minimumCount: MinimumActionTypeArtifactCount
 
@@ -607,7 +609,7 @@ public struct ActionTypeArtifactDetails: Codable, Equatable {
     }
 }
 
-public struct ActionTypeDeclaration: Codable, Equatable {
+public struct ActionTypeDeclaration: Codable, Equatable, Sendable {
     public var description: ActionTypeDescription?
     public var executor: ActionTypeExecutor
     public var id: ActionTypeIdentifier
@@ -658,7 +660,7 @@ public struct ActionTypeDeclaration: Codable, Equatable {
     }
 }
 
-public struct ActionTypeExecutor: Codable, Equatable {
+public struct ActionTypeExecutor: Codable, Equatable, Sendable {
     public var configuration: ExecutorConfiguration
     public var jobTimeout: JobTimeout?
     public var policyStatementsTemplate: PolicyStatementsTemplate?
@@ -688,7 +690,7 @@ public struct ActionTypeExecutor: Codable, Equatable {
     }
 }
 
-public struct ActionTypeId: Codable, Equatable {
+public struct ActionTypeId: Codable, Equatable, Sendable {
     public var category: ActionCategory
     public var owner: ActionOwner
     public var provider: ActionProvider
@@ -717,7 +719,7 @@ public struct ActionTypeId: Codable, Equatable {
     }
 }
 
-public struct ActionTypeIdentifier: Codable, Equatable {
+public struct ActionTypeIdentifier: Codable, Equatable, Sendable {
     public var category: ActionCategory
     public var owner: ActionTypeOwner
     public var provider: ActionProvider
@@ -747,7 +749,7 @@ public struct ActionTypeIdentifier: Codable, Equatable {
     }
 }
 
-public struct ActionTypeNotFoundException: Codable, Equatable {
+public struct ActionTypeNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -756,7 +758,7 @@ public struct ActionTypeNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ActionTypePermissions: Codable, Equatable {
+public struct ActionTypePermissions: Codable, Equatable, Sendable {
     public var allowedAccounts: AllowedAccounts
 
     public init(allowedAccounts: AllowedAccounts) {
@@ -772,7 +774,7 @@ public struct ActionTypePermissions: Codable, Equatable {
     }
 }
 
-public struct ActionTypeProperty: Codable, Equatable {
+public struct ActionTypeProperty: Codable, Equatable, Sendable {
     public var description: PropertyDescription?
     public var key: Boolean
     public var name: ActionConfigurationKey
@@ -809,7 +811,7 @@ public struct ActionTypeProperty: Codable, Equatable {
     }
 }
 
-public struct ActionTypeSettings: Codable, Equatable {
+public struct ActionTypeSettings: Codable, Equatable, Sendable {
     public var entityUrlTemplate: UrlTemplate?
     public var executionUrlTemplate: UrlTemplate?
     public var revisionUrlTemplate: UrlTemplate?
@@ -840,7 +842,7 @@ public struct ActionTypeSettings: Codable, Equatable {
     }
 }
 
-public struct ActionTypeUrls: Codable, Equatable {
+public struct ActionTypeUrls: Codable, Equatable, Sendable {
     public var configurationUrl: Url?
     public var entityUrlTemplate: UrlTemplate?
     public var executionUrlTemplate: UrlTemplate?
@@ -871,7 +873,7 @@ public struct ActionTypeUrls: Codable, Equatable {
     }
 }
 
-public struct ApprovalAlreadyCompletedException: Codable, Equatable {
+public struct ApprovalAlreadyCompletedException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -880,7 +882,7 @@ public struct ApprovalAlreadyCompletedException: Codable, Equatable {
     }
 }
 
-public struct ApprovalResult: Codable, Equatable {
+public struct ApprovalResult: Codable, Equatable, Sendable {
     public var status: ApprovalStatus
     public var summary: ApprovalSummary
 
@@ -900,7 +902,7 @@ public struct ApprovalResult: Codable, Equatable {
     }
 }
 
-public struct Artifact: Codable, Equatable {
+public struct Artifact: Codable, Equatable, Sendable {
     public var location: ArtifactLocation?
     public var name: ArtifactName?
     public var revision: Revision?
@@ -926,7 +928,7 @@ public struct Artifact: Codable, Equatable {
     }
 }
 
-public struct ArtifactDetail: Codable, Equatable {
+public struct ArtifactDetail: Codable, Equatable, Sendable {
     public var name: ArtifactName?
     public var s3location: S3Location?
 
@@ -947,7 +949,7 @@ public struct ArtifactDetail: Codable, Equatable {
     }
 }
 
-public struct ArtifactDetails: Codable, Equatable {
+public struct ArtifactDetails: Codable, Equatable, Sendable {
     public var maximumCount: MaximumArtifactCount
     public var minimumCount: MinimumArtifactCount
 
@@ -968,7 +970,7 @@ public struct ArtifactDetails: Codable, Equatable {
     }
 }
 
-public struct ArtifactLocation: Codable, Equatable {
+public struct ArtifactLocation: Codable, Equatable, Sendable {
     public var s3Location: S3ArtifactLocation?
     public var type: ArtifactLocationType?
 
@@ -988,7 +990,7 @@ public struct ArtifactLocation: Codable, Equatable {
     }
 }
 
-public struct ArtifactRevision: Codable, Equatable {
+public struct ArtifactRevision: Codable, Equatable, Sendable {
     public var created: Timestamp?
     public var name: ArtifactName?
     public var revisionChangeIdentifier: RevisionChangeIdentifier?
@@ -1028,7 +1030,7 @@ public struct ArtifactRevision: Codable, Equatable {
     }
 }
 
-public struct ArtifactStore: Codable, Equatable {
+public struct ArtifactStore: Codable, Equatable, Sendable {
     public var encryptionKey: EncryptionKey?
     public var location: ArtifactStoreLocation
     public var type: ArtifactStoreType
@@ -1053,7 +1055,7 @@ public struct ArtifactStore: Codable, Equatable {
     }
 }
 
-public struct BlockerDeclaration: Codable, Equatable {
+public struct BlockerDeclaration: Codable, Equatable, Sendable {
     public var name: BlockerName
     public var type: BlockerType
 
@@ -1073,7 +1075,7 @@ public struct BlockerDeclaration: Codable, Equatable {
     }
 }
 
-public struct ConcurrentModificationException: Codable, Equatable {
+public struct ConcurrentModificationException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -1089,7 +1091,7 @@ public struct ConcurrentModificationException: Codable, Equatable {
     }
 }
 
-public struct ConflictException: Codable, Equatable {
+public struct ConflictException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -1105,7 +1107,7 @@ public struct ConflictException: Codable, Equatable {
     }
 }
 
-public struct CreateCustomActionTypeInput: Codable, Equatable {
+public struct CreateCustomActionTypeInput: Codable, Equatable, Sendable {
     public var category: ActionCategory
     public var configurationProperties: ActionConfigurationPropertyList?
     public var inputArtifactDetails: ArtifactDetails
@@ -1154,7 +1156,7 @@ public struct CreateCustomActionTypeInput: Codable, Equatable {
     }
 }
 
-public struct CreateCustomActionTypeOutput: Codable, Equatable {
+public struct CreateCustomActionTypeOutput: Codable, Equatable, Sendable {
     public var actionType: ActionType
     public var tags: TagList?
 
@@ -1174,7 +1176,7 @@ public struct CreateCustomActionTypeOutput: Codable, Equatable {
     }
 }
 
-public struct CreatePipelineInput: Codable, Equatable {
+public struct CreatePipelineInput: Codable, Equatable, Sendable {
     public var pipeline: PipelineDeclaration
     public var tags: TagList?
 
@@ -1194,7 +1196,7 @@ public struct CreatePipelineInput: Codable, Equatable {
     }
 }
 
-public struct CreatePipelineOutput: Codable, Equatable {
+public struct CreatePipelineOutput: Codable, Equatable, Sendable {
     public var pipeline: PipelineDeclaration?
     public var tags: TagList?
 
@@ -1214,7 +1216,7 @@ public struct CreatePipelineOutput: Codable, Equatable {
     }
 }
 
-public struct CurrentRevision: Codable, Equatable {
+public struct CurrentRevision: Codable, Equatable, Sendable {
     public var changeIdentifier: RevisionChangeIdentifier
     public var created: Time?
     public var revision: Revision
@@ -1244,7 +1246,7 @@ public struct CurrentRevision: Codable, Equatable {
     }
 }
 
-public struct DeleteCustomActionTypeInput: Codable, Equatable {
+public struct DeleteCustomActionTypeInput: Codable, Equatable, Sendable {
     public var category: ActionCategory
     public var provider: ActionProvider
     public var version: Version
@@ -1269,7 +1271,7 @@ public struct DeleteCustomActionTypeInput: Codable, Equatable {
     }
 }
 
-public struct DeletePipelineInput: Codable, Equatable {
+public struct DeletePipelineInput: Codable, Equatable, Sendable {
     public var name: PipelineName
 
     public init(name: PipelineName) {
@@ -1285,7 +1287,7 @@ public struct DeletePipelineInput: Codable, Equatable {
     }
 }
 
-public struct DeleteWebhookInput: Codable, Equatable {
+public struct DeleteWebhookInput: Codable, Equatable, Sendable {
     public var name: WebhookName
 
     public init(name: WebhookName) {
@@ -1301,7 +1303,7 @@ public struct DeleteWebhookInput: Codable, Equatable {
     }
 }
 
-public struct DeleteWebhookOutput: Codable, Equatable {
+public struct DeleteWebhookOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1310,7 +1312,7 @@ public struct DeleteWebhookOutput: Codable, Equatable {
     }
 }
 
-public struct DeregisterWebhookWithThirdPartyInput: Codable, Equatable {
+public struct DeregisterWebhookWithThirdPartyInput: Codable, Equatable, Sendable {
     public var webhookName: WebhookName?
 
     public init(webhookName: WebhookName? = nil) {
@@ -1326,7 +1328,7 @@ public struct DeregisterWebhookWithThirdPartyInput: Codable, Equatable {
     }
 }
 
-public struct DeregisterWebhookWithThirdPartyOutput: Codable, Equatable {
+public struct DeregisterWebhookWithThirdPartyOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1335,7 +1337,7 @@ public struct DeregisterWebhookWithThirdPartyOutput: Codable, Equatable {
     }
 }
 
-public struct DisableStageTransitionInput: Codable, Equatable {
+public struct DisableStageTransitionInput: Codable, Equatable, Sendable {
     public var pipelineName: PipelineName
     public var reason: DisabledReason
     public var stageName: StageName
@@ -1365,7 +1367,7 @@ public struct DisableStageTransitionInput: Codable, Equatable {
     }
 }
 
-public struct DuplicatedStopRequestException: Codable, Equatable {
+public struct DuplicatedStopRequestException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -1381,7 +1383,7 @@ public struct DuplicatedStopRequestException: Codable, Equatable {
     }
 }
 
-public struct EnableStageTransitionInput: Codable, Equatable {
+public struct EnableStageTransitionInput: Codable, Equatable, Sendable {
     public var pipelineName: PipelineName
     public var stageName: StageName
     public var transitionType: StageTransitionType
@@ -1406,7 +1408,7 @@ public struct EnableStageTransitionInput: Codable, Equatable {
     }
 }
 
-public struct EncryptionKey: Codable, Equatable {
+public struct EncryptionKey: Codable, Equatable, Sendable {
     public var id: EncryptionKeyId
     public var type: EncryptionKeyType
 
@@ -1426,7 +1428,7 @@ public struct EncryptionKey: Codable, Equatable {
     }
 }
 
-public struct ErrorDetails: Codable, Equatable {
+public struct ErrorDetails: Codable, Equatable, Sendable {
     public var code: Code?
     public var message: Message?
 
@@ -1446,7 +1448,7 @@ public struct ErrorDetails: Codable, Equatable {
     }
 }
 
-public struct ExecutionDetails: Codable, Equatable {
+public struct ExecutionDetails: Codable, Equatable, Sendable {
     public var externalExecutionId: ExecutionId?
     public var percentComplete: Percentage?
     public var summary: ExecutionSummary?
@@ -1472,7 +1474,7 @@ public struct ExecutionDetails: Codable, Equatable {
     }
 }
 
-public struct ExecutionTrigger: Codable, Equatable {
+public struct ExecutionTrigger: Codable, Equatable, Sendable {
     public var triggerDetail: TriggerDetail?
     public var triggerType: TriggerType?
 
@@ -1492,7 +1494,7 @@ public struct ExecutionTrigger: Codable, Equatable {
     }
 }
 
-public struct ExecutorConfiguration: Codable, Equatable {
+public struct ExecutorConfiguration: Codable, Equatable, Sendable {
     public var jobWorkerExecutorConfiguration: JobWorkerExecutorConfiguration?
     public var lambdaExecutorConfiguration: LambdaExecutorConfiguration?
 
@@ -1513,7 +1515,7 @@ public struct ExecutorConfiguration: Codable, Equatable {
     }
 }
 
-public struct FailureDetails: Codable, Equatable {
+public struct FailureDetails: Codable, Equatable, Sendable {
     public var externalExecutionId: ExecutionId?
     public var message: Message
     public var type: FailureType
@@ -1538,7 +1540,7 @@ public struct FailureDetails: Codable, Equatable {
     }
 }
 
-public struct GetActionTypeInput: Codable, Equatable {
+public struct GetActionTypeInput: Codable, Equatable, Sendable {
     public var category: ActionCategory
     public var owner: ActionTypeOwner
     public var provider: ActionProvider
@@ -1568,7 +1570,7 @@ public struct GetActionTypeInput: Codable, Equatable {
     }
 }
 
-public struct GetActionTypeOutput: Codable, Equatable {
+public struct GetActionTypeOutput: Codable, Equatable, Sendable {
     public var actionType: ActionTypeDeclaration?
 
     public init(actionType: ActionTypeDeclaration? = nil) {
@@ -1584,7 +1586,7 @@ public struct GetActionTypeOutput: Codable, Equatable {
     }
 }
 
-public struct GetJobDetailsInput: Codable, Equatable {
+public struct GetJobDetailsInput: Codable, Equatable, Sendable {
     public var jobId: JobId
 
     public init(jobId: JobId) {
@@ -1600,7 +1602,7 @@ public struct GetJobDetailsInput: Codable, Equatable {
     }
 }
 
-public struct GetJobDetailsOutput: Codable, Equatable {
+public struct GetJobDetailsOutput: Codable, Equatable, Sendable {
     public var jobDetails: JobDetails?
 
     public init(jobDetails: JobDetails? = nil) {
@@ -1616,7 +1618,7 @@ public struct GetJobDetailsOutput: Codable, Equatable {
     }
 }
 
-public struct GetPipelineExecutionInput: Codable, Equatable {
+public struct GetPipelineExecutionInput: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId
     public var pipelineName: PipelineName
 
@@ -1637,7 +1639,7 @@ public struct GetPipelineExecutionInput: Codable, Equatable {
     }
 }
 
-public struct GetPipelineExecutionOutput: Codable, Equatable {
+public struct GetPipelineExecutionOutput: Codable, Equatable, Sendable {
     public var pipelineExecution: PipelineExecution?
 
     public init(pipelineExecution: PipelineExecution? = nil) {
@@ -1653,7 +1655,7 @@ public struct GetPipelineExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct GetPipelineInput: Codable, Equatable {
+public struct GetPipelineInput: Codable, Equatable, Sendable {
     public var name: PipelineName
     public var version: PipelineVersion?
 
@@ -1674,7 +1676,7 @@ public struct GetPipelineInput: Codable, Equatable {
     }
 }
 
-public struct GetPipelineOutput: Codable, Equatable {
+public struct GetPipelineOutput: Codable, Equatable, Sendable {
     public var metadata: PipelineMetadata?
     public var pipeline: PipelineDeclaration?
 
@@ -1695,7 +1697,7 @@ public struct GetPipelineOutput: Codable, Equatable {
     }
 }
 
-public struct GetPipelineStateInput: Codable, Equatable {
+public struct GetPipelineStateInput: Codable, Equatable, Sendable {
     public var name: PipelineName
 
     public init(name: PipelineName) {
@@ -1711,7 +1713,7 @@ public struct GetPipelineStateInput: Codable, Equatable {
     }
 }
 
-public struct GetPipelineStateOutput: Codable, Equatable {
+public struct GetPipelineStateOutput: Codable, Equatable, Sendable {
     public var created: Timestamp?
     public var pipelineName: PipelineName?
     public var pipelineVersion: PipelineVersion?
@@ -1744,7 +1746,7 @@ public struct GetPipelineStateOutput: Codable, Equatable {
     }
 }
 
-public struct GetThirdPartyJobDetailsInput: Codable, Equatable {
+public struct GetThirdPartyJobDetailsInput: Codable, Equatable, Sendable {
     public var clientToken: ClientToken
     public var jobId: ThirdPartyJobId
 
@@ -1765,7 +1767,7 @@ public struct GetThirdPartyJobDetailsInput: Codable, Equatable {
     }
 }
 
-public struct GetThirdPartyJobDetailsOutput: Codable, Equatable {
+public struct GetThirdPartyJobDetailsOutput: Codable, Equatable, Sendable {
     public var jobDetails: ThirdPartyJobDetails?
 
     public init(jobDetails: ThirdPartyJobDetails? = nil) {
@@ -1781,7 +1783,7 @@ public struct GetThirdPartyJobDetailsOutput: Codable, Equatable {
     }
 }
 
-public struct InputArtifact: Codable, Equatable {
+public struct InputArtifact: Codable, Equatable, Sendable {
     public var name: ArtifactName
 
     public init(name: ArtifactName) {
@@ -1797,7 +1799,7 @@ public struct InputArtifact: Codable, Equatable {
     }
 }
 
-public struct InvalidActionDeclarationException: Codable, Equatable {
+public struct InvalidActionDeclarationException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1806,7 +1808,7 @@ public struct InvalidActionDeclarationException: Codable, Equatable {
     }
 }
 
-public struct InvalidApprovalTokenException: Codable, Equatable {
+public struct InvalidApprovalTokenException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1815,7 +1817,7 @@ public struct InvalidApprovalTokenException: Codable, Equatable {
     }
 }
 
-public struct InvalidArnException: Codable, Equatable {
+public struct InvalidArnException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -1831,7 +1833,7 @@ public struct InvalidArnException: Codable, Equatable {
     }
 }
 
-public struct InvalidBlockerDeclarationException: Codable, Equatable {
+public struct InvalidBlockerDeclarationException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1840,7 +1842,7 @@ public struct InvalidBlockerDeclarationException: Codable, Equatable {
     }
 }
 
-public struct InvalidClientTokenException: Codable, Equatable {
+public struct InvalidClientTokenException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1849,7 +1851,7 @@ public struct InvalidClientTokenException: Codable, Equatable {
     }
 }
 
-public struct InvalidJobException: Codable, Equatable {
+public struct InvalidJobException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1858,7 +1860,7 @@ public struct InvalidJobException: Codable, Equatable {
     }
 }
 
-public struct InvalidJobStateException: Codable, Equatable {
+public struct InvalidJobStateException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1867,7 +1869,7 @@ public struct InvalidJobStateException: Codable, Equatable {
     }
 }
 
-public struct InvalidNextTokenException: Codable, Equatable {
+public struct InvalidNextTokenException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1876,7 +1878,7 @@ public struct InvalidNextTokenException: Codable, Equatable {
     }
 }
 
-public struct InvalidNonceException: Codable, Equatable {
+public struct InvalidNonceException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1885,7 +1887,7 @@ public struct InvalidNonceException: Codable, Equatable {
     }
 }
 
-public struct InvalidStageDeclarationException: Codable, Equatable {
+public struct InvalidStageDeclarationException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1894,7 +1896,7 @@ public struct InvalidStageDeclarationException: Codable, Equatable {
     }
 }
 
-public struct InvalidStructureException: Codable, Equatable {
+public struct InvalidStructureException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1903,7 +1905,7 @@ public struct InvalidStructureException: Codable, Equatable {
     }
 }
 
-public struct InvalidTagsException: Codable, Equatable {
+public struct InvalidTagsException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -1919,7 +1921,7 @@ public struct InvalidTagsException: Codable, Equatable {
     }
 }
 
-public struct InvalidWebhookAuthenticationParametersException: Codable, Equatable {
+public struct InvalidWebhookAuthenticationParametersException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1928,7 +1930,7 @@ public struct InvalidWebhookAuthenticationParametersException: Codable, Equatabl
     }
 }
 
-public struct InvalidWebhookFilterPatternException: Codable, Equatable {
+public struct InvalidWebhookFilterPatternException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1937,7 +1939,7 @@ public struct InvalidWebhookFilterPatternException: Codable, Equatable {
     }
 }
 
-public struct Job: Codable, Equatable {
+public struct Job: Codable, Equatable, Sendable {
     public var accountId: AccountId?
     public var data: JobData?
     public var id: JobId?
@@ -1968,7 +1970,7 @@ public struct Job: Codable, Equatable {
     }
 }
 
-public struct JobData: Codable, Equatable {
+public struct JobData: Codable, Equatable, Sendable {
     public var actionConfiguration: ActionConfiguration?
     public var actionTypeId: ActionTypeId?
     public var artifactCredentials: AWSSessionCredentials?
@@ -2017,7 +2019,7 @@ public struct JobData: Codable, Equatable {
     }
 }
 
-public struct JobDetails: Codable, Equatable {
+public struct JobDetails: Codable, Equatable, Sendable {
     public var accountId: AccountId?
     public var data: JobData?
     public var id: JobId?
@@ -2043,7 +2045,7 @@ public struct JobDetails: Codable, Equatable {
     }
 }
 
-public struct JobNotFoundException: Codable, Equatable {
+public struct JobNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2052,7 +2054,7 @@ public struct JobNotFoundException: Codable, Equatable {
     }
 }
 
-public struct JobWorkerExecutorConfiguration: Codable, Equatable {
+public struct JobWorkerExecutorConfiguration: Codable, Equatable, Sendable {
     public var pollingAccounts: PollingAccountList?
     public var pollingServicePrincipals: PollingServicePrincipalList?
 
@@ -2073,7 +2075,7 @@ public struct JobWorkerExecutorConfiguration: Codable, Equatable {
     }
 }
 
-public struct LambdaExecutorConfiguration: Codable, Equatable {
+public struct LambdaExecutorConfiguration: Codable, Equatable, Sendable {
     public var lambdaFunctionArn: LambdaFunctionArn
 
     public init(lambdaFunctionArn: LambdaFunctionArn) {
@@ -2089,7 +2091,7 @@ public struct LambdaExecutorConfiguration: Codable, Equatable {
     }
 }
 
-public struct LimitExceededException: Codable, Equatable {
+public struct LimitExceededException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2098,7 +2100,7 @@ public struct LimitExceededException: Codable, Equatable {
     }
 }
 
-public struct ListActionExecutionsInput: Codable, Equatable {
+public struct ListActionExecutionsInput: Codable, Equatable, Sendable {
     public var filter: ActionExecutionFilter?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -2129,7 +2131,7 @@ public struct ListActionExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct ListActionExecutionsOutput: Codable, Equatable {
+public struct ListActionExecutionsOutput: Codable, Equatable, Sendable {
     public var actionExecutionDetails: ActionExecutionDetailList?
     public var nextToken: NextToken?
 
@@ -2149,7 +2151,7 @@ public struct ListActionExecutionsOutput: Codable, Equatable {
     }
 }
 
-public struct ListActionTypesInput: Codable, Equatable {
+public struct ListActionTypesInput: Codable, Equatable, Sendable {
     public var actionOwnerFilter: ActionOwner?
     public var nextToken: NextToken?
     public var regionFilter: AWSRegionName?
@@ -2174,7 +2176,7 @@ public struct ListActionTypesInput: Codable, Equatable {
     }
 }
 
-public struct ListActionTypesOutput: Codable, Equatable {
+public struct ListActionTypesOutput: Codable, Equatable, Sendable {
     public var actionTypes: ActionTypeList
     public var nextToken: NextToken?
 
@@ -2194,7 +2196,7 @@ public struct ListActionTypesOutput: Codable, Equatable {
     }
 }
 
-public struct ListPipelineExecutionsInput: Codable, Equatable {
+public struct ListPipelineExecutionsInput: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var pipelineName: PipelineName
@@ -2220,7 +2222,7 @@ public struct ListPipelineExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct ListPipelineExecutionsOutput: Codable, Equatable {
+public struct ListPipelineExecutionsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var pipelineExecutionSummaries: PipelineExecutionSummaryList?
 
@@ -2240,7 +2242,7 @@ public struct ListPipelineExecutionsOutput: Codable, Equatable {
     }
 }
 
-public struct ListPipelinesInput: Codable, Equatable {
+public struct ListPipelinesInput: Codable, Equatable, Sendable {
     public var maxResults: MaxPipelines?
     public var nextToken: NextToken?
 
@@ -2261,7 +2263,7 @@ public struct ListPipelinesInput: Codable, Equatable {
     }
 }
 
-public struct ListPipelinesOutput: Codable, Equatable {
+public struct ListPipelinesOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var pipelines: PipelineList?
 
@@ -2281,7 +2283,7 @@ public struct ListPipelinesOutput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceInput: Codable, Equatable {
+public struct ListTagsForResourceInput: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var resourceArn: ResourceArn
@@ -2307,7 +2309,7 @@ public struct ListTagsForResourceInput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceOutput: Codable, Equatable {
+public struct ListTagsForResourceOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var tags: TagList?
 
@@ -2327,7 +2329,7 @@ public struct ListTagsForResourceOutput: Codable, Equatable {
     }
 }
 
-public struct ListWebhookItem: Codable, Equatable {
+public struct ListWebhookItem: Codable, Equatable, Sendable {
     public var arn: WebhookArn?
     public var definition: WebhookDefinition
     public var errorCode: WebhookErrorCode?
@@ -2368,7 +2370,7 @@ public struct ListWebhookItem: Codable, Equatable {
     }
 }
 
-public struct ListWebhooksInput: Codable, Equatable {
+public struct ListWebhooksInput: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -2389,7 +2391,7 @@ public struct ListWebhooksInput: Codable, Equatable {
     }
 }
 
-public struct ListWebhooksOutput: Codable, Equatable {
+public struct ListWebhooksOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var webhooks: WebhookList?
 
@@ -2409,7 +2411,7 @@ public struct ListWebhooksOutput: Codable, Equatable {
     }
 }
 
-public struct NotLatestPipelineExecutionException: Codable, Equatable {
+public struct NotLatestPipelineExecutionException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2418,7 +2420,7 @@ public struct NotLatestPipelineExecutionException: Codable, Equatable {
     }
 }
 
-public struct OutputArtifact: Codable, Equatable {
+public struct OutputArtifact: Codable, Equatable, Sendable {
     public var name: ArtifactName
 
     public init(name: ArtifactName) {
@@ -2434,7 +2436,7 @@ public struct OutputArtifact: Codable, Equatable {
     }
 }
 
-public struct OutputVariablesSizeExceededException: Codable, Equatable {
+public struct OutputVariablesSizeExceededException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -2450,7 +2452,7 @@ public struct OutputVariablesSizeExceededException: Codable, Equatable {
     }
 }
 
-public struct PipelineContext: Codable, Equatable {
+public struct PipelineContext: Codable, Equatable, Sendable {
     public var action: ActionContext?
     public var pipelineArn: PipelineArn?
     public var pipelineExecutionId: PipelineExecutionId?
@@ -2486,7 +2488,7 @@ public struct PipelineContext: Codable, Equatable {
     }
 }
 
-public struct PipelineDeclaration: Codable, Equatable {
+public struct PipelineDeclaration: Codable, Equatable, Sendable {
     public var artifactStore: ArtifactStore?
     public var artifactStores: ArtifactStoreMap?
     public var name: PipelineName
@@ -2525,7 +2527,7 @@ public struct PipelineDeclaration: Codable, Equatable {
     }
 }
 
-public struct PipelineExecution: Codable, Equatable {
+public struct PipelineExecution: Codable, Equatable, Sendable {
     public var artifactRevisions: ArtifactRevisionList?
     public var pipelineExecutionId: PipelineExecutionId?
     public var pipelineName: PipelineName?
@@ -2563,7 +2565,7 @@ public struct PipelineExecution: Codable, Equatable {
     }
 }
 
-public struct PipelineExecutionNotFoundException: Codable, Equatable {
+public struct PipelineExecutionNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2572,7 +2574,7 @@ public struct PipelineExecutionNotFoundException: Codable, Equatable {
     }
 }
 
-public struct PipelineExecutionNotStoppableException: Codable, Equatable {
+public struct PipelineExecutionNotStoppableException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -2588,7 +2590,7 @@ public struct PipelineExecutionNotStoppableException: Codable, Equatable {
     }
 }
 
-public struct PipelineExecutionSummary: Codable, Equatable {
+public struct PipelineExecutionSummary: Codable, Equatable, Sendable {
     public var lastUpdateTime: Timestamp?
     public var pipelineExecutionId: PipelineExecutionId?
     public var sourceRevisions: SourceRevisionList?
@@ -2630,7 +2632,7 @@ public struct PipelineExecutionSummary: Codable, Equatable {
     }
 }
 
-public struct PipelineMetadata: Codable, Equatable {
+public struct PipelineMetadata: Codable, Equatable, Sendable {
     public var created: Timestamp?
     public var pipelineArn: PipelineArn?
     public var updated: Timestamp?
@@ -2654,7 +2656,7 @@ public struct PipelineMetadata: Codable, Equatable {
     }
 }
 
-public struct PipelineNameInUseException: Codable, Equatable {
+public struct PipelineNameInUseException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2663,7 +2665,7 @@ public struct PipelineNameInUseException: Codable, Equatable {
     }
 }
 
-public struct PipelineNotFoundException: Codable, Equatable {
+public struct PipelineNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2672,7 +2674,7 @@ public struct PipelineNotFoundException: Codable, Equatable {
     }
 }
 
-public struct PipelineSummary: Codable, Equatable {
+public struct PipelineSummary: Codable, Equatable, Sendable {
     public var created: Timestamp?
     public var name: PipelineName?
     public var updated: Timestamp?
@@ -2701,7 +2703,7 @@ public struct PipelineSummary: Codable, Equatable {
     }
 }
 
-public struct PipelineVersionNotFoundException: Codable, Equatable {
+public struct PipelineVersionNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2710,7 +2712,7 @@ public struct PipelineVersionNotFoundException: Codable, Equatable {
     }
 }
 
-public struct PollForJobsInput: Codable, Equatable {
+public struct PollForJobsInput: Codable, Equatable, Sendable {
     public var actionTypeId: ActionTypeId
     public var maxBatchSize: MaxBatchSize?
     public var queryParam: QueryParamMap?
@@ -2735,7 +2737,7 @@ public struct PollForJobsInput: Codable, Equatable {
     }
 }
 
-public struct PollForJobsOutput: Codable, Equatable {
+public struct PollForJobsOutput: Codable, Equatable, Sendable {
     public var jobs: JobList?
 
     public init(jobs: JobList? = nil) {
@@ -2750,7 +2752,7 @@ public struct PollForJobsOutput: Codable, Equatable {
     }
 }
 
-public struct PollForThirdPartyJobsInput: Codable, Equatable {
+public struct PollForThirdPartyJobsInput: Codable, Equatable, Sendable {
     public var actionTypeId: ActionTypeId
     public var maxBatchSize: MaxBatchSize?
 
@@ -2771,7 +2773,7 @@ public struct PollForThirdPartyJobsInput: Codable, Equatable {
     }
 }
 
-public struct PollForThirdPartyJobsOutput: Codable, Equatable {
+public struct PollForThirdPartyJobsOutput: Codable, Equatable, Sendable {
     public var jobs: ThirdPartyJobList?
 
     public init(jobs: ThirdPartyJobList? = nil) {
@@ -2786,7 +2788,7 @@ public struct PollForThirdPartyJobsOutput: Codable, Equatable {
     }
 }
 
-public struct PutActionRevisionInput: Codable, Equatable {
+public struct PutActionRevisionInput: Codable, Equatable, Sendable {
     public var actionName: ActionName
     public var actionRevision: ActionRevision
     public var pipelineName: PipelineName
@@ -2817,7 +2819,7 @@ public struct PutActionRevisionInput: Codable, Equatable {
     }
 }
 
-public struct PutActionRevisionOutput: Codable, Equatable {
+public struct PutActionRevisionOutput: Codable, Equatable, Sendable {
     public var newRevision: Boolean?
     public var pipelineExecutionId: PipelineExecutionId?
 
@@ -2837,7 +2839,7 @@ public struct PutActionRevisionOutput: Codable, Equatable {
     }
 }
 
-public struct PutApprovalResultInput: Codable, Equatable {
+public struct PutApprovalResultInput: Codable, Equatable, Sendable {
     public var actionName: ActionName
     public var pipelineName: PipelineName
     public var result: ApprovalResult
@@ -2873,7 +2875,7 @@ public struct PutApprovalResultInput: Codable, Equatable {
     }
 }
 
-public struct PutApprovalResultOutput: Codable, Equatable {
+public struct PutApprovalResultOutput: Codable, Equatable, Sendable {
     public var approvedAt: Timestamp?
 
     public init(approvedAt: Timestamp? = nil) {
@@ -2888,7 +2890,7 @@ public struct PutApprovalResultOutput: Codable, Equatable {
     }
 }
 
-public struct PutJobFailureResultInput: Codable, Equatable {
+public struct PutJobFailureResultInput: Codable, Equatable, Sendable {
     public var failureDetails: FailureDetails
     public var jobId: JobId
 
@@ -2909,7 +2911,7 @@ public struct PutJobFailureResultInput: Codable, Equatable {
     }
 }
 
-public struct PutJobSuccessResultInput: Codable, Equatable {
+public struct PutJobSuccessResultInput: Codable, Equatable, Sendable {
     public var continuationToken: ContinuationToken?
     public var currentRevision: CurrentRevision?
     public var executionDetails: ExecutionDetails?
@@ -2944,7 +2946,7 @@ public struct PutJobSuccessResultInput: Codable, Equatable {
     }
 }
 
-public struct PutThirdPartyJobFailureResultInput: Codable, Equatable {
+public struct PutThirdPartyJobFailureResultInput: Codable, Equatable, Sendable {
     public var clientToken: ClientToken
     public var failureDetails: FailureDetails
     public var jobId: ThirdPartyJobId
@@ -2970,7 +2972,7 @@ public struct PutThirdPartyJobFailureResultInput: Codable, Equatable {
     }
 }
 
-public struct PutThirdPartyJobSuccessResultInput: Codable, Equatable {
+public struct PutThirdPartyJobSuccessResultInput: Codable, Equatable, Sendable {
     public var clientToken: ClientToken
     public var continuationToken: ContinuationToken?
     public var currentRevision: CurrentRevision?
@@ -3006,7 +3008,7 @@ public struct PutThirdPartyJobSuccessResultInput: Codable, Equatable {
     }
 }
 
-public struct PutWebhookInput: Codable, Equatable {
+public struct PutWebhookInput: Codable, Equatable, Sendable {
     public var tags: TagList?
     public var webhook: WebhookDefinition
 
@@ -3026,7 +3028,7 @@ public struct PutWebhookInput: Codable, Equatable {
     }
 }
 
-public struct PutWebhookOutput: Codable, Equatable {
+public struct PutWebhookOutput: Codable, Equatable, Sendable {
     public var webhook: ListWebhookItem?
 
     public init(webhook: ListWebhookItem? = nil) {
@@ -3042,7 +3044,7 @@ public struct PutWebhookOutput: Codable, Equatable {
     }
 }
 
-public struct RegisterWebhookWithThirdPartyInput: Codable, Equatable {
+public struct RegisterWebhookWithThirdPartyInput: Codable, Equatable, Sendable {
     public var webhookName: WebhookName?
 
     public init(webhookName: WebhookName? = nil) {
@@ -3058,7 +3060,7 @@ public struct RegisterWebhookWithThirdPartyInput: Codable, Equatable {
     }
 }
 
-public struct RegisterWebhookWithThirdPartyOutput: Codable, Equatable {
+public struct RegisterWebhookWithThirdPartyOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3067,7 +3069,7 @@ public struct RegisterWebhookWithThirdPartyOutput: Codable, Equatable {
     }
 }
 
-public struct RequestFailedException: Codable, Equatable {
+public struct RequestFailedException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -3083,7 +3085,7 @@ public struct RequestFailedException: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundException: Codable, Equatable {
+public struct ResourceNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3092,7 +3094,7 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct RetryStageExecutionInput: Codable, Equatable {
+public struct RetryStageExecutionInput: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId
     public var pipelineName: PipelineName
     public var retryMode: StageRetryMode
@@ -3122,7 +3124,7 @@ public struct RetryStageExecutionInput: Codable, Equatable {
     }
 }
 
-public struct RetryStageExecutionOutput: Codable, Equatable {
+public struct RetryStageExecutionOutput: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId?
 
     public init(pipelineExecutionId: PipelineExecutionId? = nil) {
@@ -3138,7 +3140,7 @@ public struct RetryStageExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct S3ArtifactLocation: Codable, Equatable {
+public struct S3ArtifactLocation: Codable, Equatable, Sendable {
     public var bucketName: S3BucketName
     public var objectKey: S3ObjectKey
 
@@ -3157,7 +3159,7 @@ public struct S3ArtifactLocation: Codable, Equatable {
     }
 }
 
-public struct S3Location: Codable, Equatable {
+public struct S3Location: Codable, Equatable, Sendable {
     public var bucket: S3Bucket?
     public var key: S3Key?
 
@@ -3178,7 +3180,7 @@ public struct S3Location: Codable, Equatable {
     }
 }
 
-public struct SourceRevision: Codable, Equatable {
+public struct SourceRevision: Codable, Equatable, Sendable {
     public var actionName: ActionName
     public var revisionId: Revision?
     public var revisionSummary: RevisionSummary?
@@ -3209,7 +3211,7 @@ public struct SourceRevision: Codable, Equatable {
     }
 }
 
-public struct StageContext: Codable, Equatable {
+public struct StageContext: Codable, Equatable, Sendable {
     public var name: StageName?
 
     public init(name: StageName? = nil) {
@@ -3225,7 +3227,7 @@ public struct StageContext: Codable, Equatable {
     }
 }
 
-public struct StageDeclaration: Codable, Equatable {
+public struct StageDeclaration: Codable, Equatable, Sendable {
     public var actions: StageActionDeclarationList
     public var blockers: StageBlockerDeclarationList?
     public var name: StageName
@@ -3249,7 +3251,7 @@ public struct StageDeclaration: Codable, Equatable {
     }
 }
 
-public struct StageExecution: Codable, Equatable {
+public struct StageExecution: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId
     public var status: StageExecutionStatus
 
@@ -3269,7 +3271,7 @@ public struct StageExecution: Codable, Equatable {
     }
 }
 
-public struct StageNotFoundException: Codable, Equatable {
+public struct StageNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3278,7 +3280,7 @@ public struct StageNotFoundException: Codable, Equatable {
     }
 }
 
-public struct StageNotRetryableException: Codable, Equatable {
+public struct StageNotRetryableException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3287,7 +3289,7 @@ public struct StageNotRetryableException: Codable, Equatable {
     }
 }
 
-public struct StageState: Codable, Equatable {
+public struct StageState: Codable, Equatable, Sendable {
     public var actionStates: ActionStateList?
     public var inboundExecution: StageExecution?
     public var inboundTransitionState: TransitionState?
@@ -3322,7 +3324,7 @@ public struct StageState: Codable, Equatable {
     }
 }
 
-public struct StartPipelineExecutionInput: Codable, Equatable {
+public struct StartPipelineExecutionInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var name: PipelineName
 
@@ -3343,7 +3345,7 @@ public struct StartPipelineExecutionInput: Codable, Equatable {
     }
 }
 
-public struct StartPipelineExecutionOutput: Codable, Equatable {
+public struct StartPipelineExecutionOutput: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId?
 
     public init(pipelineExecutionId: PipelineExecutionId? = nil) {
@@ -3359,7 +3361,7 @@ public struct StartPipelineExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct StopExecutionTrigger: Codable, Equatable {
+public struct StopExecutionTrigger: Codable, Equatable, Sendable {
     public var reason: StopPipelineExecutionReason?
 
     public init(reason: StopPipelineExecutionReason? = nil) {
@@ -3375,7 +3377,7 @@ public struct StopExecutionTrigger: Codable, Equatable {
     }
 }
 
-public struct StopPipelineExecutionInput: Codable, Equatable {
+public struct StopPipelineExecutionInput: Codable, Equatable, Sendable {
     public var abandon: Boolean?
     public var pipelineExecutionId: PipelineExecutionId
     public var pipelineName: PipelineName
@@ -3405,7 +3407,7 @@ public struct StopPipelineExecutionInput: Codable, Equatable {
     }
 }
 
-public struct StopPipelineExecutionOutput: Codable, Equatable {
+public struct StopPipelineExecutionOutput: Codable, Equatable, Sendable {
     public var pipelineExecutionId: PipelineExecutionId?
 
     public init(pipelineExecutionId: PipelineExecutionId? = nil) {
@@ -3421,7 +3423,7 @@ public struct StopPipelineExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey
     public var value: TagValue
 
@@ -3442,7 +3444,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagResourceInput: Codable, Equatable {
+public struct TagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: ResourceArn
     public var tags: TagList
 
@@ -3462,7 +3464,7 @@ public struct TagResourceInput: Codable, Equatable {
     }
 }
 
-public struct TagResourceOutput: Codable, Equatable {
+public struct TagResourceOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3471,7 +3473,7 @@ public struct TagResourceOutput: Codable, Equatable {
     }
 }
 
-public struct ThirdPartyJob: Codable, Equatable {
+public struct ThirdPartyJob: Codable, Equatable, Sendable {
     public var clientId: ClientId?
     public var jobId: JobId?
 
@@ -3492,7 +3494,7 @@ public struct ThirdPartyJob: Codable, Equatable {
     }
 }
 
-public struct ThirdPartyJobData: Codable, Equatable {
+public struct ThirdPartyJobData: Codable, Equatable, Sendable {
     public var actionConfiguration: ActionConfiguration?
     public var actionTypeId: ActionTypeId?
     public var artifactCredentials: AWSSessionCredentials?
@@ -3541,7 +3543,7 @@ public struct ThirdPartyJobData: Codable, Equatable {
     }
 }
 
-public struct ThirdPartyJobDetails: Codable, Equatable {
+public struct ThirdPartyJobDetails: Codable, Equatable, Sendable {
     public var data: ThirdPartyJobData?
     public var id: ThirdPartyJobId?
     public var nonce: Nonce?
@@ -3567,7 +3569,7 @@ public struct ThirdPartyJobDetails: Codable, Equatable {
     }
 }
 
-public struct TooManyTagsException: Codable, Equatable {
+public struct TooManyTagsException: Codable, Equatable, Sendable {
     public var message: Message?
 
     public init(message: Message? = nil) {
@@ -3583,7 +3585,7 @@ public struct TooManyTagsException: Codable, Equatable {
     }
 }
 
-public struct TransitionState: Codable, Equatable {
+public struct TransitionState: Codable, Equatable, Sendable {
     public var disabledReason: DisabledReason?
     public var enabled: Enabled?
     public var lastChangedAt: LastChangedAt?
@@ -3611,7 +3613,7 @@ public struct TransitionState: Codable, Equatable {
     }
 }
 
-public struct UntagResourceInput: Codable, Equatable {
+public struct UntagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: ResourceArn
     public var tagKeys: TagKeyList
 
@@ -3631,7 +3633,7 @@ public struct UntagResourceInput: Codable, Equatable {
     }
 }
 
-public struct UntagResourceOutput: Codable, Equatable {
+public struct UntagResourceOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3640,7 +3642,7 @@ public struct UntagResourceOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateActionTypeInput: Codable, Equatable {
+public struct UpdateActionTypeInput: Codable, Equatable, Sendable {
     public var actionType: ActionTypeDeclaration
 
     public init(actionType: ActionTypeDeclaration) {
@@ -3656,7 +3658,7 @@ public struct UpdateActionTypeInput: Codable, Equatable {
     }
 }
 
-public struct UpdatePipelineInput: Codable, Equatable {
+public struct UpdatePipelineInput: Codable, Equatable, Sendable {
     public var pipeline: PipelineDeclaration
 
     public init(pipeline: PipelineDeclaration) {
@@ -3672,7 +3674,7 @@ public struct UpdatePipelineInput: Codable, Equatable {
     }
 }
 
-public struct UpdatePipelineOutput: Codable, Equatable {
+public struct UpdatePipelineOutput: Codable, Equatable, Sendable {
     public var pipeline: PipelineDeclaration?
 
     public init(pipeline: PipelineDeclaration? = nil) {
@@ -3688,7 +3690,7 @@ public struct UpdatePipelineOutput: Codable, Equatable {
     }
 }
 
-public struct ValidationException: Codable, Equatable {
+public struct ValidationException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3697,7 +3699,7 @@ public struct ValidationException: Codable, Equatable {
     }
 }
 
-public struct WebhookAuthConfiguration: Codable, Equatable {
+public struct WebhookAuthConfiguration: Codable, Equatable, Sendable {
     public var allowedIPRange: WebhookAuthConfigurationAllowedIPRange?
     public var secretToken: WebhookAuthConfigurationSecretToken?
 
@@ -3718,7 +3720,7 @@ public struct WebhookAuthConfiguration: Codable, Equatable {
     }
 }
 
-public struct WebhookDefinition: Codable, Equatable {
+public struct WebhookDefinition: Codable, Equatable, Sendable {
     public var authentication: WebhookAuthenticationType
     public var authenticationConfiguration: WebhookAuthConfiguration
     public var filters: WebhookFilters
@@ -3758,7 +3760,7 @@ public struct WebhookDefinition: Codable, Equatable {
     }
 }
 
-public struct WebhookFilterRule: Codable, Equatable {
+public struct WebhookFilterRule: Codable, Equatable, Sendable {
     public var jsonPath: JsonPath
     public var matchEquals: MatchEquals?
 
@@ -3779,7 +3781,7 @@ public struct WebhookFilterRule: Codable, Equatable {
     }
 }
 
-public struct WebhookNotFoundException: Codable, Equatable {
+public struct WebhookNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }

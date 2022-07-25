@@ -30,7 +30,7 @@ public typealias AccountQuotaList = [AccountQuota]
 /**
  Enumeration restricting the values of the ActivityStreamMode field.
  */
-public enum ActivityStreamMode: String, Codable, CustomStringConvertible {
+public enum ActivityStreamMode: String, Codable, CustomStringConvertible, Sendable {
     case async
     case sync
 
@@ -49,7 +49,7 @@ public typealias ActivityStreamModeList = [String]
 /**
  Enumeration restricting the values of the ActivityStreamStatus field.
  */
-public enum ActivityStreamStatus: String, Codable, CustomStringConvertible {
+public enum ActivityStreamStatus: String, Codable, CustomStringConvertible, Sendable {
     case started
     case starting
     case stopped
@@ -65,7 +65,7 @@ public enum ActivityStreamStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ApplyMethod field.
  */
-public enum ApplyMethod: String, Codable, CustomStringConvertible {
+public enum ApplyMethod: String, Codable, CustomStringConvertible, Sendable {
     case immediate
     case pendingReboot = "pending-reboot"
 
@@ -84,7 +84,7 @@ public typealias AttributeValueList = [String]
 /**
  Enumeration restricting the values of the AuthScheme field.
  */
-public enum AuthScheme: String, Codable, CustomStringConvertible {
+public enum AuthScheme: String, Codable, CustomStringConvertible, Sendable {
     case secrets = "SECRETS"
 
     public var description: String {
@@ -97,7 +97,7 @@ public enum AuthScheme: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the AutomationMode field.
  */
-public enum AutomationMode: String, Codable, CustomStringConvertible {
+public enum AutomationMode: String, Codable, CustomStringConvertible, Sendable {
     case allPaused = "all-paused"
     case full
 
@@ -166,7 +166,7 @@ public typealias CustomEngineVersion = String
 /**
  Enumeration restricting the values of the CustomEngineVersionStatus field.
  */
-public enum CustomEngineVersionStatus: String, Codable, CustomStringConvertible {
+public enum CustomEngineVersionStatus: String, Codable, CustomStringConvertible, Sendable {
     case available
     case inactive
     case inactiveExceptRestore = "inactive-except-restore"
@@ -281,7 +281,7 @@ public typealias DBProxyEndpointName = String
 /**
  Enumeration restricting the values of the DBProxyEndpointStatus field.
  */
-public enum DBProxyEndpointStatus: String, Codable, CustomStringConvertible {
+public enum DBProxyEndpointStatus: String, Codable, CustomStringConvertible, Sendable {
     case available
     case creating
     case deleting
@@ -299,7 +299,7 @@ public enum DBProxyEndpointStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the DBProxyEndpointTargetRole field.
  */
-public enum DBProxyEndpointTargetRole: String, Codable, CustomStringConvertible {
+public enum DBProxyEndpointTargetRole: String, Codable, CustomStringConvertible, Sendable {
     case readOnly = "READ_ONLY"
     case readWrite = "READ_WRITE"
 
@@ -323,7 +323,7 @@ public typealias DBProxyName = String
 /**
  Enumeration restricting the values of the DBProxyStatus field.
  */
-public enum DBProxyStatus: String, Codable, CustomStringConvertible {
+public enum DBProxyStatus: String, Codable, CustomStringConvertible, Sendable {
     case available
     case creating
     case deleting
@@ -404,7 +404,7 @@ public typealias EC2SecurityGroupList = [EC2SecurityGroup]
 /**
  Enumeration restricting the values of the EngineFamily field.
  */
-public enum EngineFamily: String, Codable, CustomStringConvertible {
+public enum EngineFamily: String, Codable, CustomStringConvertible, Sendable {
     case mysql = "MYSQL"
     case postgresql = "POSTGRESQL"
 
@@ -448,7 +448,7 @@ public typealias ExportTasksList = [ExportTask]
 /**
  Enumeration restricting the values of the FailoverStatus field.
  */
-public enum FailoverStatus: String, Codable, CustomStringConvertible {
+public enum FailoverStatus: String, Codable, CustomStringConvertible, Sendable {
     case cancelling
     case failingOver = "failing-over"
     case pending
@@ -493,7 +493,7 @@ public typealias GlobalClusterMemberList = [GlobalClusterMember]
 /**
  Enumeration restricting the values of the IAMAuthMode field.
  */
-public enum IAMAuthMode: String, Codable, CustomStringConvertible {
+public enum IAMAuthMode: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case required = "REQUIRED"
 
@@ -672,7 +672,7 @@ public typealias RecurringChargeList = [RecurringCharge]
 /**
  Enumeration restricting the values of the ReplicaMode field.
  */
-public enum ReplicaMode: String, Codable, CustomStringConvertible {
+public enum ReplicaMode: String, Codable, CustomStringConvertible, Sendable {
     case mounted
     case openReadOnly = "open-read-only"
 
@@ -706,7 +706,7 @@ public typealias SourceRegionList = [SourceRegion]
 /**
  Enumeration restricting the values of the SourceType field.
  */
-public enum SourceType: String, Codable, CustomStringConvertible {
+public enum SourceType: String, Codable, CustomStringConvertible, Sendable {
     case customEngineVersion = "custom-engine-version"
     case dbCluster = "db-cluster"
     case dbClusterSnapshot = "db-cluster-snapshot"
@@ -771,7 +771,7 @@ public typealias TargetGroupList = [DBProxyTargetGroup]
 /**
  Enumeration restricting the values of the TargetHealthReason field.
  */
-public enum TargetHealthReason: String, Codable, CustomStringConvertible {
+public enum TargetHealthReason: String, Codable, CustomStringConvertible, Sendable {
     case authFailure = "AUTH_FAILURE"
     case connectionFailed = "CONNECTION_FAILED"
     case invalidReplicationState = "INVALID_REPLICATION_STATE"
@@ -793,7 +793,7 @@ public typealias TargetList = [DBProxyTarget]
 /**
  Enumeration restricting the values of the TargetRole field.
  */
-public enum TargetRole: String, Codable, CustomStringConvertible {
+public enum TargetRole: String, Codable, CustomStringConvertible, Sendable {
     case readOnly = "READ_ONLY"
     case readWrite = "READ_WRITE"
     case unknown = "UNKNOWN"
@@ -808,7 +808,7 @@ public enum TargetRole: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the TargetState field.
  */
-public enum TargetState: String, Codable, CustomStringConvertible {
+public enum TargetState: String, Codable, CustomStringConvertible, Sendable {
     case available = "AVAILABLE"
     case registering = "REGISTERING"
     case unavailable = "UNAVAILABLE"
@@ -823,7 +823,7 @@ public enum TargetState: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the TargetType field.
  */
-public enum TargetType: String, Codable, CustomStringConvertible {
+public enum TargetType: String, Codable, CustomStringConvertible, Sendable {
     case rdsInstance = "RDS_INSTANCE"
     case rdsServerlessEndpoint = "RDS_SERVERLESS_ENDPOINT"
     case trackedCluster = "TRACKED_CLUSTER"
@@ -868,7 +868,7 @@ public typealias VpcSecurityGroupMembershipList = [VpcSecurityGroupMembership]
 /**
  Enumeration restricting the values of the WriteForwardingStatus field.
  */
-public enum WriteForwardingStatus: String, Codable, CustomStringConvertible {
+public enum WriteForwardingStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled
     case disabling
     case enabled

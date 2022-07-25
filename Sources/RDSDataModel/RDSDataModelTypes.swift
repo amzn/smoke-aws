@@ -85,7 +85,7 @@ public typealias DbName = String
 /**
  Enumeration restricting the values of the DecimalReturnType field.
  */
-public enum DecimalReturnType: String, Codable, CustomStringConvertible {
+public enum DecimalReturnType: String, Codable, CustomStringConvertible, Sendable {
     case doubleOrLong = "DOUBLE_OR_LONG"
     case string = "STRING"
 
@@ -139,7 +139,7 @@ public typealias LongArray = [BoxedLong]
 /**
  Enumeration restricting the values of the LongReturnType field.
  */
-public enum LongReturnType: String, Codable, CustomStringConvertible {
+public enum LongReturnType: String, Codable, CustomStringConvertible, Sendable {
     case long = "LONG"
     case string = "STRING"
 
@@ -168,7 +168,7 @@ public typealias Records = [Record]
 /**
  Enumeration restricting the values of the RecordsFormatType field.
  */
-public enum RecordsFormatType: String, Codable, CustomStringConvertible {
+public enum RecordsFormatType: String, Codable, CustomStringConvertible, Sendable {
     case json = "JSON"
     case none = "NONE"
 
@@ -227,7 +227,7 @@ public typealias TransactionStatus = String
 /**
  Enumeration restricting the values of the TypeHint field.
  */
-public enum TypeHint: String, Codable, CustomStringConvertible {
+public enum TypeHint: String, Codable, CustomStringConvertible, Sendable {
     case date = "DATE"
     case decimal = "DECIMAL"
     case json = "JSON"

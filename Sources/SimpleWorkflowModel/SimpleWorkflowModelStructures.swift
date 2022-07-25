@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct ActivityTask: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct ActivityTask: Codable, Equatable, Sendable {
     public var activityId: ActivityId
     public var activityType: ActivityType
     public var input: Data?
@@ -62,7 +64,7 @@ public struct ActivityTask: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskCancelRequestedEventAttributes: Codable, Equatable {
+public struct ActivityTaskCancelRequestedEventAttributes: Codable, Equatable, Sendable {
     public var activityId: ActivityId
     public var decisionTaskCompletedEventId: EventId
 
@@ -82,7 +84,7 @@ public struct ActivityTaskCancelRequestedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskCanceledEventAttributes: Codable, Equatable {
+public struct ActivityTaskCanceledEventAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var latestCancelRequestedEventId: EventId?
     public var scheduledEventId: EventId
@@ -110,7 +112,7 @@ public struct ActivityTaskCanceledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskCompletedEventAttributes: Codable, Equatable {
+public struct ActivityTaskCompletedEventAttributes: Codable, Equatable, Sendable {
     public var result: Data?
     public var scheduledEventId: EventId
     public var startedEventId: EventId
@@ -134,7 +136,7 @@ public struct ActivityTaskCompletedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskFailedEventAttributes: Codable, Equatable {
+public struct ActivityTaskFailedEventAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var reason: FailureReason?
     public var scheduledEventId: EventId
@@ -163,7 +165,7 @@ public struct ActivityTaskFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskScheduledEventAttributes: Codable, Equatable {
+public struct ActivityTaskScheduledEventAttributes: Codable, Equatable, Sendable {
     public var activityId: ActivityId
     public var activityType: ActivityType
     public var control: Data?
@@ -227,7 +229,7 @@ public struct ActivityTaskScheduledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskStartedEventAttributes: Codable, Equatable {
+public struct ActivityTaskStartedEventAttributes: Codable, Equatable, Sendable {
     public var identity: Identity?
     public var scheduledEventId: EventId
 
@@ -247,7 +249,7 @@ public struct ActivityTaskStartedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskStatus: Codable, Equatable {
+public struct ActivityTaskStatus: Codable, Equatable, Sendable {
     public var cancelRequested: Canceled
 
     public init(cancelRequested: Canceled) {
@@ -262,7 +264,7 @@ public struct ActivityTaskStatus: Codable, Equatable {
     }
 }
 
-public struct ActivityTaskTimedOutEventAttributes: Codable, Equatable {
+public struct ActivityTaskTimedOutEventAttributes: Codable, Equatable, Sendable {
     public var details: LimitedData?
     public var scheduledEventId: EventId
     public var startedEventId: EventId
@@ -290,7 +292,7 @@ public struct ActivityTaskTimedOutEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ActivityType: Codable, Equatable {
+public struct ActivityType: Codable, Equatable, Sendable {
     public var name: Name
     public var version: Version
 
@@ -311,7 +313,7 @@ public struct ActivityType: Codable, Equatable {
     }
 }
 
-public struct ActivityTypeConfiguration: Codable, Equatable {
+public struct ActivityTypeConfiguration: Codable, Equatable, Sendable {
     public var defaultTaskHeartbeatTimeout: DurationInSecondsOptional?
     public var defaultTaskList: TaskList?
     public var defaultTaskPriority: TaskPriority?
@@ -351,7 +353,7 @@ public struct ActivityTypeConfiguration: Codable, Equatable {
     }
 }
 
-public struct ActivityTypeDetail: Codable, Equatable {
+public struct ActivityTypeDetail: Codable, Equatable, Sendable {
     public var configuration: ActivityTypeConfiguration
     public var typeInfo: ActivityTypeInfo
 
@@ -372,7 +374,7 @@ public struct ActivityTypeDetail: Codable, Equatable {
     }
 }
 
-public struct ActivityTypeInfo: Codable, Equatable {
+public struct ActivityTypeInfo: Codable, Equatable, Sendable {
     public var activityType: ActivityType
     public var creationDate: Timestamp
     public var deprecationDate: Timestamp?
@@ -405,7 +407,7 @@ public struct ActivityTypeInfo: Codable, Equatable {
     }
 }
 
-public struct ActivityTypeInfos: Codable, Equatable {
+public struct ActivityTypeInfos: Codable, Equatable, Sendable {
     public var nextPageToken: PageToken?
     public var typeInfos: ActivityTypeInfoList
 
@@ -425,7 +427,7 @@ public struct ActivityTypeInfos: Codable, Equatable {
     }
 }
 
-public struct CancelTimerDecisionAttributes: Codable, Equatable {
+public struct CancelTimerDecisionAttributes: Codable, Equatable, Sendable {
     public var timerId: TimerId
 
     public init(timerId: TimerId) {
@@ -441,7 +443,7 @@ public struct CancelTimerDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct CancelTimerFailedEventAttributes: Codable, Equatable {
+public struct CancelTimerFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: CancelTimerFailedCause
     public var decisionTaskCompletedEventId: EventId
     public var timerId: TimerId
@@ -465,7 +467,7 @@ public struct CancelTimerFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct CancelWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct CancelWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var details: Data?
 
     public init(details: Data? = nil) {
@@ -481,7 +483,7 @@ public struct CancelWorkflowExecutionDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct CancelWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct CancelWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: CancelWorkflowExecutionFailedCause
     public var decisionTaskCompletedEventId: EventId
 
@@ -500,7 +502,7 @@ public struct CancelWorkflowExecutionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ChildWorkflowExecutionCanceledEventAttributes: Codable, Equatable {
+public struct ChildWorkflowExecutionCanceledEventAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var initiatedEventId: EventId
     public var startedEventId: EventId
@@ -534,7 +536,7 @@ public struct ChildWorkflowExecutionCanceledEventAttributes: Codable, Equatable 
     }
 }
 
-public struct ChildWorkflowExecutionCompletedEventAttributes: Codable, Equatable {
+public struct ChildWorkflowExecutionCompletedEventAttributes: Codable, Equatable, Sendable {
     public var initiatedEventId: EventId
     public var result: Data?
     public var startedEventId: EventId
@@ -568,7 +570,7 @@ public struct ChildWorkflowExecutionCompletedEventAttributes: Codable, Equatable
     }
 }
 
-public struct ChildWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct ChildWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var initiatedEventId: EventId
     public var reason: FailureReason?
@@ -607,7 +609,7 @@ public struct ChildWorkflowExecutionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ChildWorkflowExecutionStartedEventAttributes: Codable, Equatable {
+public struct ChildWorkflowExecutionStartedEventAttributes: Codable, Equatable, Sendable {
     public var initiatedEventId: EventId
     public var workflowExecution: WorkflowExecution
     public var workflowType: WorkflowType
@@ -632,7 +634,7 @@ public struct ChildWorkflowExecutionStartedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ChildWorkflowExecutionTerminatedEventAttributes: Codable, Equatable {
+public struct ChildWorkflowExecutionTerminatedEventAttributes: Codable, Equatable, Sendable {
     public var initiatedEventId: EventId
     public var startedEventId: EventId
     public var workflowExecution: WorkflowExecution
@@ -661,7 +663,7 @@ public struct ChildWorkflowExecutionTerminatedEventAttributes: Codable, Equatabl
     }
 }
 
-public struct ChildWorkflowExecutionTimedOutEventAttributes: Codable, Equatable {
+public struct ChildWorkflowExecutionTimedOutEventAttributes: Codable, Equatable, Sendable {
     public var initiatedEventId: EventId
     public var startedEventId: EventId
     public var timeoutType: WorkflowExecutionTimeoutType
@@ -694,7 +696,7 @@ public struct ChildWorkflowExecutionTimedOutEventAttributes: Codable, Equatable 
     }
 }
 
-public struct CloseStatusFilter: Codable, Equatable {
+public struct CloseStatusFilter: Codable, Equatable, Sendable {
     public var status: CloseStatus
 
     public init(status: CloseStatus) {
@@ -709,7 +711,7 @@ public struct CloseStatusFilter: Codable, Equatable {
     }
 }
 
-public struct CompleteWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct CompleteWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var result: Data?
 
     public init(result: Data? = nil) {
@@ -725,7 +727,7 @@ public struct CompleteWorkflowExecutionDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct CompleteWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct CompleteWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: CompleteWorkflowExecutionFailedCause
     public var decisionTaskCompletedEventId: EventId
 
@@ -744,7 +746,7 @@ public struct CompleteWorkflowExecutionFailedEventAttributes: Codable, Equatable
     }
 }
 
-public struct ContinueAsNewWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct ContinueAsNewWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy?
     public var executionStartToCloseTimeout: DurationInSecondsOptional?
     public var input: Data?
@@ -798,7 +800,7 @@ public struct ContinueAsNewWorkflowExecutionDecisionAttributes: Codable, Equatab
     }
 }
 
-public struct ContinueAsNewWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct ContinueAsNewWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: ContinueAsNewWorkflowExecutionFailedCause
     public var decisionTaskCompletedEventId: EventId
 
@@ -817,7 +819,7 @@ public struct ContinueAsNewWorkflowExecutionFailedEventAttributes: Codable, Equa
     }
 }
 
-public struct CountClosedWorkflowExecutionsInput: Codable, Equatable {
+public struct CountClosedWorkflowExecutionsInput: Codable, Equatable, Sendable {
     public var closeStatusFilter: CloseStatusFilter?
     public var closeTimeFilter: ExecutionTimeFilter?
     public var domain: DomainName
@@ -863,7 +865,7 @@ public struct CountClosedWorkflowExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct CountOpenWorkflowExecutionsInput: Codable, Equatable {
+public struct CountOpenWorkflowExecutionsInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var executionFilter: WorkflowExecutionFilter?
     public var startTimeFilter: ExecutionTimeFilter
@@ -899,7 +901,7 @@ public struct CountOpenWorkflowExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct CountPendingActivityTasksInput: Codable, Equatable {
+public struct CountPendingActivityTasksInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var taskList: TaskList
 
@@ -920,7 +922,7 @@ public struct CountPendingActivityTasksInput: Codable, Equatable {
     }
 }
 
-public struct CountPendingDecisionTasksInput: Codable, Equatable {
+public struct CountPendingDecisionTasksInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var taskList: TaskList
 
@@ -941,7 +943,7 @@ public struct CountPendingDecisionTasksInput: Codable, Equatable {
     }
 }
 
-public struct Decision: Codable, Equatable {
+public struct Decision: Codable, Equatable, Sendable {
     public var cancelTimerDecisionAttributes: CancelTimerDecisionAttributes?
     public var cancelWorkflowExecutionDecisionAttributes: CancelWorkflowExecutionDecisionAttributes?
     public var completeWorkflowExecutionDecisionAttributes: CompleteWorkflowExecutionDecisionAttributes?
@@ -1021,7 +1023,7 @@ public struct Decision: Codable, Equatable {
     }
 }
 
-public struct DecisionTask: Codable, Equatable {
+public struct DecisionTask: Codable, Equatable, Sendable {
     public var events: HistoryEventList
     public var nextPageToken: PageToken?
     public var previousStartedEventId: EventId?
@@ -1064,7 +1066,7 @@ public struct DecisionTask: Codable, Equatable {
     }
 }
 
-public struct DecisionTaskCompletedEventAttributes: Codable, Equatable {
+public struct DecisionTaskCompletedEventAttributes: Codable, Equatable, Sendable {
     public var executionContext: Data?
     public var scheduledEventId: EventId
     public var startedEventId: EventId
@@ -1088,7 +1090,7 @@ public struct DecisionTaskCompletedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct DecisionTaskScheduledEventAttributes: Codable, Equatable {
+public struct DecisionTaskScheduledEventAttributes: Codable, Equatable, Sendable {
     public var startToCloseTimeout: DurationInSecondsOptional?
     public var taskList: TaskList
     public var taskPriority: TaskPriority?
@@ -1113,7 +1115,7 @@ public struct DecisionTaskScheduledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct DecisionTaskStartedEventAttributes: Codable, Equatable {
+public struct DecisionTaskStartedEventAttributes: Codable, Equatable, Sendable {
     public var identity: Identity?
     public var scheduledEventId: EventId
 
@@ -1133,7 +1135,7 @@ public struct DecisionTaskStartedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct DecisionTaskTimedOutEventAttributes: Codable, Equatable {
+public struct DecisionTaskTimedOutEventAttributes: Codable, Equatable, Sendable {
     public var scheduledEventId: EventId
     public var startedEventId: EventId
     public var timeoutType: DecisionTaskTimeoutType
@@ -1156,7 +1158,7 @@ public struct DecisionTaskTimedOutEventAttributes: Codable, Equatable {
     }
 }
 
-public struct DefaultUndefinedFault: Codable, Equatable {
+public struct DefaultUndefinedFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1171,7 +1173,7 @@ public struct DefaultUndefinedFault: Codable, Equatable {
     }
 }
 
-public struct DeprecateActivityTypeInput: Codable, Equatable {
+public struct DeprecateActivityTypeInput: Codable, Equatable, Sendable {
     public var activityType: ActivityType
     public var domain: DomainName
 
@@ -1192,7 +1194,7 @@ public struct DeprecateActivityTypeInput: Codable, Equatable {
     }
 }
 
-public struct DeprecateDomainInput: Codable, Equatable {
+public struct DeprecateDomainInput: Codable, Equatable, Sendable {
     public var name: DomainName
 
     public init(name: DomainName) {
@@ -1208,7 +1210,7 @@ public struct DeprecateDomainInput: Codable, Equatable {
     }
 }
 
-public struct DeprecateWorkflowTypeInput: Codable, Equatable {
+public struct DeprecateWorkflowTypeInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var workflowType: WorkflowType
 
@@ -1229,7 +1231,7 @@ public struct DeprecateWorkflowTypeInput: Codable, Equatable {
     }
 }
 
-public struct DescribeActivityTypeInput: Codable, Equatable {
+public struct DescribeActivityTypeInput: Codable, Equatable, Sendable {
     public var activityType: ActivityType
     public var domain: DomainName
 
@@ -1250,7 +1252,7 @@ public struct DescribeActivityTypeInput: Codable, Equatable {
     }
 }
 
-public struct DescribeDomainInput: Codable, Equatable {
+public struct DescribeDomainInput: Codable, Equatable, Sendable {
     public var name: DomainName
 
     public init(name: DomainName) {
@@ -1266,7 +1268,7 @@ public struct DescribeDomainInput: Codable, Equatable {
     }
 }
 
-public struct DescribeWorkflowExecutionInput: Codable, Equatable {
+public struct DescribeWorkflowExecutionInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var execution: WorkflowExecution
 
@@ -1287,7 +1289,7 @@ public struct DescribeWorkflowExecutionInput: Codable, Equatable {
     }
 }
 
-public struct DescribeWorkflowTypeInput: Codable, Equatable {
+public struct DescribeWorkflowTypeInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var workflowType: WorkflowType
 
@@ -1308,7 +1310,7 @@ public struct DescribeWorkflowTypeInput: Codable, Equatable {
     }
 }
 
-public struct DomainAlreadyExistsFault: Codable, Equatable {
+public struct DomainAlreadyExistsFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1323,7 +1325,7 @@ public struct DomainAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DomainConfiguration: Codable, Equatable {
+public struct DomainConfiguration: Codable, Equatable, Sendable {
     public var workflowExecutionRetentionPeriodInDays: DurationInDays
 
     public init(workflowExecutionRetentionPeriodInDays: DurationInDays) {
@@ -1339,7 +1341,7 @@ public struct DomainConfiguration: Codable, Equatable {
     }
 }
 
-public struct DomainDeprecatedFault: Codable, Equatable {
+public struct DomainDeprecatedFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1354,7 +1356,7 @@ public struct DomainDeprecatedFault: Codable, Equatable {
     }
 }
 
-public struct DomainDetail: Codable, Equatable {
+public struct DomainDetail: Codable, Equatable, Sendable {
     public var configuration: DomainConfiguration
     public var domainInfo: DomainInfo
 
@@ -1375,7 +1377,7 @@ public struct DomainDetail: Codable, Equatable {
     }
 }
 
-public struct DomainInfo: Codable, Equatable {
+public struct DomainInfo: Codable, Equatable, Sendable {
     public var arn: Arn?
     public var description: Description?
     public var name: DomainName
@@ -1405,7 +1407,7 @@ public struct DomainInfo: Codable, Equatable {
     }
 }
 
-public struct DomainInfos: Codable, Equatable {
+public struct DomainInfos: Codable, Equatable, Sendable {
     public var domainInfos: DomainInfoList
     public var nextPageToken: PageToken?
 
@@ -1425,7 +1427,7 @@ public struct DomainInfos: Codable, Equatable {
     }
 }
 
-public struct ExecutionTimeFilter: Codable, Equatable {
+public struct ExecutionTimeFilter: Codable, Equatable, Sendable {
     public var latestDate: Timestamp?
     public var oldestDate: Timestamp
 
@@ -1444,7 +1446,7 @@ public struct ExecutionTimeFilter: Codable, Equatable {
     }
 }
 
-public struct ExternalWorkflowExecutionCancelRequestedEventAttributes: Codable, Equatable {
+public struct ExternalWorkflowExecutionCancelRequestedEventAttributes: Codable, Equatable, Sendable {
     public var initiatedEventId: EventId
     public var workflowExecution: WorkflowExecution
 
@@ -1464,7 +1466,7 @@ public struct ExternalWorkflowExecutionCancelRequestedEventAttributes: Codable, 
     }
 }
 
-public struct ExternalWorkflowExecutionSignaledEventAttributes: Codable, Equatable {
+public struct ExternalWorkflowExecutionSignaledEventAttributes: Codable, Equatable, Sendable {
     public var initiatedEventId: EventId
     public var workflowExecution: WorkflowExecution
 
@@ -1484,7 +1486,7 @@ public struct ExternalWorkflowExecutionSignaledEventAttributes: Codable, Equatab
     }
 }
 
-public struct FailWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct FailWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var reason: FailureReason?
 
@@ -1505,7 +1507,7 @@ public struct FailWorkflowExecutionDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct FailWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct FailWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: FailWorkflowExecutionFailedCause
     public var decisionTaskCompletedEventId: EventId
 
@@ -1524,7 +1526,7 @@ public struct FailWorkflowExecutionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct GetWorkflowExecutionHistoryInput: Codable, Equatable {
+public struct GetWorkflowExecutionHistoryInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var execution: WorkflowExecution
     public var maximumPageSize: PageSize?
@@ -1559,7 +1561,7 @@ public struct GetWorkflowExecutionHistoryInput: Codable, Equatable {
     }
 }
 
-public struct History: Codable, Equatable {
+public struct History: Codable, Equatable, Sendable {
     public var events: HistoryEventList
     public var nextPageToken: PageToken?
 
@@ -1579,7 +1581,7 @@ public struct History: Codable, Equatable {
     }
 }
 
-public struct HistoryEvent: Codable, Equatable {
+public struct HistoryEvent: Codable, Equatable, Sendable {
     public var activityTaskCancelRequestedEventAttributes: ActivityTaskCancelRequestedEventAttributes?
     public var activityTaskCanceledEventAttributes: ActivityTaskCanceledEventAttributes?
     public var activityTaskCompletedEventAttributes: ActivityTaskCompletedEventAttributes?
@@ -1872,7 +1874,7 @@ public struct HistoryEvent: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionCompletedEventAttributes: Codable, Equatable {
+public struct LambdaFunctionCompletedEventAttributes: Codable, Equatable, Sendable {
     public var result: Data?
     public var scheduledEventId: EventId
     public var startedEventId: EventId
@@ -1896,7 +1898,7 @@ public struct LambdaFunctionCompletedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionFailedEventAttributes: Codable, Equatable {
+public struct LambdaFunctionFailedEventAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var reason: FailureReason?
     public var scheduledEventId: EventId
@@ -1925,7 +1927,7 @@ public struct LambdaFunctionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionScheduledEventAttributes: Codable, Equatable {
+public struct LambdaFunctionScheduledEventAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
     public var id: FunctionId
@@ -1965,7 +1967,7 @@ public struct LambdaFunctionScheduledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionStartedEventAttributes: Codable, Equatable {
+public struct LambdaFunctionStartedEventAttributes: Codable, Equatable, Sendable {
     public var scheduledEventId: EventId
 
     public init(scheduledEventId: EventId) {
@@ -1980,7 +1982,7 @@ public struct LambdaFunctionStartedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionTimedOutEventAttributes: Codable, Equatable {
+public struct LambdaFunctionTimedOutEventAttributes: Codable, Equatable, Sendable {
     public var scheduledEventId: EventId
     public var startedEventId: EventId
     public var timeoutType: LambdaFunctionTimeoutType?
@@ -2003,7 +2005,7 @@ public struct LambdaFunctionTimedOutEventAttributes: Codable, Equatable {
     }
 }
 
-public struct LimitExceededFault: Codable, Equatable {
+public struct LimitExceededFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2018,7 +2020,7 @@ public struct LimitExceededFault: Codable, Equatable {
     }
 }
 
-public struct ListActivityTypesInput: Codable, Equatable {
+public struct ListActivityTypesInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var maximumPageSize: PageSize?
     public var name: Name?
@@ -2057,7 +2059,7 @@ public struct ListActivityTypesInput: Codable, Equatable {
     }
 }
 
-public struct ListClosedWorkflowExecutionsInput: Codable, Equatable {
+public struct ListClosedWorkflowExecutionsInput: Codable, Equatable, Sendable {
     public var closeStatusFilter: CloseStatusFilter?
     public var closeTimeFilter: ExecutionTimeFilter?
     public var domain: DomainName
@@ -2117,7 +2119,7 @@ public struct ListClosedWorkflowExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct ListDomainsInput: Codable, Equatable {
+public struct ListDomainsInput: Codable, Equatable, Sendable {
     public var maximumPageSize: PageSize?
     public var nextPageToken: PageToken?
     public var registrationStatus: RegistrationStatus
@@ -2146,7 +2148,7 @@ public struct ListDomainsInput: Codable, Equatable {
     }
 }
 
-public struct ListOpenWorkflowExecutionsInput: Codable, Equatable {
+public struct ListOpenWorkflowExecutionsInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var executionFilter: WorkflowExecutionFilter?
     public var maximumPageSize: PageSize?
@@ -2196,7 +2198,7 @@ public struct ListOpenWorkflowExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceInput: Codable, Equatable {
+public struct ListTagsForResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -2212,7 +2214,7 @@ public struct ListTagsForResourceInput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceOutput: Codable, Equatable {
+public struct ListTagsForResourceOutput: Codable, Equatable, Sendable {
     public var tags: ResourceTagList?
 
     public init(tags: ResourceTagList? = nil) {
@@ -2227,7 +2229,7 @@ public struct ListTagsForResourceOutput: Codable, Equatable {
     }
 }
 
-public struct ListWorkflowTypesInput: Codable, Equatable {
+public struct ListWorkflowTypesInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var maximumPageSize: PageSize?
     public var name: Name?
@@ -2266,7 +2268,7 @@ public struct ListWorkflowTypesInput: Codable, Equatable {
     }
 }
 
-public struct MarkerRecordedEventAttributes: Codable, Equatable {
+public struct MarkerRecordedEventAttributes: Codable, Equatable, Sendable {
     public var decisionTaskCompletedEventId: EventId
     public var details: Data?
     public var markerName: MarkerName
@@ -2291,7 +2293,7 @@ public struct MarkerRecordedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct OperationNotPermittedFault: Codable, Equatable {
+public struct OperationNotPermittedFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2306,7 +2308,7 @@ public struct OperationNotPermittedFault: Codable, Equatable {
     }
 }
 
-public struct PendingTaskCount: Codable, Equatable {
+public struct PendingTaskCount: Codable, Equatable, Sendable {
     public var count: Count
     public var truncated: Truncated?
 
@@ -2326,7 +2328,7 @@ public struct PendingTaskCount: Codable, Equatable {
     }
 }
 
-public struct PollForActivityTaskInput: Codable, Equatable {
+public struct PollForActivityTaskInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var identity: Identity?
     public var taskList: TaskList
@@ -2352,7 +2354,7 @@ public struct PollForActivityTaskInput: Codable, Equatable {
     }
 }
 
-public struct PollForDecisionTaskInput: Codable, Equatable {
+public struct PollForDecisionTaskInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var identity: Identity?
     public var maximumPageSize: PageSize?
@@ -2392,7 +2394,7 @@ public struct PollForDecisionTaskInput: Codable, Equatable {
     }
 }
 
-public struct RecordActivityTaskHeartbeatInput: Codable, Equatable {
+public struct RecordActivityTaskHeartbeatInput: Codable, Equatable, Sendable {
     public var details: LimitedData?
     public var taskToken: TaskToken
 
@@ -2413,7 +2415,7 @@ public struct RecordActivityTaskHeartbeatInput: Codable, Equatable {
     }
 }
 
-public struct RecordMarkerDecisionAttributes: Codable, Equatable {
+public struct RecordMarkerDecisionAttributes: Codable, Equatable, Sendable {
     public var details: Data?
     public var markerName: MarkerName
 
@@ -2434,7 +2436,7 @@ public struct RecordMarkerDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct RecordMarkerFailedEventAttributes: Codable, Equatable {
+public struct RecordMarkerFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: RecordMarkerFailedCause
     public var decisionTaskCompletedEventId: EventId
     public var markerName: MarkerName
@@ -2458,7 +2460,7 @@ public struct RecordMarkerFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct RegisterActivityTypeInput: Codable, Equatable {
+public struct RegisterActivityTypeInput: Codable, Equatable, Sendable {
     public var defaultTaskHeartbeatTimeout: DurationInSecondsOptional?
     public var defaultTaskList: TaskList?
     public var defaultTaskPriority: TaskPriority?
@@ -2518,7 +2520,7 @@ public struct RegisterActivityTypeInput: Codable, Equatable {
     }
 }
 
-public struct RegisterDomainInput: Codable, Equatable {
+public struct RegisterDomainInput: Codable, Equatable, Sendable {
     public var description: Description?
     public var name: DomainName
     public var tags: ResourceTagList?
@@ -2548,7 +2550,7 @@ public struct RegisterDomainInput: Codable, Equatable {
     }
 }
 
-public struct RegisterWorkflowTypeInput: Codable, Equatable {
+public struct RegisterWorkflowTypeInput: Codable, Equatable, Sendable {
     public var defaultChildPolicy: ChildPolicy?
     public var defaultExecutionStartToCloseTimeout: DurationInSecondsOptional?
     public var defaultLambdaRole: Arn?
@@ -2607,7 +2609,7 @@ public struct RegisterWorkflowTypeInput: Codable, Equatable {
     }
 }
 
-public struct RequestCancelActivityTaskDecisionAttributes: Codable, Equatable {
+public struct RequestCancelActivityTaskDecisionAttributes: Codable, Equatable, Sendable {
     public var activityId: ActivityId
 
     public init(activityId: ActivityId) {
@@ -2623,7 +2625,7 @@ public struct RequestCancelActivityTaskDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct RequestCancelActivityTaskFailedEventAttributes: Codable, Equatable {
+public struct RequestCancelActivityTaskFailedEventAttributes: Codable, Equatable, Sendable {
     public var activityId: ActivityId
     public var cause: RequestCancelActivityTaskFailedCause
     public var decisionTaskCompletedEventId: EventId
@@ -2647,7 +2649,7 @@ public struct RequestCancelActivityTaskFailedEventAttributes: Codable, Equatable
     }
 }
 
-public struct RequestCancelExternalWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct RequestCancelExternalWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var runId: WorkflowRunIdOptional?
     public var workflowId: WorkflowId
@@ -2673,7 +2675,7 @@ public struct RequestCancelExternalWorkflowExecutionDecisionAttributes: Codable,
     }
 }
 
-public struct RequestCancelExternalWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct RequestCancelExternalWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: RequestCancelExternalWorkflowExecutionFailedCause
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
@@ -2711,7 +2713,7 @@ public struct RequestCancelExternalWorkflowExecutionFailedEventAttributes: Codab
     }
 }
 
-public struct RequestCancelExternalWorkflowExecutionInitiatedEventAttributes: Codable, Equatable {
+public struct RequestCancelExternalWorkflowExecutionInitiatedEventAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
     public var runId: WorkflowRunIdOptional?
@@ -2741,7 +2743,7 @@ public struct RequestCancelExternalWorkflowExecutionInitiatedEventAttributes: Co
     }
 }
 
-public struct RequestCancelWorkflowExecutionInput: Codable, Equatable {
+public struct RequestCancelWorkflowExecutionInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var runId: WorkflowRunIdOptional?
     public var workflowId: WorkflowId
@@ -2767,7 +2769,7 @@ public struct RequestCancelWorkflowExecutionInput: Codable, Equatable {
     }
 }
 
-public struct ResourceTag: Codable, Equatable {
+public struct ResourceTag: Codable, Equatable, Sendable {
     public var key: ResourceTagKey
     public var value: ResourceTagValue?
 
@@ -2788,7 +2790,7 @@ public struct ResourceTag: Codable, Equatable {
     }
 }
 
-public struct RespondActivityTaskCanceledInput: Codable, Equatable {
+public struct RespondActivityTaskCanceledInput: Codable, Equatable, Sendable {
     public var details: Data?
     public var taskToken: TaskToken
 
@@ -2809,7 +2811,7 @@ public struct RespondActivityTaskCanceledInput: Codable, Equatable {
     }
 }
 
-public struct RespondActivityTaskCompletedInput: Codable, Equatable {
+public struct RespondActivityTaskCompletedInput: Codable, Equatable, Sendable {
     public var result: Data?
     public var taskToken: TaskToken
 
@@ -2830,7 +2832,7 @@ public struct RespondActivityTaskCompletedInput: Codable, Equatable {
     }
 }
 
-public struct RespondActivityTaskFailedInput: Codable, Equatable {
+public struct RespondActivityTaskFailedInput: Codable, Equatable, Sendable {
     public var details: Data?
     public var reason: FailureReason?
     public var taskToken: TaskToken
@@ -2856,7 +2858,7 @@ public struct RespondActivityTaskFailedInput: Codable, Equatable {
     }
 }
 
-public struct RespondDecisionTaskCompletedInput: Codable, Equatable {
+public struct RespondDecisionTaskCompletedInput: Codable, Equatable, Sendable {
     public var decisions: DecisionList?
     public var executionContext: Data?
     public var taskToken: TaskToken
@@ -2881,7 +2883,7 @@ public struct RespondDecisionTaskCompletedInput: Codable, Equatable {
     }
 }
 
-public struct Run: Codable, Equatable {
+public struct Run: Codable, Equatable, Sendable {
     public var runId: WorkflowRunId?
 
     public init(runId: WorkflowRunId? = nil) {
@@ -2897,7 +2899,7 @@ public struct Run: Codable, Equatable {
     }
 }
 
-public struct ScheduleActivityTaskDecisionAttributes: Codable, Equatable {
+public struct ScheduleActivityTaskDecisionAttributes: Codable, Equatable, Sendable {
     public var activityId: ActivityId
     public var activityType: ActivityType
     public var control: Data?
@@ -2957,7 +2959,7 @@ public struct ScheduleActivityTaskDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct ScheduleActivityTaskFailedEventAttributes: Codable, Equatable {
+public struct ScheduleActivityTaskFailedEventAttributes: Codable, Equatable, Sendable {
     public var activityId: ActivityId
     public var activityType: ActivityType
     public var cause: ScheduleActivityTaskFailedCause
@@ -2986,7 +2988,7 @@ public struct ScheduleActivityTaskFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct ScheduleLambdaFunctionDecisionAttributes: Codable, Equatable {
+public struct ScheduleLambdaFunctionDecisionAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var id: FunctionId
     public var input: FunctionInput?
@@ -3022,7 +3024,7 @@ public struct ScheduleLambdaFunctionDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct ScheduleLambdaFunctionFailedEventAttributes: Codable, Equatable {
+public struct ScheduleLambdaFunctionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: ScheduleLambdaFunctionFailedCause
     public var decisionTaskCompletedEventId: EventId
     public var id: FunctionId
@@ -3051,7 +3053,7 @@ public struct ScheduleLambdaFunctionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct SignalExternalWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct SignalExternalWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var input: Data?
     public var runId: WorkflowRunIdOptional?
@@ -3087,7 +3089,7 @@ public struct SignalExternalWorkflowExecutionDecisionAttributes: Codable, Equata
     }
 }
 
-public struct SignalExternalWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct SignalExternalWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: SignalExternalWorkflowExecutionFailedCause
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
@@ -3125,7 +3127,7 @@ public struct SignalExternalWorkflowExecutionFailedEventAttributes: Codable, Equ
     }
 }
 
-public struct SignalExternalWorkflowExecutionInitiatedEventAttributes: Codable, Equatable {
+public struct SignalExternalWorkflowExecutionInitiatedEventAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
     public var input: Data?
@@ -3165,7 +3167,7 @@ public struct SignalExternalWorkflowExecutionInitiatedEventAttributes: Codable, 
     }
 }
 
-public struct SignalWorkflowExecutionInput: Codable, Equatable {
+public struct SignalWorkflowExecutionInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var input: Data?
     public var runId: WorkflowRunIdOptional?
@@ -3201,7 +3203,7 @@ public struct SignalWorkflowExecutionInput: Codable, Equatable {
     }
 }
 
-public struct StartChildWorkflowExecutionDecisionAttributes: Codable, Equatable {
+public struct StartChildWorkflowExecutionDecisionAttributes: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy?
     public var control: Data?
     public var executionStartToCloseTimeout: DurationInSecondsOptional?
@@ -3265,7 +3267,7 @@ public struct StartChildWorkflowExecutionDecisionAttributes: Codable, Equatable 
     }
 }
 
-public struct StartChildWorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct StartChildWorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: StartChildWorkflowExecutionFailedCause
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
@@ -3303,7 +3305,7 @@ public struct StartChildWorkflowExecutionFailedEventAttributes: Codable, Equatab
     }
 }
 
-public struct StartChildWorkflowExecutionInitiatedEventAttributes: Codable, Equatable {
+public struct StartChildWorkflowExecutionInitiatedEventAttributes: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
@@ -3371,7 +3373,7 @@ public struct StartChildWorkflowExecutionInitiatedEventAttributes: Codable, Equa
     }
 }
 
-public struct StartLambdaFunctionFailedEventAttributes: Codable, Equatable {
+public struct StartLambdaFunctionFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: StartLambdaFunctionFailedCause?
     public var message: CauseMessage?
     public var scheduledEventId: EventId?
@@ -3395,7 +3397,7 @@ public struct StartLambdaFunctionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct StartTimerDecisionAttributes: Codable, Equatable {
+public struct StartTimerDecisionAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var startToFireTimeout: DurationInSeconds
     public var timerId: TimerId
@@ -3421,7 +3423,7 @@ public struct StartTimerDecisionAttributes: Codable, Equatable {
     }
 }
 
-public struct StartTimerFailedEventAttributes: Codable, Equatable {
+public struct StartTimerFailedEventAttributes: Codable, Equatable, Sendable {
     public var cause: StartTimerFailedCause
     public var decisionTaskCompletedEventId: EventId
     public var timerId: TimerId
@@ -3445,7 +3447,7 @@ public struct StartTimerFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct StartWorkflowExecutionInput: Codable, Equatable {
+public struct StartWorkflowExecutionInput: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy?
     public var domain: DomainName
     public var executionStartToCloseTimeout: DurationInSecondsOptional?
@@ -3509,7 +3511,7 @@ public struct StartWorkflowExecutionInput: Codable, Equatable {
     }
 }
 
-public struct TagFilter: Codable, Equatable {
+public struct TagFilter: Codable, Equatable, Sendable {
     public var tag: Tag
 
     public init(tag: Tag) {
@@ -3525,7 +3527,7 @@ public struct TagFilter: Codable, Equatable {
     }
 }
 
-public struct TagResourceInput: Codable, Equatable {
+public struct TagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tags: ResourceTagList
 
@@ -3545,7 +3547,7 @@ public struct TagResourceInput: Codable, Equatable {
     }
 }
 
-public struct TaskList: Codable, Equatable {
+public struct TaskList: Codable, Equatable, Sendable {
     public var name: Name
 
     public init(name: Name) {
@@ -3561,7 +3563,7 @@ public struct TaskList: Codable, Equatable {
     }
 }
 
-public struct TerminateWorkflowExecutionInput: Codable, Equatable {
+public struct TerminateWorkflowExecutionInput: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy?
     public var details: Data?
     public var domain: DomainName
@@ -3601,7 +3603,7 @@ public struct TerminateWorkflowExecutionInput: Codable, Equatable {
     }
 }
 
-public struct TimerCanceledEventAttributes: Codable, Equatable {
+public struct TimerCanceledEventAttributes: Codable, Equatable, Sendable {
     public var decisionTaskCompletedEventId: EventId
     public var startedEventId: EventId
     public var timerId: TimerId
@@ -3625,7 +3627,7 @@ public struct TimerCanceledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct TimerFiredEventAttributes: Codable, Equatable {
+public struct TimerFiredEventAttributes: Codable, Equatable, Sendable {
     public var startedEventId: EventId
     public var timerId: TimerId
 
@@ -3645,7 +3647,7 @@ public struct TimerFiredEventAttributes: Codable, Equatable {
     }
 }
 
-public struct TimerStartedEventAttributes: Codable, Equatable {
+public struct TimerStartedEventAttributes: Codable, Equatable, Sendable {
     public var control: Data?
     public var decisionTaskCompletedEventId: EventId
     public var startToFireTimeout: DurationInSeconds
@@ -3675,7 +3677,7 @@ public struct TimerStartedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct TooManyTagsFault: Codable, Equatable {
+public struct TooManyTagsFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3690,7 +3692,7 @@ public struct TooManyTagsFault: Codable, Equatable {
     }
 }
 
-public struct TypeAlreadyExistsFault: Codable, Equatable {
+public struct TypeAlreadyExistsFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3705,7 +3707,7 @@ public struct TypeAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct TypeDeprecatedFault: Codable, Equatable {
+public struct TypeDeprecatedFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3720,7 +3722,7 @@ public struct TypeDeprecatedFault: Codable, Equatable {
     }
 }
 
-public struct UndeprecateActivityTypeInput: Codable, Equatable {
+public struct UndeprecateActivityTypeInput: Codable, Equatable, Sendable {
     public var activityType: ActivityType
     public var domain: DomainName
 
@@ -3741,7 +3743,7 @@ public struct UndeprecateActivityTypeInput: Codable, Equatable {
     }
 }
 
-public struct UndeprecateDomainInput: Codable, Equatable {
+public struct UndeprecateDomainInput: Codable, Equatable, Sendable {
     public var name: DomainName
 
     public init(name: DomainName) {
@@ -3757,7 +3759,7 @@ public struct UndeprecateDomainInput: Codable, Equatable {
     }
 }
 
-public struct UndeprecateWorkflowTypeInput: Codable, Equatable {
+public struct UndeprecateWorkflowTypeInput: Codable, Equatable, Sendable {
     public var domain: DomainName
     public var workflowType: WorkflowType
 
@@ -3778,7 +3780,7 @@ public struct UndeprecateWorkflowTypeInput: Codable, Equatable {
     }
 }
 
-public struct UnknownResourceFault: Codable, Equatable {
+public struct UnknownResourceFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3793,7 +3795,7 @@ public struct UnknownResourceFault: Codable, Equatable {
     }
 }
 
-public struct UntagResourceInput: Codable, Equatable {
+public struct UntagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tagKeys: ResourceTagKeyList
 
@@ -3813,7 +3815,7 @@ public struct UntagResourceInput: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecution: Codable, Equatable {
+public struct WorkflowExecution: Codable, Equatable, Sendable {
     public var runId: WorkflowRunId
     public var workflowId: WorkflowId
 
@@ -3834,7 +3836,7 @@ public struct WorkflowExecution: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionAlreadyStartedFault: Codable, Equatable {
+public struct WorkflowExecutionAlreadyStartedFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3849,7 +3851,7 @@ public struct WorkflowExecutionAlreadyStartedFault: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionCancelRequestedEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionCancelRequestedEventAttributes: Codable, Equatable, Sendable {
     public var cause: WorkflowExecutionCancelRequestedCause?
     public var externalInitiatedEventId: EventId?
     public var externalWorkflowExecution: WorkflowExecution?
@@ -3873,7 +3875,7 @@ public struct WorkflowExecutionCancelRequestedEventAttributes: Codable, Equatabl
     }
 }
 
-public struct WorkflowExecutionCanceledEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionCanceledEventAttributes: Codable, Equatable, Sendable {
     public var decisionTaskCompletedEventId: EventId
     public var details: Data?
 
@@ -3893,7 +3895,7 @@ public struct WorkflowExecutionCanceledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionCompletedEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionCompletedEventAttributes: Codable, Equatable, Sendable {
     public var decisionTaskCompletedEventId: EventId
     public var result: Data?
 
@@ -3913,7 +3915,7 @@ public struct WorkflowExecutionCompletedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionConfiguration: Codable, Equatable {
+public struct WorkflowExecutionConfiguration: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy
     public var executionStartToCloseTimeout: DurationInSeconds
     public var lambdaRole: Arn?
@@ -3952,7 +3954,7 @@ public struct WorkflowExecutionConfiguration: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionContinuedAsNewEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionContinuedAsNewEventAttributes: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy
     public var decisionTaskCompletedEventId: EventId
     public var executionStartToCloseTimeout: DurationInSecondsOptional?
@@ -4015,7 +4017,7 @@ public struct WorkflowExecutionContinuedAsNewEventAttributes: Codable, Equatable
     }
 }
 
-public struct WorkflowExecutionCount: Codable, Equatable {
+public struct WorkflowExecutionCount: Codable, Equatable, Sendable {
     public var count: Count
     public var truncated: Truncated?
 
@@ -4035,7 +4037,7 @@ public struct WorkflowExecutionCount: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionDetail: Codable, Equatable {
+public struct WorkflowExecutionDetail: Codable, Equatable, Sendable {
     public var executionConfiguration: WorkflowExecutionConfiguration
     public var executionInfo: WorkflowExecutionInfo
     public var latestActivityTaskTimestamp: Timestamp?
@@ -4070,7 +4072,7 @@ public struct WorkflowExecutionDetail: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionFailedEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionFailedEventAttributes: Codable, Equatable, Sendable {
     public var decisionTaskCompletedEventId: EventId
     public var details: Data?
     public var reason: FailureReason?
@@ -4095,7 +4097,7 @@ public struct WorkflowExecutionFailedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionFilter: Codable, Equatable {
+public struct WorkflowExecutionFilter: Codable, Equatable, Sendable {
     public var workflowId: WorkflowId
 
     public init(workflowId: WorkflowId) {
@@ -4111,7 +4113,7 @@ public struct WorkflowExecutionFilter: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionInfo: Codable, Equatable {
+public struct WorkflowExecutionInfo: Codable, Equatable, Sendable {
     public var cancelRequested: Canceled?
     public var closeStatus: CloseStatus?
     public var closeTimestamp: Timestamp?
@@ -4162,7 +4164,7 @@ public struct WorkflowExecutionInfo: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionInfos: Codable, Equatable {
+public struct WorkflowExecutionInfos: Codable, Equatable, Sendable {
     public var executionInfos: WorkflowExecutionInfoList
     public var nextPageToken: PageToken?
 
@@ -4182,7 +4184,7 @@ public struct WorkflowExecutionInfos: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionOpenCounts: Codable, Equatable {
+public struct WorkflowExecutionOpenCounts: Codable, Equatable, Sendable {
     public var openActivityTasks: Count
     public var openChildWorkflowExecutions: Count
     public var openDecisionTasks: OpenDecisionTasksCount
@@ -4218,7 +4220,7 @@ public struct WorkflowExecutionOpenCounts: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionSignaledEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionSignaledEventAttributes: Codable, Equatable, Sendable {
     public var externalInitiatedEventId: EventId?
     public var externalWorkflowExecution: WorkflowExecution?
     public var input: Data?
@@ -4248,7 +4250,7 @@ public struct WorkflowExecutionSignaledEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionStartedEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionStartedEventAttributes: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy
     public var continuedExecutionRunId: WorkflowRunIdOptional?
     public var executionStartToCloseTimeout: DurationInSecondsOptional?
@@ -4316,7 +4318,7 @@ public struct WorkflowExecutionStartedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionTerminatedEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionTerminatedEventAttributes: Codable, Equatable, Sendable {
     public var cause: WorkflowExecutionTerminatedCause?
     public var childPolicy: ChildPolicy
     public var details: Data?
@@ -4345,7 +4347,7 @@ public struct WorkflowExecutionTerminatedEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowExecutionTimedOutEventAttributes: Codable, Equatable {
+public struct WorkflowExecutionTimedOutEventAttributes: Codable, Equatable, Sendable {
     public var childPolicy: ChildPolicy
     public var timeoutType: WorkflowExecutionTimeoutType
 
@@ -4364,7 +4366,7 @@ public struct WorkflowExecutionTimedOutEventAttributes: Codable, Equatable {
     }
 }
 
-public struct WorkflowType: Codable, Equatable {
+public struct WorkflowType: Codable, Equatable, Sendable {
     public var name: Name
     public var version: Version
 
@@ -4385,7 +4387,7 @@ public struct WorkflowType: Codable, Equatable {
     }
 }
 
-public struct WorkflowTypeConfiguration: Codable, Equatable {
+public struct WorkflowTypeConfiguration: Codable, Equatable, Sendable {
     public var defaultChildPolicy: ChildPolicy?
     public var defaultExecutionStartToCloseTimeout: DurationInSecondsOptional?
     public var defaultLambdaRole: Arn?
@@ -4424,7 +4426,7 @@ public struct WorkflowTypeConfiguration: Codable, Equatable {
     }
 }
 
-public struct WorkflowTypeDetail: Codable, Equatable {
+public struct WorkflowTypeDetail: Codable, Equatable, Sendable {
     public var configuration: WorkflowTypeConfiguration
     public var typeInfo: WorkflowTypeInfo
 
@@ -4445,7 +4447,7 @@ public struct WorkflowTypeDetail: Codable, Equatable {
     }
 }
 
-public struct WorkflowTypeFilter: Codable, Equatable {
+public struct WorkflowTypeFilter: Codable, Equatable, Sendable {
     public var name: Name
     public var version: VersionOptional?
 
@@ -4466,7 +4468,7 @@ public struct WorkflowTypeFilter: Codable, Equatable {
     }
 }
 
-public struct WorkflowTypeInfo: Codable, Equatable {
+public struct WorkflowTypeInfo: Codable, Equatable, Sendable {
     public var creationDate: Timestamp
     public var deprecationDate: Timestamp?
     public var description: Description?
@@ -4499,7 +4501,7 @@ public struct WorkflowTypeInfo: Codable, Equatable {
     }
 }
 
-public struct WorkflowTypeInfos: Codable, Equatable {
+public struct WorkflowTypeInfos: Codable, Equatable, Sendable {
     public var nextPageToken: PageToken?
     public var typeInfos: WorkflowTypeInfoList
 

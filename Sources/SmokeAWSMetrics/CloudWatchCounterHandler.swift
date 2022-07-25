@@ -19,11 +19,11 @@ import Foundation
 import Metrics
 import CloudWatchClient
 import CloudWatchModel
-import Logging
+@preconcurrency import Logging
 /**
  Class conforming to `CounterHandler` that emits a CloudWatch metric.
  */
-internal class CloudWatchCounterHandler: CounterHandler {
+internal final class CloudWatchCounterHandler: CounterHandler {
     private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
     private let metricName: String
     private let namespace: String

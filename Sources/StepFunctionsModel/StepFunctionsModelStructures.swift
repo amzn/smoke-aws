@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct ActivityDoesNotExist: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct ActivityDoesNotExist: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -37,7 +39,7 @@ public struct ActivityDoesNotExist: Codable, Equatable {
     }
 }
 
-public struct ActivityFailedEventDetails: Codable, Equatable {
+public struct ActivityFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -58,7 +60,7 @@ public struct ActivityFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct ActivityLimitExceeded: Codable, Equatable {
+public struct ActivityLimitExceeded: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -73,7 +75,7 @@ public struct ActivityLimitExceeded: Codable, Equatable {
     }
 }
 
-public struct ActivityListItem: Codable, Equatable {
+public struct ActivityListItem: Codable, Equatable, Sendable {
     public var activityArn: Arn
     public var creationDate: Timestamp
     public var name: Name
@@ -98,7 +100,7 @@ public struct ActivityListItem: Codable, Equatable {
     }
 }
 
-public struct ActivityScheduleFailedEventDetails: Codable, Equatable {
+public struct ActivityScheduleFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -119,7 +121,7 @@ public struct ActivityScheduleFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct ActivityScheduledEventDetails: Codable, Equatable {
+public struct ActivityScheduledEventDetails: Codable, Equatable, Sendable {
     public var heartbeatInSeconds: TimeoutInSeconds?
     public var input: SensitiveData?
     public var inputDetails: HistoryEventExecutionDataDetails?
@@ -153,7 +155,7 @@ public struct ActivityScheduledEventDetails: Codable, Equatable {
     }
 }
 
-public struct ActivityStartedEventDetails: Codable, Equatable {
+public struct ActivityStartedEventDetails: Codable, Equatable, Sendable {
     public var workerName: Identity?
 
     public init(workerName: Identity? = nil) {
@@ -169,7 +171,7 @@ public struct ActivityStartedEventDetails: Codable, Equatable {
     }
 }
 
-public struct ActivitySucceededEventDetails: Codable, Equatable {
+public struct ActivitySucceededEventDetails: Codable, Equatable, Sendable {
     public var output: SensitiveData?
     public var outputDetails: HistoryEventExecutionDataDetails?
 
@@ -190,7 +192,7 @@ public struct ActivitySucceededEventDetails: Codable, Equatable {
     }
 }
 
-public struct ActivityTimedOutEventDetails: Codable, Equatable {
+public struct ActivityTimedOutEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -211,7 +213,7 @@ public struct ActivityTimedOutEventDetails: Codable, Equatable {
     }
 }
 
-public struct ActivityWorkerLimitExceeded: Codable, Equatable {
+public struct ActivityWorkerLimitExceeded: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -226,7 +228,7 @@ public struct ActivityWorkerLimitExceeded: Codable, Equatable {
     }
 }
 
-public struct BillingDetails: Codable, Equatable {
+public struct BillingDetails: Codable, Equatable, Sendable {
     public var billedDurationInMilliseconds: BilledDuration?
     public var billedMemoryUsedInMB: BilledMemoryUsed?
 
@@ -247,7 +249,7 @@ public struct BillingDetails: Codable, Equatable {
     }
 }
 
-public struct CloudWatchEventsExecutionDataDetails: Codable, Equatable {
+public struct CloudWatchEventsExecutionDataDetails: Codable, Equatable, Sendable {
     public var included: IncludedDetails?
 
     public init(included: IncludedDetails? = nil) {
@@ -262,7 +264,7 @@ public struct CloudWatchEventsExecutionDataDetails: Codable, Equatable {
     }
 }
 
-public struct CloudWatchLogsLogGroup: Codable, Equatable {
+public struct CloudWatchLogsLogGroup: Codable, Equatable, Sendable {
     public var logGroupArn: Arn?
 
     public init(logGroupArn: Arn? = nil) {
@@ -278,7 +280,7 @@ public struct CloudWatchLogsLogGroup: Codable, Equatable {
     }
 }
 
-public struct CreateActivityInput: Codable, Equatable {
+public struct CreateActivityInput: Codable, Equatable, Sendable {
     public var name: Name
     public var tags: TagList?
 
@@ -298,7 +300,7 @@ public struct CreateActivityInput: Codable, Equatable {
     }
 }
 
-public struct CreateActivityOutput: Codable, Equatable {
+public struct CreateActivityOutput: Codable, Equatable, Sendable {
     public var activityArn: Arn
     public var creationDate: Timestamp
 
@@ -318,7 +320,7 @@ public struct CreateActivityOutput: Codable, Equatable {
     }
 }
 
-public struct CreateStateMachineInput: Codable, Equatable {
+public struct CreateStateMachineInput: Codable, Equatable, Sendable {
     public var definition: Definition
     public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
@@ -362,7 +364,7 @@ public struct CreateStateMachineInput: Codable, Equatable {
     }
 }
 
-public struct CreateStateMachineOutput: Codable, Equatable {
+public struct CreateStateMachineOutput: Codable, Equatable, Sendable {
     public var creationDate: Timestamp
     public var stateMachineArn: Arn
 
@@ -382,7 +384,7 @@ public struct CreateStateMachineOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteActivityInput: Codable, Equatable {
+public struct DeleteActivityInput: Codable, Equatable, Sendable {
     public var activityArn: Arn
 
     public init(activityArn: Arn) {
@@ -398,7 +400,7 @@ public struct DeleteActivityInput: Codable, Equatable {
     }
 }
 
-public struct DeleteActivityOutput: Codable, Equatable {
+public struct DeleteActivityOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -407,7 +409,7 @@ public struct DeleteActivityOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteStateMachineInput: Codable, Equatable {
+public struct DeleteStateMachineInput: Codable, Equatable, Sendable {
     public var stateMachineArn: Arn
 
     public init(stateMachineArn: Arn) {
@@ -423,7 +425,7 @@ public struct DeleteStateMachineInput: Codable, Equatable {
     }
 }
 
-public struct DeleteStateMachineOutput: Codable, Equatable {
+public struct DeleteStateMachineOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -432,7 +434,7 @@ public struct DeleteStateMachineOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeActivityInput: Codable, Equatable {
+public struct DescribeActivityInput: Codable, Equatable, Sendable {
     public var activityArn: Arn
 
     public init(activityArn: Arn) {
@@ -448,7 +450,7 @@ public struct DescribeActivityInput: Codable, Equatable {
     }
 }
 
-public struct DescribeActivityOutput: Codable, Equatable {
+public struct DescribeActivityOutput: Codable, Equatable, Sendable {
     public var activityArn: Arn
     public var creationDate: Timestamp
     public var name: Name
@@ -473,7 +475,7 @@ public struct DescribeActivityOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeExecutionInput: Codable, Equatable {
+public struct DescribeExecutionInput: Codable, Equatable, Sendable {
     public var executionArn: Arn
 
     public init(executionArn: Arn) {
@@ -489,7 +491,7 @@ public struct DescribeExecutionInput: Codable, Equatable {
     }
 }
 
-public struct DescribeExecutionOutput: Codable, Equatable {
+public struct DescribeExecutionOutput: Codable, Equatable, Sendable {
     public var executionArn: Arn
     public var input: SensitiveData?
     public var inputDetails: CloudWatchEventsExecutionDataDetails?
@@ -552,7 +554,7 @@ public struct DescribeExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStateMachineForExecutionInput: Codable, Equatable {
+public struct DescribeStateMachineForExecutionInput: Codable, Equatable, Sendable {
     public var executionArn: Arn
 
     public init(executionArn: Arn) {
@@ -568,7 +570,7 @@ public struct DescribeStateMachineForExecutionInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
+public struct DescribeStateMachineForExecutionOutput: Codable, Equatable, Sendable {
     public var definition: Definition
     public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
@@ -613,7 +615,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStateMachineInput: Codable, Equatable {
+public struct DescribeStateMachineInput: Codable, Equatable, Sendable {
     public var stateMachineArn: Arn
 
     public init(stateMachineArn: Arn) {
@@ -629,7 +631,7 @@ public struct DescribeStateMachineInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStateMachineOutput: Codable, Equatable {
+public struct DescribeStateMachineOutput: Codable, Equatable, Sendable {
     public var creationDate: Timestamp
     public var definition: Definition
     public var loggingConfiguration: LoggingConfiguration?
@@ -682,7 +684,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
     }
 }
 
-public struct ExecutionAbortedEventDetails: Codable, Equatable {
+public struct ExecutionAbortedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -703,7 +705,7 @@ public struct ExecutionAbortedEventDetails: Codable, Equatable {
     }
 }
 
-public struct ExecutionAlreadyExists: Codable, Equatable {
+public struct ExecutionAlreadyExists: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -718,7 +720,7 @@ public struct ExecutionAlreadyExists: Codable, Equatable {
     }
 }
 
-public struct ExecutionDoesNotExist: Codable, Equatable {
+public struct ExecutionDoesNotExist: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -733,7 +735,7 @@ public struct ExecutionDoesNotExist: Codable, Equatable {
     }
 }
 
-public struct ExecutionFailedEventDetails: Codable, Equatable {
+public struct ExecutionFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -754,7 +756,7 @@ public struct ExecutionFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct ExecutionLimitExceeded: Codable, Equatable {
+public struct ExecutionLimitExceeded: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -769,7 +771,7 @@ public struct ExecutionLimitExceeded: Codable, Equatable {
     }
 }
 
-public struct ExecutionListItem: Codable, Equatable {
+public struct ExecutionListItem: Codable, Equatable, Sendable {
     public var executionArn: Arn
     public var name: Name
     public var startDate: Timestamp
@@ -807,7 +809,7 @@ public struct ExecutionListItem: Codable, Equatable {
     }
 }
 
-public struct ExecutionStartedEventDetails: Codable, Equatable {
+public struct ExecutionStartedEventDetails: Codable, Equatable, Sendable {
     public var input: SensitiveData?
     public var inputDetails: HistoryEventExecutionDataDetails?
     public var roleArn: Arn?
@@ -833,7 +835,7 @@ public struct ExecutionStartedEventDetails: Codable, Equatable {
     }
 }
 
-public struct ExecutionSucceededEventDetails: Codable, Equatable {
+public struct ExecutionSucceededEventDetails: Codable, Equatable, Sendable {
     public var output: SensitiveData?
     public var outputDetails: HistoryEventExecutionDataDetails?
 
@@ -854,7 +856,7 @@ public struct ExecutionSucceededEventDetails: Codable, Equatable {
     }
 }
 
-public struct ExecutionTimedOutEventDetails: Codable, Equatable {
+public struct ExecutionTimedOutEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -875,7 +877,7 @@ public struct ExecutionTimedOutEventDetails: Codable, Equatable {
     }
 }
 
-public struct GetActivityTaskInput: Codable, Equatable {
+public struct GetActivityTaskInput: Codable, Equatable, Sendable {
     public var activityArn: Arn
     public var workerName: Name?
 
@@ -896,7 +898,7 @@ public struct GetActivityTaskInput: Codable, Equatable {
     }
 }
 
-public struct GetActivityTaskOutput: Codable, Equatable {
+public struct GetActivityTaskOutput: Codable, Equatable, Sendable {
     public var input: SensitiveDataJobInput?
     public var taskToken: TaskToken?
 
@@ -917,7 +919,7 @@ public struct GetActivityTaskOutput: Codable, Equatable {
     }
 }
 
-public struct GetExecutionHistoryInput: Codable, Equatable {
+public struct GetExecutionHistoryInput: Codable, Equatable, Sendable {
     public var executionArn: Arn
     public var includeExecutionData: IncludeExecutionDataGetExecutionHistory?
     public var maxResults: PageSize?
@@ -951,7 +953,7 @@ public struct GetExecutionHistoryInput: Codable, Equatable {
     }
 }
 
-public struct GetExecutionHistoryOutput: Codable, Equatable {
+public struct GetExecutionHistoryOutput: Codable, Equatable, Sendable {
     public var events: HistoryEventList
     public var nextToken: PageToken?
 
@@ -971,7 +973,7 @@ public struct GetExecutionHistoryOutput: Codable, Equatable {
     }
 }
 
-public struct HistoryEvent: Codable, Equatable {
+public struct HistoryEvent: Codable, Equatable, Sendable {
     public var activityFailedEventDetails: ActivityFailedEventDetails?
     public var activityScheduleFailedEventDetails: ActivityScheduleFailedEventDetails?
     public var activityScheduledEventDetails: ActivityScheduledEventDetails?
@@ -1158,7 +1160,7 @@ public struct HistoryEvent: Codable, Equatable {
     }
 }
 
-public struct HistoryEventExecutionDataDetails: Codable, Equatable {
+public struct HistoryEventExecutionDataDetails: Codable, Equatable, Sendable {
     public var truncated: Truncated?
 
     public init(truncated: Truncated? = nil) {
@@ -1173,7 +1175,7 @@ public struct HistoryEventExecutionDataDetails: Codable, Equatable {
     }
 }
 
-public struct InvalidArn: Codable, Equatable {
+public struct InvalidArn: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1188,7 +1190,7 @@ public struct InvalidArn: Codable, Equatable {
     }
 }
 
-public struct InvalidDefinition: Codable, Equatable {
+public struct InvalidDefinition: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1203,7 +1205,7 @@ public struct InvalidDefinition: Codable, Equatable {
     }
 }
 
-public struct InvalidExecutionInput: Codable, Equatable {
+public struct InvalidExecutionInput: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1218,7 +1220,7 @@ public struct InvalidExecutionInput: Codable, Equatable {
     }
 }
 
-public struct InvalidLoggingConfiguration: Codable, Equatable {
+public struct InvalidLoggingConfiguration: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1233,7 +1235,7 @@ public struct InvalidLoggingConfiguration: Codable, Equatable {
     }
 }
 
-public struct InvalidName: Codable, Equatable {
+public struct InvalidName: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1248,7 +1250,7 @@ public struct InvalidName: Codable, Equatable {
     }
 }
 
-public struct InvalidOutput: Codable, Equatable {
+public struct InvalidOutput: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1263,7 +1265,7 @@ public struct InvalidOutput: Codable, Equatable {
     }
 }
 
-public struct InvalidToken: Codable, Equatable {
+public struct InvalidToken: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1278,7 +1280,7 @@ public struct InvalidToken: Codable, Equatable {
     }
 }
 
-public struct InvalidTracingConfiguration: Codable, Equatable {
+public struct InvalidTracingConfiguration: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1293,7 +1295,7 @@ public struct InvalidTracingConfiguration: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionFailedEventDetails: Codable, Equatable {
+public struct LambdaFunctionFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -1314,7 +1316,7 @@ public struct LambdaFunctionFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionScheduleFailedEventDetails: Codable, Equatable {
+public struct LambdaFunctionScheduleFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -1335,7 +1337,7 @@ public struct LambdaFunctionScheduleFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
+public struct LambdaFunctionScheduledEventDetails: Codable, Equatable, Sendable {
     public var input: SensitiveData?
     public var inputDetails: HistoryEventExecutionDataDetails?
     public var resource: Arn
@@ -1365,7 +1367,7 @@ public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionStartFailedEventDetails: Codable, Equatable {
+public struct LambdaFunctionStartFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -1386,7 +1388,7 @@ public struct LambdaFunctionStartFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionSucceededEventDetails: Codable, Equatable {
+public struct LambdaFunctionSucceededEventDetails: Codable, Equatable, Sendable {
     public var output: SensitiveData?
     public var outputDetails: HistoryEventExecutionDataDetails?
 
@@ -1407,7 +1409,7 @@ public struct LambdaFunctionSucceededEventDetails: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionTimedOutEventDetails: Codable, Equatable {
+public struct LambdaFunctionTimedOutEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
 
@@ -1428,7 +1430,7 @@ public struct LambdaFunctionTimedOutEventDetails: Codable, Equatable {
     }
 }
 
-public struct ListActivitiesInput: Codable, Equatable {
+public struct ListActivitiesInput: Codable, Equatable, Sendable {
     public var maxResults: PageSize?
     public var nextToken: PageToken?
 
@@ -1449,7 +1451,7 @@ public struct ListActivitiesInput: Codable, Equatable {
     }
 }
 
-public struct ListActivitiesOutput: Codable, Equatable {
+public struct ListActivitiesOutput: Codable, Equatable, Sendable {
     public var activities: ActivityList
     public var nextToken: PageToken?
 
@@ -1469,7 +1471,7 @@ public struct ListActivitiesOutput: Codable, Equatable {
     }
 }
 
-public struct ListExecutionsInput: Codable, Equatable {
+public struct ListExecutionsInput: Codable, Equatable, Sendable {
     public var maxResults: PageSize?
     public var nextToken: ListExecutionsPageToken?
     public var stateMachineArn: Arn
@@ -1499,7 +1501,7 @@ public struct ListExecutionsInput: Codable, Equatable {
     }
 }
 
-public struct ListExecutionsOutput: Codable, Equatable {
+public struct ListExecutionsOutput: Codable, Equatable, Sendable {
     public var executions: ExecutionList
     public var nextToken: ListExecutionsPageToken?
 
@@ -1519,7 +1521,7 @@ public struct ListExecutionsOutput: Codable, Equatable {
     }
 }
 
-public struct ListStateMachinesInput: Codable, Equatable {
+public struct ListStateMachinesInput: Codable, Equatable, Sendable {
     public var maxResults: PageSize?
     public var nextToken: PageToken?
 
@@ -1540,7 +1542,7 @@ public struct ListStateMachinesInput: Codable, Equatable {
     }
 }
 
-public struct ListStateMachinesOutput: Codable, Equatable {
+public struct ListStateMachinesOutput: Codable, Equatable, Sendable {
     public var nextToken: PageToken?
     public var stateMachines: StateMachineList
 
@@ -1560,7 +1562,7 @@ public struct ListStateMachinesOutput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceInput: Codable, Equatable {
+public struct ListTagsForResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -1576,7 +1578,7 @@ public struct ListTagsForResourceInput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceOutput: Codable, Equatable {
+public struct ListTagsForResourceOutput: Codable, Equatable, Sendable {
     public var tags: TagList?
 
     public init(tags: TagList? = nil) {
@@ -1591,7 +1593,7 @@ public struct ListTagsForResourceOutput: Codable, Equatable {
     }
 }
 
-public struct LogDestination: Codable, Equatable {
+public struct LogDestination: Codable, Equatable, Sendable {
     public var cloudWatchLogsLogGroup: CloudWatchLogsLogGroup?
 
     public init(cloudWatchLogsLogGroup: CloudWatchLogsLogGroup? = nil) {
@@ -1607,7 +1609,7 @@ public struct LogDestination: Codable, Equatable {
     }
 }
 
-public struct LoggingConfiguration: Codable, Equatable {
+public struct LoggingConfiguration: Codable, Equatable, Sendable {
     public var destinations: LogDestinationList?
     public var includeExecutionData: IncludeExecutionData?
     public var level: LogLevel?
@@ -1630,7 +1632,7 @@ public struct LoggingConfiguration: Codable, Equatable {
     }
 }
 
-public struct MapIterationEventDetails: Codable, Equatable {
+public struct MapIterationEventDetails: Codable, Equatable, Sendable {
     public var index: UnsignedInteger?
     public var name: Name?
 
@@ -1651,7 +1653,7 @@ public struct MapIterationEventDetails: Codable, Equatable {
     }
 }
 
-public struct MapStateStartedEventDetails: Codable, Equatable {
+public struct MapStateStartedEventDetails: Codable, Equatable, Sendable {
     public var length: UnsignedInteger?
 
     public init(length: UnsignedInteger? = nil) {
@@ -1667,7 +1669,7 @@ public struct MapStateStartedEventDetails: Codable, Equatable {
     }
 }
 
-public struct MissingRequiredParameter: Codable, Equatable {
+public struct MissingRequiredParameter: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1682,7 +1684,7 @@ public struct MissingRequiredParameter: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFound: Codable, Equatable {
+public struct ResourceNotFound: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
     public var resourceName: Arn?
 
@@ -1702,7 +1704,7 @@ public struct ResourceNotFound: Codable, Equatable {
     }
 }
 
-public struct SendTaskFailureInput: Codable, Equatable {
+public struct SendTaskFailureInput: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
     public var taskToken: TaskToken
@@ -1728,7 +1730,7 @@ public struct SendTaskFailureInput: Codable, Equatable {
     }
 }
 
-public struct SendTaskFailureOutput: Codable, Equatable {
+public struct SendTaskFailureOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1737,7 +1739,7 @@ public struct SendTaskFailureOutput: Codable, Equatable {
     }
 }
 
-public struct SendTaskHeartbeatInput: Codable, Equatable {
+public struct SendTaskHeartbeatInput: Codable, Equatable, Sendable {
     public var taskToken: TaskToken
 
     public init(taskToken: TaskToken) {
@@ -1753,7 +1755,7 @@ public struct SendTaskHeartbeatInput: Codable, Equatable {
     }
 }
 
-public struct SendTaskHeartbeatOutput: Codable, Equatable {
+public struct SendTaskHeartbeatOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1762,7 +1764,7 @@ public struct SendTaskHeartbeatOutput: Codable, Equatable {
     }
 }
 
-public struct SendTaskSuccessInput: Codable, Equatable {
+public struct SendTaskSuccessInput: Codable, Equatable, Sendable {
     public var output: SensitiveData
     public var taskToken: TaskToken
 
@@ -1783,7 +1785,7 @@ public struct SendTaskSuccessInput: Codable, Equatable {
     }
 }
 
-public struct SendTaskSuccessOutput: Codable, Equatable {
+public struct SendTaskSuccessOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1792,7 +1794,7 @@ public struct SendTaskSuccessOutput: Codable, Equatable {
     }
 }
 
-public struct StartExecutionInput: Codable, Equatable {
+public struct StartExecutionInput: Codable, Equatable, Sendable {
     public var input: SensitiveData?
     public var name: Name?
     public var stateMachineArn: Arn
@@ -1823,7 +1825,7 @@ public struct StartExecutionInput: Codable, Equatable {
     }
 }
 
-public struct StartExecutionOutput: Codable, Equatable {
+public struct StartExecutionOutput: Codable, Equatable, Sendable {
     public var executionArn: Arn
     public var startDate: Timestamp
 
@@ -1843,7 +1845,7 @@ public struct StartExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct StartSyncExecutionInput: Codable, Equatable {
+public struct StartSyncExecutionInput: Codable, Equatable, Sendable {
     public var input: SensitiveData?
     public var name: Name?
     public var stateMachineArn: Arn
@@ -1874,7 +1876,7 @@ public struct StartSyncExecutionInput: Codable, Equatable {
     }
 }
 
-public struct StartSyncExecutionOutput: Codable, Equatable {
+public struct StartSyncExecutionOutput: Codable, Equatable, Sendable {
     public var billingDetails: BillingDetails?
     public var cause: SensitiveCause?
     public var error: SensitiveError?
@@ -1952,7 +1954,7 @@ public struct StartSyncExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct StateEnteredEventDetails: Codable, Equatable {
+public struct StateEnteredEventDetails: Codable, Equatable, Sendable {
     public var input: SensitiveData?
     public var inputDetails: HistoryEventExecutionDataDetails?
     public var name: Name
@@ -1978,7 +1980,7 @@ public struct StateEnteredEventDetails: Codable, Equatable {
     }
 }
 
-public struct StateExitedEventDetails: Codable, Equatable {
+public struct StateExitedEventDetails: Codable, Equatable, Sendable {
     public var name: Name
     public var output: SensitiveData?
     public var outputDetails: HistoryEventExecutionDataDetails?
@@ -2004,7 +2006,7 @@ public struct StateExitedEventDetails: Codable, Equatable {
     }
 }
 
-public struct StateMachineAlreadyExists: Codable, Equatable {
+public struct StateMachineAlreadyExists: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2019,7 +2021,7 @@ public struct StateMachineAlreadyExists: Codable, Equatable {
     }
 }
 
-public struct StateMachineDeleting: Codable, Equatable {
+public struct StateMachineDeleting: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2034,7 +2036,7 @@ public struct StateMachineDeleting: Codable, Equatable {
     }
 }
 
-public struct StateMachineDoesNotExist: Codable, Equatable {
+public struct StateMachineDoesNotExist: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2049,7 +2051,7 @@ public struct StateMachineDoesNotExist: Codable, Equatable {
     }
 }
 
-public struct StateMachineLimitExceeded: Codable, Equatable {
+public struct StateMachineLimitExceeded: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2064,7 +2066,7 @@ public struct StateMachineLimitExceeded: Codable, Equatable {
     }
 }
 
-public struct StateMachineListItem: Codable, Equatable {
+public struct StateMachineListItem: Codable, Equatable, Sendable {
     public var creationDate: Timestamp
     public var name: Name
     public var stateMachineArn: Arn
@@ -2093,7 +2095,7 @@ public struct StateMachineListItem: Codable, Equatable {
     }
 }
 
-public struct StateMachineTypeNotSupported: Codable, Equatable {
+public struct StateMachineTypeNotSupported: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2108,7 +2110,7 @@ public struct StateMachineTypeNotSupported: Codable, Equatable {
     }
 }
 
-public struct StopExecutionInput: Codable, Equatable {
+public struct StopExecutionInput: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
     public var executionArn: Arn
@@ -2134,7 +2136,7 @@ public struct StopExecutionInput: Codable, Equatable {
     }
 }
 
-public struct StopExecutionOutput: Codable, Equatable {
+public struct StopExecutionOutput: Codable, Equatable, Sendable {
     public var stopDate: Timestamp
 
     public init(stopDate: Timestamp) {
@@ -2149,7 +2151,7 @@ public struct StopExecutionOutput: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey?
     public var value: TagValue?
 
@@ -2170,7 +2172,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagResourceInput: Codable, Equatable {
+public struct TagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tags: TagList
 
@@ -2190,7 +2192,7 @@ public struct TagResourceInput: Codable, Equatable {
     }
 }
 
-public struct TagResourceOutput: Codable, Equatable {
+public struct TagResourceOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2199,7 +2201,7 @@ public struct TagResourceOutput: Codable, Equatable {
     }
 }
 
-public struct TaskDoesNotExist: Codable, Equatable {
+public struct TaskDoesNotExist: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2214,7 +2216,7 @@ public struct TaskDoesNotExist: Codable, Equatable {
     }
 }
 
-public struct TaskFailedEventDetails: Codable, Equatable {
+public struct TaskFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
     public var resource: Name
@@ -2245,7 +2247,7 @@ public struct TaskFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskScheduledEventDetails: Codable, Equatable {
+public struct TaskScheduledEventDetails: Codable, Equatable, Sendable {
     public var heartbeatInSeconds: TimeoutInSeconds?
     public var parameters: ConnectorParameters
     public var region: Name
@@ -2284,7 +2286,7 @@ public struct TaskScheduledEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskStartFailedEventDetails: Codable, Equatable {
+public struct TaskStartFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
     public var resource: Name
@@ -2315,7 +2317,7 @@ public struct TaskStartFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskStartedEventDetails: Codable, Equatable {
+public struct TaskStartedEventDetails: Codable, Equatable, Sendable {
     public var resource: Name
     public var resourceType: Name
 
@@ -2336,7 +2338,7 @@ public struct TaskStartedEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskSubmitFailedEventDetails: Codable, Equatable {
+public struct TaskSubmitFailedEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
     public var resource: Name
@@ -2367,7 +2369,7 @@ public struct TaskSubmitFailedEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskSubmittedEventDetails: Codable, Equatable {
+public struct TaskSubmittedEventDetails: Codable, Equatable, Sendable {
     public var output: SensitiveData?
     public var outputDetails: HistoryEventExecutionDataDetails?
     public var resource: Name
@@ -2398,7 +2400,7 @@ public struct TaskSubmittedEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskSucceededEventDetails: Codable, Equatable {
+public struct TaskSucceededEventDetails: Codable, Equatable, Sendable {
     public var output: SensitiveData?
     public var outputDetails: HistoryEventExecutionDataDetails?
     public var resource: Name
@@ -2429,7 +2431,7 @@ public struct TaskSucceededEventDetails: Codable, Equatable {
     }
 }
 
-public struct TaskTimedOut: Codable, Equatable {
+public struct TaskTimedOut: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2444,7 +2446,7 @@ public struct TaskTimedOut: Codable, Equatable {
     }
 }
 
-public struct TaskTimedOutEventDetails: Codable, Equatable {
+public struct TaskTimedOutEventDetails: Codable, Equatable, Sendable {
     public var cause: SensitiveCause?
     public var error: SensitiveError?
     public var resource: Name
@@ -2475,7 +2477,7 @@ public struct TaskTimedOutEventDetails: Codable, Equatable {
     }
 }
 
-public struct TooManyTags: Codable, Equatable {
+public struct TooManyTags: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
     public var resourceName: Arn?
 
@@ -2495,7 +2497,7 @@ public struct TooManyTags: Codable, Equatable {
     }
 }
 
-public struct TracingConfiguration: Codable, Equatable {
+public struct TracingConfiguration: Codable, Equatable, Sendable {
     public var enabled: Enabled?
 
     public init(enabled: Enabled? = nil) {
@@ -2510,7 +2512,7 @@ public struct TracingConfiguration: Codable, Equatable {
     }
 }
 
-public struct UntagResourceInput: Codable, Equatable {
+public struct UntagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tagKeys: TagKeyList
 
@@ -2530,7 +2532,7 @@ public struct UntagResourceInput: Codable, Equatable {
     }
 }
 
-public struct UntagResourceOutput: Codable, Equatable {
+public struct UntagResourceOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2539,7 +2541,7 @@ public struct UntagResourceOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateStateMachineInput: Codable, Equatable {
+public struct UpdateStateMachineInput: Codable, Equatable, Sendable {
     public var definition: Definition?
     public var loggingConfiguration: LoggingConfiguration?
     public var roleArn: Arn?
@@ -2575,7 +2577,7 @@ public struct UpdateStateMachineInput: Codable, Equatable {
     }
 }
 
-public struct UpdateStateMachineOutput: Codable, Equatable {
+public struct UpdateStateMachineOutput: Codable, Equatable, Sendable {
     public var updateDate: Timestamp
 
     public init(updateDate: Timestamp) {

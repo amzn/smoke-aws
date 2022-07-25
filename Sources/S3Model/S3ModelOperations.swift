@@ -332,7 +332,7 @@ public enum S3ModelOperations: String, Hashable, CustomStringConvertible {
  Structure to encode the path input for the AbortMultipartUpload
  operation.
  */
-public struct AbortMultipartUploadOperationInputPath: Codable, Equatable {
+public struct AbortMultipartUploadOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -364,7 +364,7 @@ public extension AbortMultipartUploadRequest {
  Structure to encode the query input for the AbortMultipartUpload
  operation.
  */
-public struct AbortMultipartUploadOperationInputQuery: Codable, Equatable {
+public struct AbortMultipartUploadOperationInputQuery: Codable, Equatable, Sendable {
     public var uploadId: MultipartUploadId
 
     public init(uploadId: MultipartUploadId) {
@@ -390,7 +390,7 @@ public extension AbortMultipartUploadRequest {
  Structure to encode the body input for the AbortMultipartUpload
  operation.
  */
-public struct AbortMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
+public struct AbortMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -421,7 +421,7 @@ public extension AbortMultipartUploadRequest {
  Structure to encode the path input for the CompleteMultipartUpload
  operation.
  */
-public struct CompleteMultipartUploadOperationInputPath: Codable, Equatable {
+public struct CompleteMultipartUploadOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -453,7 +453,7 @@ public extension CompleteMultipartUploadRequest {
  Structure to encode the query input for the CompleteMultipartUpload
  operation.
  */
-public struct CompleteMultipartUploadOperationInputQuery: Codable, Equatable {
+public struct CompleteMultipartUploadOperationInputQuery: Codable, Equatable, Sendable {
     public var uploadId: MultipartUploadId
 
     public init(uploadId: MultipartUploadId) {
@@ -479,7 +479,7 @@ public extension CompleteMultipartUploadRequest {
  Structure to encode the body input for the CompleteMultipartUpload
  operation.
  */
-public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
+public struct CompleteMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -545,7 +545,7 @@ public extension CompleteMultipartUploadRequest {
  Structure to encode the body input for the CompleteMultipartUpload
  operation.
  */
-public struct CompleteMultipartUploadOperationOutputBody: Codable, Equatable {
+public struct CompleteMultipartUploadOperationOutputBody: Codable, Equatable, Sendable {
     public var bucket: BucketName?
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
@@ -607,7 +607,7 @@ public extension CompleteMultipartUploadOutput {
  Structure to encode the body input for the CompleteMultipartUpload
  operation.
  */
-public struct CompleteMultipartUploadOperationOutputHeaders: Codable, Equatable {
+public struct CompleteMultipartUploadOperationOutputHeaders: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var expiration: Expiration?
     public var requestCharged: RequestCharged?
@@ -658,7 +658,7 @@ public extension CompleteMultipartUploadOutput {
  Structure to encode the path input for the CopyObject
  operation.
  */
-public struct CopyObjectOperationInputPath: Codable, Equatable {
+public struct CopyObjectOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -690,7 +690,7 @@ public extension CopyObjectRequest {
  Structure to encode the body input for the CopyObject
  operation.
  */
-public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable {
+public struct CopyObjectOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
@@ -907,7 +907,7 @@ public extension CopyObjectRequest {
  Structure to encode the body input for the CopyObject
  operation.
  */
-public struct CopyObjectOperationOutputHeaders: Codable, Equatable {
+public struct CopyObjectOperationOutputHeaders: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var copySourceVersionId: CopySourceVersionId?
     public var expiration: Expiration?
@@ -978,7 +978,7 @@ public extension CopyObjectOutput {
  Structure to encode the path input for the CreateBucket
  operation.
  */
-public struct CreateBucketOperationInputPath: Codable, Equatable {
+public struct CreateBucketOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1004,7 +1004,7 @@ public extension CreateBucketRequest {
  Structure to encode the body input for the CreateBucket
  operation.
  */
-public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable {
+public struct CreateBucketOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var aCL: BucketCannedACL?
     public var grantFullControl: GrantFullControl?
     public var grantRead: GrantRead?
@@ -1065,7 +1065,7 @@ public extension CreateBucketRequest {
  Structure to encode the path input for the CreateMultipartUpload
  operation.
  */
-public struct CreateMultipartUploadOperationInputPath: Codable, Equatable {
+public struct CreateMultipartUploadOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -1097,7 +1097,7 @@ public extension CreateMultipartUploadRequest {
  Structure to encode the body input for the CreateMultipartUpload
  operation.
  */
-public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable {
+public struct CreateMultipartUploadOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
@@ -1258,7 +1258,7 @@ public extension CreateMultipartUploadRequest {
  Structure to encode the body input for the CreateMultipartUpload
  operation.
  */
-public struct CreateMultipartUploadOperationOutputBody: Codable, Equatable {
+public struct CreateMultipartUploadOperationOutputBody: Codable, Equatable, Sendable {
     public var bucket: BucketName?
     public var key: ObjectKey?
     public var uploadId: MultipartUploadId?
@@ -1295,7 +1295,7 @@ public extension CreateMultipartUploadOutput {
  Structure to encode the body input for the CreateMultipartUpload
  operation.
  */
-public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable {
+public struct CreateMultipartUploadOperationOutputHeaders: Codable, Equatable, Sendable {
     public var abortDate: AbortDate?
     public var abortRuleId: AbortRuleId?
     public var bucketKeyEnabled: BucketKeyEnabled?
@@ -1366,7 +1366,7 @@ public extension CreateMultipartUploadOutput {
  Structure to encode the path input for the DeleteBucket
  operation.
  */
-public struct DeleteBucketOperationInputPath: Codable, Equatable {
+public struct DeleteBucketOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1392,7 +1392,7 @@ public extension DeleteBucketRequest {
  Structure to encode the body input for the DeleteBucket
  operation.
  */
-public struct DeleteBucketOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1418,7 +1418,7 @@ public extension DeleteBucketRequest {
  Structure to encode the path input for the DeleteBucketAnalyticsConfiguration
  operation.
  */
-public struct DeleteBucketAnalyticsConfigurationOperationInputPath: Codable, Equatable {
+public struct DeleteBucketAnalyticsConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1444,7 +1444,7 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
  Structure to encode the query input for the DeleteBucketAnalyticsConfiguration
  operation.
  */
-public struct DeleteBucketAnalyticsConfigurationOperationInputQuery: Codable, Equatable {
+public struct DeleteBucketAnalyticsConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: AnalyticsId
 
     public init(id: AnalyticsId) {
@@ -1470,7 +1470,7 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
  Structure to encode the body input for the DeleteBucketAnalyticsConfiguration
  operation.
  */
-public struct DeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1496,7 +1496,7 @@ public extension DeleteBucketAnalyticsConfigurationRequest {
  Structure to encode the path input for the DeleteBucketCors
  operation.
  */
-public struct DeleteBucketCorsOperationInputPath: Codable, Equatable {
+public struct DeleteBucketCorsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1522,7 +1522,7 @@ public extension DeleteBucketCorsRequest {
  Structure to encode the body input for the DeleteBucketCors
  operation.
  */
-public struct DeleteBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketCorsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1548,7 +1548,7 @@ public extension DeleteBucketCorsRequest {
  Structure to encode the path input for the DeleteBucketEncryption
  operation.
  */
-public struct DeleteBucketEncryptionOperationInputPath: Codable, Equatable {
+public struct DeleteBucketEncryptionOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1574,7 +1574,7 @@ public extension DeleteBucketEncryptionRequest {
  Structure to encode the body input for the DeleteBucketEncryption
  operation.
  */
-public struct DeleteBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1600,7 +1600,7 @@ public extension DeleteBucketEncryptionRequest {
  Structure to encode the path input for the DeleteBucketIntelligentTieringConfiguration
  operation.
  */
-public struct DeleteBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable {
+public struct DeleteBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1626,7 +1626,7 @@ public extension DeleteBucketIntelligentTieringConfigurationRequest {
  Structure to encode the query input for the DeleteBucketIntelligentTieringConfiguration
  operation.
  */
-public struct DeleteBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable {
+public struct DeleteBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: IntelligentTieringId
 
     public init(id: IntelligentTieringId) {
@@ -1652,7 +1652,7 @@ public extension DeleteBucketIntelligentTieringConfigurationRequest {
  Structure to encode the path input for the DeleteBucketInventoryConfiguration
  operation.
  */
-public struct DeleteBucketInventoryConfigurationOperationInputPath: Codable, Equatable {
+public struct DeleteBucketInventoryConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1678,7 +1678,7 @@ public extension DeleteBucketInventoryConfigurationRequest {
  Structure to encode the query input for the DeleteBucketInventoryConfiguration
  operation.
  */
-public struct DeleteBucketInventoryConfigurationOperationInputQuery: Codable, Equatable {
+public struct DeleteBucketInventoryConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: InventoryId
 
     public init(id: InventoryId) {
@@ -1704,7 +1704,7 @@ public extension DeleteBucketInventoryConfigurationRequest {
  Structure to encode the body input for the DeleteBucketInventoryConfiguration
  operation.
  */
-public struct DeleteBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1730,7 +1730,7 @@ public extension DeleteBucketInventoryConfigurationRequest {
  Structure to encode the path input for the DeleteBucketLifecycle
  operation.
  */
-public struct DeleteBucketLifecycleOperationInputPath: Codable, Equatable {
+public struct DeleteBucketLifecycleOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1756,7 +1756,7 @@ public extension DeleteBucketLifecycleRequest {
  Structure to encode the body input for the DeleteBucketLifecycle
  operation.
  */
-public struct DeleteBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1782,7 +1782,7 @@ public extension DeleteBucketLifecycleRequest {
  Structure to encode the path input for the DeleteBucketMetricsConfiguration
  operation.
  */
-public struct DeleteBucketMetricsConfigurationOperationInputPath: Codable, Equatable {
+public struct DeleteBucketMetricsConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1808,7 +1808,7 @@ public extension DeleteBucketMetricsConfigurationRequest {
  Structure to encode the query input for the DeleteBucketMetricsConfiguration
  operation.
  */
-public struct DeleteBucketMetricsConfigurationOperationInputQuery: Codable, Equatable {
+public struct DeleteBucketMetricsConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: MetricsId
 
     public init(id: MetricsId) {
@@ -1834,7 +1834,7 @@ public extension DeleteBucketMetricsConfigurationRequest {
  Structure to encode the body input for the DeleteBucketMetricsConfiguration
  operation.
  */
-public struct DeleteBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1860,7 +1860,7 @@ public extension DeleteBucketMetricsConfigurationRequest {
  Structure to encode the path input for the DeleteBucketOwnershipControls
  operation.
  */
-public struct DeleteBucketOwnershipControlsOperationInputPath: Codable, Equatable {
+public struct DeleteBucketOwnershipControlsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1886,7 +1886,7 @@ public extension DeleteBucketOwnershipControlsRequest {
  Structure to encode the body input for the DeleteBucketOwnershipControls
  operation.
  */
-public struct DeleteBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1912,7 +1912,7 @@ public extension DeleteBucketOwnershipControlsRequest {
  Structure to encode the path input for the DeleteBucketPolicy
  operation.
  */
-public struct DeleteBucketPolicyOperationInputPath: Codable, Equatable {
+public struct DeleteBucketPolicyOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1938,7 +1938,7 @@ public extension DeleteBucketPolicyRequest {
  Structure to encode the body input for the DeleteBucketPolicy
  operation.
  */
-public struct DeleteBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -1964,7 +1964,7 @@ public extension DeleteBucketPolicyRequest {
  Structure to encode the path input for the DeleteBucketReplication
  operation.
  */
-public struct DeleteBucketReplicationOperationInputPath: Codable, Equatable {
+public struct DeleteBucketReplicationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -1990,7 +1990,7 @@ public extension DeleteBucketReplicationRequest {
  Structure to encode the body input for the DeleteBucketReplication
  operation.
  */
-public struct DeleteBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2016,7 +2016,7 @@ public extension DeleteBucketReplicationRequest {
  Structure to encode the path input for the DeleteBucketTagging
  operation.
  */
-public struct DeleteBucketTaggingOperationInputPath: Codable, Equatable {
+public struct DeleteBucketTaggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2042,7 +2042,7 @@ public extension DeleteBucketTaggingRequest {
  Structure to encode the body input for the DeleteBucketTagging
  operation.
  */
-public struct DeleteBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2068,7 +2068,7 @@ public extension DeleteBucketTaggingRequest {
  Structure to encode the path input for the DeleteBucketWebsite
  operation.
  */
-public struct DeleteBucketWebsiteOperationInputPath: Codable, Equatable {
+public struct DeleteBucketWebsiteOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2094,7 +2094,7 @@ public extension DeleteBucketWebsiteRequest {
  Structure to encode the body input for the DeleteBucketWebsite
  operation.
  */
-public struct DeleteBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2120,7 +2120,7 @@ public extension DeleteBucketWebsiteRequest {
  Structure to encode the path input for the DeleteObject
  operation.
  */
-public struct DeleteObjectOperationInputPath: Codable, Equatable {
+public struct DeleteObjectOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -2152,7 +2152,7 @@ public extension DeleteObjectRequest {
  Structure to encode the query input for the DeleteObject
  operation.
  */
-public struct DeleteObjectOperationInputQuery: Codable, Equatable {
+public struct DeleteObjectOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -2178,7 +2178,7 @@ public extension DeleteObjectRequest {
  Structure to encode the body input for the DeleteObject
  operation.
  */
-public struct DeleteObjectOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteObjectOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var expectedBucketOwner: AccountId?
     public var mFA: MFA?
@@ -2219,7 +2219,7 @@ public extension DeleteObjectRequest {
  Structure to encode the path input for the DeleteObjectTagging
  operation.
  */
-public struct DeleteObjectTaggingOperationInputPath: Codable, Equatable {
+public struct DeleteObjectTaggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -2251,7 +2251,7 @@ public extension DeleteObjectTaggingRequest {
  Structure to encode the query input for the DeleteObjectTagging
  operation.
  */
-public struct DeleteObjectTaggingOperationInputQuery: Codable, Equatable {
+public struct DeleteObjectTaggingOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -2277,7 +2277,7 @@ public extension DeleteObjectTaggingRequest {
  Structure to encode the body input for the DeleteObjectTagging
  operation.
  */
-public struct DeleteObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2303,7 +2303,7 @@ public extension DeleteObjectTaggingRequest {
  Structure to encode the path input for the DeleteObjects
  operation.
  */
-public struct DeleteObjectsOperationInputPath: Codable, Equatable {
+public struct DeleteObjectsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2329,7 +2329,7 @@ public extension DeleteObjectsRequest {
  Structure to encode the body input for the DeleteObjects
  operation.
  */
-public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeleteObjectsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
@@ -2375,7 +2375,7 @@ public extension DeleteObjectsRequest {
  Structure to encode the body input for the DeleteObjects
  operation.
  */
-public struct DeleteObjectsOperationOutputBody: Codable, Equatable {
+public struct DeleteObjectsOperationOutputBody: Codable, Equatable, Sendable {
     public var deleted: DeletedObjects?
     public var errors: Errors?
 
@@ -2406,7 +2406,7 @@ public extension DeleteObjectsOutput {
  Structure to encode the body input for the DeleteObjects
  operation.
  */
-public struct DeleteObjectsOperationOutputHeaders: Codable, Equatable {
+public struct DeleteObjectsOperationOutputHeaders: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -2432,7 +2432,7 @@ public extension DeleteObjectsOutput {
  Structure to encode the path input for the DeletePublicAccessBlock
  operation.
  */
-public struct DeletePublicAccessBlockOperationInputPath: Codable, Equatable {
+public struct DeletePublicAccessBlockOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2458,7 +2458,7 @@ public extension DeletePublicAccessBlockRequest {
  Structure to encode the body input for the DeletePublicAccessBlock
  operation.
  */
-public struct DeletePublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+public struct DeletePublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2484,7 +2484,7 @@ public extension DeletePublicAccessBlockRequest {
  Structure to encode the path input for the GetBucketAccelerateConfiguration
  operation.
  */
-public struct GetBucketAccelerateConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketAccelerateConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2510,7 +2510,7 @@ public extension GetBucketAccelerateConfigurationRequest {
  Structure to encode the body input for the GetBucketAccelerateConfiguration
  operation.
  */
-public struct GetBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2536,7 +2536,7 @@ public extension GetBucketAccelerateConfigurationRequest {
  Structure to encode the path input for the GetBucketAcl
  operation.
  */
-public struct GetBucketAclOperationInputPath: Codable, Equatable {
+public struct GetBucketAclOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2562,7 +2562,7 @@ public extension GetBucketAclRequest {
  Structure to encode the body input for the GetBucketAcl
  operation.
  */
-public struct GetBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketAclOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2588,7 +2588,7 @@ public extension GetBucketAclRequest {
  Structure to encode the path input for the GetBucketAnalyticsConfiguration
  operation.
  */
-public struct GetBucketAnalyticsConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketAnalyticsConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2614,7 +2614,7 @@ public extension GetBucketAnalyticsConfigurationRequest {
  Structure to encode the query input for the GetBucketAnalyticsConfiguration
  operation.
  */
-public struct GetBucketAnalyticsConfigurationOperationInputQuery: Codable, Equatable {
+public struct GetBucketAnalyticsConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: AnalyticsId
 
     public init(id: AnalyticsId) {
@@ -2640,7 +2640,7 @@ public extension GetBucketAnalyticsConfigurationRequest {
  Structure to encode the body input for the GetBucketAnalyticsConfiguration
  operation.
  */
-public struct GetBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2666,7 +2666,7 @@ public extension GetBucketAnalyticsConfigurationRequest {
  Structure to encode the path input for the GetBucketCors
  operation.
  */
-public struct GetBucketCorsOperationInputPath: Codable, Equatable {
+public struct GetBucketCorsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2692,7 +2692,7 @@ public extension GetBucketCorsRequest {
  Structure to encode the body input for the GetBucketCors
  operation.
  */
-public struct GetBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketCorsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2718,7 +2718,7 @@ public extension GetBucketCorsRequest {
  Structure to encode the path input for the GetBucketEncryption
  operation.
  */
-public struct GetBucketEncryptionOperationInputPath: Codable, Equatable {
+public struct GetBucketEncryptionOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2744,7 +2744,7 @@ public extension GetBucketEncryptionRequest {
  Structure to encode the body input for the GetBucketEncryption
  operation.
  */
-public struct GetBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2770,7 +2770,7 @@ public extension GetBucketEncryptionRequest {
  Structure to encode the path input for the GetBucketIntelligentTieringConfiguration
  operation.
  */
-public struct GetBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2796,7 +2796,7 @@ public extension GetBucketIntelligentTieringConfigurationRequest {
  Structure to encode the query input for the GetBucketIntelligentTieringConfiguration
  operation.
  */
-public struct GetBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable {
+public struct GetBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: IntelligentTieringId
 
     public init(id: IntelligentTieringId) {
@@ -2822,7 +2822,7 @@ public extension GetBucketIntelligentTieringConfigurationRequest {
  Structure to encode the path input for the GetBucketInventoryConfiguration
  operation.
  */
-public struct GetBucketInventoryConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketInventoryConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2848,7 +2848,7 @@ public extension GetBucketInventoryConfigurationRequest {
  Structure to encode the query input for the GetBucketInventoryConfiguration
  operation.
  */
-public struct GetBucketInventoryConfigurationOperationInputQuery: Codable, Equatable {
+public struct GetBucketInventoryConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: InventoryId
 
     public init(id: InventoryId) {
@@ -2874,7 +2874,7 @@ public extension GetBucketInventoryConfigurationRequest {
  Structure to encode the body input for the GetBucketInventoryConfiguration
  operation.
  */
-public struct GetBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2900,7 +2900,7 @@ public extension GetBucketInventoryConfigurationRequest {
  Structure to encode the path input for the GetBucketLifecycle
  operation.
  */
-public struct GetBucketLifecycleOperationInputPath: Codable, Equatable {
+public struct GetBucketLifecycleOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2926,7 +2926,7 @@ public extension GetBucketLifecycleRequest {
  Structure to encode the body input for the GetBucketLifecycle
  operation.
  */
-public struct GetBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -2952,7 +2952,7 @@ public extension GetBucketLifecycleRequest {
  Structure to encode the path input for the GetBucketLifecycleConfiguration
  operation.
  */
-public struct GetBucketLifecycleConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketLifecycleConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -2978,7 +2978,7 @@ public extension GetBucketLifecycleConfigurationRequest {
  Structure to encode the body input for the GetBucketLifecycleConfiguration
  operation.
  */
-public struct GetBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3004,7 +3004,7 @@ public extension GetBucketLifecycleConfigurationRequest {
  Structure to encode the path input for the GetBucketLocation
  operation.
  */
-public struct GetBucketLocationOperationInputPath: Codable, Equatable {
+public struct GetBucketLocationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3030,7 +3030,7 @@ public extension GetBucketLocationRequest {
  Structure to encode the body input for the GetBucketLocation
  operation.
  */
-public struct GetBucketLocationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketLocationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3056,7 +3056,7 @@ public extension GetBucketLocationRequest {
  Structure to encode the path input for the GetBucketLogging
  operation.
  */
-public struct GetBucketLoggingOperationInputPath: Codable, Equatable {
+public struct GetBucketLoggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3082,7 +3082,7 @@ public extension GetBucketLoggingRequest {
  Structure to encode the body input for the GetBucketLogging
  operation.
  */
-public struct GetBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3108,7 +3108,7 @@ public extension GetBucketLoggingRequest {
  Structure to encode the path input for the GetBucketMetricsConfiguration
  operation.
  */
-public struct GetBucketMetricsConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketMetricsConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3134,7 +3134,7 @@ public extension GetBucketMetricsConfigurationRequest {
  Structure to encode the query input for the GetBucketMetricsConfiguration
  operation.
  */
-public struct GetBucketMetricsConfigurationOperationInputQuery: Codable, Equatable {
+public struct GetBucketMetricsConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: MetricsId
 
     public init(id: MetricsId) {
@@ -3160,7 +3160,7 @@ public extension GetBucketMetricsConfigurationRequest {
  Structure to encode the body input for the GetBucketMetricsConfiguration
  operation.
  */
-public struct GetBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3186,7 +3186,7 @@ public extension GetBucketMetricsConfigurationRequest {
  Structure to encode the path input for the GetBucketNotification
  operation.
  */
-public struct GetBucketNotificationOperationInputPath: Codable, Equatable {
+public struct GetBucketNotificationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3212,7 +3212,7 @@ public extension GetBucketNotificationConfigurationRequest {
  Structure to encode the body input for the GetBucketNotification
  operation.
  */
-public struct GetBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3238,7 +3238,7 @@ public extension GetBucketNotificationConfigurationRequest {
  Structure to encode the path input for the GetBucketNotificationConfiguration
  operation.
  */
-public struct GetBucketNotificationConfigurationOperationInputPath: Codable, Equatable {
+public struct GetBucketNotificationConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3264,7 +3264,7 @@ public extension GetBucketNotificationConfigurationRequest {
  Structure to encode the body input for the GetBucketNotificationConfiguration
  operation.
  */
-public struct GetBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3290,7 +3290,7 @@ public extension GetBucketNotificationConfigurationRequest {
  Structure to encode the path input for the GetBucketOwnershipControls
  operation.
  */
-public struct GetBucketOwnershipControlsOperationInputPath: Codable, Equatable {
+public struct GetBucketOwnershipControlsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3316,7 +3316,7 @@ public extension GetBucketOwnershipControlsRequest {
  Structure to encode the body input for the GetBucketOwnershipControls
  operation.
  */
-public struct GetBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3342,7 +3342,7 @@ public extension GetBucketOwnershipControlsRequest {
  Structure to encode the path input for the GetBucketPolicy
  operation.
  */
-public struct GetBucketPolicyOperationInputPath: Codable, Equatable {
+public struct GetBucketPolicyOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3368,7 +3368,7 @@ public extension GetBucketPolicyRequest {
  Structure to encode the body input for the GetBucketPolicy
  operation.
  */
-public struct GetBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3394,7 +3394,7 @@ public extension GetBucketPolicyRequest {
  Structure to encode the path input for the GetBucketPolicyStatus
  operation.
  */
-public struct GetBucketPolicyStatusOperationInputPath: Codable, Equatable {
+public struct GetBucketPolicyStatusOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3420,7 +3420,7 @@ public extension GetBucketPolicyStatusRequest {
  Structure to encode the body input for the GetBucketPolicyStatus
  operation.
  */
-public struct GetBucketPolicyStatusOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketPolicyStatusOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3446,7 +3446,7 @@ public extension GetBucketPolicyStatusRequest {
  Structure to encode the path input for the GetBucketReplication
  operation.
  */
-public struct GetBucketReplicationOperationInputPath: Codable, Equatable {
+public struct GetBucketReplicationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3472,7 +3472,7 @@ public extension GetBucketReplicationRequest {
  Structure to encode the body input for the GetBucketReplication
  operation.
  */
-public struct GetBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3498,7 +3498,7 @@ public extension GetBucketReplicationRequest {
  Structure to encode the path input for the GetBucketRequestPayment
  operation.
  */
-public struct GetBucketRequestPaymentOperationInputPath: Codable, Equatable {
+public struct GetBucketRequestPaymentOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3524,7 +3524,7 @@ public extension GetBucketRequestPaymentRequest {
  Structure to encode the body input for the GetBucketRequestPayment
  operation.
  */
-public struct GetBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3550,7 +3550,7 @@ public extension GetBucketRequestPaymentRequest {
  Structure to encode the path input for the GetBucketTagging
  operation.
  */
-public struct GetBucketTaggingOperationInputPath: Codable, Equatable {
+public struct GetBucketTaggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3576,7 +3576,7 @@ public extension GetBucketTaggingRequest {
  Structure to encode the body input for the GetBucketTagging
  operation.
  */
-public struct GetBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3602,7 +3602,7 @@ public extension GetBucketTaggingRequest {
  Structure to encode the path input for the GetBucketVersioning
  operation.
  */
-public struct GetBucketVersioningOperationInputPath: Codable, Equatable {
+public struct GetBucketVersioningOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3628,7 +3628,7 @@ public extension GetBucketVersioningRequest {
  Structure to encode the body input for the GetBucketVersioning
  operation.
  */
-public struct GetBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3654,7 +3654,7 @@ public extension GetBucketVersioningRequest {
  Structure to encode the path input for the GetBucketWebsite
  operation.
  */
-public struct GetBucketWebsiteOperationInputPath: Codable, Equatable {
+public struct GetBucketWebsiteOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -3680,7 +3680,7 @@ public extension GetBucketWebsiteRequest {
  Structure to encode the body input for the GetBucketWebsite
  operation.
  */
-public struct GetBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -3706,7 +3706,7 @@ public extension GetBucketWebsiteRequest {
  Structure to encode the path input for the GetObject
  operation.
  */
-public struct GetObjectOperationInputPath: Codable, Equatable {
+public struct GetObjectOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -3738,7 +3738,7 @@ public extension GetObjectRequest {
  Structure to encode the query input for the GetObject
  operation.
  */
-public struct GetObjectOperationInputQuery: Codable, Equatable {
+public struct GetObjectOperationInputQuery: Codable, Equatable, Sendable {
     public var partNumber: PartNumber?
     public var responseCacheControl: ResponseCacheControl?
     public var responseContentDisposition: ResponseContentDisposition?
@@ -3799,7 +3799,7 @@ public extension GetObjectRequest {
  Structure to encode the body input for the GetObject
  operation.
  */
-public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumMode: ChecksumMode?
     public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
@@ -3875,7 +3875,7 @@ public extension GetObjectRequest {
  Structure to encode the body input for the GetObject
  operation.
  */
-public struct GetObjectOperationOutputHeaders: Codable, Equatable {
+public struct GetObjectOperationOutputHeaders: Codable, Equatable, Sendable {
     public var acceptRanges: AcceptRanges?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
@@ -4071,7 +4071,7 @@ public extension GetObjectOutput {
  Structure to encode the path input for the GetObjectAcl
  operation.
  */
-public struct GetObjectAclOperationInputPath: Codable, Equatable {
+public struct GetObjectAclOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -4103,7 +4103,7 @@ public extension GetObjectAclRequest {
  Structure to encode the query input for the GetObjectAcl
  operation.
  */
-public struct GetObjectAclOperationInputQuery: Codable, Equatable {
+public struct GetObjectAclOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -4129,7 +4129,7 @@ public extension GetObjectAclRequest {
  Structure to encode the body input for the GetObjectAcl
  operation.
  */
-public struct GetObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectAclOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -4160,7 +4160,7 @@ public extension GetObjectAclRequest {
  Structure to encode the body input for the GetObjectAcl
  operation.
  */
-public struct GetObjectAclOperationOutputBody: Codable, Equatable {
+public struct GetObjectAclOperationOutputBody: Codable, Equatable, Sendable {
     public var grants: Grants?
     public var owner: Owner?
 
@@ -4192,7 +4192,7 @@ public extension GetObjectAclOutput {
  Structure to encode the body input for the GetObjectAcl
  operation.
  */
-public struct GetObjectAclOperationOutputHeaders: Codable, Equatable {
+public struct GetObjectAclOperationOutputHeaders: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -4218,7 +4218,7 @@ public extension GetObjectAclOutput {
  Structure to encode the path input for the GetObjectAttributes
  operation.
  */
-public struct GetObjectAttributesOperationInputPath: Codable, Equatable {
+public struct GetObjectAttributesOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -4250,7 +4250,7 @@ public extension GetObjectAttributesRequest {
  Structure to encode the query input for the GetObjectAttributes
  operation.
  */
-public struct GetObjectAttributesOperationInputQuery: Codable, Equatable {
+public struct GetObjectAttributesOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -4276,7 +4276,7 @@ public extension GetObjectAttributesRequest {
  Structure to encode the body input for the GetObjectAttributes
  operation.
  */
-public struct GetObjectAttributesOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectAttributesOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var maxParts: MaxParts?
     public var objectAttributes: ObjectAttributesList
@@ -4337,7 +4337,7 @@ public extension GetObjectAttributesRequest {
  Structure to encode the body input for the GetObjectAttributes
  operation.
  */
-public struct GetObjectAttributesOperationOutputBody: Codable, Equatable {
+public struct GetObjectAttributesOperationOutputBody: Codable, Equatable, Sendable {
     public var checksum: Checksum?
     public var eTag: ETag?
     public var objectParts: GetObjectAttributesParts?
@@ -4385,7 +4385,7 @@ public extension GetObjectAttributesOutput {
  Structure to encode the body input for the GetObjectAttributes
  operation.
  */
-public struct GetObjectAttributesOperationOutputHeaders: Codable, Equatable {
+public struct GetObjectAttributesOperationOutputHeaders: Codable, Equatable, Sendable {
     public var deleteMarker: DeleteMarker?
     public var lastModified: LastModified?
     public var requestCharged: RequestCharged?
@@ -4426,7 +4426,7 @@ public extension GetObjectAttributesOutput {
  Structure to encode the path input for the GetObjectLegalHold
  operation.
  */
-public struct GetObjectLegalHoldOperationInputPath: Codable, Equatable {
+public struct GetObjectLegalHoldOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -4458,7 +4458,7 @@ public extension GetObjectLegalHoldRequest {
  Structure to encode the query input for the GetObjectLegalHold
  operation.
  */
-public struct GetObjectLegalHoldOperationInputQuery: Codable, Equatable {
+public struct GetObjectLegalHoldOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -4484,7 +4484,7 @@ public extension GetObjectLegalHoldRequest {
  Structure to encode the body input for the GetObjectLegalHold
  operation.
  */
-public struct GetObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -4515,7 +4515,7 @@ public extension GetObjectLegalHoldRequest {
  Structure to encode the path input for the GetObjectLockConfiguration
  operation.
  */
-public struct GetObjectLockConfigurationOperationInputPath: Codable, Equatable {
+public struct GetObjectLockConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -4541,7 +4541,7 @@ public extension GetObjectLockConfigurationRequest {
  Structure to encode the body input for the GetObjectLockConfiguration
  operation.
  */
-public struct GetObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -4567,7 +4567,7 @@ public extension GetObjectLockConfigurationRequest {
  Structure to encode the path input for the GetObjectRetention
  operation.
  */
-public struct GetObjectRetentionOperationInputPath: Codable, Equatable {
+public struct GetObjectRetentionOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -4599,7 +4599,7 @@ public extension GetObjectRetentionRequest {
  Structure to encode the query input for the GetObjectRetention
  operation.
  */
-public struct GetObjectRetentionOperationInputQuery: Codable, Equatable {
+public struct GetObjectRetentionOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -4625,7 +4625,7 @@ public extension GetObjectRetentionRequest {
  Structure to encode the body input for the GetObjectRetention
  operation.
  */
-public struct GetObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -4656,7 +4656,7 @@ public extension GetObjectRetentionRequest {
  Structure to encode the path input for the GetObjectTagging
  operation.
  */
-public struct GetObjectTaggingOperationInputPath: Codable, Equatable {
+public struct GetObjectTaggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -4688,7 +4688,7 @@ public extension GetObjectTaggingRequest {
  Structure to encode the query input for the GetObjectTagging
  operation.
  */
-public struct GetObjectTaggingOperationInputQuery: Codable, Equatable {
+public struct GetObjectTaggingOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -4714,7 +4714,7 @@ public extension GetObjectTaggingRequest {
  Structure to encode the body input for the GetObjectTagging
  operation.
  */
-public struct GetObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -4745,7 +4745,7 @@ public extension GetObjectTaggingRequest {
  Structure to encode the body input for the GetObjectTagging
  operation.
  */
-public struct GetObjectTaggingOperationOutputBody: Codable, Equatable {
+public struct GetObjectTaggingOperationOutputBody: Codable, Equatable, Sendable {
     public var tagSet: TagSet
 
     public init(tagSet: TagSet) {
@@ -4771,7 +4771,7 @@ public extension GetObjectTaggingOutput {
  Structure to encode the body input for the GetObjectTagging
  operation.
  */
-public struct GetObjectTaggingOperationOutputHeaders: Codable, Equatable {
+public struct GetObjectTaggingOperationOutputHeaders: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -4797,7 +4797,7 @@ public extension GetObjectTaggingOutput {
  Structure to encode the path input for the GetObjectTorrent
  operation.
  */
-public struct GetObjectTorrentOperationInputPath: Codable, Equatable {
+public struct GetObjectTorrentOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -4829,7 +4829,7 @@ public extension GetObjectTorrentRequest {
  Structure to encode the body input for the GetObjectTorrent
  operation.
  */
-public struct GetObjectTorrentOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetObjectTorrentOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -4860,7 +4860,7 @@ public extension GetObjectTorrentRequest {
  Structure to encode the body input for the GetObjectTorrent
  operation.
  */
-public struct GetObjectTorrentOperationOutputHeaders: Codable, Equatable {
+public struct GetObjectTorrentOperationOutputHeaders: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -4886,7 +4886,7 @@ public extension GetObjectTorrentOutput {
  Structure to encode the path input for the GetPublicAccessBlock
  operation.
  */
-public struct GetPublicAccessBlockOperationInputPath: Codable, Equatable {
+public struct GetPublicAccessBlockOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -4912,7 +4912,7 @@ public extension GetPublicAccessBlockRequest {
  Structure to encode the body input for the GetPublicAccessBlock
  operation.
  */
-public struct GetPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+public struct GetPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -4938,7 +4938,7 @@ public extension GetPublicAccessBlockRequest {
  Structure to encode the path input for the HeadBucket
  operation.
  */
-public struct HeadBucketOperationInputPath: Codable, Equatable {
+public struct HeadBucketOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -4964,7 +4964,7 @@ public extension HeadBucketRequest {
  Structure to encode the body input for the HeadBucket
  operation.
  */
-public struct HeadBucketOperationInputAdditionalHeaders: Codable, Equatable {
+public struct HeadBucketOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -4990,7 +4990,7 @@ public extension HeadBucketRequest {
  Structure to encode the path input for the HeadObject
  operation.
  */
-public struct HeadObjectOperationInputPath: Codable, Equatable {
+public struct HeadObjectOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -5022,7 +5022,7 @@ public extension HeadObjectRequest {
  Structure to encode the query input for the HeadObject
  operation.
  */
-public struct HeadObjectOperationInputQuery: Codable, Equatable {
+public struct HeadObjectOperationInputQuery: Codable, Equatable, Sendable {
     public var partNumber: PartNumber?
     public var versionId: ObjectVersionId?
 
@@ -5053,7 +5053,7 @@ public extension HeadObjectRequest {
  Structure to encode the body input for the HeadObject
  operation.
  */
-public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable {
+public struct HeadObjectOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumMode: ChecksumMode?
     public var expectedBucketOwner: AccountId?
     public var ifMatch: IfMatch?
@@ -5129,7 +5129,7 @@ public extension HeadObjectRequest {
  Structure to encode the path input for the ListBucketAnalyticsConfigurations
  operation.
  */
-public struct ListBucketAnalyticsConfigurationsOperationInputPath: Codable, Equatable {
+public struct ListBucketAnalyticsConfigurationsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5155,7 +5155,7 @@ public extension ListBucketAnalyticsConfigurationsRequest {
  Structure to encode the query input for the ListBucketAnalyticsConfigurations
  operation.
  */
-public struct ListBucketAnalyticsConfigurationsOperationInputQuery: Codable, Equatable {
+public struct ListBucketAnalyticsConfigurationsOperationInputQuery: Codable, Equatable, Sendable {
     public var continuationToken: Token?
 
     public init(continuationToken: Token? = nil) {
@@ -5181,7 +5181,7 @@ public extension ListBucketAnalyticsConfigurationsRequest {
  Structure to encode the body input for the ListBucketAnalyticsConfigurations
  operation.
  */
-public struct ListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListBucketAnalyticsConfigurationsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -5207,7 +5207,7 @@ public extension ListBucketAnalyticsConfigurationsRequest {
  Structure to encode the path input for the ListBucketIntelligentTieringConfigurations
  operation.
  */
-public struct ListBucketIntelligentTieringConfigurationsOperationInputPath: Codable, Equatable {
+public struct ListBucketIntelligentTieringConfigurationsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5233,7 +5233,7 @@ public extension ListBucketIntelligentTieringConfigurationsRequest {
  Structure to encode the query input for the ListBucketIntelligentTieringConfigurations
  operation.
  */
-public struct ListBucketIntelligentTieringConfigurationsOperationInputQuery: Codable, Equatable {
+public struct ListBucketIntelligentTieringConfigurationsOperationInputQuery: Codable, Equatable, Sendable {
     public var continuationToken: Token?
 
     public init(continuationToken: Token? = nil) {
@@ -5259,7 +5259,7 @@ public extension ListBucketIntelligentTieringConfigurationsRequest {
  Structure to encode the path input for the ListBucketInventoryConfigurations
  operation.
  */
-public struct ListBucketInventoryConfigurationsOperationInputPath: Codable, Equatable {
+public struct ListBucketInventoryConfigurationsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5285,7 +5285,7 @@ public extension ListBucketInventoryConfigurationsRequest {
  Structure to encode the query input for the ListBucketInventoryConfigurations
  operation.
  */
-public struct ListBucketInventoryConfigurationsOperationInputQuery: Codable, Equatable {
+public struct ListBucketInventoryConfigurationsOperationInputQuery: Codable, Equatable, Sendable {
     public var continuationToken: Token?
 
     public init(continuationToken: Token? = nil) {
@@ -5311,7 +5311,7 @@ public extension ListBucketInventoryConfigurationsRequest {
  Structure to encode the body input for the ListBucketInventoryConfigurations
  operation.
  */
-public struct ListBucketInventoryConfigurationsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListBucketInventoryConfigurationsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -5337,7 +5337,7 @@ public extension ListBucketInventoryConfigurationsRequest {
  Structure to encode the path input for the ListBucketMetricsConfigurations
  operation.
  */
-public struct ListBucketMetricsConfigurationsOperationInputPath: Codable, Equatable {
+public struct ListBucketMetricsConfigurationsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5363,7 +5363,7 @@ public extension ListBucketMetricsConfigurationsRequest {
  Structure to encode the query input for the ListBucketMetricsConfigurations
  operation.
  */
-public struct ListBucketMetricsConfigurationsOperationInputQuery: Codable, Equatable {
+public struct ListBucketMetricsConfigurationsOperationInputQuery: Codable, Equatable, Sendable {
     public var continuationToken: Token?
 
     public init(continuationToken: Token? = nil) {
@@ -5389,7 +5389,7 @@ public extension ListBucketMetricsConfigurationsRequest {
  Structure to encode the body input for the ListBucketMetricsConfigurations
  operation.
  */
-public struct ListBucketMetricsConfigurationsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListBucketMetricsConfigurationsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -5415,7 +5415,7 @@ public extension ListBucketMetricsConfigurationsRequest {
  Structure to encode the path input for the ListMultipartUploads
  operation.
  */
-public struct ListMultipartUploadsOperationInputPath: Codable, Equatable {
+public struct ListMultipartUploadsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5441,7 +5441,7 @@ public extension ListMultipartUploadsRequest {
  Structure to encode the query input for the ListMultipartUploads
  operation.
  */
-public struct ListMultipartUploadsOperationInputQuery: Codable, Equatable {
+public struct ListMultipartUploadsOperationInputQuery: Codable, Equatable, Sendable {
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
     public var keyMarker: KeyMarker?
@@ -5492,7 +5492,7 @@ public extension ListMultipartUploadsRequest {
  Structure to encode the body input for the ListMultipartUploads
  operation.
  */
-public struct ListMultipartUploadsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListMultipartUploadsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -5518,7 +5518,7 @@ public extension ListMultipartUploadsRequest {
  Structure to encode the path input for the ListObjectVersions
  operation.
  */
-public struct ListObjectVersionsOperationInputPath: Codable, Equatable {
+public struct ListObjectVersionsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5544,7 +5544,7 @@ public extension ListObjectVersionsRequest {
  Structure to encode the query input for the ListObjectVersions
  operation.
  */
-public struct ListObjectVersionsOperationInputQuery: Codable, Equatable {
+public struct ListObjectVersionsOperationInputQuery: Codable, Equatable, Sendable {
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
     public var keyMarker: KeyMarker?
@@ -5595,7 +5595,7 @@ public extension ListObjectVersionsRequest {
  Structure to encode the body input for the ListObjectVersions
  operation.
  */
-public struct ListObjectVersionsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListObjectVersionsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -5621,7 +5621,7 @@ public extension ListObjectVersionsRequest {
  Structure to encode the path input for the ListObjects
  operation.
  */
-public struct ListObjectsOperationInputPath: Codable, Equatable {
+public struct ListObjectsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5647,7 +5647,7 @@ public extension ListObjectsRequest {
  Structure to encode the query input for the ListObjects
  operation.
  */
-public struct ListObjectsOperationInputQuery: Codable, Equatable {
+public struct ListObjectsOperationInputQuery: Codable, Equatable, Sendable {
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
     public var marker: Marker?
@@ -5693,7 +5693,7 @@ public extension ListObjectsRequest {
  Structure to encode the body input for the ListObjects
  operation.
  */
-public struct ListObjectsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListObjectsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -5724,7 +5724,7 @@ public extension ListObjectsRequest {
  Structure to encode the path input for the ListObjectsV2
  operation.
  */
-public struct ListObjectsV2OperationInputPath: Codable, Equatable {
+public struct ListObjectsV2OperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -5750,7 +5750,7 @@ public extension ListObjectsV2Request {
  Structure to encode the query input for the ListObjectsV2
  operation.
  */
-public struct ListObjectsV2OperationInputQuery: Codable, Equatable {
+public struct ListObjectsV2OperationInputQuery: Codable, Equatable, Sendable {
     public var continuationToken: Token?
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
@@ -5806,7 +5806,7 @@ public extension ListObjectsV2Request {
  Structure to encode the body input for the ListObjectsV2
  operation.
  */
-public struct ListObjectsV2OperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListObjectsV2OperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
 
@@ -5837,7 +5837,7 @@ public extension ListObjectsV2Request {
  Structure to encode the path input for the ListParts
  operation.
  */
-public struct ListPartsOperationInputPath: Codable, Equatable {
+public struct ListPartsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -5869,7 +5869,7 @@ public extension ListPartsRequest {
  Structure to encode the query input for the ListParts
  operation.
  */
-public struct ListPartsOperationInputQuery: Codable, Equatable {
+public struct ListPartsOperationInputQuery: Codable, Equatable, Sendable {
     public var maxParts: MaxParts?
     public var partNumberMarker: PartNumberMarker?
     public var uploadId: MultipartUploadId
@@ -5905,7 +5905,7 @@ public extension ListPartsRequest {
  Structure to encode the body input for the ListParts
  operation.
  */
-public struct ListPartsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct ListPartsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
@@ -5951,7 +5951,7 @@ public extension ListPartsRequest {
  Structure to encode the body input for the ListParts
  operation.
  */
-public struct ListPartsOperationOutputBody: Codable, Equatable {
+public struct ListPartsOperationOutputBody: Codable, Equatable, Sendable {
     public var bucket: BucketName?
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var initiator: Initiator?
@@ -6035,7 +6035,7 @@ public extension ListPartsOutput {
  Structure to encode the body input for the ListParts
  operation.
  */
-public struct ListPartsOperationOutputHeaders: Codable, Equatable {
+public struct ListPartsOperationOutputHeaders: Codable, Equatable, Sendable {
     public var abortDate: AbortDate?
     public var abortRuleId: AbortRuleId?
     public var requestCharged: RequestCharged?
@@ -6071,7 +6071,7 @@ public extension ListPartsOutput {
  Structure to encode the path input for the PutBucketAccelerateConfiguration
  operation.
  */
-public struct PutBucketAccelerateConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketAccelerateConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6097,7 +6097,7 @@ public extension PutBucketAccelerateConfigurationRequest {
  Structure to encode the body input for the PutBucketAccelerateConfiguration
  operation.
  */
-public struct PutBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
 
@@ -6128,7 +6128,7 @@ public extension PutBucketAccelerateConfigurationRequest {
  Structure to encode the path input for the PutBucketAcl
  operation.
  */
-public struct PutBucketAclOperationInputPath: Codable, Equatable {
+public struct PutBucketAclOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6154,7 +6154,7 @@ public extension PutBucketAclRequest {
  Structure to encode the body input for the PutBucketAcl
  operation.
  */
-public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketAclOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var aCL: BucketCannedACL?
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6220,7 +6220,7 @@ public extension PutBucketAclRequest {
  Structure to encode the path input for the PutBucketAnalyticsConfiguration
  operation.
  */
-public struct PutBucketAnalyticsConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketAnalyticsConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6246,7 +6246,7 @@ public extension PutBucketAnalyticsConfigurationRequest {
  Structure to encode the query input for the PutBucketAnalyticsConfiguration
  operation.
  */
-public struct PutBucketAnalyticsConfigurationOperationInputQuery: Codable, Equatable {
+public struct PutBucketAnalyticsConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: AnalyticsId
 
     public init(id: AnalyticsId) {
@@ -6272,7 +6272,7 @@ public extension PutBucketAnalyticsConfigurationRequest {
  Structure to encode the body input for the PutBucketAnalyticsConfiguration
  operation.
  */
-public struct PutBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketAnalyticsConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -6298,7 +6298,7 @@ public extension PutBucketAnalyticsConfigurationRequest {
  Structure to encode the path input for the PutBucketCors
  operation.
  */
-public struct PutBucketCorsOperationInputPath: Codable, Equatable {
+public struct PutBucketCorsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6324,7 +6324,7 @@ public extension PutBucketCorsRequest {
  Structure to encode the body input for the PutBucketCors
  operation.
  */
-public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketCorsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -6360,7 +6360,7 @@ public extension PutBucketCorsRequest {
  Structure to encode the path input for the PutBucketEncryption
  operation.
  */
-public struct PutBucketEncryptionOperationInputPath: Codable, Equatable {
+public struct PutBucketEncryptionOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6386,7 +6386,7 @@ public extension PutBucketEncryptionRequest {
  Structure to encode the body input for the PutBucketEncryption
  operation.
  */
-public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketEncryptionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -6422,7 +6422,7 @@ public extension PutBucketEncryptionRequest {
  Structure to encode the path input for the PutBucketIntelligentTieringConfiguration
  operation.
  */
-public struct PutBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketIntelligentTieringConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6448,7 +6448,7 @@ public extension PutBucketIntelligentTieringConfigurationRequest {
  Structure to encode the query input for the PutBucketIntelligentTieringConfiguration
  operation.
  */
-public struct PutBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable {
+public struct PutBucketIntelligentTieringConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: IntelligentTieringId
 
     public init(id: IntelligentTieringId) {
@@ -6474,7 +6474,7 @@ public extension PutBucketIntelligentTieringConfigurationRequest {
  Structure to encode the path input for the PutBucketInventoryConfiguration
  operation.
  */
-public struct PutBucketInventoryConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketInventoryConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6500,7 +6500,7 @@ public extension PutBucketInventoryConfigurationRequest {
  Structure to encode the query input for the PutBucketInventoryConfiguration
  operation.
  */
-public struct PutBucketInventoryConfigurationOperationInputQuery: Codable, Equatable {
+public struct PutBucketInventoryConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: InventoryId
 
     public init(id: InventoryId) {
@@ -6526,7 +6526,7 @@ public extension PutBucketInventoryConfigurationRequest {
  Structure to encode the body input for the PutBucketInventoryConfiguration
  operation.
  */
-public struct PutBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketInventoryConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -6552,7 +6552,7 @@ public extension PutBucketInventoryConfigurationRequest {
  Structure to encode the path input for the PutBucketLifecycle
  operation.
  */
-public struct PutBucketLifecycleOperationInputPath: Codable, Equatable {
+public struct PutBucketLifecycleOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6578,7 +6578,7 @@ public extension PutBucketLifecycleRequest {
  Structure to encode the body input for the PutBucketLifecycle
  operation.
  */
-public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketLifecycleOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -6614,7 +6614,7 @@ public extension PutBucketLifecycleRequest {
  Structure to encode the path input for the PutBucketLifecycleConfiguration
  operation.
  */
-public struct PutBucketLifecycleConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketLifecycleConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6640,7 +6640,7 @@ public extension PutBucketLifecycleConfigurationRequest {
  Structure to encode the body input for the PutBucketLifecycleConfiguration
  operation.
  */
-public struct PutBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketLifecycleConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
 
@@ -6671,7 +6671,7 @@ public extension PutBucketLifecycleConfigurationRequest {
  Structure to encode the path input for the PutBucketLogging
  operation.
  */
-public struct PutBucketLoggingOperationInputPath: Codable, Equatable {
+public struct PutBucketLoggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6697,7 +6697,7 @@ public extension PutBucketLoggingRequest {
  Structure to encode the body input for the PutBucketLogging
  operation.
  */
-public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketLoggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -6733,7 +6733,7 @@ public extension PutBucketLoggingRequest {
  Structure to encode the path input for the PutBucketMetricsConfiguration
  operation.
  */
-public struct PutBucketMetricsConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketMetricsConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6759,7 +6759,7 @@ public extension PutBucketMetricsConfigurationRequest {
  Structure to encode the query input for the PutBucketMetricsConfiguration
  operation.
  */
-public struct PutBucketMetricsConfigurationOperationInputQuery: Codable, Equatable {
+public struct PutBucketMetricsConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var id: MetricsId
 
     public init(id: MetricsId) {
@@ -6785,7 +6785,7 @@ public extension PutBucketMetricsConfigurationRequest {
  Structure to encode the body input for the PutBucketMetricsConfiguration
  operation.
  */
-public struct PutBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketMetricsConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
 
     public init(expectedBucketOwner: AccountId? = nil) {
@@ -6811,7 +6811,7 @@ public extension PutBucketMetricsConfigurationRequest {
  Structure to encode the path input for the PutBucketNotification
  operation.
  */
-public struct PutBucketNotificationOperationInputPath: Codable, Equatable {
+public struct PutBucketNotificationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6837,7 +6837,7 @@ public extension PutBucketNotificationRequest {
  Structure to encode the body input for the PutBucketNotification
  operation.
  */
-public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketNotificationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -6873,7 +6873,7 @@ public extension PutBucketNotificationRequest {
  Structure to encode the path input for the PutBucketNotificationConfiguration
  operation.
  */
-public struct PutBucketNotificationConfigurationOperationInputPath: Codable, Equatable {
+public struct PutBucketNotificationConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6899,7 +6899,7 @@ public extension PutBucketNotificationConfigurationRequest {
  Structure to encode the body input for the PutBucketNotificationConfiguration
  operation.
  */
-public struct PutBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketNotificationConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var skipDestinationValidation: SkipValidation?
 
@@ -6930,7 +6930,7 @@ public extension PutBucketNotificationConfigurationRequest {
  Structure to encode the path input for the PutBucketOwnershipControls
  operation.
  */
-public struct PutBucketOwnershipControlsOperationInputPath: Codable, Equatable {
+public struct PutBucketOwnershipControlsOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -6956,7 +6956,7 @@ public extension PutBucketOwnershipControlsRequest {
  Structure to encode the body input for the PutBucketOwnershipControls
  operation.
  */
-public struct PutBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketOwnershipControlsOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
 
@@ -6987,7 +6987,7 @@ public extension PutBucketOwnershipControlsRequest {
  Structure to encode the path input for the PutBucketPolicy
  operation.
  */
-public struct PutBucketPolicyOperationInputPath: Codable, Equatable {
+public struct PutBucketPolicyOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7013,7 +7013,7 @@ public extension PutBucketPolicyRequest {
  Structure to encode the body input for the PutBucketPolicy
  operation.
  */
-public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketPolicyOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
     public var contentMD5: ContentMD5?
@@ -7054,7 +7054,7 @@ public extension PutBucketPolicyRequest {
  Structure to encode the path input for the PutBucketReplication
  operation.
  */
-public struct PutBucketReplicationOperationInputPath: Codable, Equatable {
+public struct PutBucketReplicationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7080,7 +7080,7 @@ public extension PutBucketReplicationRequest {
  Structure to encode the body input for the PutBucketReplication
  operation.
  */
-public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketReplicationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7121,7 +7121,7 @@ public extension PutBucketReplicationRequest {
  Structure to encode the path input for the PutBucketRequestPayment
  operation.
  */
-public struct PutBucketRequestPaymentOperationInputPath: Codable, Equatable {
+public struct PutBucketRequestPaymentOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7147,7 +7147,7 @@ public extension PutBucketRequestPaymentRequest {
  Structure to encode the body input for the PutBucketRequestPayment
  operation.
  */
-public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketRequestPaymentOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7183,7 +7183,7 @@ public extension PutBucketRequestPaymentRequest {
  Structure to encode the path input for the PutBucketTagging
  operation.
  */
-public struct PutBucketTaggingOperationInputPath: Codable, Equatable {
+public struct PutBucketTaggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7209,7 +7209,7 @@ public extension PutBucketTaggingRequest {
  Structure to encode the body input for the PutBucketTagging
  operation.
  */
-public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketTaggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7245,7 +7245,7 @@ public extension PutBucketTaggingRequest {
  Structure to encode the path input for the PutBucketVersioning
  operation.
  */
-public struct PutBucketVersioningOperationInputPath: Codable, Equatable {
+public struct PutBucketVersioningOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7271,7 +7271,7 @@ public extension PutBucketVersioningRequest {
  Structure to encode the body input for the PutBucketVersioning
  operation.
  */
-public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketVersioningOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7312,7 +7312,7 @@ public extension PutBucketVersioningRequest {
  Structure to encode the path input for the PutBucketWebsite
  operation.
  */
-public struct PutBucketWebsiteOperationInputPath: Codable, Equatable {
+public struct PutBucketWebsiteOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7338,7 +7338,7 @@ public extension PutBucketWebsiteRequest {
  Structure to encode the body input for the PutBucketWebsite
  operation.
  */
-public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutBucketWebsiteOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7374,7 +7374,7 @@ public extension PutBucketWebsiteRequest {
  Structure to encode the path input for the PutObject
  operation.
  */
-public struct PutObjectOperationInputPath: Codable, Equatable {
+public struct PutObjectOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -7406,7 +7406,7 @@ public extension PutObjectRequest {
  Structure to encode the body input for the PutObject
  operation.
  */
-public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutObjectOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?
@@ -7597,7 +7597,7 @@ public extension PutObjectRequest {
  Structure to encode the path input for the PutObjectAcl
  operation.
  */
-public struct PutObjectAclOperationInputPath: Codable, Equatable {
+public struct PutObjectAclOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -7629,7 +7629,7 @@ public extension PutObjectAclRequest {
  Structure to encode the query input for the PutObjectAcl
  operation.
  */
-public struct PutObjectAclOperationInputQuery: Codable, Equatable {
+public struct PutObjectAclOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -7655,7 +7655,7 @@ public extension PutObjectAclRequest {
  Structure to encode the body input for the PutObjectAcl
  operation.
  */
-public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutObjectAclOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -7726,7 +7726,7 @@ public extension PutObjectAclRequest {
  Structure to encode the path input for the PutObjectLegalHold
  operation.
  */
-public struct PutObjectLegalHoldOperationInputPath: Codable, Equatable {
+public struct PutObjectLegalHoldOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -7758,7 +7758,7 @@ public extension PutObjectLegalHoldRequest {
  Structure to encode the query input for the PutObjectLegalHold
  operation.
  */
-public struct PutObjectLegalHoldOperationInputQuery: Codable, Equatable {
+public struct PutObjectLegalHoldOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -7784,7 +7784,7 @@ public extension PutObjectLegalHoldRequest {
  Structure to encode the body input for the PutObjectLegalHold
  operation.
  */
-public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutObjectLegalHoldOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7825,7 +7825,7 @@ public extension PutObjectLegalHoldRequest {
  Structure to encode the path input for the PutObjectLockConfiguration
  operation.
  */
-public struct PutObjectLockConfigurationOperationInputPath: Codable, Equatable {
+public struct PutObjectLockConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -7851,7 +7851,7 @@ public extension PutObjectLockConfigurationRequest {
  Structure to encode the body input for the PutObjectLockConfiguration
  operation.
  */
-public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutObjectLockConfigurationOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -7897,7 +7897,7 @@ public extension PutObjectLockConfigurationRequest {
  Structure to encode the path input for the PutObjectRetention
  operation.
  */
-public struct PutObjectRetentionOperationInputPath: Codable, Equatable {
+public struct PutObjectRetentionOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -7929,7 +7929,7 @@ public extension PutObjectRetentionRequest {
  Structure to encode the query input for the PutObjectRetention
  operation.
  */
-public struct PutObjectRetentionOperationInputQuery: Codable, Equatable {
+public struct PutObjectRetentionOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -7955,7 +7955,7 @@ public extension PutObjectRetentionRequest {
  Structure to encode the body input for the PutObjectRetention
  operation.
  */
-public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutObjectRetentionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -8001,7 +8001,7 @@ public extension PutObjectRetentionRequest {
  Structure to encode the path input for the PutObjectTagging
  operation.
  */
-public struct PutObjectTaggingOperationInputPath: Codable, Equatable {
+public struct PutObjectTaggingOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -8033,7 +8033,7 @@ public extension PutObjectTaggingRequest {
  Structure to encode the query input for the PutObjectTagging
  operation.
  */
-public struct PutObjectTaggingOperationInputQuery: Codable, Equatable {
+public struct PutObjectTaggingOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -8059,7 +8059,7 @@ public extension PutObjectTaggingRequest {
  Structure to encode the body input for the PutObjectTagging
  operation.
  */
-public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutObjectTaggingOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -8100,7 +8100,7 @@ public extension PutObjectTaggingRequest {
  Structure to encode the path input for the PutPublicAccessBlock
  operation.
  */
-public struct PutPublicAccessBlockOperationInputPath: Codable, Equatable {
+public struct PutPublicAccessBlockOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
 
     public init(bucket: BucketName) {
@@ -8126,7 +8126,7 @@ public extension PutPublicAccessBlockRequest {
  Structure to encode the body input for the PutPublicAccessBlock
  operation.
  */
-public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable {
+public struct PutPublicAccessBlockOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -8162,7 +8162,7 @@ public extension PutPublicAccessBlockRequest {
  Structure to encode the path input for the RestoreObject
  operation.
  */
-public struct RestoreObjectOperationInputPath: Codable, Equatable {
+public struct RestoreObjectOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -8194,7 +8194,7 @@ public extension RestoreObjectRequest {
  Structure to encode the query input for the RestoreObject
  operation.
  */
-public struct RestoreObjectOperationInputQuery: Codable, Equatable {
+public struct RestoreObjectOperationInputQuery: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -8220,7 +8220,7 @@ public extension RestoreObjectRequest {
  Structure to encode the body input for the RestoreObject
  operation.
  */
-public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable {
+public struct RestoreObjectOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
     public var requestPayer: RequestPayer?
@@ -8256,7 +8256,7 @@ public extension RestoreObjectRequest {
  Structure to encode the path input for the SelectObjectContent
  operation.
  */
-public struct SelectObjectContentOperationInputPath: Codable, Equatable {
+public struct SelectObjectContentOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -8288,7 +8288,7 @@ public extension SelectObjectContentRequest {
  Structure to encode the body input for the SelectObjectContent
  operation.
  */
-public struct SelectObjectContentOperationInputBody: Codable, Equatable {
+public struct SelectObjectContentOperationInputBody: Codable, Equatable, Sendable {
     public var expression: Expression
     public var expressionType: ExpressionType
     public var inputSerialization: InputSerialization
@@ -8343,7 +8343,7 @@ public extension SelectObjectContentRequest {
  Structure to encode the body input for the SelectObjectContent
  operation.
  */
-public struct SelectObjectContentOperationInputAdditionalHeaders: Codable, Equatable {
+public struct SelectObjectContentOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var expectedBucketOwner: AccountId?
     public var sSECustomerAlgorithm: SSECustomerAlgorithm?
     public var sSECustomerKey: SSECustomerKey?
@@ -8384,7 +8384,7 @@ public extension SelectObjectContentRequest {
  Structure to encode the path input for the UploadPart
  operation.
  */
-public struct UploadPartOperationInputPath: Codable, Equatable {
+public struct UploadPartOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -8416,7 +8416,7 @@ public extension UploadPartRequest {
  Structure to encode the query input for the UploadPart
  operation.
  */
-public struct UploadPartOperationInputQuery: Codable, Equatable {
+public struct UploadPartOperationInputQuery: Codable, Equatable, Sendable {
     public var partNumber: PartNumber
     public var uploadId: MultipartUploadId
 
@@ -8447,7 +8447,7 @@ public extension UploadPartRequest {
  Structure to encode the body input for the UploadPart
  operation.
  */
-public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable {
+public struct UploadPartOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
@@ -8528,7 +8528,7 @@ public extension UploadPartRequest {
  Structure to encode the path input for the UploadPartCopy
  operation.
  */
-public struct UploadPartCopyOperationInputPath: Codable, Equatable {
+public struct UploadPartCopyOperationInputPath: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var key: ObjectKey
 
@@ -8560,7 +8560,7 @@ public extension UploadPartCopyRequest {
  Structure to encode the query input for the UploadPartCopy
  operation.
  */
-public struct UploadPartCopyOperationInputQuery: Codable, Equatable {
+public struct UploadPartCopyOperationInputQuery: Codable, Equatable, Sendable {
     public var partNumber: PartNumber
     public var uploadId: MultipartUploadId
 
@@ -8591,7 +8591,7 @@ public extension UploadPartCopyRequest {
  Structure to encode the body input for the UploadPartCopy
  operation.
  */
-public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable {
+public struct UploadPartCopyOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var copySource: CopySource
     public var copySourceIfMatch: CopySourceIfMatch?
     public var copySourceIfModifiedSince: CopySourceIfModifiedSince?
@@ -8688,7 +8688,7 @@ public extension UploadPartCopyRequest {
  Structure to encode the body input for the UploadPartCopy
  operation.
  */
-public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable {
+public struct UploadPartCopyOperationOutputHeaders: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var copySourceVersionId: CopySourceVersionId?
     public var requestCharged: RequestCharged?
@@ -8744,7 +8744,7 @@ public extension UploadPartCopyOutput {
  Structure to encode the body input for the WriteGetObjectResponse
  operation.
  */
-public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Equatable {
+public struct WriteGetObjectResponseOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var acceptRanges: AcceptRanges?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var cacheControl: CacheControl?

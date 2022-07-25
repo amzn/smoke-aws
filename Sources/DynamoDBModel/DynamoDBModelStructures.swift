@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct ArchivalSummary: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct ArchivalSummary: Codable, Equatable, Sendable {
     public var archivalBackupArn: BackupArn?
     public var archivalDateTime: Date?
     public var archivalReason: ArchivalReason?
@@ -46,7 +48,7 @@ public struct ArchivalSummary: Codable, Equatable {
     }
 }
 
-public struct AttributeDefinition: Codable, Equatable {
+public struct AttributeDefinition: Codable, Equatable, Sendable {
     public var attributeName: KeySchemaAttributeName
     public var attributeType: ScalarAttributeType
 
@@ -66,7 +68,7 @@ public struct AttributeDefinition: Codable, Equatable {
     }
 }
 
-public struct AttributeValue: Codable, Equatable {
+public struct AttributeValue: Codable, Equatable, Sendable {
     public var B: BinaryAttributeValue?
     public var BOOL: BooleanAttributeValue?
     public var BS: BinarySetAttributeValue?
@@ -117,7 +119,7 @@ public struct AttributeValue: Codable, Equatable {
     }
 }
 
-public struct AttributeValueUpdate: Codable, Equatable {
+public struct AttributeValueUpdate: Codable, Equatable, Sendable {
     public var action: AttributeAction?
     public var value: AttributeValue?
 
@@ -137,7 +139,7 @@ public struct AttributeValueUpdate: Codable, Equatable {
     }
 }
 
-public struct AutoScalingPolicyDescription: Codable, Equatable {
+public struct AutoScalingPolicyDescription: Codable, Equatable, Sendable {
     public var policyName: AutoScalingPolicyName?
     public var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationDescription?
 
@@ -158,7 +160,7 @@ public struct AutoScalingPolicyDescription: Codable, Equatable {
     }
 }
 
-public struct AutoScalingPolicyUpdate: Codable, Equatable {
+public struct AutoScalingPolicyUpdate: Codable, Equatable, Sendable {
     public var policyName: AutoScalingPolicyName?
     public var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
 
@@ -179,7 +181,7 @@ public struct AutoScalingPolicyUpdate: Codable, Equatable {
     }
 }
 
-public struct AutoScalingSettingsDescription: Codable, Equatable {
+public struct AutoScalingSettingsDescription: Codable, Equatable, Sendable {
     public var autoScalingDisabled: BooleanObject?
     public var autoScalingRoleArn: String?
     public var maximumUnits: PositiveLongObject?
@@ -212,7 +214,7 @@ public struct AutoScalingSettingsDescription: Codable, Equatable {
     }
 }
 
-public struct AutoScalingSettingsUpdate: Codable, Equatable {
+public struct AutoScalingSettingsUpdate: Codable, Equatable, Sendable {
     public var autoScalingDisabled: BooleanObject?
     public var autoScalingRoleArn: AutoScalingRoleArn?
     public var maximumUnits: PositiveLongObject?
@@ -247,7 +249,7 @@ public struct AutoScalingSettingsUpdate: Codable, Equatable {
     }
 }
 
-public struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription: Codable, Equatable {
+public struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription: Codable, Equatable, Sendable {
     public var disableScaleIn: BooleanObject?
     public var scaleInCooldown: IntegerObject?
     public var scaleOutCooldown: IntegerObject?
@@ -274,7 +276,7 @@ public struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription: Co
     }
 }
 
-public struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate: Codable, Equatable {
+public struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate: Codable, Equatable, Sendable {
     public var disableScaleIn: BooleanObject?
     public var scaleInCooldown: IntegerObject?
     public var scaleOutCooldown: IntegerObject?
@@ -301,7 +303,7 @@ public struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate: Codable
     }
 }
 
-public struct BackupDescription: Codable, Equatable {
+public struct BackupDescription: Codable, Equatable, Sendable {
     public var backupDetails: BackupDetails?
     public var sourceTableDetails: SourceTableDetails?
     public var sourceTableFeatureDetails: SourceTableFeatureDetails?
@@ -327,7 +329,7 @@ public struct BackupDescription: Codable, Equatable {
     }
 }
 
-public struct BackupDetails: Codable, Equatable {
+public struct BackupDetails: Codable, Equatable, Sendable {
     public var backupArn: BackupArn
     public var backupCreationDateTime: BackupCreationDateTime
     public var backupExpiryDateTime: Date?
@@ -369,7 +371,7 @@ public struct BackupDetails: Codable, Equatable {
     }
 }
 
-public struct BackupInUseException: Codable, Equatable {
+public struct BackupInUseException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -384,7 +386,7 @@ public struct BackupInUseException: Codable, Equatable {
     }
 }
 
-public struct BackupNotFoundException: Codable, Equatable {
+public struct BackupNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -399,7 +401,7 @@ public struct BackupNotFoundException: Codable, Equatable {
     }
 }
 
-public struct BackupSummary: Codable, Equatable {
+public struct BackupSummary: Codable, Equatable, Sendable {
     public var backupArn: BackupArn?
     public var backupCreationDateTime: BackupCreationDateTime?
     public var backupExpiryDateTime: Date?
@@ -455,7 +457,7 @@ public struct BackupSummary: Codable, Equatable {
     }
 }
 
-public struct BatchExecuteStatementInput: Codable, Equatable {
+public struct BatchExecuteStatementInput: Codable, Equatable, Sendable {
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var statements: PartiQLBatchRequest
 
@@ -475,7 +477,7 @@ public struct BatchExecuteStatementInput: Codable, Equatable {
     }
 }
 
-public struct BatchExecuteStatementOutput: Codable, Equatable {
+public struct BatchExecuteStatementOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacityMultiple?
     public var responses: PartiQLBatchResponse?
 
@@ -494,7 +496,7 @@ public struct BatchExecuteStatementOutput: Codable, Equatable {
     }
 }
 
-public struct BatchGetItemInput: Codable, Equatable {
+public struct BatchGetItemInput: Codable, Equatable, Sendable {
     public var requestItems: BatchGetRequestMap
     public var returnConsumedCapacity: ReturnConsumedCapacity?
 
@@ -513,7 +515,7 @@ public struct BatchGetItemInput: Codable, Equatable {
     }
 }
 
-public struct BatchGetItemOutput: Codable, Equatable {
+public struct BatchGetItemOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacityMultiple?
     public var responses: BatchGetResponseMap?
     public var unprocessedKeys: BatchGetRequestMap?
@@ -536,7 +538,7 @@ public struct BatchGetItemOutput: Codable, Equatable {
     }
 }
 
-public struct BatchStatementError: Codable, Equatable {
+public struct BatchStatementError: Codable, Equatable, Sendable {
     public var code: BatchStatementErrorCodeEnum?
     public var message: String?
 
@@ -555,7 +557,7 @@ public struct BatchStatementError: Codable, Equatable {
     }
 }
 
-public struct BatchStatementRequest: Codable, Equatable {
+public struct BatchStatementRequest: Codable, Equatable, Sendable {
     public var consistentRead: ConsistentRead?
     public var parameters: PreparedStatementParameters?
     public var statement: PartiQLStatement
@@ -580,7 +582,7 @@ public struct BatchStatementRequest: Codable, Equatable {
     }
 }
 
-public struct BatchStatementResponse: Codable, Equatable {
+public struct BatchStatementResponse: Codable, Equatable, Sendable {
     public var error: BatchStatementError?
     public var item: AttributeMap?
     public var tableName: TableName?
@@ -605,7 +607,7 @@ public struct BatchStatementResponse: Codable, Equatable {
     }
 }
 
-public struct BatchWriteItemInput: Codable, Equatable {
+public struct BatchWriteItemInput: Codable, Equatable, Sendable {
     public var requestItems: BatchWriteItemRequestMap
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
@@ -628,7 +630,7 @@ public struct BatchWriteItemInput: Codable, Equatable {
     }
 }
 
-public struct BatchWriteItemOutput: Codable, Equatable {
+public struct BatchWriteItemOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacityMultiple?
     public var itemCollectionMetrics: ItemCollectionMetricsPerTable?
     public var unprocessedItems: BatchWriteItemRequestMap?
@@ -651,7 +653,7 @@ public struct BatchWriteItemOutput: Codable, Equatable {
     }
 }
 
-public struct BillingModeSummary: Codable, Equatable {
+public struct BillingModeSummary: Codable, Equatable, Sendable {
     public var billingMode: BillingMode?
     public var lastUpdateToPayPerRequestDateTime: Date?
 
@@ -670,7 +672,7 @@ public struct BillingModeSummary: Codable, Equatable {
     }
 }
 
-public struct CancellationReason: Codable, Equatable {
+public struct CancellationReason: Codable, Equatable, Sendable {
     public var code: Code?
     public var item: AttributeMap?
     public var message: ErrorMessage?
@@ -693,7 +695,7 @@ public struct CancellationReason: Codable, Equatable {
     }
 }
 
-public struct Capacity: Codable, Equatable {
+public struct Capacity: Codable, Equatable, Sendable {
     public var capacityUnits: ConsumedCapacityUnits?
     public var readCapacityUnits: ConsumedCapacityUnits?
     public var writeCapacityUnits: ConsumedCapacityUnits?
@@ -716,7 +718,7 @@ public struct Capacity: Codable, Equatable {
     }
 }
 
-public struct Condition: Codable, Equatable {
+public struct Condition: Codable, Equatable, Sendable {
     public var attributeValueList: AttributeValueList?
     public var comparisonOperator: ComparisonOperator
 
@@ -735,7 +737,7 @@ public struct Condition: Codable, Equatable {
     }
 }
 
-public struct ConditionCheck: Codable, Equatable {
+public struct ConditionCheck: Codable, Equatable, Sendable {
     public var conditionExpression: ConditionExpression
     public var expressionAttributeNames: ExpressionAttributeNameMap?
     public var expressionAttributeValues: ExpressionAttributeValueMap?
@@ -771,7 +773,7 @@ public struct ConditionCheck: Codable, Equatable {
     }
 }
 
-public struct ConditionalCheckFailedException: Codable, Equatable {
+public struct ConditionalCheckFailedException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -786,7 +788,7 @@ public struct ConditionalCheckFailedException: Codable, Equatable {
     }
 }
 
-public struct ConsumedCapacity: Codable, Equatable {
+public struct ConsumedCapacity: Codable, Equatable, Sendable {
     public var capacityUnits: ConsumedCapacityUnits?
     public var globalSecondaryIndexes: SecondaryIndexesCapacityMap?
     public var localSecondaryIndexes: SecondaryIndexesCapacityMap?
@@ -827,7 +829,7 @@ public struct ConsumedCapacity: Codable, Equatable {
     }
 }
 
-public struct ContinuousBackupsDescription: Codable, Equatable {
+public struct ContinuousBackupsDescription: Codable, Equatable, Sendable {
     public var continuousBackupsStatus: ContinuousBackupsStatus
     public var pointInTimeRecoveryDescription: PointInTimeRecoveryDescription?
 
@@ -847,7 +849,7 @@ public struct ContinuousBackupsDescription: Codable, Equatable {
     }
 }
 
-public struct ContinuousBackupsUnavailableException: Codable, Equatable {
+public struct ContinuousBackupsUnavailableException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -862,7 +864,7 @@ public struct ContinuousBackupsUnavailableException: Codable, Equatable {
     }
 }
 
-public struct ContributorInsightsSummary: Codable, Equatable {
+public struct ContributorInsightsSummary: Codable, Equatable, Sendable {
     public var contributorInsightsStatus: ContributorInsightsStatus?
     public var indexName: IndexName?
     public var tableName: TableName?
@@ -887,7 +889,7 @@ public struct ContributorInsightsSummary: Codable, Equatable {
     }
 }
 
-public struct CreateBackupInput: Codable, Equatable {
+public struct CreateBackupInput: Codable, Equatable, Sendable {
     public var backupName: BackupName
     public var tableName: TableName
 
@@ -908,7 +910,7 @@ public struct CreateBackupInput: Codable, Equatable {
     }
 }
 
-public struct CreateBackupOutput: Codable, Equatable {
+public struct CreateBackupOutput: Codable, Equatable, Sendable {
     public var backupDetails: BackupDetails?
 
     public init(backupDetails: BackupDetails? = nil) {
@@ -924,7 +926,7 @@ public struct CreateBackupOutput: Codable, Equatable {
     }
 }
 
-public struct CreateGlobalSecondaryIndexAction: Codable, Equatable {
+public struct CreateGlobalSecondaryIndexAction: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var keySchema: KeySchema
     public var projection: Projection
@@ -955,7 +957,7 @@ public struct CreateGlobalSecondaryIndexAction: Codable, Equatable {
     }
 }
 
-public struct CreateGlobalTableInput: Codable, Equatable {
+public struct CreateGlobalTableInput: Codable, Equatable, Sendable {
     public var globalTableName: TableName
     public var replicationGroup: ReplicaList
 
@@ -975,7 +977,7 @@ public struct CreateGlobalTableInput: Codable, Equatable {
     }
 }
 
-public struct CreateGlobalTableOutput: Codable, Equatable {
+public struct CreateGlobalTableOutput: Codable, Equatable, Sendable {
     public var globalTableDescription: GlobalTableDescription?
 
     public init(globalTableDescription: GlobalTableDescription? = nil) {
@@ -991,7 +993,7 @@ public struct CreateGlobalTableOutput: Codable, Equatable {
     }
 }
 
-public struct CreateReplicaAction: Codable, Equatable {
+public struct CreateReplicaAction: Codable, Equatable, Sendable {
     public var regionName: RegionName
 
     public init(regionName: RegionName) {
@@ -1006,7 +1008,7 @@ public struct CreateReplicaAction: Codable, Equatable {
     }
 }
 
-public struct CreateReplicationGroupMemberAction: Codable, Equatable {
+public struct CreateReplicationGroupMemberAction: Codable, Equatable, Sendable {
     public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList?
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
@@ -1039,7 +1041,7 @@ public struct CreateReplicationGroupMemberAction: Codable, Equatable {
     }
 }
 
-public struct CreateTableInput: Codable, Equatable {
+public struct CreateTableInput: Codable, Equatable, Sendable {
     public var attributeDefinitions: AttributeDefinitions
     public var billingMode: BillingMode?
     public var globalSecondaryIndexes: GlobalSecondaryIndexList?
@@ -1099,7 +1101,7 @@ public struct CreateTableInput: Codable, Equatable {
     }
 }
 
-public struct CreateTableOutput: Codable, Equatable {
+public struct CreateTableOutput: Codable, Equatable, Sendable {
     public var tableDescription: TableDescription?
 
     public init(tableDescription: TableDescription? = nil) {
@@ -1115,7 +1117,7 @@ public struct CreateTableOutput: Codable, Equatable {
     }
 }
 
-public struct Delete: Codable, Equatable {
+public struct Delete: Codable, Equatable, Sendable {
     public var conditionExpression: ConditionExpression?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
     public var expressionAttributeValues: ExpressionAttributeValueMap?
@@ -1151,7 +1153,7 @@ public struct Delete: Codable, Equatable {
     }
 }
 
-public struct DeleteBackupInput: Codable, Equatable {
+public struct DeleteBackupInput: Codable, Equatable, Sendable {
     public var backupArn: BackupArn
 
     public init(backupArn: BackupArn) {
@@ -1167,7 +1169,7 @@ public struct DeleteBackupInput: Codable, Equatable {
     }
 }
 
-public struct DeleteBackupOutput: Codable, Equatable {
+public struct DeleteBackupOutput: Codable, Equatable, Sendable {
     public var backupDescription: BackupDescription?
 
     public init(backupDescription: BackupDescription? = nil) {
@@ -1183,7 +1185,7 @@ public struct DeleteBackupOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteGlobalSecondaryIndexAction: Codable, Equatable {
+public struct DeleteGlobalSecondaryIndexAction: Codable, Equatable, Sendable {
     public var indexName: IndexName
 
     public init(indexName: IndexName) {
@@ -1199,7 +1201,7 @@ public struct DeleteGlobalSecondaryIndexAction: Codable, Equatable {
     }
 }
 
-public struct DeleteItemInput: Codable, Equatable {
+public struct DeleteItemInput: Codable, Equatable, Sendable {
     public var conditionExpression: ConditionExpression?
     public var conditionalOperator: ConditionalOperator?
     public var expected: ExpectedAttributeMap?
@@ -1251,7 +1253,7 @@ public struct DeleteItemInput: Codable, Equatable {
     }
 }
 
-public struct DeleteItemOutput: Codable, Equatable {
+public struct DeleteItemOutput: Codable, Equatable, Sendable {
     public var attributes: AttributeMap?
     public var consumedCapacity: ConsumedCapacity?
     public var itemCollectionMetrics: ItemCollectionMetrics?
@@ -1276,7 +1278,7 @@ public struct DeleteItemOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteReplicaAction: Codable, Equatable {
+public struct DeleteReplicaAction: Codable, Equatable, Sendable {
     public var regionName: RegionName
 
     public init(regionName: RegionName) {
@@ -1291,7 +1293,7 @@ public struct DeleteReplicaAction: Codable, Equatable {
     }
 }
 
-public struct DeleteReplicationGroupMemberAction: Codable, Equatable {
+public struct DeleteReplicationGroupMemberAction: Codable, Equatable, Sendable {
     public var regionName: RegionName
 
     public init(regionName: RegionName) {
@@ -1306,7 +1308,7 @@ public struct DeleteReplicationGroupMemberAction: Codable, Equatable {
     }
 }
 
-public struct DeleteRequest: Codable, Equatable {
+public struct DeleteRequest: Codable, Equatable, Sendable {
     public var key: Key
 
     public init(key: Key) {
@@ -1321,7 +1323,7 @@ public struct DeleteRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteTableInput: Codable, Equatable {
+public struct DeleteTableInput: Codable, Equatable, Sendable {
     public var tableName: TableName
 
     public init(tableName: TableName) {
@@ -1337,7 +1339,7 @@ public struct DeleteTableInput: Codable, Equatable {
     }
 }
 
-public struct DeleteTableOutput: Codable, Equatable {
+public struct DeleteTableOutput: Codable, Equatable, Sendable {
     public var tableDescription: TableDescription?
 
     public init(tableDescription: TableDescription? = nil) {
@@ -1353,7 +1355,7 @@ public struct DeleteTableOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeBackupInput: Codable, Equatable {
+public struct DescribeBackupInput: Codable, Equatable, Sendable {
     public var backupArn: BackupArn
 
     public init(backupArn: BackupArn) {
@@ -1369,7 +1371,7 @@ public struct DescribeBackupInput: Codable, Equatable {
     }
 }
 
-public struct DescribeBackupOutput: Codable, Equatable {
+public struct DescribeBackupOutput: Codable, Equatable, Sendable {
     public var backupDescription: BackupDescription?
 
     public init(backupDescription: BackupDescription? = nil) {
@@ -1385,7 +1387,7 @@ public struct DescribeBackupOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeContinuousBackupsInput: Codable, Equatable {
+public struct DescribeContinuousBackupsInput: Codable, Equatable, Sendable {
     public var tableName: TableName
 
     public init(tableName: TableName) {
@@ -1401,7 +1403,7 @@ public struct DescribeContinuousBackupsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeContinuousBackupsOutput: Codable, Equatable {
+public struct DescribeContinuousBackupsOutput: Codable, Equatable, Sendable {
     public var continuousBackupsDescription: ContinuousBackupsDescription?
 
     public init(continuousBackupsDescription: ContinuousBackupsDescription? = nil) {
@@ -1417,7 +1419,7 @@ public struct DescribeContinuousBackupsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeContributorInsightsInput: Codable, Equatable {
+public struct DescribeContributorInsightsInput: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var tableName: TableName
 
@@ -1438,7 +1440,7 @@ public struct DescribeContributorInsightsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeContributorInsightsOutput: Codable, Equatable {
+public struct DescribeContributorInsightsOutput: Codable, Equatable, Sendable {
     public var contributorInsightsRuleList: ContributorInsightsRuleList?
     public var contributorInsightsStatus: ContributorInsightsStatus?
     public var failureException: FailureException?
@@ -1476,7 +1478,7 @@ public struct DescribeContributorInsightsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeEndpointsRequest: Codable, Equatable {
+public struct DescribeEndpointsRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1485,7 +1487,7 @@ public struct DescribeEndpointsRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeEndpointsResponse: Codable, Equatable {
+public struct DescribeEndpointsResponse: Codable, Equatable, Sendable {
     public var endpoints: Endpoints
 
     public init(endpoints: Endpoints) {
@@ -1500,7 +1502,7 @@ public struct DescribeEndpointsResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeExportInput: Codable, Equatable {
+public struct DescribeExportInput: Codable, Equatable, Sendable {
     public var exportArn: ExportArn
 
     public init(exportArn: ExportArn) {
@@ -1516,7 +1518,7 @@ public struct DescribeExportInput: Codable, Equatable {
     }
 }
 
-public struct DescribeExportOutput: Codable, Equatable {
+public struct DescribeExportOutput: Codable, Equatable, Sendable {
     public var exportDescription: ExportDescription?
 
     public init(exportDescription: ExportDescription? = nil) {
@@ -1532,7 +1534,7 @@ public struct DescribeExportOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeGlobalTableInput: Codable, Equatable {
+public struct DescribeGlobalTableInput: Codable, Equatable, Sendable {
     public var globalTableName: TableName
 
     public init(globalTableName: TableName) {
@@ -1548,7 +1550,7 @@ public struct DescribeGlobalTableInput: Codable, Equatable {
     }
 }
 
-public struct DescribeGlobalTableOutput: Codable, Equatable {
+public struct DescribeGlobalTableOutput: Codable, Equatable, Sendable {
     public var globalTableDescription: GlobalTableDescription?
 
     public init(globalTableDescription: GlobalTableDescription? = nil) {
@@ -1564,7 +1566,7 @@ public struct DescribeGlobalTableOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeGlobalTableSettingsInput: Codable, Equatable {
+public struct DescribeGlobalTableSettingsInput: Codable, Equatable, Sendable {
     public var globalTableName: TableName
 
     public init(globalTableName: TableName) {
@@ -1580,7 +1582,7 @@ public struct DescribeGlobalTableSettingsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeGlobalTableSettingsOutput: Codable, Equatable {
+public struct DescribeGlobalTableSettingsOutput: Codable, Equatable, Sendable {
     public var globalTableName: TableName?
     public var replicaSettings: ReplicaSettingsDescriptionList?
 
@@ -1600,7 +1602,7 @@ public struct DescribeGlobalTableSettingsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeKinesisStreamingDestinationInput: Codable, Equatable {
+public struct DescribeKinesisStreamingDestinationInput: Codable, Equatable, Sendable {
     public var tableName: TableName
 
     public init(tableName: TableName) {
@@ -1616,7 +1618,7 @@ public struct DescribeKinesisStreamingDestinationInput: Codable, Equatable {
     }
 }
 
-public struct DescribeKinesisStreamingDestinationOutput: Codable, Equatable {
+public struct DescribeKinesisStreamingDestinationOutput: Codable, Equatable, Sendable {
     public var kinesisDataStreamDestinations: KinesisDataStreamDestinations?
     public var tableName: TableName?
 
@@ -1636,7 +1638,7 @@ public struct DescribeKinesisStreamingDestinationOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeLimitsInput: Codable, Equatable {
+public struct DescribeLimitsInput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1645,7 +1647,7 @@ public struct DescribeLimitsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeLimitsOutput: Codable, Equatable {
+public struct DescribeLimitsOutput: Codable, Equatable, Sendable {
     public var accountMaxReadCapacityUnits: PositiveLongObject?
     public var accountMaxWriteCapacityUnits: PositiveLongObject?
     public var tableMaxReadCapacityUnits: PositiveLongObject?
@@ -1676,7 +1678,7 @@ public struct DescribeLimitsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeTableInput: Codable, Equatable {
+public struct DescribeTableInput: Codable, Equatable, Sendable {
     public var tableName: TableName
 
     public init(tableName: TableName) {
@@ -1692,7 +1694,7 @@ public struct DescribeTableInput: Codable, Equatable {
     }
 }
 
-public struct DescribeTableOutput: Codable, Equatable {
+public struct DescribeTableOutput: Codable, Equatable, Sendable {
     public var table: TableDescription?
 
     public init(table: TableDescription? = nil) {
@@ -1708,7 +1710,7 @@ public struct DescribeTableOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeTableReplicaAutoScalingInput: Codable, Equatable {
+public struct DescribeTableReplicaAutoScalingInput: Codable, Equatable, Sendable {
     public var tableName: TableName
 
     public init(tableName: TableName) {
@@ -1724,7 +1726,7 @@ public struct DescribeTableReplicaAutoScalingInput: Codable, Equatable {
     }
 }
 
-public struct DescribeTableReplicaAutoScalingOutput: Codable, Equatable {
+public struct DescribeTableReplicaAutoScalingOutput: Codable, Equatable, Sendable {
     public var tableAutoScalingDescription: TableAutoScalingDescription?
 
     public init(tableAutoScalingDescription: TableAutoScalingDescription? = nil) {
@@ -1740,7 +1742,7 @@ public struct DescribeTableReplicaAutoScalingOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeTimeToLiveInput: Codable, Equatable {
+public struct DescribeTimeToLiveInput: Codable, Equatable, Sendable {
     public var tableName: TableName
 
     public init(tableName: TableName) {
@@ -1756,7 +1758,7 @@ public struct DescribeTimeToLiveInput: Codable, Equatable {
     }
 }
 
-public struct DescribeTimeToLiveOutput: Codable, Equatable {
+public struct DescribeTimeToLiveOutput: Codable, Equatable, Sendable {
     public var timeToLiveDescription: TimeToLiveDescription?
 
     public init(timeToLiveDescription: TimeToLiveDescription? = nil) {
@@ -1772,7 +1774,7 @@ public struct DescribeTimeToLiveOutput: Codable, Equatable {
     }
 }
 
-public struct DuplicateItemException: Codable, Equatable {
+public struct DuplicateItemException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1787,7 +1789,7 @@ public struct DuplicateItemException: Codable, Equatable {
     }
 }
 
-public struct Endpoint: Codable, Equatable {
+public struct Endpoint: Codable, Equatable, Sendable {
     public var address: String
     public var cachePeriodInMinutes: Long
 
@@ -1806,7 +1808,7 @@ public struct Endpoint: Codable, Equatable {
     }
 }
 
-public struct ExecuteStatementInput: Codable, Equatable {
+public struct ExecuteStatementInput: Codable, Equatable, Sendable {
     public var consistentRead: ConsistentRead?
     public var limit: PositiveIntegerObject?
     public var nextToken: PartiQLNextToken?
@@ -1845,7 +1847,7 @@ public struct ExecuteStatementInput: Codable, Equatable {
     }
 }
 
-public struct ExecuteStatementOutput: Codable, Equatable {
+public struct ExecuteStatementOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacity?
     public var items: ItemList?
     public var lastEvaluatedKey: Key?
@@ -1874,7 +1876,7 @@ public struct ExecuteStatementOutput: Codable, Equatable {
     }
 }
 
-public struct ExecuteTransactionInput: Codable, Equatable {
+public struct ExecuteTransactionInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var transactStatements: ParameterizedStatements
@@ -1899,7 +1901,7 @@ public struct ExecuteTransactionInput: Codable, Equatable {
     }
 }
 
-public struct ExecuteTransactionOutput: Codable, Equatable {
+public struct ExecuteTransactionOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacityMultiple?
     public var responses: ItemResponseList?
 
@@ -1919,7 +1921,7 @@ public struct ExecuteTransactionOutput: Codable, Equatable {
     }
 }
 
-public struct ExpectedAttributeValue: Codable, Equatable {
+public struct ExpectedAttributeValue: Codable, Equatable, Sendable {
     public var attributeValueList: AttributeValueList?
     public var comparisonOperator: ComparisonOperator?
     public var exists: BooleanObject?
@@ -1947,7 +1949,7 @@ public struct ExpectedAttributeValue: Codable, Equatable {
     }
 }
 
-public struct ExportConflictException: Codable, Equatable {
+public struct ExportConflictException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1962,7 +1964,7 @@ public struct ExportConflictException: Codable, Equatable {
     }
 }
 
-public struct ExportDescription: Codable, Equatable {
+public struct ExportDescription: Codable, Equatable, Sendable {
     public var billedSizeBytes: BilledSizeBytes?
     public var clientToken: ClientToken?
     public var endTime: ExportEndTime?
@@ -2054,7 +2056,7 @@ public struct ExportDescription: Codable, Equatable {
     }
 }
 
-public struct ExportNotFoundException: Codable, Equatable {
+public struct ExportNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2069,7 +2071,7 @@ public struct ExportNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ExportSummary: Codable, Equatable {
+public struct ExportSummary: Codable, Equatable, Sendable {
     public var exportArn: ExportArn?
     public var exportStatus: ExportStatus?
 
@@ -2089,7 +2091,7 @@ public struct ExportSummary: Codable, Equatable {
     }
 }
 
-public struct ExportTableToPointInTimeInput: Codable, Equatable {
+public struct ExportTableToPointInTimeInput: Codable, Equatable, Sendable {
     public var clientToken: ClientToken?
     public var exportFormat: ExportFormat?
     public var exportTime: ExportTime?
@@ -2137,7 +2139,7 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
     }
 }
 
-public struct ExportTableToPointInTimeOutput: Codable, Equatable {
+public struct ExportTableToPointInTimeOutput: Codable, Equatable, Sendable {
     public var exportDescription: ExportDescription?
 
     public init(exportDescription: ExportDescription? = nil) {
@@ -2153,7 +2155,7 @@ public struct ExportTableToPointInTimeOutput: Codable, Equatable {
     }
 }
 
-public struct FailureException: Codable, Equatable {
+public struct FailureException: Codable, Equatable, Sendable {
     public var exceptionDescription: ExceptionDescription?
     public var exceptionName: ExceptionName?
 
@@ -2172,7 +2174,7 @@ public struct FailureException: Codable, Equatable {
     }
 }
 
-public struct Get: Codable, Equatable {
+public struct Get: Codable, Equatable, Sendable {
     public var expressionAttributeNames: ExpressionAttributeNameMap?
     public var key: Key
     public var projectionExpression: ProjectionExpression?
@@ -2200,7 +2202,7 @@ public struct Get: Codable, Equatable {
     }
 }
 
-public struct GetItemInput: Codable, Equatable {
+public struct GetItemInput: Codable, Equatable, Sendable {
     public var attributesToGet: AttributeNameList?
     public var consistentRead: ConsistentRead?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
@@ -2241,7 +2243,7 @@ public struct GetItemInput: Codable, Equatable {
     }
 }
 
-public struct GetItemOutput: Codable, Equatable {
+public struct GetItemOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacity?
     public var item: AttributeMap?
 
@@ -2261,7 +2263,7 @@ public struct GetItemOutput: Codable, Equatable {
     }
 }
 
-public struct GlobalSecondaryIndex: Codable, Equatable {
+public struct GlobalSecondaryIndex: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var keySchema: KeySchema
     public var projection: Projection
@@ -2292,7 +2294,7 @@ public struct GlobalSecondaryIndex: Codable, Equatable {
     }
 }
 
-public struct GlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable {
+public struct GlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var provisionedWriteCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
 
@@ -2313,7 +2315,7 @@ public struct GlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable {
     }
 }
 
-public struct GlobalSecondaryIndexDescription: Codable, Equatable {
+public struct GlobalSecondaryIndexDescription: Codable, Equatable, Sendable {
     public var backfilling: Backfilling?
     public var indexArn: String?
     public var indexName: IndexName?
@@ -2364,7 +2366,7 @@ public struct GlobalSecondaryIndexDescription: Codable, Equatable {
     }
 }
 
-public struct GlobalSecondaryIndexInfo: Codable, Equatable {
+public struct GlobalSecondaryIndexInfo: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var keySchema: KeySchema?
     public var projection: Projection?
@@ -2395,7 +2397,7 @@ public struct GlobalSecondaryIndexInfo: Codable, Equatable {
     }
 }
 
-public struct GlobalSecondaryIndexUpdate: Codable, Equatable {
+public struct GlobalSecondaryIndexUpdate: Codable, Equatable, Sendable {
     public var create: CreateGlobalSecondaryIndexAction?
     public var delete: DeleteGlobalSecondaryIndexAction?
     public var update: UpdateGlobalSecondaryIndexAction?
@@ -2421,7 +2423,7 @@ public struct GlobalSecondaryIndexUpdate: Codable, Equatable {
     }
 }
 
-public struct GlobalTable: Codable, Equatable {
+public struct GlobalTable: Codable, Equatable, Sendable {
     public var globalTableName: TableName?
     public var replicationGroup: ReplicaList?
 
@@ -2441,7 +2443,7 @@ public struct GlobalTable: Codable, Equatable {
     }
 }
 
-public struct GlobalTableAlreadyExistsException: Codable, Equatable {
+public struct GlobalTableAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2456,7 +2458,7 @@ public struct GlobalTableAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct GlobalTableDescription: Codable, Equatable {
+public struct GlobalTableDescription: Codable, Equatable, Sendable {
     public var creationDateTime: Date?
     public var globalTableArn: GlobalTableArnString?
     public var globalTableName: TableName?
@@ -2488,7 +2490,7 @@ public struct GlobalTableDescription: Codable, Equatable {
     }
 }
 
-public struct GlobalTableGlobalSecondaryIndexSettingsUpdate: Codable, Equatable {
+public struct GlobalTableGlobalSecondaryIndexSettingsUpdate: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     public var provisionedWriteCapacityUnits: PositiveLongObject?
@@ -2514,7 +2516,7 @@ public struct GlobalTableGlobalSecondaryIndexSettingsUpdate: Codable, Equatable 
     }
 }
 
-public struct GlobalTableNotFoundException: Codable, Equatable {
+public struct GlobalTableNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2529,7 +2531,7 @@ public struct GlobalTableNotFoundException: Codable, Equatable {
     }
 }
 
-public struct IdempotentParameterMismatchException: Codable, Equatable {
+public struct IdempotentParameterMismatchException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2544,7 +2546,7 @@ public struct IdempotentParameterMismatchException: Codable, Equatable {
     }
 }
 
-public struct IndexNotFoundException: Codable, Equatable {
+public struct IndexNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2559,7 +2561,7 @@ public struct IndexNotFoundException: Codable, Equatable {
     }
 }
 
-public struct InternalServerError: Codable, Equatable {
+public struct InternalServerError: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2574,7 +2576,7 @@ public struct InternalServerError: Codable, Equatable {
     }
 }
 
-public struct InvalidExportTimeException: Codable, Equatable {
+public struct InvalidExportTimeException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2589,7 +2591,7 @@ public struct InvalidExportTimeException: Codable, Equatable {
     }
 }
 
-public struct InvalidRestoreTimeException: Codable, Equatable {
+public struct InvalidRestoreTimeException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2604,7 +2606,7 @@ public struct InvalidRestoreTimeException: Codable, Equatable {
     }
 }
 
-public struct ItemCollectionMetrics: Codable, Equatable {
+public struct ItemCollectionMetrics: Codable, Equatable, Sendable {
     public var itemCollectionKey: ItemCollectionKeyAttributeMap?
     public var sizeEstimateRangeGB: ItemCollectionSizeEstimateRange?
 
@@ -2623,7 +2625,7 @@ public struct ItemCollectionMetrics: Codable, Equatable {
     }
 }
 
-public struct ItemCollectionSizeLimitExceededException: Codable, Equatable {
+public struct ItemCollectionSizeLimitExceededException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2638,7 +2640,7 @@ public struct ItemCollectionSizeLimitExceededException: Codable, Equatable {
     }
 }
 
-public struct ItemResponse: Codable, Equatable {
+public struct ItemResponse: Codable, Equatable, Sendable {
     public var item: AttributeMap?
 
     public init(item: AttributeMap? = nil) {
@@ -2653,7 +2655,7 @@ public struct ItemResponse: Codable, Equatable {
     }
 }
 
-public struct KeySchemaElement: Codable, Equatable {
+public struct KeySchemaElement: Codable, Equatable, Sendable {
     public var attributeName: KeySchemaAttributeName
     public var keyType: KeyType
 
@@ -2673,7 +2675,7 @@ public struct KeySchemaElement: Codable, Equatable {
     }
 }
 
-public struct KeysAndAttributes: Codable, Equatable {
+public struct KeysAndAttributes: Codable, Equatable, Sendable {
     public var attributesToGet: AttributeNameList?
     public var consistentRead: ConsistentRead?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
@@ -2706,7 +2708,7 @@ public struct KeysAndAttributes: Codable, Equatable {
     }
 }
 
-public struct KinesisDataStreamDestination: Codable, Equatable {
+public struct KinesisDataStreamDestination: Codable, Equatable, Sendable {
     public var destinationStatus: DestinationStatus?
     public var destinationStatusDescription: String?
     public var streamArn: StreamArn?
@@ -2730,7 +2732,7 @@ public struct KinesisDataStreamDestination: Codable, Equatable {
     }
 }
 
-public struct KinesisStreamingDestinationInput: Codable, Equatable {
+public struct KinesisStreamingDestinationInput: Codable, Equatable, Sendable {
     public var streamArn: StreamArn
     public var tableName: TableName
 
@@ -2751,7 +2753,7 @@ public struct KinesisStreamingDestinationInput: Codable, Equatable {
     }
 }
 
-public struct KinesisStreamingDestinationOutput: Codable, Equatable {
+public struct KinesisStreamingDestinationOutput: Codable, Equatable, Sendable {
     public var destinationStatus: DestinationStatus?
     public var streamArn: StreamArn?
     public var tableName: TableName?
@@ -2776,7 +2778,7 @@ public struct KinesisStreamingDestinationOutput: Codable, Equatable {
     }
 }
 
-public struct LimitExceededException: Codable, Equatable {
+public struct LimitExceededException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2791,7 +2793,7 @@ public struct LimitExceededException: Codable, Equatable {
     }
 }
 
-public struct ListBackupsInput: Codable, Equatable {
+public struct ListBackupsInput: Codable, Equatable, Sendable {
     public var backupType: BackupTypeFilter?
     public var exclusiveStartBackupArn: BackupArn?
     public var limit: BackupsInputLimit?
@@ -2829,7 +2831,7 @@ public struct ListBackupsInput: Codable, Equatable {
     }
 }
 
-public struct ListBackupsOutput: Codable, Equatable {
+public struct ListBackupsOutput: Codable, Equatable, Sendable {
     public var backupSummaries: BackupSummaries?
     public var lastEvaluatedBackupArn: BackupArn?
 
@@ -2849,7 +2851,7 @@ public struct ListBackupsOutput: Codable, Equatable {
     }
 }
 
-public struct ListContributorInsightsInput: Codable, Equatable {
+public struct ListContributorInsightsInput: Codable, Equatable, Sendable {
     public var maxResults: ListContributorInsightsLimit?
     public var nextToken: NextTokenString?
     public var tableName: TableName?
@@ -2874,7 +2876,7 @@ public struct ListContributorInsightsInput: Codable, Equatable {
     }
 }
 
-public struct ListContributorInsightsOutput: Codable, Equatable {
+public struct ListContributorInsightsOutput: Codable, Equatable, Sendable {
     public var contributorInsightsSummaries: ContributorInsightsSummaries?
     public var nextToken: NextTokenString?
 
@@ -2893,7 +2895,7 @@ public struct ListContributorInsightsOutput: Codable, Equatable {
     }
 }
 
-public struct ListExportsInput: Codable, Equatable {
+public struct ListExportsInput: Codable, Equatable, Sendable {
     public var maxResults: ListExportsMaxLimit?
     public var nextToken: ExportNextToken?
     public var tableArn: TableArn?
@@ -2917,7 +2919,7 @@ public struct ListExportsInput: Codable, Equatable {
     }
 }
 
-public struct ListExportsOutput: Codable, Equatable {
+public struct ListExportsOutput: Codable, Equatable, Sendable {
     public var exportSummaries: ExportSummaries?
     public var nextToken: ExportNextToken?
 
@@ -2936,7 +2938,7 @@ public struct ListExportsOutput: Codable, Equatable {
     }
 }
 
-public struct ListGlobalTablesInput: Codable, Equatable {
+public struct ListGlobalTablesInput: Codable, Equatable, Sendable {
     public var exclusiveStartGlobalTableName: TableName?
     public var limit: PositiveIntegerObject?
     public var regionName: RegionName?
@@ -2961,7 +2963,7 @@ public struct ListGlobalTablesInput: Codable, Equatable {
     }
 }
 
-public struct ListGlobalTablesOutput: Codable, Equatable {
+public struct ListGlobalTablesOutput: Codable, Equatable, Sendable {
     public var globalTables: GlobalTableList?
     public var lastEvaluatedGlobalTableName: TableName?
 
@@ -2981,7 +2983,7 @@ public struct ListGlobalTablesOutput: Codable, Equatable {
     }
 }
 
-public struct ListTablesInput: Codable, Equatable {
+public struct ListTablesInput: Codable, Equatable, Sendable {
     public var exclusiveStartTableName: TableName?
     public var limit: ListTablesInputLimit?
 
@@ -3002,7 +3004,7 @@ public struct ListTablesInput: Codable, Equatable {
     }
 }
 
-public struct ListTablesOutput: Codable, Equatable {
+public struct ListTablesOutput: Codable, Equatable, Sendable {
     public var lastEvaluatedTableName: TableName?
     public var tableNames: TableNameList?
 
@@ -3022,7 +3024,7 @@ public struct ListTablesOutput: Codable, Equatable {
     }
 }
 
-public struct ListTagsOfResourceInput: Codable, Equatable {
+public struct ListTagsOfResourceInput: Codable, Equatable, Sendable {
     public var nextToken: NextTokenString?
     public var resourceArn: ResourceArnString
 
@@ -3042,7 +3044,7 @@ public struct ListTagsOfResourceInput: Codable, Equatable {
     }
 }
 
-public struct ListTagsOfResourceOutput: Codable, Equatable {
+public struct ListTagsOfResourceOutput: Codable, Equatable, Sendable {
     public var nextToken: NextTokenString?
     public var tags: TagList?
 
@@ -3061,7 +3063,7 @@ public struct ListTagsOfResourceOutput: Codable, Equatable {
     }
 }
 
-public struct LocalSecondaryIndex: Codable, Equatable {
+public struct LocalSecondaryIndex: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var keySchema: KeySchema
     public var projection: Projection
@@ -3087,7 +3089,7 @@ public struct LocalSecondaryIndex: Codable, Equatable {
     }
 }
 
-public struct LocalSecondaryIndexDescription: Codable, Equatable {
+public struct LocalSecondaryIndexDescription: Codable, Equatable, Sendable {
     public var indexArn: String?
     public var indexName: IndexName?
     public var indexSizeBytes: Long?
@@ -3125,7 +3127,7 @@ public struct LocalSecondaryIndexDescription: Codable, Equatable {
     }
 }
 
-public struct LocalSecondaryIndexInfo: Codable, Equatable {
+public struct LocalSecondaryIndexInfo: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var keySchema: KeySchema?
     public var projection: Projection?
@@ -3151,7 +3153,7 @@ public struct LocalSecondaryIndexInfo: Codable, Equatable {
     }
 }
 
-public struct ParameterizedStatement: Codable, Equatable {
+public struct ParameterizedStatement: Codable, Equatable, Sendable {
     public var parameters: PreparedStatementParameters?
     public var statement: PartiQLStatement
 
@@ -3172,7 +3174,7 @@ public struct ParameterizedStatement: Codable, Equatable {
     }
 }
 
-public struct PointInTimeRecoveryDescription: Codable, Equatable {
+public struct PointInTimeRecoveryDescription: Codable, Equatable, Sendable {
     public var earliestRestorableDateTime: Date?
     public var latestRestorableDateTime: Date?
     public var pointInTimeRecoveryStatus: PointInTimeRecoveryStatus?
@@ -3195,7 +3197,7 @@ public struct PointInTimeRecoveryDescription: Codable, Equatable {
     }
 }
 
-public struct PointInTimeRecoverySpecification: Codable, Equatable {
+public struct PointInTimeRecoverySpecification: Codable, Equatable, Sendable {
     public var pointInTimeRecoveryEnabled: BooleanObject
 
     public init(pointInTimeRecoveryEnabled: BooleanObject) {
@@ -3210,7 +3212,7 @@ public struct PointInTimeRecoverySpecification: Codable, Equatable {
     }
 }
 
-public struct PointInTimeRecoveryUnavailableException: Codable, Equatable {
+public struct PointInTimeRecoveryUnavailableException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3225,7 +3227,7 @@ public struct PointInTimeRecoveryUnavailableException: Codable, Equatable {
     }
 }
 
-public struct Projection: Codable, Equatable {
+public struct Projection: Codable, Equatable, Sendable {
     public var nonKeyAttributes: NonKeyAttributeNameList?
     public var projectionType: ProjectionType?
 
@@ -3245,7 +3247,7 @@ public struct Projection: Codable, Equatable {
     }
 }
 
-public struct ProvisionedThroughput: Codable, Equatable {
+public struct ProvisionedThroughput: Codable, Equatable, Sendable {
     public var readCapacityUnits: PositiveLongObject
     public var writeCapacityUnits: PositiveLongObject
 
@@ -3266,7 +3268,7 @@ public struct ProvisionedThroughput: Codable, Equatable {
     }
 }
 
-public struct ProvisionedThroughputDescription: Codable, Equatable {
+public struct ProvisionedThroughputDescription: Codable, Equatable, Sendable {
     public var lastDecreaseDateTime: Date?
     public var lastIncreaseDateTime: Date?
     public var numberOfDecreasesToday: PositiveLongObject?
@@ -3300,7 +3302,7 @@ public struct ProvisionedThroughputDescription: Codable, Equatable {
     }
 }
 
-public struct ProvisionedThroughputExceededException: Codable, Equatable {
+public struct ProvisionedThroughputExceededException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3315,7 +3317,7 @@ public struct ProvisionedThroughputExceededException: Codable, Equatable {
     }
 }
 
-public struct ProvisionedThroughputOverride: Codable, Equatable {
+public struct ProvisionedThroughputOverride: Codable, Equatable, Sendable {
     public var readCapacityUnits: PositiveLongObject?
 
     public init(readCapacityUnits: PositiveLongObject? = nil) {
@@ -3331,7 +3333,7 @@ public struct ProvisionedThroughputOverride: Codable, Equatable {
     }
 }
 
-public struct Put: Codable, Equatable {
+public struct Put: Codable, Equatable, Sendable {
     public var conditionExpression: ConditionExpression?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
     public var expressionAttributeValues: ExpressionAttributeValueMap?
@@ -3367,7 +3369,7 @@ public struct Put: Codable, Equatable {
     }
 }
 
-public struct PutItemInput: Codable, Equatable {
+public struct PutItemInput: Codable, Equatable, Sendable {
     public var conditionExpression: ConditionExpression?
     public var conditionalOperator: ConditionalOperator?
     public var expected: ExpectedAttributeMap?
@@ -3419,7 +3421,7 @@ public struct PutItemInput: Codable, Equatable {
     }
 }
 
-public struct PutItemOutput: Codable, Equatable {
+public struct PutItemOutput: Codable, Equatable, Sendable {
     public var attributes: AttributeMap?
     public var consumedCapacity: ConsumedCapacity?
     public var itemCollectionMetrics: ItemCollectionMetrics?
@@ -3444,7 +3446,7 @@ public struct PutItemOutput: Codable, Equatable {
     }
 }
 
-public struct PutRequest: Codable, Equatable {
+public struct PutRequest: Codable, Equatable, Sendable {
     public var item: PutItemInputAttributeMap
 
     public init(item: PutItemInputAttributeMap) {
@@ -3459,7 +3461,7 @@ public struct PutRequest: Codable, Equatable {
     }
 }
 
-public struct QueryInput: Codable, Equatable {
+public struct QueryInput: Codable, Equatable, Sendable {
     public var attributesToGet: AttributeNameList?
     public var conditionalOperator: ConditionalOperator?
     public var consistentRead: ConsistentRead?
@@ -3542,7 +3544,7 @@ public struct QueryInput: Codable, Equatable {
     }
 }
 
-public struct QueryOutput: Codable, Equatable {
+public struct QueryOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacity?
     public var count: Integer?
     public var items: ItemList?
@@ -3574,7 +3576,7 @@ public struct QueryOutput: Codable, Equatable {
     }
 }
 
-public struct Replica: Codable, Equatable {
+public struct Replica: Codable, Equatable, Sendable {
     public var regionName: RegionName?
 
     public init(regionName: RegionName? = nil) {
@@ -3589,7 +3591,7 @@ public struct Replica: Codable, Equatable {
     }
 }
 
-public struct ReplicaAlreadyExistsException: Codable, Equatable {
+public struct ReplicaAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3604,7 +3606,7 @@ public struct ReplicaAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct ReplicaAutoScalingDescription: Codable, Equatable {
+public struct ReplicaAutoScalingDescription: Codable, Equatable, Sendable {
     public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexAutoScalingDescriptionList?
     public var regionName: RegionName?
     public var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
@@ -3637,7 +3639,7 @@ public struct ReplicaAutoScalingDescription: Codable, Equatable {
     }
 }
 
-public struct ReplicaAutoScalingUpdate: Codable, Equatable {
+public struct ReplicaAutoScalingUpdate: Codable, Equatable, Sendable {
     public var regionName: RegionName
     public var replicaGlobalSecondaryIndexUpdates: ReplicaGlobalSecondaryIndexAutoScalingUpdateList?
     public var replicaProvisionedReadCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
@@ -3661,7 +3663,7 @@ public struct ReplicaAutoScalingUpdate: Codable, Equatable {
     }
 }
 
-public struct ReplicaDescription: Codable, Equatable {
+public struct ReplicaDescription: Codable, Equatable, Sendable {
     public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexDescriptionList?
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
@@ -3710,7 +3712,7 @@ public struct ReplicaDescription: Codable, Equatable {
     }
 }
 
-public struct ReplicaGlobalSecondaryIndex: Codable, Equatable {
+public struct ReplicaGlobalSecondaryIndex: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
 
@@ -3731,7 +3733,7 @@ public struct ReplicaGlobalSecondaryIndex: Codable, Equatable {
     }
 }
 
-public struct ReplicaGlobalSecondaryIndexAutoScalingDescription: Codable, Equatable {
+public struct ReplicaGlobalSecondaryIndexAutoScalingDescription: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var indexStatus: IndexStatus?
     public var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
@@ -3761,7 +3763,7 @@ public struct ReplicaGlobalSecondaryIndexAutoScalingDescription: Codable, Equata
     }
 }
 
-public struct ReplicaGlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable {
+public struct ReplicaGlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var provisionedReadCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
 
@@ -3782,7 +3784,7 @@ public struct ReplicaGlobalSecondaryIndexAutoScalingUpdate: Codable, Equatable {
     }
 }
 
-public struct ReplicaGlobalSecondaryIndexDescription: Codable, Equatable {
+public struct ReplicaGlobalSecondaryIndexDescription: Codable, Equatable, Sendable {
     public var indexName: IndexName?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
 
@@ -3803,7 +3805,7 @@ public struct ReplicaGlobalSecondaryIndexDescription: Codable, Equatable {
     }
 }
 
-public struct ReplicaGlobalSecondaryIndexSettingsDescription: Codable, Equatable {
+public struct ReplicaGlobalSecondaryIndexSettingsDescription: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var indexStatus: IndexStatus?
     public var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
@@ -3843,7 +3845,7 @@ public struct ReplicaGlobalSecondaryIndexSettingsDescription: Codable, Equatable
     }
 }
 
-public struct ReplicaGlobalSecondaryIndexSettingsUpdate: Codable, Equatable {
+public struct ReplicaGlobalSecondaryIndexSettingsUpdate: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var provisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     public var provisionedReadCapacityUnits: PositiveLongObject?
@@ -3869,7 +3871,7 @@ public struct ReplicaGlobalSecondaryIndexSettingsUpdate: Codable, Equatable {
     }
 }
 
-public struct ReplicaNotFoundException: Codable, Equatable {
+public struct ReplicaNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -3884,7 +3886,7 @@ public struct ReplicaNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ReplicaSettingsDescription: Codable, Equatable {
+public struct ReplicaSettingsDescription: Codable, Equatable, Sendable {
     public var regionName: RegionName
     public var replicaBillingModeSummary: BillingModeSummary?
     public var replicaGlobalSecondaryIndexSettings: ReplicaGlobalSecondaryIndexSettingsDescriptionList?
@@ -3937,7 +3939,7 @@ public struct ReplicaSettingsDescription: Codable, Equatable {
     }
 }
 
-public struct ReplicaSettingsUpdate: Codable, Equatable {
+public struct ReplicaSettingsUpdate: Codable, Equatable, Sendable {
     public var regionName: RegionName
     public var replicaGlobalSecondaryIndexSettingsUpdate: ReplicaGlobalSecondaryIndexSettingsUpdateList?
     public var replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
@@ -3971,7 +3973,7 @@ public struct ReplicaSettingsUpdate: Codable, Equatable {
     }
 }
 
-public struct ReplicaUpdate: Codable, Equatable {
+public struct ReplicaUpdate: Codable, Equatable, Sendable {
     public var create: CreateReplicaAction?
     public var delete: DeleteReplicaAction?
 
@@ -3992,7 +3994,7 @@ public struct ReplicaUpdate: Codable, Equatable {
     }
 }
 
-public struct ReplicationGroupUpdate: Codable, Equatable {
+public struct ReplicationGroupUpdate: Codable, Equatable, Sendable {
     public var create: CreateReplicationGroupMemberAction?
     public var delete: DeleteReplicationGroupMemberAction?
     public var update: UpdateReplicationGroupMemberAction?
@@ -4018,7 +4020,7 @@ public struct ReplicationGroupUpdate: Codable, Equatable {
     }
 }
 
-public struct RequestLimitExceeded: Codable, Equatable {
+public struct RequestLimitExceeded: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4033,7 +4035,7 @@ public struct RequestLimitExceeded: Codable, Equatable {
     }
 }
 
-public struct ResourceInUseException: Codable, Equatable {
+public struct ResourceInUseException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4048,7 +4050,7 @@ public struct ResourceInUseException: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundException: Codable, Equatable {
+public struct ResourceNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4063,7 +4065,7 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct RestoreSummary: Codable, Equatable {
+public struct RestoreSummary: Codable, Equatable, Sendable {
     public var restoreDateTime: Date
     public var restoreInProgress: RestoreInProgress
     public var sourceBackupArn: BackupArn?
@@ -4091,7 +4093,7 @@ public struct RestoreSummary: Codable, Equatable {
     }
 }
 
-public struct RestoreTableFromBackupInput: Codable, Equatable {
+public struct RestoreTableFromBackupInput: Codable, Equatable, Sendable {
     public var backupArn: BackupArn
     public var billingModeOverride: BillingMode?
     public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
@@ -4134,7 +4136,7 @@ public struct RestoreTableFromBackupInput: Codable, Equatable {
     }
 }
 
-public struct RestoreTableFromBackupOutput: Codable, Equatable {
+public struct RestoreTableFromBackupOutput: Codable, Equatable, Sendable {
     public var tableDescription: TableDescription?
 
     public init(tableDescription: TableDescription? = nil) {
@@ -4150,7 +4152,7 @@ public struct RestoreTableFromBackupOutput: Codable, Equatable {
     }
 }
 
-public struct RestoreTableToPointInTimeInput: Codable, Equatable {
+public struct RestoreTableToPointInTimeInput: Codable, Equatable, Sendable {
     public var billingModeOverride: BillingMode?
     public var globalSecondaryIndexOverride: GlobalSecondaryIndexList?
     public var localSecondaryIndexOverride: LocalSecondaryIndexList?
@@ -4205,7 +4207,7 @@ public struct RestoreTableToPointInTimeInput: Codable, Equatable {
     }
 }
 
-public struct RestoreTableToPointInTimeOutput: Codable, Equatable {
+public struct RestoreTableToPointInTimeOutput: Codable, Equatable, Sendable {
     public var tableDescription: TableDescription?
 
     public init(tableDescription: TableDescription? = nil) {
@@ -4221,7 +4223,7 @@ public struct RestoreTableToPointInTimeOutput: Codable, Equatable {
     }
 }
 
-public struct SSEDescription: Codable, Equatable {
+public struct SSEDescription: Codable, Equatable, Sendable {
     public var inaccessibleEncryptionDateTime: Date?
     public var kMSMasterKeyArn: KMSMasterKeyArn?
     public var sSEType: SSEType?
@@ -4248,7 +4250,7 @@ public struct SSEDescription: Codable, Equatable {
     }
 }
 
-public struct SSESpecification: Codable, Equatable {
+public struct SSESpecification: Codable, Equatable, Sendable {
     public var enabled: SSEEnabled?
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var sSEType: SSEType?
@@ -4271,7 +4273,7 @@ public struct SSESpecification: Codable, Equatable {
     }
 }
 
-public struct ScanInput: Codable, Equatable {
+public struct ScanInput: Codable, Equatable, Sendable {
     public var attributesToGet: AttributeNameList?
     public var conditionalOperator: ConditionalOperator?
     public var consistentRead: ConsistentRead?
@@ -4352,7 +4354,7 @@ public struct ScanInput: Codable, Equatable {
     }
 }
 
-public struct ScanOutput: Codable, Equatable {
+public struct ScanOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacity?
     public var count: Integer?
     public var items: ItemList?
@@ -4384,7 +4386,7 @@ public struct ScanOutput: Codable, Equatable {
     }
 }
 
-public struct SourceTableDetails: Codable, Equatable {
+public struct SourceTableDetails: Codable, Equatable, Sendable {
     public var billingMode: BillingMode?
     public var itemCount: ItemCount?
     public var keySchema: KeySchema
@@ -4436,7 +4438,7 @@ public struct SourceTableDetails: Codable, Equatable {
     }
 }
 
-public struct SourceTableFeatureDetails: Codable, Equatable {
+public struct SourceTableFeatureDetails: Codable, Equatable, Sendable {
     public var globalSecondaryIndexes: GlobalSecondaryIndexes?
     public var localSecondaryIndexes: LocalSecondaryIndexes?
     public var sSEDescription: SSEDescription?
@@ -4470,7 +4472,7 @@ public struct SourceTableFeatureDetails: Codable, Equatable {
     }
 }
 
-public struct StreamSpecification: Codable, Equatable {
+public struct StreamSpecification: Codable, Equatable, Sendable {
     public var streamEnabled: StreamEnabled
     public var streamViewType: StreamViewType?
 
@@ -4489,7 +4491,7 @@ public struct StreamSpecification: Codable, Equatable {
     }
 }
 
-public struct TableAlreadyExistsException: Codable, Equatable {
+public struct TableAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4504,7 +4506,7 @@ public struct TableAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct TableAutoScalingDescription: Codable, Equatable {
+public struct TableAutoScalingDescription: Codable, Equatable, Sendable {
     public var replicas: ReplicaAutoScalingDescriptionList?
     public var tableName: TableName?
     public var tableStatus: TableStatus?
@@ -4528,7 +4530,7 @@ public struct TableAutoScalingDescription: Codable, Equatable {
     }
 }
 
-public struct TableClassSummary: Codable, Equatable {
+public struct TableClassSummary: Codable, Equatable, Sendable {
     public var lastUpdateDateTime: Date?
     public var tableClass: TableClass?
 
@@ -4547,7 +4549,7 @@ public struct TableClassSummary: Codable, Equatable {
     }
 }
 
-public struct TableDescription: Codable, Equatable {
+public struct TableDescription: Codable, Equatable, Sendable {
     public var archivalSummary: ArchivalSummary?
     public var attributeDefinitions: AttributeDefinitions?
     public var billingModeSummary: BillingModeSummary?
@@ -4657,7 +4659,7 @@ public struct TableDescription: Codable, Equatable {
     }
 }
 
-public struct TableInUseException: Codable, Equatable {
+public struct TableInUseException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4672,7 +4674,7 @@ public struct TableInUseException: Codable, Equatable {
     }
 }
 
-public struct TableNotFoundException: Codable, Equatable {
+public struct TableNotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4687,7 +4689,7 @@ public struct TableNotFoundException: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKeyString
     public var value: TagValueString
 
@@ -4708,7 +4710,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagResourceInput: Codable, Equatable {
+public struct TagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: ResourceArnString
     public var tags: TagList
 
@@ -4728,7 +4730,7 @@ public struct TagResourceInput: Codable, Equatable {
     }
 }
 
-public struct TimeToLiveDescription: Codable, Equatable {
+public struct TimeToLiveDescription: Codable, Equatable, Sendable {
     public var attributeName: TimeToLiveAttributeName?
     public var timeToLiveStatus: TimeToLiveStatus?
 
@@ -4748,7 +4750,7 @@ public struct TimeToLiveDescription: Codable, Equatable {
     }
 }
 
-public struct TimeToLiveSpecification: Codable, Equatable {
+public struct TimeToLiveSpecification: Codable, Equatable, Sendable {
     public var attributeName: TimeToLiveAttributeName
     public var enabled: TimeToLiveEnabled
 
@@ -4768,7 +4770,7 @@ public struct TimeToLiveSpecification: Codable, Equatable {
     }
 }
 
-public struct TransactGetItem: Codable, Equatable {
+public struct TransactGetItem: Codable, Equatable, Sendable {
     public var get: Get
 
     public init(get: Get) {
@@ -4784,7 +4786,7 @@ public struct TransactGetItem: Codable, Equatable {
     }
 }
 
-public struct TransactGetItemsInput: Codable, Equatable {
+public struct TransactGetItemsInput: Codable, Equatable, Sendable {
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var transactItems: TransactGetItemList
 
@@ -4804,7 +4806,7 @@ public struct TransactGetItemsInput: Codable, Equatable {
     }
 }
 
-public struct TransactGetItemsOutput: Codable, Equatable {
+public struct TransactGetItemsOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacityMultiple?
     public var responses: ItemResponseList?
 
@@ -4824,7 +4826,7 @@ public struct TransactGetItemsOutput: Codable, Equatable {
     }
 }
 
-public struct TransactWriteItem: Codable, Equatable {
+public struct TransactWriteItem: Codable, Equatable, Sendable {
     public var conditionCheck: ConditionCheck?
     public var delete: Delete?
     public var put: Put?
@@ -4855,7 +4857,7 @@ public struct TransactWriteItem: Codable, Equatable {
     }
 }
 
-public struct TransactWriteItemsInput: Codable, Equatable {
+public struct TransactWriteItemsInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
@@ -4884,7 +4886,7 @@ public struct TransactWriteItemsInput: Codable, Equatable {
     }
 }
 
-public struct TransactWriteItemsOutput: Codable, Equatable {
+public struct TransactWriteItemsOutput: Codable, Equatable, Sendable {
     public var consumedCapacity: ConsumedCapacityMultiple?
     public var itemCollectionMetrics: ItemCollectionMetricsPerTable?
 
@@ -4903,7 +4905,7 @@ public struct TransactWriteItemsOutput: Codable, Equatable {
     }
 }
 
-public struct TransactionCanceledException: Codable, Equatable {
+public struct TransactionCanceledException: Codable, Equatable, Sendable {
     public var cancellationReasons: CancellationReasonList?
     public var message: ErrorMessage?
 
@@ -4923,7 +4925,7 @@ public struct TransactionCanceledException: Codable, Equatable {
     }
 }
 
-public struct TransactionConflictException: Codable, Equatable {
+public struct TransactionConflictException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4938,7 +4940,7 @@ public struct TransactionConflictException: Codable, Equatable {
     }
 }
 
-public struct TransactionInProgressException: Codable, Equatable {
+public struct TransactionInProgressException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -4953,7 +4955,7 @@ public struct TransactionInProgressException: Codable, Equatable {
     }
 }
 
-public struct UntagResourceInput: Codable, Equatable {
+public struct UntagResourceInput: Codable, Equatable, Sendable {
     public var resourceArn: ResourceArnString
     public var tagKeys: TagKeyList
 
@@ -4973,7 +4975,7 @@ public struct UntagResourceInput: Codable, Equatable {
     }
 }
 
-public struct Update: Codable, Equatable {
+public struct Update: Codable, Equatable, Sendable {
     public var conditionExpression: ConditionExpression?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
     public var expressionAttributeValues: ExpressionAttributeValueMap?
@@ -5013,7 +5015,7 @@ public struct Update: Codable, Equatable {
     }
 }
 
-public struct UpdateContinuousBackupsInput: Codable, Equatable {
+public struct UpdateContinuousBackupsInput: Codable, Equatable, Sendable {
     public var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification
     public var tableName: TableName
 
@@ -5034,7 +5036,7 @@ public struct UpdateContinuousBackupsInput: Codable, Equatable {
     }
 }
 
-public struct UpdateContinuousBackupsOutput: Codable, Equatable {
+public struct UpdateContinuousBackupsOutput: Codable, Equatable, Sendable {
     public var continuousBackupsDescription: ContinuousBackupsDescription?
 
     public init(continuousBackupsDescription: ContinuousBackupsDescription? = nil) {
@@ -5050,7 +5052,7 @@ public struct UpdateContinuousBackupsOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateContributorInsightsInput: Codable, Equatable {
+public struct UpdateContributorInsightsInput: Codable, Equatable, Sendable {
     public var contributorInsightsAction: ContributorInsightsAction
     public var indexName: IndexName?
     public var tableName: TableName
@@ -5075,7 +5077,7 @@ public struct UpdateContributorInsightsInput: Codable, Equatable {
     }
 }
 
-public struct UpdateContributorInsightsOutput: Codable, Equatable {
+public struct UpdateContributorInsightsOutput: Codable, Equatable, Sendable {
     public var contributorInsightsStatus: ContributorInsightsStatus?
     public var indexName: IndexName?
     public var tableName: TableName?
@@ -5100,7 +5102,7 @@ public struct UpdateContributorInsightsOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateGlobalSecondaryIndexAction: Codable, Equatable {
+public struct UpdateGlobalSecondaryIndexAction: Codable, Equatable, Sendable {
     public var indexName: IndexName
     public var provisionedThroughput: ProvisionedThroughput
 
@@ -5121,7 +5123,7 @@ public struct UpdateGlobalSecondaryIndexAction: Codable, Equatable {
     }
 }
 
-public struct UpdateGlobalTableInput: Codable, Equatable {
+public struct UpdateGlobalTableInput: Codable, Equatable, Sendable {
     public var globalTableName: TableName
     public var replicaUpdates: ReplicaUpdateList
 
@@ -5141,7 +5143,7 @@ public struct UpdateGlobalTableInput: Codable, Equatable {
     }
 }
 
-public struct UpdateGlobalTableOutput: Codable, Equatable {
+public struct UpdateGlobalTableOutput: Codable, Equatable, Sendable {
     public var globalTableDescription: GlobalTableDescription?
 
     public init(globalTableDescription: GlobalTableDescription? = nil) {
@@ -5157,7 +5159,7 @@ public struct UpdateGlobalTableOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateGlobalTableSettingsInput: Codable, Equatable {
+public struct UpdateGlobalTableSettingsInput: Codable, Equatable, Sendable {
     public var globalTableBillingMode: BillingMode?
     public var globalTableGlobalSecondaryIndexSettingsUpdate: GlobalTableGlobalSecondaryIndexSettingsUpdateList?
     public var globalTableName: TableName
@@ -5197,7 +5199,7 @@ public struct UpdateGlobalTableSettingsInput: Codable, Equatable {
     }
 }
 
-public struct UpdateGlobalTableSettingsOutput: Codable, Equatable {
+public struct UpdateGlobalTableSettingsOutput: Codable, Equatable, Sendable {
     public var globalTableName: TableName?
     public var replicaSettings: ReplicaSettingsDescriptionList?
 
@@ -5217,7 +5219,7 @@ public struct UpdateGlobalTableSettingsOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateItemInput: Codable, Equatable {
+public struct UpdateItemInput: Codable, Equatable, Sendable {
     public var attributeUpdates: AttributeUpdates?
     public var conditionExpression: ConditionExpression?
     public var conditionalOperator: ConditionalOperator?
@@ -5277,7 +5279,7 @@ public struct UpdateItemInput: Codable, Equatable {
     }
 }
 
-public struct UpdateItemOutput: Codable, Equatable {
+public struct UpdateItemOutput: Codable, Equatable, Sendable {
     public var attributes: AttributeMap?
     public var consumedCapacity: ConsumedCapacity?
     public var itemCollectionMetrics: ItemCollectionMetrics?
@@ -5302,7 +5304,7 @@ public struct UpdateItemOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateReplicationGroupMemberAction: Codable, Equatable {
+public struct UpdateReplicationGroupMemberAction: Codable, Equatable, Sendable {
     public var globalSecondaryIndexes: ReplicaGlobalSecondaryIndexList?
     public var kMSMasterKeyId: KMSMasterKeyId?
     public var provisionedThroughputOverride: ProvisionedThroughputOverride?
@@ -5335,7 +5337,7 @@ public struct UpdateReplicationGroupMemberAction: Codable, Equatable {
     }
 }
 
-public struct UpdateTableInput: Codable, Equatable {
+public struct UpdateTableInput: Codable, Equatable, Sendable {
     public var attributeDefinitions: AttributeDefinitions?
     public var billingMode: BillingMode?
     public var globalSecondaryIndexUpdates: GlobalSecondaryIndexUpdateList?
@@ -5387,7 +5389,7 @@ public struct UpdateTableInput: Codable, Equatable {
     }
 }
 
-public struct UpdateTableOutput: Codable, Equatable {
+public struct UpdateTableOutput: Codable, Equatable, Sendable {
     public var tableDescription: TableDescription?
 
     public init(tableDescription: TableDescription? = nil) {
@@ -5403,7 +5405,7 @@ public struct UpdateTableOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateTableReplicaAutoScalingInput: Codable, Equatable {
+public struct UpdateTableReplicaAutoScalingInput: Codable, Equatable, Sendable {
     public var globalSecondaryIndexUpdates: GlobalSecondaryIndexAutoScalingUpdateList?
     public var provisionedWriteCapacityAutoScalingUpdate: AutoScalingSettingsUpdate?
     public var replicaUpdates: ReplicaAutoScalingUpdateList?
@@ -5434,7 +5436,7 @@ public struct UpdateTableReplicaAutoScalingInput: Codable, Equatable {
     }
 }
 
-public struct UpdateTableReplicaAutoScalingOutput: Codable, Equatable {
+public struct UpdateTableReplicaAutoScalingOutput: Codable, Equatable, Sendable {
     public var tableAutoScalingDescription: TableAutoScalingDescription?
 
     public init(tableAutoScalingDescription: TableAutoScalingDescription? = nil) {
@@ -5450,7 +5452,7 @@ public struct UpdateTableReplicaAutoScalingOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateTimeToLiveInput: Codable, Equatable {
+public struct UpdateTimeToLiveInput: Codable, Equatable, Sendable {
     public var tableName: TableName
     public var timeToLiveSpecification: TimeToLiveSpecification
 
@@ -5471,7 +5473,7 @@ public struct UpdateTimeToLiveInput: Codable, Equatable {
     }
 }
 
-public struct UpdateTimeToLiveOutput: Codable, Equatable {
+public struct UpdateTimeToLiveOutput: Codable, Equatable, Sendable {
     public var timeToLiveSpecification: TimeToLiveSpecification?
 
     public init(timeToLiveSpecification: TimeToLiveSpecification? = nil) {
@@ -5487,7 +5489,7 @@ public struct UpdateTimeToLiveOutput: Codable, Equatable {
     }
 }
 
-public struct WriteRequest: Codable, Equatable {
+public struct WriteRequest: Codable, Equatable, Sendable {
     public var deleteRequest: DeleteRequest?
     public var putRequest: PutRequest?
 

@@ -73,7 +73,7 @@ private let typeConfigurationNotFoundIdentity = "TypeConfigurationNotFoundExcept
 private let typeNotFoundIdentity = "TypeNotFoundException"
 private let validationIdentity = "ValidationError"
 
-public struct CloudformationErrorPayload: Codable {
+public struct CloudformationErrorPayload: Codable, Sendable {
     public let type: String
     public let message: String
 

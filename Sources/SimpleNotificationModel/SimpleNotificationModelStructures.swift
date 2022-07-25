@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AddPermissionInput: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AddPermissionInput: Codable, Equatable, Sendable {
     public var aWSAccountId: DelegatesList
     public var actionName: ActionsList
     public var label: Label
@@ -49,7 +51,7 @@ public struct AddPermissionInput: Codable, Equatable {
     }
 }
 
-public struct AuthorizationErrorException: Codable, Equatable {
+public struct AuthorizationErrorException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -64,7 +66,7 @@ public struct AuthorizationErrorException: Codable, Equatable {
     }
 }
 
-public struct BatchEntryIdsNotDistinctException: Codable, Equatable {
+public struct BatchEntryIdsNotDistinctException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -79,7 +81,7 @@ public struct BatchEntryIdsNotDistinctException: Codable, Equatable {
     }
 }
 
-public struct BatchRequestTooLongException: Codable, Equatable {
+public struct BatchRequestTooLongException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -94,7 +96,7 @@ public struct BatchRequestTooLongException: Codable, Equatable {
     }
 }
 
-public struct BatchResultErrorEntry: Codable, Equatable {
+public struct BatchResultErrorEntry: Codable, Equatable, Sendable {
     public var code: String
     public var id: String
     public var message: String?
@@ -121,7 +123,7 @@ public struct BatchResultErrorEntry: Codable, Equatable {
     }
 }
 
-public struct CheckIfPhoneNumberIsOptedOutInput: Codable, Equatable {
+public struct CheckIfPhoneNumberIsOptedOutInput: Codable, Equatable, Sendable {
     public var phoneNumber: PhoneNumber
 
     public init(phoneNumber: PhoneNumber) {
@@ -136,7 +138,7 @@ public struct CheckIfPhoneNumberIsOptedOutInput: Codable, Equatable {
     }
 }
 
-public struct CheckIfPhoneNumberIsOptedOutResponse: Codable, Equatable {
+public struct CheckIfPhoneNumberIsOptedOutResponse: Codable, Equatable, Sendable {
     public var isOptedOut: Boolean?
 
     public init(isOptedOut: Boolean? = nil) {
@@ -151,7 +153,7 @@ public struct CheckIfPhoneNumberIsOptedOutResponse: Codable, Equatable {
     }
 }
 
-public struct CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut: Codable, Equatable {
+public struct CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut: Codable, Equatable, Sendable {
     public var checkIfPhoneNumberIsOptedOutResult: CheckIfPhoneNumberIsOptedOutResponse
 
     public init(checkIfPhoneNumberIsOptedOutResult: CheckIfPhoneNumberIsOptedOutResponse) {
@@ -167,7 +169,7 @@ public struct CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOu
     }
 }
 
-public struct ConcurrentAccessException: Codable, Equatable {
+public struct ConcurrentAccessException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -182,7 +184,7 @@ public struct ConcurrentAccessException: Codable, Equatable {
     }
 }
 
-public struct ConfirmSubscriptionInput: Codable, Equatable {
+public struct ConfirmSubscriptionInput: Codable, Equatable, Sendable {
     public var authenticateOnUnsubscribe: AuthenticateOnUnsubscribe?
     public var token: Token
     public var topicArn: TopicARN
@@ -205,7 +207,7 @@ public struct ConfirmSubscriptionInput: Codable, Equatable {
     }
 }
 
-public struct ConfirmSubscriptionResponse: Codable, Equatable {
+public struct ConfirmSubscriptionResponse: Codable, Equatable, Sendable {
     public var subscriptionArn: SubscriptionARN?
 
     public init(subscriptionArn: SubscriptionARN? = nil) {
@@ -220,7 +222,7 @@ public struct ConfirmSubscriptionResponse: Codable, Equatable {
     }
 }
 
-public struct ConfirmSubscriptionResponseForConfirmSubscription: Codable, Equatable {
+public struct ConfirmSubscriptionResponseForConfirmSubscription: Codable, Equatable, Sendable {
     public var confirmSubscriptionResult: ConfirmSubscriptionResponse
 
     public init(confirmSubscriptionResult: ConfirmSubscriptionResponse) {
@@ -236,7 +238,7 @@ public struct ConfirmSubscriptionResponseForConfirmSubscription: Codable, Equata
     }
 }
 
-public struct CreateEndpointResponse: Codable, Equatable {
+public struct CreateEndpointResponse: Codable, Equatable, Sendable {
     public var endpointArn: String?
 
     public init(endpointArn: String? = nil) {
@@ -251,7 +253,7 @@ public struct CreateEndpointResponse: Codable, Equatable {
     }
 }
 
-public struct CreateEndpointResponseForCreatePlatformEndpoint: Codable, Equatable {
+public struct CreateEndpointResponseForCreatePlatformEndpoint: Codable, Equatable, Sendable {
     public var createPlatformEndpointResult: CreateEndpointResponse
 
     public init(createPlatformEndpointResult: CreateEndpointResponse) {
@@ -267,7 +269,7 @@ public struct CreateEndpointResponseForCreatePlatformEndpoint: Codable, Equatabl
     }
 }
 
-public struct CreatePlatformApplicationInput: Codable, Equatable {
+public struct CreatePlatformApplicationInput: Codable, Equatable, Sendable {
     public var attributes: MapStringToString
     public var name: String
     public var platform: String
@@ -290,7 +292,7 @@ public struct CreatePlatformApplicationInput: Codable, Equatable {
     }
 }
 
-public struct CreatePlatformApplicationResponse: Codable, Equatable {
+public struct CreatePlatformApplicationResponse: Codable, Equatable, Sendable {
     public var platformApplicationArn: String?
 
     public init(platformApplicationArn: String? = nil) {
@@ -305,7 +307,7 @@ public struct CreatePlatformApplicationResponse: Codable, Equatable {
     }
 }
 
-public struct CreatePlatformApplicationResponseForCreatePlatformApplication: Codable, Equatable {
+public struct CreatePlatformApplicationResponseForCreatePlatformApplication: Codable, Equatable, Sendable {
     public var createPlatformApplicationResult: CreatePlatformApplicationResponse
 
     public init(createPlatformApplicationResult: CreatePlatformApplicationResponse) {
@@ -321,7 +323,7 @@ public struct CreatePlatformApplicationResponseForCreatePlatformApplication: Cod
     }
 }
 
-public struct CreatePlatformEndpointInput: Codable, Equatable {
+public struct CreatePlatformEndpointInput: Codable, Equatable, Sendable {
     public var attributes: MapStringToString?
     public var customUserData: String?
     public var platformApplicationArn: String
@@ -348,7 +350,7 @@ public struct CreatePlatformEndpointInput: Codable, Equatable {
     }
 }
 
-public struct CreateSMSSandboxPhoneNumberInput: Codable, Equatable {
+public struct CreateSMSSandboxPhoneNumberInput: Codable, Equatable, Sendable {
     public var languageCode: LanguageCodeString?
     public var phoneNumber: PhoneNumberString
 
@@ -368,7 +370,7 @@ public struct CreateSMSSandboxPhoneNumberInput: Codable, Equatable {
     }
 }
 
-public struct CreateSMSSandboxPhoneNumberResult: Codable, Equatable {
+public struct CreateSMSSandboxPhoneNumberResult: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -377,7 +379,7 @@ public struct CreateSMSSandboxPhoneNumberResult: Codable, Equatable {
     }
 }
 
-public struct CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber: Codable, Equatable {
+public struct CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber: Codable, Equatable, Sendable {
     public var createSMSSandboxPhoneNumberResult: CreateSMSSandboxPhoneNumberResult
 
     public init(createSMSSandboxPhoneNumberResult: CreateSMSSandboxPhoneNumberResult) {
@@ -393,7 +395,7 @@ public struct CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber: C
     }
 }
 
-public struct CreateTopicInput: Codable, Equatable {
+public struct CreateTopicInput: Codable, Equatable, Sendable {
     public var attributes: TopicAttributesMap?
     public var name: TopicName
     public var tags: TagList?
@@ -416,7 +418,7 @@ public struct CreateTopicInput: Codable, Equatable {
     }
 }
 
-public struct CreateTopicResponse: Codable, Equatable {
+public struct CreateTopicResponse: Codable, Equatable, Sendable {
     public var topicArn: TopicARN?
 
     public init(topicArn: TopicARN? = nil) {
@@ -431,7 +433,7 @@ public struct CreateTopicResponse: Codable, Equatable {
     }
 }
 
-public struct CreateTopicResponseForCreateTopic: Codable, Equatable {
+public struct CreateTopicResponseForCreateTopic: Codable, Equatable, Sendable {
     public var createTopicResult: CreateTopicResponse
 
     public init(createTopicResult: CreateTopicResponse) {
@@ -447,7 +449,7 @@ public struct CreateTopicResponseForCreateTopic: Codable, Equatable {
     }
 }
 
-public struct DeleteEndpointInput: Codable, Equatable {
+public struct DeleteEndpointInput: Codable, Equatable, Sendable {
     public var endpointArn: String
 
     public init(endpointArn: String) {
@@ -462,7 +464,7 @@ public struct DeleteEndpointInput: Codable, Equatable {
     }
 }
 
-public struct DeletePlatformApplicationInput: Codable, Equatable {
+public struct DeletePlatformApplicationInput: Codable, Equatable, Sendable {
     public var platformApplicationArn: String
 
     public init(platformApplicationArn: String) {
@@ -477,7 +479,7 @@ public struct DeletePlatformApplicationInput: Codable, Equatable {
     }
 }
 
-public struct DeleteSMSSandboxPhoneNumberInput: Codable, Equatable {
+public struct DeleteSMSSandboxPhoneNumberInput: Codable, Equatable, Sendable {
     public var phoneNumber: PhoneNumberString
 
     public init(phoneNumber: PhoneNumberString) {
@@ -493,7 +495,7 @@ public struct DeleteSMSSandboxPhoneNumberInput: Codable, Equatable {
     }
 }
 
-public struct DeleteSMSSandboxPhoneNumberResult: Codable, Equatable {
+public struct DeleteSMSSandboxPhoneNumberResult: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -502,7 +504,7 @@ public struct DeleteSMSSandboxPhoneNumberResult: Codable, Equatable {
     }
 }
 
-public struct DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber: Codable, Equatable {
+public struct DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber: Codable, Equatable, Sendable {
     public var deleteSMSSandboxPhoneNumberResult: DeleteSMSSandboxPhoneNumberResult
 
     public init(deleteSMSSandboxPhoneNumberResult: DeleteSMSSandboxPhoneNumberResult) {
@@ -518,7 +520,7 @@ public struct DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber: C
     }
 }
 
-public struct DeleteTopicInput: Codable, Equatable {
+public struct DeleteTopicInput: Codable, Equatable, Sendable {
     public var topicArn: TopicARN
 
     public init(topicArn: TopicARN) {
@@ -533,7 +535,7 @@ public struct DeleteTopicInput: Codable, Equatable {
     }
 }
 
-public struct EmptyBatchRequestException: Codable, Equatable {
+public struct EmptyBatchRequestException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -548,7 +550,7 @@ public struct EmptyBatchRequestException: Codable, Equatable {
     }
 }
 
-public struct Endpoint: Codable, Equatable {
+public struct Endpoint: Codable, Equatable, Sendable {
     public var attributes: MapStringToString?
     public var endpointArn: String?
 
@@ -567,7 +569,7 @@ public struct Endpoint: Codable, Equatable {
     }
 }
 
-public struct EndpointDisabledException: Codable, Equatable {
+public struct EndpointDisabledException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -582,7 +584,7 @@ public struct EndpointDisabledException: Codable, Equatable {
     }
 }
 
-public struct FilterPolicyLimitExceededException: Codable, Equatable {
+public struct FilterPolicyLimitExceededException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -597,7 +599,7 @@ public struct FilterPolicyLimitExceededException: Codable, Equatable {
     }
 }
 
-public struct GetEndpointAttributesInput: Codable, Equatable {
+public struct GetEndpointAttributesInput: Codable, Equatable, Sendable {
     public var endpointArn: String
 
     public init(endpointArn: String) {
@@ -612,7 +614,7 @@ public struct GetEndpointAttributesInput: Codable, Equatable {
     }
 }
 
-public struct GetEndpointAttributesResponse: Codable, Equatable {
+public struct GetEndpointAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: MapStringToString?
 
     public init(attributes: MapStringToString? = nil) {
@@ -627,7 +629,7 @@ public struct GetEndpointAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct GetEndpointAttributesResponseForGetEndpointAttributes: Codable, Equatable {
+public struct GetEndpointAttributesResponseForGetEndpointAttributes: Codable, Equatable, Sendable {
     public var getEndpointAttributesResult: GetEndpointAttributesResponse
 
     public init(getEndpointAttributesResult: GetEndpointAttributesResponse) {
@@ -643,7 +645,7 @@ public struct GetEndpointAttributesResponseForGetEndpointAttributes: Codable, Eq
     }
 }
 
-public struct GetPlatformApplicationAttributesInput: Codable, Equatable {
+public struct GetPlatformApplicationAttributesInput: Codable, Equatable, Sendable {
     public var platformApplicationArn: String
 
     public init(platformApplicationArn: String) {
@@ -658,7 +660,7 @@ public struct GetPlatformApplicationAttributesInput: Codable, Equatable {
     }
 }
 
-public struct GetPlatformApplicationAttributesResponse: Codable, Equatable {
+public struct GetPlatformApplicationAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: MapStringToString?
 
     public init(attributes: MapStringToString? = nil) {
@@ -673,7 +675,7 @@ public struct GetPlatformApplicationAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes: Codable, Equatable {
+public struct GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes: Codable, Equatable, Sendable {
     public var getPlatformApplicationAttributesResult: GetPlatformApplicationAttributesResponse
 
     public init(getPlatformApplicationAttributesResult: GetPlatformApplicationAttributesResponse) {
@@ -689,7 +691,7 @@ public struct GetPlatformApplicationAttributesResponseForGetPlatformApplicationA
     }
 }
 
-public struct GetSMSAttributesInput: Codable, Equatable {
+public struct GetSMSAttributesInput: Codable, Equatable, Sendable {
     public var attributes: ListString?
 
     public init(attributes: ListString? = nil) {
@@ -704,7 +706,7 @@ public struct GetSMSAttributesInput: Codable, Equatable {
     }
 }
 
-public struct GetSMSAttributesResponse: Codable, Equatable {
+public struct GetSMSAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: MapStringToString?
 
     public init(attributes: MapStringToString? = nil) {
@@ -719,7 +721,7 @@ public struct GetSMSAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct GetSMSAttributesResponseForGetSMSAttributes: Codable, Equatable {
+public struct GetSMSAttributesResponseForGetSMSAttributes: Codable, Equatable, Sendable {
     public var getSMSAttributesResult: GetSMSAttributesResponse
 
     public init(getSMSAttributesResult: GetSMSAttributesResponse) {
@@ -735,7 +737,7 @@ public struct GetSMSAttributesResponseForGetSMSAttributes: Codable, Equatable {
     }
 }
 
-public struct GetSMSSandboxAccountStatusInput: Codable, Equatable {
+public struct GetSMSSandboxAccountStatusInput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -744,7 +746,7 @@ public struct GetSMSSandboxAccountStatusInput: Codable, Equatable {
     }
 }
 
-public struct GetSMSSandboxAccountStatusResult: Codable, Equatable {
+public struct GetSMSSandboxAccountStatusResult: Codable, Equatable, Sendable {
     public var isInSandbox: Boolean
 
     public init(isInSandbox: Boolean) {
@@ -759,7 +761,7 @@ public struct GetSMSSandboxAccountStatusResult: Codable, Equatable {
     }
 }
 
-public struct GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus: Codable, Equatable {
+public struct GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus: Codable, Equatable, Sendable {
     public var getSMSSandboxAccountStatusResult: GetSMSSandboxAccountStatusResult
 
     public init(getSMSSandboxAccountStatusResult: GetSMSSandboxAccountStatusResult) {
@@ -775,7 +777,7 @@ public struct GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus: Cod
     }
 }
 
-public struct GetSubscriptionAttributesInput: Codable, Equatable {
+public struct GetSubscriptionAttributesInput: Codable, Equatable, Sendable {
     public var subscriptionArn: SubscriptionARN
 
     public init(subscriptionArn: SubscriptionARN) {
@@ -790,7 +792,7 @@ public struct GetSubscriptionAttributesInput: Codable, Equatable {
     }
 }
 
-public struct GetSubscriptionAttributesResponse: Codable, Equatable {
+public struct GetSubscriptionAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: SubscriptionAttributesMap?
 
     public init(attributes: SubscriptionAttributesMap? = nil) {
@@ -805,7 +807,7 @@ public struct GetSubscriptionAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct GetSubscriptionAttributesResponseForGetSubscriptionAttributes: Codable, Equatable {
+public struct GetSubscriptionAttributesResponseForGetSubscriptionAttributes: Codable, Equatable, Sendable {
     public var getSubscriptionAttributesResult: GetSubscriptionAttributesResponse
 
     public init(getSubscriptionAttributesResult: GetSubscriptionAttributesResponse) {
@@ -821,7 +823,7 @@ public struct GetSubscriptionAttributesResponseForGetSubscriptionAttributes: Cod
     }
 }
 
-public struct GetTopicAttributesInput: Codable, Equatable {
+public struct GetTopicAttributesInput: Codable, Equatable, Sendable {
     public var topicArn: TopicARN
 
     public init(topicArn: TopicARN) {
@@ -836,7 +838,7 @@ public struct GetTopicAttributesInput: Codable, Equatable {
     }
 }
 
-public struct GetTopicAttributesResponse: Codable, Equatable {
+public struct GetTopicAttributesResponse: Codable, Equatable, Sendable {
     public var attributes: TopicAttributesMap?
 
     public init(attributes: TopicAttributesMap? = nil) {
@@ -851,7 +853,7 @@ public struct GetTopicAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct GetTopicAttributesResponseForGetTopicAttributes: Codable, Equatable {
+public struct GetTopicAttributesResponseForGetTopicAttributes: Codable, Equatable, Sendable {
     public var getTopicAttributesResult: GetTopicAttributesResponse
 
     public init(getTopicAttributesResult: GetTopicAttributesResponse) {
@@ -867,7 +869,7 @@ public struct GetTopicAttributesResponseForGetTopicAttributes: Codable, Equatabl
     }
 }
 
-public struct InternalErrorException: Codable, Equatable {
+public struct InternalErrorException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -882,7 +884,7 @@ public struct InternalErrorException: Codable, Equatable {
     }
 }
 
-public struct InvalidBatchEntryIdException: Codable, Equatable {
+public struct InvalidBatchEntryIdException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -897,7 +899,7 @@ public struct InvalidBatchEntryIdException: Codable, Equatable {
     }
 }
 
-public struct InvalidParameterException: Codable, Equatable {
+public struct InvalidParameterException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -912,7 +914,7 @@ public struct InvalidParameterException: Codable, Equatable {
     }
 }
 
-public struct InvalidParameterValueException: Codable, Equatable {
+public struct InvalidParameterValueException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -927,7 +929,7 @@ public struct InvalidParameterValueException: Codable, Equatable {
     }
 }
 
-public struct InvalidSecurityException: Codable, Equatable {
+public struct InvalidSecurityException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -942,7 +944,7 @@ public struct InvalidSecurityException: Codable, Equatable {
     }
 }
 
-public struct KMSAccessDeniedException: Codable, Equatable {
+public struct KMSAccessDeniedException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -957,7 +959,7 @@ public struct KMSAccessDeniedException: Codable, Equatable {
     }
 }
 
-public struct KMSDisabledException: Codable, Equatable {
+public struct KMSDisabledException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -972,7 +974,7 @@ public struct KMSDisabledException: Codable, Equatable {
     }
 }
 
-public struct KMSInvalidStateException: Codable, Equatable {
+public struct KMSInvalidStateException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -987,7 +989,7 @@ public struct KMSInvalidStateException: Codable, Equatable {
     }
 }
 
-public struct KMSNotFoundException: Codable, Equatable {
+public struct KMSNotFoundException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1002,7 +1004,7 @@ public struct KMSNotFoundException: Codable, Equatable {
     }
 }
 
-public struct KMSOptInRequired: Codable, Equatable {
+public struct KMSOptInRequired: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1017,7 +1019,7 @@ public struct KMSOptInRequired: Codable, Equatable {
     }
 }
 
-public struct KMSThrottlingException: Codable, Equatable {
+public struct KMSThrottlingException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1032,7 +1034,7 @@ public struct KMSThrottlingException: Codable, Equatable {
     }
 }
 
-public struct ListEndpointsByPlatformApplicationInput: Codable, Equatable {
+public struct ListEndpointsByPlatformApplicationInput: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var platformApplicationArn: String
 
@@ -1051,7 +1053,7 @@ public struct ListEndpointsByPlatformApplicationInput: Codable, Equatable {
     }
 }
 
-public struct ListEndpointsByPlatformApplicationResponse: Codable, Equatable {
+public struct ListEndpointsByPlatformApplicationResponse: Codable, Equatable, Sendable {
     public var endpoints: ListOfEndpoints?
     public var nextToken: String?
 
@@ -1070,7 +1072,7 @@ public struct ListEndpointsByPlatformApplicationResponse: Codable, Equatable {
     }
 }
 
-public struct ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication: Codable, Equatable {
+public struct ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication: Codable, Equatable, Sendable {
     public var listEndpointsByPlatformApplicationResult: ListEndpointsByPlatformApplicationResponse
 
     public init(listEndpointsByPlatformApplicationResult: ListEndpointsByPlatformApplicationResponse) {
@@ -1086,7 +1088,7 @@ public struct ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatfo
     }
 }
 
-public struct ListOriginationNumbersRequest: Codable, Equatable {
+public struct ListOriginationNumbersRequest: Codable, Equatable, Sendable {
     public var maxResults: MaxItemsListOriginationNumbers?
     public var nextToken: NextToken?
 
@@ -1106,7 +1108,7 @@ public struct ListOriginationNumbersRequest: Codable, Equatable {
     }
 }
 
-public struct ListOriginationNumbersResult: Codable, Equatable {
+public struct ListOriginationNumbersResult: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var phoneNumbers: PhoneNumberInformationList?
 
@@ -1125,7 +1127,7 @@ public struct ListOriginationNumbersResult: Codable, Equatable {
     }
 }
 
-public struct ListOriginationNumbersResultForListOriginationNumbers: Codable, Equatable {
+public struct ListOriginationNumbersResultForListOriginationNumbers: Codable, Equatable, Sendable {
     public var listOriginationNumbersResult: ListOriginationNumbersResult
 
     public init(listOriginationNumbersResult: ListOriginationNumbersResult) {
@@ -1141,7 +1143,7 @@ public struct ListOriginationNumbersResultForListOriginationNumbers: Codable, Eq
     }
 }
 
-public struct ListPhoneNumbersOptedOutInput: Codable, Equatable {
+public struct ListPhoneNumbersOptedOutInput: Codable, Equatable, Sendable {
     public var nextToken: String?
 
     public init(nextToken: String? = nil) {
@@ -1156,7 +1158,7 @@ public struct ListPhoneNumbersOptedOutInput: Codable, Equatable {
     }
 }
 
-public struct ListPhoneNumbersOptedOutResponse: Codable, Equatable {
+public struct ListPhoneNumbersOptedOutResponse: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var phoneNumbers: PhoneNumberList?
 
@@ -1175,7 +1177,7 @@ public struct ListPhoneNumbersOptedOutResponse: Codable, Equatable {
     }
 }
 
-public struct ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut: Codable, Equatable {
+public struct ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut: Codable, Equatable, Sendable {
     public var listPhoneNumbersOptedOutResult: ListPhoneNumbersOptedOutResponse
 
     public init(listPhoneNumbersOptedOutResult: ListPhoneNumbersOptedOutResponse) {
@@ -1191,7 +1193,7 @@ public struct ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut: Codab
     }
 }
 
-public struct ListPlatformApplicationsInput: Codable, Equatable {
+public struct ListPlatformApplicationsInput: Codable, Equatable, Sendable {
     public var nextToken: String?
 
     public init(nextToken: String? = nil) {
@@ -1206,7 +1208,7 @@ public struct ListPlatformApplicationsInput: Codable, Equatable {
     }
 }
 
-public struct ListPlatformApplicationsResponse: Codable, Equatable {
+public struct ListPlatformApplicationsResponse: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var platformApplications: ListOfPlatformApplications?
 
@@ -1225,7 +1227,7 @@ public struct ListPlatformApplicationsResponse: Codable, Equatable {
     }
 }
 
-public struct ListPlatformApplicationsResponseForListPlatformApplications: Codable, Equatable {
+public struct ListPlatformApplicationsResponseForListPlatformApplications: Codable, Equatable, Sendable {
     public var listPlatformApplicationsResult: ListPlatformApplicationsResponse
 
     public init(listPlatformApplicationsResult: ListPlatformApplicationsResponse) {
@@ -1241,7 +1243,7 @@ public struct ListPlatformApplicationsResponseForListPlatformApplications: Codab
     }
 }
 
-public struct ListSMSSandboxPhoneNumbersInput: Codable, Equatable {
+public struct ListSMSSandboxPhoneNumbersInput: Codable, Equatable, Sendable {
     public var maxResults: MaxItems?
     public var nextToken: NextToken?
 
@@ -1261,7 +1263,7 @@ public struct ListSMSSandboxPhoneNumbersInput: Codable, Equatable {
     }
 }
 
-public struct ListSMSSandboxPhoneNumbersResult: Codable, Equatable {
+public struct ListSMSSandboxPhoneNumbersResult: Codable, Equatable, Sendable {
     public var nextToken: String?
     public var phoneNumbers: SMSSandboxPhoneNumberList
 
@@ -1280,7 +1282,7 @@ public struct ListSMSSandboxPhoneNumbersResult: Codable, Equatable {
     }
 }
 
-public struct ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers: Codable, Equatable {
+public struct ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers: Codable, Equatable, Sendable {
     public var listSMSSandboxPhoneNumbersResult: ListSMSSandboxPhoneNumbersResult
 
     public init(listSMSSandboxPhoneNumbersResult: ListSMSSandboxPhoneNumbersResult) {
@@ -1296,7 +1298,7 @@ public struct ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers: Cod
     }
 }
 
-public struct ListSubscriptionsByTopicInput: Codable, Equatable {
+public struct ListSubscriptionsByTopicInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var topicArn: TopicARN
 
@@ -1315,7 +1317,7 @@ public struct ListSubscriptionsByTopicInput: Codable, Equatable {
     }
 }
 
-public struct ListSubscriptionsByTopicResponse: Codable, Equatable {
+public struct ListSubscriptionsByTopicResponse: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var subscriptions: SubscriptionsList?
 
@@ -1334,7 +1336,7 @@ public struct ListSubscriptionsByTopicResponse: Codable, Equatable {
     }
 }
 
-public struct ListSubscriptionsByTopicResponseForListSubscriptionsByTopic: Codable, Equatable {
+public struct ListSubscriptionsByTopicResponseForListSubscriptionsByTopic: Codable, Equatable, Sendable {
     public var listSubscriptionsByTopicResult: ListSubscriptionsByTopicResponse
 
     public init(listSubscriptionsByTopicResult: ListSubscriptionsByTopicResponse) {
@@ -1350,7 +1352,7 @@ public struct ListSubscriptionsByTopicResponseForListSubscriptionsByTopic: Codab
     }
 }
 
-public struct ListSubscriptionsInput: Codable, Equatable {
+public struct ListSubscriptionsInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
 
     public init(nextToken: NextToken? = nil) {
@@ -1365,7 +1367,7 @@ public struct ListSubscriptionsInput: Codable, Equatable {
     }
 }
 
-public struct ListSubscriptionsResponse: Codable, Equatable {
+public struct ListSubscriptionsResponse: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var subscriptions: SubscriptionsList?
 
@@ -1384,7 +1386,7 @@ public struct ListSubscriptionsResponse: Codable, Equatable {
     }
 }
 
-public struct ListSubscriptionsResponseForListSubscriptions: Codable, Equatable {
+public struct ListSubscriptionsResponseForListSubscriptions: Codable, Equatable, Sendable {
     public var listSubscriptionsResult: ListSubscriptionsResponse
 
     public init(listSubscriptionsResult: ListSubscriptionsResponse) {
@@ -1400,7 +1402,7 @@ public struct ListSubscriptionsResponseForListSubscriptions: Codable, Equatable 
     }
 }
 
-public struct ListTagsForResourceRequest: Codable, Equatable {
+public struct ListTagsForResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: AmazonResourceName
 
     public init(resourceArn: AmazonResourceName) {
@@ -1416,7 +1418,7 @@ public struct ListTagsForResourceRequest: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceResponse: Codable, Equatable {
+public struct ListTagsForResourceResponse: Codable, Equatable, Sendable {
     public var tags: TagList?
 
     public init(tags: TagList? = nil) {
@@ -1431,7 +1433,7 @@ public struct ListTagsForResourceResponse: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceResponseForListTagsForResource: Codable, Equatable {
+public struct ListTagsForResourceResponseForListTagsForResource: Codable, Equatable, Sendable {
     public var listTagsForResourceResult: ListTagsForResourceResponse
 
     public init(listTagsForResourceResult: ListTagsForResourceResponse) {
@@ -1447,7 +1449,7 @@ public struct ListTagsForResourceResponseForListTagsForResource: Codable, Equata
     }
 }
 
-public struct ListTopicsInput: Codable, Equatable {
+public struct ListTopicsInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
 
     public init(nextToken: NextToken? = nil) {
@@ -1462,7 +1464,7 @@ public struct ListTopicsInput: Codable, Equatable {
     }
 }
 
-public struct ListTopicsResponse: Codable, Equatable {
+public struct ListTopicsResponse: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var topics: TopicsList?
 
@@ -1481,7 +1483,7 @@ public struct ListTopicsResponse: Codable, Equatable {
     }
 }
 
-public struct ListTopicsResponseForListTopics: Codable, Equatable {
+public struct ListTopicsResponseForListTopics: Codable, Equatable, Sendable {
     public var listTopicsResult: ListTopicsResponse
 
     public init(listTopicsResult: ListTopicsResponse) {
@@ -1497,7 +1499,7 @@ public struct ListTopicsResponseForListTopics: Codable, Equatable {
     }
 }
 
-public struct MessageAttributeValue: Codable, Equatable {
+public struct MessageAttributeValue: Codable, Equatable, Sendable {
     public var binaryValue: Binary?
     public var dataType: String
     public var stringValue: String?
@@ -1520,7 +1522,7 @@ public struct MessageAttributeValue: Codable, Equatable {
     }
 }
 
-public struct NotFoundException: Codable, Equatable {
+public struct NotFoundException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1535,7 +1537,7 @@ public struct NotFoundException: Codable, Equatable {
     }
 }
 
-public struct OptInPhoneNumberInput: Codable, Equatable {
+public struct OptInPhoneNumberInput: Codable, Equatable, Sendable {
     public var phoneNumber: PhoneNumber
 
     public init(phoneNumber: PhoneNumber) {
@@ -1550,7 +1552,7 @@ public struct OptInPhoneNumberInput: Codable, Equatable {
     }
 }
 
-public struct OptInPhoneNumberResponse: Codable, Equatable {
+public struct OptInPhoneNumberResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1559,7 +1561,7 @@ public struct OptInPhoneNumberResponse: Codable, Equatable {
     }
 }
 
-public struct OptInPhoneNumberResponseForOptInPhoneNumber: Codable, Equatable {
+public struct OptInPhoneNumberResponseForOptInPhoneNumber: Codable, Equatable, Sendable {
     public var optInPhoneNumberResult: OptInPhoneNumberResponse
 
     public init(optInPhoneNumberResult: OptInPhoneNumberResponse) {
@@ -1575,7 +1577,7 @@ public struct OptInPhoneNumberResponseForOptInPhoneNumber: Codable, Equatable {
     }
 }
 
-public struct OptedOutException: Codable, Equatable {
+public struct OptedOutException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1590,7 +1592,7 @@ public struct OptedOutException: Codable, Equatable {
     }
 }
 
-public struct PhoneNumberInformation: Codable, Equatable {
+public struct PhoneNumberInformation: Codable, Equatable, Sendable {
     public var createdAt: Timestamp?
     public var iso2CountryCode: Iso2CountryCode?
     public var numberCapabilities: NumberCapabilityList?
@@ -1626,7 +1628,7 @@ public struct PhoneNumberInformation: Codable, Equatable {
     }
 }
 
-public struct PlatformApplication: Codable, Equatable {
+public struct PlatformApplication: Codable, Equatable, Sendable {
     public var attributes: MapStringToString?
     public var platformApplicationArn: String?
 
@@ -1645,7 +1647,7 @@ public struct PlatformApplication: Codable, Equatable {
     }
 }
 
-public struct PlatformApplicationDisabledException: Codable, Equatable {
+public struct PlatformApplicationDisabledException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1660,7 +1662,7 @@ public struct PlatformApplicationDisabledException: Codable, Equatable {
     }
 }
 
-public struct PublishBatchInput: Codable, Equatable {
+public struct PublishBatchInput: Codable, Equatable, Sendable {
     public var publishBatchRequestEntries: PublishBatchRequestEntryList
     public var topicArn: TopicARN
 
@@ -1679,7 +1681,7 @@ public struct PublishBatchInput: Codable, Equatable {
     }
 }
 
-public struct PublishBatchRequestEntry: Codable, Equatable {
+public struct PublishBatchRequestEntry: Codable, Equatable, Sendable {
     public var id: String
     public var message: Message
     public var messageAttributes: MessageAttributeMap?
@@ -1718,7 +1720,7 @@ public struct PublishBatchRequestEntry: Codable, Equatable {
     }
 }
 
-public struct PublishBatchResponse: Codable, Equatable {
+public struct PublishBatchResponse: Codable, Equatable, Sendable {
     public var failed: BatchResultErrorEntryList?
     public var successful: PublishBatchResultEntryList?
 
@@ -1737,7 +1739,7 @@ public struct PublishBatchResponse: Codable, Equatable {
     }
 }
 
-public struct PublishBatchResponseForPublishBatch: Codable, Equatable {
+public struct PublishBatchResponseForPublishBatch: Codable, Equatable, Sendable {
     public var publishBatchResult: PublishBatchResponse
 
     public init(publishBatchResult: PublishBatchResponse) {
@@ -1753,7 +1755,7 @@ public struct PublishBatchResponseForPublishBatch: Codable, Equatable {
     }
 }
 
-public struct PublishBatchResultEntry: Codable, Equatable {
+public struct PublishBatchResultEntry: Codable, Equatable, Sendable {
     public var id: String?
     public var messageId: MessageId?
     public var sequenceNumber: String?
@@ -1776,7 +1778,7 @@ public struct PublishBatchResultEntry: Codable, Equatable {
     }
 }
 
-public struct PublishInput: Codable, Equatable {
+public struct PublishInput: Codable, Equatable, Sendable {
     public var message: Message
     public var messageAttributes: MessageAttributeMap?
     public var messageDeduplicationId: String?
@@ -1823,7 +1825,7 @@ public struct PublishInput: Codable, Equatable {
     }
 }
 
-public struct PublishResponse: Codable, Equatable {
+public struct PublishResponse: Codable, Equatable, Sendable {
     public var messageId: MessageId?
     public var sequenceNumber: String?
 
@@ -1842,7 +1844,7 @@ public struct PublishResponse: Codable, Equatable {
     }
 }
 
-public struct PublishResponseForPublish: Codable, Equatable {
+public struct PublishResponseForPublish: Codable, Equatable, Sendable {
     public var publishResult: PublishResponse
 
     public init(publishResult: PublishResponse) {
@@ -1858,7 +1860,7 @@ public struct PublishResponseForPublish: Codable, Equatable {
     }
 }
 
-public struct RemovePermissionInput: Codable, Equatable {
+public struct RemovePermissionInput: Codable, Equatable, Sendable {
     public var label: Label
     public var topicArn: TopicARN
 
@@ -1877,7 +1879,7 @@ public struct RemovePermissionInput: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundException: Codable, Equatable {
+public struct ResourceNotFoundException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1892,7 +1894,7 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct SMSSandboxPhoneNumber: Codable, Equatable {
+public struct SMSSandboxPhoneNumber: Codable, Equatable, Sendable {
     public var phoneNumber: PhoneNumberString?
     public var status: SMSSandboxPhoneNumberVerificationStatus?
 
@@ -1912,7 +1914,7 @@ public struct SMSSandboxPhoneNumber: Codable, Equatable {
     }
 }
 
-public struct SetEndpointAttributesInput: Codable, Equatable {
+public struct SetEndpointAttributesInput: Codable, Equatable, Sendable {
     public var attributes: MapStringToString
     public var endpointArn: String
 
@@ -1931,7 +1933,7 @@ public struct SetEndpointAttributesInput: Codable, Equatable {
     }
 }
 
-public struct SetPlatformApplicationAttributesInput: Codable, Equatable {
+public struct SetPlatformApplicationAttributesInput: Codable, Equatable, Sendable {
     public var attributes: MapStringToString
     public var platformApplicationArn: String
 
@@ -1950,7 +1952,7 @@ public struct SetPlatformApplicationAttributesInput: Codable, Equatable {
     }
 }
 
-public struct SetSMSAttributesInput: Codable, Equatable {
+public struct SetSMSAttributesInput: Codable, Equatable, Sendable {
     public var attributes: MapStringToString
 
     public init(attributes: MapStringToString) {
@@ -1965,7 +1967,7 @@ public struct SetSMSAttributesInput: Codable, Equatable {
     }
 }
 
-public struct SetSMSAttributesResponse: Codable, Equatable {
+public struct SetSMSAttributesResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1974,7 +1976,7 @@ public struct SetSMSAttributesResponse: Codable, Equatable {
     }
 }
 
-public struct SetSMSAttributesResponseForSetSMSAttributes: Codable, Equatable {
+public struct SetSMSAttributesResponseForSetSMSAttributes: Codable, Equatable, Sendable {
     public var setSMSAttributesResult: SetSMSAttributesResponse
 
     public init(setSMSAttributesResult: SetSMSAttributesResponse) {
@@ -1990,7 +1992,7 @@ public struct SetSMSAttributesResponseForSetSMSAttributes: Codable, Equatable {
     }
 }
 
-public struct SetSubscriptionAttributesInput: Codable, Equatable {
+public struct SetSubscriptionAttributesInput: Codable, Equatable, Sendable {
     public var attributeName: AttributeName
     public var attributeValue: AttributeValue?
     public var subscriptionArn: SubscriptionARN
@@ -2013,7 +2015,7 @@ public struct SetSubscriptionAttributesInput: Codable, Equatable {
     }
 }
 
-public struct SetTopicAttributesInput: Codable, Equatable {
+public struct SetTopicAttributesInput: Codable, Equatable, Sendable {
     public var attributeName: AttributeName
     public var attributeValue: AttributeValue?
     public var topicArn: TopicARN
@@ -2036,7 +2038,7 @@ public struct SetTopicAttributesInput: Codable, Equatable {
     }
 }
 
-public struct StaleTagException: Codable, Equatable {
+public struct StaleTagException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2051,7 +2053,7 @@ public struct StaleTagException: Codable, Equatable {
     }
 }
 
-public struct SubscribeInput: Codable, Equatable {
+public struct SubscribeInput: Codable, Equatable, Sendable {
     public var attributes: SubscriptionAttributesMap?
     public var endpoint: EndpointString?
     public var `protocol`: Protocol
@@ -2082,7 +2084,7 @@ public struct SubscribeInput: Codable, Equatable {
     }
 }
 
-public struct SubscribeResponse: Codable, Equatable {
+public struct SubscribeResponse: Codable, Equatable, Sendable {
     public var subscriptionArn: SubscriptionARN?
 
     public init(subscriptionArn: SubscriptionARN? = nil) {
@@ -2097,7 +2099,7 @@ public struct SubscribeResponse: Codable, Equatable {
     }
 }
 
-public struct SubscribeResponseForSubscribe: Codable, Equatable {
+public struct SubscribeResponseForSubscribe: Codable, Equatable, Sendable {
     public var subscribeResult: SubscribeResponse
 
     public init(subscribeResult: SubscribeResponse) {
@@ -2113,7 +2115,7 @@ public struct SubscribeResponseForSubscribe: Codable, Equatable {
     }
 }
 
-public struct Subscription: Codable, Equatable {
+public struct Subscription: Codable, Equatable, Sendable {
     public var endpoint: EndpointString?
     public var owner: Account?
     public var `protocol`: Protocol?
@@ -2144,7 +2146,7 @@ public struct Subscription: Codable, Equatable {
     }
 }
 
-public struct SubscriptionLimitExceededException: Codable, Equatable {
+public struct SubscriptionLimitExceededException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2159,7 +2161,7 @@ public struct SubscriptionLimitExceededException: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey
     public var value: TagValue
 
@@ -2180,7 +2182,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagLimitExceededException: Codable, Equatable {
+public struct TagLimitExceededException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2195,7 +2197,7 @@ public struct TagLimitExceededException: Codable, Equatable {
     }
 }
 
-public struct TagPolicyException: Codable, Equatable {
+public struct TagPolicyException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2210,7 +2212,7 @@ public struct TagPolicyException: Codable, Equatable {
     }
 }
 
-public struct TagResourceRequest: Codable, Equatable {
+public struct TagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: AmazonResourceName
     public var tags: TagList
 
@@ -2230,7 +2232,7 @@ public struct TagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct TagResourceResponse: Codable, Equatable {
+public struct TagResourceResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2239,7 +2241,7 @@ public struct TagResourceResponse: Codable, Equatable {
     }
 }
 
-public struct TagResourceResponseForTagResource: Codable, Equatable {
+public struct TagResourceResponseForTagResource: Codable, Equatable, Sendable {
     public var tagResourceResult: TagResourceResponse
 
     public init(tagResourceResult: TagResourceResponse) {
@@ -2255,7 +2257,7 @@ public struct TagResourceResponseForTagResource: Codable, Equatable {
     }
 }
 
-public struct ThrottledException: Codable, Equatable {
+public struct ThrottledException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2270,7 +2272,7 @@ public struct ThrottledException: Codable, Equatable {
     }
 }
 
-public struct TooManyEntriesInBatchRequestException: Codable, Equatable {
+public struct TooManyEntriesInBatchRequestException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2285,7 +2287,7 @@ public struct TooManyEntriesInBatchRequestException: Codable, Equatable {
     }
 }
 
-public struct Topic: Codable, Equatable {
+public struct Topic: Codable, Equatable, Sendable {
     public var topicArn: TopicARN?
 
     public init(topicArn: TopicARN? = nil) {
@@ -2300,7 +2302,7 @@ public struct Topic: Codable, Equatable {
     }
 }
 
-public struct TopicLimitExceededException: Codable, Equatable {
+public struct TopicLimitExceededException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2315,7 +2317,7 @@ public struct TopicLimitExceededException: Codable, Equatable {
     }
 }
 
-public struct UnsubscribeInput: Codable, Equatable {
+public struct UnsubscribeInput: Codable, Equatable, Sendable {
     public var subscriptionArn: SubscriptionARN
 
     public init(subscriptionArn: SubscriptionARN) {
@@ -2330,7 +2332,7 @@ public struct UnsubscribeInput: Codable, Equatable {
     }
 }
 
-public struct UntagResourceRequest: Codable, Equatable {
+public struct UntagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: AmazonResourceName
     public var tagKeys: TagKeyList
 
@@ -2350,7 +2352,7 @@ public struct UntagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct UntagResourceResponse: Codable, Equatable {
+public struct UntagResourceResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2359,7 +2361,7 @@ public struct UntagResourceResponse: Codable, Equatable {
     }
 }
 
-public struct UntagResourceResponseForUntagResource: Codable, Equatable {
+public struct UntagResourceResponseForUntagResource: Codable, Equatable, Sendable {
     public var untagResourceResult: UntagResourceResponse
 
     public init(untagResourceResult: UntagResourceResponse) {
@@ -2375,7 +2377,7 @@ public struct UntagResourceResponseForUntagResource: Codable, Equatable {
     }
 }
 
-public struct UserErrorException: Codable, Equatable {
+public struct UserErrorException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -2390,7 +2392,7 @@ public struct UserErrorException: Codable, Equatable {
     }
 }
 
-public struct ValidationException: Codable, Equatable {
+public struct ValidationException: Codable, Equatable, Sendable {
     public var message: String
 
     public init(message: String) {
@@ -2405,7 +2407,7 @@ public struct ValidationException: Codable, Equatable {
     }
 }
 
-public struct VerificationException: Codable, Equatable {
+public struct VerificationException: Codable, Equatable, Sendable {
     public var message: String
     public var status: String
 
@@ -2424,7 +2426,7 @@ public struct VerificationException: Codable, Equatable {
     }
 }
 
-public struct VerifySMSSandboxPhoneNumberInput: Codable, Equatable {
+public struct VerifySMSSandboxPhoneNumberInput: Codable, Equatable, Sendable {
     public var oneTimePassword: OTPCode
     public var phoneNumber: PhoneNumberString
 
@@ -2445,7 +2447,7 @@ public struct VerifySMSSandboxPhoneNumberInput: Codable, Equatable {
     }
 }
 
-public struct VerifySMSSandboxPhoneNumberResult: Codable, Equatable {
+public struct VerifySMSSandboxPhoneNumberResult: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2454,7 +2456,7 @@ public struct VerifySMSSandboxPhoneNumberResult: Codable, Equatable {
     }
 }
 
-public struct VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber: Codable, Equatable {
+public struct VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber: Codable, Equatable, Sendable {
     public var verifySMSSandboxPhoneNumberResult: VerifySMSSandboxPhoneNumberResult
 
     public init(verifySMSSandboxPhoneNumberResult: VerifySMSSandboxPhoneNumberResult) {

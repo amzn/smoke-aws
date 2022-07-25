@@ -95,7 +95,7 @@ public typealias AnalyticsId = String
 /**
  Enumeration restricting the values of the AnalyticsS3ExportFileFormat field.
  */
-public enum AnalyticsS3ExportFileFormat: String, Codable, CustomStringConvertible {
+public enum AnalyticsS3ExportFileFormat: String, Codable, CustomStringConvertible, Sendable {
     case csv = "CSV"
 
     public var description: String {
@@ -108,7 +108,7 @@ public enum AnalyticsS3ExportFileFormat: String, Codable, CustomStringConvertibl
 /**
  Enumeration restricting the values of the ArchiveStatus field.
  */
-public enum ArchiveStatus: String, Codable, CustomStringConvertible {
+public enum ArchiveStatus: String, Codable, CustomStringConvertible, Sendable {
     case archiveAccess = "ARCHIVE_ACCESS"
     case deepArchiveAccess = "DEEP_ARCHIVE_ACCESS"
 
@@ -127,7 +127,7 @@ public typealias Body = Data
 /**
  Enumeration restricting the values of the BucketAccelerateStatus field.
  */
-public enum BucketAccelerateStatus: String, Codable, CustomStringConvertible {
+public enum BucketAccelerateStatus: String, Codable, CustomStringConvertible, Sendable {
     case enabled = "Enabled"
     case suspended = "Suspended"
 
@@ -141,7 +141,7 @@ public enum BucketAccelerateStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the BucketCannedACL field.
  */
-public enum BucketCannedACL: String, Codable, CustomStringConvertible {
+public enum BucketCannedACL: String, Codable, CustomStringConvertible, Sendable {
     case authenticatedRead = "authenticated-read"
     case `private` = "private"
     case publicRead = "public-read"
@@ -162,7 +162,7 @@ public typealias BucketKeyEnabled = Bool
 /**
  Enumeration restricting the values of the BucketLocationConstraint field.
  */
-public enum BucketLocationConstraint: String, Codable, CustomStringConvertible {
+public enum BucketLocationConstraint: String, Codable, CustomStringConvertible, Sendable {
     case eu = "EU"
     case afSouth1 = "af-south-1"
     case apEast1 = "ap-east-1"
@@ -199,7 +199,7 @@ public enum BucketLocationConstraint: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the BucketLogsPermission field.
  */
-public enum BucketLogsPermission: String, Codable, CustomStringConvertible {
+public enum BucketLogsPermission: String, Codable, CustomStringConvertible, Sendable {
     case fullControl = "FULL_CONTROL"
     case read = "READ"
     case write = "WRITE"
@@ -219,7 +219,7 @@ public typealias BucketName = String
 /**
  Enumeration restricting the values of the BucketVersioningStatus field.
  */
-public enum BucketVersioningStatus: String, Codable, CustomStringConvertible {
+public enum BucketVersioningStatus: String, Codable, CustomStringConvertible, Sendable {
     case enabled = "Enabled"
     case suspended = "Suspended"
 
@@ -268,7 +268,7 @@ public typealias CacheControl = String
 /**
  Enumeration restricting the values of the ChecksumAlgorithm field.
  */
-public enum ChecksumAlgorithm: String, Codable, CustomStringConvertible {
+public enum ChecksumAlgorithm: String, Codable, CustomStringConvertible, Sendable {
     case crc32 = "CRC32"
     case crc32c = "CRC32C"
     case sha1 = "SHA1"
@@ -299,7 +299,7 @@ public typealias ChecksumCRC32C = String
 /**
  Enumeration restricting the values of the ChecksumMode field.
  */
-public enum ChecksumMode: String, Codable, CustomStringConvertible {
+public enum ChecksumMode: String, Codable, CustomStringConvertible, Sendable {
     case enabled = "ENABLED"
 
     public var description: String {
@@ -352,7 +352,7 @@ public typealias CompletedPartList = [CompletedPart]
 /**
  Enumeration restricting the values of the CompressionType field.
  */
-public enum CompressionType: String, Codable, CustomStringConvertible {
+public enum CompressionType: String, Codable, CustomStringConvertible, Sendable {
     case bzip2 = "BZIP2"
     case gzip = "GZIP"
     case none = "NONE"
@@ -482,7 +482,7 @@ public typealias DeleteMarker = Bool
 /**
  Enumeration restricting the values of the DeleteMarkerReplicationStatus field.
  */
-public enum DeleteMarkerReplicationStatus: String, Codable, CustomStringConvertible {
+public enum DeleteMarkerReplicationStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -541,7 +541,7 @@ public typealias EnableRequestProgress = Bool
 /**
  Enumeration restricting the values of the EncodingType field.
  */
-public enum EncodingType: String, Codable, CustomStringConvertible {
+public enum EncodingType: String, Codable, CustomStringConvertible, Sendable {
     case url
 
     public var description: String {
@@ -574,7 +574,7 @@ public typealias Errors = [Error]
 /**
  Enumeration restricting the values of the Event field.
  */
-public enum Event: String, Codable, CustomStringConvertible {
+public enum Event: String, Codable, CustomStringConvertible, Sendable {
     case s3IntelligentTiering = "s3:IntelligentTiering"
     case s3LifecycleExpirationStar = "s3:LifecycleExpiration:*"
     case s3LifecycleExpirationDelete = "s3:LifecycleExpiration:Delete"
@@ -618,7 +618,7 @@ public typealias EventList = [Event]
 /**
  Enumeration restricting the values of the ExistingObjectReplicationStatus field.
  */
-public enum ExistingObjectReplicationStatus: String, Codable, CustomStringConvertible {
+public enum ExistingObjectReplicationStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -637,7 +637,7 @@ public typealias Expiration = String
 /**
  Enumeration restricting the values of the ExpirationStatus field.
  */
-public enum ExpirationStatus: String, Codable, CustomStringConvertible {
+public enum ExpirationStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -676,7 +676,7 @@ public typealias Expression = String
 /**
  Enumeration restricting the values of the ExpressionType field.
  */
-public enum ExpressionType: String, Codable, CustomStringConvertible {
+public enum ExpressionType: String, Codable, CustomStringConvertible, Sendable {
     case sql = "SQL"
 
     public var description: String {
@@ -699,7 +699,7 @@ public typealias FieldDelimiter = String
 /**
  Enumeration restricting the values of the FileHeaderInfo field.
  */
-public enum FileHeaderInfo: String, Codable, CustomStringConvertible {
+public enum FileHeaderInfo: String, Codable, CustomStringConvertible, Sendable {
     case ignore = "IGNORE"
     case none = "NONE"
     case use = "USE"
@@ -719,7 +719,7 @@ public typealias FilterRuleList = [FilterRule]
 /**
  Enumeration restricting the values of the FilterRuleName field.
  */
-public enum FilterRuleName: String, Codable, CustomStringConvertible {
+public enum FilterRuleName: String, Codable, CustomStringConvertible, Sendable {
     case prefix
     case suffix
 
@@ -818,7 +818,7 @@ public typealias Initiated = String
 /**
  Enumeration restricting the values of the IntelligentTieringAccessTier field.
  */
-public enum IntelligentTieringAccessTier: String, Codable, CustomStringConvertible {
+public enum IntelligentTieringAccessTier: String, Codable, CustomStringConvertible, Sendable {
     case archiveAccess = "ARCHIVE_ACCESS"
     case deepArchiveAccess = "DEEP_ARCHIVE_ACCESS"
 
@@ -847,7 +847,7 @@ public typealias IntelligentTieringId = String
 /**
  Enumeration restricting the values of the IntelligentTieringStatus field.
  */
-public enum IntelligentTieringStatus: String, Codable, CustomStringConvertible {
+public enum IntelligentTieringStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -866,7 +866,7 @@ public typealias InventoryConfigurationList = [InventoryConfiguration]
 /**
  Enumeration restricting the values of the InventoryFormat field.
  */
-public enum InventoryFormat: String, Codable, CustomStringConvertible {
+public enum InventoryFormat: String, Codable, CustomStringConvertible, Sendable {
     case csv = "CSV"
     case orc = "ORC"
     case parquet = "Parquet"
@@ -881,7 +881,7 @@ public enum InventoryFormat: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the InventoryFrequency field.
  */
-public enum InventoryFrequency: String, Codable, CustomStringConvertible {
+public enum InventoryFrequency: String, Codable, CustomStringConvertible, Sendable {
     case daily = "Daily"
     case weekly = "Weekly"
 
@@ -900,7 +900,7 @@ public typealias InventoryId = String
 /**
  Enumeration restricting the values of the InventoryIncludedObjectVersions field.
  */
-public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConvertible {
+public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConvertible, Sendable {
     case all = "All"
     case current = "Current"
 
@@ -914,7 +914,7 @@ public enum InventoryIncludedObjectVersions: String, Codable, CustomStringConver
 /**
  Enumeration restricting the values of the InventoryOptionalField field.
  */
-public enum InventoryOptionalField: String, Codable, CustomStringConvertible {
+public enum InventoryOptionalField: String, Codable, CustomStringConvertible, Sendable {
     case bucketkeystatus = "BucketKeyStatus"
     case checksumalgorithm = "ChecksumAlgorithm"
     case etag = "ETag"
@@ -964,7 +964,7 @@ public typealias IsTruncated = Bool
 /**
  Enumeration restricting the values of the JSONType field.
  */
-public enum JSONType: String, Codable, CustomStringConvertible {
+public enum JSONType: String, Codable, CustomStringConvertible, Sendable {
     case document = "DOCUMENT"
     case lines = "LINES"
 
@@ -1033,7 +1033,7 @@ public typealias MFA = String
 /**
  Enumeration restricting the values of the MFADelete field.
  */
-public enum MFADelete: String, Codable, CustomStringConvertible {
+public enum MFADelete: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1047,7 +1047,7 @@ public enum MFADelete: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the MFADeleteStatus field.
  */
-public enum MFADeleteStatus: String, Codable, CustomStringConvertible {
+public enum MFADeleteStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1096,7 +1096,7 @@ public typealias Metadata = [MetadataKey: MetadataValue]
 /**
  Enumeration restricting the values of the MetadataDirective field.
  */
-public enum MetadataDirective: String, Codable, CustomStringConvertible {
+public enum MetadataDirective: String, Codable, CustomStringConvertible, Sendable {
     case copy = "COPY"
     case replace = "REPLACE"
 
@@ -1130,7 +1130,7 @@ public typealias MetricsId = String
 /**
  Enumeration restricting the values of the MetricsStatus field.
  */
-public enum MetricsStatus: String, Codable, CustomStringConvertible {
+public enum MetricsStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1204,7 +1204,7 @@ public typealias NotificationId = String
 /**
  Enumeration restricting the values of the ObjectAttributes field.
  */
-public enum ObjectAttributes: String, Codable, CustomStringConvertible {
+public enum ObjectAttributes: String, Codable, CustomStringConvertible, Sendable {
     case checksum = "Checksum"
     case etag = "ETag"
     case objectparts = "ObjectParts"
@@ -1226,7 +1226,7 @@ public typealias ObjectAttributesList = [ObjectAttributes]
 /**
  Enumeration restricting the values of the ObjectCannedACL field.
  */
-public enum ObjectCannedACL: String, Codable, CustomStringConvertible {
+public enum ObjectCannedACL: String, Codable, CustomStringConvertible, Sendable {
     case authenticatedRead = "authenticated-read"
     case awsExecRead = "aws-exec-read"
     case bucketOwnerFullControl = "bucket-owner-full-control"
@@ -1260,7 +1260,7 @@ public typealias ObjectList = [Object]
 /**
  Enumeration restricting the values of the ObjectLockEnabled field.
  */
-public enum ObjectLockEnabled: String, Codable, CustomStringConvertible {
+public enum ObjectLockEnabled: String, Codable, CustomStringConvertible, Sendable {
     case enabled = "Enabled"
 
     public var description: String {
@@ -1278,7 +1278,7 @@ public typealias ObjectLockEnabledForBucket = Bool
 /**
  Enumeration restricting the values of the ObjectLockLegalHoldStatus field.
  */
-public enum ObjectLockLegalHoldStatus: String, Codable, CustomStringConvertible {
+public enum ObjectLockLegalHoldStatus: String, Codable, CustomStringConvertible, Sendable {
     case off = "OFF"
     case on = "ON"
 
@@ -1292,7 +1292,7 @@ public enum ObjectLockLegalHoldStatus: String, Codable, CustomStringConvertible 
 /**
  Enumeration restricting the values of the ObjectLockMode field.
  */
-public enum ObjectLockMode: String, Codable, CustomStringConvertible {
+public enum ObjectLockMode: String, Codable, CustomStringConvertible, Sendable {
     case compliance = "COMPLIANCE"
     case governance = "GOVERNANCE"
 
@@ -1311,7 +1311,7 @@ public typealias ObjectLockRetainUntilDate = String
 /**
  Enumeration restricting the values of the ObjectLockRetentionMode field.
  */
-public enum ObjectLockRetentionMode: String, Codable, CustomStringConvertible {
+public enum ObjectLockRetentionMode: String, Codable, CustomStringConvertible, Sendable {
     case compliance = "COMPLIANCE"
     case governance = "GOVERNANCE"
 
@@ -1330,7 +1330,7 @@ public typealias ObjectLockToken = String
 /**
  Enumeration restricting the values of the ObjectOwnership field.
  */
-public enum ObjectOwnership: String, Codable, CustomStringConvertible {
+public enum ObjectOwnership: String, Codable, CustomStringConvertible, Sendable {
     case bucketownerenforced = "BucketOwnerEnforced"
     case bucketownerpreferred = "BucketOwnerPreferred"
     case objectwriter = "ObjectWriter"
@@ -1360,7 +1360,7 @@ public typealias ObjectSizeLessThanBytes = Int
 /**
  Enumeration restricting the values of the ObjectStorageClass field.
  */
-public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
+public enum ObjectStorageClass: String, Codable, CustomStringConvertible, Sendable {
     case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
     case glacierIr = "GLACIER_IR"
@@ -1391,7 +1391,7 @@ public typealias ObjectVersionList = [ObjectVersion]
 /**
  Enumeration restricting the values of the ObjectVersionStorageClass field.
  */
-public enum ObjectVersionStorageClass: String, Codable, CustomStringConvertible {
+public enum ObjectVersionStorageClass: String, Codable, CustomStringConvertible, Sendable {
     case standard = "STANDARD"
 
     public var description: String {
@@ -1404,7 +1404,7 @@ public enum ObjectVersionStorageClass: String, Codable, CustomStringConvertible 
 /**
  Enumeration restricting the values of the OwnerOverride field.
  */
-public enum OwnerOverride: String, Codable, CustomStringConvertible {
+public enum OwnerOverride: String, Codable, CustomStringConvertible, Sendable {
     case destination = "Destination"
 
     public var description: String {
@@ -1447,7 +1447,7 @@ public typealias PartsList = [ObjectPart]
 /**
  Enumeration restricting the values of the Payer field.
  */
-public enum Payer: String, Codable, CustomStringConvertible {
+public enum Payer: String, Codable, CustomStringConvertible, Sendable {
     case bucketowner = "BucketOwner"
     case requester = "Requester"
 
@@ -1461,7 +1461,7 @@ public enum Payer: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Permission field.
  */
-public enum Permission: String, Codable, CustomStringConvertible {
+public enum Permission: String, Codable, CustomStringConvertible, Sendable {
     case fullControl = "FULL_CONTROL"
     case read = "READ"
     case readAcp = "READ_ACP"
@@ -1493,7 +1493,7 @@ public typealias Priority = Int
 /**
  Enumeration restricting the values of the Protocol field.
  */
-public enum Protocol: String, Codable, CustomStringConvertible {
+public enum Protocol: String, Codable, CustomStringConvertible, Sendable {
     case http
     case https
 
@@ -1532,7 +1532,7 @@ public typealias QuoteEscapeCharacter = String
 /**
  Enumeration restricting the values of the QuoteFields field.
  */
-public enum QuoteFields: String, Codable, CustomStringConvertible {
+public enum QuoteFields: String, Codable, CustomStringConvertible, Sendable {
     case always = "ALWAYS"
     case asneeded = "ASNEEDED"
 
@@ -1571,7 +1571,7 @@ public typealias ReplicaKmsKeyID = String
 /**
  Enumeration restricting the values of the ReplicaModificationsStatus field.
  */
-public enum ReplicaModificationsStatus: String, Codable, CustomStringConvertible {
+public enum ReplicaModificationsStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1585,7 +1585,7 @@ public enum ReplicaModificationsStatus: String, Codable, CustomStringConvertible
 /**
  Enumeration restricting the values of the ReplicationRuleStatus field.
  */
-public enum ReplicationRuleStatus: String, Codable, CustomStringConvertible {
+public enum ReplicationRuleStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1604,7 +1604,7 @@ public typealias ReplicationRules = [ReplicationRule]
 /**
  Enumeration restricting the values of the ReplicationStatus field.
  */
-public enum ReplicationStatus: String, Codable, CustomStringConvertible {
+public enum ReplicationStatus: String, Codable, CustomStringConvertible, Sendable {
     case complete = "COMPLETE"
     case failed = "FAILED"
     case pending = "PENDING"
@@ -1620,7 +1620,7 @@ public enum ReplicationStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ReplicationTimeStatus field.
  */
-public enum ReplicationTimeStatus: String, Codable, CustomStringConvertible {
+public enum ReplicationTimeStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1634,7 +1634,7 @@ public enum ReplicationTimeStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the RequestCharged field.
  */
-public enum RequestCharged: String, Codable, CustomStringConvertible {
+public enum RequestCharged: String, Codable, CustomStringConvertible, Sendable {
     case requester
 
     public var description: String {
@@ -1647,7 +1647,7 @@ public enum RequestCharged: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the RequestPayer field.
  */
-public enum RequestPayer: String, Codable, CustomStringConvertible {
+public enum RequestPayer: String, Codable, CustomStringConvertible, Sendable {
     case requester
 
     public var description: String {
@@ -1710,7 +1710,7 @@ public typealias RestoreOutputPath = String
 /**
  Enumeration restricting the values of the RestoreRequestType field.
  */
-public enum RestoreRequestType: String, Codable, CustomStringConvertible {
+public enum RestoreRequestType: String, Codable, CustomStringConvertible, Sendable {
     case select = "SELECT"
 
     public var description: String {
@@ -1763,7 +1763,7 @@ public typealias SSEKMSKeyId = String
 /**
  Enumeration restricting the values of the ServerSideEncryption field.
  */
-public enum ServerSideEncryption: String, Codable, CustomStringConvertible {
+public enum ServerSideEncryption: String, Codable, CustomStringConvertible, Sendable {
     case aes256 = "AES256"
     case awsKms = "aws:kms"
 
@@ -1797,7 +1797,7 @@ public typealias SkipValidation = Bool
 /**
  Enumeration restricting the values of the SseKmsEncryptedObjectsStatus field.
  */
-public enum SseKmsEncryptedObjectsStatus: String, Codable, CustomStringConvertible {
+public enum SseKmsEncryptedObjectsStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "Disabled"
     case enabled = "Enabled"
 
@@ -1821,7 +1821,7 @@ public typealias StartAfter = String
 /**
  Enumeration restricting the values of the StorageClass field.
  */
-public enum StorageClass: String, Codable, CustomStringConvertible {
+public enum StorageClass: String, Codable, CustomStringConvertible, Sendable {
     case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
     case glacierIr = "GLACIER_IR"
@@ -1842,7 +1842,7 @@ public enum StorageClass: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the StorageClassAnalysisSchemaVersion field.
  */
-public enum StorageClassAnalysisSchemaVersion: String, Codable, CustomStringConvertible {
+public enum StorageClassAnalysisSchemaVersion: String, Codable, CustomStringConvertible, Sendable {
     case v1 = "V_1"
 
     public var description: String {
@@ -1870,7 +1870,7 @@ public typealias TagSet = [Tag]
 /**
  Enumeration restricting the values of the TaggingDirective field.
  */
-public enum TaggingDirective: String, Codable, CustomStringConvertible {
+public enum TaggingDirective: String, Codable, CustomStringConvertible, Sendable {
     case copy = "COPY"
     case replace = "REPLACE"
 
@@ -1904,7 +1904,7 @@ public typealias TargetPrefix = String
 /**
  Enumeration restricting the values of the Tier field.
  */
-public enum Tier: String, Codable, CustomStringConvertible {
+public enum Tier: String, Codable, CustomStringConvertible, Sendable {
     case bulk = "Bulk"
     case expedited = "Expedited"
     case standard = "Standard"
@@ -1944,7 +1944,7 @@ public typealias TransitionList = [Transition]
 /**
  Enumeration restricting the values of the TransitionStorageClass field.
  */
-public enum TransitionStorageClass: String, Codable, CustomStringConvertible {
+public enum TransitionStorageClass: String, Codable, CustomStringConvertible, Sendable {
     case deepArchive = "DEEP_ARCHIVE"
     case glacier = "GLACIER"
     case glacierIr = "GLACIER_IR"
@@ -1962,7 +1962,7 @@ public enum TransitionStorageClass: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Type field.
  */
-public enum Type: String, Codable, CustomStringConvertible {
+public enum Type: String, Codable, CustomStringConvertible, Sendable {
     case amazoncustomerbyemail = "AmazonCustomerByEmail"
     case canonicaluser = "CanonicalUser"
     case group = "Group"

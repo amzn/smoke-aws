@@ -101,7 +101,7 @@ public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertibl
  Structure to encode the query input for the AddPermission
  operation.
  */
-public struct AddPermissionOperationInputQuery: Codable, Equatable {
+public struct AddPermissionOperationInputQuery: Codable, Equatable, Sendable {
     public var aWSAccountIds: AWSAccountIdList
     public var actions: ActionNameList
     public var label: String
@@ -137,7 +137,7 @@ public extension AddPermissionRequest {
  Structure to encode the query input for the ChangeMessageVisibility
  operation.
  */
-public struct ChangeMessageVisibilityOperationInputQuery: Codable, Equatable {
+public struct ChangeMessageVisibilityOperationInputQuery: Codable, Equatable, Sendable {
     public var receiptHandle: String
     public var visibilityTimeout: Integer
 
@@ -168,7 +168,7 @@ public extension ChangeMessageVisibilityRequest {
  Structure to encode the query input for the ChangeMessageVisibilityBatch
  operation.
  */
-public struct ChangeMessageVisibilityBatchOperationInputQuery: Codable, Equatable {
+public struct ChangeMessageVisibilityBatchOperationInputQuery: Codable, Equatable, Sendable {
     public var entries: ChangeMessageVisibilityBatchRequestEntryList
 
     public init(entries: ChangeMessageVisibilityBatchRequestEntryList) {
@@ -194,7 +194,7 @@ public extension ChangeMessageVisibilityBatchRequest {
  Structure to encode the query input for the DeleteMessage
  operation.
  */
-public struct DeleteMessageOperationInputQuery: Codable, Equatable {
+public struct DeleteMessageOperationInputQuery: Codable, Equatable, Sendable {
     public var receiptHandle: String
 
     public init(receiptHandle: String) {
@@ -220,7 +220,7 @@ public extension DeleteMessageRequest {
  Structure to encode the query input for the DeleteMessageBatch
  operation.
  */
-public struct DeleteMessageBatchOperationInputQuery: Codable, Equatable {
+public struct DeleteMessageBatchOperationInputQuery: Codable, Equatable, Sendable {
     public var entries: DeleteMessageBatchRequestEntryList
 
     public init(entries: DeleteMessageBatchRequestEntryList) {
@@ -246,7 +246,7 @@ public extension DeleteMessageBatchRequest {
  Structure to encode the query input for the GetQueueAttributes
  operation.
  */
-public struct GetQueueAttributesOperationInputQuery: Codable, Equatable {
+public struct GetQueueAttributesOperationInputQuery: Codable, Equatable, Sendable {
     public var attributeNames: AttributeNameList?
 
     public init(attributeNames: AttributeNameList? = nil) {
@@ -272,7 +272,7 @@ public extension GetQueueAttributesRequest {
  Structure to encode the query input for the ListDeadLetterSourceQueues
  operation.
  */
-public struct ListDeadLetterSourceQueuesOperationInputQuery: Codable, Equatable {
+public struct ListDeadLetterSourceQueuesOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: BoxedInteger?
     public var nextToken: Token?
 
@@ -303,7 +303,7 @@ public extension ListDeadLetterSourceQueuesRequest {
  Structure to encode the query input for the ReceiveMessage
  operation.
  */
-public struct ReceiveMessageOperationInputQuery: Codable, Equatable {
+public struct ReceiveMessageOperationInputQuery: Codable, Equatable, Sendable {
     public var attributeNames: AttributeNameList?
     public var maxNumberOfMessages: Integer?
     public var messageAttributeNames: MessageAttributeNameList?
@@ -354,7 +354,7 @@ public extension ReceiveMessageRequest {
  Structure to encode the query input for the RemovePermission
  operation.
  */
-public struct RemovePermissionOperationInputQuery: Codable, Equatable {
+public struct RemovePermissionOperationInputQuery: Codable, Equatable, Sendable {
     public var label: String
 
     public init(label: String) {
@@ -380,7 +380,7 @@ public extension RemovePermissionRequest {
  Structure to encode the query input for the SendMessage
  operation.
  */
-public struct SendMessageOperationInputQuery: Codable, Equatable {
+public struct SendMessageOperationInputQuery: Codable, Equatable, Sendable {
     public var delaySeconds: Integer?
     public var messageAttributes: MessageBodyAttributeMap?
     public var messageBody: String
@@ -431,7 +431,7 @@ public extension SendMessageRequest {
  Structure to encode the query input for the SendMessageBatch
  operation.
  */
-public struct SendMessageBatchOperationInputQuery: Codable, Equatable {
+public struct SendMessageBatchOperationInputQuery: Codable, Equatable, Sendable {
     public var entries: SendMessageBatchRequestEntryList
 
     public init(entries: SendMessageBatchRequestEntryList) {
@@ -457,7 +457,7 @@ public extension SendMessageBatchRequest {
  Structure to encode the query input for the SetQueueAttributes
  operation.
  */
-public struct SetQueueAttributesOperationInputQuery: Codable, Equatable {
+public struct SetQueueAttributesOperationInputQuery: Codable, Equatable, Sendable {
     public var attributes: QueueAttributeMap
 
     public init(attributes: QueueAttributeMap) {
@@ -483,7 +483,7 @@ public extension SetQueueAttributesRequest {
  Structure to encode the query input for the TagQueue
  operation.
  */
-public struct TagQueueOperationInputQuery: Codable, Equatable {
+public struct TagQueueOperationInputQuery: Codable, Equatable, Sendable {
     public var tags: TagMap
 
     public init(tags: TagMap) {
@@ -509,7 +509,7 @@ public extension TagQueueRequest {
  Structure to encode the query input for the UntagQueue
  operation.
  */
-public struct UntagQueueOperationInputQuery: Codable, Equatable {
+public struct UntagQueueOperationInputQuery: Codable, Equatable, Sendable {
     public var tagKeys: TagKeyList
 
     public init(tagKeys: TagKeyList) {

@@ -40,7 +40,7 @@ public typealias ActionsEnabled = Bool
 /**
  Enumeration restricting the values of the ActionsSuppressedBy field.
  */
-public enum ActionsSuppressedBy: String, Codable, CustomStringConvertible {
+public enum ActionsSuppressedBy: String, Codable, CustomStringConvertible, Sendable {
     case alarm = "Alarm"
     case extensionperiod = "ExtensionPeriod"
     case waitperiod = "WaitPeriod"
@@ -95,7 +95,7 @@ public typealias AlarmRule = String
 /**
  Enumeration restricting the values of the AlarmType field.
  */
-public enum AlarmType: String, Codable, CustomStringConvertible {
+public enum AlarmType: String, Codable, CustomStringConvertible, Sendable {
     case compositealarm = "CompositeAlarm"
     case metricalarm = "MetricAlarm"
 
@@ -134,7 +134,7 @@ public typealias AnomalyDetectorMetricTimezone = String
 /**
  Enumeration restricting the values of the AnomalyDetectorStateValue field.
  */
-public enum AnomalyDetectorStateValue: String, Codable, CustomStringConvertible {
+public enum AnomalyDetectorStateValue: String, Codable, CustomStringConvertible, Sendable {
     case pendingTraining = "PENDING_TRAINING"
     case trained = "TRAINED"
     case trainedInsufficientData = "TRAINED_INSUFFICIENT_DATA"
@@ -149,7 +149,7 @@ public enum AnomalyDetectorStateValue: String, Codable, CustomStringConvertible 
 /**
  Enumeration restricting the values of the AnomalyDetectorType field.
  */
-public enum AnomalyDetectorType: String, Codable, CustomStringConvertible {
+public enum AnomalyDetectorType: String, Codable, CustomStringConvertible, Sendable {
     case metricMath = "METRIC_MATH"
     case singleMetric = "SINGLE_METRIC"
 
@@ -183,7 +183,7 @@ public typealias BatchFailures = [PartialFailure]
 /**
  Enumeration restricting the values of the ComparisonOperator field.
  */
-public enum ComparisonOperator: String, Codable, CustomStringConvertible {
+public enum ComparisonOperator: String, Codable, CustomStringConvertible, Sendable {
     case greaterthanorequaltothreshold = "GreaterThanOrEqualToThreshold"
     case greaterthanthreshold = "GreaterThanThreshold"
     case greaterthanupperthreshold = "GreaterThanUpperThreshold"
@@ -367,7 +367,7 @@ public typealias HistoryData = String
 /**
  Enumeration restricting the values of the HistoryItemType field.
  */
-public enum HistoryItemType: String, Codable, CustomStringConvertible {
+public enum HistoryItemType: String, Codable, CustomStringConvertible, Sendable {
     case action = "Action"
     case configurationupdate = "ConfigurationUpdate"
     case stateupdate = "StateUpdate"
@@ -592,7 +592,7 @@ public typealias MetricStreamNames = [MetricStreamName]
 /**
  Enumeration restricting the values of the MetricStreamOutputFormat field.
  */
-public enum MetricStreamOutputFormat: String, Codable, CustomStringConvertible {
+public enum MetricStreamOutputFormat: String, Codable, CustomStringConvertible, Sendable {
     case json
     case opentelemetry07 = "opentelemetry0.7"
 
@@ -666,7 +666,7 @@ public typealias Period = Int
 /**
  Enumeration restricting the values of the RecentlyActive field.
  */
-public enum RecentlyActive: String, Codable, CustomStringConvertible {
+public enum RecentlyActive: String, Codable, CustomStringConvertible, Sendable {
     case pt3h = "PT3H"
 
     public var description: String {
@@ -704,7 +704,7 @@ public typealias ReturnData = Bool
 /**
  Enumeration restricting the values of the ScanBy field.
  */
-public enum ScanBy: String, Codable, CustomStringConvertible {
+public enum ScanBy: String, Codable, CustomStringConvertible, Sendable {
     case timestampascending = "TimestampAscending"
     case timestampdescending = "TimestampDescending"
 
@@ -723,7 +723,7 @@ public typealias Size = Int
 /**
  Enumeration restricting the values of the StandardUnit field.
  */
-public enum StandardUnit: String, Codable, CustomStringConvertible {
+public enum StandardUnit: String, Codable, CustomStringConvertible, Sendable {
     case bits = "Bits"
     case bitsSecond = "Bits/Second"
     case bytes = "Bytes"
@@ -777,7 +777,7 @@ public typealias StateReasonData = String
 /**
  Enumeration restricting the values of the StateValue field.
  */
-public enum StateValue: String, Codable, CustomStringConvertible {
+public enum StateValue: String, Codable, CustomStringConvertible, Sendable {
     case alarm = "ALARM"
     case insufficientData = "INSUFFICIENT_DATA"
     case ok = "OK"
@@ -792,7 +792,7 @@ public enum StateValue: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Statistic field.
  */
-public enum Statistic: String, Codable, CustomStringConvertible {
+public enum Statistic: String, Codable, CustomStringConvertible, Sendable {
     case average = "Average"
     case maximum = "Maximum"
     case minimum = "Minimum"
@@ -814,7 +814,7 @@ public typealias Statistics = [Statistic]
 /**
  Enumeration restricting the values of the StatusCode field.
  */
-public enum StatusCode: String, Codable, CustomStringConvertible {
+public enum StatusCode: String, Codable, CustomStringConvertible, Sendable {
     case complete = "Complete"
     case internalerror = "InternalError"
     case partialdata = "PartialData"

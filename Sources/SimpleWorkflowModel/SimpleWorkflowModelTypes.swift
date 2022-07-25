@@ -30,7 +30,7 @@ public typealias ActivityId = String
 /**
  Enumeration restricting the values of the ActivityTaskTimeoutType field.
  */
-public enum ActivityTaskTimeoutType: String, Codable, CustomStringConvertible {
+public enum ActivityTaskTimeoutType: String, Codable, CustomStringConvertible, Sendable {
     case heartbeat = "HEARTBEAT"
     case scheduleToClose = "SCHEDULE_TO_CLOSE"
     case scheduleToStart = "SCHEDULE_TO_START"
@@ -56,7 +56,7 @@ public typealias Arn = String
 /**
  Enumeration restricting the values of the CancelTimerFailedCause field.
  */
-public enum CancelTimerFailedCause: String, Codable, CustomStringConvertible {
+public enum CancelTimerFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case timerIdUnknown = "TIMER_ID_UNKNOWN"
 
@@ -70,7 +70,7 @@ public enum CancelTimerFailedCause: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the CancelWorkflowExecutionFailedCause field.
  */
-public enum CancelWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum CancelWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case unhandledDecision = "UNHANDLED_DECISION"
 
@@ -94,7 +94,7 @@ public typealias CauseMessage = String
 /**
  Enumeration restricting the values of the ChildPolicy field.
  */
-public enum ChildPolicy: String, Codable, CustomStringConvertible {
+public enum ChildPolicy: String, Codable, CustomStringConvertible, Sendable {
     case abandon = "ABANDON"
     case requestCancel = "REQUEST_CANCEL"
     case terminate = "TERMINATE"
@@ -109,7 +109,7 @@ public enum ChildPolicy: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the CloseStatus field.
  */
-public enum CloseStatus: String, Codable, CustomStringConvertible {
+public enum CloseStatus: String, Codable, CustomStringConvertible, Sendable {
     case canceled = "CANCELED"
     case completed = "COMPLETED"
     case continuedAsNew = "CONTINUED_AS_NEW"
@@ -127,7 +127,7 @@ public enum CloseStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the CompleteWorkflowExecutionFailedCause field.
  */
-public enum CompleteWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum CompleteWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case unhandledDecision = "UNHANDLED_DECISION"
 
@@ -141,7 +141,7 @@ public enum CompleteWorkflowExecutionFailedCause: String, Codable, CustomStringC
 /**
  Enumeration restricting the values of the ContinueAsNewWorkflowExecutionFailedCause field.
  */
-public enum ContinueAsNewWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum ContinueAsNewWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case continueAsNewWorkflowExecutionRateExceeded = "CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"
     case defaultChildPolicyUndefined = "DEFAULT_CHILD_POLICY_UNDEFINED"
     case defaultExecutionStartToCloseTimeoutUndefined = "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"
@@ -177,7 +177,7 @@ public typealias DecisionList = [Decision]
 /**
  Enumeration restricting the values of the DecisionTaskTimeoutType field.
  */
-public enum DecisionTaskTimeoutType: String, Codable, CustomStringConvertible {
+public enum DecisionTaskTimeoutType: String, Codable, CustomStringConvertible, Sendable {
     case startToClose = "START_TO_CLOSE"
 
     public var description: String {
@@ -190,7 +190,7 @@ public enum DecisionTaskTimeoutType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the DecisionType field.
  */
-public enum DecisionType: String, Codable, CustomStringConvertible {
+public enum DecisionType: String, Codable, CustomStringConvertible, Sendable {
     case canceltimer = "CancelTimer"
     case cancelworkflowexecution = "CancelWorkflowExecution"
     case completeworkflowexecution = "CompleteWorkflowExecution"
@@ -255,7 +255,7 @@ public typealias EventId = Int
 /**
  Enumeration restricting the values of the EventType field.
  */
-public enum EventType: String, Codable, CustomStringConvertible {
+public enum EventType: String, Codable, CustomStringConvertible, Sendable {
     case activitytaskcancelrequested = "ActivityTaskCancelRequested"
     case activitytaskcanceled = "ActivityTaskCanceled"
     case activitytaskcompleted = "ActivityTaskCompleted"
@@ -321,7 +321,7 @@ public enum EventType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ExecutionStatus field.
  */
-public enum ExecutionStatus: String, Codable, CustomStringConvertible {
+public enum ExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case closed = "CLOSED"
     case open = "OPEN"
 
@@ -335,7 +335,7 @@ public enum ExecutionStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the FailWorkflowExecutionFailedCause field.
  */
-public enum FailWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum FailWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case unhandledDecision = "UNHANDLED_DECISION"
 
@@ -379,7 +379,7 @@ public typealias Identity = String
 /**
  Enumeration restricting the values of the LambdaFunctionTimeoutType field.
  */
-public enum LambdaFunctionTimeoutType: String, Codable, CustomStringConvertible {
+public enum LambdaFunctionTimeoutType: String, Codable, CustomStringConvertible, Sendable {
     case startToClose = "START_TO_CLOSE"
 
     public var description: String {
@@ -422,7 +422,7 @@ public typealias PageToken = String
 /**
  Enumeration restricting the values of the RecordMarkerFailedCause field.
  */
-public enum RecordMarkerFailedCause: String, Codable, CustomStringConvertible {
+public enum RecordMarkerFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
 
     public var description: String {
@@ -435,7 +435,7 @@ public enum RecordMarkerFailedCause: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the RegistrationStatus field.
  */
-public enum RegistrationStatus: String, Codable, CustomStringConvertible {
+public enum RegistrationStatus: String, Codable, CustomStringConvertible, Sendable {
     case deprecated = "DEPRECATED"
     case registered = "REGISTERED"
 
@@ -449,7 +449,7 @@ public enum RegistrationStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the RequestCancelActivityTaskFailedCause field.
  */
-public enum RequestCancelActivityTaskFailedCause: String, Codable, CustomStringConvertible {
+public enum RequestCancelActivityTaskFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case activityIdUnknown = "ACTIVITY_ID_UNKNOWN"
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
 
@@ -463,7 +463,7 @@ public enum RequestCancelActivityTaskFailedCause: String, Codable, CustomStringC
 /**
  Enumeration restricting the values of the RequestCancelExternalWorkflowExecutionFailedCause field.
  */
-public enum RequestCancelExternalWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum RequestCancelExternalWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case requestCancelExternalWorkflowExecutionRateExceeded = "REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
     case unknownExternalWorkflowExecution = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
@@ -503,7 +503,7 @@ public typealias ReverseOrder = Bool
 /**
  Enumeration restricting the values of the ScheduleActivityTaskFailedCause field.
  */
-public enum ScheduleActivityTaskFailedCause: String, Codable, CustomStringConvertible {
+public enum ScheduleActivityTaskFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case activityCreationRateExceeded = "ACTIVITY_CREATION_RATE_EXCEEDED"
     case activityIdAlreadyInUse = "ACTIVITY_ID_ALREADY_IN_USE"
     case activityTypeDeprecated = "ACTIVITY_TYPE_DEPRECATED"
@@ -526,7 +526,7 @@ public enum ScheduleActivityTaskFailedCause: String, Codable, CustomStringConver
 /**
  Enumeration restricting the values of the ScheduleLambdaFunctionFailedCause field.
  */
-public enum ScheduleLambdaFunctionFailedCause: String, Codable, CustomStringConvertible {
+public enum ScheduleLambdaFunctionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case idAlreadyInUse = "ID_ALREADY_IN_USE"
     case lambdaFunctionCreationRateExceeded = "LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"
     case lambdaServiceNotAvailableInRegion = "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION"
@@ -542,7 +542,7 @@ public enum ScheduleLambdaFunctionFailedCause: String, Codable, CustomStringConv
 /**
  Enumeration restricting the values of the SignalExternalWorkflowExecutionFailedCause field.
  */
-public enum SignalExternalWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum SignalExternalWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case signalExternalWorkflowExecutionRateExceeded = "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
     case unknownExternalWorkflowExecution = "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
@@ -562,7 +562,7 @@ public typealias SignalName = String
 /**
  Enumeration restricting the values of the StartChildWorkflowExecutionFailedCause field.
  */
-public enum StartChildWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {
+public enum StartChildWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case childCreationRateExceeded = "CHILD_CREATION_RATE_EXCEEDED"
     case defaultChildPolicyUndefined = "DEFAULT_CHILD_POLICY_UNDEFINED"
     case defaultExecutionStartToCloseTimeoutUndefined = "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"
@@ -585,7 +585,7 @@ public enum StartChildWorkflowExecutionFailedCause: String, Codable, CustomStrin
 /**
  Enumeration restricting the values of the StartLambdaFunctionFailedCause field.
  */
-public enum StartLambdaFunctionFailedCause: String, Codable, CustomStringConvertible {
+public enum StartLambdaFunctionFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case assumeRoleFailed = "ASSUME_ROLE_FAILED"
 
     public var description: String {
@@ -598,7 +598,7 @@ public enum StartLambdaFunctionFailedCause: String, Codable, CustomStringConvert
 /**
  Enumeration restricting the values of the StartTimerFailedCause field.
  */
-public enum StartTimerFailedCause: String, Codable, CustomStringConvertible {
+public enum StartTimerFailedCause: String, Codable, CustomStringConvertible, Sendable {
     case openTimersLimitExceeded = "OPEN_TIMERS_LIMIT_EXCEEDED"
     case operationNotPermitted = "OPERATION_NOT_PERMITTED"
     case timerCreationRateExceeded = "TIMER_CREATION_RATE_EXCEEDED"
@@ -664,7 +664,7 @@ public typealias VersionOptional = String
 /**
  Enumeration restricting the values of the WorkflowExecutionCancelRequestedCause field.
  */
-public enum WorkflowExecutionCancelRequestedCause: String, Codable, CustomStringConvertible {
+public enum WorkflowExecutionCancelRequestedCause: String, Codable, CustomStringConvertible, Sendable {
     case childPolicyApplied = "CHILD_POLICY_APPLIED"
 
     public var description: String {
@@ -682,7 +682,7 @@ public typealias WorkflowExecutionInfoList = [WorkflowExecutionInfo]
 /**
  Enumeration restricting the values of the WorkflowExecutionTerminatedCause field.
  */
-public enum WorkflowExecutionTerminatedCause: String, Codable, CustomStringConvertible {
+public enum WorkflowExecutionTerminatedCause: String, Codable, CustomStringConvertible, Sendable {
     case childPolicyApplied = "CHILD_POLICY_APPLIED"
     case eventLimitExceeded = "EVENT_LIMIT_EXCEEDED"
     case operatorInitiated = "OPERATOR_INITIATED"
@@ -697,7 +697,7 @@ public enum WorkflowExecutionTerminatedCause: String, Codable, CustomStringConve
 /**
  Enumeration restricting the values of the WorkflowExecutionTimeoutType field.
  */
-public enum WorkflowExecutionTimeoutType: String, Codable, CustomStringConvertible {
+public enum WorkflowExecutionTimeoutType: String, Codable, CustomStringConvertible, Sendable {
     case startToClose = "START_TO_CLOSE"
 
     public var description: String {

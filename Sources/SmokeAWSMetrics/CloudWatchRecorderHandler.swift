@@ -19,11 +19,11 @@ import Foundation
 import Metrics
 import CloudWatchClient
 import CloudWatchModel
-import Logging
+@preconcurrency import Logging
 /**
  Class conforming to `RecorderHandler` that emits a CloudWatch metric.
  */
-internal class CloudWatchRecorderHandler: RecorderHandler {
+internal final class CloudWatchRecorderHandler: RecorderHandler {
     private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
     private let metricName: String
     private let namespace: String

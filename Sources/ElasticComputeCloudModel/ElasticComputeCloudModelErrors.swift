@@ -385,7 +385,7 @@ private let vpnGatewayLimitExceededIdentity = "VpnGatewayLimitExceeded"
 private let zonesMismatchedIdentity = "ZonesMismatched"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public struct ElasticComputeCloudErrorPayload: Codable {
+public struct ElasticComputeCloudErrorPayload: Codable, Sendable {
     public let type: String
     public let message: String
 

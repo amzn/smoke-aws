@@ -36,11 +36,11 @@ import NIO
  */
 public extension MockThrowingClientProtocol {
     
-    func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithOutput<InputType, OutputType>(
+    func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithOutput<InputType: Sendable, OutputType>(
             input: InputType,
             defaultError: Error,
             eventLoop: EventLoop,
-            functionOverride: ((InputType) async throws -> OutputType)?,
+            functionOverride: (@Sendable (InputType) async throws -> OutputType)?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
         if let functionOverride = functionOverride {
             let promise = eventLoop.makePromise(of: OutputType.self)
@@ -84,11 +84,11 @@ public extension MockThrowingClientProtocol {
         throw defaultError
     }
     
-    func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType>(
+    func mockThrowingAsyncAwareEventLoopFutureExecuteWithInputWithoutOutput<InputType: Sendable>(
             input: InputType,
             defaultError: Error,
             eventLoop: EventLoop,
-            functionOverride: ((InputType) async throws -> ())?,
+            functionOverride: (@Sendable (InputType) async throws -> ())?,
             eventLoopFutureFunctionOverride: ((InputType) -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
         if let functionOverride = functionOverride {
             let promise = eventLoop.makePromise(of: Void.self)
@@ -139,7 +139,7 @@ public extension MockThrowingClientProtocol {
     func mockThrowingAsyncAwareEventLoopFutureExecuteWithoutInputWithOutput<OutputType>(
             defaultError: Error,
             eventLoop: EventLoop,
-            functionOverride: (() async throws -> OutputType)?,
+            functionOverride: (@Sendable () async throws -> OutputType)?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<OutputType>)?) -> EventLoopFuture<OutputType> {
         if let functionOverride = functionOverride {
             let promise = eventLoop.makePromise(of: OutputType.self)
@@ -185,7 +185,7 @@ public extension MockThrowingClientProtocol {
     func mockThrowingAsyncAwareEventLoopFutureExecuteWithoutInputWithoutOutput(
             defaultError: Error,
             eventLoop: EventLoop,
-            functionOverride: (() async throws -> ())?,
+            functionOverride: (@Sendable () async throws -> ())?,
             eventLoopFutureFunctionOverride: (() -> EventLoopFuture<Void>)?) -> EventLoopFuture<Void> {
         if let functionOverride = functionOverride {
             let promise = eventLoop.makePromise(of: Void.self)

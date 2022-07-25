@@ -55,7 +55,7 @@ public typealias Iso2CountryCode = String
 /**
  Enumeration restricting the values of the LanguageCodeString field.
  */
-public enum LanguageCodeString: String, Codable, CustomStringConvertible {
+public enum LanguageCodeString: String, Codable, CustomStringConvertible, Sendable {
     case deDe = "de-DE"
     case enGb = "en-GB"
     case enUs = "en-US"
@@ -115,7 +115,7 @@ public typealias MessageAttributeMap = [String: MessageAttributeValue]
 /**
  Enumeration restricting the values of the NumberCapability field.
  */
-public enum NumberCapability: String, Codable, CustomStringConvertible {
+public enum NumberCapability: String, Codable, CustomStringConvertible, Sendable {
     case mms = "MMS"
     case sms = "SMS"
     case voice = "VOICE"
@@ -170,7 +170,7 @@ public typealias PublishBatchResultEntryList = [PublishBatchResultEntry]
 /**
  Enumeration restricting the values of the RouteType field.
  */
-public enum RouteType: String, Codable, CustomStringConvertible {
+public enum RouteType: String, Codable, CustomStringConvertible, Sendable {
     case premium = "Premium"
     case promotional = "Promotional"
     case transactional = "Transactional"
@@ -190,7 +190,7 @@ public typealias SMSSandboxPhoneNumberList = [SMSSandboxPhoneNumber]
 /**
  Enumeration restricting the values of the SMSSandboxPhoneNumberVerificationStatus field.
  */
-public enum SMSSandboxPhoneNumberVerificationStatus: String, Codable, CustomStringConvertible {
+public enum SMSSandboxPhoneNumberVerificationStatus: String, Codable, CustomStringConvertible, Sendable {
     case pending = "Pending"
     case verified = "Verified"
 

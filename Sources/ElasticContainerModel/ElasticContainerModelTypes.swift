@@ -25,7 +25,7 @@ import Foundation
 /**
  Enumeration restricting the values of the AgentUpdateStatus field.
  */
-public enum AgentUpdateStatus: String, Codable, CustomStringConvertible {
+public enum AgentUpdateStatus: String, Codable, CustomStringConvertible, Sendable {
     case failed = "FAILED"
     case pending = "PENDING"
     case staged = "STAGED"
@@ -43,7 +43,7 @@ public enum AgentUpdateStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the AssignPublicIp field.
  */
-public enum AssignPublicIp: String, Codable, CustomStringConvertible {
+public enum AssignPublicIp: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -92,7 +92,7 @@ public typealias BoxedInteger = Int
 /**
  Enumeration restricting the values of the CPUArchitecture field.
  */
-public enum CPUArchitecture: String, Codable, CustomStringConvertible {
+public enum CPUArchitecture: String, Codable, CustomStringConvertible, Sendable {
     case arm64 = "ARM64"
     case x8664 = "X86_64"
 
@@ -106,7 +106,7 @@ public enum CPUArchitecture: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the CapacityProviderField field.
  */
-public enum CapacityProviderField: String, Codable, CustomStringConvertible {
+public enum CapacityProviderField: String, Codable, CustomStringConvertible, Sendable {
     case tags = "TAGS"
 
     public var description: String {
@@ -124,7 +124,7 @@ public typealias CapacityProviderFieldList = [CapacityProviderField]
 /**
  Enumeration restricting the values of the CapacityProviderStatus field.
  */
-public enum CapacityProviderStatus: String, Codable, CustomStringConvertible {
+public enum CapacityProviderStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case inactive = "INACTIVE"
 
@@ -153,7 +153,7 @@ public typealias CapacityProviderStrategyItemWeight = Int
 /**
  Enumeration restricting the values of the CapacityProviderUpdateStatus field.
  */
-public enum CapacityProviderUpdateStatus: String, Codable, CustomStringConvertible {
+public enum CapacityProviderUpdateStatus: String, Codable, CustomStringConvertible, Sendable {
     case deleteComplete = "DELETE_COMPLETE"
     case deleteFailed = "DELETE_FAILED"
     case deleteInProgress = "DELETE_IN_PROGRESS"
@@ -176,7 +176,7 @@ public typealias CapacityProviders = [CapacityProvider]
 /**
  Enumeration restricting the values of the ClusterField field.
  */
-public enum ClusterField: String, Codable, CustomStringConvertible {
+public enum ClusterField: String, Codable, CustomStringConvertible, Sendable {
     case attachments = "ATTACHMENTS"
     case configurations = "CONFIGURATIONS"
     case settings = "SETTINGS"
@@ -198,7 +198,7 @@ public typealias ClusterFieldList = [ClusterField]
 /**
  Enumeration restricting the values of the ClusterSettingName field.
  */
-public enum ClusterSettingName: String, Codable, CustomStringConvertible {
+public enum ClusterSettingName: String, Codable, CustomStringConvertible, Sendable {
     case containerinsights = "containerInsights"
 
     public var description: String {
@@ -221,7 +221,7 @@ public typealias Clusters = [Cluster]
 /**
  Enumeration restricting the values of the Compatibility field.
  */
-public enum Compatibility: String, Codable, CustomStringConvertible {
+public enum Compatibility: String, Codable, CustomStringConvertible, Sendable {
     case ec2 = "EC2"
     case external = "EXTERNAL"
     case fargate = "FARGATE"
@@ -241,7 +241,7 @@ public typealias CompatibilityList = [Compatibility]
 /**
  Enumeration restricting the values of the Connectivity field.
  */
-public enum Connectivity: String, Codable, CustomStringConvertible {
+public enum Connectivity: String, Codable, CustomStringConvertible, Sendable {
     case connected = "CONNECTED"
     case disconnected = "DISCONNECTED"
 
@@ -255,7 +255,7 @@ public enum Connectivity: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ContainerCondition field.
  */
-public enum ContainerCondition: String, Codable, CustomStringConvertible {
+public enum ContainerCondition: String, Codable, CustomStringConvertible, Sendable {
     case complete = "COMPLETE"
     case healthy = "HEALTHY"
     case start = "START"
@@ -281,7 +281,7 @@ public typealias ContainerDependencies = [ContainerDependency]
 /**
  Enumeration restricting the values of the ContainerInstanceField field.
  */
-public enum ContainerInstanceField: String, Codable, CustomStringConvertible {
+public enum ContainerInstanceField: String, Codable, CustomStringConvertible, Sendable {
     case containerInstanceHealth = "CONTAINER_INSTANCE_HEALTH"
     case tags = "TAGS"
 
@@ -300,7 +300,7 @@ public typealias ContainerInstanceFieldList = [ContainerInstanceField]
 /**
  Enumeration restricting the values of the ContainerInstanceStatus field.
  */
-public enum ContainerInstanceStatus: String, Codable, CustomStringConvertible {
+public enum ContainerInstanceStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case deregistering = "DEREGISTERING"
     case draining = "DRAINING"
@@ -337,7 +337,7 @@ public typealias Containers = [Container]
 /**
  Enumeration restricting the values of the DeploymentControllerType field.
  */
-public enum DeploymentControllerType: String, Codable, CustomStringConvertible {
+public enum DeploymentControllerType: String, Codable, CustomStringConvertible, Sendable {
     case codeDeploy = "CODE_DEPLOY"
     case ecs = "ECS"
     case external = "EXTERNAL"
@@ -352,7 +352,7 @@ public enum DeploymentControllerType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the DeploymentRolloutState field.
  */
-public enum DeploymentRolloutState: String, Codable, CustomStringConvertible {
+public enum DeploymentRolloutState: String, Codable, CustomStringConvertible, Sendable {
     case completed = "COMPLETED"
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
@@ -372,7 +372,7 @@ public typealias Deployments = [Deployment]
 /**
  Enumeration restricting the values of the DesiredStatus field.
  */
-public enum DesiredStatus: String, Codable, CustomStringConvertible {
+public enum DesiredStatus: String, Codable, CustomStringConvertible, Sendable {
     case pending = "PENDING"
     case running = "RUNNING"
     case stopped = "STOPPED"
@@ -387,7 +387,7 @@ public enum DesiredStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the DeviceCgroupPermission field.
  */
-public enum DeviceCgroupPermission: String, Codable, CustomStringConvertible {
+public enum DeviceCgroupPermission: String, Codable, CustomStringConvertible, Sendable {
     case mknod
     case read
     case write
@@ -417,7 +417,7 @@ public typealias DockerLabelsMap = [String: String]
 /**
  Enumeration restricting the values of the EFSAuthorizationConfigIAM field.
  */
-public enum EFSAuthorizationConfigIAM: String, Codable, CustomStringConvertible {
+public enum EFSAuthorizationConfigIAM: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -431,7 +431,7 @@ public enum EFSAuthorizationConfigIAM: String, Codable, CustomStringConvertible 
 /**
  Enumeration restricting the values of the EFSTransitEncryption field.
  */
-public enum EFSTransitEncryption: String, Codable, CustomStringConvertible {
+public enum EFSTransitEncryption: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -445,7 +445,7 @@ public enum EFSTransitEncryption: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the EnvironmentFileType field.
  */
-public enum EnvironmentFileType: String, Codable, CustomStringConvertible {
+public enum EnvironmentFileType: String, Codable, CustomStringConvertible, Sendable {
     case s3
 
     public var description: String {
@@ -468,7 +468,7 @@ public typealias EnvironmentVariables = [KeyValuePair]
 /**
  Enumeration restricting the values of the ExecuteCommandLogging field.
  */
-public enum ExecuteCommandLogging: String, Codable, CustomStringConvertible {
+public enum ExecuteCommandLogging: String, Codable, CustomStringConvertible, Sendable {
     case `default` = "DEFAULT"
     case none = "NONE"
     case override = "OVERRIDE"
@@ -493,7 +493,7 @@ public typealias FirelensConfigurationOptionsMap = [String: String]
 /**
  Enumeration restricting the values of the FirelensConfigurationType field.
  */
-public enum FirelensConfigurationType: String, Codable, CustomStringConvertible {
+public enum FirelensConfigurationType: String, Codable, CustomStringConvertible, Sendable {
     case fluentbit
     case fluentd
 
@@ -512,7 +512,7 @@ public typealias GpuIds = [String]
 /**
  Enumeration restricting the values of the HealthStatus field.
  */
-public enum HealthStatus: String, Codable, CustomStringConvertible {
+public enum HealthStatus: String, Codable, CustomStringConvertible, Sendable {
     case healthy = "HEALTHY"
     case unhealthy = "UNHEALTHY"
     case unknown = "UNKNOWN"
@@ -547,7 +547,7 @@ public typealias InstanceHealthCheckResultList = [InstanceHealthCheckResult]
 /**
  Enumeration restricting the values of the InstanceHealthCheckState field.
  */
-public enum InstanceHealthCheckState: String, Codable, CustomStringConvertible {
+public enum InstanceHealthCheckState: String, Codable, CustomStringConvertible, Sendable {
     case impaired = "IMPAIRED"
     case initializing = "INITIALIZING"
     case insufficientData = "INSUFFICIENT_DATA"
@@ -563,7 +563,7 @@ public enum InstanceHealthCheckState: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the InstanceHealthCheckType field.
  */
-public enum InstanceHealthCheckType: String, Codable, CustomStringConvertible {
+public enum InstanceHealthCheckType: String, Codable, CustomStringConvertible, Sendable {
     case containerRuntime = "CONTAINER_RUNTIME"
 
     public var description: String {
@@ -581,7 +581,7 @@ public typealias Integer = Int
 /**
  Enumeration restricting the values of the IpcMode field.
  */
-public enum IpcMode: String, Codable, CustomStringConvertible {
+public enum IpcMode: String, Codable, CustomStringConvertible, Sendable {
     case host
     case none
     case task
@@ -596,7 +596,7 @@ public enum IpcMode: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the LaunchType field.
  */
-public enum LaunchType: String, Codable, CustomStringConvertible {
+public enum LaunchType: String, Codable, CustomStringConvertible, Sendable {
     case ec2 = "EC2"
     case external = "EXTERNAL"
     case fargate = "FARGATE"
@@ -621,7 +621,7 @@ public typealias LogConfigurationOptionsMap = [String: String]
 /**
  Enumeration restricting the values of the LogDriver field.
  */
-public enum LogDriver: String, Codable, CustomStringConvertible {
+public enum LogDriver: String, Codable, CustomStringConvertible, Sendable {
     case awsfirelens
     case awslogs
     case fluentd
@@ -646,7 +646,7 @@ public typealias Long = Int
 /**
  Enumeration restricting the values of the ManagedAgentName field.
  */
-public enum ManagedAgentName: String, Codable, CustomStringConvertible {
+public enum ManagedAgentName: String, Codable, CustomStringConvertible, Sendable {
     case executecommandagent = "ExecuteCommandAgent"
 
     public var description: String {
@@ -674,7 +674,7 @@ public typealias ManagedScalingInstanceWarmupPeriod = Int
 /**
  Enumeration restricting the values of the ManagedScalingStatus field.
  */
-public enum ManagedScalingStatus: String, Codable, CustomStringConvertible {
+public enum ManagedScalingStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -698,7 +698,7 @@ public typealias ManagedScalingTargetCapacity = Int
 /**
  Enumeration restricting the values of the ManagedTerminationProtection field.
  */
-public enum ManagedTerminationProtection: String, Codable, CustomStringConvertible {
+public enum ManagedTerminationProtection: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -727,7 +727,7 @@ public typealias NetworkInterfaces = [NetworkInterface]
 /**
  Enumeration restricting the values of the NetworkMode field.
  */
-public enum NetworkMode: String, Codable, CustomStringConvertible {
+public enum NetworkMode: String, Codable, CustomStringConvertible, Sendable {
     case awsvpc
     case bridge
     case host
@@ -743,7 +743,7 @@ public enum NetworkMode: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the OSFamily field.
  */
-public enum OSFamily: String, Codable, CustomStringConvertible {
+public enum OSFamily: String, Codable, CustomStringConvertible, Sendable {
     case linux = "LINUX"
     case windowsServer2004Core = "WINDOWS_SERVER_2004_CORE"
     case windowsServer2016Full = "WINDOWS_SERVER_2016_FULL"
@@ -763,7 +763,7 @@ public enum OSFamily: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the PidMode field.
  */
-public enum PidMode: String, Codable, CustomStringConvertible {
+public enum PidMode: String, Codable, CustomStringConvertible, Sendable {
     case host
     case task
 
@@ -777,7 +777,7 @@ public enum PidMode: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the PlacementConstraintType field.
  */
-public enum PlacementConstraintType: String, Codable, CustomStringConvertible {
+public enum PlacementConstraintType: String, Codable, CustomStringConvertible, Sendable {
     case distinctinstance = "distinctInstance"
     case memberof = "memberOf"
 
@@ -801,7 +801,7 @@ public typealias PlacementStrategies = [PlacementStrategy]
 /**
  Enumeration restricting the values of the PlacementStrategyType field.
  */
-public enum PlacementStrategyType: String, Codable, CustomStringConvertible {
+public enum PlacementStrategyType: String, Codable, CustomStringConvertible, Sendable {
     case binpack
     case random
     case spread
@@ -816,7 +816,7 @@ public enum PlacementStrategyType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the PlatformDeviceType field.
  */
-public enum PlatformDeviceType: String, Codable, CustomStringConvertible {
+public enum PlatformDeviceType: String, Codable, CustomStringConvertible, Sendable {
     case gpu = "GPU"
 
     public var description: String {
@@ -839,7 +839,7 @@ public typealias PortMappingList = [PortMapping]
 /**
  Enumeration restricting the values of the PropagateTags field.
  */
-public enum PropagateTags: String, Codable, CustomStringConvertible {
+public enum PropagateTags: String, Codable, CustomStringConvertible, Sendable {
     case none = "NONE"
     case service = "SERVICE"
     case taskDefinition = "TASK_DEFINITION"
@@ -859,7 +859,7 @@ public typealias ProxyConfigurationProperties = [KeyValuePair]
 /**
  Enumeration restricting the values of the ProxyConfigurationType field.
  */
-public enum ProxyConfigurationType: String, Codable, CustomStringConvertible {
+public enum ProxyConfigurationType: String, Codable, CustomStringConvertible, Sendable {
     case appmesh = "APPMESH"
 
     public var description: String {
@@ -882,7 +882,7 @@ public typealias ResourceRequirements = [ResourceRequirement]
 /**
  Enumeration restricting the values of the ResourceType field.
  */
-public enum ResourceType: String, Codable, CustomStringConvertible {
+public enum ResourceType: String, Codable, CustomStringConvertible, Sendable {
     case gpu = "GPU"
     case inferenceaccelerator = "InferenceAccelerator"
 
@@ -901,7 +901,7 @@ public typealias Resources = [Resource]
 /**
  Enumeration restricting the values of the ScaleUnit field.
  */
-public enum ScaleUnit: String, Codable, CustomStringConvertible {
+public enum ScaleUnit: String, Codable, CustomStringConvertible, Sendable {
     case percent = "PERCENT"
 
     public var description: String {
@@ -914,7 +914,7 @@ public enum ScaleUnit: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the SchedulingStrategy field.
  */
-public enum SchedulingStrategy: String, Codable, CustomStringConvertible {
+public enum SchedulingStrategy: String, Codable, CustomStringConvertible, Sendable {
     case daemon = "DAEMON"
     case replica = "REPLICA"
 
@@ -928,7 +928,7 @@ public enum SchedulingStrategy: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Scope field.
  */
-public enum Scope: String, Codable, CustomStringConvertible {
+public enum Scope: String, Codable, CustomStringConvertible, Sendable {
     case shared
     case task
 
@@ -957,7 +957,7 @@ public typealias ServiceEvents = [ServiceEvent]
 /**
  Enumeration restricting the values of the ServiceField field.
  */
-public enum ServiceField: String, Codable, CustomStringConvertible {
+public enum ServiceField: String, Codable, CustomStringConvertible, Sendable {
     case tags = "TAGS"
 
     public var description: String {
@@ -985,7 +985,7 @@ public typealias Services = [Service]
 /**
  Enumeration restricting the values of the SettingName field.
  */
-public enum SettingName: String, Codable, CustomStringConvertible {
+public enum SettingName: String, Codable, CustomStringConvertible, Sendable {
     case awsvpctrunking = "awsvpcTrunking"
     case containerinsights = "containerInsights"
     case containerinstancelongarnformat = "containerInstanceLongArnFormat"
@@ -1007,7 +1007,7 @@ public typealias Settings = [Setting]
 /**
  Enumeration restricting the values of the SortOrder field.
  */
-public enum SortOrder: String, Codable, CustomStringConvertible {
+public enum SortOrder: String, Codable, CustomStringConvertible, Sendable {
     case asc = "ASC"
     case desc = "DESC"
 
@@ -1021,7 +1021,7 @@ public enum SortOrder: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the StabilityStatus field.
  */
-public enum StabilityStatus: String, Codable, CustomStringConvertible {
+public enum StabilityStatus: String, Codable, CustomStringConvertible, Sendable {
     case stabilizing = "STABILIZING"
     case steadyState = "STEADY_STATE"
 
@@ -1075,7 +1075,7 @@ public typealias Tags = [Tag]
 /**
  Enumeration restricting the values of the TargetType field.
  */
-public enum TargetType: String, Codable, CustomStringConvertible {
+public enum TargetType: String, Codable, CustomStringConvertible, Sendable {
     case containerInstance = "container-instance"
 
     public var description: String {
@@ -1088,7 +1088,7 @@ public enum TargetType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the TaskDefinitionFamilyStatus field.
  */
-public enum TaskDefinitionFamilyStatus: String, Codable, CustomStringConvertible {
+public enum TaskDefinitionFamilyStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case all = "ALL"
     case inactive = "INACTIVE"
@@ -1103,7 +1103,7 @@ public enum TaskDefinitionFamilyStatus: String, Codable, CustomStringConvertible
 /**
  Enumeration restricting the values of the TaskDefinitionField field.
  */
-public enum TaskDefinitionField: String, Codable, CustomStringConvertible {
+public enum TaskDefinitionField: String, Codable, CustomStringConvertible, Sendable {
     case tags = "TAGS"
 
     public var description: String {
@@ -1121,7 +1121,7 @@ public typealias TaskDefinitionFieldList = [TaskDefinitionField]
 /**
  Enumeration restricting the values of the TaskDefinitionPlacementConstraintType field.
  */
-public enum TaskDefinitionPlacementConstraintType: String, Codable, CustomStringConvertible {
+public enum TaskDefinitionPlacementConstraintType: String, Codable, CustomStringConvertible, Sendable {
     case memberof = "memberOf"
 
     public var description: String {
@@ -1139,7 +1139,7 @@ public typealias TaskDefinitionPlacementConstraints = [TaskDefinitionPlacementCo
 /**
  Enumeration restricting the values of the TaskDefinitionStatus field.
  */
-public enum TaskDefinitionStatus: String, Codable, CustomStringConvertible {
+public enum TaskDefinitionStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case inactive = "INACTIVE"
 
@@ -1153,7 +1153,7 @@ public enum TaskDefinitionStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the TaskField field.
  */
-public enum TaskField: String, Codable, CustomStringConvertible {
+public enum TaskField: String, Codable, CustomStringConvertible, Sendable {
     case tags = "TAGS"
 
     public var description: String {
@@ -1171,7 +1171,7 @@ public typealias TaskFieldList = [TaskField]
 /**
  Enumeration restricting the values of the TaskSetField field.
  */
-public enum TaskSetField: String, Codable, CustomStringConvertible {
+public enum TaskSetField: String, Codable, CustomStringConvertible, Sendable {
     case tags = "TAGS"
 
     public var description: String {
@@ -1194,7 +1194,7 @@ public typealias TaskSets = [TaskSet]
 /**
  Enumeration restricting the values of the TaskStopCode field.
  */
-public enum TaskStopCode: String, Codable, CustomStringConvertible {
+public enum TaskStopCode: String, Codable, CustomStringConvertible, Sendable {
     case essentialcontainerexited = "EssentialContainerExited"
     case taskfailedtostart = "TaskFailedToStart"
     case userinitiated = "UserInitiated"
@@ -1224,7 +1224,7 @@ public typealias TmpfsList = [Tmpfs]
 /**
  Enumeration restricting the values of the TransportProtocol field.
  */
-public enum TransportProtocol: String, Codable, CustomStringConvertible {
+public enum TransportProtocol: String, Codable, CustomStringConvertible, Sendable {
     case tcp
     case udp
 
@@ -1243,7 +1243,7 @@ public typealias UlimitList = [Ulimit]
 /**
  Enumeration restricting the values of the UlimitName field.
  */
-public enum UlimitName: String, Codable, CustomStringConvertible {
+public enum UlimitName: String, Codable, CustomStringConvertible, Sendable {
     case core
     case cpu
     case data

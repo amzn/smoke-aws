@@ -100,7 +100,7 @@ public typealias Date = Int64
 /**
  Enumeration restricting the values of the EncryptionType field.
  */
-public enum EncryptionType: String, Codable, CustomStringConvertible {
+public enum EncryptionType: String, Codable, CustomStringConvertible, Sendable {
     case aes256 = "AES256"
     case kms = "KMS"
 
@@ -159,7 +159,7 @@ public typealias FindingName = String
 /**
  Enumeration restricting the values of the FindingSeverity field.
  */
-public enum FindingSeverity: String, Codable, CustomStringConvertible {
+public enum FindingSeverity: String, Codable, CustomStringConvertible, Sendable {
     case critical = "CRITICAL"
     case high = "HIGH"
     case informational = "INFORMATIONAL"
@@ -192,7 +192,7 @@ public typealias GetAuthorizationTokenRegistryIdList = [RegistryId]
 /**
  Enumeration restricting the values of the ImageActionType field.
  */
-public enum ImageActionType: String, Codable, CustomStringConvertible {
+public enum ImageActionType: String, Codable, CustomStringConvertible, Sendable {
     case expire = "EXPIRE"
 
     public var description: String {
@@ -220,7 +220,7 @@ public typealias ImageDigest = String
 /**
  Enumeration restricting the values of the ImageFailureCode field.
  */
-public enum ImageFailureCode: String, Codable, CustomStringConvertible {
+public enum ImageFailureCode: String, Codable, CustomStringConvertible, Sendable {
     case imageNotFound = "ImageNotFound"
     case imageReferencedByManifestList = "ImageReferencedByManifestList"
     case imageTagDoesNotMatchDigest = "ImageTagDoesNotMatchDigest"
@@ -289,7 +289,7 @@ public typealias ImageTagList = [ImageTag]
 /**
  Enumeration restricting the values of the ImageTagMutability field.
  */
-public enum ImageTagMutability: String, Codable, CustomStringConvertible {
+public enum ImageTagMutability: String, Codable, CustomStringConvertible, Sendable {
     case immutable = "IMMUTABLE"
     case mutable = "MUTABLE"
 
@@ -318,7 +318,7 @@ public typealias KmsKey = String
 /**
  Enumeration restricting the values of the LayerAvailability field.
  */
-public enum LayerAvailability: String, Codable, CustomStringConvertible {
+public enum LayerAvailability: String, Codable, CustomStringConvertible, Sendable {
     case available = "AVAILABLE"
     case unavailable = "UNAVAILABLE"
 
@@ -342,7 +342,7 @@ public typealias LayerDigestList = [LayerDigest]
 /**
  Enumeration restricting the values of the LayerFailureCode field.
  */
-public enum LayerFailureCode: String, Codable, CustomStringConvertible {
+public enum LayerFailureCode: String, Codable, CustomStringConvertible, Sendable {
     case invalidLayerDigest = "InvalidLayerDigest"
     case missingLayerDigest = "MissingLayerDigest"
 
@@ -386,7 +386,7 @@ public typealias LifecyclePolicyPreviewResultList = [LifecyclePolicyPreviewResul
 /**
  Enumeration restricting the values of the LifecyclePolicyPreviewStatus field.
  */
-public enum LifecyclePolicyPreviewStatus: String, Codable, CustomStringConvertible {
+public enum LifecyclePolicyPreviewStatus: String, Codable, CustomStringConvertible, Sendable {
     case complete = "COMPLETE"
     case expired = "EXPIRED"
     case failed = "FAILED"
@@ -552,7 +552,7 @@ public typealias ReplicationRuleList = [ReplicationRule]
 /**
  Enumeration restricting the values of the ReplicationStatus field.
  */
-public enum ReplicationStatus: String, Codable, CustomStringConvertible {
+public enum ReplicationStatus: String, Codable, CustomStringConvertible, Sendable {
     case complete = "COMPLETE"
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
@@ -572,7 +572,7 @@ public typealias RepositoryFilterList = [RepositoryFilter]
 /**
  Enumeration restricting the values of the RepositoryFilterType field.
  */
-public enum RepositoryFilterType: String, Codable, CustomStringConvertible {
+public enum RepositoryFilterType: String, Codable, CustomStringConvertible, Sendable {
     case prefixMatch = "PREFIX_MATCH"
 
     public var description: String {
@@ -630,7 +630,7 @@ public typealias ResourceList = [Resource]
 /**
  Enumeration restricting the values of the ScanFrequency field.
  */
-public enum ScanFrequency: String, Codable, CustomStringConvertible {
+public enum ScanFrequency: String, Codable, CustomStringConvertible, Sendable {
     case continuousScan = "CONTINUOUS_SCAN"
     case manual = "MANUAL"
     case scanOnPush = "SCAN_ON_PUSH"
@@ -650,7 +650,7 @@ public typealias ScanOnPushFlag = Bool
 /**
  Enumeration restricting the values of the ScanStatus field.
  */
-public enum ScanStatus: String, Codable, CustomStringConvertible {
+public enum ScanStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case complete = "COMPLETE"
     case failed = "FAILED"
@@ -680,7 +680,7 @@ public typealias ScanTimestamp = Int64
 /**
  Enumeration restricting the values of the ScanType field.
  */
-public enum ScanType: String, Codable, CustomStringConvertible {
+public enum ScanType: String, Codable, CustomStringConvertible, Sendable {
     case basic = "BASIC"
     case enhanced = "ENHANCED"
 
@@ -694,7 +694,7 @@ public enum ScanType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ScanningConfigurationFailureCode field.
  */
-public enum ScanningConfigurationFailureCode: String, Codable, CustomStringConvertible {
+public enum ScanningConfigurationFailureCode: String, Codable, CustomStringConvertible, Sendable {
     case repositoryNotFound = "REPOSITORY_NOT_FOUND"
 
     public var description: String {
@@ -722,7 +722,7 @@ public typealias ScanningRepositoryFilterList = [ScanningRepositoryFilter]
 /**
  Enumeration restricting the values of the ScanningRepositoryFilterType field.
  */
-public enum ScanningRepositoryFilterType: String, Codable, CustomStringConvertible {
+public enum ScanningRepositoryFilterType: String, Codable, CustomStringConvertible, Sendable {
     case wildcard = "WILDCARD"
 
     public var description: String {
@@ -790,7 +790,7 @@ public typealias TagList = [Tag]
 /**
  Enumeration restricting the values of the TagStatus field.
  */
-public enum TagStatus: String, Codable, CustomStringConvertible {
+public enum TagStatus: String, Codable, CustomStringConvertible, Sendable {
     case any = "ANY"
     case tagged = "TAGGED"
     case untagged = "UNTAGGED"

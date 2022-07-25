@@ -228,6 +228,49 @@ public extension AcceptVpcPeeringConnectionResult {
     }()
 }
 
+public extension AccessScopeAnalysisFinding {
+    /**
+     Default instance of the AccessScopeAnalysisFinding structure.
+     */
+    static let __default: ElasticComputeCloudModel.AccessScopeAnalysisFinding = {
+        let defaultInstance = ElasticComputeCloudModel.AccessScopeAnalysisFinding(
+            findingComponents: nil,
+            findingId: nil,
+            networkInsightsAccessScopeAnalysisId: nil,
+            networkInsightsAccessScopeId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AccessScopePath {
+    /**
+     Default instance of the AccessScopePath structure.
+     */
+    static let __default: ElasticComputeCloudModel.AccessScopePath = {
+        let defaultInstance = ElasticComputeCloudModel.AccessScopePath(
+            destination: nil,
+            source: nil,
+            throughResources: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AccessScopePathRequest {
+    /**
+     Default instance of the AccessScopePathRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.AccessScopePathRequest = {
+        let defaultInstance = ElasticComputeCloudModel.AccessScopePathRequest(
+            destination: nil,
+            source: nil,
+            throughResources: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AccountAttribute {
     /**
      Default instance of the AccountAttribute structure.
@@ -268,6 +311,18 @@ public extension ActiveInstance {
     }()
 }
 
+public extension AddIpamOperatingRegion {
+    /**
+     Default instance of the AddIpamOperatingRegion structure.
+     */
+    static let __default: ElasticComputeCloudModel.AddIpamOperatingRegion = {
+        let defaultInstance = ElasticComputeCloudModel.AddIpamOperatingRegion(
+            regionName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AddPrefixListEntry {
     /**
      Default instance of the AddPrefixListEntry structure.
@@ -276,6 +331,19 @@ public extension AddPrefixListEntry {
         let defaultInstance = ElasticComputeCloudModel.AddPrefixListEntry(
             cidr: "value",
             description: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AdditionalDetail {
+    /**
+     Default instance of the AdditionalDetail structure.
+     */
+    static let __default: ElasticComputeCloudModel.AdditionalDetail = {
+        let defaultInstance = ElasticComputeCloudModel.AdditionalDetail(
+            additionalDetailType: nil,
+            component: nil)
 
         return defaultInstance
     }()
@@ -395,6 +463,7 @@ public extension AllocateHostsRequest {
             hostRecovery: nil,
             instanceFamily: nil,
             instanceType: nil,
+            outpostArn: nil,
             quantity: 0,
             tagSpecifications: nil)
 
@@ -409,6 +478,37 @@ public extension AllocateHostsResult {
     static let __default: ElasticComputeCloudModel.AllocateHostsResult = {
         let defaultInstance = ElasticComputeCloudModel.AllocateHostsResult(
             hostIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AllocateIpamPoolCidrRequest {
+    /**
+     Default instance of the AllocateIpamPoolCidrRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest = {
+        let defaultInstance = ElasticComputeCloudModel.AllocateIpamPoolCidrRequest(
+            cidr: nil,
+            clientToken: nil,
+            description: nil,
+            disallowedCidrs: nil,
+            dryRun: nil,
+            ipamPoolId: "value",
+            netmaskLength: nil,
+            previewNextCidr: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension AllocateIpamPoolCidrResult {
+    /**
+     Default instance of the AllocateIpamPoolCidrResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.AllocateIpamPoolCidrResult = {
+        let defaultInstance = ElasticComputeCloudModel.AllocateIpamPoolCidrResult(
+            ipamPoolAllocation: nil)
 
         return defaultInstance
     }()
@@ -464,7 +564,8 @@ public extension AnalysisComponent {
     static let __default: ElasticComputeCloudModel.AnalysisComponent = {
         let defaultInstance = ElasticComputeCloudModel.AnalysisComponent(
             arn: nil,
-            id: nil)
+            id: nil,
+            name: nil)
 
         return defaultInstance
     }()
@@ -884,6 +985,32 @@ public extension AssociateTransitGatewayMulticastDomainResult {
     }()
 }
 
+public extension AssociateTransitGatewayPolicyTableRequest {
+    /**
+     Default instance of the AssociateTransitGatewayPolicyTableRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableRequest = {
+        let defaultInstance = ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableRequest(
+            dryRun: nil,
+            transitGatewayAttachmentId: "value",
+            transitGatewayPolicyTableId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension AssociateTransitGatewayPolicyTableResult {
+    /**
+     Default instance of the AssociateTransitGatewayPolicyTableResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableResult = {
+        let defaultInstance = ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableResult(
+            association: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension AssociateTransitGatewayRouteTableRequest {
     /**
      Default instance of the AssociateTransitGatewayRouteTableRequest structure.
@@ -948,8 +1075,12 @@ public extension AssociateVpcCidrBlockRequest {
         let defaultInstance = ElasticComputeCloudModel.AssociateVpcCidrBlockRequest(
             amazonProvidedIpv6CidrBlock: nil,
             cidrBlock: nil,
+            ipv4IpamPoolId: nil,
+            ipv4NetmaskLength: nil,
             ipv6CidrBlock: nil,
             ipv6CidrBlockNetworkBorderGroup: nil,
+            ipv6IpamPoolId: nil,
+            ipv6NetmaskLength: nil,
             ipv6Pool: nil,
             vpcId: "value")
 
@@ -1745,6 +1876,7 @@ public extension CapacityReservation {
             instanceType: nil,
             outpostArn: nil,
             ownerId: nil,
+            placementGroupArn: nil,
             startDate: nil,
             state: nil,
             tags: nil,
@@ -2053,6 +2185,32 @@ public extension ClientData {
     }()
 }
 
+public extension ClientLoginBannerOptions {
+    /**
+     Default instance of the ClientLoginBannerOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.ClientLoginBannerOptions = {
+        let defaultInstance = ElasticComputeCloudModel.ClientLoginBannerOptions(
+            bannerText: nil,
+            enabled: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ClientLoginBannerResponseOptions {
+    /**
+     Default instance of the ClientLoginBannerResponseOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.ClientLoginBannerResponseOptions = {
+        let defaultInstance = ElasticComputeCloudModel.ClientLoginBannerResponseOptions(
+            bannerText: nil,
+            enabled: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ClientVpnAuthentication {
     /**
      Default instance of the ClientVpnAuthentication structure.
@@ -2143,6 +2301,7 @@ public extension ClientVpnEndpoint {
             authenticationOptions: nil,
             clientCidrBlock: nil,
             clientConnectOptions: nil,
+            clientLoginBannerOptions: nil,
             clientVpnEndpointId: nil,
             connectionLogOptions: nil,
             creationTime: nil,
@@ -2153,6 +2312,7 @@ public extension ClientVpnEndpoint {
             securityGroupIds: nil,
             selfServicePortalUrl: nil,
             serverCertificateArn: nil,
+            sessionTimeoutHours: nil,
             splitTunnel: nil,
             status: nil,
             tags: nil,
@@ -2526,6 +2686,7 @@ public extension CreateCapacityReservationRequest {
             instancePlatform: .__default,
             instanceType: "value",
             outpostArn: nil,
+            placementGroupArn: nil,
             tagSpecifications: nil,
             tenancy: nil)
 
@@ -2581,6 +2742,7 @@ public extension CreateClientVpnEndpointRequest {
             authenticationOptions: [],
             clientCidrBlock: "value",
             clientConnectOptions: nil,
+            clientLoginBannerOptions: nil,
             clientToken: nil,
             connectionLogOptions: ConnectionLogOptions.__default,
             description: nil,
@@ -2589,6 +2751,7 @@ public extension CreateClientVpnEndpointRequest {
             securityGroupIds: nil,
             selfServicePortal: nil,
             serverCertificateArn: "value",
+            sessionTimeoutHours: nil,
             splitTunnel: nil,
             tagSpecifications: nil,
             transportProtocol: nil,
@@ -2652,6 +2815,7 @@ public extension CreateCustomerGatewayRequest {
             certificateArn: nil,
             deviceName: nil,
             dryRun: nil,
+            ipAddress: nil,
             publicIp: nil,
             tagSpecifications: nil,
             type: .__default)
@@ -2864,7 +3028,7 @@ public extension CreateFlowLogsRequest {
             resourceIds: [],
             resourceType: .__default,
             tagSpecifications: nil,
-            trafficType: .__default)
+            trafficType: nil)
 
         return defaultInstance
     }()
@@ -3026,6 +3190,100 @@ public extension CreateInternetGatewayResult {
     }()
 }
 
+public extension CreateIpamPoolRequest {
+    /**
+     Default instance of the CreateIpamPoolRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateIpamPoolRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateIpamPoolRequest(
+            addressFamily: .__default,
+            allocationDefaultNetmaskLength: nil,
+            allocationMaxNetmaskLength: nil,
+            allocationMinNetmaskLength: nil,
+            allocationResourceTags: nil,
+            autoImport: nil,
+            awsService: nil,
+            clientToken: nil,
+            description: nil,
+            dryRun: nil,
+            ipamScopeId: "value",
+            locale: nil,
+            publiclyAdvertisable: nil,
+            sourceIpamPoolId: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateIpamPoolResult {
+    /**
+     Default instance of the CreateIpamPoolResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateIpamPoolResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateIpamPoolResult(
+            ipamPool: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateIpamRequest {
+    /**
+     Default instance of the CreateIpamRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateIpamRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateIpamRequest(
+            clientToken: nil,
+            description: nil,
+            dryRun: nil,
+            operatingRegions: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateIpamResult {
+    /**
+     Default instance of the CreateIpamResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateIpamResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateIpamResult(
+            ipam: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateIpamScopeRequest {
+    /**
+     Default instance of the CreateIpamScopeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateIpamScopeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateIpamScopeRequest(
+            clientToken: nil,
+            description: nil,
+            dryRun: nil,
+            ipamId: "value",
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateIpamScopeResult {
+    /**
+     Default instance of the CreateIpamScopeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateIpamScopeResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateIpamScopeResult(
+            ipamScope: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateKeyPairRequest {
     /**
      Default instance of the CreateKeyPairRequest structure.
@@ -3033,6 +3291,7 @@ public extension CreateKeyPairRequest {
     static let __default: ElasticComputeCloudModel.CreateKeyPairRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateKeyPairRequest(
             dryRun: nil,
+            keyFormat: nil,
             keyName: "value",
             keyType: nil,
             tagSpecifications: nil)
@@ -3263,6 +3522,35 @@ public extension CreateNetworkAclResult {
     }()
 }
 
+public extension CreateNetworkInsightsAccessScopeRequest {
+    /**
+     Default instance of the CreateNetworkInsightsAccessScopeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest(
+            clientToken: "value",
+            dryRun: nil,
+            excludePaths: nil,
+            matchPaths: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateNetworkInsightsAccessScopeResult {
+    /**
+     Default instance of the CreateNetworkInsightsAccessScopeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult(
+            networkInsightsAccessScope: nil,
+            networkInsightsAccessScopeContent: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateNetworkInsightsPathRequest {
     /**
      Default instance of the CreateNetworkInsightsPathRequest structure.
@@ -3372,6 +3660,7 @@ public extension CreatePlacementGroupRequest {
             dryRun: nil,
             groupName: nil,
             partitionCount: nil,
+            spreadLevel: nil,
             strategy: nil,
             tagSpecifications: nil)
 
@@ -3386,6 +3675,31 @@ public extension CreatePlacementGroupResult {
     static let __default: ElasticComputeCloudModel.CreatePlacementGroupResult = {
         let defaultInstance = ElasticComputeCloudModel.CreatePlacementGroupResult(
             placementGroup: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreatePublicIpv4PoolRequest {
+    /**
+     Default instance of the CreatePublicIpv4PoolRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreatePublicIpv4PoolRequest(
+            dryRun: nil,
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreatePublicIpv4PoolResult {
+    /**
+     Default instance of the CreatePublicIpv4PoolResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreatePublicIpv4PoolResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreatePublicIpv4PoolResult(
+            poolId: nil)
 
         return defaultInstance
     }()
@@ -3848,6 +4162,7 @@ public extension CreateTrafficMirrorTargetRequest {
             clientToken: nil,
             description: nil,
             dryRun: nil,
+            gatewayLoadBalancerEndpointId: nil,
             networkInterfaceId: nil,
             networkLoadBalancerArn: nil,
             tagSpecifications: nil)
@@ -3986,11 +4301,24 @@ public extension CreateTransitGatewayPeeringAttachmentRequest {
     static let __default: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest(
             dryRun: nil,
+            options: nil,
             peerAccountId: "value",
             peerRegion: "value",
             peerTransitGatewayId: "value",
             tagSpecifications: nil,
             transitGatewayId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateTransitGatewayPeeringAttachmentRequestOptions {
+    /**
+     Default instance of the CreateTransitGatewayPeeringAttachmentRequestOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequestOptions = {
+        let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequestOptions(
+            dynamicRouting: nil)
 
         return defaultInstance
     }()
@@ -4003,6 +4331,32 @@ public extension CreateTransitGatewayPeeringAttachmentResult {
     static let __default: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult(
             transitGatewayPeeringAttachment: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateTransitGatewayPolicyTableRequest {
+    /**
+     Default instance of the CreateTransitGatewayPolicyTableRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateTransitGatewayPolicyTableRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayPolicyTableRequest(
+            dryRun: nil,
+            tagSpecifications: nil,
+            transitGatewayId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateTransitGatewayPolicyTableResult {
+    /**
+     Default instance of the CreateTransitGatewayPolicyTableResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateTransitGatewayPolicyTableResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayPolicyTableResult(
+            transitGatewayPolicyTable: nil)
 
         return defaultInstance
     }()
@@ -4086,6 +4440,33 @@ public extension CreateTransitGatewayRouteResult {
     static let __default: ElasticComputeCloudModel.CreateTransitGatewayRouteResult = {
         let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayRouteResult(
             route: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateTransitGatewayRouteTableAnnouncementRequest {
+    /**
+     Default instance of the CreateTransitGatewayRouteTableAnnouncementRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementRequest = {
+        let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementRequest(
+            dryRun: nil,
+            peeringAttachmentId: "value",
+            tagSpecifications: nil,
+            transitGatewayRouteTableId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateTransitGatewayRouteTableAnnouncementResult {
+    /**
+     Default instance of the CreateTransitGatewayRouteTableAnnouncementResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementResult = {
+        let defaultInstance = ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementResult(
+            transitGatewayRouteTableAnnouncement: nil)
 
         return defaultInstance
     }()
@@ -4247,7 +4628,9 @@ public extension CreateVpcEndpointRequest {
     static let __default: ElasticComputeCloudModel.CreateVpcEndpointRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateVpcEndpointRequest(
             clientToken: nil,
+            dnsOptions: nil,
             dryRun: nil,
+            ipAddressType: nil,
             policyDocument: nil,
             privateDnsEnabled: nil,
             routeTableIds: nil,
@@ -4287,6 +4670,7 @@ public extension CreateVpcEndpointServiceConfigurationRequest {
             gatewayLoadBalancerArns: nil,
             networkLoadBalancerArns: nil,
             privateDnsName: nil,
+            supportedIpAddressTypes: nil,
             tagSpecifications: nil)
 
         return defaultInstance
@@ -4342,11 +4726,15 @@ public extension CreateVpcRequest {
     static let __default: ElasticComputeCloudModel.CreateVpcRequest = {
         let defaultInstance = ElasticComputeCloudModel.CreateVpcRequest(
             amazonProvidedIpv6CidrBlock: nil,
-            cidrBlock: "value",
+            cidrBlock: nil,
             dryRun: nil,
             instanceTenancy: nil,
+            ipv4IpamPoolId: nil,
+            ipv4NetmaskLength: nil,
             ipv6CidrBlock: nil,
             ipv6CidrBlockNetworkBorderGroup: nil,
+            ipv6IpamPoolId: nil,
+            ipv6NetmaskLength: nil,
             ipv6Pool: nil,
             tagSpecifications: nil)
 
@@ -4764,6 +5152,82 @@ public extension DeleteInternetGatewayRequest {
     }()
 }
 
+public extension DeleteIpamPoolRequest {
+    /**
+     Default instance of the DeleteIpamPoolRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteIpamPoolRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteIpamPoolRequest(
+            dryRun: nil,
+            ipamPoolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteIpamPoolResult {
+    /**
+     Default instance of the DeleteIpamPoolResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteIpamPoolResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteIpamPoolResult(
+            ipamPool: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteIpamRequest {
+    /**
+     Default instance of the DeleteIpamRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteIpamRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteIpamRequest(
+            cascade: nil,
+            dryRun: nil,
+            ipamId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteIpamResult {
+    /**
+     Default instance of the DeleteIpamResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteIpamResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteIpamResult(
+            ipam: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteIpamScopeRequest {
+    /**
+     Default instance of the DeleteIpamScopeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteIpamScopeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteIpamScopeRequest(
+            dryRun: nil,
+            ipamScopeId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteIpamScopeResult {
+    /**
+     Default instance of the DeleteIpamScopeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteIpamScopeResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteIpamScopeResult(
+            ipamScope: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteKeyPairRequest {
     /**
      Default instance of the DeleteKeyPairRequest structure.
@@ -4990,6 +5454,56 @@ public extension DeleteNetworkAclRequest {
     }()
 }
 
+public extension DeleteNetworkInsightsAccessScopeAnalysisRequest {
+    /**
+     Default instance of the DeleteNetworkInsightsAccessScopeAnalysisRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest(
+            dryRun: nil,
+            networkInsightsAccessScopeAnalysisId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteNetworkInsightsAccessScopeAnalysisResult {
+    /**
+     Default instance of the DeleteNetworkInsightsAccessScopeAnalysisResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult(
+            networkInsightsAccessScopeAnalysisId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteNetworkInsightsAccessScopeRequest {
+    /**
+     Default instance of the DeleteNetworkInsightsAccessScopeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest(
+            dryRun: nil,
+            networkInsightsAccessScopeId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteNetworkInsightsAccessScopeResult {
+    /**
+     Default instance of the DeleteNetworkInsightsAccessScopeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult(
+            networkInsightsAccessScopeId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteNetworkInsightsAnalysisRequest {
     /**
      Default instance of the DeleteNetworkInsightsAnalysisRequest structure.
@@ -5087,6 +5601,31 @@ public extension DeletePlacementGroupRequest {
         let defaultInstance = ElasticComputeCloudModel.DeletePlacementGroupRequest(
             dryRun: nil,
             groupName: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeletePublicIpv4PoolRequest {
+    /**
+     Default instance of the DeletePublicIpv4PoolRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeletePublicIpv4PoolRequest(
+            dryRun: nil,
+            poolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeletePublicIpv4PoolResult {
+    /**
+     Default instance of the DeletePublicIpv4PoolResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeletePublicIpv4PoolResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeletePublicIpv4PoolResult(
+            returnValue: nil)
 
         return defaultInstance
     }()
@@ -5451,6 +5990,31 @@ public extension DeleteTransitGatewayPeeringAttachmentResult {
     }()
 }
 
+public extension DeleteTransitGatewayPolicyTableRequest {
+    /**
+     Default instance of the DeleteTransitGatewayPolicyTableRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableRequest(
+            dryRun: nil,
+            transitGatewayPolicyTableId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteTransitGatewayPolicyTableResult {
+    /**
+     Default instance of the DeleteTransitGatewayPolicyTableResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableResult(
+            transitGatewayPolicyTable: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteTransitGatewayPrefixListReferenceRequest {
     /**
      Default instance of the DeleteTransitGatewayPrefixListReferenceRequest structure.
@@ -5523,6 +6087,31 @@ public extension DeleteTransitGatewayRouteResult {
     static let __default: ElasticComputeCloudModel.DeleteTransitGatewayRouteResult = {
         let defaultInstance = ElasticComputeCloudModel.DeleteTransitGatewayRouteResult(
             route: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteTransitGatewayRouteTableAnnouncementRequest {
+    /**
+     Default instance of the DeleteTransitGatewayRouteTableAnnouncementRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementRequest(
+            dryRun: nil,
+            transitGatewayRouteTableAnnouncementId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteTransitGatewayRouteTableAnnouncementResult {
+    /**
+     Default instance of the DeleteTransitGatewayRouteTableAnnouncementResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementResult(
+            transitGatewayRouteTableAnnouncement: nil)
 
         return defaultInstance
     }()
@@ -5763,6 +6352,59 @@ public extension DeprovisionByoipCidrResult {
     static let __default: ElasticComputeCloudModel.DeprovisionByoipCidrResult = {
         let defaultInstance = ElasticComputeCloudModel.DeprovisionByoipCidrResult(
             byoipCidr: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeprovisionIpamPoolCidrRequest {
+    /**
+     Default instance of the DeprovisionIpamPoolCidrRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest(
+            cidr: nil,
+            dryRun: nil,
+            ipamPoolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeprovisionIpamPoolCidrResult {
+    /**
+     Default instance of the DeprovisionIpamPoolCidrResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult(
+            ipamPoolCidr: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeprovisionPublicIpv4PoolCidrRequest {
+    /**
+     Default instance of the DeprovisionPublicIpv4PoolCidrRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest(
+            cidr: "value",
+            dryRun: nil,
+            poolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeprovisionPublicIpv4PoolCidrResult {
+    /**
+     Default instance of the DeprovisionPublicIpv4PoolCidrResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult(
+            deprovisionedAddresses: nil,
+            poolId: nil)
 
         return defaultInstance
     }()
@@ -6544,6 +7186,55 @@ public extension DescribeExportTasksResult {
     }()
 }
 
+public extension DescribeFastLaunchImagesRequest {
+    /**
+     Default instance of the DescribeFastLaunchImagesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeFastLaunchImagesRequest(
+            dryRun: nil,
+            filters: nil,
+            imageIds: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeFastLaunchImagesResult {
+    /**
+     Default instance of the DescribeFastLaunchImagesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeFastLaunchImagesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeFastLaunchImagesResult(
+            fastLaunchImages: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeFastLaunchImagesSuccessItem {
+    /**
+     Default instance of the DescribeFastLaunchImagesSuccessItem structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeFastLaunchImagesSuccessItem = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeFastLaunchImagesSuccessItem(
+            imageId: nil,
+            launchTemplate: nil,
+            maxParallelLaunches: nil,
+            ownerId: nil,
+            resourceType: nil,
+            snapshotConfiguration: nil,
+            state: nil,
+            stateTransitionReason: nil,
+            stateTransitionTime: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeFastSnapshotRestoreSuccessItem {
     /**
      Default instance of the DescribeFastSnapshotRestoreSuccessItem structure.
@@ -7308,6 +7999,93 @@ public extension DescribeInternetGatewaysResult {
     }()
 }
 
+public extension DescribeIpamPoolsRequest {
+    /**
+     Default instance of the DescribeIpamPoolsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeIpamPoolsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeIpamPoolsRequest(
+            dryRun: nil,
+            filters: nil,
+            ipamPoolIds: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeIpamPoolsResult {
+    /**
+     Default instance of the DescribeIpamPoolsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeIpamPoolsResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeIpamPoolsResult(
+            ipamPools: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeIpamScopesRequest {
+    /**
+     Default instance of the DescribeIpamScopesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeIpamScopesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeIpamScopesRequest(
+            dryRun: nil,
+            filters: nil,
+            ipamScopeIds: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeIpamScopesResult {
+    /**
+     Default instance of the DescribeIpamScopesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeIpamScopesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeIpamScopesResult(
+            ipamScopes: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeIpamsRequest {
+    /**
+     Default instance of the DescribeIpamsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeIpamsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeIpamsRequest(
+            dryRun: nil,
+            filters: nil,
+            ipamIds: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeIpamsResult {
+    /**
+     Default instance of the DescribeIpamsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeIpamsResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeIpamsResult(
+            ipams: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeIpv6PoolsRequest {
     /**
      Default instance of the DescribeIpv6PoolsRequest structure.
@@ -7345,6 +8123,7 @@ public extension DescribeKeyPairsRequest {
         let defaultInstance = ElasticComputeCloudModel.DescribeKeyPairsRequest(
             dryRun: nil,
             filters: nil,
+            includePublicKey: nil,
             keyNames: nil,
             keyPairIds: nil)
 
@@ -7711,6 +8490,67 @@ public extension DescribeNetworkAclsResult {
     static let __default: ElasticComputeCloudModel.DescribeNetworkAclsResult = {
         let defaultInstance = ElasticComputeCloudModel.DescribeNetworkAclsResult(
             networkAcls: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeNetworkInsightsAccessScopeAnalysesRequest {
+    /**
+     Default instance of the DescribeNetworkInsightsAccessScopeAnalysesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest(
+            analysisStartTimeBegin: nil,
+            analysisStartTimeEnd: nil,
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            networkInsightsAccessScopeAnalysisIds: nil,
+            networkInsightsAccessScopeId: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeNetworkInsightsAccessScopeAnalysesResult {
+    /**
+     Default instance of the DescribeNetworkInsightsAccessScopeAnalysesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult(
+            networkInsightsAccessScopeAnalyses: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeNetworkInsightsAccessScopesRequest {
+    /**
+     Default instance of the DescribeNetworkInsightsAccessScopesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            networkInsightsAccessScopeIds: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeNetworkInsightsAccessScopesResult {
+    /**
+     Default instance of the DescribeNetworkInsightsAccessScopesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult(
+            networkInsightsAccessScopes: nil,
             nextToken: nil)
 
         return defaultInstance
@@ -8356,6 +9196,34 @@ public extension DescribeSnapshotAttributeResult {
     }()
 }
 
+public extension DescribeSnapshotTierStatusRequest {
+    /**
+     Default instance of the DescribeSnapshotTierStatusRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeSnapshotTierStatusResult {
+    /**
+     Default instance of the DescribeSnapshotTierStatusResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeSnapshotTierStatusResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeSnapshotTierStatusResult(
+            nextToken: nil,
+            snapshotTierStatuses: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeSnapshotsRequest {
     /**
      Default instance of the DescribeSnapshotsRequest structure.
@@ -8904,6 +9772,64 @@ public extension DescribeTransitGatewayPeeringAttachmentsResult {
         let defaultInstance = ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult(
             nextToken: nil,
             transitGatewayPeeringAttachments: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeTransitGatewayPolicyTablesRequest {
+    /**
+     Default instance of the DescribeTransitGatewayPolicyTablesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil,
+            transitGatewayPolicyTableIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeTransitGatewayPolicyTablesResult {
+    /**
+     Default instance of the DescribeTransitGatewayPolicyTablesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesResult(
+            nextToken: nil,
+            transitGatewayPolicyTables: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeTransitGatewayRouteTableAnnouncementsRequest {
+    /**
+     Default instance of the DescribeTransitGatewayRouteTableAnnouncementsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil,
+            transitGatewayRouteTableAnnouncementIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeTransitGatewayRouteTableAnnouncementsResult {
+    /**
+     Default instance of the DescribeTransitGatewayRouteTableAnnouncementsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsResult = {
+        let defaultInstance = ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsResult(
+            nextToken: nil,
+            transitGatewayRouteTableAnnouncements: nil)
 
         return defaultInstance
     }()
@@ -9693,6 +10619,40 @@ public extension DisableEbsEncryptionByDefaultResult {
     }()
 }
 
+public extension DisableFastLaunchRequest {
+    /**
+     Default instance of the DisableFastLaunchRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableFastLaunchRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisableFastLaunchRequest(
+            dryRun: nil,
+            force: nil,
+            imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableFastLaunchResult {
+    /**
+     Default instance of the DisableFastLaunchResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableFastLaunchResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisableFastLaunchResult(
+            imageId: nil,
+            launchTemplate: nil,
+            maxParallelLaunches: nil,
+            ownerId: nil,
+            resourceType: nil,
+            snapshotConfiguration: nil,
+            state: nil,
+            stateTransitionReason: nil,
+            stateTransitionTime: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DisableFastSnapshotRestoreErrorItem {
     /**
      Default instance of the DisableFastSnapshotRestoreErrorItem structure.
@@ -9806,6 +10766,31 @@ public extension DisableImageDeprecationResult {
     }()
 }
 
+public extension DisableIpamOrganizationAdminAccountRequest {
+    /**
+     Default instance of the DisableIpamOrganizationAdminAccountRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest(
+            delegatedAdminAccountId: "value",
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableIpamOrganizationAdminAccountResult {
+    /**
+     Default instance of the DisableIpamOrganizationAdminAccountResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult(
+            success: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DisableSerialConsoleAccessRequest {
     /**
      Default instance of the DisableSerialConsoleAccessRequest structure.
@@ -9837,7 +10822,8 @@ public extension DisableTransitGatewayRouteTablePropagationRequest {
     static let __default: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest = {
         let defaultInstance = ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest(
             dryRun: nil,
-            transitGatewayAttachmentId: "value",
+            transitGatewayAttachmentId: nil,
+            transitGatewayRouteTableAnnouncementId: nil,
             transitGatewayRouteTableId: "value")
 
         return defaultInstance
@@ -10101,6 +11087,32 @@ public extension DisassociateTransitGatewayMulticastDomainResult {
     }()
 }
 
+public extension DisassociateTransitGatewayPolicyTableRequest {
+    /**
+     Default instance of the DisassociateTransitGatewayPolicyTableRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableRequest(
+            dryRun: nil,
+            transitGatewayAttachmentId: "value",
+            transitGatewayPolicyTableId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DisassociateTransitGatewayPolicyTableResult {
+    /**
+     Default instance of the DisassociateTransitGatewayPolicyTableResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableResult(
+            association: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DisassociateTransitGatewayRouteTableRequest {
     /**
      Default instance of the DisassociateTransitGatewayRouteTableRequest structure.
@@ -10258,6 +11270,30 @@ public extension DnsEntry {
         let defaultInstance = ElasticComputeCloudModel.DnsEntry(
             dnsName: nil,
             hostedZoneId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DnsOptions {
+    /**
+     Default instance of the DnsOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.DnsOptions = {
+        let defaultInstance = ElasticComputeCloudModel.DnsOptions(
+            dnsRecordIpType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DnsOptionsSpecification {
+    /**
+     Default instance of the DnsOptionsSpecification structure.
+     */
+    static let __default: ElasticComputeCloudModel.DnsOptionsSpecification = {
+        let defaultInstance = ElasticComputeCloudModel.DnsOptionsSpecification(
+            dnsRecordIpType: nil)
 
         return defaultInstance
     }()
@@ -10503,6 +11539,43 @@ public extension EnableEbsEncryptionByDefaultResult {
     }()
 }
 
+public extension EnableFastLaunchRequest {
+    /**
+     Default instance of the EnableFastLaunchRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableFastLaunchRequest = {
+        let defaultInstance = ElasticComputeCloudModel.EnableFastLaunchRequest(
+            dryRun: nil,
+            imageId: "value",
+            launchTemplate: nil,
+            maxParallelLaunches: nil,
+            resourceType: nil,
+            snapshotConfiguration: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableFastLaunchResult {
+    /**
+     Default instance of the EnableFastLaunchResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableFastLaunchResult = {
+        let defaultInstance = ElasticComputeCloudModel.EnableFastLaunchResult(
+            imageId: nil,
+            launchTemplate: nil,
+            maxParallelLaunches: nil,
+            ownerId: nil,
+            resourceType: nil,
+            snapshotConfiguration: nil,
+            state: nil,
+            stateTransitionReason: nil,
+            stateTransitionTime: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension EnableFastSnapshotRestoreErrorItem {
     /**
      Default instance of the EnableFastSnapshotRestoreErrorItem structure.
@@ -10617,6 +11690,31 @@ public extension EnableImageDeprecationResult {
     }()
 }
 
+public extension EnableIpamOrganizationAdminAccountRequest {
+    /**
+     Default instance of the EnableIpamOrganizationAdminAccountRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest = {
+        let defaultInstance = ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest(
+            delegatedAdminAccountId: "value",
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableIpamOrganizationAdminAccountResult {
+    /**
+     Default instance of the EnableIpamOrganizationAdminAccountResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult = {
+        let defaultInstance = ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult(
+            success: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension EnableSerialConsoleAccessRequest {
     /**
      Default instance of the EnableSerialConsoleAccessRequest structure.
@@ -10648,7 +11746,8 @@ public extension EnableTransitGatewayRouteTablePropagationRequest {
     static let __default: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest = {
         let defaultInstance = ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest(
             dryRun: nil,
-            transitGatewayAttachmentId: "value",
+            transitGatewayAttachmentId: nil,
+            transitGatewayRouteTableAnnouncementId: nil,
             transitGatewayRouteTableId: "value")
 
         return defaultInstance
@@ -10827,6 +11926,10 @@ public extension Explanation {
             state: nil,
             subnet: nil,
             subnetRouteTable: nil,
+            transitGateway: nil,
+            transitGatewayAttachment: nil,
+            transitGatewayRouteTable: nil,
+            transitGatewayRouteTableRoute: nil,
             vpc: nil,
             vpcEndpoint: nil,
             vpcPeeringConnection: nil,
@@ -11069,6 +12172,58 @@ public extension FailedQueuedPurchaseDeletion {
         let defaultInstance = ElasticComputeCloudModel.FailedQueuedPurchaseDeletion(
             error: nil,
             reservedInstancesId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FastLaunchLaunchTemplateSpecificationRequest {
+    /**
+     Default instance of the FastLaunchLaunchTemplateSpecificationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.FastLaunchLaunchTemplateSpecificationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.FastLaunchLaunchTemplateSpecificationRequest(
+            launchTemplateId: nil,
+            launchTemplateName: nil,
+            version: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension FastLaunchLaunchTemplateSpecificationResponse {
+    /**
+     Default instance of the FastLaunchLaunchTemplateSpecificationResponse structure.
+     */
+    static let __default: ElasticComputeCloudModel.FastLaunchLaunchTemplateSpecificationResponse = {
+        let defaultInstance = ElasticComputeCloudModel.FastLaunchLaunchTemplateSpecificationResponse(
+            launchTemplateId: nil,
+            launchTemplateName: nil,
+            version: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FastLaunchSnapshotConfigurationRequest {
+    /**
+     Default instance of the FastLaunchSnapshotConfigurationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.FastLaunchSnapshotConfigurationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.FastLaunchSnapshotConfigurationRequest(
+            targetResourceCount: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension FastLaunchSnapshotConfigurationResponse {
+    /**
+     Default instance of the FastLaunchSnapshotConfigurationResponse structure.
+     */
+    static let __default: ElasticComputeCloudModel.FastLaunchSnapshotConfigurationResponse = {
+        let defaultInstance = ElasticComputeCloudModel.FastLaunchSnapshotConfigurationResponse(
+            targetResourceCount: nil)
 
         return defaultInstance
     }()
@@ -11787,6 +12942,157 @@ public extension GetInstanceTypesFromInstanceRequirementsResult {
     }()
 }
 
+public extension GetInstanceUefiDataRequest {
+    /**
+     Default instance of the GetInstanceUefiDataRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetInstanceUefiDataRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetInstanceUefiDataRequest(
+            dryRun: nil,
+            instanceId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetInstanceUefiDataResult {
+    /**
+     Default instance of the GetInstanceUefiDataResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetInstanceUefiDataResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetInstanceUefiDataResult(
+            instanceId: nil,
+            uefiData: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamAddressHistoryRequest {
+    /**
+     Default instance of the GetIpamAddressHistoryRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamAddressHistoryRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamAddressHistoryRequest(
+            cidr: "value",
+            dryRun: nil,
+            endTime: nil,
+            ipamScopeId: "value",
+            maxResults: nil,
+            nextToken: nil,
+            startTime: nil,
+            vpcId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamAddressHistoryResult {
+    /**
+     Default instance of the GetIpamAddressHistoryResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamAddressHistoryResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamAddressHistoryResult(
+            historyRecords: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamPoolAllocationsRequest {
+    /**
+     Default instance of the GetIpamPoolAllocationsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamPoolAllocationsRequest(
+            dryRun: nil,
+            filters: nil,
+            ipamPoolAllocationId: nil,
+            ipamPoolId: "value",
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamPoolAllocationsResult {
+    /**
+     Default instance of the GetIpamPoolAllocationsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamPoolAllocationsResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamPoolAllocationsResult(
+            ipamPoolAllocations: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamPoolCidrsRequest {
+    /**
+     Default instance of the GetIpamPoolCidrsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamPoolCidrsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamPoolCidrsRequest(
+            dryRun: nil,
+            filters: nil,
+            ipamPoolId: "value",
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamPoolCidrsResult {
+    /**
+     Default instance of the GetIpamPoolCidrsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamPoolCidrsResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamPoolCidrsResult(
+            ipamPoolCidrs: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamResourceCidrsRequest {
+    /**
+     Default instance of the GetIpamResourceCidrsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamResourceCidrsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamResourceCidrsRequest(
+            dryRun: nil,
+            filters: nil,
+            ipamPoolId: nil,
+            ipamScopeId: "value",
+            maxResults: nil,
+            nextToken: nil,
+            resourceId: nil,
+            resourceOwner: nil,
+            resourceTag: nil,
+            resourceType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetIpamResourceCidrsResult {
+    /**
+     Default instance of the GetIpamResourceCidrsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetIpamResourceCidrsResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetIpamResourceCidrsResult(
+            ipamResourceCidrs: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension GetLaunchTemplateDataRequest {
     /**
      Default instance of the GetLaunchTemplateDataRequest structure.
@@ -11864,6 +13170,61 @@ public extension GetManagedPrefixListEntriesResult {
         let defaultInstance = ElasticComputeCloudModel.GetManagedPrefixListEntriesResult(
             entries: nil,
             nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetNetworkInsightsAccessScopeAnalysisFindingsRequest {
+    /**
+     Default instance of the GetNetworkInsightsAccessScopeAnalysisFindingsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest(
+            dryRun: nil,
+            maxResults: nil,
+            networkInsightsAccessScopeAnalysisId: "value",
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetNetworkInsightsAccessScopeAnalysisFindingsResult {
+    /**
+     Default instance of the GetNetworkInsightsAccessScopeAnalysisFindingsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult(
+            analysisFindings: nil,
+            analysisStatus: nil,
+            networkInsightsAccessScopeAnalysisId: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetNetworkInsightsAccessScopeContentRequest {
+    /**
+     Default instance of the GetNetworkInsightsAccessScopeContentRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest(
+            dryRun: nil,
+            networkInsightsAccessScopeId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetNetworkInsightsAccessScopeContentResult {
+    /**
+     Default instance of the GetNetworkInsightsAccessScopeContentResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult(
+            networkInsightsAccessScopeContent: nil)
 
         return defaultInstance
     }()
@@ -12070,6 +13431,63 @@ public extension GetTransitGatewayMulticastDomainAssociationsResult {
         let defaultInstance = ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult(
             multicastDomainAssociations: nil,
             nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetTransitGatewayPolicyTableAssociationsRequest {
+    /**
+     Default instance of the GetTransitGatewayPolicyTableAssociationsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil,
+            transitGatewayPolicyTableId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetTransitGatewayPolicyTableAssociationsResult {
+    /**
+     Default instance of the GetTransitGatewayPolicyTableAssociationsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsResult(
+            associations: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetTransitGatewayPolicyTableEntriesRequest {
+    /**
+     Default instance of the GetTransitGatewayPolicyTableEntriesRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil,
+            transitGatewayPolicyTableId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetTransitGatewayPolicyTableEntriesResult {
+    /**
+     Default instance of the GetTransitGatewayPolicyTableEntriesResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesResult(
+            transitGatewayPolicyTableEntries: nil)
 
         return defaultInstance
     }()
@@ -12340,6 +13758,7 @@ public extension Host {
             hostReservationId: nil,
             instances: nil,
             memberOfServiceLinkedResourceGroup: nil,
+            outpostArn: nil,
             ownerId: nil,
             releaseTime: nil,
             state: nil,
@@ -12547,6 +13966,7 @@ public extension Image {
             state: nil,
             stateReason: nil,
             tags: nil,
+            tpmSupport: nil,
             usageOperation: nil,
             virtualizationType: nil)
 
@@ -12565,10 +13985,13 @@ public extension ImageAttribute {
             description: nil,
             imageId: nil,
             kernelId: nil,
+            lastLaunchedTime: nil,
             launchPermissions: nil,
             productCodes: nil,
             ramdiskId: nil,
-            sriovNetSupport: nil)
+            sriovNetSupport: nil,
+            tpmSupport: nil,
+            uefiData: nil)
 
         return defaultInstance
     }()
@@ -12586,6 +14009,22 @@ public extension ImageDiskContainer {
             snapshotId: nil,
             url: nil,
             userBucket: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImageRecycleBinInfo {
+    /**
+     Default instance of the ImageRecycleBinInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.ImageRecycleBinInfo = {
+        let defaultInstance = ElasticComputeCloudModel.ImageRecycleBinInfo(
+            description: nil,
+            imageId: nil,
+            name: nil,
+            recycleBinEnterTime: nil,
+            recycleBinExitTime: nil)
 
         return defaultInstance
     }()
@@ -12987,6 +14426,7 @@ public extension Instance {
             keyName: nil,
             launchTime: nil,
             licenses: nil,
+            maintenanceOptions: nil,
             metadataOptions: nil,
             monitoring: nil,
             networkInterfaces: nil,
@@ -13012,6 +14452,7 @@ public extension Instance {
             stateTransitionReason: nil,
             subnetId: nil,
             tags: nil,
+            tpmSupport: nil,
             usageOperation: nil,
             usageOperationUpdateTime: nil,
             virtualizationType: nil,
@@ -13028,6 +14469,7 @@ public extension InstanceAttribute {
     static let __default: ElasticComputeCloudModel.InstanceAttribute = {
         let defaultInstance = ElasticComputeCloudModel.InstanceAttribute(
             blockDeviceMappings: nil,
+            disableApiStop: nil,
             disableApiTermination: nil,
             ebsOptimized: nil,
             enaSupport: nil,
@@ -13306,6 +14748,30 @@ public extension InstanceIpv6Prefix {
     }()
 }
 
+public extension InstanceMaintenanceOptions {
+    /**
+     Default instance of the InstanceMaintenanceOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceMaintenanceOptions = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceMaintenanceOptions(
+            autoRecovery: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InstanceMaintenanceOptionsRequest {
+    /**
+     Default instance of the InstanceMaintenanceOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.InstanceMaintenanceOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.InstanceMaintenanceOptionsRequest(
+            autoRecovery: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InstanceMarketOptionsRequest {
     /**
      Default instance of the InstanceMarketOptionsRequest structure.
@@ -13328,7 +14794,8 @@ public extension InstanceMetadataOptionsRequest {
             httpEndpoint: nil,
             httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
-            httpTokens: nil)
+            httpTokens: nil,
+            instanceMetadataTags: nil)
 
         return defaultInstance
     }()
@@ -13344,6 +14811,7 @@ public extension InstanceMetadataOptionsResponse {
             httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil,
+            instanceMetadataTags: nil,
             state: nil)
 
         return defaultInstance
@@ -13823,6 +15291,214 @@ public extension IpRange {
     }()
 }
 
+public extension Ipam {
+    /**
+     Default instance of the Ipam structure.
+     */
+    static let __default: ElasticComputeCloudModel.Ipam = {
+        let defaultInstance = ElasticComputeCloudModel.Ipam(
+            description: nil,
+            ipamArn: nil,
+            ipamId: nil,
+            ipamRegion: nil,
+            operatingRegions: nil,
+            ownerId: nil,
+            privateDefaultScopeId: nil,
+            publicDefaultScopeId: nil,
+            scopeCount: nil,
+            state: nil,
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamAddressHistoryRecord {
+    /**
+     Default instance of the IpamAddressHistoryRecord structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamAddressHistoryRecord = {
+        let defaultInstance = ElasticComputeCloudModel.IpamAddressHistoryRecord(
+            resourceCidr: nil,
+            resourceComplianceStatus: nil,
+            resourceId: nil,
+            resourceName: nil,
+            resourceOverlapStatus: nil,
+            resourceOwnerId: nil,
+            resourceRegion: nil,
+            resourceType: nil,
+            sampledEndTime: nil,
+            sampledStartTime: nil,
+            vpcId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamCidrAuthorizationContext {
+    /**
+     Default instance of the IpamCidrAuthorizationContext structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamCidrAuthorizationContext = {
+        let defaultInstance = ElasticComputeCloudModel.IpamCidrAuthorizationContext(
+            message: nil,
+            signature: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamOperatingRegion {
+    /**
+     Default instance of the IpamOperatingRegion structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamOperatingRegion = {
+        let defaultInstance = ElasticComputeCloudModel.IpamOperatingRegion(
+            regionName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamPool {
+    /**
+     Default instance of the IpamPool structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamPool = {
+        let defaultInstance = ElasticComputeCloudModel.IpamPool(
+            addressFamily: nil,
+            allocationDefaultNetmaskLength: nil,
+            allocationMaxNetmaskLength: nil,
+            allocationMinNetmaskLength: nil,
+            allocationResourceTags: nil,
+            autoImport: nil,
+            awsService: nil,
+            description: nil,
+            ipamArn: nil,
+            ipamPoolArn: nil,
+            ipamPoolId: nil,
+            ipamRegion: nil,
+            ipamScopeArn: nil,
+            ipamScopeType: nil,
+            locale: nil,
+            ownerId: nil,
+            poolDepth: nil,
+            publiclyAdvertisable: nil,
+            sourceIpamPoolId: nil,
+            state: nil,
+            stateMessage: nil,
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamPoolAllocation {
+    /**
+     Default instance of the IpamPoolAllocation structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamPoolAllocation = {
+        let defaultInstance = ElasticComputeCloudModel.IpamPoolAllocation(
+            cidr: nil,
+            description: nil,
+            ipamPoolAllocationId: nil,
+            resourceId: nil,
+            resourceOwner: nil,
+            resourceRegion: nil,
+            resourceType: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamPoolCidr {
+    /**
+     Default instance of the IpamPoolCidr structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamPoolCidr = {
+        let defaultInstance = ElasticComputeCloudModel.IpamPoolCidr(
+            cidr: nil,
+            failureReason: nil,
+            state: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamPoolCidrFailureReason {
+    /**
+     Default instance of the IpamPoolCidrFailureReason structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamPoolCidrFailureReason = {
+        let defaultInstance = ElasticComputeCloudModel.IpamPoolCidrFailureReason(
+            code: nil,
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamResourceCidr {
+    /**
+     Default instance of the IpamResourceCidr structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamResourceCidr = {
+        let defaultInstance = ElasticComputeCloudModel.IpamResourceCidr(
+            complianceStatus: nil,
+            ipUsage: nil,
+            ipamId: nil,
+            ipamPoolId: nil,
+            ipamScopeId: nil,
+            managementState: nil,
+            overlapStatus: nil,
+            resourceCidr: nil,
+            resourceId: nil,
+            resourceName: nil,
+            resourceOwnerId: nil,
+            resourceRegion: nil,
+            resourceTags: nil,
+            resourceType: nil,
+            vpcId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamResourceTag {
+    /**
+     Default instance of the IpamResourceTag structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamResourceTag = {
+        let defaultInstance = ElasticComputeCloudModel.IpamResourceTag(
+            key: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension IpamScope {
+    /**
+     Default instance of the IpamScope structure.
+     */
+    static let __default: ElasticComputeCloudModel.IpamScope = {
+        let defaultInstance = ElasticComputeCloudModel.IpamScope(
+            description: nil,
+            ipamArn: nil,
+            ipamRegion: nil,
+            ipamScopeArn: nil,
+            ipamScopeId: nil,
+            ipamScopeType: nil,
+            isDefault: nil,
+            ownerId: nil,
+            poolCount: nil,
+            state: nil,
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Ipv4PrefixSpecification {
     /**
      Default instance of the Ipv4PrefixSpecification structure.
@@ -13970,10 +15646,12 @@ public extension KeyPairInfo {
      */
     static let __default: ElasticComputeCloudModel.KeyPairInfo = {
         let defaultInstance = ElasticComputeCloudModel.KeyPairInfo(
+            createTime: nil,
             keyFingerprint: nil,
             keyName: nil,
             keyPairId: nil,
             keyType: nil,
+            publicKey: nil,
             tags: nil)
 
         return defaultInstance
@@ -14311,6 +15989,30 @@ public extension LaunchTemplateIamInstanceProfileSpecificationRequest {
     }()
 }
 
+public extension LaunchTemplateInstanceMaintenanceOptions {
+    /**
+     Default instance of the LaunchTemplateInstanceMaintenanceOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.LaunchTemplateInstanceMaintenanceOptions = {
+        let defaultInstance = ElasticComputeCloudModel.LaunchTemplateInstanceMaintenanceOptions(
+            autoRecovery: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension LaunchTemplateInstanceMaintenanceOptionsRequest {
+    /**
+     Default instance of the LaunchTemplateInstanceMaintenanceOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.LaunchTemplateInstanceMaintenanceOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.LaunchTemplateInstanceMaintenanceOptionsRequest(
+            autoRecovery: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension LaunchTemplateInstanceMarketOptions {
     /**
      Default instance of the LaunchTemplateInstanceMarketOptions structure.
@@ -14347,6 +16049,7 @@ public extension LaunchTemplateInstanceMetadataOptions {
             httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil,
+            instanceMetadataTags: nil,
             state: nil)
 
         return defaultInstance
@@ -14362,7 +16065,8 @@ public extension LaunchTemplateInstanceMetadataOptionsRequest {
             httpEndpoint: nil,
             httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
-            httpTokens: nil)
+            httpTokens: nil,
+            instanceMetadataTags: nil)
 
         return defaultInstance
     }()
@@ -14670,6 +16374,62 @@ public extension LicenseConfigurationRequest {
     static let __default: ElasticComputeCloudModel.LicenseConfigurationRequest = {
         let defaultInstance = ElasticComputeCloudModel.LicenseConfigurationRequest(
             licenseConfigurationArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListImagesInRecycleBinRequest {
+    /**
+     Default instance of the ListImagesInRecycleBinRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ListImagesInRecycleBinRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ListImagesInRecycleBinRequest(
+            dryRun: nil,
+            imageIds: nil,
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListImagesInRecycleBinResult {
+    /**
+     Default instance of the ListImagesInRecycleBinResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ListImagesInRecycleBinResult = {
+        let defaultInstance = ElasticComputeCloudModel.ListImagesInRecycleBinResult(
+            images: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListSnapshotsInRecycleBinRequest {
+    /**
+     Default instance of the ListSnapshotsInRecycleBinRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest(
+            dryRun: nil,
+            maxResults: nil,
+            nextToken: nil,
+            snapshotIds: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListSnapshotsInRecycleBinResult {
+    /**
+     Default instance of the ListSnapshotsInRecycleBinResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult = {
+        let defaultInstance = ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult(
+            nextToken: nil,
+            snapshots: nil)
 
         return defaultInstance
     }()
@@ -15055,6 +16815,7 @@ public extension ModifyClientVpnEndpointRequest {
     static let __default: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest = {
         let defaultInstance = ElasticComputeCloudModel.ModifyClientVpnEndpointRequest(
             clientConnectOptions: nil,
+            clientLoginBannerOptions: nil,
             clientVpnEndpointId: "value",
             connectionLogOptions: nil,
             description: nil,
@@ -15063,6 +16824,7 @@ public extension ModifyClientVpnEndpointRequest {
             securityGroupIds: nil,
             selfServicePortal: nil,
             serverCertificateArn: nil,
+            sessionTimeoutHours: nil,
             splitTunnel: nil,
             vpcId: nil,
             vpnPort: nil)
@@ -15283,6 +17045,7 @@ public extension ModifyInstanceAttributeRequest {
         let defaultInstance = ElasticComputeCloudModel.ModifyInstanceAttributeRequest(
             attribute: nil,
             blockDeviceMappings: nil,
+            disableApiStop: nil,
             disableApiTermination: nil,
             dryRun: nil,
             ebsOptimized: nil,
@@ -15410,6 +17173,33 @@ public extension ModifyInstanceEventWindowResult {
     }()
 }
 
+public extension ModifyInstanceMaintenanceOptionsRequest {
+    /**
+     Default instance of the ModifyInstanceMaintenanceOptionsRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsRequest(
+            autoRecovery: nil,
+            dryRun: nil,
+            instanceId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyInstanceMaintenanceOptionsResult {
+    /**
+     Default instance of the ModifyInstanceMaintenanceOptionsResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsResult(
+            autoRecovery: nil,
+            instanceId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifyInstanceMetadataOptionsRequest {
     /**
      Default instance of the ModifyInstanceMetadataOptionsRequest structure.
@@ -15421,7 +17211,8 @@ public extension ModifyInstanceMetadataOptionsRequest {
             httpProtocolIpv6: nil,
             httpPutResponseHopLimit: nil,
             httpTokens: nil,
-            instanceId: "value")
+            instanceId: "value",
+            instanceMetadataTags: nil)
 
         return defaultInstance
     }()
@@ -15465,6 +17256,123 @@ public extension ModifyInstancePlacementResult {
     static let __default: ElasticComputeCloudModel.ModifyInstancePlacementResult = {
         let defaultInstance = ElasticComputeCloudModel.ModifyInstancePlacementResult(
             return: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamPoolRequest {
+    /**
+     Default instance of the ModifyIpamPoolRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamPoolRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamPoolRequest(
+            addAllocationResourceTags: nil,
+            allocationDefaultNetmaskLength: nil,
+            allocationMaxNetmaskLength: nil,
+            allocationMinNetmaskLength: nil,
+            autoImport: nil,
+            clearAllocationDefaultNetmaskLength: nil,
+            description: nil,
+            dryRun: nil,
+            ipamPoolId: "value",
+            removeAllocationResourceTags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamPoolResult {
+    /**
+     Default instance of the ModifyIpamPoolResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamPoolResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamPoolResult(
+            ipamPool: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamRequest {
+    /**
+     Default instance of the ModifyIpamRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamRequest(
+            addOperatingRegions: nil,
+            description: nil,
+            dryRun: nil,
+            ipamId: "value",
+            removeOperatingRegions: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamResourceCidrRequest {
+    /**
+     Default instance of the ModifyIpamResourceCidrRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamResourceCidrRequest(
+            currentIpamScopeId: "value",
+            destinationIpamScopeId: nil,
+            dryRun: nil,
+            monitored: false,
+            resourceCidr: "value",
+            resourceId: "value",
+            resourceRegion: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamResourceCidrResult {
+    /**
+     Default instance of the ModifyIpamResourceCidrResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamResourceCidrResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamResourceCidrResult(
+            ipamResourceCidr: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamResult {
+    /**
+     Default instance of the ModifyIpamResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamResult(
+            ipam: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamScopeRequest {
+    /**
+     Default instance of the ModifyIpamScopeRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamScopeRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamScopeRequest(
+            description: nil,
+            dryRun: nil,
+            ipamScopeId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyIpamScopeResult {
+    /**
+     Default instance of the ModifyIpamScopeResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyIpamScopeResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyIpamScopeResult(
+            ipamScope: nil)
 
         return defaultInstance
     }()
@@ -15643,6 +17551,33 @@ public extension ModifySnapshotAttributeRequest {
     }()
 }
 
+public extension ModifySnapshotTierRequest {
+    /**
+     Default instance of the ModifySnapshotTierRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifySnapshotTierRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifySnapshotTierRequest(
+            dryRun: nil,
+            snapshotId: "value",
+            storageTier: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifySnapshotTierResult {
+    /**
+     Default instance of the ModifySnapshotTierResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifySnapshotTierResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifySnapshotTierResult(
+            snapshotId: nil,
+            tieringStartTime: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifySpotFleetRequestRequest {
     /**
      Default instance of the ModifySpotFleetRequestRequest structure.
@@ -15680,7 +17615,9 @@ public extension ModifySubnetAttributeRequest {
         let defaultInstance = ElasticComputeCloudModel.ModifySubnetAttributeRequest(
             assignIpv6AddressOnCreation: nil,
             customerOwnedIpv4Pool: nil,
+            disableLniAtDeviceIndex: nil,
             enableDns64: nil,
+            enableLniAtDeviceIndex: nil,
             enableResourceNameDnsAAAARecordOnLaunch: nil,
             enableResourceNameDnsARecordOnLaunch: nil,
             mapCustomerOwnedIpOnLaunch: nil,
@@ -15793,6 +17730,7 @@ public extension ModifyTransitGatewayOptions {
     static let __default: ElasticComputeCloudModel.ModifyTransitGatewayOptions = {
         let defaultInstance = ElasticComputeCloudModel.ModifyTransitGatewayOptions(
             addTransitGatewayCidrBlocks: nil,
+            amazonSideAsn: nil,
             associationDefaultRouteTableId: nil,
             autoAcceptSharedAttachments: nil,
             defaultRouteTableAssociation: nil,
@@ -15997,7 +17935,9 @@ public extension ModifyVpcEndpointRequest {
             addRouteTableIds: nil,
             addSecurityGroupIds: nil,
             addSubnetIds: nil,
+            dnsOptions: nil,
             dryRun: nil,
+            ipAddressType: nil,
             policyDocument: nil,
             privateDnsEnabled: nil,
             removeRouteTableIds: nil,
@@ -16031,11 +17971,13 @@ public extension ModifyVpcEndpointServiceConfigurationRequest {
             acceptanceRequired: nil,
             addGatewayLoadBalancerArns: nil,
             addNetworkLoadBalancerArns: nil,
+            addSupportedIpAddressTypes: nil,
             dryRun: nil,
             privateDnsName: nil,
             removeGatewayLoadBalancerArns: nil,
             removeNetworkLoadBalancerArns: nil,
             removePrivateDnsName: nil,
+            removeSupportedIpAddressTypes: nil,
             serviceId: "value")
 
         return defaultInstance
@@ -16049,6 +17991,32 @@ public extension ModifyVpcEndpointServiceConfigurationResult {
     static let __default: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult = {
         let defaultInstance = ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult(
             return: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyVpcEndpointServicePayerResponsibilityRequest {
+    /**
+     Default instance of the ModifyVpcEndpointServicePayerResponsibilityRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest(
+            dryRun: nil,
+            payerResponsibility: .__default,
+            serviceId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyVpcEndpointServicePayerResponsibilityResult {
+    /**
+     Default instance of the ModifyVpcEndpointServicePayerResponsibilityResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult = {
+        let defaultInstance = ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult(
+            returnValue: nil)
 
         return defaultInstance
     }()
@@ -16337,6 +18305,33 @@ public extension MoveAddressToVpcResult {
     }()
 }
 
+public extension MoveByoipCidrToIpamRequest {
+    /**
+     Default instance of the MoveByoipCidrToIpamRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest = {
+        let defaultInstance = ElasticComputeCloudModel.MoveByoipCidrToIpamRequest(
+            cidr: "value",
+            dryRun: nil,
+            ipamPoolId: "value",
+            ipamPoolOwner: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension MoveByoipCidrToIpamResult {
+    /**
+     Default instance of the MoveByoipCidrToIpamResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.MoveByoipCidrToIpamResult = {
+        let defaultInstance = ElasticComputeCloudModel.MoveByoipCidrToIpamResult(
+            byoipCidr: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MovingAddressStatus {
     /**
      Default instance of the MovingAddressStatus structure.
@@ -16476,6 +18471,58 @@ public extension NetworkInfo {
     }()
 }
 
+public extension NetworkInsightsAccessScope {
+    /**
+     Default instance of the NetworkInsightsAccessScope structure.
+     */
+    static let __default: ElasticComputeCloudModel.NetworkInsightsAccessScope = {
+        let defaultInstance = ElasticComputeCloudModel.NetworkInsightsAccessScope(
+            createdDate: nil,
+            networkInsightsAccessScopeArn: nil,
+            networkInsightsAccessScopeId: nil,
+            tags: nil,
+            updatedDate: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension NetworkInsightsAccessScopeAnalysis {
+    /**
+     Default instance of the NetworkInsightsAccessScopeAnalysis structure.
+     */
+    static let __default: ElasticComputeCloudModel.NetworkInsightsAccessScopeAnalysis = {
+        let defaultInstance = ElasticComputeCloudModel.NetworkInsightsAccessScopeAnalysis(
+            analyzedEniCount: nil,
+            endDate: nil,
+            findingsFound: nil,
+            networkInsightsAccessScopeAnalysisArn: nil,
+            networkInsightsAccessScopeAnalysisId: nil,
+            networkInsightsAccessScopeId: nil,
+            startDate: nil,
+            status: nil,
+            statusMessage: nil,
+            tags: nil,
+            warningMessage: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension NetworkInsightsAccessScopeContent {
+    /**
+     Default instance of the NetworkInsightsAccessScopeContent structure.
+     */
+    static let __default: ElasticComputeCloudModel.NetworkInsightsAccessScopeContent = {
+        let defaultInstance = ElasticComputeCloudModel.NetworkInsightsAccessScopeContent(
+            excludePaths: nil,
+            matchPaths: nil,
+            networkInsightsAccessScopeId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension NetworkInsightsAnalysis {
     /**
      Default instance of the NetworkInsightsAnalysis structure.
@@ -16494,7 +18541,8 @@ public extension NetworkInsightsAnalysis {
             startDate: nil,
             status: nil,
             statusMessage: nil,
-            tags: nil)
+            tags: nil,
+            warningMessage: nil)
 
         return defaultInstance
     }()
@@ -16738,6 +18786,42 @@ public extension OnDemandOptionsRequest {
     }()
 }
 
+public extension PacketHeaderStatement {
+    /**
+     Default instance of the PacketHeaderStatement structure.
+     */
+    static let __default: ElasticComputeCloudModel.PacketHeaderStatement = {
+        let defaultInstance = ElasticComputeCloudModel.PacketHeaderStatement(
+            destinationAddresses: nil,
+            destinationPorts: nil,
+            destinationPrefixLists: nil,
+            protocols: nil,
+            sourceAddresses: nil,
+            sourcePorts: nil,
+            sourcePrefixLists: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PacketHeaderStatementRequest {
+    /**
+     Default instance of the PacketHeaderStatementRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.PacketHeaderStatementRequest = {
+        let defaultInstance = ElasticComputeCloudModel.PacketHeaderStatementRequest(
+            destinationAddresses: nil,
+            destinationPorts: nil,
+            destinationPrefixLists: nil,
+            protocols: nil,
+            sourceAddresses: nil,
+            sourcePorts: nil,
+            sourcePrefixLists: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension PathComponent {
     /**
      Default instance of the PathComponent structure.
@@ -16745,6 +18829,8 @@ public extension PathComponent {
     static let __default: ElasticComputeCloudModel.PathComponent = {
         let defaultInstance = ElasticComputeCloudModel.PathComponent(
             aclRule: nil,
+            additionalDetails: nil,
+            attachedTo: nil,
             component: nil,
             destinationVpc: nil,
             inboundHeader: nil,
@@ -16754,7 +18840,35 @@ public extension PathComponent {
             sequenceNumber: nil,
             sourceVpc: nil,
             subnet: nil,
+            transitGateway: nil,
+            transitGatewayRouteTableRoute: nil,
             vpc: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PathStatement {
+    /**
+     Default instance of the PathStatement structure.
+     */
+    static let __default: ElasticComputeCloudModel.PathStatement = {
+        let defaultInstance = ElasticComputeCloudModel.PathStatement(
+            packetHeaderStatement: nil,
+            resourceStatement: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PathStatementRequest {
+    /**
+     Default instance of the PathStatementRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.PathStatementRequest = {
+        let defaultInstance = ElasticComputeCloudModel.PathStatementRequest(
+            packetHeaderStatement: nil,
+            resourceStatement: nil)
 
         return defaultInstance
     }()
@@ -16822,6 +18936,7 @@ public extension PeeringTgwInfo {
      */
     static let __default: ElasticComputeCloudModel.PeeringTgwInfo = {
         let defaultInstance = ElasticComputeCloudModel.PeeringTgwInfo(
+            coreNetworkId: nil,
             ownerId: nil,
             region: nil,
             transitGatewayId: nil)
@@ -16999,9 +19114,11 @@ public extension PlacementGroup {
      */
     static let __default: ElasticComputeCloudModel.PlacementGroup = {
         let defaultInstance = ElasticComputeCloudModel.PlacementGroup(
+            groupArn: nil,
             groupId: nil,
             groupName: nil,
             partitionCount: nil,
+            spreadLevel: nil,
             state: nil,
             strategy: nil,
             tags: nil)
@@ -17317,6 +19434,61 @@ public extension ProvisionByoipCidrResult {
     }()
 }
 
+public extension ProvisionIpamPoolCidrRequest {
+    /**
+     Default instance of the ProvisionIpamPoolCidrRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest(
+            cidr: nil,
+            cidrAuthorizationContext: nil,
+            dryRun: nil,
+            ipamPoolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ProvisionIpamPoolCidrResult {
+    /**
+     Default instance of the ProvisionIpamPoolCidrResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ProvisionIpamPoolCidrResult = {
+        let defaultInstance = ElasticComputeCloudModel.ProvisionIpamPoolCidrResult(
+            ipamPoolCidr: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ProvisionPublicIpv4PoolCidrRequest {
+    /**
+     Default instance of the ProvisionPublicIpv4PoolCidrRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest(
+            dryRun: nil,
+            ipamPoolId: "value",
+            netmaskLength: 0,
+            poolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ProvisionPublicIpv4PoolCidrResult {
+    /**
+     Default instance of the ProvisionPublicIpv4PoolCidrResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult = {
+        let defaultInstance = ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult(
+            poolAddressRange: nil,
+            poolId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ProvisionedBandwidth {
     /**
      Default instance of the ProvisionedBandwidth structure.
@@ -17574,6 +19746,8 @@ public extension RegisterImageRequest {
             ramdiskId: nil,
             rootDeviceName: nil,
             sriovNetSupport: nil,
+            tpmSupport: nil,
+            uefiData: nil,
             virtualizationType: nil)
 
         return defaultInstance
@@ -17852,6 +20026,45 @@ public extension ReleaseHostsResult {
     }()
 }
 
+public extension ReleaseIpamPoolAllocationRequest {
+    /**
+     Default instance of the ReleaseIpamPoolAllocationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest(
+            cidr: "value",
+            dryRun: nil,
+            ipamPoolAllocationId: "value",
+            ipamPoolId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ReleaseIpamPoolAllocationResult {
+    /**
+     Default instance of the ReleaseIpamPoolAllocationResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult = {
+        let defaultInstance = ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult(
+            success: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RemoveIpamOperatingRegion {
+    /**
+     Default instance of the RemoveIpamOperatingRegion structure.
+     */
+    static let __default: ElasticComputeCloudModel.RemoveIpamOperatingRegion = {
+        let defaultInstance = ElasticComputeCloudModel.RemoveIpamOperatingRegion(
+            regionName: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension RemovePrefixListEntry {
     /**
      Default instance of the RemovePrefixListEntry structure.
@@ -18054,6 +20267,19 @@ public extension ReportInstanceStatusRequest {
     }()
 }
 
+public extension RequestIpamResourceTag {
+    /**
+     Default instance of the RequestIpamResourceTag structure.
+     */
+    static let __default: ElasticComputeCloudModel.RequestIpamResourceTag = {
+        let defaultInstance = ElasticComputeCloudModel.RequestIpamResourceTag(
+            key: nil,
+            value: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension RequestLaunchTemplateData {
     /**
      Default instance of the RequestLaunchTemplateData structure.
@@ -18064,6 +20290,7 @@ public extension RequestLaunchTemplateData {
             capacityReservationSpecification: nil,
             cpuOptions: nil,
             creditSpecification: nil,
+            disableApiStop: nil,
             disableApiTermination: nil,
             ebsOptimized: nil,
             elasticGpuSpecifications: nil,
@@ -18079,6 +20306,7 @@ public extension RequestLaunchTemplateData {
             kernelId: nil,
             keyName: nil,
             licenseSpecifications: nil,
+            maintenanceOptions: nil,
             metadataOptions: nil,
             monitoring: nil,
             networkInterfaces: nil,
@@ -18525,6 +20753,32 @@ public extension ResetSnapshotAttributeRequest {
     }()
 }
 
+public extension ResourceStatement {
+    /**
+     Default instance of the ResourceStatement structure.
+     */
+    static let __default: ElasticComputeCloudModel.ResourceStatement = {
+        let defaultInstance = ElasticComputeCloudModel.ResourceStatement(
+            resourceTypes: nil,
+            resources: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ResourceStatementRequest {
+    /**
+     Default instance of the ResourceStatementRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ResourceStatementRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ResourceStatementRequest(
+            resourceTypes: nil,
+            resources: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ResponseError {
     /**
      Default instance of the ResponseError structure.
@@ -18548,6 +20802,7 @@ public extension ResponseLaunchTemplateData {
             capacityReservationSpecification: nil,
             cpuOptions: nil,
             creditSpecification: nil,
+            disableApiStop: nil,
             disableApiTermination: nil,
             ebsOptimized: nil,
             elasticGpuSpecifications: nil,
@@ -18563,6 +20818,7 @@ public extension ResponseLaunchTemplateData {
             kernelId: nil,
             keyName: nil,
             licenseSpecifications: nil,
+            maintenanceOptions: nil,
             metadataOptions: nil,
             monitoring: nil,
             networkInterfaces: nil,
@@ -18604,6 +20860,31 @@ public extension RestoreAddressToClassicResult {
     }()
 }
 
+public extension RestoreImageFromRecycleBinRequest {
+    /**
+     Default instance of the RestoreImageFromRecycleBinRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RestoreImageFromRecycleBinRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RestoreImageFromRecycleBinRequest(
+            dryRun: nil,
+            imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension RestoreImageFromRecycleBinResult {
+    /**
+     Default instance of the RestoreImageFromRecycleBinResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.RestoreImageFromRecycleBinResult = {
+        let defaultInstance = ElasticComputeCloudModel.RestoreImageFromRecycleBinResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension RestoreManagedPrefixListVersionRequest {
     /**
      Default instance of the RestoreManagedPrefixListVersionRequest structure.
@@ -18626,6 +20907,70 @@ public extension RestoreManagedPrefixListVersionResult {
     static let __default: ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult = {
         let defaultInstance = ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult(
             prefixList: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RestoreSnapshotFromRecycleBinRequest {
+    /**
+     Default instance of the RestoreSnapshotFromRecycleBinRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest(
+            dryRun: nil,
+            snapshotId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension RestoreSnapshotFromRecycleBinResult {
+    /**
+     Default instance of the RestoreSnapshotFromRecycleBinResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult = {
+        let defaultInstance = ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult(
+            description: nil,
+            encrypted: nil,
+            outpostArn: nil,
+            ownerId: nil,
+            progress: nil,
+            snapshotId: nil,
+            startTime: nil,
+            state: nil,
+            volumeId: nil,
+            volumeSize: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RestoreSnapshotTierRequest {
+    /**
+     Default instance of the RestoreSnapshotTierRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.RestoreSnapshotTierRequest = {
+        let defaultInstance = ElasticComputeCloudModel.RestoreSnapshotTierRequest(
+            dryRun: nil,
+            permanentRestore: nil,
+            snapshotId: "value",
+            temporaryRestoreDays: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RestoreSnapshotTierResult {
+    /**
+     Default instance of the RestoreSnapshotTierResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.RestoreSnapshotTierResult = {
+        let defaultInstance = ElasticComputeCloudModel.RestoreSnapshotTierResult(
+            isPermanentRestore: nil,
+            restoreDuration: nil,
+            restoreStartTime: nil,
+            snapshotId: nil)
 
         return defaultInstance
     }()
@@ -18827,6 +21172,7 @@ public extension RunInstancesRequest {
             clientToken: nil,
             cpuOptions: nil,
             creditSpecification: nil,
+            disableApiStop: nil,
             disableApiTermination: nil,
             dryRun: nil,
             ebsOptimized: nil,
@@ -18845,6 +21191,7 @@ public extension RunInstancesRequest {
             keyName: nil,
             launchTemplate: nil,
             licenseSpecifications: nil,
+            maintenanceOptions: nil,
             maxCount: 0,
             metadataOptions: nil,
             minCount: 0,
@@ -19372,12 +21719,14 @@ public extension ServiceConfiguration {
             gatewayLoadBalancerArns: nil,
             managesVpcEndpoints: nil,
             networkLoadBalancerArns: nil,
+            payerResponsibility: nil,
             privateDnsName: nil,
             privateDnsNameConfiguration: nil,
             serviceId: nil,
             serviceName: nil,
             serviceState: nil,
             serviceType: nil,
+            supportedIpAddressTypes: nil,
             tags: nil)
 
         return defaultInstance
@@ -19395,12 +21744,14 @@ public extension ServiceDetail {
             baseEndpointDnsNames: nil,
             managesVpcEndpoints: nil,
             owner: nil,
+            payerResponsibility: nil,
             privateDnsName: nil,
             privateDnsNameVerificationState: nil,
             privateDnsNames: nil,
             serviceId: nil,
             serviceName: nil,
             serviceType: nil,
+            supportedIpAddressTypes: nil,
             tags: nil,
             vpcEndpointPolicySupported: nil)
 
@@ -19460,10 +21811,12 @@ public extension Snapshot {
             ownerAlias: nil,
             ownerId: nil,
             progress: nil,
+            restoreExpiryTime: nil,
             snapshotId: nil,
             startTime: nil,
             state: nil,
             stateMessage: nil,
+            storageTier: nil,
             tags: nil,
             volumeId: nil,
             volumeSize: nil)
@@ -19530,6 +21883,22 @@ public extension SnapshotInfo {
     }()
 }
 
+public extension SnapshotRecycleBinInfo {
+    /**
+     Default instance of the SnapshotRecycleBinInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.SnapshotRecycleBinInfo = {
+        let defaultInstance = ElasticComputeCloudModel.SnapshotRecycleBinInfo(
+            description: nil,
+            recycleBinEnterTime: nil,
+            recycleBinExitTime: nil,
+            snapshotId: nil,
+            volumeId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SnapshotTaskDetail {
     /**
      Default instance of the SnapshotTaskDetail structure.
@@ -19547,6 +21916,29 @@ public extension SnapshotTaskDetail {
             statusMessage: nil,
             url: nil,
             userBucket: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SnapshotTierStatus {
+    /**
+     Default instance of the SnapshotTierStatus structure.
+     */
+    static let __default: ElasticComputeCloudModel.SnapshotTierStatus = {
+        let defaultInstance = ElasticComputeCloudModel.SnapshotTierStatus(
+            archivalCompleteTime: nil,
+            lastTieringOperationStatus: nil,
+            lastTieringOperationStatusDetail: nil,
+            lastTieringProgress: nil,
+            lastTieringStartTime: nil,
+            ownerId: nil,
+            restoreExpiryTime: nil,
+            snapshotId: nil,
+            status: nil,
+            storageTier: nil,
+            tags: nil,
+            volumeId: nil)
 
         return defaultInstance
     }()
@@ -19917,6 +22309,33 @@ public extension StartInstancesResult {
     }()
 }
 
+public extension StartNetworkInsightsAccessScopeAnalysisRequest {
+    /**
+     Default instance of the StartNetworkInsightsAccessScopeAnalysisRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest = {
+        let defaultInstance = ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest(
+            clientToken: "value",
+            dryRun: nil,
+            networkInsightsAccessScopeId: "value",
+            tagSpecifications: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartNetworkInsightsAccessScopeAnalysisResult {
+    /**
+     Default instance of the StartNetworkInsightsAccessScopeAnalysisResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult = {
+        let defaultInstance = ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult(
+            networkInsightsAccessScopeAnalysis: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension StartNetworkInsightsAnalysisRequest {
     /**
      Default instance of the StartNetworkInsightsAnalysisRequest structure.
@@ -20067,6 +22486,7 @@ public extension Subnet {
             customerOwnedIpv4Pool: nil,
             defaultForAz: nil,
             enableDns64: nil,
+            enableLniAtDeviceIndex: nil,
             ipv6CidrBlockAssociationSet: nil,
             ipv6Native: nil,
             mapCustomerOwnedIpOnLaunch: nil,
@@ -20387,6 +22807,30 @@ public extension TerminateInstancesResult {
     }()
 }
 
+public extension ThroughResourcesStatement {
+    /**
+     Default instance of the ThroughResourcesStatement structure.
+     */
+    static let __default: ElasticComputeCloudModel.ThroughResourcesStatement = {
+        let defaultInstance = ElasticComputeCloudModel.ThroughResourcesStatement(
+            resourceStatement: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ThroughResourcesStatementRequest {
+    /**
+     Default instance of the ThroughResourcesStatementRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.ThroughResourcesStatementRequest = {
+        let defaultInstance = ElasticComputeCloudModel.ThroughResourcesStatementRequest(
+            resourceStatement: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension TotalLocalStorageGB {
     /**
      Default instance of the TotalLocalStorageGB structure.
@@ -20506,6 +22950,7 @@ public extension TrafficMirrorTarget {
     static let __default: ElasticComputeCloudModel.TrafficMirrorTarget = {
         let defaultInstance = ElasticComputeCloudModel.TrafficMirrorTarget(
             description: nil,
+            gatewayLoadBalancerEndpointId: nil,
             networkInterfaceId: nil,
             networkLoadBalancerArn: nil,
             ownerId: nil,
@@ -20862,12 +23307,102 @@ public extension TransitGatewayPeeringAttachment {
     static let __default: ElasticComputeCloudModel.TransitGatewayPeeringAttachment = {
         let defaultInstance = ElasticComputeCloudModel.TransitGatewayPeeringAttachment(
             accepterTgwInfo: nil,
+            accepterTransitGatewayAttachmentId: nil,
             creationTime: nil,
+            options: nil,
             requesterTgwInfo: nil,
             state: nil,
             status: nil,
             tags: nil,
             transitGatewayAttachmentId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayPeeringAttachmentOptions {
+    /**
+     Default instance of the TransitGatewayPeeringAttachmentOptions structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayPeeringAttachmentOptions = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayPeeringAttachmentOptions(
+            dynamicRouting: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayPolicyRule {
+    /**
+     Default instance of the TransitGatewayPolicyRule structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayPolicyRule = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayPolicyRule(
+            destinationCidrBlock: nil,
+            destinationPortRange: nil,
+            metaData: nil,
+            protocol: nil,
+            sourceCidrBlock: nil,
+            sourcePortRange: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayPolicyRuleMetaData {
+    /**
+     Default instance of the TransitGatewayPolicyRuleMetaData structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayPolicyRuleMetaData = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayPolicyRuleMetaData(
+            metaDataKey: nil,
+            metaDataValue: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayPolicyTable {
+    /**
+     Default instance of the TransitGatewayPolicyTable structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayPolicyTable = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayPolicyTable(
+            creationTime: nil,
+            state: nil,
+            tags: nil,
+            transitGatewayId: nil,
+            transitGatewayPolicyTableId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayPolicyTableAssociation {
+    /**
+     Default instance of the TransitGatewayPolicyTableAssociation structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayPolicyTableAssociation = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayPolicyTableAssociation(
+            resourceId: nil,
+            resourceType: nil,
+            state: nil,
+            transitGatewayAttachmentId: nil,
+            transitGatewayPolicyTableId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayPolicyTableEntry {
+    /**
+     Default instance of the TransitGatewayPolicyTableEntry structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayPolicyTableEntry = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayPolicyTableEntry(
+            policyRule: nil,
+            policyRuleNumber: nil,
+            targetRouteTableId: nil)
 
         return defaultInstance
     }()
@@ -20914,6 +23449,7 @@ public extension TransitGatewayPropagation {
             resourceType: nil,
             state: nil,
             transitGatewayAttachmentId: nil,
+            transitGatewayRouteTableAnnouncementId: nil,
             transitGatewayRouteTableId: nil)
 
         return defaultInstance
@@ -20949,6 +23485,7 @@ public extension TransitGatewayRoute {
             prefixListId: nil,
             state: nil,
             transitGatewayAttachments: nil,
+            transitGatewayRouteTableAnnouncementId: nil,
             type: nil)
 
         return defaultInstance
@@ -20987,6 +23524,28 @@ public extension TransitGatewayRouteTable {
     }()
 }
 
+public extension TransitGatewayRouteTableAnnouncement {
+    /**
+     Default instance of the TransitGatewayRouteTableAnnouncement structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayRouteTableAnnouncement = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayRouteTableAnnouncement(
+            announcementDirection: nil,
+            coreNetworkId: nil,
+            creationTime: nil,
+            peerCoreNetworkId: nil,
+            peerTransitGatewayId: nil,
+            peeringAttachmentId: nil,
+            state: nil,
+            tags: nil,
+            transitGatewayId: nil,
+            transitGatewayRouteTableAnnouncementId: nil,
+            transitGatewayRouteTableId: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension TransitGatewayRouteTableAssociation {
     /**
      Default instance of the TransitGatewayRouteTableAssociation structure.
@@ -21011,7 +23570,26 @@ public extension TransitGatewayRouteTablePropagation {
             resourceId: nil,
             resourceType: nil,
             state: nil,
-            transitGatewayAttachmentId: nil)
+            transitGatewayAttachmentId: nil,
+            transitGatewayRouteTableAnnouncementId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TransitGatewayRouteTableRoute {
+    /**
+     Default instance of the TransitGatewayRouteTableRoute structure.
+     */
+    static let __default: ElasticComputeCloudModel.TransitGatewayRouteTableRoute = {
+        let defaultInstance = ElasticComputeCloudModel.TransitGatewayRouteTableRoute(
+            attachmentId: nil,
+            destinationCidr: nil,
+            prefixListId: nil,
+            resourceId: nil,
+            resourceType: nil,
+            routeOrigin: nil,
+            state: nil)
 
         return defaultInstance
     }()
@@ -21669,7 +24247,9 @@ public extension VpcEndpoint {
         let defaultInstance = ElasticComputeCloudModel.VpcEndpoint(
             creationTimestamp: nil,
             dnsEntries: nil,
+            dnsOptions: nil,
             groups: nil,
+            ipAddressType: nil,
             lastError: nil,
             networkInterfaceIds: nil,
             ownerId: nil,
@@ -21698,6 +24278,7 @@ public extension VpcEndpointConnection {
             creationTimestamp: nil,
             dnsEntries: nil,
             gatewayLoadBalancerArns: nil,
+            ipAddressType: nil,
             networkLoadBalancerArns: nil,
             serviceId: nil,
             vpcEndpointId: nil,
@@ -21836,9 +24417,11 @@ public extension VpnConnectionOptions {
             enableAcceleration: nil,
             localIpv4NetworkCidr: nil,
             localIpv6NetworkCidr: nil,
+            outsideIpAddressType: nil,
             remoteIpv4NetworkCidr: nil,
             remoteIpv6NetworkCidr: nil,
             staticRoutesOnly: nil,
+            transportTransitGatewayAttachmentId: nil,
             tunnelInsideIpVersion: nil,
             tunnelOptions: nil)
 
@@ -21855,9 +24438,11 @@ public extension VpnConnectionOptionsSpecification {
             enableAcceleration: nil,
             localIpv4NetworkCidr: nil,
             localIpv6NetworkCidr: nil,
+            outsideIpAddressType: nil,
             remoteIpv4NetworkCidr: nil,
             remoteIpv6NetworkCidr: nil,
             staticRoutesOnly: nil,
+            transportTransitGatewayAttachmentId: nil,
             tunnelInsideIpVersion: nil,
             tunnelOptions: nil)
 

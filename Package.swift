@@ -16,6 +16,13 @@
 
 import PackageDescription
 
+let swiftSettings: [SwiftSetting]
+#if compiler(<5.6)
+swiftSettings = []
+#else
+swiftSettings = [.unsafeFlags(["-warn-concurrency"])]
+#endif
+
 let package = Package(
     name: "smoke-aws",
     platforms: [
@@ -150,153 +157,219 @@ let package = Package(
             name: "AppConfigClient", dependencies: [
                 .target(name: "AppConfigModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "AppConfigModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CloudWatchClient", dependencies: [
                 .target(name: "CloudWatchModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CloudWatchModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CloudformationClient", dependencies: [
                 .target(name: "CloudformationModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CloudformationModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CodePipelineClient", dependencies: [
                 .target(name: "CodePipelineModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CodePipelineModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "DynamoDBClient", dependencies: [
                 .target(name: "DynamoDBModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "DynamoDBModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "ECRClient", dependencies: [
                 .target(name: "ECRModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "ECRModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "ElasticComputeCloudClient", dependencies: [
                 .target(name: "ElasticComputeCloudModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "ElasticComputeCloudModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "ElasticContainerClient", dependencies: [
                 .target(name: "ElasticContainerModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "ElasticContainerModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "RDSClient", dependencies: [
                 .target(name: "RDSModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "RDSModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "RDSDataClient", dependencies: [
                 .target(name: "RDSDataModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "RDSDataModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "S3Client", dependencies: [
                 .target(name: "S3Model"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "S3Model", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SecurityTokenClient", dependencies: [
                 .target(name: "SecurityTokenModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SecurityTokenModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SimpleNotificationClient", dependencies: [
                 .target(name: "SimpleNotificationModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SimpleNotificationModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SimpleQueueClient", dependencies: [
                 .target(name: "SimpleQueueModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SimpleQueueModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SimpleWorkflowClient", dependencies: [
                 .target(name: "SimpleWorkflowModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SimpleWorkflowModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "StepFunctionsClient", dependencies: [
                 .target(name: "StepFunctionsModel"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "StepFunctionsModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SmokeAWSCore", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Metrics", package: "swift-metrics"),
                 .product(name: "XMLCoding", package: "XMLCoding"),
                 .product(name: "SmokeHTTPClient", package: "smoke-http"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SmokeAWSHttp", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
@@ -308,7 +381,9 @@ let package = Package(
                 .product(name: "HTTPPathCoding", package: "smoke-http"),
                 .product(name: "HTTPHeadersCoding", package: "smoke-http"),
                 .product(name: "Crypto", package: "swift-crypto"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "SmokeAWSMiddleware", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
@@ -316,7 +391,9 @@ let package = Package(
                 .product(name: "AsyncHttpMiddlewareClient", package: "async-http-middleware-client"),
                 .product(name: "SmokeHTTPClientMiddleware", package: "smoke-http"),
                 .target(name: "SmokeAWSHttp"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "_SmokeAWSHttpConcurrency", dependencies: [
                 .target(name: "SmokeAWSHttp"),
@@ -326,7 +403,9 @@ let package = Package(
                 .product(name: "Logging", package: "swift-log"),
                 .product(name: "Metrics", package: "swift-metrics"),
                 .target(name: "CloudWatchClient"),
-            ]),
+            ],
+            swiftSettings: swiftSettings
+        ),
         .testTarget(
             name: "S3ClientTests", dependencies: [
                 .target(name: "S3Client"),

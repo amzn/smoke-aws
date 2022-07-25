@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AbortIncompleteMultipartUpload: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AbortIncompleteMultipartUpload: Codable, Equatable, Sendable {
     public var daysAfterInitiation: DaysAfterInitiation?
 
     public init(daysAfterInitiation: DaysAfterInitiation? = nil) {
@@ -37,7 +39,7 @@ public struct AbortIncompleteMultipartUpload: Codable, Equatable {
     }
 }
 
-public struct AbortMultipartUploadOutput: Codable, Equatable {
+public struct AbortMultipartUploadOutput: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -52,7 +54,7 @@ public struct AbortMultipartUploadOutput: Codable, Equatable {
     }
 }
 
-public struct AbortMultipartUploadRequest: Codable, Equatable {
+public struct AbortMultipartUploadRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -84,7 +86,7 @@ public struct AbortMultipartUploadRequest: Codable, Equatable {
     }
 }
 
-public struct AccelerateConfiguration: Codable, Equatable {
+public struct AccelerateConfiguration: Codable, Equatable, Sendable {
     public var status: BucketAccelerateStatus?
 
     public init(status: BucketAccelerateStatus? = nil) {
@@ -99,7 +101,7 @@ public struct AccelerateConfiguration: Codable, Equatable {
     }
 }
 
-public struct AccessControlPolicy: Codable, Equatable {
+public struct AccessControlPolicy: Codable, Equatable, Sendable {
     public var grants: Grants?
     public var owner: Owner?
 
@@ -119,7 +121,7 @@ public struct AccessControlPolicy: Codable, Equatable {
     }
 }
 
-public struct AccessControlTranslation: Codable, Equatable {
+public struct AccessControlTranslation: Codable, Equatable, Sendable {
     public var owner: OwnerOverride
 
     public init(owner: OwnerOverride) {
@@ -134,7 +136,7 @@ public struct AccessControlTranslation: Codable, Equatable {
     }
 }
 
-public struct AnalyticsAndOperator: Codable, Equatable {
+public struct AnalyticsAndOperator: Codable, Equatable, Sendable {
     public var prefix: Prefix?
     public var tags: TagSet?
 
@@ -153,7 +155,7 @@ public struct AnalyticsAndOperator: Codable, Equatable {
     }
 }
 
-public struct AnalyticsConfiguration: Codable, Equatable {
+public struct AnalyticsConfiguration: Codable, Equatable, Sendable {
     public var filter: AnalyticsFilter?
     public var id: AnalyticsId
     public var storageClassAnalysis: StorageClassAnalysis
@@ -178,7 +180,7 @@ public struct AnalyticsConfiguration: Codable, Equatable {
     }
 }
 
-public struct AnalyticsExportDestination: Codable, Equatable {
+public struct AnalyticsExportDestination: Codable, Equatable, Sendable {
     public var s3BucketDestination: AnalyticsS3BucketDestination
 
     public init(s3BucketDestination: AnalyticsS3BucketDestination) {
@@ -194,7 +196,7 @@ public struct AnalyticsExportDestination: Codable, Equatable {
     }
 }
 
-public struct AnalyticsFilter: Codable, Equatable {
+public struct AnalyticsFilter: Codable, Equatable, Sendable {
     public var and: AnalyticsAndOperator?
     public var prefix: Prefix?
     public var tag: Tag?
@@ -219,7 +221,7 @@ public struct AnalyticsFilter: Codable, Equatable {
     }
 }
 
-public struct AnalyticsS3BucketDestination: Codable, Equatable {
+public struct AnalyticsS3BucketDestination: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var bucketAccountId: AccountId?
     public var format: AnalyticsS3ExportFileFormat
@@ -246,7 +248,7 @@ public struct AnalyticsS3BucketDestination: Codable, Equatable {
     }
 }
 
-public struct Bucket: Codable, Equatable {
+public struct Bucket: Codable, Equatable, Sendable {
     public var creationDate: CreationDate?
     public var name: BucketName?
 
@@ -265,7 +267,7 @@ public struct Bucket: Codable, Equatable {
     }
 }
 
-public struct BucketAlreadyExists: Codable, Equatable {
+public struct BucketAlreadyExists: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -274,7 +276,7 @@ public struct BucketAlreadyExists: Codable, Equatable {
     }
 }
 
-public struct BucketAlreadyOwnedByYou: Codable, Equatable {
+public struct BucketAlreadyOwnedByYou: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -283,7 +285,7 @@ public struct BucketAlreadyOwnedByYou: Codable, Equatable {
     }
 }
 
-public struct BucketLifecycleConfiguration: Codable, Equatable {
+public struct BucketLifecycleConfiguration: Codable, Equatable, Sendable {
     public var rules: LifecycleRules
 
     public init(rules: LifecycleRules) {
@@ -298,7 +300,7 @@ public struct BucketLifecycleConfiguration: Codable, Equatable {
     }
 }
 
-public struct BucketLoggingStatus: Codable, Equatable {
+public struct BucketLoggingStatus: Codable, Equatable, Sendable {
     public var loggingEnabled: LoggingEnabled?
 
     public init(loggingEnabled: LoggingEnabled? = nil) {
@@ -314,7 +316,7 @@ public struct BucketLoggingStatus: Codable, Equatable {
     }
 }
 
-public struct CORSConfiguration: Codable, Equatable {
+public struct CORSConfiguration: Codable, Equatable, Sendable {
     public var cORSRules: CORSRules
 
     public init(cORSRules: CORSRules) {
@@ -329,7 +331,7 @@ public struct CORSConfiguration: Codable, Equatable {
     }
 }
 
-public struct CORSRule: Codable, Equatable {
+public struct CORSRule: Codable, Equatable, Sendable {
     public var allowedHeaders: AllowedHeaders?
     public var allowedMethods: AllowedMethods
     public var allowedOrigins: AllowedOrigins
@@ -364,7 +366,7 @@ public struct CORSRule: Codable, Equatable {
     }
 }
 
-public struct CSVInput: Codable, Equatable {
+public struct CSVInput: Codable, Equatable, Sendable {
     public var allowQuotedRecordDelimiter: AllowQuotedRecordDelimiter?
     public var comments: Comments?
     public var fieldDelimiter: FieldDelimiter?
@@ -403,7 +405,7 @@ public struct CSVInput: Codable, Equatable {
     }
 }
 
-public struct CSVOutput: Codable, Equatable {
+public struct CSVOutput: Codable, Equatable, Sendable {
     public var fieldDelimiter: FieldDelimiter?
     public var quoteCharacter: QuoteCharacter?
     public var quoteEscapeCharacter: QuoteEscapeCharacter?
@@ -434,7 +436,7 @@ public struct CSVOutput: Codable, Equatable {
     }
 }
 
-public struct Checksum: Codable, Equatable {
+public struct Checksum: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -461,7 +463,7 @@ public struct Checksum: Codable, Equatable {
     }
 }
 
-public struct CloudFunctionConfiguration: Codable, Equatable {
+public struct CloudFunctionConfiguration: Codable, Equatable, Sendable {
     public var cloudFunction: CloudFunction?
     public var events: EventList?
     public var id: NotificationId?
@@ -488,7 +490,7 @@ public struct CloudFunctionConfiguration: Codable, Equatable {
     }
 }
 
-public struct CommonPrefix: Codable, Equatable {
+public struct CommonPrefix: Codable, Equatable, Sendable {
     public var prefix: Prefix?
 
     public init(prefix: Prefix? = nil) {
@@ -503,7 +505,7 @@ public struct CommonPrefix: Codable, Equatable {
     }
 }
 
-public struct CompleteMultipartUploadOutput: Codable, Equatable {
+public struct CompleteMultipartUploadOutput: Codable, Equatable, Sendable {
     public var bucket: BucketName?
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var checksumCRC32: ChecksumCRC32?
@@ -571,7 +573,7 @@ public struct CompleteMultipartUploadOutput: Codable, Equatable {
     }
 }
 
-public struct CompleteMultipartUploadRequest: Codable, Equatable {
+public struct CompleteMultipartUploadRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
@@ -636,7 +638,7 @@ public struct CompleteMultipartUploadRequest: Codable, Equatable {
     }
 }
 
-public struct CompletedMultipartUpload: Codable, Equatable {
+public struct CompletedMultipartUpload: Codable, Equatable, Sendable {
     public var parts: CompletedPartList?
 
     public init(parts: CompletedPartList? = nil) {
@@ -651,7 +653,7 @@ public struct CompletedMultipartUpload: Codable, Equatable {
     }
 }
 
-public struct CompletedPart: Codable, Equatable {
+public struct CompletedPart: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -686,7 +688,7 @@ public struct CompletedPart: Codable, Equatable {
     }
 }
 
-public struct Condition: Codable, Equatable {
+public struct Condition: Codable, Equatable, Sendable {
     public var httpErrorCodeReturnedEquals: HttpErrorCodeReturnedEquals?
     public var keyPrefixEquals: KeyPrefixEquals?
 
@@ -705,7 +707,7 @@ public struct Condition: Codable, Equatable {
     }
 }
 
-public struct ContinuationEvent: Codable, Equatable {
+public struct ContinuationEvent: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -714,7 +716,7 @@ public struct ContinuationEvent: Codable, Equatable {
     }
 }
 
-public struct CopyObjectOutput: Codable, Equatable {
+public struct CopyObjectOutput: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var copyObjectResult: CopyObjectResult?
     public var copySourceVersionId: CopySourceVersionId?
@@ -770,7 +772,7 @@ public struct CopyObjectOutput: Codable, Equatable {
     }
 }
 
-public struct CopyObjectRequest: Codable, Equatable {
+public struct CopyObjectRequest: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var bucket: BucketName
     public var bucketKeyEnabled: BucketKeyEnabled?
@@ -947,7 +949,7 @@ public struct CopyObjectRequest: Codable, Equatable {
     }
 }
 
-public struct CopyObjectResult: Codable, Equatable {
+public struct CopyObjectResult: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -982,7 +984,7 @@ public struct CopyObjectResult: Codable, Equatable {
     }
 }
 
-public struct CopyPartResult: Codable, Equatable {
+public struct CopyPartResult: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -1017,7 +1019,7 @@ public struct CopyPartResult: Codable, Equatable {
     }
 }
 
-public struct CreateBucketConfiguration: Codable, Equatable {
+public struct CreateBucketConfiguration: Codable, Equatable, Sendable {
     public var locationConstraint: BucketLocationConstraint?
 
     public init(locationConstraint: BucketLocationConstraint? = nil) {
@@ -1032,7 +1034,7 @@ public struct CreateBucketConfiguration: Codable, Equatable {
     }
 }
 
-public struct CreateBucketOutput: Codable, Equatable {
+public struct CreateBucketOutput: Codable, Equatable, Sendable {
     public var location: Location?
 
     public init(location: Location? = nil) {
@@ -1047,7 +1049,7 @@ public struct CreateBucketOutput: Codable, Equatable {
     }
 }
 
-public struct CreateBucketRequest: Codable, Equatable {
+public struct CreateBucketRequest: Codable, Equatable, Sendable {
     public var aCL: BucketCannedACL?
     public var bucket: BucketName
     public var createBucketConfiguration: CreateBucketConfiguration?
@@ -1099,7 +1101,7 @@ public struct CreateBucketRequest: Codable, Equatable {
     }
 }
 
-public struct CreateMultipartUploadOutput: Codable, Equatable {
+public struct CreateMultipartUploadOutput: Codable, Equatable, Sendable {
     public var abortDate: AbortDate?
     public var abortRuleId: AbortRuleId?
     public var bucket: BucketName?
@@ -1163,7 +1165,7 @@ public struct CreateMultipartUploadOutput: Codable, Equatable {
     }
 }
 
-public struct CreateMultipartUploadRequest: Codable, Equatable {
+public struct CreateMultipartUploadRequest: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var bucket: BucketName
     public var bucketKeyEnabled: BucketKeyEnabled?
@@ -1295,7 +1297,7 @@ public struct CreateMultipartUploadRequest: Codable, Equatable {
     }
 }
 
-public struct DefaultRetention: Codable, Equatable {
+public struct DefaultRetention: Codable, Equatable, Sendable {
     public var days: Days?
     public var mode: ObjectLockRetentionMode?
     public var years: Years?
@@ -1318,7 +1320,7 @@ public struct DefaultRetention: Codable, Equatable {
     }
 }
 
-public struct Delete: Codable, Equatable {
+public struct Delete: Codable, Equatable, Sendable {
     public var objects: ObjectIdentifierList
     public var quiet: Quiet?
 
@@ -1337,7 +1339,7 @@ public struct Delete: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketAnalyticsConfigurationRequest: Codable, Equatable {
+public struct DeleteBucketAnalyticsConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: AnalyticsId
@@ -1360,7 +1362,7 @@ public struct DeleteBucketAnalyticsConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketCorsRequest: Codable, Equatable {
+public struct DeleteBucketCorsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1379,7 +1381,7 @@ public struct DeleteBucketCorsRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketEncryptionRequest: Codable, Equatable {
+public struct DeleteBucketEncryptionRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1398,7 +1400,7 @@ public struct DeleteBucketEncryptionRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketIntelligentTieringConfigurationRequest: Codable, Equatable {
+public struct DeleteBucketIntelligentTieringConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var id: IntelligentTieringId
 
@@ -1417,7 +1419,7 @@ public struct DeleteBucketIntelligentTieringConfigurationRequest: Codable, Equat
     }
 }
 
-public struct DeleteBucketInventoryConfigurationRequest: Codable, Equatable {
+public struct DeleteBucketInventoryConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: InventoryId
@@ -1440,7 +1442,7 @@ public struct DeleteBucketInventoryConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketLifecycleRequest: Codable, Equatable {
+public struct DeleteBucketLifecycleRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1459,7 +1461,7 @@ public struct DeleteBucketLifecycleRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketMetricsConfigurationRequest: Codable, Equatable {
+public struct DeleteBucketMetricsConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: MetricsId
@@ -1482,7 +1484,7 @@ public struct DeleteBucketMetricsConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketOwnershipControlsRequest: Codable, Equatable {
+public struct DeleteBucketOwnershipControlsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1501,7 +1503,7 @@ public struct DeleteBucketOwnershipControlsRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketPolicyRequest: Codable, Equatable {
+public struct DeleteBucketPolicyRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1520,7 +1522,7 @@ public struct DeleteBucketPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketReplicationRequest: Codable, Equatable {
+public struct DeleteBucketReplicationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1539,7 +1541,7 @@ public struct DeleteBucketReplicationRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketRequest: Codable, Equatable {
+public struct DeleteBucketRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1558,7 +1560,7 @@ public struct DeleteBucketRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketTaggingRequest: Codable, Equatable {
+public struct DeleteBucketTaggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1577,7 +1579,7 @@ public struct DeleteBucketTaggingRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteBucketWebsiteRequest: Codable, Equatable {
+public struct DeleteBucketWebsiteRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1596,7 +1598,7 @@ public struct DeleteBucketWebsiteRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteMarkerEntry: Codable, Equatable {
+public struct DeleteMarkerEntry: Codable, Equatable, Sendable {
     public var isLatest: IsLatest?
     public var key: ObjectKey?
     public var lastModified: LastModified?
@@ -1629,7 +1631,7 @@ public struct DeleteMarkerEntry: Codable, Equatable {
     }
 }
 
-public struct DeleteMarkerReplication: Codable, Equatable {
+public struct DeleteMarkerReplication: Codable, Equatable, Sendable {
     public var status: DeleteMarkerReplicationStatus?
 
     public init(status: DeleteMarkerReplicationStatus? = nil) {
@@ -1644,7 +1646,7 @@ public struct DeleteMarkerReplication: Codable, Equatable {
     }
 }
 
-public struct DeleteObjectOutput: Codable, Equatable {
+public struct DeleteObjectOutput: Codable, Equatable, Sendable {
     public var deleteMarker: DeleteMarker?
     public var requestCharged: RequestCharged?
     public var versionId: ObjectVersionId?
@@ -1667,7 +1669,7 @@ public struct DeleteObjectOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteObjectRequest: Codable, Equatable {
+public struct DeleteObjectRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var expectedBucketOwner: AccountId?
@@ -1707,7 +1709,7 @@ public struct DeleteObjectRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteObjectTaggingOutput: Codable, Equatable {
+public struct DeleteObjectTaggingOutput: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -1722,7 +1724,7 @@ public struct DeleteObjectTaggingOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteObjectTaggingRequest: Codable, Equatable {
+public struct DeleteObjectTaggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -1750,7 +1752,7 @@ public struct DeleteObjectTaggingRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteObjectsOutput: Codable, Equatable {
+public struct DeleteObjectsOutput: Codable, Equatable, Sendable {
     public var deleted: DeletedObjects?
     public var errors: Errors?
     public var requestCharged: RequestCharged?
@@ -1773,7 +1775,7 @@ public struct DeleteObjectsOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteObjectsRequest: Codable, Equatable {
+public struct DeleteObjectsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var checksumAlgorithm: ChecksumAlgorithm?
@@ -1813,7 +1815,7 @@ public struct DeleteObjectsRequest: Codable, Equatable {
     }
 }
 
-public struct DeletePublicAccessBlockRequest: Codable, Equatable {
+public struct DeletePublicAccessBlockRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -1832,7 +1834,7 @@ public struct DeletePublicAccessBlockRequest: Codable, Equatable {
     }
 }
 
-public struct DeletedObject: Codable, Equatable {
+public struct DeletedObject: Codable, Equatable, Sendable {
     public var deleteMarker: DeleteMarker?
     public var deleteMarkerVersionId: DeleteMarkerVersionId?
     public var key: ObjectKey?
@@ -1860,7 +1862,7 @@ public struct DeletedObject: Codable, Equatable {
     }
 }
 
-public struct Destination: Codable, Equatable {
+public struct Destination: Codable, Equatable, Sendable {
     public var accessControlTranslation: AccessControlTranslation?
     public var account: AccountId?
     public var bucket: BucketName
@@ -1903,7 +1905,7 @@ public struct Destination: Codable, Equatable {
     }
 }
 
-public struct Encryption: Codable, Equatable {
+public struct Encryption: Codable, Equatable, Sendable {
     public var encryptionType: ServerSideEncryption
     public var kMSContext: KMSContext?
     public var kMSKeyId: SSEKMSKeyId?
@@ -1926,7 +1928,7 @@ public struct Encryption: Codable, Equatable {
     }
 }
 
-public struct EncryptionConfiguration: Codable, Equatable {
+public struct EncryptionConfiguration: Codable, Equatable, Sendable {
     public var replicaKmsKeyID: ReplicaKmsKeyID?
 
     public init(replicaKmsKeyID: ReplicaKmsKeyID? = nil) {
@@ -1941,7 +1943,7 @@ public struct EncryptionConfiguration: Codable, Equatable {
     }
 }
 
-public struct EndEvent: Codable, Equatable {
+public struct EndEvent: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1950,7 +1952,7 @@ public struct EndEvent: Codable, Equatable {
     }
 }
 
-public struct Error: Codable, Equatable {
+public struct Error: Codable, Equatable, Sendable {
     public var code: Code?
     public var key: ObjectKey?
     public var message: Message?
@@ -1978,7 +1980,7 @@ public struct Error: Codable, Equatable {
     }
 }
 
-public struct ErrorDocument: Codable, Equatable {
+public struct ErrorDocument: Codable, Equatable, Sendable {
     public var key: ObjectKey
 
     public init(key: ObjectKey) {
@@ -1994,7 +1996,7 @@ public struct ErrorDocument: Codable, Equatable {
     }
 }
 
-public struct EventBridgeConfiguration: Codable, Equatable {
+public struct EventBridgeConfiguration: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2003,7 +2005,7 @@ public struct EventBridgeConfiguration: Codable, Equatable {
     }
 }
 
-public struct ExistingObjectReplication: Codable, Equatable {
+public struct ExistingObjectReplication: Codable, Equatable, Sendable {
     public var status: ExistingObjectReplicationStatus
 
     public init(status: ExistingObjectReplicationStatus) {
@@ -2018,7 +2020,7 @@ public struct ExistingObjectReplication: Codable, Equatable {
     }
 }
 
-public struct FilterRule: Codable, Equatable {
+public struct FilterRule: Codable, Equatable, Sendable {
     public var name: FilterRuleName?
     public var value: FilterRuleValue?
 
@@ -2037,7 +2039,7 @@ public struct FilterRule: Codable, Equatable {
     }
 }
 
-public struct GetBucketAccelerateConfigurationOutput: Codable, Equatable {
+public struct GetBucketAccelerateConfigurationOutput: Codable, Equatable, Sendable {
     public var status: BucketAccelerateStatus?
 
     public init(status: BucketAccelerateStatus? = nil) {
@@ -2052,7 +2054,7 @@ public struct GetBucketAccelerateConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketAccelerateConfigurationRequest: Codable, Equatable {
+public struct GetBucketAccelerateConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2071,7 +2073,7 @@ public struct GetBucketAccelerateConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketAclOutput: Codable, Equatable {
+public struct GetBucketAclOutput: Codable, Equatable, Sendable {
     public var grants: Grants?
     public var owner: Owner?
 
@@ -2091,7 +2093,7 @@ public struct GetBucketAclOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketAclRequest: Codable, Equatable {
+public struct GetBucketAclRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2110,7 +2112,7 @@ public struct GetBucketAclRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketAnalyticsConfigurationOutput: Codable, Equatable {
+public struct GetBucketAnalyticsConfigurationOutput: Codable, Equatable, Sendable {
     public var analyticsConfiguration: AnalyticsConfiguration?
 
     public init(analyticsConfiguration: AnalyticsConfiguration? = nil) {
@@ -2126,7 +2128,7 @@ public struct GetBucketAnalyticsConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketAnalyticsConfigurationRequest: Codable, Equatable {
+public struct GetBucketAnalyticsConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: AnalyticsId
@@ -2149,7 +2151,7 @@ public struct GetBucketAnalyticsConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketCorsOutput: Codable, Equatable {
+public struct GetBucketCorsOutput: Codable, Equatable, Sendable {
     public var cORSRules: CORSRules?
 
     public init(cORSRules: CORSRules? = nil) {
@@ -2164,7 +2166,7 @@ public struct GetBucketCorsOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketCorsRequest: Codable, Equatable {
+public struct GetBucketCorsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2183,7 +2185,7 @@ public struct GetBucketCorsRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketEncryptionOutput: Codable, Equatable {
+public struct GetBucketEncryptionOutput: Codable, Equatable, Sendable {
     public var serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration?
 
     public init(serverSideEncryptionConfiguration: ServerSideEncryptionConfiguration? = nil) {
@@ -2199,7 +2201,7 @@ public struct GetBucketEncryptionOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketEncryptionRequest: Codable, Equatable {
+public struct GetBucketEncryptionRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2218,7 +2220,7 @@ public struct GetBucketEncryptionRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketIntelligentTieringConfigurationOutput: Codable, Equatable {
+public struct GetBucketIntelligentTieringConfigurationOutput: Codable, Equatable, Sendable {
     public var intelligentTieringConfiguration: IntelligentTieringConfiguration?
 
     public init(intelligentTieringConfiguration: IntelligentTieringConfiguration? = nil) {
@@ -2234,7 +2236,7 @@ public struct GetBucketIntelligentTieringConfigurationOutput: Codable, Equatable
     }
 }
 
-public struct GetBucketIntelligentTieringConfigurationRequest: Codable, Equatable {
+public struct GetBucketIntelligentTieringConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var id: IntelligentTieringId
 
@@ -2253,7 +2255,7 @@ public struct GetBucketIntelligentTieringConfigurationRequest: Codable, Equatabl
     }
 }
 
-public struct GetBucketInventoryConfigurationOutput: Codable, Equatable {
+public struct GetBucketInventoryConfigurationOutput: Codable, Equatable, Sendable {
     public var inventoryConfiguration: InventoryConfiguration?
 
     public init(inventoryConfiguration: InventoryConfiguration? = nil) {
@@ -2269,7 +2271,7 @@ public struct GetBucketInventoryConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketInventoryConfigurationRequest: Codable, Equatable {
+public struct GetBucketInventoryConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: InventoryId
@@ -2292,7 +2294,7 @@ public struct GetBucketInventoryConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketLifecycleConfigurationOutput: Codable, Equatable {
+public struct GetBucketLifecycleConfigurationOutput: Codable, Equatable, Sendable {
     public var rules: LifecycleRules?
 
     public init(rules: LifecycleRules? = nil) {
@@ -2307,7 +2309,7 @@ public struct GetBucketLifecycleConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketLifecycleConfigurationRequest: Codable, Equatable {
+public struct GetBucketLifecycleConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2326,7 +2328,7 @@ public struct GetBucketLifecycleConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketLifecycleOutput: Codable, Equatable {
+public struct GetBucketLifecycleOutput: Codable, Equatable, Sendable {
     public var rules: Rules?
 
     public init(rules: Rules? = nil) {
@@ -2341,7 +2343,7 @@ public struct GetBucketLifecycleOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketLifecycleRequest: Codable, Equatable {
+public struct GetBucketLifecycleRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2360,7 +2362,7 @@ public struct GetBucketLifecycleRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketLocationOutput: Codable, Equatable {
+public struct GetBucketLocationOutput: Codable, Equatable, Sendable {
     public var locationConstraint: BucketLocationConstraint?
 
     public init(locationConstraint: BucketLocationConstraint? = nil) {
@@ -2375,7 +2377,7 @@ public struct GetBucketLocationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketLocationRequest: Codable, Equatable {
+public struct GetBucketLocationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2394,7 +2396,7 @@ public struct GetBucketLocationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketLoggingOutput: Codable, Equatable {
+public struct GetBucketLoggingOutput: Codable, Equatable, Sendable {
     public var loggingEnabled: LoggingEnabled?
 
     public init(loggingEnabled: LoggingEnabled? = nil) {
@@ -2410,7 +2412,7 @@ public struct GetBucketLoggingOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketLoggingRequest: Codable, Equatable {
+public struct GetBucketLoggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2429,7 +2431,7 @@ public struct GetBucketLoggingRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketMetricsConfigurationOutput: Codable, Equatable {
+public struct GetBucketMetricsConfigurationOutput: Codable, Equatable, Sendable {
     public var metricsConfiguration: MetricsConfiguration?
 
     public init(metricsConfiguration: MetricsConfiguration? = nil) {
@@ -2445,7 +2447,7 @@ public struct GetBucketMetricsConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketMetricsConfigurationRequest: Codable, Equatable {
+public struct GetBucketMetricsConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: MetricsId
@@ -2468,7 +2470,7 @@ public struct GetBucketMetricsConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketNotificationConfigurationRequest: Codable, Equatable {
+public struct GetBucketNotificationConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2487,7 +2489,7 @@ public struct GetBucketNotificationConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketOwnershipControlsOutput: Codable, Equatable {
+public struct GetBucketOwnershipControlsOutput: Codable, Equatable, Sendable {
     public var ownershipControls: OwnershipControls?
 
     public init(ownershipControls: OwnershipControls? = nil) {
@@ -2503,7 +2505,7 @@ public struct GetBucketOwnershipControlsOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketOwnershipControlsRequest: Codable, Equatable {
+public struct GetBucketOwnershipControlsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2522,7 +2524,7 @@ public struct GetBucketOwnershipControlsRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketPolicyOutput: Codable, Equatable {
+public struct GetBucketPolicyOutput: Codable, Equatable, Sendable {
     public var policy: Policy?
 
     public init(policy: Policy? = nil) {
@@ -2537,7 +2539,7 @@ public struct GetBucketPolicyOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketPolicyRequest: Codable, Equatable {
+public struct GetBucketPolicyRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2556,7 +2558,7 @@ public struct GetBucketPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketPolicyStatusOutput: Codable, Equatable {
+public struct GetBucketPolicyStatusOutput: Codable, Equatable, Sendable {
     public var policyStatus: PolicyStatus?
 
     public init(policyStatus: PolicyStatus? = nil) {
@@ -2572,7 +2574,7 @@ public struct GetBucketPolicyStatusOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketPolicyStatusRequest: Codable, Equatable {
+public struct GetBucketPolicyStatusRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2591,7 +2593,7 @@ public struct GetBucketPolicyStatusRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketReplicationOutput: Codable, Equatable {
+public struct GetBucketReplicationOutput: Codable, Equatable, Sendable {
     public var replicationConfiguration: ReplicationConfiguration?
 
     public init(replicationConfiguration: ReplicationConfiguration? = nil) {
@@ -2607,7 +2609,7 @@ public struct GetBucketReplicationOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketReplicationRequest: Codable, Equatable {
+public struct GetBucketReplicationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2626,7 +2628,7 @@ public struct GetBucketReplicationRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketRequestPaymentOutput: Codable, Equatable {
+public struct GetBucketRequestPaymentOutput: Codable, Equatable, Sendable {
     public var payer: Payer?
 
     public init(payer: Payer? = nil) {
@@ -2641,7 +2643,7 @@ public struct GetBucketRequestPaymentOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketRequestPaymentRequest: Codable, Equatable {
+public struct GetBucketRequestPaymentRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2660,7 +2662,7 @@ public struct GetBucketRequestPaymentRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketTaggingOutput: Codable, Equatable {
+public struct GetBucketTaggingOutput: Codable, Equatable, Sendable {
     public var tagSet: TagSet
 
     public init(tagSet: TagSet) {
@@ -2675,7 +2677,7 @@ public struct GetBucketTaggingOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketTaggingRequest: Codable, Equatable {
+public struct GetBucketTaggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2694,7 +2696,7 @@ public struct GetBucketTaggingRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketVersioningOutput: Codable, Equatable {
+public struct GetBucketVersioningOutput: Codable, Equatable, Sendable {
     public var mFADelete: MFADeleteStatus?
     public var status: BucketVersioningStatus?
 
@@ -2713,7 +2715,7 @@ public struct GetBucketVersioningOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketVersioningRequest: Codable, Equatable {
+public struct GetBucketVersioningRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2732,7 +2734,7 @@ public struct GetBucketVersioningRequest: Codable, Equatable {
     }
 }
 
-public struct GetBucketWebsiteOutput: Codable, Equatable {
+public struct GetBucketWebsiteOutput: Codable, Equatable, Sendable {
     public var errorDocument: ErrorDocument?
     public var indexDocument: IndexDocument?
     public var redirectAllRequestsTo: RedirectAllRequestsTo?
@@ -2762,7 +2764,7 @@ public struct GetBucketWebsiteOutput: Codable, Equatable {
     }
 }
 
-public struct GetBucketWebsiteRequest: Codable, Equatable {
+public struct GetBucketWebsiteRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -2781,7 +2783,7 @@ public struct GetBucketWebsiteRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectAclOutput: Codable, Equatable {
+public struct GetObjectAclOutput: Codable, Equatable, Sendable {
     public var grants: Grants?
     public var owner: Owner?
     public var requestCharged: RequestCharged?
@@ -2805,7 +2807,7 @@ public struct GetObjectAclOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectAclRequest: Codable, Equatable {
+public struct GetObjectAclRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -2837,7 +2839,7 @@ public struct GetObjectAclRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectAttributesOutput: Codable, Equatable {
+public struct GetObjectAttributesOutput: Codable, Equatable, Sendable {
     public var checksum: Checksum?
     public var deleteMarker: DeleteMarker?
     public var eTag: ETag?
@@ -2886,7 +2888,7 @@ public struct GetObjectAttributesOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectAttributesParts: Codable, Equatable {
+public struct GetObjectAttributesParts: Codable, Equatable, Sendable {
     public var isTruncated: IsTruncated?
     public var maxParts: MaxParts?
     public var nextPartNumberMarker: NextPartNumberMarker?
@@ -2921,7 +2923,7 @@ public struct GetObjectAttributesParts: Codable, Equatable {
     }
 }
 
-public struct GetObjectAttributesRequest: Codable, Equatable {
+public struct GetObjectAttributesRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -2977,7 +2979,7 @@ public struct GetObjectAttributesRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectLegalHoldOutput: Codable, Equatable {
+public struct GetObjectLegalHoldOutput: Codable, Equatable, Sendable {
     public var legalHold: ObjectLockLegalHold?
 
     public init(legalHold: ObjectLockLegalHold? = nil) {
@@ -2993,7 +2995,7 @@ public struct GetObjectLegalHoldOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectLegalHoldRequest: Codable, Equatable {
+public struct GetObjectLegalHoldRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -3025,7 +3027,7 @@ public struct GetObjectLegalHoldRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectLockConfigurationOutput: Codable, Equatable {
+public struct GetObjectLockConfigurationOutput: Codable, Equatable, Sendable {
     public var objectLockConfiguration: ObjectLockConfiguration?
 
     public init(objectLockConfiguration: ObjectLockConfiguration? = nil) {
@@ -3041,7 +3043,7 @@ public struct GetObjectLockConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectLockConfigurationRequest: Codable, Equatable {
+public struct GetObjectLockConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -3060,7 +3062,7 @@ public struct GetObjectLockConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectOutput: Codable, Equatable {
+public struct GetObjectOutput: Codable, Equatable, Sendable {
     public var acceptRanges: AcceptRanges?
     public var body: Body?
     public var bucketKeyEnabled: BucketKeyEnabled?
@@ -3215,7 +3217,7 @@ public struct GetObjectOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectRequest: Codable, Equatable {
+public struct GetObjectRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumMode: ChecksumMode?
     public var expectedBucketOwner: AccountId?
@@ -3311,7 +3313,7 @@ public struct GetObjectRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectRetentionOutput: Codable, Equatable {
+public struct GetObjectRetentionOutput: Codable, Equatable, Sendable {
     public var retention: ObjectLockRetention?
 
     public init(retention: ObjectLockRetention? = nil) {
@@ -3327,7 +3329,7 @@ public struct GetObjectRetentionOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectRetentionRequest: Codable, Equatable {
+public struct GetObjectRetentionRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -3359,7 +3361,7 @@ public struct GetObjectRetentionRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectTaggingOutput: Codable, Equatable {
+public struct GetObjectTaggingOutput: Codable, Equatable, Sendable {
     public var tagSet: TagSet
     public var versionId: ObjectVersionId?
 
@@ -3378,7 +3380,7 @@ public struct GetObjectTaggingOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectTaggingRequest: Codable, Equatable {
+public struct GetObjectTaggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -3410,7 +3412,7 @@ public struct GetObjectTaggingRequest: Codable, Equatable {
     }
 }
 
-public struct GetObjectTorrentOutput: Codable, Equatable {
+public struct GetObjectTorrentOutput: Codable, Equatable, Sendable {
     public var body: Body?
     public var requestCharged: RequestCharged?
 
@@ -3429,7 +3431,7 @@ public struct GetObjectTorrentOutput: Codable, Equatable {
     }
 }
 
-public struct GetObjectTorrentRequest: Codable, Equatable {
+public struct GetObjectTorrentRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -3457,7 +3459,7 @@ public struct GetObjectTorrentRequest: Codable, Equatable {
     }
 }
 
-public struct GetPublicAccessBlockOutput: Codable, Equatable {
+public struct GetPublicAccessBlockOutput: Codable, Equatable, Sendable {
     public var publicAccessBlockConfiguration: PublicAccessBlockConfiguration?
 
     public init(publicAccessBlockConfiguration: PublicAccessBlockConfiguration? = nil) {
@@ -3473,7 +3475,7 @@ public struct GetPublicAccessBlockOutput: Codable, Equatable {
     }
 }
 
-public struct GetPublicAccessBlockRequest: Codable, Equatable {
+public struct GetPublicAccessBlockRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -3492,7 +3494,7 @@ public struct GetPublicAccessBlockRequest: Codable, Equatable {
     }
 }
 
-public struct GlacierJobParameters: Codable, Equatable {
+public struct GlacierJobParameters: Codable, Equatable, Sendable {
     public var tier: Tier
 
     public init(tier: Tier) {
@@ -3507,7 +3509,7 @@ public struct GlacierJobParameters: Codable, Equatable {
     }
 }
 
-public struct Grant: Codable, Equatable {
+public struct Grant: Codable, Equatable, Sendable {
     public var grantee: Grantee?
     public var permission: Permission?
 
@@ -3527,7 +3529,7 @@ public struct Grant: Codable, Equatable {
     }
 }
 
-public struct Grantee: Codable, Equatable {
+public struct Grantee: Codable, Equatable, Sendable {
     public var displayName: DisplayName?
     public var emailAddress: EmailAddress?
     public var iD: ID?
@@ -3558,7 +3560,7 @@ public struct Grantee: Codable, Equatable {
     }
 }
 
-public struct HeadBucketRequest: Codable, Equatable {
+public struct HeadBucketRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
 
@@ -3577,7 +3579,7 @@ public struct HeadBucketRequest: Codable, Equatable {
     }
 }
 
-public struct HeadObjectOutput: Codable, Equatable {
+public struct HeadObjectOutput: Codable, Equatable, Sendable {
     public var acceptRanges: AcceptRanges?
     public var archiveStatus: ArchiveStatus?
     public var bucketKeyEnabled: BucketKeyEnabled?
@@ -3724,7 +3726,7 @@ public struct HeadObjectOutput: Codable, Equatable {
     }
 }
 
-public struct HeadObjectRequest: Codable, Equatable {
+public struct HeadObjectRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumMode: ChecksumMode?
     public var expectedBucketOwner: AccountId?
@@ -3796,7 +3798,7 @@ public struct HeadObjectRequest: Codable, Equatable {
     }
 }
 
-public struct IndexDocument: Codable, Equatable {
+public struct IndexDocument: Codable, Equatable, Sendable {
     public var suffix: Suffix
 
     public init(suffix: Suffix) {
@@ -3811,7 +3813,7 @@ public struct IndexDocument: Codable, Equatable {
     }
 }
 
-public struct Initiator: Codable, Equatable {
+public struct Initiator: Codable, Equatable, Sendable {
     public var displayName: DisplayName?
     public var iD: ID?
 
@@ -3830,7 +3832,7 @@ public struct Initiator: Codable, Equatable {
     }
 }
 
-public struct InputSerialization: Codable, Equatable {
+public struct InputSerialization: Codable, Equatable, Sendable {
     public var cSV: CSVInput?
     public var compressionType: CompressionType?
     public var jSON: JSONInput?
@@ -3860,7 +3862,7 @@ public struct InputSerialization: Codable, Equatable {
     }
 }
 
-public struct IntelligentTieringAndOperator: Codable, Equatable {
+public struct IntelligentTieringAndOperator: Codable, Equatable, Sendable {
     public var prefix: Prefix?
     public var tags: TagSet?
 
@@ -3879,7 +3881,7 @@ public struct IntelligentTieringAndOperator: Codable, Equatable {
     }
 }
 
-public struct IntelligentTieringConfiguration: Codable, Equatable {
+public struct IntelligentTieringConfiguration: Codable, Equatable, Sendable {
     public var filter: IntelligentTieringFilter?
     public var id: IntelligentTieringId
     public var status: IntelligentTieringStatus
@@ -3907,7 +3909,7 @@ public struct IntelligentTieringConfiguration: Codable, Equatable {
     }
 }
 
-public struct IntelligentTieringFilter: Codable, Equatable {
+public struct IntelligentTieringFilter: Codable, Equatable, Sendable {
     public var and: IntelligentTieringAndOperator?
     public var prefix: Prefix?
     public var tag: Tag?
@@ -3932,7 +3934,7 @@ public struct IntelligentTieringFilter: Codable, Equatable {
     }
 }
 
-public struct InvalidObjectState: Codable, Equatable {
+public struct InvalidObjectState: Codable, Equatable, Sendable {
     public var accessTier: IntelligentTieringAccessTier?
     public var storageClass: StorageClass?
 
@@ -3951,7 +3953,7 @@ public struct InvalidObjectState: Codable, Equatable {
     }
 }
 
-public struct InventoryConfiguration: Codable, Equatable {
+public struct InventoryConfiguration: Codable, Equatable, Sendable {
     public var destination: InventoryDestination
     public var filter: InventoryFilter?
     public var id: InventoryId
@@ -3993,7 +3995,7 @@ public struct InventoryConfiguration: Codable, Equatable {
     }
 }
 
-public struct InventoryDestination: Codable, Equatable {
+public struct InventoryDestination: Codable, Equatable, Sendable {
     public var s3BucketDestination: InventoryS3BucketDestination
 
     public init(s3BucketDestination: InventoryS3BucketDestination) {
@@ -4009,7 +4011,7 @@ public struct InventoryDestination: Codable, Equatable {
     }
 }
 
-public struct InventoryEncryption: Codable, Equatable {
+public struct InventoryEncryption: Codable, Equatable, Sendable {
     public var sSEKMS: SSEKMS?
     public var sSES3: SSES3?
 
@@ -4030,7 +4032,7 @@ public struct InventoryEncryption: Codable, Equatable {
     }
 }
 
-public struct InventoryFilter: Codable, Equatable {
+public struct InventoryFilter: Codable, Equatable, Sendable {
     public var prefix: Prefix
 
     public init(prefix: Prefix) {
@@ -4045,7 +4047,7 @@ public struct InventoryFilter: Codable, Equatable {
     }
 }
 
-public struct InventoryS3BucketDestination: Codable, Equatable {
+public struct InventoryS3BucketDestination: Codable, Equatable, Sendable {
     public var accountId: AccountId?
     public var bucket: BucketName
     public var encryption: InventoryEncryption?
@@ -4077,7 +4079,7 @@ public struct InventoryS3BucketDestination: Codable, Equatable {
     }
 }
 
-public struct InventorySchedule: Codable, Equatable {
+public struct InventorySchedule: Codable, Equatable, Sendable {
     public var frequency: InventoryFrequency
 
     public init(frequency: InventoryFrequency) {
@@ -4092,7 +4094,7 @@ public struct InventorySchedule: Codable, Equatable {
     }
 }
 
-public struct JSONInput: Codable, Equatable {
+public struct JSONInput: Codable, Equatable, Sendable {
     public var type: JSONType?
 
     public init(type: JSONType? = nil) {
@@ -4107,7 +4109,7 @@ public struct JSONInput: Codable, Equatable {
     }
 }
 
-public struct JSONOutput: Codable, Equatable {
+public struct JSONOutput: Codable, Equatable, Sendable {
     public var recordDelimiter: RecordDelimiter?
 
     public init(recordDelimiter: RecordDelimiter? = nil) {
@@ -4122,7 +4124,7 @@ public struct JSONOutput: Codable, Equatable {
     }
 }
 
-public struct LambdaFunctionConfiguration: Codable, Equatable {
+public struct LambdaFunctionConfiguration: Codable, Equatable, Sendable {
     public var events: EventList
     public var filter: NotificationConfigurationFilter?
     public var id: NotificationId?
@@ -4150,7 +4152,7 @@ public struct LambdaFunctionConfiguration: Codable, Equatable {
     }
 }
 
-public struct LifecycleConfiguration: Codable, Equatable {
+public struct LifecycleConfiguration: Codable, Equatable, Sendable {
     public var rules: Rules
 
     public init(rules: Rules) {
@@ -4165,7 +4167,7 @@ public struct LifecycleConfiguration: Codable, Equatable {
     }
 }
 
-public struct LifecycleExpiration: Codable, Equatable {
+public struct LifecycleExpiration: Codable, Equatable, Sendable {
     public var date: Date?
     public var days: Days?
     public var expiredObjectDeleteMarker: ExpiredObjectDeleteMarker?
@@ -4188,7 +4190,7 @@ public struct LifecycleExpiration: Codable, Equatable {
     }
 }
 
-public struct LifecycleRule: Codable, Equatable {
+public struct LifecycleRule: Codable, Equatable, Sendable {
     public var abortIncompleteMultipartUpload: AbortIncompleteMultipartUpload?
     public var expiration: LifecycleExpiration?
     public var filter: LifecycleRuleFilter?
@@ -4235,7 +4237,7 @@ public struct LifecycleRule: Codable, Equatable {
     }
 }
 
-public struct LifecycleRuleAndOperator: Codable, Equatable {
+public struct LifecycleRuleAndOperator: Codable, Equatable, Sendable {
     public var objectSizeGreaterThan: ObjectSizeGreaterThanBytes?
     public var objectSizeLessThan: ObjectSizeLessThanBytes?
     public var prefix: Prefix?
@@ -4262,7 +4264,7 @@ public struct LifecycleRuleAndOperator: Codable, Equatable {
     }
 }
 
-public struct LifecycleRuleFilter: Codable, Equatable {
+public struct LifecycleRuleFilter: Codable, Equatable, Sendable {
     public var and: LifecycleRuleAndOperator?
     public var objectSizeGreaterThan: ObjectSizeGreaterThanBytes?
     public var objectSizeLessThan: ObjectSizeLessThanBytes?
@@ -4295,7 +4297,7 @@ public struct LifecycleRuleFilter: Codable, Equatable {
     }
 }
 
-public struct ListBucketAnalyticsConfigurationsOutput: Codable, Equatable {
+public struct ListBucketAnalyticsConfigurationsOutput: Codable, Equatable, Sendable {
     public var analyticsConfigurationList: AnalyticsConfigurationList?
     public var continuationToken: Token?
     public var isTruncated: IsTruncated?
@@ -4322,7 +4324,7 @@ public struct ListBucketAnalyticsConfigurationsOutput: Codable, Equatable {
     }
 }
 
-public struct ListBucketAnalyticsConfigurationsRequest: Codable, Equatable {
+public struct ListBucketAnalyticsConfigurationsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var continuationToken: Token?
     public var expectedBucketOwner: AccountId?
@@ -4345,7 +4347,7 @@ public struct ListBucketAnalyticsConfigurationsRequest: Codable, Equatable {
     }
 }
 
-public struct ListBucketIntelligentTieringConfigurationsOutput: Codable, Equatable {
+public struct ListBucketIntelligentTieringConfigurationsOutput: Codable, Equatable, Sendable {
     public var continuationToken: Token?
     public var intelligentTieringConfigurationList: IntelligentTieringConfigurationList?
     public var isTruncated: IsTruncated?
@@ -4372,7 +4374,7 @@ public struct ListBucketIntelligentTieringConfigurationsOutput: Codable, Equatab
     }
 }
 
-public struct ListBucketIntelligentTieringConfigurationsRequest: Codable, Equatable {
+public struct ListBucketIntelligentTieringConfigurationsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var continuationToken: Token?
 
@@ -4391,7 +4393,7 @@ public struct ListBucketIntelligentTieringConfigurationsRequest: Codable, Equata
     }
 }
 
-public struct ListBucketInventoryConfigurationsOutput: Codable, Equatable {
+public struct ListBucketInventoryConfigurationsOutput: Codable, Equatable, Sendable {
     public var continuationToken: Token?
     public var inventoryConfigurationList: InventoryConfigurationList?
     public var isTruncated: IsTruncated?
@@ -4418,7 +4420,7 @@ public struct ListBucketInventoryConfigurationsOutput: Codable, Equatable {
     }
 }
 
-public struct ListBucketInventoryConfigurationsRequest: Codable, Equatable {
+public struct ListBucketInventoryConfigurationsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var continuationToken: Token?
     public var expectedBucketOwner: AccountId?
@@ -4441,7 +4443,7 @@ public struct ListBucketInventoryConfigurationsRequest: Codable, Equatable {
     }
 }
 
-public struct ListBucketMetricsConfigurationsOutput: Codable, Equatable {
+public struct ListBucketMetricsConfigurationsOutput: Codable, Equatable, Sendable {
     public var continuationToken: Token?
     public var isTruncated: IsTruncated?
     public var metricsConfigurationList: MetricsConfigurationList?
@@ -4468,7 +4470,7 @@ public struct ListBucketMetricsConfigurationsOutput: Codable, Equatable {
     }
 }
 
-public struct ListBucketMetricsConfigurationsRequest: Codable, Equatable {
+public struct ListBucketMetricsConfigurationsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var continuationToken: Token?
     public var expectedBucketOwner: AccountId?
@@ -4491,7 +4493,7 @@ public struct ListBucketMetricsConfigurationsRequest: Codable, Equatable {
     }
 }
 
-public struct ListBucketsOutput: Codable, Equatable {
+public struct ListBucketsOutput: Codable, Equatable, Sendable {
     public var buckets: Buckets?
     public var owner: Owner?
 
@@ -4511,7 +4513,7 @@ public struct ListBucketsOutput: Codable, Equatable {
     }
 }
 
-public struct ListMultipartUploadsOutput: Codable, Equatable {
+public struct ListMultipartUploadsOutput: Codable, Equatable, Sendable {
     public var bucket: BucketName?
     public var commonPrefixes: CommonPrefixList?
     public var delimiter: Delimiter?
@@ -4570,7 +4572,7 @@ public struct ListMultipartUploadsOutput: Codable, Equatable {
     }
 }
 
-public struct ListMultipartUploadsRequest: Codable, Equatable {
+public struct ListMultipartUploadsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
@@ -4613,7 +4615,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
     }
 }
 
-public struct ListObjectVersionsOutput: Codable, Equatable {
+public struct ListObjectVersionsOutput: Codable, Equatable, Sendable {
     public var commonPrefixes: CommonPrefixList?
     public var deleteMarkers: DeleteMarkers?
     public var delimiter: Delimiter?
@@ -4676,7 +4678,7 @@ public struct ListObjectVersionsOutput: Codable, Equatable {
     }
 }
 
-public struct ListObjectVersionsRequest: Codable, Equatable {
+public struct ListObjectVersionsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
@@ -4719,7 +4721,7 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
     }
 }
 
-public struct ListObjectsOutput: Codable, Equatable {
+public struct ListObjectsOutput: Codable, Equatable, Sendable {
     public var commonPrefixes: CommonPrefixList?
     public var contents: ObjectList?
     public var delimiter: Delimiter?
@@ -4770,7 +4772,7 @@ public struct ListObjectsOutput: Codable, Equatable {
     }
 }
 
-public struct ListObjectsRequest: Codable, Equatable {
+public struct ListObjectsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var delimiter: Delimiter?
     public var encodingType: EncodingType?
@@ -4813,7 +4815,7 @@ public struct ListObjectsRequest: Codable, Equatable {
     }
 }
 
-public struct ListObjectsV2Output: Codable, Equatable {
+public struct ListObjectsV2Output: Codable, Equatable, Sendable {
     public var commonPrefixes: CommonPrefixList?
     public var contents: ObjectList?
     public var continuationToken: Token?
@@ -4872,7 +4874,7 @@ public struct ListObjectsV2Output: Codable, Equatable {
     }
 }
 
-public struct ListObjectsV2Request: Codable, Equatable {
+public struct ListObjectsV2Request: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var continuationToken: Token?
     public var delimiter: Delimiter?
@@ -4923,7 +4925,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
     }
 }
 
-public struct ListPartsOutput: Codable, Equatable {
+public struct ListPartsOutput: Codable, Equatable, Sendable {
     public var abortDate: AbortDate?
     public var abortRuleId: AbortRuleId?
     public var bucket: BucketName?
@@ -4997,7 +4999,7 @@ public struct ListPartsOutput: Codable, Equatable {
     }
 }
 
-public struct ListPartsRequest: Codable, Equatable {
+public struct ListPartsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var key: ObjectKey
@@ -5049,7 +5051,7 @@ public struct ListPartsRequest: Codable, Equatable {
     }
 }
 
-public struct LoggingEnabled: Codable, Equatable {
+public struct LoggingEnabled: Codable, Equatable, Sendable {
     public var targetBucket: TargetBucket
     public var targetGrants: TargetGrants?
     public var targetPrefix: TargetPrefix
@@ -5072,7 +5074,7 @@ public struct LoggingEnabled: Codable, Equatable {
     }
 }
 
-public struct MetadataEntry: Codable, Equatable {
+public struct MetadataEntry: Codable, Equatable, Sendable {
     public var name: MetadataKey?
     public var value: MetadataValue?
 
@@ -5091,7 +5093,7 @@ public struct MetadataEntry: Codable, Equatable {
     }
 }
 
-public struct Metrics: Codable, Equatable {
+public struct Metrics: Codable, Equatable, Sendable {
     public var eventThreshold: ReplicationTimeValue?
     public var status: MetricsStatus
 
@@ -5111,7 +5113,7 @@ public struct Metrics: Codable, Equatable {
     }
 }
 
-public struct MetricsAndOperator: Codable, Equatable {
+public struct MetricsAndOperator: Codable, Equatable, Sendable {
     public var accessPointArn: AccessPointArn?
     public var prefix: Prefix?
     public var tags: TagSet?
@@ -5134,7 +5136,7 @@ public struct MetricsAndOperator: Codable, Equatable {
     }
 }
 
-public struct MetricsConfiguration: Codable, Equatable {
+public struct MetricsConfiguration: Codable, Equatable, Sendable {
     public var filter: MetricsFilter?
     public var id: MetricsId
 
@@ -5154,7 +5156,7 @@ public struct MetricsConfiguration: Codable, Equatable {
     }
 }
 
-public struct MetricsFilter: Codable, Equatable {
+public struct MetricsFilter: Codable, Equatable, Sendable {
     public var accessPointArn: AccessPointArn?
     public var and: MetricsAndOperator?
     public var prefix: Prefix?
@@ -5183,7 +5185,7 @@ public struct MetricsFilter: Codable, Equatable {
     }
 }
 
-public struct MultipartUpload: Codable, Equatable {
+public struct MultipartUpload: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var initiated: Initiated?
     public var initiator: Initiator?
@@ -5225,7 +5227,7 @@ public struct MultipartUpload: Codable, Equatable {
     }
 }
 
-public struct NoSuchBucket: Codable, Equatable {
+public struct NoSuchBucket: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5234,7 +5236,7 @@ public struct NoSuchBucket: Codable, Equatable {
     }
 }
 
-public struct NoSuchKey: Codable, Equatable {
+public struct NoSuchKey: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5243,7 +5245,7 @@ public struct NoSuchKey: Codable, Equatable {
     }
 }
 
-public struct NoSuchUpload: Codable, Equatable {
+public struct NoSuchUpload: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5252,7 +5254,7 @@ public struct NoSuchUpload: Codable, Equatable {
     }
 }
 
-public struct NoncurrentVersionExpiration: Codable, Equatable {
+public struct NoncurrentVersionExpiration: Codable, Equatable, Sendable {
     public var newerNoncurrentVersions: VersionCount?
     public var noncurrentDays: Days?
 
@@ -5271,7 +5273,7 @@ public struct NoncurrentVersionExpiration: Codable, Equatable {
     }
 }
 
-public struct NoncurrentVersionTransition: Codable, Equatable {
+public struct NoncurrentVersionTransition: Codable, Equatable, Sendable {
     public var newerNoncurrentVersions: VersionCount?
     public var noncurrentDays: Days?
     public var storageClass: TransitionStorageClass?
@@ -5294,7 +5296,7 @@ public struct NoncurrentVersionTransition: Codable, Equatable {
     }
 }
 
-public struct NotificationConfiguration: Codable, Equatable {
+public struct NotificationConfiguration: Codable, Equatable, Sendable {
     public var eventBridgeConfiguration: EventBridgeConfiguration?
     public var lambdaFunctionConfigurations: LambdaFunctionConfigurationList?
     public var queueConfigurations: QueueConfigurationList?
@@ -5322,7 +5324,7 @@ public struct NotificationConfiguration: Codable, Equatable {
     }
 }
 
-public struct NotificationConfigurationDeprecated: Codable, Equatable {
+public struct NotificationConfigurationDeprecated: Codable, Equatable, Sendable {
     public var cloudFunctionConfiguration: CloudFunctionConfiguration?
     public var queueConfiguration: QueueConfigurationDeprecated?
     public var topicConfiguration: TopicConfigurationDeprecated?
@@ -5348,7 +5350,7 @@ public struct NotificationConfigurationDeprecated: Codable, Equatable {
     }
 }
 
-public struct NotificationConfigurationFilter: Codable, Equatable {
+public struct NotificationConfigurationFilter: Codable, Equatable, Sendable {
     public var key: S3KeyFilter?
 
     public init(key: S3KeyFilter? = nil) {
@@ -5364,7 +5366,7 @@ public struct NotificationConfigurationFilter: Codable, Equatable {
     }
 }
 
-public struct Object: Codable, Equatable {
+public struct Object: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithmList?
     public var eTag: ETag?
     public var key: ObjectKey?
@@ -5405,7 +5407,7 @@ public struct Object: Codable, Equatable {
     }
 }
 
-public struct ObjectAlreadyInActiveTierError: Codable, Equatable {
+public struct ObjectAlreadyInActiveTierError: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5414,7 +5416,7 @@ public struct ObjectAlreadyInActiveTierError: Codable, Equatable {
     }
 }
 
-public struct ObjectIdentifier: Codable, Equatable {
+public struct ObjectIdentifier: Codable, Equatable, Sendable {
     public var key: ObjectKey
     public var versionId: ObjectVersionId?
 
@@ -5434,7 +5436,7 @@ public struct ObjectIdentifier: Codable, Equatable {
     }
 }
 
-public struct ObjectLockConfiguration: Codable, Equatable {
+public struct ObjectLockConfiguration: Codable, Equatable, Sendable {
     public var objectLockEnabled: ObjectLockEnabled?
     public var rule: ObjectLockRule?
 
@@ -5454,7 +5456,7 @@ public struct ObjectLockConfiguration: Codable, Equatable {
     }
 }
 
-public struct ObjectLockLegalHold: Codable, Equatable {
+public struct ObjectLockLegalHold: Codable, Equatable, Sendable {
     public var status: ObjectLockLegalHoldStatus?
 
     public init(status: ObjectLockLegalHoldStatus? = nil) {
@@ -5469,7 +5471,7 @@ public struct ObjectLockLegalHold: Codable, Equatable {
     }
 }
 
-public struct ObjectLockRetention: Codable, Equatable {
+public struct ObjectLockRetention: Codable, Equatable, Sendable {
     public var mode: ObjectLockRetentionMode?
     public var retainUntilDate: Date?
 
@@ -5488,7 +5490,7 @@ public struct ObjectLockRetention: Codable, Equatable {
     }
 }
 
-public struct ObjectLockRule: Codable, Equatable {
+public struct ObjectLockRule: Codable, Equatable, Sendable {
     public var defaultRetention: DefaultRetention?
 
     public init(defaultRetention: DefaultRetention? = nil) {
@@ -5504,7 +5506,7 @@ public struct ObjectLockRule: Codable, Equatable {
     }
 }
 
-public struct ObjectNotInActiveTierError: Codable, Equatable {
+public struct ObjectNotInActiveTierError: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5513,7 +5515,7 @@ public struct ObjectNotInActiveTierError: Codable, Equatable {
     }
 }
 
-public struct ObjectPart: Codable, Equatable {
+public struct ObjectPart: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -5548,7 +5550,7 @@ public struct ObjectPart: Codable, Equatable {
     }
 }
 
-public struct ObjectVersion: Codable, Equatable {
+public struct ObjectVersion: Codable, Equatable, Sendable {
     public var checksumAlgorithm: ChecksumAlgorithmList?
     public var eTag: ETag?
     public var isLatest: IsLatest?
@@ -5597,7 +5599,7 @@ public struct ObjectVersion: Codable, Equatable {
     }
 }
 
-public struct OutputLocation: Codable, Equatable {
+public struct OutputLocation: Codable, Equatable, Sendable {
     public var s3: S3Location?
 
     public init(s3: S3Location? = nil) {
@@ -5613,7 +5615,7 @@ public struct OutputLocation: Codable, Equatable {
     }
 }
 
-public struct OutputSerialization: Codable, Equatable {
+public struct OutputSerialization: Codable, Equatable, Sendable {
     public var cSV: CSVOutput?
     public var jSON: JSONOutput?
 
@@ -5634,7 +5636,7 @@ public struct OutputSerialization: Codable, Equatable {
     }
 }
 
-public struct Owner: Codable, Equatable {
+public struct Owner: Codable, Equatable, Sendable {
     public var displayName: DisplayName?
     public var iD: ID?
 
@@ -5653,7 +5655,7 @@ public struct Owner: Codable, Equatable {
     }
 }
 
-public struct OwnershipControls: Codable, Equatable {
+public struct OwnershipControls: Codable, Equatable, Sendable {
     public var rules: OwnershipControlsRules
 
     public init(rules: OwnershipControlsRules) {
@@ -5668,7 +5670,7 @@ public struct OwnershipControls: Codable, Equatable {
     }
 }
 
-public struct OwnershipControlsRule: Codable, Equatable {
+public struct OwnershipControlsRule: Codable, Equatable, Sendable {
     public var objectOwnership: ObjectOwnership
 
     public init(objectOwnership: ObjectOwnership) {
@@ -5683,7 +5685,7 @@ public struct OwnershipControlsRule: Codable, Equatable {
     }
 }
 
-public struct ParquetInput: Codable, Equatable {
+public struct ParquetInput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5692,7 +5694,7 @@ public struct ParquetInput: Codable, Equatable {
     }
 }
 
-public struct Part: Codable, Equatable {
+public struct Part: Codable, Equatable, Sendable {
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
     public var checksumSHA1: ChecksumSHA1?
@@ -5735,7 +5737,7 @@ public struct Part: Codable, Equatable {
     }
 }
 
-public struct PolicyStatus: Codable, Equatable {
+public struct PolicyStatus: Codable, Equatable, Sendable {
     public var isPublic: IsPublic?
 
     public init(isPublic: IsPublic? = nil) {
@@ -5750,7 +5752,7 @@ public struct PolicyStatus: Codable, Equatable {
     }
 }
 
-public struct Progress: Codable, Equatable {
+public struct Progress: Codable, Equatable, Sendable {
     public var bytesProcessed: BytesProcessed?
     public var bytesReturned: BytesReturned?
     public var bytesScanned: BytesScanned?
@@ -5773,7 +5775,7 @@ public struct Progress: Codable, Equatable {
     }
 }
 
-public struct ProgressEvent: Codable, Equatable {
+public struct ProgressEvent: Codable, Equatable, Sendable {
     public var details: Progress?
 
     public init(details: Progress? = nil) {
@@ -5789,7 +5791,7 @@ public struct ProgressEvent: Codable, Equatable {
     }
 }
 
-public struct PublicAccessBlockConfiguration: Codable, Equatable {
+public struct PublicAccessBlockConfiguration: Codable, Equatable, Sendable {
     public var blockPublicAcls: Setting?
     public var blockPublicPolicy: Setting?
     public var ignorePublicAcls: Setting?
@@ -5816,7 +5818,7 @@ public struct PublicAccessBlockConfiguration: Codable, Equatable {
     }
 }
 
-public struct PutBucketAccelerateConfigurationRequest: Codable, Equatable {
+public struct PutBucketAccelerateConfigurationRequest: Codable, Equatable, Sendable {
     public var accelerateConfiguration: AccelerateConfiguration
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
@@ -5844,7 +5846,7 @@ public struct PutBucketAccelerateConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketAclRequest: Codable, Equatable {
+public struct PutBucketAclRequest: Codable, Equatable, Sendable {
     public var aCL: BucketCannedACL?
     public var accessControlPolicy: AccessControlPolicy?
     public var bucket: BucketName
@@ -5900,7 +5902,7 @@ public struct PutBucketAclRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketAnalyticsConfigurationRequest: Codable, Equatable {
+public struct PutBucketAnalyticsConfigurationRequest: Codable, Equatable, Sendable {
     public var analyticsConfiguration: AnalyticsConfiguration
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
@@ -5928,7 +5930,7 @@ public struct PutBucketAnalyticsConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketCorsRequest: Codable, Equatable {
+public struct PutBucketCorsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var cORSConfiguration: CORSConfiguration
     public var checksumAlgorithm: ChecksumAlgorithm?
@@ -5960,7 +5962,7 @@ public struct PutBucketCorsRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketEncryptionRequest: Codable, Equatable {
+public struct PutBucketEncryptionRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -5992,7 +5994,7 @@ public struct PutBucketEncryptionRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketIntelligentTieringConfigurationRequest: Codable, Equatable {
+public struct PutBucketIntelligentTieringConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var id: IntelligentTieringId
     public var intelligentTieringConfiguration: IntelligentTieringConfiguration
@@ -6016,7 +6018,7 @@ public struct PutBucketIntelligentTieringConfigurationRequest: Codable, Equatabl
     }
 }
 
-public struct PutBucketInventoryConfigurationRequest: Codable, Equatable {
+public struct PutBucketInventoryConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: InventoryId
@@ -6044,7 +6046,7 @@ public struct PutBucketInventoryConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketLifecycleConfigurationRequest: Codable, Equatable {
+public struct PutBucketLifecycleConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
@@ -6072,7 +6074,7 @@ public struct PutBucketLifecycleConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketLifecycleRequest: Codable, Equatable {
+public struct PutBucketLifecycleRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6104,7 +6106,7 @@ public struct PutBucketLifecycleRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketLoggingRequest: Codable, Equatable {
+public struct PutBucketLoggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var bucketLoggingStatus: BucketLoggingStatus
     public var checksumAlgorithm: ChecksumAlgorithm?
@@ -6136,7 +6138,7 @@ public struct PutBucketLoggingRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketMetricsConfigurationRequest: Codable, Equatable {
+public struct PutBucketMetricsConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var id: MetricsId
@@ -6164,7 +6166,7 @@ public struct PutBucketMetricsConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketNotificationConfigurationRequest: Codable, Equatable {
+public struct PutBucketNotificationConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var notificationConfiguration: NotificationConfiguration
@@ -6192,7 +6194,7 @@ public struct PutBucketNotificationConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketNotificationRequest: Codable, Equatable {
+public struct PutBucketNotificationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6224,7 +6226,7 @@ public struct PutBucketNotificationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketOwnershipControlsRequest: Codable, Equatable {
+public struct PutBucketOwnershipControlsRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var contentMD5: ContentMD5?
     public var expectedBucketOwner: AccountId?
@@ -6252,7 +6254,7 @@ public struct PutBucketOwnershipControlsRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketPolicyRequest: Codable, Equatable {
+public struct PutBucketPolicyRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var confirmRemoveSelfBucketAccess: ConfirmRemoveSelfBucketAccess?
@@ -6287,7 +6289,7 @@ public struct PutBucketPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketReplicationRequest: Codable, Equatable {
+public struct PutBucketReplicationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6323,7 +6325,7 @@ public struct PutBucketReplicationRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketRequestPaymentRequest: Codable, Equatable {
+public struct PutBucketRequestPaymentRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6355,7 +6357,7 @@ public struct PutBucketRequestPaymentRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketTaggingRequest: Codable, Equatable {
+public struct PutBucketTaggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6387,7 +6389,7 @@ public struct PutBucketTaggingRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketVersioningRequest: Codable, Equatable {
+public struct PutBucketVersioningRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6423,7 +6425,7 @@ public struct PutBucketVersioningRequest: Codable, Equatable {
     }
 }
 
-public struct PutBucketWebsiteRequest: Codable, Equatable {
+public struct PutBucketWebsiteRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6455,7 +6457,7 @@ public struct PutBucketWebsiteRequest: Codable, Equatable {
     }
 }
 
-public struct PutObjectAclOutput: Codable, Equatable {
+public struct PutObjectAclOutput: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -6470,7 +6472,7 @@ public struct PutObjectAclOutput: Codable, Equatable {
     }
 }
 
-public struct PutObjectAclRequest: Codable, Equatable {
+public struct PutObjectAclRequest: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var accessControlPolicy: AccessControlPolicy?
     public var bucket: BucketName
@@ -6539,7 +6541,7 @@ public struct PutObjectAclRequest: Codable, Equatable {
     }
 }
 
-public struct PutObjectLegalHoldOutput: Codable, Equatable {
+public struct PutObjectLegalHoldOutput: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -6554,7 +6556,7 @@ public struct PutObjectLegalHoldOutput: Codable, Equatable {
     }
 }
 
-public struct PutObjectLegalHoldRequest: Codable, Equatable {
+public struct PutObjectLegalHoldRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6599,7 +6601,7 @@ public struct PutObjectLegalHoldRequest: Codable, Equatable {
     }
 }
 
-public struct PutObjectLockConfigurationOutput: Codable, Equatable {
+public struct PutObjectLockConfigurationOutput: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -6614,7 +6616,7 @@ public struct PutObjectLockConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct PutObjectLockConfigurationRequest: Codable, Equatable {
+public struct PutObjectLockConfigurationRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -6654,7 +6656,7 @@ public struct PutObjectLockConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutObjectOutput: Codable, Equatable {
+public struct PutObjectOutput: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
@@ -6721,7 +6723,7 @@ public struct PutObjectOutput: Codable, Equatable {
     }
 }
 
-public struct PutObjectRequest: Codable, Equatable {
+public struct PutObjectRequest: Codable, Equatable, Sendable {
     public var aCL: ObjectCannedACL?
     public var body: Body?
     public var bucket: BucketName
@@ -6881,7 +6883,7 @@ public struct PutObjectRequest: Codable, Equatable {
     }
 }
 
-public struct PutObjectRetentionOutput: Codable, Equatable {
+public struct PutObjectRetentionOutput: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
 
     public init(requestCharged: RequestCharged? = nil) {
@@ -6896,7 +6898,7 @@ public struct PutObjectRetentionOutput: Codable, Equatable {
     }
 }
 
-public struct PutObjectRetentionRequest: Codable, Equatable {
+public struct PutObjectRetentionRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var bypassGovernanceRetention: BypassGovernanceRetention?
     public var checksumAlgorithm: ChecksumAlgorithm?
@@ -6945,7 +6947,7 @@ public struct PutObjectRetentionRequest: Codable, Equatable {
     }
 }
 
-public struct PutObjectTaggingOutput: Codable, Equatable {
+public struct PutObjectTaggingOutput: Codable, Equatable, Sendable {
     public var versionId: ObjectVersionId?
 
     public init(versionId: ObjectVersionId? = nil) {
@@ -6960,7 +6962,7 @@ public struct PutObjectTaggingOutput: Codable, Equatable {
     }
 }
 
-public struct PutObjectTaggingRequest: Codable, Equatable {
+public struct PutObjectTaggingRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -7005,7 +7007,7 @@ public struct PutObjectTaggingRequest: Codable, Equatable {
     }
 }
 
-public struct PutPublicAccessBlockRequest: Codable, Equatable {
+public struct PutPublicAccessBlockRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var contentMD5: ContentMD5?
@@ -7037,7 +7039,7 @@ public struct PutPublicAccessBlockRequest: Codable, Equatable {
     }
 }
 
-public struct QueueConfiguration: Codable, Equatable {
+public struct QueueConfiguration: Codable, Equatable, Sendable {
     public var events: EventList
     public var filter: NotificationConfigurationFilter?
     public var id: NotificationId?
@@ -7065,7 +7067,7 @@ public struct QueueConfiguration: Codable, Equatable {
     }
 }
 
-public struct QueueConfigurationDeprecated: Codable, Equatable {
+public struct QueueConfigurationDeprecated: Codable, Equatable, Sendable {
     public var events: EventList?
     public var id: NotificationId?
     public var queue: QueueArn?
@@ -7088,7 +7090,7 @@ public struct QueueConfigurationDeprecated: Codable, Equatable {
     }
 }
 
-public struct RecordsEvent: Codable, Equatable {
+public struct RecordsEvent: Codable, Equatable, Sendable {
     public var payload: Body?
 
     public init(payload: Body? = nil) {
@@ -7103,7 +7105,7 @@ public struct RecordsEvent: Codable, Equatable {
     }
 }
 
-public struct Redirect: Codable, Equatable {
+public struct Redirect: Codable, Equatable, Sendable {
     public var hostName: HostName?
     public var httpRedirectCode: HttpRedirectCode?
     public var `protocol`: Protocol?
@@ -7134,7 +7136,7 @@ public struct Redirect: Codable, Equatable {
     }
 }
 
-public struct RedirectAllRequestsTo: Codable, Equatable {
+public struct RedirectAllRequestsTo: Codable, Equatable, Sendable {
     public var hostName: HostName
     public var `protocol`: Protocol?
 
@@ -7153,7 +7155,7 @@ public struct RedirectAllRequestsTo: Codable, Equatable {
     }
 }
 
-public struct ReplicaModifications: Codable, Equatable {
+public struct ReplicaModifications: Codable, Equatable, Sendable {
     public var status: ReplicaModificationsStatus
 
     public init(status: ReplicaModificationsStatus) {
@@ -7168,7 +7170,7 @@ public struct ReplicaModifications: Codable, Equatable {
     }
 }
 
-public struct ReplicationConfiguration: Codable, Equatable {
+public struct ReplicationConfiguration: Codable, Equatable, Sendable {
     public var role: Role
     public var rules: ReplicationRules
 
@@ -7187,7 +7189,7 @@ public struct ReplicationConfiguration: Codable, Equatable {
     }
 }
 
-public struct ReplicationRule: Codable, Equatable {
+public struct ReplicationRule: Codable, Equatable, Sendable {
     public var deleteMarkerReplication: DeleteMarkerReplication?
     public var destination: Destination
     public var existingObjectReplication: ExistingObjectReplication?
@@ -7235,7 +7237,7 @@ public struct ReplicationRule: Codable, Equatable {
     }
 }
 
-public struct ReplicationRuleAndOperator: Codable, Equatable {
+public struct ReplicationRuleAndOperator: Codable, Equatable, Sendable {
     public var prefix: Prefix?
     public var tags: TagSet?
 
@@ -7254,7 +7256,7 @@ public struct ReplicationRuleAndOperator: Codable, Equatable {
     }
 }
 
-public struct ReplicationRuleFilter: Codable, Equatable {
+public struct ReplicationRuleFilter: Codable, Equatable, Sendable {
     public var and: ReplicationRuleAndOperator?
     public var prefix: Prefix?
     public var tag: Tag?
@@ -7279,7 +7281,7 @@ public struct ReplicationRuleFilter: Codable, Equatable {
     }
 }
 
-public struct ReplicationTime: Codable, Equatable {
+public struct ReplicationTime: Codable, Equatable, Sendable {
     public var status: ReplicationTimeStatus
     public var time: ReplicationTimeValue
 
@@ -7299,7 +7301,7 @@ public struct ReplicationTime: Codable, Equatable {
     }
 }
 
-public struct ReplicationTimeValue: Codable, Equatable {
+public struct ReplicationTimeValue: Codable, Equatable, Sendable {
     public var minutes: Minutes?
 
     public init(minutes: Minutes? = nil) {
@@ -7314,7 +7316,7 @@ public struct ReplicationTimeValue: Codable, Equatable {
     }
 }
 
-public struct RequestPaymentConfiguration: Codable, Equatable {
+public struct RequestPaymentConfiguration: Codable, Equatable, Sendable {
     public var payer: Payer
 
     public init(payer: Payer) {
@@ -7329,7 +7331,7 @@ public struct RequestPaymentConfiguration: Codable, Equatable {
     }
 }
 
-public struct RequestProgress: Codable, Equatable {
+public struct RequestProgress: Codable, Equatable, Sendable {
     public var enabled: EnableRequestProgress?
 
     public init(enabled: EnableRequestProgress? = nil) {
@@ -7344,7 +7346,7 @@ public struct RequestProgress: Codable, Equatable {
     }
 }
 
-public struct RestoreObjectOutput: Codable, Equatable {
+public struct RestoreObjectOutput: Codable, Equatable, Sendable {
     public var requestCharged: RequestCharged?
     public var restoreOutputPath: RestoreOutputPath?
 
@@ -7363,7 +7365,7 @@ public struct RestoreObjectOutput: Codable, Equatable {
     }
 }
 
-public struct RestoreObjectRequest: Codable, Equatable {
+public struct RestoreObjectRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
     public var expectedBucketOwner: AccountId?
@@ -7404,7 +7406,7 @@ public struct RestoreObjectRequest: Codable, Equatable {
     }
 }
 
-public struct RestoreRequest: Codable, Equatable {
+public struct RestoreRequest: Codable, Equatable, Sendable {
     public var days: Days?
     public var description: Description?
     public var glacierJobParameters: GlacierJobParameters?
@@ -7446,7 +7448,7 @@ public struct RestoreRequest: Codable, Equatable {
     }
 }
 
-public struct RoutingRule: Codable, Equatable {
+public struct RoutingRule: Codable, Equatable, Sendable {
     public var condition: Condition?
     public var redirect: Redirect
 
@@ -7467,7 +7469,7 @@ public struct RoutingRule: Codable, Equatable {
     }
 }
 
-public struct Rule: Codable, Equatable {
+public struct Rule: Codable, Equatable, Sendable {
     public var abortIncompleteMultipartUpload: AbortIncompleteMultipartUpload?
     public var expiration: LifecycleExpiration?
     public var iD: ID?
@@ -7515,7 +7517,7 @@ public struct Rule: Codable, Equatable {
     }
 }
 
-public struct S3KeyFilter: Codable, Equatable {
+public struct S3KeyFilter: Codable, Equatable, Sendable {
     public var filterRules: FilterRuleList?
 
     public init(filterRules: FilterRuleList? = nil) {
@@ -7530,7 +7532,7 @@ public struct S3KeyFilter: Codable, Equatable {
     }
 }
 
-public struct S3Location: Codable, Equatable {
+public struct S3Location: Codable, Equatable, Sendable {
     public var accessControlList: Grants?
     public var bucketName: BucketName
     public var cannedACL: ObjectCannedACL?
@@ -7575,7 +7577,7 @@ public struct S3Location: Codable, Equatable {
     }
 }
 
-public struct SSEKMS: Codable, Equatable {
+public struct SSEKMS: Codable, Equatable, Sendable {
     public var keyId: SSEKMSKeyId
 
     public init(keyId: SSEKMSKeyId) {
@@ -7590,7 +7592,7 @@ public struct SSEKMS: Codable, Equatable {
     }
 }
 
-public struct SSES3: Codable, Equatable {
+public struct SSES3: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -7599,7 +7601,7 @@ public struct SSES3: Codable, Equatable {
     }
 }
 
-public struct ScanRange: Codable, Equatable {
+public struct ScanRange: Codable, Equatable, Sendable {
     public var end: End?
     public var start: Start?
 
@@ -7618,7 +7620,7 @@ public struct ScanRange: Codable, Equatable {
     }
 }
 
-public struct SelectObjectContentEventStream: Codable, Equatable {
+public struct SelectObjectContentEventStream: Codable, Equatable, Sendable {
     public var cont: ContinuationEvent?
     public var end: EndEvent?
     public var progress: ProgressEvent?
@@ -7654,7 +7656,7 @@ public struct SelectObjectContentEventStream: Codable, Equatable {
     }
 }
 
-public struct SelectObjectContentOutput: Codable, Equatable {
+public struct SelectObjectContentOutput: Codable, Equatable, Sendable {
     public var payload: SelectObjectContentEventStream?
 
     public init(payload: SelectObjectContentEventStream? = nil) {
@@ -7670,7 +7672,7 @@ public struct SelectObjectContentOutput: Codable, Equatable {
     }
 }
 
-public struct SelectObjectContentRequest: Codable, Equatable {
+public struct SelectObjectContentRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
     public var expression: Expression
@@ -7734,7 +7736,7 @@ public struct SelectObjectContentRequest: Codable, Equatable {
     }
 }
 
-public struct SelectParameters: Codable, Equatable {
+public struct SelectParameters: Codable, Equatable, Sendable {
     public var expression: Expression
     public var expressionType: ExpressionType
     public var inputSerialization: InputSerialization
@@ -7763,7 +7765,7 @@ public struct SelectParameters: Codable, Equatable {
     }
 }
 
-public struct ServerSideEncryptionByDefault: Codable, Equatable {
+public struct ServerSideEncryptionByDefault: Codable, Equatable, Sendable {
     public var kMSMasterKeyID: SSEKMSKeyId?
     public var sSEAlgorithm: ServerSideEncryption
 
@@ -7782,7 +7784,7 @@ public struct ServerSideEncryptionByDefault: Codable, Equatable {
     }
 }
 
-public struct ServerSideEncryptionConfiguration: Codable, Equatable {
+public struct ServerSideEncryptionConfiguration: Codable, Equatable, Sendable {
     public var rules: ServerSideEncryptionRules
 
     public init(rules: ServerSideEncryptionRules) {
@@ -7797,7 +7799,7 @@ public struct ServerSideEncryptionConfiguration: Codable, Equatable {
     }
 }
 
-public struct ServerSideEncryptionRule: Codable, Equatable {
+public struct ServerSideEncryptionRule: Codable, Equatable, Sendable {
     public var applyServerSideEncryptionByDefault: ServerSideEncryptionByDefault?
     public var bucketKeyEnabled: BucketKeyEnabled?
 
@@ -7817,7 +7819,7 @@ public struct ServerSideEncryptionRule: Codable, Equatable {
     }
 }
 
-public struct SourceSelectionCriteria: Codable, Equatable {
+public struct SourceSelectionCriteria: Codable, Equatable, Sendable {
     public var replicaModifications: ReplicaModifications?
     public var sseKmsEncryptedObjects: SseKmsEncryptedObjects?
 
@@ -7838,7 +7840,7 @@ public struct SourceSelectionCriteria: Codable, Equatable {
     }
 }
 
-public struct SseKmsEncryptedObjects: Codable, Equatable {
+public struct SseKmsEncryptedObjects: Codable, Equatable, Sendable {
     public var status: SseKmsEncryptedObjectsStatus
 
     public init(status: SseKmsEncryptedObjectsStatus) {
@@ -7853,7 +7855,7 @@ public struct SseKmsEncryptedObjects: Codable, Equatable {
     }
 }
 
-public struct Stats: Codable, Equatable {
+public struct Stats: Codable, Equatable, Sendable {
     public var bytesProcessed: BytesProcessed?
     public var bytesReturned: BytesReturned?
     public var bytesScanned: BytesScanned?
@@ -7876,7 +7878,7 @@ public struct Stats: Codable, Equatable {
     }
 }
 
-public struct StatsEvent: Codable, Equatable {
+public struct StatsEvent: Codable, Equatable, Sendable {
     public var details: Stats?
 
     public init(details: Stats? = nil) {
@@ -7892,7 +7894,7 @@ public struct StatsEvent: Codable, Equatable {
     }
 }
 
-public struct StorageClassAnalysis: Codable, Equatable {
+public struct StorageClassAnalysis: Codable, Equatable, Sendable {
     public var dataExport: StorageClassAnalysisDataExport?
 
     public init(dataExport: StorageClassAnalysisDataExport? = nil) {
@@ -7908,7 +7910,7 @@ public struct StorageClassAnalysis: Codable, Equatable {
     }
 }
 
-public struct StorageClassAnalysisDataExport: Codable, Equatable {
+public struct StorageClassAnalysisDataExport: Codable, Equatable, Sendable {
     public var destination: AnalyticsExportDestination
     public var outputSchemaVersion: StorageClassAnalysisSchemaVersion
 
@@ -7928,7 +7930,7 @@ public struct StorageClassAnalysisDataExport: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: ObjectKey
     public var value: Value
 
@@ -7948,7 +7950,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct Tagging: Codable, Equatable {
+public struct Tagging: Codable, Equatable, Sendable {
     public var tagSet: TagSet
 
     public init(tagSet: TagSet) {
@@ -7963,7 +7965,7 @@ public struct Tagging: Codable, Equatable {
     }
 }
 
-public struct TargetGrant: Codable, Equatable {
+public struct TargetGrant: Codable, Equatable, Sendable {
     public var grantee: Grantee?
     public var permission: BucketLogsPermission?
 
@@ -7983,7 +7985,7 @@ public struct TargetGrant: Codable, Equatable {
     }
 }
 
-public struct Tiering: Codable, Equatable {
+public struct Tiering: Codable, Equatable, Sendable {
     public var accessTier: IntelligentTieringAccessTier
     public var days: IntelligentTieringDays
 
@@ -8002,7 +8004,7 @@ public struct Tiering: Codable, Equatable {
     }
 }
 
-public struct TopicConfiguration: Codable, Equatable {
+public struct TopicConfiguration: Codable, Equatable, Sendable {
     public var events: EventList
     public var filter: NotificationConfigurationFilter?
     public var id: NotificationId?
@@ -8030,7 +8032,7 @@ public struct TopicConfiguration: Codable, Equatable {
     }
 }
 
-public struct TopicConfigurationDeprecated: Codable, Equatable {
+public struct TopicConfigurationDeprecated: Codable, Equatable, Sendable {
     public var events: EventList?
     public var id: NotificationId?
     public var topic: TopicArn?
@@ -8053,7 +8055,7 @@ public struct TopicConfigurationDeprecated: Codable, Equatable {
     }
 }
 
-public struct Transition: Codable, Equatable {
+public struct Transition: Codable, Equatable, Sendable {
     public var date: Date?
     public var days: Days?
     public var storageClass: TransitionStorageClass?
@@ -8076,7 +8078,7 @@ public struct Transition: Codable, Equatable {
     }
 }
 
-public struct UploadPartCopyOutput: Codable, Equatable {
+public struct UploadPartCopyOutput: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var copyPartResult: CopyPartResult?
     public var copySourceVersionId: CopySourceVersionId?
@@ -8120,7 +8122,7 @@ public struct UploadPartCopyOutput: Codable, Equatable {
     }
 }
 
-public struct UploadPartCopyRequest: Codable, Equatable {
+public struct UploadPartCopyRequest: Codable, Equatable, Sendable {
     public var bucket: BucketName
     public var copySource: CopySource
     public var copySourceIfMatch: CopySourceIfMatch?
@@ -8209,7 +8211,7 @@ public struct UploadPartCopyRequest: Codable, Equatable {
     }
 }
 
-public struct UploadPartOutput: Codable, Equatable {
+public struct UploadPartOutput: Codable, Equatable, Sendable {
     public var bucketKeyEnabled: BucketKeyEnabled?
     public var checksumCRC32: ChecksumCRC32?
     public var checksumCRC32C: ChecksumCRC32C?
@@ -8264,7 +8266,7 @@ public struct UploadPartOutput: Codable, Equatable {
     }
 }
 
-public struct UploadPartRequest: Codable, Equatable {
+public struct UploadPartRequest: Codable, Equatable, Sendable {
     public var body: Body?
     public var bucket: BucketName
     public var checksumAlgorithm: ChecksumAlgorithm?
@@ -8344,7 +8346,7 @@ public struct UploadPartRequest: Codable, Equatable {
     }
 }
 
-public struct VersioningConfiguration: Codable, Equatable {
+public struct VersioningConfiguration: Codable, Equatable, Sendable {
     public var mFADelete: MFADelete?
     public var status: BucketVersioningStatus?
 
@@ -8363,7 +8365,7 @@ public struct VersioningConfiguration: Codable, Equatable {
     }
 }
 
-public struct WebsiteConfiguration: Codable, Equatable {
+public struct WebsiteConfiguration: Codable, Equatable, Sendable {
     public var errorDocument: ErrorDocument?
     public var indexDocument: IndexDocument?
     public var redirectAllRequestsTo: RedirectAllRequestsTo?
@@ -8393,7 +8395,7 @@ public struct WebsiteConfiguration: Codable, Equatable {
     }
 }
 
-public struct WriteGetObjectResponseRequest: Codable, Equatable {
+public struct WriteGetObjectResponseRequest: Codable, Equatable, Sendable {
     public var acceptRanges: AcceptRanges?
     public var body: Body?
     public var bucketKeyEnabled: BucketKeyEnabled?

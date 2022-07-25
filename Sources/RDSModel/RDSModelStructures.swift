@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AccountAttributesMessage: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AccountAttributesMessage: Codable, Equatable, Sendable {
     public var accountQuotas: AccountQuotaList?
 
     public init(accountQuotas: AccountQuotaList? = nil) {
@@ -37,7 +39,7 @@ public struct AccountAttributesMessage: Codable, Equatable {
     }
 }
 
-public struct AccountAttributesMessageForDescribeAccountAttributes: Codable, Equatable {
+public struct AccountAttributesMessageForDescribeAccountAttributes: Codable, Equatable, Sendable {
     public var describeAccountAttributesResult: AccountAttributesMessage
 
     public init(describeAccountAttributesResult: AccountAttributesMessage) {
@@ -53,7 +55,7 @@ public struct AccountAttributesMessageForDescribeAccountAttributes: Codable, Equ
     }
 }
 
-public struct AccountQuota: Codable, Equatable {
+public struct AccountQuota: Codable, Equatable, Sendable {
     public var accountQuotaName: String?
     public var max: Long?
     public var used: Long?
@@ -76,7 +78,7 @@ public struct AccountQuota: Codable, Equatable {
     }
 }
 
-public struct AddRoleToDBClusterMessage: Codable, Equatable {
+public struct AddRoleToDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
     public var featureName: String?
     public var roleArn: String
@@ -99,7 +101,7 @@ public struct AddRoleToDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct AddRoleToDBInstanceMessage: Codable, Equatable {
+public struct AddRoleToDBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var featureName: String
     public var roleArn: String
@@ -122,7 +124,7 @@ public struct AddRoleToDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct AddSourceIdentifierToSubscriptionMessage: Codable, Equatable {
+public struct AddSourceIdentifierToSubscriptionMessage: Codable, Equatable, Sendable {
     public var sourceIdentifier: String
     public var subscriptionName: String
 
@@ -141,7 +143,7 @@ public struct AddSourceIdentifierToSubscriptionMessage: Codable, Equatable {
     }
 }
 
-public struct AddSourceIdentifierToSubscriptionResult: Codable, Equatable {
+public struct AddSourceIdentifierToSubscriptionResult: Codable, Equatable, Sendable {
     public var eventSubscription: EventSubscription?
 
     public init(eventSubscription: EventSubscription? = nil) {
@@ -157,7 +159,7 @@ public struct AddSourceIdentifierToSubscriptionResult: Codable, Equatable {
     }
 }
 
-public struct AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription: Codable, Equatable {
+public struct AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription: Codable, Equatable, Sendable {
     public var addSourceIdentifierToSubscriptionResult: AddSourceIdentifierToSubscriptionResult
 
     public init(addSourceIdentifierToSubscriptionResult: AddSourceIdentifierToSubscriptionResult) {
@@ -173,7 +175,7 @@ public struct AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSub
     }
 }
 
-public struct AddTagsToResourceMessage: Codable, Equatable {
+public struct AddTagsToResourceMessage: Codable, Equatable, Sendable {
     public var resourceName: String
     public var tags: TagList
 
@@ -192,7 +194,7 @@ public struct AddTagsToResourceMessage: Codable, Equatable {
     }
 }
 
-public struct ApplyPendingMaintenanceActionMessage: Codable, Equatable {
+public struct ApplyPendingMaintenanceActionMessage: Codable, Equatable, Sendable {
     public var applyAction: String
     public var optInType: String
     public var resourceIdentifier: String
@@ -215,7 +217,7 @@ public struct ApplyPendingMaintenanceActionMessage: Codable, Equatable {
     }
 }
 
-public struct ApplyPendingMaintenanceActionResult: Codable, Equatable {
+public struct ApplyPendingMaintenanceActionResult: Codable, Equatable, Sendable {
     public var resourcePendingMaintenanceActions: ResourcePendingMaintenanceActions?
 
     public init(resourcePendingMaintenanceActions: ResourcePendingMaintenanceActions? = nil) {
@@ -231,7 +233,7 @@ public struct ApplyPendingMaintenanceActionResult: Codable, Equatable {
     }
 }
 
-public struct ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction: Codable, Equatable {
+public struct ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction: Codable, Equatable, Sendable {
     public var applyPendingMaintenanceActionResult: ApplyPendingMaintenanceActionResult
 
     public init(applyPendingMaintenanceActionResult: ApplyPendingMaintenanceActionResult) {
@@ -247,7 +249,7 @@ public struct ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceActio
     }
 }
 
-public struct AuthorizationAlreadyExistsFault: Codable, Equatable {
+public struct AuthorizationAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -256,7 +258,7 @@ public struct AuthorizationAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct AuthorizationNotFoundFault: Codable, Equatable {
+public struct AuthorizationNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -265,7 +267,7 @@ public struct AuthorizationNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct AuthorizationQuotaExceededFault: Codable, Equatable {
+public struct AuthorizationQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -274,7 +276,7 @@ public struct AuthorizationQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct AuthorizeDBSecurityGroupIngressMessage: Codable, Equatable {
+public struct AuthorizeDBSecurityGroupIngressMessage: Codable, Equatable, Sendable {
     public var cIDRIP: String?
     public var dBSecurityGroupName: String
     public var eC2SecurityGroupId: String?
@@ -305,7 +307,7 @@ public struct AuthorizeDBSecurityGroupIngressMessage: Codable, Equatable {
     }
 }
 
-public struct AuthorizeDBSecurityGroupIngressResult: Codable, Equatable {
+public struct AuthorizeDBSecurityGroupIngressResult: Codable, Equatable, Sendable {
     public var dBSecurityGroup: DBSecurityGroup?
 
     public init(dBSecurityGroup: DBSecurityGroup? = nil) {
@@ -321,7 +323,7 @@ public struct AuthorizeDBSecurityGroupIngressResult: Codable, Equatable {
     }
 }
 
-public struct AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress: Codable, Equatable {
+public struct AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress: Codable, Equatable, Sendable {
     public var authorizeDBSecurityGroupIngressResult: AuthorizeDBSecurityGroupIngressResult
 
     public init(authorizeDBSecurityGroupIngressResult: AuthorizeDBSecurityGroupIngressResult) {
@@ -337,7 +339,7 @@ public struct AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIn
     }
 }
 
-public struct AvailabilityZone: Codable, Equatable {
+public struct AvailabilityZone: Codable, Equatable, Sendable {
     public var name: String?
 
     public init(name: String? = nil) {
@@ -352,7 +354,7 @@ public struct AvailabilityZone: Codable, Equatable {
     }
 }
 
-public struct AvailableProcessorFeature: Codable, Equatable {
+public struct AvailableProcessorFeature: Codable, Equatable, Sendable {
     public var allowedValues: String?
     public var defaultValue: String?
     public var name: String?
@@ -375,7 +377,7 @@ public struct AvailableProcessorFeature: Codable, Equatable {
     }
 }
 
-public struct BacktrackDBClusterMessage: Codable, Equatable {
+public struct BacktrackDBClusterMessage: Codable, Equatable, Sendable {
     public var backtrackTo: TStamp
     public var dBClusterIdentifier: String
     public var force: BooleanOptional?
@@ -402,7 +404,7 @@ public struct BacktrackDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct BackupPolicyNotFoundFault: Codable, Equatable {
+public struct BackupPolicyNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -411,7 +413,7 @@ public struct BackupPolicyNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct CancelExportTaskMessage: Codable, Equatable {
+public struct CancelExportTaskMessage: Codable, Equatable, Sendable {
     public var exportTaskIdentifier: String
 
     public init(exportTaskIdentifier: String) {
@@ -426,7 +428,7 @@ public struct CancelExportTaskMessage: Codable, Equatable {
     }
 }
 
-public struct Certificate: Codable, Equatable {
+public struct Certificate: Codable, Equatable, Sendable {
     public var certificateArn: String?
     public var certificateIdentifier: String?
     public var certificateType: String?
@@ -469,7 +471,7 @@ public struct Certificate: Codable, Equatable {
     }
 }
 
-public struct CertificateMessage: Codable, Equatable {
+public struct CertificateMessage: Codable, Equatable, Sendable {
     public var certificates: CertificateList?
     public var marker: String?
 
@@ -488,7 +490,7 @@ public struct CertificateMessage: Codable, Equatable {
     }
 }
 
-public struct CertificateMessageForDescribeCertificates: Codable, Equatable {
+public struct CertificateMessageForDescribeCertificates: Codable, Equatable, Sendable {
     public var describeCertificatesResult: CertificateMessage
 
     public init(describeCertificatesResult: CertificateMessage) {
@@ -504,7 +506,7 @@ public struct CertificateMessageForDescribeCertificates: Codable, Equatable {
     }
 }
 
-public struct CertificateNotFoundFault: Codable, Equatable {
+public struct CertificateNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -513,7 +515,7 @@ public struct CertificateNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct CharacterSet: Codable, Equatable {
+public struct CharacterSet: Codable, Equatable, Sendable {
     public var characterSetDescription: String?
     public var characterSetName: String?
 
@@ -532,7 +534,7 @@ public struct CharacterSet: Codable, Equatable {
     }
 }
 
-public struct CloudwatchLogsExportConfiguration: Codable, Equatable {
+public struct CloudwatchLogsExportConfiguration: Codable, Equatable, Sendable {
     public var disableLogTypes: LogTypeList?
     public var enableLogTypes: LogTypeList?
 
@@ -551,7 +553,7 @@ public struct CloudwatchLogsExportConfiguration: Codable, Equatable {
     }
 }
 
-public struct ClusterPendingModifiedValues: Codable, Equatable {
+public struct ClusterPendingModifiedValues: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String?
     public var engineVersion: String?
     public var iAMDatabaseAuthenticationEnabled: BooleanOptional?
@@ -583,7 +585,7 @@ public struct ClusterPendingModifiedValues: Codable, Equatable {
     }
 }
 
-public struct ConnectionPoolConfiguration: Codable, Equatable {
+public struct ConnectionPoolConfiguration: Codable, Equatable, Sendable {
     public var connectionBorrowTimeout: IntegerOptional?
     public var initQuery: String?
     public var maxConnectionsPercent: IntegerOptional?
@@ -614,7 +616,7 @@ public struct ConnectionPoolConfiguration: Codable, Equatable {
     }
 }
 
-public struct ConnectionPoolConfigurationInfo: Codable, Equatable {
+public struct ConnectionPoolConfigurationInfo: Codable, Equatable, Sendable {
     public var connectionBorrowTimeout: Integer?
     public var initQuery: String?
     public var maxConnectionsPercent: Integer?
@@ -645,7 +647,7 @@ public struct ConnectionPoolConfigurationInfo: Codable, Equatable {
     }
 }
 
-public struct CopyDBClusterParameterGroupMessage: Codable, Equatable {
+public struct CopyDBClusterParameterGroupMessage: Codable, Equatable, Sendable {
     public var sourceDBClusterParameterGroupIdentifier: String
     public var tags: TagList?
     public var targetDBClusterParameterGroupDescription: String
@@ -672,7 +674,7 @@ public struct CopyDBClusterParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CopyDBClusterParameterGroupResult: Codable, Equatable {
+public struct CopyDBClusterParameterGroupResult: Codable, Equatable, Sendable {
     public var dBClusterParameterGroup: DBClusterParameterGroup?
 
     public init(dBClusterParameterGroup: DBClusterParameterGroup? = nil) {
@@ -688,7 +690,7 @@ public struct CopyDBClusterParameterGroupResult: Codable, Equatable {
     }
 }
 
-public struct CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup: Codable, Equatable {
+public struct CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup: Codable, Equatable, Sendable {
     public var copyDBClusterParameterGroupResult: CopyDBClusterParameterGroupResult
 
     public init(copyDBClusterParameterGroupResult: CopyDBClusterParameterGroupResult) {
@@ -704,7 +706,7 @@ public struct CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup: C
     }
 }
 
-public struct CopyDBClusterSnapshotMessage: Codable, Equatable {
+public struct CopyDBClusterSnapshotMessage: Codable, Equatable, Sendable {
     public var copyTags: BooleanOptional?
     public var kmsKeyId: String?
     public var preSignedUrl: String?
@@ -739,7 +741,7 @@ public struct CopyDBClusterSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct CopyDBClusterSnapshotResult: Codable, Equatable {
+public struct CopyDBClusterSnapshotResult: Codable, Equatable, Sendable {
     public var dBClusterSnapshot: DBClusterSnapshot?
 
     public init(dBClusterSnapshot: DBClusterSnapshot? = nil) {
@@ -755,7 +757,7 @@ public struct CopyDBClusterSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct CopyDBClusterSnapshotResultForCopyDBClusterSnapshot: Codable, Equatable {
+public struct CopyDBClusterSnapshotResultForCopyDBClusterSnapshot: Codable, Equatable, Sendable {
     public var copyDBClusterSnapshotResult: CopyDBClusterSnapshotResult
 
     public init(copyDBClusterSnapshotResult: CopyDBClusterSnapshotResult) {
@@ -771,7 +773,7 @@ public struct CopyDBClusterSnapshotResultForCopyDBClusterSnapshot: Codable, Equa
     }
 }
 
-public struct CopyDBParameterGroupMessage: Codable, Equatable {
+public struct CopyDBParameterGroupMessage: Codable, Equatable, Sendable {
     public var sourceDBParameterGroupIdentifier: String
     public var tags: TagList?
     public var targetDBParameterGroupDescription: String
@@ -798,7 +800,7 @@ public struct CopyDBParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CopyDBParameterGroupResult: Codable, Equatable {
+public struct CopyDBParameterGroupResult: Codable, Equatable, Sendable {
     public var dBParameterGroup: DBParameterGroup?
 
     public init(dBParameterGroup: DBParameterGroup? = nil) {
@@ -814,7 +816,7 @@ public struct CopyDBParameterGroupResult: Codable, Equatable {
     }
 }
 
-public struct CopyDBParameterGroupResultForCopyDBParameterGroup: Codable, Equatable {
+public struct CopyDBParameterGroupResultForCopyDBParameterGroup: Codable, Equatable, Sendable {
     public var copyDBParameterGroupResult: CopyDBParameterGroupResult
 
     public init(copyDBParameterGroupResult: CopyDBParameterGroupResult) {
@@ -830,7 +832,7 @@ public struct CopyDBParameterGroupResultForCopyDBParameterGroup: Codable, Equata
     }
 }
 
-public struct CopyDBSnapshotMessage: Codable, Equatable {
+public struct CopyDBSnapshotMessage: Codable, Equatable, Sendable {
     public var copyTags: BooleanOptional?
     public var kmsKeyId: String?
     public var optionGroupName: String?
@@ -873,7 +875,7 @@ public struct CopyDBSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct CopyDBSnapshotResult: Codable, Equatable {
+public struct CopyDBSnapshotResult: Codable, Equatable, Sendable {
     public var dBSnapshot: DBSnapshot?
 
     public init(dBSnapshot: DBSnapshot? = nil) {
@@ -889,7 +891,7 @@ public struct CopyDBSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct CopyDBSnapshotResultForCopyDBSnapshot: Codable, Equatable {
+public struct CopyDBSnapshotResultForCopyDBSnapshot: Codable, Equatable, Sendable {
     public var copyDBSnapshotResult: CopyDBSnapshotResult
 
     public init(copyDBSnapshotResult: CopyDBSnapshotResult) {
@@ -905,7 +907,7 @@ public struct CopyDBSnapshotResultForCopyDBSnapshot: Codable, Equatable {
     }
 }
 
-public struct CopyOptionGroupMessage: Codable, Equatable {
+public struct CopyOptionGroupMessage: Codable, Equatable, Sendable {
     public var sourceOptionGroupIdentifier: String
     public var tags: TagList?
     public var targetOptionGroupDescription: String
@@ -932,7 +934,7 @@ public struct CopyOptionGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CopyOptionGroupResult: Codable, Equatable {
+public struct CopyOptionGroupResult: Codable, Equatable, Sendable {
     public var optionGroup: OptionGroup?
 
     public init(optionGroup: OptionGroup? = nil) {
@@ -948,7 +950,7 @@ public struct CopyOptionGroupResult: Codable, Equatable {
     }
 }
 
-public struct CopyOptionGroupResultForCopyOptionGroup: Codable, Equatable {
+public struct CopyOptionGroupResultForCopyOptionGroup: Codable, Equatable, Sendable {
     public var copyOptionGroupResult: CopyOptionGroupResult
 
     public init(copyOptionGroupResult: CopyOptionGroupResult) {
@@ -964,7 +966,7 @@ public struct CopyOptionGroupResultForCopyOptionGroup: Codable, Equatable {
     }
 }
 
-public struct CreateCustomDBEngineVersionMessage: Codable, Equatable {
+public struct CreateCustomDBEngineVersionMessage: Codable, Equatable, Sendable {
     public var databaseInstallationFilesS3BucketName: BucketName
     public var databaseInstallationFilesS3Prefix: String255?
     public var description: Description?
@@ -1014,7 +1016,7 @@ public struct CreateCustomDBEngineVersionMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterEndpointMessage: Codable, Equatable {
+public struct CreateDBClusterEndpointMessage: Codable, Equatable, Sendable {
     public var dBClusterEndpointIdentifier: String
     public var dBClusterIdentifier: String
     public var endpointType: String
@@ -1049,7 +1051,7 @@ public struct CreateDBClusterEndpointMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterMessage: Codable, Equatable {
+public struct CreateDBClusterMessage: Codable, Equatable, Sendable {
     public var allocatedStorage: IntegerOptional?
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZones: AvailabilityZones?
@@ -1242,7 +1244,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterParameterGroupMessage: Codable, Equatable {
+public struct CreateDBClusterParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String
     public var dBParameterGroupFamily: String
     public var description: String
@@ -1269,7 +1271,7 @@ public struct CreateDBClusterParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterParameterGroupResult: Codable, Equatable {
+public struct CreateDBClusterParameterGroupResult: Codable, Equatable, Sendable {
     public var dBClusterParameterGroup: DBClusterParameterGroup?
 
     public init(dBClusterParameterGroup: DBClusterParameterGroup? = nil) {
@@ -1285,7 +1287,7 @@ public struct CreateDBClusterParameterGroupResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup: Codable, Equatable {
+public struct CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup: Codable, Equatable, Sendable {
     public var createDBClusterParameterGroupResult: CreateDBClusterParameterGroupResult
 
     public init(createDBClusterParameterGroupResult: CreateDBClusterParameterGroupResult) {
@@ -1301,7 +1303,7 @@ public struct CreateDBClusterParameterGroupResultForCreateDBClusterParameterGrou
     }
 }
 
-public struct CreateDBClusterResult: Codable, Equatable {
+public struct CreateDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -1317,7 +1319,7 @@ public struct CreateDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterResultForCreateDBCluster: Codable, Equatable {
+public struct CreateDBClusterResultForCreateDBCluster: Codable, Equatable, Sendable {
     public var createDBClusterResult: CreateDBClusterResult
 
     public init(createDBClusterResult: CreateDBClusterResult) {
@@ -1333,7 +1335,7 @@ public struct CreateDBClusterResultForCreateDBCluster: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterSnapshotMessage: Codable, Equatable {
+public struct CreateDBClusterSnapshotMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
     public var dBClusterSnapshotIdentifier: String
     public var tags: TagList?
@@ -1356,7 +1358,7 @@ public struct CreateDBClusterSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterSnapshotResult: Codable, Equatable {
+public struct CreateDBClusterSnapshotResult: Codable, Equatable, Sendable {
     public var dBClusterSnapshot: DBClusterSnapshot?
 
     public init(dBClusterSnapshot: DBClusterSnapshot? = nil) {
@@ -1372,7 +1374,7 @@ public struct CreateDBClusterSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBClusterSnapshotResultForCreateDBClusterSnapshot: Codable, Equatable {
+public struct CreateDBClusterSnapshotResultForCreateDBClusterSnapshot: Codable, Equatable, Sendable {
     public var createDBClusterSnapshotResult: CreateDBClusterSnapshotResult
 
     public init(createDBClusterSnapshotResult: CreateDBClusterSnapshotResult) {
@@ -1388,7 +1390,7 @@ public struct CreateDBClusterSnapshotResultForCreateDBClusterSnapshot: Codable, 
     }
 }
 
-public struct CreateDBInstanceMessage: Codable, Equatable {
+public struct CreateDBInstanceMessage: Codable, Equatable, Sendable {
     public var allocatedStorage: IntegerOptional?
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
@@ -1603,7 +1605,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
+public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable, Sendable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var copyTagsToSnapshot: BooleanOptional?
@@ -1750,7 +1752,7 @@ public struct CreateDBInstanceReadReplicaMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBInstanceReadReplicaResult: Codable, Equatable {
+public struct CreateDBInstanceReadReplicaResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -1766,7 +1768,7 @@ public struct CreateDBInstanceReadReplicaResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica: Codable, Equatable {
+public struct CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica: Codable, Equatable, Sendable {
     public var createDBInstanceReadReplicaResult: CreateDBInstanceReadReplicaResult
 
     public init(createDBInstanceReadReplicaResult: CreateDBInstanceReadReplicaResult) {
@@ -1782,7 +1784,7 @@ public struct CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica: C
     }
 }
 
-public struct CreateDBInstanceResult: Codable, Equatable {
+public struct CreateDBInstanceResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -1798,7 +1800,7 @@ public struct CreateDBInstanceResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBInstanceResultForCreateDBInstance: Codable, Equatable {
+public struct CreateDBInstanceResultForCreateDBInstance: Codable, Equatable, Sendable {
     public var createDBInstanceResult: CreateDBInstanceResult
 
     public init(createDBInstanceResult: CreateDBInstanceResult) {
@@ -1814,7 +1816,7 @@ public struct CreateDBInstanceResultForCreateDBInstance: Codable, Equatable {
     }
 }
 
-public struct CreateDBParameterGroupMessage: Codable, Equatable {
+public struct CreateDBParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupFamily: String
     public var dBParameterGroupName: String
     public var description: String
@@ -1841,7 +1843,7 @@ public struct CreateDBParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBParameterGroupResult: Codable, Equatable {
+public struct CreateDBParameterGroupResult: Codable, Equatable, Sendable {
     public var dBParameterGroup: DBParameterGroup?
 
     public init(dBParameterGroup: DBParameterGroup? = nil) {
@@ -1857,7 +1859,7 @@ public struct CreateDBParameterGroupResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBParameterGroupResultForCreateDBParameterGroup: Codable, Equatable {
+public struct CreateDBParameterGroupResultForCreateDBParameterGroup: Codable, Equatable, Sendable {
     public var createDBParameterGroupResult: CreateDBParameterGroupResult
 
     public init(createDBParameterGroupResult: CreateDBParameterGroupResult) {
@@ -1873,7 +1875,7 @@ public struct CreateDBParameterGroupResultForCreateDBParameterGroup: Codable, Eq
     }
 }
 
-public struct CreateDBProxyEndpointRequest: Codable, Equatable {
+public struct CreateDBProxyEndpointRequest: Codable, Equatable, Sendable {
     public var dBProxyEndpointName: DBProxyEndpointName
     public var dBProxyName: DBProxyName
     public var tags: TagList?
@@ -1910,7 +1912,7 @@ public struct CreateDBProxyEndpointRequest: Codable, Equatable {
     }
 }
 
-public struct CreateDBProxyEndpointResponse: Codable, Equatable {
+public struct CreateDBProxyEndpointResponse: Codable, Equatable, Sendable {
     public var dBProxyEndpoint: DBProxyEndpoint?
 
     public init(dBProxyEndpoint: DBProxyEndpoint? = nil) {
@@ -1926,7 +1928,7 @@ public struct CreateDBProxyEndpointResponse: Codable, Equatable {
     }
 }
 
-public struct CreateDBProxyEndpointResponseForCreateDBProxyEndpoint: Codable, Equatable {
+public struct CreateDBProxyEndpointResponseForCreateDBProxyEndpoint: Codable, Equatable, Sendable {
     public var createDBProxyEndpointResult: CreateDBProxyEndpointResponse
 
     public init(createDBProxyEndpointResult: CreateDBProxyEndpointResponse) {
@@ -1942,7 +1944,7 @@ public struct CreateDBProxyEndpointResponseForCreateDBProxyEndpoint: Codable, Eq
     }
 }
 
-public struct CreateDBProxyRequest: Codable, Equatable {
+public struct CreateDBProxyRequest: Codable, Equatable, Sendable {
     public var auth: UserAuthConfigList
     public var dBProxyName: String
     public var debugLogging: Boolean?
@@ -1993,7 +1995,7 @@ public struct CreateDBProxyRequest: Codable, Equatable {
     }
 }
 
-public struct CreateDBProxyResponse: Codable, Equatable {
+public struct CreateDBProxyResponse: Codable, Equatable, Sendable {
     public var dBProxy: DBProxy?
 
     public init(dBProxy: DBProxy? = nil) {
@@ -2009,7 +2011,7 @@ public struct CreateDBProxyResponse: Codable, Equatable {
     }
 }
 
-public struct CreateDBProxyResponseForCreateDBProxy: Codable, Equatable {
+public struct CreateDBProxyResponseForCreateDBProxy: Codable, Equatable, Sendable {
     public var createDBProxyResult: CreateDBProxyResponse
 
     public init(createDBProxyResult: CreateDBProxyResponse) {
@@ -2025,7 +2027,7 @@ public struct CreateDBProxyResponseForCreateDBProxy: Codable, Equatable {
     }
 }
 
-public struct CreateDBSecurityGroupMessage: Codable, Equatable {
+public struct CreateDBSecurityGroupMessage: Codable, Equatable, Sendable {
     public var dBSecurityGroupDescription: String
     public var dBSecurityGroupName: String
     public var tags: TagList?
@@ -2048,7 +2050,7 @@ public struct CreateDBSecurityGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBSecurityGroupResult: Codable, Equatable {
+public struct CreateDBSecurityGroupResult: Codable, Equatable, Sendable {
     public var dBSecurityGroup: DBSecurityGroup?
 
     public init(dBSecurityGroup: DBSecurityGroup? = nil) {
@@ -2064,7 +2066,7 @@ public struct CreateDBSecurityGroupResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBSecurityGroupResultForCreateDBSecurityGroup: Codable, Equatable {
+public struct CreateDBSecurityGroupResultForCreateDBSecurityGroup: Codable, Equatable, Sendable {
     public var createDBSecurityGroupResult: CreateDBSecurityGroupResult
 
     public init(createDBSecurityGroupResult: CreateDBSecurityGroupResult) {
@@ -2080,7 +2082,7 @@ public struct CreateDBSecurityGroupResultForCreateDBSecurityGroup: Codable, Equa
     }
 }
 
-public struct CreateDBSnapshotMessage: Codable, Equatable {
+public struct CreateDBSnapshotMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var dBSnapshotIdentifier: String
     public var tags: TagList?
@@ -2103,7 +2105,7 @@ public struct CreateDBSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBSnapshotResult: Codable, Equatable {
+public struct CreateDBSnapshotResult: Codable, Equatable, Sendable {
     public var dBSnapshot: DBSnapshot?
 
     public init(dBSnapshot: DBSnapshot? = nil) {
@@ -2119,7 +2121,7 @@ public struct CreateDBSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBSnapshotResultForCreateDBSnapshot: Codable, Equatable {
+public struct CreateDBSnapshotResultForCreateDBSnapshot: Codable, Equatable, Sendable {
     public var createDBSnapshotResult: CreateDBSnapshotResult
 
     public init(createDBSnapshotResult: CreateDBSnapshotResult) {
@@ -2135,7 +2137,7 @@ public struct CreateDBSnapshotResultForCreateDBSnapshot: Codable, Equatable {
     }
 }
 
-public struct CreateDBSubnetGroupMessage: Codable, Equatable {
+public struct CreateDBSubnetGroupMessage: Codable, Equatable, Sendable {
     public var dBSubnetGroupDescription: String
     public var dBSubnetGroupName: String
     public var subnetIds: SubnetIdentifierList
@@ -2162,7 +2164,7 @@ public struct CreateDBSubnetGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CreateDBSubnetGroupResult: Codable, Equatable {
+public struct CreateDBSubnetGroupResult: Codable, Equatable, Sendable {
     public var dBSubnetGroup: DBSubnetGroup?
 
     public init(dBSubnetGroup: DBSubnetGroup? = nil) {
@@ -2178,7 +2180,7 @@ public struct CreateDBSubnetGroupResult: Codable, Equatable {
     }
 }
 
-public struct CreateDBSubnetGroupResultForCreateDBSubnetGroup: Codable, Equatable {
+public struct CreateDBSubnetGroupResultForCreateDBSubnetGroup: Codable, Equatable, Sendable {
     public var createDBSubnetGroupResult: CreateDBSubnetGroupResult
 
     public init(createDBSubnetGroupResult: CreateDBSubnetGroupResult) {
@@ -2194,7 +2196,7 @@ public struct CreateDBSubnetGroupResultForCreateDBSubnetGroup: Codable, Equatabl
     }
 }
 
-public struct CreateEventSubscriptionMessage: Codable, Equatable {
+public struct CreateEventSubscriptionMessage: Codable, Equatable, Sendable {
     public var enabled: BooleanOptional?
     public var eventCategories: EventCategoriesList?
     public var snsTopicArn: String
@@ -2233,7 +2235,7 @@ public struct CreateEventSubscriptionMessage: Codable, Equatable {
     }
 }
 
-public struct CreateEventSubscriptionResult: Codable, Equatable {
+public struct CreateEventSubscriptionResult: Codable, Equatable, Sendable {
     public var eventSubscription: EventSubscription?
 
     public init(eventSubscription: EventSubscription? = nil) {
@@ -2249,7 +2251,7 @@ public struct CreateEventSubscriptionResult: Codable, Equatable {
     }
 }
 
-public struct CreateEventSubscriptionResultForCreateEventSubscription: Codable, Equatable {
+public struct CreateEventSubscriptionResultForCreateEventSubscription: Codable, Equatable, Sendable {
     public var createEventSubscriptionResult: CreateEventSubscriptionResult
 
     public init(createEventSubscriptionResult: CreateEventSubscriptionResult) {
@@ -2265,7 +2267,7 @@ public struct CreateEventSubscriptionResultForCreateEventSubscription: Codable, 
     }
 }
 
-public struct CreateGlobalClusterMessage: Codable, Equatable {
+public struct CreateGlobalClusterMessage: Codable, Equatable, Sendable {
     public var databaseName: String?
     public var deletionProtection: BooleanOptional?
     public var engine: String?
@@ -2304,7 +2306,7 @@ public struct CreateGlobalClusterMessage: Codable, Equatable {
     }
 }
 
-public struct CreateGlobalClusterResult: Codable, Equatable {
+public struct CreateGlobalClusterResult: Codable, Equatable, Sendable {
     public var globalCluster: GlobalCluster?
 
     public init(globalCluster: GlobalCluster? = nil) {
@@ -2320,7 +2322,7 @@ public struct CreateGlobalClusterResult: Codable, Equatable {
     }
 }
 
-public struct CreateGlobalClusterResultForCreateGlobalCluster: Codable, Equatable {
+public struct CreateGlobalClusterResultForCreateGlobalCluster: Codable, Equatable, Sendable {
     public var createGlobalClusterResult: CreateGlobalClusterResult
 
     public init(createGlobalClusterResult: CreateGlobalClusterResult) {
@@ -2336,7 +2338,7 @@ public struct CreateGlobalClusterResultForCreateGlobalCluster: Codable, Equatabl
     }
 }
 
-public struct CreateOptionGroupMessage: Codable, Equatable {
+public struct CreateOptionGroupMessage: Codable, Equatable, Sendable {
     public var engineName: String
     public var majorEngineVersion: String
     public var optionGroupDescription: String
@@ -2367,7 +2369,7 @@ public struct CreateOptionGroupMessage: Codable, Equatable {
     }
 }
 
-public struct CreateOptionGroupResult: Codable, Equatable {
+public struct CreateOptionGroupResult: Codable, Equatable, Sendable {
     public var optionGroup: OptionGroup?
 
     public init(optionGroup: OptionGroup? = nil) {
@@ -2383,7 +2385,7 @@ public struct CreateOptionGroupResult: Codable, Equatable {
     }
 }
 
-public struct CreateOptionGroupResultForCreateOptionGroup: Codable, Equatable {
+public struct CreateOptionGroupResultForCreateOptionGroup: Codable, Equatable, Sendable {
     public var createOptionGroupResult: CreateOptionGroupResult
 
     public init(createOptionGroupResult: CreateOptionGroupResult) {
@@ -2399,7 +2401,7 @@ public struct CreateOptionGroupResultForCreateOptionGroup: Codable, Equatable {
     }
 }
 
-public struct CustomAvailabilityZoneNotFoundFault: Codable, Equatable {
+public struct CustomAvailabilityZoneNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2408,7 +2410,7 @@ public struct CustomAvailabilityZoneNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct CustomDBEngineVersionAlreadyExistsFault: Codable, Equatable {
+public struct CustomDBEngineVersionAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2417,7 +2419,7 @@ public struct CustomDBEngineVersionAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct CustomDBEngineVersionNotFoundFault: Codable, Equatable {
+public struct CustomDBEngineVersionNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2426,7 +2428,7 @@ public struct CustomDBEngineVersionNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct CustomDBEngineVersionQuotaExceededFault: Codable, Equatable {
+public struct CustomDBEngineVersionQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2435,7 +2437,7 @@ public struct CustomDBEngineVersionQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBCluster: Codable, Equatable {
+public struct DBCluster: Codable, Equatable, Sendable {
     public var activityStreamKinesisStreamName: String?
     public var activityStreamKmsKeyId: String?
     public var activityStreamMode: ActivityStreamMode?
@@ -2721,7 +2723,7 @@ public struct DBCluster: Codable, Equatable {
     }
 }
 
-public struct DBClusterAlreadyExistsFault: Codable, Equatable {
+public struct DBClusterAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2730,7 +2732,7 @@ public struct DBClusterAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterBacktrack: Codable, Equatable {
+public struct DBClusterBacktrack: Codable, Equatable, Sendable {
     public var backtrackIdentifier: String?
     public var backtrackRequestCreationTime: TStamp?
     public var backtrackTo: TStamp?
@@ -2765,7 +2767,7 @@ public struct DBClusterBacktrack: Codable, Equatable {
     }
 }
 
-public struct DBClusterBacktrackForBacktrackDBCluster: Codable, Equatable {
+public struct DBClusterBacktrackForBacktrackDBCluster: Codable, Equatable, Sendable {
     public var backtrackDBClusterResult: DBClusterBacktrack
 
     public init(backtrackDBClusterResult: DBClusterBacktrack) {
@@ -2781,7 +2783,7 @@ public struct DBClusterBacktrackForBacktrackDBCluster: Codable, Equatable {
     }
 }
 
-public struct DBClusterBacktrackMessage: Codable, Equatable {
+public struct DBClusterBacktrackMessage: Codable, Equatable, Sendable {
     public var dBClusterBacktracks: DBClusterBacktrackList?
     public var marker: String?
 
@@ -2800,7 +2802,7 @@ public struct DBClusterBacktrackMessage: Codable, Equatable {
     }
 }
 
-public struct DBClusterBacktrackMessageForDescribeDBClusterBacktracks: Codable, Equatable {
+public struct DBClusterBacktrackMessageForDescribeDBClusterBacktracks: Codable, Equatable, Sendable {
     public var describeDBClusterBacktracksResult: DBClusterBacktrackMessage
 
     public init(describeDBClusterBacktracksResult: DBClusterBacktrackMessage) {
@@ -2816,7 +2818,7 @@ public struct DBClusterBacktrackMessageForDescribeDBClusterBacktracks: Codable, 
     }
 }
 
-public struct DBClusterBacktrackNotFoundFault: Codable, Equatable {
+public struct DBClusterBacktrackNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2825,7 +2827,7 @@ public struct DBClusterBacktrackNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterCapacityInfo: Codable, Equatable {
+public struct DBClusterCapacityInfo: Codable, Equatable, Sendable {
     public var currentCapacity: IntegerOptional?
     public var dBClusterIdentifier: String?
     public var pendingCapacity: IntegerOptional?
@@ -2856,7 +2858,7 @@ public struct DBClusterCapacityInfo: Codable, Equatable {
     }
 }
 
-public struct DBClusterCapacityInfoForModifyCurrentDBClusterCapacity: Codable, Equatable {
+public struct DBClusterCapacityInfoForModifyCurrentDBClusterCapacity: Codable, Equatable, Sendable {
     public var modifyCurrentDBClusterCapacityResult: DBClusterCapacityInfo
 
     public init(modifyCurrentDBClusterCapacityResult: DBClusterCapacityInfo) {
@@ -2872,7 +2874,7 @@ public struct DBClusterCapacityInfoForModifyCurrentDBClusterCapacity: Codable, E
     }
 }
 
-public struct DBClusterEndpoint: Codable, Equatable {
+public struct DBClusterEndpoint: Codable, Equatable, Sendable {
     public var customEndpointType: String?
     public var dBClusterEndpointArn: String?
     public var dBClusterEndpointIdentifier: String?
@@ -2923,7 +2925,7 @@ public struct DBClusterEndpoint: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointAlreadyExistsFault: Codable, Equatable {
+public struct DBClusterEndpointAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2932,7 +2934,7 @@ public struct DBClusterEndpointAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointForCreateDBClusterEndpoint: Codable, Equatable {
+public struct DBClusterEndpointForCreateDBClusterEndpoint: Codable, Equatable, Sendable {
     public var createDBClusterEndpointResult: DBClusterEndpoint
 
     public init(createDBClusterEndpointResult: DBClusterEndpoint) {
@@ -2948,7 +2950,7 @@ public struct DBClusterEndpointForCreateDBClusterEndpoint: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointForDeleteDBClusterEndpoint: Codable, Equatable {
+public struct DBClusterEndpointForDeleteDBClusterEndpoint: Codable, Equatable, Sendable {
     public var deleteDBClusterEndpointResult: DBClusterEndpoint
 
     public init(deleteDBClusterEndpointResult: DBClusterEndpoint) {
@@ -2964,7 +2966,7 @@ public struct DBClusterEndpointForDeleteDBClusterEndpoint: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointForModifyDBClusterEndpoint: Codable, Equatable {
+public struct DBClusterEndpointForModifyDBClusterEndpoint: Codable, Equatable, Sendable {
     public var modifyDBClusterEndpointResult: DBClusterEndpoint
 
     public init(modifyDBClusterEndpointResult: DBClusterEndpoint) {
@@ -2980,7 +2982,7 @@ public struct DBClusterEndpointForModifyDBClusterEndpoint: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointMessage: Codable, Equatable {
+public struct DBClusterEndpointMessage: Codable, Equatable, Sendable {
     public var dBClusterEndpoints: DBClusterEndpointList?
     public var marker: String?
 
@@ -2999,7 +3001,7 @@ public struct DBClusterEndpointMessage: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointMessageForDescribeDBClusterEndpoints: Codable, Equatable {
+public struct DBClusterEndpointMessageForDescribeDBClusterEndpoints: Codable, Equatable, Sendable {
     public var describeDBClusterEndpointsResult: DBClusterEndpointMessage
 
     public init(describeDBClusterEndpointsResult: DBClusterEndpointMessage) {
@@ -3015,7 +3017,7 @@ public struct DBClusterEndpointMessageForDescribeDBClusterEndpoints: Codable, Eq
     }
 }
 
-public struct DBClusterEndpointNotFoundFault: Codable, Equatable {
+public struct DBClusterEndpointNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3024,7 +3026,7 @@ public struct DBClusterEndpointNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterEndpointQuotaExceededFault: Codable, Equatable {
+public struct DBClusterEndpointQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3033,7 +3035,7 @@ public struct DBClusterEndpointQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterMember: Codable, Equatable {
+public struct DBClusterMember: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupStatus: String?
     public var dBInstanceIdentifier: String?
     public var isClusterWriter: Boolean?
@@ -3060,7 +3062,7 @@ public struct DBClusterMember: Codable, Equatable {
     }
 }
 
-public struct DBClusterMessage: Codable, Equatable {
+public struct DBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusters: DBClusterList?
     public var marker: String?
 
@@ -3079,7 +3081,7 @@ public struct DBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct DBClusterMessageForDescribeDBClusters: Codable, Equatable {
+public struct DBClusterMessageForDescribeDBClusters: Codable, Equatable, Sendable {
     public var describeDBClustersResult: DBClusterMessage
 
     public init(describeDBClustersResult: DBClusterMessage) {
@@ -3095,7 +3097,7 @@ public struct DBClusterMessageForDescribeDBClusters: Codable, Equatable {
     }
 }
 
-public struct DBClusterNotFoundFault: Codable, Equatable {
+public struct DBClusterNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3104,7 +3106,7 @@ public struct DBClusterNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterOptionGroupStatus: Codable, Equatable {
+public struct DBClusterOptionGroupStatus: Codable, Equatable, Sendable {
     public var dBClusterOptionGroupName: String?
     public var status: String?
 
@@ -3123,7 +3125,7 @@ public struct DBClusterOptionGroupStatus: Codable, Equatable {
     }
 }
 
-public struct DBClusterParameterGroup: Codable, Equatable {
+public struct DBClusterParameterGroup: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupArn: String?
     public var dBClusterParameterGroupName: String?
     public var dBParameterGroupFamily: String?
@@ -3150,7 +3152,7 @@ public struct DBClusterParameterGroup: Codable, Equatable {
     }
 }
 
-public struct DBClusterParameterGroupDetails: Codable, Equatable {
+public struct DBClusterParameterGroupDetails: Codable, Equatable, Sendable {
     public var marker: String?
     public var parameters: ParametersList?
 
@@ -3169,7 +3171,7 @@ public struct DBClusterParameterGroupDetails: Codable, Equatable {
     }
 }
 
-public struct DBClusterParameterGroupDetailsForDescribeDBClusterParameters: Codable, Equatable {
+public struct DBClusterParameterGroupDetailsForDescribeDBClusterParameters: Codable, Equatable, Sendable {
     public var describeDBClusterParametersResult: DBClusterParameterGroupDetails
 
     public init(describeDBClusterParametersResult: DBClusterParameterGroupDetails) {
@@ -3185,7 +3187,7 @@ public struct DBClusterParameterGroupDetailsForDescribeDBClusterParameters: Coda
     }
 }
 
-public struct DBClusterParameterGroupNameMessage: Codable, Equatable {
+public struct DBClusterParameterGroupNameMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String?
 
     public init(dBClusterParameterGroupName: String? = nil) {
@@ -3200,7 +3202,7 @@ public struct DBClusterParameterGroupNameMessage: Codable, Equatable {
     }
 }
 
-public struct DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup: Codable, Equatable {
+public struct DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup: Codable, Equatable, Sendable {
     public var modifyDBClusterParameterGroupResult: DBClusterParameterGroupNameMessage
 
     public init(modifyDBClusterParameterGroupResult: DBClusterParameterGroupNameMessage) {
@@ -3216,7 +3218,7 @@ public struct DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup
     }
 }
 
-public struct DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup: Codable, Equatable {
+public struct DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup: Codable, Equatable, Sendable {
     public var resetDBClusterParameterGroupResult: DBClusterParameterGroupNameMessage
 
     public init(resetDBClusterParameterGroupResult: DBClusterParameterGroupNameMessage) {
@@ -3232,7 +3234,7 @@ public struct DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup:
     }
 }
 
-public struct DBClusterParameterGroupNotFoundFault: Codable, Equatable {
+public struct DBClusterParameterGroupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3241,7 +3243,7 @@ public struct DBClusterParameterGroupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterParameterGroupsMessage: Codable, Equatable {
+public struct DBClusterParameterGroupsMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroups: DBClusterParameterGroupList?
     public var marker: String?
 
@@ -3260,7 +3262,7 @@ public struct DBClusterParameterGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups: Codable, Equatable {
+public struct DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups: Codable, Equatable, Sendable {
     public var describeDBClusterParameterGroupsResult: DBClusterParameterGroupsMessage
 
     public init(describeDBClusterParameterGroupsResult: DBClusterParameterGroupsMessage) {
@@ -3276,7 +3278,7 @@ public struct DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups
     }
 }
 
-public struct DBClusterQuotaExceededFault: Codable, Equatable {
+public struct DBClusterQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3285,7 +3287,7 @@ public struct DBClusterQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterRole: Codable, Equatable {
+public struct DBClusterRole: Codable, Equatable, Sendable {
     public var featureName: String?
     public var roleArn: String?
     public var status: String?
@@ -3308,7 +3310,7 @@ public struct DBClusterRole: Codable, Equatable {
     }
 }
 
-public struct DBClusterRoleAlreadyExistsFault: Codable, Equatable {
+public struct DBClusterRoleAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3317,7 +3319,7 @@ public struct DBClusterRoleAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterRoleNotFoundFault: Codable, Equatable {
+public struct DBClusterRoleNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3326,7 +3328,7 @@ public struct DBClusterRoleNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterRoleQuotaExceededFault: Codable, Equatable {
+public struct DBClusterRoleQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3335,7 +3337,7 @@ public struct DBClusterRoleQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterSnapshot: Codable, Equatable {
+public struct DBClusterSnapshot: Codable, Equatable, Sendable {
     public var allocatedStorage: Integer?
     public var availabilityZones: AvailabilityZones?
     public var clusterCreateTime: TStamp?
@@ -3434,7 +3436,7 @@ public struct DBClusterSnapshot: Codable, Equatable {
     }
 }
 
-public struct DBClusterSnapshotAlreadyExistsFault: Codable, Equatable {
+public struct DBClusterSnapshotAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3443,7 +3445,7 @@ public struct DBClusterSnapshotAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBClusterSnapshotAttribute: Codable, Equatable {
+public struct DBClusterSnapshotAttribute: Codable, Equatable, Sendable {
     public var attributeName: String?
     public var attributeValues: AttributeValueList?
 
@@ -3462,7 +3464,7 @@ public struct DBClusterSnapshotAttribute: Codable, Equatable {
     }
 }
 
-public struct DBClusterSnapshotAttributesResult: Codable, Equatable {
+public struct DBClusterSnapshotAttributesResult: Codable, Equatable, Sendable {
     public var dBClusterSnapshotAttributes: DBClusterSnapshotAttributeList?
     public var dBClusterSnapshotIdentifier: String?
 
@@ -3481,7 +3483,7 @@ public struct DBClusterSnapshotAttributesResult: Codable, Equatable {
     }
 }
 
-public struct DBClusterSnapshotMessage: Codable, Equatable {
+public struct DBClusterSnapshotMessage: Codable, Equatable, Sendable {
     public var dBClusterSnapshots: DBClusterSnapshotList?
     public var marker: String?
 
@@ -3500,7 +3502,7 @@ public struct DBClusterSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct DBClusterSnapshotMessageForDescribeDBClusterSnapshots: Codable, Equatable {
+public struct DBClusterSnapshotMessageForDescribeDBClusterSnapshots: Codable, Equatable, Sendable {
     public var describeDBClusterSnapshotsResult: DBClusterSnapshotMessage
 
     public init(describeDBClusterSnapshotsResult: DBClusterSnapshotMessage) {
@@ -3516,7 +3518,7 @@ public struct DBClusterSnapshotMessageForDescribeDBClusterSnapshots: Codable, Eq
     }
 }
 
-public struct DBClusterSnapshotNotFoundFault: Codable, Equatable {
+public struct DBClusterSnapshotNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3525,7 +3527,7 @@ public struct DBClusterSnapshotNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBEngineVersion: Codable, Equatable {
+public struct DBEngineVersion: Codable, Equatable, Sendable {
     public var createTime: TStamp?
     public var dBEngineDescription: String?
     public var dBEngineVersionArn: String?
@@ -3641,7 +3643,7 @@ public struct DBEngineVersion: Codable, Equatable {
     }
 }
 
-public struct DBEngineVersionForCreateCustomDBEngineVersion: Codable, Equatable {
+public struct DBEngineVersionForCreateCustomDBEngineVersion: Codable, Equatable, Sendable {
     public var createCustomDBEngineVersionResult: DBEngineVersion
 
     public init(createCustomDBEngineVersionResult: DBEngineVersion) {
@@ -3657,7 +3659,7 @@ public struct DBEngineVersionForCreateCustomDBEngineVersion: Codable, Equatable 
     }
 }
 
-public struct DBEngineVersionForDeleteCustomDBEngineVersion: Codable, Equatable {
+public struct DBEngineVersionForDeleteCustomDBEngineVersion: Codable, Equatable, Sendable {
     public var deleteCustomDBEngineVersionResult: DBEngineVersion
 
     public init(deleteCustomDBEngineVersionResult: DBEngineVersion) {
@@ -3673,7 +3675,7 @@ public struct DBEngineVersionForDeleteCustomDBEngineVersion: Codable, Equatable 
     }
 }
 
-public struct DBEngineVersionForModifyCustomDBEngineVersion: Codable, Equatable {
+public struct DBEngineVersionForModifyCustomDBEngineVersion: Codable, Equatable, Sendable {
     public var modifyCustomDBEngineVersionResult: DBEngineVersion
 
     public init(modifyCustomDBEngineVersionResult: DBEngineVersion) {
@@ -3689,7 +3691,7 @@ public struct DBEngineVersionForModifyCustomDBEngineVersion: Codable, Equatable 
     }
 }
 
-public struct DBEngineVersionMessage: Codable, Equatable {
+public struct DBEngineVersionMessage: Codable, Equatable, Sendable {
     public var dBEngineVersions: DBEngineVersionList?
     public var marker: String?
 
@@ -3708,7 +3710,7 @@ public struct DBEngineVersionMessage: Codable, Equatable {
     }
 }
 
-public struct DBEngineVersionMessageForDescribeDBEngineVersions: Codable, Equatable {
+public struct DBEngineVersionMessageForDescribeDBEngineVersions: Codable, Equatable, Sendable {
     public var describeDBEngineVersionsResult: DBEngineVersionMessage
 
     public init(describeDBEngineVersionsResult: DBEngineVersionMessage) {
@@ -3724,7 +3726,7 @@ public struct DBEngineVersionMessageForDescribeDBEngineVersions: Codable, Equata
     }
 }
 
-public struct DBInstance: Codable, Equatable {
+public struct DBInstance: Codable, Equatable, Sendable {
     public var activityStreamEngineNativeAuditFieldsIncluded: BooleanOptional?
     public var activityStreamKinesisStreamName: String?
     public var activityStreamKmsKeyId: String?
@@ -4039,7 +4041,7 @@ public struct DBInstance: Codable, Equatable {
     }
 }
 
-public struct DBInstanceAlreadyExistsFault: Codable, Equatable {
+public struct DBInstanceAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4048,7 +4050,7 @@ public struct DBInstanceAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceAutomatedBackup: Codable, Equatable {
+public struct DBInstanceAutomatedBackup: Codable, Equatable, Sendable {
     public var allocatedStorage: Integer?
     public var availabilityZone: String?
     public var backupRetentionPeriod: IntegerOptional?
@@ -4168,7 +4170,7 @@ public struct DBInstanceAutomatedBackup: Codable, Equatable {
     }
 }
 
-public struct DBInstanceAutomatedBackupMessage: Codable, Equatable {
+public struct DBInstanceAutomatedBackupMessage: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackups: DBInstanceAutomatedBackupList?
     public var marker: String?
 
@@ -4187,7 +4189,7 @@ public struct DBInstanceAutomatedBackupMessage: Codable, Equatable {
     }
 }
 
-public struct DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups: Codable, Equatable {
+public struct DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups: Codable, Equatable, Sendable {
     public var describeDBInstanceAutomatedBackupsResult: DBInstanceAutomatedBackupMessage
 
     public init(describeDBInstanceAutomatedBackupsResult: DBInstanceAutomatedBackupMessage) {
@@ -4203,7 +4205,7 @@ public struct DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBack
     }
 }
 
-public struct DBInstanceAutomatedBackupNotFoundFault: Codable, Equatable {
+public struct DBInstanceAutomatedBackupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4212,7 +4214,7 @@ public struct DBInstanceAutomatedBackupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceAutomatedBackupQuotaExceededFault: Codable, Equatable {
+public struct DBInstanceAutomatedBackupQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4221,7 +4223,7 @@ public struct DBInstanceAutomatedBackupQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceAutomatedBackupsReplication: Codable, Equatable {
+public struct DBInstanceAutomatedBackupsReplication: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackupsArn: String?
 
     public init(dBInstanceAutomatedBackupsArn: String? = nil) {
@@ -4236,7 +4238,7 @@ public struct DBInstanceAutomatedBackupsReplication: Codable, Equatable {
     }
 }
 
-public struct DBInstanceMessage: Codable, Equatable {
+public struct DBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstances: DBInstanceList?
     public var marker: String?
 
@@ -4255,7 +4257,7 @@ public struct DBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct DBInstanceMessageForDescribeDBInstances: Codable, Equatable {
+public struct DBInstanceMessageForDescribeDBInstances: Codable, Equatable, Sendable {
     public var describeDBInstancesResult: DBInstanceMessage
 
     public init(describeDBInstancesResult: DBInstanceMessage) {
@@ -4271,7 +4273,7 @@ public struct DBInstanceMessageForDescribeDBInstances: Codable, Equatable {
     }
 }
 
-public struct DBInstanceNotFoundFault: Codable, Equatable {
+public struct DBInstanceNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4280,7 +4282,7 @@ public struct DBInstanceNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceRole: Codable, Equatable {
+public struct DBInstanceRole: Codable, Equatable, Sendable {
     public var featureName: String?
     public var roleArn: String?
     public var status: String?
@@ -4303,7 +4305,7 @@ public struct DBInstanceRole: Codable, Equatable {
     }
 }
 
-public struct DBInstanceRoleAlreadyExistsFault: Codable, Equatable {
+public struct DBInstanceRoleAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4312,7 +4314,7 @@ public struct DBInstanceRoleAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceRoleNotFoundFault: Codable, Equatable {
+public struct DBInstanceRoleNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4321,7 +4323,7 @@ public struct DBInstanceRoleNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceRoleQuotaExceededFault: Codable, Equatable {
+public struct DBInstanceRoleQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4330,7 +4332,7 @@ public struct DBInstanceRoleQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBInstanceStatusInfo: Codable, Equatable {
+public struct DBInstanceStatusInfo: Codable, Equatable, Sendable {
     public var message: String?
     public var normal: Boolean?
     public var status: String?
@@ -4357,7 +4359,7 @@ public struct DBInstanceStatusInfo: Codable, Equatable {
     }
 }
 
-public struct DBLogFileNotFoundFault: Codable, Equatable {
+public struct DBLogFileNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4366,7 +4368,7 @@ public struct DBLogFileNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroup: Codable, Equatable {
+public struct DBParameterGroup: Codable, Equatable, Sendable {
     public var dBParameterGroupArn: String?
     public var dBParameterGroupFamily: String?
     public var dBParameterGroupName: String?
@@ -4393,7 +4395,7 @@ public struct DBParameterGroup: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupAlreadyExistsFault: Codable, Equatable {
+public struct DBParameterGroupAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4402,7 +4404,7 @@ public struct DBParameterGroupAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupDetails: Codable, Equatable {
+public struct DBParameterGroupDetails: Codable, Equatable, Sendable {
     public var marker: String?
     public var parameters: ParametersList?
 
@@ -4421,7 +4423,7 @@ public struct DBParameterGroupDetails: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupDetailsForDescribeDBParameters: Codable, Equatable {
+public struct DBParameterGroupDetailsForDescribeDBParameters: Codable, Equatable, Sendable {
     public var describeDBParametersResult: DBParameterGroupDetails
 
     public init(describeDBParametersResult: DBParameterGroupDetails) {
@@ -4437,7 +4439,7 @@ public struct DBParameterGroupDetailsForDescribeDBParameters: Codable, Equatable
     }
 }
 
-public struct DBParameterGroupNameMessage: Codable, Equatable {
+public struct DBParameterGroupNameMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String?
 
     public init(dBParameterGroupName: String? = nil) {
@@ -4452,7 +4454,7 @@ public struct DBParameterGroupNameMessage: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupNameMessageForModifyDBParameterGroup: Codable, Equatable {
+public struct DBParameterGroupNameMessageForModifyDBParameterGroup: Codable, Equatable, Sendable {
     public var modifyDBParameterGroupResult: DBParameterGroupNameMessage
 
     public init(modifyDBParameterGroupResult: DBParameterGroupNameMessage) {
@@ -4468,7 +4470,7 @@ public struct DBParameterGroupNameMessageForModifyDBParameterGroup: Codable, Equ
     }
 }
 
-public struct DBParameterGroupNameMessageForResetDBParameterGroup: Codable, Equatable {
+public struct DBParameterGroupNameMessageForResetDBParameterGroup: Codable, Equatable, Sendable {
     public var resetDBParameterGroupResult: DBParameterGroupNameMessage
 
     public init(resetDBParameterGroupResult: DBParameterGroupNameMessage) {
@@ -4484,7 +4486,7 @@ public struct DBParameterGroupNameMessageForResetDBParameterGroup: Codable, Equa
     }
 }
 
-public struct DBParameterGroupNotFoundFault: Codable, Equatable {
+public struct DBParameterGroupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4493,7 +4495,7 @@ public struct DBParameterGroupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupQuotaExceededFault: Codable, Equatable {
+public struct DBParameterGroupQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4502,7 +4504,7 @@ public struct DBParameterGroupQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupStatus: Codable, Equatable {
+public struct DBParameterGroupStatus: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String?
     public var parameterApplyStatus: String?
 
@@ -4521,7 +4523,7 @@ public struct DBParameterGroupStatus: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupsMessage: Codable, Equatable {
+public struct DBParameterGroupsMessage: Codable, Equatable, Sendable {
     public var dBParameterGroups: DBParameterGroupList?
     public var marker: String?
 
@@ -4540,7 +4542,7 @@ public struct DBParameterGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DBParameterGroupsMessageForDescribeDBParameterGroups: Codable, Equatable {
+public struct DBParameterGroupsMessageForDescribeDBParameterGroups: Codable, Equatable, Sendable {
     public var describeDBParameterGroupsResult: DBParameterGroupsMessage
 
     public init(describeDBParameterGroupsResult: DBParameterGroupsMessage) {
@@ -4556,7 +4558,7 @@ public struct DBParameterGroupsMessageForDescribeDBParameterGroups: Codable, Equ
     }
 }
 
-public struct DBProxy: Codable, Equatable {
+public struct DBProxy: Codable, Equatable, Sendable {
     public var auth: UserAuthConfigInfoList?
     public var createdDate: TStamp?
     public var dBProxyArn: String?
@@ -4627,7 +4629,7 @@ public struct DBProxy: Codable, Equatable {
     }
 }
 
-public struct DBProxyAlreadyExistsFault: Codable, Equatable {
+public struct DBProxyAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4636,7 +4638,7 @@ public struct DBProxyAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyEndpoint: Codable, Equatable {
+public struct DBProxyEndpoint: Codable, Equatable, Sendable {
     public var createdDate: TStamp?
     public var dBProxyEndpointArn: String?
     public var dBProxyEndpointName: String?
@@ -4691,7 +4693,7 @@ public struct DBProxyEndpoint: Codable, Equatable {
     }
 }
 
-public struct DBProxyEndpointAlreadyExistsFault: Codable, Equatable {
+public struct DBProxyEndpointAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4700,7 +4702,7 @@ public struct DBProxyEndpointAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyEndpointNotFoundFault: Codable, Equatable {
+public struct DBProxyEndpointNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4709,7 +4711,7 @@ public struct DBProxyEndpointNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyEndpointQuotaExceededFault: Codable, Equatable {
+public struct DBProxyEndpointQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4718,7 +4720,7 @@ public struct DBProxyEndpointQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyNotFoundFault: Codable, Equatable {
+public struct DBProxyNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4727,7 +4729,7 @@ public struct DBProxyNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyQuotaExceededFault: Codable, Equatable {
+public struct DBProxyQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4736,7 +4738,7 @@ public struct DBProxyQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyTarget: Codable, Equatable {
+public struct DBProxyTarget: Codable, Equatable, Sendable {
     public var endpoint: String?
     public var port: Integer?
     public var rdsResourceId: String?
@@ -4780,7 +4782,7 @@ public struct DBProxyTarget: Codable, Equatable {
     }
 }
 
-public struct DBProxyTargetAlreadyRegisteredFault: Codable, Equatable {
+public struct DBProxyTargetAlreadyRegisteredFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4789,7 +4791,7 @@ public struct DBProxyTargetAlreadyRegisteredFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyTargetGroup: Codable, Equatable {
+public struct DBProxyTargetGroup: Codable, Equatable, Sendable {
     public var connectionPoolConfig: ConnectionPoolConfigurationInfo?
     public var createdDate: TStamp?
     public var dBProxyName: String?
@@ -4833,7 +4835,7 @@ public struct DBProxyTargetGroup: Codable, Equatable {
     }
 }
 
-public struct DBProxyTargetGroupNotFoundFault: Codable, Equatable {
+public struct DBProxyTargetGroupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4842,7 +4844,7 @@ public struct DBProxyTargetGroupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBProxyTargetNotFoundFault: Codable, Equatable {
+public struct DBProxyTargetNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4851,7 +4853,7 @@ public struct DBProxyTargetNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroup: Codable, Equatable {
+public struct DBSecurityGroup: Codable, Equatable, Sendable {
     public var dBSecurityGroupArn: String?
     public var dBSecurityGroupDescription: String?
     public var dBSecurityGroupName: String?
@@ -4890,7 +4892,7 @@ public struct DBSecurityGroup: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroupAlreadyExistsFault: Codable, Equatable {
+public struct DBSecurityGroupAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4899,7 +4901,7 @@ public struct DBSecurityGroupAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroupMembership: Codable, Equatable {
+public struct DBSecurityGroupMembership: Codable, Equatable, Sendable {
     public var dBSecurityGroupName: String?
     public var status: String?
 
@@ -4918,7 +4920,7 @@ public struct DBSecurityGroupMembership: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroupMessage: Codable, Equatable {
+public struct DBSecurityGroupMessage: Codable, Equatable, Sendable {
     public var dBSecurityGroups: DBSecurityGroups?
     public var marker: String?
 
@@ -4937,7 +4939,7 @@ public struct DBSecurityGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroupMessageForDescribeDBSecurityGroups: Codable, Equatable {
+public struct DBSecurityGroupMessageForDescribeDBSecurityGroups: Codable, Equatable, Sendable {
     public var describeDBSecurityGroupsResult: DBSecurityGroupMessage
 
     public init(describeDBSecurityGroupsResult: DBSecurityGroupMessage) {
@@ -4953,7 +4955,7 @@ public struct DBSecurityGroupMessageForDescribeDBSecurityGroups: Codable, Equata
     }
 }
 
-public struct DBSecurityGroupNotFoundFault: Codable, Equatable {
+public struct DBSecurityGroupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4962,7 +4964,7 @@ public struct DBSecurityGroupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroupNotSupportedFault: Codable, Equatable {
+public struct DBSecurityGroupNotSupportedFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4971,7 +4973,7 @@ public struct DBSecurityGroupNotSupportedFault: Codable, Equatable {
     }
 }
 
-public struct DBSecurityGroupQuotaExceededFault: Codable, Equatable {
+public struct DBSecurityGroupQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4980,7 +4982,7 @@ public struct DBSecurityGroupQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBSnapshot: Codable, Equatable {
+public struct DBSnapshot: Codable, Equatable, Sendable {
     public var allocatedStorage: Integer?
     public var availabilityZone: String?
     public var dBInstanceIdentifier: String?
@@ -5115,7 +5117,7 @@ public struct DBSnapshot: Codable, Equatable {
     }
 }
 
-public struct DBSnapshotAlreadyExistsFault: Codable, Equatable {
+public struct DBSnapshotAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5124,7 +5126,7 @@ public struct DBSnapshotAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBSnapshotAttribute: Codable, Equatable {
+public struct DBSnapshotAttribute: Codable, Equatable, Sendable {
     public var attributeName: String?
     public var attributeValues: AttributeValueList?
 
@@ -5143,7 +5145,7 @@ public struct DBSnapshotAttribute: Codable, Equatable {
     }
 }
 
-public struct DBSnapshotAttributesResult: Codable, Equatable {
+public struct DBSnapshotAttributesResult: Codable, Equatable, Sendable {
     public var dBSnapshotAttributes: DBSnapshotAttributeList?
     public var dBSnapshotIdentifier: String?
 
@@ -5162,7 +5164,7 @@ public struct DBSnapshotAttributesResult: Codable, Equatable {
     }
 }
 
-public struct DBSnapshotMessage: Codable, Equatable {
+public struct DBSnapshotMessage: Codable, Equatable, Sendable {
     public var dBSnapshots: DBSnapshotList?
     public var marker: String?
 
@@ -5181,7 +5183,7 @@ public struct DBSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct DBSnapshotMessageForDescribeDBSnapshots: Codable, Equatable {
+public struct DBSnapshotMessageForDescribeDBSnapshots: Codable, Equatable, Sendable {
     public var describeDBSnapshotsResult: DBSnapshotMessage
 
     public init(describeDBSnapshotsResult: DBSnapshotMessage) {
@@ -5197,7 +5199,7 @@ public struct DBSnapshotMessageForDescribeDBSnapshots: Codable, Equatable {
     }
 }
 
-public struct DBSnapshotNotFoundFault: Codable, Equatable {
+public struct DBSnapshotNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5206,7 +5208,7 @@ public struct DBSnapshotNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroup: Codable, Equatable {
+public struct DBSubnetGroup: Codable, Equatable, Sendable {
     public var dBSubnetGroupArn: String?
     public var dBSubnetGroupDescription: String?
     public var dBSubnetGroupName: String?
@@ -5245,7 +5247,7 @@ public struct DBSubnetGroup: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroupAlreadyExistsFault: Codable, Equatable {
+public struct DBSubnetGroupAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5254,7 +5256,7 @@ public struct DBSubnetGroupAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroupDoesNotCoverEnoughAZs: Codable, Equatable {
+public struct DBSubnetGroupDoesNotCoverEnoughAZs: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5263,7 +5265,7 @@ public struct DBSubnetGroupDoesNotCoverEnoughAZs: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroupMessage: Codable, Equatable {
+public struct DBSubnetGroupMessage: Codable, Equatable, Sendable {
     public var dBSubnetGroups: DBSubnetGroups?
     public var marker: String?
 
@@ -5282,7 +5284,7 @@ public struct DBSubnetGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroupMessageForDescribeDBSubnetGroups: Codable, Equatable {
+public struct DBSubnetGroupMessageForDescribeDBSubnetGroups: Codable, Equatable, Sendable {
     public var describeDBSubnetGroupsResult: DBSubnetGroupMessage
 
     public init(describeDBSubnetGroupsResult: DBSubnetGroupMessage) {
@@ -5298,7 +5300,7 @@ public struct DBSubnetGroupMessageForDescribeDBSubnetGroups: Codable, Equatable 
     }
 }
 
-public struct DBSubnetGroupNotAllowedFault: Codable, Equatable {
+public struct DBSubnetGroupNotAllowedFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5307,7 +5309,7 @@ public struct DBSubnetGroupNotAllowedFault: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroupNotFoundFault: Codable, Equatable {
+public struct DBSubnetGroupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5316,7 +5318,7 @@ public struct DBSubnetGroupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DBSubnetGroupQuotaExceededFault: Codable, Equatable {
+public struct DBSubnetGroupQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5325,7 +5327,7 @@ public struct DBSubnetGroupQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBSubnetQuotaExceededFault: Codable, Equatable {
+public struct DBSubnetQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5334,7 +5336,7 @@ public struct DBSubnetQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct DBUpgradeDependencyFailureFault: Codable, Equatable {
+public struct DBUpgradeDependencyFailureFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5343,7 +5345,7 @@ public struct DBUpgradeDependencyFailureFault: Codable, Equatable {
     }
 }
 
-public struct DeleteCustomDBEngineVersionMessage: Codable, Equatable {
+public struct DeleteCustomDBEngineVersionMessage: Codable, Equatable, Sendable {
     public var engine: CustomEngineName
     public var engineVersion: CustomEngineVersion
 
@@ -5364,7 +5366,7 @@ public struct DeleteCustomDBEngineVersionMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterEndpointMessage: Codable, Equatable {
+public struct DeleteDBClusterEndpointMessage: Codable, Equatable, Sendable {
     public var dBClusterEndpointIdentifier: String
 
     public init(dBClusterEndpointIdentifier: String) {
@@ -5379,7 +5381,7 @@ public struct DeleteDBClusterEndpointMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterMessage: Codable, Equatable {
+public struct DeleteDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
     public var finalDBSnapshotIdentifier: String?
     public var skipFinalSnapshot: Boolean?
@@ -5402,7 +5404,7 @@ public struct DeleteDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterParameterGroupMessage: Codable, Equatable {
+public struct DeleteDBClusterParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String
 
     public init(dBClusterParameterGroupName: String) {
@@ -5417,7 +5419,7 @@ public struct DeleteDBClusterParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterResult: Codable, Equatable {
+public struct DeleteDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -5433,7 +5435,7 @@ public struct DeleteDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterResultForDeleteDBCluster: Codable, Equatable {
+public struct DeleteDBClusterResultForDeleteDBCluster: Codable, Equatable, Sendable {
     public var deleteDBClusterResult: DeleteDBClusterResult
 
     public init(deleteDBClusterResult: DeleteDBClusterResult) {
@@ -5449,7 +5451,7 @@ public struct DeleteDBClusterResultForDeleteDBCluster: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterSnapshotMessage: Codable, Equatable {
+public struct DeleteDBClusterSnapshotMessage: Codable, Equatable, Sendable {
     public var dBClusterSnapshotIdentifier: String
 
     public init(dBClusterSnapshotIdentifier: String) {
@@ -5464,7 +5466,7 @@ public struct DeleteDBClusterSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterSnapshotResult: Codable, Equatable {
+public struct DeleteDBClusterSnapshotResult: Codable, Equatable, Sendable {
     public var dBClusterSnapshot: DBClusterSnapshot?
 
     public init(dBClusterSnapshot: DBClusterSnapshot? = nil) {
@@ -5480,7 +5482,7 @@ public struct DeleteDBClusterSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot: Codable, Equatable {
+public struct DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot: Codable, Equatable, Sendable {
     public var deleteDBClusterSnapshotResult: DeleteDBClusterSnapshotResult
 
     public init(deleteDBClusterSnapshotResult: DeleteDBClusterSnapshotResult) {
@@ -5496,7 +5498,7 @@ public struct DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot: Codable, 
     }
 }
 
-public struct DeleteDBInstanceAutomatedBackupMessage: Codable, Equatable {
+public struct DeleteDBInstanceAutomatedBackupMessage: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackupsArn: String?
     public var dbiResourceId: String?
 
@@ -5515,7 +5517,7 @@ public struct DeleteDBInstanceAutomatedBackupMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBInstanceAutomatedBackupResult: Codable, Equatable {
+public struct DeleteDBInstanceAutomatedBackupResult: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackup: DBInstanceAutomatedBackup?
 
     public init(dBInstanceAutomatedBackup: DBInstanceAutomatedBackup? = nil) {
@@ -5531,7 +5533,7 @@ public struct DeleteDBInstanceAutomatedBackupResult: Codable, Equatable {
     }
 }
 
-public struct DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup: Codable, Equatable {
+public struct DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup: Codable, Equatable, Sendable {
     public var deleteDBInstanceAutomatedBackupResult: DeleteDBInstanceAutomatedBackupResult
 
     public init(deleteDBInstanceAutomatedBackupResult: DeleteDBInstanceAutomatedBackupResult) {
@@ -5547,7 +5549,7 @@ public struct DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedB
     }
 }
 
-public struct DeleteDBInstanceMessage: Codable, Equatable {
+public struct DeleteDBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var deleteAutomatedBackups: BooleanOptional?
     public var finalDBSnapshotIdentifier: String?
@@ -5574,7 +5576,7 @@ public struct DeleteDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBInstanceResult: Codable, Equatable {
+public struct DeleteDBInstanceResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -5590,7 +5592,7 @@ public struct DeleteDBInstanceResult: Codable, Equatable {
     }
 }
 
-public struct DeleteDBInstanceResultForDeleteDBInstance: Codable, Equatable {
+public struct DeleteDBInstanceResultForDeleteDBInstance: Codable, Equatable, Sendable {
     public var deleteDBInstanceResult: DeleteDBInstanceResult
 
     public init(deleteDBInstanceResult: DeleteDBInstanceResult) {
@@ -5606,7 +5608,7 @@ public struct DeleteDBInstanceResultForDeleteDBInstance: Codable, Equatable {
     }
 }
 
-public struct DeleteDBParameterGroupMessage: Codable, Equatable {
+public struct DeleteDBParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String
 
     public init(dBParameterGroupName: String) {
@@ -5621,7 +5623,7 @@ public struct DeleteDBParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBProxyEndpointRequest: Codable, Equatable {
+public struct DeleteDBProxyEndpointRequest: Codable, Equatable, Sendable {
     public var dBProxyEndpointName: DBProxyEndpointName
 
     public init(dBProxyEndpointName: DBProxyEndpointName) {
@@ -5637,7 +5639,7 @@ public struct DeleteDBProxyEndpointRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteDBProxyEndpointResponse: Codable, Equatable {
+public struct DeleteDBProxyEndpointResponse: Codable, Equatable, Sendable {
     public var dBProxyEndpoint: DBProxyEndpoint?
 
     public init(dBProxyEndpoint: DBProxyEndpoint? = nil) {
@@ -5653,7 +5655,7 @@ public struct DeleteDBProxyEndpointResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint: Codable, Equatable {
+public struct DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint: Codable, Equatable, Sendable {
     public var deleteDBProxyEndpointResult: DeleteDBProxyEndpointResponse
 
     public init(deleteDBProxyEndpointResult: DeleteDBProxyEndpointResponse) {
@@ -5669,7 +5671,7 @@ public struct DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint: Codable, Eq
     }
 }
 
-public struct DeleteDBProxyRequest: Codable, Equatable {
+public struct DeleteDBProxyRequest: Codable, Equatable, Sendable {
     public var dBProxyName: String
 
     public init(dBProxyName: String) {
@@ -5684,7 +5686,7 @@ public struct DeleteDBProxyRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteDBProxyResponse: Codable, Equatable {
+public struct DeleteDBProxyResponse: Codable, Equatable, Sendable {
     public var dBProxy: DBProxy?
 
     public init(dBProxy: DBProxy? = nil) {
@@ -5700,7 +5702,7 @@ public struct DeleteDBProxyResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteDBProxyResponseForDeleteDBProxy: Codable, Equatable {
+public struct DeleteDBProxyResponseForDeleteDBProxy: Codable, Equatable, Sendable {
     public var deleteDBProxyResult: DeleteDBProxyResponse
 
     public init(deleteDBProxyResult: DeleteDBProxyResponse) {
@@ -5716,7 +5718,7 @@ public struct DeleteDBProxyResponseForDeleteDBProxy: Codable, Equatable {
     }
 }
 
-public struct DeleteDBSecurityGroupMessage: Codable, Equatable {
+public struct DeleteDBSecurityGroupMessage: Codable, Equatable, Sendable {
     public var dBSecurityGroupName: String
 
     public init(dBSecurityGroupName: String) {
@@ -5731,7 +5733,7 @@ public struct DeleteDBSecurityGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBSnapshotMessage: Codable, Equatable {
+public struct DeleteDBSnapshotMessage: Codable, Equatable, Sendable {
     public var dBSnapshotIdentifier: String
 
     public init(dBSnapshotIdentifier: String) {
@@ -5746,7 +5748,7 @@ public struct DeleteDBSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteDBSnapshotResult: Codable, Equatable {
+public struct DeleteDBSnapshotResult: Codable, Equatable, Sendable {
     public var dBSnapshot: DBSnapshot?
 
     public init(dBSnapshot: DBSnapshot? = nil) {
@@ -5762,7 +5764,7 @@ public struct DeleteDBSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct DeleteDBSnapshotResultForDeleteDBSnapshot: Codable, Equatable {
+public struct DeleteDBSnapshotResultForDeleteDBSnapshot: Codable, Equatable, Sendable {
     public var deleteDBSnapshotResult: DeleteDBSnapshotResult
 
     public init(deleteDBSnapshotResult: DeleteDBSnapshotResult) {
@@ -5778,7 +5780,7 @@ public struct DeleteDBSnapshotResultForDeleteDBSnapshot: Codable, Equatable {
     }
 }
 
-public struct DeleteDBSubnetGroupMessage: Codable, Equatable {
+public struct DeleteDBSubnetGroupMessage: Codable, Equatable, Sendable {
     public var dBSubnetGroupName: String
 
     public init(dBSubnetGroupName: String) {
@@ -5793,7 +5795,7 @@ public struct DeleteDBSubnetGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteEventSubscriptionMessage: Codable, Equatable {
+public struct DeleteEventSubscriptionMessage: Codable, Equatable, Sendable {
     public var subscriptionName: String
 
     public init(subscriptionName: String) {
@@ -5808,7 +5810,7 @@ public struct DeleteEventSubscriptionMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteEventSubscriptionResult: Codable, Equatable {
+public struct DeleteEventSubscriptionResult: Codable, Equatable, Sendable {
     public var eventSubscription: EventSubscription?
 
     public init(eventSubscription: EventSubscription? = nil) {
@@ -5824,7 +5826,7 @@ public struct DeleteEventSubscriptionResult: Codable, Equatable {
     }
 }
 
-public struct DeleteEventSubscriptionResultForDeleteEventSubscription: Codable, Equatable {
+public struct DeleteEventSubscriptionResultForDeleteEventSubscription: Codable, Equatable, Sendable {
     public var deleteEventSubscriptionResult: DeleteEventSubscriptionResult
 
     public init(deleteEventSubscriptionResult: DeleteEventSubscriptionResult) {
@@ -5840,7 +5842,7 @@ public struct DeleteEventSubscriptionResultForDeleteEventSubscription: Codable, 
     }
 }
 
-public struct DeleteGlobalClusterMessage: Codable, Equatable {
+public struct DeleteGlobalClusterMessage: Codable, Equatable, Sendable {
     public var globalClusterIdentifier: String
 
     public init(globalClusterIdentifier: String) {
@@ -5855,7 +5857,7 @@ public struct DeleteGlobalClusterMessage: Codable, Equatable {
     }
 }
 
-public struct DeleteGlobalClusterResult: Codable, Equatable {
+public struct DeleteGlobalClusterResult: Codable, Equatable, Sendable {
     public var globalCluster: GlobalCluster?
 
     public init(globalCluster: GlobalCluster? = nil) {
@@ -5871,7 +5873,7 @@ public struct DeleteGlobalClusterResult: Codable, Equatable {
     }
 }
 
-public struct DeleteGlobalClusterResultForDeleteGlobalCluster: Codable, Equatable {
+public struct DeleteGlobalClusterResultForDeleteGlobalCluster: Codable, Equatable, Sendable {
     public var deleteGlobalClusterResult: DeleteGlobalClusterResult
 
     public init(deleteGlobalClusterResult: DeleteGlobalClusterResult) {
@@ -5887,7 +5889,7 @@ public struct DeleteGlobalClusterResultForDeleteGlobalCluster: Codable, Equatabl
     }
 }
 
-public struct DeleteOptionGroupMessage: Codable, Equatable {
+public struct DeleteOptionGroupMessage: Codable, Equatable, Sendable {
     public var optionGroupName: String
 
     public init(optionGroupName: String) {
@@ -5902,7 +5904,7 @@ public struct DeleteOptionGroupMessage: Codable, Equatable {
     }
 }
 
-public struct DeregisterDBProxyTargetsRequest: Codable, Equatable {
+public struct DeregisterDBProxyTargetsRequest: Codable, Equatable, Sendable {
     public var dBClusterIdentifiers: StringList?
     public var dBInstanceIdentifiers: StringList?
     public var dBProxyName: String
@@ -5929,7 +5931,7 @@ public struct DeregisterDBProxyTargetsRequest: Codable, Equatable {
     }
 }
 
-public struct DeregisterDBProxyTargetsResponse: Codable, Equatable {
+public struct DeregisterDBProxyTargetsResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5938,7 +5940,7 @@ public struct DeregisterDBProxyTargetsResponse: Codable, Equatable {
     }
 }
 
-public struct DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets: Codable, Equatable {
+public struct DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets: Codable, Equatable, Sendable {
     public var deregisterDBProxyTargetsResult: DeregisterDBProxyTargetsResponse
 
     public init(deregisterDBProxyTargetsResult: DeregisterDBProxyTargetsResponse) {
@@ -5954,7 +5956,7 @@ public struct DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets: Codab
     }
 }
 
-public struct DescribeAccountAttributesMessage: Codable, Equatable {
+public struct DescribeAccountAttributesMessage: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5963,7 +5965,7 @@ public struct DescribeAccountAttributesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeCertificatesMessage: Codable, Equatable {
+public struct DescribeCertificatesMessage: Codable, Equatable, Sendable {
     public var certificateIdentifier: String?
     public var filters: FilterList?
     public var marker: String?
@@ -5990,7 +5992,7 @@ public struct DescribeCertificatesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterBacktracksMessage: Codable, Equatable {
+public struct DescribeDBClusterBacktracksMessage: Codable, Equatable, Sendable {
     public var backtrackIdentifier: String?
     public var dBClusterIdentifier: String
     public var filters: FilterList?
@@ -6021,7 +6023,7 @@ public struct DescribeDBClusterBacktracksMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterEndpointsMessage: Codable, Equatable {
+public struct DescribeDBClusterEndpointsMessage: Codable, Equatable, Sendable {
     public var dBClusterEndpointIdentifier: String?
     public var dBClusterIdentifier: String?
     public var filters: FilterList?
@@ -6052,7 +6054,7 @@ public struct DescribeDBClusterEndpointsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterParameterGroupsMessage: Codable, Equatable {
+public struct DescribeDBClusterParameterGroupsMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String?
     public var filters: FilterList?
     public var marker: String?
@@ -6079,7 +6081,7 @@ public struct DescribeDBClusterParameterGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterParametersMessage: Codable, Equatable {
+public struct DescribeDBClusterParametersMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String
     public var filters: FilterList?
     public var marker: String?
@@ -6110,7 +6112,7 @@ public struct DescribeDBClusterParametersMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterSnapshotAttributesMessage: Codable, Equatable {
+public struct DescribeDBClusterSnapshotAttributesMessage: Codable, Equatable, Sendable {
     public var dBClusterSnapshotIdentifier: String
 
     public init(dBClusterSnapshotIdentifier: String) {
@@ -6125,7 +6127,7 @@ public struct DescribeDBClusterSnapshotAttributesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterSnapshotAttributesResult: Codable, Equatable {
+public struct DescribeDBClusterSnapshotAttributesResult: Codable, Equatable, Sendable {
     public var dBClusterSnapshotAttributesResult: DBClusterSnapshotAttributesResult?
 
     public init(dBClusterSnapshotAttributesResult: DBClusterSnapshotAttributesResult? = nil) {
@@ -6141,7 +6143,7 @@ public struct DescribeDBClusterSnapshotAttributesResult: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes: Codable, Equatable {
+public struct DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes: Codable, Equatable, Sendable {
     public var describeDBClusterSnapshotAttributesResult: DescribeDBClusterSnapshotAttributesResult
 
     public init(describeDBClusterSnapshotAttributesResult: DescribeDBClusterSnapshotAttributesResult) {
@@ -6157,7 +6159,7 @@ public struct DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnaps
     }
 }
 
-public struct DescribeDBClusterSnapshotsMessage: Codable, Equatable {
+public struct DescribeDBClusterSnapshotsMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String?
     public var dBClusterSnapshotIdentifier: String?
     public var filters: FilterList?
@@ -6200,7 +6202,7 @@ public struct DescribeDBClusterSnapshotsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBClustersMessage: Codable, Equatable {
+public struct DescribeDBClustersMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String?
     public var filters: FilterList?
     public var includeShared: Boolean?
@@ -6231,7 +6233,7 @@ public struct DescribeDBClustersMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
+public struct DescribeDBEngineVersionsMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupFamily: String?
     public var defaultOnly: Boolean?
     public var engine: String?
@@ -6282,7 +6284,7 @@ public struct DescribeDBEngineVersionsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBInstanceAutomatedBackupsMessage: Codable, Equatable {
+public struct DescribeDBInstanceAutomatedBackupsMessage: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackupsArn: String?
     public var dBInstanceIdentifier: String?
     public var dbiResourceId: String?
@@ -6317,7 +6319,7 @@ public struct DescribeDBInstanceAutomatedBackupsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBInstancesMessage: Codable, Equatable {
+public struct DescribeDBInstancesMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String?
     public var filters: FilterList?
     public var marker: String?
@@ -6344,7 +6346,7 @@ public struct DescribeDBInstancesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBLogFilesDetails: Codable, Equatable {
+public struct DescribeDBLogFilesDetails: Codable, Equatable, Sendable {
     public var lastWritten: Long?
     public var logFileName: String?
     public var size: Long?
@@ -6367,7 +6369,7 @@ public struct DescribeDBLogFilesDetails: Codable, Equatable {
     }
 }
 
-public struct DescribeDBLogFilesMessage: Codable, Equatable {
+public struct DescribeDBLogFilesMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var fileLastWritten: Long?
     public var fileSize: Long?
@@ -6406,7 +6408,7 @@ public struct DescribeDBLogFilesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBLogFilesResponse: Codable, Equatable {
+public struct DescribeDBLogFilesResponse: Codable, Equatable, Sendable {
     public var describeDBLogFiles: DescribeDBLogFilesList?
     public var marker: String?
 
@@ -6425,7 +6427,7 @@ public struct DescribeDBLogFilesResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeDBLogFilesResponseForDescribeDBLogFiles: Codable, Equatable {
+public struct DescribeDBLogFilesResponseForDescribeDBLogFiles: Codable, Equatable, Sendable {
     public var describeDBLogFilesResult: DescribeDBLogFilesResponse
 
     public init(describeDBLogFilesResult: DescribeDBLogFilesResponse) {
@@ -6441,7 +6443,7 @@ public struct DescribeDBLogFilesResponseForDescribeDBLogFiles: Codable, Equatabl
     }
 }
 
-public struct DescribeDBParameterGroupsMessage: Codable, Equatable {
+public struct DescribeDBParameterGroupsMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String?
     public var filters: FilterList?
     public var marker: String?
@@ -6468,7 +6470,7 @@ public struct DescribeDBParameterGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBParametersMessage: Codable, Equatable {
+public struct DescribeDBParametersMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String
     public var filters: FilterList?
     public var marker: String?
@@ -6499,7 +6501,7 @@ public struct DescribeDBParametersMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxiesRequest: Codable, Equatable {
+public struct DescribeDBProxiesRequest: Codable, Equatable, Sendable {
     public var dBProxyName: String?
     public var filters: FilterList?
     public var marker: String?
@@ -6527,7 +6529,7 @@ public struct DescribeDBProxiesRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxiesResponse: Codable, Equatable {
+public struct DescribeDBProxiesResponse: Codable, Equatable, Sendable {
     public var dBProxies: DBProxyList?
     public var marker: String?
 
@@ -6546,7 +6548,7 @@ public struct DescribeDBProxiesResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxiesResponseForDescribeDBProxies: Codable, Equatable {
+public struct DescribeDBProxiesResponseForDescribeDBProxies: Codable, Equatable, Sendable {
     public var describeDBProxiesResult: DescribeDBProxiesResponse
 
     public init(describeDBProxiesResult: DescribeDBProxiesResponse) {
@@ -6562,7 +6564,7 @@ public struct DescribeDBProxiesResponseForDescribeDBProxies: Codable, Equatable 
     }
 }
 
-public struct DescribeDBProxyEndpointsRequest: Codable, Equatable {
+public struct DescribeDBProxyEndpointsRequest: Codable, Equatable, Sendable {
     public var dBProxyEndpointName: DBProxyEndpointName?
     public var dBProxyName: DBProxyName?
     public var filters: FilterList?
@@ -6596,7 +6598,7 @@ public struct DescribeDBProxyEndpointsRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxyEndpointsResponse: Codable, Equatable {
+public struct DescribeDBProxyEndpointsResponse: Codable, Equatable, Sendable {
     public var dBProxyEndpoints: DBProxyEndpointList?
     public var marker: String?
 
@@ -6615,7 +6617,7 @@ public struct DescribeDBProxyEndpointsResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints: Codable, Equatable {
+public struct DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints: Codable, Equatable, Sendable {
     public var describeDBProxyEndpointsResult: DescribeDBProxyEndpointsResponse
 
     public init(describeDBProxyEndpointsResult: DescribeDBProxyEndpointsResponse) {
@@ -6631,7 +6633,7 @@ public struct DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints: Codab
     }
 }
 
-public struct DescribeDBProxyTargetGroupsRequest: Codable, Equatable {
+public struct DescribeDBProxyTargetGroupsRequest: Codable, Equatable, Sendable {
     public var dBProxyName: String
     public var filters: FilterList?
     public var marker: String?
@@ -6663,7 +6665,7 @@ public struct DescribeDBProxyTargetGroupsRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxyTargetGroupsResponse: Codable, Equatable {
+public struct DescribeDBProxyTargetGroupsResponse: Codable, Equatable, Sendable {
     public var marker: String?
     public var targetGroups: TargetGroupList?
 
@@ -6682,7 +6684,7 @@ public struct DescribeDBProxyTargetGroupsResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups: Codable, Equatable {
+public struct DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups: Codable, Equatable, Sendable {
     public var describeDBProxyTargetGroupsResult: DescribeDBProxyTargetGroupsResponse
 
     public init(describeDBProxyTargetGroupsResult: DescribeDBProxyTargetGroupsResponse) {
@@ -6698,7 +6700,7 @@ public struct DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups:
     }
 }
 
-public struct DescribeDBProxyTargetsRequest: Codable, Equatable {
+public struct DescribeDBProxyTargetsRequest: Codable, Equatable, Sendable {
     public var dBProxyName: String
     public var filters: FilterList?
     public var marker: String?
@@ -6730,7 +6732,7 @@ public struct DescribeDBProxyTargetsRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxyTargetsResponse: Codable, Equatable {
+public struct DescribeDBProxyTargetsResponse: Codable, Equatable, Sendable {
     public var marker: String?
     public var targets: TargetList?
 
@@ -6749,7 +6751,7 @@ public struct DescribeDBProxyTargetsResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeDBProxyTargetsResponseForDescribeDBProxyTargets: Codable, Equatable {
+public struct DescribeDBProxyTargetsResponseForDescribeDBProxyTargets: Codable, Equatable, Sendable {
     public var describeDBProxyTargetsResult: DescribeDBProxyTargetsResponse
 
     public init(describeDBProxyTargetsResult: DescribeDBProxyTargetsResponse) {
@@ -6765,7 +6767,7 @@ public struct DescribeDBProxyTargetsResponseForDescribeDBProxyTargets: Codable, 
     }
 }
 
-public struct DescribeDBSecurityGroupsMessage: Codable, Equatable {
+public struct DescribeDBSecurityGroupsMessage: Codable, Equatable, Sendable {
     public var dBSecurityGroupName: String?
     public var filters: FilterList?
     public var marker: String?
@@ -6792,7 +6794,7 @@ public struct DescribeDBSecurityGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBSnapshotAttributesMessage: Codable, Equatable {
+public struct DescribeDBSnapshotAttributesMessage: Codable, Equatable, Sendable {
     public var dBSnapshotIdentifier: String
 
     public init(dBSnapshotIdentifier: String) {
@@ -6807,7 +6809,7 @@ public struct DescribeDBSnapshotAttributesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBSnapshotAttributesResult: Codable, Equatable {
+public struct DescribeDBSnapshotAttributesResult: Codable, Equatable, Sendable {
     public var dBSnapshotAttributesResult: DBSnapshotAttributesResult?
 
     public init(dBSnapshotAttributesResult: DBSnapshotAttributesResult? = nil) {
@@ -6823,7 +6825,7 @@ public struct DescribeDBSnapshotAttributesResult: Codable, Equatable {
     }
 }
 
-public struct DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes: Codable, Equatable {
+public struct DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes: Codable, Equatable, Sendable {
     public var describeDBSnapshotAttributesResult: DescribeDBSnapshotAttributesResult
 
     public init(describeDBSnapshotAttributesResult: DescribeDBSnapshotAttributesResult) {
@@ -6839,7 +6841,7 @@ public struct DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes:
     }
 }
 
-public struct DescribeDBSnapshotsMessage: Codable, Equatable {
+public struct DescribeDBSnapshotsMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String?
     public var dBSnapshotIdentifier: String?
     public var dbiResourceId: String?
@@ -6886,7 +6888,7 @@ public struct DescribeDBSnapshotsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeDBSubnetGroupsMessage: Codable, Equatable {
+public struct DescribeDBSubnetGroupsMessage: Codable, Equatable, Sendable {
     public var dBSubnetGroupName: String?
     public var filters: FilterList?
     public var marker: String?
@@ -6913,7 +6915,7 @@ public struct DescribeDBSubnetGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeEngineDefaultClusterParametersMessage: Codable, Equatable {
+public struct DescribeEngineDefaultClusterParametersMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupFamily: String
     public var filters: FilterList?
     public var marker: String?
@@ -6940,7 +6942,7 @@ public struct DescribeEngineDefaultClusterParametersMessage: Codable, Equatable 
     }
 }
 
-public struct DescribeEngineDefaultClusterParametersResult: Codable, Equatable {
+public struct DescribeEngineDefaultClusterParametersResult: Codable, Equatable, Sendable {
     public var engineDefaults: EngineDefaults?
 
     public init(engineDefaults: EngineDefaults? = nil) {
@@ -6956,7 +6958,7 @@ public struct DescribeEngineDefaultClusterParametersResult: Codable, Equatable {
     }
 }
 
-public struct DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters: Codable, Equatable {
+public struct DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters: Codable, Equatable, Sendable {
     public var describeEngineDefaultClusterParametersResult: DescribeEngineDefaultClusterParametersResult
 
     public init(describeEngineDefaultClusterParametersResult: DescribeEngineDefaultClusterParametersResult) {
@@ -6972,7 +6974,7 @@ public struct DescribeEngineDefaultClusterParametersResultForDescribeEngineDefau
     }
 }
 
-public struct DescribeEngineDefaultParametersMessage: Codable, Equatable {
+public struct DescribeEngineDefaultParametersMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupFamily: String
     public var filters: FilterList?
     public var marker: String?
@@ -6999,7 +7001,7 @@ public struct DescribeEngineDefaultParametersMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeEngineDefaultParametersResult: Codable, Equatable {
+public struct DescribeEngineDefaultParametersResult: Codable, Equatable, Sendable {
     public var engineDefaults: EngineDefaults?
 
     public init(engineDefaults: EngineDefaults? = nil) {
@@ -7015,7 +7017,7 @@ public struct DescribeEngineDefaultParametersResult: Codable, Equatable {
     }
 }
 
-public struct DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters: Codable, Equatable {
+public struct DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters: Codable, Equatable, Sendable {
     public var describeEngineDefaultParametersResult: DescribeEngineDefaultParametersResult
 
     public init(describeEngineDefaultParametersResult: DescribeEngineDefaultParametersResult) {
@@ -7031,7 +7033,7 @@ public struct DescribeEngineDefaultParametersResultForDescribeEngineDefaultParam
     }
 }
 
-public struct DescribeEventCategoriesMessage: Codable, Equatable {
+public struct DescribeEventCategoriesMessage: Codable, Equatable, Sendable {
     public var filters: FilterList?
     public var sourceType: String?
 
@@ -7050,7 +7052,7 @@ public struct DescribeEventCategoriesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeEventSubscriptionsMessage: Codable, Equatable {
+public struct DescribeEventSubscriptionsMessage: Codable, Equatable, Sendable {
     public var filters: FilterList?
     public var marker: String?
     public var maxRecords: IntegerOptional?
@@ -7077,7 +7079,7 @@ public struct DescribeEventSubscriptionsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeEventsMessage: Codable, Equatable {
+public struct DescribeEventsMessage: Codable, Equatable, Sendable {
     public var duration: IntegerOptional?
     public var endTime: TStamp?
     public var eventCategories: EventCategoriesList?
@@ -7124,7 +7126,7 @@ public struct DescribeEventsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeExportTasksMessage: Codable, Equatable {
+public struct DescribeExportTasksMessage: Codable, Equatable, Sendable {
     public var exportTaskIdentifier: String?
     public var filters: FilterList?
     public var marker: String?
@@ -7156,7 +7158,7 @@ public struct DescribeExportTasksMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeGlobalClustersMessage: Codable, Equatable {
+public struct DescribeGlobalClustersMessage: Codable, Equatable, Sendable {
     public var filters: FilterList?
     public var globalClusterIdentifier: String?
     public var marker: String?
@@ -7183,7 +7185,7 @@ public struct DescribeGlobalClustersMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeOptionGroupOptionsMessage: Codable, Equatable {
+public struct DescribeOptionGroupOptionsMessage: Codable, Equatable, Sendable {
     public var engineName: String
     public var filters: FilterList?
     public var majorEngineVersion: String?
@@ -7214,7 +7216,7 @@ public struct DescribeOptionGroupOptionsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeOptionGroupsMessage: Codable, Equatable {
+public struct DescribeOptionGroupsMessage: Codable, Equatable, Sendable {
     public var engineName: String?
     public var filters: FilterList?
     public var majorEngineVersion: String?
@@ -7249,7 +7251,7 @@ public struct DescribeOptionGroupsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable {
+public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable, Sendable {
     public var availabilityZoneGroup: String?
     public var dBInstanceClass: String?
     public var engine: String
@@ -7296,7 +7298,7 @@ public struct DescribeOrderableDBInstanceOptionsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribePendingMaintenanceActionsMessage: Codable, Equatable {
+public struct DescribePendingMaintenanceActionsMessage: Codable, Equatable, Sendable {
     public var filters: FilterList?
     public var marker: String?
     public var maxRecords: IntegerOptional?
@@ -7323,7 +7325,7 @@ public struct DescribePendingMaintenanceActionsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeReservedDBInstancesMessage: Codable, Equatable {
+public struct DescribeReservedDBInstancesMessage: Codable, Equatable, Sendable {
     public var dBInstanceClass: String?
     public var duration: String?
     public var filters: FilterList?
@@ -7378,7 +7380,7 @@ public struct DescribeReservedDBInstancesMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeReservedDBInstancesOfferingsMessage: Codable, Equatable {
+public struct DescribeReservedDBInstancesOfferingsMessage: Codable, Equatable, Sendable {
     public var dBInstanceClass: String?
     public var duration: String?
     public var filters: FilterList?
@@ -7425,7 +7427,7 @@ public struct DescribeReservedDBInstancesOfferingsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeSourceRegionsMessage: Codable, Equatable {
+public struct DescribeSourceRegionsMessage: Codable, Equatable, Sendable {
     public var filters: FilterList?
     public var marker: String?
     public var maxRecords: IntegerOptional?
@@ -7452,7 +7454,7 @@ public struct DescribeSourceRegionsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeValidDBInstanceModificationsMessage: Codable, Equatable {
+public struct DescribeValidDBInstanceModificationsMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
 
     public init(dBInstanceIdentifier: String) {
@@ -7467,7 +7469,7 @@ public struct DescribeValidDBInstanceModificationsMessage: Codable, Equatable {
     }
 }
 
-public struct DescribeValidDBInstanceModificationsResult: Codable, Equatable {
+public struct DescribeValidDBInstanceModificationsResult: Codable, Equatable, Sendable {
     public var validDBInstanceModificationsMessage: ValidDBInstanceModificationsMessage?
 
     public init(validDBInstanceModificationsMessage: ValidDBInstanceModificationsMessage? = nil) {
@@ -7483,7 +7485,7 @@ public struct DescribeValidDBInstanceModificationsResult: Codable, Equatable {
     }
 }
 
-public struct DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications: Codable, Equatable {
+public struct DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications: Codable, Equatable, Sendable {
     public var describeValidDBInstanceModificationsResult: DescribeValidDBInstanceModificationsResult
 
     public init(describeValidDBInstanceModificationsResult: DescribeValidDBInstanceModificationsResult) {
@@ -7499,7 +7501,7 @@ public struct DescribeValidDBInstanceModificationsResultForDescribeValidDBInstan
     }
 }
 
-public struct DomainMembership: Codable, Equatable {
+public struct DomainMembership: Codable, Equatable, Sendable {
     public var domain: String?
     public var fQDN: String?
     public var iAMRoleName: String?
@@ -7526,7 +7528,7 @@ public struct DomainMembership: Codable, Equatable {
     }
 }
 
-public struct DomainNotFoundFault: Codable, Equatable {
+public struct DomainNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -7535,7 +7537,7 @@ public struct DomainNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct DoubleRange: Codable, Equatable {
+public struct DoubleRange: Codable, Equatable, Sendable {
     public var from: Double?
     public var to: Double?
 
@@ -7554,7 +7556,7 @@ public struct DoubleRange: Codable, Equatable {
     }
 }
 
-public struct DownloadDBLogFilePortionDetails: Codable, Equatable {
+public struct DownloadDBLogFilePortionDetails: Codable, Equatable, Sendable {
     public var additionalDataPending: Boolean?
     public var logFileData: String?
     public var marker: String?
@@ -7577,7 +7579,7 @@ public struct DownloadDBLogFilePortionDetails: Codable, Equatable {
     }
 }
 
-public struct DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion: Codable, Equatable {
+public struct DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion: Codable, Equatable, Sendable {
     public var downloadDBLogFilePortionResult: DownloadDBLogFilePortionDetails
 
     public init(downloadDBLogFilePortionResult: DownloadDBLogFilePortionDetails) {
@@ -7593,7 +7595,7 @@ public struct DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion: Codabl
     }
 }
 
-public struct DownloadDBLogFilePortionMessage: Codable, Equatable {
+public struct DownloadDBLogFilePortionMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var logFileName: String
     public var marker: String?
@@ -7620,7 +7622,7 @@ public struct DownloadDBLogFilePortionMessage: Codable, Equatable {
     }
 }
 
-public struct EC2SecurityGroup: Codable, Equatable {
+public struct EC2SecurityGroup: Codable, Equatable, Sendable {
     public var eC2SecurityGroupId: String?
     public var eC2SecurityGroupName: String?
     public var eC2SecurityGroupOwnerId: String?
@@ -7647,7 +7649,7 @@ public struct EC2SecurityGroup: Codable, Equatable {
     }
 }
 
-public struct Endpoint: Codable, Equatable {
+public struct Endpoint: Codable, Equatable, Sendable {
     public var address: String?
     public var hostedZoneId: String?
     public var port: Integer?
@@ -7670,7 +7672,7 @@ public struct Endpoint: Codable, Equatable {
     }
 }
 
-public struct EngineDefaults: Codable, Equatable {
+public struct EngineDefaults: Codable, Equatable, Sendable {
     public var dBParameterGroupFamily: String?
     public var marker: String?
     public var parameters: ParametersList?
@@ -7693,7 +7695,7 @@ public struct EngineDefaults: Codable, Equatable {
     }
 }
 
-public struct Event: Codable, Equatable {
+public struct Event: Codable, Equatable, Sendable {
     public var date: TStamp?
     public var eventCategories: EventCategoriesList?
     public var message: String?
@@ -7728,7 +7730,7 @@ public struct Event: Codable, Equatable {
     }
 }
 
-public struct EventCategoriesMap: Codable, Equatable {
+public struct EventCategoriesMap: Codable, Equatable, Sendable {
     public var eventCategories: EventCategoriesList?
     public var sourceType: String?
 
@@ -7747,7 +7749,7 @@ public struct EventCategoriesMap: Codable, Equatable {
     }
 }
 
-public struct EventCategoriesMessage: Codable, Equatable {
+public struct EventCategoriesMessage: Codable, Equatable, Sendable {
     public var eventCategoriesMapList: EventCategoriesMapList?
 
     public init(eventCategoriesMapList: EventCategoriesMapList? = nil) {
@@ -7762,7 +7764,7 @@ public struct EventCategoriesMessage: Codable, Equatable {
     }
 }
 
-public struct EventCategoriesMessageForDescribeEventCategories: Codable, Equatable {
+public struct EventCategoriesMessageForDescribeEventCategories: Codable, Equatable, Sendable {
     public var describeEventCategoriesResult: EventCategoriesMessage
 
     public init(describeEventCategoriesResult: EventCategoriesMessage) {
@@ -7778,7 +7780,7 @@ public struct EventCategoriesMessageForDescribeEventCategories: Codable, Equatab
     }
 }
 
-public struct EventSubscription: Codable, Equatable {
+public struct EventSubscription: Codable, Equatable, Sendable {
     public var custSubscriptionId: String?
     public var customerAwsId: String?
     public var enabled: Boolean?
@@ -7829,7 +7831,7 @@ public struct EventSubscription: Codable, Equatable {
     }
 }
 
-public struct EventSubscriptionQuotaExceededFault: Codable, Equatable {
+public struct EventSubscriptionQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -7838,7 +7840,7 @@ public struct EventSubscriptionQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct EventSubscriptionsMessage: Codable, Equatable {
+public struct EventSubscriptionsMessage: Codable, Equatable, Sendable {
     public var eventSubscriptionsList: EventSubscriptionsList?
     public var marker: String?
 
@@ -7857,7 +7859,7 @@ public struct EventSubscriptionsMessage: Codable, Equatable {
     }
 }
 
-public struct EventSubscriptionsMessageForDescribeEventSubscriptions: Codable, Equatable {
+public struct EventSubscriptionsMessageForDescribeEventSubscriptions: Codable, Equatable, Sendable {
     public var describeEventSubscriptionsResult: EventSubscriptionsMessage
 
     public init(describeEventSubscriptionsResult: EventSubscriptionsMessage) {
@@ -7873,7 +7875,7 @@ public struct EventSubscriptionsMessageForDescribeEventSubscriptions: Codable, E
     }
 }
 
-public struct EventsMessage: Codable, Equatable {
+public struct EventsMessage: Codable, Equatable, Sendable {
     public var events: EventList?
     public var marker: String?
 
@@ -7892,7 +7894,7 @@ public struct EventsMessage: Codable, Equatable {
     }
 }
 
-public struct EventsMessageForDescribeEvents: Codable, Equatable {
+public struct EventsMessageForDescribeEvents: Codable, Equatable, Sendable {
     public var describeEventsResult: EventsMessage
 
     public init(describeEventsResult: EventsMessage) {
@@ -7908,7 +7910,7 @@ public struct EventsMessageForDescribeEvents: Codable, Equatable {
     }
 }
 
-public struct ExportTask: Codable, Equatable {
+public struct ExportTask: Codable, Equatable, Sendable {
     public var exportOnly: StringList?
     public var exportTaskIdentifier: String?
     public var failureCause: String?
@@ -7979,7 +7981,7 @@ public struct ExportTask: Codable, Equatable {
     }
 }
 
-public struct ExportTaskAlreadyExistsFault: Codable, Equatable {
+public struct ExportTaskAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -7988,7 +7990,7 @@ public struct ExportTaskAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct ExportTaskForCancelExportTask: Codable, Equatable {
+public struct ExportTaskForCancelExportTask: Codable, Equatable, Sendable {
     public var cancelExportTaskResult: ExportTask
 
     public init(cancelExportTaskResult: ExportTask) {
@@ -8004,7 +8006,7 @@ public struct ExportTaskForCancelExportTask: Codable, Equatable {
     }
 }
 
-public struct ExportTaskForStartExportTask: Codable, Equatable {
+public struct ExportTaskForStartExportTask: Codable, Equatable, Sendable {
     public var startExportTaskResult: ExportTask
 
     public init(startExportTaskResult: ExportTask) {
@@ -8020,7 +8022,7 @@ public struct ExportTaskForStartExportTask: Codable, Equatable {
     }
 }
 
-public struct ExportTaskNotFoundFault: Codable, Equatable {
+public struct ExportTaskNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8029,7 +8031,7 @@ public struct ExportTaskNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct ExportTasksMessage: Codable, Equatable {
+public struct ExportTasksMessage: Codable, Equatable, Sendable {
     public var exportTasks: ExportTasksList?
     public var marker: String?
 
@@ -8048,7 +8050,7 @@ public struct ExportTasksMessage: Codable, Equatable {
     }
 }
 
-public struct ExportTasksMessageForDescribeExportTasks: Codable, Equatable {
+public struct ExportTasksMessageForDescribeExportTasks: Codable, Equatable, Sendable {
     public var describeExportTasksResult: ExportTasksMessage
 
     public init(describeExportTasksResult: ExportTasksMessage) {
@@ -8064,7 +8066,7 @@ public struct ExportTasksMessageForDescribeExportTasks: Codable, Equatable {
     }
 }
 
-public struct FailoverDBClusterMessage: Codable, Equatable {
+public struct FailoverDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
     public var targetDBInstanceIdentifier: String?
 
@@ -8083,7 +8085,7 @@ public struct FailoverDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct FailoverDBClusterResult: Codable, Equatable {
+public struct FailoverDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -8099,7 +8101,7 @@ public struct FailoverDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct FailoverDBClusterResultForFailoverDBCluster: Codable, Equatable {
+public struct FailoverDBClusterResultForFailoverDBCluster: Codable, Equatable, Sendable {
     public var failoverDBClusterResult: FailoverDBClusterResult
 
     public init(failoverDBClusterResult: FailoverDBClusterResult) {
@@ -8115,7 +8117,7 @@ public struct FailoverDBClusterResultForFailoverDBCluster: Codable, Equatable {
     }
 }
 
-public struct FailoverGlobalClusterMessage: Codable, Equatable {
+public struct FailoverGlobalClusterMessage: Codable, Equatable, Sendable {
     public var globalClusterIdentifier: GlobalClusterIdentifier
     public var targetDbClusterIdentifier: DBClusterIdentifier
 
@@ -8136,7 +8138,7 @@ public struct FailoverGlobalClusterMessage: Codable, Equatable {
     }
 }
 
-public struct FailoverGlobalClusterResult: Codable, Equatable {
+public struct FailoverGlobalClusterResult: Codable, Equatable, Sendable {
     public var globalCluster: GlobalCluster?
 
     public init(globalCluster: GlobalCluster? = nil) {
@@ -8152,7 +8154,7 @@ public struct FailoverGlobalClusterResult: Codable, Equatable {
     }
 }
 
-public struct FailoverGlobalClusterResultForFailoverGlobalCluster: Codable, Equatable {
+public struct FailoverGlobalClusterResultForFailoverGlobalCluster: Codable, Equatable, Sendable {
     public var failoverGlobalClusterResult: FailoverGlobalClusterResult
 
     public init(failoverGlobalClusterResult: FailoverGlobalClusterResult) {
@@ -8168,7 +8170,7 @@ public struct FailoverGlobalClusterResultForFailoverGlobalCluster: Codable, Equa
     }
 }
 
-public struct FailoverState: Codable, Equatable {
+public struct FailoverState: Codable, Equatable, Sendable {
     public var fromDbClusterArn: String?
     public var status: FailoverStatus?
     public var toDbClusterArn: String?
@@ -8191,7 +8193,7 @@ public struct FailoverState: Codable, Equatable {
     }
 }
 
-public struct Filter: Codable, Equatable {
+public struct Filter: Codable, Equatable, Sendable {
     public var name: String
     public var values: FilterValueList
 
@@ -8210,7 +8212,7 @@ public struct Filter: Codable, Equatable {
     }
 }
 
-public struct GlobalCluster: Codable, Equatable {
+public struct GlobalCluster: Codable, Equatable, Sendable {
     public var databaseName: String?
     public var deletionProtection: BooleanOptional?
     public var engine: String?
@@ -8266,7 +8268,7 @@ public struct GlobalCluster: Codable, Equatable {
     }
 }
 
-public struct GlobalClusterAlreadyExistsFault: Codable, Equatable {
+public struct GlobalClusterAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8275,7 +8277,7 @@ public struct GlobalClusterAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct GlobalClusterMember: Codable, Equatable {
+public struct GlobalClusterMember: Codable, Equatable, Sendable {
     public var dBClusterArn: String?
     public var globalWriteForwardingStatus: WriteForwardingStatus?
     public var isWriter: Boolean?
@@ -8302,7 +8304,7 @@ public struct GlobalClusterMember: Codable, Equatable {
     }
 }
 
-public struct GlobalClusterNotFoundFault: Codable, Equatable {
+public struct GlobalClusterNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8311,7 +8313,7 @@ public struct GlobalClusterNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct GlobalClusterQuotaExceededFault: Codable, Equatable {
+public struct GlobalClusterQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8320,7 +8322,7 @@ public struct GlobalClusterQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct GlobalClustersMessage: Codable, Equatable {
+public struct GlobalClustersMessage: Codable, Equatable, Sendable {
     public var globalClusters: GlobalClusterList?
     public var marker: String?
 
@@ -8339,7 +8341,7 @@ public struct GlobalClustersMessage: Codable, Equatable {
     }
 }
 
-public struct GlobalClustersMessageForDescribeGlobalClusters: Codable, Equatable {
+public struct GlobalClustersMessageForDescribeGlobalClusters: Codable, Equatable, Sendable {
     public var describeGlobalClustersResult: GlobalClustersMessage
 
     public init(describeGlobalClustersResult: GlobalClustersMessage) {
@@ -8355,7 +8357,7 @@ public struct GlobalClustersMessageForDescribeGlobalClusters: Codable, Equatable
     }
 }
 
-public struct IPRange: Codable, Equatable {
+public struct IPRange: Codable, Equatable, Sendable {
     public var cIDRIP: String?
     public var status: String?
 
@@ -8374,7 +8376,7 @@ public struct IPRange: Codable, Equatable {
     }
 }
 
-public struct IamRoleMissingPermissionsFault: Codable, Equatable {
+public struct IamRoleMissingPermissionsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8383,7 +8385,7 @@ public struct IamRoleMissingPermissionsFault: Codable, Equatable {
     }
 }
 
-public struct IamRoleNotFoundFault: Codable, Equatable {
+public struct IamRoleNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8392,7 +8394,7 @@ public struct IamRoleNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct InstanceQuotaExceededFault: Codable, Equatable {
+public struct InstanceQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8401,7 +8403,7 @@ public struct InstanceQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct InsufficientAvailableIPsInSubnetFault: Codable, Equatable {
+public struct InsufficientAvailableIPsInSubnetFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8410,7 +8412,7 @@ public struct InsufficientAvailableIPsInSubnetFault: Codable, Equatable {
     }
 }
 
-public struct InsufficientDBClusterCapacityFault: Codable, Equatable {
+public struct InsufficientDBClusterCapacityFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8419,7 +8421,7 @@ public struct InsufficientDBClusterCapacityFault: Codable, Equatable {
     }
 }
 
-public struct InsufficientDBInstanceCapacityFault: Codable, Equatable {
+public struct InsufficientDBInstanceCapacityFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8428,7 +8430,7 @@ public struct InsufficientDBInstanceCapacityFault: Codable, Equatable {
     }
 }
 
-public struct InsufficientStorageClusterCapacityFault: Codable, Equatable {
+public struct InsufficientStorageClusterCapacityFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8437,7 +8439,7 @@ public struct InsufficientStorageClusterCapacityFault: Codable, Equatable {
     }
 }
 
-public struct InvalidCustomDBEngineVersionStateFault: Codable, Equatable {
+public struct InvalidCustomDBEngineVersionStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8446,7 +8448,7 @@ public struct InvalidCustomDBEngineVersionStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBClusterCapacityFault: Codable, Equatable {
+public struct InvalidDBClusterCapacityFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8455,7 +8457,7 @@ public struct InvalidDBClusterCapacityFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBClusterEndpointStateFault: Codable, Equatable {
+public struct InvalidDBClusterEndpointStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8464,7 +8466,7 @@ public struct InvalidDBClusterEndpointStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBClusterSnapshotStateFault: Codable, Equatable {
+public struct InvalidDBClusterSnapshotStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8473,7 +8475,7 @@ public struct InvalidDBClusterSnapshotStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBClusterStateFault: Codable, Equatable {
+public struct InvalidDBClusterStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8482,7 +8484,7 @@ public struct InvalidDBClusterStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBInstanceAutomatedBackupStateFault: Codable, Equatable {
+public struct InvalidDBInstanceAutomatedBackupStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8491,7 +8493,7 @@ public struct InvalidDBInstanceAutomatedBackupStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBInstanceStateFault: Codable, Equatable {
+public struct InvalidDBInstanceStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8500,7 +8502,7 @@ public struct InvalidDBInstanceStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBParameterGroupStateFault: Codable, Equatable {
+public struct InvalidDBParameterGroupStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8509,7 +8511,7 @@ public struct InvalidDBParameterGroupStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBProxyEndpointStateFault: Codable, Equatable {
+public struct InvalidDBProxyEndpointStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8518,7 +8520,7 @@ public struct InvalidDBProxyEndpointStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBProxyStateFault: Codable, Equatable {
+public struct InvalidDBProxyStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8527,7 +8529,7 @@ public struct InvalidDBProxyStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBSecurityGroupStateFault: Codable, Equatable {
+public struct InvalidDBSecurityGroupStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8536,7 +8538,7 @@ public struct InvalidDBSecurityGroupStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBSnapshotStateFault: Codable, Equatable {
+public struct InvalidDBSnapshotStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8545,7 +8547,7 @@ public struct InvalidDBSnapshotStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBSubnetGroupFault: Codable, Equatable {
+public struct InvalidDBSubnetGroupFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8554,7 +8556,7 @@ public struct InvalidDBSubnetGroupFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBSubnetGroupStateFault: Codable, Equatable {
+public struct InvalidDBSubnetGroupStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8563,7 +8565,7 @@ public struct InvalidDBSubnetGroupStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidDBSubnetStateFault: Codable, Equatable {
+public struct InvalidDBSubnetStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8572,7 +8574,7 @@ public struct InvalidDBSubnetStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidEventSubscriptionStateFault: Codable, Equatable {
+public struct InvalidEventSubscriptionStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8581,7 +8583,7 @@ public struct InvalidEventSubscriptionStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidExportOnlyFault: Codable, Equatable {
+public struct InvalidExportOnlyFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8590,7 +8592,7 @@ public struct InvalidExportOnlyFault: Codable, Equatable {
     }
 }
 
-public struct InvalidExportSourceStateFault: Codable, Equatable {
+public struct InvalidExportSourceStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8599,7 +8601,7 @@ public struct InvalidExportSourceStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidExportTaskStateFault: Codable, Equatable {
+public struct InvalidExportTaskStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8608,7 +8610,7 @@ public struct InvalidExportTaskStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidGlobalClusterStateFault: Codable, Equatable {
+public struct InvalidGlobalClusterStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8617,7 +8619,7 @@ public struct InvalidGlobalClusterStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidOptionGroupStateFault: Codable, Equatable {
+public struct InvalidOptionGroupStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8626,7 +8628,7 @@ public struct InvalidOptionGroupStateFault: Codable, Equatable {
     }
 }
 
-public struct InvalidRestoreFault: Codable, Equatable {
+public struct InvalidRestoreFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8635,7 +8637,7 @@ public struct InvalidRestoreFault: Codable, Equatable {
     }
 }
 
-public struct InvalidS3BucketFault: Codable, Equatable {
+public struct InvalidS3BucketFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8644,7 +8646,7 @@ public struct InvalidS3BucketFault: Codable, Equatable {
     }
 }
 
-public struct InvalidSubnet: Codable, Equatable {
+public struct InvalidSubnet: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8653,7 +8655,7 @@ public struct InvalidSubnet: Codable, Equatable {
     }
 }
 
-public struct InvalidVPCNetworkStateFault: Codable, Equatable {
+public struct InvalidVPCNetworkStateFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8662,7 +8664,7 @@ public struct InvalidVPCNetworkStateFault: Codable, Equatable {
     }
 }
 
-public struct KMSKeyNotAccessibleFault: Codable, Equatable {
+public struct KMSKeyNotAccessibleFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -8671,7 +8673,7 @@ public struct KMSKeyNotAccessibleFault: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceMessage: Codable, Equatable {
+public struct ListTagsForResourceMessage: Codable, Equatable, Sendable {
     public var filters: FilterList?
     public var resourceName: String
 
@@ -8690,7 +8692,7 @@ public struct ListTagsForResourceMessage: Codable, Equatable {
     }
 }
 
-public struct MinimumEngineVersionPerAllowedValue: Codable, Equatable {
+public struct MinimumEngineVersionPerAllowedValue: Codable, Equatable, Sendable {
     public var allowedValue: String?
     public var minimumEngineVersion: String?
 
@@ -8709,7 +8711,7 @@ public struct MinimumEngineVersionPerAllowedValue: Codable, Equatable {
     }
 }
 
-public struct ModifyCertificatesMessage: Codable, Equatable {
+public struct ModifyCertificatesMessage: Codable, Equatable, Sendable {
     public var certificateIdentifier: String?
     public var removeCustomerOverride: BooleanOptional?
 
@@ -8728,7 +8730,7 @@ public struct ModifyCertificatesMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyCertificatesResult: Codable, Equatable {
+public struct ModifyCertificatesResult: Codable, Equatable, Sendable {
     public var certificate: Certificate?
 
     public init(certificate: Certificate? = nil) {
@@ -8744,7 +8746,7 @@ public struct ModifyCertificatesResult: Codable, Equatable {
     }
 }
 
-public struct ModifyCertificatesResultForModifyCertificates: Codable, Equatable {
+public struct ModifyCertificatesResultForModifyCertificates: Codable, Equatable, Sendable {
     public var modifyCertificatesResult: ModifyCertificatesResult
 
     public init(modifyCertificatesResult: ModifyCertificatesResult) {
@@ -8760,7 +8762,7 @@ public struct ModifyCertificatesResultForModifyCertificates: Codable, Equatable 
     }
 }
 
-public struct ModifyCurrentDBClusterCapacityMessage: Codable, Equatable {
+public struct ModifyCurrentDBClusterCapacityMessage: Codable, Equatable, Sendable {
     public var capacity: IntegerOptional?
     public var dBClusterIdentifier: String
     public var secondsBeforeTimeout: IntegerOptional?
@@ -8787,7 +8789,7 @@ public struct ModifyCurrentDBClusterCapacityMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyCustomDBEngineVersionMessage: Codable, Equatable {
+public struct ModifyCustomDBEngineVersionMessage: Codable, Equatable, Sendable {
     public var description: Description?
     public var engine: CustomEngineName
     public var engineVersion: CustomEngineVersion
@@ -8817,7 +8819,7 @@ public struct ModifyCustomDBEngineVersionMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterEndpointMessage: Codable, Equatable {
+public struct ModifyDBClusterEndpointMessage: Codable, Equatable, Sendable {
     public var dBClusterEndpointIdentifier: String
     public var endpointType: String?
     public var excludedMembers: StringList?
@@ -8844,7 +8846,7 @@ public struct ModifyDBClusterEndpointMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterMessage: Codable, Equatable {
+public struct ModifyDBClusterMessage: Codable, Equatable, Sendable {
     public var allocatedStorage: IntegerOptional?
     public var allowMajorVersionUpgrade: Boolean?
     public var applyImmediately: Boolean?
@@ -8998,7 +9000,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterParameterGroupMessage: Codable, Equatable {
+public struct ModifyDBClusterParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String
     public var parameters: ParametersList
 
@@ -9017,7 +9019,7 @@ public struct ModifyDBClusterParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterResult: Codable, Equatable {
+public struct ModifyDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -9033,7 +9035,7 @@ public struct ModifyDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterResultForModifyDBCluster: Codable, Equatable {
+public struct ModifyDBClusterResultForModifyDBCluster: Codable, Equatable, Sendable {
     public var modifyDBClusterResult: ModifyDBClusterResult
 
     public init(modifyDBClusterResult: ModifyDBClusterResult) {
@@ -9049,7 +9051,7 @@ public struct ModifyDBClusterResultForModifyDBCluster: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterSnapshotAttributeMessage: Codable, Equatable {
+public struct ModifyDBClusterSnapshotAttributeMessage: Codable, Equatable, Sendable {
     public var attributeName: String
     public var dBClusterSnapshotIdentifier: String
     public var valuesToAdd: AttributeValueList?
@@ -9076,7 +9078,7 @@ public struct ModifyDBClusterSnapshotAttributeMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterSnapshotAttributeResult: Codable, Equatable {
+public struct ModifyDBClusterSnapshotAttributeResult: Codable, Equatable, Sendable {
     public var dBClusterSnapshotAttributesResult: DBClusterSnapshotAttributesResult?
 
     public init(dBClusterSnapshotAttributesResult: DBClusterSnapshotAttributesResult? = nil) {
@@ -9092,7 +9094,7 @@ public struct ModifyDBClusterSnapshotAttributeResult: Codable, Equatable {
     }
 }
 
-public struct ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute: Codable, Equatable {
+public struct ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute: Codable, Equatable, Sendable {
     public var modifyDBClusterSnapshotAttributeResult: ModifyDBClusterSnapshotAttributeResult
 
     public init(modifyDBClusterSnapshotAttributeResult: ModifyDBClusterSnapshotAttributeResult) {
@@ -9108,7 +9110,7 @@ public struct ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAt
     }
 }
 
-public struct ModifyDBInstanceMessage: Codable, Equatable {
+public struct ModifyDBInstanceMessage: Codable, Equatable, Sendable {
     public var allocatedStorage: IntegerOptional?
     public var allowMajorVersionUpgrade: Boolean?
     public var applyImmediately: Boolean?
@@ -9313,7 +9315,7 @@ public struct ModifyDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBInstanceResult: Codable, Equatable {
+public struct ModifyDBInstanceResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -9329,7 +9331,7 @@ public struct ModifyDBInstanceResult: Codable, Equatable {
     }
 }
 
-public struct ModifyDBInstanceResultForModifyDBInstance: Codable, Equatable {
+public struct ModifyDBInstanceResultForModifyDBInstance: Codable, Equatable, Sendable {
     public var modifyDBInstanceResult: ModifyDBInstanceResult
 
     public init(modifyDBInstanceResult: ModifyDBInstanceResult) {
@@ -9345,7 +9347,7 @@ public struct ModifyDBInstanceResultForModifyDBInstance: Codable, Equatable {
     }
 }
 
-public struct ModifyDBParameterGroupMessage: Codable, Equatable {
+public struct ModifyDBParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String
     public var parameters: ParametersList
 
@@ -9364,7 +9366,7 @@ public struct ModifyDBParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyEndpointRequest: Codable, Equatable {
+public struct ModifyDBProxyEndpointRequest: Codable, Equatable, Sendable {
     public var dBProxyEndpointName: DBProxyEndpointName
     public var newDBProxyEndpointName: DBProxyEndpointName?
     public var vpcSecurityGroupIds: StringList?
@@ -9389,7 +9391,7 @@ public struct ModifyDBProxyEndpointRequest: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyEndpointResponse: Codable, Equatable {
+public struct ModifyDBProxyEndpointResponse: Codable, Equatable, Sendable {
     public var dBProxyEndpoint: DBProxyEndpoint?
 
     public init(dBProxyEndpoint: DBProxyEndpoint? = nil) {
@@ -9405,7 +9407,7 @@ public struct ModifyDBProxyEndpointResponse: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint: Codable, Equatable {
+public struct ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint: Codable, Equatable, Sendable {
     public var modifyDBProxyEndpointResult: ModifyDBProxyEndpointResponse
 
     public init(modifyDBProxyEndpointResult: ModifyDBProxyEndpointResponse) {
@@ -9421,7 +9423,7 @@ public struct ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint: Codable, Eq
     }
 }
 
-public struct ModifyDBProxyRequest: Codable, Equatable {
+public struct ModifyDBProxyRequest: Codable, Equatable, Sendable {
     public var auth: UserAuthConfigList?
     public var dBProxyName: String
     public var debugLogging: BooleanOptional?
@@ -9464,7 +9466,7 @@ public struct ModifyDBProxyRequest: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyResponse: Codable, Equatable {
+public struct ModifyDBProxyResponse: Codable, Equatable, Sendable {
     public var dBProxy: DBProxy?
 
     public init(dBProxy: DBProxy? = nil) {
@@ -9480,7 +9482,7 @@ public struct ModifyDBProxyResponse: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyResponseForModifyDBProxy: Codable, Equatable {
+public struct ModifyDBProxyResponseForModifyDBProxy: Codable, Equatable, Sendable {
     public var modifyDBProxyResult: ModifyDBProxyResponse
 
     public init(modifyDBProxyResult: ModifyDBProxyResponse) {
@@ -9496,7 +9498,7 @@ public struct ModifyDBProxyResponseForModifyDBProxy: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyTargetGroupRequest: Codable, Equatable {
+public struct ModifyDBProxyTargetGroupRequest: Codable, Equatable, Sendable {
     public var connectionPoolConfig: ConnectionPoolConfiguration?
     public var dBProxyName: String
     public var newName: String?
@@ -9524,7 +9526,7 @@ public struct ModifyDBProxyTargetGroupRequest: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyTargetGroupResponse: Codable, Equatable {
+public struct ModifyDBProxyTargetGroupResponse: Codable, Equatable, Sendable {
     public var dBProxyTargetGroup: DBProxyTargetGroup?
 
     public init(dBProxyTargetGroup: DBProxyTargetGroup? = nil) {
@@ -9540,7 +9542,7 @@ public struct ModifyDBProxyTargetGroupResponse: Codable, Equatable {
     }
 }
 
-public struct ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup: Codable, Equatable {
+public struct ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup: Codable, Equatable, Sendable {
     public var modifyDBProxyTargetGroupResult: ModifyDBProxyTargetGroupResponse
 
     public init(modifyDBProxyTargetGroupResult: ModifyDBProxyTargetGroupResponse) {
@@ -9556,7 +9558,7 @@ public struct ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup: Codab
     }
 }
 
-public struct ModifyDBSnapshotAttributeMessage: Codable, Equatable {
+public struct ModifyDBSnapshotAttributeMessage: Codable, Equatable, Sendable {
     public var attributeName: String
     public var dBSnapshotIdentifier: String
     public var valuesToAdd: AttributeValueList?
@@ -9583,7 +9585,7 @@ public struct ModifyDBSnapshotAttributeMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSnapshotAttributeResult: Codable, Equatable {
+public struct ModifyDBSnapshotAttributeResult: Codable, Equatable, Sendable {
     public var dBSnapshotAttributesResult: DBSnapshotAttributesResult?
 
     public init(dBSnapshotAttributesResult: DBSnapshotAttributesResult? = nil) {
@@ -9599,7 +9601,7 @@ public struct ModifyDBSnapshotAttributeResult: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute: Codable, Equatable {
+public struct ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute: Codable, Equatable, Sendable {
     public var modifyDBSnapshotAttributeResult: ModifyDBSnapshotAttributeResult
 
     public init(modifyDBSnapshotAttributeResult: ModifyDBSnapshotAttributeResult) {
@@ -9615,7 +9617,7 @@ public struct ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute: Codab
     }
 }
 
-public struct ModifyDBSnapshotMessage: Codable, Equatable {
+public struct ModifyDBSnapshotMessage: Codable, Equatable, Sendable {
     public var dBSnapshotIdentifier: String
     public var engineVersion: String?
     public var optionGroupName: String?
@@ -9638,7 +9640,7 @@ public struct ModifyDBSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSnapshotResult: Codable, Equatable {
+public struct ModifyDBSnapshotResult: Codable, Equatable, Sendable {
     public var dBSnapshot: DBSnapshot?
 
     public init(dBSnapshot: DBSnapshot? = nil) {
@@ -9654,7 +9656,7 @@ public struct ModifyDBSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSnapshotResultForModifyDBSnapshot: Codable, Equatable {
+public struct ModifyDBSnapshotResultForModifyDBSnapshot: Codable, Equatable, Sendable {
     public var modifyDBSnapshotResult: ModifyDBSnapshotResult
 
     public init(modifyDBSnapshotResult: ModifyDBSnapshotResult) {
@@ -9670,7 +9672,7 @@ public struct ModifyDBSnapshotResultForModifyDBSnapshot: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSubnetGroupMessage: Codable, Equatable {
+public struct ModifyDBSubnetGroupMessage: Codable, Equatable, Sendable {
     public var dBSubnetGroupDescription: String?
     public var dBSubnetGroupName: String
     public var subnetIds: SubnetIdentifierList
@@ -9693,7 +9695,7 @@ public struct ModifyDBSubnetGroupMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSubnetGroupResult: Codable, Equatable {
+public struct ModifyDBSubnetGroupResult: Codable, Equatable, Sendable {
     public var dBSubnetGroup: DBSubnetGroup?
 
     public init(dBSubnetGroup: DBSubnetGroup? = nil) {
@@ -9709,7 +9711,7 @@ public struct ModifyDBSubnetGroupResult: Codable, Equatable {
     }
 }
 
-public struct ModifyDBSubnetGroupResultForModifyDBSubnetGroup: Codable, Equatable {
+public struct ModifyDBSubnetGroupResultForModifyDBSubnetGroup: Codable, Equatable, Sendable {
     public var modifyDBSubnetGroupResult: ModifyDBSubnetGroupResult
 
     public init(modifyDBSubnetGroupResult: ModifyDBSubnetGroupResult) {
@@ -9725,7 +9727,7 @@ public struct ModifyDBSubnetGroupResultForModifyDBSubnetGroup: Codable, Equatabl
     }
 }
 
-public struct ModifyEventSubscriptionMessage: Codable, Equatable {
+public struct ModifyEventSubscriptionMessage: Codable, Equatable, Sendable {
     public var enabled: BooleanOptional?
     public var eventCategories: EventCategoriesList?
     public var snsTopicArn: String?
@@ -9756,7 +9758,7 @@ public struct ModifyEventSubscriptionMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyEventSubscriptionResult: Codable, Equatable {
+public struct ModifyEventSubscriptionResult: Codable, Equatable, Sendable {
     public var eventSubscription: EventSubscription?
 
     public init(eventSubscription: EventSubscription? = nil) {
@@ -9772,7 +9774,7 @@ public struct ModifyEventSubscriptionResult: Codable, Equatable {
     }
 }
 
-public struct ModifyEventSubscriptionResultForModifyEventSubscription: Codable, Equatable {
+public struct ModifyEventSubscriptionResultForModifyEventSubscription: Codable, Equatable, Sendable {
     public var modifyEventSubscriptionResult: ModifyEventSubscriptionResult
 
     public init(modifyEventSubscriptionResult: ModifyEventSubscriptionResult) {
@@ -9788,7 +9790,7 @@ public struct ModifyEventSubscriptionResultForModifyEventSubscription: Codable, 
     }
 }
 
-public struct ModifyGlobalClusterMessage: Codable, Equatable {
+public struct ModifyGlobalClusterMessage: Codable, Equatable, Sendable {
     public var allowMajorVersionUpgrade: BooleanOptional?
     public var deletionProtection: BooleanOptional?
     public var engineVersion: String?
@@ -9819,7 +9821,7 @@ public struct ModifyGlobalClusterMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyGlobalClusterResult: Codable, Equatable {
+public struct ModifyGlobalClusterResult: Codable, Equatable, Sendable {
     public var globalCluster: GlobalCluster?
 
     public init(globalCluster: GlobalCluster? = nil) {
@@ -9835,7 +9837,7 @@ public struct ModifyGlobalClusterResult: Codable, Equatable {
     }
 }
 
-public struct ModifyGlobalClusterResultForModifyGlobalCluster: Codable, Equatable {
+public struct ModifyGlobalClusterResultForModifyGlobalCluster: Codable, Equatable, Sendable {
     public var modifyGlobalClusterResult: ModifyGlobalClusterResult
 
     public init(modifyGlobalClusterResult: ModifyGlobalClusterResult) {
@@ -9851,7 +9853,7 @@ public struct ModifyGlobalClusterResultForModifyGlobalCluster: Codable, Equatabl
     }
 }
 
-public struct ModifyOptionGroupMessage: Codable, Equatable {
+public struct ModifyOptionGroupMessage: Codable, Equatable, Sendable {
     public var applyImmediately: Boolean?
     public var optionGroupName: String
     public var optionsToInclude: OptionConfigurationList?
@@ -9878,7 +9880,7 @@ public struct ModifyOptionGroupMessage: Codable, Equatable {
     }
 }
 
-public struct ModifyOptionGroupResult: Codable, Equatable {
+public struct ModifyOptionGroupResult: Codable, Equatable, Sendable {
     public var optionGroup: OptionGroup?
 
     public init(optionGroup: OptionGroup? = nil) {
@@ -9894,7 +9896,7 @@ public struct ModifyOptionGroupResult: Codable, Equatable {
     }
 }
 
-public struct ModifyOptionGroupResultForModifyOptionGroup: Codable, Equatable {
+public struct ModifyOptionGroupResultForModifyOptionGroup: Codable, Equatable, Sendable {
     public var modifyOptionGroupResult: ModifyOptionGroupResult
 
     public init(modifyOptionGroupResult: ModifyOptionGroupResult) {
@@ -9910,7 +9912,7 @@ public struct ModifyOptionGroupResultForModifyOptionGroup: Codable, Equatable {
     }
 }
 
-public struct NetworkTypeNotSupported: Codable, Equatable {
+public struct NetworkTypeNotSupported: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -9919,7 +9921,7 @@ public struct NetworkTypeNotSupported: Codable, Equatable {
     }
 }
 
-public struct Option: Codable, Equatable {
+public struct Option: Codable, Equatable, Sendable {
     public var dBSecurityGroupMemberships: DBSecurityGroupMembershipList?
     public var optionDescription: String?
     public var optionName: String?
@@ -9966,7 +9968,7 @@ public struct Option: Codable, Equatable {
     }
 }
 
-public struct OptionConfiguration: Codable, Equatable {
+public struct OptionConfiguration: Codable, Equatable, Sendable {
     public var dBSecurityGroupMemberships: DBSecurityGroupNameList?
     public var optionName: String
     public var optionSettings: OptionSettingsList?
@@ -10001,7 +10003,7 @@ public struct OptionConfiguration: Codable, Equatable {
     }
 }
 
-public struct OptionGroup: Codable, Equatable {
+public struct OptionGroup: Codable, Equatable, Sendable {
     public var allowsVpcAndNonVpcInstanceMemberships: Boolean?
     public var engineName: String?
     public var majorEngineVersion: String?
@@ -10044,7 +10046,7 @@ public struct OptionGroup: Codable, Equatable {
     }
 }
 
-public struct OptionGroupAlreadyExistsFault: Codable, Equatable {
+public struct OptionGroupAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -10053,7 +10055,7 @@ public struct OptionGroupAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct OptionGroupMembership: Codable, Equatable {
+public struct OptionGroupMembership: Codable, Equatable, Sendable {
     public var optionGroupName: String?
     public var status: String?
 
@@ -10072,7 +10074,7 @@ public struct OptionGroupMembership: Codable, Equatable {
     }
 }
 
-public struct OptionGroupNotFoundFault: Codable, Equatable {
+public struct OptionGroupNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -10081,7 +10083,7 @@ public struct OptionGroupNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct OptionGroupOption: Codable, Equatable {
+public struct OptionGroupOption: Codable, Equatable, Sendable {
     public var defaultPort: IntegerOptional?
     public var description: String?
     public var engineName: String?
@@ -10156,7 +10158,7 @@ public struct OptionGroupOption: Codable, Equatable {
     }
 }
 
-public struct OptionGroupOptionSetting: Codable, Equatable {
+public struct OptionGroupOptionSetting: Codable, Equatable, Sendable {
     public var allowedValues: String?
     public var applyType: String?
     public var defaultValue: String?
@@ -10199,7 +10201,7 @@ public struct OptionGroupOptionSetting: Codable, Equatable {
     }
 }
 
-public struct OptionGroupOptionsMessage: Codable, Equatable {
+public struct OptionGroupOptionsMessage: Codable, Equatable, Sendable {
     public var marker: String?
     public var optionGroupOptions: OptionGroupOptionsList?
 
@@ -10218,7 +10220,7 @@ public struct OptionGroupOptionsMessage: Codable, Equatable {
     }
 }
 
-public struct OptionGroupOptionsMessageForDescribeOptionGroupOptions: Codable, Equatable {
+public struct OptionGroupOptionsMessageForDescribeOptionGroupOptions: Codable, Equatable, Sendable {
     public var describeOptionGroupOptionsResult: OptionGroupOptionsMessage
 
     public init(describeOptionGroupOptionsResult: OptionGroupOptionsMessage) {
@@ -10234,7 +10236,7 @@ public struct OptionGroupOptionsMessageForDescribeOptionGroupOptions: Codable, E
     }
 }
 
-public struct OptionGroupQuotaExceededFault: Codable, Equatable {
+public struct OptionGroupQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -10243,7 +10245,7 @@ public struct OptionGroupQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct OptionGroups: Codable, Equatable {
+public struct OptionGroups: Codable, Equatable, Sendable {
     public var marker: String?
     public var optionGroupsList: OptionGroupsList?
 
@@ -10262,7 +10264,7 @@ public struct OptionGroups: Codable, Equatable {
     }
 }
 
-public struct OptionGroupsForDescribeOptionGroups: Codable, Equatable {
+public struct OptionGroupsForDescribeOptionGroups: Codable, Equatable, Sendable {
     public var describeOptionGroupsResult: OptionGroups
 
     public init(describeOptionGroupsResult: OptionGroups) {
@@ -10278,7 +10280,7 @@ public struct OptionGroupsForDescribeOptionGroups: Codable, Equatable {
     }
 }
 
-public struct OptionSetting: Codable, Equatable {
+public struct OptionSetting: Codable, Equatable, Sendable {
     public var allowedValues: String?
     public var applyType: String?
     public var dataType: String?
@@ -10325,7 +10327,7 @@ public struct OptionSetting: Codable, Equatable {
     }
 }
 
-public struct OptionVersion: Codable, Equatable {
+public struct OptionVersion: Codable, Equatable, Sendable {
     public var isDefault: Boolean?
     public var version: String?
 
@@ -10344,7 +10346,7 @@ public struct OptionVersion: Codable, Equatable {
     }
 }
 
-public struct OrderableDBInstanceOption: Codable, Equatable {
+public struct OrderableDBInstanceOption: Codable, Equatable, Sendable {
     public var availabilityZoneGroup: String?
     public var availabilityZones: AvailabilityZoneList?
     public var availableProcessorFeatures: AvailableProcessorFeatureList?
@@ -10475,7 +10477,7 @@ public struct OrderableDBInstanceOption: Codable, Equatable {
     }
 }
 
-public struct OrderableDBInstanceOptionsMessage: Codable, Equatable {
+public struct OrderableDBInstanceOptionsMessage: Codable, Equatable, Sendable {
     public var marker: String?
     public var orderableDBInstanceOptions: OrderableDBInstanceOptionsList?
 
@@ -10494,7 +10496,7 @@ public struct OrderableDBInstanceOptionsMessage: Codable, Equatable {
     }
 }
 
-public struct OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions: Codable, Equatable {
+public struct OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions: Codable, Equatable, Sendable {
     public var describeOrderableDBInstanceOptionsResult: OrderableDBInstanceOptionsMessage
 
     public init(describeOrderableDBInstanceOptionsResult: OrderableDBInstanceOptionsMessage) {
@@ -10510,7 +10512,7 @@ public struct OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOpt
     }
 }
 
-public struct Outpost: Codable, Equatable {
+public struct Outpost: Codable, Equatable, Sendable {
     public var arn: String?
 
     public init(arn: String? = nil) {
@@ -10525,7 +10527,7 @@ public struct Outpost: Codable, Equatable {
     }
 }
 
-public struct Parameter: Codable, Equatable {
+public struct Parameter: Codable, Equatable, Sendable {
     public var allowedValues: String?
     public var applyMethod: ApplyMethod?
     public var applyType: String?
@@ -10580,7 +10582,7 @@ public struct Parameter: Codable, Equatable {
     }
 }
 
-public struct PendingCloudwatchLogsExports: Codable, Equatable {
+public struct PendingCloudwatchLogsExports: Codable, Equatable, Sendable {
     public var logTypesToDisable: LogTypeList?
     public var logTypesToEnable: LogTypeList?
 
@@ -10599,7 +10601,7 @@ public struct PendingCloudwatchLogsExports: Codable, Equatable {
     }
 }
 
-public struct PendingMaintenanceAction: Codable, Equatable {
+public struct PendingMaintenanceAction: Codable, Equatable, Sendable {
     public var action: String?
     public var autoAppliedAfterDate: TStamp?
     public var currentApplyDate: TStamp?
@@ -10634,7 +10636,7 @@ public struct PendingMaintenanceAction: Codable, Equatable {
     }
 }
 
-public struct PendingMaintenanceActionsMessage: Codable, Equatable {
+public struct PendingMaintenanceActionsMessage: Codable, Equatable, Sendable {
     public var marker: String?
     public var pendingMaintenanceActions: PendingMaintenanceActions?
 
@@ -10653,7 +10655,7 @@ public struct PendingMaintenanceActionsMessage: Codable, Equatable {
     }
 }
 
-public struct PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions: Codable, Equatable {
+public struct PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions: Codable, Equatable, Sendable {
     public var describePendingMaintenanceActionsResult: PendingMaintenanceActionsMessage
 
     public init(describePendingMaintenanceActionsResult: PendingMaintenanceActionsMessage) {
@@ -10669,7 +10671,7 @@ public struct PendingMaintenanceActionsMessageForDescribePendingMaintenanceActio
     }
 }
 
-public struct PendingModifiedValues: Codable, Equatable {
+public struct PendingModifiedValues: Codable, Equatable, Sendable {
     public var allocatedStorage: IntegerOptional?
     public var automationMode: AutomationMode?
     public var backupRetentionPeriod: IntegerOptional?
@@ -10753,7 +10755,7 @@ public struct PendingModifiedValues: Codable, Equatable {
     }
 }
 
-public struct PointInTimeRestoreNotEnabledFault: Codable, Equatable {
+public struct PointInTimeRestoreNotEnabledFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -10762,7 +10764,7 @@ public struct PointInTimeRestoreNotEnabledFault: Codable, Equatable {
     }
 }
 
-public struct ProcessorFeature: Codable, Equatable {
+public struct ProcessorFeature: Codable, Equatable, Sendable {
     public var name: String?
     public var value: String?
 
@@ -10781,7 +10783,7 @@ public struct ProcessorFeature: Codable, Equatable {
     }
 }
 
-public struct PromoteReadReplicaDBClusterMessage: Codable, Equatable {
+public struct PromoteReadReplicaDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
 
     public init(dBClusterIdentifier: String) {
@@ -10796,7 +10798,7 @@ public struct PromoteReadReplicaDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct PromoteReadReplicaDBClusterResult: Codable, Equatable {
+public struct PromoteReadReplicaDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -10812,7 +10814,7 @@ public struct PromoteReadReplicaDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster: Codable, Equatable {
+public struct PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster: Codable, Equatable, Sendable {
     public var promoteReadReplicaDBClusterResult: PromoteReadReplicaDBClusterResult
 
     public init(promoteReadReplicaDBClusterResult: PromoteReadReplicaDBClusterResult) {
@@ -10828,7 +10830,7 @@ public struct PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster: C
     }
 }
 
-public struct PromoteReadReplicaMessage: Codable, Equatable {
+public struct PromoteReadReplicaMessage: Codable, Equatable, Sendable {
     public var backupRetentionPeriod: IntegerOptional?
     public var dBInstanceIdentifier: String
     public var preferredBackupWindow: String?
@@ -10851,7 +10853,7 @@ public struct PromoteReadReplicaMessage: Codable, Equatable {
     }
 }
 
-public struct PromoteReadReplicaResult: Codable, Equatable {
+public struct PromoteReadReplicaResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -10867,7 +10869,7 @@ public struct PromoteReadReplicaResult: Codable, Equatable {
     }
 }
 
-public struct PromoteReadReplicaResultForPromoteReadReplica: Codable, Equatable {
+public struct PromoteReadReplicaResultForPromoteReadReplica: Codable, Equatable, Sendable {
     public var promoteReadReplicaResult: PromoteReadReplicaResult
 
     public init(promoteReadReplicaResult: PromoteReadReplicaResult) {
@@ -10883,7 +10885,7 @@ public struct PromoteReadReplicaResultForPromoteReadReplica: Codable, Equatable 
     }
 }
 
-public struct ProvisionedIopsNotAvailableInAZFault: Codable, Equatable {
+public struct ProvisionedIopsNotAvailableInAZFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -10892,7 +10894,7 @@ public struct ProvisionedIopsNotAvailableInAZFault: Codable, Equatable {
     }
 }
 
-public struct PurchaseReservedDBInstancesOfferingMessage: Codable, Equatable {
+public struct PurchaseReservedDBInstancesOfferingMessage: Codable, Equatable, Sendable {
     public var dBInstanceCount: IntegerOptional?
     public var reservedDBInstanceId: String?
     public var reservedDBInstancesOfferingId: String
@@ -10919,7 +10921,7 @@ public struct PurchaseReservedDBInstancesOfferingMessage: Codable, Equatable {
     }
 }
 
-public struct PurchaseReservedDBInstancesOfferingResult: Codable, Equatable {
+public struct PurchaseReservedDBInstancesOfferingResult: Codable, Equatable, Sendable {
     public var reservedDBInstance: ReservedDBInstance?
 
     public init(reservedDBInstance: ReservedDBInstance? = nil) {
@@ -10935,7 +10937,7 @@ public struct PurchaseReservedDBInstancesOfferingResult: Codable, Equatable {
     }
 }
 
-public struct PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering: Codable, Equatable {
+public struct PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering: Codable, Equatable, Sendable {
     public var purchaseReservedDBInstancesOfferingResult: PurchaseReservedDBInstancesOfferingResult
 
     public init(purchaseReservedDBInstancesOfferingResult: PurchaseReservedDBInstancesOfferingResult) {
@@ -10951,7 +10953,7 @@ public struct PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInst
     }
 }
 
-public struct Range: Codable, Equatable {
+public struct Range: Codable, Equatable, Sendable {
     public var from: Integer?
     public var step: IntegerOptional?
     public var to: Integer?
@@ -10974,7 +10976,7 @@ public struct Range: Codable, Equatable {
     }
 }
 
-public struct RebootDBClusterMessage: Codable, Equatable {
+public struct RebootDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
 
     public init(dBClusterIdentifier: String) {
@@ -10989,7 +10991,7 @@ public struct RebootDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct RebootDBClusterResult: Codable, Equatable {
+public struct RebootDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -11005,7 +11007,7 @@ public struct RebootDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct RebootDBClusterResultForRebootDBCluster: Codable, Equatable {
+public struct RebootDBClusterResultForRebootDBCluster: Codable, Equatable, Sendable {
     public var rebootDBClusterResult: RebootDBClusterResult
 
     public init(rebootDBClusterResult: RebootDBClusterResult) {
@@ -11021,7 +11023,7 @@ public struct RebootDBClusterResultForRebootDBCluster: Codable, Equatable {
     }
 }
 
-public struct RebootDBInstanceMessage: Codable, Equatable {
+public struct RebootDBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var forceFailover: BooleanOptional?
 
@@ -11040,7 +11042,7 @@ public struct RebootDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct RebootDBInstanceResult: Codable, Equatable {
+public struct RebootDBInstanceResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -11056,7 +11058,7 @@ public struct RebootDBInstanceResult: Codable, Equatable {
     }
 }
 
-public struct RebootDBInstanceResultForRebootDBInstance: Codable, Equatable {
+public struct RebootDBInstanceResultForRebootDBInstance: Codable, Equatable, Sendable {
     public var rebootDBInstanceResult: RebootDBInstanceResult
 
     public init(rebootDBInstanceResult: RebootDBInstanceResult) {
@@ -11072,7 +11074,7 @@ public struct RebootDBInstanceResultForRebootDBInstance: Codable, Equatable {
     }
 }
 
-public struct RecurringCharge: Codable, Equatable {
+public struct RecurringCharge: Codable, Equatable, Sendable {
     public var recurringChargeAmount: Double?
     public var recurringChargeFrequency: String?
 
@@ -11091,7 +11093,7 @@ public struct RecurringCharge: Codable, Equatable {
     }
 }
 
-public struct RegisterDBProxyTargetsRequest: Codable, Equatable {
+public struct RegisterDBProxyTargetsRequest: Codable, Equatable, Sendable {
     public var dBClusterIdentifiers: StringList?
     public var dBInstanceIdentifiers: StringList?
     public var dBProxyName: String
@@ -11118,7 +11120,7 @@ public struct RegisterDBProxyTargetsRequest: Codable, Equatable {
     }
 }
 
-public struct RegisterDBProxyTargetsResponse: Codable, Equatable {
+public struct RegisterDBProxyTargetsResponse: Codable, Equatable, Sendable {
     public var dBProxyTargets: TargetList?
 
     public init(dBProxyTargets: TargetList? = nil) {
@@ -11133,7 +11135,7 @@ public struct RegisterDBProxyTargetsResponse: Codable, Equatable {
     }
 }
 
-public struct RegisterDBProxyTargetsResponseForRegisterDBProxyTargets: Codable, Equatable {
+public struct RegisterDBProxyTargetsResponseForRegisterDBProxyTargets: Codable, Equatable, Sendable {
     public var registerDBProxyTargetsResult: RegisterDBProxyTargetsResponse
 
     public init(registerDBProxyTargetsResult: RegisterDBProxyTargetsResponse) {
@@ -11149,7 +11151,7 @@ public struct RegisterDBProxyTargetsResponseForRegisterDBProxyTargets: Codable, 
     }
 }
 
-public struct RemoveFromGlobalClusterMessage: Codable, Equatable {
+public struct RemoveFromGlobalClusterMessage: Codable, Equatable, Sendable {
     public var dbClusterIdentifier: String?
     public var globalClusterIdentifier: String?
 
@@ -11168,7 +11170,7 @@ public struct RemoveFromGlobalClusterMessage: Codable, Equatable {
     }
 }
 
-public struct RemoveFromGlobalClusterResult: Codable, Equatable {
+public struct RemoveFromGlobalClusterResult: Codable, Equatable, Sendable {
     public var globalCluster: GlobalCluster?
 
     public init(globalCluster: GlobalCluster? = nil) {
@@ -11184,7 +11186,7 @@ public struct RemoveFromGlobalClusterResult: Codable, Equatable {
     }
 }
 
-public struct RemoveFromGlobalClusterResultForRemoveFromGlobalCluster: Codable, Equatable {
+public struct RemoveFromGlobalClusterResultForRemoveFromGlobalCluster: Codable, Equatable, Sendable {
     public var removeFromGlobalClusterResult: RemoveFromGlobalClusterResult
 
     public init(removeFromGlobalClusterResult: RemoveFromGlobalClusterResult) {
@@ -11200,7 +11202,7 @@ public struct RemoveFromGlobalClusterResultForRemoveFromGlobalCluster: Codable, 
     }
 }
 
-public struct RemoveRoleFromDBClusterMessage: Codable, Equatable {
+public struct RemoveRoleFromDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
     public var featureName: String?
     public var roleArn: String
@@ -11223,7 +11225,7 @@ public struct RemoveRoleFromDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct RemoveRoleFromDBInstanceMessage: Codable, Equatable {
+public struct RemoveRoleFromDBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var featureName: String
     public var roleArn: String
@@ -11246,7 +11248,7 @@ public struct RemoveRoleFromDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct RemoveSourceIdentifierFromSubscriptionMessage: Codable, Equatable {
+public struct RemoveSourceIdentifierFromSubscriptionMessage: Codable, Equatable, Sendable {
     public var sourceIdentifier: String
     public var subscriptionName: String
 
@@ -11265,7 +11267,7 @@ public struct RemoveSourceIdentifierFromSubscriptionMessage: Codable, Equatable 
     }
 }
 
-public struct RemoveSourceIdentifierFromSubscriptionResult: Codable, Equatable {
+public struct RemoveSourceIdentifierFromSubscriptionResult: Codable, Equatable, Sendable {
     public var eventSubscription: EventSubscription?
 
     public init(eventSubscription: EventSubscription? = nil) {
@@ -11281,7 +11283,7 @@ public struct RemoveSourceIdentifierFromSubscriptionResult: Codable, Equatable {
     }
 }
 
-public struct RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription: Codable, Equatable {
+public struct RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription: Codable, Equatable, Sendable {
     public var removeSourceIdentifierFromSubscriptionResult: RemoveSourceIdentifierFromSubscriptionResult
 
     public init(removeSourceIdentifierFromSubscriptionResult: RemoveSourceIdentifierFromSubscriptionResult) {
@@ -11297,7 +11299,7 @@ public struct RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentif
     }
 }
 
-public struct RemoveTagsFromResourceMessage: Codable, Equatable {
+public struct RemoveTagsFromResourceMessage: Codable, Equatable, Sendable {
     public var resourceName: String
     public var tagKeys: KeyList
 
@@ -11316,7 +11318,7 @@ public struct RemoveTagsFromResourceMessage: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstance: Codable, Equatable {
+public struct ReservedDBInstance: Codable, Equatable, Sendable {
     public var currencyCode: String?
     public var dBInstanceClass: String?
     public var dBInstanceCount: Integer?
@@ -11391,7 +11393,7 @@ public struct ReservedDBInstance: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstanceAlreadyExistsFault: Codable, Equatable {
+public struct ReservedDBInstanceAlreadyExistsFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -11400,7 +11402,7 @@ public struct ReservedDBInstanceAlreadyExistsFault: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstanceMessage: Codable, Equatable {
+public struct ReservedDBInstanceMessage: Codable, Equatable, Sendable {
     public var marker: String?
     public var reservedDBInstances: ReservedDBInstanceList?
 
@@ -11419,7 +11421,7 @@ public struct ReservedDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstanceMessageForDescribeReservedDBInstances: Codable, Equatable {
+public struct ReservedDBInstanceMessageForDescribeReservedDBInstances: Codable, Equatable, Sendable {
     public var describeReservedDBInstancesResult: ReservedDBInstanceMessage
 
     public init(describeReservedDBInstancesResult: ReservedDBInstanceMessage) {
@@ -11435,7 +11437,7 @@ public struct ReservedDBInstanceMessageForDescribeReservedDBInstances: Codable, 
     }
 }
 
-public struct ReservedDBInstanceNotFoundFault: Codable, Equatable {
+public struct ReservedDBInstanceNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -11444,7 +11446,7 @@ public struct ReservedDBInstanceNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstanceQuotaExceededFault: Codable, Equatable {
+public struct ReservedDBInstanceQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -11453,7 +11455,7 @@ public struct ReservedDBInstanceQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstancesOffering: Codable, Equatable {
+public struct ReservedDBInstancesOffering: Codable, Equatable, Sendable {
     public var currencyCode: String?
     public var dBInstanceClass: String?
     public var duration: Integer?
@@ -11504,7 +11506,7 @@ public struct ReservedDBInstancesOffering: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstancesOfferingMessage: Codable, Equatable {
+public struct ReservedDBInstancesOfferingMessage: Codable, Equatable, Sendable {
     public var marker: String?
     public var reservedDBInstancesOfferings: ReservedDBInstancesOfferingList?
 
@@ -11523,7 +11525,7 @@ public struct ReservedDBInstancesOfferingMessage: Codable, Equatable {
     }
 }
 
-public struct ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings: Codable, Equatable {
+public struct ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings: Codable, Equatable, Sendable {
     public var describeReservedDBInstancesOfferingsResult: ReservedDBInstancesOfferingMessage
 
     public init(describeReservedDBInstancesOfferingsResult: ReservedDBInstancesOfferingMessage) {
@@ -11539,7 +11541,7 @@ public struct ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOf
     }
 }
 
-public struct ReservedDBInstancesOfferingNotFoundFault: Codable, Equatable {
+public struct ReservedDBInstancesOfferingNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -11548,7 +11550,7 @@ public struct ReservedDBInstancesOfferingNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct ResetDBClusterParameterGroupMessage: Codable, Equatable {
+public struct ResetDBClusterParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBClusterParameterGroupName: String
     public var parameters: ParametersList?
     public var resetAllParameters: Boolean?
@@ -11571,7 +11573,7 @@ public struct ResetDBClusterParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct ResetDBParameterGroupMessage: Codable, Equatable {
+public struct ResetDBParameterGroupMessage: Codable, Equatable, Sendable {
     public var dBParameterGroupName: String
     public var parameters: ParametersList?
     public var resetAllParameters: Boolean?
@@ -11594,7 +11596,7 @@ public struct ResetDBParameterGroupMessage: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundFault: Codable, Equatable {
+public struct ResourceNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -11603,7 +11605,7 @@ public struct ResourceNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct ResourcePendingMaintenanceActions: Codable, Equatable {
+public struct ResourcePendingMaintenanceActions: Codable, Equatable, Sendable {
     public var pendingMaintenanceActionDetails: PendingMaintenanceActionDetails?
     public var resourceIdentifier: String?
 
@@ -11622,7 +11624,7 @@ public struct ResourcePendingMaintenanceActions: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterFromS3Message: Codable, Equatable {
+public struct RestoreDBClusterFromS3Message: Codable, Equatable, Sendable {
     public var availabilityZones: AvailabilityZones?
     public var backtrackWindow: LongOptional?
     public var backupRetentionPeriod: IntegerOptional?
@@ -11762,7 +11764,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterFromS3Result: Codable, Equatable {
+public struct RestoreDBClusterFromS3Result: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -11778,7 +11780,7 @@ public struct RestoreDBClusterFromS3Result: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3: Codable, Equatable {
+public struct RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3: Codable, Equatable, Sendable {
     public var restoreDBClusterFromS3Result: RestoreDBClusterFromS3Result
 
     public init(restoreDBClusterFromS3Result: RestoreDBClusterFromS3Result) {
@@ -11794,7 +11796,7 @@ public struct RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3: Codable, Eq
     }
 }
 
-public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
+public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable, Sendable {
     public var availabilityZones: AvailabilityZones?
     public var backtrackWindow: LongOptional?
     public var copyTagsToSnapshot: BooleanOptional?
@@ -11915,7 +11917,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterFromSnapshotResult: Codable, Equatable {
+public struct RestoreDBClusterFromSnapshotResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -11931,7 +11933,7 @@ public struct RestoreDBClusterFromSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot: Codable, Equatable {
+public struct RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot: Codable, Equatable, Sendable {
     public var restoreDBClusterFromSnapshotResult: RestoreDBClusterFromSnapshotResult
 
     public init(restoreDBClusterFromSnapshotResult: RestoreDBClusterFromSnapshotResult) {
@@ -11947,7 +11949,7 @@ public struct RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot:
     }
 }
 
-public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
+public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable, Sendable {
     public var backtrackWindow: LongOptional?
     public var copyTagsToSnapshot: BooleanOptional?
     public var dBClusterIdentifier: String
@@ -12064,7 +12066,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterToPointInTimeResult: Codable, Equatable {
+public struct RestoreDBClusterToPointInTimeResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -12080,7 +12082,7 @@ public struct RestoreDBClusterToPointInTimeResult: Codable, Equatable {
     }
 }
 
-public struct RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime: Codable, Equatable {
+public struct RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime: Codable, Equatable, Sendable {
     public var restoreDBClusterToPointInTimeResult: RestoreDBClusterToPointInTimeResult
 
     public init(restoreDBClusterToPointInTimeResult: RestoreDBClusterToPointInTimeResult) {
@@ -12096,7 +12098,7 @@ public struct RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTim
     }
 }
 
-public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
+public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable, Sendable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var backupTarget: String?
@@ -12235,7 +12237,7 @@ public struct RestoreDBInstanceFromDBSnapshotMessage: Codable, Equatable {
     }
 }
 
-public struct RestoreDBInstanceFromDBSnapshotResult: Codable, Equatable {
+public struct RestoreDBInstanceFromDBSnapshotResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -12251,7 +12253,7 @@ public struct RestoreDBInstanceFromDBSnapshotResult: Codable, Equatable {
     }
 }
 
-public struct RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot: Codable, Equatable {
+public struct RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot: Codable, Equatable, Sendable {
     public var restoreDBInstanceFromDBSnapshotResult: RestoreDBInstanceFromDBSnapshotResult
 
     public init(restoreDBInstanceFromDBSnapshotResult: RestoreDBInstanceFromDBSnapshotResult) {
@@ -12267,7 +12269,7 @@ public struct RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSna
     }
 }
 
-public struct RestoreDBInstanceFromS3Message: Codable, Equatable {
+public struct RestoreDBInstanceFromS3Message: Codable, Equatable, Sendable {
     public var allocatedStorage: IntegerOptional?
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
@@ -12458,7 +12460,7 @@ public struct RestoreDBInstanceFromS3Message: Codable, Equatable {
     }
 }
 
-public struct RestoreDBInstanceFromS3Result: Codable, Equatable {
+public struct RestoreDBInstanceFromS3Result: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -12474,7 +12476,7 @@ public struct RestoreDBInstanceFromS3Result: Codable, Equatable {
     }
 }
 
-public struct RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3: Codable, Equatable {
+public struct RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3: Codable, Equatable, Sendable {
     public var restoreDBInstanceFromS3Result: RestoreDBInstanceFromS3Result
 
     public init(restoreDBInstanceFromS3Result: RestoreDBInstanceFromS3Result) {
@@ -12490,7 +12492,7 @@ public struct RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3: Codable, 
     }
 }
 
-public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
+public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable, Sendable {
     public var autoMinorVersionUpgrade: BooleanOptional?
     public var availabilityZone: String?
     public var backupTarget: String?
@@ -12649,7 +12651,7 @@ public struct RestoreDBInstanceToPointInTimeMessage: Codable, Equatable {
     }
 }
 
-public struct RestoreDBInstanceToPointInTimeResult: Codable, Equatable {
+public struct RestoreDBInstanceToPointInTimeResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -12665,7 +12667,7 @@ public struct RestoreDBInstanceToPointInTimeResult: Codable, Equatable {
     }
 }
 
-public struct RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime: Codable, Equatable {
+public struct RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime: Codable, Equatable, Sendable {
     public var restoreDBInstanceToPointInTimeResult: RestoreDBInstanceToPointInTimeResult
 
     public init(restoreDBInstanceToPointInTimeResult: RestoreDBInstanceToPointInTimeResult) {
@@ -12681,7 +12683,7 @@ public struct RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInT
     }
 }
 
-public struct RestoreWindow: Codable, Equatable {
+public struct RestoreWindow: Codable, Equatable, Sendable {
     public var earliestTime: TStamp?
     public var latestTime: TStamp?
 
@@ -12700,7 +12702,7 @@ public struct RestoreWindow: Codable, Equatable {
     }
 }
 
-public struct RevokeDBSecurityGroupIngressMessage: Codable, Equatable {
+public struct RevokeDBSecurityGroupIngressMessage: Codable, Equatable, Sendable {
     public var cIDRIP: String?
     public var dBSecurityGroupName: String
     public var eC2SecurityGroupId: String?
@@ -12731,7 +12733,7 @@ public struct RevokeDBSecurityGroupIngressMessage: Codable, Equatable {
     }
 }
 
-public struct RevokeDBSecurityGroupIngressResult: Codable, Equatable {
+public struct RevokeDBSecurityGroupIngressResult: Codable, Equatable, Sendable {
     public var dBSecurityGroup: DBSecurityGroup?
 
     public init(dBSecurityGroup: DBSecurityGroup? = nil) {
@@ -12747,7 +12749,7 @@ public struct RevokeDBSecurityGroupIngressResult: Codable, Equatable {
     }
 }
 
-public struct RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress: Codable, Equatable {
+public struct RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress: Codable, Equatable, Sendable {
     public var revokeDBSecurityGroupIngressResult: RevokeDBSecurityGroupIngressResult
 
     public init(revokeDBSecurityGroupIngressResult: RevokeDBSecurityGroupIngressResult) {
@@ -12763,7 +12765,7 @@ public struct RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress:
     }
 }
 
-public struct SNSInvalidTopicFault: Codable, Equatable {
+public struct SNSInvalidTopicFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -12772,7 +12774,7 @@ public struct SNSInvalidTopicFault: Codable, Equatable {
     }
 }
 
-public struct SNSNoAuthorizationFault: Codable, Equatable {
+public struct SNSNoAuthorizationFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -12781,7 +12783,7 @@ public struct SNSNoAuthorizationFault: Codable, Equatable {
     }
 }
 
-public struct SNSTopicArnNotFoundFault: Codable, Equatable {
+public struct SNSTopicArnNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -12790,7 +12792,7 @@ public struct SNSTopicArnNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct ScalingConfiguration: Codable, Equatable {
+public struct ScalingConfiguration: Codable, Equatable, Sendable {
     public var autoPause: BooleanOptional?
     public var maxCapacity: IntegerOptional?
     public var minCapacity: IntegerOptional?
@@ -12825,7 +12827,7 @@ public struct ScalingConfiguration: Codable, Equatable {
     }
 }
 
-public struct ScalingConfigurationInfo: Codable, Equatable {
+public struct ScalingConfigurationInfo: Codable, Equatable, Sendable {
     public var autoPause: BooleanOptional?
     public var maxCapacity: IntegerOptional?
     public var minCapacity: IntegerOptional?
@@ -12860,7 +12862,7 @@ public struct ScalingConfigurationInfo: Codable, Equatable {
     }
 }
 
-public struct ServerlessV2ScalingConfiguration: Codable, Equatable {
+public struct ServerlessV2ScalingConfiguration: Codable, Equatable, Sendable {
     public var maxCapacity: DoubleOptional?
     public var minCapacity: DoubleOptional?
 
@@ -12879,7 +12881,7 @@ public struct ServerlessV2ScalingConfiguration: Codable, Equatable {
     }
 }
 
-public struct ServerlessV2ScalingConfigurationInfo: Codable, Equatable {
+public struct ServerlessV2ScalingConfigurationInfo: Codable, Equatable, Sendable {
     public var maxCapacity: DoubleOptional?
     public var minCapacity: DoubleOptional?
 
@@ -12898,7 +12900,7 @@ public struct ServerlessV2ScalingConfigurationInfo: Codable, Equatable {
     }
 }
 
-public struct SharedSnapshotQuotaExceededFault: Codable, Equatable {
+public struct SharedSnapshotQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -12907,7 +12909,7 @@ public struct SharedSnapshotQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct SnapshotQuotaExceededFault: Codable, Equatable {
+public struct SnapshotQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -12916,7 +12918,7 @@ public struct SnapshotQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct SourceNotFoundFault: Codable, Equatable {
+public struct SourceNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -12925,7 +12927,7 @@ public struct SourceNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct SourceRegion: Codable, Equatable {
+public struct SourceRegion: Codable, Equatable, Sendable {
     public var endpoint: String?
     public var regionName: String?
     public var status: String?
@@ -12952,7 +12954,7 @@ public struct SourceRegion: Codable, Equatable {
     }
 }
 
-public struct SourceRegionMessage: Codable, Equatable {
+public struct SourceRegionMessage: Codable, Equatable, Sendable {
     public var marker: String?
     public var sourceRegions: SourceRegionList?
 
@@ -12971,7 +12973,7 @@ public struct SourceRegionMessage: Codable, Equatable {
     }
 }
 
-public struct SourceRegionMessageForDescribeSourceRegions: Codable, Equatable {
+public struct SourceRegionMessageForDescribeSourceRegions: Codable, Equatable, Sendable {
     public var describeSourceRegionsResult: SourceRegionMessage
 
     public init(describeSourceRegionsResult: SourceRegionMessage) {
@@ -12987,7 +12989,7 @@ public struct SourceRegionMessageForDescribeSourceRegions: Codable, Equatable {
     }
 }
 
-public struct StartActivityStreamRequest: Codable, Equatable {
+public struct StartActivityStreamRequest: Codable, Equatable, Sendable {
     public var applyImmediately: BooleanOptional?
     public var engineNativeAuditFieldsIncluded: BooleanOptional?
     public var kmsKeyId: String
@@ -13018,7 +13020,7 @@ public struct StartActivityStreamRequest: Codable, Equatable {
     }
 }
 
-public struct StartActivityStreamResponse: Codable, Equatable {
+public struct StartActivityStreamResponse: Codable, Equatable, Sendable {
     public var applyImmediately: Boolean?
     public var engineNativeAuditFieldsIncluded: BooleanOptional?
     public var kinesisStreamName: String?
@@ -13053,7 +13055,7 @@ public struct StartActivityStreamResponse: Codable, Equatable {
     }
 }
 
-public struct StartActivityStreamResponseForStartActivityStream: Codable, Equatable {
+public struct StartActivityStreamResponseForStartActivityStream: Codable, Equatable, Sendable {
     public var startActivityStreamResult: StartActivityStreamResponse
 
     public init(startActivityStreamResult: StartActivityStreamResponse) {
@@ -13069,7 +13071,7 @@ public struct StartActivityStreamResponseForStartActivityStream: Codable, Equata
     }
 }
 
-public struct StartDBClusterMessage: Codable, Equatable {
+public struct StartDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
 
     public init(dBClusterIdentifier: String) {
@@ -13084,7 +13086,7 @@ public struct StartDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct StartDBClusterResult: Codable, Equatable {
+public struct StartDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -13100,7 +13102,7 @@ public struct StartDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct StartDBClusterResultForStartDBCluster: Codable, Equatable {
+public struct StartDBClusterResultForStartDBCluster: Codable, Equatable, Sendable {
     public var startDBClusterResult: StartDBClusterResult
 
     public init(startDBClusterResult: StartDBClusterResult) {
@@ -13116,7 +13118,7 @@ public struct StartDBClusterResultForStartDBCluster: Codable, Equatable {
     }
 }
 
-public struct StartDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatable {
+public struct StartDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatable, Sendable {
     public var backupRetentionPeriod: IntegerOptional?
     public var kmsKeyId: String?
     public var preSignedUrl: String?
@@ -13143,7 +13145,7 @@ public struct StartDBInstanceAutomatedBackupsReplicationMessage: Codable, Equata
     }
 }
 
-public struct StartDBInstanceAutomatedBackupsReplicationResult: Codable, Equatable {
+public struct StartDBInstanceAutomatedBackupsReplicationResult: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackup: DBInstanceAutomatedBackup?
 
     public init(dBInstanceAutomatedBackup: DBInstanceAutomatedBackup? = nil) {
@@ -13159,7 +13161,7 @@ public struct StartDBInstanceAutomatedBackupsReplicationResult: Codable, Equatab
     }
 }
 
-public struct StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication: Codable, Equatable {
+public struct StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication: Codable, Equatable, Sendable {
     public var startDBInstanceAutomatedBackupsReplicationResult: StartDBInstanceAutomatedBackupsReplicationResult
 
     public init(startDBInstanceAutomatedBackupsReplicationResult: StartDBInstanceAutomatedBackupsReplicationResult) {
@@ -13175,7 +13177,7 @@ public struct StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstance
     }
 }
 
-public struct StartDBInstanceMessage: Codable, Equatable {
+public struct StartDBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
 
     public init(dBInstanceIdentifier: String) {
@@ -13190,7 +13192,7 @@ public struct StartDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct StartDBInstanceResult: Codable, Equatable {
+public struct StartDBInstanceResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -13206,7 +13208,7 @@ public struct StartDBInstanceResult: Codable, Equatable {
     }
 }
 
-public struct StartDBInstanceResultForStartDBInstance: Codable, Equatable {
+public struct StartDBInstanceResultForStartDBInstance: Codable, Equatable, Sendable {
     public var startDBInstanceResult: StartDBInstanceResult
 
     public init(startDBInstanceResult: StartDBInstanceResult) {
@@ -13222,7 +13224,7 @@ public struct StartDBInstanceResultForStartDBInstance: Codable, Equatable {
     }
 }
 
-public struct StartExportTaskMessage: Codable, Equatable {
+public struct StartExportTaskMessage: Codable, Equatable, Sendable {
     public var exportOnly: StringList?
     public var exportTaskIdentifier: String
     public var iamRoleArn: String
@@ -13261,7 +13263,7 @@ public struct StartExportTaskMessage: Codable, Equatable {
     }
 }
 
-public struct StopActivityStreamRequest: Codable, Equatable {
+public struct StopActivityStreamRequest: Codable, Equatable, Sendable {
     public var applyImmediately: BooleanOptional?
     public var resourceArn: String
 
@@ -13280,7 +13282,7 @@ public struct StopActivityStreamRequest: Codable, Equatable {
     }
 }
 
-public struct StopActivityStreamResponse: Codable, Equatable {
+public struct StopActivityStreamResponse: Codable, Equatable, Sendable {
     public var kinesisStreamName: String?
     public var kmsKeyId: String?
     public var status: ActivityStreamStatus?
@@ -13303,7 +13305,7 @@ public struct StopActivityStreamResponse: Codable, Equatable {
     }
 }
 
-public struct StopActivityStreamResponseForStopActivityStream: Codable, Equatable {
+public struct StopActivityStreamResponseForStopActivityStream: Codable, Equatable, Sendable {
     public var stopActivityStreamResult: StopActivityStreamResponse
 
     public init(stopActivityStreamResult: StopActivityStreamResponse) {
@@ -13319,7 +13321,7 @@ public struct StopActivityStreamResponseForStopActivityStream: Codable, Equatabl
     }
 }
 
-public struct StopDBClusterMessage: Codable, Equatable {
+public struct StopDBClusterMessage: Codable, Equatable, Sendable {
     public var dBClusterIdentifier: String
 
     public init(dBClusterIdentifier: String) {
@@ -13334,7 +13336,7 @@ public struct StopDBClusterMessage: Codable, Equatable {
     }
 }
 
-public struct StopDBClusterResult: Codable, Equatable {
+public struct StopDBClusterResult: Codable, Equatable, Sendable {
     public var dBCluster: DBCluster?
 
     public init(dBCluster: DBCluster? = nil) {
@@ -13350,7 +13352,7 @@ public struct StopDBClusterResult: Codable, Equatable {
     }
 }
 
-public struct StopDBClusterResultForStopDBCluster: Codable, Equatable {
+public struct StopDBClusterResultForStopDBCluster: Codable, Equatable, Sendable {
     public var stopDBClusterResult: StopDBClusterResult
 
     public init(stopDBClusterResult: StopDBClusterResult) {
@@ -13366,7 +13368,7 @@ public struct StopDBClusterResultForStopDBCluster: Codable, Equatable {
     }
 }
 
-public struct StopDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatable {
+public struct StopDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatable, Sendable {
     public var sourceDBInstanceArn: String
 
     public init(sourceDBInstanceArn: String) {
@@ -13381,7 +13383,7 @@ public struct StopDBInstanceAutomatedBackupsReplicationMessage: Codable, Equatab
     }
 }
 
-public struct StopDBInstanceAutomatedBackupsReplicationResult: Codable, Equatable {
+public struct StopDBInstanceAutomatedBackupsReplicationResult: Codable, Equatable, Sendable {
     public var dBInstanceAutomatedBackup: DBInstanceAutomatedBackup?
 
     public init(dBInstanceAutomatedBackup: DBInstanceAutomatedBackup? = nil) {
@@ -13397,7 +13399,7 @@ public struct StopDBInstanceAutomatedBackupsReplicationResult: Codable, Equatabl
     }
 }
 
-public struct StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication: Codable, Equatable {
+public struct StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication: Codable, Equatable, Sendable {
     public var stopDBInstanceAutomatedBackupsReplicationResult: StopDBInstanceAutomatedBackupsReplicationResult
 
     public init(stopDBInstanceAutomatedBackupsReplicationResult: StopDBInstanceAutomatedBackupsReplicationResult) {
@@ -13413,7 +13415,7 @@ public struct StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAu
     }
 }
 
-public struct StopDBInstanceMessage: Codable, Equatable {
+public struct StopDBInstanceMessage: Codable, Equatable, Sendable {
     public var dBInstanceIdentifier: String
     public var dBSnapshotIdentifier: String?
 
@@ -13432,7 +13434,7 @@ public struct StopDBInstanceMessage: Codable, Equatable {
     }
 }
 
-public struct StopDBInstanceResult: Codable, Equatable {
+public struct StopDBInstanceResult: Codable, Equatable, Sendable {
     public var dBInstance: DBInstance?
 
     public init(dBInstance: DBInstance? = nil) {
@@ -13448,7 +13450,7 @@ public struct StopDBInstanceResult: Codable, Equatable {
     }
 }
 
-public struct StopDBInstanceResultForStopDBInstance: Codable, Equatable {
+public struct StopDBInstanceResultForStopDBInstance: Codable, Equatable, Sendable {
     public var stopDBInstanceResult: StopDBInstanceResult
 
     public init(stopDBInstanceResult: StopDBInstanceResult) {
@@ -13464,7 +13466,7 @@ public struct StopDBInstanceResultForStopDBInstance: Codable, Equatable {
     }
 }
 
-public struct StorageQuotaExceededFault: Codable, Equatable {
+public struct StorageQuotaExceededFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -13473,7 +13475,7 @@ public struct StorageQuotaExceededFault: Codable, Equatable {
     }
 }
 
-public struct StorageTypeNotSupportedFault: Codable, Equatable {
+public struct StorageTypeNotSupportedFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -13482,7 +13484,7 @@ public struct StorageTypeNotSupportedFault: Codable, Equatable {
     }
 }
 
-public struct Subnet: Codable, Equatable {
+public struct Subnet: Codable, Equatable, Sendable {
     public var subnetAvailabilityZone: AvailabilityZone?
     public var subnetIdentifier: String?
     public var subnetOutpost: Outpost?
@@ -13511,7 +13513,7 @@ public struct Subnet: Codable, Equatable {
     }
 }
 
-public struct SubnetAlreadyInUse: Codable, Equatable {
+public struct SubnetAlreadyInUse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -13520,7 +13522,7 @@ public struct SubnetAlreadyInUse: Codable, Equatable {
     }
 }
 
-public struct SubscriptionAlreadyExistFault: Codable, Equatable {
+public struct SubscriptionAlreadyExistFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -13529,7 +13531,7 @@ public struct SubscriptionAlreadyExistFault: Codable, Equatable {
     }
 }
 
-public struct SubscriptionCategoryNotFoundFault: Codable, Equatable {
+public struct SubscriptionCategoryNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -13538,7 +13540,7 @@ public struct SubscriptionCategoryNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct SubscriptionNotFoundFault: Codable, Equatable {
+public struct SubscriptionNotFoundFault: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -13547,7 +13549,7 @@ public struct SubscriptionNotFoundFault: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: String?
     public var value: String?
 
@@ -13566,7 +13568,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagListMessage: Codable, Equatable {
+public struct TagListMessage: Codable, Equatable, Sendable {
     public var tagList: TagList?
 
     public init(tagList: TagList? = nil) {
@@ -13581,7 +13583,7 @@ public struct TagListMessage: Codable, Equatable {
     }
 }
 
-public struct TagListMessageForListTagsForResource: Codable, Equatable {
+public struct TagListMessageForListTagsForResource: Codable, Equatable, Sendable {
     public var listTagsForResourceResult: TagListMessage
 
     public init(listTagsForResourceResult: TagListMessage) {
@@ -13597,7 +13599,7 @@ public struct TagListMessageForListTagsForResource: Codable, Equatable {
     }
 }
 
-public struct TargetHealth: Codable, Equatable {
+public struct TargetHealth: Codable, Equatable, Sendable {
     public var description: String?
     public var reason: TargetHealthReason?
     public var state: TargetState?
@@ -13620,7 +13622,7 @@ public struct TargetHealth: Codable, Equatable {
     }
 }
 
-public struct Timezone: Codable, Equatable {
+public struct Timezone: Codable, Equatable, Sendable {
     public var timezoneName: String?
 
     public init(timezoneName: String? = nil) {
@@ -13635,7 +13637,7 @@ public struct Timezone: Codable, Equatable {
     }
 }
 
-public struct UpgradeTarget: Codable, Equatable {
+public struct UpgradeTarget: Codable, Equatable, Sendable {
     public var autoUpgrade: Boolean?
     public var description: String?
     public var engine: String?
@@ -13682,7 +13684,7 @@ public struct UpgradeTarget: Codable, Equatable {
     }
 }
 
-public struct UserAuthConfig: Codable, Equatable {
+public struct UserAuthConfig: Codable, Equatable, Sendable {
     public var authScheme: AuthScheme?
     public var description: String?
     public var iAMAuth: IAMAuthMode?
@@ -13713,7 +13715,7 @@ public struct UserAuthConfig: Codable, Equatable {
     }
 }
 
-public struct UserAuthConfigInfo: Codable, Equatable {
+public struct UserAuthConfigInfo: Codable, Equatable, Sendable {
     public var authScheme: AuthScheme?
     public var description: String?
     public var iAMAuth: IAMAuthMode?
@@ -13744,7 +13746,7 @@ public struct UserAuthConfigInfo: Codable, Equatable {
     }
 }
 
-public struct ValidDBInstanceModificationsMessage: Codable, Equatable {
+public struct ValidDBInstanceModificationsMessage: Codable, Equatable, Sendable {
     public var storage: ValidStorageOptionsList?
     public var validProcessorFeatures: AvailableProcessorFeatureList?
 
@@ -13763,7 +13765,7 @@ public struct ValidDBInstanceModificationsMessage: Codable, Equatable {
     }
 }
 
-public struct ValidStorageOptions: Codable, Equatable {
+public struct ValidStorageOptions: Codable, Equatable, Sendable {
     public var iopsToStorageRatio: DoubleRangeList?
     public var provisionedIops: RangeList?
     public var storageSize: RangeList?
@@ -13794,7 +13796,7 @@ public struct ValidStorageOptions: Codable, Equatable {
     }
 }
 
-public struct VpcSecurityGroupMembership: Codable, Equatable {
+public struct VpcSecurityGroupMembership: Codable, Equatable, Sendable {
     public var status: String?
     public var vpcSecurityGroupId: String?
 

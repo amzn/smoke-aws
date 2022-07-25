@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AccessDeniedException: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AccessDeniedException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -37,7 +39,7 @@ public struct AccessDeniedException: Codable, Equatable {
     }
 }
 
-public struct ArrayValue: Codable, Equatable {
+public struct ArrayValue: Codable, Equatable, Sendable {
     public var arrayValues: ArrayOfArray?
     public var booleanValues: BooleanArray?
     public var doubleValues: DoubleArray?
@@ -68,7 +70,7 @@ public struct ArrayValue: Codable, Equatable {
     }
 }
 
-public struct BadRequestException: Codable, Equatable {
+public struct BadRequestException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -83,7 +85,7 @@ public struct BadRequestException: Codable, Equatable {
     }
 }
 
-public struct BatchExecuteStatementRequest: Codable, Equatable {
+public struct BatchExecuteStatementRequest: Codable, Equatable, Sendable {
     public var database: DbName?
     public var parameterSets: SqlParameterSets?
     public var resourceArn: Arn
@@ -128,7 +130,7 @@ public struct BatchExecuteStatementRequest: Codable, Equatable {
     }
 }
 
-public struct BatchExecuteStatementResponse: Codable, Equatable {
+public struct BatchExecuteStatementResponse: Codable, Equatable, Sendable {
     public var updateResults: UpdateResults?
 
     public init(updateResults: UpdateResults? = nil) {
@@ -143,7 +145,7 @@ public struct BatchExecuteStatementResponse: Codable, Equatable {
     }
 }
 
-public struct BeginTransactionRequest: Codable, Equatable {
+public struct BeginTransactionRequest: Codable, Equatable, Sendable {
     public var database: DbName?
     public var resourceArn: Arn
     public var schema: DbName?
@@ -174,7 +176,7 @@ public struct BeginTransactionRequest: Codable, Equatable {
     }
 }
 
-public struct BeginTransactionResponse: Codable, Equatable {
+public struct BeginTransactionResponse: Codable, Equatable, Sendable {
     public var transactionId: Id?
 
     public init(transactionId: Id? = nil) {
@@ -190,7 +192,7 @@ public struct BeginTransactionResponse: Codable, Equatable {
     }
 }
 
-public struct ColumnMetadata: Codable, Equatable {
+public struct ColumnMetadata: Codable, Equatable, Sendable {
     public var arrayBaseColumnType: Integer?
     public var isAutoIncrement: Boolean?
     public var isCaseSensitive: Boolean?
@@ -257,7 +259,7 @@ public struct ColumnMetadata: Codable, Equatable {
     }
 }
 
-public struct CommitTransactionRequest: Codable, Equatable {
+public struct CommitTransactionRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var secretArn: Arn
     public var transactionId: Id
@@ -283,7 +285,7 @@ public struct CommitTransactionRequest: Codable, Equatable {
     }
 }
 
-public struct CommitTransactionResponse: Codable, Equatable {
+public struct CommitTransactionResponse: Codable, Equatable, Sendable {
     public var transactionStatus: TransactionStatus?
 
     public init(transactionStatus: TransactionStatus? = nil) {
@@ -299,7 +301,7 @@ public struct CommitTransactionResponse: Codable, Equatable {
     }
 }
 
-public struct ExecuteSqlRequest: Codable, Equatable {
+public struct ExecuteSqlRequest: Codable, Equatable, Sendable {
     public var awsSecretStoreArn: Arn
     public var database: DbName?
     public var dbClusterOrInstanceArn: Arn
@@ -335,7 +337,7 @@ public struct ExecuteSqlRequest: Codable, Equatable {
     }
 }
 
-public struct ExecuteSqlResponse: Codable, Equatable {
+public struct ExecuteSqlResponse: Codable, Equatable, Sendable {
     public var sqlStatementResults: SqlStatementResults?
 
     public init(sqlStatementResults: SqlStatementResults? = nil) {
@@ -350,7 +352,7 @@ public struct ExecuteSqlResponse: Codable, Equatable {
     }
 }
 
-public struct ExecuteStatementRequest: Codable, Equatable {
+public struct ExecuteStatementRequest: Codable, Equatable, Sendable {
     public var continueAfterTimeout: Boolean?
     public var database: DbName?
     public var formatRecordsAs: RecordsFormatType?
@@ -412,7 +414,7 @@ public struct ExecuteStatementRequest: Codable, Equatable {
     }
 }
 
-public struct ExecuteStatementResponse: Codable, Equatable {
+public struct ExecuteStatementResponse: Codable, Equatable, Sendable {
     public var columnMetadata: Metadata?
     public var formattedRecords: FormattedSqlRecords?
     public var generatedFields: FieldList?
@@ -443,7 +445,7 @@ public struct ExecuteStatementResponse: Codable, Equatable {
     }
 }
 
-public struct Field: Codable, Equatable {
+public struct Field: Codable, Equatable, Sendable {
     public var arrayValue: ArrayValue?
     public var blobValue: Blob?
     public var booleanValue: BoxedBoolean?
@@ -483,7 +485,7 @@ public struct Field: Codable, Equatable {
     }
 }
 
-public struct ForbiddenException: Codable, Equatable {
+public struct ForbiddenException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -498,7 +500,7 @@ public struct ForbiddenException: Codable, Equatable {
     }
 }
 
-public struct InternalServerErrorException: Codable, Equatable {
+public struct InternalServerErrorException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -507,7 +509,7 @@ public struct InternalServerErrorException: Codable, Equatable {
     }
 }
 
-public struct NotFoundException: Codable, Equatable {
+public struct NotFoundException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -522,7 +524,7 @@ public struct NotFoundException: Codable, Equatable {
     }
 }
 
-public struct Record: Codable, Equatable {
+public struct Record: Codable, Equatable, Sendable {
     public var values: Row?
 
     public init(values: Row? = nil) {
@@ -537,7 +539,7 @@ public struct Record: Codable, Equatable {
     }
 }
 
-public struct ResultFrame: Codable, Equatable {
+public struct ResultFrame: Codable, Equatable, Sendable {
     public var records: Records?
     public var resultSetMetadata: ResultSetMetadata?
 
@@ -557,7 +559,7 @@ public struct ResultFrame: Codable, Equatable {
     }
 }
 
-public struct ResultSetMetadata: Codable, Equatable {
+public struct ResultSetMetadata: Codable, Equatable, Sendable {
     public var columnCount: Long?
     public var columnMetadata: Metadata?
 
@@ -576,7 +578,7 @@ public struct ResultSetMetadata: Codable, Equatable {
     }
 }
 
-public struct ResultSetOptions: Codable, Equatable {
+public struct ResultSetOptions: Codable, Equatable, Sendable {
     public var decimalReturnType: DecimalReturnType?
     public var longReturnType: LongReturnType?
 
@@ -595,7 +597,7 @@ public struct ResultSetOptions: Codable, Equatable {
     }
 }
 
-public struct RollbackTransactionRequest: Codable, Equatable {
+public struct RollbackTransactionRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var secretArn: Arn
     public var transactionId: Id
@@ -621,7 +623,7 @@ public struct RollbackTransactionRequest: Codable, Equatable {
     }
 }
 
-public struct RollbackTransactionResponse: Codable, Equatable {
+public struct RollbackTransactionResponse: Codable, Equatable, Sendable {
     public var transactionStatus: TransactionStatus?
 
     public init(transactionStatus: TransactionStatus? = nil) {
@@ -637,7 +639,7 @@ public struct RollbackTransactionResponse: Codable, Equatable {
     }
 }
 
-public struct ServiceUnavailableError: Codable, Equatable {
+public struct ServiceUnavailableError: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -646,7 +648,7 @@ public struct ServiceUnavailableError: Codable, Equatable {
     }
 }
 
-public struct SqlParameter: Codable, Equatable {
+public struct SqlParameter: Codable, Equatable, Sendable {
     public var name: ParameterName?
     public var typeHint: TypeHint?
     public var value: Field?
@@ -670,7 +672,7 @@ public struct SqlParameter: Codable, Equatable {
     }
 }
 
-public struct SqlStatementResult: Codable, Equatable {
+public struct SqlStatementResult: Codable, Equatable, Sendable {
     public var numberOfRecordsUpdated: RecordsUpdated?
     public var resultFrame: ResultFrame?
 
@@ -690,7 +692,7 @@ public struct SqlStatementResult: Codable, Equatable {
     }
 }
 
-public struct StatementTimeoutException: Codable, Equatable {
+public struct StatementTimeoutException: Codable, Equatable, Sendable {
     public var dbConnectionId: Long?
     public var message: ErrorMessage?
 
@@ -709,7 +711,7 @@ public struct StatementTimeoutException: Codable, Equatable {
     }
 }
 
-public struct StructValue: Codable, Equatable {
+public struct StructValue: Codable, Equatable, Sendable {
     public var attributes: ArrayValueList?
 
     public init(attributes: ArrayValueList? = nil) {
@@ -724,7 +726,7 @@ public struct StructValue: Codable, Equatable {
     }
 }
 
-public struct UpdateResult: Codable, Equatable {
+public struct UpdateResult: Codable, Equatable, Sendable {
     public var generatedFields: FieldList?
 
     public init(generatedFields: FieldList? = nil) {
@@ -739,7 +741,7 @@ public struct UpdateResult: Codable, Equatable {
     }
 }
 
-public struct Value: Codable, Equatable {
+public struct Value: Codable, Equatable, Sendable {
     public var arrayValues: ArrayValueList?
     public var bigIntValue: BoxedLong?
     public var bitValue: BoxedBoolean?

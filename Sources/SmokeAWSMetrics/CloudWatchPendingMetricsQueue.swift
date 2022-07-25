@@ -50,7 +50,7 @@ private struct QueueShutdownDetails {
 #endif
 }
 
-internal class CloudWatchPendingMetricsQueue {
+internal class CloudWatchPendingMetricsQueue: @unchecked Sendable {
     private var pendingEntries: [Entry]
     private let logger: Logger
     private let cloudWatchClient: CloudWatchClientProtocol

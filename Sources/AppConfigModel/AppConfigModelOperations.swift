@@ -170,7 +170,7 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
  Structure to encode the path input for the CreateConfigurationProfile
  operation.
  */
-public struct CreateConfigurationProfileOperationInputPath: Codable, Equatable {
+public struct CreateConfigurationProfileOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -197,7 +197,7 @@ public extension CreateConfigurationProfileRequest {
  Structure to encode the body input for the CreateConfigurationProfile
  operation.
  */
-public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
+public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable, Sendable {
     public var description: Description?
     public var locationUri: Uri
     public var name: LongName
@@ -259,7 +259,7 @@ public extension CreateConfigurationProfileRequest {
  Structure to encode the path input for the CreateEnvironment
  operation.
  */
-public struct CreateEnvironmentOperationInputPath: Codable, Equatable {
+public struct CreateEnvironmentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -286,7 +286,7 @@ public extension CreateEnvironmentRequest {
  Structure to encode the body input for the CreateEnvironment
  operation.
  */
-public struct CreateEnvironmentOperationInputBody: Codable, Equatable {
+public struct CreateEnvironmentOperationInputBody: Codable, Equatable, Sendable {
     public var description: Description?
     public var monitors: MonitorList?
     public var name: Name
@@ -330,7 +330,7 @@ public extension CreateEnvironmentRequest {
  Structure to encode the body input for the CreateExtension
  operation.
  */
-public struct CreateExtensionOperationInputBody: Codable, Equatable {
+public struct CreateExtensionOperationInputBody: Codable, Equatable, Sendable {
     public var actions: ActionsMap
     public var description: Description?
     public var name: Name
@@ -378,7 +378,7 @@ public extension CreateExtensionRequest {
  Structure to encode the body input for the CreateExtension
  operation.
  */
-public struct CreateExtensionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct CreateExtensionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var latestVersionNumber: Integer?
 
     public init(latestVersionNumber: Integer? = nil) {
@@ -404,7 +404,7 @@ public extension CreateExtensionRequest {
  Structure to encode the path input for the CreateHostedConfigurationVersion
  operation.
  */
-public struct CreateHostedConfigurationVersionOperationInputPath: Codable, Equatable {
+public struct CreateHostedConfigurationVersionOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -437,7 +437,7 @@ public extension CreateHostedConfigurationVersionRequest {
  Structure to encode the body input for the CreateHostedConfigurationVersion
  operation.
  */
-public struct CreateHostedConfigurationVersionOperationInputAdditionalHeaders: Codable, Equatable {
+public struct CreateHostedConfigurationVersionOperationInputAdditionalHeaders: Codable, Equatable, Sendable {
     public var contentType: StringWithLengthBetween1And255
     public var description: Description?
     public var latestVersionNumber: Integer?
@@ -475,7 +475,7 @@ public extension CreateHostedConfigurationVersionRequest {
  Structure to encode the body input for the CreateHostedConfigurationVersion
  operation.
  */
-public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, Equatable {
+public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var configurationProfileId: Id?
     public var contentType: StringWithLengthBetween1And255?
@@ -525,7 +525,7 @@ public extension HostedConfigurationVersion {
  Structure to encode the path input for the DeleteApplication
  operation.
  */
-public struct DeleteApplicationOperationInputPath: Codable, Equatable {
+public struct DeleteApplicationOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -552,7 +552,7 @@ public extension DeleteApplicationRequest {
  Structure to encode the path input for the DeleteConfigurationProfile
  operation.
  */
-public struct DeleteConfigurationProfileOperationInputPath: Codable, Equatable {
+public struct DeleteConfigurationProfileOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -585,7 +585,7 @@ public extension DeleteConfigurationProfileRequest {
  Structure to encode the path input for the DeleteDeploymentStrategy
  operation.
  */
-public struct DeleteDeploymentStrategyOperationInputPath: Codable, Equatable {
+public struct DeleteDeploymentStrategyOperationInputPath: Codable, Equatable, Sendable {
     public var deploymentStrategyId: DeploymentStrategyId
 
     public init(deploymentStrategyId: DeploymentStrategyId) {
@@ -612,7 +612,7 @@ public extension DeleteDeploymentStrategyRequest {
  Structure to encode the path input for the DeleteEnvironment
  operation.
  */
-public struct DeleteEnvironmentOperationInputPath: Codable, Equatable {
+public struct DeleteEnvironmentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -645,7 +645,7 @@ public extension DeleteEnvironmentRequest {
  Structure to encode the path input for the DeleteExtension
  operation.
  */
-public struct DeleteExtensionOperationInputPath: Codable, Equatable {
+public struct DeleteExtensionOperationInputPath: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier
 
     public init(extensionIdentifier: Identifier) {
@@ -672,7 +672,7 @@ public extension DeleteExtensionRequest {
  Structure to encode the query input for the DeleteExtension
  operation.
  */
-public struct DeleteExtensionOperationInputQuery: Codable, Equatable {
+public struct DeleteExtensionOperationInputQuery: Codable, Equatable, Sendable {
     public var versionNumber: Integer?
 
     public init(versionNumber: Integer? = nil) {
@@ -698,7 +698,7 @@ public extension DeleteExtensionRequest {
  Structure to encode the path input for the DeleteExtensionAssociation
  operation.
  */
-public struct DeleteExtensionAssociationOperationInputPath: Codable, Equatable {
+public struct DeleteExtensionAssociationOperationInputPath: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id
 
     public init(extensionAssociationId: Id) {
@@ -725,7 +725,7 @@ public extension DeleteExtensionAssociationRequest {
  Structure to encode the path input for the DeleteHostedConfigurationVersion
  operation.
  */
-public struct DeleteHostedConfigurationVersionOperationInputPath: Codable, Equatable {
+public struct DeleteHostedConfigurationVersionOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var versionNumber: Integer
@@ -763,7 +763,7 @@ public extension DeleteHostedConfigurationVersionRequest {
  Structure to encode the path input for the GetApplication
  operation.
  */
-public struct GetApplicationOperationInputPath: Codable, Equatable {
+public struct GetApplicationOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -790,7 +790,7 @@ public extension GetApplicationRequest {
  Structure to encode the path input for the GetConfiguration
  operation.
  */
-public struct GetConfigurationOperationInputPath: Codable, Equatable {
+public struct GetConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var application: StringWithLengthBetween1And64
     public var configuration: StringWithLengthBetween1And64
     public var environment: StringWithLengthBetween1And64
@@ -829,7 +829,7 @@ public extension GetConfigurationRequest {
  Structure to encode the query input for the GetConfiguration
  operation.
  */
-public struct GetConfigurationOperationInputQuery: Codable, Equatable {
+public struct GetConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var clientConfigurationVersion: Version?
     public var clientId: StringWithLengthBetween1And64
 
@@ -862,7 +862,7 @@ public extension GetConfigurationRequest {
  Structure to encode the body input for the GetConfiguration
  operation.
  */
-public struct GetConfigurationOperationOutputHeaders: Codable, Equatable {
+public struct GetConfigurationOperationOutputHeaders: Codable, Equatable, Sendable {
     public var configurationVersion: Version?
     public var contentType: String?
 
@@ -894,7 +894,7 @@ public extension Configuration {
  Structure to encode the path input for the GetConfigurationProfile
  operation.
  */
-public struct GetConfigurationProfileOperationInputPath: Codable, Equatable {
+public struct GetConfigurationProfileOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -927,7 +927,7 @@ public extension GetConfigurationProfileRequest {
  Structure to encode the path input for the GetDeployment
  operation.
  */
-public struct GetDeploymentOperationInputPath: Codable, Equatable {
+public struct GetDeploymentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var deploymentNumber: Integer
     public var environmentId: Id
@@ -965,7 +965,7 @@ public extension GetDeploymentRequest {
  Structure to encode the path input for the GetDeploymentStrategy
  operation.
  */
-public struct GetDeploymentStrategyOperationInputPath: Codable, Equatable {
+public struct GetDeploymentStrategyOperationInputPath: Codable, Equatable, Sendable {
     public var deploymentStrategyId: DeploymentStrategyId
 
     public init(deploymentStrategyId: DeploymentStrategyId) {
@@ -992,7 +992,7 @@ public extension GetDeploymentStrategyRequest {
  Structure to encode the path input for the GetEnvironment
  operation.
  */
-public struct GetEnvironmentOperationInputPath: Codable, Equatable {
+public struct GetEnvironmentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -1025,7 +1025,7 @@ public extension GetEnvironmentRequest {
  Structure to encode the path input for the GetExtension
  operation.
  */
-public struct GetExtensionOperationInputPath: Codable, Equatable {
+public struct GetExtensionOperationInputPath: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier
 
     public init(extensionIdentifier: Identifier) {
@@ -1052,7 +1052,7 @@ public extension GetExtensionRequest {
  Structure to encode the query input for the GetExtension
  operation.
  */
-public struct GetExtensionOperationInputQuery: Codable, Equatable {
+public struct GetExtensionOperationInputQuery: Codable, Equatable, Sendable {
     public var versionNumber: Integer?
 
     public init(versionNumber: Integer? = nil) {
@@ -1078,7 +1078,7 @@ public extension GetExtensionRequest {
  Structure to encode the path input for the GetExtensionAssociation
  operation.
  */
-public struct GetExtensionAssociationOperationInputPath: Codable, Equatable {
+public struct GetExtensionAssociationOperationInputPath: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id
 
     public init(extensionAssociationId: Id) {
@@ -1105,7 +1105,7 @@ public extension GetExtensionAssociationRequest {
  Structure to encode the path input for the GetHostedConfigurationVersion
  operation.
  */
-public struct GetHostedConfigurationVersionOperationInputPath: Codable, Equatable {
+public struct GetHostedConfigurationVersionOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var versionNumber: Integer
@@ -1143,7 +1143,7 @@ public extension GetHostedConfigurationVersionRequest {
  Structure to encode the query input for the ListApplications
  operation.
  */
-public struct ListApplicationsOperationInputQuery: Codable, Equatable {
+public struct ListApplicationsOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1176,7 +1176,7 @@ public extension ListApplicationsRequest {
  Structure to encode the path input for the ListConfigurationProfiles
  operation.
  */
-public struct ListConfigurationProfilesOperationInputPath: Codable, Equatable {
+public struct ListConfigurationProfilesOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -1203,7 +1203,7 @@ public extension ListConfigurationProfilesRequest {
  Structure to encode the query input for the ListConfigurationProfiles
  operation.
  */
-public struct ListConfigurationProfilesOperationInputQuery: Codable, Equatable {
+public struct ListConfigurationProfilesOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var type: ConfigurationProfileType?
@@ -1242,7 +1242,7 @@ public extension ListConfigurationProfilesRequest {
  Structure to encode the query input for the ListDeploymentStrategies
  operation.
  */
-public struct ListDeploymentStrategiesOperationInputQuery: Codable, Equatable {
+public struct ListDeploymentStrategiesOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1275,7 +1275,7 @@ public extension ListDeploymentStrategiesRequest {
  Structure to encode the path input for the ListDeployments
  operation.
  */
-public struct ListDeploymentsOperationInputPath: Codable, Equatable {
+public struct ListDeploymentsOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -1308,7 +1308,7 @@ public extension ListDeploymentsRequest {
  Structure to encode the query input for the ListDeployments
  operation.
  */
-public struct ListDeploymentsOperationInputQuery: Codable, Equatable {
+public struct ListDeploymentsOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1341,7 +1341,7 @@ public extension ListDeploymentsRequest {
  Structure to encode the path input for the ListEnvironments
  operation.
  */
-public struct ListEnvironmentsOperationInputPath: Codable, Equatable {
+public struct ListEnvironmentsOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -1368,7 +1368,7 @@ public extension ListEnvironmentsRequest {
  Structure to encode the query input for the ListEnvironments
  operation.
  */
-public struct ListEnvironmentsOperationInputQuery: Codable, Equatable {
+public struct ListEnvironmentsOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1401,7 +1401,7 @@ public extension ListEnvironmentsRequest {
  Structure to encode the query input for the ListExtensionAssociations
  operation.
  */
-public struct ListExtensionAssociationsOperationInputQuery: Codable, Equatable {
+public struct ListExtensionAssociationsOperationInputQuery: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier?
     public var extensionVersionNumber: Integer?
     public var maxResults: MaxResults?
@@ -1451,7 +1451,7 @@ public extension ListExtensionAssociationsRequest {
  Structure to encode the query input for the ListExtensions
  operation.
  */
-public struct ListExtensionsOperationInputQuery: Codable, Equatable {
+public struct ListExtensionsOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var name: QueryName?
     public var nextToken: NextToken?
@@ -1490,7 +1490,7 @@ public extension ListExtensionsRequest {
  Structure to encode the path input for the ListHostedConfigurationVersions
  operation.
  */
-public struct ListHostedConfigurationVersionsOperationInputPath: Codable, Equatable {
+public struct ListHostedConfigurationVersionsOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -1523,7 +1523,7 @@ public extension ListHostedConfigurationVersionsRequest {
  Structure to encode the query input for the ListHostedConfigurationVersions
  operation.
  */
-public struct ListHostedConfigurationVersionsOperationInputQuery: Codable, Equatable {
+public struct ListHostedConfigurationVersionsOperationInputQuery: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1556,7 +1556,7 @@ public extension ListHostedConfigurationVersionsRequest {
  Structure to encode the path input for the ListTagsForResource
  operation.
  */
-public struct ListTagsForResourceOperationInputPath: Codable, Equatable {
+public struct ListTagsForResourceOperationInputPath: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -1583,7 +1583,7 @@ public extension ListTagsForResourceRequest {
  Structure to encode the path input for the StartDeployment
  operation.
  */
-public struct StartDeploymentOperationInputPath: Codable, Equatable {
+public struct StartDeploymentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -1616,7 +1616,7 @@ public extension StartDeploymentRequest {
  Structure to encode the body input for the StartDeployment
  operation.
  */
-public struct StartDeploymentOperationInputBody: Codable, Equatable {
+public struct StartDeploymentOperationInputBody: Codable, Equatable, Sendable {
     public var configurationProfileId: Id
     public var configurationVersion: Version
     public var deploymentStrategyId: DeploymentStrategyId
@@ -1666,7 +1666,7 @@ public extension StartDeploymentRequest {
  Structure to encode the path input for the StopDeployment
  operation.
  */
-public struct StopDeploymentOperationInputPath: Codable, Equatable {
+public struct StopDeploymentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var deploymentNumber: Integer
     public var environmentId: Id
@@ -1704,7 +1704,7 @@ public extension StopDeploymentRequest {
  Structure to encode the path input for the TagResource
  operation.
  */
-public struct TagResourceOperationInputPath: Codable, Equatable {
+public struct TagResourceOperationInputPath: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -1731,7 +1731,7 @@ public extension TagResourceRequest {
  Structure to encode the body input for the TagResource
  operation.
  */
-public struct TagResourceOperationInputBody: Codable, Equatable {
+public struct TagResourceOperationInputBody: Codable, Equatable, Sendable {
     public var tags: TagMap
 
     public init(tags: TagMap) {
@@ -1757,7 +1757,7 @@ public extension TagResourceRequest {
  Structure to encode the path input for the UntagResource
  operation.
  */
-public struct UntagResourceOperationInputPath: Codable, Equatable {
+public struct UntagResourceOperationInputPath: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -1784,7 +1784,7 @@ public extension UntagResourceRequest {
  Structure to encode the query input for the UntagResource
  operation.
  */
-public struct UntagResourceOperationInputQuery: Codable, Equatable {
+public struct UntagResourceOperationInputQuery: Codable, Equatable, Sendable {
     public var tagKeys: TagKeyList
 
     public init(tagKeys: TagKeyList) {
@@ -1811,7 +1811,7 @@ public extension UntagResourceRequest {
  Structure to encode the path input for the UpdateApplication
  operation.
  */
-public struct UpdateApplicationOperationInputPath: Codable, Equatable {
+public struct UpdateApplicationOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -1838,7 +1838,7 @@ public extension UpdateApplicationRequest {
  Structure to encode the body input for the UpdateApplication
  operation.
  */
-public struct UpdateApplicationOperationInputBody: Codable, Equatable {
+public struct UpdateApplicationOperationInputBody: Codable, Equatable, Sendable {
     public var description: Description?
     public var name: Name?
 
@@ -1871,7 +1871,7 @@ public extension UpdateApplicationRequest {
  Structure to encode the path input for the UpdateConfigurationProfile
  operation.
  */
-public struct UpdateConfigurationProfileOperationInputPath: Codable, Equatable {
+public struct UpdateConfigurationProfileOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -1904,7 +1904,7 @@ public extension UpdateConfigurationProfileRequest {
  Structure to encode the body input for the UpdateConfigurationProfile
  operation.
  */
-public struct UpdateConfigurationProfileOperationInputBody: Codable, Equatable {
+public struct UpdateConfigurationProfileOperationInputBody: Codable, Equatable, Sendable {
     public var description: Description?
     public var name: Name?
     public var retrievalRoleArn: RoleArn?
@@ -1949,7 +1949,7 @@ public extension UpdateConfigurationProfileRequest {
  Structure to encode the path input for the UpdateDeploymentStrategy
  operation.
  */
-public struct UpdateDeploymentStrategyOperationInputPath: Codable, Equatable {
+public struct UpdateDeploymentStrategyOperationInputPath: Codable, Equatable, Sendable {
     public var deploymentStrategyId: DeploymentStrategyId
 
     public init(deploymentStrategyId: DeploymentStrategyId) {
@@ -1976,7 +1976,7 @@ public extension UpdateDeploymentStrategyRequest {
  Structure to encode the body input for the UpdateDeploymentStrategy
  operation.
  */
-public struct UpdateDeploymentStrategyOperationInputBody: Codable, Equatable {
+public struct UpdateDeploymentStrategyOperationInputBody: Codable, Equatable, Sendable {
     public var deploymentDurationInMinutes: MinutesBetween0And24Hours?
     public var description: Description?
     public var finalBakeTimeInMinutes: MinutesBetween0And24Hours?
@@ -2026,7 +2026,7 @@ public extension UpdateDeploymentStrategyRequest {
  Structure to encode the path input for the UpdateEnvironment
  operation.
  */
-public struct UpdateEnvironmentOperationInputPath: Codable, Equatable {
+public struct UpdateEnvironmentOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -2059,7 +2059,7 @@ public extension UpdateEnvironmentRequest {
  Structure to encode the body input for the UpdateEnvironment
  operation.
  */
-public struct UpdateEnvironmentOperationInputBody: Codable, Equatable {
+public struct UpdateEnvironmentOperationInputBody: Codable, Equatable, Sendable {
     public var description: Description?
     public var monitors: MonitorList?
     public var name: Name?
@@ -2098,7 +2098,7 @@ public extension UpdateEnvironmentRequest {
  Structure to encode the path input for the UpdateExtension
  operation.
  */
-public struct UpdateExtensionOperationInputPath: Codable, Equatable {
+public struct UpdateExtensionOperationInputPath: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier
 
     public init(extensionIdentifier: Identifier) {
@@ -2125,7 +2125,7 @@ public extension UpdateExtensionRequest {
  Structure to encode the body input for the UpdateExtension
  operation.
  */
-public struct UpdateExtensionOperationInputBody: Codable, Equatable {
+public struct UpdateExtensionOperationInputBody: Codable, Equatable, Sendable {
     public var actions: ActionsMap?
     public var description: Description?
     public var parameters: ParameterMap?
@@ -2167,7 +2167,7 @@ public extension UpdateExtensionRequest {
  Structure to encode the path input for the UpdateExtensionAssociation
  operation.
  */
-public struct UpdateExtensionAssociationOperationInputPath: Codable, Equatable {
+public struct UpdateExtensionAssociationOperationInputPath: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id
 
     public init(extensionAssociationId: Id) {
@@ -2194,7 +2194,7 @@ public extension UpdateExtensionAssociationRequest {
  Structure to encode the body input for the UpdateExtensionAssociation
  operation.
  */
-public struct UpdateExtensionAssociationOperationInputBody: Codable, Equatable {
+public struct UpdateExtensionAssociationOperationInputBody: Codable, Equatable, Sendable {
     public var parameters: ParameterValueMap?
 
     public init(parameters: ParameterValueMap? = nil) {
@@ -2220,7 +2220,7 @@ public extension UpdateExtensionAssociationRequest {
  Structure to encode the path input for the ValidateConfiguration
  operation.
  */
-public struct ValidateConfigurationOperationInputPath: Codable, Equatable {
+public struct ValidateConfigurationOperationInputPath: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -2253,7 +2253,7 @@ public extension ValidateConfigurationRequest {
  Structure to encode the query input for the ValidateConfiguration
  operation.
  */
-public struct ValidateConfigurationOperationInputQuery: Codable, Equatable {
+public struct ValidateConfigurationOperationInputQuery: Codable, Equatable, Sendable {
     public var configurationVersion: Version
 
     public init(configurationVersion: Version) {

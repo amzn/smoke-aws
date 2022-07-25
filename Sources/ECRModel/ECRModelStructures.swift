@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct Attribute: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct Attribute: Codable, Equatable, Sendable {
     public var key: AttributeKey
     public var value: AttributeValue?
 
@@ -43,7 +45,7 @@ public struct Attribute: Codable, Equatable {
     }
 }
 
-public struct AuthorizationData: Codable, Equatable {
+public struct AuthorizationData: Codable, Equatable, Sendable {
     public var authorizationToken: Base64?
     public var expiresAt: ExpirationTimestamp?
     public var proxyEndpoint: ProxyEndpoint?
@@ -67,7 +69,7 @@ public struct AuthorizationData: Codable, Equatable {
     }
 }
 
-public struct AwsEcrContainerImageDetails: Codable, Equatable {
+public struct AwsEcrContainerImageDetails: Codable, Equatable, Sendable {
     public var architecture: Arch?
     public var author: Author?
     public var imageHash: ImageDigest?
@@ -112,7 +114,7 @@ public struct AwsEcrContainerImageDetails: Codable, Equatable {
     }
 }
 
-public struct BatchCheckLayerAvailabilityRequest: Codable, Equatable {
+public struct BatchCheckLayerAvailabilityRequest: Codable, Equatable, Sendable {
     public var layerDigests: BatchedOperationLayerDigestList
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -138,7 +140,7 @@ public struct BatchCheckLayerAvailabilityRequest: Codable, Equatable {
     }
 }
 
-public struct BatchCheckLayerAvailabilityResponse: Codable, Equatable {
+public struct BatchCheckLayerAvailabilityResponse: Codable, Equatable, Sendable {
     public var failures: LayerFailureList?
     public var layers: LayerList?
 
@@ -157,7 +159,7 @@ public struct BatchCheckLayerAvailabilityResponse: Codable, Equatable {
     }
 }
 
-public struct BatchDeleteImageRequest: Codable, Equatable {
+public struct BatchDeleteImageRequest: Codable, Equatable, Sendable {
     public var imageIds: ImageIdentifierList
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -183,7 +185,7 @@ public struct BatchDeleteImageRequest: Codable, Equatable {
     }
 }
 
-public struct BatchDeleteImageResponse: Codable, Equatable {
+public struct BatchDeleteImageResponse: Codable, Equatable, Sendable {
     public var failures: ImageFailureList?
     public var imageIds: ImageIdentifierList?
 
@@ -203,7 +205,7 @@ public struct BatchDeleteImageResponse: Codable, Equatable {
     }
 }
 
-public struct BatchGetImageRequest: Codable, Equatable {
+public struct BatchGetImageRequest: Codable, Equatable, Sendable {
     public var acceptedMediaTypes: MediaTypeList?
     public var imageIds: ImageIdentifierList
     public var registryId: RegistryId?
@@ -234,7 +236,7 @@ public struct BatchGetImageRequest: Codable, Equatable {
     }
 }
 
-public struct BatchGetImageResponse: Codable, Equatable {
+public struct BatchGetImageResponse: Codable, Equatable, Sendable {
     public var failures: ImageFailureList?
     public var images: ImageList?
 
@@ -253,7 +255,7 @@ public struct BatchGetImageResponse: Codable, Equatable {
     }
 }
 
-public struct BatchGetRepositoryScanningConfigurationRequest: Codable, Equatable {
+public struct BatchGetRepositoryScanningConfigurationRequest: Codable, Equatable, Sendable {
     public var repositoryNames: ScanningConfigurationRepositoryNameList
 
     public init(repositoryNames: ScanningConfigurationRepositoryNameList) {
@@ -269,7 +271,7 @@ public struct BatchGetRepositoryScanningConfigurationRequest: Codable, Equatable
     }
 }
 
-public struct BatchGetRepositoryScanningConfigurationResponse: Codable, Equatable {
+public struct BatchGetRepositoryScanningConfigurationResponse: Codable, Equatable, Sendable {
     public var failures: RepositoryScanningConfigurationFailureList?
     public var scanningConfigurations: RepositoryScanningConfigurationList?
 
@@ -288,7 +290,7 @@ public struct BatchGetRepositoryScanningConfigurationResponse: Codable, Equatabl
     }
 }
 
-public struct CompleteLayerUploadRequest: Codable, Equatable {
+public struct CompleteLayerUploadRequest: Codable, Equatable, Sendable {
     public var layerDigests: LayerDigestList
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -319,7 +321,7 @@ public struct CompleteLayerUploadRequest: Codable, Equatable {
     }
 }
 
-public struct CompleteLayerUploadResponse: Codable, Equatable {
+public struct CompleteLayerUploadResponse: Codable, Equatable, Sendable {
     public var layerDigest: LayerDigest?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -350,7 +352,7 @@ public struct CompleteLayerUploadResponse: Codable, Equatable {
     }
 }
 
-public struct CreatePullThroughCacheRuleRequest: Codable, Equatable {
+public struct CreatePullThroughCacheRuleRequest: Codable, Equatable, Sendable {
     public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix
     public var registryId: RegistryId?
     public var upstreamRegistryUrl: Url
@@ -375,7 +377,7 @@ public struct CreatePullThroughCacheRuleRequest: Codable, Equatable {
     }
 }
 
-public struct CreatePullThroughCacheRuleResponse: Codable, Equatable {
+public struct CreatePullThroughCacheRuleResponse: Codable, Equatable, Sendable {
     public var createdAt: CreationTimestamp?
     public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix?
     public var registryId: RegistryId?
@@ -404,7 +406,7 @@ public struct CreatePullThroughCacheRuleResponse: Codable, Equatable {
     }
 }
 
-public struct CreateRepositoryRequest: Codable, Equatable {
+public struct CreateRepositoryRequest: Codable, Equatable, Sendable {
     public var encryptionConfiguration: EncryptionConfiguration?
     public var imageScanningConfiguration: ImageScanningConfiguration?
     public var imageTagMutability: ImageTagMutability?
@@ -443,7 +445,7 @@ public struct CreateRepositoryRequest: Codable, Equatable {
     }
 }
 
-public struct CreateRepositoryResponse: Codable, Equatable {
+public struct CreateRepositoryResponse: Codable, Equatable, Sendable {
     public var repository: Repository?
 
     public init(repository: Repository? = nil) {
@@ -459,7 +461,7 @@ public struct CreateRepositoryResponse: Codable, Equatable {
     }
 }
 
-public struct CvssScore: Codable, Equatable {
+public struct CvssScore: Codable, Equatable, Sendable {
     public var baseScore: BaseScore?
     public var scoringVector: ScoringVector?
     public var source: Source?
@@ -486,7 +488,7 @@ public struct CvssScore: Codable, Equatable {
     }
 }
 
-public struct CvssScoreAdjustment: Codable, Equatable {
+public struct CvssScoreAdjustment: Codable, Equatable, Sendable {
     public var metric: Metric?
     public var reason: Reason?
 
@@ -505,7 +507,7 @@ public struct CvssScoreAdjustment: Codable, Equatable {
     }
 }
 
-public struct CvssScoreDetails: Codable, Equatable {
+public struct CvssScoreDetails: Codable, Equatable, Sendable {
     public var adjustments: CvssScoreAdjustmentList?
     public var score: Score?
     public var scoreSource: Source?
@@ -536,7 +538,7 @@ public struct CvssScoreDetails: Codable, Equatable {
     }
 }
 
-public struct DeleteLifecyclePolicyRequest: Codable, Equatable {
+public struct DeleteLifecyclePolicyRequest: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
 
@@ -557,7 +559,7 @@ public struct DeleteLifecyclePolicyRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteLifecyclePolicyResponse: Codable, Equatable {
+public struct DeleteLifecyclePolicyResponse: Codable, Equatable, Sendable {
     public var lastEvaluatedAt: EvaluationTimestamp?
     public var lifecyclePolicyText: LifecyclePolicyText?
     public var registryId: RegistryId?
@@ -587,7 +589,7 @@ public struct DeleteLifecyclePolicyResponse: Codable, Equatable {
     }
 }
 
-public struct DeletePullThroughCacheRuleRequest: Codable, Equatable {
+public struct DeletePullThroughCacheRuleRequest: Codable, Equatable, Sendable {
     public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix
     public var registryId: RegistryId?
 
@@ -608,7 +610,7 @@ public struct DeletePullThroughCacheRuleRequest: Codable, Equatable {
     }
 }
 
-public struct DeletePullThroughCacheRuleResponse: Codable, Equatable {
+public struct DeletePullThroughCacheRuleResponse: Codable, Equatable, Sendable {
     public var createdAt: CreationTimestamp?
     public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix?
     public var registryId: RegistryId?
@@ -637,7 +639,7 @@ public struct DeletePullThroughCacheRuleResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteRegistryPolicyRequest: Codable, Equatable {
+public struct DeleteRegistryPolicyRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -646,7 +648,7 @@ public struct DeleteRegistryPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteRegistryPolicyResponse: Codable, Equatable {
+public struct DeleteRegistryPolicyResponse: Codable, Equatable, Sendable {
     public var policyText: RegistryPolicyText?
     public var registryId: RegistryId?
 
@@ -667,7 +669,7 @@ public struct DeleteRegistryPolicyResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteRepositoryPolicyRequest: Codable, Equatable {
+public struct DeleteRepositoryPolicyRequest: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
 
@@ -688,7 +690,7 @@ public struct DeleteRepositoryPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteRepositoryPolicyResponse: Codable, Equatable {
+public struct DeleteRepositoryPolicyResponse: Codable, Equatable, Sendable {
     public var policyText: RepositoryPolicyText?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -714,7 +716,7 @@ public struct DeleteRepositoryPolicyResponse: Codable, Equatable {
     }
 }
 
-public struct DeleteRepositoryRequest: Codable, Equatable {
+public struct DeleteRepositoryRequest: Codable, Equatable, Sendable {
     public var force: ForceFlag?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -739,7 +741,7 @@ public struct DeleteRepositoryRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteRepositoryResponse: Codable, Equatable {
+public struct DeleteRepositoryResponse: Codable, Equatable, Sendable {
     public var repository: Repository?
 
     public init(repository: Repository? = nil) {
@@ -755,7 +757,7 @@ public struct DeleteRepositoryResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeImageReplicationStatusRequest: Codable, Equatable {
+public struct DescribeImageReplicationStatusRequest: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -781,7 +783,7 @@ public struct DescribeImageReplicationStatusRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeImageReplicationStatusResponse: Codable, Equatable {
+public struct DescribeImageReplicationStatusResponse: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier?
     public var replicationStatuses: ImageReplicationStatusList?
     public var repositoryName: RepositoryName?
@@ -806,7 +808,7 @@ public struct DescribeImageReplicationStatusResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeImageScanFindingsRequest: Codable, Equatable {
+public struct DescribeImageScanFindingsRequest: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -841,7 +843,7 @@ public struct DescribeImageScanFindingsRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeImageScanFindingsResponse: Codable, Equatable {
+public struct DescribeImageScanFindingsResponse: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier?
     public var imageScanFindings: ImageScanFindings?
     public var imageScanStatus: ImageScanStatus?
@@ -881,7 +883,7 @@ public struct DescribeImageScanFindingsResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeImagesFilter: Codable, Equatable {
+public struct DescribeImagesFilter: Codable, Equatable, Sendable {
     public var tagStatus: TagStatus?
 
     public init(tagStatus: TagStatus? = nil) {
@@ -896,7 +898,7 @@ public struct DescribeImagesFilter: Codable, Equatable {
     }
 }
 
-public struct DescribeImagesRequest: Codable, Equatable {
+public struct DescribeImagesRequest: Codable, Equatable, Sendable {
     public var filter: DescribeImagesFilter?
     public var imageIds: ImageIdentifierList?
     public var maxResults: MaxResults?
@@ -936,7 +938,7 @@ public struct DescribeImagesRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeImagesResponse: Codable, Equatable {
+public struct DescribeImagesResponse: Codable, Equatable, Sendable {
     public var imageDetails: ImageDetailList?
     public var nextToken: NextToken?
 
@@ -955,7 +957,7 @@ public struct DescribeImagesResponse: Codable, Equatable {
     }
 }
 
-public struct DescribePullThroughCacheRulesRequest: Codable, Equatable {
+public struct DescribePullThroughCacheRulesRequest: Codable, Equatable, Sendable {
     public var ecrRepositoryPrefixes: PullThroughCacheRuleRepositoryPrefixList?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -985,7 +987,7 @@ public struct DescribePullThroughCacheRulesRequest: Codable, Equatable {
     }
 }
 
-public struct DescribePullThroughCacheRulesResponse: Codable, Equatable {
+public struct DescribePullThroughCacheRulesResponse: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var pullThroughCacheRules: PullThroughCacheRuleList?
 
@@ -1004,7 +1006,7 @@ public struct DescribePullThroughCacheRulesResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeRegistryRequest: Codable, Equatable {
+public struct DescribeRegistryRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1013,7 +1015,7 @@ public struct DescribeRegistryRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeRegistryResponse: Codable, Equatable {
+public struct DescribeRegistryResponse: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var replicationConfiguration: ReplicationConfiguration?
 
@@ -1034,7 +1036,7 @@ public struct DescribeRegistryResponse: Codable, Equatable {
     }
 }
 
-public struct DescribeRepositoriesRequest: Codable, Equatable {
+public struct DescribeRepositoriesRequest: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var registryId: RegistryId?
@@ -1064,7 +1066,7 @@ public struct DescribeRepositoriesRequest: Codable, Equatable {
     }
 }
 
-public struct DescribeRepositoriesResponse: Codable, Equatable {
+public struct DescribeRepositoriesResponse: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var repositories: RepositoryList?
 
@@ -1083,7 +1085,7 @@ public struct DescribeRepositoriesResponse: Codable, Equatable {
     }
 }
 
-public struct EmptyUploadException: Codable, Equatable {
+public struct EmptyUploadException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1098,7 +1100,7 @@ public struct EmptyUploadException: Codable, Equatable {
     }
 }
 
-public struct EncryptionConfiguration: Codable, Equatable {
+public struct EncryptionConfiguration: Codable, Equatable, Sendable {
     public var encryptionType: EncryptionType
     public var kmsKey: KmsKey?
 
@@ -1118,7 +1120,7 @@ public struct EncryptionConfiguration: Codable, Equatable {
     }
 }
 
-public struct EnhancedImageScanFinding: Codable, Equatable {
+public struct EnhancedImageScanFinding: Codable, Equatable, Sendable {
     public var awsAccountId: RegistryId?
     public var description: FindingDescription?
     public var findingArn: FindingArn?
@@ -1193,7 +1195,7 @@ public struct EnhancedImageScanFinding: Codable, Equatable {
     }
 }
 
-public struct GetAuthorizationTokenRequest: Codable, Equatable {
+public struct GetAuthorizationTokenRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1202,7 +1204,7 @@ public struct GetAuthorizationTokenRequest: Codable, Equatable {
     }
 }
 
-public struct GetAuthorizationTokenResponse: Codable, Equatable {
+public struct GetAuthorizationTokenResponse: Codable, Equatable, Sendable {
     public var authorizationData: AuthorizationDataList?
 
     public init(authorizationData: AuthorizationDataList? = nil) {
@@ -1217,7 +1219,7 @@ public struct GetAuthorizationTokenResponse: Codable, Equatable {
     }
 }
 
-public struct GetDownloadUrlForLayerRequest: Codable, Equatable {
+public struct GetDownloadUrlForLayerRequest: Codable, Equatable, Sendable {
     public var layerDigest: LayerDigest
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -1243,7 +1245,7 @@ public struct GetDownloadUrlForLayerRequest: Codable, Equatable {
     }
 }
 
-public struct GetDownloadUrlForLayerResponse: Codable, Equatable {
+public struct GetDownloadUrlForLayerResponse: Codable, Equatable, Sendable {
     public var downloadUrl: Url?
     public var layerDigest: LayerDigest?
 
@@ -1263,7 +1265,7 @@ public struct GetDownloadUrlForLayerResponse: Codable, Equatable {
     }
 }
 
-public struct GetLifecyclePolicyPreviewRequest: Codable, Equatable {
+public struct GetLifecyclePolicyPreviewRequest: Codable, Equatable, Sendable {
     public var filter: LifecyclePolicyPreviewFilter?
     public var imageIds: ImageIdentifierList?
     public var maxResults: LifecyclePreviewMaxResults?
@@ -1303,7 +1305,7 @@ public struct GetLifecyclePolicyPreviewRequest: Codable, Equatable {
     }
 }
 
-public struct GetLifecyclePolicyPreviewResponse: Codable, Equatable {
+public struct GetLifecyclePolicyPreviewResponse: Codable, Equatable, Sendable {
     public var lifecyclePolicyText: LifecyclePolicyText?
     public var nextToken: NextToken?
     public var previewResults: LifecyclePolicyPreviewResultList?
@@ -1346,7 +1348,7 @@ public struct GetLifecyclePolicyPreviewResponse: Codable, Equatable {
     }
 }
 
-public struct GetLifecyclePolicyRequest: Codable, Equatable {
+public struct GetLifecyclePolicyRequest: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
 
@@ -1367,7 +1369,7 @@ public struct GetLifecyclePolicyRequest: Codable, Equatable {
     }
 }
 
-public struct GetLifecyclePolicyResponse: Codable, Equatable {
+public struct GetLifecyclePolicyResponse: Codable, Equatable, Sendable {
     public var lastEvaluatedAt: EvaluationTimestamp?
     public var lifecyclePolicyText: LifecyclePolicyText?
     public var registryId: RegistryId?
@@ -1397,7 +1399,7 @@ public struct GetLifecyclePolicyResponse: Codable, Equatable {
     }
 }
 
-public struct GetRegistryPolicyRequest: Codable, Equatable {
+public struct GetRegistryPolicyRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1406,7 +1408,7 @@ public struct GetRegistryPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct GetRegistryPolicyResponse: Codable, Equatable {
+public struct GetRegistryPolicyResponse: Codable, Equatable, Sendable {
     public var policyText: RegistryPolicyText?
     public var registryId: RegistryId?
 
@@ -1427,7 +1429,7 @@ public struct GetRegistryPolicyResponse: Codable, Equatable {
     }
 }
 
-public struct GetRegistryScanningConfigurationRequest: Codable, Equatable {
+public struct GetRegistryScanningConfigurationRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1436,7 +1438,7 @@ public struct GetRegistryScanningConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetRegistryScanningConfigurationResponse: Codable, Equatable {
+public struct GetRegistryScanningConfigurationResponse: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var scanningConfiguration: RegistryScanningConfiguration?
 
@@ -1457,7 +1459,7 @@ public struct GetRegistryScanningConfigurationResponse: Codable, Equatable {
     }
 }
 
-public struct GetRepositoryPolicyRequest: Codable, Equatable {
+public struct GetRepositoryPolicyRequest: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
 
@@ -1478,7 +1480,7 @@ public struct GetRepositoryPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct GetRepositoryPolicyResponse: Codable, Equatable {
+public struct GetRepositoryPolicyResponse: Codable, Equatable, Sendable {
     public var policyText: RepositoryPolicyText?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -1504,7 +1506,7 @@ public struct GetRepositoryPolicyResponse: Codable, Equatable {
     }
 }
 
-public struct Image: Codable, Equatable {
+public struct Image: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier?
     public var imageManifest: ImageManifest?
     public var imageManifestMediaType: MediaType?
@@ -1539,7 +1541,7 @@ public struct Image: Codable, Equatable {
     }
 }
 
-public struct ImageAlreadyExistsException: Codable, Equatable {
+public struct ImageAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1554,7 +1556,7 @@ public struct ImageAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct ImageDetail: Codable, Equatable {
+public struct ImageDetail: Codable, Equatable, Sendable {
     public var artifactMediaType: MediaType?
     public var imageDigest: ImageDigest?
     public var imageManifestMediaType: MediaType?
@@ -1613,7 +1615,7 @@ public struct ImageDetail: Codable, Equatable {
     }
 }
 
-public struct ImageDigestDoesNotMatchException: Codable, Equatable {
+public struct ImageDigestDoesNotMatchException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1628,7 +1630,7 @@ public struct ImageDigestDoesNotMatchException: Codable, Equatable {
     }
 }
 
-public struct ImageFailure: Codable, Equatable {
+public struct ImageFailure: Codable, Equatable, Sendable {
     public var failureCode: ImageFailureCode?
     public var failureReason: ImageFailureReason?
     public var imageId: ImageIdentifier?
@@ -1652,7 +1654,7 @@ public struct ImageFailure: Codable, Equatable {
     }
 }
 
-public struct ImageIdentifier: Codable, Equatable {
+public struct ImageIdentifier: Codable, Equatable, Sendable {
     public var imageDigest: ImageDigest?
     public var imageTag: ImageTag?
 
@@ -1672,7 +1674,7 @@ public struct ImageIdentifier: Codable, Equatable {
     }
 }
 
-public struct ImageNotFoundException: Codable, Equatable {
+public struct ImageNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1687,7 +1689,7 @@ public struct ImageNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ImageReplicationStatus: Codable, Equatable {
+public struct ImageReplicationStatus: Codable, Equatable, Sendable {
     public var failureCode: ReplicationError?
     public var region: Region?
     public var registryId: RegistryId?
@@ -1716,7 +1718,7 @@ public struct ImageReplicationStatus: Codable, Equatable {
     }
 }
 
-public struct ImageScanFinding: Codable, Equatable {
+public struct ImageScanFinding: Codable, Equatable, Sendable {
     public var attributes: AttributeList?
     public var description: FindingDescription?
     public var name: FindingName?
@@ -1748,7 +1750,7 @@ public struct ImageScanFinding: Codable, Equatable {
     }
 }
 
-public struct ImageScanFindings: Codable, Equatable {
+public struct ImageScanFindings: Codable, Equatable, Sendable {
     public var enhancedFindings: EnhancedImageScanFindingList?
     public var findingSeverityCounts: FindingSeverityCounts?
     public var findings: ImageScanFindingList?
@@ -1779,7 +1781,7 @@ public struct ImageScanFindings: Codable, Equatable {
     }
 }
 
-public struct ImageScanFindingsSummary: Codable, Equatable {
+public struct ImageScanFindingsSummary: Codable, Equatable, Sendable {
     public var findingSeverityCounts: FindingSeverityCounts?
     public var imageScanCompletedAt: ScanTimestamp?
     public var vulnerabilitySourceUpdatedAt: VulnerabilitySourceUpdateTimestamp?
@@ -1802,7 +1804,7 @@ public struct ImageScanFindingsSummary: Codable, Equatable {
     }
 }
 
-public struct ImageScanStatus: Codable, Equatable {
+public struct ImageScanStatus: Codable, Equatable, Sendable {
     public var description: ScanStatusDescription?
     public var status: ScanStatus?
 
@@ -1821,7 +1823,7 @@ public struct ImageScanStatus: Codable, Equatable {
     }
 }
 
-public struct ImageScanningConfiguration: Codable, Equatable {
+public struct ImageScanningConfiguration: Codable, Equatable, Sendable {
     public var scanOnPush: ScanOnPushFlag?
 
     public init(scanOnPush: ScanOnPushFlag? = nil) {
@@ -1836,7 +1838,7 @@ public struct ImageScanningConfiguration: Codable, Equatable {
     }
 }
 
-public struct ImageTagAlreadyExistsException: Codable, Equatable {
+public struct ImageTagAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1851,7 +1853,7 @@ public struct ImageTagAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct InitiateLayerUploadRequest: Codable, Equatable {
+public struct InitiateLayerUploadRequest: Codable, Equatable, Sendable {
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
 
@@ -1872,7 +1874,7 @@ public struct InitiateLayerUploadRequest: Codable, Equatable {
     }
 }
 
-public struct InitiateLayerUploadResponse: Codable, Equatable {
+public struct InitiateLayerUploadResponse: Codable, Equatable, Sendable {
     public var partSize: PartSize?
     public var uploadId: UploadId?
 
@@ -1893,7 +1895,7 @@ public struct InitiateLayerUploadResponse: Codable, Equatable {
     }
 }
 
-public struct InvalidLayerException: Codable, Equatable {
+public struct InvalidLayerException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1908,7 +1910,7 @@ public struct InvalidLayerException: Codable, Equatable {
     }
 }
 
-public struct InvalidLayerPartException: Codable, Equatable {
+public struct InvalidLayerPartException: Codable, Equatable, Sendable {
     public var lastValidByteReceived: PartSize?
     public var message: ExceptionMessage?
     public var registryId: RegistryId?
@@ -1943,7 +1945,7 @@ public struct InvalidLayerPartException: Codable, Equatable {
     }
 }
 
-public struct InvalidParameterException: Codable, Equatable {
+public struct InvalidParameterException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1958,7 +1960,7 @@ public struct InvalidParameterException: Codable, Equatable {
     }
 }
 
-public struct InvalidTagParameterException: Codable, Equatable {
+public struct InvalidTagParameterException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -1973,7 +1975,7 @@ public struct InvalidTagParameterException: Codable, Equatable {
     }
 }
 
-public struct KmsException: Codable, Equatable {
+public struct KmsException: Codable, Equatable, Sendable {
     public var kmsError: KmsError?
     public var message: ExceptionMessage?
 
@@ -1992,7 +1994,7 @@ public struct KmsException: Codable, Equatable {
     }
 }
 
-public struct Layer: Codable, Equatable {
+public struct Layer: Codable, Equatable, Sendable {
     public var layerAvailability: LayerAvailability?
     public var layerDigest: LayerDigest?
     public var layerSize: LayerSizeInBytes?
@@ -2020,7 +2022,7 @@ public struct Layer: Codable, Equatable {
     }
 }
 
-public struct LayerAlreadyExistsException: Codable, Equatable {
+public struct LayerAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2035,7 +2037,7 @@ public struct LayerAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct LayerFailure: Codable, Equatable {
+public struct LayerFailure: Codable, Equatable, Sendable {
     public var failureCode: LayerFailureCode?
     public var failureReason: LayerFailureReason?
     public var layerDigest: BatchedOperationLayerDigest?
@@ -2059,7 +2061,7 @@ public struct LayerFailure: Codable, Equatable {
     }
 }
 
-public struct LayerInaccessibleException: Codable, Equatable {
+public struct LayerInaccessibleException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2074,7 +2076,7 @@ public struct LayerInaccessibleException: Codable, Equatable {
     }
 }
 
-public struct LayerPartTooSmallException: Codable, Equatable {
+public struct LayerPartTooSmallException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2089,7 +2091,7 @@ public struct LayerPartTooSmallException: Codable, Equatable {
     }
 }
 
-public struct LayersNotFoundException: Codable, Equatable {
+public struct LayersNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2104,7 +2106,7 @@ public struct LayersNotFoundException: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyNotFoundException: Codable, Equatable {
+public struct LifecyclePolicyNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2119,7 +2121,7 @@ public struct LifecyclePolicyNotFoundException: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyPreviewFilter: Codable, Equatable {
+public struct LifecyclePolicyPreviewFilter: Codable, Equatable, Sendable {
     public var tagStatus: TagStatus?
 
     public init(tagStatus: TagStatus? = nil) {
@@ -2134,7 +2136,7 @@ public struct LifecyclePolicyPreviewFilter: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyPreviewInProgressException: Codable, Equatable {
+public struct LifecyclePolicyPreviewInProgressException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2149,7 +2151,7 @@ public struct LifecyclePolicyPreviewInProgressException: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyPreviewNotFoundException: Codable, Equatable {
+public struct LifecyclePolicyPreviewNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2164,7 +2166,7 @@ public struct LifecyclePolicyPreviewNotFoundException: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyPreviewResult: Codable, Equatable {
+public struct LifecyclePolicyPreviewResult: Codable, Equatable, Sendable {
     public var action: LifecyclePolicyRuleAction?
     public var appliedRulePriority: LifecyclePolicyRulePriority?
     public var imageDigest: ImageDigest?
@@ -2197,7 +2199,7 @@ public struct LifecyclePolicyPreviewResult: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyPreviewSummary: Codable, Equatable {
+public struct LifecyclePolicyPreviewSummary: Codable, Equatable, Sendable {
     public var expiringImageTotalCount: ImageCount?
 
     public init(expiringImageTotalCount: ImageCount? = nil) {
@@ -2213,7 +2215,7 @@ public struct LifecyclePolicyPreviewSummary: Codable, Equatable {
     }
 }
 
-public struct LifecyclePolicyRuleAction: Codable, Equatable {
+public struct LifecyclePolicyRuleAction: Codable, Equatable, Sendable {
     public var type: ImageActionType?
 
     public init(type: ImageActionType? = nil) {
@@ -2228,7 +2230,7 @@ public struct LifecyclePolicyRuleAction: Codable, Equatable {
     }
 }
 
-public struct LimitExceededException: Codable, Equatable {
+public struct LimitExceededException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2243,7 +2245,7 @@ public struct LimitExceededException: Codable, Equatable {
     }
 }
 
-public struct ListImagesFilter: Codable, Equatable {
+public struct ListImagesFilter: Codable, Equatable, Sendable {
     public var tagStatus: TagStatus?
 
     public init(tagStatus: TagStatus? = nil) {
@@ -2258,7 +2260,7 @@ public struct ListImagesFilter: Codable, Equatable {
     }
 }
 
-public struct ListImagesRequest: Codable, Equatable {
+public struct ListImagesRequest: Codable, Equatable, Sendable {
     public var filter: ListImagesFilter?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -2293,7 +2295,7 @@ public struct ListImagesRequest: Codable, Equatable {
     }
 }
 
-public struct ListImagesResponse: Codable, Equatable {
+public struct ListImagesResponse: Codable, Equatable, Sendable {
     public var imageIds: ImageIdentifierList?
     public var nextToken: NextToken?
 
@@ -2313,7 +2315,7 @@ public struct ListImagesResponse: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceRequest: Codable, Equatable {
+public struct ListTagsForResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -2328,7 +2330,7 @@ public struct ListTagsForResourceRequest: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceResponse: Codable, Equatable {
+public struct ListTagsForResourceResponse: Codable, Equatable, Sendable {
     public var tags: TagList?
 
     public init(tags: TagList? = nil) {
@@ -2343,7 +2345,7 @@ public struct ListTagsForResourceResponse: Codable, Equatable {
     }
 }
 
-public struct PackageVulnerabilityDetails: Codable, Equatable {
+public struct PackageVulnerabilityDetails: Codable, Equatable, Sendable {
     public var cvss: CvssScoreList?
     public var referenceUrls: ReferenceUrlsList?
     public var relatedVulnerabilities: RelatedVulnerabilitiesList?
@@ -2394,7 +2396,7 @@ public struct PackageVulnerabilityDetails: Codable, Equatable {
     }
 }
 
-public struct PullThroughCacheRule: Codable, Equatable {
+public struct PullThroughCacheRule: Codable, Equatable, Sendable {
     public var createdAt: CreationTimestamp?
     public var ecrRepositoryPrefix: PullThroughCacheRuleRepositoryPrefix?
     public var registryId: RegistryId?
@@ -2423,7 +2425,7 @@ public struct PullThroughCacheRule: Codable, Equatable {
     }
 }
 
-public struct PullThroughCacheRuleAlreadyExistsException: Codable, Equatable {
+public struct PullThroughCacheRuleAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2438,7 +2440,7 @@ public struct PullThroughCacheRuleAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct PullThroughCacheRuleNotFoundException: Codable, Equatable {
+public struct PullThroughCacheRuleNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2453,7 +2455,7 @@ public struct PullThroughCacheRuleNotFoundException: Codable, Equatable {
     }
 }
 
-public struct PutImageRequest: Codable, Equatable {
+public struct PutImageRequest: Codable, Equatable, Sendable {
     public var imageDigest: ImageDigest?
     public var imageManifest: ImageManifest
     public var imageManifestMediaType: MediaType?
@@ -2492,7 +2494,7 @@ public struct PutImageRequest: Codable, Equatable {
     }
 }
 
-public struct PutImageResponse: Codable, Equatable {
+public struct PutImageResponse: Codable, Equatable, Sendable {
     public var image: Image?
 
     public init(image: Image? = nil) {
@@ -2508,7 +2510,7 @@ public struct PutImageResponse: Codable, Equatable {
     }
 }
 
-public struct PutImageScanningConfigurationRequest: Codable, Equatable {
+public struct PutImageScanningConfigurationRequest: Codable, Equatable, Sendable {
     public var imageScanningConfiguration: ImageScanningConfiguration
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -2534,7 +2536,7 @@ public struct PutImageScanningConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutImageScanningConfigurationResponse: Codable, Equatable {
+public struct PutImageScanningConfigurationResponse: Codable, Equatable, Sendable {
     public var imageScanningConfiguration: ImageScanningConfiguration?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -2560,7 +2562,7 @@ public struct PutImageScanningConfigurationResponse: Codable, Equatable {
     }
 }
 
-public struct PutImageTagMutabilityRequest: Codable, Equatable {
+public struct PutImageTagMutabilityRequest: Codable, Equatable, Sendable {
     public var imageTagMutability: ImageTagMutability
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -2585,7 +2587,7 @@ public struct PutImageTagMutabilityRequest: Codable, Equatable {
     }
 }
 
-public struct PutImageTagMutabilityResponse: Codable, Equatable {
+public struct PutImageTagMutabilityResponse: Codable, Equatable, Sendable {
     public var imageTagMutability: ImageTagMutability?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -2610,7 +2612,7 @@ public struct PutImageTagMutabilityResponse: Codable, Equatable {
     }
 }
 
-public struct PutLifecyclePolicyRequest: Codable, Equatable {
+public struct PutLifecyclePolicyRequest: Codable, Equatable, Sendable {
     public var lifecyclePolicyText: LifecyclePolicyText
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -2636,7 +2638,7 @@ public struct PutLifecyclePolicyRequest: Codable, Equatable {
     }
 }
 
-public struct PutLifecyclePolicyResponse: Codable, Equatable {
+public struct PutLifecyclePolicyResponse: Codable, Equatable, Sendable {
     public var lifecyclePolicyText: LifecyclePolicyText?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -2662,7 +2664,7 @@ public struct PutLifecyclePolicyResponse: Codable, Equatable {
     }
 }
 
-public struct PutRegistryPolicyRequest: Codable, Equatable {
+public struct PutRegistryPolicyRequest: Codable, Equatable, Sendable {
     public var policyText: RegistryPolicyText
 
     public init(policyText: RegistryPolicyText) {
@@ -2678,7 +2680,7 @@ public struct PutRegistryPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct PutRegistryPolicyResponse: Codable, Equatable {
+public struct PutRegistryPolicyResponse: Codable, Equatable, Sendable {
     public var policyText: RegistryPolicyText?
     public var registryId: RegistryId?
 
@@ -2699,7 +2701,7 @@ public struct PutRegistryPolicyResponse: Codable, Equatable {
     }
 }
 
-public struct PutRegistryScanningConfigurationRequest: Codable, Equatable {
+public struct PutRegistryScanningConfigurationRequest: Codable, Equatable, Sendable {
     public var rules: RegistryScanningRuleList?
     public var scanType: ScanType?
 
@@ -2719,7 +2721,7 @@ public struct PutRegistryScanningConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutRegistryScanningConfigurationResponse: Codable, Equatable {
+public struct PutRegistryScanningConfigurationResponse: Codable, Equatable, Sendable {
     public var registryScanningConfiguration: RegistryScanningConfiguration?
 
     public init(registryScanningConfiguration: RegistryScanningConfiguration? = nil) {
@@ -2735,7 +2737,7 @@ public struct PutRegistryScanningConfigurationResponse: Codable, Equatable {
     }
 }
 
-public struct PutReplicationConfigurationRequest: Codable, Equatable {
+public struct PutReplicationConfigurationRequest: Codable, Equatable, Sendable {
     public var replicationConfiguration: ReplicationConfiguration
 
     public init(replicationConfiguration: ReplicationConfiguration) {
@@ -2751,7 +2753,7 @@ public struct PutReplicationConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct PutReplicationConfigurationResponse: Codable, Equatable {
+public struct PutReplicationConfigurationResponse: Codable, Equatable, Sendable {
     public var replicationConfiguration: ReplicationConfiguration?
 
     public init(replicationConfiguration: ReplicationConfiguration? = nil) {
@@ -2767,7 +2769,7 @@ public struct PutReplicationConfigurationResponse: Codable, Equatable {
     }
 }
 
-public struct Recommendation: Codable, Equatable {
+public struct Recommendation: Codable, Equatable, Sendable {
     public var text: RecommendationText?
     public var url: Url?
 
@@ -2786,7 +2788,7 @@ public struct Recommendation: Codable, Equatable {
     }
 }
 
-public struct ReferencedImagesNotFoundException: Codable, Equatable {
+public struct ReferencedImagesNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2801,7 +2803,7 @@ public struct ReferencedImagesNotFoundException: Codable, Equatable {
     }
 }
 
-public struct RegistryPolicyNotFoundException: Codable, Equatable {
+public struct RegistryPolicyNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2816,7 +2818,7 @@ public struct RegistryPolicyNotFoundException: Codable, Equatable {
     }
 }
 
-public struct RegistryScanningConfiguration: Codable, Equatable {
+public struct RegistryScanningConfiguration: Codable, Equatable, Sendable {
     public var rules: RegistryScanningRuleList?
     public var scanType: ScanType?
 
@@ -2836,7 +2838,7 @@ public struct RegistryScanningConfiguration: Codable, Equatable {
     }
 }
 
-public struct RegistryScanningRule: Codable, Equatable {
+public struct RegistryScanningRule: Codable, Equatable, Sendable {
     public var repositoryFilters: ScanningRepositoryFilterList
     public var scanFrequency: ScanFrequency
 
@@ -2856,7 +2858,7 @@ public struct RegistryScanningRule: Codable, Equatable {
     }
 }
 
-public struct Remediation: Codable, Equatable {
+public struct Remediation: Codable, Equatable, Sendable {
     public var recommendation: Recommendation?
 
     public init(recommendation: Recommendation? = nil) {
@@ -2872,7 +2874,7 @@ public struct Remediation: Codable, Equatable {
     }
 }
 
-public struct ReplicationConfiguration: Codable, Equatable {
+public struct ReplicationConfiguration: Codable, Equatable, Sendable {
     public var rules: ReplicationRuleList
 
     public init(rules: ReplicationRuleList) {
@@ -2888,7 +2890,7 @@ public struct ReplicationConfiguration: Codable, Equatable {
     }
 }
 
-public struct ReplicationDestination: Codable, Equatable {
+public struct ReplicationDestination: Codable, Equatable, Sendable {
     public var region: Region
     public var registryId: RegistryId
 
@@ -2909,7 +2911,7 @@ public struct ReplicationDestination: Codable, Equatable {
     }
 }
 
-public struct ReplicationRule: Codable, Equatable {
+public struct ReplicationRule: Codable, Equatable, Sendable {
     public var destinations: ReplicationDestinationList
     public var repositoryFilters: RepositoryFilterList?
 
@@ -2930,7 +2932,7 @@ public struct ReplicationRule: Codable, Equatable {
     }
 }
 
-public struct Repository: Codable, Equatable {
+public struct Repository: Codable, Equatable, Sendable {
     public var createdAt: CreationTimestamp?
     public var encryptionConfiguration: EncryptionConfiguration?
     public var imageScanningConfiguration: ImageScanningConfiguration?
@@ -2977,7 +2979,7 @@ public struct Repository: Codable, Equatable {
     }
 }
 
-public struct RepositoryAlreadyExistsException: Codable, Equatable {
+public struct RepositoryAlreadyExistsException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -2992,7 +2994,7 @@ public struct RepositoryAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct RepositoryFilter: Codable, Equatable {
+public struct RepositoryFilter: Codable, Equatable, Sendable {
     public var filter: RepositoryFilterValue
     public var filterType: RepositoryFilterType
 
@@ -3012,7 +3014,7 @@ public struct RepositoryFilter: Codable, Equatable {
     }
 }
 
-public struct RepositoryNotEmptyException: Codable, Equatable {
+public struct RepositoryNotEmptyException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3027,7 +3029,7 @@ public struct RepositoryNotEmptyException: Codable, Equatable {
     }
 }
 
-public struct RepositoryNotFoundException: Codable, Equatable {
+public struct RepositoryNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3042,7 +3044,7 @@ public struct RepositoryNotFoundException: Codable, Equatable {
     }
 }
 
-public struct RepositoryPolicyNotFoundException: Codable, Equatable {
+public struct RepositoryPolicyNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3057,7 +3059,7 @@ public struct RepositoryPolicyNotFoundException: Codable, Equatable {
     }
 }
 
-public struct RepositoryScanningConfiguration: Codable, Equatable {
+public struct RepositoryScanningConfiguration: Codable, Equatable, Sendable {
     public var appliedScanFilters: ScanningRepositoryFilterList?
     public var repositoryArn: Arn?
     public var repositoryName: RepositoryName?
@@ -3090,7 +3092,7 @@ public struct RepositoryScanningConfiguration: Codable, Equatable {
     }
 }
 
-public struct RepositoryScanningConfigurationFailure: Codable, Equatable {
+public struct RepositoryScanningConfigurationFailure: Codable, Equatable, Sendable {
     public var failureCode: ScanningConfigurationFailureCode?
     public var failureReason: ScanningConfigurationFailureReason?
     public var repositoryName: RepositoryName?
@@ -3114,7 +3116,7 @@ public struct RepositoryScanningConfigurationFailure: Codable, Equatable {
     }
 }
 
-public struct Resource: Codable, Equatable {
+public struct Resource: Codable, Equatable, Sendable {
     public var details: ResourceDetails?
     public var id: ResourceId?
     public var tags: Tags?
@@ -3142,7 +3144,7 @@ public struct Resource: Codable, Equatable {
     }
 }
 
-public struct ResourceDetails: Codable, Equatable {
+public struct ResourceDetails: Codable, Equatable, Sendable {
     public var awsEcrContainerImage: AwsEcrContainerImageDetails?
 
     public init(awsEcrContainerImage: AwsEcrContainerImageDetails? = nil) {
@@ -3158,7 +3160,7 @@ public struct ResourceDetails: Codable, Equatable {
     }
 }
 
-public struct ScanNotFoundException: Codable, Equatable {
+public struct ScanNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3173,7 +3175,7 @@ public struct ScanNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ScanningRepositoryFilter: Codable, Equatable {
+public struct ScanningRepositoryFilter: Codable, Equatable, Sendable {
     public var filter: ScanningRepositoryFilterValue
     public var filterType: ScanningRepositoryFilterType
 
@@ -3193,7 +3195,7 @@ public struct ScanningRepositoryFilter: Codable, Equatable {
     }
 }
 
-public struct ScoreDetails: Codable, Equatable {
+public struct ScoreDetails: Codable, Equatable, Sendable {
     public var cvss: CvssScoreDetails?
 
     public init(cvss: CvssScoreDetails? = nil) {
@@ -3209,7 +3211,7 @@ public struct ScoreDetails: Codable, Equatable {
     }
 }
 
-public struct ServerException: Codable, Equatable {
+public struct ServerException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3224,7 +3226,7 @@ public struct ServerException: Codable, Equatable {
     }
 }
 
-public struct SetRepositoryPolicyRequest: Codable, Equatable {
+public struct SetRepositoryPolicyRequest: Codable, Equatable, Sendable {
     public var force: ForceFlag?
     public var policyText: RepositoryPolicyText
     public var registryId: RegistryId?
@@ -3254,7 +3256,7 @@ public struct SetRepositoryPolicyRequest: Codable, Equatable {
     }
 }
 
-public struct SetRepositoryPolicyResponse: Codable, Equatable {
+public struct SetRepositoryPolicyResponse: Codable, Equatable, Sendable {
     public var policyText: RepositoryPolicyText?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -3280,7 +3282,7 @@ public struct SetRepositoryPolicyResponse: Codable, Equatable {
     }
 }
 
-public struct StartImageScanRequest: Codable, Equatable {
+public struct StartImageScanRequest: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -3306,7 +3308,7 @@ public struct StartImageScanRequest: Codable, Equatable {
     }
 }
 
-public struct StartImageScanResponse: Codable, Equatable {
+public struct StartImageScanResponse: Codable, Equatable, Sendable {
     public var imageId: ImageIdentifier?
     public var imageScanStatus: ImageScanStatus?
     public var registryId: RegistryId?
@@ -3337,7 +3339,7 @@ public struct StartImageScanResponse: Codable, Equatable {
     }
 }
 
-public struct StartLifecyclePolicyPreviewRequest: Codable, Equatable {
+public struct StartLifecyclePolicyPreviewRequest: Codable, Equatable, Sendable {
     public var lifecyclePolicyText: LifecyclePolicyText?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName
@@ -3363,7 +3365,7 @@ public struct StartLifecyclePolicyPreviewRequest: Codable, Equatable {
     }
 }
 
-public struct StartLifecyclePolicyPreviewResponse: Codable, Equatable {
+public struct StartLifecyclePolicyPreviewResponse: Codable, Equatable, Sendable {
     public var lifecyclePolicyText: LifecyclePolicyText?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -3393,7 +3395,7 @@ public struct StartLifecyclePolicyPreviewResponse: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey?
     public var value: TagValue?
 
@@ -3412,7 +3414,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagResourceRequest: Codable, Equatable {
+public struct TagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tags: TagList
 
@@ -3431,7 +3433,7 @@ public struct TagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct TagResourceResponse: Codable, Equatable {
+public struct TagResourceResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3440,7 +3442,7 @@ public struct TagResourceResponse: Codable, Equatable {
     }
 }
 
-public struct TooManyTagsException: Codable, Equatable {
+public struct TooManyTagsException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3455,7 +3457,7 @@ public struct TooManyTagsException: Codable, Equatable {
     }
 }
 
-public struct UnsupportedImageTypeException: Codable, Equatable {
+public struct UnsupportedImageTypeException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3470,7 +3472,7 @@ public struct UnsupportedImageTypeException: Codable, Equatable {
     }
 }
 
-public struct UnsupportedUpstreamRegistryException: Codable, Equatable {
+public struct UnsupportedUpstreamRegistryException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3485,7 +3487,7 @@ public struct UnsupportedUpstreamRegistryException: Codable, Equatable {
     }
 }
 
-public struct UntagResourceRequest: Codable, Equatable {
+public struct UntagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tagKeys: TagKeyList
 
@@ -3504,7 +3506,7 @@ public struct UntagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct UntagResourceResponse: Codable, Equatable {
+public struct UntagResourceResponse: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3513,7 +3515,7 @@ public struct UntagResourceResponse: Codable, Equatable {
     }
 }
 
-public struct UploadLayerPartRequest: Codable, Equatable {
+public struct UploadLayerPartRequest: Codable, Equatable, Sendable {
     public var layerPartBlob: LayerPartBlob
     public var partFirstByte: PartSize
     public var partLastByte: PartSize
@@ -3553,7 +3555,7 @@ public struct UploadLayerPartRequest: Codable, Equatable {
     }
 }
 
-public struct UploadLayerPartResponse: Codable, Equatable {
+public struct UploadLayerPartResponse: Codable, Equatable, Sendable {
     public var lastByteReceived: PartSize?
     public var registryId: RegistryId?
     public var repositoryName: RepositoryName?
@@ -3584,7 +3586,7 @@ public struct UploadLayerPartResponse: Codable, Equatable {
     }
 }
 
-public struct UploadNotFoundException: Codable, Equatable {
+public struct UploadNotFoundException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3599,7 +3601,7 @@ public struct UploadNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ValidationException: Codable, Equatable {
+public struct ValidationException: Codable, Equatable, Sendable {
     public var message: ExceptionMessage?
 
     public init(message: ExceptionMessage? = nil) {
@@ -3614,7 +3616,7 @@ public struct ValidationException: Codable, Equatable {
     }
 }
 
-public struct VulnerablePackage: Codable, Equatable {
+public struct VulnerablePackage: Codable, Equatable, Sendable {
     public var arch: Arch?
     public var epoch: Epoch?
     public var filePath: FilePath?

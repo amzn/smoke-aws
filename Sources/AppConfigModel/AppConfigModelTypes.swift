@@ -35,7 +35,7 @@ public typealias ActionList = [Action]
 /**
  Enumeration restricting the values of the ActionPoint field.
  */
-public enum ActionPoint: String, Codable, CustomStringConvertible {
+public enum ActionPoint: String, Codable, CustomStringConvertible, Sendable {
     case onDeploymentBaking = "ON_DEPLOYMENT_BAKING"
     case onDeploymentComplete = "ON_DEPLOYMENT_COMPLETE"
     case onDeploymentRolledBack = "ON_DEPLOYMENT_ROLLED_BACK"
@@ -74,7 +74,7 @@ public typealias Arn = String
 /**
  Enumeration restricting the values of the BadRequestReason field.
  */
-public enum BadRequestReason: String, Codable, CustomStringConvertible {
+public enum BadRequestReason: String, Codable, CustomStringConvertible, Sendable {
     case invalidconfiguration = "InvalidConfiguration"
 
     public var description: String {
@@ -97,7 +97,7 @@ public typealias Boolean = Bool
 /**
  Enumeration restricting the values of the BytesMeasure field.
  */
-public enum BytesMeasure: String, Codable, CustomStringConvertible {
+public enum BytesMeasure: String, Codable, CustomStringConvertible, Sendable {
     case kilobytes = "KILOBYTES"
 
     public var description: String {
@@ -120,7 +120,7 @@ public typealias ConfigurationProfileType = String
 /**
  Enumeration restricting the values of the DeploymentEventType field.
  */
-public enum DeploymentEventType: String, Codable, CustomStringConvertible {
+public enum DeploymentEventType: String, Codable, CustomStringConvertible, Sendable {
     case bakeTimeStarted = "BAKE_TIME_STARTED"
     case deploymentCompleted = "DEPLOYMENT_COMPLETED"
     case deploymentStarted = "DEPLOYMENT_STARTED"
@@ -148,7 +148,7 @@ public typealias DeploymentList = [DeploymentSummary]
 /**
  Enumeration restricting the values of the DeploymentState field.
  */
-public enum DeploymentState: String, Codable, CustomStringConvertible {
+public enum DeploymentState: String, Codable, CustomStringConvertible, Sendable {
     case baking = "BAKING"
     case complete = "COMPLETE"
     case deploying = "DEPLOYING"
@@ -186,7 +186,7 @@ public typealias EnvironmentList = [Environment]
 /**
  Enumeration restricting the values of the EnvironmentState field.
  */
-public enum EnvironmentState: String, Codable, CustomStringConvertible {
+public enum EnvironmentState: String, Codable, CustomStringConvertible, Sendable {
     case deploying = "DEPLOYING"
     case readyForDeployment = "READY_FOR_DEPLOYMENT"
     case rolledBack = "ROLLED_BACK"
@@ -222,7 +222,7 @@ public typealias GrowthFactor = Double
 /**
  Enumeration restricting the values of the GrowthType field.
  */
-public enum GrowthType: String, Codable, CustomStringConvertible {
+public enum GrowthType: String, Codable, CustomStringConvertible, Sendable {
     case exponential = "EXPONENTIAL"
     case linear = "LINEAR"
 
@@ -316,7 +316,7 @@ public typealias QueryName = String
 /**
  Enumeration restricting the values of the ReplicateTo field.
  */
-public enum ReplicateTo: String, Codable, CustomStringConvertible {
+public enum ReplicateTo: String, Codable, CustomStringConvertible, Sendable {
     case none = "NONE"
     case ssmDocument = "SSM_DOCUMENT"
 
@@ -375,7 +375,7 @@ public typealias TagValue = String
 /**
  Enumeration restricting the values of the TriggeredBy field.
  */
-public enum TriggeredBy: String, Codable, CustomStringConvertible {
+public enum TriggeredBy: String, Codable, CustomStringConvertible, Sendable {
     case appconfig = "APPCONFIG"
     case cloudwatchAlarm = "CLOUDWATCH_ALARM"
     case internalError = "INTERNAL_ERROR"
@@ -401,7 +401,7 @@ public typealias ValidatorList = [Validator]
 /**
  Enumeration restricting the values of the ValidatorType field.
  */
-public enum ValidatorType: String, Codable, CustomStringConvertible {
+public enum ValidatorType: String, Codable, CustomStringConvertible, Sendable {
     case jsonSchema = "JSON_SCHEMA"
     case lambda = "LAMBDA"
 

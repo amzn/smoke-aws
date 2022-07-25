@@ -120,7 +120,7 @@ public typealias MessageSystemAttributeMap = [MessageSystemAttributeName: String
 /**
  Enumeration restricting the values of the MessageSystemAttributeName field.
  */
-public enum MessageSystemAttributeName: String, Codable, CustomStringConvertible {
+public enum MessageSystemAttributeName: String, Codable, CustomStringConvertible, Sendable {
     case awstraceheader = "AWSTraceHeader"
     case approximatefirstreceivetimestamp = "ApproximateFirstReceiveTimestamp"
     case approximatereceivecount = "ApproximateReceiveCount"
@@ -140,7 +140,7 @@ public enum MessageSystemAttributeName: String, Codable, CustomStringConvertible
 /**
  Enumeration restricting the values of the MessageSystemAttributeNameForSends field.
  */
-public enum MessageSystemAttributeNameForSends: String, Codable, CustomStringConvertible {
+public enum MessageSystemAttributeNameForSends: String, Codable, CustomStringConvertible, Sendable {
     case awstraceheader = "AWSTraceHeader"
 
     public var description: String {
@@ -158,7 +158,7 @@ public typealias QueueAttributeMap = [QueueAttributeName: String]
 /**
  Enumeration restricting the values of the QueueAttributeName field.
  */
-public enum QueueAttributeName: String, Codable, CustomStringConvertible {
+public enum QueueAttributeName: String, Codable, CustomStringConvertible, Sendable {
     case all = "All"
     case approximatenumberofmessages = "ApproximateNumberOfMessages"
     case approximatenumberofmessagesdelayed = "ApproximateNumberOfMessagesDelayed"

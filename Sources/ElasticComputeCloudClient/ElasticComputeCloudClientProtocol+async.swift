@@ -265,6 +265,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the AllocateIpamPoolCidr operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AllocateIpamPoolCidrRequest object being passed to this operation.
+     - Returns: The AllocateIpamPoolCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func allocateIpamPoolCidr(input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest) async throws
+     -> ElasticComputeCloudModel.AllocateIpamPoolCidrResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try allocateIpamPoolCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ApplySecurityGroupsToClientVpnTargetNetwork operation and asynchronously returning the response.
 
      - Parameters:
@@ -559,6 +585,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try associateTransitGatewayMulticastDomainAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the AssociateTransitGatewayPolicyTable operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AssociateTransitGatewayPolicyTableRequest object being passed to this operation.
+     - Returns: The AssociateTransitGatewayPolicyTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateTransitGatewayPolicyTable(input: ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableRequest) async throws
+     -> ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try associateTransitGatewayPolicyTableAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -1653,6 +1705,84 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateIpam operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateIpamRequest object being passed to this operation.
+     - Returns: The CreateIpamResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createIpam(input: ElasticComputeCloudModel.CreateIpamRequest) async throws
+     -> ElasticComputeCloudModel.CreateIpamResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createIpamAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateIpamPool operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateIpamPoolRequest object being passed to this operation.
+     - Returns: The CreateIpamPoolResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createIpamPool(input: ElasticComputeCloudModel.CreateIpamPoolRequest) async throws
+     -> ElasticComputeCloudModel.CreateIpamPoolResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createIpamPoolAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateIpamScope operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateIpamScopeRequest object being passed to this operation.
+     - Returns: The CreateIpamScopeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createIpamScope(input: ElasticComputeCloudModel.CreateIpamScopeRequest) async throws
+     -> ElasticComputeCloudModel.CreateIpamScopeResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createIpamScopeAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateKeyPair operation and asynchronously returning the response.
 
      - Parameters:
@@ -1883,6 +2013,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateNetworkInsightsAccessScope operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateNetworkInsightsAccessScopeRequest object being passed to this operation.
+     - Returns: The CreateNetworkInsightsAccessScopeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createNetworkInsightsAccessScope(input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest) async throws
+     -> ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createNetworkInsightsAccessScopeAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateNetworkInsightsPath operation and asynchronously returning the response.
 
      - Parameters:
@@ -1973,6 +2129,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try createPlacementGroupAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreatePublicIpv4Pool operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreatePublicIpv4PoolRequest object being passed to this operation.
+     - Returns: The CreatePublicIpv4PoolResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createPublicIpv4Pool(input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest) async throws
+     -> ElasticComputeCloudModel.CreatePublicIpv4PoolResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createPublicIpv4PoolAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -2555,6 +2737,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateTransitGatewayPolicyTable operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayPolicyTableRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayPolicyTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayPolicyTable(input: ElasticComputeCloudModel.CreateTransitGatewayPolicyTableRequest) async throws
+     -> ElasticComputeCloudModel.CreateTransitGatewayPolicyTableResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createTransitGatewayPolicyTableAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateTransitGatewayPrefixListReference operation and asynchronously returning the response.
 
      - Parameters:
@@ -2619,6 +2827,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try createTransitGatewayRouteTableAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateTransitGatewayRouteTableAnnouncement operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateTransitGatewayRouteTableAnnouncementRequest object being passed to this operation.
+     - Returns: The CreateTransitGatewayRouteTableAnnouncementResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createTransitGatewayRouteTableAnnouncement(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementRequest) async throws
+     -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try createTransitGatewayRouteTableAnnouncementAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -3163,6 +3397,84 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteIpam operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteIpamRequest object being passed to this operation.
+     - Returns: The DeleteIpamResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteIpam(input: ElasticComputeCloudModel.DeleteIpamRequest) async throws
+     -> ElasticComputeCloudModel.DeleteIpamResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteIpamAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteIpamPool operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteIpamPoolRequest object being passed to this operation.
+     - Returns: The DeleteIpamPoolResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteIpamPool(input: ElasticComputeCloudModel.DeleteIpamPoolRequest) async throws
+     -> ElasticComputeCloudModel.DeleteIpamPoolResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteIpamPoolAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteIpamScope operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteIpamScopeRequest object being passed to this operation.
+     - Returns: The DeleteIpamScopeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteIpamScope(input: ElasticComputeCloudModel.DeleteIpamScopeRequest) async throws
+     -> ElasticComputeCloudModel.DeleteIpamScopeResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteIpamScopeAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DeleteKeyPair operation and asynchronously returning the response.
 
      - Parameters:
@@ -3385,6 +3697,58 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteNetworkInsightsAccessScope operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAccessScopeRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsAccessScopeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteNetworkInsightsAccessScope(input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest) async throws
+     -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteNetworkInsightsAccessScopeAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteNetworkInsightsAccessScopeAnalysis operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteNetworkInsightsAccessScopeAnalysisRequest object being passed to this operation.
+     - Returns: The DeleteNetworkInsightsAccessScopeAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteNetworkInsightsAccessScopeAnalysis(input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest) async throws
+     -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteNetworkInsightsAccessScopeAnalysisAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DeleteNetworkInsightsAnalysis operation and asynchronously returning the response.
 
      - Parameters:
@@ -3498,6 +3862,32 @@ public extension ElasticComputeCloudClientProtocol {
                         cont.resume(throwing: error)
                     } else {
                         cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeletePublicIpv4Pool operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeletePublicIpv4PoolRequest object being passed to this operation.
+     - Returns: The DeletePublicIpv4PoolResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deletePublicIpv4Pool(input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest) async throws
+     -> ElasticComputeCloudModel.DeletePublicIpv4PoolResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deletePublicIpv4PoolAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {
@@ -3947,6 +4337,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteTransitGatewayPolicyTable operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayPolicyTableRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayPolicyTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayPolicyTable(input: ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableRequest) async throws
+     -> ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteTransitGatewayPolicyTableAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DeleteTransitGatewayPrefixListReference operation and asynchronously returning the response.
 
      - Parameters:
@@ -4011,6 +4427,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayRouteTableAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteTransitGatewayRouteTableAnnouncement operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteTransitGatewayRouteTableAnnouncementRequest object being passed to this operation.
+     - Returns: The DeleteTransitGatewayRouteTableAnnouncementResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteTransitGatewayRouteTableAnnouncement(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementRequest) async throws
+     -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deleteTransitGatewayRouteTableAnnouncementAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -4277,6 +4719,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try deprovisionByoipCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeprovisionIpamPoolCidr operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeprovisionIpamPoolCidrRequest object being passed to this operation.
+     - Returns: The DeprovisionIpamPoolCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deprovisionIpamPoolCidr(input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest) async throws
+     -> ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deprovisionIpamPoolCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeprovisionPublicIpv4PoolCidr operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeprovisionPublicIpv4PoolCidrRequest object being passed to this operation.
+     - Returns: The DeprovisionPublicIpv4PoolCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deprovisionPublicIpv4PoolCidr(input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest) async throws
+     -> ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try deprovisionPublicIpv4PoolCidrAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -5015,6 +5509,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeFastLaunchImages operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeFastLaunchImagesRequest object being passed to this operation.
+     - Returns: The DescribeFastLaunchImagesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeFastLaunchImages(input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeFastLaunchImagesResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeFastLaunchImagesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeFastSnapshotRestores operation and asynchronously returning the response.
 
      - Parameters:
@@ -5691,6 +6211,84 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeIpamPools operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeIpamPoolsRequest object being passed to this operation.
+     - Returns: The DescribeIpamPoolsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpamPools(input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeIpamPoolsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeIpamPoolsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamScopes operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeIpamScopesRequest object being passed to this operation.
+     - Returns: The DescribeIpamScopesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpamScopes(input: ElasticComputeCloudModel.DescribeIpamScopesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeIpamScopesResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeIpamScopesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeIpams operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeIpamsRequest object being passed to this operation.
+     - Returns: The DescribeIpamsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpams(input: ElasticComputeCloudModel.DescribeIpamsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeIpamsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeIpamsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeIpv6Pools operation and asynchronously returning the response.
 
      - Parameters:
@@ -6041,6 +6639,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try describeNetworkAclsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsAccessScopeAnalyses operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAccessScopeAnalysesRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsAccessScopeAnalysesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeNetworkInsightsAccessScopeAnalyses(input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeNetworkInsightsAccessScopeAnalysesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeNetworkInsightsAccessScopes operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeNetworkInsightsAccessScopesRequest object being passed to this operation.
+     - Returns: The DescribeNetworkInsightsAccessScopesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeNetworkInsightsAccessScopes(input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeNetworkInsightsAccessScopesAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -6627,6 +7277,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeSnapshotTierStatus operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeSnapshotTierStatusRequest object being passed to this operation.
+     - Returns: The DescribeSnapshotTierStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeSnapshotTierStatus(input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest) async throws
+     -> ElasticComputeCloudModel.DescribeSnapshotTierStatusResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeSnapshotTierStatusAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeSnapshots operation and asynchronously returning the response.
 
      - Parameters:
@@ -7107,6 +7783,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try describeTransitGatewayPeeringAttachmentsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayPolicyTables operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayPolicyTablesRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayPolicyTablesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayPolicyTables(input: ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeTransitGatewayPolicyTablesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeTransitGatewayRouteTableAnnouncements operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeTransitGatewayRouteTableAnnouncementsRequest object being passed to this operation.
+     - Returns: The DescribeTransitGatewayRouteTableAnnouncementsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeTransitGatewayRouteTableAnnouncements(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeTransitGatewayRouteTableAnnouncementsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -7811,6 +8539,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableFastLaunch operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisableFastLaunchRequest object being passed to this operation.
+     - Returns: The DisableFastLaunchResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableFastLaunch(input: ElasticComputeCloudModel.DisableFastLaunchRequest) async throws
+     -> ElasticComputeCloudModel.DisableFastLaunchResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try disableFastLaunchAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DisableFastSnapshotRestores operation and asynchronously returning the response.
 
      - Parameters:
@@ -7849,6 +8603,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try disableImageDeprecationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DisableIpamOrganizationAdminAccount operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisableIpamOrganizationAdminAccountRequest object being passed to this operation.
+     - Returns: The DisableIpamOrganizationAdminAccountResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableIpamOrganizationAdminAccount(input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest) async throws
+     -> ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try disableIpamOrganizationAdminAccountAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -8189,6 +8969,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateTransitGatewayPolicyTable operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisassociateTransitGatewayPolicyTableRequest object being passed to this operation.
+     - Returns: The DisassociateTransitGatewayPolicyTableResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateTransitGatewayPolicyTable(input: ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableRequest) async throws
+     -> ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try disassociateTransitGatewayPolicyTableAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DisassociateTransitGatewayRouteTable operation and asynchronously returning the response.
 
      - Parameters:
@@ -8293,6 +9099,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the EnableFastLaunch operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableFastLaunchRequest object being passed to this operation.
+     - Returns: The EnableFastLaunchResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableFastLaunch(input: ElasticComputeCloudModel.EnableFastLaunchRequest) async throws
+     -> ElasticComputeCloudModel.EnableFastLaunchResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try enableFastLaunchAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the EnableFastSnapshotRestores operation and asynchronously returning the response.
 
      - Parameters:
@@ -8331,6 +9163,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try enableImageDeprecationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the EnableIpamOrganizationAdminAccount operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableIpamOrganizationAdminAccountRequest object being passed to this operation.
+     - Returns: The EnableIpamOrganizationAdminAccountResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableIpamOrganizationAdminAccount(input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest) async throws
+     -> ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try enableIpamOrganizationAdminAccountAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -8935,6 +9793,136 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetInstanceUefiData operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetInstanceUefiDataRequest object being passed to this operation.
+     - Returns: The GetInstanceUefiDataResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getInstanceUefiData(input: ElasticComputeCloudModel.GetInstanceUefiDataRequest) async throws
+     -> ElasticComputeCloudModel.GetInstanceUefiDataResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getInstanceUefiDataAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetIpamAddressHistory operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetIpamAddressHistoryRequest object being passed to this operation.
+     - Returns: The GetIpamAddressHistoryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamAddressHistory(input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest) async throws
+     -> ElasticComputeCloudModel.GetIpamAddressHistoryResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getIpamAddressHistoryAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetIpamPoolAllocations operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetIpamPoolAllocationsRequest object being passed to this operation.
+     - Returns: The GetIpamPoolAllocationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamPoolAllocations(input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest) async throws
+     -> ElasticComputeCloudModel.GetIpamPoolAllocationsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getIpamPoolAllocationsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetIpamPoolCidrs operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetIpamPoolCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamPoolCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamPoolCidrs(input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest) async throws
+     -> ElasticComputeCloudModel.GetIpamPoolCidrsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getIpamPoolCidrsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetIpamResourceCidrs operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetIpamResourceCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamResourceCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamResourceCidrs(input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest) async throws
+     -> ElasticComputeCloudModel.GetIpamResourceCidrsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getIpamResourceCidrsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the GetLaunchTemplateData operation and asynchronously returning the response.
 
      - Parameters:
@@ -8999,6 +9987,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try getManagedPrefixListEntriesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetNetworkInsightsAccessScopeAnalysisFindings operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetNetworkInsightsAccessScopeAnalysisFindingsRequest object being passed to this operation.
+     - Returns: The GetNetworkInsightsAccessScopeAnalysisFindingsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getNetworkInsightsAccessScopeAnalysisFindings(input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest) async throws
+     -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getNetworkInsightsAccessScopeAnalysisFindingsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetNetworkInsightsAccessScopeContent operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetNetworkInsightsAccessScopeContentRequest object being passed to this operation.
+     - Returns: The GetNetworkInsightsAccessScopeContentResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getNetworkInsightsAccessScopeContent(input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest) async throws
+     -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getNetworkInsightsAccessScopeContentAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -9181,6 +10221,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try getTransitGatewayMulticastDomainAssociationsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetTransitGatewayPolicyTableAssociations operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPolicyTableAssociationsRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayPolicyTableAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getTransitGatewayPolicyTableAssociations(input: ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsRequest) async throws
+     -> ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getTransitGatewayPolicyTableAssociationsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetTransitGatewayPolicyTableEntries operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetTransitGatewayPolicyTableEntriesRequest object being passed to this operation.
+     - Returns: The GetTransitGatewayPolicyTableEntriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getTransitGatewayPolicyTableEntries(input: ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesRequest) async throws
+     -> ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getTransitGatewayPolicyTableEntriesAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -9467,6 +10559,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try importVolumeAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListImagesInRecycleBin operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListImagesInRecycleBinRequest object being passed to this operation.
+     - Returns: The ListImagesInRecycleBinResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func listImagesInRecycleBin(input: ElasticComputeCloudModel.ListImagesInRecycleBinRequest) async throws
+     -> ElasticComputeCloudModel.ListImagesInRecycleBinResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try listImagesInRecycleBinAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListSnapshotsInRecycleBin operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListSnapshotsInRecycleBinRequest object being passed to this operation.
+     - Returns: The ListSnapshotsInRecycleBinResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func listSnapshotsInRecycleBin(input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest) async throws
+     -> ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try listSnapshotsInRecycleBinAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -9933,6 +11077,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyInstanceMaintenanceOptions operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyInstanceMaintenanceOptionsRequest object being passed to this operation.
+     - Returns: The ModifyInstanceMaintenanceOptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyInstanceMaintenanceOptions(input: ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsRequest) async throws
+     -> ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyInstanceMaintenanceOptionsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ModifyInstanceMetadataOptions operation and asynchronously returning the response.
 
      - Parameters:
@@ -9971,6 +11141,110 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try modifyInstancePlacementAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyIpam operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyIpamRequest object being passed to this operation.
+     - Returns: The ModifyIpamResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyIpam(input: ElasticComputeCloudModel.ModifyIpamRequest) async throws
+     -> ElasticComputeCloudModel.ModifyIpamResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyIpamAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyIpamPool operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyIpamPoolRequest object being passed to this operation.
+     - Returns: The ModifyIpamPoolResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyIpamPool(input: ElasticComputeCloudModel.ModifyIpamPoolRequest) async throws
+     -> ElasticComputeCloudModel.ModifyIpamPoolResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyIpamPoolAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyIpamResourceCidr operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceCidrRequest object being passed to this operation.
+     - Returns: The ModifyIpamResourceCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyIpamResourceCidr(input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) async throws
+     -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyIpamResourceCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyIpamScope operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyIpamScopeRequest object being passed to this operation.
+     - Returns: The ModifyIpamScopeResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyIpamScope(input: ElasticComputeCloudModel.ModifyIpamScopeRequest) async throws
+     -> ElasticComputeCloudModel.ModifyIpamScopeResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyIpamScopeAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -10150,6 +11424,32 @@ public extension ElasticComputeCloudClientProtocol {
                         cont.resume(throwing: error)
                     } else {
                         cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifySnapshotTier operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifySnapshotTierRequest object being passed to this operation.
+     - Returns: The ModifySnapshotTierResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifySnapshotTier(input: ElasticComputeCloudModel.ModifySnapshotTierRequest) async throws
+     -> ElasticComputeCloudModel.ModifySnapshotTierResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifySnapshotTierAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {
@@ -10511,6 +11811,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ModifyVpcEndpointServicePayerResponsibility operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVpcEndpointServicePayerResponsibilityRequest object being passed to this operation.
+     - Returns: The ModifyVpcEndpointServicePayerResponsibilityResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVpcEndpointServicePayerResponsibility(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyVpcEndpointServicePayerResponsibilityAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ModifyVpcEndpointServicePermissions operation and asynchronously returning the response.
 
      - Parameters:
@@ -10745,6 +12071,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the MoveByoipCidrToIpam operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated MoveByoipCidrToIpamRequest object being passed to this operation.
+     - Returns: The MoveByoipCidrToIpamResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func moveByoipCidrToIpam(input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest) async throws
+     -> ElasticComputeCloudModel.MoveByoipCidrToIpamResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try moveByoipCidrToIpamAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ProvisionByoipCidr operation and asynchronously returning the response.
 
      - Parameters:
@@ -10757,6 +12109,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try provisionByoipCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ProvisionIpamPoolCidr operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ProvisionIpamPoolCidrRequest object being passed to this operation.
+     - Returns: The ProvisionIpamPoolCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func provisionIpamPoolCidr(input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest) async throws
+     -> ElasticComputeCloudModel.ProvisionIpamPoolCidrResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try provisionIpamPoolCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ProvisionPublicIpv4PoolCidr operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ProvisionPublicIpv4PoolCidrRequest object being passed to this operation.
+     - Returns: The ProvisionPublicIpv4PoolCidrResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func provisionPublicIpv4PoolCidr(input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest) async throws
+     -> ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try provisionPublicIpv4PoolCidrAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -11139,6 +12543,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try releaseHostsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ReleaseIpamPoolAllocation operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ReleaseIpamPoolAllocationRequest object being passed to this operation.
+     - Returns: The ReleaseIpamPoolAllocationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func releaseIpamPoolAllocation(input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest) async throws
+     -> ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try releaseIpamPoolAllocationAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -11567,6 +12997,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the RestoreImageFromRecycleBin operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated RestoreImageFromRecycleBinRequest object being passed to this operation.
+     - Returns: The RestoreImageFromRecycleBinResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func restoreImageFromRecycleBin(input: ElasticComputeCloudModel.RestoreImageFromRecycleBinRequest) async throws
+     -> ElasticComputeCloudModel.RestoreImageFromRecycleBinResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try restoreImageFromRecycleBinAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the RestoreManagedPrefixListVersion operation and asynchronously returning the response.
 
      - Parameters:
@@ -11579,6 +13035,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try restoreManagedPrefixListVersionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the RestoreSnapshotFromRecycleBin operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated RestoreSnapshotFromRecycleBinRequest object being passed to this operation.
+     - Returns: The RestoreSnapshotFromRecycleBinResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func restoreSnapshotFromRecycleBin(input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest) async throws
+     -> ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try restoreSnapshotFromRecycleBinAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the RestoreSnapshotTier operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated RestoreSnapshotTierRequest object being passed to this operation.
+     - Returns: The RestoreSnapshotTierResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func restoreSnapshotTier(input: ElasticComputeCloudModel.RestoreSnapshotTierRequest) async throws
+     -> ElasticComputeCloudModel.RestoreSnapshotTierResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try restoreSnapshotTierAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -11835,6 +13343,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try startInstancesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the StartNetworkInsightsAccessScopeAnalysis operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated StartNetworkInsightsAccessScopeAnalysisRequest object being passed to this operation.
+     - Returns: The StartNetworkInsightsAccessScopeAnalysisResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func startNetworkInsightsAccessScopeAnalysis(input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest) async throws
+     -> ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try startNetworkInsightsAccessScopeAnalysisAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

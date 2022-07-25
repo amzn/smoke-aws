@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AssumeRoleRequest: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AssumeRoleRequest: Codable, Equatable, Sendable {
     public var durationSeconds: RoleDurationSecondsType?
     public var externalId: ExternalIdType?
     public var policy: SessionPolicyDocumentType?
@@ -87,7 +89,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleResponse: Codable, Equatable {
+public struct AssumeRoleResponse: Codable, Equatable, Sendable {
     public var assumedRoleUser: AssumedRoleUser?
     public var credentials: Credentials?
     public var packedPolicySize: NonNegativeIntegerType?
@@ -118,7 +120,7 @@ public struct AssumeRoleResponse: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleResponseForAssumeRole: Codable, Equatable {
+public struct AssumeRoleResponseForAssumeRole: Codable, Equatable, Sendable {
     public var assumeRoleResult: AssumeRoleResponse
 
     public init(assumeRoleResult: AssumeRoleResponse) {
@@ -134,7 +136,7 @@ public struct AssumeRoleResponseForAssumeRole: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleWithSAMLRequest: Codable, Equatable {
+public struct AssumeRoleWithSAMLRequest: Codable, Equatable, Sendable {
     public var durationSeconds: RoleDurationSecondsType?
     public var policy: SessionPolicyDocumentType?
     public var policyArns: PolicyDescriptorListType?
@@ -174,7 +176,7 @@ public struct AssumeRoleWithSAMLRequest: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
+public struct AssumeRoleWithSAMLResponse: Codable, Equatable, Sendable {
     public var assumedRoleUser: AssumedRoleUser?
     public var audience: Audience?
     public var credentials: Credentials?
@@ -225,7 +227,7 @@ public struct AssumeRoleWithSAMLResponse: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleWithSAMLResponseForAssumeRoleWithSAML: Codable, Equatable {
+public struct AssumeRoleWithSAMLResponseForAssumeRoleWithSAML: Codable, Equatable, Sendable {
     public var assumeRoleWithSAMLResult: AssumeRoleWithSAMLResponse
 
     public init(assumeRoleWithSAMLResult: AssumeRoleWithSAMLResponse) {
@@ -241,7 +243,7 @@ public struct AssumeRoleWithSAMLResponseForAssumeRoleWithSAML: Codable, Equatabl
     }
 }
 
-public struct AssumeRoleWithWebIdentityRequest: Codable, Equatable {
+public struct AssumeRoleWithWebIdentityRequest: Codable, Equatable, Sendable {
     public var durationSeconds: RoleDurationSecondsType?
     public var policy: SessionPolicyDocumentType?
     public var policyArns: PolicyDescriptorListType?
@@ -286,7 +288,7 @@ public struct AssumeRoleWithWebIdentityRequest: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable {
+public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable, Sendable {
     public var assumedRoleUser: AssumedRoleUser?
     public var audience: Audience?
     public var credentials: Credentials?
@@ -330,7 +332,7 @@ public struct AssumeRoleWithWebIdentityResponse: Codable, Equatable {
     }
 }
 
-public struct AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity: Codable, Equatable {
+public struct AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity: Codable, Equatable, Sendable {
     public var assumeRoleWithWebIdentityResult: AssumeRoleWithWebIdentityResponse
 
     public init(assumeRoleWithWebIdentityResult: AssumeRoleWithWebIdentityResponse) {
@@ -346,7 +348,7 @@ public struct AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity: Cod
     }
 }
 
-public struct AssumedRoleUser: Codable, Equatable {
+public struct AssumedRoleUser: Codable, Equatable, Sendable {
     public var arn: ArnType
     public var assumedRoleId: AssumedRoleIdType
 
@@ -367,7 +369,7 @@ public struct AssumedRoleUser: Codable, Equatable {
     }
 }
 
-public struct Credentials: Codable, Equatable {
+public struct Credentials: Codable, Equatable, Sendable {
     public var accessKeyId: AccessKeyIdType
     public var expiration: DateType
     public var secretAccessKey: AccessKeySecretType
@@ -395,7 +397,7 @@ public struct Credentials: Codable, Equatable {
     }
 }
 
-public struct DecodeAuthorizationMessageRequest: Codable, Equatable {
+public struct DecodeAuthorizationMessageRequest: Codable, Equatable, Sendable {
     public var encodedMessage: EncodedMessageType
 
     public init(encodedMessage: EncodedMessageType) {
@@ -411,7 +413,7 @@ public struct DecodeAuthorizationMessageRequest: Codable, Equatable {
     }
 }
 
-public struct DecodeAuthorizationMessageResponse: Codable, Equatable {
+public struct DecodeAuthorizationMessageResponse: Codable, Equatable, Sendable {
     public var decodedMessage: DecodedMessageType?
 
     public init(decodedMessage: DecodedMessageType? = nil) {
@@ -426,7 +428,7 @@ public struct DecodeAuthorizationMessageResponse: Codable, Equatable {
     }
 }
 
-public struct DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage: Codable, Equatable {
+public struct DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage: Codable, Equatable, Sendable {
     public var decodeAuthorizationMessageResult: DecodeAuthorizationMessageResponse
 
     public init(decodeAuthorizationMessageResult: DecodeAuthorizationMessageResponse) {
@@ -442,7 +444,7 @@ public struct DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage: C
     }
 }
 
-public struct ExpiredTokenException: Codable, Equatable {
+public struct ExpiredTokenException: Codable, Equatable, Sendable {
     public var message: ExpiredIdentityTokenMessage?
 
     public init(message: ExpiredIdentityTokenMessage? = nil) {
@@ -457,7 +459,7 @@ public struct ExpiredTokenException: Codable, Equatable {
     }
 }
 
-public struct FederatedUser: Codable, Equatable {
+public struct FederatedUser: Codable, Equatable, Sendable {
     public var arn: ArnType
     public var federatedUserId: FederatedIdType
 
@@ -478,7 +480,7 @@ public struct FederatedUser: Codable, Equatable {
     }
 }
 
-public struct GetAccessKeyInfoRequest: Codable, Equatable {
+public struct GetAccessKeyInfoRequest: Codable, Equatable, Sendable {
     public var accessKeyId: AccessKeyIdType
 
     public init(accessKeyId: AccessKeyIdType) {
@@ -494,7 +496,7 @@ public struct GetAccessKeyInfoRequest: Codable, Equatable {
     }
 }
 
-public struct GetAccessKeyInfoResponse: Codable, Equatable {
+public struct GetAccessKeyInfoResponse: Codable, Equatable, Sendable {
     public var account: AccountType?
 
     public init(account: AccountType? = nil) {
@@ -509,7 +511,7 @@ public struct GetAccessKeyInfoResponse: Codable, Equatable {
     }
 }
 
-public struct GetAccessKeyInfoResponseForGetAccessKeyInfo: Codable, Equatable {
+public struct GetAccessKeyInfoResponseForGetAccessKeyInfo: Codable, Equatable, Sendable {
     public var getAccessKeyInfoResult: GetAccessKeyInfoResponse
 
     public init(getAccessKeyInfoResult: GetAccessKeyInfoResponse) {
@@ -525,7 +527,7 @@ public struct GetAccessKeyInfoResponseForGetAccessKeyInfo: Codable, Equatable {
     }
 }
 
-public struct GetCallerIdentityRequest: Codable, Equatable {
+public struct GetCallerIdentityRequest: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -534,7 +536,7 @@ public struct GetCallerIdentityRequest: Codable, Equatable {
     }
 }
 
-public struct GetCallerIdentityResponse: Codable, Equatable {
+public struct GetCallerIdentityResponse: Codable, Equatable, Sendable {
     public var account: AccountType?
     public var arn: ArnType?
     public var userId: UserIdType?
@@ -558,7 +560,7 @@ public struct GetCallerIdentityResponse: Codable, Equatable {
     }
 }
 
-public struct GetCallerIdentityResponseForGetCallerIdentity: Codable, Equatable {
+public struct GetCallerIdentityResponseForGetCallerIdentity: Codable, Equatable, Sendable {
     public var getCallerIdentityResult: GetCallerIdentityResponse
 
     public init(getCallerIdentityResult: GetCallerIdentityResponse) {
@@ -574,7 +576,7 @@ public struct GetCallerIdentityResponseForGetCallerIdentity: Codable, Equatable 
     }
 }
 
-public struct GetFederationTokenRequest: Codable, Equatable {
+public struct GetFederationTokenRequest: Codable, Equatable, Sendable {
     public var durationSeconds: DurationSecondsType?
     public var name: UserNameType
     public var policy: SessionPolicyDocumentType?
@@ -609,7 +611,7 @@ public struct GetFederationTokenRequest: Codable, Equatable {
     }
 }
 
-public struct GetFederationTokenResponse: Codable, Equatable {
+public struct GetFederationTokenResponse: Codable, Equatable, Sendable {
     public var credentials: Credentials?
     public var federatedUser: FederatedUser?
     public var packedPolicySize: NonNegativeIntegerType?
@@ -635,7 +637,7 @@ public struct GetFederationTokenResponse: Codable, Equatable {
     }
 }
 
-public struct GetFederationTokenResponseForGetFederationToken: Codable, Equatable {
+public struct GetFederationTokenResponseForGetFederationToken: Codable, Equatable, Sendable {
     public var getFederationTokenResult: GetFederationTokenResponse
 
     public init(getFederationTokenResult: GetFederationTokenResponse) {
@@ -651,7 +653,7 @@ public struct GetFederationTokenResponseForGetFederationToken: Codable, Equatabl
     }
 }
 
-public struct GetSessionTokenRequest: Codable, Equatable {
+public struct GetSessionTokenRequest: Codable, Equatable, Sendable {
     public var durationSeconds: DurationSecondsType?
     public var serialNumber: SerialNumberType?
     public var tokenCode: TokenCodeType?
@@ -677,7 +679,7 @@ public struct GetSessionTokenRequest: Codable, Equatable {
     }
 }
 
-public struct GetSessionTokenResponse: Codable, Equatable {
+public struct GetSessionTokenResponse: Codable, Equatable, Sendable {
     public var credentials: Credentials?
 
     public init(credentials: Credentials? = nil) {
@@ -693,7 +695,7 @@ public struct GetSessionTokenResponse: Codable, Equatable {
     }
 }
 
-public struct GetSessionTokenResponseForGetSessionToken: Codable, Equatable {
+public struct GetSessionTokenResponseForGetSessionToken: Codable, Equatable, Sendable {
     public var getSessionTokenResult: GetSessionTokenResponse
 
     public init(getSessionTokenResult: GetSessionTokenResponse) {
@@ -709,7 +711,7 @@ public struct GetSessionTokenResponseForGetSessionToken: Codable, Equatable {
     }
 }
 
-public struct IDPCommunicationErrorException: Codable, Equatable {
+public struct IDPCommunicationErrorException: Codable, Equatable, Sendable {
     public var message: IdpCommunicationErrorMessage?
 
     public init(message: IdpCommunicationErrorMessage? = nil) {
@@ -724,7 +726,7 @@ public struct IDPCommunicationErrorException: Codable, Equatable {
     }
 }
 
-public struct IDPRejectedClaimException: Codable, Equatable {
+public struct IDPRejectedClaimException: Codable, Equatable, Sendable {
     public var message: IdpRejectedClaimMessage?
 
     public init(message: IdpRejectedClaimMessage? = nil) {
@@ -739,7 +741,7 @@ public struct IDPRejectedClaimException: Codable, Equatable {
     }
 }
 
-public struct InvalidAuthorizationMessageException: Codable, Equatable {
+public struct InvalidAuthorizationMessageException: Codable, Equatable, Sendable {
     public var message: InvalidAuthorizationMessage?
 
     public init(message: InvalidAuthorizationMessage? = nil) {
@@ -754,7 +756,7 @@ public struct InvalidAuthorizationMessageException: Codable, Equatable {
     }
 }
 
-public struct InvalidIdentityTokenException: Codable, Equatable {
+public struct InvalidIdentityTokenException: Codable, Equatable, Sendable {
     public var message: InvalidIdentityTokenMessage?
 
     public init(message: InvalidIdentityTokenMessage? = nil) {
@@ -769,7 +771,7 @@ public struct InvalidIdentityTokenException: Codable, Equatable {
     }
 }
 
-public struct MalformedPolicyDocumentException: Codable, Equatable {
+public struct MalformedPolicyDocumentException: Codable, Equatable, Sendable {
     public var message: MalformedPolicyDocumentMessage?
 
     public init(message: MalformedPolicyDocumentMessage? = nil) {
@@ -784,7 +786,7 @@ public struct MalformedPolicyDocumentException: Codable, Equatable {
     }
 }
 
-public struct PackedPolicyTooLargeException: Codable, Equatable {
+public struct PackedPolicyTooLargeException: Codable, Equatable, Sendable {
     public var message: PackedPolicyTooLargeMessage?
 
     public init(message: PackedPolicyTooLargeMessage? = nil) {
@@ -799,7 +801,7 @@ public struct PackedPolicyTooLargeException: Codable, Equatable {
     }
 }
 
-public struct PolicyDescriptorType: Codable, Equatable {
+public struct PolicyDescriptorType: Codable, Equatable, Sendable {
     public var arn: ArnType?
 
     public init(arn: ArnType? = nil) {
@@ -815,7 +817,7 @@ public struct PolicyDescriptorType: Codable, Equatable {
     }
 }
 
-public struct RegionDisabledException: Codable, Equatable {
+public struct RegionDisabledException: Codable, Equatable, Sendable {
     public var message: RegionDisabledMessage?
 
     public init(message: RegionDisabledMessage? = nil) {
@@ -830,7 +832,7 @@ public struct RegionDisabledException: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKeyType
     public var value: TagValueType
 

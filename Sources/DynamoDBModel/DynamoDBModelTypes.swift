@@ -30,7 +30,7 @@ public typealias ArchivalReason = String
 /**
  Enumeration restricting the values of the AttributeAction field.
  */
-public enum AttributeAction: String, Codable, CustomStringConvertible {
+public enum AttributeAction: String, Codable, CustomStringConvertible, Sendable {
     case add = "ADD"
     case delete = "DELETE"
     case put = "PUT"
@@ -115,7 +115,7 @@ public typealias BackupSizeBytes = Int
 /**
  Enumeration restricting the values of the BackupStatus field.
  */
-public enum BackupStatus: String, Codable, CustomStringConvertible {
+public enum BackupStatus: String, Codable, CustomStringConvertible, Sendable {
     case available = "AVAILABLE"
     case creating = "CREATING"
     case deleted = "DELETED"
@@ -135,7 +135,7 @@ public typealias BackupSummaries = [BackupSummary]
 /**
  Enumeration restricting the values of the BackupType field.
  */
-public enum BackupType: String, Codable, CustomStringConvertible {
+public enum BackupType: String, Codable, CustomStringConvertible, Sendable {
     case awsBackup = "AWS_BACKUP"
     case system = "SYSTEM"
     case user = "USER"
@@ -150,7 +150,7 @@ public enum BackupType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the BackupTypeFilter field.
  */
-public enum BackupTypeFilter: String, Codable, CustomStringConvertible {
+public enum BackupTypeFilter: String, Codable, CustomStringConvertible, Sendable {
     case all = "ALL"
     case awsBackup = "AWS_BACKUP"
     case system = "SYSTEM"
@@ -181,7 +181,7 @@ public typealias BatchGetResponseMap = [TableName: ItemList]
 /**
  Enumeration restricting the values of the BatchStatementErrorCodeEnum field.
  */
-public enum BatchStatementErrorCodeEnum: String, Codable, CustomStringConvertible {
+public enum BatchStatementErrorCodeEnum: String, Codable, CustomStringConvertible, Sendable {
     case accessdenied = "AccessDenied"
     case conditionalcheckfailed = "ConditionalCheckFailed"
     case duplicateitem = "DuplicateItem"
@@ -214,7 +214,7 @@ public typealias BilledSizeBytes = Int
 /**
  Enumeration restricting the values of the BillingMode field.
  */
-public enum BillingMode: String, Codable, CustomStringConvertible {
+public enum BillingMode: String, Codable, CustomStringConvertible, Sendable {
     case payPerRequest = "PAY_PER_REQUEST"
     case provisioned = "PROVISIONED"
 
@@ -268,7 +268,7 @@ public typealias Code = String
 /**
  Enumeration restricting the values of the ComparisonOperator field.
  */
-public enum ComparisonOperator: String, Codable, CustomStringConvertible {
+public enum ComparisonOperator: String, Codable, CustomStringConvertible, Sendable {
     case beginsWith = "BEGINS_WITH"
     case between = "BETWEEN"
     case contains = "CONTAINS"
@@ -298,7 +298,7 @@ public typealias ConditionExpression = String
 /**
  Enumeration restricting the values of the ConditionalOperator field.
  */
-public enum ConditionalOperator: String, Codable, CustomStringConvertible {
+public enum ConditionalOperator: String, Codable, CustomStringConvertible, Sendable {
     case and = "AND"
     case or = "OR"
 
@@ -327,7 +327,7 @@ public typealias ConsumedCapacityUnits = Double
 /**
  Enumeration restricting the values of the ContinuousBackupsStatus field.
  */
-public enum ContinuousBackupsStatus: String, Codable, CustomStringConvertible {
+public enum ContinuousBackupsStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -341,7 +341,7 @@ public enum ContinuousBackupsStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ContributorInsightsAction field.
  */
-public enum ContributorInsightsAction: String, Codable, CustomStringConvertible {
+public enum ContributorInsightsAction: String, Codable, CustomStringConvertible, Sendable {
     case disable = "DISABLE"
     case enable = "ENABLE"
 
@@ -365,7 +365,7 @@ public typealias ContributorInsightsRuleList = [ContributorInsightsRule]
 /**
  Enumeration restricting the values of the ContributorInsightsStatus field.
  */
-public enum ContributorInsightsStatus: String, Codable, CustomStringConvertible {
+public enum ContributorInsightsStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case disabling = "DISABLING"
     case enabled = "ENABLED"
@@ -392,7 +392,7 @@ public typealias Date = String
 /**
  Enumeration restricting the values of the DestinationStatus field.
  */
-public enum DestinationStatus: String, Codable, CustomStringConvertible {
+public enum DestinationStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case disabled = "DISABLED"
     case disabling = "DISABLING"
@@ -444,7 +444,7 @@ public typealias ExportEndTime = String
 /**
  Enumeration restricting the values of the ExportFormat field.
  */
-public enum ExportFormat: String, Codable, CustomStringConvertible {
+public enum ExportFormat: String, Codable, CustomStringConvertible, Sendable {
     case dynamodbJson = "DYNAMODB_JSON"
     case ion = "ION"
 
@@ -473,7 +473,7 @@ public typealias ExportStartTime = String
 /**
  Enumeration restricting the values of the ExportStatus field.
  */
-public enum ExportStatus: String, Codable, CustomStringConvertible {
+public enum ExportStatus: String, Codable, CustomStringConvertible, Sendable {
     case completed = "COMPLETED"
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
@@ -573,7 +573,7 @@ public typealias GlobalTableList = [GlobalTable]
 /**
  Enumeration restricting the values of the GlobalTableStatus field.
  */
-public enum GlobalTableStatus: String, Codable, CustomStringConvertible {
+public enum GlobalTableStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case creating = "CREATING"
     case deleting = "DELETING"
@@ -594,7 +594,7 @@ public typealias IndexName = String
 /**
  Enumeration restricting the values of the IndexStatus field.
  */
-public enum IndexStatus: String, Codable, CustomStringConvertible {
+public enum IndexStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case creating = "CREATING"
     case deleting = "DELETING"
@@ -700,7 +700,7 @@ public typealias KeySchemaAttributeName = String
 /**
  Enumeration restricting the values of the KeyType field.
  */
-public enum KeyType: String, Codable, CustomStringConvertible {
+public enum KeyType: String, Codable, CustomStringConvertible, Sendable {
     case hash = "HASH"
     case range = "RANGE"
 
@@ -829,7 +829,7 @@ public typealias PartiQLStatement = String
 /**
  Enumeration restricting the values of the PointInTimeRecoveryStatus field.
  */
-public enum PointInTimeRecoveryStatus: String, Codable, CustomStringConvertible {
+public enum PointInTimeRecoveryStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case enabled = "ENABLED"
 
@@ -863,7 +863,7 @@ public typealias ProjectionExpression = String
 /**
  Enumeration restricting the values of the ProjectionType field.
  */
-public enum ProjectionType: String, Codable, CustomStringConvertible {
+public enum ProjectionType: String, Codable, CustomStringConvertible, Sendable {
     case all = "ALL"
     case include = "INCLUDE"
     case keysOnly = "KEYS_ONLY"
@@ -948,7 +948,7 @@ public typealias ReplicaSettingsUpdateList = [ReplicaSettingsUpdate]
 /**
  Enumeration restricting the values of the ReplicaStatus field.
  */
-public enum ReplicaStatus: String, Codable, CustomStringConvertible {
+public enum ReplicaStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case creating = "CREATING"
     case creationFailed = "CREATION_FAILED"
@@ -997,7 +997,7 @@ public typealias RestoreInProgress = Bool
 /**
  Enumeration restricting the values of the ReturnConsumedCapacity field.
  */
-public enum ReturnConsumedCapacity: String, Codable, CustomStringConvertible {
+public enum ReturnConsumedCapacity: String, Codable, CustomStringConvertible, Sendable {
     case indexes = "INDEXES"
     case none = "NONE"
     case total = "TOTAL"
@@ -1012,7 +1012,7 @@ public enum ReturnConsumedCapacity: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ReturnItemCollectionMetrics field.
  */
-public enum ReturnItemCollectionMetrics: String, Codable, CustomStringConvertible {
+public enum ReturnItemCollectionMetrics: String, Codable, CustomStringConvertible, Sendable {
     case none = "NONE"
     case size = "SIZE"
 
@@ -1026,7 +1026,7 @@ public enum ReturnItemCollectionMetrics: String, Codable, CustomStringConvertibl
 /**
  Enumeration restricting the values of the ReturnValue field.
  */
-public enum ReturnValue: String, Codable, CustomStringConvertible {
+public enum ReturnValue: String, Codable, CustomStringConvertible, Sendable {
     case allNew = "ALL_NEW"
     case allOld = "ALL_OLD"
     case none = "NONE"
@@ -1043,7 +1043,7 @@ public enum ReturnValue: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ReturnValuesOnConditionCheckFailure field.
  */
-public enum ReturnValuesOnConditionCheckFailure: String, Codable, CustomStringConvertible {
+public enum ReturnValuesOnConditionCheckFailure: String, Codable, CustomStringConvertible, Sendable {
     case allOld = "ALL_OLD"
     case none = "NONE"
 
@@ -1072,7 +1072,7 @@ public typealias S3Prefix = String
 /**
  Enumeration restricting the values of the S3SseAlgorithm field.
  */
-public enum S3SseAlgorithm: String, Codable, CustomStringConvertible {
+public enum S3SseAlgorithm: String, Codable, CustomStringConvertible, Sendable {
     case aes256 = "AES256"
     case kms = "KMS"
 
@@ -1096,7 +1096,7 @@ public typealias SSEEnabled = Bool
 /**
  Enumeration restricting the values of the SSEStatus field.
  */
-public enum SSEStatus: String, Codable, CustomStringConvertible {
+public enum SSEStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case disabling = "DISABLING"
     case enabled = "ENABLED"
@@ -1113,7 +1113,7 @@ public enum SSEStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the SSEType field.
  */
-public enum SSEType: String, Codable, CustomStringConvertible {
+public enum SSEType: String, Codable, CustomStringConvertible, Sendable {
     case aes256 = "AES256"
     case kms = "KMS"
 
@@ -1127,7 +1127,7 @@ public enum SSEType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ScalarAttributeType field.
  */
-public enum ScalarAttributeType: String, Codable, CustomStringConvertible {
+public enum ScalarAttributeType: String, Codable, CustomStringConvertible, Sendable {
     case b = "B"
     case n = "N"
     case s = "S"
@@ -1157,7 +1157,7 @@ public typealias SecondaryIndexesCapacityMap = [IndexName: Capacity]
 /**
  Enumeration restricting the values of the Select field.
  */
-public enum Select: String, Codable, CustomStringConvertible {
+public enum Select: String, Codable, CustomStringConvertible, Sendable {
     case allAttributes = "ALL_ATTRIBUTES"
     case allProjectedAttributes = "ALL_PROJECTED_ATTRIBUTES"
     case count = "COUNT"
@@ -1183,7 +1183,7 @@ public typealias StreamEnabled = Bool
 /**
  Enumeration restricting the values of the StreamViewType field.
  */
-public enum StreamViewType: String, Codable, CustomStringConvertible {
+public enum StreamViewType: String, Codable, CustomStringConvertible, Sendable {
     case keysOnly = "KEYS_ONLY"
     case newAndOldImages = "NEW_AND_OLD_IMAGES"
     case newImage = "NEW_IMAGE"
@@ -1214,7 +1214,7 @@ public typealias TableArn = String
 /**
  Enumeration restricting the values of the TableClass field.
  */
-public enum TableClass: String, Codable, CustomStringConvertible {
+public enum TableClass: String, Codable, CustomStringConvertible, Sendable {
     case standard = "STANDARD"
     case standardInfrequentAccess = "STANDARD_INFREQUENT_ACCESS"
 
@@ -1248,7 +1248,7 @@ public typealias TableNameList = [TableName]
 /**
  Enumeration restricting the values of the TableStatus field.
  */
-public enum TableStatus: String, Codable, CustomStringConvertible {
+public enum TableStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case archived = "ARCHIVED"
     case archiving = "ARCHIVING"
@@ -1307,7 +1307,7 @@ public typealias TimeToLiveEnabled = Bool
 /**
  Enumeration restricting the values of the TimeToLiveStatus field.
  */
-public enum TimeToLiveStatus: String, Codable, CustomStringConvertible {
+public enum TimeToLiveStatus: String, Codable, CustomStringConvertible, Sendable {
     case disabled = "DISABLED"
     case disabling = "DISABLING"
     case enabled = "ENABLED"

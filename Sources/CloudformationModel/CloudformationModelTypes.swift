@@ -35,7 +35,7 @@ public typealias Account = String
 /**
  Enumeration restricting the values of the AccountFilterType field.
  */
-public enum AccountFilterType: String, Codable, CustomStringConvertible {
+public enum AccountFilterType: String, Codable, CustomStringConvertible, Sendable {
     case difference = "DIFFERENCE"
     case intersection = "INTERSECTION"
     case none = "NONE"
@@ -51,7 +51,7 @@ public enum AccountFilterType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the AccountGateStatus field.
  */
-public enum AccountGateStatus: String, Codable, CustomStringConvertible {
+public enum AccountGateStatus: String, Codable, CustomStringConvertible, Sendable {
     case failed = "FAILED"
     case skipped = "SKIPPED"
     case succeeded = "SUCCEEDED"
@@ -126,7 +126,7 @@ public typealias BoxedMaxResults = Int
 /**
  Enumeration restricting the values of the CallAs field.
  */
-public enum CallAs: String, Codable, CustomStringConvertible {
+public enum CallAs: String, Codable, CustomStringConvertible, Sendable {
     case delegatedAdmin = "DELEGATED_ADMIN"
     case `self` = "SELF"
 
@@ -150,7 +150,7 @@ public typealias CapabilitiesReason = String
 /**
  Enumeration restricting the values of the Capability field.
  */
-public enum Capability: String, Codable, CustomStringConvertible {
+public enum Capability: String, Codable, CustomStringConvertible, Sendable {
     case capabilityAutoExpand = "CAPABILITY_AUTO_EXPAND"
     case capabilityIam = "CAPABILITY_IAM"
     case capabilityNamedIam = "CAPABILITY_NAMED_IAM"
@@ -165,7 +165,7 @@ public enum Capability: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Category field.
  */
-public enum Category: String, Codable, CustomStringConvertible {
+public enum Category: String, Codable, CustomStringConvertible, Sendable {
     case activated = "ACTIVATED"
     case awsTypes = "AWS_TYPES"
     case registered = "REGISTERED"
@@ -186,7 +186,7 @@ public typealias CausingEntity = String
 /**
  Enumeration restricting the values of the ChangeAction field.
  */
-public enum ChangeAction: String, Codable, CustomStringConvertible {
+public enum ChangeAction: String, Codable, CustomStringConvertible, Sendable {
     case add = "Add"
     case dynamic = "Dynamic"
     case `import` = "Import"
@@ -208,7 +208,7 @@ public typealias ChangeSetHooks = [ChangeSetHook]
 /**
  Enumeration restricting the values of the ChangeSetHooksStatus field.
  */
-public enum ChangeSetHooksStatus: String, Codable, CustomStringConvertible {
+public enum ChangeSetHooksStatus: String, Codable, CustomStringConvertible, Sendable {
     case planned = "PLANNED"
     case planning = "PLANNING"
     case unavailable = "UNAVAILABLE"
@@ -238,7 +238,7 @@ public typealias ChangeSetNameOrId = String
 /**
  Enumeration restricting the values of the ChangeSetStatus field.
  */
-public enum ChangeSetStatus: String, Codable, CustomStringConvertible {
+public enum ChangeSetStatus: String, Codable, CustomStringConvertible, Sendable {
     case createComplete = "CREATE_COMPLETE"
     case createInProgress = "CREATE_IN_PROGRESS"
     case createPending = "CREATE_PENDING"
@@ -268,7 +268,7 @@ public typealias ChangeSetSummaries = [ChangeSetSummary]
 /**
  Enumeration restricting the values of the ChangeSetType field.
  */
-public enum ChangeSetType: String, Codable, CustomStringConvertible {
+public enum ChangeSetType: String, Codable, CustomStringConvertible, Sendable {
     case create = "CREATE"
     case `import` = "IMPORT"
     case update = "UPDATE"
@@ -283,7 +283,7 @@ public enum ChangeSetType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ChangeSource field.
  */
-public enum ChangeSource: String, Codable, CustomStringConvertible {
+public enum ChangeSource: String, Codable, CustomStringConvertible, Sendable {
     case automatic = "Automatic"
     case directModification = "DirectModification"
     case parameterReference = "ParameterReference"
@@ -300,7 +300,7 @@ public enum ChangeSource: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ChangeType field.
  */
-public enum ChangeType: String, Codable, CustomStringConvertible {
+public enum ChangeType: String, Codable, CustomStringConvertible, Sendable {
     case resource = "Resource"
 
     public var description: String {
@@ -348,7 +348,7 @@ public typealias DeletionTime = String
 /**
  Enumeration restricting the values of the DeprecatedStatus field.
  */
-public enum DeprecatedStatus: String, Codable, CustomStringConvertible {
+public enum DeprecatedStatus: String, Codable, CustomStringConvertible, Sendable {
     case deprecated = "DEPRECATED"
     case live = "LIVE"
 
@@ -367,7 +367,7 @@ public typealias Description = String
 /**
  Enumeration restricting the values of the DifferenceType field.
  */
-public enum DifferenceType: String, Codable, CustomStringConvertible {
+public enum DifferenceType: String, Codable, CustomStringConvertible, Sendable {
     case add = "ADD"
     case notEqual = "NOT_EQUAL"
     case remove = "REMOVE"
@@ -407,7 +407,7 @@ public typealias ErrorMessage = String
 /**
  Enumeration restricting the values of the EvaluationType field.
  */
-public enum EvaluationType: String, Codable, CustomStringConvertible {
+public enum EvaluationType: String, Codable, CustomStringConvertible, Sendable {
     case dynamic = "Dynamic"
     case `static` = "Static"
 
@@ -431,7 +431,7 @@ public typealias ExecutionRoleName = String
 /**
  Enumeration restricting the values of the ExecutionStatus field.
  */
-public enum ExecutionStatus: String, Codable, CustomStringConvertible {
+public enum ExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case available = "AVAILABLE"
     case executeComplete = "EXECUTE_COMPLETE"
     case executeFailed = "EXECUTE_FAILED"
@@ -479,7 +479,7 @@ public typealias FailureTolerancePercentage = Int
 /**
  Enumeration restricting the values of the HandlerErrorCode field.
  */
-public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
+public enum HandlerErrorCode: String, Codable, CustomStringConvertible, Sendable {
     case accessDenied = "AccessDenied"
     case alreadyExists = "AlreadyExists"
     case generalServiceException = "GeneralServiceException"
@@ -509,7 +509,7 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the HookFailureMode field.
  */
-public enum HookFailureMode: String, Codable, CustomStringConvertible {
+public enum HookFailureMode: String, Codable, CustomStringConvertible, Sendable {
     case fail = "FAIL"
     case warn = "WARN"
 
@@ -528,7 +528,7 @@ public typealias HookInvocationCount = Int
 /**
  Enumeration restricting the values of the HookInvocationPoint field.
  */
-public enum HookInvocationPoint: String, Codable, CustomStringConvertible {
+public enum HookInvocationPoint: String, Codable, CustomStringConvertible, Sendable {
     case preProvision = "PRE_PROVISION"
 
     public var description: String {
@@ -541,7 +541,7 @@ public enum HookInvocationPoint: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the HookStatus field.
  */
-public enum HookStatus: String, Codable, CustomStringConvertible {
+public enum HookStatus: String, Codable, CustomStringConvertible, Sendable {
     case hookCompleteFailed = "HOOK_COMPLETE_FAILED"
     case hookCompleteSucceeded = "HOOK_COMPLETE_SUCCEEDED"
     case hookFailed = "HOOK_FAILED"
@@ -562,7 +562,7 @@ public typealias HookStatusReason = String
 /**
  Enumeration restricting the values of the HookTargetType field.
  */
-public enum HookTargetType: String, Codable, CustomStringConvertible {
+public enum HookTargetType: String, Codable, CustomStringConvertible, Sendable {
     case resource = "RESOURCE"
 
     public var description: String {
@@ -600,7 +600,7 @@ public typealias HookTypeVersionId = String
 /**
  Enumeration restricting the values of the IdentityProvider field.
  */
-public enum IdentityProvider: String, Codable, CustomStringConvertible {
+public enum IdentityProvider: String, Codable, CustomStringConvertible, Sendable {
     case awsMarketplace = "AWS_Marketplace"
     case bitbucket = "Bitbucket"
     case github = "GitHub"
@@ -745,7 +745,7 @@ public typealias NotificationARNs = [NotificationARN]
 /**
  Enumeration restricting the values of the OnFailure field.
  */
-public enum OnFailure: String, Codable, CustomStringConvertible {
+public enum OnFailure: String, Codable, CustomStringConvertible, Sendable {
     case delete = "DELETE"
     case doNothing = "DO_NOTHING"
     case rollback = "ROLLBACK"
@@ -760,7 +760,7 @@ public enum OnFailure: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the OperationStatus field.
  */
-public enum OperationStatus: String, Codable, CustomStringConvertible {
+public enum OperationStatus: String, Codable, CustomStringConvertible, Sendable {
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
     case pending = "PENDING"
@@ -831,7 +831,7 @@ public typealias Parameters = [Parameter]
 /**
  Enumeration restricting the values of the PermissionModels field.
  */
-public enum PermissionModels: String, Codable, CustomStringConvertible {
+public enum PermissionModels: String, Codable, CustomStringConvertible, Sendable {
     case selfManaged = "SELF_MANAGED"
     case serviceManaged = "SERVICE_MANAGED"
 
@@ -885,7 +885,7 @@ public typealias PropertyValue = String
 /**
  Enumeration restricting the values of the ProvisioningType field.
  */
-public enum ProvisioningType: String, Codable, CustomStringConvertible {
+public enum ProvisioningType: String, Codable, CustomStringConvertible, Sendable {
     case fullyMutable = "FULLY_MUTABLE"
     case immutable = "IMMUTABLE"
     case nonProvisionable = "NON_PROVISIONABLE"
@@ -920,7 +920,7 @@ public typealias PublisherProfile = String
 /**
  Enumeration restricting the values of the PublisherStatus field.
  */
-public enum PublisherStatus: String, Codable, CustomStringConvertible {
+public enum PublisherStatus: String, Codable, CustomStringConvertible, Sendable {
     case unverified = "UNVERIFIED"
     case verified = "VERIFIED"
 
@@ -944,7 +944,7 @@ public typealias Region = String
 /**
  Enumeration restricting the values of the RegionConcurrencyType field.
  */
-public enum RegionConcurrencyType: String, Codable, CustomStringConvertible {
+public enum RegionConcurrencyType: String, Codable, CustomStringConvertible, Sendable {
     case parallel = "PARALLEL"
     case sequential = "SEQUENTIAL"
 
@@ -963,7 +963,7 @@ public typealias RegionList = [Region]
 /**
  Enumeration restricting the values of the RegistrationStatus field.
  */
-public enum RegistrationStatus: String, Codable, CustomStringConvertible {
+public enum RegistrationStatus: String, Codable, CustomStringConvertible, Sendable {
     case complete = "COMPLETE"
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
@@ -988,7 +988,7 @@ public typealias RegistrationTokenList = [RegistrationToken]
 /**
  Enumeration restricting the values of the RegistryType field.
  */
-public enum RegistryType: String, Codable, CustomStringConvertible {
+public enum RegistryType: String, Codable, CustomStringConvertible, Sendable {
     case hook = "HOOK"
     case module = "MODULE"
     case resource = "RESOURCE"
@@ -1003,7 +1003,7 @@ public enum RegistryType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Replacement field.
  */
-public enum Replacement: String, Codable, CustomStringConvertible {
+public enum Replacement: String, Codable, CustomStringConvertible, Sendable {
     case conditional = "Conditional"
     case `false` = "False"
     case `true` = "True"
@@ -1028,7 +1028,7 @@ public typealias RequiredActivatedTypes = [RequiredActivatedType]
 /**
  Enumeration restricting the values of the RequiresRecreation field.
  */
-public enum RequiresRecreation: String, Codable, CustomStringConvertible {
+public enum RequiresRecreation: String, Codable, CustomStringConvertible, Sendable {
     case always = "Always"
     case conditionally = "Conditionally"
     case never = "Never"
@@ -1043,7 +1043,7 @@ public enum RequiresRecreation: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the ResourceAttribute field.
  */
-public enum ResourceAttribute: String, Codable, CustomStringConvertible {
+public enum ResourceAttribute: String, Codable, CustomStringConvertible, Sendable {
     case creationPolicy = "CreationPolicy"
     case deletionPolicy = "DeletionPolicy"
     case metadata = "Metadata"
@@ -1101,7 +1101,7 @@ public typealias ResourceProperties = String
 /**
  Enumeration restricting the values of the ResourceSignalStatus field.
  */
-public enum ResourceSignalStatus: String, Codable, CustomStringConvertible {
+public enum ResourceSignalStatus: String, Codable, CustomStringConvertible, Sendable {
     case failure = "FAILURE"
     case success = "SUCCESS"
 
@@ -1120,7 +1120,7 @@ public typealias ResourceSignalUniqueId = String
 /**
  Enumeration restricting the values of the ResourceStatus field.
  */
-public enum ResourceStatus: String, Codable, CustomStringConvertible {
+public enum ResourceStatus: String, Codable, CustomStringConvertible, Sendable {
     case createComplete = "CREATE_COMPLETE"
     case createFailed = "CREATE_FAILED"
     case createInProgress = "CREATE_IN_PROGRESS"
@@ -1239,7 +1239,7 @@ public typealias StackDriftDetectionId = String
 /**
  Enumeration restricting the values of the StackDriftDetectionStatus field.
  */
-public enum StackDriftDetectionStatus: String, Codable, CustomStringConvertible {
+public enum StackDriftDetectionStatus: String, Codable, CustomStringConvertible, Sendable {
     case detectionComplete = "DETECTION_COMPLETE"
     case detectionFailed = "DETECTION_FAILED"
     case detectionInProgress = "DETECTION_IN_PROGRESS"
@@ -1259,7 +1259,7 @@ public typealias StackDriftDetectionStatusReason = String
 /**
  Enumeration restricting the values of the StackDriftStatus field.
  */
-public enum StackDriftStatus: String, Codable, CustomStringConvertible {
+public enum StackDriftStatus: String, Codable, CustomStringConvertible, Sendable {
     case drifted = "DRIFTED"
     case inSync = "IN_SYNC"
     case notChecked = "NOT_CHECKED"
@@ -1295,7 +1295,7 @@ public typealias StackIdsUrl = String
 /**
  Enumeration restricting the values of the StackInstanceDetailedStatus field.
  */
-public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertible {
+public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertible, Sendable {
     case cancelled = "CANCELLED"
     case failed = "FAILED"
     case inoperable = "INOPERABLE"
@@ -1313,7 +1313,7 @@ public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertibl
 /**
  Enumeration restricting the values of the StackInstanceFilterName field.
  */
-public enum StackInstanceFilterName: String, Codable, CustomStringConvertible {
+public enum StackInstanceFilterName: String, Codable, CustomStringConvertible, Sendable {
     case detailedStatus = "DETAILED_STATUS"
 
     public var description: String {
@@ -1336,7 +1336,7 @@ public typealias StackInstanceFilters = [StackInstanceFilter]
 /**
  Enumeration restricting the values of the StackInstanceStatus field.
  */
-public enum StackInstanceStatus: String, Codable, CustomStringConvertible {
+public enum StackInstanceStatus: String, Codable, CustomStringConvertible, Sendable {
     case current = "CURRENT"
     case inoperable = "INOPERABLE"
     case outdated = "OUTDATED"
@@ -1386,7 +1386,7 @@ public typealias StackPolicyURL = String
 /**
  Enumeration restricting the values of the StackResourceDriftStatus field.
  */
-public enum StackResourceDriftStatus: String, Codable, CustomStringConvertible {
+public enum StackResourceDriftStatus: String, Codable, CustomStringConvertible, Sendable {
     case deleted = "DELETED"
     case inSync = "IN_SYNC"
     case modified = "MODIFIED"
@@ -1427,7 +1427,7 @@ public typealias StackSetARN = String
 /**
  Enumeration restricting the values of the StackSetDriftDetectionStatus field.
  */
-public enum StackSetDriftDetectionStatus: String, Codable, CustomStringConvertible {
+public enum StackSetDriftDetectionStatus: String, Codable, CustomStringConvertible, Sendable {
     case completed = "COMPLETED"
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
@@ -1444,7 +1444,7 @@ public enum StackSetDriftDetectionStatus: String, Codable, CustomStringConvertib
 /**
  Enumeration restricting the values of the StackSetDriftStatus field.
  */
-public enum StackSetDriftStatus: String, Codable, CustomStringConvertible {
+public enum StackSetDriftStatus: String, Codable, CustomStringConvertible, Sendable {
     case drifted = "DRIFTED"
     case inSync = "IN_SYNC"
     case notChecked = "NOT_CHECKED"
@@ -1474,7 +1474,7 @@ public typealias StackSetNameOrId = String
 /**
  Enumeration restricting the values of the StackSetOperationAction field.
  */
-public enum StackSetOperationAction: String, Codable, CustomStringConvertible {
+public enum StackSetOperationAction: String, Codable, CustomStringConvertible, Sendable {
     case create = "CREATE"
     case delete = "DELETE"
     case detectDrift = "DETECT_DRIFT"
@@ -1490,7 +1490,7 @@ public enum StackSetOperationAction: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the StackSetOperationResultStatus field.
  */
-public enum StackSetOperationResultStatus: String, Codable, CustomStringConvertible {
+public enum StackSetOperationResultStatus: String, Codable, CustomStringConvertible, Sendable {
     case cancelled = "CANCELLED"
     case failed = "FAILED"
     case pending = "PENDING"
@@ -1512,7 +1512,7 @@ public typealias StackSetOperationResultSummaries = [StackSetOperationResultSumm
 /**
  Enumeration restricting the values of the StackSetOperationStatus field.
  */
-public enum StackSetOperationStatus: String, Codable, CustomStringConvertible {
+public enum StackSetOperationStatus: String, Codable, CustomStringConvertible, Sendable {
     case failed = "FAILED"
     case queued = "QUEUED"
     case running = "RUNNING"
@@ -1540,7 +1540,7 @@ public typealias StackSetOperationSummaries = [StackSetOperationSummary]
 /**
  Enumeration restricting the values of the StackSetStatus field.
  */
-public enum StackSetStatus: String, Codable, CustomStringConvertible {
+public enum StackSetStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case deleted = "DELETED"
 
@@ -1559,7 +1559,7 @@ public typealias StackSetSummaries = [StackSetSummary]
 /**
  Enumeration restricting the values of the StackStatus field.
  */
-public enum StackStatus: String, Codable, CustomStringConvertible {
+public enum StackStatus: String, Codable, CustomStringConvertible, Sendable {
     case createComplete = "CREATE_COMPLETE"
     case createFailed = "CREATE_FAILED"
     case createInProgress = "CREATE_IN_PROGRESS"
@@ -1664,7 +1664,7 @@ public typealias TemplateParameters = [TemplateParameter]
 /**
  Enumeration restricting the values of the TemplateStage field.
  */
-public enum TemplateStage: String, Codable, CustomStringConvertible {
+public enum TemplateStage: String, Codable, CustomStringConvertible, Sendable {
     case original = "Original"
     case processed = "Processed"
 
@@ -1683,7 +1683,7 @@ public typealias TemplateURL = String
 /**
  Enumeration restricting the values of the ThirdPartyType field.
  */
-public enum ThirdPartyType: String, Codable, CustomStringConvertible {
+public enum ThirdPartyType: String, Codable, CustomStringConvertible, Sendable {
     case hook = "HOOK"
     case module = "MODULE"
     case resource = "RESOURCE"
@@ -1788,7 +1788,7 @@ public typealias TypeSummaries = [TypeSummary]
 /**
  Enumeration restricting the values of the TypeTestsStatus field.
  */
-public enum TypeTestsStatus: String, Codable, CustomStringConvertible {
+public enum TypeTestsStatus: String, Codable, CustomStringConvertible, Sendable {
     case failed = "FAILED"
     case inProgress = "IN_PROGRESS"
     case notTested = "NOT_TESTED"
@@ -1849,7 +1849,7 @@ public typealias Version = String
 /**
  Enumeration restricting the values of the VersionBump field.
  */
-public enum VersionBump: String, Codable, CustomStringConvertible {
+public enum VersionBump: String, Codable, CustomStringConvertible, Sendable {
     case major = "MAJOR"
     case minor = "MINOR"
 
@@ -1863,7 +1863,7 @@ public enum VersionBump: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the Visibility field.
  */
-public enum Visibility: String, Codable, CustomStringConvertible {
+public enum Visibility: String, Codable, CustomStringConvertible, Sendable {
     case `private` = "PRIVATE"
     case `public` = "PUBLIC"
 

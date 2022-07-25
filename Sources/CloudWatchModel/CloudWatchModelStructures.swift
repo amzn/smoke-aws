@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AlarmHistoryItem: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AlarmHistoryItem: Codable, Equatable, Sendable {
     public var alarmName: AlarmName?
     public var alarmType: AlarmType?
     public var historyData: HistoryData?
@@ -60,7 +62,7 @@ public struct AlarmHistoryItem: Codable, Equatable {
     }
 }
 
-public struct AnomalyDetector: Codable, Equatable {
+public struct AnomalyDetector: Codable, Equatable, Sendable {
     public var configuration: AnomalyDetectorConfiguration?
     public var metricMathAnomalyDetector: MetricMathAnomalyDetector?
     public var singleMetricAnomalyDetector: SingleMetricAnomalyDetector?
@@ -90,7 +92,7 @@ public struct AnomalyDetector: Codable, Equatable {
     }
 }
 
-public struct AnomalyDetectorConfiguration: Codable, Equatable {
+public struct AnomalyDetectorConfiguration: Codable, Equatable, Sendable {
     public var excludedTimeRanges: AnomalyDetectorExcludedTimeRanges?
     public var metricTimezone: AnomalyDetectorMetricTimezone?
 
@@ -110,7 +112,7 @@ public struct AnomalyDetectorConfiguration: Codable, Equatable {
     }
 }
 
-public struct CompositeAlarm: Codable, Equatable {
+public struct CompositeAlarm: Codable, Equatable, Sendable {
     public var actionsEnabled: ActionsEnabled?
     public var actionsSuppressedBy: ActionsSuppressedBy?
     public var actionsSuppressedReason: ActionsSuppressedReason?
@@ -208,7 +210,7 @@ public struct CompositeAlarm: Codable, Equatable {
     }
 }
 
-public struct ConcurrentModificationException: Codable, Equatable {
+public struct ConcurrentModificationException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -217,7 +219,7 @@ public struct ConcurrentModificationException: Codable, Equatable {
     }
 }
 
-public struct DashboardEntry: Codable, Equatable {
+public struct DashboardEntry: Codable, Equatable, Sendable {
     public var dashboardArn: DashboardArn?
     public var dashboardName: DashboardName?
     public var lastModified: LastModified?
@@ -244,7 +246,7 @@ public struct DashboardEntry: Codable, Equatable {
     }
 }
 
-public struct DashboardInvalidInputError: Codable, Equatable {
+public struct DashboardInvalidInputError: Codable, Equatable, Sendable {
     public var dashboardValidationMessages: DashboardValidationMessages?
     public var message: DashboardErrorMessage?
 
@@ -263,7 +265,7 @@ public struct DashboardInvalidInputError: Codable, Equatable {
     }
 }
 
-public struct DashboardNotFoundError: Codable, Equatable {
+public struct DashboardNotFoundError: Codable, Equatable, Sendable {
     public var message: DashboardErrorMessage?
 
     public init(message: DashboardErrorMessage? = nil) {
@@ -278,7 +280,7 @@ public struct DashboardNotFoundError: Codable, Equatable {
     }
 }
 
-public struct DashboardValidationMessage: Codable, Equatable {
+public struct DashboardValidationMessage: Codable, Equatable, Sendable {
     public var dataPath: DataPath?
     public var message: Message?
 
@@ -297,7 +299,7 @@ public struct DashboardValidationMessage: Codable, Equatable {
     }
 }
 
-public struct Datapoint: Codable, Equatable {
+public struct Datapoint: Codable, Equatable, Sendable {
     public var average: DatapointValue?
     public var extendedStatistics: DatapointValueMap?
     public var maximum: DatapointValue?
@@ -340,7 +342,7 @@ public struct Datapoint: Codable, Equatable {
     }
 }
 
-public struct DeleteAlarmsInput: Codable, Equatable {
+public struct DeleteAlarmsInput: Codable, Equatable, Sendable {
     public var alarmNames: AlarmNames
 
     public init(alarmNames: AlarmNames) {
@@ -356,7 +358,7 @@ public struct DeleteAlarmsInput: Codable, Equatable {
     }
 }
 
-public struct DeleteAnomalyDetectorInput: Codable, Equatable {
+public struct DeleteAnomalyDetectorInput: Codable, Equatable, Sendable {
     public var metricMathAnomalyDetector: MetricMathAnomalyDetector?
     public var singleMetricAnomalyDetector: SingleMetricAnomalyDetector?
 
@@ -377,7 +379,7 @@ public struct DeleteAnomalyDetectorInput: Codable, Equatable {
     }
 }
 
-public struct DeleteAnomalyDetectorOutput: Codable, Equatable {
+public struct DeleteAnomalyDetectorOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -386,7 +388,7 @@ public struct DeleteAnomalyDetectorOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteAnomalyDetectorOutputForDeleteAnomalyDetector: Codable, Equatable {
+public struct DeleteAnomalyDetectorOutputForDeleteAnomalyDetector: Codable, Equatable, Sendable {
     public var deleteAnomalyDetectorResult: DeleteAnomalyDetectorOutput
 
     public init(deleteAnomalyDetectorResult: DeleteAnomalyDetectorOutput) {
@@ -402,7 +404,7 @@ public struct DeleteAnomalyDetectorOutputForDeleteAnomalyDetector: Codable, Equa
     }
 }
 
-public struct DeleteDashboardsInput: Codable, Equatable {
+public struct DeleteDashboardsInput: Codable, Equatable, Sendable {
     public var dashboardNames: DashboardNames
 
     public init(dashboardNames: DashboardNames) {
@@ -417,7 +419,7 @@ public struct DeleteDashboardsInput: Codable, Equatable {
     }
 }
 
-public struct DeleteDashboardsOutput: Codable, Equatable {
+public struct DeleteDashboardsOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -426,7 +428,7 @@ public struct DeleteDashboardsOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteDashboardsOutputForDeleteDashboards: Codable, Equatable {
+public struct DeleteDashboardsOutputForDeleteDashboards: Codable, Equatable, Sendable {
     public var deleteDashboardsResult: DeleteDashboardsOutput
 
     public init(deleteDashboardsResult: DeleteDashboardsOutput) {
@@ -442,7 +444,7 @@ public struct DeleteDashboardsOutputForDeleteDashboards: Codable, Equatable {
     }
 }
 
-public struct DeleteInsightRulesInput: Codable, Equatable {
+public struct DeleteInsightRulesInput: Codable, Equatable, Sendable {
     public var ruleNames: InsightRuleNames
 
     public init(ruleNames: InsightRuleNames) {
@@ -457,7 +459,7 @@ public struct DeleteInsightRulesInput: Codable, Equatable {
     }
 }
 
-public struct DeleteInsightRulesOutput: Codable, Equatable {
+public struct DeleteInsightRulesOutput: Codable, Equatable, Sendable {
     public var failures: BatchFailures?
 
     public init(failures: BatchFailures? = nil) {
@@ -472,7 +474,7 @@ public struct DeleteInsightRulesOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteInsightRulesOutputForDeleteInsightRules: Codable, Equatable {
+public struct DeleteInsightRulesOutputForDeleteInsightRules: Codable, Equatable, Sendable {
     public var deleteInsightRulesResult: DeleteInsightRulesOutput
 
     public init(deleteInsightRulesResult: DeleteInsightRulesOutput) {
@@ -488,7 +490,7 @@ public struct DeleteInsightRulesOutputForDeleteInsightRules: Codable, Equatable 
     }
 }
 
-public struct DeleteMetricStreamInput: Codable, Equatable {
+public struct DeleteMetricStreamInput: Codable, Equatable, Sendable {
     public var name: MetricStreamName
 
     public init(name: MetricStreamName) {
@@ -504,7 +506,7 @@ public struct DeleteMetricStreamInput: Codable, Equatable {
     }
 }
 
-public struct DeleteMetricStreamOutput: Codable, Equatable {
+public struct DeleteMetricStreamOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -513,7 +515,7 @@ public struct DeleteMetricStreamOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteMetricStreamOutputForDeleteMetricStream: Codable, Equatable {
+public struct DeleteMetricStreamOutputForDeleteMetricStream: Codable, Equatable, Sendable {
     public var deleteMetricStreamResult: DeleteMetricStreamOutput
 
     public init(deleteMetricStreamResult: DeleteMetricStreamOutput) {
@@ -529,7 +531,7 @@ public struct DeleteMetricStreamOutputForDeleteMetricStream: Codable, Equatable 
     }
 }
 
-public struct DescribeAlarmHistoryInput: Codable, Equatable {
+public struct DescribeAlarmHistoryInput: Codable, Equatable, Sendable {
     public var alarmName: AlarmName?
     public var alarmTypes: AlarmTypes?
     public var endDate: Timestamp?
@@ -574,7 +576,7 @@ public struct DescribeAlarmHistoryInput: Codable, Equatable {
     }
 }
 
-public struct DescribeAlarmHistoryOutput: Codable, Equatable {
+public struct DescribeAlarmHistoryOutput: Codable, Equatable, Sendable {
     public var alarmHistoryItems: AlarmHistoryItems?
     public var nextToken: NextToken?
 
@@ -593,7 +595,7 @@ public struct DescribeAlarmHistoryOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeAlarmHistoryOutputForDescribeAlarmHistory: Codable, Equatable {
+public struct DescribeAlarmHistoryOutputForDescribeAlarmHistory: Codable, Equatable, Sendable {
     public var describeAlarmHistoryResult: DescribeAlarmHistoryOutput
 
     public init(describeAlarmHistoryResult: DescribeAlarmHistoryOutput) {
@@ -609,7 +611,7 @@ public struct DescribeAlarmHistoryOutputForDescribeAlarmHistory: Codable, Equata
     }
 }
 
-public struct DescribeAlarmsForMetricInput: Codable, Equatable {
+public struct DescribeAlarmsForMetricInput: Codable, Equatable, Sendable {
     public var dimensions: Dimensions?
     public var extendedStatistic: ExtendedStatistic?
     public var metricName: MetricName
@@ -653,7 +655,7 @@ public struct DescribeAlarmsForMetricInput: Codable, Equatable {
     }
 }
 
-public struct DescribeAlarmsForMetricOutput: Codable, Equatable {
+public struct DescribeAlarmsForMetricOutput: Codable, Equatable, Sendable {
     public var metricAlarms: MetricAlarms?
 
     public init(metricAlarms: MetricAlarms? = nil) {
@@ -668,7 +670,7 @@ public struct DescribeAlarmsForMetricOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric: Codable, Equatable {
+public struct DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric: Codable, Equatable, Sendable {
     public var describeAlarmsForMetricResult: DescribeAlarmsForMetricOutput
 
     public init(describeAlarmsForMetricResult: DescribeAlarmsForMetricOutput) {
@@ -684,7 +686,7 @@ public struct DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric: Codable, 
     }
 }
 
-public struct DescribeAlarmsInput: Codable, Equatable {
+public struct DescribeAlarmsInput: Codable, Equatable, Sendable {
     public var actionPrefix: ActionPrefix?
     public var alarmNamePrefix: AlarmNamePrefix?
     public var alarmNames: AlarmNames?
@@ -737,7 +739,7 @@ public struct DescribeAlarmsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeAlarmsOutput: Codable, Equatable {
+public struct DescribeAlarmsOutput: Codable, Equatable, Sendable {
     public var compositeAlarms: CompositeAlarms?
     public var metricAlarms: MetricAlarms?
     public var nextToken: NextToken?
@@ -760,7 +762,7 @@ public struct DescribeAlarmsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeAlarmsOutputForDescribeAlarms: Codable, Equatable {
+public struct DescribeAlarmsOutputForDescribeAlarms: Codable, Equatable, Sendable {
     public var describeAlarmsResult: DescribeAlarmsOutput
 
     public init(describeAlarmsResult: DescribeAlarmsOutput) {
@@ -776,7 +778,7 @@ public struct DescribeAlarmsOutputForDescribeAlarms: Codable, Equatable {
     }
 }
 
-public struct DescribeAnomalyDetectorsInput: Codable, Equatable {
+public struct DescribeAnomalyDetectorsInput: Codable, Equatable, Sendable {
     public var anomalyDetectorTypes: AnomalyDetectorTypes?
     public var dimensions: Dimensions?
     public var maxResults: MaxReturnedResultsCount?
@@ -816,7 +818,7 @@ public struct DescribeAnomalyDetectorsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeAnomalyDetectorsOutput: Codable, Equatable {
+public struct DescribeAnomalyDetectorsOutput: Codable, Equatable, Sendable {
     public var anomalyDetectors: AnomalyDetectors?
     public var nextToken: NextToken?
 
@@ -835,7 +837,7 @@ public struct DescribeAnomalyDetectorsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors: Codable, Equatable {
+public struct DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors: Codable, Equatable, Sendable {
     public var describeAnomalyDetectorsResult: DescribeAnomalyDetectorsOutput
 
     public init(describeAnomalyDetectorsResult: DescribeAnomalyDetectorsOutput) {
@@ -851,7 +853,7 @@ public struct DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors: Codable
     }
 }
 
-public struct DescribeInsightRulesInput: Codable, Equatable {
+public struct DescribeInsightRulesInput: Codable, Equatable, Sendable {
     public var maxResults: InsightRuleMaxResults?
     public var nextToken: NextToken?
 
@@ -871,7 +873,7 @@ public struct DescribeInsightRulesInput: Codable, Equatable {
     }
 }
 
-public struct DescribeInsightRulesOutput: Codable, Equatable {
+public struct DescribeInsightRulesOutput: Codable, Equatable, Sendable {
     public var insightRules: InsightRules?
     public var nextToken: NextToken?
 
@@ -890,7 +892,7 @@ public struct DescribeInsightRulesOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeInsightRulesOutputForDescribeInsightRules: Codable, Equatable {
+public struct DescribeInsightRulesOutputForDescribeInsightRules: Codable, Equatable, Sendable {
     public var describeInsightRulesResult: DescribeInsightRulesOutput
 
     public init(describeInsightRulesResult: DescribeInsightRulesOutput) {
@@ -906,7 +908,7 @@ public struct DescribeInsightRulesOutputForDescribeInsightRules: Codable, Equata
     }
 }
 
-public struct Dimension: Codable, Equatable {
+public struct Dimension: Codable, Equatable, Sendable {
     public var name: DimensionName
     public var value: DimensionValue
 
@@ -927,7 +929,7 @@ public struct Dimension: Codable, Equatable {
     }
 }
 
-public struct DimensionFilter: Codable, Equatable {
+public struct DimensionFilter: Codable, Equatable, Sendable {
     public var name: DimensionName
     public var value: DimensionValue?
 
@@ -948,7 +950,7 @@ public struct DimensionFilter: Codable, Equatable {
     }
 }
 
-public struct DisableAlarmActionsInput: Codable, Equatable {
+public struct DisableAlarmActionsInput: Codable, Equatable, Sendable {
     public var alarmNames: AlarmNames
 
     public init(alarmNames: AlarmNames) {
@@ -964,7 +966,7 @@ public struct DisableAlarmActionsInput: Codable, Equatable {
     }
 }
 
-public struct DisableInsightRulesInput: Codable, Equatable {
+public struct DisableInsightRulesInput: Codable, Equatable, Sendable {
     public var ruleNames: InsightRuleNames
 
     public init(ruleNames: InsightRuleNames) {
@@ -979,7 +981,7 @@ public struct DisableInsightRulesInput: Codable, Equatable {
     }
 }
 
-public struct DisableInsightRulesOutput: Codable, Equatable {
+public struct DisableInsightRulesOutput: Codable, Equatable, Sendable {
     public var failures: BatchFailures?
 
     public init(failures: BatchFailures? = nil) {
@@ -994,7 +996,7 @@ public struct DisableInsightRulesOutput: Codable, Equatable {
     }
 }
 
-public struct DisableInsightRulesOutputForDisableInsightRules: Codable, Equatable {
+public struct DisableInsightRulesOutputForDisableInsightRules: Codable, Equatable, Sendable {
     public var disableInsightRulesResult: DisableInsightRulesOutput
 
     public init(disableInsightRulesResult: DisableInsightRulesOutput) {
@@ -1010,7 +1012,7 @@ public struct DisableInsightRulesOutputForDisableInsightRules: Codable, Equatabl
     }
 }
 
-public struct EnableAlarmActionsInput: Codable, Equatable {
+public struct EnableAlarmActionsInput: Codable, Equatable, Sendable {
     public var alarmNames: AlarmNames
 
     public init(alarmNames: AlarmNames) {
@@ -1026,7 +1028,7 @@ public struct EnableAlarmActionsInput: Codable, Equatable {
     }
 }
 
-public struct EnableInsightRulesInput: Codable, Equatable {
+public struct EnableInsightRulesInput: Codable, Equatable, Sendable {
     public var ruleNames: InsightRuleNames
 
     public init(ruleNames: InsightRuleNames) {
@@ -1041,7 +1043,7 @@ public struct EnableInsightRulesInput: Codable, Equatable {
     }
 }
 
-public struct EnableInsightRulesOutput: Codable, Equatable {
+public struct EnableInsightRulesOutput: Codable, Equatable, Sendable {
     public var failures: BatchFailures?
 
     public init(failures: BatchFailures? = nil) {
@@ -1056,7 +1058,7 @@ public struct EnableInsightRulesOutput: Codable, Equatable {
     }
 }
 
-public struct EnableInsightRulesOutputForEnableInsightRules: Codable, Equatable {
+public struct EnableInsightRulesOutputForEnableInsightRules: Codable, Equatable, Sendable {
     public var enableInsightRulesResult: EnableInsightRulesOutput
 
     public init(enableInsightRulesResult: EnableInsightRulesOutput) {
@@ -1072,7 +1074,7 @@ public struct EnableInsightRulesOutputForEnableInsightRules: Codable, Equatable 
     }
 }
 
-public struct GetDashboardInput: Codable, Equatable {
+public struct GetDashboardInput: Codable, Equatable, Sendable {
     public var dashboardName: DashboardName
 
     public init(dashboardName: DashboardName) {
@@ -1087,7 +1089,7 @@ public struct GetDashboardInput: Codable, Equatable {
     }
 }
 
-public struct GetDashboardOutput: Codable, Equatable {
+public struct GetDashboardOutput: Codable, Equatable, Sendable {
     public var dashboardArn: DashboardArn?
     public var dashboardBody: DashboardBody?
     public var dashboardName: DashboardName?
@@ -1110,7 +1112,7 @@ public struct GetDashboardOutput: Codable, Equatable {
     }
 }
 
-public struct GetDashboardOutputForGetDashboard: Codable, Equatable {
+public struct GetDashboardOutputForGetDashboard: Codable, Equatable, Sendable {
     public var getDashboardResult: GetDashboardOutput
 
     public init(getDashboardResult: GetDashboardOutput) {
@@ -1126,7 +1128,7 @@ public struct GetDashboardOutputForGetDashboard: Codable, Equatable {
     }
 }
 
-public struct GetInsightRuleReportInput: Codable, Equatable {
+public struct GetInsightRuleReportInput: Codable, Equatable, Sendable {
     public var endTime: Timestamp
     public var maxContributorCount: InsightRuleUnboundInteger?
     public var metrics: InsightRuleMetricList?
@@ -1168,7 +1170,7 @@ public struct GetInsightRuleReportInput: Codable, Equatable {
     }
 }
 
-public struct GetInsightRuleReportOutput: Codable, Equatable {
+public struct GetInsightRuleReportOutput: Codable, Equatable, Sendable {
     public var aggregateValue: InsightRuleUnboundDouble?
     public var aggregationStatistic: InsightRuleAggregationStatistic?
     public var approximateUniqueCount: InsightRuleUnboundLong?
@@ -1203,7 +1205,7 @@ public struct GetInsightRuleReportOutput: Codable, Equatable {
     }
 }
 
-public struct GetInsightRuleReportOutputForGetInsightRuleReport: Codable, Equatable {
+public struct GetInsightRuleReportOutputForGetInsightRuleReport: Codable, Equatable, Sendable {
     public var getInsightRuleReportResult: GetInsightRuleReportOutput
 
     public init(getInsightRuleReportResult: GetInsightRuleReportOutput) {
@@ -1219,7 +1221,7 @@ public struct GetInsightRuleReportOutputForGetInsightRuleReport: Codable, Equata
     }
 }
 
-public struct GetMetricDataInput: Codable, Equatable {
+public struct GetMetricDataInput: Codable, Equatable, Sendable {
     public var endTime: Timestamp
     public var labelOptions: LabelOptions?
     public var maxDatapoints: GetMetricDataMaxDatapoints?
@@ -1259,7 +1261,7 @@ public struct GetMetricDataInput: Codable, Equatable {
     }
 }
 
-public struct GetMetricDataOutput: Codable, Equatable {
+public struct GetMetricDataOutput: Codable, Equatable, Sendable {
     public var messages: MetricDataResultMessages?
     public var metricDataResults: MetricDataResults?
     public var nextToken: NextToken?
@@ -1282,7 +1284,7 @@ public struct GetMetricDataOutput: Codable, Equatable {
     }
 }
 
-public struct GetMetricDataOutputForGetMetricData: Codable, Equatable {
+public struct GetMetricDataOutputForGetMetricData: Codable, Equatable, Sendable {
     public var getMetricDataResult: GetMetricDataOutput
 
     public init(getMetricDataResult: GetMetricDataOutput) {
@@ -1298,7 +1300,7 @@ public struct GetMetricDataOutputForGetMetricData: Codable, Equatable {
     }
 }
 
-public struct GetMetricStatisticsInput: Codable, Equatable {
+public struct GetMetricStatisticsInput: Codable, Equatable, Sendable {
     public var dimensions: Dimensions?
     public var endTime: Timestamp
     public var extendedStatistics: ExtendedStatistics?
@@ -1351,7 +1353,7 @@ public struct GetMetricStatisticsInput: Codable, Equatable {
     }
 }
 
-public struct GetMetricStatisticsOutput: Codable, Equatable {
+public struct GetMetricStatisticsOutput: Codable, Equatable, Sendable {
     public var datapoints: Datapoints?
     public var label: MetricLabel?
 
@@ -1370,7 +1372,7 @@ public struct GetMetricStatisticsOutput: Codable, Equatable {
     }
 }
 
-public struct GetMetricStatisticsOutputForGetMetricStatistics: Codable, Equatable {
+public struct GetMetricStatisticsOutputForGetMetricStatistics: Codable, Equatable, Sendable {
     public var getMetricStatisticsResult: GetMetricStatisticsOutput
 
     public init(getMetricStatisticsResult: GetMetricStatisticsOutput) {
@@ -1386,7 +1388,7 @@ public struct GetMetricStatisticsOutputForGetMetricStatistics: Codable, Equatabl
     }
 }
 
-public struct GetMetricStreamInput: Codable, Equatable {
+public struct GetMetricStreamInput: Codable, Equatable, Sendable {
     public var name: MetricStreamName
 
     public init(name: MetricStreamName) {
@@ -1402,7 +1404,7 @@ public struct GetMetricStreamInput: Codable, Equatable {
     }
 }
 
-public struct GetMetricStreamOutput: Codable, Equatable {
+public struct GetMetricStreamOutput: Codable, Equatable, Sendable {
     public var arn: AmazonResourceName?
     public var creationDate: Timestamp?
     public var excludeFilters: MetricStreamFilters?
@@ -1461,7 +1463,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
     }
 }
 
-public struct GetMetricStreamOutputForGetMetricStream: Codable, Equatable {
+public struct GetMetricStreamOutputForGetMetricStream: Codable, Equatable, Sendable {
     public var getMetricStreamResult: GetMetricStreamOutput
 
     public init(getMetricStreamResult: GetMetricStreamOutput) {
@@ -1477,7 +1479,7 @@ public struct GetMetricStreamOutputForGetMetricStream: Codable, Equatable {
     }
 }
 
-public struct GetMetricWidgetImageInput: Codable, Equatable {
+public struct GetMetricWidgetImageInput: Codable, Equatable, Sendable {
     public var metricWidget: MetricWidget
     public var outputFormat: OutputFormat?
 
@@ -1496,7 +1498,7 @@ public struct GetMetricWidgetImageInput: Codable, Equatable {
     }
 }
 
-public struct GetMetricWidgetImageOutput: Codable, Equatable {
+public struct GetMetricWidgetImageOutput: Codable, Equatable, Sendable {
     public var metricWidgetImage: MetricWidgetImage?
 
     public init(metricWidgetImage: MetricWidgetImage? = nil) {
@@ -1511,7 +1513,7 @@ public struct GetMetricWidgetImageOutput: Codable, Equatable {
     }
 }
 
-public struct GetMetricWidgetImageOutputForGetMetricWidgetImage: Codable, Equatable {
+public struct GetMetricWidgetImageOutputForGetMetricWidgetImage: Codable, Equatable, Sendable {
     public var getMetricWidgetImageResult: GetMetricWidgetImageOutput
 
     public init(getMetricWidgetImageResult: GetMetricWidgetImageOutput) {
@@ -1527,7 +1529,7 @@ public struct GetMetricWidgetImageOutputForGetMetricWidgetImage: Codable, Equata
     }
 }
 
-public struct InsightRule: Codable, Equatable {
+public struct InsightRule: Codable, Equatable, Sendable {
     public var definition: InsightRuleDefinition
     public var name: InsightRuleName
     public var schema: InsightRuleSchema
@@ -1557,7 +1559,7 @@ public struct InsightRule: Codable, Equatable {
     }
 }
 
-public struct InsightRuleContributor: Codable, Equatable {
+public struct InsightRuleContributor: Codable, Equatable, Sendable {
     public var approximateAggregateValue: InsightRuleUnboundDouble
     public var datapoints: InsightRuleContributorDatapoints
     public var keys: InsightRuleContributorKeys
@@ -1580,7 +1582,7 @@ public struct InsightRuleContributor: Codable, Equatable {
     }
 }
 
-public struct InsightRuleContributorDatapoint: Codable, Equatable {
+public struct InsightRuleContributorDatapoint: Codable, Equatable, Sendable {
     public var approximateValue: InsightRuleUnboundDouble
     public var timestamp: Timestamp
 
@@ -1599,7 +1601,7 @@ public struct InsightRuleContributorDatapoint: Codable, Equatable {
     }
 }
 
-public struct InsightRuleMetricDatapoint: Codable, Equatable {
+public struct InsightRuleMetricDatapoint: Codable, Equatable, Sendable {
     public var average: InsightRuleUnboundDouble?
     public var maxContributorValue: InsightRuleUnboundDouble?
     public var maximum: InsightRuleUnboundDouble?
@@ -1642,7 +1644,7 @@ public struct InsightRuleMetricDatapoint: Codable, Equatable {
     }
 }
 
-public struct InternalServiceFault: Codable, Equatable {
+public struct InternalServiceFault: Codable, Equatable, Sendable {
     public var message: FaultDescription?
 
     public init(message: FaultDescription? = nil) {
@@ -1657,7 +1659,7 @@ public struct InternalServiceFault: Codable, Equatable {
     }
 }
 
-public struct InvalidFormatFault: Codable, Equatable {
+public struct InvalidFormatFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1673,7 +1675,7 @@ public struct InvalidFormatFault: Codable, Equatable {
     }
 }
 
-public struct InvalidNextToken: Codable, Equatable {
+public struct InvalidNextToken: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1689,7 +1691,7 @@ public struct InvalidNextToken: Codable, Equatable {
     }
 }
 
-public struct InvalidParameterCombinationException: Codable, Equatable {
+public struct InvalidParameterCombinationException: Codable, Equatable, Sendable {
     public var message: AwsQueryErrorMessage?
 
     public init(message: AwsQueryErrorMessage? = nil) {
@@ -1704,7 +1706,7 @@ public struct InvalidParameterCombinationException: Codable, Equatable {
     }
 }
 
-public struct InvalidParameterValueException: Codable, Equatable {
+public struct InvalidParameterValueException: Codable, Equatable, Sendable {
     public var message: AwsQueryErrorMessage?
 
     public init(message: AwsQueryErrorMessage? = nil) {
@@ -1719,7 +1721,7 @@ public struct InvalidParameterValueException: Codable, Equatable {
     }
 }
 
-public struct LabelOptions: Codable, Equatable {
+public struct LabelOptions: Codable, Equatable, Sendable {
     public var timezone: GetMetricDataLabelTimezone?
 
     public init(timezone: GetMetricDataLabelTimezone? = nil) {
@@ -1734,7 +1736,7 @@ public struct LabelOptions: Codable, Equatable {
     }
 }
 
-public struct LimitExceededException: Codable, Equatable {
+public struct LimitExceededException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1743,7 +1745,7 @@ public struct LimitExceededException: Codable, Equatable {
     }
 }
 
-public struct LimitExceededFault: Codable, Equatable {
+public struct LimitExceededFault: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -1759,7 +1761,7 @@ public struct LimitExceededFault: Codable, Equatable {
     }
 }
 
-public struct ListDashboardsInput: Codable, Equatable {
+public struct ListDashboardsInput: Codable, Equatable, Sendable {
     public var dashboardNamePrefix: DashboardNamePrefix?
     public var nextToken: NextToken?
 
@@ -1778,7 +1780,7 @@ public struct ListDashboardsInput: Codable, Equatable {
     }
 }
 
-public struct ListDashboardsOutput: Codable, Equatable {
+public struct ListDashboardsOutput: Codable, Equatable, Sendable {
     public var dashboardEntries: DashboardEntries?
     public var nextToken: NextToken?
 
@@ -1797,7 +1799,7 @@ public struct ListDashboardsOutput: Codable, Equatable {
     }
 }
 
-public struct ListDashboardsOutputForListDashboards: Codable, Equatable {
+public struct ListDashboardsOutputForListDashboards: Codable, Equatable, Sendable {
     public var listDashboardsResult: ListDashboardsOutput
 
     public init(listDashboardsResult: ListDashboardsOutput) {
@@ -1813,7 +1815,7 @@ public struct ListDashboardsOutputForListDashboards: Codable, Equatable {
     }
 }
 
-public struct ListMetricStreamsInput: Codable, Equatable {
+public struct ListMetricStreamsInput: Codable, Equatable, Sendable {
     public var maxResults: ListMetricStreamsMaxResults?
     public var nextToken: NextToken?
 
@@ -1833,7 +1835,7 @@ public struct ListMetricStreamsInput: Codable, Equatable {
     }
 }
 
-public struct ListMetricStreamsOutput: Codable, Equatable {
+public struct ListMetricStreamsOutput: Codable, Equatable, Sendable {
     public var entries: MetricStreamEntries?
     public var nextToken: NextToken?
 
@@ -1852,7 +1854,7 @@ public struct ListMetricStreamsOutput: Codable, Equatable {
     }
 }
 
-public struct ListMetricStreamsOutputForListMetricStreams: Codable, Equatable {
+public struct ListMetricStreamsOutputForListMetricStreams: Codable, Equatable, Sendable {
     public var listMetricStreamsResult: ListMetricStreamsOutput
 
     public init(listMetricStreamsResult: ListMetricStreamsOutput) {
@@ -1868,7 +1870,7 @@ public struct ListMetricStreamsOutputForListMetricStreams: Codable, Equatable {
     }
 }
 
-public struct ListMetricsInput: Codable, Equatable {
+public struct ListMetricsInput: Codable, Equatable, Sendable {
     public var dimensions: DimensionFilters?
     public var metricName: MetricName?
     public var namespace: Namespace?
@@ -1902,7 +1904,7 @@ public struct ListMetricsInput: Codable, Equatable {
     }
 }
 
-public struct ListMetricsOutput: Codable, Equatable {
+public struct ListMetricsOutput: Codable, Equatable, Sendable {
     public var metrics: Metrics?
     public var nextToken: NextToken?
 
@@ -1921,7 +1923,7 @@ public struct ListMetricsOutput: Codable, Equatable {
     }
 }
 
-public struct ListMetricsOutputForListMetrics: Codable, Equatable {
+public struct ListMetricsOutputForListMetrics: Codable, Equatable, Sendable {
     public var listMetricsResult: ListMetricsOutput
 
     public init(listMetricsResult: ListMetricsOutput) {
@@ -1937,7 +1939,7 @@ public struct ListMetricsOutputForListMetrics: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceInput: Codable, Equatable {
+public struct ListTagsForResourceInput: Codable, Equatable, Sendable {
     public var resourceARN: AmazonResourceName
 
     public init(resourceARN: AmazonResourceName) {
@@ -1953,7 +1955,7 @@ public struct ListTagsForResourceInput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceOutput: Codable, Equatable {
+public struct ListTagsForResourceOutput: Codable, Equatable, Sendable {
     public var tags: TagList?
 
     public init(tags: TagList? = nil) {
@@ -1968,7 +1970,7 @@ public struct ListTagsForResourceOutput: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceOutputForListTagsForResource: Codable, Equatable {
+public struct ListTagsForResourceOutputForListTagsForResource: Codable, Equatable, Sendable {
     public var listTagsForResourceResult: ListTagsForResourceOutput
 
     public init(listTagsForResourceResult: ListTagsForResourceOutput) {
@@ -1984,7 +1986,7 @@ public struct ListTagsForResourceOutputForListTagsForResource: Codable, Equatabl
     }
 }
 
-public struct MessageData: Codable, Equatable {
+public struct MessageData: Codable, Equatable, Sendable {
     public var code: MessageDataCode?
     public var value: MessageDataValue?
 
@@ -2003,7 +2005,7 @@ public struct MessageData: Codable, Equatable {
     }
 }
 
-public struct Metric: Codable, Equatable {
+public struct Metric: Codable, Equatable, Sendable {
     public var dimensions: Dimensions?
     public var metricName: MetricName?
     public var namespace: Namespace?
@@ -2029,7 +2031,7 @@ public struct Metric: Codable, Equatable {
     }
 }
 
-public struct MetricAlarm: Codable, Equatable {
+public struct MetricAlarm: Codable, Equatable, Sendable {
     public var actionsEnabled: ActionsEnabled?
     public var alarmActions: ResourceList?
     public var alarmArn: AlarmArn?
@@ -2166,7 +2168,7 @@ public struct MetricAlarm: Codable, Equatable {
     }
 }
 
-public struct MetricDataQuery: Codable, Equatable {
+public struct MetricDataQuery: Codable, Equatable, Sendable {
     public var accountId: AccountId?
     public var expression: MetricExpression?
     public var id: MetricId
@@ -2210,7 +2212,7 @@ public struct MetricDataQuery: Codable, Equatable {
     }
 }
 
-public struct MetricDataResult: Codable, Equatable {
+public struct MetricDataResult: Codable, Equatable, Sendable {
     public var id: MetricId?
     public var label: MetricLabel?
     public var messages: MetricDataResultMessages?
@@ -2246,7 +2248,7 @@ public struct MetricDataResult: Codable, Equatable {
     }
 }
 
-public struct MetricDatum: Codable, Equatable {
+public struct MetricDatum: Codable, Equatable, Sendable {
     public var counts: Counts?
     public var dimensions: Dimensions?
     public var metricName: MetricName
@@ -2297,7 +2299,7 @@ public struct MetricDatum: Codable, Equatable {
     }
 }
 
-public struct MetricMathAnomalyDetector: Codable, Equatable {
+public struct MetricMathAnomalyDetector: Codable, Equatable, Sendable {
     public var metricDataQueries: MetricDataQueries?
 
     public init(metricDataQueries: MetricDataQueries? = nil) {
@@ -2312,7 +2314,7 @@ public struct MetricMathAnomalyDetector: Codable, Equatable {
     }
 }
 
-public struct MetricStat: Codable, Equatable {
+public struct MetricStat: Codable, Equatable, Sendable {
     public var metric: Metric
     public var period: Period
     public var stat: Stat
@@ -2341,7 +2343,7 @@ public struct MetricStat: Codable, Equatable {
     }
 }
 
-public struct MetricStreamEntry: Codable, Equatable {
+public struct MetricStreamEntry: Codable, Equatable, Sendable {
     public var arn: AmazonResourceName?
     public var creationDate: Timestamp?
     public var firehoseArn: AmazonResourceName?
@@ -2383,7 +2385,7 @@ public struct MetricStreamEntry: Codable, Equatable {
     }
 }
 
-public struct MetricStreamFilter: Codable, Equatable {
+public struct MetricStreamFilter: Codable, Equatable, Sendable {
     public var namespace: Namespace?
 
     public init(namespace: Namespace? = nil) {
@@ -2399,7 +2401,7 @@ public struct MetricStreamFilter: Codable, Equatable {
     }
 }
 
-public struct MetricStreamStatisticsConfiguration: Codable, Equatable {
+public struct MetricStreamStatisticsConfiguration: Codable, Equatable, Sendable {
     public var additionalStatistics: MetricStreamStatisticsAdditionalStatistics
     public var includeMetrics: MetricStreamStatisticsIncludeMetrics
 
@@ -2418,7 +2420,7 @@ public struct MetricStreamStatisticsConfiguration: Codable, Equatable {
     }
 }
 
-public struct MetricStreamStatisticsMetric: Codable, Equatable {
+public struct MetricStreamStatisticsMetric: Codable, Equatable, Sendable {
     public var metricName: MetricName
     public var namespace: Namespace
 
@@ -2439,7 +2441,7 @@ public struct MetricStreamStatisticsMetric: Codable, Equatable {
     }
 }
 
-public struct MissingRequiredParameterException: Codable, Equatable {
+public struct MissingRequiredParameterException: Codable, Equatable, Sendable {
     public var message: AwsQueryErrorMessage?
 
     public init(message: AwsQueryErrorMessage? = nil) {
@@ -2454,7 +2456,7 @@ public struct MissingRequiredParameterException: Codable, Equatable {
     }
 }
 
-public struct PartialFailure: Codable, Equatable {
+public struct PartialFailure: Codable, Equatable, Sendable {
     public var exceptionType: ExceptionType?
     public var failureCode: FailureCode?
     public var failureDescription: FailureDescription?
@@ -2481,7 +2483,7 @@ public struct PartialFailure: Codable, Equatable {
     }
 }
 
-public struct PutAnomalyDetectorInput: Codable, Equatable {
+public struct PutAnomalyDetectorInput: Codable, Equatable, Sendable {
     public var configuration: AnomalyDetectorConfiguration?
     public var metricMathAnomalyDetector: MetricMathAnomalyDetector?
     public var singleMetricAnomalyDetector: SingleMetricAnomalyDetector?
@@ -2507,7 +2509,7 @@ public struct PutAnomalyDetectorInput: Codable, Equatable {
     }
 }
 
-public struct PutAnomalyDetectorOutput: Codable, Equatable {
+public struct PutAnomalyDetectorOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2516,7 +2518,7 @@ public struct PutAnomalyDetectorOutput: Codable, Equatable {
     }
 }
 
-public struct PutAnomalyDetectorOutputForPutAnomalyDetector: Codable, Equatable {
+public struct PutAnomalyDetectorOutputForPutAnomalyDetector: Codable, Equatable, Sendable {
     public var putAnomalyDetectorResult: PutAnomalyDetectorOutput
 
     public init(putAnomalyDetectorResult: PutAnomalyDetectorOutput) {
@@ -2532,7 +2534,7 @@ public struct PutAnomalyDetectorOutputForPutAnomalyDetector: Codable, Equatable 
     }
 }
 
-public struct PutCompositeAlarmInput: Codable, Equatable {
+public struct PutCompositeAlarmInput: Codable, Equatable, Sendable {
     public var actionsEnabled: ActionsEnabled?
     public var actionsSuppressor: AlarmArn?
     public var actionsSuppressorExtensionPeriod: SuppressorPeriod?
@@ -2594,7 +2596,7 @@ public struct PutCompositeAlarmInput: Codable, Equatable {
     }
 }
 
-public struct PutDashboardInput: Codable, Equatable {
+public struct PutDashboardInput: Codable, Equatable, Sendable {
     public var dashboardBody: DashboardBody
     public var dashboardName: DashboardName
 
@@ -2613,7 +2615,7 @@ public struct PutDashboardInput: Codable, Equatable {
     }
 }
 
-public struct PutDashboardOutput: Codable, Equatable {
+public struct PutDashboardOutput: Codable, Equatable, Sendable {
     public var dashboardValidationMessages: DashboardValidationMessages?
 
     public init(dashboardValidationMessages: DashboardValidationMessages? = nil) {
@@ -2628,7 +2630,7 @@ public struct PutDashboardOutput: Codable, Equatable {
     }
 }
 
-public struct PutDashboardOutputForPutDashboard: Codable, Equatable {
+public struct PutDashboardOutputForPutDashboard: Codable, Equatable, Sendable {
     public var putDashboardResult: PutDashboardOutput
 
     public init(putDashboardResult: PutDashboardOutput) {
@@ -2644,7 +2646,7 @@ public struct PutDashboardOutputForPutDashboard: Codable, Equatable {
     }
 }
 
-public struct PutInsightRuleInput: Codable, Equatable {
+public struct PutInsightRuleInput: Codable, Equatable, Sendable {
     public var ruleDefinition: InsightRuleDefinition
     public var ruleName: InsightRuleName
     public var ruleState: InsightRuleState?
@@ -2674,7 +2676,7 @@ public struct PutInsightRuleInput: Codable, Equatable {
     }
 }
 
-public struct PutInsightRuleOutput: Codable, Equatable {
+public struct PutInsightRuleOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2683,7 +2685,7 @@ public struct PutInsightRuleOutput: Codable, Equatable {
     }
 }
 
-public struct PutInsightRuleOutputForPutInsightRule: Codable, Equatable {
+public struct PutInsightRuleOutputForPutInsightRule: Codable, Equatable, Sendable {
     public var putInsightRuleResult: PutInsightRuleOutput
 
     public init(putInsightRuleResult: PutInsightRuleOutput) {
@@ -2699,7 +2701,7 @@ public struct PutInsightRuleOutputForPutInsightRule: Codable, Equatable {
     }
 }
 
-public struct PutMetricAlarmInput: Codable, Equatable {
+public struct PutMetricAlarmInput: Codable, Equatable, Sendable {
     public var actionsEnabled: ActionsEnabled?
     public var alarmActions: ResourceList?
     public var alarmDescription: AlarmDescription?
@@ -2813,7 +2815,7 @@ public struct PutMetricAlarmInput: Codable, Equatable {
     }
 }
 
-public struct PutMetricDataInput: Codable, Equatable {
+public struct PutMetricDataInput: Codable, Equatable, Sendable {
     public var metricData: MetricData
     public var namespace: Namespace
 
@@ -2833,7 +2835,7 @@ public struct PutMetricDataInput: Codable, Equatable {
     }
 }
 
-public struct PutMetricStreamInput: Codable, Equatable {
+public struct PutMetricStreamInput: Codable, Equatable, Sendable {
     public var excludeFilters: MetricStreamFilters?
     public var firehoseArn: AmazonResourceName
     public var includeFilters: MetricStreamFilters?
@@ -2879,7 +2881,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
     }
 }
 
-public struct PutMetricStreamOutput: Codable, Equatable {
+public struct PutMetricStreamOutput: Codable, Equatable, Sendable {
     public var arn: AmazonResourceName?
 
     public init(arn: AmazonResourceName? = nil) {
@@ -2895,7 +2897,7 @@ public struct PutMetricStreamOutput: Codable, Equatable {
     }
 }
 
-public struct PutMetricStreamOutputForPutMetricStream: Codable, Equatable {
+public struct PutMetricStreamOutputForPutMetricStream: Codable, Equatable, Sendable {
     public var putMetricStreamResult: PutMetricStreamOutput
 
     public init(putMetricStreamResult: PutMetricStreamOutput) {
@@ -2911,7 +2913,7 @@ public struct PutMetricStreamOutputForPutMetricStream: Codable, Equatable {
     }
 }
 
-public struct Range: Codable, Equatable {
+public struct Range: Codable, Equatable, Sendable {
     public var endTime: Timestamp
     public var startTime: Timestamp
 
@@ -2930,7 +2932,7 @@ public struct Range: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFound: Codable, Equatable {
+public struct ResourceNotFound: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -2946,7 +2948,7 @@ public struct ResourceNotFound: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundException: Codable, Equatable {
+public struct ResourceNotFoundException: Codable, Equatable, Sendable {
     public var resourceId: ResourceId?
     public var resourceType: ResourceType?
 
@@ -2965,7 +2967,7 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct SetAlarmStateInput: Codable, Equatable {
+public struct SetAlarmStateInput: Codable, Equatable, Sendable {
     public var alarmName: AlarmName
     public var stateReason: StateReason
     public var stateReasonData: StateReasonData?
@@ -2995,7 +2997,7 @@ public struct SetAlarmStateInput: Codable, Equatable {
     }
 }
 
-public struct SingleMetricAnomalyDetector: Codable, Equatable {
+public struct SingleMetricAnomalyDetector: Codable, Equatable, Sendable {
     public var dimensions: Dimensions?
     public var metricName: MetricName?
     public var namespace: Namespace?
@@ -3026,7 +3028,7 @@ public struct SingleMetricAnomalyDetector: Codable, Equatable {
     }
 }
 
-public struct StartMetricStreamsInput: Codable, Equatable {
+public struct StartMetricStreamsInput: Codable, Equatable, Sendable {
     public var names: MetricStreamNames
 
     public init(names: MetricStreamNames) {
@@ -3041,7 +3043,7 @@ public struct StartMetricStreamsInput: Codable, Equatable {
     }
 }
 
-public struct StartMetricStreamsOutput: Codable, Equatable {
+public struct StartMetricStreamsOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3050,7 +3052,7 @@ public struct StartMetricStreamsOutput: Codable, Equatable {
     }
 }
 
-public struct StartMetricStreamsOutputForStartMetricStreams: Codable, Equatable {
+public struct StartMetricStreamsOutputForStartMetricStreams: Codable, Equatable, Sendable {
     public var startMetricStreamsResult: StartMetricStreamsOutput
 
     public init(startMetricStreamsResult: StartMetricStreamsOutput) {
@@ -3066,7 +3068,7 @@ public struct StartMetricStreamsOutputForStartMetricStreams: Codable, Equatable 
     }
 }
 
-public struct StatisticSet: Codable, Equatable {
+public struct StatisticSet: Codable, Equatable, Sendable {
     public var maximum: DatapointValue
     public var minimum: DatapointValue
     public var sampleCount: DatapointValue
@@ -3093,7 +3095,7 @@ public struct StatisticSet: Codable, Equatable {
     }
 }
 
-public struct StopMetricStreamsInput: Codable, Equatable {
+public struct StopMetricStreamsInput: Codable, Equatable, Sendable {
     public var names: MetricStreamNames
 
     public init(names: MetricStreamNames) {
@@ -3108,7 +3110,7 @@ public struct StopMetricStreamsInput: Codable, Equatable {
     }
 }
 
-public struct StopMetricStreamsOutput: Codable, Equatable {
+public struct StopMetricStreamsOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3117,7 +3119,7 @@ public struct StopMetricStreamsOutput: Codable, Equatable {
     }
 }
 
-public struct StopMetricStreamsOutputForStopMetricStreams: Codable, Equatable {
+public struct StopMetricStreamsOutputForStopMetricStreams: Codable, Equatable, Sendable {
     public var stopMetricStreamsResult: StopMetricStreamsOutput
 
     public init(stopMetricStreamsResult: StopMetricStreamsOutput) {
@@ -3133,7 +3135,7 @@ public struct StopMetricStreamsOutputForStopMetricStreams: Codable, Equatable {
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey
     public var value: TagValue
 
@@ -3154,7 +3156,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TagResourceInput: Codable, Equatable {
+public struct TagResourceInput: Codable, Equatable, Sendable {
     public var resourceARN: AmazonResourceName
     public var tags: TagList
 
@@ -3174,7 +3176,7 @@ public struct TagResourceInput: Codable, Equatable {
     }
 }
 
-public struct TagResourceOutput: Codable, Equatable {
+public struct TagResourceOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3183,7 +3185,7 @@ public struct TagResourceOutput: Codable, Equatable {
     }
 }
 
-public struct TagResourceOutputForTagResource: Codable, Equatable {
+public struct TagResourceOutputForTagResource: Codable, Equatable, Sendable {
     public var tagResourceResult: TagResourceOutput
 
     public init(tagResourceResult: TagResourceOutput) {
@@ -3199,7 +3201,7 @@ public struct TagResourceOutputForTagResource: Codable, Equatable {
     }
 }
 
-public struct UntagResourceInput: Codable, Equatable {
+public struct UntagResourceInput: Codable, Equatable, Sendable {
     public var resourceARN: AmazonResourceName
     public var tagKeys: TagKeyList
 
@@ -3219,7 +3221,7 @@ public struct UntagResourceInput: Codable, Equatable {
     }
 }
 
-public struct UntagResourceOutput: Codable, Equatable {
+public struct UntagResourceOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3228,7 +3230,7 @@ public struct UntagResourceOutput: Codable, Equatable {
     }
 }
 
-public struct UntagResourceOutputForUntagResource: Codable, Equatable {
+public struct UntagResourceOutputForUntagResource: Codable, Equatable, Sendable {
     public var untagResourceResult: UntagResourceOutput
 
     public init(untagResourceResult: UntagResourceOutput) {

@@ -25,6 +25,8 @@ import SmokeHTTPClientMiddleware
 import AsyncHTTPClient
 import AsyncHttpMiddlewareClient
 
+extension Foundation.Data: @unchecked Sendable { }
+
 public struct SigV4HeaderMiddleware: MiddlewareProtocol {
     public var id = "SigV4Headers"
     

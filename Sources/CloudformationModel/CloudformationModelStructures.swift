@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct AccountGateResult: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct AccountGateResult: Codable, Equatable, Sendable {
     public var status: AccountGateStatus?
     public var statusReason: AccountGateStatusReason?
 
@@ -41,7 +43,7 @@ public struct AccountGateResult: Codable, Equatable {
     }
 }
 
-public struct AccountLimit: Codable, Equatable {
+public struct AccountLimit: Codable, Equatable, Sendable {
     public var name: LimitName?
     public var value: LimitValue?
 
@@ -60,7 +62,7 @@ public struct AccountLimit: Codable, Equatable {
     }
 }
 
-public struct ActivateTypeInput: Codable, Equatable {
+public struct ActivateTypeInput: Codable, Equatable, Sendable {
     public var autoUpdate: AutoUpdate?
     public var executionRoleArn: RoleArn?
     public var loggingConfig: LoggingConfig?
@@ -118,7 +120,7 @@ public struct ActivateTypeInput: Codable, Equatable {
     }
 }
 
-public struct ActivateTypeOutput: Codable, Equatable {
+public struct ActivateTypeOutput: Codable, Equatable, Sendable {
     public var arn: PrivateTypeArn?
 
     public init(arn: PrivateTypeArn? = nil) {
@@ -134,7 +136,7 @@ public struct ActivateTypeOutput: Codable, Equatable {
     }
 }
 
-public struct ActivateTypeOutputForActivateType: Codable, Equatable {
+public struct ActivateTypeOutputForActivateType: Codable, Equatable, Sendable {
     public var activateTypeResult: ActivateTypeOutput
 
     public init(activateTypeResult: ActivateTypeOutput) {
@@ -150,7 +152,7 @@ public struct ActivateTypeOutputForActivateType: Codable, Equatable {
     }
 }
 
-public struct AlreadyExistsException: Codable, Equatable {
+public struct AlreadyExistsException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -159,7 +161,7 @@ public struct AlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct AutoDeployment: Codable, Equatable {
+public struct AutoDeployment: Codable, Equatable, Sendable {
     public var enabled: AutoDeploymentNullable?
     public var retainStacksOnAccountRemoval: RetainStacksOnAccountRemovalNullable?
 
@@ -178,7 +180,7 @@ public struct AutoDeployment: Codable, Equatable {
     }
 }
 
-public struct BatchDescribeTypeConfigurationsError: Codable, Equatable {
+public struct BatchDescribeTypeConfigurationsError: Codable, Equatable, Sendable {
     public var errorCode: ErrorCode?
     public var errorMessage: ErrorMessage?
     public var typeConfigurationIdentifier: TypeConfigurationIdentifier?
@@ -204,7 +206,7 @@ public struct BatchDescribeTypeConfigurationsError: Codable, Equatable {
     }
 }
 
-public struct BatchDescribeTypeConfigurationsInput: Codable, Equatable {
+public struct BatchDescribeTypeConfigurationsInput: Codable, Equatable, Sendable {
     public var typeConfigurationIdentifiers: TypeConfigurationIdentifiers
 
     public init(typeConfigurationIdentifiers: TypeConfigurationIdentifiers) {
@@ -220,7 +222,7 @@ public struct BatchDescribeTypeConfigurationsInput: Codable, Equatable {
     }
 }
 
-public struct BatchDescribeTypeConfigurationsOutput: Codable, Equatable {
+public struct BatchDescribeTypeConfigurationsOutput: Codable, Equatable, Sendable {
     public var errors: BatchDescribeTypeConfigurationsErrors?
     public var typeConfigurations: TypeConfigurationDetailsList?
     public var unprocessedTypeConfigurations: UnprocessedTypeConfigurations?
@@ -243,7 +245,7 @@ public struct BatchDescribeTypeConfigurationsOutput: Codable, Equatable {
     }
 }
 
-public struct BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations: Codable, Equatable {
+public struct BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations: Codable, Equatable, Sendable {
     public var batchDescribeTypeConfigurationsResult: BatchDescribeTypeConfigurationsOutput
 
     public init(batchDescribeTypeConfigurationsResult: BatchDescribeTypeConfigurationsOutput) {
@@ -259,7 +261,7 @@ public struct BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigura
     }
 }
 
-public struct CFNRegistryException: Codable, Equatable {
+public struct CFNRegistryException: Codable, Equatable, Sendable {
     public var message: ErrorMessage?
 
     public init(message: ErrorMessage? = nil) {
@@ -275,7 +277,7 @@ public struct CFNRegistryException: Codable, Equatable {
     }
 }
 
-public struct CancelUpdateStackInput: Codable, Equatable {
+public struct CancelUpdateStackInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var stackName: StackName
 
@@ -295,7 +297,7 @@ public struct CancelUpdateStackInput: Codable, Equatable {
     }
 }
 
-public struct Change: Codable, Equatable {
+public struct Change: Codable, Equatable, Sendable {
     public var hookInvocationCount: HookInvocationCount?
     public var resourceChange: ResourceChange?
     public var type: ChangeType?
@@ -320,7 +322,7 @@ public struct Change: Codable, Equatable {
     }
 }
 
-public struct ChangeSetHook: Codable, Equatable {
+public struct ChangeSetHook: Codable, Equatable, Sendable {
     public var failureMode: HookFailureMode?
     public var invocationPoint: HookInvocationPoint?
     public var targetDetails: ChangeSetHookTargetDetails?
@@ -359,7 +361,7 @@ public struct ChangeSetHook: Codable, Equatable {
     }
 }
 
-public struct ChangeSetHookResourceTargetDetails: Codable, Equatable {
+public struct ChangeSetHookResourceTargetDetails: Codable, Equatable, Sendable {
     public var logicalResourceId: LogicalResourceId?
     public var resourceAction: ChangeAction?
     public var resourceType: HookTargetTypeName?
@@ -383,7 +385,7 @@ public struct ChangeSetHookResourceTargetDetails: Codable, Equatable {
     }
 }
 
-public struct ChangeSetHookTargetDetails: Codable, Equatable {
+public struct ChangeSetHookTargetDetails: Codable, Equatable, Sendable {
     public var resourceTargetDetails: ChangeSetHookResourceTargetDetails?
     public var targetType: HookTargetType?
 
@@ -403,7 +405,7 @@ public struct ChangeSetHookTargetDetails: Codable, Equatable {
     }
 }
 
-public struct ChangeSetNotFoundException: Codable, Equatable {
+public struct ChangeSetNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -412,7 +414,7 @@ public struct ChangeSetNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ChangeSetSummary: Codable, Equatable {
+public struct ChangeSetSummary: Codable, Equatable, Sendable {
     public var changeSetId: ChangeSetId?
     public var changeSetName: ChangeSetName?
     public var creationTime: CreationTime?
@@ -476,7 +478,7 @@ public struct ChangeSetSummary: Codable, Equatable {
     }
 }
 
-public struct ContinueUpdateRollbackInput: Codable, Equatable {
+public struct ContinueUpdateRollbackInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var resourcesToSkip: ResourcesToSkip?
     public var roleARN: RoleARN?
@@ -506,7 +508,7 @@ public struct ContinueUpdateRollbackInput: Codable, Equatable {
     }
 }
 
-public struct ContinueUpdateRollbackOutput: Codable, Equatable {
+public struct ContinueUpdateRollbackOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -515,7 +517,7 @@ public struct ContinueUpdateRollbackOutput: Codable, Equatable {
     }
 }
 
-public struct ContinueUpdateRollbackOutputForContinueUpdateRollback: Codable, Equatable {
+public struct ContinueUpdateRollbackOutputForContinueUpdateRollback: Codable, Equatable, Sendable {
     public var continueUpdateRollbackResult: ContinueUpdateRollbackOutput
 
     public init(continueUpdateRollbackResult: ContinueUpdateRollbackOutput) {
@@ -531,7 +533,7 @@ public struct ContinueUpdateRollbackOutputForContinueUpdateRollback: Codable, Eq
     }
 }
 
-public struct CreateChangeSetInput: Codable, Equatable {
+public struct CreateChangeSetInput: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var changeSetName: ChangeSetName
     public var changeSetType: ChangeSetType?
@@ -621,7 +623,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
     }
 }
 
-public struct CreateChangeSetOutput: Codable, Equatable {
+public struct CreateChangeSetOutput: Codable, Equatable, Sendable {
     public var id: ChangeSetId?
     public var stackId: StackId?
 
@@ -641,7 +643,7 @@ public struct CreateChangeSetOutput: Codable, Equatable {
     }
 }
 
-public struct CreateChangeSetOutputForCreateChangeSet: Codable, Equatable {
+public struct CreateChangeSetOutputForCreateChangeSet: Codable, Equatable, Sendable {
     public var createChangeSetResult: CreateChangeSetOutput
 
     public init(createChangeSetResult: CreateChangeSetOutput) {
@@ -657,7 +659,7 @@ public struct CreateChangeSetOutputForCreateChangeSet: Codable, Equatable {
     }
 }
 
-public struct CreateStackInput: Codable, Equatable {
+public struct CreateStackInput: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var clientRequestToken: ClientRequestToken?
     public var disableRollback: DisableRollback?
@@ -746,7 +748,7 @@ public struct CreateStackInput: Codable, Equatable {
     }
 }
 
-public struct CreateStackInstancesInput: Codable, Equatable {
+public struct CreateStackInstancesInput: Codable, Equatable, Sendable {
     public var accounts: AccountList?
     public var callAs: CallAs?
     public var deploymentTargets: DeploymentTargets?
@@ -792,7 +794,7 @@ public struct CreateStackInstancesInput: Codable, Equatable {
     }
 }
 
-public struct CreateStackInstancesOutput: Codable, Equatable {
+public struct CreateStackInstancesOutput: Codable, Equatable, Sendable {
     public var operationId: ClientRequestToken?
 
     public init(operationId: ClientRequestToken? = nil) {
@@ -808,7 +810,7 @@ public struct CreateStackInstancesOutput: Codable, Equatable {
     }
 }
 
-public struct CreateStackInstancesOutputForCreateStackInstances: Codable, Equatable {
+public struct CreateStackInstancesOutputForCreateStackInstances: Codable, Equatable, Sendable {
     public var createStackInstancesResult: CreateStackInstancesOutput
 
     public init(createStackInstancesResult: CreateStackInstancesOutput) {
@@ -824,7 +826,7 @@ public struct CreateStackInstancesOutputForCreateStackInstances: Codable, Equata
     }
 }
 
-public struct CreateStackOutput: Codable, Equatable {
+public struct CreateStackOutput: Codable, Equatable, Sendable {
     public var stackId: StackId?
 
     public init(stackId: StackId? = nil) {
@@ -839,7 +841,7 @@ public struct CreateStackOutput: Codable, Equatable {
     }
 }
 
-public struct CreateStackOutputForCreateStack: Codable, Equatable {
+public struct CreateStackOutputForCreateStack: Codable, Equatable, Sendable {
     public var createStackResult: CreateStackOutput
 
     public init(createStackResult: CreateStackOutput) {
@@ -855,7 +857,7 @@ public struct CreateStackOutputForCreateStack: Codable, Equatable {
     }
 }
 
-public struct CreateStackSetInput: Codable, Equatable {
+public struct CreateStackSetInput: Codable, Equatable, Sendable {
     public var administrationRoleARN: RoleARN?
     public var autoDeployment: AutoDeployment?
     public var callAs: CallAs?
@@ -935,7 +937,7 @@ public struct CreateStackSetInput: Codable, Equatable {
     }
 }
 
-public struct CreateStackSetOutput: Codable, Equatable {
+public struct CreateStackSetOutput: Codable, Equatable, Sendable {
     public var stackSetId: StackSetId?
 
     public init(stackSetId: StackSetId? = nil) {
@@ -950,7 +952,7 @@ public struct CreateStackSetOutput: Codable, Equatable {
     }
 }
 
-public struct CreateStackSetOutputForCreateStackSet: Codable, Equatable {
+public struct CreateStackSetOutputForCreateStackSet: Codable, Equatable, Sendable {
     public var createStackSetResult: CreateStackSetOutput
 
     public init(createStackSetResult: CreateStackSetOutput) {
@@ -966,7 +968,7 @@ public struct CreateStackSetOutputForCreateStackSet: Codable, Equatable {
     }
 }
 
-public struct CreatedButModifiedException: Codable, Equatable {
+public struct CreatedButModifiedException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -975,7 +977,7 @@ public struct CreatedButModifiedException: Codable, Equatable {
     }
 }
 
-public struct DeactivateTypeInput: Codable, Equatable {
+public struct DeactivateTypeInput: Codable, Equatable, Sendable {
     public var arn: PrivateTypeArn?
     public var type: ThirdPartyType?
     public var typeName: TypeName?
@@ -1000,7 +1002,7 @@ public struct DeactivateTypeInput: Codable, Equatable {
     }
 }
 
-public struct DeactivateTypeOutput: Codable, Equatable {
+public struct DeactivateTypeOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1009,7 +1011,7 @@ public struct DeactivateTypeOutput: Codable, Equatable {
     }
 }
 
-public struct DeactivateTypeOutputForDeactivateType: Codable, Equatable {
+public struct DeactivateTypeOutputForDeactivateType: Codable, Equatable, Sendable {
     public var deactivateTypeResult: DeactivateTypeOutput
 
     public init(deactivateTypeResult: DeactivateTypeOutput) {
@@ -1025,7 +1027,7 @@ public struct DeactivateTypeOutputForDeactivateType: Codable, Equatable {
     }
 }
 
-public struct DeleteChangeSetInput: Codable, Equatable {
+public struct DeleteChangeSetInput: Codable, Equatable, Sendable {
     public var changeSetName: ChangeSetNameOrId
     public var stackName: StackNameOrId?
 
@@ -1046,7 +1048,7 @@ public struct DeleteChangeSetInput: Codable, Equatable {
     }
 }
 
-public struct DeleteChangeSetOutput: Codable, Equatable {
+public struct DeleteChangeSetOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1055,7 +1057,7 @@ public struct DeleteChangeSetOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteChangeSetOutputForDeleteChangeSet: Codable, Equatable {
+public struct DeleteChangeSetOutputForDeleteChangeSet: Codable, Equatable, Sendable {
     public var deleteChangeSetResult: DeleteChangeSetOutput
 
     public init(deleteChangeSetResult: DeleteChangeSetOutput) {
@@ -1071,7 +1073,7 @@ public struct DeleteChangeSetOutputForDeleteChangeSet: Codable, Equatable {
     }
 }
 
-public struct DeleteStackInput: Codable, Equatable {
+public struct DeleteStackInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var retainResources: RetainResources?
     public var roleARN: RoleARN?
@@ -1100,7 +1102,7 @@ public struct DeleteStackInput: Codable, Equatable {
     }
 }
 
-public struct DeleteStackInstancesInput: Codable, Equatable {
+public struct DeleteStackInstancesInput: Codable, Equatable, Sendable {
     public var accounts: AccountList?
     public var callAs: CallAs?
     public var deploymentTargets: DeploymentTargets?
@@ -1146,7 +1148,7 @@ public struct DeleteStackInstancesInput: Codable, Equatable {
     }
 }
 
-public struct DeleteStackInstancesOutput: Codable, Equatable {
+public struct DeleteStackInstancesOutput: Codable, Equatable, Sendable {
     public var operationId: ClientRequestToken?
 
     public init(operationId: ClientRequestToken? = nil) {
@@ -1162,7 +1164,7 @@ public struct DeleteStackInstancesOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteStackInstancesOutputForDeleteStackInstances: Codable, Equatable {
+public struct DeleteStackInstancesOutputForDeleteStackInstances: Codable, Equatable, Sendable {
     public var deleteStackInstancesResult: DeleteStackInstancesOutput
 
     public init(deleteStackInstancesResult: DeleteStackInstancesOutput) {
@@ -1178,7 +1180,7 @@ public struct DeleteStackInstancesOutputForDeleteStackInstances: Codable, Equata
     }
 }
 
-public struct DeleteStackSetInput: Codable, Equatable {
+public struct DeleteStackSetInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var stackSetName: StackSetName
 
@@ -1197,7 +1199,7 @@ public struct DeleteStackSetInput: Codable, Equatable {
     }
 }
 
-public struct DeleteStackSetOutput: Codable, Equatable {
+public struct DeleteStackSetOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1206,7 +1208,7 @@ public struct DeleteStackSetOutput: Codable, Equatable {
     }
 }
 
-public struct DeleteStackSetOutputForDeleteStackSet: Codable, Equatable {
+public struct DeleteStackSetOutputForDeleteStackSet: Codable, Equatable, Sendable {
     public var deleteStackSetResult: DeleteStackSetOutput
 
     public init(deleteStackSetResult: DeleteStackSetOutput) {
@@ -1222,7 +1224,7 @@ public struct DeleteStackSetOutputForDeleteStackSet: Codable, Equatable {
     }
 }
 
-public struct DeploymentTargets: Codable, Equatable {
+public struct DeploymentTargets: Codable, Equatable, Sendable {
     public var accountFilterType: AccountFilterType?
     public var accounts: AccountList?
     public var accountsUrl: AccountsUrl?
@@ -1250,7 +1252,7 @@ public struct DeploymentTargets: Codable, Equatable {
     }
 }
 
-public struct DeregisterTypeInput: Codable, Equatable {
+public struct DeregisterTypeInput: Codable, Equatable, Sendable {
     public var arn: PrivateTypeArn?
     public var type: RegistryType?
     public var typeName: TypeName?
@@ -1280,7 +1282,7 @@ public struct DeregisterTypeInput: Codable, Equatable {
     }
 }
 
-public struct DeregisterTypeOutput: Codable, Equatable {
+public struct DeregisterTypeOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -1289,7 +1291,7 @@ public struct DeregisterTypeOutput: Codable, Equatable {
     }
 }
 
-public struct DeregisterTypeOutputForDeregisterType: Codable, Equatable {
+public struct DeregisterTypeOutputForDeregisterType: Codable, Equatable, Sendable {
     public var deregisterTypeResult: DeregisterTypeOutput
 
     public init(deregisterTypeResult: DeregisterTypeOutput) {
@@ -1305,7 +1307,7 @@ public struct DeregisterTypeOutputForDeregisterType: Codable, Equatable {
     }
 }
 
-public struct DescribeAccountLimitsInput: Codable, Equatable {
+public struct DescribeAccountLimitsInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
 
     public init(nextToken: NextToken? = nil) {
@@ -1321,7 +1323,7 @@ public struct DescribeAccountLimitsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeAccountLimitsOutput: Codable, Equatable {
+public struct DescribeAccountLimitsOutput: Codable, Equatable, Sendable {
     public var accountLimits: AccountLimitList?
     public var nextToken: NextToken?
 
@@ -1341,7 +1343,7 @@ public struct DescribeAccountLimitsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeAccountLimitsOutputForDescribeAccountLimits: Codable, Equatable {
+public struct DescribeAccountLimitsOutputForDescribeAccountLimits: Codable, Equatable, Sendable {
     public var describeAccountLimitsResult: DescribeAccountLimitsOutput
 
     public init(describeAccountLimitsResult: DescribeAccountLimitsOutput) {
@@ -1357,7 +1359,7 @@ public struct DescribeAccountLimitsOutputForDescribeAccountLimits: Codable, Equa
     }
 }
 
-public struct DescribeChangeSetHooksInput: Codable, Equatable {
+public struct DescribeChangeSetHooksInput: Codable, Equatable, Sendable {
     public var changeSetName: ChangeSetNameOrId
     public var logicalResourceId: LogicalResourceId?
     public var nextToken: NextToken?
@@ -1387,7 +1389,7 @@ public struct DescribeChangeSetHooksInput: Codable, Equatable {
     }
 }
 
-public struct DescribeChangeSetHooksOutput: Codable, Equatable {
+public struct DescribeChangeSetHooksOutput: Codable, Equatable, Sendable {
     public var changeSetId: ChangeSetId?
     public var changeSetName: ChangeSetName?
     public var hooks: ChangeSetHooks?
@@ -1429,7 +1431,7 @@ public struct DescribeChangeSetHooksOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeChangeSetHooksOutputForDescribeChangeSetHooks: Codable, Equatable {
+public struct DescribeChangeSetHooksOutputForDescribeChangeSetHooks: Codable, Equatable, Sendable {
     public var describeChangeSetHooksResult: DescribeChangeSetHooksOutput
 
     public init(describeChangeSetHooksResult: DescribeChangeSetHooksOutput) {
@@ -1445,7 +1447,7 @@ public struct DescribeChangeSetHooksOutputForDescribeChangeSetHooks: Codable, Eq
     }
 }
 
-public struct DescribeChangeSetInput: Codable, Equatable {
+public struct DescribeChangeSetInput: Codable, Equatable, Sendable {
     public var changeSetName: ChangeSetNameOrId
     public var nextToken: NextToken?
     public var stackName: StackNameOrId?
@@ -1471,7 +1473,7 @@ public struct DescribeChangeSetInput: Codable, Equatable {
     }
 }
 
-public struct DescribeChangeSetOutput: Codable, Equatable {
+public struct DescribeChangeSetOutput: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var changeSetId: ChangeSetId?
     public var changeSetName: ChangeSetName?
@@ -1567,7 +1569,7 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeChangeSetOutputForDescribeChangeSet: Codable, Equatable {
+public struct DescribeChangeSetOutputForDescribeChangeSet: Codable, Equatable, Sendable {
     public var describeChangeSetResult: DescribeChangeSetOutput
 
     public init(describeChangeSetResult: DescribeChangeSetOutput) {
@@ -1583,7 +1585,7 @@ public struct DescribeChangeSetOutputForDescribeChangeSet: Codable, Equatable {
     }
 }
 
-public struct DescribePublisherInput: Codable, Equatable {
+public struct DescribePublisherInput: Codable, Equatable, Sendable {
     public var publisherId: PublisherId?
 
     public init(publisherId: PublisherId? = nil) {
@@ -1599,7 +1601,7 @@ public struct DescribePublisherInput: Codable, Equatable {
     }
 }
 
-public struct DescribePublisherOutput: Codable, Equatable {
+public struct DescribePublisherOutput: Codable, Equatable, Sendable {
     public var identityProvider: IdentityProvider?
     public var publisherId: PublisherId?
     public var publisherProfile: PublisherProfile?
@@ -1628,7 +1630,7 @@ public struct DescribePublisherOutput: Codable, Equatable {
     }
 }
 
-public struct DescribePublisherOutputForDescribePublisher: Codable, Equatable {
+public struct DescribePublisherOutputForDescribePublisher: Codable, Equatable, Sendable {
     public var describePublisherResult: DescribePublisherOutput
 
     public init(describePublisherResult: DescribePublisherOutput) {
@@ -1644,7 +1646,7 @@ public struct DescribePublisherOutputForDescribePublisher: Codable, Equatable {
     }
 }
 
-public struct DescribeStackDriftDetectionStatusInput: Codable, Equatable {
+public struct DescribeStackDriftDetectionStatusInput: Codable, Equatable, Sendable {
     public var stackDriftDetectionId: StackDriftDetectionId
 
     public init(stackDriftDetectionId: StackDriftDetectionId) {
@@ -1660,7 +1662,7 @@ public struct DescribeStackDriftDetectionStatusInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackDriftDetectionStatusOutput: Codable, Equatable {
+public struct DescribeStackDriftDetectionStatusOutput: Codable, Equatable, Sendable {
     public var detectionStatus: StackDriftDetectionStatus
     public var detectionStatusReason: StackDriftDetectionStatusReason?
     public var driftedStackResourceCount: BoxedInteger?
@@ -1700,7 +1702,7 @@ public struct DescribeStackDriftDetectionStatusOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus: Codable, Equatable {
+public struct DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus: Codable, Equatable, Sendable {
     public var describeStackDriftDetectionStatusResult: DescribeStackDriftDetectionStatusOutput
 
     public init(describeStackDriftDetectionStatusResult: DescribeStackDriftDetectionStatusOutput) {
@@ -1716,7 +1718,7 @@ public struct DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetect
     }
 }
 
-public struct DescribeStackEventsInput: Codable, Equatable {
+public struct DescribeStackEventsInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackName: StackName?
 
@@ -1736,7 +1738,7 @@ public struct DescribeStackEventsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackEventsOutput: Codable, Equatable {
+public struct DescribeStackEventsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackEvents: StackEvents?
 
@@ -1756,7 +1758,7 @@ public struct DescribeStackEventsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackEventsOutputForDescribeStackEvents: Codable, Equatable {
+public struct DescribeStackEventsOutputForDescribeStackEvents: Codable, Equatable, Sendable {
     public var describeStackEventsResult: DescribeStackEventsOutput
 
     public init(describeStackEventsResult: DescribeStackEventsOutput) {
@@ -1772,7 +1774,7 @@ public struct DescribeStackEventsOutputForDescribeStackEvents: Codable, Equatabl
     }
 }
 
-public struct DescribeStackInstanceInput: Codable, Equatable {
+public struct DescribeStackInstanceInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var stackInstanceAccount: Account
     public var stackInstanceRegion: Region
@@ -1801,7 +1803,7 @@ public struct DescribeStackInstanceInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackInstanceOutput: Codable, Equatable {
+public struct DescribeStackInstanceOutput: Codable, Equatable, Sendable {
     public var stackInstance: StackInstance?
 
     public init(stackInstance: StackInstance? = nil) {
@@ -1817,7 +1819,7 @@ public struct DescribeStackInstanceOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackInstanceOutputForDescribeStackInstance: Codable, Equatable {
+public struct DescribeStackInstanceOutputForDescribeStackInstance: Codable, Equatable, Sendable {
     public var describeStackInstanceResult: DescribeStackInstanceOutput
 
     public init(describeStackInstanceResult: DescribeStackInstanceOutput) {
@@ -1833,7 +1835,7 @@ public struct DescribeStackInstanceOutputForDescribeStackInstance: Codable, Equa
     }
 }
 
-public struct DescribeStackResourceDriftsInput: Codable, Equatable {
+public struct DescribeStackResourceDriftsInput: Codable, Equatable, Sendable {
     public var maxResults: BoxedMaxResults?
     public var nextToken: NextToken?
     public var stackName: StackNameOrId
@@ -1864,7 +1866,7 @@ public struct DescribeStackResourceDriftsInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackResourceDriftsOutput: Codable, Equatable {
+public struct DescribeStackResourceDriftsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackResourceDrifts: StackResourceDrifts
 
@@ -1884,7 +1886,7 @@ public struct DescribeStackResourceDriftsOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts: Codable, Equatable {
+public struct DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts: Codable, Equatable, Sendable {
     public var describeStackResourceDriftsResult: DescribeStackResourceDriftsOutput
 
     public init(describeStackResourceDriftsResult: DescribeStackResourceDriftsOutput) {
@@ -1900,7 +1902,7 @@ public struct DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts: C
     }
 }
 
-public struct DescribeStackResourceInput: Codable, Equatable {
+public struct DescribeStackResourceInput: Codable, Equatable, Sendable {
     public var logicalResourceId: LogicalResourceId
     public var stackName: StackName
 
@@ -1919,7 +1921,7 @@ public struct DescribeStackResourceInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackResourceOutput: Codable, Equatable {
+public struct DescribeStackResourceOutput: Codable, Equatable, Sendable {
     public var stackResourceDetail: StackResourceDetail?
 
     public init(stackResourceDetail: StackResourceDetail? = nil) {
@@ -1935,7 +1937,7 @@ public struct DescribeStackResourceOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackResourceOutputForDescribeStackResource: Codable, Equatable {
+public struct DescribeStackResourceOutputForDescribeStackResource: Codable, Equatable, Sendable {
     public var describeStackResourceResult: DescribeStackResourceOutput
 
     public init(describeStackResourceResult: DescribeStackResourceOutput) {
@@ -1951,7 +1953,7 @@ public struct DescribeStackResourceOutputForDescribeStackResource: Codable, Equa
     }
 }
 
-public struct DescribeStackResourcesInput: Codable, Equatable {
+public struct DescribeStackResourcesInput: Codable, Equatable, Sendable {
     public var logicalResourceId: LogicalResourceId?
     public var physicalResourceId: PhysicalResourceId?
     public var stackName: StackName?
@@ -1974,7 +1976,7 @@ public struct DescribeStackResourcesInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackResourcesOutput: Codable, Equatable {
+public struct DescribeStackResourcesOutput: Codable, Equatable, Sendable {
     public var stackResources: StackResources?
 
     public init(stackResources: StackResources? = nil) {
@@ -1989,7 +1991,7 @@ public struct DescribeStackResourcesOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackResourcesOutputForDescribeStackResources: Codable, Equatable {
+public struct DescribeStackResourcesOutputForDescribeStackResources: Codable, Equatable, Sendable {
     public var describeStackResourcesResult: DescribeStackResourcesOutput
 
     public init(describeStackResourcesResult: DescribeStackResourcesOutput) {
@@ -2005,7 +2007,7 @@ public struct DescribeStackResourcesOutputForDescribeStackResources: Codable, Eq
     }
 }
 
-public struct DescribeStackSetInput: Codable, Equatable {
+public struct DescribeStackSetInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var stackSetName: StackSetName
 
@@ -2024,7 +2026,7 @@ public struct DescribeStackSetInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackSetOperationInput: Codable, Equatable {
+public struct DescribeStackSetOperationInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var operationId: ClientRequestToken
     public var stackSetName: StackSetName
@@ -2048,7 +2050,7 @@ public struct DescribeStackSetOperationInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackSetOperationOutput: Codable, Equatable {
+public struct DescribeStackSetOperationOutput: Codable, Equatable, Sendable {
     public var stackSetOperation: StackSetOperation?
 
     public init(stackSetOperation: StackSetOperation? = nil) {
@@ -2064,7 +2066,7 @@ public struct DescribeStackSetOperationOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackSetOperationOutputForDescribeStackSetOperation: Codable, Equatable {
+public struct DescribeStackSetOperationOutputForDescribeStackSetOperation: Codable, Equatable, Sendable {
     public var describeStackSetOperationResult: DescribeStackSetOperationOutput
 
     public init(describeStackSetOperationResult: DescribeStackSetOperationOutput) {
@@ -2080,7 +2082,7 @@ public struct DescribeStackSetOperationOutputForDescribeStackSetOperation: Codab
     }
 }
 
-public struct DescribeStackSetOutput: Codable, Equatable {
+public struct DescribeStackSetOutput: Codable, Equatable, Sendable {
     public var stackSet: StackSet?
 
     public init(stackSet: StackSet? = nil) {
@@ -2096,7 +2098,7 @@ public struct DescribeStackSetOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStackSetOutputForDescribeStackSet: Codable, Equatable {
+public struct DescribeStackSetOutputForDescribeStackSet: Codable, Equatable, Sendable {
     public var describeStackSetResult: DescribeStackSetOutput
 
     public init(describeStackSetResult: DescribeStackSetOutput) {
@@ -2112,7 +2114,7 @@ public struct DescribeStackSetOutputForDescribeStackSet: Codable, Equatable {
     }
 }
 
-public struct DescribeStacksInput: Codable, Equatable {
+public struct DescribeStacksInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackName: StackName?
 
@@ -2132,7 +2134,7 @@ public struct DescribeStacksInput: Codable, Equatable {
     }
 }
 
-public struct DescribeStacksOutput: Codable, Equatable {
+public struct DescribeStacksOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stacks: Stacks?
 
@@ -2152,7 +2154,7 @@ public struct DescribeStacksOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeStacksOutputForDescribeStacks: Codable, Equatable {
+public struct DescribeStacksOutputForDescribeStacks: Codable, Equatable, Sendable {
     public var describeStacksResult: DescribeStacksOutput
 
     public init(describeStacksResult: DescribeStacksOutput) {
@@ -2168,7 +2170,7 @@ public struct DescribeStacksOutputForDescribeStacks: Codable, Equatable {
     }
 }
 
-public struct DescribeTypeInput: Codable, Equatable {
+public struct DescribeTypeInput: Codable, Equatable, Sendable {
     public var arn: TypeArn?
     public var publicVersionNumber: PublicVersionNumber?
     public var publisherId: PublisherId?
@@ -2208,7 +2210,7 @@ public struct DescribeTypeInput: Codable, Equatable {
     }
 }
 
-public struct DescribeTypeOutput: Codable, Equatable {
+public struct DescribeTypeOutput: Codable, Equatable, Sendable {
     public var arn: TypeArn?
     public var autoUpdate: AutoUpdate?
     public var configurationSchema: ConfigurationSchema?
@@ -2343,7 +2345,7 @@ public struct DescribeTypeOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeTypeOutputForDescribeType: Codable, Equatable {
+public struct DescribeTypeOutputForDescribeType: Codable, Equatable, Sendable {
     public var describeTypeResult: DescribeTypeOutput
 
     public init(describeTypeResult: DescribeTypeOutput) {
@@ -2359,7 +2361,7 @@ public struct DescribeTypeOutputForDescribeType: Codable, Equatable {
     }
 }
 
-public struct DescribeTypeRegistrationInput: Codable, Equatable {
+public struct DescribeTypeRegistrationInput: Codable, Equatable, Sendable {
     public var registrationToken: RegistrationToken
 
     public init(registrationToken: RegistrationToken) {
@@ -2375,7 +2377,7 @@ public struct DescribeTypeRegistrationInput: Codable, Equatable {
     }
 }
 
-public struct DescribeTypeRegistrationOutput: Codable, Equatable {
+public struct DescribeTypeRegistrationOutput: Codable, Equatable, Sendable {
     public var description: Description?
     public var progressStatus: RegistrationStatus?
     public var typeArn: TypeArn?
@@ -2405,7 +2407,7 @@ public struct DescribeTypeRegistrationOutput: Codable, Equatable {
     }
 }
 
-public struct DescribeTypeRegistrationOutputForDescribeTypeRegistration: Codable, Equatable {
+public struct DescribeTypeRegistrationOutputForDescribeTypeRegistration: Codable, Equatable, Sendable {
     public var describeTypeRegistrationResult: DescribeTypeRegistrationOutput
 
     public init(describeTypeRegistrationResult: DescribeTypeRegistrationOutput) {
@@ -2421,7 +2423,7 @@ public struct DescribeTypeRegistrationOutputForDescribeTypeRegistration: Codable
     }
 }
 
-public struct DetectStackDriftInput: Codable, Equatable {
+public struct DetectStackDriftInput: Codable, Equatable, Sendable {
     public var logicalResourceIds: LogicalResourceIds?
     public var stackName: StackNameOrId
 
@@ -2442,7 +2444,7 @@ public struct DetectStackDriftInput: Codable, Equatable {
     }
 }
 
-public struct DetectStackDriftOutput: Codable, Equatable {
+public struct DetectStackDriftOutput: Codable, Equatable, Sendable {
     public var stackDriftDetectionId: StackDriftDetectionId
 
     public init(stackDriftDetectionId: StackDriftDetectionId) {
@@ -2458,7 +2460,7 @@ public struct DetectStackDriftOutput: Codable, Equatable {
     }
 }
 
-public struct DetectStackDriftOutputForDetectStackDrift: Codable, Equatable {
+public struct DetectStackDriftOutputForDetectStackDrift: Codable, Equatable, Sendable {
     public var detectStackDriftResult: DetectStackDriftOutput
 
     public init(detectStackDriftResult: DetectStackDriftOutput) {
@@ -2474,7 +2476,7 @@ public struct DetectStackDriftOutputForDetectStackDrift: Codable, Equatable {
     }
 }
 
-public struct DetectStackResourceDriftInput: Codable, Equatable {
+public struct DetectStackResourceDriftInput: Codable, Equatable, Sendable {
     public var logicalResourceId: LogicalResourceId
     public var stackName: StackNameOrId
 
@@ -2494,7 +2496,7 @@ public struct DetectStackResourceDriftInput: Codable, Equatable {
     }
 }
 
-public struct DetectStackResourceDriftOutput: Codable, Equatable {
+public struct DetectStackResourceDriftOutput: Codable, Equatable, Sendable {
     public var stackResourceDrift: StackResourceDrift
 
     public init(stackResourceDrift: StackResourceDrift) {
@@ -2510,7 +2512,7 @@ public struct DetectStackResourceDriftOutput: Codable, Equatable {
     }
 }
 
-public struct DetectStackResourceDriftOutputForDetectStackResourceDrift: Codable, Equatable {
+public struct DetectStackResourceDriftOutputForDetectStackResourceDrift: Codable, Equatable, Sendable {
     public var detectStackResourceDriftResult: DetectStackResourceDriftOutput
 
     public init(detectStackResourceDriftResult: DetectStackResourceDriftOutput) {
@@ -2526,7 +2528,7 @@ public struct DetectStackResourceDriftOutputForDetectStackResourceDrift: Codable
     }
 }
 
-public struct DetectStackSetDriftInput: Codable, Equatable {
+public struct DetectStackSetDriftInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
@@ -2556,7 +2558,7 @@ public struct DetectStackSetDriftInput: Codable, Equatable {
     }
 }
 
-public struct DetectStackSetDriftOutput: Codable, Equatable {
+public struct DetectStackSetDriftOutput: Codable, Equatable, Sendable {
     public var operationId: ClientRequestToken?
 
     public init(operationId: ClientRequestToken? = nil) {
@@ -2572,7 +2574,7 @@ public struct DetectStackSetDriftOutput: Codable, Equatable {
     }
 }
 
-public struct DetectStackSetDriftOutputForDetectStackSetDrift: Codable, Equatable {
+public struct DetectStackSetDriftOutputForDetectStackSetDrift: Codable, Equatable, Sendable {
     public var detectStackSetDriftResult: DetectStackSetDriftOutput
 
     public init(detectStackSetDriftResult: DetectStackSetDriftOutput) {
@@ -2588,7 +2590,7 @@ public struct DetectStackSetDriftOutputForDetectStackSetDrift: Codable, Equatabl
     }
 }
 
-public struct EstimateTemplateCostInput: Codable, Equatable {
+public struct EstimateTemplateCostInput: Codable, Equatable, Sendable {
     public var parameters: Parameters?
     public var templateBody: TemplateBody?
     public var templateURL: TemplateURL?
@@ -2613,7 +2615,7 @@ public struct EstimateTemplateCostInput: Codable, Equatable {
     }
 }
 
-public struct EstimateTemplateCostOutput: Codable, Equatable {
+public struct EstimateTemplateCostOutput: Codable, Equatable, Sendable {
     public var url: Url?
 
     public init(url: Url? = nil) {
@@ -2628,7 +2630,7 @@ public struct EstimateTemplateCostOutput: Codable, Equatable {
     }
 }
 
-public struct EstimateTemplateCostOutputForEstimateTemplateCost: Codable, Equatable {
+public struct EstimateTemplateCostOutputForEstimateTemplateCost: Codable, Equatable, Sendable {
     public var estimateTemplateCostResult: EstimateTemplateCostOutput
 
     public init(estimateTemplateCostResult: EstimateTemplateCostOutput) {
@@ -2644,7 +2646,7 @@ public struct EstimateTemplateCostOutputForEstimateTemplateCost: Codable, Equata
     }
 }
 
-public struct ExecuteChangeSetInput: Codable, Equatable {
+public struct ExecuteChangeSetInput: Codable, Equatable, Sendable {
     public var changeSetName: ChangeSetNameOrId
     public var clientRequestToken: ClientRequestToken?
     public var disableRollback: DisableRollback?
@@ -2674,7 +2676,7 @@ public struct ExecuteChangeSetInput: Codable, Equatable {
     }
 }
 
-public struct ExecuteChangeSetOutput: Codable, Equatable {
+public struct ExecuteChangeSetOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -2683,7 +2685,7 @@ public struct ExecuteChangeSetOutput: Codable, Equatable {
     }
 }
 
-public struct ExecuteChangeSetOutputForExecuteChangeSet: Codable, Equatable {
+public struct ExecuteChangeSetOutputForExecuteChangeSet: Codable, Equatable, Sendable {
     public var executeChangeSetResult: ExecuteChangeSetOutput
 
     public init(executeChangeSetResult: ExecuteChangeSetOutput) {
@@ -2699,7 +2701,7 @@ public struct ExecuteChangeSetOutputForExecuteChangeSet: Codable, Equatable {
     }
 }
 
-public struct Export: Codable, Equatable {
+public struct Export: Codable, Equatable, Sendable {
     public var exportingStackId: StackId?
     public var name: ExportName?
     public var value: ExportValue?
@@ -2722,7 +2724,7 @@ public struct Export: Codable, Equatable {
     }
 }
 
-public struct GetStackPolicyInput: Codable, Equatable {
+public struct GetStackPolicyInput: Codable, Equatable, Sendable {
     public var stackName: StackName
 
     public init(stackName: StackName) {
@@ -2737,7 +2739,7 @@ public struct GetStackPolicyInput: Codable, Equatable {
     }
 }
 
-public struct GetStackPolicyOutput: Codable, Equatable {
+public struct GetStackPolicyOutput: Codable, Equatable, Sendable {
     public var stackPolicyBody: StackPolicyBody?
 
     public init(stackPolicyBody: StackPolicyBody? = nil) {
@@ -2753,7 +2755,7 @@ public struct GetStackPolicyOutput: Codable, Equatable {
     }
 }
 
-public struct GetStackPolicyOutputForGetStackPolicy: Codable, Equatable {
+public struct GetStackPolicyOutputForGetStackPolicy: Codable, Equatable, Sendable {
     public var getStackPolicyResult: GetStackPolicyOutput
 
     public init(getStackPolicyResult: GetStackPolicyOutput) {
@@ -2769,7 +2771,7 @@ public struct GetStackPolicyOutputForGetStackPolicy: Codable, Equatable {
     }
 }
 
-public struct GetTemplateInput: Codable, Equatable {
+public struct GetTemplateInput: Codable, Equatable, Sendable {
     public var changeSetName: ChangeSetNameOrId?
     public var stackName: StackName?
     public var templateStage: TemplateStage?
@@ -2793,7 +2795,7 @@ public struct GetTemplateInput: Codable, Equatable {
     }
 }
 
-public struct GetTemplateOutput: Codable, Equatable {
+public struct GetTemplateOutput: Codable, Equatable, Sendable {
     public var stagesAvailable: StageList?
     public var templateBody: TemplateBody?
 
@@ -2813,7 +2815,7 @@ public struct GetTemplateOutput: Codable, Equatable {
     }
 }
 
-public struct GetTemplateOutputForGetTemplate: Codable, Equatable {
+public struct GetTemplateOutputForGetTemplate: Codable, Equatable, Sendable {
     public var getTemplateResult: GetTemplateOutput
 
     public init(getTemplateResult: GetTemplateOutput) {
@@ -2829,7 +2831,7 @@ public struct GetTemplateOutputForGetTemplate: Codable, Equatable {
     }
 }
 
-public struct GetTemplateSummaryInput: Codable, Equatable {
+public struct GetTemplateSummaryInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var stackName: StackNameOrId?
     public var stackSetName: StackSetNameOrId?
@@ -2864,7 +2866,7 @@ public struct GetTemplateSummaryInput: Codable, Equatable {
     }
 }
 
-public struct GetTemplateSummaryOutput: Codable, Equatable {
+public struct GetTemplateSummaryOutput: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var capabilitiesReason: CapabilitiesReason?
     public var declaredTransforms: TransformsList?
@@ -2912,7 +2914,7 @@ public struct GetTemplateSummaryOutput: Codable, Equatable {
     }
 }
 
-public struct GetTemplateSummaryOutputForGetTemplateSummary: Codable, Equatable {
+public struct GetTemplateSummaryOutputForGetTemplateSummary: Codable, Equatable, Sendable {
     public var getTemplateSummaryResult: GetTemplateSummaryOutput
 
     public init(getTemplateSummaryResult: GetTemplateSummaryOutput) {
@@ -2928,7 +2930,7 @@ public struct GetTemplateSummaryOutputForGetTemplateSummary: Codable, Equatable 
     }
 }
 
-public struct ImportStacksToStackSetInput: Codable, Equatable {
+public struct ImportStacksToStackSetInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var operationId: ClientRequestToken?
     public var operationPreferences: StackSetOperationPreferences?
@@ -2971,7 +2973,7 @@ public struct ImportStacksToStackSetInput: Codable, Equatable {
     }
 }
 
-public struct ImportStacksToStackSetOutput: Codable, Equatable {
+public struct ImportStacksToStackSetOutput: Codable, Equatable, Sendable {
     public var operationId: ClientRequestToken?
 
     public init(operationId: ClientRequestToken? = nil) {
@@ -2987,7 +2989,7 @@ public struct ImportStacksToStackSetOutput: Codable, Equatable {
     }
 }
 
-public struct ImportStacksToStackSetOutputForImportStacksToStackSet: Codable, Equatable {
+public struct ImportStacksToStackSetOutputForImportStacksToStackSet: Codable, Equatable, Sendable {
     public var importStacksToStackSetResult: ImportStacksToStackSetOutput
 
     public init(importStacksToStackSetResult: ImportStacksToStackSetOutput) {
@@ -3003,7 +3005,7 @@ public struct ImportStacksToStackSetOutputForImportStacksToStackSet: Codable, Eq
     }
 }
 
-public struct InsufficientCapabilitiesException: Codable, Equatable {
+public struct InsufficientCapabilitiesException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3012,7 +3014,7 @@ public struct InsufficientCapabilitiesException: Codable, Equatable {
     }
 }
 
-public struct InvalidChangeSetStatusException: Codable, Equatable {
+public struct InvalidChangeSetStatusException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3021,7 +3023,7 @@ public struct InvalidChangeSetStatusException: Codable, Equatable {
     }
 }
 
-public struct InvalidOperationException: Codable, Equatable {
+public struct InvalidOperationException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3030,7 +3032,7 @@ public struct InvalidOperationException: Codable, Equatable {
     }
 }
 
-public struct InvalidStateTransitionException: Codable, Equatable {
+public struct InvalidStateTransitionException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3039,7 +3041,7 @@ public struct InvalidStateTransitionException: Codable, Equatable {
     }
 }
 
-public struct LimitExceededException: Codable, Equatable {
+public struct LimitExceededException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3048,7 +3050,7 @@ public struct LimitExceededException: Codable, Equatable {
     }
 }
 
-public struct ListChangeSetsInput: Codable, Equatable {
+public struct ListChangeSetsInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackName: StackNameOrId
 
@@ -3069,7 +3071,7 @@ public struct ListChangeSetsInput: Codable, Equatable {
     }
 }
 
-public struct ListChangeSetsOutput: Codable, Equatable {
+public struct ListChangeSetsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var summaries: ChangeSetSummaries?
 
@@ -3089,7 +3091,7 @@ public struct ListChangeSetsOutput: Codable, Equatable {
     }
 }
 
-public struct ListChangeSetsOutputForListChangeSets: Codable, Equatable {
+public struct ListChangeSetsOutputForListChangeSets: Codable, Equatable, Sendable {
     public var listChangeSetsResult: ListChangeSetsOutput
 
     public init(listChangeSetsResult: ListChangeSetsOutput) {
@@ -3105,7 +3107,7 @@ public struct ListChangeSetsOutputForListChangeSets: Codable, Equatable {
     }
 }
 
-public struct ListExportsInput: Codable, Equatable {
+public struct ListExportsInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
 
     public init(nextToken: NextToken? = nil) {
@@ -3121,7 +3123,7 @@ public struct ListExportsInput: Codable, Equatable {
     }
 }
 
-public struct ListExportsOutput: Codable, Equatable {
+public struct ListExportsOutput: Codable, Equatable, Sendable {
     public var exports: Exports?
     public var nextToken: NextToken?
 
@@ -3141,7 +3143,7 @@ public struct ListExportsOutput: Codable, Equatable {
     }
 }
 
-public struct ListExportsOutputForListExports: Codable, Equatable {
+public struct ListExportsOutputForListExports: Codable, Equatable, Sendable {
     public var listExportsResult: ListExportsOutput
 
     public init(listExportsResult: ListExportsOutput) {
@@ -3157,7 +3159,7 @@ public struct ListExportsOutputForListExports: Codable, Equatable {
     }
 }
 
-public struct ListImportsInput: Codable, Equatable {
+public struct ListImportsInput: Codable, Equatable, Sendable {
     public var exportName: ExportName
     public var nextToken: NextToken?
 
@@ -3177,7 +3179,7 @@ public struct ListImportsInput: Codable, Equatable {
     }
 }
 
-public struct ListImportsOutput: Codable, Equatable {
+public struct ListImportsOutput: Codable, Equatable, Sendable {
     public var imports: Imports?
     public var nextToken: NextToken?
 
@@ -3197,7 +3199,7 @@ public struct ListImportsOutput: Codable, Equatable {
     }
 }
 
-public struct ListImportsOutputForListImports: Codable, Equatable {
+public struct ListImportsOutputForListImports: Codable, Equatable, Sendable {
     public var listImportsResult: ListImportsOutput
 
     public init(listImportsResult: ListImportsOutput) {
@@ -3213,7 +3215,7 @@ public struct ListImportsOutputForListImports: Codable, Equatable {
     }
 }
 
-public struct ListStackInstancesInput: Codable, Equatable {
+public struct ListStackInstancesInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var filters: StackInstanceFilters?
     public var maxResults: MaxResults?
@@ -3257,7 +3259,7 @@ public struct ListStackInstancesInput: Codable, Equatable {
     }
 }
 
-public struct ListStackInstancesOutput: Codable, Equatable {
+public struct ListStackInstancesOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var summaries: StackInstanceSummaries?
 
@@ -3277,7 +3279,7 @@ public struct ListStackInstancesOutput: Codable, Equatable {
     }
 }
 
-public struct ListStackInstancesOutputForListStackInstances: Codable, Equatable {
+public struct ListStackInstancesOutputForListStackInstances: Codable, Equatable, Sendable {
     public var listStackInstancesResult: ListStackInstancesOutput
 
     public init(listStackInstancesResult: ListStackInstancesOutput) {
@@ -3293,7 +3295,7 @@ public struct ListStackInstancesOutputForListStackInstances: Codable, Equatable 
     }
 }
 
-public struct ListStackResourcesInput: Codable, Equatable {
+public struct ListStackResourcesInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackName: StackName
 
@@ -3313,7 +3315,7 @@ public struct ListStackResourcesInput: Codable, Equatable {
     }
 }
 
-public struct ListStackResourcesOutput: Codable, Equatable {
+public struct ListStackResourcesOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackResourceSummaries: StackResourceSummaries?
 
@@ -3333,7 +3335,7 @@ public struct ListStackResourcesOutput: Codable, Equatable {
     }
 }
 
-public struct ListStackResourcesOutputForListStackResources: Codable, Equatable {
+public struct ListStackResourcesOutputForListStackResources: Codable, Equatable, Sendable {
     public var listStackResourcesResult: ListStackResourcesOutput
 
     public init(listStackResourcesResult: ListStackResourcesOutput) {
@@ -3349,7 +3351,7 @@ public struct ListStackResourcesOutputForListStackResources: Codable, Equatable 
     }
 }
 
-public struct ListStackSetOperationResultsInput: Codable, Equatable {
+public struct ListStackSetOperationResultsInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -3383,7 +3385,7 @@ public struct ListStackSetOperationResultsInput: Codable, Equatable {
     }
 }
 
-public struct ListStackSetOperationResultsOutput: Codable, Equatable {
+public struct ListStackSetOperationResultsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var summaries: StackSetOperationResultSummaries?
 
@@ -3403,7 +3405,7 @@ public struct ListStackSetOperationResultsOutput: Codable, Equatable {
     }
 }
 
-public struct ListStackSetOperationResultsOutputForListStackSetOperationResults: Codable, Equatable {
+public struct ListStackSetOperationResultsOutputForListStackSetOperationResults: Codable, Equatable, Sendable {
     public var listStackSetOperationResultsResult: ListStackSetOperationResultsOutput
 
     public init(listStackSetOperationResultsResult: ListStackSetOperationResultsOutput) {
@@ -3419,7 +3421,7 @@ public struct ListStackSetOperationResultsOutputForListStackSetOperationResults:
     }
 }
 
-public struct ListStackSetOperationsInput: Codable, Equatable {
+public struct ListStackSetOperationsInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -3448,7 +3450,7 @@ public struct ListStackSetOperationsInput: Codable, Equatable {
     }
 }
 
-public struct ListStackSetOperationsOutput: Codable, Equatable {
+public struct ListStackSetOperationsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var summaries: StackSetOperationSummaries?
 
@@ -3468,7 +3470,7 @@ public struct ListStackSetOperationsOutput: Codable, Equatable {
     }
 }
 
-public struct ListStackSetOperationsOutputForListStackSetOperations: Codable, Equatable {
+public struct ListStackSetOperationsOutputForListStackSetOperations: Codable, Equatable, Sendable {
     public var listStackSetOperationsResult: ListStackSetOperationsOutput
 
     public init(listStackSetOperationsResult: ListStackSetOperationsOutput) {
@@ -3484,7 +3486,7 @@ public struct ListStackSetOperationsOutputForListStackSetOperations: Codable, Eq
     }
 }
 
-public struct ListStackSetsInput: Codable, Equatable {
+public struct ListStackSetsInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -3513,7 +3515,7 @@ public struct ListStackSetsInput: Codable, Equatable {
     }
 }
 
-public struct ListStackSetsOutput: Codable, Equatable {
+public struct ListStackSetsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var summaries: StackSetSummaries?
 
@@ -3533,7 +3535,7 @@ public struct ListStackSetsOutput: Codable, Equatable {
     }
 }
 
-public struct ListStackSetsOutputForListStackSets: Codable, Equatable {
+public struct ListStackSetsOutputForListStackSets: Codable, Equatable, Sendable {
     public var listStackSetsResult: ListStackSetsOutput
 
     public init(listStackSetsResult: ListStackSetsOutput) {
@@ -3549,7 +3551,7 @@ public struct ListStackSetsOutputForListStackSets: Codable, Equatable {
     }
 }
 
-public struct ListStacksInput: Codable, Equatable {
+public struct ListStacksInput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackStatusFilter: StackStatusFilter?
 
@@ -3569,7 +3571,7 @@ public struct ListStacksInput: Codable, Equatable {
     }
 }
 
-public struct ListStacksOutput: Codable, Equatable {
+public struct ListStacksOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var stackSummaries: StackSummaries?
 
@@ -3589,7 +3591,7 @@ public struct ListStacksOutput: Codable, Equatable {
     }
 }
 
-public struct ListStacksOutputForListStacks: Codable, Equatable {
+public struct ListStacksOutputForListStacks: Codable, Equatable, Sendable {
     public var listStacksResult: ListStacksOutput
 
     public init(listStacksResult: ListStacksOutput) {
@@ -3605,7 +3607,7 @@ public struct ListStacksOutputForListStacks: Codable, Equatable {
     }
 }
 
-public struct ListTypeRegistrationsInput: Codable, Equatable {
+public struct ListTypeRegistrationsInput: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var registrationStatusFilter: RegistrationStatus?
@@ -3644,7 +3646,7 @@ public struct ListTypeRegistrationsInput: Codable, Equatable {
     }
 }
 
-public struct ListTypeRegistrationsOutput: Codable, Equatable {
+public struct ListTypeRegistrationsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var registrationTokenList: RegistrationTokenList?
 
@@ -3664,7 +3666,7 @@ public struct ListTypeRegistrationsOutput: Codable, Equatable {
     }
 }
 
-public struct ListTypeRegistrationsOutputForListTypeRegistrations: Codable, Equatable {
+public struct ListTypeRegistrationsOutputForListTypeRegistrations: Codable, Equatable, Sendable {
     public var listTypeRegistrationsResult: ListTypeRegistrationsOutput
 
     public init(listTypeRegistrationsResult: ListTypeRegistrationsOutput) {
@@ -3680,7 +3682,7 @@ public struct ListTypeRegistrationsOutputForListTypeRegistrations: Codable, Equa
     }
 }
 
-public struct ListTypeVersionsInput: Codable, Equatable {
+public struct ListTypeVersionsInput: Codable, Equatable, Sendable {
     public var arn: TypeArn?
     public var deprecatedStatus: DeprecatedStatus?
     public var maxResults: MaxResults?
@@ -3724,7 +3726,7 @@ public struct ListTypeVersionsInput: Codable, Equatable {
     }
 }
 
-public struct ListTypeVersionsOutput: Codable, Equatable {
+public struct ListTypeVersionsOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var typeVersionSummaries: TypeVersionSummaries?
 
@@ -3744,7 +3746,7 @@ public struct ListTypeVersionsOutput: Codable, Equatable {
     }
 }
 
-public struct ListTypeVersionsOutputForListTypeVersions: Codable, Equatable {
+public struct ListTypeVersionsOutputForListTypeVersions: Codable, Equatable, Sendable {
     public var listTypeVersionsResult: ListTypeVersionsOutput
 
     public init(listTypeVersionsResult: ListTypeVersionsOutput) {
@@ -3760,7 +3762,7 @@ public struct ListTypeVersionsOutputForListTypeVersions: Codable, Equatable {
     }
 }
 
-public struct ListTypesInput: Codable, Equatable {
+public struct ListTypesInput: Codable, Equatable, Sendable {
     public var deprecatedStatus: DeprecatedStatus?
     public var filters: TypeFilters?
     public var maxResults: MaxResults?
@@ -3802,7 +3804,7 @@ public struct ListTypesInput: Codable, Equatable {
     }
 }
 
-public struct ListTypesOutput: Codable, Equatable {
+public struct ListTypesOutput: Codable, Equatable, Sendable {
     public var nextToken: NextToken?
     public var typeSummaries: TypeSummaries?
 
@@ -3822,7 +3824,7 @@ public struct ListTypesOutput: Codable, Equatable {
     }
 }
 
-public struct ListTypesOutputForListTypes: Codable, Equatable {
+public struct ListTypesOutputForListTypes: Codable, Equatable, Sendable {
     public var listTypesResult: ListTypesOutput
 
     public init(listTypesResult: ListTypesOutput) {
@@ -3838,7 +3840,7 @@ public struct ListTypesOutputForListTypes: Codable, Equatable {
     }
 }
 
-public struct LoggingConfig: Codable, Equatable {
+public struct LoggingConfig: Codable, Equatable, Sendable {
     public var logGroupName: LogGroupName
     public var logRoleArn: RoleArn
 
@@ -3859,7 +3861,7 @@ public struct LoggingConfig: Codable, Equatable {
     }
 }
 
-public struct ManagedExecution: Codable, Equatable {
+public struct ManagedExecution: Codable, Equatable, Sendable {
     public var active: ManagedExecutionNullable?
 
     public init(active: ManagedExecutionNullable? = nil) {
@@ -3874,7 +3876,7 @@ public struct ManagedExecution: Codable, Equatable {
     }
 }
 
-public struct ModuleInfo: Codable, Equatable {
+public struct ModuleInfo: Codable, Equatable, Sendable {
     public var logicalIdHierarchy: LogicalIdHierarchy?
     public var typeHierarchy: TypeHierarchy?
 
@@ -3893,7 +3895,7 @@ public struct ModuleInfo: Codable, Equatable {
     }
 }
 
-public struct NameAlreadyExistsException: Codable, Equatable {
+public struct NameAlreadyExistsException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3902,7 +3904,7 @@ public struct NameAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct OperationIdAlreadyExistsException: Codable, Equatable {
+public struct OperationIdAlreadyExistsException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3911,7 +3913,7 @@ public struct OperationIdAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct OperationInProgressException: Codable, Equatable {
+public struct OperationInProgressException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3920,7 +3922,7 @@ public struct OperationInProgressException: Codable, Equatable {
     }
 }
 
-public struct OperationNotFoundException: Codable, Equatable {
+public struct OperationNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3929,7 +3931,7 @@ public struct OperationNotFoundException: Codable, Equatable {
     }
 }
 
-public struct OperationStatusCheckFailedException: Codable, Equatable {
+public struct OperationStatusCheckFailedException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -3938,7 +3940,7 @@ public struct OperationStatusCheckFailedException: Codable, Equatable {
     }
 }
 
-public struct Output: Codable, Equatable {
+public struct Output: Codable, Equatable, Sendable {
     public var description: Description?
     public var exportName: ExportName?
     public var outputKey: OutputKey?
@@ -3966,7 +3968,7 @@ public struct Output: Codable, Equatable {
     }
 }
 
-public struct Parameter: Codable, Equatable {
+public struct Parameter: Codable, Equatable, Sendable {
     public var parameterKey: ParameterKey?
     public var parameterValue: ParameterValue?
     public var resolvedValue: ParameterValue?
@@ -3993,7 +3995,7 @@ public struct Parameter: Codable, Equatable {
     }
 }
 
-public struct ParameterConstraints: Codable, Equatable {
+public struct ParameterConstraints: Codable, Equatable, Sendable {
     public var allowedValues: AllowedValues?
 
     public init(allowedValues: AllowedValues? = nil) {
@@ -4008,7 +4010,7 @@ public struct ParameterConstraints: Codable, Equatable {
     }
 }
 
-public struct ParameterDeclaration: Codable, Equatable {
+public struct ParameterDeclaration: Codable, Equatable, Sendable {
     public var defaultValue: ParameterValue?
     public var description: Description?
     public var noEcho: NoEcho?
@@ -4045,7 +4047,7 @@ public struct ParameterDeclaration: Codable, Equatable {
     }
 }
 
-public struct PhysicalResourceIdContextKeyValuePair: Codable, Equatable {
+public struct PhysicalResourceIdContextKeyValuePair: Codable, Equatable, Sendable {
     public var key: Key
     public var value: Value
 
@@ -4064,7 +4066,7 @@ public struct PhysicalResourceIdContextKeyValuePair: Codable, Equatable {
     }
 }
 
-public struct PropertyDifference: Codable, Equatable {
+public struct PropertyDifference: Codable, Equatable, Sendable {
     public var actualValue: PropertyValue
     public var differenceType: DifferenceType
     public var expectedValue: PropertyValue
@@ -4091,7 +4093,7 @@ public struct PropertyDifference: Codable, Equatable {
     }
 }
 
-public struct PublishTypeInput: Codable, Equatable {
+public struct PublishTypeInput: Codable, Equatable, Sendable {
     public var arn: PrivateTypeArn?
     public var publicVersionNumber: PublicVersionNumber?
     public var type: ThirdPartyType?
@@ -4121,7 +4123,7 @@ public struct PublishTypeInput: Codable, Equatable {
     }
 }
 
-public struct PublishTypeOutput: Codable, Equatable {
+public struct PublishTypeOutput: Codable, Equatable, Sendable {
     public var publicTypeArn: TypeArn?
 
     public init(publicTypeArn: TypeArn? = nil) {
@@ -4137,7 +4139,7 @@ public struct PublishTypeOutput: Codable, Equatable {
     }
 }
 
-public struct PublishTypeOutputForPublishType: Codable, Equatable {
+public struct PublishTypeOutputForPublishType: Codable, Equatable, Sendable {
     public var publishTypeResult: PublishTypeOutput
 
     public init(publishTypeResult: PublishTypeOutput) {
@@ -4153,7 +4155,7 @@ public struct PublishTypeOutputForPublishType: Codable, Equatable {
     }
 }
 
-public struct RecordHandlerProgressInput: Codable, Equatable {
+public struct RecordHandlerProgressInput: Codable, Equatable, Sendable {
     public var bearerToken: ClientToken
     public var clientRequestToken: ClientRequestToken?
     public var currentOperationStatus: OperationStatus?
@@ -4196,7 +4198,7 @@ public struct RecordHandlerProgressInput: Codable, Equatable {
     }
 }
 
-public struct RecordHandlerProgressOutput: Codable, Equatable {
+public struct RecordHandlerProgressOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4205,7 +4207,7 @@ public struct RecordHandlerProgressOutput: Codable, Equatable {
     }
 }
 
-public struct RecordHandlerProgressOutputForRecordHandlerProgress: Codable, Equatable {
+public struct RecordHandlerProgressOutputForRecordHandlerProgress: Codable, Equatable, Sendable {
     public var recordHandlerProgressResult: RecordHandlerProgressOutput
 
     public init(recordHandlerProgressResult: RecordHandlerProgressOutput) {
@@ -4221,7 +4223,7 @@ public struct RecordHandlerProgressOutputForRecordHandlerProgress: Codable, Equa
     }
 }
 
-public struct RegisterPublisherInput: Codable, Equatable {
+public struct RegisterPublisherInput: Codable, Equatable, Sendable {
     public var acceptTermsAndConditions: AcceptTermsAndConditions?
     public var connectionArn: ConnectionArn?
 
@@ -4241,7 +4243,7 @@ public struct RegisterPublisherInput: Codable, Equatable {
     }
 }
 
-public struct RegisterPublisherOutput: Codable, Equatable {
+public struct RegisterPublisherOutput: Codable, Equatable, Sendable {
     public var publisherId: PublisherId?
 
     public init(publisherId: PublisherId? = nil) {
@@ -4257,7 +4259,7 @@ public struct RegisterPublisherOutput: Codable, Equatable {
     }
 }
 
-public struct RegisterPublisherOutputForRegisterPublisher: Codable, Equatable {
+public struct RegisterPublisherOutputForRegisterPublisher: Codable, Equatable, Sendable {
     public var registerPublisherResult: RegisterPublisherOutput
 
     public init(registerPublisherResult: RegisterPublisherOutput) {
@@ -4273,7 +4275,7 @@ public struct RegisterPublisherOutputForRegisterPublisher: Codable, Equatable {
     }
 }
 
-public struct RegisterTypeInput: Codable, Equatable {
+public struct RegisterTypeInput: Codable, Equatable, Sendable {
     public var clientRequestToken: RequestToken?
     public var executionRoleArn: RoleArn?
     public var loggingConfig: LoggingConfig?
@@ -4313,7 +4315,7 @@ public struct RegisterTypeInput: Codable, Equatable {
     }
 }
 
-public struct RegisterTypeOutput: Codable, Equatable {
+public struct RegisterTypeOutput: Codable, Equatable, Sendable {
     public var registrationToken: RegistrationToken?
 
     public init(registrationToken: RegistrationToken? = nil) {
@@ -4329,7 +4331,7 @@ public struct RegisterTypeOutput: Codable, Equatable {
     }
 }
 
-public struct RegisterTypeOutputForRegisterType: Codable, Equatable {
+public struct RegisterTypeOutputForRegisterType: Codable, Equatable, Sendable {
     public var registerTypeResult: RegisterTypeOutput
 
     public init(registerTypeResult: RegisterTypeOutput) {
@@ -4345,7 +4347,7 @@ public struct RegisterTypeOutputForRegisterType: Codable, Equatable {
     }
 }
 
-public struct RequiredActivatedType: Codable, Equatable {
+public struct RequiredActivatedType: Codable, Equatable, Sendable {
     public var originalTypeName: TypeName?
     public var publisherId: PublisherId?
     public var supportedMajorVersions: SupportedMajorVersions?
@@ -4375,7 +4377,7 @@ public struct RequiredActivatedType: Codable, Equatable {
     }
 }
 
-public struct ResourceChange: Codable, Equatable {
+public struct ResourceChange: Codable, Equatable, Sendable {
     public var action: ChangeAction?
     public var changeSetId: ChangeSetId?
     public var details: ResourceChangeDetails?
@@ -4425,7 +4427,7 @@ public struct ResourceChange: Codable, Equatable {
     }
 }
 
-public struct ResourceChangeDetail: Codable, Equatable {
+public struct ResourceChangeDetail: Codable, Equatable, Sendable {
     public var causingEntity: CausingEntity?
     public var changeSource: ChangeSource?
     public var evaluation: EvaluationType?
@@ -4453,7 +4455,7 @@ public struct ResourceChangeDetail: Codable, Equatable {
     }
 }
 
-public struct ResourceIdentifierSummary: Codable, Equatable {
+public struct ResourceIdentifierSummary: Codable, Equatable, Sendable {
     public var logicalResourceIds: LogicalResourceIds?
     public var resourceIdentifiers: ResourceIdentifiers?
     public var resourceType: ResourceType?
@@ -4478,7 +4480,7 @@ public struct ResourceIdentifierSummary: Codable, Equatable {
     }
 }
 
-public struct ResourceTargetDefinition: Codable, Equatable {
+public struct ResourceTargetDefinition: Codable, Equatable, Sendable {
     public var attribute: ResourceAttribute?
     public var name: PropertyName?
     public var requiresRecreation: RequiresRecreation?
@@ -4501,7 +4503,7 @@ public struct ResourceTargetDefinition: Codable, Equatable {
     }
 }
 
-public struct ResourceToImport: Codable, Equatable {
+public struct ResourceToImport: Codable, Equatable, Sendable {
     public var logicalResourceId: LogicalResourceId
     public var resourceIdentifier: ResourceIdentifierProperties
     public var resourceType: ResourceType
@@ -4525,7 +4527,7 @@ public struct ResourceToImport: Codable, Equatable {
     }
 }
 
-public struct RollbackConfiguration: Codable, Equatable {
+public struct RollbackConfiguration: Codable, Equatable, Sendable {
     public var monitoringTimeInMinutes: MonitoringTimeInMinutes?
     public var rollbackTriggers: RollbackTriggers?
 
@@ -4546,7 +4548,7 @@ public struct RollbackConfiguration: Codable, Equatable {
     }
 }
 
-public struct RollbackStackInput: Codable, Equatable {
+public struct RollbackStackInput: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var roleARN: RoleARN?
     public var stackName: StackNameOrId
@@ -4572,7 +4574,7 @@ public struct RollbackStackInput: Codable, Equatable {
     }
 }
 
-public struct RollbackStackOutput: Codable, Equatable {
+public struct RollbackStackOutput: Codable, Equatable, Sendable {
     public var stackId: StackId?
 
     public init(stackId: StackId? = nil) {
@@ -4587,7 +4589,7 @@ public struct RollbackStackOutput: Codable, Equatable {
     }
 }
 
-public struct RollbackStackOutputForRollbackStack: Codable, Equatable {
+public struct RollbackStackOutputForRollbackStack: Codable, Equatable, Sendable {
     public var rollbackStackResult: RollbackStackOutput
 
     public init(rollbackStackResult: RollbackStackOutput) {
@@ -4603,7 +4605,7 @@ public struct RollbackStackOutputForRollbackStack: Codable, Equatable {
     }
 }
 
-public struct RollbackTrigger: Codable, Equatable {
+public struct RollbackTrigger: Codable, Equatable, Sendable {
     public var arn: Arn
     public var type: Type
 
@@ -4622,7 +4624,7 @@ public struct RollbackTrigger: Codable, Equatable {
     }
 }
 
-public struct SetStackPolicyInput: Codable, Equatable {
+public struct SetStackPolicyInput: Codable, Equatable, Sendable {
     public var stackName: StackName
     public var stackPolicyBody: StackPolicyBody?
     public var stackPolicyURL: StackPolicyURL?
@@ -4647,7 +4649,7 @@ public struct SetStackPolicyInput: Codable, Equatable {
     }
 }
 
-public struct SetTypeConfigurationInput: Codable, Equatable {
+public struct SetTypeConfigurationInput: Codable, Equatable, Sendable {
     public var configuration: TypeConfiguration
     public var configurationAlias: TypeConfigurationAlias?
     public var type: ThirdPartyType?
@@ -4682,7 +4684,7 @@ public struct SetTypeConfigurationInput: Codable, Equatable {
     }
 }
 
-public struct SetTypeConfigurationOutput: Codable, Equatable {
+public struct SetTypeConfigurationOutput: Codable, Equatable, Sendable {
     public var configurationArn: TypeConfigurationArn?
 
     public init(configurationArn: TypeConfigurationArn? = nil) {
@@ -4698,7 +4700,7 @@ public struct SetTypeConfigurationOutput: Codable, Equatable {
     }
 }
 
-public struct SetTypeConfigurationOutputForSetTypeConfiguration: Codable, Equatable {
+public struct SetTypeConfigurationOutputForSetTypeConfiguration: Codable, Equatable, Sendable {
     public var setTypeConfigurationResult: SetTypeConfigurationOutput
 
     public init(setTypeConfigurationResult: SetTypeConfigurationOutput) {
@@ -4714,7 +4716,7 @@ public struct SetTypeConfigurationOutputForSetTypeConfiguration: Codable, Equata
     }
 }
 
-public struct SetTypeDefaultVersionInput: Codable, Equatable {
+public struct SetTypeDefaultVersionInput: Codable, Equatable, Sendable {
     public var arn: PrivateTypeArn?
     public var type: RegistryType?
     public var typeName: TypeName?
@@ -4744,7 +4746,7 @@ public struct SetTypeDefaultVersionInput: Codable, Equatable {
     }
 }
 
-public struct SetTypeDefaultVersionOutput: Codable, Equatable {
+public struct SetTypeDefaultVersionOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -4753,7 +4755,7 @@ public struct SetTypeDefaultVersionOutput: Codable, Equatable {
     }
 }
 
-public struct SetTypeDefaultVersionOutputForSetTypeDefaultVersion: Codable, Equatable {
+public struct SetTypeDefaultVersionOutputForSetTypeDefaultVersion: Codable, Equatable, Sendable {
     public var setTypeDefaultVersionResult: SetTypeDefaultVersionOutput
 
     public init(setTypeDefaultVersionResult: SetTypeDefaultVersionOutput) {
@@ -4769,7 +4771,7 @@ public struct SetTypeDefaultVersionOutputForSetTypeDefaultVersion: Codable, Equa
     }
 }
 
-public struct SignalResourceInput: Codable, Equatable {
+public struct SignalResourceInput: Codable, Equatable, Sendable {
     public var logicalResourceId: LogicalResourceId
     public var stackName: StackNameOrId
     public var status: ResourceSignalStatus
@@ -4798,7 +4800,7 @@ public struct SignalResourceInput: Codable, Equatable {
     }
 }
 
-public struct Stack: Codable, Equatable {
+public struct Stack: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var changeSetId: ChangeSetId?
     public var creationTime: CreationTime
@@ -4905,7 +4907,7 @@ public struct Stack: Codable, Equatable {
     }
 }
 
-public struct StackDriftInformation: Codable, Equatable {
+public struct StackDriftInformation: Codable, Equatable, Sendable {
     public var lastCheckTimestamp: Timestamp?
     public var stackDriftStatus: StackDriftStatus
 
@@ -4924,7 +4926,7 @@ public struct StackDriftInformation: Codable, Equatable {
     }
 }
 
-public struct StackDriftInformationSummary: Codable, Equatable {
+public struct StackDriftInformationSummary: Codable, Equatable, Sendable {
     public var lastCheckTimestamp: Timestamp?
     public var stackDriftStatus: StackDriftStatus
 
@@ -4943,7 +4945,7 @@ public struct StackDriftInformationSummary: Codable, Equatable {
     }
 }
 
-public struct StackEvent: Codable, Equatable {
+public struct StackEvent: Codable, Equatable, Sendable {
     public var clientRequestToken: ClientRequestToken?
     public var eventId: EventId
     public var hookFailureMode: HookFailureMode?
@@ -5022,7 +5024,7 @@ public struct StackEvent: Codable, Equatable {
     }
 }
 
-public struct StackInstance: Codable, Equatable {
+public struct StackInstance: Codable, Equatable, Sendable {
     public var account: Account?
     public var driftStatus: StackDriftStatus?
     public var lastDriftCheckTimestamp: Timestamp?
@@ -5081,7 +5083,7 @@ public struct StackInstance: Codable, Equatable {
     }
 }
 
-public struct StackInstanceComprehensiveStatus: Codable, Equatable {
+public struct StackInstanceComprehensiveStatus: Codable, Equatable, Sendable {
     public var detailedStatus: StackInstanceDetailedStatus?
 
     public init(detailedStatus: StackInstanceDetailedStatus? = nil) {
@@ -5096,7 +5098,7 @@ public struct StackInstanceComprehensiveStatus: Codable, Equatable {
     }
 }
 
-public struct StackInstanceFilter: Codable, Equatable {
+public struct StackInstanceFilter: Codable, Equatable, Sendable {
     public var name: StackInstanceFilterName?
     public var values: StackInstanceFilterValues?
 
@@ -5116,7 +5118,7 @@ public struct StackInstanceFilter: Codable, Equatable {
     }
 }
 
-public struct StackInstanceNotFoundException: Codable, Equatable {
+public struct StackInstanceNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5125,7 +5127,7 @@ public struct StackInstanceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct StackInstanceSummary: Codable, Equatable {
+public struct StackInstanceSummary: Codable, Equatable, Sendable {
     public var account: Account?
     public var driftStatus: StackDriftStatus?
     public var lastDriftCheckTimestamp: Timestamp?
@@ -5180,7 +5182,7 @@ public struct StackInstanceSummary: Codable, Equatable {
     }
 }
 
-public struct StackNotFoundException: Codable, Equatable {
+public struct StackNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5189,7 +5191,7 @@ public struct StackNotFoundException: Codable, Equatable {
     }
 }
 
-public struct StackResource: Codable, Equatable {
+public struct StackResource: Codable, Equatable, Sendable {
     public var description: Description?
     public var driftInformation: StackResourceDriftInformation?
     public var logicalResourceId: LogicalResourceId
@@ -5248,7 +5250,7 @@ public struct StackResource: Codable, Equatable {
     }
 }
 
-public struct StackResourceDetail: Codable, Equatable {
+public struct StackResourceDetail: Codable, Equatable, Sendable {
     public var description: Description?
     public var driftInformation: StackResourceDriftInformation?
     public var lastUpdatedTimestamp: Timestamp
@@ -5311,7 +5313,7 @@ public struct StackResourceDetail: Codable, Equatable {
     }
 }
 
-public struct StackResourceDrift: Codable, Equatable {
+public struct StackResourceDrift: Codable, Equatable, Sendable {
     public var actualProperties: Properties?
     public var expectedProperties: Properties?
     public var logicalResourceId: LogicalResourceId
@@ -5369,7 +5371,7 @@ public struct StackResourceDrift: Codable, Equatable {
     }
 }
 
-public struct StackResourceDriftInformation: Codable, Equatable {
+public struct StackResourceDriftInformation: Codable, Equatable, Sendable {
     public var lastCheckTimestamp: Timestamp?
     public var stackResourceDriftStatus: StackResourceDriftStatus
 
@@ -5388,7 +5390,7 @@ public struct StackResourceDriftInformation: Codable, Equatable {
     }
 }
 
-public struct StackResourceDriftInformationSummary: Codable, Equatable {
+public struct StackResourceDriftInformationSummary: Codable, Equatable, Sendable {
     public var lastCheckTimestamp: Timestamp?
     public var stackResourceDriftStatus: StackResourceDriftStatus
 
@@ -5407,7 +5409,7 @@ public struct StackResourceDriftInformationSummary: Codable, Equatable {
     }
 }
 
-public struct StackResourceSummary: Codable, Equatable {
+public struct StackResourceSummary: Codable, Equatable, Sendable {
     public var driftInformation: StackResourceDriftInformationSummary?
     public var lastUpdatedTimestamp: Timestamp
     public var logicalResourceId: LogicalResourceId
@@ -5453,7 +5455,7 @@ public struct StackResourceSummary: Codable, Equatable {
     }
 }
 
-public struct StackSet: Codable, Equatable {
+public struct StackSet: Codable, Equatable, Sendable {
     public var administrationRoleARN: RoleARN?
     public var autoDeployment: AutoDeployment?
     public var capabilities: Capabilities?
@@ -5536,7 +5538,7 @@ public struct StackSet: Codable, Equatable {
     }
 }
 
-public struct StackSetDriftDetectionDetails: Codable, Equatable {
+public struct StackSetDriftDetectionDetails: Codable, Equatable, Sendable {
     public var driftDetectionStatus: StackSetDriftDetectionStatus?
     public var driftStatus: StackSetDriftStatus?
     public var driftedStackInstancesCount: DriftedStackInstancesCount?
@@ -5584,7 +5586,7 @@ public struct StackSetDriftDetectionDetails: Codable, Equatable {
     }
 }
 
-public struct StackSetNotEmptyException: Codable, Equatable {
+public struct StackSetNotEmptyException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5593,7 +5595,7 @@ public struct StackSetNotEmptyException: Codable, Equatable {
     }
 }
 
-public struct StackSetNotFoundException: Codable, Equatable {
+public struct StackSetNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5602,7 +5604,7 @@ public struct StackSetNotFoundException: Codable, Equatable {
     }
 }
 
-public struct StackSetOperation: Codable, Equatable {
+public struct StackSetOperation: Codable, Equatable, Sendable {
     public var action: StackSetOperationAction?
     public var administrationRoleARN: RoleARN?
     public var creationTimestamp: Timestamp?
@@ -5671,7 +5673,7 @@ public struct StackSetOperation: Codable, Equatable {
     }
 }
 
-public struct StackSetOperationPreferences: Codable, Equatable {
+public struct StackSetOperationPreferences: Codable, Equatable, Sendable {
     public var failureToleranceCount: FailureToleranceCount?
     public var failureTolerancePercentage: FailureTolerancePercentage?
     public var maxConcurrentCount: MaxConcurrentCount?
@@ -5710,7 +5712,7 @@ public struct StackSetOperationPreferences: Codable, Equatable {
     }
 }
 
-public struct StackSetOperationResultSummary: Codable, Equatable {
+public struct StackSetOperationResultSummary: Codable, Equatable, Sendable {
     public var account: Account?
     public var accountGateResult: AccountGateResult?
     public var organizationalUnitId: OrganizationalUnitId?
@@ -5749,7 +5751,7 @@ public struct StackSetOperationResultSummary: Codable, Equatable {
     }
 }
 
-public struct StackSetOperationSummary: Codable, Equatable {
+public struct StackSetOperationSummary: Codable, Equatable, Sendable {
     public var action: StackSetOperationAction?
     public var creationTimestamp: Timestamp?
     public var endTimestamp: Timestamp?
@@ -5785,7 +5787,7 @@ public struct StackSetOperationSummary: Codable, Equatable {
     }
 }
 
-public struct StackSetSummary: Codable, Equatable {
+public struct StackSetSummary: Codable, Equatable, Sendable {
     public var autoDeployment: AutoDeployment?
     public var description: Description?
     public var driftStatus: StackDriftStatus?
@@ -5835,7 +5837,7 @@ public struct StackSetSummary: Codable, Equatable {
     }
 }
 
-public struct StackSummary: Codable, Equatable {
+public struct StackSummary: Codable, Equatable, Sendable {
     public var creationTime: CreationTime
     public var deletionTime: DeletionTime?
     public var driftInformation: StackDriftInformationSummary?
@@ -5891,7 +5893,7 @@ public struct StackSummary: Codable, Equatable {
     }
 }
 
-public struct StaleRequestException: Codable, Equatable {
+public struct StaleRequestException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5900,7 +5902,7 @@ public struct StaleRequestException: Codable, Equatable {
     }
 }
 
-public struct StopStackSetOperationInput: Codable, Equatable {
+public struct StopStackSetOperationInput: Codable, Equatable, Sendable {
     public var callAs: CallAs?
     public var operationId: ClientRequestToken
     public var stackSetName: StackSetName
@@ -5924,7 +5926,7 @@ public struct StopStackSetOperationInput: Codable, Equatable {
     }
 }
 
-public struct StopStackSetOperationOutput: Codable, Equatable {
+public struct StopStackSetOperationOutput: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -5933,7 +5935,7 @@ public struct StopStackSetOperationOutput: Codable, Equatable {
     }
 }
 
-public struct StopStackSetOperationOutputForStopStackSetOperation: Codable, Equatable {
+public struct StopStackSetOperationOutputForStopStackSetOperation: Codable, Equatable, Sendable {
     public var stopStackSetOperationResult: StopStackSetOperationOutput
 
     public init(stopStackSetOperationResult: StopStackSetOperationOutput) {
@@ -5949,7 +5951,7 @@ public struct StopStackSetOperationOutputForStopStackSetOperation: Codable, Equa
     }
 }
 
-public struct Tag: Codable, Equatable {
+public struct Tag: Codable, Equatable, Sendable {
     public var key: TagKey
     public var value: TagValue
 
@@ -5970,7 +5972,7 @@ public struct Tag: Codable, Equatable {
     }
 }
 
-public struct TemplateParameter: Codable, Equatable {
+public struct TemplateParameter: Codable, Equatable, Sendable {
     public var defaultValue: ParameterValue?
     public var description: Description?
     public var noEcho: NoEcho?
@@ -5998,7 +6000,7 @@ public struct TemplateParameter: Codable, Equatable {
     }
 }
 
-public struct TestTypeInput: Codable, Equatable {
+public struct TestTypeInput: Codable, Equatable, Sendable {
     public var arn: TypeArn?
     public var logDeliveryBucket: S3Bucket?
     public var type: ThirdPartyType?
@@ -6033,7 +6035,7 @@ public struct TestTypeInput: Codable, Equatable {
     }
 }
 
-public struct TestTypeOutput: Codable, Equatable {
+public struct TestTypeOutput: Codable, Equatable, Sendable {
     public var typeVersionArn: TypeArn?
 
     public init(typeVersionArn: TypeArn? = nil) {
@@ -6049,7 +6051,7 @@ public struct TestTypeOutput: Codable, Equatable {
     }
 }
 
-public struct TestTypeOutputForTestType: Codable, Equatable {
+public struct TestTypeOutputForTestType: Codable, Equatable, Sendable {
     public var testTypeResult: TestTypeOutput
 
     public init(testTypeResult: TestTypeOutput) {
@@ -6065,7 +6067,7 @@ public struct TestTypeOutputForTestType: Codable, Equatable {
     }
 }
 
-public struct TokenAlreadyExistsException: Codable, Equatable {
+public struct TokenAlreadyExistsException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -6074,7 +6076,7 @@ public struct TokenAlreadyExistsException: Codable, Equatable {
     }
 }
 
-public struct TypeConfigurationDetails: Codable, Equatable {
+public struct TypeConfigurationDetails: Codable, Equatable, Sendable {
     public var alias: TypeConfigurationAlias?
     public var arn: TypeConfigurationArn?
     public var configuration: TypeConfiguration?
@@ -6118,7 +6120,7 @@ public struct TypeConfigurationDetails: Codable, Equatable {
     }
 }
 
-public struct TypeConfigurationIdentifier: Codable, Equatable {
+public struct TypeConfigurationIdentifier: Codable, Equatable, Sendable {
     public var type: ThirdPartyType?
     public var typeArn: TypeArn?
     public var typeConfigurationAlias: TypeConfigurationAlias?
@@ -6153,7 +6155,7 @@ public struct TypeConfigurationIdentifier: Codable, Equatable {
     }
 }
 
-public struct TypeConfigurationNotFoundException: Codable, Equatable {
+public struct TypeConfigurationNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -6162,7 +6164,7 @@ public struct TypeConfigurationNotFoundException: Codable, Equatable {
     }
 }
 
-public struct TypeFilters: Codable, Equatable {
+public struct TypeFilters: Codable, Equatable, Sendable {
     public var category: Category?
     public var publisherId: PublisherId?
     public var typeNamePrefix: TypeNamePrefix?
@@ -6187,7 +6189,7 @@ public struct TypeFilters: Codable, Equatable {
     }
 }
 
-public struct TypeNotFoundException: Codable, Equatable {
+public struct TypeNotFoundException: Codable, Equatable, Sendable {
 
     public init() {
     }
@@ -6196,7 +6198,7 @@ public struct TypeNotFoundException: Codable, Equatable {
     }
 }
 
-public struct TypeSummary: Codable, Equatable {
+public struct TypeSummary: Codable, Equatable, Sendable {
     public var defaultVersionId: TypeVersionId?
     public var description: Description?
     public var isActivated: IsActivated?
@@ -6268,7 +6270,7 @@ public struct TypeSummary: Codable, Equatable {
     }
 }
 
-public struct TypeVersionSummary: Codable, Equatable {
+public struct TypeVersionSummary: Codable, Equatable, Sendable {
     public var arn: TypeArn?
     public var description: Description?
     public var isDefaultVersion: IsDefaultVersion?
@@ -6316,7 +6318,7 @@ public struct TypeVersionSummary: Codable, Equatable {
     }
 }
 
-public struct UpdateStackInput: Codable, Equatable {
+public struct UpdateStackInput: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var clientRequestToken: ClientRequestToken?
     public var disableRollback: DisableRollback?
@@ -6406,7 +6408,7 @@ public struct UpdateStackInput: Codable, Equatable {
     }
 }
 
-public struct UpdateStackInstancesInput: Codable, Equatable {
+public struct UpdateStackInstancesInput: Codable, Equatable, Sendable {
     public var accounts: AccountList?
     public var callAs: CallAs?
     public var deploymentTargets: DeploymentTargets?
@@ -6453,7 +6455,7 @@ public struct UpdateStackInstancesInput: Codable, Equatable {
     }
 }
 
-public struct UpdateStackInstancesOutput: Codable, Equatable {
+public struct UpdateStackInstancesOutput: Codable, Equatable, Sendable {
     public var operationId: ClientRequestToken?
 
     public init(operationId: ClientRequestToken? = nil) {
@@ -6469,7 +6471,7 @@ public struct UpdateStackInstancesOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateStackInstancesOutputForUpdateStackInstances: Codable, Equatable {
+public struct UpdateStackInstancesOutputForUpdateStackInstances: Codable, Equatable, Sendable {
     public var updateStackInstancesResult: UpdateStackInstancesOutput
 
     public init(updateStackInstancesResult: UpdateStackInstancesOutput) {
@@ -6485,7 +6487,7 @@ public struct UpdateStackInstancesOutputForUpdateStackInstances: Codable, Equata
     }
 }
 
-public struct UpdateStackOutput: Codable, Equatable {
+public struct UpdateStackOutput: Codable, Equatable, Sendable {
     public var stackId: StackId?
 
     public init(stackId: StackId? = nil) {
@@ -6500,7 +6502,7 @@ public struct UpdateStackOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateStackOutputForUpdateStack: Codable, Equatable {
+public struct UpdateStackOutputForUpdateStack: Codable, Equatable, Sendable {
     public var updateStackResult: UpdateStackOutput
 
     public init(updateStackResult: UpdateStackOutput) {
@@ -6516,7 +6518,7 @@ public struct UpdateStackOutputForUpdateStack: Codable, Equatable {
     }
 }
 
-public struct UpdateStackSetInput: Codable, Equatable {
+public struct UpdateStackSetInput: Codable, Equatable, Sendable {
     public var accounts: AccountList?
     public var administrationRoleARN: RoleARN?
     public var autoDeployment: AutoDeployment?
@@ -6614,7 +6616,7 @@ public struct UpdateStackSetInput: Codable, Equatable {
     }
 }
 
-public struct UpdateStackSetOutput: Codable, Equatable {
+public struct UpdateStackSetOutput: Codable, Equatable, Sendable {
     public var operationId: ClientRequestToken?
 
     public init(operationId: ClientRequestToken? = nil) {
@@ -6630,7 +6632,7 @@ public struct UpdateStackSetOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateStackSetOutputForUpdateStackSet: Codable, Equatable {
+public struct UpdateStackSetOutputForUpdateStackSet: Codable, Equatable, Sendable {
     public var updateStackSetResult: UpdateStackSetOutput
 
     public init(updateStackSetResult: UpdateStackSetOutput) {
@@ -6646,7 +6648,7 @@ public struct UpdateStackSetOutputForUpdateStackSet: Codable, Equatable {
     }
 }
 
-public struct UpdateTerminationProtectionInput: Codable, Equatable {
+public struct UpdateTerminationProtectionInput: Codable, Equatable, Sendable {
     public var enableTerminationProtection: EnableTerminationProtection
     public var stackName: StackNameOrId
 
@@ -6666,7 +6668,7 @@ public struct UpdateTerminationProtectionInput: Codable, Equatable {
     }
 }
 
-public struct UpdateTerminationProtectionOutput: Codable, Equatable {
+public struct UpdateTerminationProtectionOutput: Codable, Equatable, Sendable {
     public var stackId: StackId?
 
     public init(stackId: StackId? = nil) {
@@ -6681,7 +6683,7 @@ public struct UpdateTerminationProtectionOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateTerminationProtectionOutputForUpdateTerminationProtection: Codable, Equatable {
+public struct UpdateTerminationProtectionOutputForUpdateTerminationProtection: Codable, Equatable, Sendable {
     public var updateTerminationProtectionResult: UpdateTerminationProtectionOutput
 
     public init(updateTerminationProtectionResult: UpdateTerminationProtectionOutput) {
@@ -6697,7 +6699,7 @@ public struct UpdateTerminationProtectionOutputForUpdateTerminationProtection: C
     }
 }
 
-public struct ValidateTemplateInput: Codable, Equatable {
+public struct ValidateTemplateInput: Codable, Equatable, Sendable {
     public var templateBody: TemplateBody?
     public var templateURL: TemplateURL?
 
@@ -6718,7 +6720,7 @@ public struct ValidateTemplateInput: Codable, Equatable {
     }
 }
 
-public struct ValidateTemplateOutput: Codable, Equatable {
+public struct ValidateTemplateOutput: Codable, Equatable, Sendable {
     public var capabilities: Capabilities?
     public var capabilitiesReason: CapabilitiesReason?
     public var declaredTransforms: TransformsList?
@@ -6750,7 +6752,7 @@ public struct ValidateTemplateOutput: Codable, Equatable {
     }
 }
 
-public struct ValidateTemplateOutputForValidateTemplate: Codable, Equatable {
+public struct ValidateTemplateOutputForValidateTemplate: Codable, Equatable, Sendable {
     public var validateTemplateResult: ValidateTemplateOutput
 
     public init(validateTemplateResult: ValidateTemplateOutput) {

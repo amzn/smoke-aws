@@ -75,7 +75,7 @@ public typealias ExecutionList = [ExecutionListItem]
 /**
  Enumeration restricting the values of the ExecutionStatus field.
  */
-public enum ExecutionStatus: String, Codable, CustomStringConvertible {
+public enum ExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case aborted = "ABORTED"
     case failed = "FAILED"
     case running = "RUNNING"
@@ -97,7 +97,7 @@ public typealias HistoryEventList = [HistoryEvent]
 /**
  Enumeration restricting the values of the HistoryEventType field.
  */
-public enum HistoryEventType: String, Codable, CustomStringConvertible {
+public enum HistoryEventType: String, Codable, CustomStringConvertible, Sendable {
     case activityFailed = "ActivityFailed"
     case activityScheduleFailed = "ActivityScheduleFailed"
     case activityScheduled = "ActivityScheduled"
@@ -189,7 +189,7 @@ public typealias LogDestinationList = [LogDestination]
 /**
  Enumeration restricting the values of the LogLevel field.
  */
-public enum LogLevel: String, Codable, CustomStringConvertible {
+public enum LogLevel: String, Codable, CustomStringConvertible, Sendable {
     case all = "ALL"
     case error = "ERROR"
     case fatal = "FATAL"
@@ -250,7 +250,7 @@ public typealias StateMachineList = [StateMachineListItem]
 /**
  Enumeration restricting the values of the StateMachineStatus field.
  */
-public enum StateMachineStatus: String, Codable, CustomStringConvertible {
+public enum StateMachineStatus: String, Codable, CustomStringConvertible, Sendable {
     case active = "ACTIVE"
     case deleting = "DELETING"
 
@@ -264,7 +264,7 @@ public enum StateMachineStatus: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the StateMachineType field.
  */
-public enum StateMachineType: String, Codable, CustomStringConvertible {
+public enum StateMachineType: String, Codable, CustomStringConvertible, Sendable {
     case express = "EXPRESS"
     case standard = "STANDARD"
 
@@ -278,7 +278,7 @@ public enum StateMachineType: String, Codable, CustomStringConvertible {
 /**
  Enumeration restricting the values of the SyncExecutionStatus field.
  */
-public enum SyncExecutionStatus: String, Codable, CustomStringConvertible {
+public enum SyncExecutionStatus: String, Codable, CustomStringConvertible, Sendable {
     case failed = "FAILED"
     case succeeded = "SUCCEEDED"
     case timedOut = "TIMED_OUT"

@@ -22,7 +22,9 @@
 
 import Foundation
 
-public struct Action: Codable, Equatable {
+extension Foundation.Data: @unchecked Sendable { }
+
+public struct Action: Codable, Equatable, Sendable {
     public var description: Description?
     public var name: Name?
     public var roleArn: Arn?
@@ -53,7 +55,7 @@ public struct Action: Codable, Equatable {
     }
 }
 
-public struct ActionInvocation: Codable, Equatable {
+public struct ActionInvocation: Codable, Equatable, Sendable {
     public var actionName: Name?
     public var errorCode: String?
     public var errorMessage: String?
@@ -97,7 +99,7 @@ public struct ActionInvocation: Codable, Equatable {
     }
 }
 
-public struct Application: Codable, Equatable {
+public struct Application: Codable, Equatable, Sendable {
     public var description: Description?
     public var id: Id?
     public var name: Name?
@@ -123,7 +125,7 @@ public struct Application: Codable, Equatable {
     }
 }
 
-public struct Applications: Codable, Equatable {
+public struct Applications: Codable, Equatable, Sendable {
     public var items: ApplicationList?
     public var nextToken: NextToken?
 
@@ -143,7 +145,7 @@ public struct Applications: Codable, Equatable {
     }
 }
 
-public struct AppliedExtension: Codable, Equatable {
+public struct AppliedExtension: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id?
     public var extensionId: Id?
     public var parameters: ParameterValueMap?
@@ -172,7 +174,7 @@ public struct AppliedExtension: Codable, Equatable {
     }
 }
 
-public struct BadRequestDetails: Codable, Equatable {
+public struct BadRequestDetails: Codable, Equatable, Sendable {
     public var invalidConfiguration: InvalidConfigurationDetailList?
 
     public init(invalidConfiguration: InvalidConfigurationDetailList? = nil) {
@@ -187,7 +189,7 @@ public struct BadRequestDetails: Codable, Equatable {
     }
 }
 
-public struct BadRequestException: Codable, Equatable {
+public struct BadRequestException: Codable, Equatable, Sendable {
     public var details: BadRequestDetails?
     public var message: String?
     public var reason: BadRequestReason?
@@ -211,7 +213,7 @@ public struct BadRequestException: Codable, Equatable {
     }
 }
 
-public struct Configuration: Codable, Equatable {
+public struct Configuration: Codable, Equatable, Sendable {
     public var configurationVersion: Version?
     public var content: Blob?
     public var contentType: String?
@@ -235,7 +237,7 @@ public struct Configuration: Codable, Equatable {
     }
 }
 
-public struct ConfigurationProfile: Codable, Equatable {
+public struct ConfigurationProfile: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var description: Description?
     public var id: Id?
@@ -286,7 +288,7 @@ public struct ConfigurationProfile: Codable, Equatable {
     }
 }
 
-public struct ConfigurationProfileSummary: Codable, Equatable {
+public struct ConfigurationProfileSummary: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var id: Id?
     public var locationUri: Uri?
@@ -327,7 +329,7 @@ public struct ConfigurationProfileSummary: Codable, Equatable {
     }
 }
 
-public struct ConfigurationProfiles: Codable, Equatable {
+public struct ConfigurationProfiles: Codable, Equatable, Sendable {
     public var items: ConfigurationProfileSummaryList?
     public var nextToken: NextToken?
 
@@ -347,7 +349,7 @@ public struct ConfigurationProfiles: Codable, Equatable {
     }
 }
 
-public struct ConflictException: Codable, Equatable {
+public struct ConflictException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -362,7 +364,7 @@ public struct ConflictException: Codable, Equatable {
     }
 }
 
-public struct CreateApplicationRequest: Codable, Equatable {
+public struct CreateApplicationRequest: Codable, Equatable, Sendable {
     public var description: Description?
     public var name: Name
     public var tags: TagMap?
@@ -387,7 +389,7 @@ public struct CreateApplicationRequest: Codable, Equatable {
     }
 }
 
-public struct CreateConfigurationProfileRequest: Codable, Equatable {
+public struct CreateConfigurationProfileRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var description: Description?
     public var locationUri: Uri
@@ -437,7 +439,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
     }
 }
 
-public struct CreateDeploymentStrategyRequest: Codable, Equatable {
+public struct CreateDeploymentStrategyRequest: Codable, Equatable, Sendable {
     public var deploymentDurationInMinutes: MinutesBetween0And24Hours
     public var description: Description?
     public var finalBakeTimeInMinutes: MinutesBetween0And24Hours?
@@ -485,7 +487,7 @@ public struct CreateDeploymentStrategyRequest: Codable, Equatable {
     }
 }
 
-public struct CreateEnvironmentRequest: Codable, Equatable {
+public struct CreateEnvironmentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var description: Description?
     public var monitors: MonitorList?
@@ -520,7 +522,7 @@ public struct CreateEnvironmentRequest: Codable, Equatable {
     }
 }
 
-public struct CreateExtensionAssociationRequest: Codable, Equatable {
+public struct CreateExtensionAssociationRequest: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier
     public var extensionVersionNumber: Integer?
     public var parameters: ParameterValueMap?
@@ -553,7 +555,7 @@ public struct CreateExtensionAssociationRequest: Codable, Equatable {
     }
 }
 
-public struct CreateExtensionRequest: Codable, Equatable {
+public struct CreateExtensionRequest: Codable, Equatable, Sendable {
     public var actions: ActionsMap
     public var description: Description?
     public var latestVersionNumber: Integer?
@@ -590,7 +592,7 @@ public struct CreateExtensionRequest: Codable, Equatable {
     }
 }
 
-public struct CreateHostedConfigurationVersionRequest: Codable, Equatable {
+public struct CreateHostedConfigurationVersionRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var content: Blob
@@ -629,7 +631,7 @@ public struct CreateHostedConfigurationVersionRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteApplicationRequest: Codable, Equatable {
+public struct DeleteApplicationRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -645,7 +647,7 @@ public struct DeleteApplicationRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteConfigurationProfileRequest: Codable, Equatable {
+public struct DeleteConfigurationProfileRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -666,7 +668,7 @@ public struct DeleteConfigurationProfileRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteDeploymentStrategyRequest: Codable, Equatable {
+public struct DeleteDeploymentStrategyRequest: Codable, Equatable, Sendable {
     public var deploymentStrategyId: DeploymentStrategyId
 
     public init(deploymentStrategyId: DeploymentStrategyId) {
@@ -682,7 +684,7 @@ public struct DeleteDeploymentStrategyRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteEnvironmentRequest: Codable, Equatable {
+public struct DeleteEnvironmentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -703,7 +705,7 @@ public struct DeleteEnvironmentRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteExtensionAssociationRequest: Codable, Equatable {
+public struct DeleteExtensionAssociationRequest: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id
 
     public init(extensionAssociationId: Id) {
@@ -719,7 +721,7 @@ public struct DeleteExtensionAssociationRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteExtensionRequest: Codable, Equatable {
+public struct DeleteExtensionRequest: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier
     public var versionNumber: Integer?
 
@@ -739,7 +741,7 @@ public struct DeleteExtensionRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteHostedConfigurationVersionRequest: Codable, Equatable {
+public struct DeleteHostedConfigurationVersionRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var versionNumber: Integer
@@ -764,7 +766,7 @@ public struct DeleteHostedConfigurationVersionRequest: Codable, Equatable {
     }
 }
 
-public struct Deployment: Codable, Equatable {
+public struct Deployment: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var appliedExtensions: AppliedExtensions?
     public var completedAt: Iso8601DateTime?
@@ -863,7 +865,7 @@ public struct Deployment: Codable, Equatable {
     }
 }
 
-public struct DeploymentEvent: Codable, Equatable {
+public struct DeploymentEvent: Codable, Equatable, Sendable {
     public var actionInvocations: ActionInvocations?
     public var description: Description?
     public var eventType: DeploymentEventType?
@@ -895,7 +897,7 @@ public struct DeploymentEvent: Codable, Equatable {
     }
 }
 
-public struct DeploymentStrategies: Codable, Equatable {
+public struct DeploymentStrategies: Codable, Equatable, Sendable {
     public var items: DeploymentStrategyList?
     public var nextToken: NextToken?
 
@@ -915,7 +917,7 @@ public struct DeploymentStrategies: Codable, Equatable {
     }
 }
 
-public struct DeploymentStrategy: Codable, Equatable {
+public struct DeploymentStrategy: Codable, Equatable, Sendable {
     public var deploymentDurationInMinutes: MinutesBetween0And24Hours?
     public var description: Description?
     public var finalBakeTimeInMinutes: MinutesBetween0And24Hours?
@@ -964,7 +966,7 @@ public struct DeploymentStrategy: Codable, Equatable {
     }
 }
 
-public struct DeploymentSummary: Codable, Equatable {
+public struct DeploymentSummary: Codable, Equatable, Sendable {
     public var completedAt: Iso8601DateTime?
     public var configurationName: Name?
     public var configurationVersion: Version?
@@ -1025,7 +1027,7 @@ public struct DeploymentSummary: Codable, Equatable {
     }
 }
 
-public struct Deployments: Codable, Equatable {
+public struct Deployments: Codable, Equatable, Sendable {
     public var items: DeploymentList?
     public var nextToken: NextToken?
 
@@ -1045,7 +1047,7 @@ public struct Deployments: Codable, Equatable {
     }
 }
 
-public struct Environment: Codable, Equatable {
+public struct Environment: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var description: Description?
     public var id: Id?
@@ -1085,7 +1087,7 @@ public struct Environment: Codable, Equatable {
     }
 }
 
-public struct Environments: Codable, Equatable {
+public struct Environments: Codable, Equatable, Sendable {
     public var items: EnvironmentList?
     public var nextToken: NextToken?
 
@@ -1105,7 +1107,7 @@ public struct Environments: Codable, Equatable {
     }
 }
 
-public struct Extension: Codable, Equatable {
+public struct Extension: Codable, Equatable, Sendable {
     public var actions: ActionsMap?
     public var arn: Arn?
     public var description: Description?
@@ -1148,7 +1150,7 @@ public struct Extension: Codable, Equatable {
     }
 }
 
-public struct ExtensionAssociation: Codable, Equatable {
+public struct ExtensionAssociation: Codable, Equatable, Sendable {
     public var arn: Arn?
     public var extensionArn: Arn?
     public var extensionVersionNumber: Integer?
@@ -1187,7 +1189,7 @@ public struct ExtensionAssociation: Codable, Equatable {
     }
 }
 
-public struct ExtensionAssociationSummary: Codable, Equatable {
+public struct ExtensionAssociationSummary: Codable, Equatable, Sendable {
     public var extensionArn: Arn?
     public var id: Identifier?
     public var resourceArn: Arn?
@@ -1213,7 +1215,7 @@ public struct ExtensionAssociationSummary: Codable, Equatable {
     }
 }
 
-public struct ExtensionAssociations: Codable, Equatable {
+public struct ExtensionAssociations: Codable, Equatable, Sendable {
     public var items: ExtensionAssociationSummaries?
     public var nextToken: NextToken?
 
@@ -1233,7 +1235,7 @@ public struct ExtensionAssociations: Codable, Equatable {
     }
 }
 
-public struct ExtensionSummary: Codable, Equatable {
+public struct ExtensionSummary: Codable, Equatable, Sendable {
     public var arn: Arn?
     public var description: Description?
     public var id: Id?
@@ -1268,7 +1270,7 @@ public struct ExtensionSummary: Codable, Equatable {
     }
 }
 
-public struct Extensions: Codable, Equatable {
+public struct Extensions: Codable, Equatable, Sendable {
     public var items: ExtensionSummaries?
     public var nextToken: NextToken?
 
@@ -1288,7 +1290,7 @@ public struct Extensions: Codable, Equatable {
     }
 }
 
-public struct GetApplicationRequest: Codable, Equatable {
+public struct GetApplicationRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
 
     public init(applicationId: Id) {
@@ -1304,7 +1306,7 @@ public struct GetApplicationRequest: Codable, Equatable {
     }
 }
 
-public struct GetConfigurationProfileRequest: Codable, Equatable {
+public struct GetConfigurationProfileRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
 
@@ -1325,7 +1327,7 @@ public struct GetConfigurationProfileRequest: Codable, Equatable {
     }
 }
 
-public struct GetConfigurationRequest: Codable, Equatable {
+public struct GetConfigurationRequest: Codable, Equatable, Sendable {
     public var application: StringWithLengthBetween1And64
     public var clientConfigurationVersion: Version?
     public var clientId: StringWithLengthBetween1And64
@@ -1361,7 +1363,7 @@ public struct GetConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct GetDeploymentRequest: Codable, Equatable {
+public struct GetDeploymentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var deploymentNumber: Integer
     public var environmentId: Id
@@ -1386,7 +1388,7 @@ public struct GetDeploymentRequest: Codable, Equatable {
     }
 }
 
-public struct GetDeploymentStrategyRequest: Codable, Equatable {
+public struct GetDeploymentStrategyRequest: Codable, Equatable, Sendable {
     public var deploymentStrategyId: DeploymentStrategyId
 
     public init(deploymentStrategyId: DeploymentStrategyId) {
@@ -1402,7 +1404,7 @@ public struct GetDeploymentStrategyRequest: Codable, Equatable {
     }
 }
 
-public struct GetEnvironmentRequest: Codable, Equatable {
+public struct GetEnvironmentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
 
@@ -1423,7 +1425,7 @@ public struct GetEnvironmentRequest: Codable, Equatable {
     }
 }
 
-public struct GetExtensionAssociationRequest: Codable, Equatable {
+public struct GetExtensionAssociationRequest: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id
 
     public init(extensionAssociationId: Id) {
@@ -1439,7 +1441,7 @@ public struct GetExtensionAssociationRequest: Codable, Equatable {
     }
 }
 
-public struct GetExtensionRequest: Codable, Equatable {
+public struct GetExtensionRequest: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier
     public var versionNumber: Integer?
 
@@ -1459,7 +1461,7 @@ public struct GetExtensionRequest: Codable, Equatable {
     }
 }
 
-public struct GetHostedConfigurationVersionRequest: Codable, Equatable {
+public struct GetHostedConfigurationVersionRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var versionNumber: Integer
@@ -1484,7 +1486,7 @@ public struct GetHostedConfigurationVersionRequest: Codable, Equatable {
     }
 }
 
-public struct HostedConfigurationVersion: Codable, Equatable {
+public struct HostedConfigurationVersion: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var configurationProfileId: Id?
     public var content: Blob?
@@ -1523,7 +1525,7 @@ public struct HostedConfigurationVersion: Codable, Equatable {
     }
 }
 
-public struct HostedConfigurationVersionSummary: Codable, Equatable {
+public struct HostedConfigurationVersionSummary: Codable, Equatable, Sendable {
     public var applicationId: Id?
     public var configurationProfileId: Id?
     public var contentType: StringWithLengthBetween1And255?
@@ -1558,7 +1560,7 @@ public struct HostedConfigurationVersionSummary: Codable, Equatable {
     }
 }
 
-public struct HostedConfigurationVersions: Codable, Equatable {
+public struct HostedConfigurationVersions: Codable, Equatable, Sendable {
     public var items: HostedConfigurationVersionSummaryList?
     public var nextToken: NextToken?
 
@@ -1578,7 +1580,7 @@ public struct HostedConfigurationVersions: Codable, Equatable {
     }
 }
 
-public struct InternalServerException: Codable, Equatable {
+public struct InternalServerException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1593,7 +1595,7 @@ public struct InternalServerException: Codable, Equatable {
     }
 }
 
-public struct InvalidConfigurationDetail: Codable, Equatable {
+public struct InvalidConfigurationDetail: Codable, Equatable, Sendable {
     public var constraint: String?
     public var location: String?
     public var reason: String?
@@ -1624,7 +1626,7 @@ public struct InvalidConfigurationDetail: Codable, Equatable {
     }
 }
 
-public struct ListApplicationsRequest: Codable, Equatable {
+public struct ListApplicationsRequest: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1645,7 +1647,7 @@ public struct ListApplicationsRequest: Codable, Equatable {
     }
 }
 
-public struct ListConfigurationProfilesRequest: Codable, Equatable {
+public struct ListConfigurationProfilesRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -1676,7 +1678,7 @@ public struct ListConfigurationProfilesRequest: Codable, Equatable {
     }
 }
 
-public struct ListDeploymentStrategiesRequest: Codable, Equatable {
+public struct ListDeploymentStrategiesRequest: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
 
@@ -1697,7 +1699,7 @@ public struct ListDeploymentStrategiesRequest: Codable, Equatable {
     }
 }
 
-public struct ListDeploymentsRequest: Codable, Equatable {
+public struct ListDeploymentsRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var environmentId: Id
     public var maxResults: MaxResults?
@@ -1728,7 +1730,7 @@ public struct ListDeploymentsRequest: Codable, Equatable {
     }
 }
 
-public struct ListEnvironmentsRequest: Codable, Equatable {
+public struct ListEnvironmentsRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
@@ -1754,7 +1756,7 @@ public struct ListEnvironmentsRequest: Codable, Equatable {
     }
 }
 
-public struct ListExtensionAssociationsRequest: Codable, Equatable {
+public struct ListExtensionAssociationsRequest: Codable, Equatable, Sendable {
     public var extensionIdentifier: Identifier?
     public var extensionVersionNumber: Integer?
     public var maxResults: MaxResults?
@@ -1789,7 +1791,7 @@ public struct ListExtensionAssociationsRequest: Codable, Equatable {
     }
 }
 
-public struct ListExtensionsRequest: Codable, Equatable {
+public struct ListExtensionsRequest: Codable, Equatable, Sendable {
     public var maxResults: MaxResults?
     public var name: QueryName?
     public var nextToken: NextToken?
@@ -1815,7 +1817,7 @@ public struct ListExtensionsRequest: Codable, Equatable {
     }
 }
 
-public struct ListHostedConfigurationVersionsRequest: Codable, Equatable {
+public struct ListHostedConfigurationVersionsRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var maxResults: MaxResults?
@@ -1846,7 +1848,7 @@ public struct ListHostedConfigurationVersionsRequest: Codable, Equatable {
     }
 }
 
-public struct ListTagsForResourceRequest: Codable, Equatable {
+public struct ListTagsForResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
 
     public init(resourceArn: Arn) {
@@ -1862,7 +1864,7 @@ public struct ListTagsForResourceRequest: Codable, Equatable {
     }
 }
 
-public struct Monitor: Codable, Equatable {
+public struct Monitor: Codable, Equatable, Sendable {
     public var alarmArn: StringWithLengthBetween1And2048
     public var alarmRoleArn: RoleArn?
 
@@ -1883,7 +1885,7 @@ public struct Monitor: Codable, Equatable {
     }
 }
 
-public struct Parameter: Codable, Equatable {
+public struct Parameter: Codable, Equatable, Sendable {
     public var description: Description?
     public var required: Boolean?
 
@@ -1903,7 +1905,7 @@ public struct Parameter: Codable, Equatable {
     }
 }
 
-public struct PayloadTooLargeException: Codable, Equatable {
+public struct PayloadTooLargeException: Codable, Equatable, Sendable {
     public var limit: Float?
     public var measure: BytesMeasure?
     public var message: String?
@@ -1930,7 +1932,7 @@ public struct PayloadTooLargeException: Codable, Equatable {
     }
 }
 
-public struct ResourceNotFoundException: Codable, Equatable {
+public struct ResourceNotFoundException: Codable, Equatable, Sendable {
     public var message: String?
     public var resourceName: String?
 
@@ -1949,7 +1951,7 @@ public struct ResourceNotFoundException: Codable, Equatable {
     }
 }
 
-public struct ResourceTags: Codable, Equatable {
+public struct ResourceTags: Codable, Equatable, Sendable {
     public var tags: TagMap?
 
     public init(tags: TagMap? = nil) {
@@ -1964,7 +1966,7 @@ public struct ResourceTags: Codable, Equatable {
     }
 }
 
-public struct ServiceQuotaExceededException: Codable, Equatable {
+public struct ServiceQuotaExceededException: Codable, Equatable, Sendable {
     public var message: String?
 
     public init(message: String? = nil) {
@@ -1979,7 +1981,7 @@ public struct ServiceQuotaExceededException: Codable, Equatable {
     }
 }
 
-public struct StartDeploymentRequest: Codable, Equatable {
+public struct StartDeploymentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var configurationVersion: Version
@@ -2024,7 +2026,7 @@ public struct StartDeploymentRequest: Codable, Equatable {
     }
 }
 
-public struct StopDeploymentRequest: Codable, Equatable {
+public struct StopDeploymentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var deploymentNumber: Integer
     public var environmentId: Id
@@ -2049,7 +2051,7 @@ public struct StopDeploymentRequest: Codable, Equatable {
     }
 }
 
-public struct TagResourceRequest: Codable, Equatable {
+public struct TagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tags: TagMap
 
@@ -2069,7 +2071,7 @@ public struct TagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct UntagResourceRequest: Codable, Equatable {
+public struct UntagResourceRequest: Codable, Equatable, Sendable {
     public var resourceArn: Arn
     public var tagKeys: TagKeyList
 
@@ -2090,7 +2092,7 @@ public struct UntagResourceRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateApplicationRequest: Codable, Equatable {
+public struct UpdateApplicationRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var description: Description?
     public var name: Name?
@@ -2116,7 +2118,7 @@ public struct UpdateApplicationRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateConfigurationProfileRequest: Codable, Equatable {
+public struct UpdateConfigurationProfileRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var description: Description?
@@ -2157,7 +2159,7 @@ public struct UpdateConfigurationProfileRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateDeploymentStrategyRequest: Codable, Equatable {
+public struct UpdateDeploymentStrategyRequest: Codable, Equatable, Sendable {
     public var deploymentDurationInMinutes: MinutesBetween0And24Hours?
     public var deploymentStrategyId: DeploymentStrategyId
     public var description: Description?
@@ -2197,7 +2199,7 @@ public struct UpdateDeploymentStrategyRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateEnvironmentRequest: Codable, Equatable {
+public struct UpdateEnvironmentRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var description: Description?
     public var environmentId: Id
@@ -2233,7 +2235,7 @@ public struct UpdateEnvironmentRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateExtensionAssociationRequest: Codable, Equatable {
+public struct UpdateExtensionAssociationRequest: Codable, Equatable, Sendable {
     public var extensionAssociationId: Id
     public var parameters: ParameterValueMap?
 
@@ -2253,7 +2255,7 @@ public struct UpdateExtensionAssociationRequest: Codable, Equatable {
     }
 }
 
-public struct UpdateExtensionRequest: Codable, Equatable {
+public struct UpdateExtensionRequest: Codable, Equatable, Sendable {
     public var actions: ActionsMap?
     public var description: Description?
     public var extensionIdentifier: Identifier
@@ -2286,7 +2288,7 @@ public struct UpdateExtensionRequest: Codable, Equatable {
     }
 }
 
-public struct ValidateConfigurationRequest: Codable, Equatable {
+public struct ValidateConfigurationRequest: Codable, Equatable, Sendable {
     public var applicationId: Id
     public var configurationProfileId: Id
     public var configurationVersion: Version
@@ -2312,7 +2314,7 @@ public struct ValidateConfigurationRequest: Codable, Equatable {
     }
 }
 
-public struct Validator: Codable, Equatable {
+public struct Validator: Codable, Equatable, Sendable {
     public var content: StringWithLengthBetween0And32768
     public var type: ValidatorType
 
