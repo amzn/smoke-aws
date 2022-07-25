@@ -33,7 +33,7 @@ public struct SigV4HeaderMiddleware: MiddlewareProtocol {
     public typealias InputType = HttpClientRequestBuilder<HTTPClientRequest>
     public typealias OutputType = HTTPClientResponse
     
-    private let credentialsProvider: CredentialsProvider
+    private let credentialsProvider: CredentialsProvider & Sendable
     private let awsRegion: AWSRegion
     private let service: String
     private let operation: String?
@@ -41,7 +41,7 @@ public struct SigV4HeaderMiddleware: MiddlewareProtocol {
     private let signAllHeaders: Bool
     private let bodyContext: SmokeHTTPBodyContext
     
-    public init(credentialsProvider: CredentialsProvider,
+    public init(credentialsProvider: CredentialsProvider & Sendable,
                 awsRegion: AWSRegion,
                 service: String,
                 operation: String?,

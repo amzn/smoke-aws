@@ -34,7 +34,7 @@ public struct SmokeStandardMiddleware {
     public static func createStack<InputType: HTTPRequestInputProtocol,
                                    OutputType: HTTPResponseOutputProtocol,
                                    ErrorType: Decodable & Error>(
-        credentialsProvider: CredentialsProvider,
+        credentialsProvider: CredentialsProvider & Sendable,
         awsRegion: AWSRegion,
         service: String,
         operation: String?,
@@ -47,7 +47,7 @@ public struct SmokeStandardMiddleware {
         specifyContentHeadersForZeroLengthBody: Bool = true,
         httpPath: String = "/",
         retryConfiguration: HTTPClientRetryConfiguration,
-        invocationMetrics: HTTPClientInvocationMetrics?,
+        invocationMetrics: (HTTPClientInvocationMetrics & Sendable)?,
         requestTags: [String],
         inputQueryMapDecodingStrategy: QueryEncoder.MapEncodingStrategy? = nil,
         signAllHeaders: Bool = false,
@@ -59,6 +59,7 @@ public struct SmokeStandardMiddleware {
         let jsonDecoder = JSONDecoder.awsCompatibleDecoder()
         let jsonEncoder = JSONEncoder.awsCompatibleEncoder()
         
+        @Sendable
         func errorStatusFunction(error: Swift.Error) -> (isRetriable: Bool, code: UInt) {
             if let httpClientError = error as? AsyncHTTPClient.HTTPClientError {
                 if httpClientError.isRetriable {

@@ -20,7 +20,7 @@ import Foundation
 /**
  Enumeration of the AWS Regions.
  */
-public enum AWSRegion: String {
+public enum AWSRegion: String, Sendable {
     case us_east_1 = "us-east-1"
     case us_east_2 = "us-east-2"
     case us_west_1 = "us-west-1"
