@@ -28,7 +28,7 @@ import DynamoDBModel
 /**
  Invocations reporting for the DynamoDBModel.
  */
-public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchGetItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchWriteItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

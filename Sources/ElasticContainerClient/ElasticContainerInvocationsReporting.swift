@@ -28,7 +28,7 @@ import ElasticContainerModel
 /**
  Invocations reporting for the ElasticContainerModel.
  */
-public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let createCapacityProvider: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

@@ -45,7 +45,7 @@ public enum SecurityTokenClientError: Swift.Error {
 /**
  AWS Client for the SecurityToken service.
  */
-public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SecurityTokenClientProtocol {
+public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: SecurityTokenClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

@@ -28,7 +28,7 @@ import CloudWatchModel
 /**
  Invocations reporting for the CloudWatchModel.
  */
-public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let deleteAlarms: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteAnomalyDetector: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

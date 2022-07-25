@@ -28,7 +28,7 @@ import ElasticComputeCloudModel
 /**
  Invocations reporting for the ElasticComputeCloudModel.
  */
-public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let acceptReservedInstancesExchangeQuote: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let acceptTransitGatewayMulticastDomainAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let acceptTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

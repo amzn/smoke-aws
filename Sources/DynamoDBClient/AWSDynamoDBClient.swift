@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the DynamoDB service.
  */
-public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: DynamoDBClientProtocol {
+public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: DynamoDBClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

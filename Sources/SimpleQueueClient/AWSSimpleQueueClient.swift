@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the SimpleQueue service.
  */
-public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleQueueClientProtocol {
+public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: SimpleQueueClientProtocol {
     let httpClient: HTTPOperationsClient
     let listHttpClient: HTTPOperationsClient
     let ownsHttpClients: Bool

@@ -45,7 +45,7 @@ public enum CloudformationClientError: Swift.Error {
 /**
  AWS Client for the Cloudformation service.
  */
-public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: CloudformationClientProtocol {
+public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: CloudformationClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

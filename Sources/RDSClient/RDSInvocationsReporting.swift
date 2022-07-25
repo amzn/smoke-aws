@@ -28,7 +28,7 @@ import RDSModel
 /**
  Invocations reporting for the RDSModel.
  */
-public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let addRoleToDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let addRoleToDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let addSourceIdentifierToSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

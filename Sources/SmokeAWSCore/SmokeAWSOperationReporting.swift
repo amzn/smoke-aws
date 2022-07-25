@@ -39,7 +39,7 @@ public protocol SmokeAWSOperationReporting {
     var latencyTimer: Metrics.Timer? { get }
 }
 
-public struct StandardSmokeAWSOperationReporting<OperationIdentifer: Hashable & CustomStringConvertible>: SmokeAWSOperationReporting {
+public struct StandardSmokeAWSOperationReporting<OperationIdentifer: Hashable & CustomStringConvertible>: SmokeAWSOperationReporting, Sendable {
     public let successCounter: Metrics.Counter?
     public let failure5XXCounter: Metrics.Counter?
     public let failure4XXCounter: Metrics.Counter?

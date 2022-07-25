@@ -22,14 +22,15 @@ import NIO
 import Logging
 import Metrics
 
-public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: HTTPClientCoreInvocationReporting>: HTTPClientInvocationReporting {
+public struct SmokeAWSHTTPClientInvocationReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>
+: HTTPClientInvocationReporting, Sendable {
     public typealias TraceContextType = InvocationReportingType.TraceContextType
     
     private let smokeAWSInvocationReporting: InvocationReportingType
-    private let smokeAWSOperationReporting: SmokeAWSOperationReporting
+    private let smokeAWSOperationReporting: SmokeAWSOperationReporting & Sendable
     
     public init(smokeAWSInvocationReporting: InvocationReportingType,
-                smokeAWSOperationReporting: SmokeAWSOperationReporting) {
+                smokeAWSOperationReporting: SmokeAWSOperationReporting & Sendable) {
         self.smokeAWSInvocationReporting = smokeAWSInvocationReporting
         self.smokeAWSOperationReporting = smokeAWSOperationReporting
     }

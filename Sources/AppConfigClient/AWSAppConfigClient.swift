@@ -45,7 +45,7 @@ public enum AppConfigClientError: Swift.Error {
 /**
  AWS Client for the AppConfig service.
  */
-public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: AppConfigClientProtocol {
+public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: AppConfigClientProtocol {
     let httpClient: HTTPOperationsClient
     let dataHttpClient: HTTPOperationsClient
     let ownsHttpClients: Bool

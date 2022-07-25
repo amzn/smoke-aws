@@ -117,7 +117,7 @@ public struct AWSRDSClientGenerator {
             operationsReporting: self.operationsReporting)
     }
     
-    public func with<NewTraceContextType: InvocationTraceContext>(
+    public func with<NewTraceContextType: InvocationTraceContext & Sendable>(
             logger: Logging.Logger,
             internalRequestId: String = "none",
             traceContext: NewTraceContextType) -> AWSRDSClient<StandardHTTPClientCoreInvocationReporting<NewTraceContextType>> {

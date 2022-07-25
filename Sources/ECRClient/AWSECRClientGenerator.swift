@@ -115,7 +115,7 @@ public struct AWSECRClientGenerator {
             operationsReporting: self.operationsReporting)
     }
     
-    public func with<NewTraceContextType: InvocationTraceContext>(
+    public func with<NewTraceContextType: InvocationTraceContext & Sendable>(
             logger: Logging.Logger,
             internalRequestId: String = "none",
             traceContext: NewTraceContextType) -> AWSECRClient<StandardHTTPClientCoreInvocationReporting<NewTraceContextType>> {

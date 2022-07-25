@@ -28,7 +28,7 @@ import RDSDataModel
 /**
  Invocations reporting for the RDSDataModel.
  */
-public struct RDSDataInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct RDSDataInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let batchExecuteStatement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let beginTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let commitTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

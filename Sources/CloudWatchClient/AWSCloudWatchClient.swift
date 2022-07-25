@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the CloudWatch service.
  */
-public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: CloudWatchClientProtocol {
+public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: CloudWatchClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

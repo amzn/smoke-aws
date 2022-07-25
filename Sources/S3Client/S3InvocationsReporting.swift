@@ -28,7 +28,7 @@ import S3Model
 /**
  Invocations reporting for the S3Model.
  */
-public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct S3InvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let abortMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let completeMultipartUpload: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let copyObject: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

@@ -28,7 +28,7 @@ import CodePipelineModel
 /**
  Invocations reporting for the CodePipelineModel.
  */
-public struct CodePipelineInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct CodePipelineInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let acknowledgeJob: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let acknowledgeThirdPartyJob: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCustomActionType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

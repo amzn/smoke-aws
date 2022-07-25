@@ -28,7 +28,7 @@ import AppConfigModel
 /**
  Invocations reporting for the AppConfigModel.
  */
-public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct AppConfigInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let createApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createConfigurationProfile: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDeploymentStrategy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

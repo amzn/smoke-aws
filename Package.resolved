@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
           "branch": "middleware_poc",
-          "revision": "e26f78571f724e11fe40f70aa9bd826c6d4f3c04",
+          "revision": "f2003ebccff65e3ce22f09ed562a9830bb65eb4c",
           "version": null
         }
       },

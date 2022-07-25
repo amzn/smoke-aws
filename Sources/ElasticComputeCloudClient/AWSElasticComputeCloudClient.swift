@@ -45,7 +45,7 @@ public enum ElasticComputeCloudClientError: Swift.Error {
 /**
  AWS Client for the ElasticComputeCloud service.
  */
-public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ElasticComputeCloudClientProtocol {
+public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: ElasticComputeCloudClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

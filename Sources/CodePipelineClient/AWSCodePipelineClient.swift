@@ -45,7 +45,7 @@ public enum CodePipelineClientError: Swift.Error {
 /**
  AWS Client for the CodePipeline service.
  */
-public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: CodePipelineClientProtocol {
+public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: CodePipelineClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

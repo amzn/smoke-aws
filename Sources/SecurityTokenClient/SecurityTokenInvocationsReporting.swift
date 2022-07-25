@@ -28,7 +28,7 @@ import SecurityTokenModel
 /**
  Invocations reporting for the SecurityTokenModel.
  */
-public struct SecurityTokenInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct SecurityTokenInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let assumeRole: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let assumeRoleWithSAML: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let assumeRoleWithWebIdentity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the SimpleWorkflow service.
  */
-public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleWorkflowClientProtocol {
+public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: SimpleWorkflowClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

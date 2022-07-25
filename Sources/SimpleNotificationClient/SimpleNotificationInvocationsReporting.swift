@@ -28,7 +28,7 @@ import SimpleNotificationModel
 /**
  Invocations reporting for the SimpleNotificationModel.
  */
-public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let checkIfPhoneNumberIsOptedOut: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let confirmSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

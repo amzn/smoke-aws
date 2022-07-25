@@ -119,7 +119,7 @@ public struct AWSElasticComputeCloudClientGenerator {
             operationsReporting: self.operationsReporting)
     }
     
-    public func with<NewTraceContextType: InvocationTraceContext>(
+    public func with<NewTraceContextType: InvocationTraceContext & Sendable>(
             logger: Logging.Logger,
             internalRequestId: String = "none",
             traceContext: NewTraceContextType) -> AWSElasticComputeCloudClient<StandardHTTPClientCoreInvocationReporting<NewTraceContextType>> {

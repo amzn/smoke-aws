@@ -45,7 +45,7 @@ public enum ECRClientError: Swift.Error {
 /**
  AWS Client for the ECR service.
  */
-public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ECRClientProtocol {
+public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: ECRClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

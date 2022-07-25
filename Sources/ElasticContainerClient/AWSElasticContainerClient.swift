@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the ElasticContainer service.
  */
-public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: ElasticContainerClientProtocol {
+public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: ElasticContainerClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

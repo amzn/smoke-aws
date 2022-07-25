@@ -28,7 +28,7 @@ import ECRModel
 /**
  Invocations reporting for the ECRModel.
  */
-public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct ECRInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let batchCheckLayerAvailability: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchDeleteImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchGetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

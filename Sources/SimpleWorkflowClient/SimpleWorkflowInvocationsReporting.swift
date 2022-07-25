@@ -28,7 +28,7 @@ import SimpleWorkflowModel
 /**
  Invocations reporting for the SimpleWorkflowModel.
  */
-public struct SimpleWorkflowInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct SimpleWorkflowInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let countClosedWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let countOpenWorkflowExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let countPendingActivityTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

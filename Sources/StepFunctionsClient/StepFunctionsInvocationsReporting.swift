@@ -28,7 +28,7 @@ import StepFunctionsModel
 /**
  Invocations reporting for the StepFunctionsModel.
  */
-public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let createActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

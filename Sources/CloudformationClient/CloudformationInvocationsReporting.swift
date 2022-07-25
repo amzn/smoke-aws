@@ -28,7 +28,7 @@ import CloudformationModel
 /**
  Invocations reporting for the CloudformationModel.
  */
-public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let activateType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchDescribeTypeConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelUpdateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

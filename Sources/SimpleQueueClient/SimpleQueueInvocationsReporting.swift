@@ -28,7 +28,7 @@ import SimpleQueueModel
 /**
  Invocations reporting for the SimpleQueueModel.
  */
-public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable> {
     public let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let changeMessageVisibility: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let changeMessageVisibilityBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>

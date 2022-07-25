@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the StepFunctions service.
  */
-public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: StepFunctionsClientProtocol {
+public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: StepFunctionsClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

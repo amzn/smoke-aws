@@ -45,7 +45,7 @@ public enum S3ClientError: Swift.Error {
 /**
  AWS Client for the S3 service.
  */
-public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationReporting>: S3ClientProtocol {
+public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: S3ClientProtocol {
     let httpClient: HTTPOperationsClient
     let dataHttpClient: HTTPOperationsClient
     let ownsHttpClients: Bool

@@ -117,7 +117,7 @@ public struct S3Object: S3ObjectProtocol {
      Gets an object from the S3 bucket, returning the decoded response in the
      completion handler.
      */
-    public func getAsync<OutputType: Codable, InvocationReportingType: HTTPClientCoreInvocationReporting>(
+    public func getAsync<OutputType: Codable, InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>(
             objectPath: String,
             reporting: InvocationReportingType,
             completion: @escaping (Result<OutputType, HTTPClientError>) -> ()) throws {
@@ -152,7 +152,7 @@ public struct S3Object: S3ObjectProtocol {
     /**
      Gets an object from the S3 bucket, returning the decoded response.
      */
-    public func getSync<OutputType: Codable, InvocationReportingType: HTTPClientCoreInvocationReporting  >(objectPath: String, reporting: InvocationReportingType) throws -> OutputType {
+    public func getSync<OutputType: Codable, InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>(objectPath: String, reporting: InvocationReportingType) throws -> OutputType {
         // make sure the object path is submitted starting with a "/"
         let fullEndpointPath: String
         if let first = objectPath.first, first == "/" {

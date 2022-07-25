@@ -64,7 +64,7 @@ private extension SmokeHTTPClient.HTTPClientError {
 /**
  AWS Client for the SimpleNotification service.
  */
-public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: SimpleNotificationClientProtocol {
+public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: SimpleNotificationClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion

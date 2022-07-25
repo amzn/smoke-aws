@@ -28,7 +28,7 @@ private let xAmzId2 = "x-amz-id-2"
   A type conforming to the `InvocationTraceContext` protocol, sutiable for AWS clients. This implementation will log the input to and output from the outgoing request,
   along with x-amz-request-id and x-amz-id-2" headers if present.
  */
-public struct AWSClientInvocationTraceContext: InvocationTraceContext {
+public struct AWSClientInvocationTraceContext: InvocationTraceContext, Sendable {
     public typealias OutwardsRequestContext = String
     
     private let traceLoggingEnabled: Bool

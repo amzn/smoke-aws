@@ -45,7 +45,7 @@ public enum RDSDataClientError: Swift.Error {
 /**
  AWS Client for the RDSData service.
  */
-public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocationReporting>: RDSDataClientProtocol {
+public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocationReporting & Sendable>: RDSDataClientProtocol {
     let httpClient: HTTPOperationsClient
     let ownsHttpClients: Bool
     let awsRegion: AWSRegion
