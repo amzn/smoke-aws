@@ -21,7 +21,7 @@ import Foundation
  An implementation of the Credentials that provides static
  credentials provided by an initializer.
  */
-public struct StaticCredentials : Credentials {
+public struct StaticCredentials : Credentials, Sendable {
     public let accessKeyId: String
     public let secretAccessKey: String
     public let sessionToken: String?
