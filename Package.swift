@@ -16,12 +16,7 @@
 
 import PackageDescription
 
-let swiftSettings: [SwiftSetting]
-#if compiler(<5.6)
-swiftSettings = []
-#else
-swiftSettings = [.unsafeFlags(["-warn-concurrency"])]
-#endif
+let swiftSettings: [SwiftSetting] = []
 
 let package = Package(
     name: "smoke-aws",
