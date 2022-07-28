@@ -17,20 +17,22 @@
 
 import Foundation
 
-private func createEncoder() -> JSONEncoder {
+private func createEncoder(withPrettyPrinting: Bool = true) -> JSONEncoder {
     let jsonEncoder = JSONEncoder()
     if #available(OSX 10.12, *) {
         jsonEncoder.dateEncodingStrategy = .iso8601
     }
 
-    jsonEncoder.outputFormatting = .prettyPrinted
+    if withPrettyPrinting {
+        jsonEncoder.outputFormatting = .prettyPrinted
+    }
     
     return jsonEncoder
 }
 
 public extension JSONEncoder {
     /// Return a AWS compatible JSON Encoder
-    static func awsCompatibleEncoder() -> JSONEncoder {
-        return createEncoder()
+    static func awsCompatibleEncoder(withPrettyPrinting: Bool = true) -> JSONEncoder {
+        return createEncoder(withPrettyPrinting: withPrettyPrinting)
     }
 }
