@@ -536,7 +536,7 @@ public struct BatchGetItemOutput: Codable, Equatable {
     }
 }
 
-public struct BatchStatementError: Codable, Equatable {
+public struct BatchStatementError: Codable, Equatable, Hashable {
     public var code: BatchStatementErrorCodeEnum?
     public var message: String?
 
@@ -549,6 +549,11 @@ public struct BatchStatementError: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case code = "Code"
         case message = "Message"
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.code)
+        hasher.combine(self.message)
     }
 
     public func validate() throws {
