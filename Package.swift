@@ -130,6 +130,12 @@ let package = Package(
         .library(
             name: "SmokeAWSMetrics",
             targets: ["SmokeAWSMetrics"]),
+        .library(
+             name: "SmokeLambda",
+             targets: ["SmokeLambda"]),
+         .library(
+             name: "SmokeLambdaEvents",
+             targets: ["SmokeLambdaEvents"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.33.0"),
@@ -139,6 +145,7 @@ let package = Package(
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.4.1"),
         .package(url: "https://github.com/amzn/smoke-http.git", from: "2.12.0"),
         .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0"),
+        .package(url: "https://github.com/swift-server/swift-aws-lambda-runtime.git", from: "0.1.0"),
     ],
     targets: [
         .target(
@@ -314,6 +321,17 @@ let package = Package(
                 .product(name: "Metrics", package: "swift-metrics"),
                 .target(name: "CloudWatchClient"),
             ]),
+        .target(
+            name: "SmokeLambda", dependencies: [
+                .product(name: "AWSLambdaRuntime", package: "swift-aws-lambda-runtime"),
+                .product(name: "NIO", package: "swift-nio"),
+                .target(name: "StepFunctionsClient"),
+                .target(name: "SmokeLambdaEvents"),
+            ]),
+        .target(
+            name: "SmokeLambdaEvents", dependencies: [
+                .product(name: "AWSLambdaEvents", package: "swift-aws-lambda-runtime")
+            ]),
         .testTarget(
             name: "S3ClientTests", dependencies: [
                 .target(name: "S3Client"),
@@ -342,6 +360,10 @@ let package = Package(
             name: "AppConfigClientTests", dependencies: [
                 .target(name: "AppConfigClient"),
             ]),
+        .testTarget(
+            name: "SmokeLambdaEventsTests", dependencies: [
+                .target(name: "SmokeLambdaEvents"),
+            ])
     ],
     swiftLanguageVersions: [.v5]
 )

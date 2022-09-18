@@ -224,6 +224,56 @@ behavior for particular API methods, allowing you to provide custom mock behavio
 
 The majority of this package is code generated using [SmokeAWSGenerate](https://github.com/amzn/smoke-aws-generate). 
 
+## SmokeLambda
+This target provides an extension to [swift-aws-lambda-runtime](https://github.com/swift-server/swift-aws-lambda-runtime). This target provides the following event handlers-
+
+* **SmokeSNSLambdaInitializer**: Creates a lambda that accepts incoming SNS message payloads.
+* **SmokeSQSLambdaInitializer**: Creates a lambda that accepts incoming SQS message payloads.
+* **SmokeJSONMessageSQSSNSFanoutLambdaInitializer**: Creates a lambda that accepts incoming SQS message payloads that are the result of a fanout from an SNS topic.
+* **SmokeJSONLambdaInitializer**: Creates a lambda that accepts incoming JSON payload
+* **SmokeStepFunctionWithTaskTokenLambdaInitializer**: Creates a lambda that accepts incoming Step Functions message payload with an activity task token.
+
+To create a lambda using this target, create an initializer that creates a context for each invocation and that specifies the handler funtion.
+
+```
+@main
+struct ExampleHandlerInitializer: SmokeJSONMessageSQSSNSFanoutLambdaInitializer {    
+    let eventHandlerProvider = ExampleContext.handleNotification
+    
+    init(context: Lambda.InitializationContext) throws {
+        ...
+    }
+    
+    func getInvocationContext(context: Lambda.Context) -> ExampleContext {
+        return ExampleContext(
+            ...
+            logger: context.logger)
+    }
+    
+    func onShutdown() async throws {
+        ...
+    }
+}
+```
+
+Implement the Context type and the handler function. The input to the handler function - in this case `EventPayload` should represent the payload of the event the lambda is designed to process. This type needs to conform to `Codable`.
+
+```
+public struct ExampleContext {
+
+}
+
+public struct EventPayload: Codable {
+    // Define the fields here
+}
+
+public extension ExampleContext {
+    func handleNotification(request: EventPayload) async throws {
+        self.logger.info("Handled event.")
+    }
+}
+```
+
 ## License
 
 This library is licensed under the Apache 2.0 License.
