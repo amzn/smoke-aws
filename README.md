@@ -235,7 +235,7 @@ This target provides an extension to [swift-aws-lambda-runtime](https://github.c
 
 To create a lambda using this target, create an initializer that creates a context for each invocation and that specifies the handler funtion.
 
-```
+```swift
 @main
 struct ExampleHandlerInitializer: SmokeJSONMessageSQSSNSFanoutLambdaInitializer {    
     let eventHandlerProvider = ExampleContext.handleNotification
@@ -258,7 +258,7 @@ struct ExampleHandlerInitializer: SmokeJSONMessageSQSSNSFanoutLambdaInitializer 
 
 Implement the Context type and the handler function. The input to the handler function - in this case `EventPayload` should represent the payload of the event the lambda is designed to process. This type needs to conform to `Codable`.
 
-```
+```swift
 public struct ExampleContext {
 
 }
