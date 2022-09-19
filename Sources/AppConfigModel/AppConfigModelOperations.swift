@@ -30,15 +30,11 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
     case createConfigurationProfile = "CreateConfigurationProfile"
     case createDeploymentStrategy = "CreateDeploymentStrategy"
     case createEnvironment = "CreateEnvironment"
-    case createExtension = "CreateExtension"
-    case createExtensionAssociation = "CreateExtensionAssociation"
     case createHostedConfigurationVersion = "CreateHostedConfigurationVersion"
     case deleteApplication = "DeleteApplication"
     case deleteConfigurationProfile = "DeleteConfigurationProfile"
     case deleteDeploymentStrategy = "DeleteDeploymentStrategy"
     case deleteEnvironment = "DeleteEnvironment"
-    case deleteExtension = "DeleteExtension"
-    case deleteExtensionAssociation = "DeleteExtensionAssociation"
     case deleteHostedConfigurationVersion = "DeleteHostedConfigurationVersion"
     case getApplication = "GetApplication"
     case getConfiguration = "GetConfiguration"
@@ -46,16 +42,12 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
     case getDeployment = "GetDeployment"
     case getDeploymentStrategy = "GetDeploymentStrategy"
     case getEnvironment = "GetEnvironment"
-    case getExtension = "GetExtension"
-    case getExtensionAssociation = "GetExtensionAssociation"
     case getHostedConfigurationVersion = "GetHostedConfigurationVersion"
     case listApplications = "ListApplications"
     case listConfigurationProfiles = "ListConfigurationProfiles"
     case listDeploymentStrategies = "ListDeploymentStrategies"
     case listDeployments = "ListDeployments"
     case listEnvironments = "ListEnvironments"
-    case listExtensionAssociations = "ListExtensionAssociations"
-    case listExtensions = "ListExtensions"
     case listHostedConfigurationVersions = "ListHostedConfigurationVersions"
     case listTagsForResource = "ListTagsForResource"
     case startDeployment = "StartDeployment"
@@ -66,8 +58,6 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
     case updateConfigurationProfile = "UpdateConfigurationProfile"
     case updateDeploymentStrategy = "UpdateDeploymentStrategy"
     case updateEnvironment = "UpdateEnvironment"
-    case updateExtension = "UpdateExtension"
-    case updateExtensionAssociation = "UpdateExtensionAssociation"
     case validateConfiguration = "ValidateConfiguration"
 
     public var description: String {
@@ -84,10 +74,6 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
             return "/deploymentstrategies"
         case .createEnvironment:
             return "/applications/{ApplicationId}/environments"
-        case .createExtension:
-            return "/extensions"
-        case .createExtensionAssociation:
-            return "/extensionassociations"
         case .createHostedConfigurationVersion:
             return "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions"
         case .deleteApplication:
@@ -98,10 +84,6 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
             return "/deployementstrategies/{DeploymentStrategyId}"
         case .deleteEnvironment:
             return "/applications/{ApplicationId}/environments/{EnvironmentId}"
-        case .deleteExtension:
-            return "/extensions/{ExtensionIdentifier}"
-        case .deleteExtensionAssociation:
-            return "/extensionassociations/{ExtensionAssociationId}"
         case .deleteHostedConfigurationVersion:
             return "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions/{VersionNumber}"
         case .getApplication:
@@ -116,10 +98,6 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
             return "/deploymentstrategies/{DeploymentStrategyId}"
         case .getEnvironment:
             return "/applications/{ApplicationId}/environments/{EnvironmentId}"
-        case .getExtension:
-            return "/extensions/{ExtensionIdentifier}"
-        case .getExtensionAssociation:
-            return "/extensionassociations/{ExtensionAssociationId}"
         case .getHostedConfigurationVersion:
             return "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions/{VersionNumber}"
         case .listApplications:
@@ -132,10 +110,6 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
             return "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments"
         case .listEnvironments:
             return "/applications/{ApplicationId}/environments"
-        case .listExtensionAssociations:
-            return "/extensionassociations"
-        case .listExtensions:
-            return "/extensions"
         case .listHostedConfigurationVersions:
             return "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions"
         case .listTagsForResource:
@@ -156,10 +130,6 @@ public enum AppConfigModelOperations: String, Hashable, CustomStringConvertible 
             return "/deploymentstrategies/{DeploymentStrategyId}"
         case .updateEnvironment:
             return "/applications/{ApplicationId}/environments/{EnvironmentId}"
-        case .updateExtension:
-            return "/extensions/{ExtensionIdentifier}"
-        case .updateExtensionAssociation:
-            return "/extensionassociations/{ExtensionAssociationId}"
         case .validateConfiguration:
             return "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/validators"
         }
@@ -200,7 +170,7 @@ public extension CreateConfigurationProfileRequest {
 public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
     public var description: Description?
     public var locationUri: Uri
-    public var name: LongName
+    public var name: Name
     public var retrievalRoleArn: RoleArn?
     public var tags: TagMap?
     public var type: ConfigurationProfileType?
@@ -208,7 +178,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
 
     public init(description: Description? = nil,
                 locationUri: Uri,
-                name: LongName,
+                name: Name,
                 retrievalRoleArn: RoleArn? = nil,
                 tags: TagMap? = nil,
                 type: ConfigurationProfileType? = nil,
@@ -235,7 +205,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
     public func validate() throws {
         try description?.validateAsDescription()
         try locationUri.validateAsUri()
-        try name.validateAsLongName()
+        try name.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
         try type?.validateAsConfigurationProfileType()
         try validators?.validateAsValidatorList()
@@ -323,80 +293,6 @@ public extension CreateEnvironmentRequest {
             monitors: monitors,
             name: name,
             tags: tags)
-    }
-}
-
-/**
- Structure to encode the body input for the CreateExtension
- operation.
- */
-public struct CreateExtensionOperationInputBody: Codable, Equatable {
-    public var actions: ActionsMap
-    public var description: Description?
-    public var name: Name
-    public var parameters: ParameterMap?
-    public var tags: TagMap?
-
-    public init(actions: ActionsMap,
-                description: Description? = nil,
-                name: Name,
-                parameters: ParameterMap? = nil,
-                tags: TagMap? = nil) {
-        self.actions = actions
-        self.description = description
-        self.name = name
-        self.parameters = parameters
-        self.tags = tags
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case actions = "Actions"
-        case description = "Description"
-        case name = "Name"
-        case parameters = "Parameters"
-        case tags = "Tags"
-    }
-
-    public func validate() throws {
-        try description?.validateAsDescription()
-        try name.validateAsName()
-    }
-}
-
-public extension CreateExtensionRequest {
-    func asAppConfigModelCreateExtensionOperationInputBody() -> CreateExtensionOperationInputBody {
-        return CreateExtensionOperationInputBody(
-            actions: actions,
-            description: description,
-            name: name,
-            parameters: parameters,
-            tags: tags)
-    }
-}
-
-/**
- Structure to encode the body input for the CreateExtension
- operation.
- */
-public struct CreateExtensionOperationInputAdditionalHeaders: Codable, Equatable {
-    public var latestVersionNumber: Integer?
-
-    public init(latestVersionNumber: Integer? = nil) {
-        self.latestVersionNumber = latestVersionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case latestVersionNumber = "Latest-Version-Number"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension CreateExtensionRequest {
-    func asAppConfigModelCreateExtensionOperationInputAdditionalHeaders() -> CreateExtensionOperationInputAdditionalHeaders {
-        return CreateExtensionOperationInputAdditionalHeaders(
-            latestVersionNumber: latestVersionNumber)
     }
 }
 
@@ -638,86 +534,6 @@ public extension DeleteEnvironmentRequest {
         return DeleteEnvironmentOperationInputPath(
             applicationId: applicationId,
             environmentId: environmentId)
-    }
-}
-
-/**
- Structure to encode the path input for the DeleteExtension
- operation.
- */
-public struct DeleteExtensionOperationInputPath: Codable, Equatable {
-    public var extensionIdentifier: Identifier
-
-    public init(extensionIdentifier: Identifier) {
-        self.extensionIdentifier = extensionIdentifier
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "ExtensionIdentifier"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier.validateAsIdentifier()
-    }
-}
-
-public extension DeleteExtensionRequest {
-    func asAppConfigModelDeleteExtensionOperationInputPath() -> DeleteExtensionOperationInputPath {
-        return DeleteExtensionOperationInputPath(
-            extensionIdentifier: extensionIdentifier)
-    }
-}
-
-/**
- Structure to encode the query input for the DeleteExtension
- operation.
- */
-public struct DeleteExtensionOperationInputQuery: Codable, Equatable {
-    public var versionNumber: Integer?
-
-    public init(versionNumber: Integer? = nil) {
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case versionNumber = "version"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension DeleteExtensionRequest {
-    func asAppConfigModelDeleteExtensionOperationInputQuery() -> DeleteExtensionOperationInputQuery {
-        return DeleteExtensionOperationInputQuery(
-            versionNumber: versionNumber)
-    }
-}
-
-/**
- Structure to encode the path input for the DeleteExtensionAssociation
- operation.
- */
-public struct DeleteExtensionAssociationOperationInputPath: Codable, Equatable {
-    public var extensionAssociationId: Id
-
-    public init(extensionAssociationId: Id) {
-        self.extensionAssociationId = extensionAssociationId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId.validateAsId()
-    }
-}
-
-public extension DeleteExtensionAssociationRequest {
-    func asAppConfigModelDeleteExtensionAssociationOperationInputPath() -> DeleteExtensionAssociationOperationInputPath {
-        return DeleteExtensionAssociationOperationInputPath(
-            extensionAssociationId: extensionAssociationId)
     }
 }
 
@@ -1022,86 +838,6 @@ public extension GetEnvironmentRequest {
 }
 
 /**
- Structure to encode the path input for the GetExtension
- operation.
- */
-public struct GetExtensionOperationInputPath: Codable, Equatable {
-    public var extensionIdentifier: Identifier
-
-    public init(extensionIdentifier: Identifier) {
-        self.extensionIdentifier = extensionIdentifier
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "ExtensionIdentifier"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier.validateAsIdentifier()
-    }
-}
-
-public extension GetExtensionRequest {
-    func asAppConfigModelGetExtensionOperationInputPath() -> GetExtensionOperationInputPath {
-        return GetExtensionOperationInputPath(
-            extensionIdentifier: extensionIdentifier)
-    }
-}
-
-/**
- Structure to encode the query input for the GetExtension
- operation.
- */
-public struct GetExtensionOperationInputQuery: Codable, Equatable {
-    public var versionNumber: Integer?
-
-    public init(versionNumber: Integer? = nil) {
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case versionNumber = "version_number"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension GetExtensionRequest {
-    func asAppConfigModelGetExtensionOperationInputQuery() -> GetExtensionOperationInputQuery {
-        return GetExtensionOperationInputQuery(
-            versionNumber: versionNumber)
-    }
-}
-
-/**
- Structure to encode the path input for the GetExtensionAssociation
- operation.
- */
-public struct GetExtensionAssociationOperationInputPath: Codable, Equatable {
-    public var extensionAssociationId: Id
-
-    public init(extensionAssociationId: Id) {
-        self.extensionAssociationId = extensionAssociationId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId.validateAsId()
-    }
-}
-
-public extension GetExtensionAssociationRequest {
-    func asAppConfigModelGetExtensionAssociationOperationInputPath() -> GetExtensionAssociationOperationInputPath {
-        return GetExtensionAssociationOperationInputPath(
-            extensionAssociationId: extensionAssociationId)
-    }
-}
-
-/**
  Structure to encode the path input for the GetHostedConfigurationVersion
  operation.
  */
@@ -1393,95 +1129,6 @@ public extension ListEnvironmentsRequest {
     func asAppConfigModelListEnvironmentsOperationInputQuery() -> ListEnvironmentsOperationInputQuery {
         return ListEnvironmentsOperationInputQuery(
             maxResults: maxResults,
-            nextToken: nextToken)
-    }
-}
-
-/**
- Structure to encode the query input for the ListExtensionAssociations
- operation.
- */
-public struct ListExtensionAssociationsOperationInputQuery: Codable, Equatable {
-    public var extensionIdentifier: Identifier?
-    public var extensionVersionNumber: Integer?
-    public var maxResults: MaxResults?
-    public var nextToken: NextToken?
-    public var resourceIdentifier: Arn?
-
-    public init(extensionIdentifier: Identifier? = nil,
-                extensionVersionNumber: Integer? = nil,
-                maxResults: MaxResults? = nil,
-                nextToken: NextToken? = nil,
-                resourceIdentifier: Arn? = nil) {
-        self.extensionIdentifier = extensionIdentifier
-        self.extensionVersionNumber = extensionVersionNumber
-        self.maxResults = maxResults
-        self.nextToken = nextToken
-        self.resourceIdentifier = resourceIdentifier
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "extension_identifier"
-        case extensionVersionNumber = "extension_version_number"
-        case maxResults = "max_results"
-        case nextToken = "next_token"
-        case resourceIdentifier = "resource_identifier"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier?.validateAsIdentifier()
-        try maxResults?.validateAsMaxResults()
-        try nextToken?.validateAsNextToken()
-        try resourceIdentifier?.validateAsArn()
-    }
-}
-
-public extension ListExtensionAssociationsRequest {
-    func asAppConfigModelListExtensionAssociationsOperationInputQuery() -> ListExtensionAssociationsOperationInputQuery {
-        return ListExtensionAssociationsOperationInputQuery(
-            extensionIdentifier: extensionIdentifier,
-            extensionVersionNumber: extensionVersionNumber,
-            maxResults: maxResults,
-            nextToken: nextToken,
-            resourceIdentifier: resourceIdentifier)
-    }
-}
-
-/**
- Structure to encode the query input for the ListExtensions
- operation.
- */
-public struct ListExtensionsOperationInputQuery: Codable, Equatable {
-    public var maxResults: MaxResults?
-    public var name: QueryName?
-    public var nextToken: NextToken?
-
-    public init(maxResults: MaxResults? = nil,
-                name: QueryName? = nil,
-                nextToken: NextToken? = nil) {
-        self.maxResults = maxResults
-        self.name = name
-        self.nextToken = nextToken
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case maxResults = "max_results"
-        case name
-        case nextToken = "next_token"
-    }
-
-    public func validate() throws {
-        try maxResults?.validateAsMaxResults()
-        try name?.validateAsQueryName()
-        try nextToken?.validateAsNextToken()
-    }
-}
-
-public extension ListExtensionsRequest {
-    func asAppConfigModelListExtensionsOperationInputQuery() -> ListExtensionsOperationInputQuery {
-        return ListExtensionsOperationInputQuery(
-            maxResults: maxResults,
-            name: name,
             nextToken: nextToken)
     }
 }
@@ -2091,128 +1738,6 @@ public extension UpdateEnvironmentRequest {
             description: description,
             monitors: monitors,
             name: name)
-    }
-}
-
-/**
- Structure to encode the path input for the UpdateExtension
- operation.
- */
-public struct UpdateExtensionOperationInputPath: Codable, Equatable {
-    public var extensionIdentifier: Identifier
-
-    public init(extensionIdentifier: Identifier) {
-        self.extensionIdentifier = extensionIdentifier
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "ExtensionIdentifier"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier.validateAsIdentifier()
-    }
-}
-
-public extension UpdateExtensionRequest {
-    func asAppConfigModelUpdateExtensionOperationInputPath() -> UpdateExtensionOperationInputPath {
-        return UpdateExtensionOperationInputPath(
-            extensionIdentifier: extensionIdentifier)
-    }
-}
-
-/**
- Structure to encode the body input for the UpdateExtension
- operation.
- */
-public struct UpdateExtensionOperationInputBody: Codable, Equatable {
-    public var actions: ActionsMap?
-    public var description: Description?
-    public var parameters: ParameterMap?
-    public var versionNumber: Integer?
-
-    public init(actions: ActionsMap? = nil,
-                description: Description? = nil,
-                parameters: ParameterMap? = nil,
-                versionNumber: Integer? = nil) {
-        self.actions = actions
-        self.description = description
-        self.parameters = parameters
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case actions = "Actions"
-        case description = "Description"
-        case parameters = "Parameters"
-        case versionNumber = "VersionNumber"
-    }
-
-    public func validate() throws {
-        try description?.validateAsDescription()
-    }
-}
-
-public extension UpdateExtensionRequest {
-    func asAppConfigModelUpdateExtensionOperationInputBody() -> UpdateExtensionOperationInputBody {
-        return UpdateExtensionOperationInputBody(
-            actions: actions,
-            description: description,
-            parameters: parameters,
-            versionNumber: versionNumber)
-    }
-}
-
-/**
- Structure to encode the path input for the UpdateExtensionAssociation
- operation.
- */
-public struct UpdateExtensionAssociationOperationInputPath: Codable, Equatable {
-    public var extensionAssociationId: Id
-
-    public init(extensionAssociationId: Id) {
-        self.extensionAssociationId = extensionAssociationId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId.validateAsId()
-    }
-}
-
-public extension UpdateExtensionAssociationRequest {
-    func asAppConfigModelUpdateExtensionAssociationOperationInputPath() -> UpdateExtensionAssociationOperationInputPath {
-        return UpdateExtensionAssociationOperationInputPath(
-            extensionAssociationId: extensionAssociationId)
-    }
-}
-
-/**
- Structure to encode the body input for the UpdateExtensionAssociation
- operation.
- */
-public struct UpdateExtensionAssociationOperationInputBody: Codable, Equatable {
-    public var parameters: ParameterValueMap?
-
-    public init(parameters: ParameterValueMap? = nil) {
-        self.parameters = parameters
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case parameters = "Parameters"
-    }
-
-    public func validate() throws {
-    }
-}
-
-public extension UpdateExtensionAssociationRequest {
-    func asAppConfigModelUpdateExtensionAssociationOperationInputBody() -> UpdateExtensionAssociationOperationInputBody {
-        return UpdateExtensionAssociationOperationInputBody(
-            parameters: parameters)
     }
 }
 

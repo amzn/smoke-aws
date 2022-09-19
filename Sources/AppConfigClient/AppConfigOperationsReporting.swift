@@ -32,15 +32,11 @@ public struct AppConfigOperationsReporting {
     public let createConfigurationProfile: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let createDeploymentStrategy: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let createEnvironment: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let createExtension: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let createExtensionAssociation: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let createHostedConfigurationVersion: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let deleteApplication: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let deleteConfigurationProfile: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let deleteDeploymentStrategy: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let deleteEnvironment: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let deleteExtension: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let deleteExtensionAssociation: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let deleteHostedConfigurationVersion: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let getApplication: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let getConfiguration: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
@@ -48,16 +44,12 @@ public struct AppConfigOperationsReporting {
     public let getDeployment: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let getDeploymentStrategy: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let getEnvironment: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let getExtension: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let getExtensionAssociation: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let getHostedConfigurationVersion: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listApplications: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listConfigurationProfiles: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listDeploymentStrategies: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listDeployments: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listEnvironments: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let listExtensionAssociations: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let listExtensions: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listHostedConfigurationVersions: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let startDeployment: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
@@ -68,8 +60,6 @@ public struct AppConfigOperationsReporting {
     public let updateConfigurationProfile: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let updateDeploymentStrategy: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let updateEnvironment: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let updateExtension: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
-    public let updateExtensionAssociation: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
     public let validateConfiguration: StandardSmokeAWSOperationReporting<AppConfigModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<AppConfigModelOperations>) {
@@ -81,10 +71,6 @@ public struct AppConfigOperationsReporting {
             clientName: clientName, operation: .createDeploymentStrategy, configuration: reportingConfiguration)
         self.createEnvironment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createEnvironment, configuration: reportingConfiguration)
-        self.createExtension = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .createExtension, configuration: reportingConfiguration)
-        self.createExtensionAssociation = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .createExtensionAssociation, configuration: reportingConfiguration)
         self.createHostedConfigurationVersion = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createHostedConfigurationVersion, configuration: reportingConfiguration)
         self.deleteApplication = StandardSmokeAWSOperationReporting(
@@ -95,10 +81,6 @@ public struct AppConfigOperationsReporting {
             clientName: clientName, operation: .deleteDeploymentStrategy, configuration: reportingConfiguration)
         self.deleteEnvironment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteEnvironment, configuration: reportingConfiguration)
-        self.deleteExtension = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .deleteExtension, configuration: reportingConfiguration)
-        self.deleteExtensionAssociation = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .deleteExtensionAssociation, configuration: reportingConfiguration)
         self.deleteHostedConfigurationVersion = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteHostedConfigurationVersion, configuration: reportingConfiguration)
         self.getApplication = StandardSmokeAWSOperationReporting(
@@ -113,10 +95,6 @@ public struct AppConfigOperationsReporting {
             clientName: clientName, operation: .getDeploymentStrategy, configuration: reportingConfiguration)
         self.getEnvironment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getEnvironment, configuration: reportingConfiguration)
-        self.getExtension = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .getExtension, configuration: reportingConfiguration)
-        self.getExtensionAssociation = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .getExtensionAssociation, configuration: reportingConfiguration)
         self.getHostedConfigurationVersion = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getHostedConfigurationVersion, configuration: reportingConfiguration)
         self.listApplications = StandardSmokeAWSOperationReporting(
@@ -129,10 +107,6 @@ public struct AppConfigOperationsReporting {
             clientName: clientName, operation: .listDeployments, configuration: reportingConfiguration)
         self.listEnvironments = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listEnvironments, configuration: reportingConfiguration)
-        self.listExtensionAssociations = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .listExtensionAssociations, configuration: reportingConfiguration)
-        self.listExtensions = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .listExtensions, configuration: reportingConfiguration)
         self.listHostedConfigurationVersions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listHostedConfigurationVersions, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(
@@ -153,10 +127,6 @@ public struct AppConfigOperationsReporting {
             clientName: clientName, operation: .updateDeploymentStrategy, configuration: reportingConfiguration)
         self.updateEnvironment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateEnvironment, configuration: reportingConfiguration)
-        self.updateExtension = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .updateExtension, configuration: reportingConfiguration)
-        self.updateExtensionAssociation = StandardSmokeAWSOperationReporting(
-            clientName: clientName, operation: .updateExtensionAssociation, configuration: reportingConfiguration)
         self.validateConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .validateConfiguration, configuration: reportingConfiguration)
     }

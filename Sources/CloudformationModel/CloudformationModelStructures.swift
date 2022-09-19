@@ -1223,23 +1223,19 @@ public struct DeleteStackSetOutputForDeleteStackSet: Codable, Equatable {
 }
 
 public struct DeploymentTargets: Codable, Equatable {
-    public var accountFilterType: AccountFilterType?
     public var accounts: AccountList?
     public var accountsUrl: AccountsUrl?
     public var organizationalUnitIds: OrganizationalUnitIdList?
 
-    public init(accountFilterType: AccountFilterType? = nil,
-                accounts: AccountList? = nil,
+    public init(accounts: AccountList? = nil,
                 accountsUrl: AccountsUrl? = nil,
                 organizationalUnitIds: OrganizationalUnitIdList? = nil) {
-        self.accountFilterType = accountFilterType
         self.accounts = accounts
         self.accountsUrl = accountsUrl
         self.organizationalUnitIds = organizationalUnitIds
     }
 
     enum CodingKeys: String, CodingKey {
-        case accountFilterType = "AccountFilterType"
         case accounts = "Accounts"
         case accountsUrl = "AccountsUrl"
         case organizationalUnitIds = "OrganizationalUnitIds"

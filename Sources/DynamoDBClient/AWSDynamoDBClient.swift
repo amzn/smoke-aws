@@ -43,7 +43,7 @@ public enum DynamoDBClientError: Swift.Error {
 
     public func isRetriable() -> Bool? {
         switch self {
-        case .internalServer, .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded:
+        case .internalServer, .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded, .throttling:
             return true
         default:
             return nil

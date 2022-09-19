@@ -38,26 +38,6 @@ public typealias ActionPrefix = String
 public typealias ActionsEnabled = Bool
 
 /**
- Enumeration restricting the values of the ActionsSuppressedBy field.
- */
-public enum ActionsSuppressedBy: String, Codable, CustomStringConvertible {
-    case alarm = "Alarm"
-    case extensionperiod = "ExtensionPeriod"
-    case waitperiod = "WaitPeriod"
-
-    public var description: String {
-        return rawValue
-    }
-    
-    public static let __default: ActionsSuppressedBy = .alarm
-}
-
-/**
- Type definition for the ActionsSuppressedReason field.
- */
-public typealias ActionsSuppressedReason = String
-
-/**
  Type definition for the AlarmArn field.
  */
 public typealias AlarmArn = String
@@ -832,11 +812,6 @@ public enum StatusCode: String, Codable, CustomStringConvertible {
 public typealias StorageResolution = Int
 
 /**
- Type definition for the SuppressorPeriod field.
- */
-public typealias SuppressorPeriod = Int
-
-/**
  Type definition for the TagKey field.
  */
 public typealias TagKey = String
@@ -907,21 +882,6 @@ extension CloudWatchModel.ActionPrefix {
 
         if self.count > 1024 {
             throw CloudWatchError.validationError(reason: "The provided value to ActionPrefix violated the maximum length constraint.")
-        }
-    }
-}
-
-/**
- Validation for the ActionsSuppressedReason field.
-*/
-extension CloudWatchModel.ActionsSuppressedReason {
-    public func validateAsActionsSuppressedReason() throws {
-        if self.count < 0 {
-            throw CloudWatchError.validationError(reason: "The provided value to ActionsSuppressedReason violated the minimum length constraint.")
-        }
-
-        if self.count > 1024 {
-            throw CloudWatchError.validationError(reason: "The provided value to ActionsSuppressedReason violated the maximum length constraint.")
         }
     }
 }

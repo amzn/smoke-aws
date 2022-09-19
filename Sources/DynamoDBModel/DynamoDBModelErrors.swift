@@ -59,10 +59,21 @@ private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let tableAlreadyExistsIdentity = "TableAlreadyExistsException"
 private let tableInUseIdentity = "TableInUseException"
 private let tableNotFoundIdentity = "TableNotFoundException"
+private let throttlingIdentity = "ThrottlingException"
 private let transactionCanceledIdentity = "TransactionCanceledException"
 private let transactionConflictIdentity = "TransactionConflictException"
 private let transactionInProgressIdentity = "TransactionInProgressException"
 private let __accessDeniedIdentity = "AccessDenied"
+
+public struct DynamoDBErrorPayload: Codable {
+    public let type: String
+    public let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "__type"
+        case message = "message"
+    }
+}
 
 public enum DynamoDBError: Swift.Error, Decodable {
     case backupInUse(BackupInUseException)
@@ -91,6 +102,7 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case tableAlreadyExists(TableAlreadyExistsException)
     case tableInUse(TableInUseException)
     case tableNotFound(TableNotFoundException)
+    case throttling(DynamoDBErrorPayload)
     case transactionCanceled(TransactionCanceledException)
     case transactionConflict(TransactionConflictException)
     case transactionInProgress(TransactionInProgressException)
@@ -191,6 +203,9 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case tableNotFoundIdentity:
             let errorPayload = try TableNotFoundException(from: decoder)
             self = DynamoDBError.tableNotFound(errorPayload)
+        case throttlingIdentity:
+            let errorPayload = try DynamoDBErrorPayload(from: decoder)
+            self = DynamoDBError.throttling(errorPayload)
         case transactionCanceledIdentity:
             let errorPayload = try TransactionCanceledException(from: decoder)
             self = DynamoDBError.transactionCanceled(errorPayload)

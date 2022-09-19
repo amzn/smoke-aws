@@ -22,81 +22,6 @@
 
 import Foundation
 
-public struct Action: Codable, Equatable {
-    public var description: Description?
-    public var name: Name?
-    public var roleArn: Arn?
-    public var uri: Uri?
-
-    public init(description: Description? = nil,
-                name: Name? = nil,
-                roleArn: Arn? = nil,
-                uri: Uri? = nil) {
-        self.description = description
-        self.name = name
-        self.roleArn = roleArn
-        self.uri = uri
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case description = "Description"
-        case name = "Name"
-        case roleArn = "RoleArn"
-        case uri = "Uri"
-    }
-
-    public func validate() throws {
-        try description?.validateAsDescription()
-        try name?.validateAsName()
-        try roleArn?.validateAsArn()
-        try uri?.validateAsUri()
-    }
-}
-
-public struct ActionInvocation: Codable, Equatable {
-    public var actionName: Name?
-    public var errorCode: String?
-    public var errorMessage: String?
-    public var extensionIdentifier: Identifier?
-    public var invocationId: Id?
-    public var roleArn: Arn?
-    public var uri: Uri?
-
-    public init(actionName: Name? = nil,
-                errorCode: String? = nil,
-                errorMessage: String? = nil,
-                extensionIdentifier: Identifier? = nil,
-                invocationId: Id? = nil,
-                roleArn: Arn? = nil,
-                uri: Uri? = nil) {
-        self.actionName = actionName
-        self.errorCode = errorCode
-        self.errorMessage = errorMessage
-        self.extensionIdentifier = extensionIdentifier
-        self.invocationId = invocationId
-        self.roleArn = roleArn
-        self.uri = uri
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case actionName = "ActionName"
-        case errorCode = "ErrorCode"
-        case errorMessage = "ErrorMessage"
-        case extensionIdentifier = "ExtensionIdentifier"
-        case invocationId = "InvocationId"
-        case roleArn = "RoleArn"
-        case uri = "Uri"
-    }
-
-    public func validate() throws {
-        try actionName?.validateAsName()
-        try extensionIdentifier?.validateAsIdentifier()
-        try invocationId?.validateAsId()
-        try roleArn?.validateAsArn()
-        try uri?.validateAsUri()
-    }
-}
-
 public struct Application: Codable, Equatable {
     public var description: Description?
     public var id: Id?
@@ -140,35 +65,6 @@ public struct Applications: Codable, Equatable {
 
     public func validate() throws {
         try nextToken?.validateAsNextToken()
-    }
-}
-
-public struct AppliedExtension: Codable, Equatable {
-    public var extensionAssociationId: Id?
-    public var extensionId: Id?
-    public var parameters: ParameterValueMap?
-    public var versionNumber: Integer?
-
-    public init(extensionAssociationId: Id? = nil,
-                extensionId: Id? = nil,
-                parameters: ParameterValueMap? = nil,
-                versionNumber: Integer? = nil) {
-        self.extensionAssociationId = extensionAssociationId
-        self.extensionId = extensionId
-        self.parameters = parameters
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-        case extensionId = "ExtensionId"
-        case parameters = "Parameters"
-        case versionNumber = "VersionNumber"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId?.validateAsId()
-        try extensionId?.validateAsId()
     }
 }
 
@@ -240,7 +136,7 @@ public struct ConfigurationProfile: Codable, Equatable {
     public var description: Description?
     public var id: Id?
     public var locationUri: Uri?
-    public var name: LongName?
+    public var name: Name?
     public var retrievalRoleArn: RoleArn?
     public var type: ConfigurationProfileType?
     public var validators: ValidatorList?
@@ -249,7 +145,7 @@ public struct ConfigurationProfile: Codable, Equatable {
                 description: Description? = nil,
                 id: Id? = nil,
                 locationUri: Uri? = nil,
-                name: LongName? = nil,
+                name: Name? = nil,
                 retrievalRoleArn: RoleArn? = nil,
                 type: ConfigurationProfileType? = nil,
                 validators: ValidatorList? = nil) {
@@ -279,7 +175,7 @@ public struct ConfigurationProfile: Codable, Equatable {
         try description?.validateAsDescription()
         try id?.validateAsId()
         try locationUri?.validateAsUri()
-        try name?.validateAsLongName()
+        try name?.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
         try type?.validateAsConfigurationProfileType()
         try validators?.validateAsValidatorList()
@@ -290,14 +186,14 @@ public struct ConfigurationProfileSummary: Codable, Equatable {
     public var applicationId: Id?
     public var id: Id?
     public var locationUri: Uri?
-    public var name: LongName?
+    public var name: Name?
     public var type: ConfigurationProfileType?
     public var validatorTypes: ValidatorTypeList?
 
     public init(applicationId: Id? = nil,
                 id: Id? = nil,
                 locationUri: Uri? = nil,
-                name: LongName? = nil,
+                name: Name? = nil,
                 type: ConfigurationProfileType? = nil,
                 validatorTypes: ValidatorTypeList? = nil) {
         self.applicationId = applicationId
@@ -321,7 +217,7 @@ public struct ConfigurationProfileSummary: Codable, Equatable {
         try applicationId?.validateAsId()
         try id?.validateAsId()
         try locationUri?.validateAsUri()
-        try name?.validateAsLongName()
+        try name?.validateAsName()
         try type?.validateAsConfigurationProfileType()
         try validatorTypes?.validateAsValidatorTypeList()
     }
@@ -391,7 +287,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
     public var applicationId: Id
     public var description: Description?
     public var locationUri: Uri
-    public var name: LongName
+    public var name: Name
     public var retrievalRoleArn: RoleArn?
     public var tags: TagMap?
     public var type: ConfigurationProfileType?
@@ -400,7 +296,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
     public init(applicationId: Id,
                 description: Description? = nil,
                 locationUri: Uri,
-                name: LongName,
+                name: Name,
                 retrievalRoleArn: RoleArn? = nil,
                 tags: TagMap? = nil,
                 type: ConfigurationProfileType? = nil,
@@ -430,7 +326,7 @@ public struct CreateConfigurationProfileRequest: Codable, Equatable {
         try applicationId.validateAsId()
         try description?.validateAsDescription()
         try locationUri.validateAsUri()
-        try name.validateAsLongName()
+        try name.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
         try type?.validateAsConfigurationProfileType()
         try validators?.validateAsValidatorList()
@@ -444,7 +340,7 @@ public struct CreateDeploymentStrategyRequest: Codable, Equatable {
     public var growthFactor: GrowthFactor
     public var growthType: GrowthType?
     public var name: Name
-    public var replicateTo: ReplicateTo?
+    public var replicateTo: ReplicateTo
     public var tags: TagMap?
 
     public init(deploymentDurationInMinutes: MinutesBetween0And24Hours,
@@ -453,7 +349,7 @@ public struct CreateDeploymentStrategyRequest: Codable, Equatable {
                 growthFactor: GrowthFactor,
                 growthType: GrowthType? = nil,
                 name: Name,
-                replicateTo: ReplicateTo? = nil,
+                replicateTo: ReplicateTo,
                 tags: TagMap? = nil) {
         self.deploymentDurationInMinutes = deploymentDurationInMinutes
         self.description = description
@@ -516,76 +412,6 @@ public struct CreateEnvironmentRequest: Codable, Equatable {
         try applicationId.validateAsId()
         try description?.validateAsDescription()
         try monitors?.validateAsMonitorList()
-        try name.validateAsName()
-    }
-}
-
-public struct CreateExtensionAssociationRequest: Codable, Equatable {
-    public var extensionIdentifier: Identifier
-    public var extensionVersionNumber: Integer?
-    public var parameters: ParameterValueMap?
-    public var resourceIdentifier: Identifier
-    public var tags: TagMap?
-
-    public init(extensionIdentifier: Identifier,
-                extensionVersionNumber: Integer? = nil,
-                parameters: ParameterValueMap? = nil,
-                resourceIdentifier: Identifier,
-                tags: TagMap? = nil) {
-        self.extensionIdentifier = extensionIdentifier
-        self.extensionVersionNumber = extensionVersionNumber
-        self.parameters = parameters
-        self.resourceIdentifier = resourceIdentifier
-        self.tags = tags
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "ExtensionIdentifier"
-        case extensionVersionNumber = "ExtensionVersionNumber"
-        case parameters = "Parameters"
-        case resourceIdentifier = "ResourceIdentifier"
-        case tags = "Tags"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier.validateAsIdentifier()
-        try resourceIdentifier.validateAsIdentifier()
-    }
-}
-
-public struct CreateExtensionRequest: Codable, Equatable {
-    public var actions: ActionsMap
-    public var description: Description?
-    public var latestVersionNumber: Integer?
-    public var name: Name
-    public var parameters: ParameterMap?
-    public var tags: TagMap?
-
-    public init(actions: ActionsMap,
-                description: Description? = nil,
-                latestVersionNumber: Integer? = nil,
-                name: Name,
-                parameters: ParameterMap? = nil,
-                tags: TagMap? = nil) {
-        self.actions = actions
-        self.description = description
-        self.latestVersionNumber = latestVersionNumber
-        self.name = name
-        self.parameters = parameters
-        self.tags = tags
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case actions = "Actions"
-        case description = "Description"
-        case latestVersionNumber = "Latest-Version-Number"
-        case name = "Name"
-        case parameters = "Parameters"
-        case tags = "Tags"
-    }
-
-    public func validate() throws {
-        try description?.validateAsDescription()
         try name.validateAsName()
     }
 }
@@ -703,42 +529,6 @@ public struct DeleteEnvironmentRequest: Codable, Equatable {
     }
 }
 
-public struct DeleteExtensionAssociationRequest: Codable, Equatable {
-    public var extensionAssociationId: Id
-
-    public init(extensionAssociationId: Id) {
-        self.extensionAssociationId = extensionAssociationId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId.validateAsId()
-    }
-}
-
-public struct DeleteExtensionRequest: Codable, Equatable {
-    public var extensionIdentifier: Identifier
-    public var versionNumber: Integer?
-
-    public init(extensionIdentifier: Identifier,
-                versionNumber: Integer? = nil) {
-        self.extensionIdentifier = extensionIdentifier
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "ExtensionIdentifier"
-        case versionNumber = "version"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier.validateAsIdentifier()
-    }
-}
-
 public struct DeleteHostedConfigurationVersionRequest: Codable, Equatable {
     public var applicationId: Id
     public var configurationProfileId: Id
@@ -766,7 +556,6 @@ public struct DeleteHostedConfigurationVersionRequest: Codable, Equatable {
 
 public struct Deployment: Codable, Equatable {
     public var applicationId: Id?
-    public var appliedExtensions: AppliedExtensions?
     public var completedAt: Iso8601DateTime?
     public var configurationLocationUri: Uri?
     public var configurationName: Name?
@@ -786,7 +575,6 @@ public struct Deployment: Codable, Equatable {
     public var state: DeploymentState?
 
     public init(applicationId: Id? = nil,
-                appliedExtensions: AppliedExtensions? = nil,
                 completedAt: Iso8601DateTime? = nil,
                 configurationLocationUri: Uri? = nil,
                 configurationName: Name? = nil,
@@ -805,7 +593,6 @@ public struct Deployment: Codable, Equatable {
                 startedAt: Iso8601DateTime? = nil,
                 state: DeploymentState? = nil) {
         self.applicationId = applicationId
-        self.appliedExtensions = appliedExtensions
         self.completedAt = completedAt
         self.configurationLocationUri = configurationLocationUri
         self.configurationName = configurationName
@@ -827,7 +614,6 @@ public struct Deployment: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case applicationId = "ApplicationId"
-        case appliedExtensions = "AppliedExtensions"
         case completedAt = "CompletedAt"
         case configurationLocationUri = "ConfigurationLocationUri"
         case configurationName = "ConfigurationName"
@@ -864,18 +650,15 @@ public struct Deployment: Codable, Equatable {
 }
 
 public struct DeploymentEvent: Codable, Equatable {
-    public var actionInvocations: ActionInvocations?
     public var description: Description?
     public var eventType: DeploymentEventType?
     public var occurredAt: Iso8601DateTime?
     public var triggeredBy: TriggeredBy?
 
-    public init(actionInvocations: ActionInvocations? = nil,
-                description: Description? = nil,
+    public init(description: Description? = nil,
                 eventType: DeploymentEventType? = nil,
                 occurredAt: Iso8601DateTime? = nil,
                 triggeredBy: TriggeredBy? = nil) {
-        self.actionInvocations = actionInvocations
         self.description = description
         self.eventType = eventType
         self.occurredAt = occurredAt
@@ -883,7 +666,6 @@ public struct DeploymentEvent: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case actionInvocations = "ActionInvocations"
         case description = "Description"
         case eventType = "EventType"
         case occurredAt = "OccurredAt"
@@ -1105,189 +887,6 @@ public struct Environments: Codable, Equatable {
     }
 }
 
-public struct Extension: Codable, Equatable {
-    public var actions: ActionsMap?
-    public var arn: Arn?
-    public var description: Description?
-    public var id: Id?
-    public var name: Name?
-    public var parameters: ParameterMap?
-    public var versionNumber: Integer?
-
-    public init(actions: ActionsMap? = nil,
-                arn: Arn? = nil,
-                description: Description? = nil,
-                id: Id? = nil,
-                name: Name? = nil,
-                parameters: ParameterMap? = nil,
-                versionNumber: Integer? = nil) {
-        self.actions = actions
-        self.arn = arn
-        self.description = description
-        self.id = id
-        self.name = name
-        self.parameters = parameters
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case actions = "Actions"
-        case arn = "Arn"
-        case description = "Description"
-        case id = "Id"
-        case name = "Name"
-        case parameters = "Parameters"
-        case versionNumber = "VersionNumber"
-    }
-
-    public func validate() throws {
-        try arn?.validateAsArn()
-        try description?.validateAsDescription()
-        try id?.validateAsId()
-        try name?.validateAsName()
-    }
-}
-
-public struct ExtensionAssociation: Codable, Equatable {
-    public var arn: Arn?
-    public var extensionArn: Arn?
-    public var extensionVersionNumber: Integer?
-    public var id: Identifier?
-    public var parameters: ParameterValueMap?
-    public var resourceArn: Arn?
-
-    public init(arn: Arn? = nil,
-                extensionArn: Arn? = nil,
-                extensionVersionNumber: Integer? = nil,
-                id: Identifier? = nil,
-                parameters: ParameterValueMap? = nil,
-                resourceArn: Arn? = nil) {
-        self.arn = arn
-        self.extensionArn = extensionArn
-        self.extensionVersionNumber = extensionVersionNumber
-        self.id = id
-        self.parameters = parameters
-        self.resourceArn = resourceArn
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case arn = "Arn"
-        case extensionArn = "ExtensionArn"
-        case extensionVersionNumber = "ExtensionVersionNumber"
-        case id = "Id"
-        case parameters = "Parameters"
-        case resourceArn = "ResourceArn"
-    }
-
-    public func validate() throws {
-        try arn?.validateAsArn()
-        try extensionArn?.validateAsArn()
-        try id?.validateAsIdentifier()
-        try resourceArn?.validateAsArn()
-    }
-}
-
-public struct ExtensionAssociationSummary: Codable, Equatable {
-    public var extensionArn: Arn?
-    public var id: Identifier?
-    public var resourceArn: Arn?
-
-    public init(extensionArn: Arn? = nil,
-                id: Identifier? = nil,
-                resourceArn: Arn? = nil) {
-        self.extensionArn = extensionArn
-        self.id = id
-        self.resourceArn = resourceArn
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionArn = "ExtensionArn"
-        case id = "Id"
-        case resourceArn = "ResourceArn"
-    }
-
-    public func validate() throws {
-        try extensionArn?.validateAsArn()
-        try id?.validateAsIdentifier()
-        try resourceArn?.validateAsArn()
-    }
-}
-
-public struct ExtensionAssociations: Codable, Equatable {
-    public var items: ExtensionAssociationSummaries?
-    public var nextToken: NextToken?
-
-    public init(items: ExtensionAssociationSummaries? = nil,
-                nextToken: NextToken? = nil) {
-        self.items = items
-        self.nextToken = nextToken
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case items = "Items"
-        case nextToken = "NextToken"
-    }
-
-    public func validate() throws {
-        try nextToken?.validateAsNextToken()
-    }
-}
-
-public struct ExtensionSummary: Codable, Equatable {
-    public var arn: Arn?
-    public var description: Description?
-    public var id: Id?
-    public var name: Name?
-    public var versionNumber: Integer?
-
-    public init(arn: Arn? = nil,
-                description: Description? = nil,
-                id: Id? = nil,
-                name: Name? = nil,
-                versionNumber: Integer? = nil) {
-        self.arn = arn
-        self.description = description
-        self.id = id
-        self.name = name
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case arn = "Arn"
-        case description = "Description"
-        case id = "Id"
-        case name = "Name"
-        case versionNumber = "VersionNumber"
-    }
-
-    public func validate() throws {
-        try arn?.validateAsArn()
-        try description?.validateAsDescription()
-        try id?.validateAsId()
-        try name?.validateAsName()
-    }
-}
-
-public struct Extensions: Codable, Equatable {
-    public var items: ExtensionSummaries?
-    public var nextToken: NextToken?
-
-    public init(items: ExtensionSummaries? = nil,
-                nextToken: NextToken? = nil) {
-        self.items = items
-        self.nextToken = nextToken
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case items = "Items"
-        case nextToken = "NextToken"
-    }
-
-    public func validate() throws {
-        try nextToken?.validateAsNextToken()
-    }
-}
-
 public struct GetApplicationRequest: Codable, Equatable {
     public var applicationId: Id
 
@@ -1420,42 +1019,6 @@ public struct GetEnvironmentRequest: Codable, Equatable {
     public func validate() throws {
         try applicationId.validateAsId()
         try environmentId.validateAsId()
-    }
-}
-
-public struct GetExtensionAssociationRequest: Codable, Equatable {
-    public var extensionAssociationId: Id
-
-    public init(extensionAssociationId: Id) {
-        self.extensionAssociationId = extensionAssociationId
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId.validateAsId()
-    }
-}
-
-public struct GetExtensionRequest: Codable, Equatable {
-    public var extensionIdentifier: Identifier
-    public var versionNumber: Integer?
-
-    public init(extensionIdentifier: Identifier,
-                versionNumber: Integer? = nil) {
-        self.extensionIdentifier = extensionIdentifier
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "ExtensionIdentifier"
-        case versionNumber = "version_number"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier.validateAsIdentifier()
     }
 }
 
@@ -1598,18 +1161,15 @@ public struct InvalidConfigurationDetail: Codable, Equatable {
     public var location: String?
     public var reason: String?
     public var type: String?
-    public var value: String?
 
     public init(constraint: String? = nil,
                 location: String? = nil,
                 reason: String? = nil,
-                type: String? = nil,
-                value: String? = nil) {
+                type: String? = nil) {
         self.constraint = constraint
         self.location = location
         self.reason = reason
         self.type = type
-        self.value = value
     }
 
     enum CodingKeys: String, CodingKey {
@@ -1617,7 +1177,6 @@ public struct InvalidConfigurationDetail: Codable, Equatable {
         case location = "Location"
         case reason = "Reason"
         case type = "Type"
-        case value = "Value"
     }
 
     public func validate() throws {
@@ -1754,67 +1313,6 @@ public struct ListEnvironmentsRequest: Codable, Equatable {
     }
 }
 
-public struct ListExtensionAssociationsRequest: Codable, Equatable {
-    public var extensionIdentifier: Identifier?
-    public var extensionVersionNumber: Integer?
-    public var maxResults: MaxResults?
-    public var nextToken: NextToken?
-    public var resourceIdentifier: Arn?
-
-    public init(extensionIdentifier: Identifier? = nil,
-                extensionVersionNumber: Integer? = nil,
-                maxResults: MaxResults? = nil,
-                nextToken: NextToken? = nil,
-                resourceIdentifier: Arn? = nil) {
-        self.extensionIdentifier = extensionIdentifier
-        self.extensionVersionNumber = extensionVersionNumber
-        self.maxResults = maxResults
-        self.nextToken = nextToken
-        self.resourceIdentifier = resourceIdentifier
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionIdentifier = "extension_identifier"
-        case extensionVersionNumber = "extension_version_number"
-        case maxResults = "max_results"
-        case nextToken = "next_token"
-        case resourceIdentifier = "resource_identifier"
-    }
-
-    public func validate() throws {
-        try extensionIdentifier?.validateAsIdentifier()
-        try maxResults?.validateAsMaxResults()
-        try nextToken?.validateAsNextToken()
-        try resourceIdentifier?.validateAsArn()
-    }
-}
-
-public struct ListExtensionsRequest: Codable, Equatable {
-    public var maxResults: MaxResults?
-    public var name: QueryName?
-    public var nextToken: NextToken?
-
-    public init(maxResults: MaxResults? = nil,
-                name: QueryName? = nil,
-                nextToken: NextToken? = nil) {
-        self.maxResults = maxResults
-        self.name = name
-        self.nextToken = nextToken
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case maxResults = "max_results"
-        case name
-        case nextToken = "next_token"
-    }
-
-    public func validate() throws {
-        try maxResults?.validateAsMaxResults()
-        try name?.validateAsQueryName()
-        try nextToken?.validateAsNextToken()
-    }
-}
-
 public struct ListHostedConfigurationVersionsRequest: Codable, Equatable {
     public var applicationId: Id
     public var configurationProfileId: Id
@@ -1880,26 +1378,6 @@ public struct Monitor: Codable, Equatable {
     public func validate() throws {
         try alarmArn.validateAsStringWithLengthBetween1And2048()
         try alarmRoleArn?.validateAsRoleArn()
-    }
-}
-
-public struct Parameter: Codable, Equatable {
-    public var description: Description?
-    public var required: Boolean?
-
-    public init(description: Description? = nil,
-                required: Boolean? = nil) {
-        self.description = description
-        self.required = required
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case description = "Description"
-        case required = "Required"
-    }
-
-    public func validate() throws {
-        try description?.validateAsDescription()
     }
 }
 
@@ -2230,59 +1708,6 @@ public struct UpdateEnvironmentRequest: Codable, Equatable {
         try environmentId.validateAsId()
         try monitors?.validateAsMonitorList()
         try name?.validateAsName()
-    }
-}
-
-public struct UpdateExtensionAssociationRequest: Codable, Equatable {
-    public var extensionAssociationId: Id
-    public var parameters: ParameterValueMap?
-
-    public init(extensionAssociationId: Id,
-                parameters: ParameterValueMap? = nil) {
-        self.extensionAssociationId = extensionAssociationId
-        self.parameters = parameters
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case extensionAssociationId = "ExtensionAssociationId"
-        case parameters = "Parameters"
-    }
-
-    public func validate() throws {
-        try extensionAssociationId.validateAsId()
-    }
-}
-
-public struct UpdateExtensionRequest: Codable, Equatable {
-    public var actions: ActionsMap?
-    public var description: Description?
-    public var extensionIdentifier: Identifier
-    public var parameters: ParameterMap?
-    public var versionNumber: Integer?
-
-    public init(actions: ActionsMap? = nil,
-                description: Description? = nil,
-                extensionIdentifier: Identifier,
-                parameters: ParameterMap? = nil,
-                versionNumber: Integer? = nil) {
-        self.actions = actions
-        self.description = description
-        self.extensionIdentifier = extensionIdentifier
-        self.parameters = parameters
-        self.versionNumber = versionNumber
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case actions = "Actions"
-        case description = "Description"
-        case extensionIdentifier = "ExtensionIdentifier"
-        case parameters = "Parameters"
-        case versionNumber = "VersionNumber"
-    }
-
-    public func validate() throws {
-        try description?.validateAsDescription()
-        try extensionIdentifier.validateAsIdentifier()
     }
 }
 
