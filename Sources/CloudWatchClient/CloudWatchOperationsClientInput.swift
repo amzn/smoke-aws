@@ -130,6 +130,11 @@ public typealias GetMetricWidgetImageOperationHTTPRequestInput = QueryHTTPReques
 public typealias ListDashboardsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ListManagedInsightRules operation in a HTTP client.
+ */
+public typealias ListManagedInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListMetricStreams operation in a HTTP client.
  */
 public typealias ListMetricStreamsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -163,6 +168,11 @@ public typealias PutDashboardOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the PutInsightRule operation in a HTTP client.
  */
 public typealias PutInsightRuleOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the PutManagedInsightRules operation in a HTTP client.
+ */
+public typealias PutManagedInsightRulesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the PutMetricAlarm operation in a HTTP client.

@@ -61,6 +61,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let describeGlobalTableSyncOverride: DescribeGlobalTableSyncType?
     let describeGlobalTableSettingsAsyncOverride: DescribeGlobalTableSettingsAsyncType?
     let describeGlobalTableSettingsSyncOverride: DescribeGlobalTableSettingsSyncType?
+    let describeImportAsyncOverride: DescribeImportAsyncType?
+    let describeImportSyncOverride: DescribeImportSyncType?
     let describeKinesisStreamingDestinationAsyncOverride: DescribeKinesisStreamingDestinationAsyncType?
     let describeKinesisStreamingDestinationSyncOverride: DescribeKinesisStreamingDestinationSyncType?
     let describeLimitsAsyncOverride: DescribeLimitsAsyncType?
@@ -83,6 +85,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let exportTableToPointInTimeSyncOverride: ExportTableToPointInTimeSyncType?
     let getItemAsyncOverride: GetItemAsyncType?
     let getItemSyncOverride: GetItemSyncType?
+    let importTableAsyncOverride: ImportTableAsyncType?
+    let importTableSyncOverride: ImportTableSyncType?
     let listBackupsAsyncOverride: ListBackupsAsyncType?
     let listBackupsSyncOverride: ListBackupsSyncType?
     let listContributorInsightsAsyncOverride: ListContributorInsightsAsyncType?
@@ -91,6 +95,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     let listExportsSyncOverride: ListExportsSyncType?
     let listGlobalTablesAsyncOverride: ListGlobalTablesAsyncType?
     let listGlobalTablesSyncOverride: ListGlobalTablesSyncType?
+    let listImportsAsyncOverride: ListImportsAsyncType?
+    let listImportsSyncOverride: ListImportsSyncType?
     let listTablesAsyncOverride: ListTablesAsyncType?
     let listTablesSyncOverride: ListTablesSyncType?
     let listTagsOfResourceAsyncOverride: ListTagsOfResourceAsyncType?
@@ -167,6 +173,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             describeGlobalTableSync: DescribeGlobalTableSyncType? = nil,
             describeGlobalTableSettingsAsync: DescribeGlobalTableSettingsAsyncType? = nil,
             describeGlobalTableSettingsSync: DescribeGlobalTableSettingsSyncType? = nil,
+            describeImportAsync: DescribeImportAsyncType? = nil,
+            describeImportSync: DescribeImportSyncType? = nil,
             describeKinesisStreamingDestinationAsync: DescribeKinesisStreamingDestinationAsyncType? = nil,
             describeKinesisStreamingDestinationSync: DescribeKinesisStreamingDestinationSyncType? = nil,
             describeLimitsAsync: DescribeLimitsAsyncType? = nil,
@@ -189,6 +197,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             exportTableToPointInTimeSync: ExportTableToPointInTimeSyncType? = nil,
             getItemAsync: GetItemAsyncType? = nil,
             getItemSync: GetItemSyncType? = nil,
+            importTableAsync: ImportTableAsyncType? = nil,
+            importTableSync: ImportTableSyncType? = nil,
             listBackupsAsync: ListBackupsAsyncType? = nil,
             listBackupsSync: ListBackupsSyncType? = nil,
             listContributorInsightsAsync: ListContributorInsightsAsyncType? = nil,
@@ -197,6 +207,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
             listExportsSync: ListExportsSyncType? = nil,
             listGlobalTablesAsync: ListGlobalTablesAsyncType? = nil,
             listGlobalTablesSync: ListGlobalTablesSyncType? = nil,
+            listImportsAsync: ListImportsAsyncType? = nil,
+            listImportsSync: ListImportsSyncType? = nil,
             listTablesAsync: ListTablesAsyncType? = nil,
             listTablesSync: ListTablesSyncType? = nil,
             listTagsOfResourceAsync: ListTagsOfResourceAsyncType? = nil,
@@ -267,6 +279,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.describeGlobalTableSyncOverride = describeGlobalTableSync
         self.describeGlobalTableSettingsAsyncOverride = describeGlobalTableSettingsAsync
         self.describeGlobalTableSettingsSyncOverride = describeGlobalTableSettingsSync
+        self.describeImportAsyncOverride = describeImportAsync
+        self.describeImportSyncOverride = describeImportSync
         self.describeKinesisStreamingDestinationAsyncOverride = describeKinesisStreamingDestinationAsync
         self.describeKinesisStreamingDestinationSyncOverride = describeKinesisStreamingDestinationSync
         self.describeLimitsAsyncOverride = describeLimitsAsync
@@ -289,6 +303,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.exportTableToPointInTimeSyncOverride = exportTableToPointInTimeSync
         self.getItemAsyncOverride = getItemAsync
         self.getItemSyncOverride = getItemSync
+        self.importTableAsyncOverride = importTableAsync
+        self.importTableSyncOverride = importTableSync
         self.listBackupsAsyncOverride = listBackupsAsync
         self.listBackupsSyncOverride = listBackupsSync
         self.listContributorInsightsAsyncOverride = listContributorInsightsAsync
@@ -297,6 +313,8 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         self.listExportsSyncOverride = listExportsSync
         self.listGlobalTablesAsyncOverride = listGlobalTablesAsync
         self.listGlobalTablesSyncOverride = listGlobalTablesSync
+        self.listImportsAsyncOverride = listImportsAsync
+        self.listImportsSyncOverride = listImportsSync
         self.listTablesAsyncOverride = listTablesAsync
         self.listTablesSyncOverride = listTablesSync
         self.listTagsOfResourceAsyncOverride = listTagsOfResourceAsync
@@ -976,6 +994,46 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeImport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+         - completion: The DescribeImportOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImportOutput
+           object will be validated before being returned to caller.
+           The possible errors are: importNotFound.
+     */
+    public func describeImportAsync(
+            input: DynamoDBModel.DescribeImportInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeImportOutput, DynamoDBError>) -> ()) throws {
+        if let describeImportAsyncOverride = describeImportAsyncOverride {
+            return try describeImportAsyncOverride(input, completion)
+        }
+
+        let result = DescribeImportOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeImport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+     - Returns: The DescribeImportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importNotFound.
+     */
+    public func describeImportSync(
+            input: DynamoDBModel.DescribeImportInput) throws -> DynamoDBModel.DescribeImportOutput {
+        if let describeImportSyncOverride = describeImportSyncOverride {
+            return try describeImportSyncOverride(input)
+        }
+
+        return DescribeImportOutput.__default
+    }
+
+    /**
      Invokes the DescribeKinesisStreamingDestination operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1416,6 +1474,46 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the ImportTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+         - completion: The ImportTableOutput object or an error will be passed to this 
+           callback when the operation is complete. The ImportTableOutput
+           object will be validated before being returned to caller.
+           The possible errors are: importConflict, limitExceeded, resourceInUse.
+     */
+    public func importTableAsync(
+            input: DynamoDBModel.ImportTableInput, 
+            completion: @escaping (Result<DynamoDBModel.ImportTableOutput, DynamoDBError>) -> ()) throws {
+        if let importTableAsyncOverride = importTableAsyncOverride {
+            return try importTableAsyncOverride(input, completion)
+        }
+
+        let result = ImportTableOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ImportTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+     - Returns: The ImportTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importConflict, limitExceeded, resourceInUse.
+     */
+    public func importTableSync(
+            input: DynamoDBModel.ImportTableInput) throws -> DynamoDBModel.ImportTableOutput {
+        if let importTableSyncOverride = importTableSyncOverride {
+            return try importTableSyncOverride(input)
+        }
+
+        return ImportTableOutput.__default
+    }
+
+    /**
      Invokes the ListBackups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1573,6 +1671,46 @@ public struct MockDynamoDBClient: DynamoDBClientProtocol {
         }
 
         return ListGlobalTablesOutput.__default
+    }
+
+    /**
+     Invokes the ListImports operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+         - completion: The ListImportsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListImportsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded.
+     */
+    public func listImportsAsync(
+            input: DynamoDBModel.ListImportsInput, 
+            completion: @escaping (Result<DynamoDBModel.ListImportsOutput, DynamoDBError>) -> ()) throws {
+        if let listImportsAsyncOverride = listImportsAsyncOverride {
+            return try listImportsAsyncOverride(input, completion)
+        }
+
+        let result = ListImportsOutput.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListImports operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+     - Returns: The ListImportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded.
+     */
+    public func listImportsSync(
+            input: DynamoDBModel.ListImportsInput) throws -> DynamoDBModel.ListImportsOutput {
+        if let listImportsSyncOverride = listImportsSyncOverride {
+            return try listImportsSyncOverride(input)
+        }
+
+        return ListImportsOutput.__default
     }
 
     /**

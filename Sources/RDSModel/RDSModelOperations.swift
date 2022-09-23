@@ -114,6 +114,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case failoverDBCluster = "FailoverDBCluster"
     case failoverGlobalCluster = "FailoverGlobalCluster"
     case listTagsForResource = "ListTagsForResource"
+    case modifyActivityStream = "ModifyActivityStream"
     case modifyCertificates = "ModifyCertificates"
     case modifyCurrentDBClusterCapacity = "ModifyCurrentDBClusterCapacity"
     case modifyCustomDBEngineVersion = "ModifyCustomDBEngineVersion"
@@ -161,6 +162,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
     case stopDBInstanceAutomatedBackupsReplication = "StopDBInstanceAutomatedBackupsReplication"
+    case switchoverReadReplica = "SwitchoverReadReplica"
 
     public var description: String {
         return rawValue
@@ -344,6 +346,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .listTagsForResource:
             return "/"
+        case .modifyActivityStream:
+            return "/"
         case .modifyCertificates:
             return "/"
         case .modifyCurrentDBClusterCapacity:
@@ -437,6 +441,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .stopDBInstance:
             return "/"
         case .stopDBInstanceAutomatedBackupsReplication:
+            return "/"
+        case .switchoverReadReplica:
             return "/"
         }
     }

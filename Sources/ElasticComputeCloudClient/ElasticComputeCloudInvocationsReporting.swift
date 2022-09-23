@@ -38,6 +38,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let advertiseByoipCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let allocateAddress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let allocateHosts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let allocateIpamPoolCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let applySecurityGroupsToClientVpnTargetNetwork: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let assignIpv6Addresses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let assignPrivateIpAddresses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -50,6 +51,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let associateRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let associateSubnetCidrBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let associateTransitGatewayMulticastDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let associateTransitGatewayPolicyTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let associateTransitGatewayRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let associateTrunkInterface: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let associateVpcCidrBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -80,6 +82,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let createCarrierGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createClientVpnEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createClientVpnRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createCoipCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createCoipPool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCustomerGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDefaultSubnet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDefaultVpc: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -92,19 +96,26 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let createInstanceEventWindow: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createInstanceExportTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createInternetGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createIpam: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createIpamPool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createIpamScope: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createKeyPair: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createLaunchTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createLaunchTemplateVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createLocalGatewayRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createLocalGatewayRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createLocalGatewayRouteTableVpcAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createManagedPrefixList: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createNatGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createNetworkAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createNetworkAclEntry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createNetworkInsightsAccessScope: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createNetworkInsightsPath: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createNetworkInterface: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createNetworkInterfacePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createPlacementGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createPublicIpv4Pool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createReplaceRootVolumeTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createReservedInstancesListing: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createRestoreImageTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -127,9 +138,11 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let createTransitGatewayConnectPeer: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTransitGatewayMulticastDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createTransitGatewayPolicyTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTransitGatewayPrefixListReference: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTransitGatewayRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTransitGatewayRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createTransitGatewayRouteTableAnnouncement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createTransitGatewayVpcAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createVolume: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createVpc: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -143,6 +156,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let deleteCarrierGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteClientVpnEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteClientVpnRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteCoipCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteCoipPool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteCustomerGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDhcpOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteEgressOnlyInternetGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -151,20 +166,28 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let deleteFpgaImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteInstanceEventWindow: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteInternetGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteIpam: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteIpamPool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteIpamScope: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteKeyPair: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteLaunchTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteLaunchTemplateVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteLocalGatewayRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteLocalGatewayRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteLocalGatewayRouteTableVpcAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteManagedPrefixList: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNatGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNetworkAcl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNetworkAclEntry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteNetworkInsightsAccessScope: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteNetworkInsightsAccessScopeAnalysis: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNetworkInsightsAnalysis: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNetworkInsightsPath: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNetworkInterface: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteNetworkInterfacePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deletePlacementGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deletePublicIpv4Pool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteQueuedReservedInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -183,9 +206,11 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let deleteTransitGatewayConnectPeer: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTransitGatewayMulticastDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTransitGatewayPeeringAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteTransitGatewayPolicyTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTransitGatewayPrefixListReference: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTransitGatewayRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTransitGatewayRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteTransitGatewayRouteTableAnnouncement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTransitGatewayVpcAttachment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteVolume: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteVpc: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -197,6 +222,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let deleteVpnConnectionRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteVpnGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deprovisionByoipCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deprovisionIpamPoolCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deprovisionPublicIpv4PoolCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deregisterImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deregisterInstanceEventNotificationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deregisterTransitGatewayMulticastGroupMembers: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -225,6 +252,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let describeElasticGpus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeExportImageTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeExportTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeFastLaunchImages: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeFastSnapshotRestores: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeFleetHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeFleetInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -251,6 +279,9 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let describeInstanceTypes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeInternetGateways: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeIpamPools: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeIpamScopes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeIpams: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeIpv6Pools: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeKeyPairs: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeLaunchTemplateVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -265,6 +296,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let describeMovingAddresses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeNatGateways: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeNetworkAcls: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeNetworkInsightsAccessScopeAnalyses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeNetworkInsightsAccessScopes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeNetworkInsightsAnalyses: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeNetworkInsightsPaths: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeNetworkInterfaceAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -287,6 +320,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let describeSecurityGroupRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeSecurityGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeSnapshotTierStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeSnapshots: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeSpotDatafeedSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeSpotFleetInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -306,6 +340,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let describeTransitGatewayConnects: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTransitGatewayMulticastDomains: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTransitGatewayPeeringAttachments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTransitGatewayPolicyTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeTransitGatewayRouteTableAnnouncements: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTransitGatewayRouteTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTransitGatewayVpcAttachments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTransitGateways: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -333,8 +369,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let detachVolume: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let detachVpnGateway: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableEbsEncryptionByDefault: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableFastLaunch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableFastSnapshotRestores: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableImageDeprecation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableIpamOrganizationAdminAccount: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableSerialConsoleAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableTransitGatewayRouteTablePropagation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableVgwRoutePropagation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -348,12 +386,15 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let disassociateRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disassociateSubnetCidrBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disassociateTransitGatewayMulticastDomain: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disassociateTransitGatewayPolicyTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disassociateTransitGatewayRouteTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disassociateTrunkInterface: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disassociateVpcCidrBlock: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableEbsEncryptionByDefault: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableFastLaunch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableFastSnapshotRestores: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableImageDeprecation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableIpamOrganizationAdminAccount: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableSerialConsoleAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableTransitGatewayRouteTablePropagation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableVgwRoutePropagation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -377,9 +418,16 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let getGroupsForCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getHostReservationPurchasePreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getInstanceTypesFromInstanceRequirements: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getInstanceUefiData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getIpamAddressHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getIpamPoolAllocations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getIpamPoolCidrs: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getIpamResourceCidrs: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getLaunchTemplateData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getManagedPrefixListAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getManagedPrefixListEntries: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getNetworkInsightsAccessScopeAnalysisFindings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getNetworkInsightsAccessScopeContent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getPasswordData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getReservedInstancesExchangeQuote: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSerialConsoleAccessStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -387,6 +435,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let getSubnetCidrReservations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayAttachmentPropagations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayMulticastDomainAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getTransitGatewayPolicyTableAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getTransitGatewayPolicyTableEntries: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayPrefixListReferences: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayRouteTableAssociations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getTransitGatewayRouteTablePropagations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -398,6 +448,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let importKeyPair: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let importSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let importVolume: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listImagesInRecycleBin: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listSnapshotsInRecycleBin: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyAddressAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyAvailabilityZoneGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -416,15 +468,22 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let modifyInstanceCreditSpecification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyInstanceEventStartTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyInstanceEventWindow: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyInstanceMaintenanceOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyInstanceMetadataOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyInstancePlacement: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyIpam: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyIpamPool: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyIpamResourceCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyIpamScope: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyLaunchTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyLocalGatewayRoute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyManagedPrefixList: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyNetworkInterfaceAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyPrivateDnsNameOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyReservedInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifySecurityGroupRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifySnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifySnapshotTier: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifySpotFleetRequest: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifySubnetAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyTrafficMirrorFilterNetworkServices: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -439,6 +498,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let modifyVpcEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyVpcEndpointConnectionNotification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyVpcEndpointServiceConfiguration: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyVpcEndpointServicePayerResponsibility: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyVpcEndpointServicePermissions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyVpcPeeringConnectionOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyVpcTenancy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -448,7 +508,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let modifyVpnTunnelOptions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let monitorInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let moveAddressToVpc: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let moveByoipCidrToIpam: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let provisionByoipCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let provisionIpamPoolCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let provisionPublicIpv4PoolCidr: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let purchaseHostReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let purchaseReservedInstancesOffering: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let purchaseScheduledInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -464,6 +527,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let rejectVpcPeeringConnection: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let releaseAddress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let releaseHosts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let releaseIpamPoolAllocation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let replaceIamInstanceProfileAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let replaceNetworkAclAssociation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let replaceNetworkAclEntry: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -481,7 +545,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let resetNetworkInterfaceAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let resetSnapshotAttribute: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let restoreAddressToClassic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreImageFromRecycleBin: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let restoreManagedPrefixListVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreSnapshotFromRecycleBin: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let restoreSnapshotTier: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let revokeClientVpnIngress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let revokeSecurityGroupEgress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let revokeSecurityGroupIngress: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -492,6 +559,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let searchTransitGatewayRoutes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let sendDiagnosticInterrupt: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let startInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startNetworkInsightsAccessScopeAnalysis: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let startNetworkInsightsAnalysis: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let startVpcEndpointServicePrivateDnsVerification: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -523,6 +591,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.allocateAddress)
         self.allocateHosts = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.allocateHosts)
+        self.allocateIpamPoolCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.allocateIpamPoolCidr)
         self.applySecurityGroupsToClientVpnTargetNetwork = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.applySecurityGroupsToClientVpnTargetNetwork)
         self.assignIpv6Addresses = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -547,6 +617,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.associateSubnetCidrBlock)
         self.associateTransitGatewayMulticastDomain = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.associateTransitGatewayMulticastDomain)
+        self.associateTransitGatewayPolicyTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.associateTransitGatewayPolicyTable)
         self.associateTransitGatewayRouteTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.associateTransitGatewayRouteTable)
         self.associateTrunkInterface = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -607,6 +679,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createClientVpnEndpoint)
         self.createClientVpnRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createClientVpnRoute)
+        self.createCoipCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createCoipCidr)
+        self.createCoipPool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createCoipPool)
         self.createCustomerGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createCustomerGateway)
         self.createDefaultSubnet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -631,6 +707,12 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createInstanceExportTask)
         self.createInternetGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createInternetGateway)
+        self.createIpam = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createIpam)
+        self.createIpamPool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createIpamPool)
+        self.createIpamScope = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createIpamScope)
         self.createKeyPair = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createKeyPair)
         self.createLaunchTemplate = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -639,6 +721,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createLaunchTemplateVersion)
         self.createLocalGatewayRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createLocalGatewayRoute)
+        self.createLocalGatewayRouteTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createLocalGatewayRouteTable)
+        self.createLocalGatewayRouteTableVirtualInterfaceGroupAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createLocalGatewayRouteTableVirtualInterfaceGroupAssociation)
         self.createLocalGatewayRouteTableVpcAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createLocalGatewayRouteTableVpcAssociation)
         self.createManagedPrefixList = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -649,6 +735,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createNetworkAcl)
         self.createNetworkAclEntry = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createNetworkAclEntry)
+        self.createNetworkInsightsAccessScope = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createNetworkInsightsAccessScope)
         self.createNetworkInsightsPath = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createNetworkInsightsPath)
         self.createNetworkInterface = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -657,6 +745,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createNetworkInterfacePermission)
         self.createPlacementGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createPlacementGroup)
+        self.createPublicIpv4Pool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createPublicIpv4Pool)
         self.createReplaceRootVolumeTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createReplaceRootVolumeTask)
         self.createReservedInstancesListing = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -701,12 +791,16 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayMulticastDomain)
         self.createTransitGatewayPeeringAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayPeeringAttachment)
+        self.createTransitGatewayPolicyTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createTransitGatewayPolicyTable)
         self.createTransitGatewayPrefixListReference = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayPrefixListReference)
         self.createTransitGatewayRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayRoute)
         self.createTransitGatewayRouteTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayRouteTable)
+        self.createTransitGatewayRouteTableAnnouncement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createTransitGatewayRouteTableAnnouncement)
         self.createTransitGatewayVpcAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createTransitGatewayVpcAttachment)
         self.createVolume = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -733,6 +827,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteClientVpnEndpoint)
         self.deleteClientVpnRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteClientVpnRoute)
+        self.deleteCoipCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteCoipCidr)
+        self.deleteCoipPool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteCoipPool)
         self.deleteCustomerGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteCustomerGateway)
         self.deleteDhcpOptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -749,6 +847,12 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteInstanceEventWindow)
         self.deleteInternetGateway = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteInternetGateway)
+        self.deleteIpam = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteIpam)
+        self.deleteIpamPool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteIpamPool)
+        self.deleteIpamScope = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteIpamScope)
         self.deleteKeyPair = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteKeyPair)
         self.deleteLaunchTemplate = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -757,6 +861,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteLaunchTemplateVersions)
         self.deleteLocalGatewayRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteLocalGatewayRoute)
+        self.deleteLocalGatewayRouteTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteLocalGatewayRouteTable)
+        self.deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation)
         self.deleteLocalGatewayRouteTableVpcAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteLocalGatewayRouteTableVpcAssociation)
         self.deleteManagedPrefixList = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -767,6 +875,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteNetworkAcl)
         self.deleteNetworkAclEntry = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteNetworkAclEntry)
+        self.deleteNetworkInsightsAccessScope = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteNetworkInsightsAccessScope)
+        self.deleteNetworkInsightsAccessScopeAnalysis = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteNetworkInsightsAccessScopeAnalysis)
         self.deleteNetworkInsightsAnalysis = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteNetworkInsightsAnalysis)
         self.deleteNetworkInsightsPath = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -777,6 +889,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteNetworkInterfacePermission)
         self.deletePlacementGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deletePlacementGroup)
+        self.deletePublicIpv4Pool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deletePublicIpv4Pool)
         self.deleteQueuedReservedInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteQueuedReservedInstances)
         self.deleteRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -813,12 +927,16 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayMulticastDomain)
         self.deleteTransitGatewayPeeringAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayPeeringAttachment)
+        self.deleteTransitGatewayPolicyTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayPolicyTable)
         self.deleteTransitGatewayPrefixListReference = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayPrefixListReference)
         self.deleteTransitGatewayRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayRoute)
         self.deleteTransitGatewayRouteTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayRouteTable)
+        self.deleteTransitGatewayRouteTableAnnouncement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayRouteTableAnnouncement)
         self.deleteTransitGatewayVpcAttachment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTransitGatewayVpcAttachment)
         self.deleteVolume = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -841,6 +959,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.deleteVpnGateway)
         self.deprovisionByoipCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deprovisionByoipCidr)
+        self.deprovisionIpamPoolCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deprovisionIpamPoolCidr)
+        self.deprovisionPublicIpv4PoolCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deprovisionPublicIpv4PoolCidr)
         self.deregisterImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deregisterImage)
         self.deregisterInstanceEventNotificationAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -897,6 +1019,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeExportImageTasks)
         self.describeExportTasks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeExportTasks)
+        self.describeFastLaunchImages = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeFastLaunchImages)
         self.describeFastSnapshotRestores = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeFastSnapshotRestores)
         self.describeFleetHistory = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -949,6 +1073,12 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeInstances)
         self.describeInternetGateways = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeInternetGateways)
+        self.describeIpamPools = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeIpamPools)
+        self.describeIpamScopes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeIpamScopes)
+        self.describeIpams = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeIpams)
         self.describeIpv6Pools = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeIpv6Pools)
         self.describeKeyPairs = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -977,6 +1107,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeNatGateways)
         self.describeNetworkAcls = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeNetworkAcls)
+        self.describeNetworkInsightsAccessScopeAnalyses = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeNetworkInsightsAccessScopeAnalyses)
+        self.describeNetworkInsightsAccessScopes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeNetworkInsightsAccessScopes)
         self.describeNetworkInsightsAnalyses = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeNetworkInsightsAnalyses)
         self.describeNetworkInsightsPaths = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1021,6 +1155,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeSecurityGroups)
         self.describeSnapshotAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeSnapshotAttribute)
+        self.describeSnapshotTierStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeSnapshotTierStatus)
         self.describeSnapshots = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeSnapshots)
         self.describeSpotDatafeedSubscription = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1059,6 +1195,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.describeTransitGatewayMulticastDomains)
         self.describeTransitGatewayPeeringAttachments = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeTransitGatewayPeeringAttachments)
+        self.describeTransitGatewayPolicyTables = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeTransitGatewayPolicyTables)
+        self.describeTransitGatewayRouteTableAnnouncements = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeTransitGatewayRouteTableAnnouncements)
         self.describeTransitGatewayRouteTables = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeTransitGatewayRouteTables)
         self.describeTransitGatewayVpcAttachments = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1113,10 +1253,14 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.detachVpnGateway)
         self.disableEbsEncryptionByDefault = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disableEbsEncryptionByDefault)
+        self.disableFastLaunch = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.disableFastLaunch)
         self.disableFastSnapshotRestores = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disableFastSnapshotRestores)
         self.disableImageDeprecation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disableImageDeprecation)
+        self.disableIpamOrganizationAdminAccount = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.disableIpamOrganizationAdminAccount)
         self.disableSerialConsoleAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disableSerialConsoleAccess)
         self.disableTransitGatewayRouteTablePropagation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1143,6 +1287,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.disassociateSubnetCidrBlock)
         self.disassociateTransitGatewayMulticastDomain = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disassociateTransitGatewayMulticastDomain)
+        self.disassociateTransitGatewayPolicyTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.disassociateTransitGatewayPolicyTable)
         self.disassociateTransitGatewayRouteTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disassociateTransitGatewayRouteTable)
         self.disassociateTrunkInterface = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1151,10 +1297,14 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.disassociateVpcCidrBlock)
         self.enableEbsEncryptionByDefault = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.enableEbsEncryptionByDefault)
+        self.enableFastLaunch = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.enableFastLaunch)
         self.enableFastSnapshotRestores = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.enableFastSnapshotRestores)
         self.enableImageDeprecation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.enableImageDeprecation)
+        self.enableIpamOrganizationAdminAccount = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.enableIpamOrganizationAdminAccount)
         self.enableSerialConsoleAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.enableSerialConsoleAccess)
         self.enableTransitGatewayRouteTablePropagation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1201,12 +1351,26 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.getHostReservationPurchasePreview)
         self.getInstanceTypesFromInstanceRequirements = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getInstanceTypesFromInstanceRequirements)
+        self.getInstanceUefiData = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getInstanceUefiData)
+        self.getIpamAddressHistory = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getIpamAddressHistory)
+        self.getIpamPoolAllocations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getIpamPoolAllocations)
+        self.getIpamPoolCidrs = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getIpamPoolCidrs)
+        self.getIpamResourceCidrs = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getIpamResourceCidrs)
         self.getLaunchTemplateData = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getLaunchTemplateData)
         self.getManagedPrefixListAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getManagedPrefixListAssociations)
         self.getManagedPrefixListEntries = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getManagedPrefixListEntries)
+        self.getNetworkInsightsAccessScopeAnalysisFindings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getNetworkInsightsAccessScopeAnalysisFindings)
+        self.getNetworkInsightsAccessScopeContent = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getNetworkInsightsAccessScopeContent)
         self.getPasswordData = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getPasswordData)
         self.getReservedInstancesExchangeQuote = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1221,6 +1385,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.getTransitGatewayAttachmentPropagations)
         self.getTransitGatewayMulticastDomainAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getTransitGatewayMulticastDomainAssociations)
+        self.getTransitGatewayPolicyTableAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getTransitGatewayPolicyTableAssociations)
+        self.getTransitGatewayPolicyTableEntries = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getTransitGatewayPolicyTableEntries)
         self.getTransitGatewayPrefixListReferences = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getTransitGatewayPrefixListReferences)
         self.getTransitGatewayRouteTableAssociations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1243,6 +1411,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.importSnapshot)
         self.importVolume = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.importVolume)
+        self.listImagesInRecycleBin = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listImagesInRecycleBin)
+        self.listSnapshotsInRecycleBin = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listSnapshotsInRecycleBin)
         self.modifyAddressAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyAddressAttribute)
         self.modifyAvailabilityZoneGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1279,12 +1451,24 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.modifyInstanceEventStartTime)
         self.modifyInstanceEventWindow = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyInstanceEventWindow)
+        self.modifyInstanceMaintenanceOptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyInstanceMaintenanceOptions)
         self.modifyInstanceMetadataOptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyInstanceMetadataOptions)
         self.modifyInstancePlacement = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyInstancePlacement)
+        self.modifyIpam = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyIpam)
+        self.modifyIpamPool = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyIpamPool)
+        self.modifyIpamResourceCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyIpamResourceCidr)
+        self.modifyIpamScope = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyIpamScope)
         self.modifyLaunchTemplate = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyLaunchTemplate)
+        self.modifyLocalGatewayRoute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyLocalGatewayRoute)
         self.modifyManagedPrefixList = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyManagedPrefixList)
         self.modifyNetworkInterfaceAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1297,6 +1481,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.modifySecurityGroupRules)
         self.modifySnapshotAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifySnapshotAttribute)
+        self.modifySnapshotTier = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifySnapshotTier)
         self.modifySpotFleetRequest = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifySpotFleetRequest)
         self.modifySubnetAttribute = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1325,6 +1511,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.modifyVpcEndpointConnectionNotification)
         self.modifyVpcEndpointServiceConfiguration = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyVpcEndpointServiceConfiguration)
+        self.modifyVpcEndpointServicePayerResponsibility = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyVpcEndpointServicePayerResponsibility)
         self.modifyVpcEndpointServicePermissions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyVpcEndpointServicePermissions)
         self.modifyVpcPeeringConnectionOptions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1343,8 +1531,14 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.monitorInstances)
         self.moveAddressToVpc = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.moveAddressToVpc)
+        self.moveByoipCidrToIpam = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.moveByoipCidrToIpam)
         self.provisionByoipCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.provisionByoipCidr)
+        self.provisionIpamPoolCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.provisionIpamPoolCidr)
+        self.provisionPublicIpv4PoolCidr = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.provisionPublicIpv4PoolCidr)
         self.purchaseHostReservation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.purchaseHostReservation)
         self.purchaseReservedInstancesOffering = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1375,6 +1569,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.releaseAddress)
         self.releaseHosts = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.releaseHosts)
+        self.releaseIpamPoolAllocation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.releaseIpamPoolAllocation)
         self.replaceIamInstanceProfileAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.replaceIamInstanceProfileAssociation)
         self.replaceNetworkAclAssociation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1409,8 +1605,14 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.resetSnapshotAttribute)
         self.restoreAddressToClassic = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.restoreAddressToClassic)
+        self.restoreImageFromRecycleBin = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.restoreImageFromRecycleBin)
         self.restoreManagedPrefixListVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.restoreManagedPrefixListVersion)
+        self.restoreSnapshotFromRecycleBin = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.restoreSnapshotFromRecycleBin)
+        self.restoreSnapshotTier = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.restoreSnapshotTier)
         self.revokeClientVpnIngress = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.revokeClientVpnIngress)
         self.revokeSecurityGroupEgress = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1431,6 +1633,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.sendDiagnosticInterrupt)
         self.startInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startInstances)
+        self.startNetworkInsightsAccessScopeAnalysis = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.startNetworkInsightsAccessScopeAnalysis)
         self.startNetworkInsightsAnalysis = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.startNetworkInsightsAnalysis)
         self.startVpcEndpointServicePrivateDnsVerification = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -465,6 +465,11 @@ public typealias FailoverGlobalClusterOperationHTTPRequestInput = QueryHTTPReque
 public typealias ListTagsForResourceOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ModifyActivityStream operation in a HTTP client.
+ */
+public typealias ModifyActivityStreamOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ModifyCertificates operation in a HTTP client.
  */
 public typealias ModifyCertificatesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -698,3 +703,8 @@ public typealias StopDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StopDBInstanceAutomatedBackupsReplication operation in a HTTP client.
  */
 public typealias StopDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the SwitchoverReadReplica operation in a HTTP client.
+ */
+public typealias SwitchoverReadReplicaOperationHTTPRequestInput = QueryHTTPRequestInput

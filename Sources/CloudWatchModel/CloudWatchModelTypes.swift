@@ -425,6 +425,11 @@ public typealias InsightRuleContributors = [InsightRuleContributor]
 public typealias InsightRuleDefinition = String
 
 /**
+ Type definition for the InsightRuleIsManaged field.
+ */
+public typealias InsightRuleIsManaged = Bool
+
+/**
  Type definition for the InsightRuleMaxResults field.
  */
 public typealias InsightRuleMaxResults = Int
@@ -498,6 +503,16 @@ public typealias LastModified = String
  Type definition for the ListMetricStreamsMaxResults field.
  */
 public typealias ListMetricStreamsMaxResults = Int
+
+/**
+ Type definition for the ManagedRuleDescriptions field.
+ */
+public typealias ManagedRuleDescriptions = [ManagedRuleDescription]
+
+/**
+ Type definition for the ManagedRules field.
+ */
+public typealias ManagedRules = [ManagedRule]
 
 /**
  Type definition for the MaxRecords field.
@@ -857,6 +872,11 @@ public typealias TagList = [Tag]
 public typealias TagValue = String
 
 /**
+ Type definition for the TemplateName field.
+ */
+public typealias TemplateName = String
+
+/**
  Type definition for the Threshold field.
  */
 public typealias Threshold = Double
@@ -1124,7 +1144,7 @@ extension CloudWatchModel.DimensionValue {
             throw CloudWatchError.validationError(reason: "The provided value to DimensionValue violated the minimum length constraint.")
         }
 
-        if self.count > 255 {
+        if self.count > 1024 {
             throw CloudWatchError.validationError(reason: "The provided value to DimensionValue violated the maximum length constraint.")
         }
     }
@@ -1136,7 +1156,7 @@ extension CloudWatchModel.DimensionValue {
 extension Array where Element == CloudWatchModel.Dimension {
     public func validateAsDimensions() throws {
 
-        if self.count > 10 {
+        if self.count > 30 {
             throw CloudWatchError.validationError(reason: "The provided value to Dimensions violated the maximum length constraint.")
         }
     }
@@ -1181,19 +1201,6 @@ extension CloudWatchModel.EvaluationPeriods {
             throw CloudWatchError.validationError(reason: "The provided value to EvaluationPeriods violated the minimum range constraint.")
         }
 
-    }
-}
-
-/**
- Validation for the ExtendedStatistic field.
-*/
-extension CloudWatchModel.ExtendedStatistic {
-    public func validateAsExtendedStatistic() throws {
-        guard let matchingRange = self.range(of: "p(\\d{1,2}(\\.\\d{0,2})?|100)", options: .regularExpression),
-            matchingRange == startIndex..<endIndex else {
-                throw CloudWatchError.validationError(
-                    reason: "The provided value to ExtendedStatistic violated the regular expression constraint.")
-        }
     }
 }
 
@@ -1413,7 +1420,7 @@ extension CloudWatchModel.MetricExpression {
             throw CloudWatchError.validationError(reason: "The provided value to MetricExpression violated the minimum length constraint.")
         }
 
-        if self.count > 1024 {
+        if self.count > 2048 {
             throw CloudWatchError.validationError(reason: "The provided value to MetricExpression violated the maximum length constraint.")
         }
     }
@@ -1607,6 +1614,27 @@ extension CloudWatchModel.TagValue {
 
         if self.count > 256 {
             throw CloudWatchError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TemplateName field.
+*/
+extension CloudWatchModel.TemplateName {
+    public func validateAsTemplateName() throws {
+        if self.count < 1 {
+            throw CloudWatchError.validationError(reason: "The provided value to TemplateName violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw CloudWatchError.validationError(reason: "The provided value to TemplateName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[0-9A-Za-z][\\-\\.\\_0-9A-Za-z]{0,126}[0-9A-Za-z]", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudWatchError.validationError(
+                    reason: "The provided value to TemplateName violated the regular expression constraint.")
         }
     }
 }

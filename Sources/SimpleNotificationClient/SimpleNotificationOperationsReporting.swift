@@ -39,6 +39,7 @@ public struct SimpleNotificationOperationsReporting {
     public let deletePlatformApplication: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let deleteSMSSandboxPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let deleteTopic: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let getDataProtectionPolicy: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let getSMSAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
@@ -57,6 +58,7 @@ public struct SimpleNotificationOperationsReporting {
     public let optInPhoneNumber: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let publish: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let publishBatch: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
+    public let putDataProtectionPolicy: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let removePermission: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let setEndpointAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
     public let setPlatformApplicationAttributes: StandardSmokeAWSOperationReporting<SimpleNotificationModelOperations>
@@ -92,6 +94,8 @@ public struct SimpleNotificationOperationsReporting {
             clientName: clientName, operation: .deleteSMSSandboxPhoneNumber, configuration: reportingConfiguration)
         self.deleteTopic = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTopic, configuration: reportingConfiguration)
+        self.getDataProtectionPolicy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getDataProtectionPolicy, configuration: reportingConfiguration)
         self.getEndpointAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getEndpointAttributes, configuration: reportingConfiguration)
         self.getPlatformApplicationAttributes = StandardSmokeAWSOperationReporting(
@@ -128,6 +132,8 @@ public struct SimpleNotificationOperationsReporting {
             clientName: clientName, operation: .publish, configuration: reportingConfiguration)
         self.publishBatch = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .publishBatch, configuration: reportingConfiguration)
+        self.putDataProtectionPolicy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putDataProtectionPolicy, configuration: reportingConfiguration)
         self.removePermission = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .removePermission, configuration: reportingConfiguration)
         self.setEndpointAttributes = StandardSmokeAWSOperationReporting(

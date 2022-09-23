@@ -45,6 +45,7 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
     public let describeExport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeGlobalTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeGlobalTableSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeImport: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeKinesisStreamingDestination: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -56,10 +57,12 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
     public let executeTransaction: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let exportTableToPointInTime: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let importTable: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listContributorInsights: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listGlobalTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listImports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTables: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsOfResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putItem: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -113,6 +116,8 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
             smokeAWSOperationReporting: operationsReporting.describeGlobalTable)
         self.describeGlobalTableSettings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeGlobalTableSettings)
+        self.describeImport = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeImport)
         self.describeKinesisStreamingDestination = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeKinesisStreamingDestination)
         self.describeLimits = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -135,6 +140,8 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
             smokeAWSOperationReporting: operationsReporting.exportTableToPointInTime)
         self.getItem = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getItem)
+        self.importTable = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.importTable)
         self.listBackups = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listBackups)
         self.listContributorInsights = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -143,6 +150,8 @@ public struct DynamoDBInvocationsReporting<InvocationReportingType: HTTPClientCo
             smokeAWSOperationReporting: operationsReporting.listExports)
         self.listGlobalTables = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listGlobalTables)
+        self.listImports = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listImports)
         self.listTables = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listTables)
         self.listTagsOfResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

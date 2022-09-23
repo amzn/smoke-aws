@@ -84,6 +84,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias DeleteTopicAsyncType = (
             _ input: SimpleNotificationModel.DeleteTopicInput, 
             _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
+    typealias GetDataProtectionPolicySyncType = (
+            _ input: SimpleNotificationModel.GetDataProtectionPolicyInput) throws -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy
+    typealias GetDataProtectionPolicyAsyncType = (
+            _ input: SimpleNotificationModel.GetDataProtectionPolicyInput, 
+            _ completion: @escaping (Result<SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy, SimpleNotificationError>) -> ()) throws -> ()
     typealias GetEndpointAttributesSyncType = (
             _ input: SimpleNotificationModel.GetEndpointAttributesInput) throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes
     typealias GetEndpointAttributesAsyncType = (
@@ -174,6 +179,11 @@ public protocol SimpleNotificationClientProtocol {
     typealias PublishBatchAsyncType = (
             _ input: SimpleNotificationModel.PublishBatchInput, 
             _ completion: @escaping (Result<SimpleNotificationModel.PublishBatchResponseForPublishBatch, SimpleNotificationError>) -> ()) throws -> ()
+    typealias PutDataProtectionPolicySyncType = (
+            _ input: SimpleNotificationModel.PutDataProtectionPolicyInput) throws -> ()
+    typealias PutDataProtectionPolicyAsyncType = (
+            _ input: SimpleNotificationModel.PutDataProtectionPolicyInput, 
+            _ completion: @escaping (SimpleNotificationError?) -> ()) throws -> ()
     typealias RemovePermissionSyncType = (
             _ input: SimpleNotificationModel.RemovePermissionInput) throws -> ()
     typealias RemovePermissionAsyncType = (
@@ -503,6 +513,32 @@ public protocol SimpleNotificationClientProtocol {
      */
     func deleteTopicSync(
             input: SimpleNotificationModel.DeleteTopicInput) throws
+
+    /**
+     Invokes the GetDataProtectionPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetDataProtectionPolicyInput object being passed to this operation.
+         - completion: The GetDataProtectionPolicyResponseForGetDataProtectionPolicy object or an error will be passed to this 
+           callback when the operation is complete. The GetDataProtectionPolicyResponseForGetDataProtectionPolicy
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    func getDataProtectionPolicyAsync(
+            input: SimpleNotificationModel.GetDataProtectionPolicyInput, 
+            completion: @escaping (Result<SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy, SimpleNotificationError>) -> ()) throws
+
+    /**
+     Invokes the GetDataProtectionPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetDataProtectionPolicyInput object being passed to this operation.
+     - Returns: The GetDataProtectionPolicyResponseForGetDataProtectionPolicy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    func getDataProtectionPolicySync(
+            input: SimpleNotificationModel.GetDataProtectionPolicyInput) throws -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy
 
     /**
      Invokes the GetEndpointAttributes operation returning immediately and passing the response to a callback.
@@ -928,7 +964,7 @@ public protocol SimpleNotificationClientProtocol {
          - completion: The PublishResponseForPublish object or an error will be passed to this 
            callback when the operation is complete. The PublishResponseForPublish
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
+           The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, validation.
      */
     func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
@@ -941,7 +977,7 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated PublishInput object being passed to this operation.
      - Returns: The PublishResponseForPublish object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
+     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, validation.
      */
     func publishSync(
             input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish
@@ -954,7 +990,7 @@ public protocol SimpleNotificationClientProtocol {
          - completion: The PublishBatchResponseForPublishBatch object or an error will be passed to this 
            callback when the operation is complete. The PublishBatchResponseForPublishBatch
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest, validation.
      */
     func publishBatchAsync(
             input: SimpleNotificationModel.PublishBatchInput, 
@@ -967,10 +1003,33 @@ public protocol SimpleNotificationClientProtocol {
          - input: The validated PublishBatchInput object being passed to this operation.
      - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest, validation.
      */
     func publishBatchSync(
             input: SimpleNotificationModel.PublishBatchInput) throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch
+
+    /**
+     Invokes the PutDataProtectionPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutDataProtectionPolicyInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    func putDataProtectionPolicyAsync(
+            input: SimpleNotificationModel.PutDataProtectionPolicyInput, 
+            completion: @escaping (SimpleNotificationError?) -> ()) throws
+
+    /**
+     Invokes the PutDataProtectionPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutDataProtectionPolicyInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    func putDataProtectionPolicySync(
+            input: SimpleNotificationModel.PutDataProtectionPolicyInput) throws
 
     /**
      Invokes the RemovePermission operation returning immediately and passing the response to a callback.

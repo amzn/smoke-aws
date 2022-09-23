@@ -47,6 +47,22 @@ public enum ActivityStreamMode: String, Codable, CustomStringConvertible {
 public typealias ActivityStreamModeList = [String]
 
 /**
+ Enumeration restricting the values of the ActivityStreamPolicyStatus field.
+ */
+public enum ActivityStreamPolicyStatus: String, Codable, CustomStringConvertible {
+    case locked
+    case lockingPolicy = "locking-policy"
+    case unlocked
+    case unlockingPolicy = "unlocking-policy"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ActivityStreamPolicyStatus = .locked
+}
+
+/**
  Enumeration restricting the values of the ActivityStreamStatus field.
  */
 public enum ActivityStreamStatus: String, Codable, CustomStringConvertible {
@@ -80,6 +96,20 @@ public enum ApplyMethod: String, Codable, CustomStringConvertible {
  Type definition for the AttributeValueList field.
  */
 public typealias AttributeValueList = [String]
+
+/**
+ Enumeration restricting the values of the AuditPolicyState field.
+ */
+public enum AuditPolicyState: String, Codable, CustomStringConvertible {
+    case locked
+    case unlocked
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AuditPolicyState = .locked
+}
 
 /**
  Enumeration restricting the values of the AuthScheme field.
@@ -407,6 +437,7 @@ public typealias EC2SecurityGroupList = [EC2SecurityGroup]
 public enum EngineFamily: String, Codable, CustomStringConvertible {
     case mysql = "MYSQL"
     case postgresql = "POSTGRESQL"
+    case sqlserver = "SQLSERVER"
 
     public var description: String {
         return rawValue
@@ -495,6 +526,7 @@ public typealias GlobalClusterMemberList = [GlobalClusterMember]
  */
 public enum IAMAuthMode: String, Codable, CustomStringConvertible {
     case disabled = "DISABLED"
+    case enabled = "ENABLED"
     case required = "REQUIRED"
 
     public var description: String {

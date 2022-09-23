@@ -582,6 +582,33 @@ public extension CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the ListManagedInsightRules operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+     - Returns: The ListManagedInsightRulesOutputForListManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    func listManagedInsightRules(input: CloudWatchModel.ListManagedInsightRulesInput) async throws
+     -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try listManagedInsightRulesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ListMetricStreams operation and asynchronously returning the response.
 
      - Parameters:
@@ -753,6 +780,33 @@ public extension CloudWatchClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try putInsightRuleAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the PutManagedInsightRules operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+     - Returns: The PutManagedInsightRulesOutputForPutManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    func putManagedInsightRules(input: CloudWatchModel.PutManagedInsightRulesInput) async throws
+     -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try putManagedInsightRulesAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

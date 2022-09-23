@@ -395,19 +395,23 @@ public struct CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber: C
 
 public struct CreateTopicInput: Codable, Equatable {
     public var attributes: TopicAttributesMap?
+    public var dataProtectionPolicy: AttributeValue?
     public var name: TopicName
     public var tags: TagList?
 
     public init(attributes: TopicAttributesMap? = nil,
+                dataProtectionPolicy: AttributeValue? = nil,
                 name: TopicName,
                 tags: TagList? = nil) {
         self.attributes = attributes
+        self.dataProtectionPolicy = dataProtectionPolicy
         self.name = name
         self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
         case attributes = "Attributes"
+        case dataProtectionPolicy = "DataProtectionPolicy"
         case name = "Name"
         case tags = "Tags"
     }
@@ -594,6 +598,52 @@ public struct FilterPolicyLimitExceededException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct GetDataProtectionPolicyInput: Codable, Equatable {
+    public var resourceArn: TopicARN
+
+    public init(resourceArn: TopicARN) {
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceArn = "ResourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetDataProtectionPolicyResponse: Codable, Equatable {
+    public var dataProtectionPolicy: AttributeValue?
+
+    public init(dataProtectionPolicy: AttributeValue? = nil) {
+        self.dataProtectionPolicy = dataProtectionPolicy
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dataProtectionPolicy = "DataProtectionPolicy"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetDataProtectionPolicyResponseForGetDataProtectionPolicy: Codable, Equatable {
+    public var getDataProtectionPolicyResult: GetDataProtectionPolicyResponse
+
+    public init(getDataProtectionPolicyResult: GetDataProtectionPolicyResponse) {
+        self.getDataProtectionPolicyResult = getDataProtectionPolicyResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case getDataProtectionPolicyResult = "GetDataProtectionPolicyResult"
+    }
+
+    public func validate() throws {
+        try getDataProtectionPolicyResult.validate()
     }
 }
 
@@ -1855,6 +1905,25 @@ public struct PublishResponseForPublish: Codable, Equatable {
 
     public func validate() throws {
         try publishResult.validate()
+    }
+}
+
+public struct PutDataProtectionPolicyInput: Codable, Equatable {
+    public var dataProtectionPolicy: AttributeValue
+    public var resourceArn: TopicARN
+
+    public init(dataProtectionPolicy: AttributeValue,
+                resourceArn: TopicARN) {
+        self.dataProtectionPolicy = dataProtectionPolicy
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dataProtectionPolicy = "DataProtectionPolicy"
+        case resourceArn = "ResourceArn"
+    }
+
+    public func validate() throws {
     }
 }
 

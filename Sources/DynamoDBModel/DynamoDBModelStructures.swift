@@ -536,7 +536,7 @@ public struct BatchGetItemOutput: Codable, Equatable {
     }
 }
 
-public struct BatchStatementError: Codable, Equatable, Hashable {
+public struct BatchStatementError: Codable, Equatable {
     public var code: BatchStatementErrorCodeEnum?
     public var message: String?
 
@@ -549,11 +549,6 @@ public struct BatchStatementError: Codable, Equatable, Hashable {
     enum CodingKeys: String, CodingKey {
         case code = "Code"
         case message = "Message"
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.code)
-        hasher.combine(self.message)
     }
 
     public func validate() throws {
@@ -1120,6 +1115,27 @@ public struct CreateTableOutput: Codable, Equatable {
     }
 }
 
+public struct CsvOptions: Codable, Equatable {
+    public var delimiter: CsvDelimiter?
+    public var headerList: CsvHeaderList?
+
+    public init(delimiter: CsvDelimiter? = nil,
+                headerList: CsvHeaderList? = nil) {
+        self.delimiter = delimiter
+        self.headerList = headerList
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case delimiter = "Delimiter"
+        case headerList = "HeaderList"
+    }
+
+    public func validate() throws {
+        try delimiter?.validateAsCsvDelimiter()
+        try headerList?.validateAsCsvHeaderList()
+    }
+}
+
 public struct Delete: Codable, Equatable {
     public var conditionExpression: ConditionExpression?
     public var expressionAttributeNames: ExpressionAttributeNameMap?
@@ -1605,6 +1621,38 @@ public struct DescribeGlobalTableSettingsOutput: Codable, Equatable {
     }
 }
 
+public struct DescribeImportInput: Codable, Equatable {
+    public var importArn: ImportArn
+
+    public init(importArn: ImportArn) {
+        self.importArn = importArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case importArn = "ImportArn"
+    }
+
+    public func validate() throws {
+        try importArn.validateAsImportArn()
+    }
+}
+
+public struct DescribeImportOutput: Codable, Equatable {
+    public var importTableDescription: ImportTableDescription
+
+    public init(importTableDescription: ImportTableDescription) {
+        self.importTableDescription = importTableDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case importTableDescription = "ImportTableDescription"
+    }
+
+    public func validate() throws {
+        try importTableDescription.validate()
+    }
+}
+
 public struct DescribeKinesisStreamingDestinationInput: Codable, Equatable {
     public var tableName: TableName
 
@@ -2052,8 +2100,12 @@ public struct ExportDescription: Codable, Equatable {
 
     public func validate() throws {
         try billedSizeBytes?.validateAsBilledSizeBytes()
+        try clientToken?.validateAsClientToken()
         try exportArn?.validateAsExportArn()
         try itemCount?.validateAsItemCount()
+        try s3Bucket?.validateAsS3Bucket()
+        try s3BucketOwner?.validateAsS3BucketOwner()
+        try s3Prefix?.validateAsS3Prefix()
         try s3SseKmsKeyId?.validateAsS3SseKmsKeyId()
         try tableId?.validateAsTableId()
     }
@@ -2138,6 +2190,10 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try clientToken?.validateAsClientToken()
+        try s3Bucket.validateAsS3Bucket()
+        try s3BucketOwner?.validateAsS3BucketOwner()
+        try s3Prefix?.validateAsS3Prefix()
         try s3SseKmsKeyId?.validateAsS3SseKmsKeyId()
     }
 }
@@ -2549,6 +2605,234 @@ public struct IdempotentParameterMismatchException: Codable, Equatable {
     }
 }
 
+public struct ImportConflictException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ImportNotFoundException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ImportSummary: Codable, Equatable {
+    public var cloudWatchLogGroupArn: CloudWatchLogGroupArn?
+    public var endTime: ImportEndTime?
+    public var importArn: ImportArn?
+    public var importStatus: ImportStatus?
+    public var inputFormat: InputFormat?
+    public var s3BucketSource: S3BucketSource?
+    public var startTime: ImportStartTime?
+    public var tableArn: TableArn?
+
+    public init(cloudWatchLogGroupArn: CloudWatchLogGroupArn? = nil,
+                endTime: ImportEndTime? = nil,
+                importArn: ImportArn? = nil,
+                importStatus: ImportStatus? = nil,
+                inputFormat: InputFormat? = nil,
+                s3BucketSource: S3BucketSource? = nil,
+                startTime: ImportStartTime? = nil,
+                tableArn: TableArn? = nil) {
+        self.cloudWatchLogGroupArn = cloudWatchLogGroupArn
+        self.endTime = endTime
+        self.importArn = importArn
+        self.importStatus = importStatus
+        self.inputFormat = inputFormat
+        self.s3BucketSource = s3BucketSource
+        self.startTime = startTime
+        self.tableArn = tableArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cloudWatchLogGroupArn = "CloudWatchLogGroupArn"
+        case endTime = "EndTime"
+        case importArn = "ImportArn"
+        case importStatus = "ImportStatus"
+        case inputFormat = "InputFormat"
+        case s3BucketSource = "S3BucketSource"
+        case startTime = "StartTime"
+        case tableArn = "TableArn"
+    }
+
+    public func validate() throws {
+        try cloudWatchLogGroupArn?.validateAsCloudWatchLogGroupArn()
+        try importArn?.validateAsImportArn()
+        try s3BucketSource?.validate()
+    }
+}
+
+public struct ImportTableDescription: Codable, Equatable {
+    public var clientToken: ClientToken?
+    public var cloudWatchLogGroupArn: CloudWatchLogGroupArn?
+    public var endTime: ImportEndTime?
+    public var errorCount: ErrorCount?
+    public var failureCode: FailureCode?
+    public var failureMessage: FailureMessage?
+    public var importArn: ImportArn?
+    public var importStatus: ImportStatus?
+    public var importedItemCount: ImportedItemCount?
+    public var inputCompressionType: InputCompressionType?
+    public var inputFormat: InputFormat?
+    public var inputFormatOptions: InputFormatOptions?
+    public var processedItemCount: ProcessedItemCount?
+    public var processedSizeBytes: Long?
+    public var s3BucketSource: S3BucketSource?
+    public var startTime: ImportStartTime?
+    public var tableArn: TableArn?
+    public var tableCreationParameters: TableCreationParameters?
+    public var tableId: TableId?
+
+    public init(clientToken: ClientToken? = nil,
+                cloudWatchLogGroupArn: CloudWatchLogGroupArn? = nil,
+                endTime: ImportEndTime? = nil,
+                errorCount: ErrorCount? = nil,
+                failureCode: FailureCode? = nil,
+                failureMessage: FailureMessage? = nil,
+                importArn: ImportArn? = nil,
+                importStatus: ImportStatus? = nil,
+                importedItemCount: ImportedItemCount? = nil,
+                inputCompressionType: InputCompressionType? = nil,
+                inputFormat: InputFormat? = nil,
+                inputFormatOptions: InputFormatOptions? = nil,
+                processedItemCount: ProcessedItemCount? = nil,
+                processedSizeBytes: Long? = nil,
+                s3BucketSource: S3BucketSource? = nil,
+                startTime: ImportStartTime? = nil,
+                tableArn: TableArn? = nil,
+                tableCreationParameters: TableCreationParameters? = nil,
+                tableId: TableId? = nil) {
+        self.clientToken = clientToken
+        self.cloudWatchLogGroupArn = cloudWatchLogGroupArn
+        self.endTime = endTime
+        self.errorCount = errorCount
+        self.failureCode = failureCode
+        self.failureMessage = failureMessage
+        self.importArn = importArn
+        self.importStatus = importStatus
+        self.importedItemCount = importedItemCount
+        self.inputCompressionType = inputCompressionType
+        self.inputFormat = inputFormat
+        self.inputFormatOptions = inputFormatOptions
+        self.processedItemCount = processedItemCount
+        self.processedSizeBytes = processedSizeBytes
+        self.s3BucketSource = s3BucketSource
+        self.startTime = startTime
+        self.tableArn = tableArn
+        self.tableCreationParameters = tableCreationParameters
+        self.tableId = tableId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case cloudWatchLogGroupArn = "CloudWatchLogGroupArn"
+        case endTime = "EndTime"
+        case errorCount = "ErrorCount"
+        case failureCode = "FailureCode"
+        case failureMessage = "FailureMessage"
+        case importArn = "ImportArn"
+        case importStatus = "ImportStatus"
+        case importedItemCount = "ImportedItemCount"
+        case inputCompressionType = "InputCompressionType"
+        case inputFormat = "InputFormat"
+        case inputFormatOptions = "InputFormatOptions"
+        case processedItemCount = "ProcessedItemCount"
+        case processedSizeBytes = "ProcessedSizeBytes"
+        case s3BucketSource = "S3BucketSource"
+        case startTime = "StartTime"
+        case tableArn = "TableArn"
+        case tableCreationParameters = "TableCreationParameters"
+        case tableId = "TableId"
+    }
+
+    public func validate() throws {
+        try clientToken?.validateAsClientToken()
+        try cloudWatchLogGroupArn?.validateAsCloudWatchLogGroupArn()
+        try errorCount?.validateAsErrorCount()
+        try importArn?.validateAsImportArn()
+        try importedItemCount?.validateAsImportedItemCount()
+        try inputFormatOptions?.validate()
+        try processedItemCount?.validateAsProcessedItemCount()
+        try s3BucketSource?.validate()
+        try tableCreationParameters?.validate()
+        try tableId?.validateAsTableId()
+    }
+}
+
+public struct ImportTableInput: Codable, Equatable {
+    public var clientToken: ClientToken?
+    public var inputCompressionType: InputCompressionType?
+    public var inputFormat: InputFormat
+    public var inputFormatOptions: InputFormatOptions?
+    public var s3BucketSource: S3BucketSource
+    public var tableCreationParameters: TableCreationParameters
+
+    public init(clientToken: ClientToken? = nil,
+                inputCompressionType: InputCompressionType? = nil,
+                inputFormat: InputFormat,
+                inputFormatOptions: InputFormatOptions? = nil,
+                s3BucketSource: S3BucketSource,
+                tableCreationParameters: TableCreationParameters) {
+        self.clientToken = clientToken
+        self.inputCompressionType = inputCompressionType
+        self.inputFormat = inputFormat
+        self.inputFormatOptions = inputFormatOptions
+        self.s3BucketSource = s3BucketSource
+        self.tableCreationParameters = tableCreationParameters
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case inputCompressionType = "InputCompressionType"
+        case inputFormat = "InputFormat"
+        case inputFormatOptions = "InputFormatOptions"
+        case s3BucketSource = "S3BucketSource"
+        case tableCreationParameters = "TableCreationParameters"
+    }
+
+    public func validate() throws {
+        try clientToken?.validateAsClientToken()
+        try inputFormatOptions?.validate()
+        try s3BucketSource.validate()
+        try tableCreationParameters.validate()
+    }
+}
+
+public struct ImportTableOutput: Codable, Equatable {
+    public var importTableDescription: ImportTableDescription
+
+    public init(importTableDescription: ImportTableDescription) {
+        self.importTableDescription = importTableDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case importTableDescription = "ImportTableDescription"
+    }
+
+    public func validate() throws {
+        try importTableDescription.validate()
+    }
+}
+
 public struct IndexNotFoundException: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -2561,6 +2845,22 @@ public struct IndexNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct InputFormatOptions: Codable, Equatable {
+    public var csv: CsvOptions?
+
+    public init(csv: CsvOptions? = nil) {
+        self.csv = csv
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case csv = "Csv"
+    }
+
+    public func validate() throws {
+        try csv?.validate()
     }
 }
 
@@ -2983,6 +3283,51 @@ public struct ListGlobalTablesOutput: Codable, Equatable {
 
     public func validate() throws {
         try lastEvaluatedGlobalTableName?.validateAsTableName()
+    }
+}
+
+public struct ListImportsInput: Codable, Equatable {
+    public var nextToken: ImportNextToken?
+    public var pageSize: ListImportsMaxLimit?
+    public var tableArn: TableArn?
+
+    public init(nextToken: ImportNextToken? = nil,
+                pageSize: ListImportsMaxLimit? = nil,
+                tableArn: TableArn? = nil) {
+        self.nextToken = nextToken
+        self.pageSize = pageSize
+        self.tableArn = tableArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken = "NextToken"
+        case pageSize = "PageSize"
+        case tableArn = "TableArn"
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsImportNextToken()
+        try pageSize?.validateAsListImportsMaxLimit()
+    }
+}
+
+public struct ListImportsOutput: Codable, Equatable {
+    public var importSummaryList: ImportSummaryList?
+    public var nextToken: ImportNextToken?
+
+    public init(importSummaryList: ImportSummaryList? = nil,
+                nextToken: ImportNextToken? = nil) {
+        self.importSummaryList = importSummaryList
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case importSummaryList = "ImportSummaryList"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsImportNextToken()
     }
 }
 
@@ -4226,6 +4571,32 @@ public struct RestoreTableToPointInTimeOutput: Codable, Equatable {
     }
 }
 
+public struct S3BucketSource: Codable, Equatable {
+    public var s3Bucket: S3Bucket
+    public var s3BucketOwner: S3BucketOwner?
+    public var s3KeyPrefix: S3Prefix?
+
+    public init(s3Bucket: S3Bucket,
+                s3BucketOwner: S3BucketOwner? = nil,
+                s3KeyPrefix: S3Prefix? = nil) {
+        self.s3Bucket = s3Bucket
+        self.s3BucketOwner = s3BucketOwner
+        self.s3KeyPrefix = s3KeyPrefix
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case s3Bucket = "S3Bucket"
+        case s3BucketOwner = "S3BucketOwner"
+        case s3KeyPrefix = "S3KeyPrefix"
+    }
+
+    public func validate() throws {
+        try s3Bucket.validateAsS3Bucket()
+        try s3BucketOwner?.validateAsS3BucketOwner()
+        try s3KeyPrefix?.validateAsS3Prefix()
+    }
+}
+
 public struct SSEDescription: Codable, Equatable {
     public var inaccessibleEncryptionDateTime: Date?
     public var kMSMasterKeyArn: KMSMasterKeyArn?
@@ -4549,6 +4920,49 @@ public struct TableClassSummary: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct TableCreationParameters: Codable, Equatable {
+    public var attributeDefinitions: AttributeDefinitions
+    public var billingMode: BillingMode?
+    public var globalSecondaryIndexes: GlobalSecondaryIndexList?
+    public var keySchema: KeySchema
+    public var provisionedThroughput: ProvisionedThroughput?
+    public var sSESpecification: SSESpecification?
+    public var tableName: TableName
+
+    public init(attributeDefinitions: AttributeDefinitions,
+                billingMode: BillingMode? = nil,
+                globalSecondaryIndexes: GlobalSecondaryIndexList? = nil,
+                keySchema: KeySchema,
+                provisionedThroughput: ProvisionedThroughput? = nil,
+                sSESpecification: SSESpecification? = nil,
+                tableName: TableName) {
+        self.attributeDefinitions = attributeDefinitions
+        self.billingMode = billingMode
+        self.globalSecondaryIndexes = globalSecondaryIndexes
+        self.keySchema = keySchema
+        self.provisionedThroughput = provisionedThroughput
+        self.sSESpecification = sSESpecification
+        self.tableName = tableName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case attributeDefinitions = "AttributeDefinitions"
+        case billingMode = "BillingMode"
+        case globalSecondaryIndexes = "GlobalSecondaryIndexes"
+        case keySchema = "KeySchema"
+        case provisionedThroughput = "ProvisionedThroughput"
+        case sSESpecification = "SSESpecification"
+        case tableName = "TableName"
+    }
+
+    public func validate() throws {
+        try keySchema.validateAsKeySchema()
+        try provisionedThroughput?.validate()
+        try sSESpecification?.validate()
+        try tableName.validateAsTableName()
     }
 }
 

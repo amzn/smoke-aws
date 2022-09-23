@@ -43,6 +43,8 @@ private let exportNotFoundIdentity = "ExportNotFoundException"
 private let globalTableAlreadyExistsIdentity = "GlobalTableAlreadyExistsException"
 private let globalTableNotFoundIdentity = "GlobalTableNotFoundException"
 private let idempotentParameterMismatchIdentity = "IdempotentParameterMismatchException"
+private let importConflictIdentity = "ImportConflictException"
+private let importNotFoundIdentity = "ImportNotFoundException"
 private let indexNotFoundIdentity = "IndexNotFoundException"
 private let internalServerIdentity = "InternalServerError"
 private let invalidExportTimeIdentity = "InvalidExportTimeException"
@@ -59,10 +61,21 @@ private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let tableAlreadyExistsIdentity = "TableAlreadyExistsException"
 private let tableInUseIdentity = "TableInUseException"
 private let tableNotFoundIdentity = "TableNotFoundException"
+private let throttlingIdentity = "ThrottlingException"
 private let transactionCanceledIdentity = "TransactionCanceledException"
 private let transactionConflictIdentity = "TransactionConflictException"
 private let transactionInProgressIdentity = "TransactionInProgressException"
 private let __accessDeniedIdentity = "AccessDenied"
+
+public struct DynamoDBErrorPayload: Codable {
+    public let type: String
+    public let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "__type"
+        case message = "message"
+    }
+}
 
 public enum DynamoDBError: Swift.Error, Decodable {
     case backupInUse(BackupInUseException)
@@ -75,6 +88,8 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case globalTableAlreadyExists(GlobalTableAlreadyExistsException)
     case globalTableNotFound(GlobalTableNotFoundException)
     case idempotentParameterMismatch(IdempotentParameterMismatchException)
+    case importConflict(ImportConflictException)
+    case importNotFound(ImportNotFoundException)
     case indexNotFound(IndexNotFoundException)
     case internalServer(InternalServerError)
     case invalidExportTime(InvalidExportTimeException)
@@ -91,6 +106,7 @@ public enum DynamoDBError: Swift.Error, Decodable {
     case tableAlreadyExists(TableAlreadyExistsException)
     case tableInUse(TableInUseException)
     case tableNotFound(TableNotFoundException)
+    case throttling(DynamoDBErrorPayload)
     case transactionCanceled(TransactionCanceledException)
     case transactionConflict(TransactionConflictException)
     case transactionInProgress(TransactionInProgressException)
@@ -143,6 +159,12 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case idempotentParameterMismatchIdentity:
             let errorPayload = try IdempotentParameterMismatchException(from: decoder)
             self = DynamoDBError.idempotentParameterMismatch(errorPayload)
+        case importConflictIdentity:
+            let errorPayload = try ImportConflictException(from: decoder)
+            self = DynamoDBError.importConflict(errorPayload)
+        case importNotFoundIdentity:
+            let errorPayload = try ImportNotFoundException(from: decoder)
+            self = DynamoDBError.importNotFound(errorPayload)
         case indexNotFoundIdentity:
             let errorPayload = try IndexNotFoundException(from: decoder)
             self = DynamoDBError.indexNotFound(errorPayload)
@@ -191,6 +213,9 @@ public enum DynamoDBError: Swift.Error, Decodable {
         case tableNotFoundIdentity:
             let errorPayload = try TableNotFoundException(from: decoder)
             self = DynamoDBError.tableNotFound(errorPayload)
+        case throttlingIdentity:
+            let errorPayload = try DynamoDBErrorPayload(from: decoder)
+            self = DynamoDBError.throttling(errorPayload)
         case transactionCanceledIdentity:
             let errorPayload = try TransactionCanceledException(from: decoder)
             self = DynamoDBError.transactionCanceled(errorPayload)

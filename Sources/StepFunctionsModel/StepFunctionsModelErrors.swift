@@ -56,8 +56,19 @@ private let stateMachineLimitExceededIdentity = "StateMachineLimitExceeded"
 private let stateMachineTypeNotSupportedIdentity = "StateMachineTypeNotSupported"
 private let taskDoesNotExistIdentity = "TaskDoesNotExist"
 private let taskTimedOutIdentity = "TaskTimedOut"
+private let throttlingIdentity = "ThrottlingException"
 private let tooManyTagsIdentity = "TooManyTags"
 private let __accessDeniedIdentity = "AccessDenied"
+
+public struct StepFunctionsErrorPayload: Codable {
+    public let type: String
+    public let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "__type"
+        case message = "message"
+    }
+}
 
 public enum StepFunctionsError: Swift.Error, Decodable {
     case activityDoesNotExist(ActivityDoesNotExist)
@@ -83,6 +94,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case stateMachineTypeNotSupported(StateMachineTypeNotSupported)
     case taskDoesNotExist(TaskDoesNotExist)
     case taskTimedOut(TaskTimedOut)
+    case throttling(StepFunctionsErrorPayload)
     case tooManyTags(TooManyTags)
     case accessDenied(message: String?)
     case validationError(reason: String)
@@ -172,6 +184,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case taskTimedOutIdentity:
             let errorPayload = try TaskTimedOut(from: decoder)
             self = StepFunctionsError.taskTimedOut(errorPayload)
+        case throttlingIdentity:
+            let errorPayload = try StepFunctionsErrorPayload(from: decoder)
+            self = StepFunctionsError.throttling(errorPayload)
         case tooManyTagsIdentity:
             let errorPayload = try TooManyTags(from: decoder)
             self = StepFunctionsError.tooManyTags(errorPayload)

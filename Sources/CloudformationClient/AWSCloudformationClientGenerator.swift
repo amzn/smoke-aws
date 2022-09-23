@@ -30,6 +30,16 @@ import NIOHTTP1
 import AsyncHTTPClient
 import Logging
 
+private extension SmokeHTTPClient.HTTPClientError {
+    func isRetriable() -> Bool {
+        if let typedError = self.cause as? CloudformationError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
+        } else {
+            return self.isRetriableAccordingToCategory
+        }
+    }
+}
+
 /**
  AWS Client Generator for the Cloudformation service.
  */

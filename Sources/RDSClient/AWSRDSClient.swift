@@ -6974,6 +6974,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
     }
 
     /**
+     Invokes the ModifyActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+         - completion: The ModifyActivityStreamResponseForModifyActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The ModifyActivityStreamResponseForModifyActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    public func modifyActivityStreamAsync(
+            input: RDSModel.ModifyActivityStreamRequest, 
+            completion: @escaping (Result<RDSModel.ModifyActivityStreamResponseForModifyActivityStream, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyActivityStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyActivityStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyActivityStream.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+     - Returns: The ModifyActivityStreamResponseForModifyActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    public func modifyActivityStreamSync(
+            input: RDSModel.ModifyActivityStreamRequest) throws -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyActivityStream,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyActivityStreamOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.modifyActivityStream.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10614,6 +10692,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.stopDBInstanceAutomatedBackupsReplication.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SwitchoverReadReplica operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+         - completion: The SwitchoverReadReplicaResultForSwitchoverReadReplica object or an error will be passed to this 
+           callback when the operation is complete. The SwitchoverReadReplicaResultForSwitchoverReadReplica
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func switchoverReadReplicaAsync(
+            input: RDSModel.SwitchoverReadReplicaMessage, 
+            completion: @escaping (Result<RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.switchoverReadReplica,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SwitchoverReadReplicaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.switchoverReadReplica.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SwitchoverReadReplica operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+     - Returns: The SwitchoverReadReplicaResultForSwitchoverReadReplica object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func switchoverReadReplicaSync(
+            input: RDSModel.SwitchoverReadReplicaMessage) throws -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.switchoverReadReplica,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SwitchoverReadReplicaOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.switchoverReadReplica.rawValue,
             version: apiVersion)
 
         do {

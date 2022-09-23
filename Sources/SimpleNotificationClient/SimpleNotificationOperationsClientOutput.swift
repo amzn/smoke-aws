@@ -116,6 +116,19 @@ extension DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber: HTTPR
 }
 
 /**
+ Type to handle the output from the GetDataProtectionPolicy operation in a HTTP client.
+ */
+extension GetDataProtectionPolicyResponseForGetDataProtectionPolicy: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetDataProtectionPolicyResponseForGetDataProtectionPolicy
+    public typealias HeadersType = GetDataProtectionPolicyResponseForGetDataProtectionPolicy
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetEndpointAttributes operation in a HTTP client.
  */
 extension GetEndpointAttributesResponseForGetEndpointAttributes: HTTPResponseOutputProtocol {

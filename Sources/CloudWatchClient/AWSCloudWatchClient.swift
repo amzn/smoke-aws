@@ -1794,6 +1794,84 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
     }
 
     /**
+     Invokes the ListManagedInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+         - completion: The ListManagedInsightRulesOutputForListManagedInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The ListManagedInsightRulesOutputForListManagedInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listManagedInsightRulesAsync(
+            input: CloudWatchModel.ListManagedInsightRulesInput, 
+            completion: @escaping (Result<CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listManagedInsightRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListManagedInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.listManagedInsightRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListManagedInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+     - Returns: The ListManagedInsightRulesOutputForListManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listManagedInsightRulesSync(
+            input: CloudWatchModel.ListManagedInsightRulesInput) throws -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listManagedInsightRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListManagedInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.listManagedInsightRules.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListMetricStreams operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2320,6 +2398,84 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudWatchModelOperations.putInsightRule.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudWatchError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutManagedInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+         - completion: The PutManagedInsightRulesOutputForPutManagedInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The PutManagedInsightRulesOutputForPutManagedInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    public func putManagedInsightRulesAsync(
+            input: CloudWatchModel.PutManagedInsightRulesInput, 
+            completion: @escaping (Result<CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules, CloudWatchError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putManagedInsightRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutManagedInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putManagedInsightRules.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PutManagedInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+     - Returns: The PutManagedInsightRulesOutputForPutManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    public func putManagedInsightRulesSync(
+            input: CloudWatchModel.PutManagedInsightRulesInput) throws -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putManagedInsightRules,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutManagedInsightRulesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudWatchModelOperations.putManagedInsightRules.rawValue,
             version: apiVersion)
 
         do {

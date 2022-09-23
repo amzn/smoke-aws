@@ -43,7 +43,7 @@ public enum StepFunctionsClientError: Swift.Error {
 
     public func isRetriable() -> Bool? {
         switch self {
-        case .activityLimitExceeded, .activityWorkerLimitExceeded, .executionLimitExceeded, .stateMachineLimitExceeded:
+        case .activityLimitExceeded, .activityWorkerLimitExceeded, .executionLimitExceeded, .stateMachineLimitExceeded, .throttling:
             return true
         default:
             return nil
