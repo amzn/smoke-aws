@@ -83,9 +83,4 @@ class ElasticComputeCloudClientTests: XCTestCase {
             return XCTFail()
         }
     }
-
-    static var allTests = [
-        ("testAccessDeniedErrorDecode", testAccessDeniedErrorDecode),
-        ("testKnownErrorDecode", testKnownErrorDecode),
-    ]
 }

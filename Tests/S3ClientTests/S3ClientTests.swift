@@ -188,17 +188,4 @@ class S3ClientTests: XCTestCase {
             return XCTFail()
         }
     }
-
-    static var allTests = [
-        ("testValidS3Uri", testValidS3Uri),
-        ("testValidHttpsUri", testValidHttpsUri),
-        ("testValidHttpUri", testValidHttpUri),
-        ("testInvalidS3UriPrefix", testInvalidS3UriPrefix),
-        ("testS3UriNoSeparator", testS3UriNoSeparator),
-        ("testHttpsUriNoSeparatorForBucket", testHttpsUriNoSeparatorForBucket),
-        ("testHttpsUriNoSeparatorForKey", testHttpsUriNoSeparatorForKey),
-        ("testAccessDeniedErrorDecode", testAccessDeniedErrorDecode),
-        ("testAccessDeniedErrorDataAPIsDecode", testAccessDeniedErrorDataAPIsDecode),
-        ("testKnownErrorDecode", testKnownErrorDecode),
-    ]
 }
