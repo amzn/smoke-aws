@@ -49,6 +49,7 @@ public struct CloudWatchOperationsReporting {
     public let getMetricStream: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let getMetricWidgetImage: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listDashboards: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let listManagedInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listMetricStreams: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listMetrics: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -56,6 +57,7 @@ public struct CloudWatchOperationsReporting {
     public let putCompositeAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putDashboard: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putInsightRule: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
+    public let putManagedInsightRules: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putMetricAlarm: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putMetricData: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
     public let putMetricStream: StandardSmokeAWSOperationReporting<CloudWatchModelOperations>
@@ -108,6 +110,8 @@ public struct CloudWatchOperationsReporting {
             clientName: clientName, operation: .getMetricWidgetImage, configuration: reportingConfiguration)
         self.listDashboards = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listDashboards, configuration: reportingConfiguration)
+        self.listManagedInsightRules = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listManagedInsightRules, configuration: reportingConfiguration)
         self.listMetricStreams = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listMetricStreams, configuration: reportingConfiguration)
         self.listMetrics = StandardSmokeAWSOperationReporting(
@@ -122,6 +126,8 @@ public struct CloudWatchOperationsReporting {
             clientName: clientName, operation: .putDashboard, configuration: reportingConfiguration)
         self.putInsightRule = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putInsightRule, configuration: reportingConfiguration)
+        self.putManagedInsightRules = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .putManagedInsightRules, configuration: reportingConfiguration)
         self.putMetricAlarm = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .putMetricAlarm, configuration: reportingConfiguration)
         self.putMetricData = StandardSmokeAWSOperationReporting(

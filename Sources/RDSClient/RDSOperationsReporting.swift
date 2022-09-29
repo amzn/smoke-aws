@@ -116,6 +116,7 @@ public struct RDSOperationsReporting {
     public let failoverDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let failoverGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let modifyActivityStream: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCurrentDBClusterCapacity: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let modifyCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -163,6 +164,7 @@ public struct RDSOperationsReporting {
     public let stopDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let stopDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let stopDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let switchoverReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>) {
         self.addRoleToDBCluster = StandardSmokeAWSOperationReporting(
@@ -341,6 +343,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .failoverGlobalCluster, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listTagsForResource, configuration: reportingConfiguration)
+        self.modifyActivityStream = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyActivityStream, configuration: reportingConfiguration)
         self.modifyCertificates = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyCertificates, configuration: reportingConfiguration)
         self.modifyCurrentDBClusterCapacity = StandardSmokeAWSOperationReporting(
@@ -435,5 +439,7 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .stopDBInstance, configuration: reportingConfiguration)
         self.stopDBInstanceAutomatedBackupsReplication = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .stopDBInstanceAutomatedBackupsReplication, configuration: reportingConfiguration)
+        self.switchoverReadReplica = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .switchoverReadReplica, configuration: reportingConfiguration)
     }
 }

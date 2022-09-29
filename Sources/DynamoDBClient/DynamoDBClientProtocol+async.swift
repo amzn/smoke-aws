@@ -462,6 +462,33 @@ public extension DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the DescribeImport operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+     - Returns: The DescribeImportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importNotFound.
+     */
+    func describeImport(input: DynamoDBModel.DescribeImportInput) async throws
+     -> DynamoDBModel.DescribeImportOutput {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try describeImportAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeKinesisStreamingDestination operation and asynchronously returning the response.
 
      - Parameters:
@@ -759,6 +786,33 @@ public extension DynamoDBClientProtocol {
     }
 
     /**
+     Invokes the ImportTable operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+     - Returns: The ImportTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importConflict, limitExceeded, resourceInUse.
+     */
+    func importTable(input: DynamoDBModel.ImportTableInput) async throws
+     -> DynamoDBModel.ImportTableOutput {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try importTableAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ListBackups operation and asynchronously returning the response.
 
      - Parameters:
@@ -853,6 +907,33 @@ public extension DynamoDBClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try listGlobalTablesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListImports operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+     - Returns: The ListImportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded.
+     */
+    func listImports(input: DynamoDBModel.ListImportsInput) async throws
+     -> DynamoDBModel.ListImportsOutput {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try listImportsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

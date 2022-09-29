@@ -294,6 +294,7 @@ public extension CreateTopicInput {
     static let __default: SimpleNotificationModel.CreateTopicInput = {
         let defaultInstance = SimpleNotificationModel.CreateTopicInput(
             attributes: nil,
+            dataProtectionPolicy: nil,
             name: "value",
             tags: nil)
 
@@ -440,6 +441,42 @@ public extension FilterPolicyLimitExceededException {
     static let __default: SimpleNotificationModel.FilterPolicyLimitExceededException = {
         let defaultInstance = SimpleNotificationModel.FilterPolicyLimitExceededException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetDataProtectionPolicyInput {
+    /**
+     Default instance of the GetDataProtectionPolicyInput structure.
+     */
+    static let __default: SimpleNotificationModel.GetDataProtectionPolicyInput = {
+        let defaultInstance = SimpleNotificationModel.GetDataProtectionPolicyInput(
+            resourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetDataProtectionPolicyResponse {
+    /**
+     Default instance of the GetDataProtectionPolicyResponse structure.
+     */
+    static let __default: SimpleNotificationModel.GetDataProtectionPolicyResponse = {
+        let defaultInstance = SimpleNotificationModel.GetDataProtectionPolicyResponse(
+            dataProtectionPolicy: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
+    /**
+     Default instance of the GetDataProtectionPolicyResponseForGetDataProtectionPolicy structure.
+     */
+    static let __default: SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy = {
+        let defaultInstance = SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy(
+            getDataProtectionPolicyResult: GetDataProtectionPolicyResponse.__default)
 
         return defaultInstance
     }()
@@ -1353,6 +1390,19 @@ public extension PublishResponseForPublish {
     static let __default: SimpleNotificationModel.PublishResponseForPublish = {
         let defaultInstance = SimpleNotificationModel.PublishResponseForPublish(
             publishResult: PublishResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutDataProtectionPolicyInput {
+    /**
+     Default instance of the PutDataProtectionPolicyInput structure.
+     */
+    static let __default: SimpleNotificationModel.PutDataProtectionPolicyInput = {
+        let defaultInstance = SimpleNotificationModel.PutDataProtectionPolicyInput(
+            dataProtectionPolicy: "value",
+            resourceArn: "value")
 
         return defaultInstance
     }()

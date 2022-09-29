@@ -312,6 +312,33 @@ public extension SimpleNotificationClientProtocol {
     }
 
     /**
+     Invokes the GetDataProtectionPolicy operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetDataProtectionPolicyInput object being passed to this operation.
+     - Returns: The GetDataProtectionPolicyResponseForGetDataProtectionPolicy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    func getDataProtectionPolicy(input: SimpleNotificationModel.GetDataProtectionPolicyInput) async throws
+     -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try getDataProtectionPolicyAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the GetEndpointAttributes operation and asynchronously returning the response.
 
      - Parameters:
@@ -750,7 +777,7 @@ public extension SimpleNotificationClientProtocol {
          - input: The validated PublishInput object being passed to this operation.
      - Returns: The PublishResponseForPublish object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
+     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, validation.
      */
     func publish(input: SimpleNotificationModel.PublishInput) async throws
      -> SimpleNotificationModel.PublishResponseForPublish {
@@ -777,7 +804,7 @@ public extension SimpleNotificationClientProtocol {
          - input: The validated PublishBatchInput object being passed to this operation.
      - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest, validation.
      */
     func publishBatch(input: SimpleNotificationModel.PublishBatchInput) async throws
      -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
@@ -789,6 +816,29 @@ public extension SimpleNotificationClientProtocol {
                         cont.resume(throwing: error)
                     case .success(let response):
                         cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the PutDataProtectionPolicy operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated PutDataProtectionPolicyInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    func putDataProtectionPolicy(input: SimpleNotificationModel.PutDataProtectionPolicyInput) async throws {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try putDataProtectionPolicyAsync(input: input) { error in
+                    if let error = error {
+                        cont.resume(throwing: error)
+                    } else {
+                        cont.resume(returning: ())
                     }
                 }
             } catch {

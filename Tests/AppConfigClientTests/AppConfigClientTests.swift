@@ -96,10 +96,4 @@ class AppConfigClientTests: XCTestCase {
         let expectedError = BadRequestException(message: message)
         XCTAssertEqual(expectedError, badRequestException)
     }
-
-    static var allTests = [
-        ("testAccessDeniedErrorDecode", testAccessDeniedErrorDecode),
-        ("testKnownErrorDecode", testKnownErrorDecode),
-        ("testKnownErrorDecodeOnDataClientDelegate", testKnownErrorDecodeOnDataClientDelegate),
-    ]
 }

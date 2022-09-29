@@ -469,6 +469,11 @@ public protocol RDSClientProtocol {
     typealias ListTagsForResourceAsyncType = (
             _ input: RDSModel.ListTagsForResourceMessage, 
             _ completion: @escaping (Result<RDSModel.TagListMessageForListTagsForResource, RDSError>) -> ()) throws -> ()
+    typealias ModifyActivityStreamSyncType = (
+            _ input: RDSModel.ModifyActivityStreamRequest) throws -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream
+    typealias ModifyActivityStreamAsyncType = (
+            _ input: RDSModel.ModifyActivityStreamRequest, 
+            _ completion: @escaping (Result<RDSModel.ModifyActivityStreamResponseForModifyActivityStream, RDSError>) -> ()) throws -> ()
     typealias ModifyCertificatesSyncType = (
             _ input: RDSModel.ModifyCertificatesMessage) throws -> RDSModel.ModifyCertificatesResultForModifyCertificates
     typealias ModifyCertificatesAsyncType = (
@@ -704,6 +709,11 @@ public protocol RDSClientProtocol {
     typealias StopDBInstanceAutomatedBackupsReplicationAsyncType = (
             _ input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage, 
             _ completion: @escaping (Result<RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication, RDSError>) -> ()) throws -> ()
+    typealias SwitchoverReadReplicaSyncType = (
+            _ input: RDSModel.SwitchoverReadReplicaMessage) throws -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica
+    typealias SwitchoverReadReplicaAsyncType = (
+            _ input: RDSModel.SwitchoverReadReplicaMessage, 
+            _ completion: @escaping (Result<RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica, RDSError>) -> ()) throws -> ()
 
     /**
      Invokes the AddRoleToDBCluster operation returning immediately and passing the response to a callback.
@@ -2952,6 +2962,32 @@ public protocol RDSClientProtocol {
             input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource
 
     /**
+     Invokes the ModifyActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+         - completion: The ModifyActivityStreamResponseForModifyActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The ModifyActivityStreamResponseForModifyActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    func modifyActivityStreamAsync(
+            input: RDSModel.ModifyActivityStreamRequest, 
+            completion: @escaping (Result<RDSModel.ModifyActivityStreamResponseForModifyActivityStream, RDSError>) -> ()) throws
+
+    /**
+     Invokes the ModifyActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+     - Returns: The ModifyActivityStreamResponseForModifyActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    func modifyActivityStreamSync(
+            input: RDSModel.ModifyActivityStreamRequest) throws -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream
+
+    /**
      Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4163,4 +4199,30 @@ public protocol RDSClientProtocol {
      */
     func stopDBInstanceAutomatedBackupsReplicationSync(
             input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
+
+    /**
+     Invokes the SwitchoverReadReplica operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+         - completion: The SwitchoverReadReplicaResultForSwitchoverReadReplica object or an error will be passed to this 
+           callback when the operation is complete. The SwitchoverReadReplicaResultForSwitchoverReadReplica
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    func switchoverReadReplicaAsync(
+            input: RDSModel.SwitchoverReadReplicaMessage, 
+            completion: @escaping (Result<RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica, RDSError>) -> ()) throws
+
+    /**
+     Invokes the SwitchoverReadReplica operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+     - Returns: The SwitchoverReadReplicaResultForSwitchoverReadReplica object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    func switchoverReadReplicaSync(
+            input: RDSModel.SwitchoverReadReplicaMessage) throws -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica
 }

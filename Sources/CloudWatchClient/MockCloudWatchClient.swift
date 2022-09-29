@@ -71,6 +71,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let getMetricWidgetImageSyncOverride: GetMetricWidgetImageSyncType?
     let listDashboardsAsyncOverride: ListDashboardsAsyncType?
     let listDashboardsSyncOverride: ListDashboardsSyncType?
+    let listManagedInsightRulesAsyncOverride: ListManagedInsightRulesAsyncType?
+    let listManagedInsightRulesSyncOverride: ListManagedInsightRulesSyncType?
     let listMetricStreamsAsyncOverride: ListMetricStreamsAsyncType?
     let listMetricStreamsSyncOverride: ListMetricStreamsSyncType?
     let listMetricsAsyncOverride: ListMetricsAsyncType?
@@ -85,6 +87,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     let putDashboardSyncOverride: PutDashboardSyncType?
     let putInsightRuleAsyncOverride: PutInsightRuleAsyncType?
     let putInsightRuleSyncOverride: PutInsightRuleSyncType?
+    let putManagedInsightRulesAsyncOverride: PutManagedInsightRulesAsyncType?
+    let putManagedInsightRulesSyncOverride: PutManagedInsightRulesSyncType?
     let putMetricAlarmAsyncOverride: PutMetricAlarmAsyncType?
     let putMetricAlarmSyncOverride: PutMetricAlarmSyncType?
     let putMetricDataAsyncOverride: PutMetricDataAsyncType?
@@ -149,6 +153,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             getMetricWidgetImageSync: GetMetricWidgetImageSyncType? = nil,
             listDashboardsAsync: ListDashboardsAsyncType? = nil,
             listDashboardsSync: ListDashboardsSyncType? = nil,
+            listManagedInsightRulesAsync: ListManagedInsightRulesAsyncType? = nil,
+            listManagedInsightRulesSync: ListManagedInsightRulesSyncType? = nil,
             listMetricStreamsAsync: ListMetricStreamsAsyncType? = nil,
             listMetricStreamsSync: ListMetricStreamsSyncType? = nil,
             listMetricsAsync: ListMetricsAsyncType? = nil,
@@ -163,6 +169,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
             putDashboardSync: PutDashboardSyncType? = nil,
             putInsightRuleAsync: PutInsightRuleAsyncType? = nil,
             putInsightRuleSync: PutInsightRuleSyncType? = nil,
+            putManagedInsightRulesAsync: PutManagedInsightRulesAsyncType? = nil,
+            putManagedInsightRulesSync: PutManagedInsightRulesSyncType? = nil,
             putMetricAlarmAsync: PutMetricAlarmAsyncType? = nil,
             putMetricAlarmSync: PutMetricAlarmSyncType? = nil,
             putMetricDataAsync: PutMetricDataAsyncType? = nil,
@@ -221,6 +229,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.getMetricWidgetImageSyncOverride = getMetricWidgetImageSync
         self.listDashboardsAsyncOverride = listDashboardsAsync
         self.listDashboardsSyncOverride = listDashboardsSync
+        self.listManagedInsightRulesAsyncOverride = listManagedInsightRulesAsync
+        self.listManagedInsightRulesSyncOverride = listManagedInsightRulesSync
         self.listMetricStreamsAsyncOverride = listMetricStreamsAsync
         self.listMetricStreamsSyncOverride = listMetricStreamsSync
         self.listMetricsAsyncOverride = listMetricsAsync
@@ -235,6 +245,8 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         self.putDashboardSyncOverride = putDashboardSync
         self.putInsightRuleAsyncOverride = putInsightRuleAsync
         self.putInsightRuleSyncOverride = putInsightRuleSync
+        self.putManagedInsightRulesAsyncOverride = putManagedInsightRulesAsync
+        self.putManagedInsightRulesSyncOverride = putManagedInsightRulesSync
         self.putMetricAlarmAsyncOverride = putMetricAlarmAsync
         self.putMetricAlarmSyncOverride = putMetricAlarmSync
         self.putMetricDataAsyncOverride = putMetricDataAsync
@@ -1068,6 +1080,46 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
     }
 
     /**
+     Invokes the ListManagedInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+         - completion: The ListManagedInsightRulesOutputForListManagedInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The ListManagedInsightRulesOutputForListManagedInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listManagedInsightRulesAsync(
+            input: CloudWatchModel.ListManagedInsightRulesInput, 
+            completion: @escaping (Result<CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules, CloudWatchError>) -> ()) throws {
+        if let listManagedInsightRulesAsyncOverride = listManagedInsightRulesAsyncOverride {
+            return try listManagedInsightRulesAsyncOverride(input, completion)
+        }
+
+        let result = ListManagedInsightRulesOutputForListManagedInsightRules.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListManagedInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+     - Returns: The ListManagedInsightRulesOutputForListManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    public func listManagedInsightRulesSync(
+            input: CloudWatchModel.ListManagedInsightRulesInput) throws -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules {
+        if let listManagedInsightRulesSyncOverride = listManagedInsightRulesSyncOverride {
+            return try listManagedInsightRulesSyncOverride(input)
+        }
+
+        return ListManagedInsightRulesOutputForListManagedInsightRules.__default
+    }
+
+    /**
      Invokes the ListMetricStreams operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1339,6 +1391,46 @@ public struct MockCloudWatchClient: CloudWatchClientProtocol {
         }
 
         return PutInsightRuleOutputForPutInsightRule.__default
+    }
+
+    /**
+     Invokes the PutManagedInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+         - completion: The PutManagedInsightRulesOutputForPutManagedInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The PutManagedInsightRulesOutputForPutManagedInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    public func putManagedInsightRulesAsync(
+            input: CloudWatchModel.PutManagedInsightRulesInput, 
+            completion: @escaping (Result<CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules, CloudWatchError>) -> ()) throws {
+        if let putManagedInsightRulesAsyncOverride = putManagedInsightRulesAsyncOverride {
+            return try putManagedInsightRulesAsyncOverride(input, completion)
+        }
+
+        let result = PutManagedInsightRulesOutputForPutManagedInsightRules.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the PutManagedInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+     - Returns: The PutManagedInsightRulesOutputForPutManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    public func putManagedInsightRulesSync(
+            input: CloudWatchModel.PutManagedInsightRulesInput) throws -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules {
+        if let putManagedInsightRulesSyncOverride = putManagedInsightRulesSyncOverride {
+            return try putManagedInsightRulesSyncOverride(input)
+        }
+
+        return PutManagedInsightRulesOutputForPutManagedInsightRules.__default
     }
 
     /**

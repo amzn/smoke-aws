@@ -1065,6 +1065,19 @@ extension TagListMessageForListTagsForResource: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ModifyActivityStream operation in a HTTP client.
+ */
+extension ModifyActivityStreamResponseForModifyActivityStream: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyActivityStreamResponseForModifyActivityStream
+    public typealias HeadersType = ModifyActivityStreamResponseForModifyActivityStream
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyActivityStreamResponseForModifyActivityStream {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ModifyCertificates operation in a HTTP client.
  */
 extension ModifyCertificatesResultForModifyCertificates: HTTPResponseOutputProtocol {
@@ -1632,6 +1645,19 @@ extension StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutoma
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the SwitchoverReadReplica operation in a HTTP client.
+ */
+extension SwitchoverReadReplicaResultForSwitchoverReadReplica: HTTPResponseOutputProtocol {
+    public typealias BodyType = SwitchoverReadReplicaResultForSwitchoverReadReplica
+    public typealias HeadersType = SwitchoverReadReplicaResultForSwitchoverReadReplica
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> SwitchoverReadReplicaResultForSwitchoverReadReplica {
         return try bodyDecodableProvider()
     }
 }

@@ -42,6 +42,7 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case describeExport = "DescribeExport"
     case describeGlobalTable = "DescribeGlobalTable"
     case describeGlobalTableSettings = "DescribeGlobalTableSettings"
+    case describeImport = "DescribeImport"
     case describeKinesisStreamingDestination = "DescribeKinesisStreamingDestination"
     case describeLimits = "DescribeLimits"
     case describeTable = "DescribeTable"
@@ -53,10 +54,12 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
     case executeTransaction = "ExecuteTransaction"
     case exportTableToPointInTime = "ExportTableToPointInTime"
     case getItem = "GetItem"
+    case importTable = "ImportTable"
     case listBackups = "ListBackups"
     case listContributorInsights = "ListContributorInsights"
     case listExports = "ListExports"
     case listGlobalTables = "ListGlobalTables"
+    case listImports = "ListImports"
     case listTables = "ListTables"
     case listTagsOfResource = "ListTagsOfResource"
     case putItem = "PutItem"
@@ -115,6 +118,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .describeGlobalTableSettings:
             return "/"
+        case .describeImport:
+            return "/"
         case .describeKinesisStreamingDestination:
             return "/"
         case .describeLimits:
@@ -137,6 +142,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .getItem:
             return "/"
+        case .importTable:
+            return "/"
         case .listBackups:
             return "/"
         case .listContributorInsights:
@@ -144,6 +151,8 @@ public enum DynamoDBModelOperations: String, Hashable, CustomStringConvertible {
         case .listExports:
             return "/"
         case .listGlobalTables:
+            return "/"
+        case .listImports:
             return "/"
         case .listTables:
             return "/"

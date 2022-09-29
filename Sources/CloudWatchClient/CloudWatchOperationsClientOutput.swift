@@ -259,6 +259,19 @@ extension ListDashboardsOutputForListDashboards: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListManagedInsightRules operation in a HTTP client.
+ */
+extension ListManagedInsightRulesOutputForListManagedInsightRules: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListManagedInsightRulesOutputForListManagedInsightRules
+    public typealias HeadersType = ListManagedInsightRulesOutputForListManagedInsightRules
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListManagedInsightRulesOutputForListManagedInsightRules {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListMetricStreams operation in a HTTP client.
  */
 extension ListMetricStreamsOutputForListMetricStreams: HTTPResponseOutputProtocol {
@@ -332,6 +345,19 @@ extension PutInsightRuleOutputForPutInsightRule: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> PutInsightRuleOutputForPutInsightRule {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PutManagedInsightRules operation in a HTTP client.
+ */
+extension PutManagedInsightRulesOutputForPutManagedInsightRules: HTTPResponseOutputProtocol {
+    public typealias BodyType = PutManagedInsightRulesOutputForPutManagedInsightRules
+    public typealias HeadersType = PutManagedInsightRulesOutputForPutManagedInsightRules
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PutManagedInsightRulesOutputForPutManagedInsightRules {
         return try bodyDecodableProvider()
     }
 }

@@ -47,6 +47,7 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case getMetricStream = "GetMetricStream"
     case getMetricWidgetImage = "GetMetricWidgetImage"
     case listDashboards = "ListDashboards"
+    case listManagedInsightRules = "ListManagedInsightRules"
     case listMetricStreams = "ListMetricStreams"
     case listMetrics = "ListMetrics"
     case listTagsForResource = "ListTagsForResource"
@@ -54,6 +55,7 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
     case putCompositeAlarm = "PutCompositeAlarm"
     case putDashboard = "PutDashboard"
     case putInsightRule = "PutInsightRule"
+    case putManagedInsightRules = "PutManagedInsightRules"
     case putMetricAlarm = "PutMetricAlarm"
     case putMetricData = "PutMetricData"
     case putMetricStream = "PutMetricStream"
@@ -111,6 +113,8 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
             return "/"
         case .listDashboards:
             return "/"
+        case .listManagedInsightRules:
+            return "/"
         case .listMetricStreams:
             return "/"
         case .listMetrics:
@@ -124,6 +128,8 @@ public enum CloudWatchModelOperations: String, Hashable, CustomStringConvertible
         case .putDashboard:
             return "/"
         case .putInsightRule:
+            return "/"
+        case .putManagedInsightRules:
             return "/"
         case .putMetricAlarm:
             return "/"

@@ -637,6 +637,19 @@ public extension CreateTableOutput {
     }()
 }
 
+public extension CsvOptions {
+    /**
+     Default instance of the CsvOptions structure.
+     */
+    static let __default: DynamoDBModel.CsvOptions = {
+        let defaultInstance = DynamoDBModel.CsvOptions(
+            delimiter: nil,
+            headerList: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension Delete {
     /**
      Default instance of the Delete structure.
@@ -959,6 +972,30 @@ public extension DescribeGlobalTableSettingsOutput {
     }()
 }
 
+public extension DescribeImportInput {
+    /**
+     Default instance of the DescribeImportInput structure.
+     */
+    static let __default: DynamoDBModel.DescribeImportInput = {
+        let defaultInstance = DynamoDBModel.DescribeImportInput(
+            importArn: "0123456789012345678901234567890123456")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeImportOutput {
+    /**
+     Default instance of the DescribeImportOutput structure.
+     */
+    static let __default: DynamoDBModel.DescribeImportOutput = {
+        let defaultInstance = DynamoDBModel.DescribeImportOutput(
+            importTableDescription: ImportTableDescription.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeKinesisStreamingDestinationInput {
     /**
      Default instance of the DescribeKinesisStreamingDestinationInput structure.
@@ -1257,7 +1294,7 @@ public extension ExportTableToPointInTimeInput {
             clientToken: nil,
             exportFormat: nil,
             exportTime: nil,
-            s3Bucket: "value",
+            s3Bucket: "",
             s3BucketOwner: nil,
             s3Prefix: nil,
             s3SseAlgorithm: nil,
@@ -1495,6 +1532,108 @@ public extension IdempotentParameterMismatchException {
     }()
 }
 
+public extension ImportConflictException {
+    /**
+     Default instance of the ImportConflictException structure.
+     */
+    static let __default: DynamoDBModel.ImportConflictException = {
+        let defaultInstance = DynamoDBModel.ImportConflictException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportNotFoundException {
+    /**
+     Default instance of the ImportNotFoundException structure.
+     */
+    static let __default: DynamoDBModel.ImportNotFoundException = {
+        let defaultInstance = DynamoDBModel.ImportNotFoundException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportSummary {
+    /**
+     Default instance of the ImportSummary structure.
+     */
+    static let __default: DynamoDBModel.ImportSummary = {
+        let defaultInstance = DynamoDBModel.ImportSummary(
+            cloudWatchLogGroupArn: nil,
+            endTime: nil,
+            importArn: nil,
+            importStatus: nil,
+            inputFormat: nil,
+            s3BucketSource: nil,
+            startTime: nil,
+            tableArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportTableDescription {
+    /**
+     Default instance of the ImportTableDescription structure.
+     */
+    static let __default: DynamoDBModel.ImportTableDescription = {
+        let defaultInstance = DynamoDBModel.ImportTableDescription(
+            clientToken: nil,
+            cloudWatchLogGroupArn: nil,
+            endTime: nil,
+            errorCount: nil,
+            failureCode: nil,
+            failureMessage: nil,
+            importArn: nil,
+            importStatus: nil,
+            importedItemCount: nil,
+            inputCompressionType: nil,
+            inputFormat: nil,
+            inputFormatOptions: nil,
+            processedItemCount: nil,
+            processedSizeBytes: nil,
+            s3BucketSource: nil,
+            startTime: nil,
+            tableArn: nil,
+            tableCreationParameters: nil,
+            tableId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportTableInput {
+    /**
+     Default instance of the ImportTableInput structure.
+     */
+    static let __default: DynamoDBModel.ImportTableInput = {
+        let defaultInstance = DynamoDBModel.ImportTableInput(
+            clientToken: nil,
+            inputCompressionType: nil,
+            inputFormat: .__default,
+            inputFormatOptions: nil,
+            s3BucketSource: S3BucketSource.__default,
+            tableCreationParameters: TableCreationParameters.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ImportTableOutput {
+    /**
+     Default instance of the ImportTableOutput structure.
+     */
+    static let __default: DynamoDBModel.ImportTableOutput = {
+        let defaultInstance = DynamoDBModel.ImportTableOutput(
+            importTableDescription: ImportTableDescription.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension IndexNotFoundException {
     /**
      Default instance of the IndexNotFoundException structure.
@@ -1502,6 +1641,18 @@ public extension IndexNotFoundException {
     static let __default: DynamoDBModel.IndexNotFoundException = {
         let defaultInstance = DynamoDBModel.IndexNotFoundException(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InputFormatOptions {
+    /**
+     Default instance of the InputFormatOptions structure.
+     */
+    static let __default: DynamoDBModel.InputFormatOptions = {
+        let defaultInstance = DynamoDBModel.InputFormatOptions(
+            csv: nil)
 
         return defaultInstance
     }()
@@ -1768,6 +1919,33 @@ public extension ListGlobalTablesOutput {
         let defaultInstance = DynamoDBModel.ListGlobalTablesOutput(
             globalTables: nil,
             lastEvaluatedGlobalTableName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListImportsInput {
+    /**
+     Default instance of the ListImportsInput structure.
+     */
+    static let __default: DynamoDBModel.ListImportsInput = {
+        let defaultInstance = DynamoDBModel.ListImportsInput(
+            nextToken: nil,
+            pageSize: nil,
+            tableArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListImportsOutput {
+    /**
+     Default instance of the ListImportsOutput structure.
+     */
+    static let __default: DynamoDBModel.ListImportsOutput = {
+        let defaultInstance = DynamoDBModel.ListImportsOutput(
+            importSummaryList: nil,
+            nextToken: nil)
 
         return defaultInstance
     }()
@@ -2443,6 +2621,20 @@ public extension RestoreTableToPointInTimeOutput {
     }()
 }
 
+public extension S3BucketSource {
+    /**
+     Default instance of the S3BucketSource structure.
+     */
+    static let __default: DynamoDBModel.S3BucketSource = {
+        let defaultInstance = DynamoDBModel.S3BucketSource(
+            s3Bucket: "",
+            s3BucketOwner: nil,
+            s3KeyPrefix: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SSEDescription {
     /**
      Default instance of the SSEDescription structure.
@@ -2598,6 +2790,24 @@ public extension TableClassSummary {
         let defaultInstance = DynamoDBModel.TableClassSummary(
             lastUpdateDateTime: nil,
             tableClass: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension TableCreationParameters {
+    /**
+     Default instance of the TableCreationParameters structure.
+     */
+    static let __default: DynamoDBModel.TableCreationParameters = {
+        let defaultInstance = DynamoDBModel.TableCreationParameters(
+            attributeDefinitions: [],
+            billingMode: nil,
+            globalSecondaryIndexes: nil,
+            keySchema: [KeySchemaElement.__default],
+            provisionedThroughput: nil,
+            sSESpecification: nil,
+            tableName: "012")
 
         return defaultInstance
     }()

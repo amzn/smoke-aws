@@ -109,6 +109,11 @@ public protocol DynamoDBClientProtocol {
     typealias DescribeGlobalTableSettingsAsyncType = (
             _ input: DynamoDBModel.DescribeGlobalTableSettingsInput, 
             _ completion: @escaping (Result<DynamoDBModel.DescribeGlobalTableSettingsOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias DescribeImportSyncType = (
+            _ input: DynamoDBModel.DescribeImportInput) throws -> DynamoDBModel.DescribeImportOutput
+    typealias DescribeImportAsyncType = (
+            _ input: DynamoDBModel.DescribeImportInput, 
+            _ completion: @escaping (Result<DynamoDBModel.DescribeImportOutput, DynamoDBError>) -> ()) throws -> ()
     typealias DescribeKinesisStreamingDestinationSyncType = (
             _ input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput
     typealias DescribeKinesisStreamingDestinationAsyncType = (
@@ -164,6 +169,11 @@ public protocol DynamoDBClientProtocol {
     typealias GetItemAsyncType = (
             _ input: DynamoDBModel.GetItemInput, 
             _ completion: @escaping (Result<DynamoDBModel.GetItemOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias ImportTableSyncType = (
+            _ input: DynamoDBModel.ImportTableInput) throws -> DynamoDBModel.ImportTableOutput
+    typealias ImportTableAsyncType = (
+            _ input: DynamoDBModel.ImportTableInput, 
+            _ completion: @escaping (Result<DynamoDBModel.ImportTableOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListBackupsSyncType = (
             _ input: DynamoDBModel.ListBackupsInput) throws -> DynamoDBModel.ListBackupsOutput
     typealias ListBackupsAsyncType = (
@@ -184,6 +194,11 @@ public protocol DynamoDBClientProtocol {
     typealias ListGlobalTablesAsyncType = (
             _ input: DynamoDBModel.ListGlobalTablesInput, 
             _ completion: @escaping (Result<DynamoDBModel.ListGlobalTablesOutput, DynamoDBError>) -> ()) throws -> ()
+    typealias ListImportsSyncType = (
+            _ input: DynamoDBModel.ListImportsInput) throws -> DynamoDBModel.ListImportsOutput
+    typealias ListImportsAsyncType = (
+            _ input: DynamoDBModel.ListImportsInput, 
+            _ completion: @escaping (Result<DynamoDBModel.ListImportsOutput, DynamoDBError>) -> ()) throws -> ()
     typealias ListTablesSyncType = (
             _ input: DynamoDBModel.ListTablesInput) throws -> DynamoDBModel.ListTablesOutput
     typealias ListTablesAsyncType = (
@@ -695,6 +710,32 @@ public protocol DynamoDBClientProtocol {
             input: DynamoDBModel.DescribeGlobalTableSettingsInput) throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput
 
     /**
+     Invokes the DescribeImport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+         - completion: The DescribeImportOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImportOutput
+           object will be validated before being returned to caller.
+           The possible errors are: importNotFound.
+     */
+    func describeImportAsync(
+            input: DynamoDBModel.DescribeImportInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeImportOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the DescribeImport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+     - Returns: The DescribeImportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importNotFound.
+     */
+    func describeImportSync(
+            input: DynamoDBModel.DescribeImportInput) throws -> DynamoDBModel.DescribeImportOutput
+
+    /**
      Invokes the DescribeKinesisStreamingDestination operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -981,6 +1022,32 @@ public protocol DynamoDBClientProtocol {
             input: DynamoDBModel.GetItemInput) throws -> DynamoDBModel.GetItemOutput
 
     /**
+     Invokes the ImportTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+         - completion: The ImportTableOutput object or an error will be passed to this 
+           callback when the operation is complete. The ImportTableOutput
+           object will be validated before being returned to caller.
+           The possible errors are: importConflict, limitExceeded, resourceInUse.
+     */
+    func importTableAsync(
+            input: DynamoDBModel.ImportTableInput, 
+            completion: @escaping (Result<DynamoDBModel.ImportTableOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the ImportTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+     - Returns: The ImportTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importConflict, limitExceeded, resourceInUse.
+     */
+    func importTableSync(
+            input: DynamoDBModel.ImportTableInput) throws -> DynamoDBModel.ImportTableOutput
+
+    /**
      Invokes the ListBackups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1083,6 +1150,32 @@ public protocol DynamoDBClientProtocol {
      */
     func listGlobalTablesSync(
             input: DynamoDBModel.ListGlobalTablesInput) throws -> DynamoDBModel.ListGlobalTablesOutput
+
+    /**
+     Invokes the ListImports operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+         - completion: The ListImportsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListImportsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded.
+     */
+    func listImportsAsync(
+            input: DynamoDBModel.ListImportsInput, 
+            completion: @escaping (Result<DynamoDBModel.ListImportsOutput, DynamoDBError>) -> ()) throws
+
+    /**
+     Invokes the ListImports operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+     - Returns: The ListImportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded.
+     */
+    func listImportsSync(
+            input: DynamoDBModel.ListImportsInput) throws -> DynamoDBModel.ListImportsOutput
 
     /**
      Invokes the ListTables operation returning immediately and passing the response to a callback.

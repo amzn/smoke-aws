@@ -80,6 +80,11 @@ public typealias DeleteSMSSandboxPhoneNumberOperationHTTPRequestInput = QueryHTT
 public typealias DeleteTopicOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetDataProtectionPolicy operation in a HTTP client.
+ */
+public typealias GetDataProtectionPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetEndpointAttributes operation in a HTTP client.
  */
 public typealias GetEndpointAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -168,6 +173,11 @@ public typealias PublishOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the PublishBatch operation in a HTTP client.
  */
 public typealias PublishBatchOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the PutDataProtectionPolicy operation in a HTTP client.
+ */
+public typealias PutDataProtectionPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the RemovePermission operation in a HTTP client.

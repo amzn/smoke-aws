@@ -134,6 +134,11 @@ public protocol CloudWatchClientProtocol {
     typealias ListDashboardsAsyncType = (
             _ input: CloudWatchModel.ListDashboardsInput, 
             _ completion: @escaping (Result<CloudWatchModel.ListDashboardsOutputForListDashboards, CloudWatchError>) -> ()) throws -> ()
+    typealias ListManagedInsightRulesSyncType = (
+            _ input: CloudWatchModel.ListManagedInsightRulesInput) throws -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules
+    typealias ListManagedInsightRulesAsyncType = (
+            _ input: CloudWatchModel.ListManagedInsightRulesInput, 
+            _ completion: @escaping (Result<CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules, CloudWatchError>) -> ()) throws -> ()
     typealias ListMetricStreamsSyncType = (
             _ input: CloudWatchModel.ListMetricStreamsInput) throws -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams
     typealias ListMetricStreamsAsyncType = (
@@ -169,6 +174,11 @@ public protocol CloudWatchClientProtocol {
     typealias PutInsightRuleAsyncType = (
             _ input: CloudWatchModel.PutInsightRuleInput, 
             _ completion: @escaping (Result<CloudWatchModel.PutInsightRuleOutputForPutInsightRule, CloudWatchError>) -> ()) throws -> ()
+    typealias PutManagedInsightRulesSyncType = (
+            _ input: CloudWatchModel.PutManagedInsightRulesInput) throws -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules
+    typealias PutManagedInsightRulesAsyncType = (
+            _ input: CloudWatchModel.PutManagedInsightRulesInput, 
+            _ completion: @escaping (Result<CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules, CloudWatchError>) -> ()) throws -> ()
     typealias PutMetricAlarmSyncType = (
             _ input: CloudWatchModel.PutMetricAlarmInput) throws -> ()
     typealias PutMetricAlarmAsyncType = (
@@ -740,6 +750,32 @@ public protocol CloudWatchClientProtocol {
             input: CloudWatchModel.ListDashboardsInput) throws -> CloudWatchModel.ListDashboardsOutputForListDashboards
 
     /**
+     Invokes the ListManagedInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+         - completion: The ListManagedInsightRulesOutputForListManagedInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The ListManagedInsightRulesOutputForListManagedInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    func listManagedInsightRulesAsync(
+            input: CloudWatchModel.ListManagedInsightRulesInput, 
+            completion: @escaping (Result<CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the ListManagedInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListManagedInsightRulesInput object being passed to this operation.
+     - Returns: The ListManagedInsightRulesOutputForListManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, invalidParameterValue, missingRequiredParameter.
+     */
+    func listManagedInsightRulesSync(
+            input: CloudWatchModel.ListManagedInsightRulesInput) throws -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules
+
+    /**
      Invokes the ListMetricStreams operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -917,6 +953,32 @@ public protocol CloudWatchClientProtocol {
      */
     func putInsightRuleSync(
             input: CloudWatchModel.PutInsightRuleInput) throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule
+
+    /**
+     Invokes the PutManagedInsightRules operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+         - completion: The PutManagedInsightRulesOutputForPutManagedInsightRules object or an error will be passed to this 
+           callback when the operation is complete. The PutManagedInsightRulesOutputForPutManagedInsightRules
+           object will be validated before being returned to caller.
+           The possible errors are: invalidParameterValue, missingRequiredParameter.
+     */
+    func putManagedInsightRulesAsync(
+            input: CloudWatchModel.PutManagedInsightRulesInput, 
+            completion: @escaping (Result<CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules, CloudWatchError>) -> ()) throws
+
+    /**
+     Invokes the PutManagedInsightRules operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutManagedInsightRulesInput object being passed to this operation.
+     - Returns: The PutManagedInsightRulesOutputForPutManagedInsightRules object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidParameterValue, missingRequiredParameter.
+     */
+    func putManagedInsightRulesSync(
+            input: CloudWatchModel.PutManagedInsightRulesInput) throws -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules
 
     /**
      Invokes the PutMetricAlarm operation returning immediately and passing the response to a callback.

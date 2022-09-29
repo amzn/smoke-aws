@@ -205,6 +205,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let failoverGlobalClusterSyncOverride: FailoverGlobalClusterSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
     let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let modifyActivityStreamAsyncOverride: ModifyActivityStreamAsyncType?
+    let modifyActivityStreamSyncOverride: ModifyActivityStreamSyncType?
     let modifyCertificatesAsyncOverride: ModifyCertificatesAsyncType?
     let modifyCertificatesSyncOverride: ModifyCertificatesSyncType?
     let modifyCurrentDBClusterCapacityAsyncOverride: ModifyCurrentDBClusterCapacityAsyncType?
@@ -299,6 +301,8 @@ public struct MockRDSClient: RDSClientProtocol {
     let stopDBInstanceSyncOverride: StopDBInstanceSyncType?
     let stopDBInstanceAutomatedBackupsReplicationAsyncOverride: StopDBInstanceAutomatedBackupsReplicationAsyncType?
     let stopDBInstanceAutomatedBackupsReplicationSyncOverride: StopDBInstanceAutomatedBackupsReplicationSyncType?
+    let switchoverReadReplicaAsyncOverride: SwitchoverReadReplicaAsyncType?
+    let switchoverReadReplicaSyncOverride: SwitchoverReadReplicaSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -481,6 +485,8 @@ public struct MockRDSClient: RDSClientProtocol {
             failoverGlobalClusterSync: FailoverGlobalClusterSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
             listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            modifyActivityStreamAsync: ModifyActivityStreamAsyncType? = nil,
+            modifyActivityStreamSync: ModifyActivityStreamSyncType? = nil,
             modifyCertificatesAsync: ModifyCertificatesAsyncType? = nil,
             modifyCertificatesSync: ModifyCertificatesSyncType? = nil,
             modifyCurrentDBClusterCapacityAsync: ModifyCurrentDBClusterCapacityAsyncType? = nil,
@@ -574,7 +580,9 @@ public struct MockRDSClient: RDSClientProtocol {
             stopDBInstanceAsync: StopDBInstanceAsyncType? = nil,
             stopDBInstanceSync: StopDBInstanceSyncType? = nil,
             stopDBInstanceAutomatedBackupsReplicationAsync: StopDBInstanceAutomatedBackupsReplicationAsyncType? = nil,
-            stopDBInstanceAutomatedBackupsReplicationSync: StopDBInstanceAutomatedBackupsReplicationSyncType? = nil) {
+            stopDBInstanceAutomatedBackupsReplicationSync: StopDBInstanceAutomatedBackupsReplicationSyncType? = nil,
+            switchoverReadReplicaAsync: SwitchoverReadReplicaAsyncType? = nil,
+            switchoverReadReplicaSync: SwitchoverReadReplicaSyncType? = nil) {
         self.addRoleToDBClusterAsyncOverride = addRoleToDBClusterAsync
         self.addRoleToDBClusterSyncOverride = addRoleToDBClusterSync
         self.addRoleToDBInstanceAsyncOverride = addRoleToDBInstanceAsync
@@ -751,6 +759,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.failoverGlobalClusterSyncOverride = failoverGlobalClusterSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
         self.listTagsForResourceSyncOverride = listTagsForResourceSync
+        self.modifyActivityStreamAsyncOverride = modifyActivityStreamAsync
+        self.modifyActivityStreamSyncOverride = modifyActivityStreamSync
         self.modifyCertificatesAsyncOverride = modifyCertificatesAsync
         self.modifyCertificatesSyncOverride = modifyCertificatesSync
         self.modifyCurrentDBClusterCapacityAsyncOverride = modifyCurrentDBClusterCapacityAsync
@@ -845,6 +855,8 @@ public struct MockRDSClient: RDSClientProtocol {
         self.stopDBInstanceSyncOverride = stopDBInstanceSync
         self.stopDBInstanceAutomatedBackupsReplicationAsyncOverride = stopDBInstanceAutomatedBackupsReplicationAsync
         self.stopDBInstanceAutomatedBackupsReplicationSyncOverride = stopDBInstanceAutomatedBackupsReplicationSync
+        self.switchoverReadReplicaAsyncOverride = switchoverReadReplicaAsync
+        self.switchoverReadReplicaSyncOverride = switchoverReadReplicaSync
     }
 
     /**
@@ -4302,6 +4314,46 @@ public struct MockRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the ModifyActivityStream operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+         - completion: The ModifyActivityStreamResponseForModifyActivityStream object or an error will be passed to this 
+           callback when the operation is complete. The ModifyActivityStreamResponseForModifyActivityStream
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    public func modifyActivityStreamAsync(
+            input: RDSModel.ModifyActivityStreamRequest, 
+            completion: @escaping (Result<RDSModel.ModifyActivityStreamResponseForModifyActivityStream, RDSError>) -> ()) throws {
+        if let modifyActivityStreamAsyncOverride = modifyActivityStreamAsyncOverride {
+            return try modifyActivityStreamAsyncOverride(input, completion)
+        }
+
+        let result = ModifyActivityStreamResponseForModifyActivityStream.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyActivityStream operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+     - Returns: The ModifyActivityStreamResponseForModifyActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    public func modifyActivityStreamSync(
+            input: RDSModel.ModifyActivityStreamRequest) throws -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream {
+        if let modifyActivityStreamSyncOverride = modifyActivityStreamSyncOverride {
+            return try modifyActivityStreamSyncOverride(input)
+        }
+
+        return ModifyActivityStreamResponseForModifyActivityStream.__default
+    }
+
+    /**
      Invokes the ModifyCertificates operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6161,5 +6213,45 @@ public struct MockRDSClient: RDSClientProtocol {
         }
 
         return StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication.__default
+    }
+
+    /**
+     Invokes the SwitchoverReadReplica operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+         - completion: The SwitchoverReadReplicaResultForSwitchoverReadReplica object or an error will be passed to this 
+           callback when the operation is complete. The SwitchoverReadReplicaResultForSwitchoverReadReplica
+           object will be validated before being returned to caller.
+           The possible errors are: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func switchoverReadReplicaAsync(
+            input: RDSModel.SwitchoverReadReplicaMessage, 
+            completion: @escaping (Result<RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica, RDSError>) -> ()) throws {
+        if let switchoverReadReplicaAsyncOverride = switchoverReadReplicaAsyncOverride {
+            return try switchoverReadReplicaAsyncOverride(input, completion)
+        }
+
+        let result = SwitchoverReadReplicaResultForSwitchoverReadReplica.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the SwitchoverReadReplica operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+     - Returns: The SwitchoverReadReplicaResultForSwitchoverReadReplica object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    public func switchoverReadReplicaSync(
+            input: RDSModel.SwitchoverReadReplicaMessage) throws -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica {
+        if let switchoverReadReplicaSyncOverride = switchoverReadReplicaSyncOverride {
+            return try switchoverReadReplicaSyncOverride(input)
+        }
+
+        return SwitchoverReadReplicaResultForSwitchoverReadReplica.__default
     }
 }

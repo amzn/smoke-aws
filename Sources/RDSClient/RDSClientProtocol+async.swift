@@ -2366,6 +2366,33 @@ public extension RDSClientProtocol {
     }
 
     /**
+     Invokes the ModifyActivityStream operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyActivityStreamRequest object being passed to this operation.
+     - Returns: The ModifyActivityStreamResponseForModifyActivityStream object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState, resourceNotFound.
+     */
+    func modifyActivityStream(input: RDSModel.ModifyActivityStreamRequest) async throws
+     -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try modifyActivityStreamAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ModifyCertificates operation and asynchronously returning the response.
 
      - Parameters:
@@ -3609,6 +3636,33 @@ public extension RDSClientProtocol {
         return try await withUnsafeThrowingContinuation { cont in
             do {
                 try stopDBInstanceAutomatedBackupsReplicationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the SwitchoverReadReplica operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated SwitchoverReadReplicaMessage object being passed to this operation.
+     - Returns: The SwitchoverReadReplicaResultForSwitchoverReadReplica object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBInstanceNotFound, invalidDBInstanceState.
+     */
+    func switchoverReadReplica(input: RDSModel.SwitchoverReadReplicaMessage) async throws
+     -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica {
+        return try await withUnsafeThrowingContinuation { cont in
+            do {
+                try switchoverReadReplicaAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

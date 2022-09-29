@@ -1080,6 +1080,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
     public var masterUsername: String?
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
+    public var networkType: String?
     public var optionGroupName: String?
     public var performanceInsightsKMSKeyId: String?
     public var performanceInsightsRetentionPeriod: IntegerOptional?
@@ -1126,6 +1127,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
                 masterUsername: String? = nil,
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
                 performanceInsightsRetentionPeriod: IntegerOptional? = nil,
@@ -1171,6 +1173,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         self.masterUsername = masterUsername
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
         self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
@@ -1219,6 +1222,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         case masterUsername = "MasterUsername"
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
         case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
@@ -2485,6 +2489,7 @@ public struct DBCluster: Codable, Equatable {
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
     public var multiAZ: BooleanOptional?
+    public var networkType: String?
     public var pendingModifiedValues: ClusterPendingModifiedValues?
     public var percentProgress: String?
     public var performanceInsightsEnabled: BooleanOptional?
@@ -2554,6 +2559,7 @@ public struct DBCluster: Codable, Equatable {
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
                 multiAZ: BooleanOptional? = nil,
+                networkType: String? = nil,
                 pendingModifiedValues: ClusterPendingModifiedValues? = nil,
                 percentProgress: String? = nil,
                 performanceInsightsEnabled: BooleanOptional? = nil,
@@ -2622,6 +2628,7 @@ public struct DBCluster: Codable, Equatable {
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
         self.multiAZ = multiAZ
+        self.networkType = networkType
         self.pendingModifiedValues = pendingModifiedValues
         self.percentProgress = percentProgress
         self.performanceInsightsEnabled = performanceInsightsEnabled
@@ -2693,6 +2700,7 @@ public struct DBCluster: Codable, Equatable {
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
         case multiAZ = "MultiAZ"
+        case networkType = "NetworkType"
         case pendingModifiedValues = "PendingModifiedValues"
         case percentProgress = "PercentProgress"
         case performanceInsightsEnabled = "PerformanceInsightsEnabled"
@@ -3729,6 +3737,7 @@ public struct DBInstance: Codable, Equatable {
     public var activityStreamKinesisStreamName: String?
     public var activityStreamKmsKeyId: String?
     public var activityStreamMode: ActivityStreamMode?
+    public var activityStreamPolicyStatus: ActivityStreamPolicyStatus?
     public var activityStreamStatus: ActivityStreamStatus?
     public var allocatedStorage: Integer?
     public var associatedRoles: DBInstanceRoles?
@@ -3805,6 +3814,7 @@ public struct DBInstance: Codable, Equatable {
                 activityStreamKinesisStreamName: String? = nil,
                 activityStreamKmsKeyId: String? = nil,
                 activityStreamMode: ActivityStreamMode? = nil,
+                activityStreamPolicyStatus: ActivityStreamPolicyStatus? = nil,
                 activityStreamStatus: ActivityStreamStatus? = nil,
                 allocatedStorage: Integer? = nil,
                 associatedRoles: DBInstanceRoles? = nil,
@@ -3880,6 +3890,7 @@ public struct DBInstance: Codable, Equatable {
         self.activityStreamKinesisStreamName = activityStreamKinesisStreamName
         self.activityStreamKmsKeyId = activityStreamKmsKeyId
         self.activityStreamMode = activityStreamMode
+        self.activityStreamPolicyStatus = activityStreamPolicyStatus
         self.activityStreamStatus = activityStreamStatus
         self.allocatedStorage = allocatedStorage
         self.associatedRoles = associatedRoles
@@ -3958,6 +3969,7 @@ public struct DBInstance: Codable, Equatable {
         case activityStreamKinesisStreamName = "ActivityStreamKinesisStreamName"
         case activityStreamKmsKeyId = "ActivityStreamKmsKeyId"
         case activityStreamMode = "ActivityStreamMode"
+        case activityStreamPolicyStatus = "ActivityStreamPolicyStatus"
         case activityStreamStatus = "ActivityStreamStatus"
         case allocatedStorage = "AllocatedStorage"
         case associatedRoles = "AssociatedRoles"
@@ -5002,6 +5014,7 @@ public struct DBSnapshot: Codable, Equatable {
     public var port: Integer?
     public var processorFeatures: ProcessorFeatureList?
     public var snapshotCreateTime: TStamp?
+    public var snapshotDatabaseTime: TStamp?
     public var snapshotTarget: String?
     public var snapshotType: String?
     public var sourceDBSnapshotIdentifier: String?
@@ -5034,6 +5047,7 @@ public struct DBSnapshot: Codable, Equatable {
                 port: Integer? = nil,
                 processorFeatures: ProcessorFeatureList? = nil,
                 snapshotCreateTime: TStamp? = nil,
+                snapshotDatabaseTime: TStamp? = nil,
                 snapshotTarget: String? = nil,
                 snapshotType: String? = nil,
                 sourceDBSnapshotIdentifier: String? = nil,
@@ -5065,6 +5079,7 @@ public struct DBSnapshot: Codable, Equatable {
         self.port = port
         self.processorFeatures = processorFeatures
         self.snapshotCreateTime = snapshotCreateTime
+        self.snapshotDatabaseTime = snapshotDatabaseTime
         self.snapshotTarget = snapshotTarget
         self.snapshotType = snapshotType
         self.sourceDBSnapshotIdentifier = sourceDBSnapshotIdentifier
@@ -5099,6 +5114,7 @@ public struct DBSnapshot: Codable, Equatable {
         case port = "Port"
         case processorFeatures = "ProcessorFeatures"
         case snapshotCreateTime = "SnapshotCreateTime"
+        case snapshotDatabaseTime = "SnapshotDatabaseTime"
         case snapshotTarget = "SnapshotTarget"
         case snapshotType = "SnapshotType"
         case sourceDBSnapshotIdentifier = "SourceDBSnapshotIdentifier"
@@ -8709,6 +8725,76 @@ public struct MinimumEngineVersionPerAllowedValue: Codable, Equatable {
     }
 }
 
+public struct ModifyActivityStreamRequest: Codable, Equatable {
+    public var auditPolicyState: AuditPolicyState?
+    public var resourceArn: String?
+
+    public init(auditPolicyState: AuditPolicyState? = nil,
+                resourceArn: String? = nil) {
+        self.auditPolicyState = auditPolicyState
+        self.resourceArn = resourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case auditPolicyState = "AuditPolicyState"
+        case resourceArn = "ResourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyActivityStreamResponse: Codable, Equatable {
+    public var engineNativeAuditFieldsIncluded: BooleanOptional?
+    public var kinesisStreamName: String?
+    public var kmsKeyId: String?
+    public var mode: ActivityStreamMode?
+    public var policyStatus: ActivityStreamPolicyStatus?
+    public var status: ActivityStreamStatus?
+
+    public init(engineNativeAuditFieldsIncluded: BooleanOptional? = nil,
+                kinesisStreamName: String? = nil,
+                kmsKeyId: String? = nil,
+                mode: ActivityStreamMode? = nil,
+                policyStatus: ActivityStreamPolicyStatus? = nil,
+                status: ActivityStreamStatus? = nil) {
+        self.engineNativeAuditFieldsIncluded = engineNativeAuditFieldsIncluded
+        self.kinesisStreamName = kinesisStreamName
+        self.kmsKeyId = kmsKeyId
+        self.mode = mode
+        self.policyStatus = policyStatus
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case engineNativeAuditFieldsIncluded = "EngineNativeAuditFieldsIncluded"
+        case kinesisStreamName = "KinesisStreamName"
+        case kmsKeyId = "KmsKeyId"
+        case mode = "Mode"
+        case policyStatus = "PolicyStatus"
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ModifyActivityStreamResponseForModifyActivityStream: Codable, Equatable {
+    public var modifyActivityStreamResult: ModifyActivityStreamResponse
+
+    public init(modifyActivityStreamResult: ModifyActivityStreamResponse) {
+        self.modifyActivityStreamResult = modifyActivityStreamResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case modifyActivityStreamResult = "ModifyActivityStreamResult"
+    }
+
+    public func validate() throws {
+        try modifyActivityStreamResult.validate()
+    }
+}
+
 public struct ModifyCertificatesMessage: Codable, Equatable {
     public var certificateIdentifier: String?
     public var removeCustomerOverride: BooleanOptional?
@@ -8869,6 +8955,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     public var masterUserPassword: String?
     public var monitoringInterval: IntegerOptional?
     public var monitoringRoleArn: String?
+    public var networkType: String?
     public var newDBClusterIdentifier: String?
     public var optionGroupName: String?
     public var performanceInsightsKMSKeyId: String?
@@ -8905,6 +8992,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
                 masterUserPassword: String? = nil,
                 monitoringInterval: IntegerOptional? = nil,
                 monitoringRoleArn: String? = nil,
+                networkType: String? = nil,
                 newDBClusterIdentifier: String? = nil,
                 optionGroupName: String? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
@@ -8940,6 +9028,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         self.masterUserPassword = masterUserPassword
         self.monitoringInterval = monitoringInterval
         self.monitoringRoleArn = monitoringRoleArn
+        self.networkType = networkType
         self.newDBClusterIdentifier = newDBClusterIdentifier
         self.optionGroupName = optionGroupName
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
@@ -8978,6 +9067,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         case masterUserPassword = "MasterUserPassword"
         case monitoringInterval = "MonitoringInterval"
         case monitoringRoleArn = "MonitoringRoleArn"
+        case networkType = "NetworkType"
         case newDBClusterIdentifier = "NewDBClusterIdentifier"
         case optionGroupName = "OptionGroupName"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
@@ -11642,6 +11732,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
     public var kmsKeyId: String?
     public var masterUserPassword: String
     public var masterUsername: String
+    public var networkType: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
     public var preferredBackupWindow: String?
@@ -11675,6 +11766,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
                 kmsKeyId: String? = nil,
                 masterUserPassword: String,
                 masterUsername: String,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
                 preferredBackupWindow: String? = nil,
@@ -11707,6 +11799,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
         self.kmsKeyId = kmsKeyId
         self.masterUserPassword = masterUserPassword
         self.masterUsername = masterUsername
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.port = port
         self.preferredBackupWindow = preferredBackupWindow
@@ -11742,6 +11835,7 @@ public struct RestoreDBClusterFromS3Message: Codable, Equatable {
         case kmsKeyId = "KmsKeyId"
         case masterUserPassword = "MasterUserPassword"
         case masterUsername = "MasterUsername"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
         case preferredBackupWindow = "PreferredBackupWindow"
@@ -11813,6 +11907,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
     public var engineVersion: String?
     public var iops: IntegerOptional?
     public var kmsKeyId: String?
+    public var networkType: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
     public var publiclyAccessible: BooleanOptional?
@@ -11841,6 +11936,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
                 engineVersion: String? = nil,
                 iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
                 publiclyAccessible: BooleanOptional? = nil,
@@ -11868,6 +11964,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         self.engineVersion = engineVersion
         self.iops = iops
         self.kmsKeyId = kmsKeyId
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.port = port
         self.publiclyAccessible = publiclyAccessible
@@ -11898,6 +11995,7 @@ public struct RestoreDBClusterFromSnapshotMessage: Codable, Equatable {
         case engineVersion = "EngineVersion"
         case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
         case publiclyAccessible = "PubliclyAccessible"
@@ -11962,6 +12060,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
     public var engineMode: String?
     public var iops: IntegerOptional?
     public var kmsKeyId: String?
+    public var networkType: String?
     public var optionGroupName: String?
     public var port: IntegerOptional?
     public var publiclyAccessible: BooleanOptional?
@@ -11989,6 +12088,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
                 engineMode: String? = nil,
                 iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
+                networkType: String? = nil,
                 optionGroupName: String? = nil,
                 port: IntegerOptional? = nil,
                 publiclyAccessible: BooleanOptional? = nil,
@@ -12015,6 +12115,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         self.engineMode = engineMode
         self.iops = iops
         self.kmsKeyId = kmsKeyId
+        self.networkType = networkType
         self.optionGroupName = optionGroupName
         self.port = port
         self.publiclyAccessible = publiclyAccessible
@@ -12044,6 +12145,7 @@ public struct RestoreDBClusterToPointInTimeMessage: Codable, Equatable {
         case engineMode = "EngineMode"
         case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
+        case networkType = "NetworkType"
         case optionGroupName = "OptionGroupName"
         case port = "Port"
         case publiclyAccessible = "PubliclyAccessible"
@@ -13544,6 +13646,53 @@ public struct SubscriptionNotFoundFault: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct SwitchoverReadReplicaMessage: Codable, Equatable {
+    public var dBInstanceIdentifier: String
+
+    public init(dBInstanceIdentifier: String) {
+        self.dBInstanceIdentifier = dBInstanceIdentifier
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBInstanceIdentifier = "DBInstanceIdentifier"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct SwitchoverReadReplicaResult: Codable, Equatable {
+    public var dBInstance: DBInstance?
+
+    public init(dBInstance: DBInstance? = nil) {
+        self.dBInstance = dBInstance
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dBInstance = "DBInstance"
+    }
+
+    public func validate() throws {
+        try dBInstance?.validate()
+    }
+}
+
+public struct SwitchoverReadReplicaResultForSwitchoverReadReplica: Codable, Equatable {
+    public var switchoverReadReplicaResult: SwitchoverReadReplicaResult
+
+    public init(switchoverReadReplicaResult: SwitchoverReadReplicaResult) {
+        self.switchoverReadReplicaResult = switchoverReadReplicaResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case switchoverReadReplicaResult = "SwitchoverReadReplicaResult"
+    }
+
+    public func validate() throws {
+        try switchoverReadReplicaResult.validate()
     }
 }
 

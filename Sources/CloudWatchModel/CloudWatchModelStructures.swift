@@ -646,7 +646,6 @@ public struct DescribeAlarmsForMetricInput: Codable, Equatable {
 
     public func validate() throws {
         try dimensions?.validateAsDimensions()
-        try extendedStatistic?.validateAsExtendedStatistic()
         try metricName.validateAsMetricName()
         try namespace.validateAsNamespace()
         try period?.validateAsPeriod()
@@ -1529,15 +1528,18 @@ public struct GetMetricWidgetImageOutputForGetMetricWidgetImage: Codable, Equata
 
 public struct InsightRule: Codable, Equatable {
     public var definition: InsightRuleDefinition
+    public var managedRule: InsightRuleIsManaged?
     public var name: InsightRuleName
     public var schema: InsightRuleSchema
     public var state: InsightRuleState
 
     public init(definition: InsightRuleDefinition,
+                managedRule: InsightRuleIsManaged? = nil,
                 name: InsightRuleName,
                 schema: InsightRuleSchema,
                 state: InsightRuleState) {
         self.definition = definition
+        self.managedRule = managedRule
         self.name = name
         self.schema = schema
         self.state = state
@@ -1545,6 +1547,7 @@ public struct InsightRule: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case definition = "Definition"
+        case managedRule = "ManagedRule"
         case name = "Name"
         case schema = "Schema"
         case state = "State"
@@ -1813,6 +1816,66 @@ public struct ListDashboardsOutputForListDashboards: Codable, Equatable {
     }
 }
 
+public struct ListManagedInsightRulesInput: Codable, Equatable {
+    public var maxResults: InsightRuleMaxResults?
+    public var nextToken: NextToken?
+    public var resourceARN: AmazonResourceName
+
+    public init(maxResults: InsightRuleMaxResults? = nil,
+                nextToken: NextToken? = nil,
+                resourceARN: AmazonResourceName) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.resourceARN = resourceARN
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case resourceARN = "ResourceARN"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsInsightRuleMaxResults()
+        try resourceARN.validateAsAmazonResourceName()
+    }
+}
+
+public struct ListManagedInsightRulesOutput: Codable, Equatable {
+    public var managedRules: ManagedRuleDescriptions?
+    public var nextToken: NextToken?
+
+    public init(managedRules: ManagedRuleDescriptions? = nil,
+                nextToken: NextToken? = nil) {
+        self.managedRules = managedRules
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case managedRules = "ManagedRules"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListManagedInsightRulesOutputForListManagedInsightRules: Codable, Equatable {
+    public var listManagedInsightRulesResult: ListManagedInsightRulesOutput
+
+    public init(listManagedInsightRulesResult: ListManagedInsightRulesOutput) {
+        self.listManagedInsightRulesResult = listManagedInsightRulesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listManagedInsightRulesResult = "ListManagedInsightRulesResult"
+    }
+
+    public func validate() throws {
+        try listManagedInsightRulesResult.validate()
+    }
+}
+
 public struct ListMetricStreamsInput: Codable, Equatable {
     public var maxResults: ListMetricStreamsMaxResults?
     public var nextToken: NextToken?
@@ -1981,6 +2044,78 @@ public struct ListTagsForResourceOutputForListTagsForResource: Codable, Equatabl
 
     public func validate() throws {
         try listTagsForResourceResult.validate()
+    }
+}
+
+public struct ManagedRule: Codable, Equatable {
+    public var resourceARN: AmazonResourceName
+    public var tags: TagList?
+    public var templateName: TemplateName
+
+    public init(resourceARN: AmazonResourceName,
+                tags: TagList? = nil,
+                templateName: TemplateName) {
+        self.resourceARN = resourceARN
+        self.tags = tags
+        self.templateName = templateName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceARN = "ResourceARN"
+        case tags = "Tags"
+        case templateName = "TemplateName"
+    }
+
+    public func validate() throws {
+        try resourceARN.validateAsAmazonResourceName()
+        try templateName.validateAsTemplateName()
+    }
+}
+
+public struct ManagedRuleDescription: Codable, Equatable {
+    public var resourceARN: AmazonResourceName?
+    public var ruleState: ManagedRuleState?
+    public var templateName: TemplateName?
+
+    public init(resourceARN: AmazonResourceName? = nil,
+                ruleState: ManagedRuleState? = nil,
+                templateName: TemplateName? = nil) {
+        self.resourceARN = resourceARN
+        self.ruleState = ruleState
+        self.templateName = templateName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case resourceARN = "ResourceARN"
+        case ruleState = "RuleState"
+        case templateName = "TemplateName"
+    }
+
+    public func validate() throws {
+        try resourceARN?.validateAsAmazonResourceName()
+        try ruleState?.validate()
+        try templateName?.validateAsTemplateName()
+    }
+}
+
+public struct ManagedRuleState: Codable, Equatable {
+    public var ruleName: InsightRuleName
+    public var state: InsightRuleState
+
+    public init(ruleName: InsightRuleName,
+                state: InsightRuleState) {
+        self.ruleName = ruleName
+        self.state = state
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleName = "RuleName"
+        case state = "State"
+    }
+
+    public func validate() throws {
+        try ruleName.validateAsInsightRuleName()
+        try state.validateAsInsightRuleState()
     }
 }
 
@@ -2153,7 +2288,6 @@ public struct MetricAlarm: Codable, Equatable {
         try dimensions?.validateAsDimensions()
         try evaluateLowSampleCountPercentile?.validateAsEvaluateLowSampleCountPercentile()
         try evaluationPeriods?.validateAsEvaluationPeriods()
-        try extendedStatistic?.validateAsExtendedStatistic()
         try insufficientDataActions?.validateAsResourceList()
         try metricName?.validateAsMetricName()
         try namespace?.validateAsNamespace()
@@ -2699,6 +2833,52 @@ public struct PutInsightRuleOutputForPutInsightRule: Codable, Equatable {
     }
 }
 
+public struct PutManagedInsightRulesInput: Codable, Equatable {
+    public var managedRules: ManagedRules
+
+    public init(managedRules: ManagedRules) {
+        self.managedRules = managedRules
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case managedRules = "ManagedRules"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutManagedInsightRulesOutput: Codable, Equatable {
+    public var failures: BatchFailures?
+
+    public init(failures: BatchFailures? = nil) {
+        self.failures = failures
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures = "Failures"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct PutManagedInsightRulesOutputForPutManagedInsightRules: Codable, Equatable {
+    public var putManagedInsightRulesResult: PutManagedInsightRulesOutput
+
+    public init(putManagedInsightRulesResult: PutManagedInsightRulesOutput) {
+        self.putManagedInsightRulesResult = putManagedInsightRulesResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case putManagedInsightRulesResult = "PutManagedInsightRulesResult"
+    }
+
+    public func validate() throws {
+        try putManagedInsightRulesResult.validate()
+    }
+}
+
 public struct PutMetricAlarmInput: Codable, Equatable {
     public var actionsEnabled: ActionsEnabled?
     public var alarmActions: ResourceList?
@@ -2802,7 +2982,6 @@ public struct PutMetricAlarmInput: Codable, Equatable {
         try dimensions?.validateAsDimensions()
         try evaluateLowSampleCountPercentile?.validateAsEvaluateLowSampleCountPercentile()
         try evaluationPeriods.validateAsEvaluationPeriods()
-        try extendedStatistic?.validateAsExtendedStatistic()
         try insufficientDataActions?.validateAsResourceList()
         try metricName?.validateAsMetricName()
         try namespace?.validateAsNamespace()

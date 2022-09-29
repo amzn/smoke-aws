@@ -40,6 +40,7 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
     public let deletePlatformApplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteSMSSandboxPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteTopic: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getDataProtectionPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSMSAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -58,6 +59,7 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
     public let optInPhoneNumber: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let publish: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let publishBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putDataProtectionPolicy: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let removePermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setEndpointAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setPlatformApplicationAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -93,6 +95,8 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
             smokeAWSOperationReporting: operationsReporting.deleteSMSSandboxPhoneNumber)
         self.deleteTopic = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteTopic)
+        self.getDataProtectionPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getDataProtectionPolicy)
         self.getEndpointAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getEndpointAttributes)
         self.getPlatformApplicationAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -129,6 +133,8 @@ public struct SimpleNotificationInvocationsReporting<InvocationReportingType: HT
             smokeAWSOperationReporting: operationsReporting.publish)
         self.publishBatch = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.publishBatch)
+        self.putDataProtectionPolicy = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putDataProtectionPolicy)
         self.removePermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.removePermission)
         self.setEndpointAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

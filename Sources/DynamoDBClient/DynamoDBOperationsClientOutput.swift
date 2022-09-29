@@ -233,6 +233,19 @@ extension DescribeGlobalTableSettingsOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeImport operation in a HTTP client.
+ */
+extension DescribeImportOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeImportOutput
+    public typealias HeadersType = DescribeImportOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeImportOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeKinesisStreamingDestination operation in a HTTP client.
  */
 extension DescribeKinesisStreamingDestinationOutput: HTTPResponseOutputProtocol {
@@ -363,6 +376,19 @@ extension GetItemOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ImportTable operation in a HTTP client.
+ */
+extension ImportTableOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ImportTableOutput
+    public typealias HeadersType = ImportTableOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ImportTableOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListBackups operation in a HTTP client.
  */
 extension ListBackupsOutput: HTTPResponseOutputProtocol {
@@ -410,6 +436,19 @@ extension ListGlobalTablesOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListGlobalTablesOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListImports operation in a HTTP client.
+ */
+extension ListImportsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListImportsOutput
+    public typealias HeadersType = ListImportsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListImportsOutput {
         return try bodyDecodableProvider()
     }
 }

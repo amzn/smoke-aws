@@ -37,6 +37,7 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
     case deletePlatformApplication = "DeletePlatformApplication"
     case deleteSMSSandboxPhoneNumber = "DeleteSMSSandboxPhoneNumber"
     case deleteTopic = "DeleteTopic"
+    case getDataProtectionPolicy = "GetDataProtectionPolicy"
     case getEndpointAttributes = "GetEndpointAttributes"
     case getPlatformApplicationAttributes = "GetPlatformApplicationAttributes"
     case getSMSAttributes = "GetSMSAttributes"
@@ -55,6 +56,7 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
     case optInPhoneNumber = "OptInPhoneNumber"
     case publish = "Publish"
     case publishBatch = "PublishBatch"
+    case putDataProtectionPolicy = "PutDataProtectionPolicy"
     case removePermission = "RemovePermission"
     case setEndpointAttributes = "SetEndpointAttributes"
     case setPlatformApplicationAttributes = "SetPlatformApplicationAttributes"
@@ -95,6 +97,8 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
             return "/"
         case .deleteTopic:
             return "/"
+        case .getDataProtectionPolicy:
+            return "/"
         case .getEndpointAttributes:
             return "/"
         case .getPlatformApplicationAttributes:
@@ -130,6 +134,8 @@ public enum SimpleNotificationModelOperations: String, Hashable, CustomStringCon
         case .publish:
             return "/"
         case .publishBatch:
+            return "/"
+        case .putDataProtectionPolicy:
             return "/"
         case .removePermission:
             return "/"

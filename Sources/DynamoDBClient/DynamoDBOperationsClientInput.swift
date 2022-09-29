@@ -105,6 +105,11 @@ public typealias DescribeGlobalTableOperationHTTPRequestInput = BodyHTTPRequestI
 public typealias DescribeGlobalTableSettingsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeImport operation in a HTTP client.
+ */
+public typealias DescribeImportOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeKinesisStreamingDestination operation in a HTTP client.
  */
 public typealias DescribeKinesisStreamingDestinationOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -160,6 +165,11 @@ public typealias ExportTableToPointInTimeOperationHTTPRequestInput = BodyHTTPReq
 public typealias GetItemOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ImportTable operation in a HTTP client.
+ */
+public typealias ImportTableOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListBackups operation in a HTTP client.
  */
 public typealias ListBackupsOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -178,6 +188,11 @@ public typealias ListExportsOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the ListGlobalTables operation in a HTTP client.
  */
 public typealias ListGlobalTablesOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ListImports operation in a HTTP client.
+ */
+public typealias ListImportsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the ListTables operation in a HTTP client.

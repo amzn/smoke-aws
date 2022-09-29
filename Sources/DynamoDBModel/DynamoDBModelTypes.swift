@@ -261,6 +261,11 @@ public typealias ClientRequestToken = String
 public typealias ClientToken = String
 
 /**
+ Type definition for the CloudWatchLogGroupArn field.
+ */
+public typealias CloudWatchLogGroupArn = String
+
+/**
  Type definition for the Code field.
  */
 public typealias Code = String
@@ -385,6 +390,21 @@ public enum ContributorInsightsStatus: String, Codable, CustomStringConvertible 
 public typealias ContributorInsightsSummaries = [ContributorInsightsSummary]
 
 /**
+ Type definition for the CsvDelimiter field.
+ */
+public typealias CsvDelimiter = String
+
+/**
+ Type definition for the CsvHeader field.
+ */
+public typealias CsvHeader = String
+
+/**
+ Type definition for the CsvHeaderList field.
+ */
+public typealias CsvHeaderList = [CsvHeader]
+
+/**
  Type definition for the Date field.
  */
 public typealias Date = String
@@ -410,6 +430,11 @@ public enum DestinationStatus: String, Codable, CustomStringConvertible {
  Type definition for the Endpoints field.
  */
 public typealias Endpoints = [Endpoint]
+
+/**
+ Type definition for the ErrorCount field.
+ */
+public typealias ErrorCount = Int
 
 /**
  Type definition for the ErrorMessage field.
@@ -587,6 +612,53 @@ public enum GlobalTableStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ImportArn field.
+ */
+public typealias ImportArn = String
+
+/**
+ Type definition for the ImportEndTime field.
+ */
+public typealias ImportEndTime = String
+
+/**
+ Type definition for the ImportNextToken field.
+ */
+public typealias ImportNextToken = String
+
+/**
+ Type definition for the ImportStartTime field.
+ */
+public typealias ImportStartTime = String
+
+/**
+ Enumeration restricting the values of the ImportStatus field.
+ */
+public enum ImportStatus: String, Codable, CustomStringConvertible {
+    case cancelled = "CANCELLED"
+    case cancelling = "CANCELLING"
+    case completed = "COMPLETED"
+    case failed = "FAILED"
+    case inProgress = "IN_PROGRESS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ImportStatus = .cancelled
+}
+
+/**
+ Type definition for the ImportSummaryList field.
+ */
+public typealias ImportSummaryList = [ImportSummary]
+
+/**
+ Type definition for the ImportedItemCount field.
+ */
+public typealias ImportedItemCount = Int
+
+/**
  Type definition for the IndexName field.
  */
 public typealias IndexName = String
@@ -605,6 +677,36 @@ public enum IndexStatus: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: IndexStatus = .active
+}
+
+/**
+ Enumeration restricting the values of the InputCompressionType field.
+ */
+public enum InputCompressionType: String, Codable, CustomStringConvertible {
+    case gzip = "GZIP"
+    case none = "NONE"
+    case zstd = "ZSTD"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InputCompressionType = .gzip
+}
+
+/**
+ Enumeration restricting the values of the InputFormat field.
+ */
+public enum InputFormat: String, Codable, CustomStringConvertible {
+    case csv = "CSV"
+    case dynamodbJson = "DYNAMODB_JSON"
+    case ion = "ION"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: InputFormat = .csv
 }
 
 /**
@@ -737,6 +839,11 @@ public typealias ListContributorInsightsLimit = Int
 public typealias ListExportsMaxLimit = Int
 
 /**
+ Type definition for the ListImportsMaxLimit field.
+ */
+public typealias ListImportsMaxLimit = Int
+
+/**
  Type definition for the ListTablesInputLimit field.
  */
 public typealias ListTablesInputLimit = Int
@@ -854,6 +961,11 @@ public typealias PositiveLongObject = Int
  Type definition for the PreparedStatementParameters field.
  */
 public typealias PreparedStatementParameters = [AttributeValue]
+
+/**
+ Type definition for the ProcessedItemCount field.
+ */
+public typealias ProcessedItemCount = Int
 
 /**
  Type definition for the ProjectionExpression field.
@@ -1490,7 +1602,7 @@ extension Array where Element == DynamoDBModel.CancellationReason {
             throw DynamoDBError.validationError(reason: "The provided value to CancellationReasonList violated the minimum length constraint.")
         }
 
-        if self.count > 25 {
+        if self.count > 100 {
             throw DynamoDBError.validationError(reason: "The provided value to CancellationReasonList violated the maximum length constraint.")
         }
     }
@@ -1512,6 +1624,34 @@ extension DynamoDBModel.ClientRequestToken {
 }
 
 /**
+ Validation for the ClientToken field.
+*/
+extension DynamoDBModel.ClientToken {
+    public func validateAsClientToken() throws {
+        guard let matchingRange = self.range(of: "^[^\\$]+$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBError.validationError(
+                    reason: "The provided value to ClientToken violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CloudWatchLogGroupArn field.
+*/
+extension DynamoDBModel.CloudWatchLogGroupArn {
+    public func validateAsCloudWatchLogGroupArn() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to CloudWatchLogGroupArn violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw DynamoDBError.validationError(reason: "The provided value to CloudWatchLogGroupArn violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the ContributorInsightsRule field.
 */
 extension DynamoDBModel.ContributorInsightsRule {
@@ -1521,6 +1661,75 @@ extension DynamoDBModel.ContributorInsightsRule {
                 throw DynamoDBError.validationError(
                     reason: "The provided value to ContributorInsightsRule violated the regular expression constraint.")
         }
+    }
+}
+
+/**
+ Validation for the CsvDelimiter field.
+*/
+extension DynamoDBModel.CsvDelimiter {
+    public func validateAsCsvDelimiter() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to CsvDelimiter violated the minimum length constraint.")
+        }
+
+        if self.count > 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to CsvDelimiter violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[,;:|\\t ]", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBError.validationError(
+                    reason: "The provided value to CsvDelimiter violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CsvHeader field.
+*/
+extension DynamoDBModel.CsvHeader {
+    public func validateAsCsvHeader() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to CsvHeader violated the minimum length constraint.")
+        }
+
+        if self.count > 65536 {
+            throw DynamoDBError.validationError(reason: "The provided value to CsvHeader violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[\\x20-\\x21\\x23-\\x2B\\x2D-\\x7E]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBError.validationError(
+                    reason: "The provided value to CsvHeader violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the CsvHeaderList field.
+*/
+extension Array where Element == DynamoDBModel.CsvHeader {
+    public func validateAsCsvHeaderList() throws {
+        if self.count < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to CsvHeaderList violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw DynamoDBError.validationError(reason: "The provided value to CsvHeaderList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ErrorCount field.
+*/
+extension DynamoDBModel.ErrorCount {
+    public func validateAsErrorCount() throws {
+        if self < 0 {
+            throw DynamoDBError.validationError(reason: "The provided value to ErrorCount violated the minimum range constraint.")
+        }
+
     }
 }
 
@@ -1567,6 +1776,54 @@ extension Array where Element == DynamoDBModel.GlobalTableGlobalSecondaryIndexSe
 }
 
 /**
+ Validation for the ImportArn field.
+*/
+extension DynamoDBModel.ImportArn {
+    public func validateAsImportArn() throws {
+        if self.count < 37 {
+            throw DynamoDBError.validationError(reason: "The provided value to ImportArn violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw DynamoDBError.validationError(reason: "The provided value to ImportArn violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ImportNextToken field.
+*/
+extension DynamoDBModel.ImportNextToken {
+    public func validateAsImportNextToken() throws {
+        if self.count < 112 {
+            throw DynamoDBError.validationError(reason: "The provided value to ImportNextToken violated the minimum length constraint.")
+        }
+
+        if self.count > 1024 {
+            throw DynamoDBError.validationError(reason: "The provided value to ImportNextToken violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "([0-9a-f]{16})+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBError.validationError(
+                    reason: "The provided value to ImportNextToken violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ImportedItemCount field.
+*/
+extension DynamoDBModel.ImportedItemCount {
+    public func validateAsImportedItemCount() throws {
+        if self < 0 {
+            throw DynamoDBError.validationError(reason: "The provided value to ImportedItemCount violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
  Validation for the IndexName field.
 */
 extension DynamoDBModel.IndexName {
@@ -1608,7 +1865,7 @@ extension Array where Element == DynamoDBModel.ItemResponse {
             throw DynamoDBError.validationError(reason: "The provided value to ItemResponseList violated the minimum length constraint.")
         }
 
-        if self.count > 25 {
+        if self.count > 100 {
             throw DynamoDBError.validationError(reason: "The provided value to ItemResponseList violated the maximum length constraint.")
         }
     }
@@ -1687,6 +1944,21 @@ extension DynamoDBModel.ListExportsMaxLimit {
 }
 
 /**
+ Validation for the ListImportsMaxLimit field.
+*/
+extension DynamoDBModel.ListImportsMaxLimit {
+    public func validateAsListImportsMaxLimit() throws {
+        if self < 1 {
+            throw DynamoDBError.validationError(reason: "The provided value to ListImportsMaxLimit violated the minimum range constraint.")
+        }
+
+        if self > 25 {
+            throw DynamoDBError.validationError(reason: "The provided value to ListImportsMaxLimit violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the ListTablesInputLimit field.
 */
 extension DynamoDBModel.ListTablesInputLimit {
@@ -1752,7 +2024,7 @@ extension Array where Element == DynamoDBModel.ParameterizedStatement {
             throw DynamoDBError.validationError(reason: "The provided value to ParameterizedStatements violated the minimum length constraint.")
         }
 
-        if self.count > 25 {
+        if self.count > 100 {
             throw DynamoDBError.validationError(reason: "The provided value to ParameterizedStatements violated the maximum length constraint.")
         }
     }
@@ -1840,6 +2112,18 @@ extension Array where Element == DynamoDBModel.AttributeValue {
 }
 
 /**
+ Validation for the ProcessedItemCount field.
+*/
+extension DynamoDBModel.ProcessedItemCount {
+    public func validateAsProcessedItemCount() throws {
+        if self < 0 {
+            throw DynamoDBError.validationError(reason: "The provided value to ProcessedItemCount violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
  Validation for the ReplicaAutoScalingUpdateList field.
 */
 extension Array where Element == DynamoDBModel.ReplicaAutoScalingUpdate {
@@ -1916,6 +2200,49 @@ extension DynamoDBModel.ResourceArnString {
 
         if self.count > 1283 {
             throw DynamoDBError.validationError(reason: "The provided value to ResourceArnString violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the S3Bucket field.
+*/
+extension DynamoDBModel.S3Bucket {
+    public func validateAsS3Bucket() throws {
+
+        if self.count > 255 {
+            throw DynamoDBError.validationError(reason: "The provided value to S3Bucket violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^[a-z0-9A-Z]+[\\.\\-\\w]*[a-z0-9A-Z]+$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBError.validationError(
+                    reason: "The provided value to S3Bucket violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the S3BucketOwner field.
+*/
+extension DynamoDBModel.S3BucketOwner {
+    public func validateAsS3BucketOwner() throws {
+        guard let matchingRange = self.range(of: "[0-9]{12}", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw DynamoDBError.validationError(
+                    reason: "The provided value to S3BucketOwner violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the S3Prefix field.
+*/
+extension DynamoDBModel.S3Prefix {
+    public func validateAsS3Prefix() throws {
+
+        if self.count > 1024 {
+            throw DynamoDBError.validationError(reason: "The provided value to S3Prefix violated the maximum length constraint.")
         }
     }
 }
@@ -2068,7 +2395,7 @@ extension Array where Element == DynamoDBModel.TransactGetItem {
             throw DynamoDBError.validationError(reason: "The provided value to TransactGetItemList violated the minimum length constraint.")
         }
 
-        if self.count > 25 {
+        if self.count > 100 {
             throw DynamoDBError.validationError(reason: "The provided value to TransactGetItemList violated the maximum length constraint.")
         }
     }
@@ -2083,7 +2410,7 @@ extension Array where Element == DynamoDBModel.TransactWriteItem {
             throw DynamoDBError.validationError(reason: "The provided value to TransactWriteItemList violated the minimum length constraint.")
         }
 
-        if self.count > 25 {
+        if self.count > 100 {
             throw DynamoDBError.validationError(reason: "The provided value to TransactWriteItemList violated the maximum length constraint.")
         }
     }

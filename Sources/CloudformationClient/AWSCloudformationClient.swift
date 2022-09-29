@@ -40,6 +40,25 @@ public enum CloudformationClientError: Swift.Error {
     public static func asUnrecognizedError(error: Swift.Error) -> CloudformationError {
         return error.asUnrecognizedCloudformationError()
     }
+
+    public func isRetriable() -> Bool? {
+        switch self {
+        case .throttling:
+            return true
+        default:
+            return nil
+        }
+    }
+}
+
+private extension SmokeHTTPClient.HTTPClientError {
+    func isRetriable() -> Bool {
+        if let typedError = self.cause as? CloudformationError, let isRetriable = typedError.isRetriable() {
+            return isRetriable
+        } else {
+            return self.isRetriableAccordingToCategory
+        }
+    }
 }
 
 /**

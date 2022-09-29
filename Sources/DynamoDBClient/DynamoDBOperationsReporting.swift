@@ -44,6 +44,7 @@ public struct DynamoDBOperationsReporting {
     public let describeExport: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let describeGlobalTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let describeGlobalTableSettings: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let describeImport: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let describeKinesisStreamingDestination: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let describeLimits: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let describeTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
@@ -55,10 +56,12 @@ public struct DynamoDBOperationsReporting {
     public let executeTransaction: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let exportTableToPointInTime: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let getItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let importTable: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let listBackups: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let listContributorInsights: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let listExports: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let listGlobalTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
+    public let listImports: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let listTables: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let listTagsOfResource: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
     public let putItem: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>
@@ -112,6 +115,8 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .describeGlobalTable, configuration: reportingConfiguration)
         self.describeGlobalTableSettings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeGlobalTableSettings, configuration: reportingConfiguration)
+        self.describeImport = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeImport, configuration: reportingConfiguration)
         self.describeKinesisStreamingDestination = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeKinesisStreamingDestination, configuration: reportingConfiguration)
         self.describeLimits = StandardSmokeAWSOperationReporting(
@@ -134,6 +139,8 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .exportTableToPointInTime, configuration: reportingConfiguration)
         self.getItem = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getItem, configuration: reportingConfiguration)
+        self.importTable = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .importTable, configuration: reportingConfiguration)
         self.listBackups = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listBackups, configuration: reportingConfiguration)
         self.listContributorInsights = StandardSmokeAWSOperationReporting(
@@ -142,6 +149,8 @@ public struct DynamoDBOperationsReporting {
             clientName: clientName, operation: .listExports, configuration: reportingConfiguration)
         self.listGlobalTables = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listGlobalTables, configuration: reportingConfiguration)
+        self.listImports = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listImports, configuration: reportingConfiguration)
         self.listTables = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listTables, configuration: reportingConfiguration)
         self.listTagsOfResource = StandardSmokeAWSOperationReporting(

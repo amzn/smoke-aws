@@ -932,6 +932,7 @@ public extension InsightRule {
     static let __default: CloudWatchModel.InsightRule = {
         let defaultInstance = CloudWatchModel.InsightRule(
             definition: "0",
+            managedRule: nil,
             name: "0",
             schema: "value",
             state: "0")
@@ -1119,6 +1120,45 @@ public extension ListDashboardsOutputForListDashboards {
     }()
 }
 
+public extension ListManagedInsightRulesInput {
+    /**
+     Default instance of the ListManagedInsightRulesInput structure.
+     */
+    static let __default: CloudWatchModel.ListManagedInsightRulesInput = {
+        let defaultInstance = CloudWatchModel.ListManagedInsightRulesInput(
+            maxResults: nil,
+            nextToken: nil,
+            resourceARN: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListManagedInsightRulesOutput {
+    /**
+     Default instance of the ListManagedInsightRulesOutput structure.
+     */
+    static let __default: CloudWatchModel.ListManagedInsightRulesOutput = {
+        let defaultInstance = CloudWatchModel.ListManagedInsightRulesOutput(
+            managedRules: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListManagedInsightRulesOutputForListManagedInsightRules {
+    /**
+     Default instance of the ListManagedInsightRulesOutputForListManagedInsightRules structure.
+     */
+    static let __default: CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules = {
+        let defaultInstance = CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules(
+            listManagedInsightRulesResult: ListManagedInsightRulesOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListMetricStreamsInput {
     /**
      Default instance of the ListMetricStreamsInput structure.
@@ -1229,6 +1269,47 @@ public extension ListTagsForResourceOutputForListTagsForResource {
     static let __default: CloudWatchModel.ListTagsForResourceOutputForListTagsForResource = {
         let defaultInstance = CloudWatchModel.ListTagsForResourceOutputForListTagsForResource(
             listTagsForResourceResult: ListTagsForResourceOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ManagedRule {
+    /**
+     Default instance of the ManagedRule structure.
+     */
+    static let __default: CloudWatchModel.ManagedRule = {
+        let defaultInstance = CloudWatchModel.ManagedRule(
+            resourceARN: "0",
+            tags: nil,
+            templateName: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ManagedRuleDescription {
+    /**
+     Default instance of the ManagedRuleDescription structure.
+     */
+    static let __default: CloudWatchModel.ManagedRuleDescription = {
+        let defaultInstance = CloudWatchModel.ManagedRuleDescription(
+            resourceARN: nil,
+            ruleState: nil,
+            templateName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ManagedRuleState {
+    /**
+     Default instance of the ManagedRuleState structure.
+     */
+    static let __default: CloudWatchModel.ManagedRuleState = {
+        let defaultInstance = CloudWatchModel.ManagedRuleState(
+            ruleName: "0",
+            state: "0")
 
         return defaultInstance
     }()
@@ -1593,6 +1674,42 @@ public extension PutInsightRuleOutputForPutInsightRule {
     static let __default: CloudWatchModel.PutInsightRuleOutputForPutInsightRule = {
         let defaultInstance = CloudWatchModel.PutInsightRuleOutputForPutInsightRule(
             putInsightRuleResult: PutInsightRuleOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutManagedInsightRulesInput {
+    /**
+     Default instance of the PutManagedInsightRulesInput structure.
+     */
+    static let __default: CloudWatchModel.PutManagedInsightRulesInput = {
+        let defaultInstance = CloudWatchModel.PutManagedInsightRulesInput(
+            managedRules: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension PutManagedInsightRulesOutput {
+    /**
+     Default instance of the PutManagedInsightRulesOutput structure.
+     */
+    static let __default: CloudWatchModel.PutManagedInsightRulesOutput = {
+        let defaultInstance = CloudWatchModel.PutManagedInsightRulesOutput(
+            failures: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PutManagedInsightRulesOutputForPutManagedInsightRules {
+    /**
+     Default instance of the PutManagedInsightRulesOutputForPutManagedInsightRules structure.
+     */
+    static let __default: CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules = {
+        let defaultInstance = CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules(
+            putManagedInsightRulesResult: PutManagedInsightRulesOutput.__default)
 
         return defaultInstance
     }()

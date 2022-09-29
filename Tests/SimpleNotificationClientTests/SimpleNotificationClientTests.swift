@@ -109,9 +109,4 @@ class SimpleNotificationClientTests: XCTestCase {
         XCTAssertEqual(code, receivedCode)
         XCTAssertEqual(message, receivedMessage)
     }
-
-    static var allTests = [
-        ("testAccessDeniedErrorDecode", testAccessDeniedErrorDecode),
-        ("testKnownErrorDecode", testKnownErrorDecode),
-    ]
 }

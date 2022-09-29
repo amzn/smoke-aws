@@ -715,6 +715,7 @@ public extension CreateDBClusterMessage {
             masterUsername: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
+            networkType: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
             performanceInsightsRetentionPeriod: nil,
@@ -1454,6 +1455,7 @@ public extension DBCluster {
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             multiAZ: nil,
+            networkType: nil,
             pendingModifiedValues: nil,
             percentProgress: nil,
             performanceInsightsEnabled: nil,
@@ -2145,6 +2147,7 @@ public extension DBInstance {
             activityStreamKinesisStreamName: nil,
             activityStreamKmsKeyId: nil,
             activityStreamMode: nil,
+            activityStreamPolicyStatus: nil,
             activityStreamStatus: nil,
             allocatedStorage: nil,
             associatedRoles: nil,
@@ -2897,6 +2900,7 @@ public extension DBSnapshot {
             port: nil,
             processorFeatures: nil,
             snapshotCreateTime: nil,
+            snapshotDatabaseTime: nil,
             snapshotTarget: nil,
             snapshotType: nil,
             sourceDBSnapshotIdentifier: nil,
@@ -5380,6 +5384,48 @@ public extension MinimumEngineVersionPerAllowedValue {
     }()
 }
 
+public extension ModifyActivityStreamRequest {
+    /**
+     Default instance of the ModifyActivityStreamRequest structure.
+     */
+    static let __default: RDSModel.ModifyActivityStreamRequest = {
+        let defaultInstance = RDSModel.ModifyActivityStreamRequest(
+            auditPolicyState: nil,
+            resourceArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyActivityStreamResponse {
+    /**
+     Default instance of the ModifyActivityStreamResponse structure.
+     */
+    static let __default: RDSModel.ModifyActivityStreamResponse = {
+        let defaultInstance = RDSModel.ModifyActivityStreamResponse(
+            engineNativeAuditFieldsIncluded: nil,
+            kinesisStreamName: nil,
+            kmsKeyId: nil,
+            mode: nil,
+            policyStatus: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ModifyActivityStreamResponseForModifyActivityStream {
+    /**
+     Default instance of the ModifyActivityStreamResponseForModifyActivityStream structure.
+     */
+    static let __default: RDSModel.ModifyActivityStreamResponseForModifyActivityStream = {
+        let defaultInstance = RDSModel.ModifyActivityStreamResponseForModifyActivityStream(
+            modifyActivityStreamResult: ModifyActivityStreamResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ModifyCertificatesMessage {
     /**
      Default instance of the ModifyCertificatesMessage structure.
@@ -5492,6 +5538,7 @@ public extension ModifyDBClusterMessage {
             masterUserPassword: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
+            networkType: nil,
             newDBClusterIdentifier: nil,
             optionGroupName: nil,
             performanceInsightsKMSKeyId: nil,
@@ -7081,6 +7128,7 @@ public extension RestoreDBClusterFromS3Message {
             kmsKeyId: nil,
             masterUserPassword: "value",
             masterUsername: "value",
+            networkType: nil,
             optionGroupName: nil,
             port: nil,
             preferredBackupWindow: nil,
@@ -7147,6 +7195,7 @@ public extension RestoreDBClusterFromSnapshotMessage {
             engineVersion: nil,
             iops: nil,
             kmsKeyId: nil,
+            networkType: nil,
             optionGroupName: nil,
             port: nil,
             publiclyAccessible: nil,
@@ -7205,6 +7254,7 @@ public extension RestoreDBClusterToPointInTimeMessage {
             engineMode: nil,
             iops: nil,
             kmsKeyId: nil,
+            networkType: nil,
             optionGroupName: nil,
             port: nil,
             publiclyAccessible: nil,
@@ -8082,6 +8132,42 @@ public extension SubscriptionNotFoundFault {
      */
     static let __default: RDSModel.SubscriptionNotFoundFault = {
         let defaultInstance = RDSModel.SubscriptionNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverReadReplicaMessage {
+    /**
+     Default instance of the SwitchoverReadReplicaMessage structure.
+     */
+    static let __default: RDSModel.SwitchoverReadReplicaMessage = {
+        let defaultInstance = RDSModel.SwitchoverReadReplicaMessage(
+            dBInstanceIdentifier: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverReadReplicaResult {
+    /**
+     Default instance of the SwitchoverReadReplicaResult structure.
+     */
+    static let __default: RDSModel.SwitchoverReadReplicaResult = {
+        let defaultInstance = RDSModel.SwitchoverReadReplicaResult(
+            dBInstance: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverReadReplicaResultForSwitchoverReadReplica {
+    /**
+     Default instance of the SwitchoverReadReplicaResultForSwitchoverReadReplica structure.
+     */
+    static let __default: RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica = {
+        let defaultInstance = RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica(
+            switchoverReadReplicaResult: SwitchoverReadReplicaResult.__default)
 
         return defaultInstance
     }()

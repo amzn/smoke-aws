@@ -52,6 +52,8 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
     let deleteSMSSandboxPhoneNumberSyncOverride: DeleteSMSSandboxPhoneNumberSyncType?
     let deleteTopicAsyncOverride: DeleteTopicAsyncType?
     let deleteTopicSyncOverride: DeleteTopicSyncType?
+    let getDataProtectionPolicyAsyncOverride: GetDataProtectionPolicyAsyncType?
+    let getDataProtectionPolicySyncOverride: GetDataProtectionPolicySyncType?
     let getEndpointAttributesAsyncOverride: GetEndpointAttributesAsyncType?
     let getEndpointAttributesSyncOverride: GetEndpointAttributesSyncType?
     let getPlatformApplicationAttributesAsyncOverride: GetPlatformApplicationAttributesAsyncType?
@@ -88,6 +90,8 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
     let publishSyncOverride: PublishSyncType?
     let publishBatchAsyncOverride: PublishBatchAsyncType?
     let publishBatchSyncOverride: PublishBatchSyncType?
+    let putDataProtectionPolicyAsyncOverride: PutDataProtectionPolicyAsyncType?
+    let putDataProtectionPolicySyncOverride: PutDataProtectionPolicySyncType?
     let removePermissionAsyncOverride: RemovePermissionAsyncType?
     let removePermissionSyncOverride: RemovePermissionSyncType?
     let setEndpointAttributesAsyncOverride: SetEndpointAttributesAsyncType?
@@ -138,6 +142,8 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
             deleteSMSSandboxPhoneNumberSync: DeleteSMSSandboxPhoneNumberSyncType? = nil,
             deleteTopicAsync: DeleteTopicAsyncType? = nil,
             deleteTopicSync: DeleteTopicSyncType? = nil,
+            getDataProtectionPolicyAsync: GetDataProtectionPolicyAsyncType? = nil,
+            getDataProtectionPolicySync: GetDataProtectionPolicySyncType? = nil,
             getEndpointAttributesAsync: GetEndpointAttributesAsyncType? = nil,
             getEndpointAttributesSync: GetEndpointAttributesSyncType? = nil,
             getPlatformApplicationAttributesAsync: GetPlatformApplicationAttributesAsyncType? = nil,
@@ -174,6 +180,8 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
             publishSync: PublishSyncType? = nil,
             publishBatchAsync: PublishBatchAsyncType? = nil,
             publishBatchSync: PublishBatchSyncType? = nil,
+            putDataProtectionPolicyAsync: PutDataProtectionPolicyAsyncType? = nil,
+            putDataProtectionPolicySync: PutDataProtectionPolicySyncType? = nil,
             removePermissionAsync: RemovePermissionAsyncType? = nil,
             removePermissionSync: RemovePermissionSyncType? = nil,
             setEndpointAttributesAsync: SetEndpointAttributesAsyncType? = nil,
@@ -219,6 +227,8 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
         self.deleteSMSSandboxPhoneNumberSyncOverride = deleteSMSSandboxPhoneNumberSync
         self.deleteTopicAsyncOverride = deleteTopicAsync
         self.deleteTopicSyncOverride = deleteTopicSync
+        self.getDataProtectionPolicyAsyncOverride = getDataProtectionPolicyAsync
+        self.getDataProtectionPolicySyncOverride = getDataProtectionPolicySync
         self.getEndpointAttributesAsyncOverride = getEndpointAttributesAsync
         self.getEndpointAttributesSyncOverride = getEndpointAttributesSync
         self.getPlatformApplicationAttributesAsyncOverride = getPlatformApplicationAttributesAsync
@@ -255,6 +265,8 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
         self.publishSyncOverride = publishSync
         self.publishBatchAsyncOverride = publishBatchAsync
         self.publishBatchSyncOverride = publishBatchSync
+        self.putDataProtectionPolicyAsyncOverride = putDataProtectionPolicyAsync
+        self.putDataProtectionPolicySyncOverride = putDataProtectionPolicySync
         self.removePermissionAsyncOverride = removePermissionAsync
         self.removePermissionSyncOverride = removePermissionSync
         self.setEndpointAttributesAsyncOverride = setEndpointAttributesAsync
@@ -680,6 +692,44 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
             input: SimpleNotificationModel.DeleteTopicInput) throws {
         if let deleteTopicSyncOverride = deleteTopicSyncOverride {
             return try deleteTopicSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetDataProtectionPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetDataProtectionPolicyInput object being passed to this operation.
+         - completion: The GetDataProtectionPolicyResponseForGetDataProtectionPolicy object or an error will be passed to this 
+           callback when the operation is complete. The GetDataProtectionPolicyResponseForGetDataProtectionPolicy
+           object will be validated before being returned to caller.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func getDataProtectionPolicyAsync(
+            input: SimpleNotificationModel.GetDataProtectionPolicyInput, 
+            completion: @escaping (Result<SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy, SimpleNotificationError>) -> ()) throws {
+        if let getDataProtectionPolicyAsyncOverride = getDataProtectionPolicyAsyncOverride {
+            return try getDataProtectionPolicyAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the GetDataProtectionPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetDataProtectionPolicyInput object being passed to this operation.
+     - Returns: The GetDataProtectionPolicyResponseForGetDataProtectionPolicy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func getDataProtectionPolicySync(
+            input: SimpleNotificationModel.GetDataProtectionPolicyInput) throws -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
+        if let getDataProtectionPolicySyncOverride = getDataProtectionPolicySyncOverride {
+            return try getDataProtectionPolicySyncOverride(input)
         }
 
         throw error
@@ -1301,7 +1351,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - completion: The PublishResponseForPublish object or an error will be passed to this 
            callback when the operation is complete. The PublishResponseForPublish
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
+           The possible errors are: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, validation.
      */
     public func publishAsync(
             input: SimpleNotificationModel.PublishInput, 
@@ -1320,7 +1370,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated PublishInput object being passed to this operation.
      - Returns: The PublishResponseForPublish object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled.
+     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, validation.
      */
     public func publishSync(
             input: SimpleNotificationModel.PublishInput) throws -> SimpleNotificationModel.PublishResponseForPublish {
@@ -1339,7 +1389,7 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - completion: The PublishBatchResponseForPublishBatch object or an error will be passed to this 
            callback when the operation is complete. The PublishBatchResponseForPublishBatch
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+           The possible errors are: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest, validation.
      */
     public func publishBatchAsync(
             input: SimpleNotificationModel.PublishBatchInput, 
@@ -1358,12 +1408,47 @@ public struct ThrowingSimpleNotificationClient: SimpleNotificationClientProtocol
          - input: The validated PublishBatchInput object being passed to this operation.
      - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest, validation.
      */
     public func publishBatchSync(
             input: SimpleNotificationModel.PublishBatchInput) throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
         if let publishBatchSyncOverride = publishBatchSyncOverride {
             return try publishBatchSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the PutDataProtectionPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PutDataProtectionPolicyInput object being passed to this operation.
+         - completion: Nil or an error will be passed to this callback when the operation
+           is complete.
+           The possible errors are: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func putDataProtectionPolicyAsync(
+            input: SimpleNotificationModel.PutDataProtectionPolicyInput, 
+            completion: @escaping (SimpleNotificationError?) -> ()) throws {
+        if let putDataProtectionPolicyAsyncOverride = putDataProtectionPolicyAsyncOverride {
+            return try putDataProtectionPolicyAsyncOverride(input, completion)
+        }
+
+        completion(error)
+    }
+
+    /**
+     Invokes the PutDataProtectionPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PutDataProtectionPolicyInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func putDataProtectionPolicySync(
+            input: SimpleNotificationModel.PutDataProtectionPolicyInput) throws {
+        if let putDataProtectionPolicySyncOverride = putDataProtectionPolicySyncOverride {
+            return try putDataProtectionPolicySyncOverride(input)
         }
 
         throw error

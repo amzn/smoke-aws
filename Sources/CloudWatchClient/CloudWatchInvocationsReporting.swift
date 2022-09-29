@@ -50,6 +50,7 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
     public let getMetricStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getMetricWidgetImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listDashboards: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listManagedInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listMetricStreams: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listMetrics: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -57,6 +58,7 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
     public let putCompositeAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putDashboard: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putInsightRule: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let putManagedInsightRules: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putMetricAlarm: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putMetricData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let putMetricStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -109,6 +111,8 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
             smokeAWSOperationReporting: operationsReporting.getMetricWidgetImage)
         self.listDashboards = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listDashboards)
+        self.listManagedInsightRules = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listManagedInsightRules)
         self.listMetricStreams = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listMetricStreams)
         self.listMetrics = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -123,6 +127,8 @@ public struct CloudWatchInvocationsReporting<InvocationReportingType: HTTPClient
             smokeAWSOperationReporting: operationsReporting.putDashboard)
         self.putInsightRule = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putInsightRule)
+        self.putManagedInsightRules = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.putManagedInsightRules)
         self.putMetricAlarm = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.putMetricAlarm)
         self.putMetricData = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

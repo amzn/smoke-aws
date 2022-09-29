@@ -43,7 +43,7 @@ public enum DynamoDBClientError: Swift.Error {
 
     public func isRetriable() -> Bool? {
         switch self {
-        case .internalServer, .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded:
+        case .internalServer, .itemCollectionSizeLimitExceeded, .limitExceeded, .provisionedThroughputExceeded, .requestLimitExceeded, .throttling:
             return true
         default:
             return nil
@@ -1286,6 +1286,76 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     }
 
     /**
+     Invokes the DescribeImport operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+         - completion: The DescribeImportOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeImportOutput
+           object will be validated before being returned to caller.
+           The possible errors are: importNotFound.
+     */
+    public func describeImportAsync(
+            input: DynamoDBModel.DescribeImportInput, 
+            completion: @escaping (Result<DynamoDBModel.DescribeImportOutput, DynamoDBError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeImport.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeImport,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeImportOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeImport operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+     - Returns: The DescribeImportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importNotFound.
+     */
+    public func describeImportSync(
+            input: DynamoDBModel.DescribeImportInput) throws -> DynamoDBModel.DescribeImportOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeImport.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeImport,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeImportOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeKinesisStreamingDestination operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2056,6 +2126,76 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
     }
 
     /**
+     Invokes the ImportTable operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+         - completion: The ImportTableOutput object or an error will be passed to this 
+           callback when the operation is complete. The ImportTableOutput
+           object will be validated before being returned to caller.
+           The possible errors are: importConflict, limitExceeded, resourceInUse.
+     */
+    public func importTableAsync(
+            input: DynamoDBModel.ImportTableInput, 
+            completion: @escaping (Result<DynamoDBModel.ImportTableOutput, DynamoDBError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.importTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ImportTableOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ImportTable operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+     - Returns: The ImportTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importConflict, limitExceeded, resourceInUse.
+     */
+    public func importTableSync(
+            input: DynamoDBModel.ImportTableInput) throws -> DynamoDBModel.ImportTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.importTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ImportTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListBackups operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -2320,6 +2460,76 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listGlobalTables,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListImports operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+         - completion: The ListImportsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListImportsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: limitExceeded.
+     */
+    public func listImportsAsync(
+            input: DynamoDBModel.ListImportsInput, 
+            completion: @escaping (Result<DynamoDBModel.ListImportsOutput, DynamoDBError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listImports.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listImports,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListImportsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListImports operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+     - Returns: The ListImportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded.
+     */
+    public func listImportsSync(
+            input: DynamoDBModel.ListImportsInput) throws -> DynamoDBModel.ListImportsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listImports.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listImports,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListImportsOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(

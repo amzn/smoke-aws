@@ -46,8 +46,4 @@ class SecurityTokenClientTests: XCTestCase {
             return XCTFail()
         }
     }
-
-    static var allTests = [
-        ("testAccessDeniedErrorDecode", testAccessDeniedErrorDecode),
-    ]
 }

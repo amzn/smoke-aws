@@ -117,6 +117,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let failoverDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let failoverGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let modifyActivityStream: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCurrentDBClusterCapacity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let modifyCustomDBEngineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -164,6 +165,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let stopDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let switchoverReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: RDSOperationsReporting) {
         self.addRoleToDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -342,6 +344,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.failoverGlobalCluster)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listTagsForResource)
+        self.modifyActivityStream = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.modifyActivityStream)
         self.modifyCertificates = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.modifyCertificates)
         self.modifyCurrentDBClusterCapacity = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -436,5 +440,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.stopDBInstance)
         self.stopDBInstanceAutomatedBackupsReplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.stopDBInstanceAutomatedBackupsReplication)
+        self.switchoverReadReplica = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.switchoverReadReplica)
     }
 }
