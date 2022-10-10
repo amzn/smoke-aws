@@ -14,7 +14,7 @@
         "package": "smoke-http",
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
-          "branch": "yuhaoy",
+          "branch": "yuhaoy-log",
           "revision": "34e461cc8a3b74fbde2bc10a9a38dbd6488ffefe",
           "version": null
         }
