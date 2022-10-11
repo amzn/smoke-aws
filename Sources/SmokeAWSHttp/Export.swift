@@ -11,25 +11,8 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 //
-//  XMLDecoder+awsCompatibleDecoder.swift
-//  SmokeAWSCore
+//  Export.swift
+//  SmokeAWSHttp
 //
 
-import Foundation
-import XMLCoding
-
-private func createDecoder() -> XMLDecoder {
-    let xmlDecoder = XMLDecoder()
-    if #available(OSX 10.12, *) {
-        xmlDecoder.dateDecodingStrategy = .iso8601
-    }
-    
-    return xmlDecoder
-}
-
-public extension XMLDecoder {
-    /// Return a AWS compatible XML Decoder
-    static func awsCompatibleDecoder() -> XMLDecoder {
-        return createDecoder()
-    }
-}
+@_exported import AWSHttp

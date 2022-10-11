@@ -11,27 +11,9 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 //
-//  XMLEncoder+awsCompatibleEncoder.swift
+//  Export.swift
 //  SmokeAWSCore
 //
 
-import Foundation
-import XMLCoding
-
-private func createEncoder() -> XMLEncoder {
-    let xmlEncoder = XMLEncoder()
-    if #available(OSX 10.12, *) {
-        xmlEncoder.dateEncodingStrategy = .iso8601
-    }
-
-    xmlEncoder.outputFormatting = .prettyPrinted
-    
-    return xmlEncoder
-}
-
-public extension XMLEncoder {
-    /// Return a AWS compatible XML Encoder
-    static func awsCompatibleEncoder() -> XMLEncoder {
-        return createEncoder()
-    }
-}
+@_exported import AWSCore
+@_exported import AWSLogging
