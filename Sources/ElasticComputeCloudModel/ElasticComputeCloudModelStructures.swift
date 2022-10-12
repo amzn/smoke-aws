@@ -17732,25 +17732,30 @@ public struct DescribeVpcAttributeRequest: Codable, Equatable {
 public struct DescribeVpcAttributeResult: Codable, Equatable {
     public var enableDnsHostnames: AttributeBooleanValue?
     public var enableDnsSupport: AttributeBooleanValue?
+    public var enableNetworkAddressUsageMetrics: AttributeBooleanValue?
     public var vpcId: String?
 
     public init(enableDnsHostnames: AttributeBooleanValue? = nil,
                 enableDnsSupport: AttributeBooleanValue? = nil,
+                enableNetworkAddressUsageMetrics: AttributeBooleanValue? = nil,
                 vpcId: String? = nil) {
         self.enableDnsHostnames = enableDnsHostnames
         self.enableDnsSupport = enableDnsSupport
+        self.enableNetworkAddressUsageMetrics = enableNetworkAddressUsageMetrics
         self.vpcId = vpcId
     }
 
     enum CodingKeys: String, CodingKey {
         case enableDnsHostnames
         case enableDnsSupport
+        case enableNetworkAddressUsageMetrics
         case vpcId
     }
 
     public func validate() throws {
         try enableDnsHostnames?.validate()
         try enableDnsSupport?.validate()
+        try enableNetworkAddressUsageMetrics?.validate()
     }
 }
 
@@ -24443,6 +24448,7 @@ public struct Image: Codable, Equatable {
     public var imageLocation: String?
     public var imageOwnerAlias: String?
     public var imageType: ImageTypeValues?
+    public var imdsSupport: ImdsSupportValues?
     public var kernelId: String?
     public var name: String?
     public var ownerId: String?
@@ -24473,6 +24479,7 @@ public struct Image: Codable, Equatable {
                 imageLocation: String? = nil,
                 imageOwnerAlias: String? = nil,
                 imageType: ImageTypeValues? = nil,
+                imdsSupport: ImdsSupportValues? = nil,
                 kernelId: String? = nil,
                 name: String? = nil,
                 ownerId: String? = nil,
@@ -24502,6 +24509,7 @@ public struct Image: Codable, Equatable {
         self.imageLocation = imageLocation
         self.imageOwnerAlias = imageOwnerAlias
         self.imageType = imageType
+        self.imdsSupport = imdsSupport
         self.kernelId = kernelId
         self.name = name
         self.ownerId = ownerId
@@ -24534,6 +24542,7 @@ public struct Image: Codable, Equatable {
         case imageLocation
         case imageOwnerAlias
         case imageType
+        case imdsSupport
         case kernelId
         case name
         case ownerId = "imageOwnerId"
@@ -24563,6 +24572,7 @@ public struct ImageAttribute: Codable, Equatable {
     public var bootMode: AttributeValue?
     public var description: AttributeValue?
     public var imageId: String?
+    public var imdsSupport: AttributeValue?
     public var kernelId: AttributeValue?
     public var lastLaunchedTime: AttributeValue?
     public var launchPermissions: LaunchPermissionList?
@@ -24576,6 +24586,7 @@ public struct ImageAttribute: Codable, Equatable {
                 bootMode: AttributeValue? = nil,
                 description: AttributeValue? = nil,
                 imageId: String? = nil,
+                imdsSupport: AttributeValue? = nil,
                 kernelId: AttributeValue? = nil,
                 lastLaunchedTime: AttributeValue? = nil,
                 launchPermissions: LaunchPermissionList? = nil,
@@ -24588,6 +24599,7 @@ public struct ImageAttribute: Codable, Equatable {
         self.bootMode = bootMode
         self.description = description
         self.imageId = imageId
+        self.imdsSupport = imdsSupport
         self.kernelId = kernelId
         self.lastLaunchedTime = lastLaunchedTime
         self.launchPermissions = launchPermissions
@@ -24603,6 +24615,7 @@ public struct ImageAttribute: Codable, Equatable {
         case bootMode
         case description
         case imageId
+        case imdsSupport
         case kernelId = "kernel"
         case lastLaunchedTime
         case launchPermissions = "launchPermission"
@@ -24616,6 +24629,7 @@ public struct ImageAttribute: Codable, Equatable {
     public func validate() throws {
         try bootMode?.validate()
         try description?.validate()
+        try imdsSupport?.validate()
         try kernelId?.validate()
         try lastLaunchedTime?.validate()
         try ramdiskId?.validate()
@@ -32227,25 +32241,30 @@ public struct ModifyVolumeResult: Codable, Equatable {
 public struct ModifyVpcAttributeRequest: Codable, Equatable {
     public var enableDnsHostnames: AttributeBooleanValue?
     public var enableDnsSupport: AttributeBooleanValue?
+    public var enableNetworkAddressUsageMetrics: AttributeBooleanValue?
     public var vpcId: VpcId
 
     public init(enableDnsHostnames: AttributeBooleanValue? = nil,
                 enableDnsSupport: AttributeBooleanValue? = nil,
+                enableNetworkAddressUsageMetrics: AttributeBooleanValue? = nil,
                 vpcId: VpcId) {
         self.enableDnsHostnames = enableDnsHostnames
         self.enableDnsSupport = enableDnsSupport
+        self.enableNetworkAddressUsageMetrics = enableNetworkAddressUsageMetrics
         self.vpcId = vpcId
     }
 
     enum CodingKeys: String, CodingKey {
         case enableDnsHostnames = "EnableDnsHostnames"
         case enableDnsSupport = "EnableDnsSupport"
+        case enableNetworkAddressUsageMetrics = "EnableNetworkAddressUsageMetrics"
         case vpcId
     }
 
     public func validate() throws {
         try enableDnsHostnames?.validate()
         try enableDnsSupport?.validate()
+        try enableNetworkAddressUsageMetrics?.validate()
     }
 }
 
@@ -35580,6 +35599,7 @@ public struct RegisterImageRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var enaSupport: Boolean?
     public var imageLocation: String?
+    public var imdsSupport: ImdsSupportValues?
     public var kernelId: KernelId?
     public var name: String
     public var ramdiskId: RamdiskId?
@@ -35597,6 +35617,7 @@ public struct RegisterImageRequest: Codable, Equatable {
                 dryRun: Boolean? = nil,
                 enaSupport: Boolean? = nil,
                 imageLocation: String? = nil,
+                imdsSupport: ImdsSupportValues? = nil,
                 kernelId: KernelId? = nil,
                 name: String,
                 ramdiskId: RamdiskId? = nil,
@@ -35613,6 +35634,7 @@ public struct RegisterImageRequest: Codable, Equatable {
         self.dryRun = dryRun
         self.enaSupport = enaSupport
         self.imageLocation = imageLocation
+        self.imdsSupport = imdsSupport
         self.kernelId = kernelId
         self.name = name
         self.ramdiskId = ramdiskId
@@ -35632,6 +35654,7 @@ public struct RegisterImageRequest: Codable, Equatable {
         case dryRun
         case enaSupport
         case imageLocation = "ImageLocation"
+        case imdsSupport = "ImdsSupport"
         case kernelId
         case name
         case ramdiskId

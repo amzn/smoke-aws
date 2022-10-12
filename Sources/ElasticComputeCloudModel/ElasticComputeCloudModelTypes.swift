@@ -3047,6 +3047,7 @@ public enum ImageAttributeName: String, Codable, CustomStringConvertible {
     case blockdevicemapping = "blockDeviceMapping"
     case bootmode = "bootMode"
     case description
+    case imdssupport = "imdsSupport"
     case kernel
     case lastlaunchedtime = "lastLaunchedTime"
     case launchpermission = "launchPermission"
@@ -3125,6 +3126,19 @@ public enum ImageTypeValues: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: ImageTypeValues = .kernel
+}
+
+/**
+ Enumeration restricting the values of the ImdsSupportValues field.
+ */
+public enum ImdsSupportValues: String, Codable, CustomStringConvertible {
+    case v20 = "v2.0"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ImdsSupportValues = .v20
 }
 
 /**
@@ -4120,6 +4134,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case u12tb1Metal = "u-12tb1.metal"
     case u18tb1Metal = "u-18tb1.metal"
     case u24tb1Metal = "u-24tb1.metal"
+    case u3tb156xlarge = "u-3tb1.56xlarge"
     case u6tb1112xlarge = "u-6tb1.112xlarge"
     case u6tb156xlarge = "u-6tb1.56xlarge"
     case u6tb1Metal = "u-6tb1.metal"
@@ -8656,6 +8671,7 @@ public typealias VpcAttachmentList = [VpcAttachment]
 public enum VpcAttributeName: String, Codable, CustomStringConvertible {
     case enablednshostnames = "enableDnsHostnames"
     case enablednssupport = "enableDnsSupport"
+    case enablenetworkaddressusagemetrics = "enableNetworkAddressUsageMetrics"
 
     public var description: String {
         return rawValue
@@ -10285,7 +10301,7 @@ extension ElasticComputeCloudModel.PoolMaxResults {
 */
 extension ElasticComputeCloudModel.Port {
     public func validateAsPort() throws {
-        if self < 1 {
+        if self < 0 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to Port violated the minimum range constraint.")
         }
 
