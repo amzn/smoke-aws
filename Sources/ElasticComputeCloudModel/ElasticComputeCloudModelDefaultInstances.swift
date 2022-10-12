@@ -10372,6 +10372,7 @@ public extension DescribeVpcAttributeResult {
         let defaultInstance = ElasticComputeCloudModel.DescribeVpcAttributeResult(
             enableDnsHostnames: nil,
             enableDnsSupport: nil,
+            enableNetworkAddressUsageMetrics: nil,
             vpcId: nil)
 
         return defaultInstance
@@ -14241,6 +14242,7 @@ public extension Image {
             imageLocation: nil,
             imageOwnerAlias: nil,
             imageType: nil,
+            imdsSupport: nil,
             kernelId: nil,
             name: nil,
             ownerId: nil,
@@ -14273,6 +14275,7 @@ public extension ImageAttribute {
             bootMode: nil,
             description: nil,
             imageId: nil,
+            imdsSupport: nil,
             kernelId: nil,
             lastLaunchedTime: nil,
             launchPermissions: nil,
@@ -18216,6 +18219,7 @@ public extension ModifyVpcAttributeRequest {
         let defaultInstance = ElasticComputeCloudModel.ModifyVpcAttributeRequest(
             enableDnsHostnames: nil,
             enableDnsSupport: nil,
+            enableNetworkAddressUsageMetrics: nil,
             vpcId: "value")
 
         return defaultInstance
@@ -20068,6 +20072,7 @@ public extension RegisterImageRequest {
             dryRun: nil,
             enaSupport: nil,
             imageLocation: nil,
+            imdsSupport: nil,
             kernelId: nil,
             name: "value",
             ramdiskId: nil,
