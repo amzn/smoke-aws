@@ -41,7 +41,7 @@ public extension S3ClientProtocol {
      */
     func abortMultipartUpload(input: S3Model.AbortMultipartUploadRequest) async throws
      -> S3Model.AbortMultipartUploadOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try abortMultipartUploadAsync(input: input) { result in
                     switch result {
@@ -67,7 +67,7 @@ public extension S3ClientProtocol {
      */
     func completeMultipartUpload(input: S3Model.CompleteMultipartUploadRequest) async throws
      -> S3Model.CompleteMultipartUploadOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try completeMultipartUploadAsync(input: input) { result in
                     switch result {
@@ -94,7 +94,7 @@ public extension S3ClientProtocol {
      */
     func copyObject(input: S3Model.CopyObjectRequest) async throws
      -> S3Model.CopyObjectOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyObjectAsync(input: input) { result in
                     switch result {
@@ -121,7 +121,7 @@ public extension S3ClientProtocol {
      */
     func createBucket(input: S3Model.CreateBucketRequest) async throws
      -> S3Model.CreateBucketOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createBucketAsync(input: input) { result in
                     switch result {
@@ -147,7 +147,7 @@ public extension S3ClientProtocol {
      */
     func createMultipartUpload(input: S3Model.CreateMultipartUploadRequest) async throws
      -> S3Model.CreateMultipartUploadOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createMultipartUploadAsync(input: input) { result in
                     switch result {
@@ -170,7 +170,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketRequest object being passed to this operation.
      */
     func deleteBucket(input: S3Model.DeleteBucketRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketAsync(input: input) { error in
                     if let error = error {
@@ -192,7 +192,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
     func deleteBucketAnalyticsConfiguration(input: S3Model.DeleteBucketAnalyticsConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketAnalyticsConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -214,7 +214,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketCorsRequest object being passed to this operation.
      */
     func deleteBucketCors(input: S3Model.DeleteBucketCorsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketCorsAsync(input: input) { error in
                     if let error = error {
@@ -236,7 +236,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketEncryptionRequest object being passed to this operation.
      */
     func deleteBucketEncryption(input: S3Model.DeleteBucketEncryptionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketEncryptionAsync(input: input) { error in
                     if let error = error {
@@ -258,7 +258,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
      */
     func deleteBucketIntelligentTieringConfiguration(input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketIntelligentTieringConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -280,7 +280,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketInventoryConfigurationRequest object being passed to this operation.
      */
     func deleteBucketInventoryConfiguration(input: S3Model.DeleteBucketInventoryConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketInventoryConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -302,7 +302,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketLifecycleRequest object being passed to this operation.
      */
     func deleteBucketLifecycle(input: S3Model.DeleteBucketLifecycleRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketLifecycleAsync(input: input) { error in
                     if let error = error {
@@ -324,7 +324,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketMetricsConfigurationRequest object being passed to this operation.
      */
     func deleteBucketMetricsConfiguration(input: S3Model.DeleteBucketMetricsConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketMetricsConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -346,7 +346,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
      */
     func deleteBucketOwnershipControls(input: S3Model.DeleteBucketOwnershipControlsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketOwnershipControlsAsync(input: input) { error in
                     if let error = error {
@@ -368,7 +368,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketPolicyRequest object being passed to this operation.
      */
     func deleteBucketPolicy(input: S3Model.DeleteBucketPolicyRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketPolicyAsync(input: input) { error in
                     if let error = error {
@@ -390,7 +390,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketReplicationRequest object being passed to this operation.
      */
     func deleteBucketReplication(input: S3Model.DeleteBucketReplicationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketReplicationAsync(input: input) { error in
                     if let error = error {
@@ -412,7 +412,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketTaggingRequest object being passed to this operation.
      */
     func deleteBucketTagging(input: S3Model.DeleteBucketTaggingRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketTaggingAsync(input: input) { error in
                     if let error = error {
@@ -434,7 +434,7 @@ public extension S3ClientProtocol {
          - input: The validated DeleteBucketWebsiteRequest object being passed to this operation.
      */
     func deleteBucketWebsite(input: S3Model.DeleteBucketWebsiteRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBucketWebsiteAsync(input: input) { error in
                     if let error = error {
@@ -459,7 +459,7 @@ public extension S3ClientProtocol {
      */
     func deleteObject(input: S3Model.DeleteObjectRequest) async throws
      -> S3Model.DeleteObjectOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteObjectAsync(input: input) { result in
                     switch result {
@@ -485,7 +485,7 @@ public extension S3ClientProtocol {
      */
     func deleteObjectTagging(input: S3Model.DeleteObjectTaggingRequest) async throws
      -> S3Model.DeleteObjectTaggingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteObjectTaggingAsync(input: input) { result in
                     switch result {
@@ -511,7 +511,7 @@ public extension S3ClientProtocol {
      */
     func deleteObjects(input: S3Model.DeleteObjectsRequest) async throws
      -> S3Model.DeleteObjectsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteObjectsAsync(input: input) { result in
                     switch result {
@@ -534,7 +534,7 @@ public extension S3ClientProtocol {
          - input: The validated DeletePublicAccessBlockRequest object being passed to this operation.
      */
     func deletePublicAccessBlock(input: S3Model.DeletePublicAccessBlockRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deletePublicAccessBlockAsync(input: input) { error in
                     if let error = error {
@@ -559,7 +559,7 @@ public extension S3ClientProtocol {
      */
     func getBucketAccelerateConfiguration(input: S3Model.GetBucketAccelerateConfigurationRequest) async throws
      -> S3Model.GetBucketAccelerateConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketAccelerateConfigurationAsync(input: input) { result in
                     switch result {
@@ -585,7 +585,7 @@ public extension S3ClientProtocol {
      */
     func getBucketAcl(input: S3Model.GetBucketAclRequest) async throws
      -> S3Model.GetBucketAclOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketAclAsync(input: input) { result in
                     switch result {
@@ -611,7 +611,7 @@ public extension S3ClientProtocol {
      */
     func getBucketAnalyticsConfiguration(input: S3Model.GetBucketAnalyticsConfigurationRequest) async throws
      -> S3Model.GetBucketAnalyticsConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketAnalyticsConfigurationAsync(input: input) { result in
                     switch result {
@@ -637,7 +637,7 @@ public extension S3ClientProtocol {
      */
     func getBucketCors(input: S3Model.GetBucketCorsRequest) async throws
      -> S3Model.GetBucketCorsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketCorsAsync(input: input) { result in
                     switch result {
@@ -663,7 +663,7 @@ public extension S3ClientProtocol {
      */
     func getBucketEncryption(input: S3Model.GetBucketEncryptionRequest) async throws
      -> S3Model.GetBucketEncryptionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketEncryptionAsync(input: input) { result in
                     switch result {
@@ -689,7 +689,7 @@ public extension S3ClientProtocol {
      */
     func getBucketIntelligentTieringConfiguration(input: S3Model.GetBucketIntelligentTieringConfigurationRequest) async throws
      -> S3Model.GetBucketIntelligentTieringConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketIntelligentTieringConfigurationAsync(input: input) { result in
                     switch result {
@@ -715,7 +715,7 @@ public extension S3ClientProtocol {
      */
     func getBucketInventoryConfiguration(input: S3Model.GetBucketInventoryConfigurationRequest) async throws
      -> S3Model.GetBucketInventoryConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketInventoryConfigurationAsync(input: input) { result in
                     switch result {
@@ -741,7 +741,7 @@ public extension S3ClientProtocol {
      */
     func getBucketLifecycle(input: S3Model.GetBucketLifecycleRequest) async throws
      -> S3Model.GetBucketLifecycleOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketLifecycleAsync(input: input) { result in
                     switch result {
@@ -767,7 +767,7 @@ public extension S3ClientProtocol {
      */
     func getBucketLifecycleConfiguration(input: S3Model.GetBucketLifecycleConfigurationRequest) async throws
      -> S3Model.GetBucketLifecycleConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketLifecycleConfigurationAsync(input: input) { result in
                     switch result {
@@ -793,7 +793,7 @@ public extension S3ClientProtocol {
      */
     func getBucketLocation(input: S3Model.GetBucketLocationRequest) async throws
      -> S3Model.GetBucketLocationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketLocationAsync(input: input) { result in
                     switch result {
@@ -819,7 +819,7 @@ public extension S3ClientProtocol {
      */
     func getBucketLogging(input: S3Model.GetBucketLoggingRequest) async throws
      -> S3Model.GetBucketLoggingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketLoggingAsync(input: input) { result in
                     switch result {
@@ -845,7 +845,7 @@ public extension S3ClientProtocol {
      */
     func getBucketMetricsConfiguration(input: S3Model.GetBucketMetricsConfigurationRequest) async throws
      -> S3Model.GetBucketMetricsConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketMetricsConfigurationAsync(input: input) { result in
                     switch result {
@@ -871,7 +871,7 @@ public extension S3ClientProtocol {
      */
     func getBucketNotification(input: S3Model.GetBucketNotificationConfigurationRequest) async throws
      -> S3Model.NotificationConfigurationDeprecated {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketNotificationAsync(input: input) { result in
                     switch result {
@@ -897,7 +897,7 @@ public extension S3ClientProtocol {
      */
     func getBucketNotificationConfiguration(input: S3Model.GetBucketNotificationConfigurationRequest) async throws
      -> S3Model.NotificationConfiguration {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketNotificationConfigurationAsync(input: input) { result in
                     switch result {
@@ -923,7 +923,7 @@ public extension S3ClientProtocol {
      */
     func getBucketOwnershipControls(input: S3Model.GetBucketOwnershipControlsRequest) async throws
      -> S3Model.GetBucketOwnershipControlsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketOwnershipControlsAsync(input: input) { result in
                     switch result {
@@ -949,7 +949,7 @@ public extension S3ClientProtocol {
      */
     func getBucketPolicy(input: S3Model.GetBucketPolicyRequest) async throws
      -> S3Model.GetBucketPolicyOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketPolicyAsync(input: input) { result in
                     switch result {
@@ -975,7 +975,7 @@ public extension S3ClientProtocol {
      */
     func getBucketPolicyStatus(input: S3Model.GetBucketPolicyStatusRequest) async throws
      -> S3Model.GetBucketPolicyStatusOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketPolicyStatusAsync(input: input) { result in
                     switch result {
@@ -1001,7 +1001,7 @@ public extension S3ClientProtocol {
      */
     func getBucketReplication(input: S3Model.GetBucketReplicationRequest) async throws
      -> S3Model.GetBucketReplicationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketReplicationAsync(input: input) { result in
                     switch result {
@@ -1027,7 +1027,7 @@ public extension S3ClientProtocol {
      */
     func getBucketRequestPayment(input: S3Model.GetBucketRequestPaymentRequest) async throws
      -> S3Model.GetBucketRequestPaymentOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketRequestPaymentAsync(input: input) { result in
                     switch result {
@@ -1053,7 +1053,7 @@ public extension S3ClientProtocol {
      */
     func getBucketTagging(input: S3Model.GetBucketTaggingRequest) async throws
      -> S3Model.GetBucketTaggingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketTaggingAsync(input: input) { result in
                     switch result {
@@ -1079,7 +1079,7 @@ public extension S3ClientProtocol {
      */
     func getBucketVersioning(input: S3Model.GetBucketVersioningRequest) async throws
      -> S3Model.GetBucketVersioningOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketVersioningAsync(input: input) { result in
                     switch result {
@@ -1105,7 +1105,7 @@ public extension S3ClientProtocol {
      */
     func getBucketWebsite(input: S3Model.GetBucketWebsiteRequest) async throws
      -> S3Model.GetBucketWebsiteOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getBucketWebsiteAsync(input: input) { result in
                     switch result {
@@ -1132,7 +1132,7 @@ public extension S3ClientProtocol {
      */
     func getObject(input: S3Model.GetObjectRequest) async throws
      -> S3Model.GetObjectOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectAsync(input: input) { result in
                     switch result {
@@ -1159,7 +1159,7 @@ public extension S3ClientProtocol {
      */
     func getObjectAcl(input: S3Model.GetObjectAclRequest) async throws
      -> S3Model.GetObjectAclOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectAclAsync(input: input) { result in
                     switch result {
@@ -1186,7 +1186,7 @@ public extension S3ClientProtocol {
      */
     func getObjectAttributes(input: S3Model.GetObjectAttributesRequest) async throws
      -> S3Model.GetObjectAttributesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectAttributesAsync(input: input) { result in
                     switch result {
@@ -1212,7 +1212,7 @@ public extension S3ClientProtocol {
      */
     func getObjectLegalHold(input: S3Model.GetObjectLegalHoldRequest) async throws
      -> S3Model.GetObjectLegalHoldOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectLegalHoldAsync(input: input) { result in
                     switch result {
@@ -1238,7 +1238,7 @@ public extension S3ClientProtocol {
      */
     func getObjectLockConfiguration(input: S3Model.GetObjectLockConfigurationRequest) async throws
      -> S3Model.GetObjectLockConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectLockConfigurationAsync(input: input) { result in
                     switch result {
@@ -1264,7 +1264,7 @@ public extension S3ClientProtocol {
      */
     func getObjectRetention(input: S3Model.GetObjectRetentionRequest) async throws
      -> S3Model.GetObjectRetentionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectRetentionAsync(input: input) { result in
                     switch result {
@@ -1290,7 +1290,7 @@ public extension S3ClientProtocol {
      */
     func getObjectTagging(input: S3Model.GetObjectTaggingRequest) async throws
      -> S3Model.GetObjectTaggingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectTaggingAsync(input: input) { result in
                     switch result {
@@ -1316,7 +1316,7 @@ public extension S3ClientProtocol {
      */
     func getObjectTorrent(input: S3Model.GetObjectTorrentRequest) async throws
      -> S3Model.GetObjectTorrentOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getObjectTorrentAsync(input: input) { result in
                     switch result {
@@ -1342,7 +1342,7 @@ public extension S3ClientProtocol {
      */
     func getPublicAccessBlock(input: S3Model.GetPublicAccessBlockRequest) async throws
      -> S3Model.GetPublicAccessBlockOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getPublicAccessBlockAsync(input: input) { result in
                     switch result {
@@ -1366,7 +1366,7 @@ public extension S3ClientProtocol {
      - Throws: noSuchBucket.
      */
     func headBucket(input: S3Model.HeadBucketRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try headBucketAsync(input: input) { error in
                     if let error = error {
@@ -1392,7 +1392,7 @@ public extension S3ClientProtocol {
      */
     func headObject(input: S3Model.HeadObjectRequest) async throws
      -> S3Model.HeadObjectOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try headObjectAsync(input: input) { result in
                     switch result {
@@ -1418,7 +1418,7 @@ public extension S3ClientProtocol {
      */
     func listBucketAnalyticsConfigurations(input: S3Model.ListBucketAnalyticsConfigurationsRequest) async throws
      -> S3Model.ListBucketAnalyticsConfigurationsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listBucketAnalyticsConfigurationsAsync(input: input) { result in
                     switch result {
@@ -1444,7 +1444,7 @@ public extension S3ClientProtocol {
      */
     func listBucketIntelligentTieringConfigurations(input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) async throws
      -> S3Model.ListBucketIntelligentTieringConfigurationsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listBucketIntelligentTieringConfigurationsAsync(input: input) { result in
                     switch result {
@@ -1470,7 +1470,7 @@ public extension S3ClientProtocol {
      */
     func listBucketInventoryConfigurations(input: S3Model.ListBucketInventoryConfigurationsRequest) async throws
      -> S3Model.ListBucketInventoryConfigurationsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listBucketInventoryConfigurationsAsync(input: input) { result in
                     switch result {
@@ -1496,7 +1496,7 @@ public extension S3ClientProtocol {
      */
     func listBucketMetricsConfigurations(input: S3Model.ListBucketMetricsConfigurationsRequest) async throws
      -> S3Model.ListBucketMetricsConfigurationsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listBucketMetricsConfigurationsAsync(input: input) { result in
                     switch result {
@@ -1519,7 +1519,7 @@ public extension S3ClientProtocol {
      */
     func listBuckets() async throws
      -> S3Model.ListBucketsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listBucketsAsync { result in
                     switch result {
@@ -1545,7 +1545,7 @@ public extension S3ClientProtocol {
      */
     func listMultipartUploads(input: S3Model.ListMultipartUploadsRequest) async throws
      -> S3Model.ListMultipartUploadsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listMultipartUploadsAsync(input: input) { result in
                     switch result {
@@ -1571,7 +1571,7 @@ public extension S3ClientProtocol {
      */
     func listObjectVersions(input: S3Model.ListObjectVersionsRequest) async throws
      -> S3Model.ListObjectVersionsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listObjectVersionsAsync(input: input) { result in
                     switch result {
@@ -1598,7 +1598,7 @@ public extension S3ClientProtocol {
      */
     func listObjects(input: S3Model.ListObjectsRequest) async throws
      -> S3Model.ListObjectsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listObjectsAsync(input: input) { result in
                     switch result {
@@ -1625,7 +1625,7 @@ public extension S3ClientProtocol {
      */
     func listObjectsV2(input: S3Model.ListObjectsV2Request) async throws
      -> S3Model.ListObjectsV2Output {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listObjectsV2Async(input: input) { result in
                     switch result {
@@ -1651,7 +1651,7 @@ public extension S3ClientProtocol {
      */
     func listParts(input: S3Model.ListPartsRequest) async throws
      -> S3Model.ListPartsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listPartsAsync(input: input) { result in
                     switch result {
@@ -1674,7 +1674,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketAccelerateConfigurationRequest object being passed to this operation.
      */
     func putBucketAccelerateConfiguration(input: S3Model.PutBucketAccelerateConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketAccelerateConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1696,7 +1696,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketAclRequest object being passed to this operation.
      */
     func putBucketAcl(input: S3Model.PutBucketAclRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketAclAsync(input: input) { error in
                     if let error = error {
@@ -1718,7 +1718,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketAnalyticsConfigurationRequest object being passed to this operation.
      */
     func putBucketAnalyticsConfiguration(input: S3Model.PutBucketAnalyticsConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketAnalyticsConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1740,7 +1740,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketCorsRequest object being passed to this operation.
      */
     func putBucketCors(input: S3Model.PutBucketCorsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketCorsAsync(input: input) { error in
                     if let error = error {
@@ -1762,7 +1762,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketEncryptionRequest object being passed to this operation.
      */
     func putBucketEncryption(input: S3Model.PutBucketEncryptionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketEncryptionAsync(input: input) { error in
                     if let error = error {
@@ -1784,7 +1784,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
      */
     func putBucketIntelligentTieringConfiguration(input: S3Model.PutBucketIntelligentTieringConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketIntelligentTieringConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1806,7 +1806,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketInventoryConfigurationRequest object being passed to this operation.
      */
     func putBucketInventoryConfiguration(input: S3Model.PutBucketInventoryConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketInventoryConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1828,7 +1828,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketLifecycleRequest object being passed to this operation.
      */
     func putBucketLifecycle(input: S3Model.PutBucketLifecycleRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketLifecycleAsync(input: input) { error in
                     if let error = error {
@@ -1850,7 +1850,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketLifecycleConfigurationRequest object being passed to this operation.
      */
     func putBucketLifecycleConfiguration(input: S3Model.PutBucketLifecycleConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketLifecycleConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1872,7 +1872,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketLoggingRequest object being passed to this operation.
      */
     func putBucketLogging(input: S3Model.PutBucketLoggingRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketLoggingAsync(input: input) { error in
                     if let error = error {
@@ -1894,7 +1894,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketMetricsConfigurationRequest object being passed to this operation.
      */
     func putBucketMetricsConfiguration(input: S3Model.PutBucketMetricsConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketMetricsConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1916,7 +1916,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketNotificationRequest object being passed to this operation.
      */
     func putBucketNotification(input: S3Model.PutBucketNotificationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketNotificationAsync(input: input) { error in
                     if let error = error {
@@ -1938,7 +1938,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketNotificationConfigurationRequest object being passed to this operation.
      */
     func putBucketNotificationConfiguration(input: S3Model.PutBucketNotificationConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketNotificationConfigurationAsync(input: input) { error in
                     if let error = error {
@@ -1960,7 +1960,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
      */
     func putBucketOwnershipControls(input: S3Model.PutBucketOwnershipControlsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketOwnershipControlsAsync(input: input) { error in
                     if let error = error {
@@ -1982,7 +1982,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketPolicyRequest object being passed to this operation.
      */
     func putBucketPolicy(input: S3Model.PutBucketPolicyRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketPolicyAsync(input: input) { error in
                     if let error = error {
@@ -2004,7 +2004,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketReplicationRequest object being passed to this operation.
      */
     func putBucketReplication(input: S3Model.PutBucketReplicationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketReplicationAsync(input: input) { error in
                     if let error = error {
@@ -2026,7 +2026,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketRequestPaymentRequest object being passed to this operation.
      */
     func putBucketRequestPayment(input: S3Model.PutBucketRequestPaymentRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketRequestPaymentAsync(input: input) { error in
                     if let error = error {
@@ -2048,7 +2048,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketTaggingRequest object being passed to this operation.
      */
     func putBucketTagging(input: S3Model.PutBucketTaggingRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketTaggingAsync(input: input) { error in
                     if let error = error {
@@ -2070,7 +2070,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketVersioningRequest object being passed to this operation.
      */
     func putBucketVersioning(input: S3Model.PutBucketVersioningRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketVersioningAsync(input: input) { error in
                     if let error = error {
@@ -2092,7 +2092,7 @@ public extension S3ClientProtocol {
          - input: The validated PutBucketWebsiteRequest object being passed to this operation.
      */
     func putBucketWebsite(input: S3Model.PutBucketWebsiteRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putBucketWebsiteAsync(input: input) { error in
                     if let error = error {
@@ -2117,7 +2117,7 @@ public extension S3ClientProtocol {
      */
     func putObject(input: S3Model.PutObjectRequest) async throws
      -> S3Model.PutObjectOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putObjectAsync(input: input) { result in
                     switch result {
@@ -2144,7 +2144,7 @@ public extension S3ClientProtocol {
      */
     func putObjectAcl(input: S3Model.PutObjectAclRequest) async throws
      -> S3Model.PutObjectAclOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putObjectAclAsync(input: input) { result in
                     switch result {
@@ -2170,7 +2170,7 @@ public extension S3ClientProtocol {
      */
     func putObjectLegalHold(input: S3Model.PutObjectLegalHoldRequest) async throws
      -> S3Model.PutObjectLegalHoldOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putObjectLegalHoldAsync(input: input) { result in
                     switch result {
@@ -2196,7 +2196,7 @@ public extension S3ClientProtocol {
      */
     func putObjectLockConfiguration(input: S3Model.PutObjectLockConfigurationRequest) async throws
      -> S3Model.PutObjectLockConfigurationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putObjectLockConfigurationAsync(input: input) { result in
                     switch result {
@@ -2222,7 +2222,7 @@ public extension S3ClientProtocol {
      */
     func putObjectRetention(input: S3Model.PutObjectRetentionRequest) async throws
      -> S3Model.PutObjectRetentionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putObjectRetentionAsync(input: input) { result in
                     switch result {
@@ -2248,7 +2248,7 @@ public extension S3ClientProtocol {
      */
     func putObjectTagging(input: S3Model.PutObjectTaggingRequest) async throws
      -> S3Model.PutObjectTaggingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putObjectTaggingAsync(input: input) { result in
                     switch result {
@@ -2271,7 +2271,7 @@ public extension S3ClientProtocol {
          - input: The validated PutPublicAccessBlockRequest object being passed to this operation.
      */
     func putPublicAccessBlock(input: S3Model.PutPublicAccessBlockRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putPublicAccessBlockAsync(input: input) { error in
                     if let error = error {
@@ -2297,7 +2297,7 @@ public extension S3ClientProtocol {
      */
     func restoreObject(input: S3Model.RestoreObjectRequest) async throws
      -> S3Model.RestoreObjectOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreObjectAsync(input: input) { result in
                     switch result {
@@ -2323,7 +2323,7 @@ public extension S3ClientProtocol {
      */
     func selectObjectContent(input: S3Model.SelectObjectContentRequest) async throws
      -> S3Model.SelectObjectContentOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try selectObjectContentAsync(input: input) { result in
                     switch result {
@@ -2349,7 +2349,7 @@ public extension S3ClientProtocol {
      */
     func uploadPart(input: S3Model.UploadPartRequest) async throws
      -> S3Model.UploadPartOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try uploadPartAsync(input: input) { result in
                     switch result {
@@ -2375,7 +2375,7 @@ public extension S3ClientProtocol {
      */
     func uploadPartCopy(input: S3Model.UploadPartCopyRequest) async throws
      -> S3Model.UploadPartCopyOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try uploadPartCopyAsync(input: input) { result in
                     switch result {
@@ -2398,7 +2398,7 @@ public extension S3ClientProtocol {
          - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
      */
     func writeGetObjectResponse(input: S3Model.WriteGetObjectResponseRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try writeGetObjectResponseAsync(input: input) { error in
                     if let error = error {

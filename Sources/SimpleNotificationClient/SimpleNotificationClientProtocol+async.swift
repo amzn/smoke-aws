@@ -38,7 +38,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     func addPermission(input: SimpleNotificationModel.AddPermissionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try addPermissionAsync(input: input) { error in
                     if let error = error {
@@ -64,7 +64,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func checkIfPhoneNumberIsOptedOut(input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) async throws
      -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try checkIfPhoneNumberIsOptedOutAsync(input: input) { result in
                     switch result {
@@ -91,7 +91,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func confirmSubscription(input: SimpleNotificationModel.ConfirmSubscriptionInput) async throws
      -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try confirmSubscriptionAsync(input: input) { result in
                     switch result {
@@ -118,7 +118,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func createPlatformApplication(input: SimpleNotificationModel.CreatePlatformApplicationInput) async throws
      -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createPlatformApplicationAsync(input: input) { result in
                     switch result {
@@ -145,7 +145,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func createPlatformEndpoint(input: SimpleNotificationModel.CreatePlatformEndpointInput) async throws
      -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createPlatformEndpointAsync(input: input) { result in
                     switch result {
@@ -172,7 +172,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func createSMSSandboxPhoneNumber(input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) async throws
      -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSMSSandboxPhoneNumberAsync(input: input) { result in
                     switch result {
@@ -199,7 +199,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func createTopic(input: SimpleNotificationModel.CreateTopicInput) async throws
      -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTopicAsync(input: input) { result in
                     switch result {
@@ -223,7 +223,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     func deleteEndpoint(input: SimpleNotificationModel.DeleteEndpointInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteEndpointAsync(input: input) { error in
                     if let error = error {
@@ -246,7 +246,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter.
      */
     func deletePlatformApplication(input: SimpleNotificationModel.DeletePlatformApplicationInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deletePlatformApplicationAsync(input: input) { error in
                     if let error = error {
@@ -272,7 +272,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func deleteSMSSandboxPhoneNumber(input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) async throws
      -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteSMSSandboxPhoneNumberAsync(input: input) { result in
                     switch result {
@@ -296,7 +296,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
      */
     func deleteTopic(input: SimpleNotificationModel.DeleteTopicInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTopicAsync(input: input) { error in
                     if let error = error {
@@ -322,7 +322,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getDataProtectionPolicy(input: SimpleNotificationModel.GetDataProtectionPolicyInput) async throws
      -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getDataProtectionPolicyAsync(input: input) { result in
                     switch result {
@@ -349,7 +349,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getEndpointAttributes(input: SimpleNotificationModel.GetEndpointAttributesInput) async throws
      -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getEndpointAttributesAsync(input: input) { result in
                     switch result {
@@ -376,7 +376,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getPlatformApplicationAttributes(input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) async throws
      -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getPlatformApplicationAttributesAsync(input: input) { result in
                     switch result {
@@ -403,7 +403,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getSMSAttributes(input: SimpleNotificationModel.GetSMSAttributesInput) async throws
      -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSMSAttributesAsync(input: input) { result in
                     switch result {
@@ -430,7 +430,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getSMSSandboxAccountStatus(input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) async throws
      -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSMSSandboxAccountStatusAsync(input: input) { result in
                     switch result {
@@ -457,7 +457,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getSubscriptionAttributes(input: SimpleNotificationModel.GetSubscriptionAttributesInput) async throws
      -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSubscriptionAttributesAsync(input: input) { result in
                     switch result {
@@ -484,7 +484,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func getTopicAttributes(input: SimpleNotificationModel.GetTopicAttributesInput) async throws
      -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTopicAttributesAsync(input: input) { result in
                     switch result {
@@ -511,7 +511,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listEndpointsByPlatformApplication(input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) async throws
      -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listEndpointsByPlatformApplicationAsync(input: input) { result in
                     switch result {
@@ -538,7 +538,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listOriginationNumbers(input: SimpleNotificationModel.ListOriginationNumbersRequest) async throws
      -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listOriginationNumbersAsync(input: input) { result in
                     switch result {
@@ -565,7 +565,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listPhoneNumbersOptedOut(input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) async throws
      -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listPhoneNumbersOptedOutAsync(input: input) { result in
                     switch result {
@@ -592,7 +592,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listPlatformApplications(input: SimpleNotificationModel.ListPlatformApplicationsInput) async throws
      -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listPlatformApplicationsAsync(input: input) { result in
                     switch result {
@@ -619,7 +619,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listSMSSandboxPhoneNumbers(input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) async throws
      -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listSMSSandboxPhoneNumbersAsync(input: input) { result in
                     switch result {
@@ -646,7 +646,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listSubscriptions(input: SimpleNotificationModel.ListSubscriptionsInput) async throws
      -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listSubscriptionsAsync(input: input) { result in
                     switch result {
@@ -673,7 +673,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listSubscriptionsByTopic(input: SimpleNotificationModel.ListSubscriptionsByTopicInput) async throws
      -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listSubscriptionsByTopicAsync(input: input) { result in
                     switch result {
@@ -700,7 +700,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listTagsForResource(input: SimpleNotificationModel.ListTagsForResourceRequest) async throws
      -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -727,7 +727,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func listTopics(input: SimpleNotificationModel.ListTopicsInput) async throws
      -> SimpleNotificationModel.ListTopicsResponseForListTopics {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTopicsAsync(input: input) { result in
                     switch result {
@@ -754,7 +754,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func optInPhoneNumber(input: SimpleNotificationModel.OptInPhoneNumberInput) async throws
      -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try optInPhoneNumberAsync(input: input) { result in
                     switch result {
@@ -781,7 +781,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func publish(input: SimpleNotificationModel.PublishInput) async throws
      -> SimpleNotificationModel.PublishResponseForPublish {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try publishAsync(input: input) { result in
                     switch result {
@@ -808,7 +808,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func publishBatch(input: SimpleNotificationModel.PublishBatchInput) async throws
      -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try publishBatchAsync(input: input) { result in
                     switch result {
@@ -832,7 +832,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     func putDataProtectionPolicy(input: SimpleNotificationModel.PutDataProtectionPolicyInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putDataProtectionPolicyAsync(input: input) { error in
                     if let error = error {
@@ -855,7 +855,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     func removePermission(input: SimpleNotificationModel.RemovePermissionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removePermissionAsync(input: input) { error in
                     if let error = error {
@@ -878,7 +878,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     func setEndpointAttributes(input: SimpleNotificationModel.SetEndpointAttributesInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setEndpointAttributesAsync(input: input) { error in
                     if let error = error {
@@ -901,7 +901,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, notFound.
      */
     func setPlatformApplicationAttributes(input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setPlatformApplicationAttributesAsync(input: input) { error in
                     if let error = error {
@@ -927,7 +927,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func setSMSAttributes(input: SimpleNotificationModel.SetSMSAttributesInput) async throws
      -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setSMSAttributesAsync(input: input) { result in
                     switch result {
@@ -951,7 +951,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
      */
     func setSubscriptionAttributes(input: SimpleNotificationModel.SetSubscriptionAttributesInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setSubscriptionAttributesAsync(input: input) { error in
                     if let error = error {
@@ -974,7 +974,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     func setTopicAttributes(input: SimpleNotificationModel.SetTopicAttributesInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setTopicAttributesAsync(input: input) { error in
                     if let error = error {
@@ -1000,7 +1000,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func subscribe(input: SimpleNotificationModel.SubscribeInput) async throws
      -> SimpleNotificationModel.SubscribeResponseForSubscribe {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try subscribeAsync(input: input) { result in
                     switch result {
@@ -1027,7 +1027,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func tagResource(input: SimpleNotificationModel.TagResourceRequest) async throws
      -> SimpleNotificationModel.TagResourceResponseForTagResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { result in
                     switch result {
@@ -1051,7 +1051,7 @@ public extension SimpleNotificationClientProtocol {
      - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
      */
     func unsubscribe(input: SimpleNotificationModel.UnsubscribeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try unsubscribeAsync(input: input) { error in
                     if let error = error {
@@ -1077,7 +1077,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func untagResource(input: SimpleNotificationModel.UntagResourceRequest) async throws
      -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { result in
                     switch result {
@@ -1104,7 +1104,7 @@ public extension SimpleNotificationClientProtocol {
      */
     func verifySMSSandboxPhoneNumber(input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) async throws
      -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try verifySMSSandboxPhoneNumberAsync(input: input) { result in
                     switch result {

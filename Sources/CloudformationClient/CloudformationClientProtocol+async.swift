@@ -41,7 +41,7 @@ public extension CloudformationClientProtocol {
      */
     func activateType(input: CloudformationModel.ActivateTypeInput) async throws
      -> CloudformationModel.ActivateTypeOutputForActivateType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try activateTypeAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension CloudformationClientProtocol {
      */
     func batchDescribeTypeConfigurations(input: CloudformationModel.BatchDescribeTypeConfigurationsInput) async throws
      -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchDescribeTypeConfigurationsAsync(input: input) { result in
                     switch result {
@@ -92,7 +92,7 @@ public extension CloudformationClientProtocol {
      - Throws: tokenAlreadyExists.
      */
     func cancelUpdateStack(input: CloudformationModel.CancelUpdateStackInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelUpdateStackAsync(input: input) { error in
                     if let error = error {
@@ -118,7 +118,7 @@ public extension CloudformationClientProtocol {
      */
     func continueUpdateRollback(input: CloudformationModel.ContinueUpdateRollbackInput) async throws
      -> CloudformationModel.ContinueUpdateRollbackOutputForContinueUpdateRollback {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try continueUpdateRollbackAsync(input: input) { result in
                     switch result {
@@ -145,7 +145,7 @@ public extension CloudformationClientProtocol {
      */
     func createChangeSet(input: CloudformationModel.CreateChangeSetInput) async throws
      -> CloudformationModel.CreateChangeSetOutputForCreateChangeSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createChangeSetAsync(input: input) { result in
                     switch result {
@@ -172,7 +172,7 @@ public extension CloudformationClientProtocol {
      */
     func createStack(input: CloudformationModel.CreateStackInput) async throws
      -> CloudformationModel.CreateStackOutputForCreateStack {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStackAsync(input: input) { result in
                     switch result {
@@ -199,7 +199,7 @@ public extension CloudformationClientProtocol {
      */
     func createStackInstances(input: CloudformationModel.CreateStackInstancesInput) async throws
      -> CloudformationModel.CreateStackInstancesOutputForCreateStackInstances {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStackInstancesAsync(input: input) { result in
                     switch result {
@@ -226,7 +226,7 @@ public extension CloudformationClientProtocol {
      */
     func createStackSet(input: CloudformationModel.CreateStackSetInput) async throws
      -> CloudformationModel.CreateStackSetOutputForCreateStackSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStackSetAsync(input: input) { result in
                     switch result {
@@ -253,7 +253,7 @@ public extension CloudformationClientProtocol {
      */
     func deactivateType(input: CloudformationModel.DeactivateTypeInput) async throws
      -> CloudformationModel.DeactivateTypeOutputForDeactivateType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deactivateTypeAsync(input: input) { result in
                     switch result {
@@ -280,7 +280,7 @@ public extension CloudformationClientProtocol {
      */
     func deleteChangeSet(input: CloudformationModel.DeleteChangeSetInput) async throws
      -> CloudformationModel.DeleteChangeSetOutputForDeleteChangeSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteChangeSetAsync(input: input) { result in
                     switch result {
@@ -304,7 +304,7 @@ public extension CloudformationClientProtocol {
      - Throws: tokenAlreadyExists.
      */
     func deleteStack(input: CloudformationModel.DeleteStackInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteStackAsync(input: input) { error in
                     if let error = error {
@@ -330,7 +330,7 @@ public extension CloudformationClientProtocol {
      */
     func deleteStackInstances(input: CloudformationModel.DeleteStackInstancesInput) async throws
      -> CloudformationModel.DeleteStackInstancesOutputForDeleteStackInstances {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteStackInstancesAsync(input: input) { result in
                     switch result {
@@ -357,7 +357,7 @@ public extension CloudformationClientProtocol {
      */
     func deleteStackSet(input: CloudformationModel.DeleteStackSetInput) async throws
      -> CloudformationModel.DeleteStackSetOutputForDeleteStackSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteStackSetAsync(input: input) { result in
                     switch result {
@@ -384,7 +384,7 @@ public extension CloudformationClientProtocol {
      */
     func deregisterType(input: CloudformationModel.DeregisterTypeInput) async throws
      -> CloudformationModel.DeregisterTypeOutputForDeregisterType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterTypeAsync(input: input) { result in
                     switch result {
@@ -410,7 +410,7 @@ public extension CloudformationClientProtocol {
      */
     func describeAccountLimits(input: CloudformationModel.DescribeAccountLimitsInput) async throws
      -> CloudformationModel.DescribeAccountLimitsOutputForDescribeAccountLimits {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAccountLimitsAsync(input: input) { result in
                     switch result {
@@ -437,7 +437,7 @@ public extension CloudformationClientProtocol {
      */
     func describeChangeSet(input: CloudformationModel.DescribeChangeSetInput) async throws
      -> CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeChangeSetAsync(input: input) { result in
                     switch result {
@@ -464,7 +464,7 @@ public extension CloudformationClientProtocol {
      */
     func describeChangeSetHooks(input: CloudformationModel.DescribeChangeSetHooksInput) async throws
      -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeChangeSetHooksAsync(input: input) { result in
                     switch result {
@@ -491,7 +491,7 @@ public extension CloudformationClientProtocol {
      */
     func describePublisher(input: CloudformationModel.DescribePublisherInput) async throws
      -> CloudformationModel.DescribePublisherOutputForDescribePublisher {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePublisherAsync(input: input) { result in
                     switch result {
@@ -517,7 +517,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackDriftDetectionStatus(input: CloudformationModel.DescribeStackDriftDetectionStatusInput) async throws
      -> CloudformationModel.DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackDriftDetectionStatusAsync(input: input) { result in
                     switch result {
@@ -543,7 +543,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackEvents(input: CloudformationModel.DescribeStackEventsInput) async throws
      -> CloudformationModel.DescribeStackEventsOutputForDescribeStackEvents {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackEventsAsync(input: input) { result in
                     switch result {
@@ -570,7 +570,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackInstance(input: CloudformationModel.DescribeStackInstanceInput) async throws
      -> CloudformationModel.DescribeStackInstanceOutputForDescribeStackInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackInstanceAsync(input: input) { result in
                     switch result {
@@ -596,7 +596,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackResource(input: CloudformationModel.DescribeStackResourceInput) async throws
      -> CloudformationModel.DescribeStackResourceOutputForDescribeStackResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackResourceAsync(input: input) { result in
                     switch result {
@@ -622,7 +622,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackResourceDrifts(input: CloudformationModel.DescribeStackResourceDriftsInput) async throws
      -> CloudformationModel.DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackResourceDriftsAsync(input: input) { result in
                     switch result {
@@ -648,7 +648,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackResources(input: CloudformationModel.DescribeStackResourcesInput) async throws
      -> CloudformationModel.DescribeStackResourcesOutputForDescribeStackResources {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackResourcesAsync(input: input) { result in
                     switch result {
@@ -675,7 +675,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackSet(input: CloudformationModel.DescribeStackSetInput) async throws
      -> CloudformationModel.DescribeStackSetOutputForDescribeStackSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackSetAsync(input: input) { result in
                     switch result {
@@ -702,7 +702,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStackSetOperation(input: CloudformationModel.DescribeStackSetOperationInput) async throws
      -> CloudformationModel.DescribeStackSetOperationOutputForDescribeStackSetOperation {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStackSetOperationAsync(input: input) { result in
                     switch result {
@@ -728,7 +728,7 @@ public extension CloudformationClientProtocol {
      */
     func describeStacks(input: CloudformationModel.DescribeStacksInput) async throws
      -> CloudformationModel.DescribeStacksOutputForDescribeStacks {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStacksAsync(input: input) { result in
                     switch result {
@@ -755,7 +755,7 @@ public extension CloudformationClientProtocol {
      */
     func describeType(input: CloudformationModel.DescribeTypeInput) async throws
      -> CloudformationModel.DescribeTypeOutputForDescribeType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTypeAsync(input: input) { result in
                     switch result {
@@ -782,7 +782,7 @@ public extension CloudformationClientProtocol {
      */
     func describeTypeRegistration(input: CloudformationModel.DescribeTypeRegistrationInput) async throws
      -> CloudformationModel.DescribeTypeRegistrationOutputForDescribeTypeRegistration {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTypeRegistrationAsync(input: input) { result in
                     switch result {
@@ -808,7 +808,7 @@ public extension CloudformationClientProtocol {
      */
     func detectStackDrift(input: CloudformationModel.DetectStackDriftInput) async throws
      -> CloudformationModel.DetectStackDriftOutputForDetectStackDrift {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detectStackDriftAsync(input: input) { result in
                     switch result {
@@ -834,7 +834,7 @@ public extension CloudformationClientProtocol {
      */
     func detectStackResourceDrift(input: CloudformationModel.DetectStackResourceDriftInput) async throws
      -> CloudformationModel.DetectStackResourceDriftOutputForDetectStackResourceDrift {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detectStackResourceDriftAsync(input: input) { result in
                     switch result {
@@ -861,7 +861,7 @@ public extension CloudformationClientProtocol {
      */
     func detectStackSetDrift(input: CloudformationModel.DetectStackSetDriftInput) async throws
      -> CloudformationModel.DetectStackSetDriftOutputForDetectStackSetDrift {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detectStackSetDriftAsync(input: input) { result in
                     switch result {
@@ -887,7 +887,7 @@ public extension CloudformationClientProtocol {
      */
     func estimateTemplateCost(input: CloudformationModel.EstimateTemplateCostInput) async throws
      -> CloudformationModel.EstimateTemplateCostOutputForEstimateTemplateCost {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try estimateTemplateCostAsync(input: input) { result in
                     switch result {
@@ -914,7 +914,7 @@ public extension CloudformationClientProtocol {
      */
     func executeChangeSet(input: CloudformationModel.ExecuteChangeSetInput) async throws
      -> CloudformationModel.ExecuteChangeSetOutputForExecuteChangeSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try executeChangeSetAsync(input: input) { result in
                     switch result {
@@ -940,7 +940,7 @@ public extension CloudformationClientProtocol {
      */
     func getStackPolicy(input: CloudformationModel.GetStackPolicyInput) async throws
      -> CloudformationModel.GetStackPolicyOutputForGetStackPolicy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getStackPolicyAsync(input: input) { result in
                     switch result {
@@ -967,7 +967,7 @@ public extension CloudformationClientProtocol {
      */
     func getTemplate(input: CloudformationModel.GetTemplateInput) async throws
      -> CloudformationModel.GetTemplateOutputForGetTemplate {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTemplateAsync(input: input) { result in
                     switch result {
@@ -994,7 +994,7 @@ public extension CloudformationClientProtocol {
      */
     func getTemplateSummary(input: CloudformationModel.GetTemplateSummaryInput) async throws
      -> CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTemplateSummaryAsync(input: input) { result in
                     switch result {
@@ -1021,7 +1021,7 @@ public extension CloudformationClientProtocol {
      */
     func importStacksToStackSet(input: CloudformationModel.ImportStacksToStackSetInput) async throws
      -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importStacksToStackSetAsync(input: input) { result in
                     switch result {
@@ -1047,7 +1047,7 @@ public extension CloudformationClientProtocol {
      */
     func listChangeSets(input: CloudformationModel.ListChangeSetsInput) async throws
      -> CloudformationModel.ListChangeSetsOutputForListChangeSets {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listChangeSetsAsync(input: input) { result in
                     switch result {
@@ -1073,7 +1073,7 @@ public extension CloudformationClientProtocol {
      */
     func listExports(input: CloudformationModel.ListExportsInput) async throws
      -> CloudformationModel.ListExportsOutputForListExports {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listExportsAsync(input: input) { result in
                     switch result {
@@ -1099,7 +1099,7 @@ public extension CloudformationClientProtocol {
      */
     func listImports(input: CloudformationModel.ListImportsInput) async throws
      -> CloudformationModel.ListImportsOutputForListImports {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listImportsAsync(input: input) { result in
                     switch result {
@@ -1126,7 +1126,7 @@ public extension CloudformationClientProtocol {
      */
     func listStackInstances(input: CloudformationModel.ListStackInstancesInput) async throws
      -> CloudformationModel.ListStackInstancesOutputForListStackInstances {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStackInstancesAsync(input: input) { result in
                     switch result {
@@ -1152,7 +1152,7 @@ public extension CloudformationClientProtocol {
      */
     func listStackResources(input: CloudformationModel.ListStackResourcesInput) async throws
      -> CloudformationModel.ListStackResourcesOutputForListStackResources {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStackResourcesAsync(input: input) { result in
                     switch result {
@@ -1179,7 +1179,7 @@ public extension CloudformationClientProtocol {
      */
     func listStackSetOperationResults(input: CloudformationModel.ListStackSetOperationResultsInput) async throws
      -> CloudformationModel.ListStackSetOperationResultsOutputForListStackSetOperationResults {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStackSetOperationResultsAsync(input: input) { result in
                     switch result {
@@ -1206,7 +1206,7 @@ public extension CloudformationClientProtocol {
      */
     func listStackSetOperations(input: CloudformationModel.ListStackSetOperationsInput) async throws
      -> CloudformationModel.ListStackSetOperationsOutputForListStackSetOperations {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStackSetOperationsAsync(input: input) { result in
                     switch result {
@@ -1232,7 +1232,7 @@ public extension CloudformationClientProtocol {
      */
     func listStackSets(input: CloudformationModel.ListStackSetsInput) async throws
      -> CloudformationModel.ListStackSetsOutputForListStackSets {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStackSetsAsync(input: input) { result in
                     switch result {
@@ -1258,7 +1258,7 @@ public extension CloudformationClientProtocol {
      */
     func listStacks(input: CloudformationModel.ListStacksInput) async throws
      -> CloudformationModel.ListStacksOutputForListStacks {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStacksAsync(input: input) { result in
                     switch result {
@@ -1285,7 +1285,7 @@ public extension CloudformationClientProtocol {
      */
     func listTypeRegistrations(input: CloudformationModel.ListTypeRegistrationsInput) async throws
      -> CloudformationModel.ListTypeRegistrationsOutputForListTypeRegistrations {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTypeRegistrationsAsync(input: input) { result in
                     switch result {
@@ -1312,7 +1312,7 @@ public extension CloudformationClientProtocol {
      */
     func listTypeVersions(input: CloudformationModel.ListTypeVersionsInput) async throws
      -> CloudformationModel.ListTypeVersionsOutputForListTypeVersions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTypeVersionsAsync(input: input) { result in
                     switch result {
@@ -1339,7 +1339,7 @@ public extension CloudformationClientProtocol {
      */
     func listTypes(input: CloudformationModel.ListTypesInput) async throws
      -> CloudformationModel.ListTypesOutputForListTypes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTypesAsync(input: input) { result in
                     switch result {
@@ -1366,7 +1366,7 @@ public extension CloudformationClientProtocol {
      */
     func publishType(input: CloudformationModel.PublishTypeInput) async throws
      -> CloudformationModel.PublishTypeOutputForPublishType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try publishTypeAsync(input: input) { result in
                     switch result {
@@ -1393,7 +1393,7 @@ public extension CloudformationClientProtocol {
      */
     func recordHandlerProgress(input: CloudformationModel.RecordHandlerProgressInput) async throws
      -> CloudformationModel.RecordHandlerProgressOutputForRecordHandlerProgress {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try recordHandlerProgressAsync(input: input) { result in
                     switch result {
@@ -1420,7 +1420,7 @@ public extension CloudformationClientProtocol {
      */
     func registerPublisher(input: CloudformationModel.RegisterPublisherInput) async throws
      -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerPublisherAsync(input: input) { result in
                     switch result {
@@ -1447,7 +1447,7 @@ public extension CloudformationClientProtocol {
      */
     func registerType(input: CloudformationModel.RegisterTypeInput) async throws
      -> CloudformationModel.RegisterTypeOutputForRegisterType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerTypeAsync(input: input) { result in
                     switch result {
@@ -1474,7 +1474,7 @@ public extension CloudformationClientProtocol {
      */
     func rollbackStack(input: CloudformationModel.RollbackStackInput) async throws
      -> CloudformationModel.RollbackStackOutputForRollbackStack {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rollbackStackAsync(input: input) { result in
                     switch result {
@@ -1497,7 +1497,7 @@ public extension CloudformationClientProtocol {
          - input: The validated SetStackPolicyInput object being passed to this operation.
      */
     func setStackPolicy(input: CloudformationModel.SetStackPolicyInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setStackPolicyAsync(input: input) { error in
                     if let error = error {
@@ -1523,7 +1523,7 @@ public extension CloudformationClientProtocol {
      */
     func setTypeConfiguration(input: CloudformationModel.SetTypeConfigurationInput) async throws
      -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setTypeConfigurationAsync(input: input) { result in
                     switch result {
@@ -1550,7 +1550,7 @@ public extension CloudformationClientProtocol {
      */
     func setTypeDefaultVersion(input: CloudformationModel.SetTypeDefaultVersionInput) async throws
      -> CloudformationModel.SetTypeDefaultVersionOutputForSetTypeDefaultVersion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setTypeDefaultVersionAsync(input: input) { result in
                     switch result {
@@ -1573,7 +1573,7 @@ public extension CloudformationClientProtocol {
          - input: The validated SignalResourceInput object being passed to this operation.
      */
     func signalResource(input: CloudformationModel.SignalResourceInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try signalResourceAsync(input: input) { error in
                     if let error = error {
@@ -1599,7 +1599,7 @@ public extension CloudformationClientProtocol {
      */
     func stopStackSetOperation(input: CloudformationModel.StopStackSetOperationInput) async throws
      -> CloudformationModel.StopStackSetOperationOutputForStopStackSetOperation {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopStackSetOperationAsync(input: input) { result in
                     switch result {
@@ -1626,7 +1626,7 @@ public extension CloudformationClientProtocol {
      */
     func testType(input: CloudformationModel.TestTypeInput) async throws
      -> CloudformationModel.TestTypeOutputForTestType {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try testTypeAsync(input: input) { result in
                     switch result {
@@ -1653,7 +1653,7 @@ public extension CloudformationClientProtocol {
      */
     func updateStack(input: CloudformationModel.UpdateStackInput) async throws
      -> CloudformationModel.UpdateStackOutputForUpdateStack {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateStackAsync(input: input) { result in
                     switch result {
@@ -1680,7 +1680,7 @@ public extension CloudformationClientProtocol {
      */
     func updateStackInstances(input: CloudformationModel.UpdateStackInstancesInput) async throws
      -> CloudformationModel.UpdateStackInstancesOutputForUpdateStackInstances {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateStackInstancesAsync(input: input) { result in
                     switch result {
@@ -1707,7 +1707,7 @@ public extension CloudformationClientProtocol {
      */
     func updateStackSet(input: CloudformationModel.UpdateStackSetInput) async throws
      -> CloudformationModel.UpdateStackSetOutputForUpdateStackSet {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateStackSetAsync(input: input) { result in
                     switch result {
@@ -1733,7 +1733,7 @@ public extension CloudformationClientProtocol {
      */
     func updateTerminationProtection(input: CloudformationModel.UpdateTerminationProtectionInput) async throws
      -> CloudformationModel.UpdateTerminationProtectionOutputForUpdateTerminationProtection {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateTerminationProtectionAsync(input: input) { result in
                     switch result {
@@ -1759,7 +1759,7 @@ public extension CloudformationClientProtocol {
      */
     func validateTemplate(input: CloudformationModel.ValidateTemplateInput) async throws
      -> CloudformationModel.ValidateTemplateOutputForValidateTemplate {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try validateTemplateAsync(input: input) { result in
                     switch result {

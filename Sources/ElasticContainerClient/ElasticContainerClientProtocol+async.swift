@@ -41,7 +41,7 @@ public extension ElasticContainerClientProtocol {
      */
     func createCapacityProvider(input: ElasticContainerModel.CreateCapacityProviderRequest) async throws
      -> ElasticContainerModel.CreateCapacityProviderResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCapacityProviderAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension ElasticContainerClientProtocol {
      */
     func createCluster(input: ElasticContainerModel.CreateClusterRequest) async throws
      -> ElasticContainerModel.CreateClusterResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createClusterAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension ElasticContainerClientProtocol {
      */
     func createService(input: ElasticContainerModel.CreateServiceRequest) async throws
      -> ElasticContainerModel.CreateServiceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createServiceAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension ElasticContainerClientProtocol {
      */
     func createTaskSet(input: ElasticContainerModel.CreateTaskSetRequest) async throws
      -> ElasticContainerModel.CreateTaskSetResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTaskSetAsync(input: input) { result in
                     switch result {
@@ -149,7 +149,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deleteAccountSetting(input: ElasticContainerModel.DeleteAccountSettingRequest) async throws
      -> ElasticContainerModel.DeleteAccountSettingResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteAccountSettingAsync(input: input) { result in
                     switch result {
@@ -176,7 +176,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deleteAttributes(input: ElasticContainerModel.DeleteAttributesRequest) async throws
      -> ElasticContainerModel.DeleteAttributesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteAttributesAsync(input: input) { result in
                     switch result {
@@ -203,7 +203,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deleteCapacityProvider(input: ElasticContainerModel.DeleteCapacityProviderRequest) async throws
      -> ElasticContainerModel.DeleteCapacityProviderResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCapacityProviderAsync(input: input) { result in
                     switch result {
@@ -230,7 +230,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deleteCluster(input: ElasticContainerModel.DeleteClusterRequest) async throws
      -> ElasticContainerModel.DeleteClusterResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteClusterAsync(input: input) { result in
                     switch result {
@@ -257,7 +257,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deleteService(input: ElasticContainerModel.DeleteServiceRequest) async throws
      -> ElasticContainerModel.DeleteServiceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteServiceAsync(input: input) { result in
                     switch result {
@@ -284,7 +284,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deleteTaskSet(input: ElasticContainerModel.DeleteTaskSetRequest) async throws
      -> ElasticContainerModel.DeleteTaskSetResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTaskSetAsync(input: input) { result in
                     switch result {
@@ -311,7 +311,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deregisterContainerInstance(input: ElasticContainerModel.DeregisterContainerInstanceRequest) async throws
      -> ElasticContainerModel.DeregisterContainerInstanceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterContainerInstanceAsync(input: input) { result in
                     switch result {
@@ -338,7 +338,7 @@ public extension ElasticContainerClientProtocol {
      */
     func deregisterTaskDefinition(input: ElasticContainerModel.DeregisterTaskDefinitionRequest) async throws
      -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterTaskDefinitionAsync(input: input) { result in
                     switch result {
@@ -365,7 +365,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeCapacityProviders(input: ElasticContainerModel.DescribeCapacityProvidersRequest) async throws
      -> ElasticContainerModel.DescribeCapacityProvidersResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCapacityProvidersAsync(input: input) { result in
                     switch result {
@@ -392,7 +392,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeClusters(input: ElasticContainerModel.DescribeClustersRequest) async throws
      -> ElasticContainerModel.DescribeClustersResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClustersAsync(input: input) { result in
                     switch result {
@@ -419,7 +419,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeContainerInstances(input: ElasticContainerModel.DescribeContainerInstancesRequest) async throws
      -> ElasticContainerModel.DescribeContainerInstancesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeContainerInstancesAsync(input: input) { result in
                     switch result {
@@ -446,7 +446,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeServices(input: ElasticContainerModel.DescribeServicesRequest) async throws
      -> ElasticContainerModel.DescribeServicesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeServicesAsync(input: input) { result in
                     switch result {
@@ -473,7 +473,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeTaskDefinition(input: ElasticContainerModel.DescribeTaskDefinitionRequest) async throws
      -> ElasticContainerModel.DescribeTaskDefinitionResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTaskDefinitionAsync(input: input) { result in
                     switch result {
@@ -500,7 +500,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeTaskSets(input: ElasticContainerModel.DescribeTaskSetsRequest) async throws
      -> ElasticContainerModel.DescribeTaskSetsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTaskSetsAsync(input: input) { result in
                     switch result {
@@ -527,7 +527,7 @@ public extension ElasticContainerClientProtocol {
      */
     func describeTasks(input: ElasticContainerModel.DescribeTasksRequest) async throws
      -> ElasticContainerModel.DescribeTasksResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTasksAsync(input: input) { result in
                     switch result {
@@ -554,7 +554,7 @@ public extension ElasticContainerClientProtocol {
      */
     func discoverPollEndpoint(input: ElasticContainerModel.DiscoverPollEndpointRequest) async throws
      -> ElasticContainerModel.DiscoverPollEndpointResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try discoverPollEndpointAsync(input: input) { result in
                     switch result {
@@ -581,7 +581,7 @@ public extension ElasticContainerClientProtocol {
      */
     func executeCommand(input: ElasticContainerModel.ExecuteCommandRequest) async throws
      -> ElasticContainerModel.ExecuteCommandResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try executeCommandAsync(input: input) { result in
                     switch result {
@@ -608,7 +608,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listAccountSettings(input: ElasticContainerModel.ListAccountSettingsRequest) async throws
      -> ElasticContainerModel.ListAccountSettingsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listAccountSettingsAsync(input: input) { result in
                     switch result {
@@ -635,7 +635,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listAttributes(input: ElasticContainerModel.ListAttributesRequest) async throws
      -> ElasticContainerModel.ListAttributesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listAttributesAsync(input: input) { result in
                     switch result {
@@ -662,7 +662,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listClusters(input: ElasticContainerModel.ListClustersRequest) async throws
      -> ElasticContainerModel.ListClustersResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listClustersAsync(input: input) { result in
                     switch result {
@@ -689,7 +689,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listContainerInstances(input: ElasticContainerModel.ListContainerInstancesRequest) async throws
      -> ElasticContainerModel.ListContainerInstancesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listContainerInstancesAsync(input: input) { result in
                     switch result {
@@ -716,7 +716,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listServices(input: ElasticContainerModel.ListServicesRequest) async throws
      -> ElasticContainerModel.ListServicesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listServicesAsync(input: input) { result in
                     switch result {
@@ -743,7 +743,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listTagsForResource(input: ElasticContainerModel.ListTagsForResourceRequest) async throws
      -> ElasticContainerModel.ListTagsForResourceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -770,7 +770,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listTaskDefinitionFamilies(input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) async throws
      -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTaskDefinitionFamiliesAsync(input: input) { result in
                     switch result {
@@ -797,7 +797,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listTaskDefinitions(input: ElasticContainerModel.ListTaskDefinitionsRequest) async throws
      -> ElasticContainerModel.ListTaskDefinitionsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTaskDefinitionsAsync(input: input) { result in
                     switch result {
@@ -824,7 +824,7 @@ public extension ElasticContainerClientProtocol {
      */
     func listTasks(input: ElasticContainerModel.ListTasksRequest) async throws
      -> ElasticContainerModel.ListTasksResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTasksAsync(input: input) { result in
                     switch result {
@@ -851,7 +851,7 @@ public extension ElasticContainerClientProtocol {
      */
     func putAccountSetting(input: ElasticContainerModel.PutAccountSettingRequest) async throws
      -> ElasticContainerModel.PutAccountSettingResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putAccountSettingAsync(input: input) { result in
                     switch result {
@@ -878,7 +878,7 @@ public extension ElasticContainerClientProtocol {
      */
     func putAccountSettingDefault(input: ElasticContainerModel.PutAccountSettingDefaultRequest) async throws
      -> ElasticContainerModel.PutAccountSettingDefaultResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putAccountSettingDefaultAsync(input: input) { result in
                     switch result {
@@ -905,7 +905,7 @@ public extension ElasticContainerClientProtocol {
      */
     func putAttributes(input: ElasticContainerModel.PutAttributesRequest) async throws
      -> ElasticContainerModel.PutAttributesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putAttributesAsync(input: input) { result in
                     switch result {
@@ -932,7 +932,7 @@ public extension ElasticContainerClientProtocol {
      */
     func putClusterCapacityProviders(input: ElasticContainerModel.PutClusterCapacityProvidersRequest) async throws
      -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putClusterCapacityProvidersAsync(input: input) { result in
                     switch result {
@@ -959,7 +959,7 @@ public extension ElasticContainerClientProtocol {
      */
     func registerContainerInstance(input: ElasticContainerModel.RegisterContainerInstanceRequest) async throws
      -> ElasticContainerModel.RegisterContainerInstanceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerContainerInstanceAsync(input: input) { result in
                     switch result {
@@ -986,7 +986,7 @@ public extension ElasticContainerClientProtocol {
      */
     func registerTaskDefinition(input: ElasticContainerModel.RegisterTaskDefinitionRequest) async throws
      -> ElasticContainerModel.RegisterTaskDefinitionResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerTaskDefinitionAsync(input: input) { result in
                     switch result {
@@ -1013,7 +1013,7 @@ public extension ElasticContainerClientProtocol {
      */
     func runTask(input: ElasticContainerModel.RunTaskRequest) async throws
      -> ElasticContainerModel.RunTaskResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try runTaskAsync(input: input) { result in
                     switch result {
@@ -1040,7 +1040,7 @@ public extension ElasticContainerClientProtocol {
      */
     func startTask(input: ElasticContainerModel.StartTaskRequest) async throws
      -> ElasticContainerModel.StartTaskResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startTaskAsync(input: input) { result in
                     switch result {
@@ -1067,7 +1067,7 @@ public extension ElasticContainerClientProtocol {
      */
     func stopTask(input: ElasticContainerModel.StopTaskRequest) async throws
      -> ElasticContainerModel.StopTaskResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopTaskAsync(input: input) { result in
                     switch result {
@@ -1094,7 +1094,7 @@ public extension ElasticContainerClientProtocol {
      */
     func submitAttachmentStateChanges(input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) async throws
      -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try submitAttachmentStateChangesAsync(input: input) { result in
                     switch result {
@@ -1121,7 +1121,7 @@ public extension ElasticContainerClientProtocol {
      */
     func submitContainerStateChange(input: ElasticContainerModel.SubmitContainerStateChangeRequest) async throws
      -> ElasticContainerModel.SubmitContainerStateChangeResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try submitContainerStateChangeAsync(input: input) { result in
                     switch result {
@@ -1148,7 +1148,7 @@ public extension ElasticContainerClientProtocol {
      */
     func submitTaskStateChange(input: ElasticContainerModel.SubmitTaskStateChangeRequest) async throws
      -> ElasticContainerModel.SubmitTaskStateChangeResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try submitTaskStateChangeAsync(input: input) { result in
                     switch result {
@@ -1175,7 +1175,7 @@ public extension ElasticContainerClientProtocol {
      */
     func tagResource(input: ElasticContainerModel.TagResourceRequest) async throws
      -> ElasticContainerModel.TagResourceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { result in
                     switch result {
@@ -1202,7 +1202,7 @@ public extension ElasticContainerClientProtocol {
      */
     func untagResource(input: ElasticContainerModel.UntagResourceRequest) async throws
      -> ElasticContainerModel.UntagResourceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { result in
                     switch result {
@@ -1229,7 +1229,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateCapacityProvider(input: ElasticContainerModel.UpdateCapacityProviderRequest) async throws
      -> ElasticContainerModel.UpdateCapacityProviderResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateCapacityProviderAsync(input: input) { result in
                     switch result {
@@ -1256,7 +1256,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateCluster(input: ElasticContainerModel.UpdateClusterRequest) async throws
      -> ElasticContainerModel.UpdateClusterResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateClusterAsync(input: input) { result in
                     switch result {
@@ -1283,7 +1283,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateClusterSettings(input: ElasticContainerModel.UpdateClusterSettingsRequest) async throws
      -> ElasticContainerModel.UpdateClusterSettingsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateClusterSettingsAsync(input: input) { result in
                     switch result {
@@ -1310,7 +1310,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateContainerAgent(input: ElasticContainerModel.UpdateContainerAgentRequest) async throws
      -> ElasticContainerModel.UpdateContainerAgentResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateContainerAgentAsync(input: input) { result in
                     switch result {
@@ -1337,7 +1337,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateContainerInstancesState(input: ElasticContainerModel.UpdateContainerInstancesStateRequest) async throws
      -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateContainerInstancesStateAsync(input: input) { result in
                     switch result {
@@ -1364,7 +1364,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateService(input: ElasticContainerModel.UpdateServiceRequest) async throws
      -> ElasticContainerModel.UpdateServiceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateServiceAsync(input: input) { result in
                     switch result {
@@ -1391,7 +1391,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateServicePrimaryTaskSet(input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) async throws
      -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateServicePrimaryTaskSetAsync(input: input) { result in
                     switch result {
@@ -1418,7 +1418,7 @@ public extension ElasticContainerClientProtocol {
      */
     func updateTaskSet(input: ElasticContainerModel.UpdateTaskSetRequest) async throws
      -> ElasticContainerModel.UpdateTaskSetResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateTaskSetAsync(input: input) { result in
                     switch result {

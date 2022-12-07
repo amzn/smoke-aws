@@ -41,7 +41,7 @@ public extension RDSDataClientProtocol {
      */
     func batchExecuteStatement(input: RDSDataModel.BatchExecuteStatementRequest) async throws
      -> RDSDataModel.BatchExecuteStatementResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchExecuteStatementAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension RDSDataClientProtocol {
      */
     func beginTransaction(input: RDSDataModel.BeginTransactionRequest) async throws
      -> RDSDataModel.BeginTransactionResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try beginTransactionAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension RDSDataClientProtocol {
      */
     func commitTransaction(input: RDSDataModel.CommitTransactionRequest) async throws
      -> RDSDataModel.CommitTransactionResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try commitTransactionAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension RDSDataClientProtocol {
      */
     func executeSql(input: RDSDataModel.ExecuteSqlRequest) async throws
      -> RDSDataModel.ExecuteSqlResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try executeSqlAsync(input: input) { result in
                     switch result {
@@ -149,7 +149,7 @@ public extension RDSDataClientProtocol {
      */
     func executeStatement(input: RDSDataModel.ExecuteStatementRequest) async throws
      -> RDSDataModel.ExecuteStatementResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try executeStatementAsync(input: input) { result in
                     switch result {
@@ -176,7 +176,7 @@ public extension RDSDataClientProtocol {
      */
     func rollbackTransaction(input: RDSDataModel.RollbackTransactionRequest) async throws
      -> RDSDataModel.RollbackTransactionResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rollbackTransactionAsync(input: input) { result in
                     switch result {

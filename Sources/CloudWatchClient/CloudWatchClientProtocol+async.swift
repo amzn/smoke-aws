@@ -38,7 +38,7 @@ public extension CloudWatchClientProtocol {
      - Throws: resourceNotFound.
      */
     func deleteAlarms(input: CloudWatchModel.DeleteAlarmsInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteAlarmsAsync(input: input) { error in
                     if let error = error {
@@ -64,7 +64,7 @@ public extension CloudWatchClientProtocol {
      */
     func deleteAnomalyDetector(input: CloudWatchModel.DeleteAnomalyDetectorInput) async throws
      -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteAnomalyDetectorAsync(input: input) { result in
                     switch result {
@@ -91,7 +91,7 @@ public extension CloudWatchClientProtocol {
      */
     func deleteDashboards(input: CloudWatchModel.DeleteDashboardsInput) async throws
      -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDashboardsAsync(input: input) { result in
                     switch result {
@@ -118,7 +118,7 @@ public extension CloudWatchClientProtocol {
      */
     func deleteInsightRules(input: CloudWatchModel.DeleteInsightRulesInput) async throws
      -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteInsightRulesAsync(input: input) { result in
                     switch result {
@@ -145,7 +145,7 @@ public extension CloudWatchClientProtocol {
      */
     func deleteMetricStream(input: CloudWatchModel.DeleteMetricStreamInput) async throws
      -> CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteMetricStreamAsync(input: input) { result in
                     switch result {
@@ -172,7 +172,7 @@ public extension CloudWatchClientProtocol {
      */
     func describeAlarmHistory(input: CloudWatchModel.DescribeAlarmHistoryInput) async throws
      -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAlarmHistoryAsync(input: input) { result in
                     switch result {
@@ -199,7 +199,7 @@ public extension CloudWatchClientProtocol {
      */
     func describeAlarms(input: CloudWatchModel.DescribeAlarmsInput) async throws
      -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAlarmsAsync(input: input) { result in
                     switch result {
@@ -225,7 +225,7 @@ public extension CloudWatchClientProtocol {
      */
     func describeAlarmsForMetric(input: CloudWatchModel.DescribeAlarmsForMetricInput) async throws
      -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAlarmsForMetricAsync(input: input) { result in
                     switch result {
@@ -252,7 +252,7 @@ public extension CloudWatchClientProtocol {
      */
     func describeAnomalyDetectors(input: CloudWatchModel.DescribeAnomalyDetectorsInput) async throws
      -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAnomalyDetectorsAsync(input: input) { result in
                     switch result {
@@ -279,7 +279,7 @@ public extension CloudWatchClientProtocol {
      */
     func describeInsightRules(input: CloudWatchModel.DescribeInsightRulesInput) async throws
      -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInsightRulesAsync(input: input) { result in
                     switch result {
@@ -302,7 +302,7 @@ public extension CloudWatchClientProtocol {
          - input: The validated DisableAlarmActionsInput object being passed to this operation.
      */
     func disableAlarmActions(input: CloudWatchModel.DisableAlarmActionsInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableAlarmActionsAsync(input: input) { error in
                     if let error = error {
@@ -328,7 +328,7 @@ public extension CloudWatchClientProtocol {
      */
     func disableInsightRules(input: CloudWatchModel.DisableInsightRulesInput) async throws
      -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableInsightRulesAsync(input: input) { result in
                     switch result {
@@ -351,7 +351,7 @@ public extension CloudWatchClientProtocol {
          - input: The validated EnableAlarmActionsInput object being passed to this operation.
      */
     func enableAlarmActions(input: CloudWatchModel.EnableAlarmActionsInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableAlarmActionsAsync(input: input) { error in
                     if let error = error {
@@ -377,7 +377,7 @@ public extension CloudWatchClientProtocol {
      */
     func enableInsightRules(input: CloudWatchModel.EnableInsightRulesInput) async throws
      -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableInsightRulesAsync(input: input) { result in
                     switch result {
@@ -404,7 +404,7 @@ public extension CloudWatchClientProtocol {
      */
     func getDashboard(input: CloudWatchModel.GetDashboardInput) async throws
      -> CloudWatchModel.GetDashboardOutputForGetDashboard {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getDashboardAsync(input: input) { result in
                     switch result {
@@ -431,7 +431,7 @@ public extension CloudWatchClientProtocol {
      */
     func getInsightRuleReport(input: CloudWatchModel.GetInsightRuleReportInput) async throws
      -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getInsightRuleReportAsync(input: input) { result in
                     switch result {
@@ -458,7 +458,7 @@ public extension CloudWatchClientProtocol {
      */
     func getMetricData(input: CloudWatchModel.GetMetricDataInput) async throws
      -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getMetricDataAsync(input: input) { result in
                     switch result {
@@ -485,7 +485,7 @@ public extension CloudWatchClientProtocol {
      */
     func getMetricStatistics(input: CloudWatchModel.GetMetricStatisticsInput) async throws
      -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getMetricStatisticsAsync(input: input) { result in
                     switch result {
@@ -512,7 +512,7 @@ public extension CloudWatchClientProtocol {
      */
     func getMetricStream(input: CloudWatchModel.GetMetricStreamInput) async throws
      -> CloudWatchModel.GetMetricStreamOutputForGetMetricStream {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getMetricStreamAsync(input: input) { result in
                     switch result {
@@ -538,7 +538,7 @@ public extension CloudWatchClientProtocol {
      */
     func getMetricWidgetImage(input: CloudWatchModel.GetMetricWidgetImageInput) async throws
      -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getMetricWidgetImageAsync(input: input) { result in
                     switch result {
@@ -565,7 +565,7 @@ public extension CloudWatchClientProtocol {
      */
     func listDashboards(input: CloudWatchModel.ListDashboardsInput) async throws
      -> CloudWatchModel.ListDashboardsOutputForListDashboards {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listDashboardsAsync(input: input) { result in
                     switch result {
@@ -592,7 +592,7 @@ public extension CloudWatchClientProtocol {
      */
     func listManagedInsightRules(input: CloudWatchModel.ListManagedInsightRulesInput) async throws
      -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listManagedInsightRulesAsync(input: input) { result in
                     switch result {
@@ -619,7 +619,7 @@ public extension CloudWatchClientProtocol {
      */
     func listMetricStreams(input: CloudWatchModel.ListMetricStreamsInput) async throws
      -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listMetricStreamsAsync(input: input) { result in
                     switch result {
@@ -646,7 +646,7 @@ public extension CloudWatchClientProtocol {
      */
     func listMetrics(input: CloudWatchModel.ListMetricsInput) async throws
      -> CloudWatchModel.ListMetricsOutputForListMetrics {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listMetricsAsync(input: input) { result in
                     switch result {
@@ -673,7 +673,7 @@ public extension CloudWatchClientProtocol {
      */
     func listTagsForResource(input: CloudWatchModel.ListTagsForResourceInput) async throws
      -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -700,7 +700,7 @@ public extension CloudWatchClientProtocol {
      */
     func putAnomalyDetector(input: CloudWatchModel.PutAnomalyDetectorInput) async throws
      -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putAnomalyDetectorAsync(input: input) { result in
                     switch result {
@@ -724,7 +724,7 @@ public extension CloudWatchClientProtocol {
      - Throws: limitExceeded.
      */
     func putCompositeAlarm(input: CloudWatchModel.PutCompositeAlarmInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putCompositeAlarmAsync(input: input) { error in
                     if let error = error {
@@ -750,7 +750,7 @@ public extension CloudWatchClientProtocol {
      */
     func putDashboard(input: CloudWatchModel.PutDashboardInput) async throws
      -> CloudWatchModel.PutDashboardOutputForPutDashboard {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putDashboardAsync(input: input) { result in
                     switch result {
@@ -777,7 +777,7 @@ public extension CloudWatchClientProtocol {
      */
     func putInsightRule(input: CloudWatchModel.PutInsightRuleInput) async throws
      -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putInsightRuleAsync(input: input) { result in
                     switch result {
@@ -804,7 +804,7 @@ public extension CloudWatchClientProtocol {
      */
     func putManagedInsightRules(input: CloudWatchModel.PutManagedInsightRulesInput) async throws
      -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putManagedInsightRulesAsync(input: input) { result in
                     switch result {
@@ -828,7 +828,7 @@ public extension CloudWatchClientProtocol {
      - Throws: limitExceeded.
      */
     func putMetricAlarm(input: CloudWatchModel.PutMetricAlarmInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putMetricAlarmAsync(input: input) { error in
                     if let error = error {
@@ -851,7 +851,7 @@ public extension CloudWatchClientProtocol {
      - Throws: internalService, invalidParameterCombination, invalidParameterValue, missingRequiredParameter.
      */
     func putMetricData(input: CloudWatchModel.PutMetricDataInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putMetricDataAsync(input: input) { error in
                     if let error = error {
@@ -877,7 +877,7 @@ public extension CloudWatchClientProtocol {
      */
     func putMetricStream(input: CloudWatchModel.PutMetricStreamInput) async throws
      -> CloudWatchModel.PutMetricStreamOutputForPutMetricStream {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putMetricStreamAsync(input: input) { result in
                     switch result {
@@ -901,7 +901,7 @@ public extension CloudWatchClientProtocol {
      - Throws: invalidFormat, resourceNotFound.
      */
     func setAlarmState(input: CloudWatchModel.SetAlarmStateInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setAlarmStateAsync(input: input) { error in
                     if let error = error {
@@ -927,7 +927,7 @@ public extension CloudWatchClientProtocol {
      */
     func startMetricStreams(input: CloudWatchModel.StartMetricStreamsInput) async throws
      -> CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startMetricStreamsAsync(input: input) { result in
                     switch result {
@@ -954,7 +954,7 @@ public extension CloudWatchClientProtocol {
      */
     func stopMetricStreams(input: CloudWatchModel.StopMetricStreamsInput) async throws
      -> CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopMetricStreamsAsync(input: input) { result in
                     switch result {
@@ -981,7 +981,7 @@ public extension CloudWatchClientProtocol {
      */
     func tagResource(input: CloudWatchModel.TagResourceInput) async throws
      -> CloudWatchModel.TagResourceOutputForTagResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { result in
                     switch result {
@@ -1008,7 +1008,7 @@ public extension CloudWatchClientProtocol {
      */
     func untagResource(input: CloudWatchModel.UntagResourceInput) async throws
      -> CloudWatchModel.UntagResourceOutputForUntagResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { result in
                     switch result {

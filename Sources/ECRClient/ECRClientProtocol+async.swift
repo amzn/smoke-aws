@@ -41,7 +41,7 @@ public extension ECRClientProtocol {
      */
     func batchCheckLayerAvailability(input: ECRModel.BatchCheckLayerAvailabilityRequest) async throws
      -> ECRModel.BatchCheckLayerAvailabilityResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchCheckLayerAvailabilityAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension ECRClientProtocol {
      */
     func batchDeleteImage(input: ECRModel.BatchDeleteImageRequest) async throws
      -> ECRModel.BatchDeleteImageResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchDeleteImageAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension ECRClientProtocol {
      */
     func batchGetImage(input: ECRModel.BatchGetImageRequest) async throws
      -> ECRModel.BatchGetImageResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchGetImageAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension ECRClientProtocol {
      */
     func batchGetRepositoryScanningConfiguration(input: ECRModel.BatchGetRepositoryScanningConfigurationRequest) async throws
      -> ECRModel.BatchGetRepositoryScanningConfigurationResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchGetRepositoryScanningConfigurationAsync(input: input) { result in
                     switch result {
@@ -149,7 +149,7 @@ public extension ECRClientProtocol {
      */
     func completeLayerUpload(input: ECRModel.CompleteLayerUploadRequest) async throws
      -> ECRModel.CompleteLayerUploadResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try completeLayerUploadAsync(input: input) { result in
                     switch result {
@@ -176,7 +176,7 @@ public extension ECRClientProtocol {
      */
     func createPullThroughCacheRule(input: ECRModel.CreatePullThroughCacheRuleRequest) async throws
      -> ECRModel.CreatePullThroughCacheRuleResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createPullThroughCacheRuleAsync(input: input) { result in
                     switch result {
@@ -203,7 +203,7 @@ public extension ECRClientProtocol {
      */
     func createRepository(input: ECRModel.CreateRepositoryRequest) async throws
      -> ECRModel.CreateRepositoryResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createRepositoryAsync(input: input) { result in
                     switch result {
@@ -230,7 +230,7 @@ public extension ECRClientProtocol {
      */
     func deleteLifecyclePolicy(input: ECRModel.DeleteLifecyclePolicyRequest) async throws
      -> ECRModel.DeleteLifecyclePolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLifecyclePolicyAsync(input: input) { result in
                     switch result {
@@ -257,7 +257,7 @@ public extension ECRClientProtocol {
      */
     func deletePullThroughCacheRule(input: ECRModel.DeletePullThroughCacheRuleRequest) async throws
      -> ECRModel.DeletePullThroughCacheRuleResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deletePullThroughCacheRuleAsync(input: input) { result in
                     switch result {
@@ -284,7 +284,7 @@ public extension ECRClientProtocol {
      */
     func deleteRegistryPolicy(input: ECRModel.DeleteRegistryPolicyRequest) async throws
      -> ECRModel.DeleteRegistryPolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteRegistryPolicyAsync(input: input) { result in
                     switch result {
@@ -311,7 +311,7 @@ public extension ECRClientProtocol {
      */
     func deleteRepository(input: ECRModel.DeleteRepositoryRequest) async throws
      -> ECRModel.DeleteRepositoryResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteRepositoryAsync(input: input) { result in
                     switch result {
@@ -338,7 +338,7 @@ public extension ECRClientProtocol {
      */
     func deleteRepositoryPolicy(input: ECRModel.DeleteRepositoryPolicyRequest) async throws
      -> ECRModel.DeleteRepositoryPolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteRepositoryPolicyAsync(input: input) { result in
                     switch result {
@@ -365,7 +365,7 @@ public extension ECRClientProtocol {
      */
     func describeImageReplicationStatus(input: ECRModel.DescribeImageReplicationStatusRequest) async throws
      -> ECRModel.DescribeImageReplicationStatusResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImageReplicationStatusAsync(input: input) { result in
                     switch result {
@@ -392,7 +392,7 @@ public extension ECRClientProtocol {
      */
     func describeImageScanFindings(input: ECRModel.DescribeImageScanFindingsRequest) async throws
      -> ECRModel.DescribeImageScanFindingsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImageScanFindingsAsync(input: input) { result in
                     switch result {
@@ -419,7 +419,7 @@ public extension ECRClientProtocol {
      */
     func describeImages(input: ECRModel.DescribeImagesRequest) async throws
      -> ECRModel.DescribeImagesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImagesAsync(input: input) { result in
                     switch result {
@@ -446,7 +446,7 @@ public extension ECRClientProtocol {
      */
     func describePullThroughCacheRules(input: ECRModel.DescribePullThroughCacheRulesRequest) async throws
      -> ECRModel.DescribePullThroughCacheRulesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePullThroughCacheRulesAsync(input: input) { result in
                     switch result {
@@ -473,7 +473,7 @@ public extension ECRClientProtocol {
      */
     func describeRegistry(input: ECRModel.DescribeRegistryRequest) async throws
      -> ECRModel.DescribeRegistryResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeRegistryAsync(input: input) { result in
                     switch result {
@@ -500,7 +500,7 @@ public extension ECRClientProtocol {
      */
     func describeRepositories(input: ECRModel.DescribeRepositoriesRequest) async throws
      -> ECRModel.DescribeRepositoriesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeRepositoriesAsync(input: input) { result in
                     switch result {
@@ -527,7 +527,7 @@ public extension ECRClientProtocol {
      */
     func getAuthorizationToken(input: ECRModel.GetAuthorizationTokenRequest) async throws
      -> ECRModel.GetAuthorizationTokenResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getAuthorizationTokenAsync(input: input) { result in
                     switch result {
@@ -554,7 +554,7 @@ public extension ECRClientProtocol {
      */
     func getDownloadUrlForLayer(input: ECRModel.GetDownloadUrlForLayerRequest) async throws
      -> ECRModel.GetDownloadUrlForLayerResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getDownloadUrlForLayerAsync(input: input) { result in
                     switch result {
@@ -581,7 +581,7 @@ public extension ECRClientProtocol {
      */
     func getLifecyclePolicy(input: ECRModel.GetLifecyclePolicyRequest) async throws
      -> ECRModel.GetLifecyclePolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getLifecyclePolicyAsync(input: input) { result in
                     switch result {
@@ -608,7 +608,7 @@ public extension ECRClientProtocol {
      */
     func getLifecyclePolicyPreview(input: ECRModel.GetLifecyclePolicyPreviewRequest) async throws
      -> ECRModel.GetLifecyclePolicyPreviewResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getLifecyclePolicyPreviewAsync(input: input) { result in
                     switch result {
@@ -635,7 +635,7 @@ public extension ECRClientProtocol {
      */
     func getRegistryPolicy(input: ECRModel.GetRegistryPolicyRequest) async throws
      -> ECRModel.GetRegistryPolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getRegistryPolicyAsync(input: input) { result in
                     switch result {
@@ -662,7 +662,7 @@ public extension ECRClientProtocol {
      */
     func getRegistryScanningConfiguration(input: ECRModel.GetRegistryScanningConfigurationRequest) async throws
      -> ECRModel.GetRegistryScanningConfigurationResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getRegistryScanningConfigurationAsync(input: input) { result in
                     switch result {
@@ -689,7 +689,7 @@ public extension ECRClientProtocol {
      */
     func getRepositoryPolicy(input: ECRModel.GetRepositoryPolicyRequest) async throws
      -> ECRModel.GetRepositoryPolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getRepositoryPolicyAsync(input: input) { result in
                     switch result {
@@ -716,7 +716,7 @@ public extension ECRClientProtocol {
      */
     func initiateLayerUpload(input: ECRModel.InitiateLayerUploadRequest) async throws
      -> ECRModel.InitiateLayerUploadResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try initiateLayerUploadAsync(input: input) { result in
                     switch result {
@@ -743,7 +743,7 @@ public extension ECRClientProtocol {
      */
     func listImages(input: ECRModel.ListImagesRequest) async throws
      -> ECRModel.ListImagesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listImagesAsync(input: input) { result in
                     switch result {
@@ -770,7 +770,7 @@ public extension ECRClientProtocol {
      */
     func listTagsForResource(input: ECRModel.ListTagsForResourceRequest) async throws
      -> ECRModel.ListTagsForResourceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -797,7 +797,7 @@ public extension ECRClientProtocol {
      */
     func putImage(input: ECRModel.PutImageRequest) async throws
      -> ECRModel.PutImageResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putImageAsync(input: input) { result in
                     switch result {
@@ -824,7 +824,7 @@ public extension ECRClientProtocol {
      */
     func putImageScanningConfiguration(input: ECRModel.PutImageScanningConfigurationRequest) async throws
      -> ECRModel.PutImageScanningConfigurationResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putImageScanningConfigurationAsync(input: input) { result in
                     switch result {
@@ -851,7 +851,7 @@ public extension ECRClientProtocol {
      */
     func putImageTagMutability(input: ECRModel.PutImageTagMutabilityRequest) async throws
      -> ECRModel.PutImageTagMutabilityResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putImageTagMutabilityAsync(input: input) { result in
                     switch result {
@@ -878,7 +878,7 @@ public extension ECRClientProtocol {
      */
     func putLifecyclePolicy(input: ECRModel.PutLifecyclePolicyRequest) async throws
      -> ECRModel.PutLifecyclePolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putLifecyclePolicyAsync(input: input) { result in
                     switch result {
@@ -905,7 +905,7 @@ public extension ECRClientProtocol {
      */
     func putRegistryPolicy(input: ECRModel.PutRegistryPolicyRequest) async throws
      -> ECRModel.PutRegistryPolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putRegistryPolicyAsync(input: input) { result in
                     switch result {
@@ -932,7 +932,7 @@ public extension ECRClientProtocol {
      */
     func putRegistryScanningConfiguration(input: ECRModel.PutRegistryScanningConfigurationRequest) async throws
      -> ECRModel.PutRegistryScanningConfigurationResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putRegistryScanningConfigurationAsync(input: input) { result in
                     switch result {
@@ -959,7 +959,7 @@ public extension ECRClientProtocol {
      */
     func putReplicationConfiguration(input: ECRModel.PutReplicationConfigurationRequest) async throws
      -> ECRModel.PutReplicationConfigurationResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putReplicationConfigurationAsync(input: input) { result in
                     switch result {
@@ -986,7 +986,7 @@ public extension ECRClientProtocol {
      */
     func setRepositoryPolicy(input: ECRModel.SetRepositoryPolicyRequest) async throws
      -> ECRModel.SetRepositoryPolicyResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setRepositoryPolicyAsync(input: input) { result in
                     switch result {
@@ -1013,7 +1013,7 @@ public extension ECRClientProtocol {
      */
     func startImageScan(input: ECRModel.StartImageScanRequest) async throws
      -> ECRModel.StartImageScanResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startImageScanAsync(input: input) { result in
                     switch result {
@@ -1040,7 +1040,7 @@ public extension ECRClientProtocol {
      */
     func startLifecyclePolicyPreview(input: ECRModel.StartLifecyclePolicyPreviewRequest) async throws
      -> ECRModel.StartLifecyclePolicyPreviewResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startLifecyclePolicyPreviewAsync(input: input) { result in
                     switch result {
@@ -1067,7 +1067,7 @@ public extension ECRClientProtocol {
      */
     func tagResource(input: ECRModel.TagResourceRequest) async throws
      -> ECRModel.TagResourceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { result in
                     switch result {
@@ -1094,7 +1094,7 @@ public extension ECRClientProtocol {
      */
     func untagResource(input: ECRModel.UntagResourceRequest) async throws
      -> ECRModel.UntagResourceResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { result in
                     switch result {
@@ -1121,7 +1121,7 @@ public extension ECRClientProtocol {
      */
     func uploadLayerPart(input: ECRModel.UploadLayerPartRequest) async throws
      -> ECRModel.UploadLayerPartResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try uploadLayerPartAsync(input: input) { result in
                     switch result {

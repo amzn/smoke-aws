@@ -41,7 +41,7 @@ public extension CodePipelineClientProtocol {
      */
     func acknowledgeJob(input: CodePipelineModel.AcknowledgeJobInput) async throws
      -> CodePipelineModel.AcknowledgeJobOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acknowledgeJobAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension CodePipelineClientProtocol {
      */
     func acknowledgeThirdPartyJob(input: CodePipelineModel.AcknowledgeThirdPartyJobInput) async throws
      -> CodePipelineModel.AcknowledgeThirdPartyJobOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acknowledgeThirdPartyJobAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension CodePipelineClientProtocol {
      */
     func createCustomActionType(input: CodePipelineModel.CreateCustomActionTypeInput) async throws
      -> CodePipelineModel.CreateCustomActionTypeOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCustomActionTypeAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension CodePipelineClientProtocol {
      */
     func createPipeline(input: CodePipelineModel.CreatePipelineInput) async throws
      -> CodePipelineModel.CreatePipelineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createPipelineAsync(input: input) { result in
                     switch result {
@@ -146,7 +146,7 @@ public extension CodePipelineClientProtocol {
      - Throws: concurrentModification, validation.
      */
     func deleteCustomActionType(input: CodePipelineModel.DeleteCustomActionTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCustomActionTypeAsync(input: input) { error in
                     if let error = error {
@@ -169,7 +169,7 @@ public extension CodePipelineClientProtocol {
      - Throws: concurrentModification, validation.
      */
     func deletePipeline(input: CodePipelineModel.DeletePipelineInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deletePipelineAsync(input: input) { error in
                     if let error = error {
@@ -195,7 +195,7 @@ public extension CodePipelineClientProtocol {
      */
     func deleteWebhook(input: CodePipelineModel.DeleteWebhookInput) async throws
      -> CodePipelineModel.DeleteWebhookOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteWebhookAsync(input: input) { result in
                     switch result {
@@ -222,7 +222,7 @@ public extension CodePipelineClientProtocol {
      */
     func deregisterWebhookWithThirdParty(input: CodePipelineModel.DeregisterWebhookWithThirdPartyInput) async throws
      -> CodePipelineModel.DeregisterWebhookWithThirdPartyOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterWebhookWithThirdPartyAsync(input: input) { result in
                     switch result {
@@ -246,7 +246,7 @@ public extension CodePipelineClientProtocol {
      - Throws: pipelineNotFound, stageNotFound, validation.
      */
     func disableStageTransition(input: CodePipelineModel.DisableStageTransitionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableStageTransitionAsync(input: input) { error in
                     if let error = error {
@@ -269,7 +269,7 @@ public extension CodePipelineClientProtocol {
      - Throws: pipelineNotFound, stageNotFound, validation.
      */
     func enableStageTransition(input: CodePipelineModel.EnableStageTransitionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableStageTransitionAsync(input: input) { error in
                     if let error = error {
@@ -295,7 +295,7 @@ public extension CodePipelineClientProtocol {
      */
     func getActionType(input: CodePipelineModel.GetActionTypeInput) async throws
      -> CodePipelineModel.GetActionTypeOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getActionTypeAsync(input: input) { result in
                     switch result {
@@ -322,7 +322,7 @@ public extension CodePipelineClientProtocol {
      */
     func getJobDetails(input: CodePipelineModel.GetJobDetailsInput) async throws
      -> CodePipelineModel.GetJobDetailsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getJobDetailsAsync(input: input) { result in
                     switch result {
@@ -349,7 +349,7 @@ public extension CodePipelineClientProtocol {
      */
     func getPipeline(input: CodePipelineModel.GetPipelineInput) async throws
      -> CodePipelineModel.GetPipelineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getPipelineAsync(input: input) { result in
                     switch result {
@@ -376,7 +376,7 @@ public extension CodePipelineClientProtocol {
      */
     func getPipelineExecution(input: CodePipelineModel.GetPipelineExecutionInput) async throws
      -> CodePipelineModel.GetPipelineExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getPipelineExecutionAsync(input: input) { result in
                     switch result {
@@ -403,7 +403,7 @@ public extension CodePipelineClientProtocol {
      */
     func getPipelineState(input: CodePipelineModel.GetPipelineStateInput) async throws
      -> CodePipelineModel.GetPipelineStateOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getPipelineStateAsync(input: input) { result in
                     switch result {
@@ -430,7 +430,7 @@ public extension CodePipelineClientProtocol {
      */
     func getThirdPartyJobDetails(input: CodePipelineModel.GetThirdPartyJobDetailsInput) async throws
      -> CodePipelineModel.GetThirdPartyJobDetailsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getThirdPartyJobDetailsAsync(input: input) { result in
                     switch result {
@@ -457,7 +457,7 @@ public extension CodePipelineClientProtocol {
      */
     func listActionExecutions(input: CodePipelineModel.ListActionExecutionsInput) async throws
      -> CodePipelineModel.ListActionExecutionsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listActionExecutionsAsync(input: input) { result in
                     switch result {
@@ -484,7 +484,7 @@ public extension CodePipelineClientProtocol {
      */
     func listActionTypes(input: CodePipelineModel.ListActionTypesInput) async throws
      -> CodePipelineModel.ListActionTypesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listActionTypesAsync(input: input) { result in
                     switch result {
@@ -511,7 +511,7 @@ public extension CodePipelineClientProtocol {
      */
     func listPipelineExecutions(input: CodePipelineModel.ListPipelineExecutionsInput) async throws
      -> CodePipelineModel.ListPipelineExecutionsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listPipelineExecutionsAsync(input: input) { result in
                     switch result {
@@ -538,7 +538,7 @@ public extension CodePipelineClientProtocol {
      */
     func listPipelines(input: CodePipelineModel.ListPipelinesInput) async throws
      -> CodePipelineModel.ListPipelinesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listPipelinesAsync(input: input) { result in
                     switch result {
@@ -565,7 +565,7 @@ public extension CodePipelineClientProtocol {
      */
     func listTagsForResource(input: CodePipelineModel.ListTagsForResourceInput) async throws
      -> CodePipelineModel.ListTagsForResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -592,7 +592,7 @@ public extension CodePipelineClientProtocol {
      */
     func listWebhooks(input: CodePipelineModel.ListWebhooksInput) async throws
      -> CodePipelineModel.ListWebhooksOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listWebhooksAsync(input: input) { result in
                     switch result {
@@ -619,7 +619,7 @@ public extension CodePipelineClientProtocol {
      */
     func pollForJobs(input: CodePipelineModel.PollForJobsInput) async throws
      -> CodePipelineModel.PollForJobsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try pollForJobsAsync(input: input) { result in
                     switch result {
@@ -646,7 +646,7 @@ public extension CodePipelineClientProtocol {
      */
     func pollForThirdPartyJobs(input: CodePipelineModel.PollForThirdPartyJobsInput) async throws
      -> CodePipelineModel.PollForThirdPartyJobsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try pollForThirdPartyJobsAsync(input: input) { result in
                     switch result {
@@ -673,7 +673,7 @@ public extension CodePipelineClientProtocol {
      */
     func putActionRevision(input: CodePipelineModel.PutActionRevisionInput) async throws
      -> CodePipelineModel.PutActionRevisionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putActionRevisionAsync(input: input) { result in
                     switch result {
@@ -700,7 +700,7 @@ public extension CodePipelineClientProtocol {
      */
     func putApprovalResult(input: CodePipelineModel.PutApprovalResultInput) async throws
      -> CodePipelineModel.PutApprovalResultOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putApprovalResultAsync(input: input) { result in
                     switch result {
@@ -724,7 +724,7 @@ public extension CodePipelineClientProtocol {
      - Throws: invalidJobState, jobNotFound, validation.
      */
     func putJobFailureResult(input: CodePipelineModel.PutJobFailureResultInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putJobFailureResultAsync(input: input) { error in
                     if let error = error {
@@ -747,7 +747,7 @@ public extension CodePipelineClientProtocol {
      - Throws: invalidJobState, jobNotFound, outputVariablesSizeExceeded, validation.
      */
     func putJobSuccessResult(input: CodePipelineModel.PutJobSuccessResultInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putJobSuccessResultAsync(input: input) { error in
                     if let error = error {
@@ -770,7 +770,7 @@ public extension CodePipelineClientProtocol {
      - Throws: invalidClientToken, invalidJobState, jobNotFound, validation.
      */
     func putThirdPartyJobFailureResult(input: CodePipelineModel.PutThirdPartyJobFailureResultInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putThirdPartyJobFailureResultAsync(input: input) { error in
                     if let error = error {
@@ -793,7 +793,7 @@ public extension CodePipelineClientProtocol {
      - Throws: invalidClientToken, invalidJobState, jobNotFound, validation.
      */
     func putThirdPartyJobSuccessResult(input: CodePipelineModel.PutThirdPartyJobSuccessResultInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putThirdPartyJobSuccessResultAsync(input: input) { error in
                     if let error = error {
@@ -819,7 +819,7 @@ public extension CodePipelineClientProtocol {
      */
     func putWebhook(input: CodePipelineModel.PutWebhookInput) async throws
      -> CodePipelineModel.PutWebhookOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putWebhookAsync(input: input) { result in
                     switch result {
@@ -846,7 +846,7 @@ public extension CodePipelineClientProtocol {
      */
     func registerWebhookWithThirdParty(input: CodePipelineModel.RegisterWebhookWithThirdPartyInput) async throws
      -> CodePipelineModel.RegisterWebhookWithThirdPartyOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerWebhookWithThirdPartyAsync(input: input) { result in
                     switch result {
@@ -873,7 +873,7 @@ public extension CodePipelineClientProtocol {
      */
     func retryStageExecution(input: CodePipelineModel.RetryStageExecutionInput) async throws
      -> CodePipelineModel.RetryStageExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try retryStageExecutionAsync(input: input) { result in
                     switch result {
@@ -900,7 +900,7 @@ public extension CodePipelineClientProtocol {
      */
     func startPipelineExecution(input: CodePipelineModel.StartPipelineExecutionInput) async throws
      -> CodePipelineModel.StartPipelineExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startPipelineExecutionAsync(input: input) { result in
                     switch result {
@@ -927,7 +927,7 @@ public extension CodePipelineClientProtocol {
      */
     func stopPipelineExecution(input: CodePipelineModel.StopPipelineExecutionInput) async throws
      -> CodePipelineModel.StopPipelineExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopPipelineExecutionAsync(input: input) { result in
                     switch result {
@@ -954,7 +954,7 @@ public extension CodePipelineClientProtocol {
      */
     func tagResource(input: CodePipelineModel.TagResourceInput) async throws
      -> CodePipelineModel.TagResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { result in
                     switch result {
@@ -981,7 +981,7 @@ public extension CodePipelineClientProtocol {
      */
     func untagResource(input: CodePipelineModel.UntagResourceInput) async throws
      -> CodePipelineModel.UntagResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { result in
                     switch result {
@@ -1005,7 +1005,7 @@ public extension CodePipelineClientProtocol {
      - Throws: actionTypeNotFound, requestFailed, validation.
      */
     func updateActionType(input: CodePipelineModel.UpdateActionTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateActionTypeAsync(input: input) { error in
                     if let error = error {
@@ -1031,7 +1031,7 @@ public extension CodePipelineClientProtocol {
      */
     func updatePipeline(input: CodePipelineModel.UpdatePipelineInput) async throws
      -> CodePipelineModel.UpdatePipelineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updatePipelineAsync(input: input) { result in
                     switch result {
