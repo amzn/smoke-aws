@@ -41,7 +41,7 @@ public extension StepFunctionsClientProtocol {
      */
     func createActivity(input: StepFunctionsModel.CreateActivityInput) async throws
      -> StepFunctionsModel.CreateActivityOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createActivityAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension StepFunctionsClientProtocol {
      */
     func createStateMachine(input: StepFunctionsModel.CreateStateMachineInput) async throws
      -> StepFunctionsModel.CreateStateMachineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStateMachineAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension StepFunctionsClientProtocol {
      */
     func deleteActivity(input: StepFunctionsModel.DeleteActivityInput) async throws
      -> StepFunctionsModel.DeleteActivityOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteActivityAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension StepFunctionsClientProtocol {
      */
     func deleteStateMachine(input: StepFunctionsModel.DeleteStateMachineInput) async throws
      -> StepFunctionsModel.DeleteStateMachineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteStateMachineAsync(input: input) { result in
                     switch result {
@@ -149,7 +149,7 @@ public extension StepFunctionsClientProtocol {
      */
     func describeActivity(input: StepFunctionsModel.DescribeActivityInput) async throws
      -> StepFunctionsModel.DescribeActivityOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeActivityAsync(input: input) { result in
                     switch result {
@@ -176,7 +176,7 @@ public extension StepFunctionsClientProtocol {
      */
     func describeExecution(input: StepFunctionsModel.DescribeExecutionInput) async throws
      -> StepFunctionsModel.DescribeExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeExecutionAsync(input: input) { result in
                     switch result {
@@ -203,7 +203,7 @@ public extension StepFunctionsClientProtocol {
      */
     func describeStateMachine(input: StepFunctionsModel.DescribeStateMachineInput) async throws
      -> StepFunctionsModel.DescribeStateMachineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStateMachineAsync(input: input) { result in
                     switch result {
@@ -230,7 +230,7 @@ public extension StepFunctionsClientProtocol {
      */
     func describeStateMachineForExecution(input: StepFunctionsModel.DescribeStateMachineForExecutionInput) async throws
      -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStateMachineForExecutionAsync(input: input) { result in
                     switch result {
@@ -257,7 +257,7 @@ public extension StepFunctionsClientProtocol {
      */
     func getActivityTask(input: StepFunctionsModel.GetActivityTaskInput) async throws
      -> StepFunctionsModel.GetActivityTaskOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getActivityTaskAsync(input: input) { result in
                     switch result {
@@ -284,7 +284,7 @@ public extension StepFunctionsClientProtocol {
      */
     func getExecutionHistory(input: StepFunctionsModel.GetExecutionHistoryInput) async throws
      -> StepFunctionsModel.GetExecutionHistoryOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getExecutionHistoryAsync(input: input) { result in
                     switch result {
@@ -311,7 +311,7 @@ public extension StepFunctionsClientProtocol {
      */
     func listActivities(input: StepFunctionsModel.ListActivitiesInput) async throws
      -> StepFunctionsModel.ListActivitiesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listActivitiesAsync(input: input) { result in
                     switch result {
@@ -338,7 +338,7 @@ public extension StepFunctionsClientProtocol {
      */
     func listExecutions(input: StepFunctionsModel.ListExecutionsInput) async throws
      -> StepFunctionsModel.ListExecutionsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listExecutionsAsync(input: input) { result in
                     switch result {
@@ -365,7 +365,7 @@ public extension StepFunctionsClientProtocol {
      */
     func listStateMachines(input: StepFunctionsModel.ListStateMachinesInput) async throws
      -> StepFunctionsModel.ListStateMachinesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listStateMachinesAsync(input: input) { result in
                     switch result {
@@ -392,7 +392,7 @@ public extension StepFunctionsClientProtocol {
      */
     func listTagsForResource(input: StepFunctionsModel.ListTagsForResourceInput) async throws
      -> StepFunctionsModel.ListTagsForResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -419,7 +419,7 @@ public extension StepFunctionsClientProtocol {
      */
     func sendTaskFailure(input: StepFunctionsModel.SendTaskFailureInput) async throws
      -> StepFunctionsModel.SendTaskFailureOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try sendTaskFailureAsync(input: input) { result in
                     switch result {
@@ -446,7 +446,7 @@ public extension StepFunctionsClientProtocol {
      */
     func sendTaskHeartbeat(input: StepFunctionsModel.SendTaskHeartbeatInput) async throws
      -> StepFunctionsModel.SendTaskHeartbeatOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try sendTaskHeartbeatAsync(input: input) { result in
                     switch result {
@@ -473,7 +473,7 @@ public extension StepFunctionsClientProtocol {
      */
     func sendTaskSuccess(input: StepFunctionsModel.SendTaskSuccessInput) async throws
      -> StepFunctionsModel.SendTaskSuccessOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try sendTaskSuccessAsync(input: input) { result in
                     switch result {
@@ -500,7 +500,7 @@ public extension StepFunctionsClientProtocol {
      */
     func startExecution(input: StepFunctionsModel.StartExecutionInput) async throws
      -> StepFunctionsModel.StartExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startExecutionAsync(input: input) { result in
                     switch result {
@@ -527,7 +527,7 @@ public extension StepFunctionsClientProtocol {
      */
     func startSyncExecution(input: StepFunctionsModel.StartSyncExecutionInput) async throws
      -> StepFunctionsModel.StartSyncExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startSyncExecutionAsync(input: input) { result in
                     switch result {
@@ -554,7 +554,7 @@ public extension StepFunctionsClientProtocol {
      */
     func stopExecution(input: StepFunctionsModel.StopExecutionInput) async throws
      -> StepFunctionsModel.StopExecutionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopExecutionAsync(input: input) { result in
                     switch result {
@@ -581,7 +581,7 @@ public extension StepFunctionsClientProtocol {
      */
     func tagResource(input: StepFunctionsModel.TagResourceInput) async throws
      -> StepFunctionsModel.TagResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { result in
                     switch result {
@@ -608,7 +608,7 @@ public extension StepFunctionsClientProtocol {
      */
     func untagResource(input: StepFunctionsModel.UntagResourceInput) async throws
      -> StepFunctionsModel.UntagResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { result in
                     switch result {
@@ -635,7 +635,7 @@ public extension StepFunctionsClientProtocol {
      */
     func updateStateMachine(input: StepFunctionsModel.UpdateStateMachineInput) async throws
      -> StepFunctionsModel.UpdateStateMachineOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateStateMachineAsync(input: input) { result in
                     switch result {

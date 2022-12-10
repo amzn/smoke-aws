@@ -38,7 +38,7 @@ public extension RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterRoleAlreadyExists, dBClusterRoleQuotaExceeded, invalidDBClusterState.
      */
     func addRoleToDBCluster(input: RDSModel.AddRoleToDBClusterMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try addRoleToDBClusterAsync(input: input) { error in
                     if let error = error {
@@ -61,7 +61,7 @@ public extension RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBInstanceRoleAlreadyExists, dBInstanceRoleQuotaExceeded, invalidDBInstanceState.
      */
     func addRoleToDBInstance(input: RDSModel.AddRoleToDBInstanceMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try addRoleToDBInstanceAsync(input: input) { error in
                     if let error = error {
@@ -87,7 +87,7 @@ public extension RDSClientProtocol {
      */
     func addSourceIdentifierToSubscription(input: RDSModel.AddSourceIdentifierToSubscriptionMessage) async throws
      -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try addSourceIdentifierToSubscriptionAsync(input: input) { result in
                     switch result {
@@ -111,7 +111,7 @@ public extension RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     func addTagsToResource(input: RDSModel.AddTagsToResourceMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try addTagsToResourceAsync(input: input) { error in
                     if let error = error {
@@ -137,7 +137,7 @@ public extension RDSClientProtocol {
      */
     func applyPendingMaintenanceAction(input: RDSModel.ApplyPendingMaintenanceActionMessage) async throws
      -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try applyPendingMaintenanceActionAsync(input: input) { result in
                     switch result {
@@ -164,7 +164,7 @@ public extension RDSClientProtocol {
      */
     func authorizeDBSecurityGroupIngress(input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) async throws
      -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try authorizeDBSecurityGroupIngressAsync(input: input) { result in
                     switch result {
@@ -191,7 +191,7 @@ public extension RDSClientProtocol {
      */
     func backtrackDBCluster(input: RDSModel.BacktrackDBClusterMessage) async throws
      -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try backtrackDBClusterAsync(input: input) { result in
                     switch result {
@@ -218,7 +218,7 @@ public extension RDSClientProtocol {
      */
     func cancelExportTask(input: RDSModel.CancelExportTaskMessage) async throws
      -> RDSModel.ExportTaskForCancelExportTask {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelExportTaskAsync(input: input) { result in
                     switch result {
@@ -245,7 +245,7 @@ public extension RDSClientProtocol {
      */
     func copyDBClusterParameterGroup(input: RDSModel.CopyDBClusterParameterGroupMessage) async throws
      -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyDBClusterParameterGroupAsync(input: input) { result in
                     switch result {
@@ -272,7 +272,7 @@ public extension RDSClientProtocol {
      */
     func copyDBClusterSnapshot(input: RDSModel.CopyDBClusterSnapshotMessage) async throws
      -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyDBClusterSnapshotAsync(input: input) { result in
                     switch result {
@@ -299,7 +299,7 @@ public extension RDSClientProtocol {
      */
     func copyDBParameterGroup(input: RDSModel.CopyDBParameterGroupMessage) async throws
      -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyDBParameterGroupAsync(input: input) { result in
                     switch result {
@@ -326,7 +326,7 @@ public extension RDSClientProtocol {
      */
     func copyDBSnapshot(input: RDSModel.CopyDBSnapshotMessage) async throws
      -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyDBSnapshotAsync(input: input) { result in
                     switch result {
@@ -353,7 +353,7 @@ public extension RDSClientProtocol {
      */
     func copyOptionGroup(input: RDSModel.CopyOptionGroupMessage) async throws
      -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyOptionGroupAsync(input: input) { result in
                     switch result {
@@ -380,7 +380,7 @@ public extension RDSClientProtocol {
      */
     func createCustomDBEngineVersion(input: RDSModel.CreateCustomDBEngineVersionMessage) async throws
      -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCustomDBEngineVersionAsync(input: input) { result in
                     switch result {
@@ -407,7 +407,7 @@ public extension RDSClientProtocol {
      */
     func createDBCluster(input: RDSModel.CreateDBClusterMessage) async throws
      -> RDSModel.CreateDBClusterResultForCreateDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBClusterAsync(input: input) { result in
                     switch result {
@@ -434,7 +434,7 @@ public extension RDSClientProtocol {
      */
     func createDBClusterEndpoint(input: RDSModel.CreateDBClusterEndpointMessage) async throws
      -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBClusterEndpointAsync(input: input) { result in
                     switch result {
@@ -461,7 +461,7 @@ public extension RDSClientProtocol {
      */
     func createDBClusterParameterGroup(input: RDSModel.CreateDBClusterParameterGroupMessage) async throws
      -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBClusterParameterGroupAsync(input: input) { result in
                     switch result {
@@ -488,7 +488,7 @@ public extension RDSClientProtocol {
      */
     func createDBClusterSnapshot(input: RDSModel.CreateDBClusterSnapshotMessage) async throws
      -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBClusterSnapshotAsync(input: input) { result in
                     switch result {
@@ -515,7 +515,7 @@ public extension RDSClientProtocol {
      */
     func createDBInstance(input: RDSModel.CreateDBInstanceMessage) async throws
      -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBInstanceAsync(input: input) { result in
                     switch result {
@@ -542,7 +542,7 @@ public extension RDSClientProtocol {
      */
     func createDBInstanceReadReplica(input: RDSModel.CreateDBInstanceReadReplicaMessage) async throws
      -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBInstanceReadReplicaAsync(input: input) { result in
                     switch result {
@@ -569,7 +569,7 @@ public extension RDSClientProtocol {
      */
     func createDBParameterGroup(input: RDSModel.CreateDBParameterGroupMessage) async throws
      -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBParameterGroupAsync(input: input) { result in
                     switch result {
@@ -596,7 +596,7 @@ public extension RDSClientProtocol {
      */
     func createDBProxy(input: RDSModel.CreateDBProxyRequest) async throws
      -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBProxyAsync(input: input) { result in
                     switch result {
@@ -623,7 +623,7 @@ public extension RDSClientProtocol {
      */
     func createDBProxyEndpoint(input: RDSModel.CreateDBProxyEndpointRequest) async throws
      -> RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBProxyEndpointAsync(input: input) { result in
                     switch result {
@@ -650,7 +650,7 @@ public extension RDSClientProtocol {
      */
     func createDBSecurityGroup(input: RDSModel.CreateDBSecurityGroupMessage) async throws
      -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBSecurityGroupAsync(input: input) { result in
                     switch result {
@@ -677,7 +677,7 @@ public extension RDSClientProtocol {
      */
     func createDBSnapshot(input: RDSModel.CreateDBSnapshotMessage) async throws
      -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBSnapshotAsync(input: input) { result in
                     switch result {
@@ -704,7 +704,7 @@ public extension RDSClientProtocol {
      */
     func createDBSubnetGroup(input: RDSModel.CreateDBSubnetGroupMessage) async throws
      -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDBSubnetGroupAsync(input: input) { result in
                     switch result {
@@ -731,7 +731,7 @@ public extension RDSClientProtocol {
      */
     func createEventSubscription(input: RDSModel.CreateEventSubscriptionMessage) async throws
      -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createEventSubscriptionAsync(input: input) { result in
                     switch result {
@@ -758,7 +758,7 @@ public extension RDSClientProtocol {
      */
     func createGlobalCluster(input: RDSModel.CreateGlobalClusterMessage) async throws
      -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createGlobalClusterAsync(input: input) { result in
                     switch result {
@@ -785,7 +785,7 @@ public extension RDSClientProtocol {
      */
     func createOptionGroup(input: RDSModel.CreateOptionGroupMessage) async throws
      -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createOptionGroupAsync(input: input) { result in
                     switch result {
@@ -812,7 +812,7 @@ public extension RDSClientProtocol {
      */
     func deleteCustomDBEngineVersion(input: RDSModel.DeleteCustomDBEngineVersionMessage) async throws
      -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCustomDBEngineVersionAsync(input: input) { result in
                     switch result {
@@ -839,7 +839,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBCluster(input: RDSModel.DeleteDBClusterMessage) async throws
      -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBClusterAsync(input: input) { result in
                     switch result {
@@ -866,7 +866,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBClusterEndpoint(input: RDSModel.DeleteDBClusterEndpointMessage) async throws
      -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBClusterEndpointAsync(input: input) { result in
                     switch result {
@@ -890,7 +890,7 @@ public extension RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func deleteDBClusterParameterGroup(input: RDSModel.DeleteDBClusterParameterGroupMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBClusterParameterGroupAsync(input: input) { error in
                     if let error = error {
@@ -916,7 +916,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBClusterSnapshot(input: RDSModel.DeleteDBClusterSnapshotMessage) async throws
      -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBClusterSnapshotAsync(input: input) { result in
                     switch result {
@@ -943,7 +943,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBInstance(input: RDSModel.DeleteDBInstanceMessage) async throws
      -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBInstanceAsync(input: input) { result in
                     switch result {
@@ -970,7 +970,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBInstanceAutomatedBackup(input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) async throws
      -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBInstanceAutomatedBackupAsync(input: input) { result in
                     switch result {
@@ -994,7 +994,7 @@ public extension RDSClientProtocol {
      - Throws: dBParameterGroupNotFound, invalidDBParameterGroupState.
      */
     func deleteDBParameterGroup(input: RDSModel.DeleteDBParameterGroupMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBParameterGroupAsync(input: input) { error in
                     if let error = error {
@@ -1020,7 +1020,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBProxy(input: RDSModel.DeleteDBProxyRequest) async throws
      -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBProxyAsync(input: input) { result in
                     switch result {
@@ -1047,7 +1047,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBProxyEndpoint(input: RDSModel.DeleteDBProxyEndpointRequest) async throws
      -> RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBProxyEndpointAsync(input: input) { result in
                     switch result {
@@ -1071,7 +1071,7 @@ public extension RDSClientProtocol {
      - Throws: dBSecurityGroupNotFound, invalidDBSecurityGroupState.
      */
     func deleteDBSecurityGroup(input: RDSModel.DeleteDBSecurityGroupMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBSecurityGroupAsync(input: input) { error in
                     if let error = error {
@@ -1097,7 +1097,7 @@ public extension RDSClientProtocol {
      */
     func deleteDBSnapshot(input: RDSModel.DeleteDBSnapshotMessage) async throws
      -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBSnapshotAsync(input: input) { result in
                     switch result {
@@ -1121,7 +1121,7 @@ public extension RDSClientProtocol {
      - Throws: dBSubnetGroupNotFound, invalidDBSubnetGroupState, invalidDBSubnetState.
      */
     func deleteDBSubnetGroup(input: RDSModel.DeleteDBSubnetGroupMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDBSubnetGroupAsync(input: input) { error in
                     if let error = error {
@@ -1147,7 +1147,7 @@ public extension RDSClientProtocol {
      */
     func deleteEventSubscription(input: RDSModel.DeleteEventSubscriptionMessage) async throws
      -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteEventSubscriptionAsync(input: input) { result in
                     switch result {
@@ -1174,7 +1174,7 @@ public extension RDSClientProtocol {
      */
     func deleteGlobalCluster(input: RDSModel.DeleteGlobalClusterMessage) async throws
      -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteGlobalClusterAsync(input: input) { result in
                     switch result {
@@ -1198,7 +1198,7 @@ public extension RDSClientProtocol {
      - Throws: invalidOptionGroupState, optionGroupNotFound.
      */
     func deleteOptionGroup(input: RDSModel.DeleteOptionGroupMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteOptionGroupAsync(input: input) { error in
                     if let error = error {
@@ -1224,7 +1224,7 @@ public extension RDSClientProtocol {
      */
     func deregisterDBProxyTargets(input: RDSModel.DeregisterDBProxyTargetsRequest) async throws
      -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterDBProxyTargetsAsync(input: input) { result in
                     switch result {
@@ -1250,7 +1250,7 @@ public extension RDSClientProtocol {
      */
     func describeAccountAttributes(input: RDSModel.DescribeAccountAttributesMessage) async throws
      -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAccountAttributesAsync(input: input) { result in
                     switch result {
@@ -1277,7 +1277,7 @@ public extension RDSClientProtocol {
      */
     func describeCertificates(input: RDSModel.DescribeCertificatesMessage) async throws
      -> RDSModel.CertificateMessageForDescribeCertificates {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCertificatesAsync(input: input) { result in
                     switch result {
@@ -1304,7 +1304,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusterBacktracks(input: RDSModel.DescribeDBClusterBacktracksMessage) async throws
      -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClusterBacktracksAsync(input: input) { result in
                     switch result {
@@ -1331,7 +1331,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusterEndpoints(input: RDSModel.DescribeDBClusterEndpointsMessage) async throws
      -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClusterEndpointsAsync(input: input) { result in
                     switch result {
@@ -1358,7 +1358,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusterParameterGroups(input: RDSModel.DescribeDBClusterParameterGroupsMessage) async throws
      -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClusterParameterGroupsAsync(input: input) { result in
                     switch result {
@@ -1385,7 +1385,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusterParameters(input: RDSModel.DescribeDBClusterParametersMessage) async throws
      -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClusterParametersAsync(input: input) { result in
                     switch result {
@@ -1412,7 +1412,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusterSnapshotAttributes(input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) async throws
      -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClusterSnapshotAttributesAsync(input: input) { result in
                     switch result {
@@ -1439,7 +1439,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusterSnapshots(input: RDSModel.DescribeDBClusterSnapshotsMessage) async throws
      -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClusterSnapshotsAsync(input: input) { result in
                     switch result {
@@ -1466,7 +1466,7 @@ public extension RDSClientProtocol {
      */
     func describeDBClusters(input: RDSModel.DescribeDBClustersMessage) async throws
      -> RDSModel.DBClusterMessageForDescribeDBClusters {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBClustersAsync(input: input) { result in
                     switch result {
@@ -1492,7 +1492,7 @@ public extension RDSClientProtocol {
      */
     func describeDBEngineVersions(input: RDSModel.DescribeDBEngineVersionsMessage) async throws
      -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBEngineVersionsAsync(input: input) { result in
                     switch result {
@@ -1519,7 +1519,7 @@ public extension RDSClientProtocol {
      */
     func describeDBInstanceAutomatedBackups(input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) async throws
      -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBInstanceAutomatedBackupsAsync(input: input) { result in
                     switch result {
@@ -1546,7 +1546,7 @@ public extension RDSClientProtocol {
      */
     func describeDBInstances(input: RDSModel.DescribeDBInstancesMessage) async throws
      -> RDSModel.DBInstanceMessageForDescribeDBInstances {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBInstancesAsync(input: input) { result in
                     switch result {
@@ -1573,7 +1573,7 @@ public extension RDSClientProtocol {
      */
     func describeDBLogFiles(input: RDSModel.DescribeDBLogFilesMessage) async throws
      -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBLogFilesAsync(input: input) { result in
                     switch result {
@@ -1600,7 +1600,7 @@ public extension RDSClientProtocol {
      */
     func describeDBParameterGroups(input: RDSModel.DescribeDBParameterGroupsMessage) async throws
      -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBParameterGroupsAsync(input: input) { result in
                     switch result {
@@ -1627,7 +1627,7 @@ public extension RDSClientProtocol {
      */
     func describeDBParameters(input: RDSModel.DescribeDBParametersMessage) async throws
      -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBParametersAsync(input: input) { result in
                     switch result {
@@ -1654,7 +1654,7 @@ public extension RDSClientProtocol {
      */
     func describeDBProxies(input: RDSModel.DescribeDBProxiesRequest) async throws
      -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBProxiesAsync(input: input) { result in
                     switch result {
@@ -1681,7 +1681,7 @@ public extension RDSClientProtocol {
      */
     func describeDBProxyEndpoints(input: RDSModel.DescribeDBProxyEndpointsRequest) async throws
      -> RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBProxyEndpointsAsync(input: input) { result in
                     switch result {
@@ -1708,7 +1708,7 @@ public extension RDSClientProtocol {
      */
     func describeDBProxyTargetGroups(input: RDSModel.DescribeDBProxyTargetGroupsRequest) async throws
      -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBProxyTargetGroupsAsync(input: input) { result in
                     switch result {
@@ -1735,7 +1735,7 @@ public extension RDSClientProtocol {
      */
     func describeDBProxyTargets(input: RDSModel.DescribeDBProxyTargetsRequest) async throws
      -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBProxyTargetsAsync(input: input) { result in
                     switch result {
@@ -1762,7 +1762,7 @@ public extension RDSClientProtocol {
      */
     func describeDBSecurityGroups(input: RDSModel.DescribeDBSecurityGroupsMessage) async throws
      -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBSecurityGroupsAsync(input: input) { result in
                     switch result {
@@ -1789,7 +1789,7 @@ public extension RDSClientProtocol {
      */
     func describeDBSnapshotAttributes(input: RDSModel.DescribeDBSnapshotAttributesMessage) async throws
      -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBSnapshotAttributesAsync(input: input) { result in
                     switch result {
@@ -1816,7 +1816,7 @@ public extension RDSClientProtocol {
      */
     func describeDBSnapshots(input: RDSModel.DescribeDBSnapshotsMessage) async throws
      -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBSnapshotsAsync(input: input) { result in
                     switch result {
@@ -1843,7 +1843,7 @@ public extension RDSClientProtocol {
      */
     func describeDBSubnetGroups(input: RDSModel.DescribeDBSubnetGroupsMessage) async throws
      -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDBSubnetGroupsAsync(input: input) { result in
                     switch result {
@@ -1869,7 +1869,7 @@ public extension RDSClientProtocol {
      */
     func describeEngineDefaultClusterParameters(input: RDSModel.DescribeEngineDefaultClusterParametersMessage) async throws
      -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEngineDefaultClusterParametersAsync(input: input) { result in
                     switch result {
@@ -1895,7 +1895,7 @@ public extension RDSClientProtocol {
      */
     func describeEngineDefaultParameters(input: RDSModel.DescribeEngineDefaultParametersMessage) async throws
      -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEngineDefaultParametersAsync(input: input) { result in
                     switch result {
@@ -1921,7 +1921,7 @@ public extension RDSClientProtocol {
      */
     func describeEventCategories(input: RDSModel.DescribeEventCategoriesMessage) async throws
      -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEventCategoriesAsync(input: input) { result in
                     switch result {
@@ -1948,7 +1948,7 @@ public extension RDSClientProtocol {
      */
     func describeEventSubscriptions(input: RDSModel.DescribeEventSubscriptionsMessage) async throws
      -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEventSubscriptionsAsync(input: input) { result in
                     switch result {
@@ -1974,7 +1974,7 @@ public extension RDSClientProtocol {
      */
     func describeEvents(input: RDSModel.DescribeEventsMessage) async throws
      -> RDSModel.EventsMessageForDescribeEvents {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEventsAsync(input: input) { result in
                     switch result {
@@ -2001,7 +2001,7 @@ public extension RDSClientProtocol {
      */
     func describeExportTasks(input: RDSModel.DescribeExportTasksMessage) async throws
      -> RDSModel.ExportTasksMessageForDescribeExportTasks {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeExportTasksAsync(input: input) { result in
                     switch result {
@@ -2028,7 +2028,7 @@ public extension RDSClientProtocol {
      */
     func describeGlobalClusters(input: RDSModel.DescribeGlobalClustersMessage) async throws
      -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeGlobalClustersAsync(input: input) { result in
                     switch result {
@@ -2054,7 +2054,7 @@ public extension RDSClientProtocol {
      */
     func describeOptionGroupOptions(input: RDSModel.DescribeOptionGroupOptionsMessage) async throws
      -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeOptionGroupOptionsAsync(input: input) { result in
                     switch result {
@@ -2081,7 +2081,7 @@ public extension RDSClientProtocol {
      */
     func describeOptionGroups(input: RDSModel.DescribeOptionGroupsMessage) async throws
      -> RDSModel.OptionGroupsForDescribeOptionGroups {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeOptionGroupsAsync(input: input) { result in
                     switch result {
@@ -2107,7 +2107,7 @@ public extension RDSClientProtocol {
      */
     func describeOrderableDBInstanceOptions(input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) async throws
      -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeOrderableDBInstanceOptionsAsync(input: input) { result in
                     switch result {
@@ -2134,7 +2134,7 @@ public extension RDSClientProtocol {
      */
     func describePendingMaintenanceActions(input: RDSModel.DescribePendingMaintenanceActionsMessage) async throws
      -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePendingMaintenanceActionsAsync(input: input) { result in
                     switch result {
@@ -2161,7 +2161,7 @@ public extension RDSClientProtocol {
      */
     func describeReservedDBInstances(input: RDSModel.DescribeReservedDBInstancesMessage) async throws
      -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReservedDBInstancesAsync(input: input) { result in
                     switch result {
@@ -2188,7 +2188,7 @@ public extension RDSClientProtocol {
      */
     func describeReservedDBInstancesOfferings(input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) async throws
      -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReservedDBInstancesOfferingsAsync(input: input) { result in
                     switch result {
@@ -2214,7 +2214,7 @@ public extension RDSClientProtocol {
      */
     func describeSourceRegions(input: RDSModel.DescribeSourceRegionsMessage) async throws
      -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSourceRegionsAsync(input: input) { result in
                     switch result {
@@ -2241,7 +2241,7 @@ public extension RDSClientProtocol {
      */
     func describeValidDBInstanceModifications(input: RDSModel.DescribeValidDBInstanceModificationsMessage) async throws
      -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeValidDBInstanceModificationsAsync(input: input) { result in
                     switch result {
@@ -2268,7 +2268,7 @@ public extension RDSClientProtocol {
      */
     func downloadDBLogFilePortion(input: RDSModel.DownloadDBLogFilePortionMessage) async throws
      -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try downloadDBLogFilePortionAsync(input: input) { result in
                     switch result {
@@ -2295,7 +2295,7 @@ public extension RDSClientProtocol {
      */
     func failoverDBCluster(input: RDSModel.FailoverDBClusterMessage) async throws
      -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try failoverDBClusterAsync(input: input) { result in
                     switch result {
@@ -2322,7 +2322,7 @@ public extension RDSClientProtocol {
      */
     func failoverGlobalCluster(input: RDSModel.FailoverGlobalClusterMessage) async throws
      -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try failoverGlobalClusterAsync(input: input) { result in
                     switch result {
@@ -2349,7 +2349,7 @@ public extension RDSClientProtocol {
      */
     func listTagsForResource(input: RDSModel.ListTagsForResourceMessage) async throws
      -> RDSModel.TagListMessageForListTagsForResource {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -2376,7 +2376,7 @@ public extension RDSClientProtocol {
      */
     func modifyActivityStream(input: RDSModel.ModifyActivityStreamRequest) async throws
      -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyActivityStreamAsync(input: input) { result in
                     switch result {
@@ -2403,7 +2403,7 @@ public extension RDSClientProtocol {
      */
     func modifyCertificates(input: RDSModel.ModifyCertificatesMessage) async throws
      -> RDSModel.ModifyCertificatesResultForModifyCertificates {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyCertificatesAsync(input: input) { result in
                     switch result {
@@ -2430,7 +2430,7 @@ public extension RDSClientProtocol {
      */
     func modifyCurrentDBClusterCapacity(input: RDSModel.ModifyCurrentDBClusterCapacityMessage) async throws
      -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyCurrentDBClusterCapacityAsync(input: input) { result in
                     switch result {
@@ -2457,7 +2457,7 @@ public extension RDSClientProtocol {
      */
     func modifyCustomDBEngineVersion(input: RDSModel.ModifyCustomDBEngineVersionMessage) async throws
      -> RDSModel.DBEngineVersionForModifyCustomDBEngineVersion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyCustomDBEngineVersionAsync(input: input) { result in
                     switch result {
@@ -2484,7 +2484,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBCluster(input: RDSModel.ModifyDBClusterMessage) async throws
      -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBClusterAsync(input: input) { result in
                     switch result {
@@ -2511,7 +2511,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBClusterEndpoint(input: RDSModel.ModifyDBClusterEndpointMessage) async throws
      -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBClusterEndpointAsync(input: input) { result in
                     switch result {
@@ -2538,7 +2538,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBClusterParameterGroup(input: RDSModel.ModifyDBClusterParameterGroupMessage) async throws
      -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBClusterParameterGroupAsync(input: input) { result in
                     switch result {
@@ -2565,7 +2565,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBClusterSnapshotAttribute(input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) async throws
      -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBClusterSnapshotAttributeAsync(input: input) { result in
                     switch result {
@@ -2592,7 +2592,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBInstance(input: RDSModel.ModifyDBInstanceMessage) async throws
      -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBInstanceAsync(input: input) { result in
                     switch result {
@@ -2619,7 +2619,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBParameterGroup(input: RDSModel.ModifyDBParameterGroupMessage) async throws
      -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBParameterGroupAsync(input: input) { result in
                     switch result {
@@ -2646,7 +2646,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBProxy(input: RDSModel.ModifyDBProxyRequest) async throws
      -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBProxyAsync(input: input) { result in
                     switch result {
@@ -2673,7 +2673,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBProxyEndpoint(input: RDSModel.ModifyDBProxyEndpointRequest) async throws
      -> RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBProxyEndpointAsync(input: input) { result in
                     switch result {
@@ -2700,7 +2700,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBProxyTargetGroup(input: RDSModel.ModifyDBProxyTargetGroupRequest) async throws
      -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBProxyTargetGroupAsync(input: input) { result in
                     switch result {
@@ -2727,7 +2727,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBSnapshot(input: RDSModel.ModifyDBSnapshotMessage) async throws
      -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBSnapshotAsync(input: input) { result in
                     switch result {
@@ -2754,7 +2754,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBSnapshotAttribute(input: RDSModel.ModifyDBSnapshotAttributeMessage) async throws
      -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBSnapshotAttributeAsync(input: input) { result in
                     switch result {
@@ -2781,7 +2781,7 @@ public extension RDSClientProtocol {
      */
     func modifyDBSubnetGroup(input: RDSModel.ModifyDBSubnetGroupMessage) async throws
      -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDBSubnetGroupAsync(input: input) { result in
                     switch result {
@@ -2808,7 +2808,7 @@ public extension RDSClientProtocol {
      */
     func modifyEventSubscription(input: RDSModel.ModifyEventSubscriptionMessage) async throws
      -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyEventSubscriptionAsync(input: input) { result in
                     switch result {
@@ -2835,7 +2835,7 @@ public extension RDSClientProtocol {
      */
     func modifyGlobalCluster(input: RDSModel.ModifyGlobalClusterMessage) async throws
      -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyGlobalClusterAsync(input: input) { result in
                     switch result {
@@ -2862,7 +2862,7 @@ public extension RDSClientProtocol {
      */
     func modifyOptionGroup(input: RDSModel.ModifyOptionGroupMessage) async throws
      -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyOptionGroupAsync(input: input) { result in
                     switch result {
@@ -2889,7 +2889,7 @@ public extension RDSClientProtocol {
      */
     func promoteReadReplica(input: RDSModel.PromoteReadReplicaMessage) async throws
      -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try promoteReadReplicaAsync(input: input) { result in
                     switch result {
@@ -2916,7 +2916,7 @@ public extension RDSClientProtocol {
      */
     func promoteReadReplicaDBCluster(input: RDSModel.PromoteReadReplicaDBClusterMessage) async throws
      -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try promoteReadReplicaDBClusterAsync(input: input) { result in
                     switch result {
@@ -2943,7 +2943,7 @@ public extension RDSClientProtocol {
      */
     func purchaseReservedDBInstancesOffering(input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) async throws
      -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try purchaseReservedDBInstancesOfferingAsync(input: input) { result in
                     switch result {
@@ -2970,7 +2970,7 @@ public extension RDSClientProtocol {
      */
     func rebootDBCluster(input: RDSModel.RebootDBClusterMessage) async throws
      -> RDSModel.RebootDBClusterResultForRebootDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rebootDBClusterAsync(input: input) { result in
                     switch result {
@@ -2997,7 +2997,7 @@ public extension RDSClientProtocol {
      */
     func rebootDBInstance(input: RDSModel.RebootDBInstanceMessage) async throws
      -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rebootDBInstanceAsync(input: input) { result in
                     switch result {
@@ -3024,7 +3024,7 @@ public extension RDSClientProtocol {
      */
     func registerDBProxyTargets(input: RDSModel.RegisterDBProxyTargetsRequest) async throws
      -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerDBProxyTargetsAsync(input: input) { result in
                     switch result {
@@ -3051,7 +3051,7 @@ public extension RDSClientProtocol {
      */
     func removeFromGlobalCluster(input: RDSModel.RemoveFromGlobalClusterMessage) async throws
      -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removeFromGlobalClusterAsync(input: input) { result in
                     switch result {
@@ -3075,7 +3075,7 @@ public extension RDSClientProtocol {
      - Throws: dBClusterNotFound, dBClusterRoleNotFound, invalidDBClusterState.
      */
     func removeRoleFromDBCluster(input: RDSModel.RemoveRoleFromDBClusterMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removeRoleFromDBClusterAsync(input: input) { error in
                     if let error = error {
@@ -3098,7 +3098,7 @@ public extension RDSClientProtocol {
      - Throws: dBInstanceNotFound, dBInstanceRoleNotFound, invalidDBInstanceState.
      */
     func removeRoleFromDBInstance(input: RDSModel.RemoveRoleFromDBInstanceMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removeRoleFromDBInstanceAsync(input: input) { error in
                     if let error = error {
@@ -3124,7 +3124,7 @@ public extension RDSClientProtocol {
      */
     func removeSourceIdentifierFromSubscription(input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) async throws
      -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removeSourceIdentifierFromSubscriptionAsync(input: input) { result in
                     switch result {
@@ -3148,7 +3148,7 @@ public extension RDSClientProtocol {
      - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     func removeTagsFromResource(input: RDSModel.RemoveTagsFromResourceMessage) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removeTagsFromResourceAsync(input: input) { error in
                     if let error = error {
@@ -3174,7 +3174,7 @@ public extension RDSClientProtocol {
      */
     func resetDBClusterParameterGroup(input: RDSModel.ResetDBClusterParameterGroupMessage) async throws
      -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetDBClusterParameterGroupAsync(input: input) { result in
                     switch result {
@@ -3201,7 +3201,7 @@ public extension RDSClientProtocol {
      */
     func resetDBParameterGroup(input: RDSModel.ResetDBParameterGroupMessage) async throws
      -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetDBParameterGroupAsync(input: input) { result in
                     switch result {
@@ -3228,7 +3228,7 @@ public extension RDSClientProtocol {
      */
     func restoreDBClusterFromS3(input: RDSModel.RestoreDBClusterFromS3Message) async throws
      -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreDBClusterFromS3Async(input: input) { result in
                     switch result {
@@ -3255,7 +3255,7 @@ public extension RDSClientProtocol {
      */
     func restoreDBClusterFromSnapshot(input: RDSModel.RestoreDBClusterFromSnapshotMessage) async throws
      -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreDBClusterFromSnapshotAsync(input: input) { result in
                     switch result {
@@ -3282,7 +3282,7 @@ public extension RDSClientProtocol {
      */
     func restoreDBClusterToPointInTime(input: RDSModel.RestoreDBClusterToPointInTimeMessage) async throws
      -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreDBClusterToPointInTimeAsync(input: input) { result in
                     switch result {
@@ -3309,7 +3309,7 @@ public extension RDSClientProtocol {
      */
     func restoreDBInstanceFromDBSnapshot(input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) async throws
      -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreDBInstanceFromDBSnapshotAsync(input: input) { result in
                     switch result {
@@ -3336,7 +3336,7 @@ public extension RDSClientProtocol {
      */
     func restoreDBInstanceFromS3(input: RDSModel.RestoreDBInstanceFromS3Message) async throws
      -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreDBInstanceFromS3Async(input: input) { result in
                     switch result {
@@ -3363,7 +3363,7 @@ public extension RDSClientProtocol {
      */
     func restoreDBInstanceToPointInTime(input: RDSModel.RestoreDBInstanceToPointInTimeMessage) async throws
      -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreDBInstanceToPointInTimeAsync(input: input) { result in
                     switch result {
@@ -3390,7 +3390,7 @@ public extension RDSClientProtocol {
      */
     func revokeDBSecurityGroupIngress(input: RDSModel.RevokeDBSecurityGroupIngressMessage) async throws
      -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try revokeDBSecurityGroupIngressAsync(input: input) { result in
                     switch result {
@@ -3417,7 +3417,7 @@ public extension RDSClientProtocol {
      */
     func startActivityStream(input: RDSModel.StartActivityStreamRequest) async throws
      -> RDSModel.StartActivityStreamResponseForStartActivityStream {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startActivityStreamAsync(input: input) { result in
                     switch result {
@@ -3444,7 +3444,7 @@ public extension RDSClientProtocol {
      */
     func startDBCluster(input: RDSModel.StartDBClusterMessage) async throws
      -> RDSModel.StartDBClusterResultForStartDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startDBClusterAsync(input: input) { result in
                     switch result {
@@ -3471,7 +3471,7 @@ public extension RDSClientProtocol {
      */
     func startDBInstance(input: RDSModel.StartDBInstanceMessage) async throws
      -> RDSModel.StartDBInstanceResultForStartDBInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startDBInstanceAsync(input: input) { result in
                     switch result {
@@ -3498,7 +3498,7 @@ public extension RDSClientProtocol {
      */
     func startDBInstanceAutomatedBackupsReplication(input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage) async throws
      -> RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startDBInstanceAutomatedBackupsReplicationAsync(input: input) { result in
                     switch result {
@@ -3525,7 +3525,7 @@ public extension RDSClientProtocol {
      */
     func startExportTask(input: RDSModel.StartExportTaskMessage) async throws
      -> RDSModel.ExportTaskForStartExportTask {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startExportTaskAsync(input: input) { result in
                     switch result {
@@ -3552,7 +3552,7 @@ public extension RDSClientProtocol {
      */
     func stopActivityStream(input: RDSModel.StopActivityStreamRequest) async throws
      -> RDSModel.StopActivityStreamResponseForStopActivityStream {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopActivityStreamAsync(input: input) { result in
                     switch result {
@@ -3579,7 +3579,7 @@ public extension RDSClientProtocol {
      */
     func stopDBCluster(input: RDSModel.StopDBClusterMessage) async throws
      -> RDSModel.StopDBClusterResultForStopDBCluster {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopDBClusterAsync(input: input) { result in
                     switch result {
@@ -3606,7 +3606,7 @@ public extension RDSClientProtocol {
      */
     func stopDBInstance(input: RDSModel.StopDBInstanceMessage) async throws
      -> RDSModel.StopDBInstanceResultForStopDBInstance {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopDBInstanceAsync(input: input) { result in
                     switch result {
@@ -3633,7 +3633,7 @@ public extension RDSClientProtocol {
      */
     func stopDBInstanceAutomatedBackupsReplication(input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) async throws
      -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopDBInstanceAutomatedBackupsReplicationAsync(input: input) { result in
                     switch result {
@@ -3660,7 +3660,7 @@ public extension RDSClientProtocol {
      */
     func switchoverReadReplica(input: RDSModel.SwitchoverReadReplicaMessage) async throws
      -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try switchoverReadReplicaAsync(input: input) { result in
                     switch result {

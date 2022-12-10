@@ -41,7 +41,7 @@ public extension AppConfigClientProtocol {
      */
     func createApplication(input: AppConfigModel.CreateApplicationRequest) async throws
      -> AppConfigModel.Application {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createApplicationAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension AppConfigClientProtocol {
      */
     func createConfigurationProfile(input: AppConfigModel.CreateConfigurationProfileRequest) async throws
      -> AppConfigModel.ConfigurationProfile {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createConfigurationProfileAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension AppConfigClientProtocol {
      */
     func createDeploymentStrategy(input: AppConfigModel.CreateDeploymentStrategyRequest) async throws
      -> AppConfigModel.DeploymentStrategy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDeploymentStrategyAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension AppConfigClientProtocol {
      */
     func createEnvironment(input: AppConfigModel.CreateEnvironmentRequest) async throws
      -> AppConfigModel.Environment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createEnvironmentAsync(input: input) { result in
                     switch result {
@@ -149,7 +149,7 @@ public extension AppConfigClientProtocol {
      */
     func createExtension(input: AppConfigModel.CreateExtensionRequest) async throws
      -> AppConfigModel.Extension {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createExtensionAsync(input: input) { result in
                     switch result {
@@ -176,7 +176,7 @@ public extension AppConfigClientProtocol {
      */
     func createExtensionAssociation(input: AppConfigModel.CreateExtensionAssociationRequest) async throws
      -> AppConfigModel.ExtensionAssociation {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createExtensionAssociationAsync(input: input) { result in
                     switch result {
@@ -203,7 +203,7 @@ public extension AppConfigClientProtocol {
      */
     func createHostedConfigurationVersion(input: AppConfigModel.CreateHostedConfigurationVersionRequest) async throws
      -> AppConfigModel.HostedConfigurationVersion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createHostedConfigurationVersionAsync(input: input) { result in
                     switch result {
@@ -227,7 +227,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func deleteApplication(input: AppConfigModel.DeleteApplicationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteApplicationAsync(input: input) { error in
                     if let error = error {
@@ -250,7 +250,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, conflict, internalServer, resourceNotFound.
      */
     func deleteConfigurationProfile(input: AppConfigModel.DeleteConfigurationProfileRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteConfigurationProfileAsync(input: input) { error in
                     if let error = error {
@@ -273,7 +273,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func deleteDeploymentStrategy(input: AppConfigModel.DeleteDeploymentStrategyRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDeploymentStrategyAsync(input: input) { error in
                     if let error = error {
@@ -296,7 +296,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, conflict, internalServer, resourceNotFound.
      */
     func deleteEnvironment(input: AppConfigModel.DeleteEnvironmentRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteEnvironmentAsync(input: input) { error in
                     if let error = error {
@@ -319,7 +319,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func deleteExtension(input: AppConfigModel.DeleteExtensionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteExtensionAsync(input: input) { error in
                     if let error = error {
@@ -342,7 +342,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func deleteExtensionAssociation(input: AppConfigModel.DeleteExtensionAssociationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteExtensionAssociationAsync(input: input) { error in
                     if let error = error {
@@ -365,7 +365,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func deleteHostedConfigurationVersion(input: AppConfigModel.DeleteHostedConfigurationVersionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteHostedConfigurationVersionAsync(input: input) { error in
                     if let error = error {
@@ -391,7 +391,7 @@ public extension AppConfigClientProtocol {
      */
     func getApplication(input: AppConfigModel.GetApplicationRequest) async throws
      -> AppConfigModel.Application {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getApplicationAsync(input: input) { result in
                     switch result {
@@ -418,7 +418,7 @@ public extension AppConfigClientProtocol {
      */
     func getConfiguration(input: AppConfigModel.GetConfigurationRequest) async throws
      -> AppConfigModel.Configuration {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getConfigurationAsync(input: input) { result in
                     switch result {
@@ -445,7 +445,7 @@ public extension AppConfigClientProtocol {
      */
     func getConfigurationProfile(input: AppConfigModel.GetConfigurationProfileRequest) async throws
      -> AppConfigModel.ConfigurationProfile {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getConfigurationProfileAsync(input: input) { result in
                     switch result {
@@ -472,7 +472,7 @@ public extension AppConfigClientProtocol {
      */
     func getDeployment(input: AppConfigModel.GetDeploymentRequest) async throws
      -> AppConfigModel.Deployment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getDeploymentAsync(input: input) { result in
                     switch result {
@@ -499,7 +499,7 @@ public extension AppConfigClientProtocol {
      */
     func getDeploymentStrategy(input: AppConfigModel.GetDeploymentStrategyRequest) async throws
      -> AppConfigModel.DeploymentStrategy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getDeploymentStrategyAsync(input: input) { result in
                     switch result {
@@ -526,7 +526,7 @@ public extension AppConfigClientProtocol {
      */
     func getEnvironment(input: AppConfigModel.GetEnvironmentRequest) async throws
      -> AppConfigModel.Environment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getEnvironmentAsync(input: input) { result in
                     switch result {
@@ -553,7 +553,7 @@ public extension AppConfigClientProtocol {
      */
     func getExtension(input: AppConfigModel.GetExtensionRequest) async throws
      -> AppConfigModel.Extension {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getExtensionAsync(input: input) { result in
                     switch result {
@@ -580,7 +580,7 @@ public extension AppConfigClientProtocol {
      */
     func getExtensionAssociation(input: AppConfigModel.GetExtensionAssociationRequest) async throws
      -> AppConfigModel.ExtensionAssociation {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getExtensionAssociationAsync(input: input) { result in
                     switch result {
@@ -607,7 +607,7 @@ public extension AppConfigClientProtocol {
      */
     func getHostedConfigurationVersion(input: AppConfigModel.GetHostedConfigurationVersionRequest) async throws
      -> AppConfigModel.HostedConfigurationVersion {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getHostedConfigurationVersionAsync(input: input) { result in
                     switch result {
@@ -634,7 +634,7 @@ public extension AppConfigClientProtocol {
      */
     func listApplications(input: AppConfigModel.ListApplicationsRequest) async throws
      -> AppConfigModel.Applications {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listApplicationsAsync(input: input) { result in
                     switch result {
@@ -661,7 +661,7 @@ public extension AppConfigClientProtocol {
      */
     func listConfigurationProfiles(input: AppConfigModel.ListConfigurationProfilesRequest) async throws
      -> AppConfigModel.ConfigurationProfiles {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listConfigurationProfilesAsync(input: input) { result in
                     switch result {
@@ -688,7 +688,7 @@ public extension AppConfigClientProtocol {
      */
     func listDeploymentStrategies(input: AppConfigModel.ListDeploymentStrategiesRequest) async throws
      -> AppConfigModel.DeploymentStrategies {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listDeploymentStrategiesAsync(input: input) { result in
                     switch result {
@@ -715,7 +715,7 @@ public extension AppConfigClientProtocol {
      */
     func listDeployments(input: AppConfigModel.ListDeploymentsRequest) async throws
      -> AppConfigModel.Deployments {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listDeploymentsAsync(input: input) { result in
                     switch result {
@@ -742,7 +742,7 @@ public extension AppConfigClientProtocol {
      */
     func listEnvironments(input: AppConfigModel.ListEnvironmentsRequest) async throws
      -> AppConfigModel.Environments {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listEnvironmentsAsync(input: input) { result in
                     switch result {
@@ -769,7 +769,7 @@ public extension AppConfigClientProtocol {
      */
     func listExtensionAssociations(input: AppConfigModel.ListExtensionAssociationsRequest) async throws
      -> AppConfigModel.ExtensionAssociations {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listExtensionAssociationsAsync(input: input) { result in
                     switch result {
@@ -796,7 +796,7 @@ public extension AppConfigClientProtocol {
      */
     func listExtensions(input: AppConfigModel.ListExtensionsRequest) async throws
      -> AppConfigModel.Extensions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listExtensionsAsync(input: input) { result in
                     switch result {
@@ -823,7 +823,7 @@ public extension AppConfigClientProtocol {
      */
     func listHostedConfigurationVersions(input: AppConfigModel.ListHostedConfigurationVersionsRequest) async throws
      -> AppConfigModel.HostedConfigurationVersions {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listHostedConfigurationVersionsAsync(input: input) { result in
                     switch result {
@@ -850,7 +850,7 @@ public extension AppConfigClientProtocol {
      */
     func listTagsForResource(input: AppConfigModel.ListTagsForResourceRequest) async throws
      -> AppConfigModel.ResourceTags {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -877,7 +877,7 @@ public extension AppConfigClientProtocol {
      */
     func startDeployment(input: AppConfigModel.StartDeploymentRequest) async throws
      -> AppConfigModel.Deployment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startDeploymentAsync(input: input) { result in
                     switch result {
@@ -904,7 +904,7 @@ public extension AppConfigClientProtocol {
      */
     func stopDeployment(input: AppConfigModel.StopDeploymentRequest) async throws
      -> AppConfigModel.Deployment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopDeploymentAsync(input: input) { result in
                     switch result {
@@ -928,7 +928,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func tagResource(input: AppConfigModel.TagResourceRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { error in
                     if let error = error {
@@ -951,7 +951,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func untagResource(input: AppConfigModel.UntagResourceRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { error in
                     if let error = error {
@@ -977,7 +977,7 @@ public extension AppConfigClientProtocol {
      */
     func updateApplication(input: AppConfigModel.UpdateApplicationRequest) async throws
      -> AppConfigModel.Application {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateApplicationAsync(input: input) { result in
                     switch result {
@@ -1004,7 +1004,7 @@ public extension AppConfigClientProtocol {
      */
     func updateConfigurationProfile(input: AppConfigModel.UpdateConfigurationProfileRequest) async throws
      -> AppConfigModel.ConfigurationProfile {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateConfigurationProfileAsync(input: input) { result in
                     switch result {
@@ -1031,7 +1031,7 @@ public extension AppConfigClientProtocol {
      */
     func updateDeploymentStrategy(input: AppConfigModel.UpdateDeploymentStrategyRequest) async throws
      -> AppConfigModel.DeploymentStrategy {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateDeploymentStrategyAsync(input: input) { result in
                     switch result {
@@ -1058,7 +1058,7 @@ public extension AppConfigClientProtocol {
      */
     func updateEnvironment(input: AppConfigModel.UpdateEnvironmentRequest) async throws
      -> AppConfigModel.Environment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateEnvironmentAsync(input: input) { result in
                     switch result {
@@ -1085,7 +1085,7 @@ public extension AppConfigClientProtocol {
      */
     func updateExtension(input: AppConfigModel.UpdateExtensionRequest) async throws
      -> AppConfigModel.Extension {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateExtensionAsync(input: input) { result in
                     switch result {
@@ -1112,7 +1112,7 @@ public extension AppConfigClientProtocol {
      */
     func updateExtensionAssociation(input: AppConfigModel.UpdateExtensionAssociationRequest) async throws
      -> AppConfigModel.ExtensionAssociation {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateExtensionAssociationAsync(input: input) { result in
                     switch result {
@@ -1136,7 +1136,7 @@ public extension AppConfigClientProtocol {
      - Throws: badRequest, internalServer, resourceNotFound.
      */
     func validateConfiguration(input: AppConfigModel.ValidateConfigurationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try validateConfigurationAsync(input: input) { error in
                     if let error = error {

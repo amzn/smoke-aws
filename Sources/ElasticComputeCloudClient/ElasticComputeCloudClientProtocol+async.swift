@@ -40,7 +40,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func acceptReservedInstancesExchangeQuote(input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) async throws
      -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acceptReservedInstancesExchangeQuoteAsync(input: input) { result in
                     switch result {
@@ -66,7 +66,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func acceptTransitGatewayMulticastDomainAssociations(input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest) async throws
      -> ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acceptTransitGatewayMulticastDomainAssociationsAsync(input: input) { result in
                     switch result {
@@ -92,7 +92,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func acceptTransitGatewayPeeringAttachment(input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest) async throws
      -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acceptTransitGatewayPeeringAttachmentAsync(input: input) { result in
                     switch result {
@@ -118,7 +118,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func acceptTransitGatewayVpcAttachment(input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) async throws
      -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acceptTransitGatewayVpcAttachmentAsync(input: input) { result in
                     switch result {
@@ -144,7 +144,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func acceptVpcEndpointConnections(input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest) async throws
      -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acceptVpcEndpointConnectionsAsync(input: input) { result in
                     switch result {
@@ -170,7 +170,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func acceptVpcPeeringConnection(input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest) async throws
      -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try acceptVpcPeeringConnectionAsync(input: input) { result in
                     switch result {
@@ -196,7 +196,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func advertiseByoipCidr(input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest) async throws
      -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try advertiseByoipCidrAsync(input: input) { result in
                     switch result {
@@ -222,7 +222,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func allocateAddress(input: ElasticComputeCloudModel.AllocateAddressRequest) async throws
      -> ElasticComputeCloudModel.AllocateAddressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try allocateAddressAsync(input: input) { result in
                     switch result {
@@ -248,7 +248,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func allocateHosts(input: ElasticComputeCloudModel.AllocateHostsRequest) async throws
      -> ElasticComputeCloudModel.AllocateHostsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try allocateHostsAsync(input: input) { result in
                     switch result {
@@ -274,7 +274,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func allocateIpamPoolCidr(input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest) async throws
      -> ElasticComputeCloudModel.AllocateIpamPoolCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try allocateIpamPoolCidrAsync(input: input) { result in
                     switch result {
@@ -300,7 +300,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func applySecurityGroupsToClientVpnTargetNetwork(input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) async throws
      -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try applySecurityGroupsToClientVpnTargetNetworkAsync(input: input) { result in
                     switch result {
@@ -326,7 +326,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func assignIpv6Addresses(input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) async throws
      -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try assignIpv6AddressesAsync(input: input) { result in
                     switch result {
@@ -352,7 +352,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func assignPrivateIpAddresses(input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) async throws
      -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try assignPrivateIpAddressesAsync(input: input) { result in
                     switch result {
@@ -378,7 +378,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateAddress(input: ElasticComputeCloudModel.AssociateAddressRequest) async throws
      -> ElasticComputeCloudModel.AssociateAddressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateAddressAsync(input: input) { result in
                     switch result {
@@ -404,7 +404,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateClientVpnTargetNetwork(input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) async throws
      -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateClientVpnTargetNetworkAsync(input: input) { result in
                     switch result {
@@ -427,7 +427,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated AssociateDhcpOptionsRequest object being passed to this operation.
      */
     func associateDhcpOptions(input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateDhcpOptionsAsync(input: input) { error in
                     if let error = error {
@@ -452,7 +452,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateEnclaveCertificateIamRole(input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest) async throws
      -> ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateEnclaveCertificateIamRoleAsync(input: input) { result in
                     switch result {
@@ -478,7 +478,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateIamInstanceProfile(input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) async throws
      -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateIamInstanceProfileAsync(input: input) { result in
                     switch result {
@@ -504,7 +504,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateInstanceEventWindow(input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) async throws
      -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateInstanceEventWindowAsync(input: input) { result in
                     switch result {
@@ -530,7 +530,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateRouteTable(input: ElasticComputeCloudModel.AssociateRouteTableRequest) async throws
      -> ElasticComputeCloudModel.AssociateRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateRouteTableAsync(input: input) { result in
                     switch result {
@@ -556,7 +556,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateSubnetCidrBlock(input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) async throws
      -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateSubnetCidrBlockAsync(input: input) { result in
                     switch result {
@@ -582,7 +582,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateTransitGatewayMulticastDomain(input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest) async throws
      -> ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateTransitGatewayMulticastDomainAsync(input: input) { result in
                     switch result {
@@ -608,7 +608,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateTransitGatewayPolicyTable(input: ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableRequest) async throws
      -> ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateTransitGatewayPolicyTableAsync(input: input) { result in
                     switch result {
@@ -634,7 +634,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateTransitGatewayRouteTable(input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) async throws
      -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateTransitGatewayRouteTableAsync(input: input) { result in
                     switch result {
@@ -660,7 +660,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateTrunkInterface(input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest) async throws
      -> ElasticComputeCloudModel.AssociateTrunkInterfaceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateTrunkInterfaceAsync(input: input) { result in
                     switch result {
@@ -686,7 +686,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func associateVpcCidrBlock(input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) async throws
      -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateVpcCidrBlockAsync(input: input) { result in
                     switch result {
@@ -712,7 +712,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func attachClassicLinkVpc(input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) async throws
      -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try attachClassicLinkVpcAsync(input: input) { result in
                     switch result {
@@ -735,7 +735,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated AttachInternetGatewayRequest object being passed to this operation.
      */
     func attachInternetGateway(input: ElasticComputeCloudModel.AttachInternetGatewayRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try attachInternetGatewayAsync(input: input) { error in
                     if let error = error {
@@ -760,7 +760,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func attachNetworkInterface(input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) async throws
      -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try attachNetworkInterfaceAsync(input: input) { result in
                     switch result {
@@ -786,7 +786,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func attachVolume(input: ElasticComputeCloudModel.AttachVolumeRequest) async throws
      -> ElasticComputeCloudModel.VolumeAttachment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try attachVolumeAsync(input: input) { result in
                     switch result {
@@ -812,7 +812,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func attachVpnGateway(input: ElasticComputeCloudModel.AttachVpnGatewayRequest) async throws
      -> ElasticComputeCloudModel.AttachVpnGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try attachVpnGatewayAsync(input: input) { result in
                     switch result {
@@ -838,7 +838,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func authorizeClientVpnIngress(input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) async throws
      -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try authorizeClientVpnIngressAsync(input: input) { result in
                     switch result {
@@ -864,7 +864,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func authorizeSecurityGroupEgress(input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) async throws
      -> ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try authorizeSecurityGroupEgressAsync(input: input) { result in
                     switch result {
@@ -890,7 +890,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func authorizeSecurityGroupIngress(input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) async throws
      -> ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try authorizeSecurityGroupIngressAsync(input: input) { result in
                     switch result {
@@ -916,7 +916,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func bundleInstance(input: ElasticComputeCloudModel.BundleInstanceRequest) async throws
      -> ElasticComputeCloudModel.BundleInstanceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try bundleInstanceAsync(input: input) { result in
                     switch result {
@@ -942,7 +942,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelBundleTask(input: ElasticComputeCloudModel.CancelBundleTaskRequest) async throws
      -> ElasticComputeCloudModel.CancelBundleTaskResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelBundleTaskAsync(input: input) { result in
                     switch result {
@@ -968,7 +968,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelCapacityReservation(input: ElasticComputeCloudModel.CancelCapacityReservationRequest) async throws
      -> ElasticComputeCloudModel.CancelCapacityReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelCapacityReservationAsync(input: input) { result in
                     switch result {
@@ -994,7 +994,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelCapacityReservationFleets(input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest) async throws
      -> ElasticComputeCloudModel.CancelCapacityReservationFleetsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelCapacityReservationFleetsAsync(input: input) { result in
                     switch result {
@@ -1017,7 +1017,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated CancelConversionRequest object being passed to this operation.
      */
     func cancelConversionTask(input: ElasticComputeCloudModel.CancelConversionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelConversionTaskAsync(input: input) { error in
                     if let error = error {
@@ -1039,7 +1039,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated CancelExportTaskRequest object being passed to this operation.
      */
     func cancelExportTask(input: ElasticComputeCloudModel.CancelExportTaskRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelExportTaskAsync(input: input) { error in
                     if let error = error {
@@ -1064,7 +1064,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelImportTask(input: ElasticComputeCloudModel.CancelImportTaskRequest) async throws
      -> ElasticComputeCloudModel.CancelImportTaskResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelImportTaskAsync(input: input) { result in
                     switch result {
@@ -1090,7 +1090,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelReservedInstancesListing(input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest) async throws
      -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelReservedInstancesListingAsync(input: input) { result in
                     switch result {
@@ -1116,7 +1116,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelSpotFleetRequests(input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest) async throws
      -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelSpotFleetRequestsAsync(input: input) { result in
                     switch result {
@@ -1142,7 +1142,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func cancelSpotInstanceRequests(input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest) async throws
      -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try cancelSpotInstanceRequestsAsync(input: input) { result in
                     switch result {
@@ -1168,7 +1168,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func confirmProductInstance(input: ElasticComputeCloudModel.ConfirmProductInstanceRequest) async throws
      -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try confirmProductInstanceAsync(input: input) { result in
                     switch result {
@@ -1194,7 +1194,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func copyFpgaImage(input: ElasticComputeCloudModel.CopyFpgaImageRequest) async throws
      -> ElasticComputeCloudModel.CopyFpgaImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyFpgaImageAsync(input: input) { result in
                     switch result {
@@ -1220,7 +1220,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func copyImage(input: ElasticComputeCloudModel.CopyImageRequest) async throws
      -> ElasticComputeCloudModel.CopyImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copyImageAsync(input: input) { result in
                     switch result {
@@ -1246,7 +1246,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func copySnapshot(input: ElasticComputeCloudModel.CopySnapshotRequest) async throws
      -> ElasticComputeCloudModel.CopySnapshotResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try copySnapshotAsync(input: input) { result in
                     switch result {
@@ -1272,7 +1272,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createCapacityReservation(input: ElasticComputeCloudModel.CreateCapacityReservationRequest) async throws
      -> ElasticComputeCloudModel.CreateCapacityReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCapacityReservationAsync(input: input) { result in
                     switch result {
@@ -1298,7 +1298,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createCapacityReservationFleet(input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest) async throws
      -> ElasticComputeCloudModel.CreateCapacityReservationFleetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCapacityReservationFleetAsync(input: input) { result in
                     switch result {
@@ -1324,7 +1324,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createCarrierGateway(input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateCarrierGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCarrierGatewayAsync(input: input) { result in
                     switch result {
@@ -1350,7 +1350,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createClientVpnEndpoint(input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) async throws
      -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createClientVpnEndpointAsync(input: input) { result in
                     switch result {
@@ -1376,7 +1376,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createClientVpnRoute(input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) async throws
      -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createClientVpnRouteAsync(input: input) { result in
                     switch result {
@@ -1402,7 +1402,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createCoipCidr(input: ElasticComputeCloudModel.CreateCoipCidrRequest) async throws
      -> ElasticComputeCloudModel.CreateCoipCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCoipCidrAsync(input: input) { result in
                     switch result {
@@ -1428,7 +1428,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createCoipPool(input: ElasticComputeCloudModel.CreateCoipPoolRequest) async throws
      -> ElasticComputeCloudModel.CreateCoipPoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCoipPoolAsync(input: input) { result in
                     switch result {
@@ -1454,7 +1454,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createCustomerGateway(input: ElasticComputeCloudModel.CreateCustomerGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createCustomerGatewayAsync(input: input) { result in
                     switch result {
@@ -1480,7 +1480,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createDefaultSubnet(input: ElasticComputeCloudModel.CreateDefaultSubnetRequest) async throws
      -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDefaultSubnetAsync(input: input) { result in
                     switch result {
@@ -1506,7 +1506,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createDefaultVpc(input: ElasticComputeCloudModel.CreateDefaultVpcRequest) async throws
      -> ElasticComputeCloudModel.CreateDefaultVpcResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDefaultVpcAsync(input: input) { result in
                     switch result {
@@ -1532,7 +1532,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createDhcpOptions(input: ElasticComputeCloudModel.CreateDhcpOptionsRequest) async throws
      -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createDhcpOptionsAsync(input: input) { result in
                     switch result {
@@ -1558,7 +1558,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createEgressOnlyInternetGateway(input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createEgressOnlyInternetGatewayAsync(input: input) { result in
                     switch result {
@@ -1584,7 +1584,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createFleet(input: ElasticComputeCloudModel.CreateFleetRequest) async throws
      -> ElasticComputeCloudModel.CreateFleetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createFleetAsync(input: input) { result in
                     switch result {
@@ -1610,7 +1610,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createFlowLogs(input: ElasticComputeCloudModel.CreateFlowLogsRequest) async throws
      -> ElasticComputeCloudModel.CreateFlowLogsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createFlowLogsAsync(input: input) { result in
                     switch result {
@@ -1636,7 +1636,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createFpgaImage(input: ElasticComputeCloudModel.CreateFpgaImageRequest) async throws
      -> ElasticComputeCloudModel.CreateFpgaImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createFpgaImageAsync(input: input) { result in
                     switch result {
@@ -1662,7 +1662,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createImage(input: ElasticComputeCloudModel.CreateImageRequest) async throws
      -> ElasticComputeCloudModel.CreateImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createImageAsync(input: input) { result in
                     switch result {
@@ -1688,7 +1688,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createInstanceEventWindow(input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) async throws
      -> ElasticComputeCloudModel.CreateInstanceEventWindowResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createInstanceEventWindowAsync(input: input) { result in
                     switch result {
@@ -1714,7 +1714,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createInstanceExportTask(input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest) async throws
      -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createInstanceExportTaskAsync(input: input) { result in
                     switch result {
@@ -1740,7 +1740,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createInternetGateway(input: ElasticComputeCloudModel.CreateInternetGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateInternetGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createInternetGatewayAsync(input: input) { result in
                     switch result {
@@ -1766,7 +1766,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createIpam(input: ElasticComputeCloudModel.CreateIpamRequest) async throws
      -> ElasticComputeCloudModel.CreateIpamResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createIpamAsync(input: input) { result in
                     switch result {
@@ -1792,7 +1792,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createIpamPool(input: ElasticComputeCloudModel.CreateIpamPoolRequest) async throws
      -> ElasticComputeCloudModel.CreateIpamPoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createIpamPoolAsync(input: input) { result in
                     switch result {
@@ -1818,7 +1818,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createIpamScope(input: ElasticComputeCloudModel.CreateIpamScopeRequest) async throws
      -> ElasticComputeCloudModel.CreateIpamScopeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createIpamScopeAsync(input: input) { result in
                     switch result {
@@ -1844,7 +1844,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createKeyPair(input: ElasticComputeCloudModel.CreateKeyPairRequest) async throws
      -> ElasticComputeCloudModel.KeyPair {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createKeyPairAsync(input: input) { result in
                     switch result {
@@ -1870,7 +1870,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createLaunchTemplate(input: ElasticComputeCloudModel.CreateLaunchTemplateRequest) async throws
      -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createLaunchTemplateAsync(input: input) { result in
                     switch result {
@@ -1896,7 +1896,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createLaunchTemplateVersion(input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest) async throws
      -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createLaunchTemplateVersionAsync(input: input) { result in
                     switch result {
@@ -1922,7 +1922,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createLocalGatewayRoute(input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest) async throws
      -> ElasticComputeCloudModel.CreateLocalGatewayRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createLocalGatewayRouteAsync(input: input) { result in
                     switch result {
@@ -1948,7 +1948,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createLocalGatewayRouteTable(input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableRequest) async throws
      -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createLocalGatewayRouteTableAsync(input: input) { result in
                     switch result {
@@ -1974,7 +1974,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createLocalGatewayRouteTableVirtualInterfaceGroupAssociation(input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest) async throws
      -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createLocalGatewayRouteTableVirtualInterfaceGroupAssociationAsync(input: input) { result in
                     switch result {
@@ -2000,7 +2000,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createLocalGatewayRouteTableVpcAssociation(input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest) async throws
      -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createLocalGatewayRouteTableVpcAssociationAsync(input: input) { result in
                     switch result {
@@ -2026,7 +2026,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createManagedPrefixList(input: ElasticComputeCloudModel.CreateManagedPrefixListRequest) async throws
      -> ElasticComputeCloudModel.CreateManagedPrefixListResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createManagedPrefixListAsync(input: input) { result in
                     switch result {
@@ -2052,7 +2052,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createNatGateway(input: ElasticComputeCloudModel.CreateNatGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateNatGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNatGatewayAsync(input: input) { result in
                     switch result {
@@ -2078,7 +2078,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createNetworkAcl(input: ElasticComputeCloudModel.CreateNetworkAclRequest) async throws
      -> ElasticComputeCloudModel.CreateNetworkAclResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNetworkAclAsync(input: input) { result in
                     switch result {
@@ -2101,7 +2101,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated CreateNetworkAclEntryRequest object being passed to this operation.
      */
     func createNetworkAclEntry(input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNetworkAclEntryAsync(input: input) { error in
                     if let error = error {
@@ -2126,7 +2126,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createNetworkInsightsAccessScope(input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest) async throws
      -> ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNetworkInsightsAccessScopeAsync(input: input) { result in
                     switch result {
@@ -2152,7 +2152,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createNetworkInsightsPath(input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) async throws
      -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNetworkInsightsPathAsync(input: input) { result in
                     switch result {
@@ -2178,7 +2178,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createNetworkInterface(input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) async throws
      -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNetworkInterfaceAsync(input: input) { result in
                     switch result {
@@ -2204,7 +2204,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createNetworkInterfacePermission(input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest) async throws
      -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createNetworkInterfacePermissionAsync(input: input) { result in
                     switch result {
@@ -2230,7 +2230,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createPlacementGroup(input: ElasticComputeCloudModel.CreatePlacementGroupRequest) async throws
      -> ElasticComputeCloudModel.CreatePlacementGroupResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createPlacementGroupAsync(input: input) { result in
                     switch result {
@@ -2256,7 +2256,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createPublicIpv4Pool(input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest) async throws
      -> ElasticComputeCloudModel.CreatePublicIpv4PoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createPublicIpv4PoolAsync(input: input) { result in
                     switch result {
@@ -2282,7 +2282,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createReplaceRootVolumeTask(input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest) async throws
      -> ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createReplaceRootVolumeTaskAsync(input: input) { result in
                     switch result {
@@ -2308,7 +2308,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createReservedInstancesListing(input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) async throws
      -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createReservedInstancesListingAsync(input: input) { result in
                     switch result {
@@ -2334,7 +2334,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createRestoreImageTask(input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest) async throws
      -> ElasticComputeCloudModel.CreateRestoreImageTaskResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createRestoreImageTaskAsync(input: input) { result in
                     switch result {
@@ -2360,7 +2360,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createRoute(input: ElasticComputeCloudModel.CreateRouteRequest) async throws
      -> ElasticComputeCloudModel.CreateRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createRouteAsync(input: input) { result in
                     switch result {
@@ -2386,7 +2386,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createRouteTable(input: ElasticComputeCloudModel.CreateRouteTableRequest) async throws
      -> ElasticComputeCloudModel.CreateRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createRouteTableAsync(input: input) { result in
                     switch result {
@@ -2412,7 +2412,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createSecurityGroup(input: ElasticComputeCloudModel.CreateSecurityGroupRequest) async throws
      -> ElasticComputeCloudModel.CreateSecurityGroupResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSecurityGroupAsync(input: input) { result in
                     switch result {
@@ -2438,7 +2438,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createSnapshot(input: ElasticComputeCloudModel.CreateSnapshotRequest) async throws
      -> ElasticComputeCloudModel.Snapshot {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSnapshotAsync(input: input) { result in
                     switch result {
@@ -2464,7 +2464,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createSnapshots(input: ElasticComputeCloudModel.CreateSnapshotsRequest) async throws
      -> ElasticComputeCloudModel.CreateSnapshotsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSnapshotsAsync(input: input) { result in
                     switch result {
@@ -2490,7 +2490,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createSpotDatafeedSubscription(input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) async throws
      -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSpotDatafeedSubscriptionAsync(input: input) { result in
                     switch result {
@@ -2516,7 +2516,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createStoreImageTask(input: ElasticComputeCloudModel.CreateStoreImageTaskRequest) async throws
      -> ElasticComputeCloudModel.CreateStoreImageTaskResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStoreImageTaskAsync(input: input) { result in
                     switch result {
@@ -2542,7 +2542,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createSubnet(input: ElasticComputeCloudModel.CreateSubnetRequest) async throws
      -> ElasticComputeCloudModel.CreateSubnetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSubnetAsync(input: input) { result in
                     switch result {
@@ -2568,7 +2568,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createSubnetCidrReservation(input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest) async throws
      -> ElasticComputeCloudModel.CreateSubnetCidrReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createSubnetCidrReservationAsync(input: input) { result in
                     switch result {
@@ -2591,7 +2591,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated CreateTagsRequest object being passed to this operation.
      */
     func createTags(input: ElasticComputeCloudModel.CreateTagsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTagsAsync(input: input) { error in
                     if let error = error {
@@ -2616,7 +2616,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTrafficMirrorFilter(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest) async throws
      -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTrafficMirrorFilterAsync(input: input) { result in
                     switch result {
@@ -2642,7 +2642,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTrafficMirrorFilterRule(input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest) async throws
      -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTrafficMirrorFilterRuleAsync(input: input) { result in
                     switch result {
@@ -2668,7 +2668,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTrafficMirrorSession(input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest) async throws
      -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTrafficMirrorSessionAsync(input: input) { result in
                     switch result {
@@ -2694,7 +2694,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTrafficMirrorTarget(input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest) async throws
      -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTrafficMirrorTargetAsync(input: input) { result in
                     switch result {
@@ -2720,7 +2720,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGateway(input: ElasticComputeCloudModel.CreateTransitGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayAsync(input: input) { result in
                     switch result {
@@ -2746,7 +2746,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayConnect(input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayConnectResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayConnectAsync(input: input) { result in
                     switch result {
@@ -2772,7 +2772,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayConnectPeer(input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayConnectPeerAsync(input: input) { result in
                     switch result {
@@ -2798,7 +2798,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayMulticastDomain(input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayMulticastDomainAsync(input: input) { result in
                     switch result {
@@ -2824,7 +2824,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayPeeringAttachment(input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayPeeringAttachmentAsync(input: input) { result in
                     switch result {
@@ -2850,7 +2850,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayPolicyTable(input: ElasticComputeCloudModel.CreateTransitGatewayPolicyTableRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayPolicyTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayPolicyTableAsync(input: input) { result in
                     switch result {
@@ -2876,7 +2876,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayPrefixListReference(input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayPrefixListReferenceAsync(input: input) { result in
                     switch result {
@@ -2902,7 +2902,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayRoute(input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayRouteAsync(input: input) { result in
                     switch result {
@@ -2928,7 +2928,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayRouteTable(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayRouteTableAsync(input: input) { result in
                     switch result {
@@ -2954,7 +2954,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayRouteTableAnnouncement(input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayRouteTableAnnouncementAsync(input: input) { result in
                     switch result {
@@ -2980,7 +2980,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createTransitGatewayVpcAttachment(input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) async throws
      -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTransitGatewayVpcAttachmentAsync(input: input) { result in
                     switch result {
@@ -3006,7 +3006,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVolume(input: ElasticComputeCloudModel.CreateVolumeRequest) async throws
      -> ElasticComputeCloudModel.Volume {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVolumeAsync(input: input) { result in
                     switch result {
@@ -3032,7 +3032,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpc(input: ElasticComputeCloudModel.CreateVpcRequest) async throws
      -> ElasticComputeCloudModel.CreateVpcResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpcAsync(input: input) { result in
                     switch result {
@@ -3058,7 +3058,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpcEndpoint(input: ElasticComputeCloudModel.CreateVpcEndpointRequest) async throws
      -> ElasticComputeCloudModel.CreateVpcEndpointResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpcEndpointAsync(input: input) { result in
                     switch result {
@@ -3084,7 +3084,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpcEndpointConnectionNotification(input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest) async throws
      -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpcEndpointConnectionNotificationAsync(input: input) { result in
                     switch result {
@@ -3110,7 +3110,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpcEndpointServiceConfiguration(input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest) async throws
      -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpcEndpointServiceConfigurationAsync(input: input) { result in
                     switch result {
@@ -3136,7 +3136,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpcPeeringConnection(input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest) async throws
      -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpcPeeringConnectionAsync(input: input) { result in
                     switch result {
@@ -3162,7 +3162,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpnConnection(input: ElasticComputeCloudModel.CreateVpnConnectionRequest) async throws
      -> ElasticComputeCloudModel.CreateVpnConnectionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpnConnectionAsync(input: input) { result in
                     switch result {
@@ -3185,7 +3185,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated CreateVpnConnectionRouteRequest object being passed to this operation.
      */
     func createVpnConnectionRoute(input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpnConnectionRouteAsync(input: input) { error in
                     if let error = error {
@@ -3210,7 +3210,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func createVpnGateway(input: ElasticComputeCloudModel.CreateVpnGatewayRequest) async throws
      -> ElasticComputeCloudModel.CreateVpnGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createVpnGatewayAsync(input: input) { result in
                     switch result {
@@ -3236,7 +3236,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteCarrierGateway(input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest) async throws
      -> ElasticComputeCloudModel.DeleteCarrierGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCarrierGatewayAsync(input: input) { result in
                     switch result {
@@ -3262,7 +3262,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteClientVpnEndpoint(input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) async throws
      -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteClientVpnEndpointAsync(input: input) { result in
                     switch result {
@@ -3288,7 +3288,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteClientVpnRoute(input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) async throws
      -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteClientVpnRouteAsync(input: input) { result in
                     switch result {
@@ -3314,7 +3314,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteCoipCidr(input: ElasticComputeCloudModel.DeleteCoipCidrRequest) async throws
      -> ElasticComputeCloudModel.DeleteCoipCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCoipCidrAsync(input: input) { result in
                     switch result {
@@ -3340,7 +3340,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteCoipPool(input: ElasticComputeCloudModel.DeleteCoipPoolRequest) async throws
      -> ElasticComputeCloudModel.DeleteCoipPoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCoipPoolAsync(input: input) { result in
                     switch result {
@@ -3363,7 +3363,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteCustomerGatewayRequest object being passed to this operation.
      */
     func deleteCustomerGateway(input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteCustomerGatewayAsync(input: input) { error in
                     if let error = error {
@@ -3385,7 +3385,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteDhcpOptionsRequest object being passed to this operation.
      */
     func deleteDhcpOptions(input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteDhcpOptionsAsync(input: input) { error in
                     if let error = error {
@@ -3410,7 +3410,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteEgressOnlyInternetGateway(input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest) async throws
      -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteEgressOnlyInternetGatewayAsync(input: input) { result in
                     switch result {
@@ -3436,7 +3436,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteFleets(input: ElasticComputeCloudModel.DeleteFleetsRequest) async throws
      -> ElasticComputeCloudModel.DeleteFleetsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteFleetsAsync(input: input) { result in
                     switch result {
@@ -3462,7 +3462,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteFlowLogs(input: ElasticComputeCloudModel.DeleteFlowLogsRequest) async throws
      -> ElasticComputeCloudModel.DeleteFlowLogsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteFlowLogsAsync(input: input) { result in
                     switch result {
@@ -3488,7 +3488,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteFpgaImage(input: ElasticComputeCloudModel.DeleteFpgaImageRequest) async throws
      -> ElasticComputeCloudModel.DeleteFpgaImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteFpgaImageAsync(input: input) { result in
                     switch result {
@@ -3514,7 +3514,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteInstanceEventWindow(input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) async throws
      -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteInstanceEventWindowAsync(input: input) { result in
                     switch result {
@@ -3537,7 +3537,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteInternetGatewayRequest object being passed to this operation.
      */
     func deleteInternetGateway(input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteInternetGatewayAsync(input: input) { error in
                     if let error = error {
@@ -3562,7 +3562,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteIpam(input: ElasticComputeCloudModel.DeleteIpamRequest) async throws
      -> ElasticComputeCloudModel.DeleteIpamResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteIpamAsync(input: input) { result in
                     switch result {
@@ -3588,7 +3588,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteIpamPool(input: ElasticComputeCloudModel.DeleteIpamPoolRequest) async throws
      -> ElasticComputeCloudModel.DeleteIpamPoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteIpamPoolAsync(input: input) { result in
                     switch result {
@@ -3614,7 +3614,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteIpamScope(input: ElasticComputeCloudModel.DeleteIpamScopeRequest) async throws
      -> ElasticComputeCloudModel.DeleteIpamScopeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteIpamScopeAsync(input: input) { result in
                     switch result {
@@ -3637,7 +3637,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
      */
     func deleteKeyPair(input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteKeyPairAsync(input: input) { error in
                     if let error = error {
@@ -3662,7 +3662,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteLaunchTemplate(input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) async throws
      -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLaunchTemplateAsync(input: input) { result in
                     switch result {
@@ -3688,7 +3688,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteLaunchTemplateVersions(input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest) async throws
      -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLaunchTemplateVersionsAsync(input: input) { result in
                     switch result {
@@ -3714,7 +3714,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteLocalGatewayRoute(input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest) async throws
      -> ElasticComputeCloudModel.DeleteLocalGatewayRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLocalGatewayRouteAsync(input: input) { result in
                     switch result {
@@ -3740,7 +3740,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteLocalGatewayRouteTable(input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableRequest) async throws
      -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLocalGatewayRouteTableAsync(input: input) { result in
                     switch result {
@@ -3766,7 +3766,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation(input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest) async throws
      -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationAsync(input: input) { result in
                     switch result {
@@ -3792,7 +3792,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteLocalGatewayRouteTableVpcAssociation(input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest) async throws
      -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteLocalGatewayRouteTableVpcAssociationAsync(input: input) { result in
                     switch result {
@@ -3818,7 +3818,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteManagedPrefixList(input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest) async throws
      -> ElasticComputeCloudModel.DeleteManagedPrefixListResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteManagedPrefixListAsync(input: input) { result in
                     switch result {
@@ -3844,7 +3844,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteNatGateway(input: ElasticComputeCloudModel.DeleteNatGatewayRequest) async throws
      -> ElasticComputeCloudModel.DeleteNatGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNatGatewayAsync(input: input) { result in
                     switch result {
@@ -3867,7 +3867,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteNetworkAclRequest object being passed to this operation.
      */
     func deleteNetworkAcl(input: ElasticComputeCloudModel.DeleteNetworkAclRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkAclAsync(input: input) { error in
                     if let error = error {
@@ -3889,7 +3889,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteNetworkAclEntryRequest object being passed to this operation.
      */
     func deleteNetworkAclEntry(input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkAclEntryAsync(input: input) { error in
                     if let error = error {
@@ -3914,7 +3914,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteNetworkInsightsAccessScope(input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest) async throws
      -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkInsightsAccessScopeAsync(input: input) { result in
                     switch result {
@@ -3940,7 +3940,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteNetworkInsightsAccessScopeAnalysis(input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest) async throws
      -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkInsightsAccessScopeAnalysisAsync(input: input) { result in
                     switch result {
@@ -3966,7 +3966,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteNetworkInsightsAnalysis(input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) async throws
      -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkInsightsAnalysisAsync(input: input) { result in
                     switch result {
@@ -3992,7 +3992,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteNetworkInsightsPath(input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest) async throws
      -> ElasticComputeCloudModel.DeleteNetworkInsightsPathResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkInsightsPathAsync(input: input) { result in
                     switch result {
@@ -4015,7 +4015,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteNetworkInterfaceRequest object being passed to this operation.
      */
     func deleteNetworkInterface(input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkInterfaceAsync(input: input) { error in
                     if let error = error {
@@ -4040,7 +4040,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteNetworkInterfacePermission(input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest) async throws
      -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteNetworkInterfacePermissionAsync(input: input) { result in
                     switch result {
@@ -4063,7 +4063,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeletePlacementGroupRequest object being passed to this operation.
      */
     func deletePlacementGroup(input: ElasticComputeCloudModel.DeletePlacementGroupRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deletePlacementGroupAsync(input: input) { error in
                     if let error = error {
@@ -4088,7 +4088,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deletePublicIpv4Pool(input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest) async throws
      -> ElasticComputeCloudModel.DeletePublicIpv4PoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deletePublicIpv4PoolAsync(input: input) { result in
                     switch result {
@@ -4114,7 +4114,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteQueuedReservedInstances(input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest) async throws
      -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteQueuedReservedInstancesAsync(input: input) { result in
                     switch result {
@@ -4137,7 +4137,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteRouteRequest object being passed to this operation.
      */
     func deleteRoute(input: ElasticComputeCloudModel.DeleteRouteRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteRouteAsync(input: input) { error in
                     if let error = error {
@@ -4159,7 +4159,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteRouteTableRequest object being passed to this operation.
      */
     func deleteRouteTable(input: ElasticComputeCloudModel.DeleteRouteTableRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteRouteTableAsync(input: input) { error in
                     if let error = error {
@@ -4181,7 +4181,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteSecurityGroupRequest object being passed to this operation.
      */
     func deleteSecurityGroup(input: ElasticComputeCloudModel.DeleteSecurityGroupRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteSecurityGroupAsync(input: input) { error in
                     if let error = error {
@@ -4203,7 +4203,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteSnapshotRequest object being passed to this operation.
      */
     func deleteSnapshot(input: ElasticComputeCloudModel.DeleteSnapshotRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteSnapshotAsync(input: input) { error in
                     if let error = error {
@@ -4225,7 +4225,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteSpotDatafeedSubscriptionRequest object being passed to this operation.
      */
     func deleteSpotDatafeedSubscription(input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteSpotDatafeedSubscriptionAsync(input: input) { error in
                     if let error = error {
@@ -4247,7 +4247,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteSubnetRequest object being passed to this operation.
      */
     func deleteSubnet(input: ElasticComputeCloudModel.DeleteSubnetRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteSubnetAsync(input: input) { error in
                     if let error = error {
@@ -4272,7 +4272,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteSubnetCidrReservation(input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest) async throws
      -> ElasticComputeCloudModel.DeleteSubnetCidrReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteSubnetCidrReservationAsync(input: input) { result in
                     switch result {
@@ -4295,7 +4295,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteTagsRequest object being passed to this operation.
      */
     func deleteTags(input: ElasticComputeCloudModel.DeleteTagsRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTagsAsync(input: input) { error in
                     if let error = error {
@@ -4320,7 +4320,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTrafficMirrorFilter(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest) async throws
      -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTrafficMirrorFilterAsync(input: input) { result in
                     switch result {
@@ -4346,7 +4346,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTrafficMirrorFilterRule(input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest) async throws
      -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTrafficMirrorFilterRuleAsync(input: input) { result in
                     switch result {
@@ -4372,7 +4372,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTrafficMirrorSession(input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest) async throws
      -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTrafficMirrorSessionAsync(input: input) { result in
                     switch result {
@@ -4398,7 +4398,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTrafficMirrorTarget(input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest) async throws
      -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTrafficMirrorTargetAsync(input: input) { result in
                     switch result {
@@ -4424,7 +4424,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGateway(input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayAsync(input: input) { result in
                     switch result {
@@ -4450,7 +4450,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayConnect(input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayConnectResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayConnectAsync(input: input) { result in
                     switch result {
@@ -4476,7 +4476,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayConnectPeer(input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayConnectPeerAsync(input: input) { result in
                     switch result {
@@ -4502,7 +4502,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayMulticastDomain(input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayMulticastDomainAsync(input: input) { result in
                     switch result {
@@ -4528,7 +4528,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayPeeringAttachment(input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayPeeringAttachmentAsync(input: input) { result in
                     switch result {
@@ -4554,7 +4554,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayPolicyTable(input: ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayPolicyTableAsync(input: input) { result in
                     switch result {
@@ -4580,7 +4580,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayPrefixListReference(input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayPrefixListReferenceAsync(input: input) { result in
                     switch result {
@@ -4606,7 +4606,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayRoute(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayRouteAsync(input: input) { result in
                     switch result {
@@ -4632,7 +4632,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayRouteTable(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayRouteTableAsync(input: input) { result in
                     switch result {
@@ -4658,7 +4658,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayRouteTableAnnouncement(input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayRouteTableAnnouncementAsync(input: input) { result in
                     switch result {
@@ -4684,7 +4684,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteTransitGatewayVpcAttachment(input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) async throws
      -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTransitGatewayVpcAttachmentAsync(input: input) { result in
                     switch result {
@@ -4707,7 +4707,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteVolumeRequest object being passed to this operation.
      */
     func deleteVolume(input: ElasticComputeCloudModel.DeleteVolumeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVolumeAsync(input: input) { error in
                     if let error = error {
@@ -4729,7 +4729,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteVpcRequest object being passed to this operation.
      */
     func deleteVpc(input: ElasticComputeCloudModel.DeleteVpcRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpcAsync(input: input) { error in
                     if let error = error {
@@ -4754,7 +4754,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteVpcEndpointConnectionNotifications(input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest) async throws
      -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpcEndpointConnectionNotificationsAsync(input: input) { result in
                     switch result {
@@ -4780,7 +4780,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteVpcEndpointServiceConfigurations(input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest) async throws
      -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpcEndpointServiceConfigurationsAsync(input: input) { result in
                     switch result {
@@ -4806,7 +4806,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteVpcEndpoints(input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest) async throws
      -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpcEndpointsAsync(input: input) { result in
                     switch result {
@@ -4832,7 +4832,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deleteVpcPeeringConnection(input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest) async throws
      -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpcPeeringConnectionAsync(input: input) { result in
                     switch result {
@@ -4855,7 +4855,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteVpnConnectionRequest object being passed to this operation.
      */
     func deleteVpnConnection(input: ElasticComputeCloudModel.DeleteVpnConnectionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpnConnectionAsync(input: input) { error in
                     if let error = error {
@@ -4877,7 +4877,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteVpnConnectionRouteRequest object being passed to this operation.
      */
     func deleteVpnConnectionRoute(input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpnConnectionRouteAsync(input: input) { error in
                     if let error = error {
@@ -4899,7 +4899,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeleteVpnGatewayRequest object being passed to this operation.
      */
     func deleteVpnGateway(input: ElasticComputeCloudModel.DeleteVpnGatewayRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteVpnGatewayAsync(input: input) { error in
                     if let error = error {
@@ -4924,7 +4924,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deprovisionByoipCidr(input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) async throws
      -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deprovisionByoipCidrAsync(input: input) { result in
                     switch result {
@@ -4950,7 +4950,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deprovisionIpamPoolCidr(input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest) async throws
      -> ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deprovisionIpamPoolCidrAsync(input: input) { result in
                     switch result {
@@ -4976,7 +4976,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deprovisionPublicIpv4PoolCidr(input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest) async throws
      -> ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deprovisionPublicIpv4PoolCidrAsync(input: input) { result in
                     switch result {
@@ -4999,7 +4999,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DeregisterImageRequest object being passed to this operation.
      */
     func deregisterImage(input: ElasticComputeCloudModel.DeregisterImageRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterImageAsync(input: input) { error in
                     if let error = error {
@@ -5024,7 +5024,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deregisterInstanceEventNotificationAttributes(input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest) async throws
      -> ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterInstanceEventNotificationAttributesAsync(input: input) { result in
                     switch result {
@@ -5050,7 +5050,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deregisterTransitGatewayMulticastGroupMembers(input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest) async throws
      -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterTransitGatewayMulticastGroupMembersAsync(input: input) { result in
                     switch result {
@@ -5076,7 +5076,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func deregisterTransitGatewayMulticastGroupSources(input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest) async throws
      -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deregisterTransitGatewayMulticastGroupSourcesAsync(input: input) { result in
                     switch result {
@@ -5102,7 +5102,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeAccountAttributes(input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) async throws
      -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAccountAttributesAsync(input: input) { result in
                     switch result {
@@ -5128,7 +5128,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeAddresses(input: ElasticComputeCloudModel.DescribeAddressesRequest) async throws
      -> ElasticComputeCloudModel.DescribeAddressesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAddressesAsync(input: input) { result in
                     switch result {
@@ -5154,7 +5154,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeAddressesAttribute(input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest) async throws
      -> ElasticComputeCloudModel.DescribeAddressesAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAddressesAttributeAsync(input: input) { result in
                     switch result {
@@ -5180,7 +5180,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeAggregateIdFormat(input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest) async throws
      -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAggregateIdFormatAsync(input: input) { result in
                     switch result {
@@ -5206,7 +5206,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeAvailabilityZones(input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest) async throws
      -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAvailabilityZonesAsync(input: input) { result in
                     switch result {
@@ -5232,7 +5232,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeBundleTasks(input: ElasticComputeCloudModel.DescribeBundleTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeBundleTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeBundleTasksAsync(input: input) { result in
                     switch result {
@@ -5258,7 +5258,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeByoipCidrs(input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) async throws
      -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeByoipCidrsAsync(input: input) { result in
                     switch result {
@@ -5284,7 +5284,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeCapacityReservationFleets(input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest) async throws
      -> ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCapacityReservationFleetsAsync(input: input) { result in
                     switch result {
@@ -5310,7 +5310,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeCapacityReservations(input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCapacityReservationsAsync(input: input) { result in
                     switch result {
@@ -5336,7 +5336,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeCarrierGateways(input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeCarrierGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCarrierGatewaysAsync(input: input) { result in
                     switch result {
@@ -5362,7 +5362,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeClassicLinkInstances(input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) async throws
      -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClassicLinkInstancesAsync(input: input) { result in
                     switch result {
@@ -5388,7 +5388,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeClientVpnAuthorizationRules(input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) async throws
      -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClientVpnAuthorizationRulesAsync(input: input) { result in
                     switch result {
@@ -5414,7 +5414,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeClientVpnConnections(input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClientVpnConnectionsAsync(input: input) { result in
                     switch result {
@@ -5440,7 +5440,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeClientVpnEndpoints(input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) async throws
      -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClientVpnEndpointsAsync(input: input) { result in
                     switch result {
@@ -5466,7 +5466,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeClientVpnRoutes(input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) async throws
      -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClientVpnRoutesAsync(input: input) { result in
                     switch result {
@@ -5492,7 +5492,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeClientVpnTargetNetworks(input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) async throws
      -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeClientVpnTargetNetworksAsync(input: input) { result in
                     switch result {
@@ -5518,7 +5518,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeCoipPools(input: ElasticComputeCloudModel.DescribeCoipPoolsRequest) async throws
      -> ElasticComputeCloudModel.DescribeCoipPoolsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCoipPoolsAsync(input: input) { result in
                     switch result {
@@ -5544,7 +5544,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeConversionTasks(input: ElasticComputeCloudModel.DescribeConversionTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeConversionTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeConversionTasksAsync(input: input) { result in
                     switch result {
@@ -5570,7 +5570,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeCustomerGateways(input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeCustomerGatewaysAsync(input: input) { result in
                     switch result {
@@ -5596,7 +5596,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeDhcpOptions(input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDhcpOptionsAsync(input: input) { result in
                     switch result {
@@ -5622,7 +5622,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeEgressOnlyInternetGateways(input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEgressOnlyInternetGatewaysAsync(input: input) { result in
                     switch result {
@@ -5648,7 +5648,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeElasticGpus(input: ElasticComputeCloudModel.DescribeElasticGpusRequest) async throws
      -> ElasticComputeCloudModel.DescribeElasticGpusResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeElasticGpusAsync(input: input) { result in
                     switch result {
@@ -5674,7 +5674,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeExportImageTasks(input: ElasticComputeCloudModel.DescribeExportImageTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeExportImageTasksAsync(input: input) { result in
                     switch result {
@@ -5700,7 +5700,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeExportTasks(input: ElasticComputeCloudModel.DescribeExportTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeExportTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeExportTasksAsync(input: input) { result in
                     switch result {
@@ -5726,7 +5726,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFastLaunchImages(input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest) async throws
      -> ElasticComputeCloudModel.DescribeFastLaunchImagesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFastLaunchImagesAsync(input: input) { result in
                     switch result {
@@ -5752,7 +5752,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFastSnapshotRestores(input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest) async throws
      -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFastSnapshotRestoresAsync(input: input) { result in
                     switch result {
@@ -5778,7 +5778,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFleetHistory(input: ElasticComputeCloudModel.DescribeFleetHistoryRequest) async throws
      -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFleetHistoryAsync(input: input) { result in
                     switch result {
@@ -5804,7 +5804,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFleetInstances(input: ElasticComputeCloudModel.DescribeFleetInstancesRequest) async throws
      -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFleetInstancesAsync(input: input) { result in
                     switch result {
@@ -5830,7 +5830,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFleets(input: ElasticComputeCloudModel.DescribeFleetsRequest) async throws
      -> ElasticComputeCloudModel.DescribeFleetsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFleetsAsync(input: input) { result in
                     switch result {
@@ -5856,7 +5856,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFlowLogs(input: ElasticComputeCloudModel.DescribeFlowLogsRequest) async throws
      -> ElasticComputeCloudModel.DescribeFlowLogsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFlowLogsAsync(input: input) { result in
                     switch result {
@@ -5882,7 +5882,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFpgaImageAttribute(input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest) async throws
      -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFpgaImageAttributeAsync(input: input) { result in
                     switch result {
@@ -5908,7 +5908,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeFpgaImages(input: ElasticComputeCloudModel.DescribeFpgaImagesRequest) async throws
      -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeFpgaImagesAsync(input: input) { result in
                     switch result {
@@ -5934,7 +5934,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeHostReservationOfferings(input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest) async throws
      -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeHostReservationOfferingsAsync(input: input) { result in
                     switch result {
@@ -5960,7 +5960,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeHostReservations(input: ElasticComputeCloudModel.DescribeHostReservationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeHostReservationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeHostReservationsAsync(input: input) { result in
                     switch result {
@@ -5986,7 +5986,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeHosts(input: ElasticComputeCloudModel.DescribeHostsRequest) async throws
      -> ElasticComputeCloudModel.DescribeHostsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeHostsAsync(input: input) { result in
                     switch result {
@@ -6012,7 +6012,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIamInstanceProfileAssociations(input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIamInstanceProfileAssociationsAsync(input: input) { result in
                     switch result {
@@ -6038,7 +6038,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIdFormat(input: ElasticComputeCloudModel.DescribeIdFormatRequest) async throws
      -> ElasticComputeCloudModel.DescribeIdFormatResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIdFormatAsync(input: input) { result in
                     switch result {
@@ -6064,7 +6064,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIdentityIdFormat(input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest) async throws
      -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIdentityIdFormatAsync(input: input) { result in
                     switch result {
@@ -6090,7 +6090,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeImageAttribute(input: ElasticComputeCloudModel.DescribeImageAttributeRequest) async throws
      -> ElasticComputeCloudModel.ImageAttribute {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImageAttributeAsync(input: input) { result in
                     switch result {
@@ -6116,7 +6116,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeImages(input: ElasticComputeCloudModel.DescribeImagesRequest) async throws
      -> ElasticComputeCloudModel.DescribeImagesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImagesAsync(input: input) { result in
                     switch result {
@@ -6142,7 +6142,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeImportImageTasks(input: ElasticComputeCloudModel.DescribeImportImageTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImportImageTasksAsync(input: input) { result in
                     switch result {
@@ -6168,7 +6168,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeImportSnapshotTasks(input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImportSnapshotTasksAsync(input: input) { result in
                     switch result {
@@ -6194,7 +6194,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceAttribute(input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest) async throws
      -> ElasticComputeCloudModel.InstanceAttribute {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceAttributeAsync(input: input) { result in
                     switch result {
@@ -6220,7 +6220,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceCreditSpecifications(input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceCreditSpecificationsAsync(input: input) { result in
                     switch result {
@@ -6246,7 +6246,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceEventNotificationAttributes(input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceEventNotificationAttributesAsync(input: input) { result in
                     switch result {
@@ -6272,7 +6272,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceEventWindows(input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstanceEventWindowsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceEventWindowsAsync(input: input) { result in
                     switch result {
@@ -6298,7 +6298,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceStatus(input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceStatusAsync(input: input) { result in
                     switch result {
@@ -6324,7 +6324,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceTypeOfferings(input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceTypeOfferingsAsync(input: input) { result in
                     switch result {
@@ -6350,7 +6350,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstanceTypes(input: ElasticComputeCloudModel.DescribeInstanceTypesRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstanceTypesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstanceTypesAsync(input: input) { result in
                     switch result {
@@ -6376,7 +6376,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInstances(input: ElasticComputeCloudModel.DescribeInstancesRequest) async throws
      -> ElasticComputeCloudModel.DescribeInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInstancesAsync(input: input) { result in
                     switch result {
@@ -6402,7 +6402,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeInternetGateways(input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeInternetGatewaysAsync(input: input) { result in
                     switch result {
@@ -6428,7 +6428,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIpamPools(input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) async throws
      -> ElasticComputeCloudModel.DescribeIpamPoolsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIpamPoolsAsync(input: input) { result in
                     switch result {
@@ -6454,7 +6454,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIpamScopes(input: ElasticComputeCloudModel.DescribeIpamScopesRequest) async throws
      -> ElasticComputeCloudModel.DescribeIpamScopesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIpamScopesAsync(input: input) { result in
                     switch result {
@@ -6480,7 +6480,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIpams(input: ElasticComputeCloudModel.DescribeIpamsRequest) async throws
      -> ElasticComputeCloudModel.DescribeIpamsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIpamsAsync(input: input) { result in
                     switch result {
@@ -6506,7 +6506,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeIpv6Pools(input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest) async throws
      -> ElasticComputeCloudModel.DescribeIpv6PoolsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIpv6PoolsAsync(input: input) { result in
                     switch result {
@@ -6532,7 +6532,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeKeyPairs(input: ElasticComputeCloudModel.DescribeKeyPairsRequest) async throws
      -> ElasticComputeCloudModel.DescribeKeyPairsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeKeyPairsAsync(input: input) { result in
                     switch result {
@@ -6558,7 +6558,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLaunchTemplateVersions(input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLaunchTemplateVersionsAsync(input: input) { result in
                     switch result {
@@ -6584,7 +6584,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLaunchTemplates(input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest) async throws
      -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLaunchTemplatesAsync(input: input) { result in
                     switch result {
@@ -6610,7 +6610,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsAsync(input: input) { result in
                     switch result {
@@ -6636,7 +6636,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLocalGatewayRouteTableVpcAssociations(input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLocalGatewayRouteTableVpcAssociationsAsync(input: input) { result in
                     switch result {
@@ -6662,7 +6662,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLocalGatewayRouteTables(input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest) async throws
      -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLocalGatewayRouteTablesAsync(input: input) { result in
                     switch result {
@@ -6688,7 +6688,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLocalGatewayVirtualInterfaceGroups(input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest) async throws
      -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLocalGatewayVirtualInterfaceGroupsAsync(input: input) { result in
                     switch result {
@@ -6714,7 +6714,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLocalGatewayVirtualInterfaces(input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest) async throws
      -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLocalGatewayVirtualInterfacesAsync(input: input) { result in
                     switch result {
@@ -6740,7 +6740,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeLocalGateways(input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeLocalGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLocalGatewaysAsync(input: input) { result in
                     switch result {
@@ -6766,7 +6766,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeManagedPrefixLists(input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest) async throws
      -> ElasticComputeCloudModel.DescribeManagedPrefixListsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeManagedPrefixListsAsync(input: input) { result in
                     switch result {
@@ -6792,7 +6792,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeMovingAddresses(input: ElasticComputeCloudModel.DescribeMovingAddressesRequest) async throws
      -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeMovingAddressesAsync(input: input) { result in
                     switch result {
@@ -6818,7 +6818,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNatGateways(input: ElasticComputeCloudModel.DescribeNatGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNatGatewaysAsync(input: input) { result in
                     switch result {
@@ -6844,7 +6844,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkAcls(input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkAclsAsync(input: input) { result in
                     switch result {
@@ -6870,7 +6870,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInsightsAccessScopeAnalyses(input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInsightsAccessScopeAnalysesAsync(input: input) { result in
                     switch result {
@@ -6896,7 +6896,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInsightsAccessScopes(input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInsightsAccessScopesAsync(input: input) { result in
                     switch result {
@@ -6922,7 +6922,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInsightsAnalyses(input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInsightsAnalysesAsync(input: input) { result in
                     switch result {
@@ -6948,7 +6948,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInsightsPaths(input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInsightsPathsAsync(input: input) { result in
                     switch result {
@@ -6974,7 +6974,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInterfaceAttribute(input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInterfaceAttributeAsync(input: input) { result in
                     switch result {
@@ -7000,7 +7000,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInterfacePermissions(input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInterfacePermissionsAsync(input: input) { result in
                     switch result {
@@ -7026,7 +7026,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeNetworkInterfaces(input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest) async throws
      -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeNetworkInterfacesAsync(input: input) { result in
                     switch result {
@@ -7052,7 +7052,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describePlacementGroups(input: ElasticComputeCloudModel.DescribePlacementGroupsRequest) async throws
      -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePlacementGroupsAsync(input: input) { result in
                     switch result {
@@ -7078,7 +7078,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describePrefixLists(input: ElasticComputeCloudModel.DescribePrefixListsRequest) async throws
      -> ElasticComputeCloudModel.DescribePrefixListsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePrefixListsAsync(input: input) { result in
                     switch result {
@@ -7104,7 +7104,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describePrincipalIdFormat(input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest) async throws
      -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePrincipalIdFormatAsync(input: input) { result in
                     switch result {
@@ -7130,7 +7130,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describePublicIpv4Pools(input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest) async throws
      -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describePublicIpv4PoolsAsync(input: input) { result in
                     switch result {
@@ -7156,7 +7156,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeRegions(input: ElasticComputeCloudModel.DescribeRegionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeRegionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeRegionsAsync(input: input) { result in
                     switch result {
@@ -7182,7 +7182,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeReplaceRootVolumeTasks(input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReplaceRootVolumeTasksAsync(input: input) { result in
                     switch result {
@@ -7208,7 +7208,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeReservedInstances(input: ElasticComputeCloudModel.DescribeReservedInstancesRequest) async throws
      -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReservedInstancesAsync(input: input) { result in
                     switch result {
@@ -7234,7 +7234,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeReservedInstancesListings(input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest) async throws
      -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReservedInstancesListingsAsync(input: input) { result in
                     switch result {
@@ -7260,7 +7260,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeReservedInstancesModifications(input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReservedInstancesModificationsAsync(input: input) { result in
                     switch result {
@@ -7286,7 +7286,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeReservedInstancesOfferings(input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest) async throws
      -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeReservedInstancesOfferingsAsync(input: input) { result in
                     switch result {
@@ -7312,7 +7312,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeRouteTables(input: ElasticComputeCloudModel.DescribeRouteTablesRequest) async throws
      -> ElasticComputeCloudModel.DescribeRouteTablesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeRouteTablesAsync(input: input) { result in
                     switch result {
@@ -7338,7 +7338,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeScheduledInstanceAvailability(input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest) async throws
      -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeScheduledInstanceAvailabilityAsync(input: input) { result in
                     switch result {
@@ -7364,7 +7364,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeScheduledInstances(input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest) async throws
      -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeScheduledInstancesAsync(input: input) { result in
                     switch result {
@@ -7390,7 +7390,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSecurityGroupReferences(input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest) async throws
      -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSecurityGroupReferencesAsync(input: input) { result in
                     switch result {
@@ -7416,7 +7416,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSecurityGroupRules(input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest) async throws
      -> ElasticComputeCloudModel.DescribeSecurityGroupRulesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSecurityGroupRulesAsync(input: input) { result in
                     switch result {
@@ -7442,7 +7442,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSecurityGroups(input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest) async throws
      -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSecurityGroupsAsync(input: input) { result in
                     switch result {
@@ -7468,7 +7468,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSnapshotAttribute(input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest) async throws
      -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSnapshotAttributeAsync(input: input) { result in
                     switch result {
@@ -7494,7 +7494,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSnapshotTierStatus(input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest) async throws
      -> ElasticComputeCloudModel.DescribeSnapshotTierStatusResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSnapshotTierStatusAsync(input: input) { result in
                     switch result {
@@ -7520,7 +7520,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSnapshots(input: ElasticComputeCloudModel.DescribeSnapshotsRequest) async throws
      -> ElasticComputeCloudModel.DescribeSnapshotsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSnapshotsAsync(input: input) { result in
                     switch result {
@@ -7546,7 +7546,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSpotDatafeedSubscription(input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest) async throws
      -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSpotDatafeedSubscriptionAsync(input: input) { result in
                     switch result {
@@ -7572,7 +7572,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSpotFleetInstances(input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest) async throws
      -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSpotFleetInstancesAsync(input: input) { result in
                     switch result {
@@ -7598,7 +7598,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSpotFleetRequestHistory(input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest) async throws
      -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSpotFleetRequestHistoryAsync(input: input) { result in
                     switch result {
@@ -7624,7 +7624,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSpotFleetRequests(input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest) async throws
      -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSpotFleetRequestsAsync(input: input) { result in
                     switch result {
@@ -7650,7 +7650,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSpotInstanceRequests(input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest) async throws
      -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSpotInstanceRequestsAsync(input: input) { result in
                     switch result {
@@ -7676,7 +7676,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSpotPriceHistory(input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest) async throws
      -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSpotPriceHistoryAsync(input: input) { result in
                     switch result {
@@ -7702,7 +7702,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeStaleSecurityGroups(input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) async throws
      -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStaleSecurityGroupsAsync(input: input) { result in
                     switch result {
@@ -7728,7 +7728,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeStoreImageTasks(input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest) async throws
      -> ElasticComputeCloudModel.DescribeStoreImageTasksResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStoreImageTasksAsync(input: input) { result in
                     switch result {
@@ -7754,7 +7754,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeSubnets(input: ElasticComputeCloudModel.DescribeSubnetsRequest) async throws
      -> ElasticComputeCloudModel.DescribeSubnetsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeSubnetsAsync(input: input) { result in
                     switch result {
@@ -7780,7 +7780,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTags(input: ElasticComputeCloudModel.DescribeTagsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTagsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTagsAsync(input: input) { result in
                     switch result {
@@ -7806,7 +7806,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTrafficMirrorFilters(input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest) async throws
      -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTrafficMirrorFiltersAsync(input: input) { result in
                     switch result {
@@ -7832,7 +7832,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTrafficMirrorSessions(input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTrafficMirrorSessionsAsync(input: input) { result in
                     switch result {
@@ -7858,7 +7858,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTrafficMirrorTargets(input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTrafficMirrorTargetsAsync(input: input) { result in
                     switch result {
@@ -7884,7 +7884,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayAttachments(input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayAttachmentsAsync(input: input) { result in
                     switch result {
@@ -7910,7 +7910,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayConnectPeers(input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayConnectPeersAsync(input: input) { result in
                     switch result {
@@ -7936,7 +7936,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayConnects(input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayConnectsAsync(input: input) { result in
                     switch result {
@@ -7962,7 +7962,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayMulticastDomains(input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayMulticastDomainsAsync(input: input) { result in
                     switch result {
@@ -7988,7 +7988,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayPeeringAttachments(input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayPeeringAttachmentsAsync(input: input) { result in
                     switch result {
@@ -8014,7 +8014,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayPolicyTables(input: ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayPolicyTablesAsync(input: input) { result in
                     switch result {
@@ -8040,7 +8040,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayRouteTableAnnouncements(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayRouteTableAnnouncementsAsync(input: input) { result in
                     switch result {
@@ -8066,7 +8066,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayRouteTables(input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayRouteTablesAsync(input: input) { result in
                     switch result {
@@ -8092,7 +8092,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGatewayVpcAttachments(input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewayVpcAttachmentsAsync(input: input) { result in
                     switch result {
@@ -8118,7 +8118,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTransitGateways(input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTransitGatewaysAsync(input: input) { result in
                     switch result {
@@ -8144,7 +8144,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeTrunkInterfaceAssociations(input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTrunkInterfaceAssociationsAsync(input: input) { result in
                     switch result {
@@ -8170,7 +8170,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVolumeAttribute(input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) async throws
      -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVolumeAttributeAsync(input: input) { result in
                     switch result {
@@ -8196,7 +8196,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVolumeStatus(input: ElasticComputeCloudModel.DescribeVolumeStatusRequest) async throws
      -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVolumeStatusAsync(input: input) { result in
                     switch result {
@@ -8222,7 +8222,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVolumes(input: ElasticComputeCloudModel.DescribeVolumesRequest) async throws
      -> ElasticComputeCloudModel.DescribeVolumesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVolumesAsync(input: input) { result in
                     switch result {
@@ -8248,7 +8248,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVolumesModifications(input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVolumesModificationsAsync(input: input) { result in
                     switch result {
@@ -8274,7 +8274,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcAttribute(input: ElasticComputeCloudModel.DescribeVpcAttributeRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcAttributeAsync(input: input) { result in
                     switch result {
@@ -8300,7 +8300,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcClassicLink(input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcClassicLinkAsync(input: input) { result in
                     switch result {
@@ -8326,7 +8326,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcClassicLinkDnsSupport(input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcClassicLinkDnsSupportAsync(input: input) { result in
                     switch result {
@@ -8352,7 +8352,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcEndpointConnectionNotifications(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcEndpointConnectionNotificationsAsync(input: input) { result in
                     switch result {
@@ -8378,7 +8378,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcEndpointConnections(input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcEndpointConnectionsAsync(input: input) { result in
                     switch result {
@@ -8404,7 +8404,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcEndpointServiceConfigurations(input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcEndpointServiceConfigurationsAsync(input: input) { result in
                     switch result {
@@ -8430,7 +8430,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcEndpointServicePermissions(input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcEndpointServicePermissionsAsync(input: input) { result in
                     switch result {
@@ -8456,7 +8456,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcEndpointServices(input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcEndpointServicesAsync(input: input) { result in
                     switch result {
@@ -8482,7 +8482,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcEndpoints(input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcEndpointsAsync(input: input) { result in
                     switch result {
@@ -8508,7 +8508,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcPeeringConnections(input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcPeeringConnectionsAsync(input: input) { result in
                     switch result {
@@ -8534,7 +8534,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpcs(input: ElasticComputeCloudModel.DescribeVpcsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpcsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpcsAsync(input: input) { result in
                     switch result {
@@ -8560,7 +8560,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpnConnections(input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpnConnectionsAsync(input: input) { result in
                     switch result {
@@ -8586,7 +8586,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func describeVpnGateways(input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest) async throws
      -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeVpnGatewaysAsync(input: input) { result in
                     switch result {
@@ -8612,7 +8612,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func detachClassicLinkVpc(input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest) async throws
      -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detachClassicLinkVpcAsync(input: input) { result in
                     switch result {
@@ -8635,7 +8635,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DetachInternetGatewayRequest object being passed to this operation.
      */
     func detachInternetGateway(input: ElasticComputeCloudModel.DetachInternetGatewayRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detachInternetGatewayAsync(input: input) { error in
                     if let error = error {
@@ -8657,7 +8657,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DetachNetworkInterfaceRequest object being passed to this operation.
      */
     func detachNetworkInterface(input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detachNetworkInterfaceAsync(input: input) { error in
                     if let error = error {
@@ -8682,7 +8682,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func detachVolume(input: ElasticComputeCloudModel.DetachVolumeRequest) async throws
      -> ElasticComputeCloudModel.VolumeAttachment {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detachVolumeAsync(input: input) { result in
                     switch result {
@@ -8705,7 +8705,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DetachVpnGatewayRequest object being passed to this operation.
      */
     func detachVpnGateway(input: ElasticComputeCloudModel.DetachVpnGatewayRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try detachVpnGatewayAsync(input: input) { error in
                     if let error = error {
@@ -8730,7 +8730,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableEbsEncryptionByDefault(input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) async throws
      -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableEbsEncryptionByDefaultAsync(input: input) { result in
                     switch result {
@@ -8756,7 +8756,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableFastLaunch(input: ElasticComputeCloudModel.DisableFastLaunchRequest) async throws
      -> ElasticComputeCloudModel.DisableFastLaunchResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableFastLaunchAsync(input: input) { result in
                     switch result {
@@ -8782,7 +8782,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableFastSnapshotRestores(input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) async throws
      -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableFastSnapshotRestoresAsync(input: input) { result in
                     switch result {
@@ -8808,7 +8808,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableImageDeprecation(input: ElasticComputeCloudModel.DisableImageDeprecationRequest) async throws
      -> ElasticComputeCloudModel.DisableImageDeprecationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableImageDeprecationAsync(input: input) { result in
                     switch result {
@@ -8834,7 +8834,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableIpamOrganizationAdminAccount(input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest) async throws
      -> ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableIpamOrganizationAdminAccountAsync(input: input) { result in
                     switch result {
@@ -8860,7 +8860,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableSerialConsoleAccess(input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) async throws
      -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableSerialConsoleAccessAsync(input: input) { result in
                     switch result {
@@ -8886,7 +8886,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableTransitGatewayRouteTablePropagation(input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) async throws
      -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableTransitGatewayRouteTablePropagationAsync(input: input) { result in
                     switch result {
@@ -8909,7 +8909,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DisableVgwRoutePropagationRequest object being passed to this operation.
      */
     func disableVgwRoutePropagation(input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableVgwRoutePropagationAsync(input: input) { error in
                     if let error = error {
@@ -8934,7 +8934,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableVpcClassicLink(input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) async throws
      -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableVpcClassicLinkAsync(input: input) { result in
                     switch result {
@@ -8960,7 +8960,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disableVpcClassicLinkDnsSupport(input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest) async throws
      -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableVpcClassicLinkDnsSupportAsync(input: input) { result in
                     switch result {
@@ -8983,7 +8983,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DisassociateAddressRequest object being passed to this operation.
      */
     func disassociateAddress(input: ElasticComputeCloudModel.DisassociateAddressRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateAddressAsync(input: input) { error in
                     if let error = error {
@@ -9008,7 +9008,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateClientVpnTargetNetwork(input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) async throws
      -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateClientVpnTargetNetworkAsync(input: input) { result in
                     switch result {
@@ -9034,7 +9034,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateEnclaveCertificateIamRole(input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest) async throws
      -> ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateEnclaveCertificateIamRoleAsync(input: input) { result in
                     switch result {
@@ -9060,7 +9060,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateIamInstanceProfile(input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) async throws
      -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateIamInstanceProfileAsync(input: input) { result in
                     switch result {
@@ -9086,7 +9086,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateInstanceEventWindow(input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) async throws
      -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateInstanceEventWindowAsync(input: input) { result in
                     switch result {
@@ -9109,7 +9109,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated DisassociateRouteTableRequest object being passed to this operation.
      */
     func disassociateRouteTable(input: ElasticComputeCloudModel.DisassociateRouteTableRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateRouteTableAsync(input: input) { error in
                     if let error = error {
@@ -9134,7 +9134,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateSubnetCidrBlock(input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) async throws
      -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateSubnetCidrBlockAsync(input: input) { result in
                     switch result {
@@ -9160,7 +9160,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateTransitGatewayMulticastDomain(input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest) async throws
      -> ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateTransitGatewayMulticastDomainAsync(input: input) { result in
                     switch result {
@@ -9186,7 +9186,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateTransitGatewayPolicyTable(input: ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableRequest) async throws
      -> ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateTransitGatewayPolicyTableAsync(input: input) { result in
                     switch result {
@@ -9212,7 +9212,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateTransitGatewayRouteTable(input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) async throws
      -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateTransitGatewayRouteTableAsync(input: input) { result in
                     switch result {
@@ -9238,7 +9238,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateTrunkInterface(input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest) async throws
      -> ElasticComputeCloudModel.DisassociateTrunkInterfaceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateTrunkInterfaceAsync(input: input) { result in
                     switch result {
@@ -9264,7 +9264,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func disassociateVpcCidrBlock(input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) async throws
      -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disassociateVpcCidrBlockAsync(input: input) { result in
                     switch result {
@@ -9290,7 +9290,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableEbsEncryptionByDefault(input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) async throws
      -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableEbsEncryptionByDefaultAsync(input: input) { result in
                     switch result {
@@ -9316,7 +9316,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableFastLaunch(input: ElasticComputeCloudModel.EnableFastLaunchRequest) async throws
      -> ElasticComputeCloudModel.EnableFastLaunchResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableFastLaunchAsync(input: input) { result in
                     switch result {
@@ -9342,7 +9342,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableFastSnapshotRestores(input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) async throws
      -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableFastSnapshotRestoresAsync(input: input) { result in
                     switch result {
@@ -9368,7 +9368,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableImageDeprecation(input: ElasticComputeCloudModel.EnableImageDeprecationRequest) async throws
      -> ElasticComputeCloudModel.EnableImageDeprecationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableImageDeprecationAsync(input: input) { result in
                     switch result {
@@ -9394,7 +9394,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableIpamOrganizationAdminAccount(input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest) async throws
      -> ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableIpamOrganizationAdminAccountAsync(input: input) { result in
                     switch result {
@@ -9420,7 +9420,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableSerialConsoleAccess(input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) async throws
      -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableSerialConsoleAccessAsync(input: input) { result in
                     switch result {
@@ -9446,7 +9446,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableTransitGatewayRouteTablePropagation(input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) async throws
      -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableTransitGatewayRouteTablePropagationAsync(input: input) { result in
                     switch result {
@@ -9469,7 +9469,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated EnableVgwRoutePropagationRequest object being passed to this operation.
      */
     func enableVgwRoutePropagation(input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableVgwRoutePropagationAsync(input: input) { error in
                     if let error = error {
@@ -9491,7 +9491,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated EnableVolumeIORequest object being passed to this operation.
      */
     func enableVolumeIO(input: ElasticComputeCloudModel.EnableVolumeIORequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableVolumeIOAsync(input: input) { error in
                     if let error = error {
@@ -9516,7 +9516,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableVpcClassicLink(input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest) async throws
      -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableVpcClassicLinkAsync(input: input) { result in
                     switch result {
@@ -9542,7 +9542,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func enableVpcClassicLinkDnsSupport(input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) async throws
      -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableVpcClassicLinkDnsSupportAsync(input: input) { result in
                     switch result {
@@ -9568,7 +9568,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func exportClientVpnClientCertificateRevocationList(input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) async throws
      -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try exportClientVpnClientCertificateRevocationListAsync(input: input) { result in
                     switch result {
@@ -9594,7 +9594,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func exportClientVpnClientConfiguration(input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) async throws
      -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try exportClientVpnClientConfigurationAsync(input: input) { result in
                     switch result {
@@ -9620,7 +9620,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func exportImage(input: ElasticComputeCloudModel.ExportImageRequest) async throws
      -> ElasticComputeCloudModel.ExportImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try exportImageAsync(input: input) { result in
                     switch result {
@@ -9646,7 +9646,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func exportTransitGatewayRoutes(input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) async throws
      -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try exportTransitGatewayRoutesAsync(input: input) { result in
                     switch result {
@@ -9672,7 +9672,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getAssociatedEnclaveCertificateIamRoles(input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest) async throws
      -> ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getAssociatedEnclaveCertificateIamRolesAsync(input: input) { result in
                     switch result {
@@ -9698,7 +9698,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getAssociatedIpv6PoolCidrs(input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest) async throws
      -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getAssociatedIpv6PoolCidrsAsync(input: input) { result in
                     switch result {
@@ -9724,7 +9724,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getCapacityReservationUsage(input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest) async throws
      -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getCapacityReservationUsageAsync(input: input) { result in
                     switch result {
@@ -9750,7 +9750,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getCoipPoolUsage(input: ElasticComputeCloudModel.GetCoipPoolUsageRequest) async throws
      -> ElasticComputeCloudModel.GetCoipPoolUsageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getCoipPoolUsageAsync(input: input) { result in
                     switch result {
@@ -9776,7 +9776,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getConsoleOutput(input: ElasticComputeCloudModel.GetConsoleOutputRequest) async throws
      -> ElasticComputeCloudModel.GetConsoleOutputResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getConsoleOutputAsync(input: input) { result in
                     switch result {
@@ -9802,7 +9802,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getConsoleScreenshot(input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) async throws
      -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getConsoleScreenshotAsync(input: input) { result in
                     switch result {
@@ -9828,7 +9828,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getDefaultCreditSpecification(input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest) async throws
      -> ElasticComputeCloudModel.GetDefaultCreditSpecificationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getDefaultCreditSpecificationAsync(input: input) { result in
                     switch result {
@@ -9854,7 +9854,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getEbsDefaultKmsKeyId(input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) async throws
      -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getEbsDefaultKmsKeyIdAsync(input: input) { result in
                     switch result {
@@ -9880,7 +9880,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getEbsEncryptionByDefault(input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) async throws
      -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getEbsEncryptionByDefaultAsync(input: input) { result in
                     switch result {
@@ -9906,7 +9906,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getFlowLogsIntegrationTemplate(input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest) async throws
      -> ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getFlowLogsIntegrationTemplateAsync(input: input) { result in
                     switch result {
@@ -9932,7 +9932,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getGroupsForCapacityReservation(input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) async throws
      -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getGroupsForCapacityReservationAsync(input: input) { result in
                     switch result {
@@ -9958,7 +9958,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getHostReservationPurchasePreview(input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) async throws
      -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getHostReservationPurchasePreviewAsync(input: input) { result in
                     switch result {
@@ -9984,7 +9984,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getInstanceTypesFromInstanceRequirements(input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) async throws
      -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getInstanceTypesFromInstanceRequirementsAsync(input: input) { result in
                     switch result {
@@ -10010,7 +10010,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getInstanceUefiData(input: ElasticComputeCloudModel.GetInstanceUefiDataRequest) async throws
      -> ElasticComputeCloudModel.GetInstanceUefiDataResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getInstanceUefiDataAsync(input: input) { result in
                     switch result {
@@ -10036,7 +10036,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getIpamAddressHistory(input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest) async throws
      -> ElasticComputeCloudModel.GetIpamAddressHistoryResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getIpamAddressHistoryAsync(input: input) { result in
                     switch result {
@@ -10062,7 +10062,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getIpamPoolAllocations(input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest) async throws
      -> ElasticComputeCloudModel.GetIpamPoolAllocationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getIpamPoolAllocationsAsync(input: input) { result in
                     switch result {
@@ -10088,7 +10088,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getIpamPoolCidrs(input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest) async throws
      -> ElasticComputeCloudModel.GetIpamPoolCidrsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getIpamPoolCidrsAsync(input: input) { result in
                     switch result {
@@ -10114,7 +10114,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getIpamResourceCidrs(input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest) async throws
      -> ElasticComputeCloudModel.GetIpamResourceCidrsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getIpamResourceCidrsAsync(input: input) { result in
                     switch result {
@@ -10140,7 +10140,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getLaunchTemplateData(input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) async throws
      -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getLaunchTemplateDataAsync(input: input) { result in
                     switch result {
@@ -10166,7 +10166,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getManagedPrefixListAssociations(input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest) async throws
      -> ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getManagedPrefixListAssociationsAsync(input: input) { result in
                     switch result {
@@ -10192,7 +10192,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getManagedPrefixListEntries(input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) async throws
      -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getManagedPrefixListEntriesAsync(input: input) { result in
                     switch result {
@@ -10218,7 +10218,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getNetworkInsightsAccessScopeAnalysisFindings(input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest) async throws
      -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getNetworkInsightsAccessScopeAnalysisFindingsAsync(input: input) { result in
                     switch result {
@@ -10244,7 +10244,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getNetworkInsightsAccessScopeContent(input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest) async throws
      -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getNetworkInsightsAccessScopeContentAsync(input: input) { result in
                     switch result {
@@ -10270,7 +10270,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getPasswordData(input: ElasticComputeCloudModel.GetPasswordDataRequest) async throws
      -> ElasticComputeCloudModel.GetPasswordDataResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getPasswordDataAsync(input: input) { result in
                     switch result {
@@ -10296,7 +10296,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getReservedInstancesExchangeQuote(input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) async throws
      -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getReservedInstancesExchangeQuoteAsync(input: input) { result in
                     switch result {
@@ -10322,7 +10322,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getSerialConsoleAccessStatus(input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) async throws
      -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSerialConsoleAccessStatusAsync(input: input) { result in
                     switch result {
@@ -10348,7 +10348,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getSpotPlacementScores(input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest) async throws
      -> ElasticComputeCloudModel.GetSpotPlacementScoresResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSpotPlacementScoresAsync(input: input) { result in
                     switch result {
@@ -10374,7 +10374,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getSubnetCidrReservations(input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) async throws
      -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSubnetCidrReservationsAsync(input: input) { result in
                     switch result {
@@ -10400,7 +10400,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayAttachmentPropagations(input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayAttachmentPropagationsAsync(input: input) { result in
                     switch result {
@@ -10426,7 +10426,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayMulticastDomainAssociations(input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayMulticastDomainAssociationsAsync(input: input) { result in
                     switch result {
@@ -10452,7 +10452,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayPolicyTableAssociations(input: ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayPolicyTableAssociationsAsync(input: input) { result in
                     switch result {
@@ -10478,7 +10478,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayPolicyTableEntries(input: ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayPolicyTableEntriesAsync(input: input) { result in
                     switch result {
@@ -10504,7 +10504,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayPrefixListReferences(input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayPrefixListReferencesAsync(input: input) { result in
                     switch result {
@@ -10530,7 +10530,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayRouteTableAssociations(input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayRouteTableAssociationsAsync(input: input) { result in
                     switch result {
@@ -10556,7 +10556,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayRouteTablePropagations(input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) async throws
      -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayRouteTablePropagationsAsync(input: input) { result in
                     switch result {
@@ -10582,7 +10582,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getVpnConnectionDeviceSampleConfiguration(input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) async throws
      -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getVpnConnectionDeviceSampleConfigurationAsync(input: input) { result in
                     switch result {
@@ -10608,7 +10608,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func getVpnConnectionDeviceTypes(input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) async throws
      -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getVpnConnectionDeviceTypesAsync(input: input) { result in
                     switch result {
@@ -10634,7 +10634,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func importClientVpnClientCertificateRevocationList(input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) async throws
      -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importClientVpnClientCertificateRevocationListAsync(input: input) { result in
                     switch result {
@@ -10660,7 +10660,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func importImage(input: ElasticComputeCloudModel.ImportImageRequest) async throws
      -> ElasticComputeCloudModel.ImportImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importImageAsync(input: input) { result in
                     switch result {
@@ -10686,7 +10686,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func importInstance(input: ElasticComputeCloudModel.ImportInstanceRequest) async throws
      -> ElasticComputeCloudModel.ImportInstanceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importInstanceAsync(input: input) { result in
                     switch result {
@@ -10712,7 +10712,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func importKeyPair(input: ElasticComputeCloudModel.ImportKeyPairRequest) async throws
      -> ElasticComputeCloudModel.ImportKeyPairResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importKeyPairAsync(input: input) { result in
                     switch result {
@@ -10738,7 +10738,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func importSnapshot(input: ElasticComputeCloudModel.ImportSnapshotRequest) async throws
      -> ElasticComputeCloudModel.ImportSnapshotResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importSnapshotAsync(input: input) { result in
                     switch result {
@@ -10764,7 +10764,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func importVolume(input: ElasticComputeCloudModel.ImportVolumeRequest) async throws
      -> ElasticComputeCloudModel.ImportVolumeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importVolumeAsync(input: input) { result in
                     switch result {
@@ -10790,7 +10790,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func listImagesInRecycleBin(input: ElasticComputeCloudModel.ListImagesInRecycleBinRequest) async throws
      -> ElasticComputeCloudModel.ListImagesInRecycleBinResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listImagesInRecycleBinAsync(input: input) { result in
                     switch result {
@@ -10816,7 +10816,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func listSnapshotsInRecycleBin(input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest) async throws
      -> ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listSnapshotsInRecycleBinAsync(input: input) { result in
                     switch result {
@@ -10842,7 +10842,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyAddressAttribute(input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) async throws
      -> ElasticComputeCloudModel.ModifyAddressAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyAddressAttributeAsync(input: input) { result in
                     switch result {
@@ -10868,7 +10868,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyAvailabilityZoneGroup(input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) async throws
      -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyAvailabilityZoneGroupAsync(input: input) { result in
                     switch result {
@@ -10894,7 +10894,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyCapacityReservation(input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) async throws
      -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyCapacityReservationAsync(input: input) { result in
                     switch result {
@@ -10920,7 +10920,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyCapacityReservationFleet(input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest) async throws
      -> ElasticComputeCloudModel.ModifyCapacityReservationFleetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyCapacityReservationFleetAsync(input: input) { result in
                     switch result {
@@ -10946,7 +10946,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyClientVpnEndpoint(input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) async throws
      -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyClientVpnEndpointAsync(input: input) { result in
                     switch result {
@@ -10972,7 +10972,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyDefaultCreditSpecification(input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest) async throws
      -> ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyDefaultCreditSpecificationAsync(input: input) { result in
                     switch result {
@@ -10998,7 +10998,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyEbsDefaultKmsKeyId(input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) async throws
      -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyEbsDefaultKmsKeyIdAsync(input: input) { result in
                     switch result {
@@ -11024,7 +11024,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyFleet(input: ElasticComputeCloudModel.ModifyFleetRequest) async throws
      -> ElasticComputeCloudModel.ModifyFleetResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyFleetAsync(input: input) { result in
                     switch result {
@@ -11050,7 +11050,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyFpgaImageAttribute(input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) async throws
      -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyFpgaImageAttributeAsync(input: input) { result in
                     switch result {
@@ -11076,7 +11076,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyHosts(input: ElasticComputeCloudModel.ModifyHostsRequest) async throws
      -> ElasticComputeCloudModel.ModifyHostsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyHostsAsync(input: input) { result in
                     switch result {
@@ -11099,7 +11099,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyIdFormatRequest object being passed to this operation.
      */
     func modifyIdFormat(input: ElasticComputeCloudModel.ModifyIdFormatRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIdFormatAsync(input: input) { error in
                     if let error = error {
@@ -11121,7 +11121,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyIdentityIdFormatRequest object being passed to this operation.
      */
     func modifyIdentityIdFormat(input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIdentityIdFormatAsync(input: input) { error in
                     if let error = error {
@@ -11143,7 +11143,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyImageAttributeRequest object being passed to this operation.
      */
     func modifyImageAttribute(input: ElasticComputeCloudModel.ModifyImageAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyImageAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11165,7 +11165,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyInstanceAttributeRequest object being passed to this operation.
      */
     func modifyInstanceAttribute(input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11190,7 +11190,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstanceCapacityReservationAttributes(input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceCapacityReservationAttributesAsync(input: input) { result in
                     switch result {
@@ -11216,7 +11216,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstanceCreditSpecification(input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceCreditSpecificationAsync(input: input) { result in
                     switch result {
@@ -11242,7 +11242,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstanceEventStartTime(input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceEventStartTimeAsync(input: input) { result in
                     switch result {
@@ -11268,7 +11268,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstanceEventWindow(input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstanceEventWindowResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceEventWindowAsync(input: input) { result in
                     switch result {
@@ -11294,7 +11294,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstanceMaintenanceOptions(input: ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceMaintenanceOptionsAsync(input: input) { result in
                     switch result {
@@ -11320,7 +11320,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstanceMetadataOptions(input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstanceMetadataOptionsAsync(input: input) { result in
                     switch result {
@@ -11346,7 +11346,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyInstancePlacement(input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) async throws
      -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyInstancePlacementAsync(input: input) { result in
                     switch result {
@@ -11372,7 +11372,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyIpam(input: ElasticComputeCloudModel.ModifyIpamRequest) async throws
      -> ElasticComputeCloudModel.ModifyIpamResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIpamAsync(input: input) { result in
                     switch result {
@@ -11398,7 +11398,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyIpamPool(input: ElasticComputeCloudModel.ModifyIpamPoolRequest) async throws
      -> ElasticComputeCloudModel.ModifyIpamPoolResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIpamPoolAsync(input: input) { result in
                     switch result {
@@ -11424,7 +11424,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyIpamResourceCidr(input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) async throws
      -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIpamResourceCidrAsync(input: input) { result in
                     switch result {
@@ -11450,7 +11450,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyIpamScope(input: ElasticComputeCloudModel.ModifyIpamScopeRequest) async throws
      -> ElasticComputeCloudModel.ModifyIpamScopeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIpamScopeAsync(input: input) { result in
                     switch result {
@@ -11476,7 +11476,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyLaunchTemplate(input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) async throws
      -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyLaunchTemplateAsync(input: input) { result in
                     switch result {
@@ -11502,7 +11502,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyLocalGatewayRoute(input: ElasticComputeCloudModel.ModifyLocalGatewayRouteRequest) async throws
      -> ElasticComputeCloudModel.ModifyLocalGatewayRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyLocalGatewayRouteAsync(input: input) { result in
                     switch result {
@@ -11528,7 +11528,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyManagedPrefixList(input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest) async throws
      -> ElasticComputeCloudModel.ModifyManagedPrefixListResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyManagedPrefixListAsync(input: input) { result in
                     switch result {
@@ -11551,7 +11551,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyNetworkInterfaceAttributeRequest object being passed to this operation.
      */
     func modifyNetworkInterfaceAttribute(input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyNetworkInterfaceAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11576,7 +11576,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyPrivateDnsNameOptions(input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyPrivateDnsNameOptionsAsync(input: input) { result in
                     switch result {
@@ -11602,7 +11602,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyReservedInstances(input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) async throws
      -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyReservedInstancesAsync(input: input) { result in
                     switch result {
@@ -11628,7 +11628,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifySecurityGroupRules(input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest) async throws
      -> ElasticComputeCloudModel.ModifySecurityGroupRulesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifySecurityGroupRulesAsync(input: input) { result in
                     switch result {
@@ -11651,7 +11651,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifySnapshotAttributeRequest object being passed to this operation.
      */
     func modifySnapshotAttribute(input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifySnapshotAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11676,7 +11676,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifySnapshotTier(input: ElasticComputeCloudModel.ModifySnapshotTierRequest) async throws
      -> ElasticComputeCloudModel.ModifySnapshotTierResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifySnapshotTierAsync(input: input) { result in
                     switch result {
@@ -11702,7 +11702,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifySpotFleetRequest(input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) async throws
      -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifySpotFleetRequestAsync(input: input) { result in
                     switch result {
@@ -11725,7 +11725,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifySubnetAttributeRequest object being passed to this operation.
      */
     func modifySubnetAttribute(input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifySubnetAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11750,7 +11750,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyTrafficMirrorFilterNetworkServices(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest) async throws
      -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTrafficMirrorFilterNetworkServicesAsync(input: input) { result in
                     switch result {
@@ -11776,7 +11776,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyTrafficMirrorFilterRule(input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest) async throws
      -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTrafficMirrorFilterRuleAsync(input: input) { result in
                     switch result {
@@ -11802,7 +11802,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyTrafficMirrorSession(input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest) async throws
      -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTrafficMirrorSessionAsync(input: input) { result in
                     switch result {
@@ -11828,7 +11828,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyTransitGateway(input: ElasticComputeCloudModel.ModifyTransitGatewayRequest) async throws
      -> ElasticComputeCloudModel.ModifyTransitGatewayResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTransitGatewayAsync(input: input) { result in
                     switch result {
@@ -11854,7 +11854,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyTransitGatewayPrefixListReference(input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest) async throws
      -> ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTransitGatewayPrefixListReferenceAsync(input: input) { result in
                     switch result {
@@ -11880,7 +11880,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyTransitGatewayVpcAttachment(input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) async throws
      -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTransitGatewayVpcAttachmentAsync(input: input) { result in
                     switch result {
@@ -11906,7 +11906,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVolume(input: ElasticComputeCloudModel.ModifyVolumeRequest) async throws
      -> ElasticComputeCloudModel.ModifyVolumeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVolumeAsync(input: input) { result in
                     switch result {
@@ -11929,7 +11929,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyVolumeAttributeRequest object being passed to this operation.
      */
     func modifyVolumeAttribute(input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVolumeAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11951,7 +11951,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ModifyVpcAttributeRequest object being passed to this operation.
      */
     func modifyVpcAttribute(input: ElasticComputeCloudModel.ModifyVpcAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcAttributeAsync(input: input) { error in
                     if let error = error {
@@ -11976,7 +11976,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcEndpoint(input: ElasticComputeCloudModel.ModifyVpcEndpointRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcEndpointAsync(input: input) { result in
                     switch result {
@@ -12002,7 +12002,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcEndpointConnectionNotification(input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcEndpointConnectionNotificationAsync(input: input) { result in
                     switch result {
@@ -12028,7 +12028,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcEndpointServiceConfiguration(input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcEndpointServiceConfigurationAsync(input: input) { result in
                     switch result {
@@ -12054,7 +12054,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcEndpointServicePayerResponsibility(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcEndpointServicePayerResponsibilityAsync(input: input) { result in
                     switch result {
@@ -12080,7 +12080,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcEndpointServicePermissions(input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcEndpointServicePermissionsAsync(input: input) { result in
                     switch result {
@@ -12106,7 +12106,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcPeeringConnectionOptions(input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcPeeringConnectionOptionsAsync(input: input) { result in
                     switch result {
@@ -12132,7 +12132,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpcTenancy(input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpcTenancyAsync(input: input) { result in
                     switch result {
@@ -12158,7 +12158,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpnConnection(input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpnConnectionAsync(input: input) { result in
                     switch result {
@@ -12184,7 +12184,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpnConnectionOptions(input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpnConnectionOptionsAsync(input: input) { result in
                     switch result {
@@ -12210,7 +12210,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpnTunnelCertificate(input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpnTunnelCertificateAsync(input: input) { result in
                     switch result {
@@ -12236,7 +12236,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func modifyVpnTunnelOptions(input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest) async throws
      -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyVpnTunnelOptionsAsync(input: input) { result in
                     switch result {
@@ -12262,7 +12262,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func monitorInstances(input: ElasticComputeCloudModel.MonitorInstancesRequest) async throws
      -> ElasticComputeCloudModel.MonitorInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try monitorInstancesAsync(input: input) { result in
                     switch result {
@@ -12288,7 +12288,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func moveAddressToVpc(input: ElasticComputeCloudModel.MoveAddressToVpcRequest) async throws
      -> ElasticComputeCloudModel.MoveAddressToVpcResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try moveAddressToVpcAsync(input: input) { result in
                     switch result {
@@ -12314,7 +12314,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func moveByoipCidrToIpam(input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest) async throws
      -> ElasticComputeCloudModel.MoveByoipCidrToIpamResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try moveByoipCidrToIpamAsync(input: input) { result in
                     switch result {
@@ -12340,7 +12340,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func provisionByoipCidr(input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) async throws
      -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try provisionByoipCidrAsync(input: input) { result in
                     switch result {
@@ -12366,7 +12366,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func provisionIpamPoolCidr(input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest) async throws
      -> ElasticComputeCloudModel.ProvisionIpamPoolCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try provisionIpamPoolCidrAsync(input: input) { result in
                     switch result {
@@ -12392,7 +12392,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func provisionPublicIpv4PoolCidr(input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest) async throws
      -> ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try provisionPublicIpv4PoolCidrAsync(input: input) { result in
                     switch result {
@@ -12418,7 +12418,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func purchaseHostReservation(input: ElasticComputeCloudModel.PurchaseHostReservationRequest) async throws
      -> ElasticComputeCloudModel.PurchaseHostReservationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try purchaseHostReservationAsync(input: input) { result in
                     switch result {
@@ -12444,7 +12444,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func purchaseReservedInstancesOffering(input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest) async throws
      -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try purchaseReservedInstancesOfferingAsync(input: input) { result in
                     switch result {
@@ -12470,7 +12470,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func purchaseScheduledInstances(input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest) async throws
      -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try purchaseScheduledInstancesAsync(input: input) { result in
                     switch result {
@@ -12493,7 +12493,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated RebootInstancesRequest object being passed to this operation.
      */
     func rebootInstances(input: ElasticComputeCloudModel.RebootInstancesRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rebootInstancesAsync(input: input) { error in
                     if let error = error {
@@ -12518,7 +12518,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func registerImage(input: ElasticComputeCloudModel.RegisterImageRequest) async throws
      -> ElasticComputeCloudModel.RegisterImageResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerImageAsync(input: input) { result in
                     switch result {
@@ -12544,7 +12544,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func registerInstanceEventNotificationAttributes(input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest) async throws
      -> ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerInstanceEventNotificationAttributesAsync(input: input) { result in
                     switch result {
@@ -12570,7 +12570,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func registerTransitGatewayMulticastGroupMembers(input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest) async throws
      -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerTransitGatewayMulticastGroupMembersAsync(input: input) { result in
                     switch result {
@@ -12596,7 +12596,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func registerTransitGatewayMulticastGroupSources(input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest) async throws
      -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerTransitGatewayMulticastGroupSourcesAsync(input: input) { result in
                     switch result {
@@ -12622,7 +12622,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func rejectTransitGatewayMulticastDomainAssociations(input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest) async throws
      -> ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rejectTransitGatewayMulticastDomainAssociationsAsync(input: input) { result in
                     switch result {
@@ -12648,7 +12648,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func rejectTransitGatewayPeeringAttachment(input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest) async throws
      -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rejectTransitGatewayPeeringAttachmentAsync(input: input) { result in
                     switch result {
@@ -12674,7 +12674,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func rejectTransitGatewayVpcAttachment(input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) async throws
      -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rejectTransitGatewayVpcAttachmentAsync(input: input) { result in
                     switch result {
@@ -12700,7 +12700,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func rejectVpcEndpointConnections(input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) async throws
      -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rejectVpcEndpointConnectionsAsync(input: input) { result in
                     switch result {
@@ -12726,7 +12726,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func rejectVpcPeeringConnection(input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) async throws
      -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try rejectVpcPeeringConnectionAsync(input: input) { result in
                     switch result {
@@ -12749,7 +12749,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ReleaseAddressRequest object being passed to this operation.
      */
     func releaseAddress(input: ElasticComputeCloudModel.ReleaseAddressRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try releaseAddressAsync(input: input) { error in
                     if let error = error {
@@ -12774,7 +12774,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func releaseHosts(input: ElasticComputeCloudModel.ReleaseHostsRequest) async throws
      -> ElasticComputeCloudModel.ReleaseHostsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try releaseHostsAsync(input: input) { result in
                     switch result {
@@ -12800,7 +12800,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func releaseIpamPoolAllocation(input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest) async throws
      -> ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try releaseIpamPoolAllocationAsync(input: input) { result in
                     switch result {
@@ -12826,7 +12826,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func replaceIamInstanceProfileAssociation(input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) async throws
      -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try replaceIamInstanceProfileAssociationAsync(input: input) { result in
                     switch result {
@@ -12852,7 +12852,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func replaceNetworkAclAssociation(input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest) async throws
      -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try replaceNetworkAclAssociationAsync(input: input) { result in
                     switch result {
@@ -12875,7 +12875,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ReplaceNetworkAclEntryRequest object being passed to this operation.
      */
     func replaceNetworkAclEntry(input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try replaceNetworkAclEntryAsync(input: input) { error in
                     if let error = error {
@@ -12897,7 +12897,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ReplaceRouteRequest object being passed to this operation.
      */
     func replaceRoute(input: ElasticComputeCloudModel.ReplaceRouteRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try replaceRouteAsync(input: input) { error in
                     if let error = error {
@@ -12922,7 +12922,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func replaceRouteTableAssociation(input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) async throws
      -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try replaceRouteTableAssociationAsync(input: input) { result in
                     switch result {
@@ -12948,7 +12948,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func replaceTransitGatewayRoute(input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) async throws
      -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try replaceTransitGatewayRouteAsync(input: input) { result in
                     switch result {
@@ -12971,7 +12971,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ReportInstanceStatusRequest object being passed to this operation.
      */
     func reportInstanceStatus(input: ElasticComputeCloudModel.ReportInstanceStatusRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try reportInstanceStatusAsync(input: input) { error in
                     if let error = error {
@@ -12996,7 +12996,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func requestSpotFleet(input: ElasticComputeCloudModel.RequestSpotFleetRequest) async throws
      -> ElasticComputeCloudModel.RequestSpotFleetResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try requestSpotFleetAsync(input: input) { result in
                     switch result {
@@ -13022,7 +13022,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func requestSpotInstances(input: ElasticComputeCloudModel.RequestSpotInstancesRequest) async throws
      -> ElasticComputeCloudModel.RequestSpotInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try requestSpotInstancesAsync(input: input) { result in
                     switch result {
@@ -13048,7 +13048,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func resetAddressAttribute(input: ElasticComputeCloudModel.ResetAddressAttributeRequest) async throws
      -> ElasticComputeCloudModel.ResetAddressAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetAddressAttributeAsync(input: input) { result in
                     switch result {
@@ -13074,7 +13074,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func resetEbsDefaultKmsKeyId(input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) async throws
      -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetEbsDefaultKmsKeyIdAsync(input: input) { result in
                     switch result {
@@ -13100,7 +13100,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func resetFpgaImageAttribute(input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) async throws
      -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetFpgaImageAttributeAsync(input: input) { result in
                     switch result {
@@ -13123,7 +13123,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ResetImageAttributeRequest object being passed to this operation.
      */
     func resetImageAttribute(input: ElasticComputeCloudModel.ResetImageAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetImageAttributeAsync(input: input) { error in
                     if let error = error {
@@ -13145,7 +13145,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ResetInstanceAttributeRequest object being passed to this operation.
      */
     func resetInstanceAttribute(input: ElasticComputeCloudModel.ResetInstanceAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetInstanceAttributeAsync(input: input) { error in
                     if let error = error {
@@ -13167,7 +13167,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ResetNetworkInterfaceAttributeRequest object being passed to this operation.
      */
     func resetNetworkInterfaceAttribute(input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetNetworkInterfaceAttributeAsync(input: input) { error in
                     if let error = error {
@@ -13189,7 +13189,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated ResetSnapshotAttributeRequest object being passed to this operation.
      */
     func resetSnapshotAttribute(input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try resetSnapshotAttributeAsync(input: input) { error in
                     if let error = error {
@@ -13214,7 +13214,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func restoreAddressToClassic(input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) async throws
      -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreAddressToClassicAsync(input: input) { result in
                     switch result {
@@ -13240,7 +13240,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func restoreImageFromRecycleBin(input: ElasticComputeCloudModel.RestoreImageFromRecycleBinRequest) async throws
      -> ElasticComputeCloudModel.RestoreImageFromRecycleBinResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreImageFromRecycleBinAsync(input: input) { result in
                     switch result {
@@ -13266,7 +13266,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func restoreManagedPrefixListVersion(input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) async throws
      -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreManagedPrefixListVersionAsync(input: input) { result in
                     switch result {
@@ -13292,7 +13292,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func restoreSnapshotFromRecycleBin(input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest) async throws
      -> ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreSnapshotFromRecycleBinAsync(input: input) { result in
                     switch result {
@@ -13318,7 +13318,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func restoreSnapshotTier(input: ElasticComputeCloudModel.RestoreSnapshotTierRequest) async throws
      -> ElasticComputeCloudModel.RestoreSnapshotTierResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreSnapshotTierAsync(input: input) { result in
                     switch result {
@@ -13344,7 +13344,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func revokeClientVpnIngress(input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) async throws
      -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try revokeClientVpnIngressAsync(input: input) { result in
                     switch result {
@@ -13370,7 +13370,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func revokeSecurityGroupEgress(input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) async throws
      -> ElasticComputeCloudModel.RevokeSecurityGroupEgressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try revokeSecurityGroupEgressAsync(input: input) { result in
                     switch result {
@@ -13396,7 +13396,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func revokeSecurityGroupIngress(input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) async throws
      -> ElasticComputeCloudModel.RevokeSecurityGroupIngressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try revokeSecurityGroupIngressAsync(input: input) { result in
                     switch result {
@@ -13422,7 +13422,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func runInstances(input: ElasticComputeCloudModel.RunInstancesRequest) async throws
      -> ElasticComputeCloudModel.Reservation {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try runInstancesAsync(input: input) { result in
                     switch result {
@@ -13448,7 +13448,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func runScheduledInstances(input: ElasticComputeCloudModel.RunScheduledInstancesRequest) async throws
      -> ElasticComputeCloudModel.RunScheduledInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try runScheduledInstancesAsync(input: input) { result in
                     switch result {
@@ -13474,7 +13474,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func searchLocalGatewayRoutes(input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest) async throws
      -> ElasticComputeCloudModel.SearchLocalGatewayRoutesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try searchLocalGatewayRoutesAsync(input: input) { result in
                     switch result {
@@ -13500,7 +13500,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func searchTransitGatewayMulticastGroups(input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest) async throws
      -> ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try searchTransitGatewayMulticastGroupsAsync(input: input) { result in
                     switch result {
@@ -13526,7 +13526,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func searchTransitGatewayRoutes(input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) async throws
      -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try searchTransitGatewayRoutesAsync(input: input) { result in
                     switch result {
@@ -13549,7 +13549,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated SendDiagnosticInterruptRequest object being passed to this operation.
      */
     func sendDiagnosticInterrupt(input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try sendDiagnosticInterruptAsync(input: input) { error in
                     if let error = error {
@@ -13574,7 +13574,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func startInstances(input: ElasticComputeCloudModel.StartInstancesRequest) async throws
      -> ElasticComputeCloudModel.StartInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startInstancesAsync(input: input) { result in
                     switch result {
@@ -13600,7 +13600,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func startNetworkInsightsAccessScopeAnalysis(input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest) async throws
      -> ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startNetworkInsightsAccessScopeAnalysisAsync(input: input) { result in
                     switch result {
@@ -13626,7 +13626,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func startNetworkInsightsAnalysis(input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) async throws
      -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startNetworkInsightsAnalysisAsync(input: input) { result in
                     switch result {
@@ -13652,7 +13652,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func startVpcEndpointServicePrivateDnsVerification(input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest) async throws
      -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startVpcEndpointServicePrivateDnsVerificationAsync(input: input) { result in
                     switch result {
@@ -13678,7 +13678,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func stopInstances(input: ElasticComputeCloudModel.StopInstancesRequest) async throws
      -> ElasticComputeCloudModel.StopInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopInstancesAsync(input: input) { result in
                     switch result {
@@ -13704,7 +13704,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func terminateClientVpnConnections(input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) async throws
      -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try terminateClientVpnConnectionsAsync(input: input) { result in
                     switch result {
@@ -13730,7 +13730,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func terminateInstances(input: ElasticComputeCloudModel.TerminateInstancesRequest) async throws
      -> ElasticComputeCloudModel.TerminateInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try terminateInstancesAsync(input: input) { result in
                     switch result {
@@ -13756,7 +13756,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func unassignIpv6Addresses(input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) async throws
      -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try unassignIpv6AddressesAsync(input: input) { result in
                     switch result {
@@ -13779,7 +13779,7 @@ public extension ElasticComputeCloudClientProtocol {
          - input: The validated UnassignPrivateIpAddressesRequest object being passed to this operation.
      */
     func unassignPrivateIpAddresses(input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try unassignPrivateIpAddressesAsync(input: input) { error in
                     if let error = error {
@@ -13804,7 +13804,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func unmonitorInstances(input: ElasticComputeCloudModel.UnmonitorInstancesRequest) async throws
      -> ElasticComputeCloudModel.UnmonitorInstancesResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try unmonitorInstancesAsync(input: input) { result in
                     switch result {
@@ -13830,7 +13830,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func updateSecurityGroupRuleDescriptionsEgress(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest) async throws
      -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateSecurityGroupRuleDescriptionsEgressAsync(input: input) { result in
                     switch result {
@@ -13856,7 +13856,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func updateSecurityGroupRuleDescriptionsIngress(input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest) async throws
      -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateSecurityGroupRuleDescriptionsIngressAsync(input: input) { result in
                     switch result {
@@ -13882,7 +13882,7 @@ public extension ElasticComputeCloudClientProtocol {
      */
     func withdrawByoipCidr(input: ElasticComputeCloudModel.WithdrawByoipCidrRequest) async throws
      -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try withdrawByoipCidrAsync(input: input) { result in
                     switch result {

@@ -41,7 +41,7 @@ public extension DynamoDBClientProtocol {
      */
     func batchExecuteStatement(input: DynamoDBModel.BatchExecuteStatementInput) async throws
      -> DynamoDBModel.BatchExecuteStatementOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchExecuteStatementAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension DynamoDBClientProtocol {
      */
     func batchGetItem(input: DynamoDBModel.BatchGetItemInput) async throws
      -> DynamoDBModel.BatchGetItemOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchGetItemAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension DynamoDBClientProtocol {
      */
     func batchWriteItem(input: DynamoDBModel.BatchWriteItemInput) async throws
      -> DynamoDBModel.BatchWriteItemOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try batchWriteItemAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension DynamoDBClientProtocol {
      */
     func createBackup(input: DynamoDBModel.CreateBackupInput) async throws
      -> DynamoDBModel.CreateBackupOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createBackupAsync(input: input) { result in
                     switch result {
@@ -149,7 +149,7 @@ public extension DynamoDBClientProtocol {
      */
     func createGlobalTable(input: DynamoDBModel.CreateGlobalTableInput) async throws
      -> DynamoDBModel.CreateGlobalTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createGlobalTableAsync(input: input) { result in
                     switch result {
@@ -176,7 +176,7 @@ public extension DynamoDBClientProtocol {
      */
     func createTable(input: DynamoDBModel.CreateTableInput) async throws
      -> DynamoDBModel.CreateTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createTableAsync(input: input) { result in
                     switch result {
@@ -203,7 +203,7 @@ public extension DynamoDBClientProtocol {
      */
     func deleteBackup(input: DynamoDBModel.DeleteBackupInput) async throws
      -> DynamoDBModel.DeleteBackupOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteBackupAsync(input: input) { result in
                     switch result {
@@ -230,7 +230,7 @@ public extension DynamoDBClientProtocol {
      */
     func deleteItem(input: DynamoDBModel.DeleteItemInput) async throws
      -> DynamoDBModel.DeleteItemOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteItemAsync(input: input) { result in
                     switch result {
@@ -257,7 +257,7 @@ public extension DynamoDBClientProtocol {
      */
     func deleteTable(input: DynamoDBModel.DeleteTableInput) async throws
      -> DynamoDBModel.DeleteTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteTableAsync(input: input) { result in
                     switch result {
@@ -284,7 +284,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeBackup(input: DynamoDBModel.DescribeBackupInput) async throws
      -> DynamoDBModel.DescribeBackupOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeBackupAsync(input: input) { result in
                     switch result {
@@ -311,7 +311,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeContinuousBackups(input: DynamoDBModel.DescribeContinuousBackupsInput) async throws
      -> DynamoDBModel.DescribeContinuousBackupsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeContinuousBackupsAsync(input: input) { result in
                     switch result {
@@ -338,7 +338,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeContributorInsights(input: DynamoDBModel.DescribeContributorInsightsInput) async throws
      -> DynamoDBModel.DescribeContributorInsightsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeContributorInsightsAsync(input: input) { result in
                     switch result {
@@ -364,7 +364,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeEndpoints(input: DynamoDBModel.DescribeEndpointsRequest) async throws
      -> DynamoDBModel.DescribeEndpointsResponse {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeEndpointsAsync(input: input) { result in
                     switch result {
@@ -391,7 +391,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeExport(input: DynamoDBModel.DescribeExportInput) async throws
      -> DynamoDBModel.DescribeExportOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeExportAsync(input: input) { result in
                     switch result {
@@ -418,7 +418,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeGlobalTable(input: DynamoDBModel.DescribeGlobalTableInput) async throws
      -> DynamoDBModel.DescribeGlobalTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeGlobalTableAsync(input: input) { result in
                     switch result {
@@ -445,7 +445,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeGlobalTableSettings(input: DynamoDBModel.DescribeGlobalTableSettingsInput) async throws
      -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeGlobalTableSettingsAsync(input: input) { result in
                     switch result {
@@ -472,7 +472,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeImport(input: DynamoDBModel.DescribeImportInput) async throws
      -> DynamoDBModel.DescribeImportOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeImportAsync(input: input) { result in
                     switch result {
@@ -499,7 +499,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeKinesisStreamingDestination(input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) async throws
      -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeKinesisStreamingDestinationAsync(input: input) { result in
                     switch result {
@@ -526,7 +526,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeLimits(input: DynamoDBModel.DescribeLimitsInput) async throws
      -> DynamoDBModel.DescribeLimitsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeLimitsAsync(input: input) { result in
                     switch result {
@@ -553,7 +553,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeTable(input: DynamoDBModel.DescribeTableInput) async throws
      -> DynamoDBModel.DescribeTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTableAsync(input: input) { result in
                     switch result {
@@ -580,7 +580,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeTableReplicaAutoScaling(input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) async throws
      -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTableReplicaAutoScalingAsync(input: input) { result in
                     switch result {
@@ -607,7 +607,7 @@ public extension DynamoDBClientProtocol {
      */
     func describeTimeToLive(input: DynamoDBModel.DescribeTimeToLiveInput) async throws
      -> DynamoDBModel.DescribeTimeToLiveOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeTimeToLiveAsync(input: input) { result in
                     switch result {
@@ -634,7 +634,7 @@ public extension DynamoDBClientProtocol {
      */
     func disableKinesisStreamingDestination(input: DynamoDBModel.KinesisStreamingDestinationInput) async throws
      -> DynamoDBModel.KinesisStreamingDestinationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try disableKinesisStreamingDestinationAsync(input: input) { result in
                     switch result {
@@ -661,7 +661,7 @@ public extension DynamoDBClientProtocol {
      */
     func enableKinesisStreamingDestination(input: DynamoDBModel.KinesisStreamingDestinationInput) async throws
      -> DynamoDBModel.KinesisStreamingDestinationOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableKinesisStreamingDestinationAsync(input: input) { result in
                     switch result {
@@ -688,7 +688,7 @@ public extension DynamoDBClientProtocol {
      */
     func executeStatement(input: DynamoDBModel.ExecuteStatementInput) async throws
      -> DynamoDBModel.ExecuteStatementOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try executeStatementAsync(input: input) { result in
                     switch result {
@@ -715,7 +715,7 @@ public extension DynamoDBClientProtocol {
      */
     func executeTransaction(input: DynamoDBModel.ExecuteTransactionInput) async throws
      -> DynamoDBModel.ExecuteTransactionOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try executeTransactionAsync(input: input) { result in
                     switch result {
@@ -742,7 +742,7 @@ public extension DynamoDBClientProtocol {
      */
     func exportTableToPointInTime(input: DynamoDBModel.ExportTableToPointInTimeInput) async throws
      -> DynamoDBModel.ExportTableToPointInTimeOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try exportTableToPointInTimeAsync(input: input) { result in
                     switch result {
@@ -769,7 +769,7 @@ public extension DynamoDBClientProtocol {
      */
     func getItem(input: DynamoDBModel.GetItemInput) async throws
      -> DynamoDBModel.GetItemOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getItemAsync(input: input) { result in
                     switch result {
@@ -796,7 +796,7 @@ public extension DynamoDBClientProtocol {
      */
     func importTable(input: DynamoDBModel.ImportTableInput) async throws
      -> DynamoDBModel.ImportTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try importTableAsync(input: input) { result in
                     switch result {
@@ -823,7 +823,7 @@ public extension DynamoDBClientProtocol {
      */
     func listBackups(input: DynamoDBModel.ListBackupsInput) async throws
      -> DynamoDBModel.ListBackupsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listBackupsAsync(input: input) { result in
                     switch result {
@@ -850,7 +850,7 @@ public extension DynamoDBClientProtocol {
      */
     func listContributorInsights(input: DynamoDBModel.ListContributorInsightsInput) async throws
      -> DynamoDBModel.ListContributorInsightsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listContributorInsightsAsync(input: input) { result in
                     switch result {
@@ -877,7 +877,7 @@ public extension DynamoDBClientProtocol {
      */
     func listExports(input: DynamoDBModel.ListExportsInput) async throws
      -> DynamoDBModel.ListExportsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listExportsAsync(input: input) { result in
                     switch result {
@@ -904,7 +904,7 @@ public extension DynamoDBClientProtocol {
      */
     func listGlobalTables(input: DynamoDBModel.ListGlobalTablesInput) async throws
      -> DynamoDBModel.ListGlobalTablesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listGlobalTablesAsync(input: input) { result in
                     switch result {
@@ -931,7 +931,7 @@ public extension DynamoDBClientProtocol {
      */
     func listImports(input: DynamoDBModel.ListImportsInput) async throws
      -> DynamoDBModel.ListImportsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listImportsAsync(input: input) { result in
                     switch result {
@@ -958,7 +958,7 @@ public extension DynamoDBClientProtocol {
      */
     func listTables(input: DynamoDBModel.ListTablesInput) async throws
      -> DynamoDBModel.ListTablesOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTablesAsync(input: input) { result in
                     switch result {
@@ -985,7 +985,7 @@ public extension DynamoDBClientProtocol {
      */
     func listTagsOfResource(input: DynamoDBModel.ListTagsOfResourceInput) async throws
      -> DynamoDBModel.ListTagsOfResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsOfResourceAsync(input: input) { result in
                     switch result {
@@ -1012,7 +1012,7 @@ public extension DynamoDBClientProtocol {
      */
     func putItem(input: DynamoDBModel.PutItemInput) async throws
      -> DynamoDBModel.PutItemOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try putItemAsync(input: input) { result in
                     switch result {
@@ -1039,7 +1039,7 @@ public extension DynamoDBClientProtocol {
      */
     func query(input: DynamoDBModel.QueryInput) async throws
      -> DynamoDBModel.QueryOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try queryAsync(input: input) { result in
                     switch result {
@@ -1066,7 +1066,7 @@ public extension DynamoDBClientProtocol {
      */
     func restoreTableFromBackup(input: DynamoDBModel.RestoreTableFromBackupInput) async throws
      -> DynamoDBModel.RestoreTableFromBackupOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreTableFromBackupAsync(input: input) { result in
                     switch result {
@@ -1093,7 +1093,7 @@ public extension DynamoDBClientProtocol {
      */
     func restoreTableToPointInTime(input: DynamoDBModel.RestoreTableToPointInTimeInput) async throws
      -> DynamoDBModel.RestoreTableToPointInTimeOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try restoreTableToPointInTimeAsync(input: input) { result in
                     switch result {
@@ -1120,7 +1120,7 @@ public extension DynamoDBClientProtocol {
      */
     func scan(input: DynamoDBModel.ScanInput) async throws
      -> DynamoDBModel.ScanOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try scanAsync(input: input) { result in
                     switch result {
@@ -1144,7 +1144,7 @@ public extension DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     func tagResource(input: DynamoDBModel.TagResourceInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { error in
                     if let error = error {
@@ -1170,7 +1170,7 @@ public extension DynamoDBClientProtocol {
      */
     func transactGetItems(input: DynamoDBModel.TransactGetItemsInput) async throws
      -> DynamoDBModel.TransactGetItemsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try transactGetItemsAsync(input: input) { result in
                     switch result {
@@ -1197,7 +1197,7 @@ public extension DynamoDBClientProtocol {
      */
     func transactWriteItems(input: DynamoDBModel.TransactWriteItemsInput) async throws
      -> DynamoDBModel.TransactWriteItemsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try transactWriteItemsAsync(input: input) { result in
                     switch result {
@@ -1221,7 +1221,7 @@ public extension DynamoDBClientProtocol {
      - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
      */
     func untagResource(input: DynamoDBModel.UntagResourceInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { error in
                     if let error = error {
@@ -1247,7 +1247,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateContinuousBackups(input: DynamoDBModel.UpdateContinuousBackupsInput) async throws
      -> DynamoDBModel.UpdateContinuousBackupsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateContinuousBackupsAsync(input: input) { result in
                     switch result {
@@ -1274,7 +1274,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateContributorInsights(input: DynamoDBModel.UpdateContributorInsightsInput) async throws
      -> DynamoDBModel.UpdateContributorInsightsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateContributorInsightsAsync(input: input) { result in
                     switch result {
@@ -1301,7 +1301,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateGlobalTable(input: DynamoDBModel.UpdateGlobalTableInput) async throws
      -> DynamoDBModel.UpdateGlobalTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateGlobalTableAsync(input: input) { result in
                     switch result {
@@ -1328,7 +1328,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateGlobalTableSettings(input: DynamoDBModel.UpdateGlobalTableSettingsInput) async throws
      -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateGlobalTableSettingsAsync(input: input) { result in
                     switch result {
@@ -1355,7 +1355,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateItem(input: DynamoDBModel.UpdateItemInput) async throws
      -> DynamoDBModel.UpdateItemOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateItemAsync(input: input) { result in
                     switch result {
@@ -1382,7 +1382,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateTable(input: DynamoDBModel.UpdateTableInput) async throws
      -> DynamoDBModel.UpdateTableOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateTableAsync(input: input) { result in
                     switch result {
@@ -1409,7 +1409,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateTableReplicaAutoScaling(input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) async throws
      -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateTableReplicaAutoScalingAsync(input: input) { result in
                     switch result {
@@ -1436,7 +1436,7 @@ public extension DynamoDBClientProtocol {
      */
     func updateTimeToLive(input: DynamoDBModel.UpdateTimeToLiveInput) async throws
      -> DynamoDBModel.UpdateTimeToLiveOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateTimeToLiveAsync(input: input) { result in
                     switch result {

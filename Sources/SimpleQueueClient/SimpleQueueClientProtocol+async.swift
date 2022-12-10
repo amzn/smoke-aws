@@ -38,7 +38,7 @@ public extension SimpleQueueClientProtocol {
      - Throws: overLimit.
      */
     func addPermission(input: SimpleQueueModel.AddPermissionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try addPermissionAsync(input: input) { error in
                     if let error = error {
@@ -61,7 +61,7 @@ public extension SimpleQueueClientProtocol {
      - Throws: messageNotInflight, receiptHandleIsInvalid.
      */
     func changeMessageVisibility(input: SimpleQueueModel.ChangeMessageVisibilityRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try changeMessageVisibilityAsync(input: input) { error in
                     if let error = error {
@@ -87,7 +87,7 @@ public extension SimpleQueueClientProtocol {
      */
     func changeMessageVisibilityBatch(input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) async throws
      -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try changeMessageVisibilityBatchAsync(input: input) { result in
                     switch result {
@@ -114,7 +114,7 @@ public extension SimpleQueueClientProtocol {
      */
     func createQueue(input: SimpleQueueModel.CreateQueueRequest) async throws
      -> SimpleQueueModel.CreateQueueResultForCreateQueue {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try createQueueAsync(input: input) { result in
                     switch result {
@@ -138,7 +138,7 @@ public extension SimpleQueueClientProtocol {
      - Throws: invalidIdFormat, receiptHandleIsInvalid.
      */
     func deleteMessage(input: SimpleQueueModel.DeleteMessageRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteMessageAsync(input: input) { error in
                     if let error = error {
@@ -164,7 +164,7 @@ public extension SimpleQueueClientProtocol {
      */
     func deleteMessageBatch(input: SimpleQueueModel.DeleteMessageBatchRequest) async throws
      -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteMessageBatchAsync(input: input) { result in
                     switch result {
@@ -187,7 +187,7 @@ public extension SimpleQueueClientProtocol {
          - input: The validated DeleteQueueRequest object being passed to this operation.
      */
     func deleteQueue(input: SimpleQueueModel.DeleteQueueRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteQueueAsync(input: input) { error in
                     if let error = error {
@@ -213,7 +213,7 @@ public extension SimpleQueueClientProtocol {
      */
     func getQueueAttributes(input: SimpleQueueModel.GetQueueAttributesRequest) async throws
      -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getQueueAttributesAsync(input: input) { result in
                     switch result {
@@ -240,7 +240,7 @@ public extension SimpleQueueClientProtocol {
      */
     func getQueueUrl(input: SimpleQueueModel.GetQueueUrlRequest) async throws
      -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getQueueUrlAsync(input: input) { result in
                     switch result {
@@ -267,7 +267,7 @@ public extension SimpleQueueClientProtocol {
      */
     func listDeadLetterSourceQueues(input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) async throws
      -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listDeadLetterSourceQueuesAsync(input: input) { result in
                     switch result {
@@ -293,7 +293,7 @@ public extension SimpleQueueClientProtocol {
      */
     func listQueueTags(input: SimpleQueueModel.ListQueueTagsRequest) async throws
      -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listQueueTagsAsync(input: input) { result in
                     switch result {
@@ -319,7 +319,7 @@ public extension SimpleQueueClientProtocol {
      */
     func listQueues(input: SimpleQueueModel.ListQueuesRequest) async throws
      -> SimpleQueueModel.ListQueuesResultForListQueues {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listQueuesAsync(input: input) { result in
                     switch result {
@@ -343,7 +343,7 @@ public extension SimpleQueueClientProtocol {
      - Throws: purgeQueueInProgress, queueDoesNotExist.
      */
     func purgeQueue(input: SimpleQueueModel.PurgeQueueRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try purgeQueueAsync(input: input) { error in
                     if let error = error {
@@ -369,7 +369,7 @@ public extension SimpleQueueClientProtocol {
      */
     func receiveMessage(input: SimpleQueueModel.ReceiveMessageRequest) async throws
      -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try receiveMessageAsync(input: input) { result in
                     switch result {
@@ -392,7 +392,7 @@ public extension SimpleQueueClientProtocol {
          - input: The validated RemovePermissionRequest object being passed to this operation.
      */
     func removePermission(input: SimpleQueueModel.RemovePermissionRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try removePermissionAsync(input: input) { error in
                     if let error = error {
@@ -418,7 +418,7 @@ public extension SimpleQueueClientProtocol {
      */
     func sendMessage(input: SimpleQueueModel.SendMessageRequest) async throws
      -> SimpleQueueModel.SendMessageResultForSendMessage {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try sendMessageAsync(input: input) { result in
                     switch result {
@@ -445,7 +445,7 @@ public extension SimpleQueueClientProtocol {
      */
     func sendMessageBatch(input: SimpleQueueModel.SendMessageBatchRequest) async throws
      -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try sendMessageBatchAsync(input: input) { result in
                     switch result {
@@ -469,7 +469,7 @@ public extension SimpleQueueClientProtocol {
      - Throws: invalidAttributeName.
      */
     func setQueueAttributes(input: SimpleQueueModel.SetQueueAttributesRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try setQueueAttributesAsync(input: input) { error in
                     if let error = error {
@@ -491,7 +491,7 @@ public extension SimpleQueueClientProtocol {
          - input: The validated TagQueueRequest object being passed to this operation.
      */
     func tagQueue(input: SimpleQueueModel.TagQueueRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagQueueAsync(input: input) { error in
                     if let error = error {
@@ -513,7 +513,7 @@ public extension SimpleQueueClientProtocol {
          - input: The validated UntagQueueRequest object being passed to this operation.
      */
     func untagQueue(input: SimpleQueueModel.UntagQueueRequest) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagQueueAsync(input: input) { error in
                     if let error = error {

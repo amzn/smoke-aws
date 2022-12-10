@@ -41,7 +41,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func countClosedWorkflowExecutions(input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) async throws
      -> SimpleWorkflowModel.WorkflowExecutionCount {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try countClosedWorkflowExecutionsAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func countOpenWorkflowExecutions(input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) async throws
      -> SimpleWorkflowModel.WorkflowExecutionCount {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try countOpenWorkflowExecutionsAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func countPendingActivityTasks(input: SimpleWorkflowModel.CountPendingActivityTasksInput) async throws
      -> SimpleWorkflowModel.PendingTaskCount {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try countPendingActivityTasksAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func countPendingDecisionTasks(input: SimpleWorkflowModel.CountPendingDecisionTasksInput) async throws
      -> SimpleWorkflowModel.PendingTaskCount {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try countPendingDecisionTasksAsync(input: input) { result in
                     switch result {
@@ -146,7 +146,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
     func deprecateActivityType(input: SimpleWorkflowModel.DeprecateActivityTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deprecateActivityTypeAsync(input: input) { error in
                     if let error = error {
@@ -169,7 +169,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: domainDeprecated, operationNotPermitted, unknownResource.
      */
     func deprecateDomain(input: SimpleWorkflowModel.DeprecateDomainInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deprecateDomainAsync(input: input) { error in
                     if let error = error {
@@ -192,7 +192,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeDeprecated, unknownResource.
      */
     func deprecateWorkflowType(input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try deprecateWorkflowTypeAsync(input: input) { error in
                     if let error = error {
@@ -218,7 +218,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func describeActivityType(input: SimpleWorkflowModel.DescribeActivityTypeInput) async throws
      -> SimpleWorkflowModel.ActivityTypeDetail {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeActivityTypeAsync(input: input) { result in
                     switch result {
@@ -245,7 +245,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func describeDomain(input: SimpleWorkflowModel.DescribeDomainInput) async throws
      -> SimpleWorkflowModel.DomainDetail {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeDomainAsync(input: input) { result in
                     switch result {
@@ -272,7 +272,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func describeWorkflowExecution(input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) async throws
      -> SimpleWorkflowModel.WorkflowExecutionDetail {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeWorkflowExecutionAsync(input: input) { result in
                     switch result {
@@ -299,7 +299,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func describeWorkflowType(input: SimpleWorkflowModel.DescribeWorkflowTypeInput) async throws
      -> SimpleWorkflowModel.WorkflowTypeDetail {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeWorkflowTypeAsync(input: input) { result in
                     switch result {
@@ -326,7 +326,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func getWorkflowExecutionHistory(input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) async throws
      -> SimpleWorkflowModel.History {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getWorkflowExecutionHistoryAsync(input: input) { result in
                     switch result {
@@ -353,7 +353,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func listActivityTypes(input: SimpleWorkflowModel.ListActivityTypesInput) async throws
      -> SimpleWorkflowModel.ActivityTypeInfos {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listActivityTypesAsync(input: input) { result in
                     switch result {
@@ -380,7 +380,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func listClosedWorkflowExecutions(input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) async throws
      -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listClosedWorkflowExecutionsAsync(input: input) { result in
                     switch result {
@@ -407,7 +407,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func listDomains(input: SimpleWorkflowModel.ListDomainsInput) async throws
      -> SimpleWorkflowModel.DomainInfos {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listDomainsAsync(input: input) { result in
                     switch result {
@@ -434,7 +434,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func listOpenWorkflowExecutions(input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) async throws
      -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listOpenWorkflowExecutionsAsync(input: input) { result in
                     switch result {
@@ -461,7 +461,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func listTagsForResource(input: SimpleWorkflowModel.ListTagsForResourceInput) async throws
      -> SimpleWorkflowModel.ListTagsForResourceOutput {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
                     switch result {
@@ -488,7 +488,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func listWorkflowTypes(input: SimpleWorkflowModel.ListWorkflowTypesInput) async throws
      -> SimpleWorkflowModel.WorkflowTypeInfos {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try listWorkflowTypesAsync(input: input) { result in
                     switch result {
@@ -515,7 +515,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func pollForActivityTask(input: SimpleWorkflowModel.PollForActivityTaskInput) async throws
      -> SimpleWorkflowModel.ActivityTask {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try pollForActivityTaskAsync(input: input) { result in
                     switch result {
@@ -542,7 +542,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func pollForDecisionTask(input: SimpleWorkflowModel.PollForDecisionTaskInput) async throws
      -> SimpleWorkflowModel.DecisionTask {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try pollForDecisionTaskAsync(input: input) { result in
                     switch result {
@@ -569,7 +569,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func recordActivityTaskHeartbeat(input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) async throws
      -> SimpleWorkflowModel.ActivityTaskStatus {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try recordActivityTaskHeartbeatAsync(input: input) { result in
                     switch result {
@@ -593,7 +593,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func registerActivityType(input: SimpleWorkflowModel.RegisterActivityTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerActivityTypeAsync(input: input) { error in
                     if let error = error {
@@ -616,7 +616,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: domainAlreadyExists, limitExceeded, operationNotPermitted, tooManyTags.
      */
     func registerDomain(input: SimpleWorkflowModel.RegisterDomainInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerDomainAsync(input: input) { error in
                     if let error = error {
@@ -639,7 +639,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func registerWorkflowType(input: SimpleWorkflowModel.RegisterWorkflowTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try registerWorkflowTypeAsync(input: input) { error in
                     if let error = error {
@@ -662,7 +662,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func requestCancelWorkflowExecution(input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try requestCancelWorkflowExecutionAsync(input: input) { error in
                     if let error = error {
@@ -685,7 +685,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondActivityTaskCanceled(input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try respondActivityTaskCanceledAsync(input: input) { error in
                     if let error = error {
@@ -708,7 +708,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondActivityTaskCompleted(input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try respondActivityTaskCompletedAsync(input: input) { error in
                     if let error = error {
@@ -731,7 +731,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondActivityTaskFailed(input: SimpleWorkflowModel.RespondActivityTaskFailedInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try respondActivityTaskFailedAsync(input: input) { error in
                     if let error = error {
@@ -754,7 +754,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func respondDecisionTaskCompleted(input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try respondDecisionTaskCompletedAsync(input: input) { error in
                     if let error = error {
@@ -777,7 +777,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func signalWorkflowExecution(input: SimpleWorkflowModel.SignalWorkflowExecutionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try signalWorkflowExecutionAsync(input: input) { error in
                     if let error = error {
@@ -803,7 +803,7 @@ public extension SimpleWorkflowClientProtocol {
      */
     func startWorkflowExecution(input: SimpleWorkflowModel.StartWorkflowExecutionInput) async throws
      -> SimpleWorkflowModel.Run {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try startWorkflowExecutionAsync(input: input) { result in
                     switch result {
@@ -827,7 +827,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, tooManyTags, unknownResource.
      */
     func tagResource(input: SimpleWorkflowModel.TagResourceInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try tagResourceAsync(input: input) { error in
                     if let error = error {
@@ -850,7 +850,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, unknownResource.
      */
     func terminateWorkflowExecution(input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try terminateWorkflowExecutionAsync(input: input) { error in
                     if let error = error {
@@ -873,7 +873,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func undeprecateActivityType(input: SimpleWorkflowModel.UndeprecateActivityTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try undeprecateActivityTypeAsync(input: input) { error in
                     if let error = error {
@@ -896,7 +896,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: domainAlreadyExists, operationNotPermitted, unknownResource.
      */
     func undeprecateDomain(input: SimpleWorkflowModel.UndeprecateDomainInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try undeprecateDomainAsync(input: input) { error in
                     if let error = error {
@@ -919,7 +919,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: operationNotPermitted, typeAlreadyExists, unknownResource.
      */
     func undeprecateWorkflowType(input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try undeprecateWorkflowTypeAsync(input: input) { error in
                     if let error = error {
@@ -942,7 +942,7 @@ public extension SimpleWorkflowClientProtocol {
      - Throws: limitExceeded, operationNotPermitted, unknownResource.
      */
     func untagResource(input: SimpleWorkflowModel.UntagResourceInput) async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try untagResourceAsync(input: input) { error in
                     if let error = error {

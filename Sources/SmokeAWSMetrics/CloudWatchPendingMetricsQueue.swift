@@ -46,7 +46,7 @@ private struct Entry {
 
 private struct QueueShutdownDetails {
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
-    let awaitingContinuations: [UnsafeContinuation<Void, Error>]
+    let awaitingContinuations: [CheckedContinuation<Void, Error>]
 #endif
 }
 
@@ -56,7 +56,7 @@ internal class CloudWatchPendingMetricsQueue {
     private let cloudWatchClient: CloudWatchClientProtocol
     private let shutdownDispatchGroup: DispatchGroup
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
-    private var shutdownWaitingContinuations: [UnsafeContinuation<Void, Error>] = []
+    private var shutdownWaitingContinuations: [CheckedContinuation<Void, Error>] = []
 #endif
     
     private let accessQueue = DispatchQueue(label: "com.amazon.SmokeAWSMetrics.CloudWatchPendingMetricsQueue.accessQueue")
@@ -117,7 +117,7 @@ internal class CloudWatchPendingMetricsQueue {
     
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
     public func untilShutdown() async throws {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             if !isShutdownOtherwiseAddContinuation(newContinuation: cont) {
                 // continuation will be resumed when the server shuts down
             } else {
@@ -288,7 +288,7 @@ internal class CloudWatchPendingMetricsQueue {
     }
     
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
-    public func isShutdownOtherwiseAddContinuation(newContinuation: UnsafeContinuation<Void, Error>) -> Bool {
+    public func isShutdownOtherwiseAddContinuation(newContinuation: CheckedContinuation<Void, Error>) -> Bool {
         stateLock.lock()
         defer {
             stateLock.unlock()

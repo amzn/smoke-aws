@@ -41,7 +41,7 @@ public extension SecurityTokenClientProtocol {
      */
     func assumeRole(input: SecurityTokenModel.AssumeRoleRequest) async throws
      -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try assumeRoleAsync(input: input) { result in
                     switch result {
@@ -68,7 +68,7 @@ public extension SecurityTokenClientProtocol {
      */
     func assumeRoleWithSAML(input: SecurityTokenModel.AssumeRoleWithSAMLRequest) async throws
      -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try assumeRoleWithSAMLAsync(input: input) { result in
                     switch result {
@@ -95,7 +95,7 @@ public extension SecurityTokenClientProtocol {
      */
     func assumeRoleWithWebIdentity(input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest) async throws
      -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try assumeRoleWithWebIdentityAsync(input: input) { result in
                     switch result {
@@ -122,7 +122,7 @@ public extension SecurityTokenClientProtocol {
      */
     func decodeAuthorizationMessage(input: SecurityTokenModel.DecodeAuthorizationMessageRequest) async throws
      -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try decodeAuthorizationMessageAsync(input: input) { result in
                     switch result {
@@ -148,7 +148,7 @@ public extension SecurityTokenClientProtocol {
      */
     func getAccessKeyInfo(input: SecurityTokenModel.GetAccessKeyInfoRequest) async throws
      -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getAccessKeyInfoAsync(input: input) { result in
                     switch result {
@@ -174,7 +174,7 @@ public extension SecurityTokenClientProtocol {
      */
     func getCallerIdentity(input: SecurityTokenModel.GetCallerIdentityRequest) async throws
      -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getCallerIdentityAsync(input: input) { result in
                     switch result {
@@ -201,7 +201,7 @@ public extension SecurityTokenClientProtocol {
      */
     func getFederationToken(input: SecurityTokenModel.GetFederationTokenRequest) async throws
      -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getFederationTokenAsync(input: input) { result in
                     switch result {
@@ -228,7 +228,7 @@ public extension SecurityTokenClientProtocol {
      */
     func getSessionToken(input: SecurityTokenModel.GetSessionTokenRequest) async throws
      -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
-        return try await withUnsafeThrowingContinuation { cont in
+        return try await withCheckedThrowingContinuation { cont in
             do {
                 try getSessionTokenAsync(input: input) { result in
                     switch result {
